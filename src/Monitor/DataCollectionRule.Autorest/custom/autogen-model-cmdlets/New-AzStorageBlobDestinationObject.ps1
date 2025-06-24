@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.StorageBlobDest
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azstorageblobdestinationobject
 #>
 function New-AzStorageBlobDestinationObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.StorageBlobDestination')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

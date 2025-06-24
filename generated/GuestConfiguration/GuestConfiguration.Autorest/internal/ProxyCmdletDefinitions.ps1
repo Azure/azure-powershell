@@ -25,12 +25,12 @@ Lists all of the available GuestConfiguration REST API operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.guestconfiguration/get-azguestconfigurationoperation
 #>
 function Get-AzGuestConfigurationOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -89,12 +89,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.GuestConfiguration.private\Get-AzGuestConfigurationOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -135,14 +141,14 @@ Remove-AzGuestConfigurationAssignment -ResourceGroupName test-rg -VMName test-vm
 Get-AzGuestConfigurationAssignment -ResourceGroupName test-rg -VMName test-vm -Name test-assignment | Remove-AzGuestConfigurationAssignment -PassThru
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment
+Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment
 .Outputs
 System.Boolean
 .Link
 https://learn.microsoft.com/powershell/module/az.guestconfiguration/remove-azguestconfigurationassignment
 #>
 function Remove-AzGuestConfigurationAssignment {
-[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment])]
+[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -246,15 +252,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Delete = 'Az.GuestConfiguration.private\Remove-AzGuestConfigurationAssignment_Delete';
             Delete1 = 'Az.GuestConfiguration.private\Remove-AzGuestConfigurationAssignment_Delete1';
             Delete2 = 'Az.GuestConfiguration.private\Remove-AzGuestConfigurationAssignment_Delete2';
         }
-        if (('Delete', 'Delete1', 'Delete2') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete', 'Delete1', 'Delete2') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -263,6 +270,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

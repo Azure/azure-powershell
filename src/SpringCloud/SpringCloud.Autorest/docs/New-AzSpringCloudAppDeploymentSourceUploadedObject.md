@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.SpringCloud
-online version: https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudAppDeploymentSourceUploadedObject
+online version: https://learn.microsoft.com/powershell/module/Az.SpringCloud/new-azspringcloudappdeploymentsourceuploadedobject
 schema: 2.0.0
 ---
 
@@ -91,7 +91,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.SourceUploadedUserSourceInfo
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.SourceUploadedUserSourceInfo
 
 ## NOTES
 

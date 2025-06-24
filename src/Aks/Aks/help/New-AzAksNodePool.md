@@ -47,7 +47,7 @@ Create a new node pool in specified cluster.
 
 ### Example 1: Create a node pool with default parameters
 ```powershell
-New-AzAksNodePool -ResourceGroupName myResouceGroup -ClusterName myCluster -Name mydefault
+New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myCluster -Name mydefault
 ```
 
 ### Example 2: Create Windows Server container on an AKS
@@ -665,7 +665,7 @@ Accept wildcard characters: False
 ```
 
 ### -VmSize
-The size of the Virtual Machine. Default value is Standard_D2_v2.
+The size of the Virtual Machine. Default value is dynamically selected by the AKS resource provider based on quota and capacity.
 
 ```yaml
 Type: System.String

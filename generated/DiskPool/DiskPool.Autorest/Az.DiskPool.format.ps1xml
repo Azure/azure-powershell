@@ -2,9 +2,161 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Acl</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Acl#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>InitiatorIqn</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>InitiatorIqn</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPool</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPool#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AvailabilityZone</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AvailabilityZone</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolCreate</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolCreate#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ManagedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ManagedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolCreateProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolCreateProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>SubnetId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>SubnetId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolCreateTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolCreateTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -48,185 +200,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.Acl</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.Acl</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>InitiatorIqn</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>MappedLun</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>InitiatorIqn</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>MappedLun</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskPool</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskPool</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Status</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AvailabilityZone</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Status</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AvailabilityZone</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskPoolCreate</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskPoolCreate</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ManagedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ManagedByExtended</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ManagedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ManagedByExtended</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskPoolCreateProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskPoolCreateProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AdditionalCapability</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AvailabilityZone</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SubnetId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AdditionalCapability</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AvailabilityZone</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SubnetId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskPoolCreateTags</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskPoolCreateTags</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskPoolListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskPoolListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -246,18 +222,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskPoolProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskPoolProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>AdditionalCapability</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AvailabilityZone</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
@@ -271,12 +241,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AdditionalCapability</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AvailabilityZone</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
@@ -292,17 +256,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskPoolUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskPoolUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolUpdate#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>ManagedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ManagedByExtended</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -311,18 +272,15 @@
               <TableColumnItem>
                 <PropertyName>ManagedBy</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ManagedByExtended</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskPoolUpdateTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolUpdateTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskPoolUpdateTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolUpdateTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -342,9 +300,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskPoolZoneInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolZoneInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskPoolZoneInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolZoneInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -382,9 +340,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskPoolZoneListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolZoneListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskPoolZoneListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolZoneListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -404,9 +362,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.EndpointDependency</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.EndpointDependency</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.EndpointDependency</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.EndpointDependency#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -426,9 +384,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.EndpointDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.EndpointDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.EndpointDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.EndpointDetail#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -466,9 +424,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ErrorResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ErrorResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ErrorResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ErrorResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -500,9 +458,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiLun</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IscsiLun</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiLun</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IscsiLun#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -534,9 +492,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiTarget</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IscsiTarget</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiTarget</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IscsiTarget#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -545,9 +503,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ManagedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ManagedByExtended</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -563,9 +518,6 @@
                 <PropertyName>ManagedBy</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>ManagedByExtended</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -574,9 +526,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiTargetCreate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IscsiTargetCreate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiTargetCreate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IscsiTargetCreate#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -585,9 +537,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ManagedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ManagedByExtended</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -599,18 +548,15 @@
               <TableColumnItem>
                 <PropertyName>ManagedBy</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ManagedByExtended</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiTargetCreateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IscsiTargetCreateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiTargetCreateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IscsiTargetCreateProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -636,9 +582,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiTargetList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IscsiTargetList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiTargetList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IscsiTargetList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -658,9 +604,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiTargetProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IscsiTargetProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiTargetProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IscsiTargetProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -668,16 +614,10 @@
             <Label>AclMode</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Endpoint</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>Port</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Session</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Status</Label>
@@ -693,16 +633,10 @@
                 <PropertyName>AclMode</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Endpoint</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>Port</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Session</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Status</PropertyName>
@@ -716,9 +650,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiTargetUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IscsiTargetUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiTargetUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IscsiTargetUpdate#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -727,9 +661,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ManagedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ManagedByExtended</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -741,18 +672,15 @@
               <TableColumnItem>
                 <PropertyName>ManagedBy</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ManagedByExtended</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.OutboundEnvironmentEndpoint</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.OutboundEnvironmentEndpoint</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.OutboundEnvironmentEndpoint</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.OutboundEnvironmentEndpoint#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -778,9 +706,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.OutboundEnvironmentEndpointList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.OutboundEnvironmentEndpointList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.OutboundEnvironmentEndpointList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.OutboundEnvironmentEndpointList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -800,9 +728,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ProxyResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ProxyResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ProxyResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -822,9 +750,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Resource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -844,9 +772,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ResourceSkuCapability</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ResourceSkuCapability</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ResourceSkuCapability</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ResourceSkuCapability#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -872,9 +800,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ResourceSkuInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ResourceSkuInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ResourceSkuInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ResourceSkuInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -912,9 +840,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ResourceSkuListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ResourceSkuListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ResourceSkuListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ResourceSkuListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -934,17 +862,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ResourceSkuLocationInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ResourceSkuLocationInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ResourceSkuLocationInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ResourceSkuLocationInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Zone</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -953,54 +878,20 @@
               <TableColumnItem>
                 <PropertyName>Location</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Zone</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ResourceSkuRestrictionInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ResourceSkuRestrictions</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ResourceSkuRestrictionInfo</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Zone</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Zone</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ResourceSkuRestrictions</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ResourceSkuRestrictions</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ResourceSkuRestrictions#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>ReasonCode</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Value</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1009,40 +900,15 @@
               <TableColumnItem>
                 <PropertyName>ReasonCode</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Value</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ResourceSkuZoneDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Sku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ResourceSkuZoneDetails</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.Sku</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.Sku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Sku#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1068,9 +934,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.StoragePoolOperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.StoragePoolOperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.StoragePoolOperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.StoragePoolOperationDisplay#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1108,9 +974,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.StoragePoolOperationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.StoragePoolOperationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.StoragePoolOperationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.StoragePoolOperationListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1130,9 +996,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.StoragePoolRpOperation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.StoragePoolRpOperation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.StoragePoolRpOperation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.StoragePoolRpOperation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1170,9 +1036,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.SystemMetadata</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.SystemMetadata</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.SystemMetadata</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.SystemMetadata#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1222,9 +1088,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.TrackedResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.TrackedResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.TrackedResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.TrackedResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1250,9 +1116,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.TrackedResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.TrackedResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.TrackedResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.TrackedResourceTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

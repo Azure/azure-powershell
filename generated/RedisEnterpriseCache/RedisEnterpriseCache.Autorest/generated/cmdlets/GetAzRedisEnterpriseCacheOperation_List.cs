@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api30.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Description(@"Lists all of the available REST API operations of the Microsoft.Cache provider.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.HttpPath(Path = "/providers/Microsoft.Cache/operations", ApiVersion = "2024-09-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.HttpPath(Path = "/providers/Microsoft.Cache/operations", ApiVersion = "2025-05-01-preview")]
     public partial class GetAzRedisEnterpriseCacheOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener
     {

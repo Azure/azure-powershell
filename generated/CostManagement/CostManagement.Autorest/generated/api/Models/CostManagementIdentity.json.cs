@@ -64,16 +64,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
             {
                 return;
             }
-            {_scope = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("scope"), out var __jsonScope) ? (string)__jsonScope : (string)Scope;}
-            {_viewName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("viewName"), out var __jsonViewName) ? (string)__jsonViewName : (string)ViewName;}
-            {_alertId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("alertId"), out var __jsonAlertId) ? (string)__jsonAlertId : (string)AlertId;}
-            {_externalCloudProviderType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("externalCloudProviderType"), out var __jsonExternalCloudProviderType) ? (string)__jsonExternalCloudProviderType : (string)ExternalCloudProviderType;}
-            {_externalCloudProviderId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("externalCloudProviderId"), out var __jsonExternalCloudProviderId) ? (string)__jsonExternalCloudProviderId : (string)ExternalCloudProviderId;}
-            {_billingAccountId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("billingAccountId"), out var __jsonBillingAccountId) ? (string)__jsonBillingAccountId : (string)BillingAccountId;}
-            {_billingProfileId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("billingProfileId"), out var __jsonBillingProfileId) ? (string)__jsonBillingProfileId : (string)BillingProfileId;}
-            {_exportName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("exportName"), out var __jsonExportName) ? (string)__jsonExportName : (string)ExportName;}
-            {_operationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("operationId"), out var __jsonOperationId) ? (string)__jsonOperationId : (string)OperationId;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_scope = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("scope"), out var __jsonScope) ? (string)__jsonScope : (string)_scope;}
+            {_viewName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("viewName"), out var __jsonViewName) ? (string)__jsonViewName : (string)_viewName;}
+            {_alertId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("alertId"), out var __jsonAlertId) ? (string)__jsonAlertId : (string)_alertId;}
+            {_externalCloudProviderType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("externalCloudProviderType"), out var __jsonExternalCloudProviderType) ? (string)__jsonExternalCloudProviderType : (string)_externalCloudProviderType;}
+            {_externalCloudProviderId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("externalCloudProviderId"), out var __jsonExternalCloudProviderId) ? (string)__jsonExternalCloudProviderId : (string)_externalCloudProviderId;}
+            {_billingAccountId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("billingAccountId"), out var __jsonBillingAccountId) ? (string)__jsonBillingAccountId : (string)_billingAccountId;}
+            {_billingProfileId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("billingProfileId"), out var __jsonBillingProfileId) ? (string)__jsonBillingProfileId : (string)_billingProfileId;}
+            {_exportName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("exportName"), out var __jsonExportName) ? (string)__jsonExportName : (string)_exportName;}
+            {_operationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("operationId"), out var __jsonOperationId) ? (string)__jsonOperationId : (string)_operationId;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

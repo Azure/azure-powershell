@@ -1,7 +1,7 @@
 ---
 external help file: Az.Orbital-help.xml
 Module Name: Az.Orbital
-online version: https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkObject
+online version: https://learn.microsoft.com/powershell/module/Az.Orbital/new-azorbitalcontactprofilelinkobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for ContactProfileLink.
 ## SYNTAX
 
 ```
-New-AzOrbitalContactProfileLinkObject -Channel <IContactProfileLinkChannel[]> -Direction <Direction>
- -Name <String> -Polarization <Polarization> [-EirpdBw <Single>] [-GainOverTemperature <Single>]
+New-AzOrbitalContactProfileLinkObject -Channel <IContactProfileLinkChannel[]> -Direction <String>
+ -Name <String> -Polarization <String> [-EirpdBw <Single>] [-GainOverTemperature <Single>]
  [<CommonParameters>]
 ```
 
@@ -42,10 +42,9 @@ Create a ContactProfileLink object.
 
 ### -Channel
 Contact Profile Link Channel.
-To construct, see NOTES section for CHANNEL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfileLinkChannel[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfileLinkChannel[]
 Parameter Sets: (All)
 Aliases:
 
@@ -57,10 +56,10 @@ Accept wildcard characters: False
 ```
 
 ### -Direction
-Direction (uplink or downlink).
+Direction (Uplink or Downlink).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Direction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -73,6 +72,8 @@ Accept wildcard characters: False
 
 ### -EirpdBw
 Effective Isotropic Radiated Power (EIRP) in dBW.
+It is the required EIRP by the customer.
+Not used yet.
 
 ```yaml
 Type: System.Single
@@ -87,7 +88,9 @@ Accept wildcard characters: False
 ```
 
 ### -GainOverTemperature
-Gain To Noise Temperature in db/K.
+Gain to noise temperature in db/K.
+It is the required G/T by the customer.
+Not used yet.
 
 ```yaml
 Type: System.Single
@@ -117,11 +120,12 @@ Accept wildcard characters: False
 ```
 
 ### -Polarization
-polarization.
-eg (RHCP, LHCP).
+Polarization.
+e.g.
+(RHCP, LHCP).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Polarization
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -139,7 +143,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLink
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileLink
 
 ## NOTES
 

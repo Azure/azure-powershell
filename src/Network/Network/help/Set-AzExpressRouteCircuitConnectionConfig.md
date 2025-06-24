@@ -16,15 +16,16 @@ Updates a circuit connection configuration created in Private Peerings for an Ex
 ```
 Set-AzExpressRouteCircuitConnectionConfig [-Name] <String> [-ExpressRouteCircuit] <PSExpressRouteCircuit>
  [-AddressPrefix] <String> [-AddressPrefixType <String>] [-AuthorizationKey <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 Set-AzExpressRouteCircuitConnectionConfig [-Name] <String> [-ExpressRouteCircuit] <PSExpressRouteCircuit>
  [-PeerExpressRouteCircuitPeering] <String> [-AddressPrefix] <String> [-AddressPrefixType <String>]
- [-AuthorizationKey <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AuthorizationKey <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

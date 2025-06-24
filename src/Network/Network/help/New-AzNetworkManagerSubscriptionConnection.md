@@ -14,7 +14,8 @@ Creates a network manager subscription connection.
 
 ```
 New-AzNetworkManagerSubscriptionConnection -Name <String> -NetworkManagerId <String> [-Description <String>]
- [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

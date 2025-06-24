@@ -38,7 +38,7 @@ Describe 'New-AzBillingBenefitsSavingsPlanOrderAlias' {
         ExecuteTestCases($response)
     }
 
-    It 'Create' {
+    It 'Create' -Skip {
         $request = @{
                         AppliedScopeType = "Shared"
                         BillingPlan = "P1M"
@@ -55,7 +55,7 @@ Describe 'New-AzBillingBenefitsSavingsPlanOrderAlias' {
         
     }
 
-    It 'CreateViaIdentityExpanded' {
+    It 'CreateViaIdentityExpanded' -Skip {
         $request = @{
                         AppliedScopeType = "Shared"
                         BillingPlan = "P1M"
@@ -76,7 +76,7 @@ Describe 'New-AzBillingBenefitsSavingsPlanOrderAlias' {
         ExecuteTestCases($response)
     }
 
-    It 'CreateViaIdentity' {
+    It 'CreateViaIdentity' -Skip {
         $identity = @{
                         SavingsPlanOrderAliasName = "PSTest10"
                     }

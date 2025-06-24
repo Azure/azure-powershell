@@ -29,7 +29,7 @@ Get-AzDeviceUpdateAccount -ResourceGroupName azpstest_gp
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IAccount
+Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IAccount
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -48,7 +48,7 @@ INPUTOBJECT <IDeviceUpdateIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.deviceupdate/get-azdeviceupdateaccount
 #>
 function Get-AzDeviceUpdateAccount {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IAccount])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IAccount])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -78,7 +78,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -137,6 +136,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -161,9 +169,7 @@ begin {
             List = 'Az.DeviceUpdate.private\Get-AzDeviceUpdateAccount_List';
             List1 = 'Az.DeviceUpdate.private\Get-AzDeviceUpdateAccount_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -177,6 +183,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -233,11 +242,21 @@ Get-AzDeviceUpdateInstance -AccountName azpstest-account -ResourceGroupName azps
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IInstance
+Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+ACCOUNTINPUTOBJECT <IDeviceUpdateIdentity>: Identity Parameter
+  [AccountName <String>]: Account name.
+  [GroupId <String>]: The group ID of the private link resource.
+  [Id <String>]: Resource identity path
+  [InstanceName <String>]: Instance name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionProxyId <String>]: The ID of the private endpoint connection proxy object.
+  [ResourceGroupName <String>]: The resource group name.
+  [SubscriptionId <String>]: The Azure subscription ID.
 
 INPUTOBJECT <IDeviceUpdateIdentity>: Identity Parameter
   [AccountName <String>]: Account name.
@@ -252,7 +271,7 @@ INPUTOBJECT <IDeviceUpdateIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.deviceupdate/get-azdeviceupdateinstance
 #>
 function Get-AzDeviceUpdateInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IInstance])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IInstance])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -263,6 +282,7 @@ param(
     ${AccountName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityAccount', Mandatory)]
     [Alias('InstanceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Path')]
     [System.String]
@@ -288,8 +308,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityAccount', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity]
+    # Identity Parameter
+    ${AccountInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -347,6 +372,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -368,11 +402,10 @@ begin {
         $mapping = @{
             Get = 'Az.DeviceUpdate.private\Get-AzDeviceUpdateInstance_Get';
             GetViaIdentity = 'Az.DeviceUpdate.private\Get-AzDeviceUpdateInstance_GetViaIdentity';
+            GetViaIdentityAccount = 'Az.DeviceUpdate.private\Get-AzDeviceUpdateInstance_GetViaIdentityAccount';
             List = 'Az.DeviceUpdate.private\Get-AzDeviceUpdateInstance_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -386,6 +419,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -431,35 +467,29 @@ end {
 
 <#
 .Synopsis
-Creates or updates Account.
+create Account.
 .Description
-Creates or updates Account.
+create Account.
 .Example
-New-AzDeviceUpdateAccount -Name azpstest-account -ResourceGroupName azpstest_gp -Location eastus -IdentityType 'SystemAssigned' -PublicNetworkAccess 'Enabled' -Sku 'Standard'
+New-AzDeviceUpdateAccount -Name azpstest-account -ResourceGroupName azpstest_gp -Location eastus -EnableSystemAssignedIdentity:$true -PublicNetworkAccess 'Enabled' -Sku 'Standard'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IAccount
+Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IAccount
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>: List of private endpoint connections associated with the account.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [GroupId <String[]>]: Array of group IDs.
+  [GroupId <List<String>>]: Array of group IDs.
   [PrivateLinkServiceConnectionStateActionsRequired <String>]: A message indicating if changes on the service provider require any updates on the consumer.
   [PrivateLinkServiceConnectionStateDescription <String>]: The reason for approval/rejection of the connection.
-  [PrivateLinkServiceConnectionStateStatus <PrivateEndpointServiceConnectionStatus?>]: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+  [PrivateLinkServiceConnectionStateStatus <String>]: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 .Link
 https://learn.microsoft.com/powershell/module/az.deviceupdate/new-azdeviceupdateaccount
 #>
 function New-AzDeviceUpdateAccount {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IAccount])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IAccount])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -482,56 +512,65 @@ param(
     # The Azure subscription ID.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Support.ManagedServiceIdentityType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Support.ManagedServiceIdentityType]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IPrivateEndpointConnection[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IPrivateEndpointConnection[]]
     # List of private endpoint connections associated with the account.
-    # To construct, see NOTES section for PRIVATEENDPOINTCONNECTION properties and create a hash table.
     ${PrivateEndpointConnection},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Support.PublicNetworkAccess])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Support.PublicNetworkAccess]
+    [System.String]
     # Whether or not public network access is allowed for the account.
     ${PublicNetworkAccess},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Support.Sku])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.PSArgumentCompleterAttribute("Free", "Standard")]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Support.Sku]
+    [System.String]
     # Device Update Sku
     ${Sku},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
     ${UserAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -601,6 +640,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -621,10 +669,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.DeviceUpdate.private\New-AzDeviceUpdateAccount_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.DeviceUpdate.private\New-AzDeviceUpdateAccount_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DeviceUpdate.private\New-AzDeviceUpdateAccount_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -638,6 +686,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -740,7 +791,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -817,6 +867,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -839,9 +898,7 @@ begin {
             Delete = 'Az.DeviceUpdate.private\Remove-AzDeviceUpdateAccount_Delete';
             DeleteViaIdentity = 'Az.DeviceUpdate.private\Remove-AzDeviceUpdateAccount_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -855,6 +912,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -917,6 +977,16 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+ACCOUNTINPUTOBJECT <IDeviceUpdateIdentity>: Identity Parameter
+  [AccountName <String>]: Account name.
+  [GroupId <String>]: The group ID of the private link resource.
+  [Id <String>]: Resource identity path
+  [InstanceName <String>]: Instance name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionProxyId <String>]: The ID of the private endpoint connection proxy object.
+  [ResourceGroupName <String>]: The resource group name.
+  [SubscriptionId <String>]: The Azure subscription ID.
+
 INPUTOBJECT <IDeviceUpdateIdentity>: Identity Parameter
   [AccountName <String>]: Account name.
   [GroupId <String>]: The group ID of the private link resource.
@@ -940,6 +1010,7 @@ param(
     ${AccountName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityAccount', Mandatory)]
     [Alias('InstanceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Path')]
     [System.String]
@@ -963,8 +1034,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityAccount', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity]
+    # Identity Parameter
+    ${AccountInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1040,6 +1116,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1061,10 +1146,9 @@ begin {
         $mapping = @{
             Delete = 'Az.DeviceUpdate.private\Remove-AzDeviceUpdateInstance_Delete';
             DeleteViaIdentity = 'Az.DeviceUpdate.private\Remove-AzDeviceUpdateInstance_DeleteViaIdentity';
+            DeleteViaIdentityAccount = 'Az.DeviceUpdate.private\Remove-AzDeviceUpdateInstance_DeleteViaIdentityAccount';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1078,6 +1162,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1133,25 +1220,13 @@ Test-AzDeviceUpdateNameAvailability -Request $data
 Test-AzDeviceUpdateNameAvailability -Name azpstest-account -Type "Microsoft.DeviceUpdate/accounts"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.ICheckNameAvailabilityRequest
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity
+Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.ICheckNameAvailabilityRequest
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.ICheckNameAvailabilityResponse
+Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.ICheckNameAvailabilityResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IDeviceUpdateIdentity>: Identity Parameter
-  [AccountName <String>]: Account name.
-  [GroupId <String>]: The group ID of the private link resource.
-  [Id <String>]: Resource identity path
-  [InstanceName <String>]: Instance name.
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
-  [PrivateEndpointConnectionProxyId <String>]: The ID of the private endpoint connection proxy object.
-  [ResourceGroupName <String>]: The resource group name.
-  [SubscriptionId <String>]: The Azure subscription ID.
 
 REQUEST <ICheckNameAvailabilityRequest>: The check availability request body.
   [Name <String>]: The name of the resource for which availability needs to be checked.
@@ -1160,46 +1235,45 @@ REQUEST <ICheckNameAvailabilityRequest>: The check availability request body.
 https://learn.microsoft.com/powershell/module/az.deviceupdate/test-azdeviceupdatenameavailability
 #>
 function Test-AzDeviceUpdateNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.ICheckNameAvailabilityResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.ICheckNameAvailabilityResponse])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Check')]
-    [Parameter(ParameterSetName='CheckExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The Azure subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CheckViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CheckViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
     [Parameter(ParameterSetName='Check', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CheckViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.ICheckNameAvailabilityRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.ICheckNameAvailabilityRequest]
     # The check availability request body.
-    # To construct, see NOTES section for REQUEST properties and create a hash table.
     ${Request},
 
     [Parameter(ParameterSetName='CheckExpanded')]
-    [Parameter(ParameterSetName='CheckViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
     [System.String]
     # The name of the resource for which availability needs to be checked.
     ${Name},
 
     [Parameter(ParameterSetName='CheckExpanded')]
-    [Parameter(ParameterSetName='CheckViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
     [System.String]
     # The resource type.
     ${Type},
+
+    [Parameter(ParameterSetName='CheckViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Check operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CheckViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
+    [System.String]
+    # Json string supplied to the Check operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1257,6 +1331,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1278,12 +1361,10 @@ begin {
         $mapping = @{
             Check = 'Az.DeviceUpdate.private\Test-AzDeviceUpdateNameAvailability_Check';
             CheckExpanded = 'Az.DeviceUpdate.private\Test-AzDeviceUpdateNameAvailability_CheckExpanded';
-            CheckViaIdentity = 'Az.DeviceUpdate.private\Test-AzDeviceUpdateNameAvailability_CheckViaIdentity';
-            CheckViaIdentityExpanded = 'Az.DeviceUpdate.private\Test-AzDeviceUpdateNameAvailability_CheckViaIdentityExpanded';
+            CheckViaJsonFilePath = 'Az.DeviceUpdate.private\Test-AzDeviceUpdateNameAvailability_CheckViaJsonFilePath';
+            CheckViaJsonString = 'Az.DeviceUpdate.private\Test-AzDeviceUpdateNameAvailability_CheckViaJsonString';
         }
-        if (('Check', 'CheckExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Check', 'CheckExpanded', 'CheckViaJsonFilePath', 'CheckViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1297,6 +1378,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1342,18 +1426,18 @@ end {
 
 <#
 .Synopsis
-Updates account's patchable properties
+update Account.
 .Description
-Updates account's patchable properties
+update Account.
 .Example
-Update-AzDeviceUpdateAccount -Name azpstest-account -ResourceGroupName azpstest_gp -IdentityType 'SystemAssigned' -Tag @{"abc"="123"}
+Update-AzDeviceUpdateAccount -Name azpstest-account -ResourceGroupName azpstest_gp -EnableSystemAssignedIdentity $true -Tag @{"abc"="123"}
 .Example
-Get-AzDeviceUpdateAccount -Name azpstest-account -ResourceGroupName azpstest_gp | Update-AzDeviceUpdateAccount -IdentityType 'SystemAssigned' -Tag @{"abc"="123"}
+Get-AzDeviceUpdateAccount -Name azpstest-account -ResourceGroupName azpstest_gp | Update-AzDeviceUpdateAccount -EnableSystemAssignedIdentity $true -Tag @{"abc"="123"}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IAccount
+Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IAccount
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1368,11 +1452,17 @@ INPUTOBJECT <IDeviceUpdateIdentity>: Identity Parameter
   [PrivateEndpointConnectionProxyId <String>]: The ID of the private endpoint connection proxy object.
   [ResourceGroupName <String>]: The resource group name.
   [SubscriptionId <String>]: The Azure subscription ID.
+
+PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>: List of private endpoint connections associated with the account.
+  [GroupId <List<String>>]: Array of group IDs.
+  [PrivateLinkServiceConnectionStateActionsRequired <String>]: A message indicating if changes on the service provider require any updates on the consumer.
+  [PrivateLinkServiceConnectionStateDescription <String>]: The reason for approval/rejection of the connection.
+  [PrivateLinkServiceConnectionStateStatus <String>]: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 .Link
 https://learn.microsoft.com/powershell/module/az.deviceupdate/update-azdeviceupdateaccount
 #>
 function Update-AzDeviceUpdateAccount {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IAccount])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IAccount])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -1399,37 +1489,48 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Support.ManagedServiceIdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Support.ManagedServiceIdentityType]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
+    [System.Nullable[System.Boolean]]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IPrivateEndpointConnection[]]
+    # List of private endpoint connections associated with the account.
+    ${PrivateEndpointConnection},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
     [System.String]
-    # The geo-location where the resource lives
-    ${Location},
+    # Whether or not public network access is allowed for the account.
+    ${PublicNetworkAccess},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.PSArgumentCompleterAttribute("Free", "Standard")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
+    [System.String]
+    # Device Update Sku
+    ${Sku},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.ITagUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
-    # List of key value pairs that describe the resource.
-    # This will overwrite the existing tags.
+    # Resource tags.
     ${Tag},
 
     [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
     ${UserAssignedIdentity},
 
     [Parameter()]
@@ -1500,6 +1601,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1522,9 +1632,7 @@ begin {
             UpdateExpanded = 'Az.DeviceUpdate.private\Update-AzDeviceUpdateAccount_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.DeviceUpdate.private\Update-AzDeviceUpdateAccount_UpdateViaIdentityExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1538,6 +1646,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1583,9 +1694,9 @@ end {
 
 <#
 .Synopsis
-Updates instance's tags.
+update instance's tags.
 .Description
-Updates instance's tags.
+update instance's tags.
 .Example
 Update-AzDeviceUpdateInstance -AccountName azpstest-account -ResourceGroupName azpstest_gp -Name azpstest-instance -Tag @{"abc"="123"}
 .Example
@@ -1594,11 +1705,21 @@ Get-AzDeviceUpdateInstance -AccountName azpstest-account -ResourceGroupName azps
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IInstance
+Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+ACCOUNTINPUTOBJECT <IDeviceUpdateIdentity>: Identity Parameter
+  [AccountName <String>]: Account name.
+  [GroupId <String>]: The group ID of the private link resource.
+  [Id <String>]: Resource identity path
+  [InstanceName <String>]: Instance name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionProxyId <String>]: The ID of the private endpoint connection proxy object.
+  [ResourceGroupName <String>]: The resource group name.
+  [SubscriptionId <String>]: The Azure subscription ID.
 
 INPUTOBJECT <IDeviceUpdateIdentity>: Identity Parameter
   [AccountName <String>]: Account name.
@@ -1613,16 +1734,21 @@ INPUTOBJECT <IDeviceUpdateIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.deviceupdate/update-azdeviceupdateinstance
 #>
 function Update-AzDeviceUpdateInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IInstance])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IInstance])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Path')]
     [System.String]
     # Account name.
     ${AccountName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityAccountExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('InstanceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Path')]
     [System.String]
@@ -1630,32 +1756,55 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Path')]
     [System.String]
     # The resource group name.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The Azure subscription ID.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='UpdateViaIdentityAccountExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity]
+    # Identity Parameter
+    ${AccountInputObject},
+
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityAccountExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.ITagUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.ITagUpdateTags]))]
     [System.Collections.Hashtable]
     # List of key value pairs that describe the resource.
     # This will overwrite the existing tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1713,6 +1862,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1733,11 +1891,12 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.DeviceUpdate.private\Update-AzDeviceUpdateInstance_UpdateExpanded';
+            UpdateViaIdentityAccountExpanded = 'Az.DeviceUpdate.private\Update-AzDeviceUpdateInstance_UpdateViaIdentityAccountExpanded';
             UpdateViaIdentityExpanded = 'Az.DeviceUpdate.private\Update-AzDeviceUpdateInstance_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.DeviceUpdate.private\Update-AzDeviceUpdateInstance_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.DeviceUpdate.private\Update-AzDeviceUpdateInstance_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1751,6 +1910,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1803,12 +1965,12 @@ Create an in-memory object for CheckNameAvailabilityRequest.
 New-AzDeviceUpdateCheckNameAvailabilityRequestObject -Name azpstest-account -Type "Microsoft.DeviceUpdate/accounts"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.CheckNameAvailabilityRequest
+Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.CheckNameAvailabilityRequest
 .Link
-https://learn.microsoft.com/powershell/module/az.DeviceUpdate/new-AzDeviceUpdateCheckNameAvailabilityRequestObject
+https://learn.microsoft.com/powershell/module/Az.DeviceUpdate/new-azdeviceupdatechecknameavailabilityrequestobject
 #>
 function New-AzDeviceUpdateCheckNameAvailabilityRequestObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.CheckNameAvailabilityRequest])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.CheckNameAvailabilityRequest])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -1831,6 +1993,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1859,6 +2024,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1910,21 +2078,31 @@ Creates or updates instance.
 .Example
 New-AzDeviceUpdateInstance -AccountName azpstest-account -Name azpstest-instance -ResourceGroupName azpstest_gp -Location eastus -IotHubId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azpstest_gp/providers/Microsoft.Devices/IotHubs/azpstest-iothub" -EnableDiagnostic:$false -DiagnosticStoragePropertyResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azpstest_gp/providers/Microsoft.Storage/storageAccounts/azpsteststorageaccount" -DiagnosticStoragePropertyConnectionString "De******et"
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IInstance
+Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IInstance
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+ACCOUNTINPUTOBJECT <IDeviceUpdateIdentity>: Identity Parameter
+  [AccountName <String>]: Account name.
+  [GroupId <String>]: The group ID of the private link resource.
+  [Id <String>]: Resource identity path
+  [InstanceName <String>]: Instance name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionProxyId <String>]: The ID of the private endpoint connection proxy object.
+  [ResourceGroupName <String>]: The resource group name.
+  [SubscriptionId <String>]: The Azure subscription ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.deviceupdate/new-azdeviceupdateinstance
 #>
 function New-AzDeviceUpdateInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IInstance])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IInstance])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Path')]
-    [System.String]
-    # Account name.
-    ${AccountName},
-
     [Parameter(Mandatory)]
     [Alias('InstanceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Path')]
@@ -1932,44 +2110,67 @@ param(
     # Instance name.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Path')]
+    [System.String]
+    # Account name.
+    ${AccountName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Path')]
     [System.String]
     # The resource group name.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The Azure subscription ID.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityAccountExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity]
+    # Identity Parameter
+    ${AccountInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityAccountExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAccountExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
     [System.String]
     # ConnectionString of the diagnostic storage account
     ${DiagnosticStoragePropertyConnectionString},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAccountExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
     [System.String]
     # ResourceId of the diagnostic storage account
     ${DiagnosticStoragePropertyResourceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAccountExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Enables or Disables the diagnostic logs collection
     ${EnableDiagnostic},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAccountExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
     [System.String[]]
@@ -1977,19 +2178,33 @@ param(
     # To construct, see NOTES section for IOTHUB properties and create a hash table.
     ${IotHubId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAccountExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -2051,6 +2266,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2071,10 +2295,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.DeviceUpdate.custom\New-AzDeviceUpdateInstance';
+            CreateViaJsonString = 'Az.DeviceUpdate.custom\New-AzDeviceUpdateInstance';
+            CreateViaJsonFilePath = 'Az.DeviceUpdate.custom\New-AzDeviceUpdateInstance';
+            CreateViaIdentityAccountExpanded = 'Az.DeviceUpdate.custom\New-AzDeviceUpdateInstance';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonString', 'CreateViaJsonFilePath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2088,6 +2313,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

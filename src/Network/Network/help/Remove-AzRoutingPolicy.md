@@ -14,7 +14,8 @@ Removes the specified routing policy from a routing intent resource associated w
 
 ```
 Remove-AzRoutingPolicy -RoutingIntent <PSRoutingIntent> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -99,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -RoutingIntent
-The routing intent object from which this rouing policy has to be removed. 
+The routing intent object from which this routing policy has to be removed. 
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSRoutingIntent

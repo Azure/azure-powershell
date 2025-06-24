@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update an iSCSI Target.
+update an iSCSI Target.
 .Description
-Update an iSCSI Target.
+update an iSCSI Target.
 .Example
 $lun0 = New-AzDiskPoolIscsiLunObject -ManagedDiskAzureResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/storagepool-rg-test/providers/Microsoft.Compute/disks/disk1" -Name "lun0"
 Update-AzDiskPoolIscsiTarget -Name 'target0' -DiskPoolName 'disk-pool-5' -ResourceGroupName 'storagepool-rg-test' -Lun @($lun0)
@@ -29,11 +29,19 @@ Get-AzDiskPoolIscsiTarget -ResourceGroupName 'storagepool-rg-test' -DiskPoolName
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTarget
+Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IIscsiTarget
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+DISKPOOLINPUTOBJECT <IDiskPoolIdentity>: Identity Parameter
+  [DiskPoolName <String>]: The name of the Disk Pool.
+  [Id <String>]: Resource identity path
+  [IscsiTargetName <String>]: The name of the iSCSI Target.
+  [Location <String>]: The location of the resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 INPUTOBJECT <IDiskPoolIdentity>: Identity Parameter
   [DiskPoolName <String>]: The name of the Disk Pool.
@@ -49,21 +57,26 @@ LUN <IIscsiLun[]>: List of LUNs to be exposed through iSCSI Target.
 
 STATICACL <IAcl[]>: Access Control List (ACL) for an iSCSI Target; defines LUN masking policy
   InitiatorIqn <String>: iSCSI initiator IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:client".
-  MappedLun <String[]>: List of LUN names mapped to the ACL.
+  MappedLun <List<String>>: List of LUN names mapped to the ACL.
 .Link
 https://learn.microsoft.com/powershell/module/az.diskpool/update-azdiskpooliscsitarget
 #>
 function Update-AzDiskPoolIscsiTarget {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTarget])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IIscsiTarget])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Path')]
     [System.String]
     # The name of the Disk Pool.
     ${DiskPoolName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityDiskPoolExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('IscsiTargetName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Path')]
     [System.String]
@@ -71,6 +84,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -78,48 +93,73 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='UpdateViaIdentityDiskPoolExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentity]
+    # Identity Parameter
+    ${DiskPoolInputObject},
+
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityDiskPoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiLun[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IIscsiLun[]]
     # List of LUNs to be exposed through iSCSI Target.
-    # To construct, see NOTES section for LUN properties and create a hash table.
     ${Lun},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityDiskPoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String]
     # Azure resource id.
     # Indicates if this resource is managed by another Azure resource.
     ${ManagedBy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityDiskPoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String[]]
     # List of Azure resource ids that manage this resource.
     ${ManagedByExtended},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityDiskPoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IAcl[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IAcl[]]
     # Access Control List (ACL) for an iSCSI Target; defines LUN masking policy
-    # To construct, see NOTES section for STATICACL properties and create a hash table.
     ${StaticAcl},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -189,6 +229,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -209,11 +258,12 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.DiskPool.private\Update-AzDiskPoolIscsiTarget_UpdateExpanded';
+            UpdateViaIdentityDiskPoolExpanded = 'Az.DiskPool.private\Update-AzDiskPoolIscsiTarget_UpdateViaIdentityDiskPoolExpanded';
             UpdateViaIdentityExpanded = 'Az.DiskPool.private\Update-AzDiskPoolIscsiTarget_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.DiskPool.private\Update-AzDiskPoolIscsiTarget_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.DiskPool.private\Update-AzDiskPoolIscsiTarget_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -227,6 +277,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

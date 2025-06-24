@@ -8,18 +8,60 @@ schema: 2.0.0
 # New-AzCdnCustomDomain
 
 ## SYNOPSIS
-Creates a new custom domain within an endpoint.
+create a new custom domain within an endpoint.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzCdnCustomDomain -EndpointName <String> -Name <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-HostName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityEndpoint
+```
+New-AzCdnCustomDomain -EndpointInputObject <ICdnIdentity> -Name <String>
+ -CustomDomainProperty <ICustomDomainParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityEndpointExpanded
+```
+New-AzCdnCustomDomain -EndpointInputObject <ICdnIdentity> -Name <String> [-HostName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityProfile
+```
+New-AzCdnCustomDomain -EndpointName <String> -Name <String> -ProfileInputObject <ICdnIdentity>
+ -CustomDomainProperty <ICustomDomainParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityProfileExpanded
+```
+New-AzCdnCustomDomain -EndpointName <String> -Name <String> -ProfileInputObject <ICdnIdentity>
+ [-HostName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzCdnCustomDomain -EndpointName <String> -Name <String> -ProfileName <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzCdnCustomDomain -EndpointName <String> -Name <String> -ProfileName <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates a new custom domain within an endpoint.
+create a new custom domain within an endpoint.
 
 ## EXAMPLES
 
@@ -53,6 +95,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CustomDomainProperty
+The customDomain JSON object required for custom domain creation or update.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainParameters
+Parameter Sets: CreateViaIdentityEndpoint, CreateViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -69,12 +126,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EndpointInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: CreateViaIdentityEndpoint, CreateViaIdentityEndpointExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -EndpointName
 Name of the endpoint under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfile, CreateViaIdentityProfileExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -90,10 +162,40 @@ Must be a domain name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityEndpointExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -130,12 +232,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: CreateViaIdentityProfile, CreateViaIdentityProfileExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProfileName
 Name of the CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -150,7 +267,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -165,7 +282,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -211,9 +328,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainParameters
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomain
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain
 
 ## NOTES
 

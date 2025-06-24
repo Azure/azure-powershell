@@ -121,6 +121,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             Mandatory = true, ParameterSetName = OAuthEnvironmentParameterSet)]
         [Parameter(Position = 0, HelpMessage = StorageAccountNameHelpMessage,
             Mandatory = true, ParameterSetName = AccountNameKeyServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = StorageAccountNameHelpMessage,
+            Mandatory = false, ParameterSetName = OAuthServiceEndpointParameterSet)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 

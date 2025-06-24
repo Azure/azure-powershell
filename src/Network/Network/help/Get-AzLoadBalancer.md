@@ -209,5 +209,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzLoadBalancer](./Remove-AzLoadBalancer.md)
 
 [Set-AzLoadBalancer](./Set-AzLoadBalancer.md)
-
-

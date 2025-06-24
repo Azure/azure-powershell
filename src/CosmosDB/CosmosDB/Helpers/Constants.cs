@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string AnalyticalStorageSchemaTypeHelpMessage = "The schema type for analytical storage. Valid values include: 'WellDefined' and 'FullFidelity'.";
         public const string EnablePartitionMergeHelpMessage = "Enables partition merge feature on the Cosmos DB database account. Accepted values: false, true";
         public const string MinimalTlsVersionHelpMessage = "Indicates the minimum allowed Tls version. The default value is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2. Possible values include: 'Tls', 'Tls11', 'Tls12'.";
+        public const string EnablePerRegionPerPartitionAutoscaleHelpMessage = "Bool to indicate if Dynamic Scaling (Per Region Per Partition Autoscale) is enabled on the account.";
 
         //Restore specific help messages
         public const string IsRestoreRequestHelpMessage = "Indicates that the new Cosmos DB account request is a restore request.";
@@ -103,6 +104,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string UniqueKeyPolciyHelpMessage = "UniqueKeyPolicy Object of type Microsoft.Azure.Commands.CosmosDB.PSUniqueKeyPolicy. ";
         public const string SqlConflictResolutionPolicyHelpMessage = "ConflictResolutionPolicy Object of type PSSqlConflictResolutionPolicy, when provided this is set as the ConflictResolutionPolicy of the container.";
         public const string SqlClientEncryptionPolicyHelpMessage = "ClientEncryptionPolicy Object of type PSSqlClientEncryptionPolicy, when provided this is set as the ClientEncryptionPolicy of the container.";
+        public const string SqlVectorEmbeddingPolicyHelpMessage = "VectorEmbeddingPolicy Object of type PSSqlVectorEmbeddingPolicy, when provided this is set as the VectorEmbeddingPolicy of the container.";
         public const string ConflictResolutionPolicyHelpMessage = "ConflictResolutionPolicy Object of type PSConflictResolutionPolicy, when provided this is set as the ConflictResolutionPolicy of the container.";
         public const string PartitionKeyPathHelpMessage = "Partition Key Path, e.g., '/address/zipcode'.";
         public const string SqlContainerThroughputHelpMessage = "The throughput of SQL container (RU/s). Default value is 400.";
@@ -123,6 +125,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string IndexingPolicyCompositePathHelpMessage = "Array of array of objects of type Microsoft.Azure.Commands.CosmosDB.PSCompositePath";
         public const string SpatialTypeHelpMessage = "Array of strings with acceptable values: Point, LineString, Polygon, MultiPolygon. Represent’s paths spatial type.";
         public const string SpatialPathHelpMessage = "Path in JSON document to index.";
+        public const string VectorIndexPathHelpMessage = "The path to the vector field in the document.";
+        public const string VectorIndexTypeHelpMessage = "The index type of the vector. Currently, flat, diskANN, and quantizedFlat are supported.";
         public const string SortOrderHelpMessage = "The sort order of the CompositeIndex";
         public const string PathHelpMessage = "String value of the path";
         public const string PartitionKeyVersionHelpMessage = "The version of the partition key definition";
@@ -146,6 +150,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ClientEncryptionKeyObjectHelpMessage = "Client Encryption Key object.";
         public const string RestorableSqlContainersFeedStartTimeHelpMessage = "Restorable Sql containers event feed start time.";
         public const string RestorableSqlContainersFeedEndTimeHelpMessage = "Restorable Sql containers event feed end time.";
+        public const string VectorEmbeddingPolicyVectorEmbeddingHelpMessage = "Represents a vector embedding. A vector embedding is used to define a vector field in the documents.";
+        public const string VectorEmbeddingPathHelpMessage = "The path to the vector field in the document.";
+        public const string VectorEmbeddingDataTypeHelpMessage = "Indicates the data type of vector.";
+        public const string VectorEmbeddingDistanceFunctionHelpMessage = "The distance function to use for distance calculation in between vectors.";
+        public const string VectorEmbeddingDimensionsHelpMessage = "The number of dimensions in the vector.";
+        public const string IndexingPolicyVectorIndexHelpMessage = "Array of strings containing path to the vector field in the document.";
 
         //SQL Client Side Encryption
         public const string ClientEncryptionKeyName = "Client Encryption Key name.";

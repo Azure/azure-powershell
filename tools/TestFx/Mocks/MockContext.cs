@@ -86,6 +86,24 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
             return Start(type.Name, methodName);
         }
 
+        public ServiceClientCredentials GetClientCredentials(string targetEndpoint)
+        {
+            ServiceClientCredentials credentials;
+            if (TestFxEnvironment.IsRunningMocked)
+            {
+                credentials = TestFxEnvironment.TokenInfo[TokenAudience.Management];
+            }
+            else
+            {
+                credentials = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(
+                    AzureRmProfileProvider.Instance.Profile.DefaultContext,
+                    targetEndpoint
+                );
+            }
+
+            return credentials;
+        }
+
         /// <summary>
         /// Get a test environment using default options
         /// </summary>
@@ -108,7 +126,7 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
                 currentEnvironment.TokenInfo[TokenAudience.Management] :
                 AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(
                 AzureRmProfileProvider.Instance.Profile.DefaultContext,
-                currentEnvironment.BaseUri.AbsoluteUri);
+                AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
             return GetServiceClientWithCredentials<T>(currentEnvironment, currentEnvironment.BaseUri, credentials, internalBaseUri, handlers);
         }
 
@@ -135,7 +153,7 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
                 currentEnvironment.TokenInfo[TokenAudience.Graph] :
                 AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(
                 AzureRmProfileProvider.Instance.Profile.DefaultContext,
-                currentEnvironment.GraphUri.AbsoluteUri);
+                AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl);
             return GetServiceClientWithCredentials<T>(currentEnvironment, currentEnvironment.GraphUri, credentials, internalBaseUri, handlers);
         }
 

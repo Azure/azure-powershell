@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'New-AzDatadogMonitor' {
     It 'CreateExpanded' {
         {    
-            New-AzDatadogMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName03 -SkuName 'drawdown_testing_20200904_Monthly' -Location 'eastus2euap' -UserInfoEmailAddress 'user@microsoft.com' -UserInfoName 'user' -UserInfoPhoneNumber '11111111111' -IdentityType SystemAssigned
+            New-AzDatadogMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName03 -SkuName 'drawdown_testing_20200904_Monthly' -Location 'eastus2euap' -UserInfoEmailAddress 'user@microsoft.com' -UserInfoName 'user' -UserInfoPhoneNumber '11111111111' -EnableSystemAssignedIdentity:$true
         } | Should -Not -Throw
     }
 }

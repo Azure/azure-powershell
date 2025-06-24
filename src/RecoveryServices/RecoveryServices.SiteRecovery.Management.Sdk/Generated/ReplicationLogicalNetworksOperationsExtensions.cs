@@ -18,12 +18,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Server Id.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<LogicalNetwork> ListByReplicationFabrics(this IReplicationLogicalNetworksOperations operations, string fabricName)
+        public static Microsoft.Rest.Azure.IPage<LogicalNetwork> ListByReplicationFabrics(this IReplicationLogicalNetworksOperations operations, string resourceGroupName, string resourceName, string fabricName)
         {
-                return ((IReplicationLogicalNetworksOperations)operations).ListByReplicationFabricsAsync(fabricName).GetAwaiter().GetResult();
+                return ((IReplicationLogicalNetworksOperations)operations).ListByReplicationFabricsAsync(resourceGroupName, resourceName, fabricName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -32,15 +39,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Server Id.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<LogicalNetwork>> ListByReplicationFabricsAsync(this IReplicationLogicalNetworksOperations operations, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<LogicalNetwork>> ListByReplicationFabricsAsync(this IReplicationLogicalNetworksOperations operations, string resourceGroupName, string resourceName, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByReplicationFabricsWithHttpMessagesAsync(fabricName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByReplicationFabricsWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -51,15 +65,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Server Id.
         /// </param>
         /// <param name='logicalNetworkName'>
         /// Logical network name.
         /// </param>
-        public static LogicalNetwork Get(this IReplicationLogicalNetworksOperations operations, string fabricName, string logicalNetworkName)
+        public static LogicalNetwork Get(this IReplicationLogicalNetworksOperations operations, string resourceGroupName, string resourceName, string fabricName, string logicalNetworkName)
         {
-                return ((IReplicationLogicalNetworksOperations)operations).GetAsync(fabricName, logicalNetworkName).GetAwaiter().GetResult();
+                return ((IReplicationLogicalNetworksOperations)operations).GetAsync(resourceGroupName, resourceName, fabricName, logicalNetworkName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -67,6 +88,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Server Id.
@@ -77,9 +105,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<LogicalNetwork> GetAsync(this IReplicationLogicalNetworksOperations operations, string fabricName, string logicalNetworkName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<LogicalNetwork> GetAsync(this IReplicationLogicalNetworksOperations operations, string resourceGroupName, string resourceName, string fabricName, string logicalNetworkName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(fabricName, logicalNetworkName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, logicalNetworkName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

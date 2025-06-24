@@ -502,7 +502,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableOidcIssuer
-Whether to enalbe OIDC issuer feature.
+Whether to enable OIDC issuer feature.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -1163,7 +1163,7 @@ Accept wildcard characters: False
 ```
 
 ### -NodeVmSize
-The size of the Virtual Machine. Default value is Standard_D2_v2.
+The size of the Virtual Machine. Default value is dynamically selected by the AKS resource provider based on quota and capacity.
 
 ```yaml
 Type: System.String

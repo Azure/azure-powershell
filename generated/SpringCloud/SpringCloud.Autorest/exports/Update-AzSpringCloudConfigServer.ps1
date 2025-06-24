@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update the config server.
+update the config server.
 .Description
-Update the config server.
+update the config server.
 .Example
 Update-AzSpringCloudConfigServer -ResourceGroupName SpringCloud-gp-junxi -Name springcloud-service
 .Example
@@ -27,7 +27,7 @@ Get-AzSpringCloudConfigServer -ResourceGroupName SpringCloud-gp-junxi -Name spri
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IConfigServerResource
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IConfigServerResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,9 +40,9 @@ GITREPOSITORY <IGitPatternRepository[]>: Repositories of git.
   [HostKeyAlgorithm <String>]: SshKey algorithm of git repository.
   [Label <String>]: Label of the repository
   [Password <String>]: Password of git repository basic auth.
-  [Pattern <String[]>]: Collection of pattern of the repository
+  [Pattern <List<String>>]: Collection of pattern of the repository
   [PrivateKey <String>]: Private sshKey algorithm of git repository.
-  [SearchPath <String[]>]: Searching path of the repository
+  [SearchPath <List<String>>]: Searching path of the repository
   [StrictHostKeyChecking <Boolean?>]: Strict host key checking or not.
   [Username <String>]: Username of git repository basic auth.
 
@@ -71,16 +71,20 @@ INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.springcloud/update-azspringcloudconfigserver
 #>
 function Update-AzSpringCloudConfigServer {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IConfigServerResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IConfigServerResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the Service resource.
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the resource group that contains the resource.
@@ -88,6 +92,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -99,83 +105,105 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # The code of error.
     ${Code},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Public sshKey of git repository.
     ${GitHostKey},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # SshKey algorithm of git repository.
     ${GitHostKeyAlgorithm},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Label of the repository
     ${GitLabel},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Password of git repository basic auth.
     ${GitPassword},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Private sshKey algorithm of git repository.
     ${GitPrivateKey},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IGitPatternRepository[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IGitPatternRepository[]]
     # Repositories of git.
-    # To construct, see NOTES section for GITREPOSITORY properties and create a hash table.
     ${GitRepository},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String[]]
     # Searching path of the repository
     ${GitSearchPath},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Strict host key checking or not.
     ${GitStrictHostKeyChecking},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # URI of the repository
     ${GitUri},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Username of git repository basic auth.
     ${GitUsername},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # The message of error.
     ${Message},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -245,6 +273,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -266,9 +303,15 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.SpringCloud.private\Update-AzSpringCloudConfigServer_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.SpringCloud.private\Update-AzSpringCloudConfigServer_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.SpringCloud.private\Update-AzSpringCloudConfigServer_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.SpringCloud.private\Update-AzSpringCloudConfigServer_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -277,6 +320,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

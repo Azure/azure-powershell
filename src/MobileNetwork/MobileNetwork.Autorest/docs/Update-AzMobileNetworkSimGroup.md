@@ -8,19 +8,28 @@ schema: 2.0.0
 # Update-AzMobileNetworkSimGroup
 
 ## SYNOPSIS
-Updates SIM group.
+update a SIM group.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-Update-AzMobileNetworkSimGroup -ResourceGroupName <String> -SimGroupName <String> [-SubscriptionId <String>]
- [-EncryptionKeyUrl <String>] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-MobileNetworkId <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzMobileNetworkSimGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-EncryptionKeyUrl <String>] [-MobileNetworkId <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzMobileNetworkSimGroup -InputObject <IMobileNetworkIdentity>
+ [-EnableSystemAssignedIdentity <Boolean?>] [-EncryptionKeyUrl <String>] [-MobileNetworkId <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates SIM group.
+update a SIM group.
 
 ## EXAMPLES
 
@@ -39,6 +48,21 @@ Updates SIM group.
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -47,6 +71,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -71,35 +110,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -118,14 +140,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Name
+The name of the SIM Group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: UpdateExpanded
+Aliases: SimGroupName
 
 Required: True
 Position: Named
@@ -134,12 +155,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SimGroupName
-The name of the SIM Group.
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -154,7 +191,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -169,6 +206,22 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -219,7 +272,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimGroup
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimGroup
 
 ## NOTES
 

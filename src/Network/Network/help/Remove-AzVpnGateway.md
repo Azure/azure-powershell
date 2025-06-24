@@ -15,7 +15,8 @@ The Remove-AzVpnGateway cmdlet removes an Azure VPN gateway. This is a gateway s
 ### ByVpnGatewayName (Default)
 ```
 Remove-AzVpnGateway -ResourceGroupName <String> -Name <String> [-PassThru] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVpnGatewayObject

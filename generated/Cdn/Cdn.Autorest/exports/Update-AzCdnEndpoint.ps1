@@ -16,17 +16,17 @@
 
 <#
 .Synopsis
-Updates an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+update an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 Only tags can be updated after creating an endpoint.
-To update origins, use the Update Origin operation.
-To update origin groups, use the Update Origin group operation.
-To update custom domains, use the Update Custom Domain operation.
+To update origins, use the update Origin operation.
+To update origin groups, use the update Origin group operation.
+To update custom domains, use the update Custom Domain operation.
 .Description
-Updates an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+update an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 Only tags can be updated after creating an endpoint.
-To update origins, use the Update Origin operation.
-To update origin groups, use the Update Origin group operation.
-To update custom domains, use the Update Custom Domain operation.
+To update origins, use the update Origin operation.
+To update origin groups, use the update Origin group operation.
+To update custom domains, use the update Custom Domain operation.
 .Example
 $tags = @{
     Tag1 = 11
@@ -44,27 +44,78 @@ Update-AzCdnEndpoint -Name cdntestcert -ProfileName classicCDNtest -ResourceGrou
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpointUpdateParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 DELIVERYPOLICYRULE <IDeliveryRule[]>: A list of the delivery rules.
-  Action <IDeliveryRuleAction1[]>: A list of actions that are executed when all the conditions of a rule are satisfied.
-    Name <DeliveryRuleAction>: The name of the action for the delivery rule.
+  Action <List<IDeliveryRuleAction>>: A list of actions that are executed when all the conditions of a rule are satisfied.
+    Name <String>: The name of the action for the delivery rule.
   Order <Int32>: The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
-  [Condition <IDeliveryRuleCondition[]>]: A list of conditions that must be matched for the actions to be executed
-    Name <MatchVariable>: The name of the condition for the delivery rule.
+  [Condition <List<IDeliveryRuleCondition>>]: A list of conditions that must be matched for the actions to be executed
+    Name <String>: The name of the condition for the delivery rule.
   [Name <String>]: Name of the rule
 
+ENDPOINTUPDATEPROPERTY <IEndpointUpdateParameters>: Properties required to create or update an endpoint.
+  [ContentTypesToCompress <List<String>>]: List of content types on which compression applies. The value should be a valid MIME type.
+  [DefaultOriginGroupId <String>]: Resource ID.
+  [DeliveryPolicyDescription <String>]: User-friendly description of the policy.
+  [DeliveryPolicyRule <List<IDeliveryRule>>]: A list of the delivery rules.
+    Action <List<IDeliveryRuleAction>>: A list of actions that are executed when all the conditions of a rule are satisfied.
+      Name <String>: The name of the action for the delivery rule.
+    Order <Int32>: The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
+    [Condition <List<IDeliveryRuleCondition>>]: A list of conditions that must be matched for the actions to be executed
+      Name <String>: The name of the condition for the delivery rule.
+    [Name <String>]: Name of the rule
+  [GeoFilter <List<IGeoFilter>>]: List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/
+    Action <String>: Action of the geo filter, i.e. allow or block access.
+    CountryCode <List<String>>: Two letter country or region codes defining user country or region access in a geo filter, e.g. AU, MX, US.
+    RelativePath <String>: Relative path applicable to geo filter. (e.g. '/mypictures', '/mypicture/kitty.jpg', and etc.)
+  [IsCompressionEnabled <Boolean?>]: Indicates whether content compression is enabled on CDN. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on CDN when requested content is smaller than 1 byte or larger than 1 MB.
+  [IsHttpAllowed <Boolean?>]: Indicates whether HTTP traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed.
+  [IsHttpsAllowed <Boolean?>]: Indicates whether HTTPS traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed.
+  [OptimizationType <String>]: Specifies what scenario the customer wants this CDN endpoint to optimize for, e.g. Download, Media services. With this information, CDN can apply scenario driven optimization.
+  [OriginHostHeader <String>]: The host header value sent to the origin with each request. This property at Endpoint is only allowed when endpoint uses single origin and can be overridden by the same property specified at origin.If you leave this blank, the request hostname determines this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default.
+  [OriginPath <String>]: A directory path on the origin that CDN can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
+  [ProbePath <String>]: Path to a file hosted on the origin which helps accelerate delivery of the dynamic content and calculate the most optimal routes for the CDN. This is relative to the origin path. This property is only relevant when using a single origin.
+  [QueryStringCachingBehavior <String>]: Defines how CDN caches requests that include query strings. You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL.
+  [Tag <IEndpointUpdateParametersTags>]: Endpoint tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [UrlSigningKey <List<IUrlSigningKey>>]: List of keys used to validate the signed URL hashes.
+    KeyId <String>: Defines the customer defined key Id. This id will exist in the incoming request to indicate the key used to form the hash.
+    KeySourceParameterResourceGroupName <String>: Resource group of the user's Key Vault containing the secret
+    KeySourceParameterSecretName <String>: The name of secret in Key Vault.
+    KeySourceParameterSecretVersion <String>: The version(GUID) of secret in Key Vault.
+    KeySourceParameterSubscriptionId <String>: Subscription Id of the user's Key Vault containing the secret
+    KeySourceParameterVaultName <String>: The name of the user's Key Vault containing the secret
+  [WebApplicationFirewallPolicyLinkId <String>]: Resource ID.
+
 GEOFILTER <IGeoFilter[]>: List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/
-  Action <GeoFilterActions>: Action of the geo filter, i.e. allow or block access.
-  CountryCode <String[]>: Two letter country or region codes defining user country or region access in a geo filter, e.g. AU, MX, US.
+  Action <String>: Action of the geo filter, i.e. allow or block access.
+  CountryCode <List<String>>: Two letter country or region codes defining user country or region access in a geo filter, e.g. AU, MX, US.
   RelativePath <String>: Relative path applicable to geo filter. (e.g. '/mypictures', '/mypicture/kitty.jpg', and etc.)
 
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
+  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [Id <String>]: Resource identity path
+  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [RouteName <String>]: Name of the routing rule.
+  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
+  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
+  [SecretName <String>]: Name of the Secret under the profile.
+  [SecurityPolicyName <String>]: Name of the security policy under the profile.
+  [SubscriptionId <String>]: Azure Subscription ID.
+
+PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
@@ -90,43 +141,61 @@ URLSIGNINGKEY <IUrlSigningKey[]>: List of keys used to validate the signed URL h
 https://learn.microsoft.com/powershell/module/az.cdn/update-azcdnendpoint
 #>
 function Update-AzCdnEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='UpdateExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfile', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('EndpointName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the endpoint under the profile which is unique globally.
     ${Name},
 
-    [Parameter(ParameterSetName='UpdateExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the CDN profile which is unique within the resource group.
     ${ProfileName},
 
-    [Parameter(ParameterSetName='UpdateExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the Resource group within the Azure subscription.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='UpdateExpanded1')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # Azure Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded1', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfile', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
+    # Identity Parameter
+    ${ProfileInputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String[]]
@@ -134,37 +203,45 @@ param(
     # The value should be a valid MIME type.
     ${ContentTypesToCompress},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # Resource ID.
     ${DefaultOriginGroupId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # User-friendly description of the policy.
     ${DeliveryPolicyDescription},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRule[]]
     # A list of the delivery rules.
-    # To construct, see NOTES section for DELIVERYPOLICYRULE properties and create a hash table.
     ${DeliveryPolicyRule},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IGeoFilter[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IGeoFilter[]]
     # List of rules defining the user's geo access within a CDN endpoint.
     # Each geo filter defines an access rule to a specified path or content, e.g.
     # block APAC for path /pictures/
-    # To construct, see NOTES section for GEOFILTER properties and create a hash table.
     ${GeoFilter},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Indicates whether content compression is enabled on CDN.
@@ -173,7 +250,9 @@ param(
     # Content won't be compressed on CDN when requested content is smaller than 1 byte or larger than 1 MB.
     ${IsCompressionEnabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Indicates whether HTTP traffic is allowed on the endpoint.
@@ -181,7 +260,9 @@ param(
     # At least one protocol (HTTP or HTTPS) must be allowed.
     ${IsHttpAllowed},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Indicates whether HTTPS traffic is allowed on the endpoint.
@@ -189,16 +270,20 @@ param(
     # At least one protocol (HTTP or HTTPS) must be allowed.
     ${IsHttpsAllowed},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.OptimizationType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("GeneralWebDelivery", "GeneralMediaStreaming", "VideoOnDemandMediaStreaming", "LargeFileDownload", "DynamicSiteAcceleration")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.OptimizationType]
+    [System.String]
     # Specifies what scenario the customer wants this CDN endpoint to optimize for, e.g.
     # Download, Media services.
     # With this information, CDN can apply scenario driven optimization.
     ${OptimizationType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # The host header value sent to the origin with each request.
@@ -206,14 +291,18 @@ param(
     # Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default.
     ${OriginHostHeader},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # A directory path on the origin that CDN can use to retrieve content from, e.g.
     # contoso.cloudapp.net/originpath.
     ${OriginPath},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # Path to a file hosted on the origin which helps accelerate delivery of the dynamic content and calculate the most optimal routes for the CDN.
@@ -221,34 +310,59 @@ param(
     # This property is only relevant when using a single origin.
     ${ProbePath},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.QueryStringCachingBehavior])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("IgnoreQueryString", "BypassCaching", "UseQueryString", "NotSet")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.QueryStringCachingBehavior]
+    [System.String]
     # Defines how CDN caches requests that include query strings.
     # You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL.
     ${QueryStringCachingBehavior},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpointUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpointUpdateParametersTags]))]
     [System.Collections.Hashtable]
     # Endpoint tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IUrlSigningKey[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningKey[]]
     # List of keys used to validate the signed URL hashes.
-    # To construct, see NOTES section for URLSIGNINGKEY properties and create a hash table.
     ${UrlSigningKey},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # Resource ID.
     ${WebApplicationFirewallPolicyLinkId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityProfile', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpointUpdateParameters]
+    # Properties required to create or update an endpoint.
+    ${EndpointUpdateProperty},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -318,6 +432,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -337,12 +460,14 @@ begin {
         }
 
         $mapping = @{
-            UpdateExpanded1 = 'Az.Cdn.private\Update-AzCdnEndpoint_UpdateExpanded1';
-            UpdateViaIdentityExpanded1 = 'Az.Cdn.private\Update-AzCdnEndpoint_UpdateViaIdentityExpanded1';
+            UpdateExpanded = 'Az.Cdn.private\Update-AzCdnEndpoint_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.Cdn.private\Update-AzCdnEndpoint_UpdateViaIdentityExpanded';
+            UpdateViaIdentityProfile = 'Az.Cdn.private\Update-AzCdnEndpoint_UpdateViaIdentityProfile';
+            UpdateViaIdentityProfileExpanded = 'Az.Cdn.private\Update-AzCdnEndpoint_UpdateViaIdentityProfileExpanded';
+            UpdateViaJsonFilePath = 'Az.Cdn.private\Update-AzCdnEndpoint_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Cdn.private\Update-AzCdnEndpoint_UpdateViaJsonString';
         }
-        if (('UpdateExpanded1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -356,6 +481,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

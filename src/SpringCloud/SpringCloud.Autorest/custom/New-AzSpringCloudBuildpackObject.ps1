@@ -21,12 +21,14 @@ Create an in-memory object for BuildpackProperties.
 Create an in-memory object for BuildpackProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.BuildpackProperties
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.BuildpackProperties
 .Link
-https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudBuildpackObject
+https://learn.microsoft.com/powershell/module/Az.SpringCloud/new-azspringcloudbuildpackobject
 #>
 function New-AzSpringCloudBuildpackObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.BuildpackProperties')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.CmdletBreakingChange("19.3.0", "0.3.2", "2028/03/31", ChangeDescription = "Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.BuildpackProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -36,7 +38,7 @@ function New-AzSpringCloudBuildpackObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.BuildpackProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.BuildpackProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('Id')) {
             $Object.Id = $Id

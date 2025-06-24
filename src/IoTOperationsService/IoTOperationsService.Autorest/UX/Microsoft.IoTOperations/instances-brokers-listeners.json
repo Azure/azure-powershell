@@ -1,0 +1,105 @@
+{
+  "resourceType": "instances/brokers/listeners",
+  "apiVersion": "2024-11-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.iotoperationsservice"
+  },
+  "commands": [
+    {
+      "name": "Get-AzIoTOperationsServiceBrokerListener",
+      "description": "Get a BrokerListenerResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners/{listenerName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.iotoperationsservice/get-aziotoperationsservicebrokerlistener"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-BrokerName <String>",
+              "-InstanceName <String>",
+              "-ListenerName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a BrokerListenerResource",
+          "parameters": [
+            {
+              "name": "-BrokerName",
+              "value": "[Path.brokerName]"
+            },
+            {
+              "name": "-InstanceName",
+              "value": "[Path.instanceName]"
+            },
+            {
+              "name": "-ListenerName",
+              "value": "[Path.listenerName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzIoTOperationsServiceBrokerListener",
+      "description": "Delete a BrokerListenerResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners/{listenerName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.iotoperationsservice/remove-aziotoperationsservicebrokerlistener"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-BrokerName <String>",
+              "-InstanceName <String>",
+              "-ListenerName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a BrokerListenerResource",
+          "parameters": [
+            {
+              "name": "-BrokerName",
+              "value": "[Path.brokerName]"
+            },
+            {
+              "name": "-InstanceName",
+              "value": "[Path.instanceName]"
+            },
+            {
+              "name": "-ListenerName",
+              "value": "[Path.listenerName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

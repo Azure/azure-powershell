@@ -27,7 +27,7 @@ Get-AzReservation -ReservationOrderId a87c1742-0080-5b4d-b953-8531ad46fdc8 -Rese
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -38,14 +38,21 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [ReservationId <String>]: Id of the reservation item
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
+
+RESERVATIONORDERINPUTOBJECT <IReservationsIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ReservationId <String>]: Id of the reservation item
+  [ReservationOrderId <String>]: Order Id of the reservation
+  [SubscriptionId <String>]: Id of the subscription
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/get-azreservation
 #>
 function Get-AzReservation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationResponse])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityReservationOrder', Mandatory)]
     [Alias('ReservationId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [System.String]
@@ -64,11 +71,17 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityReservationOrder', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity]
+    # Identity Parameter
+    ${ReservationOrderInputObject},
 
     [Parameter(ParameterSetName='Get')]
     [Parameter(ParameterSetName='GetViaIdentity')]
+    [Parameter(ParameterSetName='GetViaIdentityReservationOrder')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Query')]
     [System.String]
     # Supported value of this query is renewProperties
@@ -163,6 +176,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -184,6 +206,7 @@ begin {
         $mapping = @{
             Get = 'Az.Reservations.private\Get-AzReservation_Get';
             GetViaIdentity = 'Az.Reservations.private\Get-AzReservation_GetViaIdentity';
+            GetViaIdentityReservationOrder = 'Az.Reservations.private\Get-AzReservation_GetViaIdentityReservationOrder';
             List = 'Az.Reservations.private\Get-AzReservation_List';
             List1 = 'Az.Reservations.private\Get-AzReservation_List1';
         }
@@ -194,6 +217,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

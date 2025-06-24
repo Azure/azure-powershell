@@ -25,12 +25,12 @@ New-AzSubscriptionAlias -AliasName test-subscription -SubscriptionId XXXXXXXX-XX
 New-AzSubscriptionAlias -AliasName test-subscription -SubscriptionName "createSub" -BillingScope "/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}" -Workload 'Production' 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionAliasResponse
+Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponse
 .Link
 https://learn.microsoft.com/powershell/module/az.subscription/new-azsubscriptionalias
 #>
 function New-AzSubscriptionAlias {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionAliasResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponse])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -48,7 +48,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IPutAliasRequestAdditionalPropertiesTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.IPutAliasRequestAdditionalPropertiesTags]))]
     [System.Collections.Hashtable]
     # Tags for the subscription
     ${Tag},
@@ -67,9 +67,9 @@ param(
     ${SubscriptionName},
 
     [Parameter(ParameterSetName='WorkloadCreateExpanded', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Support.Workload])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.PSArgumentCompleterAttribute("Production", "DevTest")]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Support.Workload]
+    [System.String]
     # The workload type of the subscription.
     # It can be either Production or DevTest.
     ${Workload},
@@ -166,6 +166,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -195,6 +204,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -95,6 +95,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -103,6 +106,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The first child resource type.",
         SerializedName = @"nestedResourceTypeFirst",
         PossibleTypes = new [] { typeof(string) })]
@@ -111,6 +117,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The second child resource type.",
         SerializedName = @"nestedResourceTypeSecond",
         PossibleTypes = new [] { typeof(string) })]
@@ -119,6 +128,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The third child resource type.",
         SerializedName = @"nestedResourceTypeThird",
         PossibleTypes = new [] { typeof(string) })]
@@ -127,6 +139,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The notification registration.",
         SerializedName = @"notificationRegistrationName",
         PossibleTypes = new [] { typeof(string) })]
@@ -135,6 +150,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource provider hosted within ProviderHub.",
         SerializedName = @"providerNamespace",
         PossibleTypes = new [] { typeof(string) })]
@@ -143,6 +161,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The resource type.",
         SerializedName = @"resourceType",
         PossibleTypes = new [] { typeof(string) })]
@@ -151,6 +172,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The rollout name.",
         SerializedName = @"rolloutName",
         PossibleTypes = new [] { typeof(string) })]
@@ -159,6 +183,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The SKU.",
         SerializedName = @"sku",
         PossibleTypes = new [] { typeof(string) })]
@@ -167,6 +194,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

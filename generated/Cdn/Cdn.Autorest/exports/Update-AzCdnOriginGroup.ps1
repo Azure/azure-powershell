@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Updates an existing origin group within an endpoint.
+update an existing origin group within an endpoint.
 .Description
-Updates an existing origin group within an endpoint.
+update an existing origin group within an endpoint.
 .Example
 $updateHealthProbeParameters = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 60 -ProbePath "/new-check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
 Update-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001 -HealthProbeSetting $updateHealthProbeParameters
@@ -28,18 +28,35 @@ Get-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -En
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupUpdateParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroup
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+ENDPOINTINPUTOBJECT <ICdnIdentity>: Identity Parameter
+  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [Id <String>]: Resource identity path
+  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [RouteName <String>]: Name of the routing rule.
+  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
+  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
+  [SecretName <String>]: Name of the Secret under the profile.
+  [SecurityPolicyName <String>]: Name of the security policy under the profile.
+  [SubscriptionId <String>]: Azure Subscription ID.
+
 HEALTHPROBESETTING <IHealthProbeParameters>: Health probe settings to the origin that is used to determine the health of the origin.
   [ProbeIntervalInSecond <Int32?>]: The number of seconds between health probes.Default is 240sec.
   [ProbePath <String>]: The path relative to the origin that is used to determine the health of the origin.
-  [ProbeProtocol <ProbeProtocol?>]: Protocol to use for health probe.
-  [ProbeRequestType <HealthProbeRequestType?>]: The type of health probe request that is made.
+  [ProbeProtocol <String>]: Protocol to use for health probe.
+  [ProbeRequestType <String>]: The type of health probe request that is made.
 
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
@@ -59,88 +76,176 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 ORIGIN <IResourceReference[]>: The source of the content being delivered via CDN within given origin group.
   [Id <String>]: Resource ID.
 
+ORIGINGROUPUPDATEPROPERTY <IOriginGroupUpdateParameters>: Origin group properties needed for origin group creation or update.
+  [HealthProbeSetting <IHealthProbeParameters>]: Health probe settings to the origin that is used to determine the health of the origin.
+    [ProbeIntervalInSecond <Int32?>]: The number of seconds between health probes.Default is 240sec.
+    [ProbePath <String>]: The path relative to the origin that is used to determine the health of the origin.
+    [ProbeProtocol <String>]: Protocol to use for health probe.
+    [ProbeRequestType <String>]: The type of health probe request that is made.
+  [Origin <List<IResourceReference>>]: The source of the content being delivered via CDN within given origin group.
+    [Id <String>]: Resource ID.
+  [ResponseBasedOriginErrorDetectionSetting <IResponseBasedOriginErrorDetectionParameters>]: The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported.
+    [HttpErrorRange <List<IHttpErrorRangeParameters>>]: The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
+      [Begin <Int32?>]: The inclusive start of the http status code range.
+      [End <Int32?>]: The inclusive end of the http status code range.
+    [ResponseBasedDetectedErrorType <String>]: Type of response errors for real user requests for which origin will be deemed unhealthy
+    [ResponseBasedFailoverThresholdPercentage <Int32?>]: The percentage of failed requests in the sample where failover should trigger.
+  [TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32?>]: Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
+
+PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
+  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [Id <String>]: Resource identity path
+  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [RouteName <String>]: Name of the routing rule.
+  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
+  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
+  [SecretName <String>]: Name of the Secret under the profile.
+  [SecurityPolicyName <String>]: Name of the security policy under the profile.
+  [SubscriptionId <String>]: Azure Subscription ID.
+
 RESPONSEBASEDORIGINERRORDETECTIONSETTING <IResponseBasedOriginErrorDetectionParameters>: The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported.
-  [HttpErrorRange <IHttpErrorRangeParameters[]>]: The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
+  [HttpErrorRange <List<IHttpErrorRangeParameters>>]: The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
     [Begin <Int32?>]: The inclusive start of the http status code range.
     [End <Int32?>]: The inclusive end of the http status code range.
-  [ResponseBasedDetectedErrorType <ResponseBasedDetectedErrorTypes?>]: Type of response errors for real user requests for which origin will be deemed unhealthy
+  [ResponseBasedDetectedErrorType <String>]: Type of response errors for real user requests for which origin will be deemed unhealthy
   [ResponseBasedFailoverThresholdPercentage <Int32?>]: The percentage of failed requests in the sample where failover should trigger.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/update-azcdnorigingroup
 #>
 function Update-AzCdnOriginGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroup])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='UpdateExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfile', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the endpoint under the profile which is unique globally.
     ${EndpointName},
 
-    [Parameter(ParameterSetName='UpdateExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityEndpoint', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityEndpointExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfile', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('OriginGroupName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the origin group which is unique within the endpoint.
     ${Name},
 
-    [Parameter(ParameterSetName='UpdateExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the CDN profile which is unique within the resource group.
     ${ProfileName},
 
-    [Parameter(ParameterSetName='UpdateExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the Resource group within the Azure subscription.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='UpdateExpanded1')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # Azure Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded1', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityEndpoint', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityEndpointExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${EndpointInputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
+    # Identity Parameter
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfile', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
+    # Identity Parameter
+    ${ProfileInputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityEndpointExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IHealthProbeParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters]
     # Health probe settings to the origin that is used to determine the health of the origin.
-    # To construct, see NOTES section for HEALTHPROBESETTING properties and create a hash table.
     ${HealthProbeSetting},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityEndpointExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceReference[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference[]]
     # The source of the content being delivered via CDN within given origin group.
-    # To construct, see NOTES section for ORIGIN properties and create a hash table.
     ${Origin},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityEndpointExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResponseBasedOriginErrorDetectionParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResponseBasedOriginErrorDetectionParameters]
     # The JSON object that contains the properties to determine origin health using real requests/responses.
     # This property is currently not supported.
-    # To construct, see NOTES section for RESPONSEBASEDORIGINERRORDETECTIONSETTING properties and create a hash table.
     ${ResponseBasedOriginErrorDetectionSetting},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityEndpointExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.Int32]
     # Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added.
     # Default is 10 mins.
     # This property is currently not supported.
     ${TrafficRestorationTimeToHealedOrNewEndpointsInMinute},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityEndpoint', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfile', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupUpdateParameters]
+    # Origin group properties needed for origin group creation or update.
+    ${OriginGroupUpdateProperty},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -210,6 +315,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -229,12 +343,16 @@ begin {
         }
 
         $mapping = @{
-            UpdateExpanded1 = 'Az.Cdn.private\Update-AzCdnOriginGroup_UpdateExpanded1';
-            UpdateViaIdentityExpanded1 = 'Az.Cdn.private\Update-AzCdnOriginGroup_UpdateViaIdentityExpanded1';
+            UpdateExpanded = 'Az.Cdn.private\Update-AzCdnOriginGroup_UpdateExpanded';
+            UpdateViaIdentityEndpoint = 'Az.Cdn.private\Update-AzCdnOriginGroup_UpdateViaIdentityEndpoint';
+            UpdateViaIdentityEndpointExpanded = 'Az.Cdn.private\Update-AzCdnOriginGroup_UpdateViaIdentityEndpointExpanded';
+            UpdateViaIdentityExpanded = 'Az.Cdn.private\Update-AzCdnOriginGroup_UpdateViaIdentityExpanded';
+            UpdateViaIdentityProfile = 'Az.Cdn.private\Update-AzCdnOriginGroup_UpdateViaIdentityProfile';
+            UpdateViaIdentityProfileExpanded = 'Az.Cdn.private\Update-AzCdnOriginGroup_UpdateViaIdentityProfileExpanded';
+            UpdateViaJsonFilePath = 'Az.Cdn.private\Update-AzCdnOriginGroup_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Cdn.private\Update-AzCdnOriginGroup_UpdateViaJsonString';
         }
-        if (('UpdateExpanded1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -248,6 +366,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

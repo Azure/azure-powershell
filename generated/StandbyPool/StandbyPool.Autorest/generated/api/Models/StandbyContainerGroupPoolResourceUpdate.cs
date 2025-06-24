@@ -34,13 +34,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         public string ElasticityProfileRefillPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdatePropertiesInternal)Property).ElasticityProfileRefillPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdatePropertiesInternal)Property).ElasticityProfileRefillPolicy = value ?? null; }
 
         /// <summary>Internal Acessors for ContainerGroupProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupPropertiesUpdate Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdateInternal.ContainerGroupProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdatePropertiesInternal)Property).ContainerGroupProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdatePropertiesInternal)Property).ContainerGroupProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProperties Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdateInternal.ContainerGroupProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdatePropertiesInternal)Property).ContainerGroupProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdatePropertiesInternal)Property).ContainerGroupProperty = value; }
 
         /// <summary>Internal Acessors for ContainerGroupPropertyContainerGroupProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProfileUpdate Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdateInternal.ContainerGroupPropertyContainerGroupProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdatePropertiesInternal)Property).ContainerGroupPropertyContainerGroupProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdatePropertiesInternal)Property).ContainerGroupPropertyContainerGroupProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProfile Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdateInternal.ContainerGroupPropertyContainerGroupProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdatePropertiesInternal)Property).ContainerGroupPropertyContainerGroupProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdatePropertiesInternal)Property).ContainerGroupPropertyContainerGroupProfile = value; }
 
         /// <summary>Internal Acessors for ElasticityProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfileUpdate Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdateInternal.ElasticityProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdatePropertiesInternal)Property).ElasticityProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdatePropertiesInternal)Property).ElasticityProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfile Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdateInternal.ElasticityProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdatePropertiesInternal)Property).ElasticityProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdatePropertiesInternal)Property).ElasticityProfile = value; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolResourceUpdateProperties()); set { {_property = value;} } }
@@ -58,6 +58,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdateTags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolResourceUpdateTags()); set => this._tag = value; }
+
+        /// <summary>Specifies zones of standby container group pools.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> Zone { get => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdatePropertiesInternal)Property).Zone; set => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdatePropertiesInternal)Property).Zone = value ?? null /* arrayOf */; }
 
         /// <summary>Creates an new <see cref="StandbyContainerGroupPoolResourceUpdate" /> instance.</summary>
         public StandbyContainerGroupPoolResourceUpdate()
@@ -136,6 +140,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdateTags) })]
         Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdateTags Tag { get; set; }
+        /// <summary>Specifies zones of standby container group pools.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Specifies zones of standby container group pools.",
+        SerializedName = @"zones",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> Zone { get; set; }
 
     }
     /// The type used for update operations of the StandbyContainerGroupPoolResource.
@@ -147,13 +162,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         /// <summary>Specifies revision of container group profile.</summary>
         long? ContainerGroupProfileRevision { get; set; }
         /// <summary>Specifies container group properties of standby container group pools.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupPropertiesUpdate ContainerGroupProperty { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProperties ContainerGroupProperty { get; set; }
         /// <summary>Specifies container group profile of standby container groups.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProfileUpdate ContainerGroupPropertyContainerGroupProfile { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProfile ContainerGroupPropertyContainerGroupProfile { get; set; }
         /// <summary>Specifies subnet Ids for container group.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet> ContainerGroupPropertySubnetId { get; set; }
         /// <summary>Specifies elasticity profile of standby container group pools.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfileUpdate ElasticityProfile { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfile ElasticityProfile { get; set; }
         /// <summary>Specifies maximum number of standby container groups in the standby pool.</summary>
         long? ElasticityProfileMaxReadyCapacity { get; set; }
         /// <summary>Specifies refill policy of the pool.</summary>
@@ -163,6 +178,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdateProperties Property { get; set; }
         /// <summary>Resource tags.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdateTags Tag { get; set; }
+        /// <summary>Specifies zones of standby container group pools.</summary>
+        System.Collections.Generic.List<string> Zone { get; set; }
 
     }
 }

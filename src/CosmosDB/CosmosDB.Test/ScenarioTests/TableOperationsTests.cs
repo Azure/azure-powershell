@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
             TestRunner.RunTestScript("Test-TableInAccountRestoreOperationsCmdlets");
         }
 
-        [Fact]
+        [Fact(Skip = "Resource groups need to be recreated.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTableRoleCmdlets()
         {

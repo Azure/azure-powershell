@@ -13,6 +13,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdateInternal
     {
 
+        /// <summary>Backing field for <see cref="Property" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdateProperties _property;
+
+        /// <summary>The resource-specific properties for this resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Alb.Origin(Microsoft.Azure.PowerShell.Cmdlets.Alb.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdateProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.TrafficControllerUpdateProperties()); set => this._property = value; }
+
         /// <summary>Backing field for <see cref="Tag" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdateTags _tag;
 
@@ -30,6 +37,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
     public partial interface ITrafficControllerUpdate :
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IJsonSerializable
     {
+        /// <summary>The resource-specific properties for this resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The resource-specific properties for this resource.",
+        SerializedName = @"properties",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdateProperties) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdateProperties Property { get; set; }
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Info(
         Required = false,
@@ -47,6 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
     internal partial interface ITrafficControllerUpdateInternal
 
     {
+        /// <summary>The resource-specific properties for this resource.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdateProperties Property { get; set; }
         /// <summary>Resource tags.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdateTags Tag { get; set; }
 

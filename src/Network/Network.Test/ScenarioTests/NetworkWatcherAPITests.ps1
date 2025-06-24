@@ -676,6 +676,175 @@ function Test-PacketCaptureV2 {
 
 <#
 .SYNOPSIS
+Test PacketCapture API for VM.
+#>
+function Test-PacketCaptureV2ForVMWithRingBuffer {
+    # Setup
+    $resourceGroupName = Get-NrpResourceGroupName
+    $nwName = Get-NrpResourceName
+    $location = Get-PilotLocation
+    $resourceTypeParent = "Microsoft.Network/networkWatchers"
+    $nwLocation = Get-ProviderLocation $resourceTypeParent
+    $nwRgName = Get-NrpResourceGroupName
+    $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
+    $pcName1 = Get-NrpResourceName
+
+    try {
+        . ".\AzureRM.Resources.ps1"
+
+        # Create Resource group
+        New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+
+        # Deploy resources
+        Get-TestResourcesDeployment -rgn "$resourceGroupName"
+
+        # Create Resource group for Network Watcher
+        New-AzResourceGroup -Name $nwRgName -Location "$location"
+
+        # Get Network Watcher
+        $nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
+
+        #Get Vm
+        $vm = Get-AzVM -ResourceGroupName $resourceGroupName 
+
+        #Install networkWatcherAgent on Vm
+        Set-AzVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vm.Name  -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4"
+
+        # Create Capture settiings for packet capture, its only applicable if we are pass continuousCapture as true/false
+        $c1 = New-AzPacketCaptureSettingsConfig -FileCount 2 -FileSizeInBytes 102400 -SessionTimeLimitInSeconds 60
+
+        #Create packet capture
+        $job = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -Name $pcName1 -TargetId $vm.Id -ContinuousCapture $true -CaptureSetting $c1 -LocalPath C:\captures\Capture.cap -AsJob
+        $job | Wait-Job
+
+        #Get packet capture
+        $job = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -AsJob
+        $job | Wait-Job
+        $pc1 = $job | Receive-Job
+
+        Write-Output "pc1 Name: $($pc1.Name)"
+
+        #Verification
+        Assert-AreEqual $pc1.Name $pcName1
+        Assert-AreEqual "Succeeded" $pc1.ProvisioningState
+        Assert-AreEqual 2 $c1.FileCount
+        Assert-AreEqual 102400 $c1.FileSizeInBytes
+        Assert-AreEqual 60 $c1.SessionTimeLimitInSeconds
+        Assert-Null $pc1.TotalBytesPerSession
+        Assert-Null $pc1.TimeLimitInSeconds
+
+        #Stop packet capture
+        $job = Stop-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -AsJob
+        $job | Wait-Job
+
+        #Get packet capture
+        $pc1 = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1
+
+        #Remove packet capture
+        $job = Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -AsJob
+        $job | Wait-Job
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName
+        #Clean-ResourceGroup $nwRgName
+    }
+}
+
+<#
+.SYNOPSIS
+Test PacketCapture API with ring buffer.
+#>
+function Test-PacketCaptureV2WithRingBuffer {
+    # Setup
+    $resourceGroupName = Get-NrpResourceGroupName
+    $virtualMachineScaleSetName = Get-NrpResourceName
+    $nwName = Get-NrpResourceName
+    $location = Get-PilotLocation
+    $resourceTypeParent = "Microsoft.Network/networkWatchers"
+    $nwLocation = Get-ProviderLocation $resourceTypeParent
+    $nwRgName = Get-NrpResourceGroupName
+    $templateFileVMSS = (Resolve-Path ".\TestData\DeploymentVMSS.json").Path
+    $pcName = Get-NrpResourceName
+    $pcName3 = $pcName + "2"
+
+    try {
+        . ".\AzureRM.Resources.ps1"
+
+        # Create Resource group
+        New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+
+        # Deploy resources
+        Get-TestResourcesDeploymentVMSS -rgn "$resourceGroupName"
+
+        #Get public IP address
+        $address = Get-AzPublicIpAddress -ResourceGroupName $resourceGroupName
+
+        # Create Resource group for Network Watcher
+        New-AzResourceGroup -Name $nwRgName -Location "$location"
+
+        # Get Network Watcher
+        $nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
+
+        Wait-Seconds 600
+
+        #Get Vmss and Instances
+        $vmss = Get-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $virtualMachineScaleSetName
+
+        #Install networkWatcherAgent on Vmss and Vmss Instances
+        Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -AutoUpgradeMinorVersion $True
+        Update-AzVmss -ResourceGroupName "$resourceGroupName" -Name $virtualMachineScaleSetName -VirtualMachineScaleSet $vmss
+
+        # Updating all VMSS instances with NW agent
+        $instances = Get-AzVMSSVM -ResourceGroupName "$resourceGroupName" -VMScaleSetName $vmss.Name
+        foreach ($item in $instances) {
+            Update-AzVmssInstance -ResourceGroupName "$resourceGroupName" -VMScaleSetName $vmss.Name -InstanceId $item.InstanceID
+        }
+
+        # Create Capture settiings for packet capture, its only applicable if we are pass continuousCapture as true/false
+        $c1 = New-AzPacketCaptureSettingsConfig -FileCount 2 -FileSizeInBytes 102400 -SessionTimeLimitInSeconds 60
+
+        #Create packet capture
+        # with Continuous Capture, if you are using continuousCapture, change it to local Path instead FilePath
+        $job3 = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -Name $pcName3 -TargetId $vmss.Id -TargetType "azurevmss" -ContinuousCapture $false -CaptureSetting $c1 -LocalPath C:\captures\Capture.cap -AsJob
+        $job3 | Wait-Job
+       
+        Start-TestSleep -Seconds 2
+       
+        #Get packet capture
+        $job3 = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName3 -AsJob
+        $job3 | Wait-Job
+        $pc3 = $job3 | Receive-Job
+       
+        #Write-Output ("PC3: '$pc3'")
+        
+        #Verification
+        Assert-AreEqual $pc3.Name $pcName3
+        Assert-AreEqual "Succeeded" $pc3.ProvisioningState
+        Assert-AreEqual 2 $c1.FileCount
+        Assert-AreEqual 102400 $c1.FileSizeInBytes
+        Assert-AreEqual 60 $c1.SessionTimeLimitInSeconds
+        Assert-Null $pc3.TotalBytesPerSession
+        Assert-Null $pc3.TimeLimitInSeconds
+        Assert-AreEqual $pc3.TargetType AzureVMSS
+       
+        #Stop packet capture
+        $job3 = Stop-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName3 -AsJob
+        $job3 | Wait-Job
+       
+        #Remove packet capture
+        $job3 = Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName3 -AsJob
+        $job3 | Wait-Job
+    }
+    finally {
+       # Cleanup
+       Clean-ResourceGroup $resourceGroupName
+       #Clean-ResourceGroup $nwRgName
+    }
+}
+
+<#
+.SYNOPSIS
 Test Troubleshoot API.
 #>
 function Test-Troubleshoot {
@@ -1692,208 +1861,6 @@ function Test-ProvidersList {
     finally {
         # Cleanup
         Clean-ResourceGroup $rgname
-    }
-}
-
-<#
-.SYNOPSIS
-Test ConnectionMonitor APIs.
-#>
-function Test-ConnectionMonitor {
-    # Setup
-    $resourceGroupName = Get-NrpResourceGroupName
-    $nwName = Get-NrpResourceName
-    $location = Get-PilotLocation
-    $resourceTypeParent = "Microsoft.Network/networkWatchers"
-    $nwLocation = Get-ProviderLocation $resourceTypeParent
-    $nwRgName = Get-NrpResourceGroupName
-    $securityGroupName = Get-NrpResourceName
-    $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
-    $cmName1 = Get-NrpResourceName
-    $cmName2 = Get-NrpResourceName
-    # We need location version w/o spaces to work with ByLocationParamSet
-    $locationMod = ($location -replace " ", "").ToLower()
-
-    try {
-        . ".\AzureRM.Resources.ps1"
-
-        # Create Resource group
-        New-AzResourceGroup -Name $resourceGroupName -Location "$location"
-
-        # Deploy resources
-        Get-TestResourcesDeployment -rgn "$resourceGroupName"
-
-        # Create Resource group for Network Watcher
-        New-AzResourceGroup -Name $nwRgName -Location "$location"
-
-        # Get Network Watcher
-        $nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
-
-        #Get Vm
-        $vm = Get-AzVM -ResourceGroupName $resourceGroupName
-
-        #Install networkWatcherAgent on Vm
-        Set-AzVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vm.Name -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher" 
-
-        #Create connection monitor
-        $job1 = New-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -AsJob
-        $job1 | Wait-Job
-        $cm1 = $job1 | Receive-Job
-
-        #Validation
-        Assert-AreEqual $cm1.Name $cmName1
-        Assert-AreEqual $cm1.Source.ResourceId $vm.Id
-        Assert-AreEqual $cm1.Destination.Address bing.com
-        Assert-AreEqual $cm1.Destination.Port 80
-
-        $job2 = New-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2 -SourceResourceId $vm.Id -DestinationAddress google.com -DestinationPort 80 -AsJob
-        $job2 | Wait-Job
-        $cm2 = $job2 | Receive-Job
-
-        #Validation
-        Assert-AreEqual $cm2.Name $cmName2
-        Assert-AreEqual $cm2.Source.ResourceId $vm.Id
-        Assert-AreEqual $cm2.Destination.Address google.com
-        Assert-AreEqual $cm2.Destination.Port 80
-        Assert-AreEqual $cm2.MonitoringStatus Running
-
-        # Need to run stop before Set operations
-
-        Stop-AzNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1
-        $cm1 = Set-AzNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 81 -ConfigureOnly -MonitoringIntervalInSeconds 50
-        Assert-AreEqual $cm1.Destination.Port 81
-        Assert-AreEqual $cm1.MonitoringIntervalInSeconds 50
-
-        Stop-AzNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1
-        $cm1 = Set-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress test.com -DestinationPort 81 -MonitoringIntervalInSeconds 50
-        Assert-AreEqual $cm1.Destination.Address test.com
-
-        Stop-AzNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1
-        $cm1 = Set-AzNetworkWatcherConnectionMonitor -ResourceId $cm1.Id -SourceResourceId $vm.Id -DestinationAddress test.com -DestinationPort 80 -MonitoringIntervalInSeconds 50
-        Assert-AreEqual $cm1.Destination.Port 80
-
-        Stop-AzNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1
-        $cm1Job = Set-AzNetworkWatcherConnectionMonitor -InputObject $cm1 -SourceResourceId $vm.Id -DestinationAddress test.com -DestinationPort 81 -MonitoringIntervalInSeconds 42 -AsJob
-        $cm1Job | Wait-Job
-        $cm1 = $cm1Job | Receive-Job
-        Assert-AreEqual $cm1.MonitoringIntervalInSeconds 42
-
-        Stop-AzNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1
-        $cm1 = Set-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress test.com -DestinationPort 80 -MonitoringIntervalInSeconds 42
-        Assert-AreEqual $cm1.Destination.Port 80
-
-        # Stop connection monitor
-        $stopJob = Stop-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2 -AsJob -PassThru
-        $stopJob | Wait-Job
-        $stopResult = $stopJob | Receive-Job
-        Assert-AreEqual true $stopResult
-        $cm2 = Get-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2
-        Assert-AreEqual $cm2.MonitoringStatus Stopped
-
-        # Start connection monitor
-        $startJob = Start-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2 -AsJob -PassThru
-        $startJob | Wait-Job
-        $startResult = $startJob | Receive-Job
-        Assert-AreEqual true $startResult
-        $cm2 = Get-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2
-        Assert-AreEqual $cm2.MonitoringStatus Running
-
-        # Stop connection monitor by Location
-        Stop-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cm2.Name
-        $cm2 = Get-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cm2.Name
-        Assert-AreEqual $cm2.MonitoringStatus Stopped
-
-        # Start connection monitor by location
-        Start-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cm2.Name
-        $cm2 = Get-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cm2.Name
-        Assert-AreEqual $cm2.MonitoringStatus Running
-
-        # Stop connection monitor by Id
-        Stop-AzNetworkWatcherConnectionMonitor -ResourceId $cm2.Id
-        $cm2 = Get-AzNetworkWatcherConnectionMonitor -ResourceId $cm2.Id
-        Assert-AreEqual $cm2.MonitoringStatus Stopped
-
-        # Start connection monitor by Id
-        Start-AzNetworkWatcherConnectionMonitor -ResourceId $cm2.Id
-        $cm2 = Get-AzNetworkWatcherConnectionMonitor -ResourceId $cm2.Id
-        Assert-AreEqual $cm2.MonitoringStatus Running
-
-        # Stop connection monitor by object
-        Stop-AzNetworkWatcherConnectionMonitor -InputObject $cm2
-        $cm2 = Get-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2
-        Assert-AreEqual $cm2.MonitoringStatus Stopped
-
-        # Start connection monitor by object
-        Start-AzNetworkWatcherConnectionMonitor -InputObject $cm2
-        $cm2 = Get-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2
-        Assert-AreEqual $cm2.MonitoringStatus Running
-
-        # Get List
-        $cms = Get-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name "*"
-        Assert-NotNull $cms
-
-        #Query connection monitor
-        $report = Get-AzNetworkWatcherConnectionMonitorReport -NetworkWatcher $nw -Name $cmName1
-        Assert-NotNull $report
-
-        $report = Get-AzNetworkWatcherConnectionMonitorReport -Location $locationMod -Name $cmName1
-        Assert-NotNull $report
-
-        $report = Get-AzNetworkWatcherConnectionMonitorReport -ResourceId $cm1.Id
-        Assert-NotNull $report
-
-        $reportJob = Get-AzNetworkWatcherConnectionMonitorReport -InputObject $cm1 -AsJob
-        $reportJob | Wait-Job
-        $report = $reportJob | Receive-Job
-        Assert-NotNull $report
-
-        #Remove connection monitor
-        Remove-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName1
-        Wait-Vm $vm
-
-        #Create connection monitor
-        $job1 = New-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -ConfigureOnly -MonitoringIntervalInSeconds 30 -AsJob
-        $job1 | Wait-Job
-        $cm1 = $job1 | Receive-Job
-
-        Remove-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1
-        Wait-Vm $vm
-
-        #Create connection monitor
-        $job1 = New-AzNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -ConfigureOnly -MonitoringIntervalInSeconds 30 -AsJob
-        $job1 | Wait-Job
-        $cm1 = $job1 | Receive-Job
-
-        Remove-AzNetworkWatcherConnectionMonitor -ResourceId $cm1.Id
-        Wait-Vm $vm
-
-        #Create connection monitor
-        $job1 = New-AzNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -ConfigureOnly -MonitoringIntervalInSeconds 30 -AsJob
-        $job1 | Wait-Job
-        $cm1 = $job1 | Receive-Job
-
-        $rmJob = Remove-AzNetworkWatcherConnectionMonitor -InputObject $cm1 -AsJob -PassThru
-        $rmJob | Wait-Job
-        $result = $rmJob | Receive-Job
-        Wait-Vm $vm
-
-        Assert-ThrowsLike { Set-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name "fakeName" -SourceResourceId $vm.Id -DestinationAddress test.com -DestinationPort 80 -MonitoringIntervalInSeconds 42 } "*not*found*"
-
-        # TODO: check if really deleted
-        Remove-AzNetworkWatcher -ResourceGroupName $nw.ResourceGroupName -Name $nw.Name
-
-        Assert-ThrowsLike { New-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 } "*There is no*"
-        Assert-ThrowsLike { Remove-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 } "*There is no*"
-        Assert-ThrowsLike { Get-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 } "*There is no*"
-        Assert-ThrowsLike { Set-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress test.com -DestinationPort 80 -MonitoringIntervalInSeconds 42 } "*There is no*"
-        Assert-ThrowsLike { Get-AzNetworkWatcherConnectionMonitorReport -Location $locationMod -Name $cmName1 } "*There is no*"
-        Assert-ThrowsLike { Stop-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 } "*There is no*"
-        Assert-ThrowsLike { Start-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 } "*There is no*"
-    }
-    finally {
-        # Cleanup
-        Clean-ResourceGroup $resourceGroupName
-        Clean-ResourceGroup $nwRgName
     }
 }
 

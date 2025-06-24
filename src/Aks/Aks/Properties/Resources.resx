@@ -310,7 +310,7 @@
     <value>Creating a new cluster Node pool.</value>
   </data>
   <data name="DoYouWantToCreateClusterAgentPool" xml:space="preserve">
-    <value>Do you want to craete a new Node pool?</value>
+    <value>Do you want to create a new Node pool?</value>
   </data>
   <data name="DoYouWantToDeleteTheAgentPool" xml:space="preserve">
     <value>Do you want to delete the Node pool?</value>
@@ -355,13 +355,13 @@
     <value>The node pool already exists. Please use Update-AzAksNodePool for update.</value>
   </data>
   <data name="AksNodePoolAutoScalingParametersMustAppearTogether" xml:space="preserve">
-    <value>The following three paramters must appear together if one of them appears: NodeMinCount, NodeMaxCount and EnableNodeAutoScaling.</value>
+    <value>The following three parameters must appear together if one of them appears: NodeMinCount, NodeMaxCount and EnableNodeAutoScaling.</value>
   </data>
   <data name="K8sVersionNotSupported" xml:space="preserve">
     <value>The specified KubernetesVersion is not supported in this region. Please run 'Get-AzAksVersion' to get supported version.</value>
   </data>
   <data name="NodePoolAutoScalingParametersMustAppearTogether" xml:space="preserve">
-    <value>The following three paramters must appear together if one of them appears: MinCount, MaxCount and EnableAutoScaling.</value>
+    <value>The following three parameters must appear together if one of them appears: MinCount, MaxCount and EnableAutoScaling.</value>
   </data>
   <data name="VmSetTypeIsIncorrectForWindowsPool" xml:space="preserve">
     <value>You must set VmSetType as 'VirtualMachineScaleSets' for Windows node pool.</value>
@@ -421,7 +421,7 @@
     <value>Acr role assignment {0} is already exist.</value>
   </data>
   <data name="ResetingTheCredentialOfAksCluster" xml:space="preserve">
-    <value>Reseting the credential of the aks cluster.</value>
+    <value>Resetting the credential of the aks cluster.</value>
   </data>
   <data name="ResetTheCredentialOfAksCluster" xml:space="preserve">
     <value>Do you want to reset the credential of the aks cluster?</value>
@@ -445,7 +445,7 @@
     <value>Conflicting flags. Upgrading the Kubernetes version will also upgrade node image version. If you only want to upgrade the node version please use the "-NodeImageOnly" option only.</value>
   </data>
   <data name="NeedSameParentFolder" xml:space="preserve">
-    <value>Cannot attach folder with anothe file or folder at the same time. Please put them in a same parent folder.</value>
+    <value>Cannot attach folder with another file or folder at the same time. Please put them in a same parent folder.</value>
   </data>
   <data name="DoYouWantToExecuteCommandOnCluster" xml:space="preserve">
     <value>Do you want to execute the command on cluster {0}?</value>

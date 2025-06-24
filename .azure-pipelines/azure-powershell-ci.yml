@@ -39,7 +39,7 @@ variables:
   AZURE_CLIENTS_SHOW_SECRETS_WARNING: true
 
 schedules:
-- cron: 0 4 * * 0,1,2,3,4,5,6
+- cron: 0 16 * * 0,1,2,3,4,5,6
   displayName: Daily Archive
   branches:
     include:
@@ -66,8 +66,6 @@ trigger:
     - test-build-filter
     - generation
     - Azure
-    exclude:
-    - release-network-*
 
 jobs:
 - job: Build
@@ -95,11 +93,11 @@ jobs:
     displayName: 'Use .NET SDK for Build'
     inputs:
       packageType: sdk
-      version: 8.0.x
+      version: 8.x
   - task: NodeTool@0
     displayName: Install Autorest
     inputs:
-      versionSpec: '14.17.1'
+      versionSpec: '18.20.8'
       command: custom
       verbose: false
       customCommand: install autorest@latest
@@ -109,7 +107,11 @@ jobs:
       targetType: inline
       script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
       pwsh: true
-  
+  - task: Npm@1
+    displayName: Install tsp client
+    inputs:
+      command: custom
+      customCommand: install -g @azure-tools/typespec-client-generator-cli@0.15.x
   - task: PowerShell@2
     displayName: 'Build'
     inputs:
@@ -190,7 +192,7 @@ jobs:
         & $prScriptPath -Title $prTitle -HeadBranch $tmpBranchName -BaseBranch $sourceBranchName -BotAccessToken '$(GithubToken)' -Description $prDescription
 
         <#
-          this commidId will be useful when we push directly to target branch in the future
+          this commitId will be useful when we push directly to target branch in the future
           $commitId = (git rev-parse HEAD)
         #>
   - template: util/publish-artifacts-steps.yml
@@ -210,7 +212,7 @@ jobs:
   - task: NodeTool@0
     displayName: Install autorest
     inputs:
-      versionSpec: '14.17.1'
+      versionSpec: '18.20.8'
       command: custom
       verbose: false
       customCommand: install autorest@latest
@@ -224,7 +226,7 @@ jobs:
     displayName: 'Use .NET SDK for Static Analysis'
     inputs:
       packageType: sdk
-      version: 8.0.x
+      version: 8.x
   - task: PowerShell@2
     displayName: 'Analyze'
     inputs:
@@ -266,7 +268,7 @@ jobs:
     displayName: 'Use .NET SDK for Test'
     inputs:
       packageType: sdk
-      version: 8.0.x
+      version: 8.x
   - task: PowerShell@2
     displayName: 'Test'
     inputs:

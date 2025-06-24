@@ -23,15 +23,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml;
 using System.Management.Automation;
+using System.Xml;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -443,6 +442,26 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             HelpMessage = "Specifies whether resilient VM deletion should be enabled on the virtual machine scale set. The default value is false.")]
         public bool EnableResilientVMDelete { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies whether Automatic Zone Rebalance should be enabled on the virtual machine scale set. The default value is false.")]
+        public bool EnableAutomaticZoneRebalance { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the strategy for Automatic Zone Rebalance.")]
+        [PSArgumentCompleter("Recreate")]
+        public string AutomaticZoneRebalanceStrategy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the behavior for Automatic Zone Rebalance.")]
+        [PSArgumentCompleter("CreateBeforeDelete")]
+        public string AutomaticZoneRebalanceBehavior { get; set; }
 
         private void BuildPatchObject()
         {
@@ -1365,15 +1384,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile = new SecurityProfile();
                 }
-                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings == null)
-                {
-                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
-                }
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.SecurityType = this.SecurityType;
                 if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                 {
+                    if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings == null)
+                    {
+                        this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
+                    }
                     this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
                     this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
+                }
+                else
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings = null;
                 }
             }
             // Only used for SecurityType == TrustedLaunch
@@ -1453,6 +1476,40 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSetUpdate.ResiliencyPolicy = new ResiliencyPolicy();
                 }
                 this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ResilientVMDeletionPolicy = new ResilientVMDeletionPolicy(this.EnableResilientVMDelete);
+            }
+
+            void InitializeAutomaticZoneRebalancingPolicy()
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.ResiliencyPolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.ResiliencyPolicy = new ResiliencyPolicy();
+                }
+                if (this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.AutomaticZoneRebalancingPolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.AutomaticZoneRebalancingPolicy = new AutomaticZoneRebalancingPolicy();
+                }
+            }
+
+            if (this.IsParameterBound(c => c.EnableAutomaticZoneRebalance))
+            {
+                InitializeAutomaticZoneRebalancingPolicy();
+                this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.Enabled = this.EnableAutomaticZoneRebalance;
+            }
+
+            if (this.IsParameterBound(c => c.AutomaticZoneRebalanceStrategy))
+            {
+                InitializeAutomaticZoneRebalancingPolicy();
+                this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.RebalanceStrategy = this.AutomaticZoneRebalanceStrategy;
+            }
+
+            if (this.IsParameterBound(c => c.AutomaticZoneRebalanceBehavior))
+            {
+                InitializeAutomaticZoneRebalancingPolicy();
+                this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.RebalanceBehavior = this.AutomaticZoneRebalanceBehavior;
             }
         }
 
@@ -2203,6 +2260,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
                     this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
                 }
+                else
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings = null;
+                }
             }
             // Only used for SecurityType == TrustedLaunch
             if (this.IsParameterBound(c => c.EnableVtpm))
@@ -2272,6 +2333,36 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.ResiliencyPolicy = new ResiliencyPolicy();
                 }
                 this.VirtualMachineScaleSet.ResiliencyPolicy.ResilientVMDeletionPolicy = new ResilientVMDeletionPolicy(this.EnableResilientVMDelete);
+            }
+
+            void InitializeAutomaticZoneRebalancingPolicy()
+            {
+                if (this.VirtualMachineScaleSet.ResiliencyPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ResiliencyPolicy = new ResiliencyPolicy();
+                }
+                if (this.VirtualMachineScaleSet.ResiliencyPolicy.AutomaticZoneRebalancingPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ResiliencyPolicy.AutomaticZoneRebalancingPolicy = new AutomaticZoneRebalancingPolicy();
+                }
+            }
+
+            if (this.IsParameterBound(c => c.EnableAutomaticZoneRebalance))
+            {
+                InitializeAutomaticZoneRebalancingPolicy();
+                this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.Enabled = this.EnableAutomaticZoneRebalance;
+            }
+
+            if (this.IsParameterBound(c => c.AutomaticZoneRebalanceStrategy))
+            {
+                InitializeAutomaticZoneRebalancingPolicy();
+                this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.RebalanceStrategy = this.AutomaticZoneRebalanceStrategy;
+            }
+
+            if (this.IsParameterBound(c => c.AutomaticZoneRebalanceBehavior))
+            {
+                InitializeAutomaticZoneRebalancingPolicy();
+                this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.RebalanceBehavior = this.AutomaticZoneRebalanceBehavior;
             }
         }
     }

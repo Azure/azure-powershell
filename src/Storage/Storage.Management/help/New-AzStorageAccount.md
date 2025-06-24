@@ -24,12 +24,12 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare]
  [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AsJob]
  [-EncryptionKeyTypeForTable <String>] [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption]
- [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>]
- [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>]
- [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-EdgeZone <String>]
- [-PublicNetworkAccess <String>] [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>]
- [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>] [-DnsEndpointType <String>]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
+ [-SasExpirationPeriod <TimeSpan>] [-SasExpirationAction <String>] [-KeyExpirationPeriodInDay <Int32>]
+ [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>]
+ [-EnableNfsV3 <Boolean>] [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>]
+ [-EdgeZone <String>] [-PublicNetworkAccess <String>] [-EnableAccountLevelImmutability]
+ [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>]
+ [-DnsEndpointType <String>] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
  [<CommonParameters>]
 ```
 
@@ -45,12 +45,12 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  -EnableAzureActiveDirectoryKerberosForFile <Boolean> [-ActiveDirectoryDomainName <String>]
  [-ActiveDirectoryDomainGuid <String>] [-AsJob] [-EncryptionKeyTypeForTable <String>]
  [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption] [-SasExpirationPeriod <TimeSpan>]
- [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>]
- [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>] [-AllowCrossTenantReplication <Boolean>]
- [-DefaultSharePermission <String>] [-EdgeZone <String>] [-PublicNetworkAccess <String>]
- [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>]
- [-AllowedCopyScope <String>] [-DnsEndpointType <String>] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [<CommonParameters>]
+ [-SasExpirationAction <String>] [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>]
+ [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>]
+ [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-EdgeZone <String>]
+ [-PublicNetworkAccess <String>] [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>]
+ [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>] [-DnsEndpointType <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -68,12 +68,12 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-ActiveDirectoryAzureStorageSid <String>] [-ActiveDirectorySamAccountName <String>]
  [-ActiveDirectoryAccountType <String>] [-AsJob] [-EncryptionKeyTypeForTable <String>]
  [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption] [-SasExpirationPeriod <TimeSpan>]
- [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>]
- [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>] [-AllowCrossTenantReplication <Boolean>]
- [-DefaultSharePermission <String>] [-EdgeZone <String>] [-PublicNetworkAccess <String>]
- [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>]
- [-AllowedCopyScope <String>] [-DnsEndpointType <String>] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [<CommonParameters>]
+ [-SasExpirationAction <String>] [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>]
+ [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>]
+ [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-EdgeZone <String>]
+ [-PublicNetworkAccess <String>] [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>]
+ [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>] [-DnsEndpointType <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -239,21 +239,24 @@ False
 
 This command creates a Storage account with EdgeZone as "microsoftlosangeles1" and AllowCrossTenantReplication as false, then show the created account related properties.
 
-### Example 12: Create a Storage account with KeyExpirationPeriod and SasExpirationPeriod
+### Example 12: Create a Storage account with KeyExpirationPeriod and SasExpirationPeriod with SasExpirationAction
 <!-- Skip: Output cannot be splitted from code -->
 
 
 ```powershell
-$account = New-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -SkuName Premium_LRS -Location eastus -KeyExpirationPeriodInDay 5 -SasExpirationPeriod "1.12:05:06"
+$account = New-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -SkuName Premium_LRS -Location eastus -KeyExpirationPeriodInDay 5 -SasExpirationPeriod "1.12:05:06" -SasExpirationAction Block
 
 $account.KeyPolicy.KeyExpirationPeriodInDays
 5
 
 $account.SasPolicy.SasExpirationPeriod
-1.12:05:06
+
+SasExpirationPeriod ExpirationAction
+------------------- ----------------
+1.12:05:06          Block          
 ```
 
-This command creates a Storage account with KeyExpirationPeriod and SasExpirationPeriod, then show the created account related properties.
+This command creates a Storage account with KeyExpirationPeriod and SasExpirationPeriod with SasExpirationAction, then show the created account related properties.
 
 ### Example 12: Create a Storage account with Keyvault encryption (access Keyvault with user assigned identity)
 <!-- Skip: Output cannot be splitted from code -->
@@ -881,7 +884,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-Set the new Storage Account Identity type, the idenetity is for use with key management services like Azure KeyVault.
+Set the new Storage Account Identity type, the identity is for use with key management services like Azure KeyVault.
 
 ```yaml
 Type: System.String
@@ -914,7 +917,7 @@ Accept wildcard characters: False
 
 ### -ImmutabilityPolicyState
 The mode of the policy. Possible values include: 'Unlocked', 'Disabled. 
-Disabled state disablesthe policy. 
+Disabled state disables the policy. 
 Unlocked state allows increase and decrease of immutability retention time and also allows toggling allowProtectedAppendWrites property. 
 A policy can only be created in a Disabled or Unlocked state and can be toggled between the two states.
 This property can only be specified with '-EnableAccountLevelImmutability'.
@@ -1188,6 +1191,21 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: MicrosoftRouting, InternetRouting
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SasExpirationAction
+The action to be performed when SasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period. The default value is 'Log'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

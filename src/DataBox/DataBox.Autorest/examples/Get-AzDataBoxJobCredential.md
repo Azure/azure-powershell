@@ -14,7 +14,7 @@ DcAccessSecurityCodeForwardDcAccessCode :
 DcAccessSecurityCodeReverseDcAccessCode :
 Detail                                  :
 JobName                                 : DtbxPowershell
-JobSecret                               : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxHeavyJobSecrets
+JobSecret                               : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxHeavyJobSecrets
 JobSecretJobSecretsType                 : DataBoxHeavy
 Message                                 :
 Target                                  :
@@ -23,11 +23,11 @@ Target                                  :
 AdditionalInfo                          :
 CabinetPodSecret                        : {, }
 Code                                    :
-DcAccessSecurityCode                    : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DcAccessSecurityCode
+DcAccessSecurityCode                    : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DcAccessSecurityCode
 DcAccessSecurityCodeForwardDcAccessCode :
 DcAccessSecurityCodeReverseDcAccessCode :
 Detail                                  :
-Error                                   : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudError
+Error                                   : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.CloudError
 Message                                 :
 Target                                  :
 Type                                    : DataBoxHeavy

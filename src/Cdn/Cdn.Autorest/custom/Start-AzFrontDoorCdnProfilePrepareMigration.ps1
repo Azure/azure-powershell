@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IMigrateResult
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -46,7 +46,7 @@ https://learn.microsoft.com/powershell/module/az.cdn/start-azfrontdoorcdnprofile
 #>
 function Start-AzFrontDoorCdnProfilePrepareMigration {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IMigrateResult])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -67,20 +67,19 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         # Name of the new AFD Standard/Premium profile that need to be created.
         ${ProfileName},
 
-        [Parameter(Mandatory)]
-        [ValidateNotNull()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName])]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='MigrateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Standard_Verizon", "Premium_Verizon", "Custom_Verizon", "Standard_Akamai", "Standard_ChinaCdn", "Standard_Microsoft", "Standard_AzureFrontDoor", "Premium_AzureFrontDoor", "Standard_955BandWidth_ChinaCdn", "Standard_AvgBandWidth_ChinaCdn", "StandardPlus_ChinaCdn", "StandardPlus_955BandWidth_ChinaCdn", "StandardPlus_AvgBandWidth_ChinaCdn")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName]
+        [System.String]
         # Name of the pricing tier.
         ${SkuName},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='MigrateExpanded')]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IMigrationWebApplicationFirewallMapping[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationWebApplicationFirewallMapping[]]
         # Waf mapping for the migrated profile
-        # To construct, see NOTES section for MIGRATIONWEBAPPLICATIONFIREWALLMAPPING properties and create a hash table.
         ${MigrationWebApplicationFirewallMapping},
 
         [Parameter()]
@@ -90,21 +89,23 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         # Azure Subscription ID.
         ${SubscriptionId},
 
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType])]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='MigrateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType]
+        [System.String]
         # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
         ${IdentityType},
-
-        [Parameter()]
+    
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='MigrateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api40.IUserAssignedIdentities]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities]))]
         [System.Collections.Hashtable]
         # The set of user assigned identities associated with the resource.
         # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
         # The dictionary values can be empty objects ({}) in requests.
-        ${IdentityUserAssignedIdentity},
+        ${IdentityUserAssignedIdentity},    
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -239,7 +240,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         }
 
         # We should raise a complaint if the customer did not enable managed identity when they have BYOC enabled. 
-        # However, if the customer does not have BYOC but has specified a managed identity, we could ignore the validation for BYOC, no need to keep consisence with Portal behavior.
+        # However, if the customer does not have BYOC but has specified a managed identity, we could ignore the validation for BYOC, no need to keep consistence with Portal behavior.
         if (($allPoliciesWithVault.count -gt 0) -and !($PSBoundParameters.ContainsKey('IdentityType')))
         {
             throw "IdentityType parameter should be provided when the front door has Customer Certificates."
@@ -268,7 +269,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
                 }
             }
            
-            # Validate whether MigratedToId policy already exists in the subsrciption; 
+            # Validate whether MigratedToId policy already exists in the subscription; 
             foreach ($policy in $wafPolicies) {
                 $migrateToWafId = $policy.MigratedToId
                 $migrateToWafArray = $policy.MigratedToId.split("/")
@@ -300,7 +301,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         # No need to add this parameters here, cx may add this parameter when using this command.
         # $PSBoundParameters.Add('ErrorAction', 'Stop')
 
-        # Upgrade subcriptionId
+        # Upgrade subscriptionId
         $PSBoundParameters['SubscriptionId'] =  $subId
         Az.Cdn.internal\Move-AzCdnProfile @PSBoundParameters
 
@@ -315,7 +316,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
 
             # 1. Enable MSI: get "principalId" from RP
             $commandArgs = @{ ResourceGroupName = ${ResourceGroupName}; Name = ${ProfileName}; IdentityType = ${IdentityType}; ErrorAction = 'Stop'}
-            if ($indentityType -ne "systemassigned") {
+            if ($IdentityType -ne "systemassigned") {
                 $commandArgs.Add('IdentityUserAssignedIdentity', ${IdentityUserAssignedIdentity})
             }
             
@@ -358,7 +359,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
                 Write-Host("Your have successfully granted managed identity to key vault.")
             }
         } else {
-            Write-Debug("IdentityType paramter not provided and no BYOC for the current front door, skip Managed Identity step.")
+            Write-Debug("IdentityType parameter not provided and no BYOC for the current front door, skip Managed Identity step.")
         }
 
         Write-Host("The change need to be committed after this.")
@@ -501,7 +502,7 @@ function CreateNewWafPolicy {
     # Remove the null/empty property
     $validatedWafProperty = ValidateMigrationWafPolicyProperty -WafProperty $WafProperty
 
-    # New a waf policy, copied from the Migrtae
+    # New a waf policy, copied from the Migrate
     New-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName -Name $Name -Sku $sku @validatedWafProperty  | Out-Null
 }
 

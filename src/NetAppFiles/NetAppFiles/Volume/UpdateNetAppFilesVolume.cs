@@ -169,6 +169,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "CoolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: \n Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default.\n SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier.")]
+        [PSArgumentCompleter("Auto", "SnapshotOnly")]
+        public string CoolAccessTieringPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "If enabled (true) the volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots (default to true)")]
         public SwitchParameter SnapshotDirectoryVisible { get; set; }
 
@@ -284,6 +290,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 SmbAccessBasedEnumeration = SmbAccessBasedEnumeration,
                 SmbNonBrowsable = SmbNonBrowsable,
                 CoolAccessRetrievalPolicy = CoolAccessRetrievalPolicy,
+                CoolAccessTieringPolicy = CoolAccessTieringPolicy,
                 ProtocolTypes = ProtocolType
             };            
 

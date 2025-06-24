@@ -21,12 +21,13 @@ Create an in-memory object for SimStaticIPProperties.
 Create an in-memory object for SimStaticIPProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimStaticIPProperties
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimStaticIPProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkSimStaticIPPropertiesObject
 #>
 function New-AzMobileNetworkSimStaticIPPropertiesObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimStaticIPProperties')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimStaticIPProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -42,7 +43,7 @@ function New-AzMobileNetworkSimStaticIPPropertiesObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimStaticIPProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimStaticIPProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('AttachedDataNetworkId')) {
             $Object.AttachedDataNetworkId = $AttachedDataNetworkId

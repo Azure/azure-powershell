@@ -28,6 +28,20 @@ Invoke-AzEdgeOrderReturnOrderItem -InputObject <IEdgeOrderIdentity> -ReturnReaso
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### ReturnViaJsonFilePath
+```
+Invoke-AzEdgeOrderReturnOrderItem -OrderItemName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### ReturnViaJsonString
+```
+Invoke-AzEdgeOrderReturnOrderItem -OrderItemName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Return order item.
 
@@ -75,7 +89,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IEdgeOrderIdentity
@@ -86,6 +99,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Return operation
+
+```yaml
+Type: System.String
+Parameter Sets: ReturnViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Return operation
+
+```yaml
+Type: System.String
+Parameter Sets: ReturnViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -109,7 +152,7 @@ The name of the order item
 
 ```yaml
 Type: System.String
-Parameter Sets: ReturnExpanded
+Parameter Sets: ReturnExpanded, ReturnViaJsonFilePath, ReturnViaJsonString
 Aliases:
 
 Required: True
@@ -140,7 +183,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReturnExpanded
+Parameter Sets: ReturnExpanded, ReturnViaJsonFilePath, ReturnViaJsonString
 Aliases:
 
 Required: True
@@ -152,11 +195,10 @@ Accept wildcard characters: False
 
 ### -ReturnAddressContactDetail
 Contact details for the address
-To construct, see NOTES section for RETURNADDRESSCONTACTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IContactDetails
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IContactDetails
+Parameter Sets: ReturnExpanded, ReturnViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -168,11 +210,10 @@ Accept wildcard characters: False
 
 ### -ReturnAddressShippingAddress
 Shipping details for the address
-To construct, see NOTES section for RETURNADDRESSSHIPPINGADDRESS properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IShippingAddress
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IShippingAddress
+Parameter Sets: ReturnExpanded, ReturnViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -187,7 +228,7 @@ Return Reason.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ReturnExpanded, ReturnViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -202,7 +243,7 @@ Service tag (located on the bottom-right corner of the device)
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ReturnExpanded, ReturnViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -217,7 +258,7 @@ Shipping Box required
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: ReturnExpanded, ReturnViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -232,7 +273,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReturnExpanded
+Parameter Sets: ReturnExpanded, ReturnViaJsonFilePath, ReturnViaJsonString
 Aliases:
 
 Required: False

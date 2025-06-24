@@ -10,16 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a WorkloadNetworkDnsService</summary>
+    /// <summary>update a WorkloadNetworkDnsService</summary>
     /// <remarks>
     /// [OpenAPI] UpdateDnsService=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsServices/{dnsServiceId}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzVMwareWorkloadNetworkDnsService_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Update a WorkloadNetworkDnsService")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"update a WorkloadNetworkDnsService")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsServices/{dnsServiceId}", ApiVersion = "2023-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsServices/{dnsServiceId}", ApiVersion = "2024-09-01")]
     public partial class UpdateAzVMwareWorkloadNetworkDnsService_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IContext

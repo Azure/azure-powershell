@@ -34,7 +34,7 @@ EnvironmentId IngestionKey
 ihx78752      dt0c01.C3A5JBXDZ4C3SCZDRBJ3D23I.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-This coammnd gets the payload that needs to be passed in the request body for installing Dynatrace agent on a VM.
+This command gets the payload that needs to be passed in the request body for installing Dynatrace agent on a VM.
 
 ## PARAMETERS
 
@@ -107,7 +107,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IVMExtensionPayload
+### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IVMExtensionPayload
 
 ## NOTES
 

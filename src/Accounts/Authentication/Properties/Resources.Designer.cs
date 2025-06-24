@@ -160,6 +160,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fail to push authentication telemetry record, please check the CmdletcContext with Id {0}..
+        /// </summary>
+        public static string AuthenticationTelemetryRecordPushError {
+            get {
+                return ResourceManager.GetString("AuthenticationTelemetryRecordPushError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Context autosave is not supported on current environment. Please disable it using &apos;Disable-AzContextSave&apos;..
         /// </summary>
         public static string AutosaveNotSupportedWithSuggestion {
@@ -273,6 +282,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         public static string ErrorMsgMsalInteractionRequiredWithResourceID {
             get {
                 return ResourceManager.GetString("ErrorMsgMsalInteractionRequiredWithResourceID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The scope of authenticating for SSH is not set. Please run &quot;Set-AzEnvironment -Name {0} -SshAuthScope ...&quot; to set it first..
+        /// </summary>
+        public static string ErrorSshAuthScopeNotSet {
+            get {
+                return ResourceManager.GetString("ErrorSshAuthScopeNotSet", resourceCulture);
             }
         }
         

@@ -21,12 +21,13 @@ Create an in-memory object for UrlSigningKeyParameters.
 Create an in-memory object for UrlSigningKeyParameters.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlSigningKeyParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlSigningKeyParameters
 .Link
-https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretUrlSigningKeyParametersObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnsecreturlsigningkeyparametersobject
 #>
 function New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlSigningKeyParameters')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlSigningKeyParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,14 +40,14 @@ function New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject {
         [Parameter(HelpMessage="Version of the secret to be used.")]
         [string]
         $SecretVersion,
-        [Parameter(Mandatory, HelpMessage="The type of the secret resource.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SecretType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SecretType]
+        [Parameter(HelpMessage="Type.")]
+        [string]
         $Type
+
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlSigningKeyParameters]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlSigningKeyParameters]::New()
 
         if ($PSBoundParameters.ContainsKey('KeyId')) {
             $Object.KeyId = $KeyId
@@ -56,9 +57,6 @@ function New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject {
         }
         if ($PSBoundParameters.ContainsKey('SecretVersion')) {
             $Object.SecretVersion = $SecretVersion
-        }
-        if ($PSBoundParameters.ContainsKey('Type')) {
-            $Object.Type = $Type
         }
         return $Object
     }

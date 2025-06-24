@@ -138,9 +138,9 @@ Edit-AzDataProtectionPolicyTagClientObject -Policy $defaultPol -Name Daily -Crit
 New-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Name "newAKSPolicy" -Policy $defaultPol
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBaseBackupPolicyResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBaseBackupPolicyResource
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBaseBackupPolicyResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBaseBackupPolicyResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -153,7 +153,7 @@ PARAMETER <IBaseBackupPolicyResource>: BaseBackupPolicy resource
 https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackuppolicy
 #>
 function New-AzDataProtectionBackupPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBaseBackupPolicyResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBaseBackupPolicyResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -186,7 +186,7 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBaseBackupPolicyResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBaseBackupPolicyResource]
     # BaseBackupPolicy resource
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},

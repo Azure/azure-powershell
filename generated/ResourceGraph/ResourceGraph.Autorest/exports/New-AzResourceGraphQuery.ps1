@@ -25,16 +25,16 @@ New-AzResourceGraphQuery -Name query-t03 -ResourceGroupName azure-rg-test -Locat
 New-AzResourceGraphQuery -Name query-t04 -ResourceGroupName azure-rg-test -Location "global" -Description "requesting a subset of resource fields." -File 'D:\azure-service\ResourceGraph.Autorest\azure-powershell\src\ResourceGraph\ResourceGraph.Autorest\test\Query.kql'
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20240401.IGraphQueryResource
+Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryResource
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20240401.IGraphQueryResource
+Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryResource
 .Link
 https://learn.microsoft.com/powershell/module/az.resourcegraph/new-azresourcegraphquery
 #>
 function New-AzResourceGraphQuery {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20240401.IGraphQueryResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -82,7 +82,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20240401.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
@@ -142,6 +142,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -163,9 +172,7 @@ begin {
         $mapping = @{
             CreateExpanded = 'Az.ResourceGraph.custom\New-AzResourceGraphQuery';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -179,6 +186,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Extensions;
 
-    /// <summary>Any object</summary>
+    /// <summary>Anything</summary>
     public partial class Any :
         Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IAny,
         Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IAnyInternal
@@ -19,13 +19,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
 
         }
     }
-    /// Any object
+    /// Anything
     public partial interface IAny :
         Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IJsonSerializable
     {
 
     }
-    /// Any object
+    /// Anything
     internal partial interface IAnyInternal
 
     {

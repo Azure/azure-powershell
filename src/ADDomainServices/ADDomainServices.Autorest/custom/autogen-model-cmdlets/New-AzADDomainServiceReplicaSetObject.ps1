@@ -21,12 +21,13 @@ Create an in-memory object for ReplicaSet.
 Create an in-memory object for ReplicaSet.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ReplicaSet
+Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ReplicaSet
 .Link
-https://learn.microsoft.com/powershell/module/Az.ADDomainServices/new-AzADDomainServiceReplicaSetObject
+https://learn.microsoft.com/powershell/module/Az.ADDomainServices/new-azaddomainservicereplicasetobject
 #>
 function New-AzADDomainServiceReplicaSetObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ReplicaSet')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ReplicaSet')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,7 +40,7 @@ function New-AzADDomainServiceReplicaSetObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ReplicaSet]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ReplicaSet]::New()
 
         if ($PSBoundParameters.ContainsKey('Location')) {
             $Object.Location = $Location

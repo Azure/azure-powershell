@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create an evidence a specified report</summary>
+    /// <summary>create an evidence a specified report</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/evidences/{evidenceName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzAppComplianceAutomationEvidence_Create", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IEvidenceResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Description(@"Create an evidence a specified report")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Description(@"create an evidence a specified report")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.HttpPath(Path = "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/evidences/{evidenceName}", ApiVersion = "2024-06-27")]
     public partial class NewAzAppComplianceAutomationEvidence_Create : global::System.Management.Automation.PSCmdlet,

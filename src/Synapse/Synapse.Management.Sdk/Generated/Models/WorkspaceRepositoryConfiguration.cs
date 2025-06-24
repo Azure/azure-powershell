@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// WorkspaceVSTSConfiguration, WorkspaceGitHubConfiguration
         /// </param>
 
-        /// <param name="hostName">GitHub Enterprise host name. For example: https://github.mydomain.com
+        /// <param name="hostName">GitHub Enterprise host name. For example: `https://github.mydomain.com`
         /// </param>
 
         /// <param name="accountName">Account name
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
 
         /// <summary>
         /// Gets or sets gitHub Enterprise host name. For example:
-        /// https://github.mydomain.com
+        /// `https://github.mydomain.com`
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "hostName")]
         public string HostName {get; set; }

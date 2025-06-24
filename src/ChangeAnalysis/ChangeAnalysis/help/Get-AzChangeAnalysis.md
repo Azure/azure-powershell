@@ -264,7 +264,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.Api20210401.IChange
+### Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.IChange
 
 ## NOTES
 

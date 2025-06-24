@@ -16,14 +16,16 @@ Updates a CustomIpPrefix
 ```
 Update-AzCustomIpPrefix -Name <String> -ResourceGroupName <String> [-Commission] [-Decommission] [-Provision]
  [-Deprovision] [-NoInternetAdvertise] [-Cidr <String>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateByInputObjectParameterSet
 ```
 Update-AzCustomIpPrefix -InputObject <PSCustomIpPrefix> [-Commission] [-Decommission] [-Provision]
  [-Deprovision] [-NoInternetAdvertise] [-Cidr <String>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateByResourceIdParameterSet

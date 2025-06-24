@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StorageQueueEventSubscriptio
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridstoragequeueeventsubscriptiondestinationobject
 #>
 function New-AzEventGridStorageQueueEventSubscriptionDestinationObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StorageQueueEventSubscriptionDestination')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

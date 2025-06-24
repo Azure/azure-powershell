@@ -27,9 +27,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobsBookShipmentPickUp(string subscriptionId, string resourceGroupName, string jobName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShipmentPickUpRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShipmentPickUpResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobsBookShipmentPickUp(string subscriptionId, string resourceGroupName, string jobName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShipmentPickUpRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShipmentPickUpResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -74,9 +74,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobsBookShipmentPickUpViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShipmentPickUpRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShipmentPickUpResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobsBookShipmentPickUpViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShipmentPickUpRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShipmentPickUpResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobsBookShipmentPickUp_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShipmentPickUpResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task JobsBookShipmentPickUp_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShipmentPickUpResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -150,13 +150,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ShipmentPickUpResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ShipmentPickUpResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobsBookShipmentPickUp_Validate(string subscriptionId, string resourceGroupName, string jobName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShipmentPickUpRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task JobsBookShipmentPickUp_Validate(string subscriptionId, string resourceGroupName, string jobName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShipmentPickUpRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -213,9 +213,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobsCancel(string subscriptionId, string resourceGroupName, string jobName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ICancellationReason body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobsCancel(string subscriptionId, string resourceGroupName, string jobName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ICancellationReason body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -260,9 +260,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobsCancelViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ICancellationReason body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobsCancelViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ICancellationReason body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobsCancel_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task JobsCancel_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -370,7 +370,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobsCancel_Validate(string subscriptionId, string resourceGroupName, string jobName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ICancellationReason body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task JobsCancel_Validate(string subscriptionId, string resourceGroupName, string jobName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ICancellationReason body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -402,9 +402,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobsCreate(string subscriptionId, string resourceGroupName, string jobName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobsCreate(string subscriptionId, string resourceGroupName, string jobName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -451,9 +451,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -508,7 +508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task JobsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -625,13 +625,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.JobResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.JobResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -659,7 +659,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobsCreate_Validate(string subscriptionId, string resourceGroupName, string jobName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task JobsCreate_Validate(string subscriptionId, string resourceGroupName, string jobName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -688,9 +688,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobsDelete(string subscriptionId, string resourceGroupName, string jobName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobsDelete(string subscriptionId, string resourceGroupName, string jobName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -730,9 +730,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -784,7 +784,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task JobsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -914,7 +914,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -968,9 +968,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobsGet(string subscriptionId, string resourceGroupName, string jobName, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobsGet(string subscriptionId, string resourceGroupName, string jobName, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1012,9 +1012,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobsGetViaIdentity(global::System.String viaIdentity, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobsGetViaIdentity(global::System.String viaIdentity, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1067,7 +1067,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task JobsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1085,13 +1085,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.JobResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.JobResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1144,9 +1144,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobsList(string subscriptionId, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobsList(string subscriptionId, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1186,9 +1186,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobsListByResourceGroup(string subscriptionId, string resourceGroupName, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobsListByResourceGroup(string subscriptionId, string resourceGroupName, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1229,9 +1229,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobsListByResourceGroupViaIdentity(global::System.String viaIdentity, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobsListByResourceGroupViaIdentity(global::System.String viaIdentity, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1282,7 +1282,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobsListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task JobsListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1300,13 +1300,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.JobResourceList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.JobResourceList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1355,9 +1355,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobsListCredentials(string subscriptionId, string resourceGroupName, string jobName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IUnencryptedCredentialsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobsListCredentials(string subscriptionId, string resourceGroupName, string jobName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IUnencryptedCredentialsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1397,9 +1397,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobsListCredentialsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IUnencryptedCredentialsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobsListCredentialsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IUnencryptedCredentialsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1451,7 +1451,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobsListCredentials_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IUnencryptedCredentialsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task JobsListCredentials_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IUnencryptedCredentialsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1469,13 +1469,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.UnencryptedCredentialsList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.UnencryptedCredentialsList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1526,9 +1526,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobsListViaIdentity(global::System.String viaIdentity, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobsListViaIdentity(global::System.String viaIdentity, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1576,7 +1576,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task JobsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1594,13 +1594,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.JobResourceList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.JobResourceList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1648,9 +1648,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobsMarkDevicesShipped(string jobName, string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IMarkDevicesShippedRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobsMarkDevicesShipped(string jobName, string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IMarkDevicesShippedRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1695,9 +1695,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobsMarkDevicesShippedViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IMarkDevicesShippedRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobsMarkDevicesShippedViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IMarkDevicesShippedRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1753,7 +1753,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobsMarkDevicesShipped_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task JobsMarkDevicesShipped_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1777,7 +1777,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1805,7 +1805,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobsMarkDevicesShipped_Validate(string jobName, string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IMarkDevicesShippedRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task JobsMarkDevicesShipped_Validate(string jobName, string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IMarkDevicesShippedRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1836,9 +1836,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobsUpdate(string subscriptionId, string resourceGroupName, string jobName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResourceUpdateParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobsUpdate(string subscriptionId, string resourceGroupName, string jobName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResourceUpdateParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1890,9 +1890,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobsUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResourceUpdateParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobsUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResourceUpdateParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1953,7 +1953,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task JobsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2070,13 +2070,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.JobResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.JobResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2106,7 +2106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobsUpdate_Validate(string subscriptionId, string resourceGroupName, string jobName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResourceUpdateParameter body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task JobsUpdate_Validate(string subscriptionId, string resourceGroupName, string jobName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResourceUpdateParameter body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -2136,9 +2136,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task Mitigate(string jobName, string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IMitigateJobRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task Mitigate(string jobName, string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IMitigateJobRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2183,9 +2183,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MitigateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IMitigateJobRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MitigateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IMitigateJobRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2241,7 +2241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task Mitigate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task Mitigate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2265,7 +2265,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2293,7 +2293,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task Mitigate_Validate(string jobName, string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IMitigateJobRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task Mitigate_Validate(string jobName, string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IMitigateJobRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -2317,9 +2317,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2353,9 +2353,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2398,7 +2398,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2416,13 +2416,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.OperationList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.OperationList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2468,9 +2468,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServiceListAvailableSkusByResourceGroup(string subscriptionId, string resourceGroupName, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IAvailableSkuRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IAvailableSkusResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServiceListAvailableSkusByResourceGroup(string subscriptionId, string resourceGroupName, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IAvailableSkuRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IAvailableSkusResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2517,9 +2517,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServiceListAvailableSkusByResourceGroupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IAvailableSkuRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IAvailableSkusResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServiceListAvailableSkusByResourceGroupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IAvailableSkuRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IAvailableSkusResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2577,7 +2577,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ServiceListAvailableSkusByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IAvailableSkusResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ServiceListAvailableSkusByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IAvailableSkusResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2595,13 +2595,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.AvailableSkusResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.AvailableSkusResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2628,7 +2628,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ServiceListAvailableSkusByResourceGroup_Validate(string subscriptionId, string resourceGroupName, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IAvailableSkuRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ServiceListAvailableSkusByResourceGroup_Validate(string subscriptionId, string resourceGroupName, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IAvailableSkuRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -2654,9 +2654,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServiceRegionConfiguration(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IRegionConfigurationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IRegionConfigurationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServiceRegionConfiguration(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IRegionConfigurationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IRegionConfigurationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2703,9 +2703,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServiceRegionConfigurationByResourceGroup(string subscriptionId, string resourceGroupName, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IRegionConfigurationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IRegionConfigurationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServiceRegionConfigurationByResourceGroup(string subscriptionId, string resourceGroupName, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IRegionConfigurationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IRegionConfigurationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2752,9 +2752,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServiceRegionConfigurationByResourceGroupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IRegionConfigurationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IRegionConfigurationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServiceRegionConfigurationByResourceGroupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IRegionConfigurationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IRegionConfigurationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2812,7 +2812,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ServiceRegionConfigurationByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IRegionConfigurationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ServiceRegionConfigurationByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IRegionConfigurationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2830,13 +2830,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.RegionConfigurationResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.RegionConfigurationResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2863,7 +2863,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ServiceRegionConfigurationByResourceGroup_Validate(string subscriptionId, string resourceGroupName, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IRegionConfigurationRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ServiceRegionConfigurationByResourceGroup_Validate(string subscriptionId, string resourceGroupName, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IRegionConfigurationRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -2888,9 +2888,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServiceRegionConfigurationViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IRegionConfigurationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IRegionConfigurationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServiceRegionConfigurationViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IRegionConfigurationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IRegionConfigurationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2943,7 +2943,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ServiceRegionConfiguration_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IRegionConfigurationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ServiceRegionConfiguration_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IRegionConfigurationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2961,13 +2961,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.RegionConfigurationResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.RegionConfigurationResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2993,7 +2993,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ServiceRegionConfiguration_Validate(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IRegionConfigurationRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ServiceRegionConfiguration_Validate(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IRegionConfigurationRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3019,9 +3019,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServiceValidateAddress(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IValidateAddress body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IAddressValidationOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServiceValidateAddress(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IValidateAddress body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IAddressValidationOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3067,9 +3067,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServiceValidateAddressViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IValidateAddress body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IAddressValidationOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServiceValidateAddressViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IValidateAddress body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IAddressValidationOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3122,7 +3122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ServiceValidateAddress_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IAddressValidationOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ServiceValidateAddress_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IAddressValidationOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3140,13 +3140,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.AddressValidationOutput.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.AddressValidationOutput.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3172,7 +3172,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ServiceValidateAddress_Validate(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IValidateAddress body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ServiceValidateAddress_Validate(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IValidateAddress body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3195,9 +3195,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServiceValidateInputs(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IValidationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IValidationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServiceValidateInputs(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IValidationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IValidationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3244,9 +3244,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServiceValidateInputsByResourceGroup(string subscriptionId, string resourceGroupName, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IValidationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IValidationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServiceValidateInputsByResourceGroup(string subscriptionId, string resourceGroupName, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IValidationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IValidationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3293,9 +3293,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServiceValidateInputsByResourceGroupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IValidationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IValidationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServiceValidateInputsByResourceGroupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IValidationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IValidationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3353,7 +3353,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ServiceValidateInputsByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IValidationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ServiceValidateInputsByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IValidationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3371,13 +3371,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ValidationResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ValidationResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3404,7 +3404,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ServiceValidateInputsByResourceGroup_Validate(string subscriptionId, string resourceGroupName, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IValidationRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ServiceValidateInputsByResourceGroup_Validate(string subscriptionId, string resourceGroupName, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IValidationRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3427,9 +3427,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServiceValidateInputsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IValidationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IValidationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServiceValidateInputsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IValidationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IValidationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01";
+            var apiVersion = @"2025-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3482,7 +3482,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ServiceValidateInputs_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IValidationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ServiceValidateInputs_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IValidationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IApiError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3500,13 +3500,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ValidationResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ValidationResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ApiError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3532,7 +3532,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ServiceValidateInputs_Validate(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IValidationRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ServiceValidateInputs_Validate(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IValidationRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {

@@ -123,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Specifies the replcating server for which the replication needs to be disabled.
+Specifies the replicating server for which the replication needs to be disabled.
 The server object should be retrieved using the Get-AzMigrateServerReplication cmdlet.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetObjectID
-Specifies the replcating server for which the replication needs to be disabled.
+Specifies the replicating server for which the replication needs to be disabled.
 The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
 
 ```yaml

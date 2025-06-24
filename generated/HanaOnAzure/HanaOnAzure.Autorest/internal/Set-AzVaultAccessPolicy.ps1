@@ -16,16 +16,16 @@
 
 <#
 .Synopsis
-Update access policies in a key vault in the specified subscription.
+update access policies in a key vault in the specified subscription.
 .Description
-Update access policies in a key vault in the specified subscription.
+update access policies in a key vault in the specified subscription.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001.IVaultAccessPolicyParameters
+Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IVaultAccessPolicyParameters
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -35,21 +35,21 @@ ACCESSPOLICY <IAccessPolicyEntry[]>: An array of 0 to 16 identities that have ac
   ObjectId <String>: The object ID of a user, service principal or security group in the Azure Active Directory tenant for the vault. The object ID must be unique for the list of access policies.
   TenantId <String>: The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
   [ApplicationId <String>]:  Application ID of the client making request on behalf of a principal
-  [PermissionCertificate <CertificatePermissions[]>]: Permissions to certificates
-  [PermissionKey <KeyPermissions[]>]: Permissions to keys
-  [PermissionSecret <SecretPermissions[]>]: Permissions to secrets
-  [PermissionStorage <StoragePermissions[]>]: Permissions to storage accounts
+  [PermissionCertificate <List<String>>]: Permissions to certificates
+  [PermissionKey <List<String>>]: Permissions to keys
+  [PermissionSecret <List<String>>]: Permissions to secrets
+  [PermissionStorage <List<String>>]: Permissions to storage accounts
 .Link
 https://learn.microsoft.com/powershell/module/az.hanaonazure/set-azvaultaccesspolicy
 #>
 function Set-AzVaultAccessPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001.IVaultAccessPolicyParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IVaultAccessPolicyParameters])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.AccessPolicyUpdateKind])]
+    [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.PSArgumentCompleterAttribute("add", "replace", "remove")]
     [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.AccessPolicyUpdateKind]
+    [System.String]
     # Name of the operation
     ${OperationKind},
 
@@ -73,14 +73,25 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001.IAccessPolicyEntry[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IAccessPolicyEntry[]]
     # An array of 0 to 16 identities that have access to the key vault.
     # All identities in the array must use the same tenant ID as the key vault's tenant ID.
-    # To construct, see NOTES section for ACCESSPOLICY properties and create a hash table.
     ${AccessPolicy},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -138,13 +149,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             UpdateExpanded = 'Az.HanaOnAzure.private\Set-AzVaultAccessPolicy_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.HanaOnAzure.private\Set-AzVaultAccessPolicy_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.HanaOnAzure.private\Set-AzVaultAccessPolicy_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -153,6 +167,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

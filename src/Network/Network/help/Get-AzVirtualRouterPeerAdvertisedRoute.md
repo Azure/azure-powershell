@@ -15,7 +15,8 @@ List routes being advertised by specific virtual router peer
 ### VirtualRouterPeerNameParameterSet (Default)
 ```
 Get-AzVirtualRouterPeerAdvertisedRoute -ResourceGroupName <String> -VirtualRouterName <String>
- -PeerName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -PeerName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### VirtualRouterPeerObjectParameterSet

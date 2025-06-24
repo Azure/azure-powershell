@@ -56,6 +56,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -64,6 +67,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the dedicated Hsm",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
@@ -72,6 +78,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Resource Group to which the resource belongs.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -83,6 +92,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

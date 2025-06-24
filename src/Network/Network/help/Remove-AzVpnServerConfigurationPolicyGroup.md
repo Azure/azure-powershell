@@ -5,168 +5,51 @@ online version: https://learn.microsoft.com/powershell/module/az.network/remove-
 schema: 2.0.0
 ---
 
-# New-AzP2sVpnGateway
+# Remove-AzVpnServerConfigurationPolicyGroup
 
 ## SYNOPSIS
-Create a new P2SVpnGateway under VirtualHub for point to site connectivity.
+Removes an existing VpnServerConfigurationPolicyGroup.
 
 ## SYNTAX
 
-### ByVirtualHubNameByVpnServerConfigurationObject (Default)
+### ByVpnServerConfigurationName (Default)
 ```
-New-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit <UInt32>
- -VirtualHubName <String> [-VpnServerConfiguration <PSVpnServerConfiguration>]
- [-VpnClientAddressPool <String[]>] [-CustomDnsServer <String[]>]
- [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag] [-DisableInternetSecurityFlag]
- [-EnableRoutingPreferenceInternetFlag] [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Remove-AzVpnServerConfigurationPolicyGroup -ResourceGroupName <String> -ServerConfigurationName <String>
+ -Name <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByVpnServerConfigurationResourceId
+```
+Remove-AzVpnServerConfigurationPolicyGroup -ServerConfigurationResourceId <String> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### ByVirtualHubNameByVpnServerConfigurationResourceId
+### ByVpnServerConfigurationObject
 ```
-New-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit <UInt32>
- -VirtualHubName <String> -VpnServerConfigurationId <String> [-VpnClientAddressPool <String[]>]
- [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
- [-DisableInternetSecurityFlag] [-EnableRoutingPreferenceInternetFlag]
- [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByVirtualHubObjectByVpnServerConfigurationObject
-```
-New-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit <UInt32>
- -VirtualHub <PSVirtualHub> [-VpnServerConfiguration <PSVpnServerConfiguration>]
- [-VpnClientAddressPool <String[]>] [-CustomDnsServer <String[]>]
- [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag] [-DisableInternetSecurityFlag]
- [-EnableRoutingPreferenceInternetFlag] [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ByVirtualHubObjectByVpnServerConfigurationResourceId
-```
-New-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit <UInt32>
- -VirtualHub <PSVirtualHub> -VpnServerConfigurationId <String> [-VpnClientAddressPool <String[]>]
- [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
- [-DisableInternetSecurityFlag] [-EnableRoutingPreferenceInternetFlag]
- [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByVirtualHubResourceIdByVpnServerConfigurationObject
-```
-New-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit <UInt32>
- -VirtualHubId <String> [-VpnServerConfiguration <PSVpnServerConfiguration>] [-VpnClientAddressPool <String[]>]
- [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
- [-DisableInternetSecurityFlag] [-EnableRoutingPreferenceInternetFlag]
- [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByVirtualHubResourceIdByVpnServerConfigurationResourceId
-```
-New-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit <UInt32>
- -VirtualHubId <String> -VpnServerConfigurationId <String> [-VpnClientAddressPool <String[]>]
- [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
- [-DisableInternetSecurityFlag] [-EnableRoutingPreferenceInternetFlag]
- [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzVpnServerConfigurationPolicyGroup -ServerConfigurationObject <PSVpnServerConfiguration> [-Force]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzP2sVpnGateway cmdlet enables you to create a new P2SVpnGateway under VirtualHub for Point to site connectivity from Point to site clients to Azure VirtualWan.
+The **Remove-AzVpnServerConfigurationPolicyGroup** cmdlet enables you to remove an existing VpnServerConfigurationPolicyGroup under VpnServerConfiguration.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-$virtualHub = Get-AzVirtualHub -ResourceGroupName P2SCortexGATesting -Name WestUsVirtualHub
-$vpnServerConfig1 = Get-AzVpnServerConfiguration -ResourceGroupName P2SCortexGATesting -Name WestUsConfig
-$vpnClientAddressSpaces = New-Object string[] 1
-$vpnClientAddressSpaces[0] = "192.168.2.0/24"
-$createdP2SVpnGateway = New-AzP2sVpnGateway -ResourceGroupName P2SCortexGATesting -Name 683482ade8564515aed4b8448c9757ea-westus-gw -VirtualHub $virtualHub -VpnGatewayScaleUnit 1 -VpnClientAddressPool $vpnClientAddressSpaces -VpnServerConfiguration $vpnServerConfig1 -EnableInternetSecurityFlag -EnableRoutingPreferenceInternetFlag
+Remove-AzVpnServerConfigurationPolicyGroup -ResourceGroupName TestRG -ServerConfigurationName VpnServerConfig2 -Name Group3 -Force -PassThru
 ```
 
 ```output
-ResourceGroupName              : P2SCortexGATesting
-Name                           : 683482ade8564515aed4b8448c9757ea-westus-gw
-Id                             : /subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/p2sVpnGateways/683482ade8564515a
-                                 ed4b8448c9757ea-westus-gw
-Location                       : westus
-VpnGatewayScaleUnit            : 1
-VirtualHub                     : /subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/virtualHubs/WestUsVirtualHub
-VpnServerConfiguration         : /subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/vpnServerConfigurations/WestUsConfig
-VpnServerConfigurationLocation :
-VpnClientConnectionHealth      : null
-Type                           : Microsoft.Network/p2sVpnGateways
-ProvisioningState              : Succeeded
-P2SConnectionConfigurations    : [
-                                   {
-                                     "ProvisioningState": "Succeeded",
-                                     "VpnClientAddressPool": {
-                                       "AddressPrefixes": [
-                                         "192.168.2.0/24"
-                                       ]
-                                     },
-                                     "EnableInternetSecurity": True,
-                                     "RoutingConfiguration": {
-                                       "AssociatedRouteTable": {
-                                         "Id": "/subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/virtualHubs/WestUsVirtualHub/hubRouteTables/defaultRouteTable"
-                                       }
-                                       "PropagatedRouteTables": {
-                                         "Labels": [],
-                                         "Ids": [
-                                           {
-                                            "Id": "/subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/virtualHubs/WestUsVirtualHub/hubRouteTables/defaultRouteTable"
-                                           }
-                                        ]
-                                       },
-                                       "VnetRoutes": {
-                                         "StaticRoutes": []
-                                       }
-                                     },
-                                     "Name": "P2SConnectionConfigDefault",
-                                     "Etag": "W/\"4b96e6a2-b4d8-46b3-9210-76d40f359bef\"",
-                                     "Id": "/subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/p2sVpnGateways/683482
-                                 ade8564515aed4b8448c9757ea-westus-gw/p2sConnectionConfigurations/P2SConnectionConfigDefault"
-                                   }
-                                 ]
+True
 ```
 
-The New-AzP2sVpnGateway cmdlet enables you to create a new P2SVpnGateway under VirtualHub for Point to site connectivity.
+The **Remove-AzVpnServerConfigurationPolicyGroup** cmdlet enables you to remove an existing VpnServerConfigurationPolicyGroup under VpnServerConfiguration.
 
 ## PARAMETERS
-
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CustomDnsServer
-The list of Custom Dns Servers.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -183,38 +66,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DisableInternetSecurityFlag
-Flag to disable internet security feature on this P2SVpnGateway P2SConnectionConfiguration.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableInternetSecurityFlag
-Enable internet security flag for this P2SVpnGateway connections
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableRoutingPreferenceInternetFlag
-Flag to enable Routing Preference Internet on this P2SVpnGateway.
+### -Force
+Do not ask for confirmation if you want to delete a resource
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -233,8 +86,8 @@ The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: ResourceName, P2SVpnGatewayName
+Parameter Sets: ByVpnServerConfigurationName
+Aliases: ResourceName, VpnServerConfigurationPolicyGroupName
 
 Required: True
 Position: Named
@@ -243,11 +96,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -P2SConnectionConfiguration
-The list of P2SConnectionConfigurations that this P2SVpnGateway needs to have.
+### -PassThru
+Returns an object representing the item on which this operation is being performed.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSP2SConnectionConfiguration[]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -259,11 +112,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource name.
+The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByVpnServerConfigurationName
 Aliases:
 
 Required: True
@@ -273,43 +126,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RoutingConfiguration
-Routing configuration for this connection
+### -ServerConfigurationName
+The VpnServerConfiguration name this PolicyGroup is linked to.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSRoutingConfiguration
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-A hashtable which represents resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VirtualHub
-The VirtualHub this P2SVpnGateway needs to be associated with.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHub
-Parameter Sets: ByVirtualHubObjectByVpnServerConfigurationObject, ByVirtualHubObjectByVpnServerConfigurationResourceId
-Aliases:
+Type: System.String
+Parameter Sets: ByVpnServerConfigurationName
+Aliases: ParentVpnServerConfigurationName, VpnServerConfigurationName
 
 Required: True
 Position: Named
@@ -318,88 +141,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -VirtualHubId
-The Id of the VirtualHub this P2SVpnGateway needs to be associated with.
-
-```yaml
-Type: System.String
-Parameter Sets: ByVirtualHubResourceIdByVpnServerConfigurationObject, ByVirtualHubResourceIdByVpnServerConfigurationResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -VirtualHubName
-The Id of the VirtualHub this P2SVpnGateway needs to be associated with.
-
-```yaml
-Type: System.String
-Parameter Sets: ByVirtualHubNameByVpnServerConfigurationObject, ByVirtualHubNameByVpnServerConfigurationResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VpnClientAddressPool
-P2S VpnClient AddressPool for this P2SVpnGateway P2SConnectionConfiguration.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VpnGatewayScaleUnit
-The scale unit for this P2SVpnGateway.
-
-```yaml
-Type: System.UInt32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VpnServerConfiguration
-The VpnServerConfiguration to be attached to this P2SVpnGateway.
+### -ServerConfigurationObject
+The VpnServerConfiguration object this PolicyGroup is linked to.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVpnServerConfiguration
-Parameter Sets: ByVirtualHubNameByVpnServerConfigurationObject, ByVirtualHubObjectByVpnServerConfigurationObject, ByVirtualHubResourceIdByVpnServerConfigurationObject
-Aliases:
+Parameter Sets: ByVpnServerConfigurationObject
+Aliases: ParentVpnServerConfiguration, VpnServerConfiguration
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -VpnServerConfigurationId
-The id of Vpn server configuration object this P2SVpnGateway will be attached to.
+### -ServerConfigurationResourceId
+The id of VpnServerConfiguration object this PolicyGroup is linked to.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByVirtualHubNameByVpnServerConfigurationResourceId, ByVirtualHubObjectByVpnServerConfigurationResourceId, ByVirtualHubResourceIdByVpnServerConfigurationResourceId
-Aliases:
+Parameter Sets: ByVpnServerConfigurationResourceId
+Aliases: ParentVpnServerConfigurationId, VpnServerConfigurationId
 
 Required: True
 Position: Named
@@ -418,7 +181,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -434,7 +197,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -444,15 +207,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSVirtualHub
-System.String Microsoft.Azure.Commands.Network.Models.PSVpnServerConfiguration
+### System.String
+
+### Microsoft.Azure.Commands.Network.Models.PSVpnServerConfiguration
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSP2SVpnGateway
+### System.Boolean
+
 ## NOTES
 
 ## RELATED LINKS
 
-[New-AzRoutingConfiguration]()
-
+[New-AzRoutingConfiguration](New-AzRoutingConfiguration.md)

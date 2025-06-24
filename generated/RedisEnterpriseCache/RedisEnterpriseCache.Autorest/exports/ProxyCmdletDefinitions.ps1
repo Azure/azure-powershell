@@ -25,18 +25,21 @@ Gets information about access policy assignment for database.
 Get-AzRedisEnterpriseCacheAccessPolicyAssignment -ClusterName "MyCache" -DatabaseName "default" -ResourceGroupName "MyGroup"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment
 .Link
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecacheaccesspolicyassignment
 #>
 function Get-AzRedisEnterpriseCacheAccessPolicyAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
     # The name of the Redis Enterprise cluster.
+    # Name must be 1-60 characters long.
+    # Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+    # There can be no leading nor trailing nor consecutive hyphens
     ${ClusterName},
 
     [Parameter(Mandatory)]
@@ -212,12 +215,12 @@ Gets the status of operation.
 Get-AzRedisEnterpriseCacheOperationStatus -Location "East US" -OperationId "6432a8f9-0fe6-4339-9303-772c92f35d02"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IOperationStatus
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IOperationStatus
 .Link
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecacheoperationstatus
 #>
 function Get-AzRedisEnterpriseCacheOperationStatus {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IOperationStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IOperationStatus])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -377,6 +380,182 @@ end {
 
 <#
 .Synopsis
+Lists the available SKUs for scaling the Redis Enterprise cluster.
+.Description
+Lists the available SKUs for scaling the Redis Enterprise cluster.
+.Example
+Get-AzRedisEnterpriseCacheSku -ClusterName "MyCache" -ResourceGroupName "MyGroup"
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ISkuDetails
+.Link
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecachesku
+#>
+function Get-AzRedisEnterpriseCacheSku {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ISkuDetails])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
+    [System.String]
+    # The name of the Redis Enterprise cluster.
+    # Name must be 1-60 characters long.
+    # Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+    # There can be no leading nor trailing nor consecutive hyphens
+    ${ClusterName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            List = 'Az.RedisEnterpriseCache.private\Get-AzRedisEnterpriseCacheSku_List';
+        }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Flushes all the keys in this database and also from its linked databases.
 .Description
 Flushes all the keys in this database and also from its linked databases.
@@ -384,7 +563,7 @@ Flushes all the keys in this database and also from its linked databases.
 Invoke-AzRedisEnterpriseCacheDatabaseFlush -ClusterName "MyCache" -ResourceGroupName "MyResourceGroup" -Id @("Mydatabase1") , @("MyLinkedDatabase1")
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IFlushParameters
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IFlushParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 .Outputs
@@ -396,7 +575,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [AccessPolicyAssignmentName <String>]: The name of the Redis Enterprise database access policy assignment.
-  [ClusterName <String>]: The name of the Redis Enterprise cluster.
+  [ClusterName <String>]: The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
   [DatabaseName <String>]: The name of the Redis Enterprise database.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of Azure region.
@@ -419,6 +598,9 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
     # The name of the Redis Enterprise cluster.
+    # Name must be 1-60 characters long.
+    # Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+    # There can be no leading nor trailing nor consecutive hyphens
     ${ClusterName},
 
     [Parameter(ParameterSetName='Flush', Mandatory)]
@@ -448,7 +630,7 @@ param(
     [Parameter(ParameterSetName='Flush', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='FlushViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IFlushParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IFlushParameters]
     # Parameters for a Redis Enterprise active geo-replication flush operation
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -632,7 +814,7 @@ Forcibly recreates an existing database on the specified cluster, and rejoins it
 Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -ClusterName "MyCache" -ResourceGroupName "MyResourceGroup" -DatabaseName "default" -GroupNickname "MyExistingGroup" -LinkedDatabase @(@{ResourceId="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/RedisEnterprise/mycache/databases/default"},@{ResourceId="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/RedisEnterprise/mycache/databases/MyLinkedDatabase2"})
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IForceLinkParameters
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceLinkParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 .Outputs
@@ -644,7 +826,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [AccessPolicyAssignmentName <String>]: The name of the Redis Enterprise database access policy assignment.
-  [ClusterName <String>]: The name of the Redis Enterprise cluster.
+  [ClusterName <String>]: The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
   [DatabaseName <String>]: The name of the Redis Enterprise database.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of Azure region.
@@ -672,6 +854,9 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
     # The name of the Redis Enterprise cluster.
+    # Name must be 1-60 characters long.
+    # Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+    # There can be no leading nor trailing nor consecutive hyphens
     ${ClusterName},
 
     [Parameter(ParameterSetName='Force', Mandatory)]
@@ -708,7 +893,7 @@ param(
     [Parameter(ParameterSetName='Force', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ForceViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IForceLinkParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceLinkParameters]
     # Parameters for reconfiguring active geo-replication, of an existing database that was previously unlinked from a replication group.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -725,7 +910,7 @@ param(
     [Parameter(ParameterSetName='ForceViaIdentityExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]]
     # The resource IDs of the databases that are expected to be linked and included in the replication group.
     # This parameter is used to validate that the linking is to the expected (unlinked) part of the replication group, if it is splintered.
     # To construct, see NOTES section for LINKEDDATABASE properties and create a hash table.
@@ -891,7 +1076,7 @@ Forcibly removes the link to the specified database resource.
 Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ResourceGroupName "MyGroup" -ClusterName "MyCache3" -Id @("databaseId")
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IForceUnlinkParameters
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceUnlinkParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 .Outputs
@@ -903,7 +1088,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [AccessPolicyAssignmentName <String>]: The name of the Redis Enterprise database access policy assignment.
-  [ClusterName <String>]: The name of the Redis Enterprise cluster.
+  [ClusterName <String>]: The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
   [DatabaseName <String>]: The name of the Redis Enterprise database.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of Azure region.
@@ -912,7 +1097,7 @@ INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 
-PARAMETER <IForceUnlinkParameters>: Parameters for a redis enterprise active geo-replication force unlink operation.
+PARAMETER <IForceUnlinkParameters>: Parameters for a Redis Enterprise Active Geo Replication Force Unlink operation.
   Id <String[]>: The resource IDs of the database resources to be unlinked.
 .Link
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/invoke-azredisenterprisecacheforcedatabaseunlink
@@ -926,6 +1111,9 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
     # The name of the Redis Enterprise cluster.
+    # Name must be 1-60 characters long.
+    # Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+    # There can be no leading nor trailing nor consecutive hyphens
     ${ClusterName},
 
     [Parameter(ParameterSetName='Force', Mandatory)]
@@ -955,8 +1143,8 @@ param(
     [Parameter(ParameterSetName='Force', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ForceViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IForceUnlinkParameters]
-    # Parameters for a redis enterprise active geo-replication force unlink operation.
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceUnlinkParameters]
+    # Parameters for a Redis Enterprise Active Geo Replication Force Unlink operation.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
@@ -1137,11 +1325,11 @@ Creates/Updates a particular access policy assignment for a database
 New-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName "testAccessPolicyAssignmentName" -ClusterName "MyCache" -DatabaseName "default" -ResourceGroupName "MyGroup" -UserObjectId "5fb3eb10-a8a2-4db7-8bb4-e377180e7427" -AccessPolicyName "default"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1149,7 +1337,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [AccessPolicyAssignmentName <String>]: The name of the Redis Enterprise database access policy assignment.
-  [ClusterName <String>]: The name of the Redis Enterprise cluster.
+  [ClusterName <String>]: The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
   [DatabaseName <String>]: The name of the Redis Enterprise database.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of Azure region.
@@ -1165,7 +1353,7 @@ PARAMETER <IAccessPolicyAssignment>: Describes the access policy assignment of R
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecacheaccesspolicyassignment
 #>
 function New-AzRedisEnterpriseCacheAccessPolicyAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
@@ -1180,6 +1368,9 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
     # The name of the Redis Enterprise cluster.
+    # Name must be 1-60 characters long.
+    # Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+    # There can be no leading nor trailing nor consecutive hyphens
     ${ClusterName},
 
     [Parameter(ParameterSetName='Create', Mandatory)]
@@ -1216,7 +1407,7 @@ param(
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment]
     # Describes the access policy assignment of Redis Enterprise database
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -1406,7 +1597,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [AccessPolicyAssignmentName <String>]: The name of the Redis Enterprise database access policy assignment.
-  [ClusterName <String>]: The name of the Redis Enterprise cluster.
+  [ClusterName <String>]: The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
   [DatabaseName <String>]: The name of the Redis Enterprise database.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of Azure region.
@@ -1425,6 +1616,9 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
     # The name of the Redis Enterprise cluster.
+    # Name must be 1-60 characters long.
+    # Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+    # There can be no leading nor trailing nor consecutive hyphens
     ${ClusterName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
@@ -1637,7 +1831,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [AccessPolicyAssignmentName <String>]: The name of the Redis Enterprise database access policy assignment.
-  [ClusterName <String>]: The name of the Redis Enterprise cluster.
+  [ClusterName <String>]: The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
   [DatabaseName <String>]: The name of the Redis Enterprise database.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of Azure region.
@@ -1657,6 +1851,9 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
     # The name of the Redis Enterprise cluster.
+    # Name must be 1-60 characters long.
+    # Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+    # There can be no leading nor trailing nor consecutive hyphens
     ${ClusterName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
@@ -1856,6 +2053,9 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
     # The name of the Redis Enterprise cluster.
+    # Name must be 1-60 characters long.
+    # Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+    # There can be no leading nor trailing nor consecutive hyphens
     ${ClusterName},
 
     [Parameter(Mandatory)]
@@ -2037,7 +2237,7 @@ Update-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Mini
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2045,7 +2245,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [AccessPolicyAssignmentName <String>]: The name of the Redis Enterprise database access policy assignment.
-  [ClusterName <String>]: The name of the Redis Enterprise cluster.
+  [ClusterName <String>]: The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
   [DatabaseName <String>]: The name of the Redis Enterprise database.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of Azure region.
@@ -2057,7 +2257,7 @@ INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/update-azredisenterprisecache
 #>
 function Update-AzRedisEnterpriseCache {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ICluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -2065,6 +2265,9 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
     # The name of the Redis Enterprise cluster.
+    # Name must be 1-60 characters long.
+    # Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+    # There can be no leading nor trailing nor consecutive hyphens
     ${ClusterName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -2167,7 +2370,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IClusterUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IClusterUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -2532,12 +2735,12 @@ Get-AzRedisEnterpriseCache -ResourceGroupName "MyGroup"
 Get-AzRedisEnterpriseCache
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster
 .Link
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecache
 #>
 function Get-AzRedisEnterpriseCache {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ICluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster])]
 [CmdletBinding(DefaultParameterSetName='ListBySubscriptionId', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -2708,12 +2911,12 @@ Gets information about a database in a Redis Enterprise cluster.
 Get-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase
 .Link
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecachedatabase
 #>
 function Get-AzRedisEnterpriseCacheDatabase {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IDatabase])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -2881,13 +3084,13 @@ Retrieves all access keys for a Redis Enterprise database.
 Get-AzRedisEnterpriseCacheKey -Name "MyCache" -ResourceGroupName "MyGroup"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessKeys
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessKeys
 .Link
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecachekey
 #>
 function Get-AzRedisEnterpriseCacheKey {
 [Alias('Get-AzRedisEnterpriseCacheDatabaseKey', 'Get-AzRedisEnterpriseCacheAccessKey')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessKeys])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3259,7 +3462,7 @@ New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Locatio
 New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -GroupNickname "GroupNickname" -LinkedDatabase '{id:"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default"}'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3275,7 +3478,7 @@ MODULE <IModule[]>: Optional set of redis modules to enable in this database - m
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecache
 #>
 function New-AzRedisEnterpriseCache {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ICluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster])]
 [CmdletBinding(DefaultParameterSetName='CreateClusterWithDatabase', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3346,7 +3549,7 @@ param(
 
     [Parameter(ParameterSetName='CreateClusterWithDatabase')]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule[]]
     # Optional set of redis modules to enable in this database - modules can only be added at create time.
     # To construct, see NOTES section for MODULE properties and create a hash table.
     ${Module},
@@ -3383,7 +3586,7 @@ param(
     [Parameter(ParameterSetName='CreateClusterWithDatabase')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]]
     # List of database resources to link with this database
     # To construct, see NOTES section for GEOREPLICATIONLINKEDDATABASE properties and create a hash table.
     # To construct, see NOTES section for LINKEDDATABASE properties and create a hash table.
@@ -3651,7 +3854,7 @@ New-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" 
 New-AzRedisEnterpriseCacheDatabase -Name "MyCache2" -ResourceGroupName "MyGroup" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -GroupNickname "GroupNickname" -LinkedDatabase '{id:"/subscriptions/sub1/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache1/databases/default"}','{id:"/subscriptions/sub1/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache2/databases/default"}'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3667,7 +3870,7 @@ MODULE <IModule[]>: Optional set of redis modules to enable in this database - m
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecachedatabase
 #>
 function New-AzRedisEnterpriseCacheDatabase {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IDatabase])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3693,7 +3896,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule[]]
     # Optional set of redis modules to enable in this database - modules can only be added at create time.
     # To construct, see NOTES section for MODULE properties and create a hash table.
     ${Module},
@@ -3730,7 +3933,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]]
     # List of database resources to link with this database
     # To construct, see NOTES section for GEOREPLICATIONLINKEDDATABASE properties and create a hash table.
     # To construct, see NOTES section for LINKEDDATABASE properties and create a hash table.
@@ -3943,13 +4146,13 @@ New-AzRedisEnterpriseCacheKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyT
 New-AzRedisEnterpriseCacheKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyType "Secondary"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessKeys
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessKeys
 .Link
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecachekey
 #>
 function New-AzRedisEnterpriseCacheKey {
 [Alias('New-AzRedisEnterpriseCacheDatabaseKey', 'New-AzRedisEnterpriseCacheAccessKey')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessKeys])]
 [CmdletBinding(DefaultParameterSetName='RegenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4148,7 +4351,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [AccessPolicyAssignmentName <String>]: The name of the Redis Enterprise database access policy assignment.
-  [ClusterName <String>]: The name of the Redis Enterprise cluster.
+  [ClusterName <String>]: The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
   [DatabaseName <String>]: The name of the Redis Enterprise database.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of Azure region.
@@ -4358,7 +4561,7 @@ Update-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGrou
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -4366,7 +4569,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [AccessPolicyAssignmentName <String>]: The name of the Redis Enterprise database access policy assignment.
-  [ClusterName <String>]: The name of the Redis Enterprise cluster.
+  [ClusterName <String>]: The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
   [DatabaseName <String>]: The name of the Redis Enterprise database.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of Azure region.
@@ -4378,7 +4581,7 @@ INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/update-azredisenterprisecachedatabase
 #>
 function Update-AzRedisEnterpriseCacheDatabase {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IDatabase])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]

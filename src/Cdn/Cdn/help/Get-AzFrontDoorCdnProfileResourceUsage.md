@@ -60,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProfileName
-Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
 
 ```yaml
 Type: System.String
@@ -142,7 +142,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IUsage
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsage
 
 ## NOTES
 

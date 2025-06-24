@@ -56,8 +56,26 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="licenseType">The license type.
-        /// Possible values include: 'NotSpecified', 'NoLicenseType', 'WindowsServer'</param>
-        public InMageRcmUpdateReplicationProtectedItemInput(string targetVMName = default(string), string targetVMSize = default(string), string targetResourceGroupId = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string targetBootDiagnosticsStorageAccountId = default(string), string targetNetworkId = default(string), string testNetworkId = default(string), System.Collections.Generic.IList<InMageRcmNicInput> vmNics = default(System.Collections.Generic.IList<InMageRcmNicInput>), string licenseType = default(string))
+        /// Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;WindowsServer&#39;</param>
+
+        /// <param name="sqlServerLicenseType">The SQL Server license type.
+        /// Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;PAYG&#39;, &#39;AHUB&#39;</param>
+
+        /// <param name="linuxLicenseType">The license type for Linux VM&#39;s.
+        /// Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;LinuxServer&#39;</param>
+
+        /// <param name="userSelectedOSName">The OS name selected by user.
+        /// </param>
+
+        /// <param name="targetVMTags">The target VM tags.
+        /// </param>
+
+        /// <param name="targetManagedDiskTags">The tags for the target managed disks.
+        /// </param>
+
+        /// <param name="targetNicTags">The tags for the target NICs.
+        /// </param>
+        public InMageRcmUpdateReplicationProtectedItemInput(string targetVMName = default(string), string targetVMSize = default(string), string targetResourceGroupId = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string targetBootDiagnosticsStorageAccountId = default(string), string targetNetworkId = default(string), string testNetworkId = default(string), System.Collections.Generic.IList<InMageRcmNicInput> vmNics = default(System.Collections.Generic.IList<InMageRcmNicInput>), string licenseType = default(string), string sqlServerLicenseType = default(string), string linuxLicenseType = default(string), string userSelectedOSName = default(string), System.Collections.Generic.IList<UserCreatedResourceTag> targetVMTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), System.Collections.Generic.IList<UserCreatedResourceTag> targetManagedDiskTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), System.Collections.Generic.IList<UserCreatedResourceTag> targetNicTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>))
 
         {
             this.TargetVMName = targetVMName;
@@ -71,6 +89,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.TestNetworkId = testNetworkId;
             this.VMNics = vmNics;
             this.LicenseType = licenseType;
+            this.SqlServerLicenseType = sqlServerLicenseType;
+            this.LinuxLicenseType = linuxLicenseType;
+            this.UserSelectedOSName = userSelectedOSName;
+            this.TargetVMTags = targetVMTags;
+            this.TargetManagedDiskTags = targetManagedDiskTags;
+            this.TargetNicTags = targetNicTags;
             CustomInit();
         }
 
@@ -145,5 +169,41 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "licenseType")]
         public string LicenseType {get; set; }
+
+        /// <summary>
+        /// Gets or sets the SQL Server license type. Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;PAYG&#39;, &#39;AHUB&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sqlServerLicenseType")]
+        public string SqlServerLicenseType {get; set; }
+
+        /// <summary>
+        /// Gets or sets the license type for Linux VM&#39;s. Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;LinuxServer&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "linuxLicenseType")]
+        public string LinuxLicenseType {get; set; }
+
+        /// <summary>
+        /// Gets or sets the OS name selected by user.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "userSelectedOSName")]
+        public string UserSelectedOSName {get; set; }
+
+        /// <summary>
+        /// Gets or sets the target VM tags.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetVmTags")]
+        public System.Collections.Generic.IList<UserCreatedResourceTag> TargetVMTags {get; set; }
+
+        /// <summary>
+        /// Gets or sets the tags for the target managed disks.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetManagedDiskTags")]
+        public System.Collections.Generic.IList<UserCreatedResourceTag> TargetManagedDiskTags {get; set; }
+
+        /// <summary>
+        /// Gets or sets the tags for the target NICs.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetNicTags")]
+        public System.Collections.Generic.IList<UserCreatedResourceTag> TargetNicTags {get; set; }
     }
 }

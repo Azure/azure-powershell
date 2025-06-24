@@ -16,11 +16,13 @@
 
 <#
 .Synopsis
-create ElasticSan.
+Create ElasticSan.
 .Description
-create ElasticSan.
+Create ElasticSan.
 .Example
 New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 1 -ExtendedCapacitySizeTib 6 -Location eastus -SkuName 'Premium_LRS' -Tag @{tag1="value1";tag2="value2"}
+.Example
+New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -Location eastus -SkuName 'Premium_LRS' -Tag @{tag1="value1";tag2="value2"}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -76,18 +78,6 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [System.Int64]
-    # Base size of the Elastic San appliance in TiB.
-    ${BaseSizeTiB},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [System.Int64]
-    # Extended size of the Elastic San appliance in TiB.
-    ${ExtendedCapacitySizeTiB},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
@@ -105,6 +95,20 @@ param(
     [System.String[]]
     # Logical zone for Elastic San resource; example: ["1"].
     ${AvailabilityZone},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Base size of the Elastic San appliance in TiB.
+    # Default value is 20.
+    ${BaseSizeTiB},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Extended size of the Elastic San appliance in TiB.
+    # Default value is 0.
+    ${ExtendedCapacitySizeTiB},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Enabled", "Disabled")]
@@ -196,6 +200,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -215,12 +228,10 @@ begin {
         }
 
         $mapping = @{
-            CreateExpanded = 'Az.ElasticSan.private\New-AzElasticSan_CreateExpanded';
-            CreateViaIdentityExpanded = 'Az.ElasticSan.private\New-AzElasticSan_CreateViaIdentityExpanded';
+            CreateExpanded = 'Az.ElasticSan.custom\New-AzElasticSan';
+            CreateViaIdentityExpanded = 'Az.ElasticSan.custom\New-AzElasticSan';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -234,6 +245,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

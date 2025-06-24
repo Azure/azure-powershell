@@ -20,6 +20,7 @@ using cmdletModel = Microsoft.Azure.Commands.RecoveryServices;
 using Microsoft.Azure.Commands.RecoveryServices.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -125,8 +126,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\").Token to fetch authorization token for different tenant")]        
+        [Parameter(Mandatory = false, HelpMessage = "Parameter deprecated. Please use SecureToken instead")]        
         public string Token;
+
+        /// <summary>
+        /// Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\").Token to fetch authorization token for different tenant")]
+        public System.Security.SecureString SecureToken;
 
         /// <summary>
         /// Enables or disables cross subscription restore state for RS vault. Allowed values are Enabled, Disabled, PermanentlyDisabled.
@@ -366,7 +373,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                     #endregion
 
-                    vault = RecoveryServicesClient.UpdateRSVault(this.ResourceGroupName, this.Name, patchVault, Token, isMUAProtected);                                                         
+                    string plainToken = GetPlainToken(Token, SecureToken);
+                    vault = RecoveryServicesClient.UpdateRSVault(this.ResourceGroupName, this.Name, patchVault, plainToken, isMUAProtected);                                                         
                     WriteObject(new ARSVault(vault));
                 }
                 catch (Exception exception)
@@ -375,5 +383,40 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
             }
         }
+
+        /// <summary>
+        /// Helper function to return one of Token or SecureToken after decryption
+        /// </summary>
+        /// <param name="token"></param>
+        /// <param name="secureToken"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static string GetPlainToken(string token, System.Security.SecureString secureToken)
+        {
+            bool hasToken = !string.IsNullOrEmpty(token);
+            bool hasSecureToken = secureToken != null && secureToken.Length > 0;
+
+            if (hasToken || hasSecureToken)
+            {
+                if (hasToken && hasSecureToken)
+                {
+                    throw new ArgumentException(Resources.BothTokenProvided);
+                }
+                else if (hasToken)
+                {
+                    Logger.Instance.WriteWarning(Resources.TokenParameterDepricate);
+                    return token;
+                }
+                else
+                {
+                    var plainToken = secureToken.ConvertToString();
+                    Logger.Instance.WriteDebug("Converted secure token");
+                    return plainToken;
+                }
+            }
+            Logger.Instance.WriteDebug("plainToken returning empty");
+            return "";
+        }
+
     }
 }

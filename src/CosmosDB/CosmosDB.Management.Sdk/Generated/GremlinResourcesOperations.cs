@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Management.CosmosDB
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
                 }
             }
-            string apiVersion = "2024-08-15";
+            string apiVersion = "2024-11-15";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Management.CosmosDB
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "databaseName");
             }
 
-            string apiVersion = "2024-08-15";
+            string apiVersion = "2024-11-15";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Management.CosmosDB
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "databaseName");
             }
 
-            string apiVersion = "2024-08-15";
+            string apiVersion = "2024-11-15";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1004,7 +1004,7 @@ namespace Microsoft.Azure.Management.CosmosDB
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "databaseName");
             }
 
-            string apiVersion = "2024-08-15";
+            string apiVersion = "2024-11-15";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1262,7 +1262,7 @@ namespace Microsoft.Azure.Management.CosmosDB
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "graphName");
             }
 
-            string apiVersion = "2024-08-15";
+            string apiVersion = "2024-11-15";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1582,7 +1582,7 @@ namespace Microsoft.Azure.Management.CosmosDB
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "graphName");
             }
 
-            string apiVersion = "2024-08-15";
+            string apiVersion = "2024-11-15";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1966,7 +1966,7 @@ namespace Microsoft.Azure.Management.CosmosDB
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "databaseName");
             }
 
-            string apiVersion = "2024-08-15";
+            string apiVersion = "2024-11-15";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2233,7 +2233,7 @@ namespace Microsoft.Azure.Management.CosmosDB
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "databaseName");
             }
 
-            string apiVersion = "2024-08-15";
+            string apiVersion = "2024-11-15";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2490,7 +2490,7 @@ namespace Microsoft.Azure.Management.CosmosDB
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "databaseName");
             }
 
-            string apiVersion = "2024-08-15";
+            string apiVersion = "2024-11-15";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2761,7 +2761,7 @@ namespace Microsoft.Azure.Management.CosmosDB
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "databaseName");
             }
 
-            string apiVersion = "2024-08-15";
+            string apiVersion = "2024-11-15";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3025,7 +3025,7 @@ namespace Microsoft.Azure.Management.CosmosDB
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "databaseName");
             }
 
-            string apiVersion = "2024-08-15";
+            string apiVersion = "2024-11-15";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3307,7 +3307,7 @@ namespace Microsoft.Azure.Management.CosmosDB
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "graphName");
             }
 
-            string apiVersion = "2024-08-15";
+            string apiVersion = "2024-11-15";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3584,7 +3584,7 @@ namespace Microsoft.Azure.Management.CosmosDB
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "graphName");
             }
 
-            string apiVersion = "2024-08-15";
+            string apiVersion = "2024-11-15";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3851,7 +3851,7 @@ namespace Microsoft.Azure.Management.CosmosDB
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "graphName");
             }
 
-            string apiVersion = "2024-08-15";
+            string apiVersion = "2024-11-15";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -4132,7 +4132,7 @@ namespace Microsoft.Azure.Management.CosmosDB
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "graphName");
             }
 
-            string apiVersion = "2024-08-15";
+            string apiVersion = "2024-11-15";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -4406,7 +4406,7 @@ namespace Microsoft.Azure.Management.CosmosDB
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "graphName");
             }
 
-            string apiVersion = "2024-08-15";
+            string apiVersion = "2024-11-15";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -4687,7 +4687,7 @@ namespace Microsoft.Azure.Management.CosmosDB
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "graphName");
             }
 
-            string apiVersion = "2024-08-15";
+            string apiVersion = "2024-11-15";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

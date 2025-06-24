@@ -311,9 +311,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Returns(Task.Factory.StartNew(() =>
                 {
 
-                    var result = new AzureOperationResponse<object>()
+                    var result = new AzureOperationResponse<DeploymentValidateResult>()
                     {
-                        Body = new DeploymentExtended
+                        Body = new DeploymentValidateResult
                         {
                         }
                     };
@@ -350,9 +350,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Returns(Task.Factory.StartNew(() =>
                 {
 
-                    var result = new AzureOperationResponse<object>()
+                    var result = new AzureOperationResponse<DeploymentValidateResult>()
                     {
-                        Body = new JObject(new JProperty("id", "DeploymentId"))
+                        Body = new DeploymentValidateResult()
                     };
 
                     result.Response = new System.Net.Http.HttpResponseMessage();
@@ -387,9 +387,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Returns(Task.Factory.StartNew(() =>
                 {
 
-                    var result = new AzureOperationResponse<object>()
+                    var result = new AzureOperationResponse<DeploymentValidateResult>()
                     {
-                        Body = new DeploymentExtended
+                        Body = new DeploymentValidateResult
                         {
                             Properties = new DeploymentPropertiesExtended(diagnostics: new List<DeploymentDiagnosticsDefinition>
                                 {
@@ -448,9 +448,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         null,
                         new CancellationToken()))
                         .Returns(Task.Factory.StartNew(() =>
-                            new AzureOperationResponse<object>()
+                            new AzureOperationResponse<DeploymentValidateResult>()
                             {
-                                Body = new DeploymentExtended
+                                Body = new DeploymentValidateResult
                                 {
                                 }
                             }))
@@ -640,9 +640,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 null,
                 new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() =>
-                    new AzureOperationResponse<object>()
+                    new AzureOperationResponse<DeploymentValidateResult>()
                     {
-                        Body = new DeploymentExtended
+                        Body = new DeploymentValidateResult
                         {
                         }
                     }));
@@ -842,9 +842,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 }));
 
             deploymentsMock.Setup(f => f.ValidateWithHttpMessagesAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), null, new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<object>()
+                .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<DeploymentValidateResult>()
                     {
-                        Body = new DeploymentExtended
+                        Body = new DeploymentValidateResult
                         {
                         }
                     }))
@@ -932,7 +932,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         mode: DeploymentMode.Incremental,
                         provisioningState: "Succeeded")))));
             deploymentsMock.Setup(f => f.ValidateWithHttpMessagesAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), null, new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(new object{})))
+                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(new DeploymentValidateResult{})))
                 .Callback((string resourceGroup, string deployment, Deployment d, Dictionary<string, List<string>> customHeaders, CancellationToken c) => { deploymentFromValidate = d; });
             SetupListForResourceGroupAsync(resourceGroupparameters.ResourceGroupName, new List<GenericResourceExpanded>() {
                 CreateGenericResource(null, null, "website") });
@@ -1048,9 +1048,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 null,
                 new CancellationToken()))
             .Returns(Task.Factory.StartNew(() =>
-                new AzureOperationResponse<object>()
+                new AzureOperationResponse<DeploymentValidateResult>()
                 {
-                    Body = new object {}
                 }
             ))
             .Callback((string rg, string dn, Deployment d, Dictionary<string, List<string>> customHeaders,

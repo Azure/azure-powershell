@@ -28,6 +28,7 @@ Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJob
 https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksFlinkJobObject
 #>
 function New-AzHdInsightOnAksFlinkJobObject{
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ModelCmdletAttribute()]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJob])]
     [CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false)]
     param(

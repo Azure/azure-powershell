@@ -2,79 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.BgpSession</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ConnectionMonitorTestName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PeerAsnName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PeeringName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PeeringServiceName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PrefixName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RegisteredAsnName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RegisteredPrefixName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SubscriptionId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ConnectionMonitorTestName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PeerAsnName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PeeringName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PeeringServiceName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PrefixName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RegisteredAsnName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RegisteredPrefixName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SubscriptionId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.BgpSession</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.BgpSession</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.BgpSession#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -154,9 +84,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.CdnPeeringPrefix</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.CdnPeeringPrefix</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.CdnPeeringPrefix</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.CdnPeeringPrefix#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -200,9 +130,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.CdnPeeringPrefixListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.CdnPeeringPrefixListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.CdnPeeringPrefixListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.CdnPeeringPrefixListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -222,9 +152,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.CdnPeeringPrefixProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.CdnPeeringPrefixProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.CdnPeeringPrefixProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.CdnPeeringPrefixProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -268,9 +198,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.CheckServiceProviderAvailabilityInput</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.CheckServiceProviderAvailabilityInput</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.CheckServiceProviderAvailabilityInput</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.CheckServiceProviderAvailabilityInput#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -296,9 +226,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ConnectionMonitorTest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ConnectionMonitorTest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ConnectionMonitorTest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ConnectionMonitorTest#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -324,9 +254,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ConnectionMonitorTestListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ConnectionMonitorTestListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ConnectionMonitorTestListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ConnectionMonitorTestListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -346,9 +276,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ConnectionMonitorTestProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ConnectionMonitorTestProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ConnectionMonitorTestProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ConnectionMonitorTestProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -360,9 +290,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>IsTestSuccessful</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Path</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProvisioningState</Label>
@@ -387,9 +314,6 @@
                 <PropertyName>IsTestSuccessful</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Path</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -404,9 +328,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ContactDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ContactDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ContactDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ContactDetail#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -438,9 +362,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.DirectConnection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.DirectConnection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.DirectConnection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.DirectConnection#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -508,9 +432,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.DirectPeeringFacility</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.DirectPeeringFacility</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.DirectPeeringFacility</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.DirectPeeringFacility#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -548,9 +472,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ErrorDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ErrorDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ErrorDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ErrorDetail#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -576,9 +500,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ExchangeConnection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ExchangeConnection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ExchangeConnection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ExchangeConnection#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -616,9 +540,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ExchangePeeringFacility</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ExchangePeeringFacility</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ExchangePeeringFacility</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ExchangePeeringFacility#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -680,15 +604,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.LogAnalyticsWorkspaceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.LogAnalyticsWorkspaceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.LogAnalyticsWorkspaceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.LogAnalyticsWorkspaceProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>ConnectedAgent</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>Key</Label>
           </TableColumnHeader>
@@ -699,9 +620,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ConnectedAgent</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Key</PropertyName>
               </TableColumnItem>
@@ -714,9 +632,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.LookingGlassOutput</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.LookingGlassOutput</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.LookingGlassOutput</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.LookingGlassOutput#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -742,9 +660,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.MetricDimension</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.MetricDimension</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.MetricDimension</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.MetricDimension#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -770,9 +688,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.MetricSpecification</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.MetricSpecification</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.MetricSpecification</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.MetricSpecification#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -787,9 +705,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SupportedTimeGrainType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Unit</Label>
@@ -811,9 +726,6 @@
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SupportedTimeGrainType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>Unit</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -822,9 +734,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.Operation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Operation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.Operation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Operation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -850,9 +762,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.OperationDisplayInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.OperationDisplayInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.OperationDisplayInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.OperationDisplayInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -890,9 +802,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.OperationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.OperationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.OperationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.OperationListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -912,9 +824,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeerAsn</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeerAsn</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeerAsn</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeerAsn#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -958,9 +870,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeerAsnListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeerAsnListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeerAsnListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeerAsnListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -980,9 +892,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeerAsnProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeerAsnProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeerAsnProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeerAsnProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1020,9 +932,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.Peering</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Peering</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.Peering</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Peering#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1072,9 +984,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringBandwidthOffer</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringBandwidthOffer</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringBandwidthOffer</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringBandwidthOffer#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1100,9 +1012,79 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ConnectionMonitorTestName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PeerAsnName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PeeringName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PeeringServiceName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PrefixName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RegisteredAsnName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RegisteredPrefixName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubscriptionId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ConnectionMonitorTestName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PeerAsnName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PeeringName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PeeringServiceName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrefixName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RegisteredAsnName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RegisteredPrefixName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubscriptionId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1122,9 +1104,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringLocation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringLocation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringLocation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringLocation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1162,9 +1144,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringLocationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringLocationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringLocationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringLocationListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1184,9 +1166,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringLocationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringLocationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringLocationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringLocationProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1218,9 +1200,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1246,9 +1228,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringPropertiesDirect</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringPropertiesDirect</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringPropertiesDirect</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringPropertiesDirect#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1274,9 +1256,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringReceivedRoute</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringReceivedRoute</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringReceivedRoute</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringReceivedRoute#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1332,9 +1314,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringReceivedRouteListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringReceivedRouteListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringReceivedRouteListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringReceivedRouteListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1354,9 +1336,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringRegisteredAsn</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringRegisteredAsn</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringRegisteredAsn</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringRegisteredAsn#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1394,9 +1376,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringRegisteredAsnListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringRegisteredAsnListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringRegisteredAsnListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringRegisteredAsnListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1416,9 +1398,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringRegisteredAsnProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringRegisteredAsnProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringRegisteredAsnProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringRegisteredAsnProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1450,9 +1432,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringRegisteredPrefix</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringRegisteredPrefix</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringRegisteredPrefix</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringRegisteredPrefix#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1496,9 +1478,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringRegisteredPrefixListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringRegisteredPrefixListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringRegisteredPrefixListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringRegisteredPrefixListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1518,9 +1500,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringRegisteredPrefixProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringRegisteredPrefixProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringRegisteredPrefixProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringRegisteredPrefixProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1564,9 +1546,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringService</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringService</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringService</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringService#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1616,9 +1598,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceCountry</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceCountry</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceCountry</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceCountry#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1638,9 +1620,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceCountryListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceCountryListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceCountryListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceCountryListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1660,9 +1642,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1682,9 +1664,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceLocation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceLocation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceLocation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceLocation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1722,9 +1704,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceLocationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceLocationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceLocationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceLocationListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1744,9 +1726,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceLocationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceLocationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceLocationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceLocationProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1778,9 +1760,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServicePrefix</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServicePrefix</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServicePrefix</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServicePrefix#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1830,9 +1812,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServicePrefixEvent</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServicePrefixEvent</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServicePrefixEvent</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServicePrefixEvent#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1876,9 +1858,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServicePrefixListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServicePrefixListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServicePrefixListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServicePrefixListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1898,9 +1880,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServicePrefixProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServicePrefixProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServicePrefixProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServicePrefixProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1950,9 +1932,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1996,9 +1978,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceProvider</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceProvider</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceProvider</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceProvider#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2030,9 +2012,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceProviderListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceProviderListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceProviderListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceProviderListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2052,15 +2034,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceProviderProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceProviderProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceProviderProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceProviderProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>PeeringLocation</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>ServiceProviderName</Label>
           </TableColumnHeader>
@@ -2068,9 +2047,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>PeeringLocation</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ServiceProviderName</PropertyName>
               </TableColumnItem>
@@ -2080,9 +2056,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceSku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceSku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceSku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceSku#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2102,9 +2078,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringServiceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2124,9 +2100,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringSku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringSku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringSku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringSku#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2164,9 +2140,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.PeeringTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2186,9 +2162,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Resource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2208,9 +2184,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ResourceTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2230,9 +2206,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.RpUnbilledPrefix</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.RpUnbilledPrefix</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.RpUnbilledPrefix</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.RpUnbilledPrefix#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2264,9 +2240,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.RpUnbilledPrefixListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.RpUnbilledPrefixListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.RpUnbilledPrefixListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.RpUnbilledPrefixListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

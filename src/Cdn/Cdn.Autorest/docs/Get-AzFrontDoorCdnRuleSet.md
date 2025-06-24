@@ -29,6 +29,12 @@ Get-AzFrontDoorCdnRuleSet -Name <String> -ProfileName <String> -ResourceGroupNam
 Get-AzFrontDoorCdnRuleSet -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityProfile
+```
+Get-AzFrontDoorCdnRuleSet -Name <String> -ProfileInputObject <ICdnIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.
 
@@ -94,7 +100,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -113,7 +118,7 @@ Name of the rule set under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityProfile
 Aliases: RuleSetName
 
 Required: True
@@ -123,8 +128,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: GetViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProfileName
-Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
 
 ```yaml
 Type: System.String
@@ -177,7 +197,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRuleSet
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSet
 
 ## NOTES
 

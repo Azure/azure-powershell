@@ -25,6 +25,33 @@ Test-AzFrontDoorCdnEndpointCustomDomain -InputObject <ICdnIdentity> -HostName <S
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### ValidateViaIdentityProfile
+```
+Test-AzFrontDoorCdnEndpointCustomDomain -EndpointName <String> -ProfileInputObject <ICdnIdentity>
+ -CustomDomainProperty <IValidateCustomDomainInput> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### ValidateViaIdentityProfileExpanded
+```
+Test-AzFrontDoorCdnEndpointCustomDomain -EndpointName <String> -ProfileInputObject <ICdnIdentity>
+ -HostName <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ValidateViaJsonFilePath
+```
+Test-AzFrontDoorCdnEndpointCustomDomain -EndpointName <String> -ProfileName <String>
+ -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ValidateViaJsonString
+```
+Test-AzFrontDoorCdnEndpointCustomDomain -EndpointName <String> -ProfileName <String>
+ -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS.
 
@@ -58,6 +85,21 @@ Test an AzureFrontDoor domain within the specified AzureFrontDoor endpoint via i
 
 ## PARAMETERS
 
+### -CustomDomainProperty
+Input of the custom domain to be validated for DNS mapping.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainInput
+Parameter Sets: ValidateViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -79,7 +121,7 @@ Name of the endpoint under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded
+Parameter Sets: ValidateExpanded, ValidateViaIdentityProfile, ValidateViaIdentityProfileExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
 Aliases:
 
 Required: True
@@ -95,7 +137,7 @@ Must be a domain name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded, ValidateViaIdentityProfileExpanded
 Aliases:
 
 Required: True
@@ -107,7 +149,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -121,12 +162,57 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ProfileName
-Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+### -JsonFilePath
+Path of Json file supplied to the Validate operation
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded
+Parameter Sets: ValidateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Validate operation
+
+```yaml
+Type: System.String
+Parameter Sets: ValidateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: ValidateViaIdentityProfile, ValidateViaIdentityProfileExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProfileName
+Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
 Aliases:
 
 Required: True
@@ -141,7 +227,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded
+Parameter Sets: ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
 Aliases:
 
 Required: True
@@ -156,7 +242,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded
+Parameter Sets: ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
 Aliases:
 
 Required: False
@@ -204,9 +290,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainInput
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateCustomDomainOutput
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainOutput
 
 ## NOTES
 

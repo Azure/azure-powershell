@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogAnalyticsDes
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azloganalyticsdestinationobject
 #>
 function New-AzLogAnalyticsDestinationObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogAnalyticsDestination')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

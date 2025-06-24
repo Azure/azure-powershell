@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 2.7.0
+* Added new cmdlet for validate for Modify backup - Test-AzDataProtectionBackupInstanceUpdate.
+* Added new parameters for UAMI based restore in Initialize-AzDataProtectionRestoreRequest cmdlet.
+
 ## Version 2.6.1
 * Updated Help Doc of Get-AzAccessToken Usage in DataProtection
 

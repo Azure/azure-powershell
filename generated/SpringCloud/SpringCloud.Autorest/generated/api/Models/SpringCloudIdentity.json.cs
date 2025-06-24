@@ -76,26 +76,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_serviceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("serviceName"), out var __jsonServiceName) ? (string)__jsonServiceName : (string)ServiceName;}
-            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)Location;}
-            {_configurationServiceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("configurationServiceName"), out var __jsonConfigurationServiceName) ? (string)__jsonConfigurationServiceName : (string)ConfigurationServiceName;}
-            {_serviceRegistryName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("serviceRegistryName"), out var __jsonServiceRegistryName) ? (string)__jsonServiceRegistryName : (string)ServiceRegistryName;}
-            {_buildServiceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("buildServiceName"), out var __jsonBuildServiceName) ? (string)__jsonBuildServiceName : (string)BuildServiceName;}
-            {_buildName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("buildName"), out var __jsonBuildName) ? (string)__jsonBuildName : (string)BuildName;}
-            {_buildResultName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("buildResultName"), out var __jsonBuildResultName) ? (string)__jsonBuildResultName : (string)BuildResultName;}
-            {_buildpackName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("buildpackName"), out var __jsonBuildpackName) ? (string)__jsonBuildpackName : (string)BuildpackName;}
-            {_stackName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("stackName"), out var __jsonStackName) ? (string)__jsonStackName : (string)StackName;}
-            {_builderName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("builderName"), out var __jsonBuilderName) ? (string)__jsonBuilderName : (string)BuilderName;}
-            {_buildpackBindingName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("buildpackBindingName"), out var __jsonBuildpackBindingName) ? (string)__jsonBuildpackBindingName : (string)BuildpackBindingName;}
-            {_agentPoolName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("agentPoolName"), out var __jsonAgentPoolName) ? (string)__jsonAgentPoolName : (string)AgentPoolName;}
-            {_appName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("appName"), out var __jsonAppName) ? (string)__jsonAppName : (string)AppName;}
-            {_bindingName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("bindingName"), out var __jsonBindingName) ? (string)__jsonBindingName : (string)BindingName;}
-            {_certificateName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("certificateName"), out var __jsonCertificateName) ? (string)__jsonCertificateName : (string)CertificateName;}
-            {_domainName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("domainName"), out var __jsonDomainName) ? (string)__jsonDomainName : (string)DomainName;}
-            {_deploymentName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("deploymentName"), out var __jsonDeploymentName) ? (string)__jsonDeploymentName : (string)DeploymentName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_serviceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("serviceName"), out var __jsonServiceName) ? (string)__jsonServiceName : (string)_serviceName;}
+            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
+            {_configurationServiceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("configurationServiceName"), out var __jsonConfigurationServiceName) ? (string)__jsonConfigurationServiceName : (string)_configurationServiceName;}
+            {_serviceRegistryName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("serviceRegistryName"), out var __jsonServiceRegistryName) ? (string)__jsonServiceRegistryName : (string)_serviceRegistryName;}
+            {_buildServiceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("buildServiceName"), out var __jsonBuildServiceName) ? (string)__jsonBuildServiceName : (string)_buildServiceName;}
+            {_buildName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("buildName"), out var __jsonBuildName) ? (string)__jsonBuildName : (string)_buildName;}
+            {_buildResultName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("buildResultName"), out var __jsonBuildResultName) ? (string)__jsonBuildResultName : (string)_buildResultName;}
+            {_buildpackName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("buildpackName"), out var __jsonBuildpackName) ? (string)__jsonBuildpackName : (string)_buildpackName;}
+            {_stackName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("stackName"), out var __jsonStackName) ? (string)__jsonStackName : (string)_stackName;}
+            {_builderName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("builderName"), out var __jsonBuilderName) ? (string)__jsonBuilderName : (string)_builderName;}
+            {_buildpackBindingName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("buildpackBindingName"), out var __jsonBuildpackBindingName) ? (string)__jsonBuildpackBindingName : (string)_buildpackBindingName;}
+            {_agentPoolName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("agentPoolName"), out var __jsonAgentPoolName) ? (string)__jsonAgentPoolName : (string)_agentPoolName;}
+            {_appName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("appName"), out var __jsonAppName) ? (string)__jsonAppName : (string)_appName;}
+            {_bindingName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("bindingName"), out var __jsonBindingName) ? (string)__jsonBindingName : (string)_bindingName;}
+            {_certificateName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("certificateName"), out var __jsonCertificateName) ? (string)__jsonCertificateName : (string)_certificateName;}
+            {_domainName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("domainName"), out var __jsonDomainName) ? (string)__jsonDomainName : (string)_domainName;}
+            {_deploymentName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("deploymentName"), out var __jsonDeploymentName) ? (string)__jsonDeploymentName : (string)_deploymentName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

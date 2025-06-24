@@ -25,18 +25,21 @@ Gets information about access policy assignment for database.
 Get-AzRedisEnterpriseCacheAccessPolicyAssignment -ClusterName "MyCache" -DatabaseName "default" -ResourceGroupName "MyGroup"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment
 .Link
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecacheaccesspolicyassignment
 #>
 function Get-AzRedisEnterpriseCacheAccessPolicyAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
     # The name of the Redis Enterprise cluster.
+    # Name must be 1-60 characters long.
+    # Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+    # There can be no leading nor trailing nor consecutive hyphens
     ${ClusterName},
 
     [Parameter(Mandatory)]

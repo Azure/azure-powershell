@@ -9,6 +9,80 @@
       "preferredOs": "windows",
       "majorVersions": [
         {
+          "displayText": ".NET 9 Isolated",
+          "value": "dotnet9isolated",
+          "minorVersions": [
+            {
+              "displayText": ".NET 9 Isolated",
+              "value": "9 (STS), isolated worker model",
+              "stackSettings": {
+                "windowsRuntimeSettings": {
+                  "runtimeVersion": "v9.0",
+                  "isDefault": false,
+                  "remoteDebuggingSupported": false,
+                  "appInsightsSettings": {
+                    "isSupported": true
+                  },
+                  "gitHubActionSettings": {
+                    "isSupported": true,
+                    "supportedVersion": "9.0.x"
+                  },
+                  "appSettingsDictionary": {
+                    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+                    "WEBSITE_USE_PLACEHOLDER_DOTNETISOLATED": "1"
+                  },
+                  "siteConfigPropertiesDictionary": {
+                    "use32BitWorkerProcess": false,
+                    "netFrameworkVersion": "v9.0"
+                  },
+                  "supportedFunctionsExtensionVersions": [
+                    "~4"
+                  ],
+                  "supportedFunctionsExtensionVersionsInfo": [
+                    {
+                      "version": "~4",
+                      "isDeprecated": false,
+                      "isDefault": false
+                    }
+                  ],
+                  "endOfLifeDate": "Tue May 12 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                },
+                "linuxRuntimeSettings": {
+                  "runtimeVersion": "DOTNET-ISOLATED|9.0",
+                  "isDefault": false,
+                  "remoteDebuggingSupported": false,
+                  "appInsightsSettings": {
+                    "isSupported": true
+                  },
+                  "gitHubActionSettings": {
+                    "isSupported": true,
+                    "supportedVersion": "9.0.x"
+                  },
+                  "appSettingsDictionary": {
+                    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+                    "WEBSITE_USE_PLACEHOLDER_DOTNETISOLATED": "1"
+                  },
+                  "siteConfigPropertiesDictionary": {
+                    "use32BitWorkerProcess": false,
+                    "linuxFxVersion": "DOTNET-ISOLATED|9.0"
+                  },
+                  "supportedFunctionsExtensionVersions": [
+                    "~4"
+                  ],
+                  "supportedFunctionsExtensionVersionsInfo": [
+                    {
+                      "version": "~4",
+                      "isDeprecated": false,
+                      "isDefault": false
+                    }
+                  ],
+                  "endOfLifeDate": "Tue May 12 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                }
+              }
+            }
+          ]
+        },
+        {
           "displayText": ".NET 8 Isolated",
           "value": "dotnet8isolated",
           "minorVersions": [
@@ -277,7 +351,7 @@
               "value": "8 (LTS), in-process model",
               "stackSettings": {
                 "windowsRuntimeSettings": {
-                  "isHidden": true,
+                  "isHidden": false,
                   "runtimeVersion": "v8.0",
                   "remoteDebuggingSupported": false,
                   "appInsightsSettings": {
@@ -308,7 +382,7 @@
                   "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 },
                 "linuxRuntimeSettings": {
-                  "isHidden": true,
+                  "isHidden": false,
                   "runtimeVersion": "DOTNET|8.0",
                   "remoteDebuggingSupported": false,
                   "appInsightsSettings": {
@@ -528,6 +602,79 @@
       "preferredOs": "windows",
       "majorVersions": [
         {
+          "displayText": "Node.js 22",
+          "value": "22",
+          "minorVersions": [
+            {
+              "displayText": "Node.js 22",
+              "value": "22",
+              "stackSettings": {
+                "windowsRuntimeSettings": {
+                  "runtimeVersion": "~22",
+                  "isPreview": true,
+                  "remoteDebuggingSupported": false,
+                  "appInsightsSettings": {
+                    "isSupported": true
+                  },
+                  "gitHubActionSettings": {
+                    "isSupported": true,
+                    "supportedVersion": "22.x"
+                  },
+                  "appSettingsDictionary": {
+                    "FUNCTIONS_WORKER_RUNTIME": "node",
+                    "WEBSITE_NODE_DEFAULT_VERSION": "~22"
+                  },
+                  "siteConfigPropertiesDictionary": {
+                    "use32BitWorkerProcess": true,
+                    "netFrameworkVersion": "v6.0"
+                  },
+                  "supportedFunctionsExtensionVersions": [
+                    "~4"
+                  ],
+                  "supportedFunctionsExtensionVersionsInfo": [
+                    {
+                      "version": "~4",
+                      "isDeprecated": false,
+                      "isDefault": true
+                    }
+                  ],
+                  "endOfLifeDate": "Fri Apr 30 2027 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                },
+                "linuxRuntimeSettings": {
+                  "runtimeVersion": "Node|22",
+                  "isDefault": true,
+                  "remoteDebuggingSupported": false,
+                  "appInsightsSettings": {
+                    "isSupported": true
+                  },
+                  "gitHubActionSettings": {
+                    "isSupported": true,
+                    "supportedVersion": "22.x"
+                  },
+                  "appSettingsDictionary": {
+                    "FUNCTIONS_WORKER_RUNTIME": "node"
+                  },
+                  "siteConfigPropertiesDictionary": {
+                    "use32BitWorkerProcess": false,
+                    "linuxFxVersion": "Node|22"
+                  },
+                  "supportedFunctionsExtensionVersions": [
+                    "~4"
+                  ],
+                  "supportedFunctionsExtensionVersionsInfo": [
+                    {
+                      "version": "~4",
+                      "isDeprecated": false,
+                      "isDefault": true
+                    }
+                  ],
+                  "endOfLifeDate": "Fri Apr 30 2027 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                }
+              }
+            }
+          ]
+        },
+        {
           "displayText": "Node.js 20",
           "value": "20",
           "minorVersions": [
@@ -564,11 +711,10 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Sat May 30 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Thu Apr 30 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "Node|20",
-                  "isDefault": true,
                   "remoteDebuggingSupported": false,
                   "appInsightsSettings": {
                     "isSupported": true
@@ -594,7 +740,7 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Sat May 30 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Thu Apr 30 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 }
               }
             }
@@ -670,242 +816,6 @@
               }
             }
           ]
-        },
-        {
-          "displayText": "Node.js 16",
-          "value": "16",
-          "minorVersions": [
-            {
-              "displayText": "Node.js 16 LTS",
-              "value": "16 LTS",
-              "stackSettings": {
-                "windowsRuntimeSettings": {
-                  "runtimeVersion": "~16",
-                  "isPreview": false,
-                  "remoteDebuggingSupported": false,
-                  "appInsightsSettings": {
-                    "isSupported": true
-                  },
-                  "gitHubActionSettings": {
-                    "isSupported": true,
-                    "supportedVersion": "16.x"
-                  },
-                  "appSettingsDictionary": {
-                    "FUNCTIONS_WORKER_RUNTIME": "node",
-                    "WEBSITE_NODE_DEFAULT_VERSION": "~16"
-                  },
-                  "siteConfigPropertiesDictionary": {
-                    "use32BitWorkerProcess": true,
-                    "netFrameworkVersion": "v6.0"
-                  },
-                  "supportedFunctionsExtensionVersions": [
-                    "~4"
-                  ],
-                  "supportedFunctionsExtensionVersionsInfo": [
-                    {
-                      "version": "~4",
-                      "isDeprecated": false,
-                      "isDefault": true
-                    }
-                  ],
-                  "endOfLifeDate": "Sun Jun 30 2024 00:00:00 GMT+0000 (Coordinated Universal Time)"
-                },
-                "linuxRuntimeSettings": {
-                  "runtimeVersion": "Node|16",
-                  "isPreview": false,
-                  "remoteDebuggingSupported": false,
-                  "appInsightsSettings": {
-                    "isSupported": true
-                  },
-                  "gitHubActionSettings": {
-                    "isSupported": true,
-                    "supportedVersion": "16.x"
-                  },
-                  "appSettingsDictionary": {
-                    "FUNCTIONS_WORKER_RUNTIME": "node"
-                  },
-                  "siteConfigPropertiesDictionary": {
-                    "use32BitWorkerProcess": false,
-                    "linuxFxVersion": "Node|16"
-                  },
-                  "supportedFunctionsExtensionVersions": [
-                    "~4"
-                  ],
-                  "supportedFunctionsExtensionVersionsInfo": [
-                    {
-                      "version": "~4",
-                      "isDeprecated": false,
-                      "isDefault": true
-                    }
-                  ],
-                  "endOfLifeDate": "Sun Jun 30 2024 00:00:00 GMT+0000 (Coordinated Universal Time)"
-                }
-              }
-            }
-          ]
-        },
-        {
-          "displayText": "Node.js 14",
-          "value": "14",
-          "minorVersions": [
-            {
-              "displayText": "Node.js 14 LTS",
-              "value": "14 LTS",
-              "stackSettings": {
-                "windowsRuntimeSettings": {
-                  "runtimeVersion": "~14",
-                  "remoteDebuggingSupported": false,
-                  "appInsightsSettings": {
-                    "isSupported": true
-                  },
-                  "gitHubActionSettings": {
-                    "isSupported": true,
-                    "supportedVersion": "14.x"
-                  },
-                  "appSettingsDictionary": {
-                    "FUNCTIONS_WORKER_RUNTIME": "node",
-                    "WEBSITE_NODE_DEFAULT_VERSION": "~14"
-                  },
-                  "siteConfigPropertiesDictionary": {
-                    "use32BitWorkerProcess": true,
-                    "netFrameworkVersion": "v6.0"
-                  },
-                  "supportedFunctionsExtensionVersions": [
-                    "~4",
-                    "~3"
-                  ],
-                  "supportedFunctionsExtensionVersionsInfo": [
-                    {
-                      "version": "~4",
-                      "isDeprecated": false,
-                      "isDefault": true
-                    },
-                    {
-                      "version": "~3",
-                      "isDeprecated": true,
-                      "isDefault": false
-                    }
-                  ],
-                  "endOfLifeDate": "Sun Apr 30 2023 00:00:00 GMT+0000 (Coordinated Universal Time)"
-                },
-                "linuxRuntimeSettings": {
-                  "runtimeVersion": "Node|14",
-                  "remoteDebuggingSupported": false,
-                  "appInsightsSettings": {
-                    "isSupported": true
-                  },
-                  "gitHubActionSettings": {
-                    "isSupported": true,
-                    "supportedVersion": "14.x"
-                  },
-                  "appSettingsDictionary": {
-                    "FUNCTIONS_WORKER_RUNTIME": "node"
-                  },
-                  "siteConfigPropertiesDictionary": {
-                    "use32BitWorkerProcess": false,
-                    "linuxFxVersion": "Node|14"
-                  },
-                  "supportedFunctionsExtensionVersions": [
-                    "~4",
-                    "~3"
-                  ],
-                  "supportedFunctionsExtensionVersionsInfo": [
-                    {
-                      "version": "~4",
-                      "isDeprecated": false,
-                      "isDefault": true
-                    },
-                    {
-                      "version": "~3",
-                      "isDeprecated": true,
-                      "isDefault": false
-                    }
-                  ],
-                  "endOfLifeDate": "Sun Apr 30 2023 00:00:00 GMT+0000 (Coordinated Universal Time)"
-                }
-              }
-            }
-          ]
-        },
-        {
-          "displayText": "Node.js 8",
-          "value": "8",
-          "minorVersions": [
-            {
-              "displayText": "Node.js 8 LTS",
-              "value": "8 LTS",
-              "stackSettings": {
-                "windowsRuntimeSettings": {
-                  "runtimeVersion": "~8",
-                  "remoteDebuggingSupported": false,
-                  "appInsightsSettings": {
-                    "isSupported": true
-                  },
-                  "gitHubActionSettings": {
-                    "isSupported": true,
-                    "supportedVersion": "8.x"
-                  },
-                  "appSettingsDictionary": {
-                    "FUNCTIONS_WORKER_RUNTIME": "node",
-                    "WEBSITE_NODE_DEFAULT_VERSION": "~8"
-                  },
-                  "siteConfigPropertiesDictionary": {
-                    "use32BitWorkerProcess": true
-                  },
-                  "supportedFunctionsExtensionVersions": [
-                    "~2"
-                  ],
-                  "supportedFunctionsExtensionVersionsInfo": [
-                    {
-                      "version": "~2",
-                      "isDeprecated": true,
-                      "isDefault": true
-                    }
-                  ],
-                  "endOfLifeDate": "Tue Dec 31 2019 00:00:00 GMT+0000 (Coordinated Universal Time)"
-                }
-              }
-            }
-          ]
-        },
-        {
-          "displayText": "Node.js 6",
-          "value": "6",
-          "minorVersions": [
-            {
-              "displayText": "Node.js 6 LTS",
-              "value": "6 LTS",
-              "stackSettings": {
-                "windowsRuntimeSettings": {
-                  "runtimeVersion": "~6",
-                  "remoteDebuggingSupported": false,
-                  "appInsightsSettings": {
-                    "isSupported": true
-                  },
-                  "gitHubActionSettings": {
-                    "isSupported": false
-                  },
-                  "appSettingsDictionary": {
-                    "WEBSITE_NODE_DEFAULT_VERSION": "~6"
-                  },
-                  "siteConfigPropertiesDictionary": {
-                    "use32BitWorkerProcess": true
-                  },
-                  "supportedFunctionsExtensionVersions": [
-                    "~1"
-                  ],
-                  "supportedFunctionsExtensionVersionsInfo": [
-                    {
-                      "version": "~1",
-                      "isDeprecated": true,
-                      "isDefault": true
-                    }
-                  ],
-                  "endOfLifeDate": "Tue Apr 30 2019 00:00:00 GMT+0000 (Coordinated Universal Time)"
-                }
-              }
-            }
-          ]
         }
       ]
     }
@@ -923,6 +833,44 @@
           "displayText": "Python 3",
           "value": "3",
           "minorVersions": [
+            {
+              "displayText": "Python 3.12",
+              "value": "3.12",
+              "stackSettings": {
+                "linuxRuntimeSettings": {
+                  "runtimeVersion": "Python|3.12",
+                  "remoteDebuggingSupported": false,
+                  "isPreview": false,
+                  "isDefault": true,
+                  "isHidden": false,
+                  "appInsightsSettings": {
+                    "isSupported": true
+                  },
+                  "gitHubActionSettings": {
+                    "isSupported": true,
+                    "supportedVersion": "3.12"
+                  },
+                  "appSettingsDictionary": {
+                    "FUNCTIONS_WORKER_RUNTIME": "python"
+                  },
+                  "siteConfigPropertiesDictionary": {
+                    "use32BitWorkerProcess": false,
+                    "linuxFxVersion": "Python|3.12"
+                  },
+                  "supportedFunctionsExtensionVersions": [
+                    "~4"
+                  ],
+                  "supportedFunctionsExtensionVersionsInfo": [
+                    {
+                      "version": "~4",
+                      "isDeprecated": false,
+                      "isDefault": true
+                    }
+                  ],
+                  "endOfLifeDate": "Tue Oct 31 2028 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                }
+              }
+            },
             {
               "displayText": "Python 3.11",
               "value": "3.11",
@@ -1079,7 +1027,7 @@
                       "isDefault": false
                     }
                   ],
-                  "endOfLifeDate": "Thu Oct 31 2024 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Mon Oct 07 2024 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 }
               }
             },
@@ -1126,7 +1074,7 @@
                       "isDefault": false
                     }
                   ],
-                  "endOfLifeDate": "Fri Jun 30 2023 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Tue Jun 27 2023 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 }
               }
             }
@@ -1154,8 +1102,8 @@
               "stackSettings": {
                 "windowsRuntimeSettings": {
                   "runtimeVersion": "21",
-                  "isPreview": true,
-                  "isHidden": true,
+                  "isPreview": false,
+                  "isHidden": false,
                   "isAutoUpdate": true,
                   "isDefault": false,
                   "remoteDebuggingSupported": false,
@@ -1184,11 +1132,11 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Mon Sep 01 2031 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Fri Sep 01 2028 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "Java|21",
-                  "isPreview": true,
+                  "isPreview": false,
                   "isHidden": false,
                   "isAutoUpdate": true,
                   "isDefault": false,
@@ -1217,7 +1165,7 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Mon Sep 01 2031 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Fri Sep 01 2028 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 }
               }
             }
@@ -1263,7 +1211,7 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Mon Sep 01 2031 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Wed Sep 01 2027 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "Java|17",
@@ -1296,7 +1244,7 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Mon Sep 01 2031 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Wed Sep 01 2027 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 }
               }
             }
@@ -1345,7 +1293,7 @@
                       "isDefault": false
                     }
                   ],
-                  "endOfLifeDate": "Tue Sep 01 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Wed Sep 01 2027 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "Java|11",
@@ -1381,7 +1329,7 @@
                       "isDefault": false
                     }
                   ],
-                  "endOfLifeDate": "Tue Sep 01 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Wed Sep 01 2027 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 }
               }
             }
@@ -1437,7 +1385,7 @@
                       "isDefault": false
                     }
                   ],
-                  "endOfLifeDate": "Sat Mar 01 2025 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Mon Nov 30 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "Java|8",
@@ -1474,7 +1422,7 @@
                       "isDefault": false
                     }
                   ],
-                  "endOfLifeDate": "Sat Mar 01 2025 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Mon Nov 30 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 }
               }
             }
@@ -1502,8 +1450,8 @@
               "stackSettings": {
                 "windowsRuntimeSettings": {
                   "runtimeVersion": "7.4",
-                  "isDefault": false,
-                  "isPreview": true,
+                  "isDefault": true,
+                  "isPreview": false,
                   "isHidden": false,
                   "remoteDebuggingSupported": false,
                   "appInsightsSettings": {
@@ -1534,8 +1482,8 @@
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "PowerShell|7.4",
-                  "isDefault": false,
-                  "isPreview": true,
+                  "isDefault": true,
+                  "isPreview": false,
                   "isHidden": false,
                   "remoteDebuggingSupported": false,
                   "appInsightsSettings": {
@@ -1571,7 +1519,7 @@
               "stackSettings": {
                 "windowsRuntimeSettings": {
                   "runtimeVersion": "7.2",
-                  "isDefault": true,
+                  "isDefault": false,
                   "isPreview": false,
                   "isHidden": false,
                   "remoteDebuggingSupported": false,
@@ -1603,7 +1551,7 @@
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "PowerShell|7.2",
-                  "isDefault": true,
+                  "isDefault": false,
                   "isPreview": false,
                   "isHidden": false,
                   "remoteDebuggingSupported": false,

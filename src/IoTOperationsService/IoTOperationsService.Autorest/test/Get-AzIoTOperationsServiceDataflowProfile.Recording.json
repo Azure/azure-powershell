@@ -1,0 +1,91 @@
+{
+  "Get-AzIoTOperationsServiceDataflowProfile+[NoContext]+List+$GET+https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.IoTOperations/instances/aio-th2k3/dataflowProfiles?api-version=2024-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.IoTOperations/instances/aio-th2k3/dataflowProfiles?api-version=2024-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "9c62b8d2-b720-4fb1-a28a-52ff568077d8" ],
+        "CommandName": [ "Get-AzIoTOperationsServiceDataflowProfile" ],
+        "FullCommandName": [ "Get-AzIoTOperationsServiceDataflowProfile_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.IoTOperationsService/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "5eaa31c3-fbfc-4450-bf7f-445ecd23e8ce" ],
+        "x-ms-correlation-request-id": [ "5a1f61e8-f184-4774-a8c2-07f274c4bc44" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250317T174146Z:5a1f61e8-f184-4774-a8c2-07f274c4bc44" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 79E9E6FD946A46A086CFDC5DE49BD0F8 Ref B: CO6AA3150217039 Ref C: 2025-03-17T17:41:45Z" ],
+        "Date": [ "Mon, 17 Mar 2025 17:41:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2721" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.IoTOperations/instances/aio-th2k3/dataflowProfiles/default\",\"name\":\"default\",\"type\":\"microsoft.iotoperations/instances/dataflowprofiles\",\"extendedLocation\":{\"name\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.ExtendedLocation/customLocations/location-th2k3\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"739f5293-922a-4616-b106-3662530ef99f\",\"createdByType\":\"Application\",\"createdAt\":\"2025-03-14T21:55:31.4019742Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-03-14T22:30:45.9714389Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"instanceCount\":1,\"diagnostics\":{\"logs\":{\"level\":\"info\"},\"metrics\":{\"prometheusPort\":9600}}}},{\"id\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.IoTOperations/instances/aio-th2k3/dataflowProfiles/dataflowdeployment\",\"name\":\"dataflowdeployment\",\"type\":\"microsoft.iotoperations/instances/dataflowprofiles\",\"extendedLocation\":{\"name\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.ExtendedLocation/customLocations/location-th2k3\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"739f5293-922a-4616-b106-3662530ef99f\",\"createdByType\":\"Application\",\"createdAt\":\"2025-03-14T22:19:07.4188414Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-03-14T22:30:46.7716794Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"diagnostics\":{\"logs\":{\"level\":\"debug\"},\"metrics\":{\"prometheusPort\":9600}},\"instanceCount\":1}},{\"id\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.IoTOperations/instances/aio-th2k3/dataflowProfiles/quickstart-profile\",\"name\":\"quickstart-profile\",\"type\":\"microsoft.iotoperations/instances/dataflowprofiles\",\"extendedLocation\":{\"name\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.ExtendedLocation/customLocations/location-th2k3\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"739f5293-922a-4616-b106-3662530ef99f\",\"createdByType\":\"Application\",\"createdAt\":\"2025-03-14T22:21:00.8316455Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-03-14T22:30:46.1929549Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"diagnostics\":{\"logs\":{\"level\":\"debug\"},\"metrics\":{\"prometheusPort\":9600}},\"instanceCount\":1}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzIoTOperationsServiceDataflowProfile+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.IoTOperations/instances/aio-th2k3/dataflowProfiles/quickstart-profile?api-version=2024-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.IoTOperations/instances/aio-th2k3/dataflowProfiles/quickstart-profile?api-version=2024-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "997c15f0-a5ba-4552-bd62-7debd1216839" ],
+        "CommandName": [ "Get-AzIoTOperationsServiceDataflowProfile" ],
+        "FullCommandName": [ "Get-AzIoTOperationsServiceDataflowProfile_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.IoTOperationsService/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"140085b4-0000-0200-0000-67d4ae160000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "9bcd143d-6d50-46b9-b7e5-d5d5826533e9" ],
+        "x-ms-correlation-request-id": [ "2bbdbd63-96f6-4979-9e56-d879bb2dd1fb" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250317T174146Z:2bbdbd63-96f6-4979-9e56-d879bb2dd1fb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0355A01F13FC41DFA3F3DDAB34D289C4 Ref B: CO6AA3150217039 Ref C: 2025-03-17T17:41:46Z" ],
+        "Date": [ "Mon, 17 Mar 2025 17:41:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "910" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.IoTOperations/instances/aio-th2k3/dataflowProfiles/quickstart-profile\",\"name\":\"quickstart-profile\",\"type\":\"microsoft.iotoperations/instances/dataflowprofiles\",\"extendedLocation\":{\"name\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.ExtendedLocation/customLocations/location-th2k3\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"739f5293-922a-4616-b106-3662530ef99f\",\"createdByType\":\"Application\",\"createdAt\":\"2025-03-14T22:21:00.8316455Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-03-14T22:30:46.1929549Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"diagnostics\":{\"logs\":{\"level\":\"debug\"},\"metrics\":{\"prometheusPort\":9600}},\"instanceCount\":1}}",
+      "isContentBase64": false
+    }
+  }
+}

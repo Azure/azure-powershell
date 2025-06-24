@@ -8,18 +8,47 @@ schema: 2.0.0
 # New-AzFrontDoorCdnSecret
 
 ## SYNOPSIS
-Creates a new Secret within the specified profile.
+create a new Secret within the specified profile.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzFrontDoorCdnSecret -Name <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Parameter <ISecretParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonString
+```
+New-AzFrontDoorCdnSecret -Name <String> -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzFrontDoorCdnSecret -Name <String> -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityProfileExpanded
+```
+New-AzFrontDoorCdnSecret -Name <String> -ProfileInputObject <ICdnIdentity> [-Parameter <ISecretParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityProfile
+```
+New-AzFrontDoorCdnSecret -Name <String> -ProfileInputObject <ICdnIdentity> -Secret <ISecret>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates a new Secret within the specified profile.
+create a new Secret within the specified profile.
 
 ## EXAMPLES
 
@@ -71,6 +100,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the Secret under the profile.
 
@@ -103,11 +162,10 @@ Accept wildcard characters: False
 
 ### -Parameter
 object which contains secret parameters
-To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecretParameters
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecretParameters
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -117,12 +175,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: CreateViaIdentityProfileExpanded, CreateViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProfileName
-Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -137,7 +210,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -147,12 +220,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Secret
+Friendly Secret name mapping to the any Secret or secret related information.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecret
+Parameter Sets: CreateViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -198,9 +286,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecret
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecret
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecret
 
 ## NOTES
 

@@ -40,6 +40,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
+    [GenericBreakingChangeWithVersion("In the next breaking change period (Nov 2025), the default VM size will change from 'Standard_Ds1_v2' to 'Standard_D2s_v5'.", "15.0.0", "11.0.0")]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Vmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet

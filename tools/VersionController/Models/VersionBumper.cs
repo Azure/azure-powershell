@@ -44,7 +44,6 @@ namespace VersionController.Models
         private AzurePSVersion _assignedVersion { get; set;}
 
         public AzurePSVersion MinimalVersion { get; set; }
-        public string PSRepositories { get; set; }
 
         private ReleaseType _releaseType { get; set; }
 
@@ -85,6 +84,7 @@ namespace VersionController.Models
             {
                 _newVersion = IsNewModule() ? _oldVersion : GetBumpedVersion();
             }
+            Console.WriteLine("_assignedVersion: " + _assignedVersion);
             if (MinimalVersion != null && MinimalVersion > new AzurePSVersion(_newVersion))
             {
                 Console.WriteLine($"Adjust version from {_newVersion} to {MinimalVersion} due to MinimalVersion.csv");
@@ -227,7 +227,7 @@ namespace VersionController.Models
                 versionBump = Version.MINOR;
             }
 
-            List<AzurePSVersion> galleryVersion = ModuleHelper.GetAllVersionsFromGallery(_fileHelper.ModuleName, PSRepositories);
+            List<AzurePSVersion> galleryVersion = ModuleHelper.GetAllVersionsFromGallery(_fileHelper.ModuleName);
             AzurePSVersion bumpedVersion = galleryVersion.Count == 0 ? new AzurePSVersion(0, 1, 0) : GetBumpedVersionByType(new AzurePSVersion(_oldVersion), versionBump);
             AzurePSVersion maxGAedVersionInGallery = ModuleHelper.GetLatestVersionFromGalleryUnderSameMajorVersion(bumpedVersion, galleryVersion, false);
             AzurePSVersion maxPreGAedVersionInGallery = ModuleHelper.GetLatestVersionFromGalleryUnderSameMajorVersion(bumpedVersion, galleryVersion, true);

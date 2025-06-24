@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzHdInsightOnAksClusterPoolTag
 
 ## SYNOPSIS
-Update an existing Cluster Pool Tags.
+update an existing Cluster Pool Tags.
 
 ## SYNTAX
 
@@ -55,7 +55,7 @@ Update-AzHdInsightOnAksClusterPoolTag -InputObject <IHdInsightOnAksIdentity> -Cl
 ```
 
 ## DESCRIPTION
-Update an existing Cluster Pool Tags.
+update an existing Cluster Pool Tags.
 
 ## EXAMPLES
 

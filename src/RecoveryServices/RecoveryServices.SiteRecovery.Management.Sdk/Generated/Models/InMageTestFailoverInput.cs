@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="recoveryPointType">The recovery point type. Values from LatestTime, LatestTag or Custom. In
         /// the case of custom, the recovery point provided by RecoveryPointId will be
         /// used. In the other two cases, recovery point id will be ignored.
-        /// Possible values include: 'LatestTime', 'LatestTag', 'Custom'</param>
+        /// Possible values include: &#39;LatestTime&#39;, &#39;LatestTag&#39;, &#39;Custom&#39;</param>
 
         /// <param name="recoveryPointId">The recovery point id to be passed to test failover to a particular
         /// recovery point. In case of latest recovery point, null should be passed.

@@ -51,14 +51,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         public string ExternalCloudProviderId { get => this._externalCloudProviderId; set => this._externalCloudProviderId = value; }
 
         /// <summary>Backing field for <see cref="ExternalCloudProviderType" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType? _externalCloudProviderType;
+        private string _externalCloudProviderType;
 
         /// <summary>
         /// The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for
         /// linked account and 'externalBillingAccounts' for consolidated account.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType? ExternalCloudProviderType { get => this._externalCloudProviderType; set => this._externalCloudProviderType = value; }
+        public string ExternalCloudProviderType { get => this._externalCloudProviderType; set => this._externalCloudProviderType = value; }
 
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
@@ -111,6 +111,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Alert ID",
         SerializedName = @"alertId",
         PossibleTypes = new [] { typeof(string) })]
@@ -119,6 +122,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Enrollment ID (Legacy BillingAccount ID)",
         SerializedName = @"billingAccountId",
         PossibleTypes = new [] { typeof(string) })]
@@ -127,6 +133,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"BillingProfile ID",
         SerializedName = @"billingProfileId",
         PossibleTypes = new [] { typeof(string) })]
@@ -135,6 +144,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Export Name.",
         SerializedName = @"exportName",
         PossibleTypes = new [] { typeof(string) })]
@@ -146,6 +158,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations.",
         SerializedName = @"externalCloudProviderId",
         PossibleTypes = new [] { typeof(string) })]
@@ -157,14 +172,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account.",
         SerializedName = @"externalCloudProviderType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType) })]
-        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType? ExternalCloudProviderType { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("externalSubscriptions", "externalBillingAccounts")]
+        string ExternalCloudProviderType { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -173,6 +195,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The target operation Id.",
         SerializedName = @"operationId",
         PossibleTypes = new [] { typeof(string) })]
@@ -191,6 +216,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The scope associated with view operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope.",
         SerializedName = @"scope",
         PossibleTypes = new [] { typeof(string) })]
@@ -199,6 +227,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"View name",
         SerializedName = @"viewName",
         PossibleTypes = new [] { typeof(string) })]
@@ -225,7 +256,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         /// The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for
         /// linked account and 'externalBillingAccounts' for consolidated account.
         /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType? ExternalCloudProviderType { get; set; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("externalSubscriptions", "externalBillingAccounts")]
+        string ExternalCloudProviderType { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>The target operation Id.</summary>

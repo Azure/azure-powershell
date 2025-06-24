@@ -16,19 +16,19 @@
 
 <#
 .Synopsis
-Create a new HealthBot.
+create a new HealthBot.
 .Description
-Create a new HealthBot.
+create a new HealthBot.
 .Example
 New-AzHealthBot -Name yourihealthbot1 -ResourceGroupName youriTest -Location eastus -Sku F0
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208.IHealthBot
+Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBot
 .Link
 https://learn.microsoft.com/powershell/module/az.healthbot/new-azhealthbot
 #>
 function New-AzHealthBot {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208.IHealthBot])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBot])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -51,25 +51,37 @@ param(
     # Azure Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName])]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthBot.PSArgumentCompleterAttribute("F0", "S1", "C0")]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName]
+    [System.String]
     # The name of the HealthBot SKU
     ${Sku},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -139,6 +151,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -159,10 +180,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.HealthBot.private\New-AzHealthBot_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.HealthBot.private\New-AzHealthBot_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.HealthBot.private\New-AzHealthBot_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -176,6 +197,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -16,15 +16,15 @@
 
 <#
 .Synopsis
-Creates a new job or updates an existing job in the specified subscription.
+create a new job or create an existing job in the specified subscription.
 .Description
-Creates a new job or updates an existing job in the specified subscription.
+create a new job or create an existing job in the specified subscription.
 .Example
 $driveList = @( @{ DriveId = "9CA995BA"; BitLockerKey = "238810-662376-448998-450120-652806-203390-606320-483076"; ManifestFile = "\\DriveManifest.xml"; ManifestHash = "109B21108597EF36D5785F08303F3638"; DriveHeaderHash = "" })
 New-AzImportExport -Name test-job -ResourceGroupName ImportTestRG -Location eastus -StorageAccountId "/subscriptions/<SubscriptionId>/resourcegroups/ImportTestRG/providers/Microsoft.Storage/storageAccounts/teststorageforimport" -JobType Import -ReturnAddressRecipientName "Some name" -ReturnAddressStreetAddress1 "Street1" -ReturnAddressCity "Redmond" -ReturnAddressStateOrProvince "WA" -ReturnAddressPostalCode "98008" -ReturnAddressCountryOrRegion "USA" -ReturnAddressPhone "4250000000" -ReturnAddressEmail test@contoso.com -DiagnosticsPath "waimportexport" -BackupDriveManifest -DriveList $driveList
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse
+Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -41,13 +41,13 @@ DRIVELIST <IDriveStatus[]>: List of up to ten drives that comprise the job. The 
   [ManifestHash <String>]: The Base16-encoded MD5 hash of the manifest file on the drive.
   [ManifestUri <String>]: A URI that points to the blob containing the drive manifest file. 
   [PercentComplete <Int64?>]: Percentage completed for the drive. 
-  [State <DriveState?>]: The drive's current state. 
+  [State <String>]: The drive's current state. 
   [VerboseLogUri <String>]: A URI that points to the blob containing the verbose log for the data transfer operation. 
 .Link
 https://learn.microsoft.com/powershell/module/az.importexport/new-azimportexport
 #>
 function New-AzImportExport {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponse])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -82,292 +82,303 @@ param(
     # The tenant ID of the client making the request.
     ${ClientTenantId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Default value is false.
     # Indicates whether the manifest files on the drives should be copied to block blobs.
     ${BackupDriveManifest},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String[]]
     # A collection of blob-path strings.
     ${BlobListBlobPath},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String[]]
     # A collection of blob-prefix strings.
     ${BlobListBlobPathPrefix},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Indicates whether a request has been submitted to cancel the job.
     ${CancelRequested},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The name of the carrier that is used to ship the import or export drives.
     ${DeliveryPackageCarrierName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.Int64]
     # The number of drives included in the package.
     ${DeliveryPackageDriveCount},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The date when the package is shipped.
     ${DeliveryPackageShipDate},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The tracking number of the package.
     ${DeliveryPackageTrackingNumber},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The virtual blob directory to which the copy logs and backups of drive manifest files (if enabled) will be stored.
     ${DiagnosticsPath},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IDriveStatus[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IDriveStatus[]]
     # List of up to ten drives that comprise the job.
     # The drive list is a required element for an import job; it is not specified for export jobs.
-    # To construct, see NOTES section for DRIVELIST properties and create a hash table.
     ${DriveList},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.EncryptionKekType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.PSArgumentCompleterAttribute("MicrosoftManaged", "CustomerManaged")]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.EncryptionKekType]
+    [System.String]
     # The type of kek encryption key
     ${EncryptionKeyKekType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # Specifies the url for kek encryption key.
     ${EncryptionKeyKekUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # Specifies the keyvault resource id for kek encryption key.
     ${EncryptionKeyKekVaultId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The relative URI to the block blob that contains the list of blob paths or blob path prefixes as defined above, beginning with the container name.
     # If the blob is in root container, the URI must begin with $root.
     ${ExportBlobListBlobPath},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # A blob path that points to a block blob containing a list of blob names that were not exported due to insufficient drive space.
     # If all blobs were exported successfully, then this element is not included in the response.
     ${IncompleteBlobListUri},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The type of job
     ${JobType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # Specifies the supported Azure location where the job should be created
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # Default value is Error.
     # Indicates whether error logging or verbose logging will be enabled.
     ${LogLevel},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.Int64]
     # Overall percentage completed for the job.
     ${PercentComplete},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # Specifies the provisioning state of the job.
     ${ProvisioningState},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The city name to use when returning the drives.
     ${ReturnAddressCity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The country or region to use when returning the drives.
     ${ReturnAddressCountryOrRegion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # Email address of the recipient of the returned drives.
     ${ReturnAddressEmail},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # Phone number of the recipient of the returned drives.
     ${ReturnAddressPhone},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The postal code to use when returning the drives.
     ${ReturnAddressPostalCode},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The name of the recipient who will receive the hard drives when they are returned.
     ${ReturnAddressRecipientName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The state or province to use when returning the drives.
     ${ReturnAddressStateOrProvince},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The first line of the street address to use when returning the drives.
     ${ReturnAddressStreetAddress1},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The second line of the street address to use when returning the drives.
     ${ReturnAddressStreetAddress2},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The name of the carrier that is used to ship the import or export drives.
     ${ReturnPackageCarrierName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.Int64]
     # The number of drives included in the package.
     ${ReturnPackageDriveCount},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The date when the package is shipped.
     ${ReturnPackageShipDate},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The tracking number of the package.
     ${ReturnPackageTrackingNumber},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The customer's account number with the carrier.
     ${ReturnShippingCarrierAccountNumber},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The carrier's name.
     ${ReturnShippingCarrierName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The city name to use when returning the drives.
     ${ShippingInformationCity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The country or region to use when returning the drives.
     ${ShippingInformationCountryOrRegion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # Phone number of the recipient of the returned drives.
     ${ShippingInformationPhone},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The postal code to use when returning the drives.
     ${ShippingInformationPostalCode},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The name of the recipient who will receive the hard drives when they are returned.
     ${ShippingInformationRecipientName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The state or province to use when returning the drives.
     ${ShippingInformationStateOrProvince},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The first line of the street address to use when returning the drives.
     ${ShippingInformationStreetAddress1},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The second line of the street address to use when returning the drives.
     ${ShippingInformationStreetAddress2},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # Current state of the job.
     ${State},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The resource identifier of the storage account where data will be imported to or exported from.
     ${StorageAccountId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IPutJobParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IPutJobParametersTags]))]
     [System.Collections.Hashtable]
     # Specifies the tags that will be assigned to the job.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -425,6 +436,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -445,10 +465,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.ImportExport.private\New-AzImportExport_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.ImportExport.private\New-AzImportExport_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ImportExport.private\New-AzImportExport_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -462,6 +482,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

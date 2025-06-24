@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.NumberInRangeFilter
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridnumberinrangefilterobject
 #>
 function New-AzEventGridNumberInRangeFilterObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.NumberInRangeFilter')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

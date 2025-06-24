@@ -424,7 +424,7 @@
     <value>Unable to set profile because environment variable '${0}' is null.</value>
   </data>
   <data name="ServicePrincipalWarning" xml:space="preserve">
-    <value>The provided service principal secret or certifcate password will be included in the '{0}' file found in the user profile ( {1} ). Please ensure that this directory has appropriate protections.</value>
+    <value>The provided service principal secret or certificate password will be included in the '{0}' file found in the user profile ( {1} ). Please ensure that this directory has appropriate protections.</value>
   </data>
   <data name="ClientAssertionWarning" xml:space="preserve">
     <value>The provided client id and assertion will be included in the '{0}' file found in the user profile ( {1} ). Please ensure that this directory has appropriate protections.</value>
@@ -572,7 +572,7 @@
     <comment>0: command being not found; 1: its module</comment>
   </data>
   <data name="KeyStoreLoadingError" xml:space="preserve">
-    <value>KeyStore cannot be loaded from storage. Please check the keystore file integrity or system compablity. The functions relate to context autosaving may be affected.</value>
+    <value>KeyStore cannot be loaded from storage. Please check the keystore file integrity or system compatibility. The functions relate to context autosaving may be affected.</value>
   </data>
   <data name="InvalidOpenIDConfigUri" xml:space="preserve">
     <value>The uri is invalid: {0}</value>
@@ -631,7 +631,10 @@
   <data name="ReportIssue" xml:space="preserve">
     <value>If you encounter any problem, please open an issue at: https://aka.ms/azpsissue</value>
   </data>
-  <data name="UsernamePasswordDeprecateWarningMessage" xml:space="preserve">
-    <value>Authentication with a username and password at the command line is strongly discouraged. Use one of the recommended authentication methods based on your requirements. For additional information, visit https://go.microsoft.com/fwlink/?linkid=2276971.</value>
+  <data name="RopcDeprecationPublicCloud" xml:space="preserve">
+    <value>Starting {0}, MFA will be gradually enforced for Azure public cloud. The authentication with username and password in the command line is not supported with MFA. Consider using one of the compatible authentication methods. For more details, see https://go.microsoft.com/fwlink/?linkid=2276971</value>
+  </data>
+  <data name="RopcDeprecationSovereignClouds" xml:space="preserve">
+    <value>Using authentication with username and password in the command line is strongly discouraged. Consider using one of the recommended authentication methods. For more details, see https://go.microsoft.com/fwlink/?linkid=2276971</value>
   </data>
 </root>

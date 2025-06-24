@@ -18,14 +18,16 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
  -RestoreLocation <String> -RestoreType <RestoreTargetType> -TargetResourceId <String>
  [-RecoveryPoint <String>] [-PointInTime <DateTime>] [-RehydrationDuration <String>]
  [-RehydrationPriority <String>] [-RestoreConfiguration <PSObject>] [-SecretStoreURI <String>]
- [-SecretStoreType <SecretStoreTypes>] [<CommonParameters>]
+ [-SecretStoreType <SecretStoreTypes>] [-UseSystemAssignedIdentity <Boolean>]
+ [-UserAssignedIdentityArmId <String>] [<CommonParameters>]
 ```
 
 ### AlternateLocationILR
 ```
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
  -RestoreLocation <String> -RestoreType <RestoreTargetType> -TargetResourceId <String>
- [-RecoveryPoint <String>] [-RestoreConfiguration <PSObject>] [-ItemLevelRecovery] [-ContainersList <String[]>]
+ [-RecoveryPoint <String>] [-RestoreConfiguration <PSObject>] [-UseSystemAssignedIdentity <Boolean>]
+ [-UserAssignedIdentityArmId <String>] [-ItemLevelRecovery] [-ContainersList <String[]>]
  [-PrefixMatch <Hashtable>] [<CommonParameters>]
 ```
 
@@ -34,7 +36,8 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
  -RestoreLocation <String> -RestoreType <RestoreTargetType> [-RecoveryPoint <String>] [-PointInTime <DateTime>]
  [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-RestoreConfiguration <PSObject>]
- [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>] -BackupInstance <BackupInstanceResource>
+ [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>] [-UseSystemAssignedIdentity <Boolean>]
+ [-UserAssignedIdentityArmId <String>] -BackupInstance <BackupInstanceResource>
  [<CommonParameters>]
 ```
 
@@ -43,9 +46,10 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
  -RestoreLocation <String> -RestoreType <RestoreTargetType> [-RecoveryPoint <String>] [-PointInTime <DateTime>]
  [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-RestoreConfiguration <PSObject>]
- [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>] [-ItemLevelRecovery]
- [-ContainersList <String[]>] -BackupInstance <BackupInstanceResource> [-FromPrefixPattern <String[]>]
- [-ToPrefixPattern <String[]>] [<CommonParameters>]
+ [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>] [-UseSystemAssignedIdentity <Boolean>]
+ [-UserAssignedIdentityArmId <String>] [-ItemLevelRecovery] [-ContainersList <String[]>]
+ -BackupInstance <BackupInstanceResource> [-FromPrefixPattern <String[]>] [-ToPrefixPattern <String[]>]
+ [<CommonParameters>]
 ```
 
 ### RestoreAsFiles
@@ -53,7 +57,8 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
  -RestoreLocation <String> -RestoreType <RestoreTargetType> [-RecoveryPoint <String>]
  [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-SecretStoreURI <String>]
- [-SecretStoreType <SecretStoreTypes>] -TargetContainerURI <String>
+ [-SecretStoreType <SecretStoreTypes>] [-UseSystemAssignedIdentity <Boolean>]
+ [-UserAssignedIdentityArmId <String>] -TargetContainerURI <String>
  [-TargetResourceIdForRestoreAsFile <String>] [-FileNamePrefix <String>]
  [<CommonParameters>]
 ```
@@ -216,11 +221,11 @@ The restore request object is then used to trigger the restore operation.
 ## PARAMETERS
 
 ### -BackupInstance
-Backup Instance object to trigger original localtion restore.
+Backup Instance object to trigger original location restore.
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.BackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.BackupInstanceResource
 Parameter Sets: OriginalLocationFullRecovery, OriginalLocationILR
 Aliases:
 
@@ -547,6 +552,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UserAssignedIdentityArmId
+User assigned identity ARM Id
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: AssignUserIdentity
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseSystemAssignedIdentity
+Use system assigned identity
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -554,7 +589,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupRestoreRequest
 
 ## NOTES
 

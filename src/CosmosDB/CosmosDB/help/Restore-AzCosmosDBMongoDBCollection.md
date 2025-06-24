@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
 online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/restore-azcosmosdbmongodbcollection
@@ -14,8 +14,8 @@ Restore a deleted mongodb collection in a database to a given timestamp in the s
 
 ```
 Restore-AzCosmosDBMongoDBCollection -ResourceGroupName <String> -AccountName <String> -DatabaseName <String>
- [-Name <String>] -RestoreTimestampInUtc <DateTime> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Name <String>] [-RestoreTimestampInUtc <DateTime>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Restores the deleted mongodb collection in the same account with the given name 
 
 ### Example 1
 ```powershell
-Restore-AzCosmosDBMongoDBCollection  -AccountName “my-pitr-mongodb-account” -ResourceGroupName “my-rg”  -DatabaseName “my-database” -Name “my-collection”  -RestoreTimestampInUtc “2022-08-25T07:16:20Z”  
+Restore-AzCosmosDBMongoDBCollection  -AccountName "my-pitr-mongodb-account" -ResourceGroupName "my-rg"  -DatabaseName "my-database" -Name "my-collection"  -RestoreTimestampInUtc "2022-08-25T07:16:20Z"
 ```
 
 ```output
@@ -33,7 +33,7 @@ Name     : my-collection
 Id       : /subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/my-rg/providers/Microsoft.DocumentDB/databaseAccounts/my-pitr-mongodb-account/mongoDBDatabases/my-database/collections/my-collection 
 Location :
 Tags     :
-Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSMongoDBCollectionGetPropertiesResource 
+Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSMongoDBCollectionGetPropertiesResource
 ```
 
 ## PARAMETERS
@@ -47,21 +47,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -136,7 +121,22 @@ Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -16,11 +16,11 @@
 
 <#
 .Synopsis
-The operation to create or update an export.
+The operation to update an export.
 You can optionally provide an eTag if desired as a form of concurrency control.
 To obtain the latest eTag for a given export, perform a get operation prior to your put operation.
 .Description
-The operation to create or update an export.
+The operation to update an export.
 You can optionally provide an eTag if desired as a form of concurrency control.
 To obtain the latest eTag for a given export, perform a get operation prior to your put operation.
 .Example
@@ -32,7 +32,7 @@ Update-AzCostManagementExport -InputObject $oldExport -ScheduleRecurrence 'Weekl
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExport
+Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExport
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -44,19 +44,23 @@ INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
   [BillingProfileId <String>]: BillingProfile ID
   [ExportName <String>]: Export Name.
   [ExternalCloudProviderId <String>]: This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations.
-  [ExternalCloudProviderType <ExternalCloudProviderType?>]: The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account.
+  [ExternalCloudProviderType <String>]: The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account.
   [Id <String>]: Resource identity path
   [OperationId <String>]: The target operation Id.
   [Scope <String>]: The scope associated with view operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope.
   [ViewName <String>]: View name
 .Link
 https://learn.microsoft.com/powershell/module/az.costmanagement/update-azcostmanagementexport
+.Link
+https://docs.microsoft.com/en-us/rest/api/costmanagement/
 #>
 function Update-AzCostManagementExport {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExport])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExport])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('ExportName')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Path')]
     [System.String]
@@ -64,6 +68,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Path')]
     [System.String]
     # This parameter defines the scope of costmanagement from different perspectives 'Subscription','ResourceGroup' and 'Provide Service'.
@@ -73,10 +79,10 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String[]]
@@ -85,51 +91,58 @@ param(
     # The available columns can vary by customer channel (see examples).
     ${ConfigurationColumn},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Daily")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType]
+    [System.String]
     # The granularity of rows in the export.
     # Currently only 'Daily' is supported.
     ${DataSetGranularity},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("MonthToDate", "BillingMonthToDate", "TheLastMonth", "TheLastBillingMonth", "WeekToDate", "Custom")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType]
+    [System.String]
     # The time frame for pulling data for the export.
     # If custom, then a specific time period must be provided.
     ${DefinitionTimeframe},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Usage", "ActualCost", "AmortizedCost")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType]
+    [System.String]
     # The type of the export.
     # Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations.
     ${DefinitionType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # The name of the container where exports will be uploaded.
     # If the container does not exist it will be created.
     ${DestinationContainer},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # The resource id of the storage account where exports will be delivered.
     # This is not required if a sasToken and storageAccount are specified.
     ${DestinationResourceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # The name of the directory where exports will be uploaded.
     ${DestinationRootFolderPath},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # A SAS token for the storage account.
@@ -139,73 +152,95 @@ param(
     # To update this value a new SAS token must be specified.
     ${DestinationSasToken},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # The storage account where exports will be uploaded.
     # For a restricted set of Azure customers this together with sasToken can be specified instead of resourceId.
     ${DestinationStorageAccount},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # eTag of the resource.
     # To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
     ${ETag},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Csv")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType]
+    [System.String]
     # The format of the export being delivered.
     # Currently only 'Csv' is supported.
     ${Format},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # If set to true, exported data will be partitioned by size and placed in a blob directory together with a manifest file.
     # Note: this option is currently available only for modern commerce scopes.
     ${PartitionData},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.DateTime]
     # The start date of recurrence.
     ${RecurrencePeriodFrom},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.DateTime]
     # The end date of recurrence.
     ${RecurrencePeriodTo},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Daily", "Weekly", "Monthly", "Annually")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType]
+    [System.String]
     # The schedule recurrence.
     ${ScheduleRecurrence},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Active", "Inactive")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType]
+    [System.String]
     # The status of the export's schedule.
     # If 'Inactive', the export's schedule is paused.
     ${ScheduleStatus},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.DateTime]
     # The start date for export data.
     ${TimePeriodFrom},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.DateTime]
     # The end date for export data.
     ${TimePeriodTo},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -263,13 +298,21 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             UpdateExpanded = 'Az.CostManagement.private\Update-AzCostManagementExport_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.CostManagement.private\Update-AzCostManagementExport_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.CostManagement.private\Update-AzCostManagementExport_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.CostManagement.private\Update-AzCostManagementExport_UpdateViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

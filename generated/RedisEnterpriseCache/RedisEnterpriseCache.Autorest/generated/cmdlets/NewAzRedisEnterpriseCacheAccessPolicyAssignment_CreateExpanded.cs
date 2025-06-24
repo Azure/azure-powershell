@@ -13,10 +13,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
     /// [OpenAPI] CreateUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/accessPolicyAssignments/{accessPolicyAssignmentName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzRedisEnterpriseCacheAccessPolicyAssignment_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Description(@"Creates/Updates a particular access policy assignment for a database")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/accessPolicyAssignments/{accessPolicyAssignmentName}", ApiVersion = "2024-09-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/accessPolicyAssignments/{accessPolicyAssignmentName}", ApiVersion = "2025-05-01-preview")]
     public partial class NewAzRedisEnterpriseCacheAccessPolicyAssignment_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener
     {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Describes the access policy assignment of Redis Enterprise database</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.AccessPolicyAssignment();
+        private Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.AccessPolicyAssignment();
 
         /// <summary>Backing field for <see cref="AccessPolicyAssignmentName" /> property.</summary>
         private string _accessPolicyAssignmentName;
@@ -80,12 +80,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
         /// <summary>Backing field for <see cref="ClusterName" /> property.</summary>
         private string _clusterName;
 
-        /// <summary>The name of the Redis Enterprise cluster.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the Redis Enterprise cluster.")]
+        /// <summary>
+        /// The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+        /// There can be no leading nor trailing nor consecutive hyphens
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens")]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The name of the Redis Enterprise cluster.",
+        Description = @"The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens",
         SerializedName = @"clusterName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category(global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.ParameterCategory.Path)]
@@ -227,12 +230,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment">Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment">Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -539,12 +542,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment">Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment">Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment> response)
         {
             using( NoSynchronizationContext )
             {
@@ -556,7 +559,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment
                 WriteObject((await response));
             }
         }

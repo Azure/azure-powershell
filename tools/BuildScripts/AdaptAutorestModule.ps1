@@ -74,41 +74,53 @@ if (-not (Test-Path $slnPath)) {
 if (-not (Test-Path $parentModulePath)) {
     Write-Host "New module detected, creating parent module $parentModulePath ..." -ForegroundColor DarkGreen
     New-Item -ItemType Directory -Force -Path $parentModulePath
-    <#
-        create csproj for parent module if not existed
-    #>
-    $parentModuleCsprojPath = Join-Path $parentModulePath "$parentModuleName.csproj"
+}
+
+<#
+    create csproj for parent module if not existed
+#>
+$parentModuleCsprojPath = Join-Path $parentModulePath "$parentModuleName.csproj"
+if (-not (Test-Path $parentModuleCsprojPath)) {
     Write-Host "Creating $parentModuleCsprojPath ..." -ForegroundColor DarkGreen
     New-GeneratedFileFromTemplate -TemplateName 'HandcraftedModule.csproj' -GeneratedFileName "$parentModuleName.csproj" -GeneratedDirectory $parentModulePath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
     dotnet sln $slnPath add $parentModuleCsprojPath
-    <#
-        create AsemblyInfo.cs for parent module if not existed
-    #>
-    $propertiesPath = Join-Path $parentModulePath 'Properties'
+}
+
+<#
+    create AsemblyInfo.cs for parent module if not existed
+#>
+$propertiesPath = Join-Path $parentModulePath 'Properties'
+if (-not (Test-Path $propertiesPath)) {
     New-Item -ItemType Directory -Force -Path $propertiesPath
-    Write-Host "Creating $propertiesPath/AssemblyInfo.cs ..." -ForegroundColor DarkGreen
-    New-GeneratedFileFromTemplate -TemplateName 'AssemblyInfo.cs' -GeneratedFileName "AssemblyInfo.cs" -GeneratedDirectory $propertiesPath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
-    <#
-        create psd1 for parent module if not existed
-    #>
+    if (-not (Test-Path (Join-Path $propertiesPath 'AssemblyInfo.cs'))) {
+        Write-Host "Creating $propertiesPath/AssemblyInfo.cs ..." -ForegroundColor DarkGreen
+        New-GeneratedFileFromTemplate -TemplateName 'AssemblyInfo.cs' -GeneratedFileName "AssemblyInfo.cs" -GeneratedDirectory $propertiesPath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
+    }
+}
+
+<#
+    create psd1 for parent module if not existed
+#>
+if (-not (Test-Path (Join-Path $parentModulePath "Az.$ModuleRootName.psd1"))) {
     Write-Host "Creating $parentModulePath/Az.$ModuleRootName.psd1 ..." -ForegroundColor DarkGreen
     New-GeneratedFileFromTemplate -TemplateName 'Module.psd1' -GeneratedFileName "Az.$ModuleRootName.psd1" -GeneratedDirectory $parentModulePath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
-    <#
-        create ChangeLog.md for parent module if not existed
-    #>
+}
+
+<#
+    create ChangeLog.md for parent module if not existed
+#>
+if (-not (Test-Path (Join-Path $parentModulePath "ChangeLog.md"))) {
     Write-Host "Creating $parentModulePath/ChangeLog.md ..." -ForegroundColor DarkGreen
     New-GeneratedFileFromTemplate -TemplateName 'ChangeLog.md' -GeneratedFileName "ChangeLog.md" -GeneratedDirectory $parentModulePath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
 }
+
 <#
     merge sub module to parent module psd1
 #>
-$parentModulePsd1Path = Join-Path $ParentModulePath "Az.$ModuleRootName.psd1"
+$parentModulePsd1Path = Join-Path $parentModulePath "Az.$ModuleRootName.psd1"
 Write-Host "Merging metadata of $SubModulePath/Az.$subModuleNameTrimmed.psd1 to $parentModulePsd1Path ..." -ForegroundColor DarkGreen
-if (Test-Path $parentModulePsd1Path) {
-    $parentModuleMetadata = Import-LocalizedData -BaseDirectory $ParentModulePath -FileName "Az.$ModuleRootName.psd1"
-} else {
-    $parentModuleMetadata = Import-LocalizedData -BaseDirectory $TemplatePath -FileName 'Module.psd1'
-}
+$parentModuleMetadata = Import-LocalizedData -BaseDirectory $ParentModulePath -FileName "Az.$ModuleRootName.psd1"
+
 $parentModuleMetadata.RequiredAssemblies = (@($parentModuleMetadata.RequiredAssemblies) + "$SubModuleName/bin/Az.$subModuleNameTrimmed.private.dll") | Select-Object -Unique
 $parentModuleMetadata.FormatsToProcess = (@($parentModuleMetadata.FormatsToProcess) + "$SubModuleName/Az.$subModuleNameTrimmed.format.ps1xml") | Select-Object -Unique
 $parentModuleMetadata.NestedModules = (@($parentModuleMetadata.NestedModules) + "$SubModuleName/Az.$subModuleNameTrimmed.psm1") | Select-Object -Unique
@@ -122,9 +134,11 @@ if ($parentModuleMetadata.PrivateData -and $parentModuleMetadata.PrivateData.PSD
 
 $subMoudleMetadata = Import-LocalizedData -BaseDirectory $SubModulePath -FileName "Az.$subModuleNameTrimmed.psd1"
 
+$parentModuleMetadata.FunctionsToExport = @($parentModuleMetadata.FunctionsToExport)
 $subMoudleMetadata.FunctionsToExport | Where-Object { '*' -ne $_ } | ForEach-Object { $parentModuleMetadata.FunctionsToExport += $_ }
 $parentModuleMetadata.FunctionsToExport = $parentModuleMetadata.FunctionsToExport | Select-Object -Unique
 
+$parentModuleMetadata.AliasesToExport = @($parentModuleMetadata.AliasesToExport)
 $subMoudleMetadata.AliasesToExport | Where-Object { '*' -ne $_ } | ForEach-Object { $parentModuleMetadata.AliasesToExport += $_ }
 $parentModuleMetadata.AliasesToExport = $parentModuleMetadata.AliasesToExport | Select-Object -Unique
 
@@ -182,6 +196,8 @@ try{
             [string]$SubModuleNameTrimmed
         )
 
+        $helpMarkDownScriptPath = Join-Path $RepoRoot 'tools' 'BuildScripts' 'HelpMarkDown.psm1'
+        Import-Module $helpMarkDownScriptPath
         $resolveScriptPath = Join-Path $RepoRoot 'tools' 'ResolveTools' 'Resolve-Psd1.ps1'
         $artifacts = Join-Path $RepoRoot 'artifacts'
         $artifactAccountPsd1Path = Join-Path $artifacts 'Debug' "Az.Accounts" "Az.Accounts.psd1"
@@ -207,6 +223,13 @@ try{
 
         if (-Not (Test-Path $helpPath)) {
             New-Item -Type Directory $helpPath -Force
+            New-MarkDownHelp -Module "Az.$ModuleRootName" -OutputFolder $helpPath -AlphabeticParamsOrder -UseFullTypeName -WithModulePage -ExcludeDontShow
+            $indexPath = Join-Path $helpPath "Az.$ModuleRootName.md"
+            $content = Get-Content -Path $indexPath
+            $content = $content -replace '{{ Update Download Link }}', "https://learn.microsoft.com/powershell/module/az.$($ModuleRootName.ToLower())"
+            $content = $content -replace '{{ Please enter version of help manually \(X.X.X.X\) format }}', '1.0.0.0'
+            $content = $content -replace '{{ Fill in the Description }}', "Microsoft Azure PowerShell: $ModuleRootName cmdlets"
+            $content | Set-Content -Path $indexPath
         }
         Get-ChildItem $subModuleHelpPath -Filter *-*.md | Copy-Item -Destination (Join-Path $helpPath $_.Name) -Force
         Write-Host "Refreshing help markdown files under: $helpPath ..."
@@ -218,6 +241,8 @@ try{
                 Write-Host "Redundant help markdown detected, removing $helpFile ..."
                 Remove-Item $helpFile.FullName -Force
             }
+            Write-Host "Removing ProgressAction parameter from $helpFile ..."
+            Remove-CommonParameterFromMarkdown -Path $helpFile.FullName -ParameterName 'ProgressAction'
         }
         & $resolveScriptPath -ModuleName $ModuleRootName -ArtifactFolder $artifacts -Psd1Folder $parentModulePath
     } -ArgumentList $RepoRoot, $ModuleRootName, $parentModuleName, $SubModuleName, $subModuleNameTrimmed
@@ -244,3 +269,8 @@ if ($existingCsprojPath) {
     Create or refresh generate-info.json for submodule
 #>
 New-GenerateInfoJson -GeneratedDirectory $subModulePath
+
+<#
+    Update module in tools\CreateMappings_rules.json
+#>
+Update-MappingJson -RepoRoot $RepoRoot -ModuleName $ModuleRootName

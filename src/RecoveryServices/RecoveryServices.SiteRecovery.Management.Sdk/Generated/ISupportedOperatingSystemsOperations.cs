@@ -19,6 +19,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Gets the data of supported operating systems by SRS.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='instanceType'>
         /// The instance type.
         /// </param>
@@ -34,7 +41,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SupportedOperatingSystems>> GetWithHttpMessagesAsync(string instanceType = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SupportedOperatingSystems>> GetWithHttpMessagesAsync(string resourceGroupName, string resourceName, string instanceType = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

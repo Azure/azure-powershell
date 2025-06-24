@@ -308,6 +308,10 @@ namespace Microsoft.Azure.Management.Synapse
         /// </summary>
         public virtual IIntegrationRuntimeStatusOperations IntegrationRuntimeStatus { get; private set; }
         /// <summary>
+        /// Gets the IGetOperations
+        /// </summary>
+        public virtual IGetOperations Get { get; private set; }
+        /// <summary>
         /// Gets the ISparkConfigurationOperations
         /// </summary>
         public virtual ISparkConfigurationOperations SparkConfiguration { get; private set; }
@@ -519,6 +523,9 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -613,6 +620,7 @@ namespace Microsoft.Azure.Management.Synapse
             this.IntegrationRuntimeAuthKeys = new IntegrationRuntimeAuthKeysOperations(this);
             this.IntegrationRuntimeMonitoringData = new IntegrationRuntimeMonitoringDataOperations(this);
             this.IntegrationRuntimeStatus = new IntegrationRuntimeStatusOperations(this);
+            this.Get = new GetOperations(this);
             this.SparkConfiguration = new SparkConfigurationOperations(this);
             this.SparkConfigurations = new SparkConfigurationsOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");

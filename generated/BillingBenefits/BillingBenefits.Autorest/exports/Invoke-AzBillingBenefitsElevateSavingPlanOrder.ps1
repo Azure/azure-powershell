@@ -22,16 +22,15 @@ Elevate as owner on savings plan order based on billing permissions.
 .Example
 Invoke-AzBillingBenefitsElevateSavingPlanOrder -SavingsPlanOrderId "e0b1f446-5684-4fa6-a0c8-d394368eda11"
 .Example
-$identity = @{
-            SavingsPlanOrderId = "e45905d2-9207-4f24-8549-f615c203b49b"
-}
-
-$response = Invoke-AzBillingBenefitsElevateSavingPlanOrder -InputObject $identity
+$identity = @{	
+            SavingsPlanOrderId = "e45905d2-9207-4f24-8549-f615c203b49b"	
+}	
+$response = Invoke-AzBillingBenefitsElevateSavingPlanOrder -InputObject $identity	
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IRoleAssignmentEntity
+Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IRoleAssignmentEntity
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,7 +46,7 @@ INPUTOBJECT <IBillingBenefitsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.billingbenefits/invoke-azbillingbenefitselevatesavingplanorder
 #>
 function Invoke-AzBillingBenefitsElevateSavingPlanOrder {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IRoleAssignmentEntity])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IRoleAssignmentEntity])]
 [CmdletBinding(DefaultParameterSetName='Elevate', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Elevate', Mandatory)]
@@ -60,7 +59,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -119,6 +117,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -148,6 +155,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

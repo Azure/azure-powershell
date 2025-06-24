@@ -55,24 +55,13 @@ title: PrometheusRuleGroups
 root-module-name: $(prefix).AlertsManagement
 subject-prefix: ""
 inlining-threshold: 100
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
-    # Remove the unexpanded parameter set
     - where:
-        variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
-      remove: true
-    # Hide CreateViaIdentity for customization
-    - where:
-        variant: ^CreateViaIdentity$
+        variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
       remove: true
     - where:
-        variant: ^Create$
+        variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
       remove: true
     - where:
         subject: PrometheuRuleGroup
@@ -82,8 +71,10 @@ directive:
         verb: Set
       hide: true
     - model-cmdlet:
-        - PrometheusRule
-        - PrometheusRuleGroupAction
+        - model-name: PrometheusRule
+          cmdlet-name: New-AzPrometheusRuleObject
+        - model-name: PrometheusRuleGroupAction
+          cmdlet-name: New-AzPrometheusRuleGroupActionObject
     - where:
         model-name: PrometheusRuleGroupResource
       set:
@@ -93,5 +84,4 @@ directive:
             - Location
             - ClusterName
             - Enabled
-    
 ```

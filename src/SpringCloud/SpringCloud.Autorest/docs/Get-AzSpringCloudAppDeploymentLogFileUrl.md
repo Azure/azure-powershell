@@ -25,6 +25,19 @@ Get-AzSpringCloudAppDeploymentLogFileUrl -InputObject <ISpringCloudIdentity> [-D
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### GetViaIdentityApp
+```
+Get-AzSpringCloudAppDeploymentLogFileUrl -AppInputObject <ISpringCloudIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GetViaIdentitySpring
+```
+Get-AzSpringCloudAppDeploymentLogFileUrl -AppName <String> -Name <String>
+ -SpringInputObject <ISpringCloudIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get deployment log file URL
 
@@ -36,7 +49,7 @@ Get-AzSpringCloudAppDeploymentLogFileUrl -ResourceGroupName SpringCloud-gp-junxi
 ```
 
 ```output
-url         :"https://xxxxxxxxxxxxxxxxxxxxxxxxxxx.blob.core.windows.net/8a34c541b97d45c591d5749e7ec77913/logs/?sv=2018-03-28&sr=b&sig=yAh3I%2B1P9pfSRknfOy%2BCheeomZNoKM9R1brvzj2OTtw%3D&se=2022-07-13T10%3A15%3A46Z&sp=r"
+url         :"https://xxxxxxxxxxxxxxxxxxxxxxxxxxx.blob.core.windows.net/*****/logs/?sv=2018-03-28&sr=b&sig=******%3D&se=2022-07-13T10%3A15%3A46Z&sp=r"
 ```
 
 Get deployment log file URL.
@@ -47,19 +60,34 @@ Get-AzSpringCloudAppDeployment -ResourceGroupName SpringCloud-gp-junxi -ServiceN
 ```
 
 ```output
-url         :"https://xxxxxxxxxxxxxxxxxxxxxxxxxxx.blob.core.windows.net/8a34c541b97d45c591d5749e7ec77913/logs/?sv=2018-03-28&sr=b&sig=yAh3I%2B1P9pfSRknfOy%2BCheeomZNoKM9R1brvzj2OTtw%3D&se=2022-07-13T10%3A15%3A46Z&sp=r"
+url         :"https://xxxxxxxxxxxxxxxxxxxxxxxxxxx.blob.core.windows.net/*****/logs/?sv=2018-03-28&sr=b&sig=******%3D&se=2022-07-13T10%3A15%3A46Z&sp=r"
 ```
 
 Get deployment log file URL by pipeline.
 
 ## PARAMETERS
 
+### -AppInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: GetViaIdentityApp
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -AppName
 The name of the App resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentitySpring
 Aliases:
 
 Required: True
@@ -87,7 +115,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
@@ -106,7 +133,7 @@ The name of the Deployment resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityApp, GetViaIdentitySpring
 Aliases:
 
 Required: True
@@ -159,6 +186,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SpringInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: GetViaIdentitySpring
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -218,7 +260,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ILogFileUrlResponse
 
 ## NOTES
 

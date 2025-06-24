@@ -1,0 +1,91 @@
+{
+  "Get-AzIoTOperationsServiceBrokerListener+[NoContext]+List+$GET+https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.IoTOperations/instances/aio-th2k3/brokers/default/listeners?api-version=2024-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.IoTOperations/instances/aio-th2k3/brokers/default/listeners?api-version=2024-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "ab2b1a30-d464-4f58-8cf9-d0aeea8277dd" ],
+        "CommandName": [ "Get-AzIoTOperationsServiceBrokerListener" ],
+        "FullCommandName": [ "Get-AzIoTOperationsServiceBrokerListener_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.IoTOperationsService/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "71b2b09f-d150-4462-af92-34591019fca9" ],
+        "x-ms-correlation-request-id": [ "e4eef159-17e2-4a7e-a388-80f65ff04302" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250317T174122Z:e4eef159-17e2-4a7e-a388-80f65ff04302" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 167E37A6116C407FB03EF788D0AED21C Ref B: CO6AA3150217039 Ref C: 2025-03-17T17:41:22Z" ],
+        "Date": [ "Mon, 17 Mar 2025 17:41:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2403" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.IoTOperations/instances/aio-th2k3/brokers/default/listeners/default\",\"name\":\"default\",\"type\":\"microsoft.iotoperations/instances/brokers/listeners\",\"extendedLocation\":{\"name\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.ExtendedLocation/customLocations/location-th2k3\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"739f5293-922a-4616-b106-3662530ef99f\",\"createdByType\":\"Application\",\"createdAt\":\"2025-03-14T21:56:34.8235437Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-03-14T22:30:46.731908Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"serviceType\":\"ClusterIp\",\"serviceName\":\"aio-broker\",\"ports\":[{\"authenticationRef\":\"default\",\"port\":18883,\"protocol\":\"Mqtt\",\"tls\":{\"certManagerCertificateSpec\":{\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"ClusterIssuer\",\"name\":\"azure-iot-operations-aio-certificate-issuer\"},\"privateKey\":{\"algorithm\":\"Ec256\",\"rotationPolicy\":\"Always\"}},\"mode\":\"Automatic\"}}]}},{\"id\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.IoTOperations/instances/aio-th2k3/brokers/default/listeners/test-listener\",\"name\":\"test-listener\",\"type\":\"microsoft.iotoperations/instances/brokers/listeners\",\"extendedLocation\":{\"name\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.ExtendedLocation/customLocations/location-th2k3\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"739f5293-922a-4616-b106-3662530ef99f\",\"createdByType\":\"Application\",\"createdAt\":\"2025-03-14T22:06:07.7618187Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-03-14T22:30:46.7365991Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"serviceType\":\"LoadBalancer\",\"serviceName\":\"aio-dmqtt-frontend-test\",\"ports\":[{\"port\":1883,\"protocol\":\"Mqtt\"},{\"authenticationRef\":\"default\",\"port\":9883,\"protocol\":\"Mqtt\",\"tls\":{\"certManagerCertificateSpec\":{\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"ClusterIssuer\",\"name\":\"azure-iot-operations-aio-certificate-issuer\"},\"privateKey\":{\"algorithm\":\"Ec256\",\"rotationPolicy\":\"Always\"}},\"mode\":\"Automatic\"}}]}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzIoTOperationsServiceBrokerListener+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.IoTOperations/instances/aio-th2k3/brokers/default/listeners/default?api-version=2024-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.IoTOperations/instances/aio-th2k3/brokers/default/listeners/default?api-version=2024-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "3b1c88d0-e8bf-476a-bde5-ad4680102e67" ],
+        "CommandName": [ "Get-AzIoTOperationsServiceBrokerListener" ],
+        "FullCommandName": [ "Get-AzIoTOperationsServiceBrokerListener_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.IoTOperationsService/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"82008776-0000-0200-0000-67d4ae160000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "a45d2c0a-dce8-45a1-804f-7216f2505289" ],
+        "x-ms-correlation-request-id": [ "64071882-58df-4232-9447-511f2b3453e7" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250317T174122Z:64071882-58df-4232-9447-511f2b3453e7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 805E040B07614FCC999257906A6CAB25 Ref B: CO6AA3150217039 Ref C: 2025-03-17T17:41:22Z" ],
+        "Date": [ "Mon, 17 Mar 2025 17:41:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1165" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.IoTOperations/instances/aio-th2k3/brokers/default/listeners/default\",\"name\":\"default\",\"type\":\"microsoft.iotoperations/instances/brokers/listeners\",\"extendedLocation\":{\"name\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.ExtendedLocation/customLocations/location-th2k3\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"739f5293-922a-4616-b106-3662530ef99f\",\"createdByType\":\"Application\",\"createdAt\":\"2025-03-14T21:56:34.8235437Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-03-14T22:30:46.731908Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"serviceType\":\"ClusterIp\",\"serviceName\":\"aio-broker\",\"ports\":[{\"authenticationRef\":\"default\",\"port\":18883,\"protocol\":\"Mqtt\",\"tls\":{\"certManagerCertificateSpec\":{\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"ClusterIssuer\",\"name\":\"azure-iot-operations-aio-certificate-issuer\"},\"privateKey\":{\"algorithm\":\"Ec256\",\"rotationPolicy\":\"Always\"}},\"mode\":\"Automatic\"}}]}}",
+      "isContentBase64": false
+    }
+  }
+}

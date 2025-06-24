@@ -14,7 +14,8 @@ Removes a identity from an application gateway.
 
 ```
 Remove-AzApplicationGatewayIdentity -ApplicationGateway <PSApplicationGateway>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

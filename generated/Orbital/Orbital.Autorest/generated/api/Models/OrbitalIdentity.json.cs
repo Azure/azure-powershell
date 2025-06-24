@@ -76,14 +76,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_spacecraftName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString>("spacecraftName"), out var __jsonSpacecraftName) ? (string)__jsonSpacecraftName : (string)SpacecraftName;}
-            {_contactName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString>("contactName"), out var __jsonContactName) ? (string)__jsonContactName : (string)ContactName;}
-            {_contactProfileName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString>("contactProfileName"), out var __jsonContactProfileName) ? (string)__jsonContactProfileName : (string)ContactProfileName;}
-            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)Location;}
-            {_operationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString>("operationId"), out var __jsonOperationId) ? (string)__jsonOperationId : (string)OperationId;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_spacecraftName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString>("spacecraftName"), out var __jsonSpacecraftName) ? (string)__jsonSpacecraftName : (string)_spacecraftName;}
+            {_contactName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString>("contactName"), out var __jsonContactName) ? (string)__jsonContactName : (string)_contactName;}
+            {_contactProfileName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString>("contactProfileName"), out var __jsonContactProfileName) ? (string)__jsonContactProfileName : (string)_contactProfileName;}
+            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
+            {_operationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString>("operationId"), out var __jsonOperationId) ? (string)__jsonOperationId : (string)_operationId;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

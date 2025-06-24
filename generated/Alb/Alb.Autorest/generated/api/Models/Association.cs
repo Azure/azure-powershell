@@ -165,7 +165,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
         ReadOnly = true,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Association Type",
         SerializedName = @"associationType",
         PossibleTypes = new [] { typeof(string) })]
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Association ID.",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]

@@ -1,0 +1,47 @@
+{
+  "Get-AzLambdaTestOrganization+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/abdul-test/providers/LambdaTest.HyperExecute/organizations/test-cli-instance-1?api-version=2024-02-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/abdul-test/providers/LambdaTest.HyperExecute/organizations/test-cli-instance-1?api-version=2024-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "c8f97755-bde5-4981-be27-de0e4270d249" ],
+        "CommandName": [ "Get-AzLambdaTestOrganization" ],
+        "FullCommandName": [ "Get-AzLambdaTestOrganization_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.LambdaTest/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0a000ccb-0000-3300-0000-67f9aa3e0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "199997" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "6629bd54-d23a-489a-81f8-680a80073889" ],
+        "x-ms-correlation-request-id": [ "155277b3-6917-4dcb-8151-bda38b1905fa" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20250411T234931Z:155277b3-6917-4dcb-8151-bda38b1905fa" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8115D5CF6ED442DBA07A841E5DF5470F Ref B: MAA201060513049 Ref C: 2025-04-11T23:49:29Z" ],
+        "Date": [ "Fri, 11 Apr 2025 23:49:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1254" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/abdul-test/providers/lambdatest.hyperexecute/organizations/test-cli-instance-1\",\"name\":\"test-cli-instance-1\",\"type\":\"lambdatest.hyperexecute/organizations\",\"location\":\"Central US EUAP\",\"tags\":{\"TestName1\":\"TestValue1\"},\"systemData\":{\"createdBy\":\"aggarwalsw@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-11T20:14:20.861147Z\",\"lastModifiedBy\":\"aggarwalsw@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-04-11T23:45:55.7452464Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"marketplace\":{\"subscriptionId\":\"87f5f36c-5cb3-4f1b-c9ea-f54f594f8b2c\",\"subscriptionStatus\":\"PendingFulfillmentStart\",\"offerDetails\":{\"publisherId\":\"lambdatestinc1584019832435\",\"offerId\":\"lambdatest_liftr_testing\",\"planId\":\"testing\",\"planName\":\"testing_liftr\",\"termUnit\":\"P1Y\",\"termId\":\"o73usof6rkyy\"}},\"provisioningState\":\"Succeeded\",\"user\":{\"firstName\":\"\",\"lastName\":\"\",\"emailAddress\":\"aggarwalsw@microsoft.com\",\"upn\":\"aggarwalsw@microsoft.com\",\"phoneNumber\":\"\"},\"partnerProperties\":{\"licensesSubscribed\":3},\"singleSignOnProperties\":{\"type\":\"Saml\",\"state\":\"Initial\",\"enterpriseAppId\":\"0b9873df-1629-4036-9360-5f2f65c0a0d3\",\"aadDomains\":[\"MicrosoftCustomerLed.onmicrosoft.com\"]}}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -19,6 +19,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Lists the storage classification mappings for the fabric.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -37,7 +44,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<StorageClassificationMapping>>> ListByReplicationStorageClassificationsWithHttpMessagesAsync(string fabricName, string storageClassificationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<StorageClassificationMapping>>> ListByReplicationStorageClassificationsWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the details of the specified storage classification mapping.
@@ -45,6 +52,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Gets the details of the specified storage classification mapping.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -66,7 +80,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StorageClassificationMapping>> GetWithHttpMessagesAsync(string fabricName, string storageClassificationName, string storageClassificationMappingName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StorageClassificationMapping>> GetWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, string storageClassificationMappingName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to create a storage classification mapping.
@@ -74,6 +88,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// The operation to create a storage classification mapping.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -98,7 +119,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StorageClassificationMapping>> CreateWithHttpMessagesAsync(string fabricName, string storageClassificationName, string storageClassificationMappingName, StorageMappingInputProperties properties = default(StorageMappingInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StorageClassificationMapping>> CreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, string storageClassificationMappingName, StorageMappingInputProperties properties = default(StorageMappingInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to delete a storage classification mapping.
@@ -106,6 +127,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// The operation to delete a storage classification mapping.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -124,7 +152,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string fabricName, string storageClassificationName, string storageClassificationMappingName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, string storageClassificationMappingName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists the storage classification mappings in the vault.
@@ -132,6 +160,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Lists the storage classification mappings in the vault.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -144,7 +179,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<StorageClassificationMapping>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<StorageClassificationMapping>>> ListWithHttpMessagesAsync(string resourceGroupName, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to create a storage classification mapping.
@@ -152,6 +187,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// The operation to create a storage classification mapping.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -176,7 +218,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StorageClassificationMapping>> BeginCreateWithHttpMessagesAsync(string fabricName, string storageClassificationName, string storageClassificationMappingName, StorageMappingInputProperties properties = default(StorageMappingInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StorageClassificationMapping>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, string storageClassificationMappingName, StorageMappingInputProperties properties = default(StorageMappingInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to delete a storage classification mapping.
@@ -184,6 +226,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// The operation to delete a storage classification mapping.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -202,7 +251,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string fabricName, string storageClassificationName, string storageClassificationMappingName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, string storageClassificationMappingName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists the storage classification mappings for the fabric.

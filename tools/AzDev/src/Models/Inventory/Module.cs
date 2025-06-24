@@ -33,15 +33,20 @@ namespace AzDev.Models.Inventory
             FileSystem = fs;
             Path = path;
         }
-        internal Module() {}
+        internal Module() { }
 
-        public static Module FromFileSystem(IFileSystem fs, string path)
+        public static Module FromFileSystem(IFileSystem fs, ILogger logger, string path)
         {
             Module m = new Module(fs, path)
             {
                 Name = fs.Path.GetFileName(path),
                 Projects = fs.Directory.GetDirectories(path)
-                    .Where(dir => !Conventions.IsExcludedProjectDirectory(fs, dir, out _))
+                    .Where(dir =>
+                    {
+                        var exclude = Conventions.IsExcludedProjectDirectory(fs, dir, out var r);
+                        if (exclude) logger.Debug($"Excluding project directory '{dir}' because {r}");
+                        return !exclude;
+                    })
                     .Select(dir => Project.FromFileSystem(fs, dir))
                     .ToList()
             };

@@ -39,7 +39,7 @@ namespace AzDev.Services
         public static bool IsExcludedModuleDirectory(string dir)
         {
             var slash = System.IO.Path.DirectorySeparatorChar;
-            return dir.EndsWith($"{slash}shared") || dir.EndsWith($"{slash}lib");
+            return dir.EndsWith($"{slash}shared") || dir.EndsWith($"{slash}{FileOrDirNames.Lib}");
         }
 
         internal static bool IsLegacyHelperProject(string path, out string reason)
@@ -107,11 +107,13 @@ namespace AzDev.Services
                 return true;
             }
 
-            if (!TryGetOnlyCsprojPath(fs, path, out var _, out var cannotFindCsproj))
+            if (!TryGetOnlyCsprojPath(fs, path, out var _, out var cannotFindCsproj)
+                && !IsAutorestBasedProject(path, out var notAutorestBased))
             {
-                reason = $"Path does not contain a single .csproj file: {cannotFindCsproj}";
+                reason = $"Path does not contain a single .csproj file: {cannotFindCsproj} and is not autorest based: {notAutorestBased}";
                 return true;
             }
+
             reason = null;
             return false;
         }

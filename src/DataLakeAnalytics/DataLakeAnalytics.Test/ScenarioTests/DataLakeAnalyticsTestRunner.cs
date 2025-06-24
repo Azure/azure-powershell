@@ -12,12 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.DataLake.Analytics;
-using Microsoft.Azure.Management.DataLake.Store;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using System.Collections.Generic;
-using NewResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
 using Microsoft.Azure.Commands.TestFx;
+using Microsoft.Azure.Management.DataLake.Analytics;
+using System.Collections.Generic;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
@@ -53,47 +50,18 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
                         {"Microsoft.Features", null},
                         {"Microsoft.Authorization", null}
                     }
-                ).WithManagementClients(
-                    GetNewResourceManagementClient,
-                    GetDataLakeStoreAccountManagementClient,
-                    GetDataLakeAnalyticsAccountManagementClient,
-                    GetDataLakeAnalyticsJobManagementClient,
-                    GetDataLakeAnalyticsCatalogManagementClient
+                )
+                .WithManagementClients(
+                    context =>
+                    {
+                        return context.GetServiceClient<DataLakeAnalyticsJobManagementClient>(true);
+                    },
+                    context =>
+                    {
+                        return context.GetServiceClient<DataLakeAnalyticsCatalogManagementClient>(true);
+                    }
                 )
                 .Build();
-        }
-
-        private static NewResourceManagementClient GetNewResourceManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<NewResourceManagementClient>();
-        }
-
-        private static DataLakeStoreAccountManagementClient GetDataLakeStoreAccountManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<DataLakeStoreAccountManagementClient>();
-        }
-
-        private static DataLakeAnalyticsAccountManagementClient GetDataLakeAnalyticsAccountManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<DataLakeAnalyticsAccountManagementClient>();
-        }
-
-        private static DataLakeAnalyticsJobManagementClient GetDataLakeAnalyticsJobManagementClient(MockContext context)
-        {
-            var currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
-            var toReturn = context.GetServiceClient<DataLakeAnalyticsJobManagementClient>(true);
-            toReturn.AdlaJobDnsSuffix =
-                currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", "");
-            return toReturn;
-        }
-
-        private static DataLakeAnalyticsCatalogManagementClient GetDataLakeAnalyticsCatalogManagementClient(MockContext context)
-        {
-            var currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
-            var toReturn = context.GetServiceClient<DataLakeAnalyticsCatalogManagementClient>(true);
-            toReturn.AdlaCatalogDnsSuffix =
-                currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", "");
-            return toReturn;
         }
     }
 }

@@ -8,11 +8,12 @@ schema: 2.0.0
 # New-AzEdgeOrderItem
 
 ## SYNOPSIS
-Creates an order item.
-Existing order item cannot be updated with this api and should instead be updated with the Update order item API.
+create an order item.
+Existing order item cannot be updated with this api and should instead be updated with the create order item API.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzEdgeOrderItem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -ForwardAddressContactDetail <IContactDetails> -Location <String> -OrderId <String>
@@ -21,9 +22,23 @@ New-AzEdgeOrderItem -Name <String> -ResourceGroupName <String> [-SubscriptionId 
  [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzEdgeOrderItem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzEdgeOrderItem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates an order item.
-Existing order item cannot be updated with this api and should instead be updated with the Update order item API.
+create an order item.
+Existing order item cannot be updated with this api and should instead be updated with the create order item API.
 
 ## EXAMPLES
 
@@ -125,11 +140,10 @@ Accept wildcard characters: False
 
 ### -ForwardAddressContactDetail
 Contact details for the address
-To construct, see NOTES section for FORWARDADDRESSCONTACTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IContactDetails
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IContactDetails
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -141,14 +155,43 @@ Accept wildcard characters: False
 
 ### -ForwardShippingAddress
 Shipping details for the address
-To construct, see NOTES section for FORWARDSHIPPINGADDRESS properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IShippingAddress
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IShippingAddress
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -160,7 +203,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -205,7 +248,7 @@ Id of the order to which order item belongs to
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -217,11 +260,10 @@ Accept wildcard characters: False
 
 ### -OrderItemDetail
 Represents order item details.
-To construct, see NOTES section for ORDERITEMDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemDetails
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemDetails
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -267,7 +309,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -315,7 +357,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResource
 
 ## NOTES
 

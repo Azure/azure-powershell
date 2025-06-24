@@ -16,16 +16,16 @@
 
 <#
 .Synopsis
-Creates or updates the custom resource provider.
+create the custom resource provider.
 .Description
-Creates or updates the custom resource provider.
+create the custom resource provider.
 .Example
 New-AzCustomProvider -ResourceGroupName myRG -Name Namespace.Type -Location "West US 2" -ResourceType @{Name="CustomRoute1"; Endpoint="https://www.contoso.com/"}
 .Example
 New-AzCustomProvider -ResourceGroupName myRG -Name Namespace2.Type -Location "West US 2" -ResourceType @{Name="CustomRoute1"; Endpoint="https://www.contoso.com/"}, @{Name="Associations"; Endpoint="https://contoso.com/myService"; RoutingType="Proxy,Cache,Extension"}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ICustomRpManifest
+Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomRpManifest
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -34,21 +34,21 @@ To create the parameters described below, construct a hash table containing the 
 ACTION <ICustomRpActionRouteDefinition[]>: A list of actions that the custom resource provider implements.
   Endpoint <String>: The route definition endpoint URI that the custom resource provider will proxy requests to. This can be in the form of a flat URI (e.g. 'https://testendpoint/') or can specify to route via a path (e.g. 'https://testendpoint/{requestPath}')
   Name <String>: The name of the route definition. This becomes the name for the ARM extension (e.g. '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{name}')
-  [RoutingType <ActionRouting?>]: The routing types that are supported for action requests.
+  [RoutingType <String>]: The routing types that are supported for action requests.
 
 RESOURCETYPE <ICustomRpResourceTypeRouteDefinition[]>: A list of resource types that the custom resource provider implements.
   Endpoint <String>: The route definition endpoint URI that the custom resource provider will proxy requests to. This can be in the form of a flat URI (e.g. 'https://testendpoint/') or can specify to route via a path (e.g. 'https://testendpoint/{requestPath}')
   Name <String>: The name of the route definition. This becomes the name for the ARM extension (e.g. '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{name}')
-  [RoutingType <ResourceTypeRouting?>]: The routing types that are supported for resource requests.
+  [RoutingType <String>]: The routing types that are supported for resource requests.
 
 VALIDATION <ICustomRpValidations[]>: A list of validations to run on the custom resource provider's requests.
   Specification <String>: A link to the validation specification. The specification must be hosted on raw.githubusercontent.com.
-  [ValidationType <ValidationType?>]: The type of validation to run against a matching request.
+  [ValidationType <String>]: The type of validation to run against a matching request.
 .Link
 https://learn.microsoft.com/powershell/module/az.customproviders/new-azcustomprovider
 #>
 function New-AzCustomProvider {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ICustomRpManifest])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomRpManifest])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -73,42 +73,51 @@ param(
     # 00000000-0000-0000-0000-000000000000)
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Category('Body')]
     [System.String]
     # Resource location
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ICustomRpActionRouteDefinition[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomRpActionRouteDefinition[]]
     # A list of actions that the custom resource provider implements.
-    # To construct, see NOTES section for ACTION properties and create a hash table.
     ${Action},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ICustomRpResourceTypeRouteDefinition[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomRpResourceTypeRouteDefinition[]]
     # A list of resource types that the custom resource provider implements.
-    # To construct, see NOTES section for RESOURCETYPE properties and create a hash table.
     ${ResourceType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ICustomRpValidations[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomRpValidations[]]
     # A list of validations to run on the custom resource provider's requests.
-    # To construct, see NOTES section for VALIDATION properties and create a hash table.
     ${Validation},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -178,6 +187,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -198,10 +216,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.CustomProviders.private\New-AzCustomProvider_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.CustomProviders.private\New-AzCustomProvider_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.CustomProviders.private\New-AzCustomProvider_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -215,6 +233,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

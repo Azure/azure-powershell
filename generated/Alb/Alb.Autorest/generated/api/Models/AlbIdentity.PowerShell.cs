@@ -95,6 +95,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentityInternal)this).FrontendName = (string) content.GetValueForProperty("FrontendName",((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentityInternal)this).FrontendName, global::System.Convert.ToString);
             }
+            if (content.Contains("SecurityPolicyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentityInternal)this).SecurityPolicyName = (string) content.GetValueForProperty("SecurityPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentityInternal)this).SecurityPolicyName, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -135,6 +139,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
             if (content.Contains("FrontendName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentityInternal)this).FrontendName = (string) content.GetValueForProperty("FrontendName",((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentityInternal)this).FrontendName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SecurityPolicyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentityInternal)this).SecurityPolicyName = (string) content.GetValueForProperty("SecurityPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentityInternal)this).SecurityPolicyName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Models;
@@ -41,6 +43,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public Action<string> DebugLog;
         public Action<string> InteractiveInformationLog;
         internal Func<string, string> PromptAndReadLine;
+
+        public ICmdletContext CmdletContext;
 
         private List<AzureTenant> _queriedTenants = new List<AzureTenant>();
 
@@ -83,7 +87,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// </summary>
         /// <param name="sourceContext">The name of the context to change</param>
         /// <param name="targetContext">The enw name for the context</param>
-        /// <returns>true if the rename was successful, otherwise falkse</returns>
+        /// <returns>true if the rename was successful, otherwise false</returns>
         public bool TryRenameContext(string sourceContext, string targetContext)
         {
             return _profile.TryRenameContext(sourceContext, targetContext);
@@ -321,7 +325,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                             TryGetTenantSubscription(token, account, environment, subscriptionId, subscriptionName, false, out tempSubscription, out tempTenant, out tempSubscriptions))
                         {
                             // If no subscription found for the given token/tenant，discard tempTenant value.
-                            // Continue to look for matched subscripitons until one subscription retrived by its home tenant is found.
+                            // Continue to look for matched subscriptions until one subscription retrieved by its home tenant is found.
                             if (defaultTenant == null && tempSubscription != null)
                             {
                                 defaultSubscription = tempSubscription;
@@ -683,6 +687,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 return new SimpleAccessToken(account, tenantId);
             }
 
+            var optionalParameters = new Dictionary<string, object>()
+            {
+                {AuthenticationFactory.TokenCacheParameterName,  _cache},
+                {AuthenticationFactory.ResourceIdParameterName, resourceId },
+                {AuthenticationFactory.CmdletContextParameterName, CmdletContext }
+            };
+
             return AzureSession.Instance.AuthenticationFactory.Authenticate(
                 account,
                 environment,
@@ -690,8 +701,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 password,
                 promptBehavior,
                 promptAction,
-                _cache,
-                resourceId);
+                optionalParameters);
         }
 
         private bool TryGetTenantSubscription(IAccessToken accessToken,

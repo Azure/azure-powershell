@@ -19,6 +19,13 @@ Remove-AzAksMaintenanceConfiguration -ConfigName <String> -ResourceGroupName <St
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityManagedCluster
+```
+Remove-AzAksMaintenanceConfiguration -ConfigName <String> -ManagedClusterInputObject <IAksIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzAksMaintenanceConfiguration -InputObject <IAksIdentity> [-DefaultProfile <PSObject>] [-PassThru]
@@ -48,7 +55,7 @@ The name of the maintenance configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityManagedCluster
 Aliases:
 
 Required: True
@@ -76,11 +83,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
 Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ManagedClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
+Parameter Sets: DeleteViaIdentityManagedCluster
 Aliases:
 
 Required: True

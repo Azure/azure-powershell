@@ -8,24 +8,58 @@ schema: 2.0.0
 # New-AzMobileNetworkService
 
 ## SYNOPSIS
-Creates or updates a service.
+create a service.
 Must be created in the same location as its parent mobile network.
 
 ## SYNTAX
 
+### CreateViaIdentityExpanded (Default)
+```
+New-AzMobileNetworkService -InputObject <IMobileNetworkIdentity> -Location <String>
+ -PccRule <IPccRuleConfiguration[]> -ServicePrecedence <Int32> [-MaximumBitRateDownlink <String>]
+ [-MaximumBitRateUplink <String>] [-ServiceQoPolicyAllocationAndRetentionPriorityLevel <Int32>]
+ [-ServiceQoPolicyFiveQi <Int32>] [-ServiceQoPolicyPreemptionCapability <String>]
+ [-ServiceQoPolicyPreemptionVulnerability <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzMobileNetworkService -MobileNetworkName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzMobileNetworkService -MobileNetworkName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateExpanded
 ```
 New-AzMobileNetworkService -MobileNetworkName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Location <String> -PccRule <IPccRuleConfiguration[]> -ServicePrecedence <Int32>
  [-MaximumBitRateDownlink <String>] [-MaximumBitRateUplink <String>]
  [-ServiceQoPolicyAllocationAndRetentionPriorityLevel <Int32>] [-ServiceQoPolicyFiveQi <Int32>]
- [-ServiceQoPolicyPreemptionCapability <PreemptionCapability>]
- [-ServiceQoPolicyPreemptionVulnerability <PreemptionVulnerability>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ServiceQoPolicyPreemptionCapability <String>] [-ServiceQoPolicyPreemptionVulnerability <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityMobileNetworkExpanded
+```
+New-AzMobileNetworkService -Name <String> -MobileNetworkInputObject <IMobileNetworkIdentity> -Location <String>
+ -PccRule <IPccRuleConfiguration[]> -ServicePrecedence <Int32> [-MaximumBitRateDownlink <String>]
+ [-MaximumBitRateUplink <String>] [-ServiceQoPolicyAllocationAndRetentionPriorityLevel <Int32>]
+ [-ServiceQoPolicyFiveQi <Int32>] [-ServiceQoPolicyPreemptionCapability <String>]
+ [-ServiceQoPolicyPreemptionVulnerability <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a service.
+create a service.
 Must be created in the same location as its parent mobile network.
 
 ## EXAMPLES
@@ -81,12 +115,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded, CreateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: True
@@ -101,7 +180,7 @@ Downlink bit rate.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded, CreateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: False
@@ -116,7 +195,7 @@ Uplink bit rate.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded, CreateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: False
@@ -126,12 +205,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MobileNetworkInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: CreateViaIdentityMobileNetworkExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -MobileNetworkName
 The name of the mobile network.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaJsonString, CreateViaJsonFilePath, CreateExpanded
 Aliases:
 
 Required: True
@@ -147,7 +241,7 @@ You must not use any of the following reserved strings - 'default', 'requested' 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaJsonString, CreateViaJsonFilePath, CreateExpanded, CreateViaIdentityMobileNetworkExpanded
 Aliases: ServiceName
 
 Required: True
@@ -174,11 +268,10 @@ Accept wildcard characters: False
 
 ### -PccRule
 The set of data flow policy rules that make up this service.
-To construct, see NOTES section for PCCRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPccRuleConfiguration[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPccRuleConfiguration[]
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded, CreateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: True
@@ -194,7 +287,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaJsonString, CreateViaJsonFilePath, CreateExpanded
 Aliases:
 
 Required: True
@@ -211,7 +304,7 @@ This value should be unique among all services configured in the mobile network.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded, CreateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: True
@@ -230,7 +323,7 @@ See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded, CreateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: False
@@ -247,7 +340,7 @@ See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, a
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded, CreateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: False
@@ -263,8 +356,8 @@ The preemption capability of a QoS Flow controls whether it can preempt another 
 See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionCapability
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded, CreateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: False
@@ -280,8 +373,8 @@ The preemption vulnerability of a QoS Flow controls whether it can be preempted 
 See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded, CreateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: False
@@ -296,7 +389,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaJsonString, CreateViaJsonFilePath, CreateExpanded
 Aliases:
 
 Required: False
@@ -311,7 +404,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded, CreateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: False
@@ -357,9 +450,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IService
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IService
 
 ## NOTES
 

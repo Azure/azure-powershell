@@ -122,7 +122,7 @@ Backup instance request object which will be used to configure backup
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource
 Parameter Sets: SetPermissionsForBackup
 Aliases:
 
@@ -184,7 +184,7 @@ Restore request object which will be used for restore
 To construct, see NOTES section for RESTOREREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupRestoreRequest
 Parameter Sets: SetPermissionsForRestore
 Aliases:
 
@@ -196,7 +196,7 @@ Accept wildcard characters: False
 ```
 
 ### -SnapshotResourceGroupId
-Sanpshot Resource Group
+Snapshot Resource Group
 
 ```yaml
 Type: System.String

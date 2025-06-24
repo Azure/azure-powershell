@@ -43,11 +43,11 @@ jobs:
     displayName: 'Use .NET SDK for Build'
     inputs:
       packageType: sdk
-      version: 8.0.x
+      version: 8.x
   - task: NodeTool@0
     displayName: Install Autorest
     inputs:
-      versionSpec: '14.17.1'
+      versionSpec: '18.20.8'
       command: custom
       verbose: false
       customCommand: install autorest@latest
@@ -57,6 +57,11 @@ jobs:
       targetType: inline
       script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
       pwsh: true
+  - task: Npm@1
+    displayName: Install tsp client
+    inputs:
+      command: custom
+      customCommand: install -g @azure-tools/typespec-client-generator-cli@0.15.x
   - task: PowerShell@2
     displayName: 'Build'
     inputs:
@@ -102,7 +107,7 @@ jobs:
   - task: NodeTool@0
     displayName: Install autorest
     inputs:
-      versionSpec: '14.17.1'
+      versionSpec: '18.20.8'
       command: custom
       verbose: false
       customCommand: install autorest@latest
@@ -116,7 +121,7 @@ jobs:
     displayName: 'Use .NET SDK for Static Analysis'
     inputs:
       packageType: sdk
-      version: 8.0.x
+      version: 8.x
   - task: PowerShell@2
     displayName: 'Analyze'
     inputs:
@@ -158,7 +163,7 @@ jobs:
     displayName: 'Use .NET SDK for Test'
     inputs:
       packageType: sdk
-      version: 8.0.x
+      version: 8.x
   - task: PowerShell@2
     displayName: 'Test'
     inputs:

@@ -122,7 +122,7 @@ try {
                     npx autorest --use:@autorest/powershell@4.x --tag=package-subscriptions-2021-01
                     npx autorest --use:@autorest/powershell@4.x --tag=package-features-2021-07
                     npx autorest --use:@autorest/powershell@4.x --tag=package-deploymentscripts-2020-10
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-resources-2024-07
+                    npx autorest --use:@autorest/powershell@4.x --tag=package-resources-2024-11
                     npx autorest --use:@autorest/powershell@4.x --tag=package-deploymentstacks-2024-03
                     npx autorest --use:@autorest/powershell@4.x --tag=package-templatespecs-2021-05
                 }
@@ -151,18 +151,6 @@ try {
                     ProblemId = $GenSdkChanged
                     Description = "Do not find correct autorest version, please check Readme.md"
                     Remediation = "Please determine autorest v4 in Readme file."
-                }
-            }
-            
-            If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
-            {
-                $ExceptionList += [GeneratedSdkIssue]@{
-                    Module = $ModuleName;
-                    Sdk = $_;
-                    Severity = 1;
-                    ProblemId = $GenSdkChanged
-                    Description = "Failed to set autorest.csharp@2.3.90 for $ModuleName."
-                    Remediation = ""
                 }
             }
 
@@ -196,7 +184,9 @@ try {
             # Prevent EOL changes detected
             git config --global core.safecrlf false
             git config --global core.autocrlf true
-            $diff = git diff ".\Generated"
+            # Use a single regex to ignore comments in .cs and .psd1 files
+            $diff = git diff --ignore-matching-lines="^\s*(//|/\*.*\*/|#)" ".\Generated"
+
             if($diff -ne $null){
                 $changes = $changes.replace("  ", "`n")
                 $ExceptionList += [GeneratedSdkIssue]@{

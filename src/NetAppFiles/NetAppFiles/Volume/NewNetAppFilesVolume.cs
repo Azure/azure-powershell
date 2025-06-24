@@ -230,6 +230,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "CoolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: \n Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default.\n SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier.")]
+        [PSArgumentCompleter("Auto", "SnapshotOnly")]
+        public string CoolAccessTieringPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.")]
         [Alias("UnixPermissions")]
         public string UnixPermission { get; set; }
@@ -297,7 +303,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values are: 'Microsoft.NetApp, Microsoft.KeyVault'")]
+            HelpMessage = "Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values are: 'Microsoft.NetApp, Microsoft.KeyVault'. To create a volume using customer-managed keys use 'Microsoft.KeyVault' note then you must set -NetworkFeature to Standard.")]
         [PSArgumentCompleter("Microsoft.NetApp", "Microsoft.KeyVault")]
         public string EncryptionKeySource { get; set; }
 
@@ -422,7 +428,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                     DeleteBaseSnapshot = DeleteBaseSnapshot,
                     SmbAccessBasedEnumeration = SmbAccessBasedEnumeration,
                     SmbNonBrowsable = SmbNonBrowsable,
-                    CoolAccessRetrievalPolicy = CoolAccessRetrievalPolicy
+                    CoolAccessRetrievalPolicy = CoolAccessRetrievalPolicy,
+                    CoolAccessTieringPolicy = CoolAccessTieringPolicy
                 };
                 if (IsLargeVolume.IsPresent)
                 {

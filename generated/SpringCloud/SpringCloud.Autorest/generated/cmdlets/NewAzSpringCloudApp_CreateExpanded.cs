@@ -6,20 +6,24 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a new App or update an exiting App.</summary>
+    /// <summary>create a new App or create an exiting App.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzSpringCloudApp_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Description(@"Create a new App or update an exiting App.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.CmdletBreakingChange("19.3.0", "0.3.2", "2028/03/31", ChangeDescription = "Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Description(@"create a new App or create an exiting App.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}", ApiVersion = "2022-04-01")]
     public partial class NewAzSpringCloudApp_CreateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -31,12 +35,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
         private string __processRecordId;
 
         /// <summary>App resource payload</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource _appResourceBody = new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.AppResource();
+        private Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource _appResourceBody = new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.AppResource();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
 
         /// <summary>Collection of addons</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ExportAs(typeof(global::System.Collections.Hashtable))]
@@ -47,8 +63,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
         ReadOnly = false,
         Description = @"Collection of addons",
         SerializedName = @"addonConfigs",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResourcePropertiesAddonConfigs) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResourcePropertiesAddonConfigs AddonConfig { get => _appResourceBody.AddonConfig ?? null /* object */; set => _appResourceBody.AddonConfig = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResourcePropertiesAddonConfigs) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResourcePropertiesAddonConfigs AddonConfig { get => _appResourceBody.AddonConfig ?? null /* object */; set => _appResourceBody.AddonConfig = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -59,6 +75,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.SpringCloud Client => Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Module.Instance.ClientAPI;
@@ -83,6 +102,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
         SerializedName = @"enableEndToEndTLS",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter EnableEndToEndTl { get => _appResourceBody.EnableEndToEndTl ?? default(global::System.Management.Automation.SwitchParameter); set => _appResourceBody.EnableEndToEndTl = value; }
+
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
+        public global::System.Management.Automation.SwitchParameter EnableSystemAssignedIdentity { set => _appResourceBody.IdentityType = value.IsPresent ? "SystemAssigned": null ; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>Fully qualified dns Name.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Fully qualified dns Name.")]
@@ -140,18 +166,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string IdentityTenantId { get => _appResourceBody.IdentityTenantId ?? null; set => _appResourceBody.IdentityTenantId = value; }
 
-        /// <summary>Type of the managed identity</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of the managed identity")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Type of the managed identity",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType IdentityType { get => _appResourceBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType)""); set => _appResourceBody.IdentityType = value; }
-
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
@@ -164,8 +178,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
         ReadOnly = false,
         Description = @"Collection of loaded certificates",
         SerializedName = @"loadedCertificates",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ILoadedCertificate) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ILoadedCertificate[] LoadedCertificate { get => _appResourceBody.LoadedCertificate ?? null /* arrayOf */; set => _appResourceBody.LoadedCertificate = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ILoadedCertificate) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ILoadedCertificate[] LoadedCertificate { get => _appResourceBody.LoadedCertificate?.ToArray() ?? null /* fixedArrayOf */; set => _appResourceBody.LoadedCertificate = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ILoadedCertificate>(value) : null); }
 
         /// <summary>The GEO location of the application, always the same with its parent resource</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The GEO location of the application, always the same with its parent resource")]
@@ -234,7 +248,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -311,7 +325,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -342,24 +357,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICloudError</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource">Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource">Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -407,7 +422,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -454,11 +491,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -470,10 +532,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -483,7 +561,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzSpringCloudApp_CreateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzSpringCloudApp_CreateExpanded" /> cmdlet class.
         /// </summary>
         public NewAzSpringCloudApp_CreateExpanded()
         {
@@ -549,7 +627,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -562,12 +640,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.AppsCreateOrUpdate(SubscriptionId, ResourceGroupName, ServiceName, Name, _appResourceBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.AppsCreateOrUpdate(SubscriptionId, ResourceGroupName, ServiceName, Name, _appResourceBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ServiceName=ServiceName,Name=Name,body=_appResourceBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ServiceName=ServiceName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -586,16 +664,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
             base.StopProcessing();
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICloudError</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -612,15 +705,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ServiceName=ServiceName, Name=Name, body=_appResourceBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICloudError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ServiceName=ServiceName, Name=Name, body=_appResourceBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -630,12 +723,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource">Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource">Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -647,8 +740,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

@@ -19,6 +19,15 @@
 -->
 ## Upcoming Release
 
+## Version 2.8.0
+* Implemented the Get-AzMigrateServerMigrationStatus cmdlet to retrieve the replication status of servers in Azure Migrate.
+* Fixed bugs in `New-AzMigrateLocalServerReplication` that caused HyperVSite or VMwareSite not found.
+
+## Version 2.7.1
+
+* Added validation for Data.Replication
+  - Added validation to protect virtual machines in `New-AzMigrateLocalServerReplication`
+
 ## Version 2.7.0
 * Updated Data.Replication to newer API version
   - Updated Data.Replication to point to stable API version 2024-09-01

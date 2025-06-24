@@ -27674,6 +27674,9 @@
           <TableColumnHeader>
             <Label>IsOSDisk</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StorageContainerId</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -27695,6 +27698,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>IsOSDisk</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StorageContainerId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

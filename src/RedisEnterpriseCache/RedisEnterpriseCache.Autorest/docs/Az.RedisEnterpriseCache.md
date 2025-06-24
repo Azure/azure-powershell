@@ -1,6 +1,6 @@
 ---
 Module Name: Az.RedisEnterpriseCache
-Module Guid: 0b3b43eb-9078-4d06-8c79-d156a1410906
+Module Guid: 426e71c0-51ff-4612-94ca-1963374abccd
 Download Help Link: https://learn.microsoft.com/powershell/module/az.redisenterprisecache
 Help Version: 1.0.0.0
 Locale: en-US
@@ -28,6 +28,9 @@ Retrieves all access keys for a Redis Enterprise database.
 
 ### [Get-AzRedisEnterpriseCacheOperationStatus](Get-AzRedisEnterpriseCacheOperationStatus.md)
 Gets the status of operation.
+
+### [Get-AzRedisEnterpriseCacheSku](Get-AzRedisEnterpriseCacheSku.md)
+Lists the available SKUs for scaling the Redis Enterprise cluster.
 
 ### [Import-AzRedisEnterpriseCache](Import-AzRedisEnterpriseCache.md)
 Imports a database file to target database.

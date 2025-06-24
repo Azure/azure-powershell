@@ -2,7 +2,6 @@ parameters:
   name: ''
   psVersion: ''
   agentPoolName: ''
-  agentPoolVMImage: ''
   dotnetVersion: ''
   PowerShellPath: '$(Build.SourcesDirectory)/ps_preview'
 
@@ -11,7 +10,6 @@ jobs:
   timeoutInMinutes: 180
   pool:
     name: ${{ parameters.agentPoolName }}
-    vmImage: ${{ parameters.agentPoolVMImage }}
 
   steps:
   - task: UseDotNet@2

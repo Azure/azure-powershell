@@ -30,7 +30,7 @@ Get-AzElasticVersion -Region westus2
 ```output
 version
 ---------
-8.15.2 (Lattest)
+8.15.2 (Latest)
 8.14.3
 7.17.24
 ```
@@ -93,7 +93,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticVersionListFormat
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticVersionListFormat
 
 ## NOTES
 

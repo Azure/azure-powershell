@@ -23,12 +23,12 @@ Create an in-memory object for SpacecraftLink.
 New-AzOrbitalSpacecraftLinkObject -BandwidthMHz 50 -CenterFrequencyMHz 50 -Direction 'Uplink' -Name spacecraftlink -Polarization 'LHCP'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftLink
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.SpacecraftLink
 .Link
-https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalSpacecraftLinkObject
+https://learn.microsoft.com/powershell/module/Az.Orbital/new-azorbitalspacecraftlinkobject
 #>
 function New-AzOrbitalSpacecraftLinkObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftLink])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.SpacecraftLink])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -44,10 +44,10 @@ param(
     ${CenterFrequencyMHz},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Direction])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.PSArgumentCompleterAttribute("Uplink", "Downlink")]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Direction]
-    # Direction (uplink or downlink).
+    [System.String]
+    # Direction (Uplink or Downlink).
     ${Direction},
 
     [Parameter(Mandatory)]
@@ -57,11 +57,12 @@ param(
     ${Name},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Polarization])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.PSArgumentCompleterAttribute("RHCP", "LHCP", "linearVertical", "linearHorizontal")]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Polarization]
-    # polarization.
-    # eg (RHCP, LHCP).
+    [System.String]
+    # Polarization.
+    # e.g.
+    # (RHCP, LHCP).
     ${Polarization}
 )
 
@@ -72,6 +73,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -100,6 +104,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

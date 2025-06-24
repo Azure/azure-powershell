@@ -27,13 +27,27 @@ Get-AzFluidRelayContainer -FluidRelayServerName azps-fluidrelay -ResourceGroup a
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayContainer
+Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainer
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+FLUIDRELAYSERVERINPUTOBJECT <IFluidRelayIdentity>: Identity Parameter
+  [FluidRelayContainerName <String>]: The Fluid Relay container resource name.
+  [FluidRelayServerName <String>]: The Fluid Relay server resource name.
+  [Id <String>]: Resource identity path
+  [ResourceGroup <String>]: The resource group containing the resource.
+  [SubscriptionId <String>]: The subscription id (GUID) for this resource.
+
 INPUTOBJECT <IFluidRelayIdentity>: Identity Parameter
+  [FluidRelayContainerName <String>]: The Fluid Relay container resource name.
+  [FluidRelayServerName <String>]: The Fluid Relay server resource name.
+  [Id <String>]: Resource identity path
+  [ResourceGroup <String>]: The resource group containing the resource.
+  [SubscriptionId <String>]: The subscription id (GUID) for this resource.
+
+RESOURCEGROUPINPUTOBJECT <IFluidRelayIdentity>: Identity Parameter
   [FluidRelayContainerName <String>]: The Fluid Relay container resource name.
   [FluidRelayServerName <String>]: The Fluid Relay server resource name.
   [Id <String>]: Resource identity path
@@ -43,10 +57,11 @@ INPUTOBJECT <IFluidRelayIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.fluidrelay/get-azfluidrelaycontainer
 #>
 function Get-AzFluidRelayContainer {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayContainer])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainer])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityResourceGroup', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Path')]
     [System.String]
@@ -54,6 +69,8 @@ param(
     ${FluidRelayServerName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityFluidRelayServer', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityResourceGroup', Mandatory)]
     [Alias('FluidRelayContainerName')]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Path')]
     [System.String]
@@ -79,8 +96,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityFluidRelayServer', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity]
+    # Identity Parameter
+    ${FluidRelayServerInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityResourceGroup', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity]
+    # Identity Parameter
+    ${ResourceGroupInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -138,6 +166,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -159,11 +196,11 @@ begin {
         $mapping = @{
             Get = 'Az.FluidRelay.private\Get-AzFluidRelayContainer_Get';
             GetViaIdentity = 'Az.FluidRelay.private\Get-AzFluidRelayContainer_GetViaIdentity';
+            GetViaIdentityFluidRelayServer = 'Az.FluidRelay.private\Get-AzFluidRelayContainer_GetViaIdentityFluidRelayServer';
+            GetViaIdentityResourceGroup = 'Az.FluidRelay.private\Get-AzFluidRelayContainer_GetViaIdentityResourceGroup';
             List = 'Az.FluidRelay.private\Get-AzFluidRelayContainer_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -177,6 +214,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

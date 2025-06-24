@@ -18,25 +18,14 @@ variables:
   os_linux: ubuntu-latest
   os_macos: macOS-latest
   win_ps_5_1: 5.1
-  ps_7_2_x: 7.2.*
-  ps_7_3_x: 7.3.*
   ps_7_4_x: 7.4.*
+  ps_7_5_x: 7.5.*
   ps_latest: latest
-  dotnet_sdk_6: 6.0.x
-  dotnet_sdk_7: 7.0.x
-  dotnet_sdk_8: 8.0.x
-  dotnet_sdk_9: 9.0.x
+  dotnet_sdk_8: 8.x
+  dotnet_sdk_9: 9.x
   ArtifactsName: LiveTestArtifacts
   DataLocation: $(Pipeline.Workspace)/$(ArtifactsName)
   SuppressAzurePowerShellBreakingChangeWarnings: true
-
-schedules:
-- cron: "0 19 * * *"
-  displayName: Daily Live Test
-  branches:
-    include:
-    - main
-  always: true
 
 pr: none
 trigger: none
@@ -51,7 +40,7 @@ stages:
       vmImage: ${{ variables.os_windows_2019 }}
       osType: 'Windows'
       psVersion: ${{ variables.win_ps_5_1 }}
-      dotnetVersion: ${{ variables.dotnet_sdk_6 }}
+      dotnetVersion: ${{ variables.dotnet_sdk_8 }}
       galleryName: ${{ parameters.GalleryName }}
       pipelineBuildId: ${{ parameters.PipelineBuildId }}
 
@@ -61,27 +50,7 @@ stages:
       vmImage: ${{ variables.os_windows_2022 }}
       osType: 'Windows'
       psVersion: ${{ variables.win_ps_5_1 }}
-      dotnetVersion: ${{ variables.dotnet_sdk_6 }}
-      galleryName: ${{ parameters.GalleryName }}
-      pipelineBuildId: ${{ parameters.PipelineBuildId }}
-
-  - template: util/live-test-steps.yml
-    parameters:
-      name: 'ps_7_2_x_win_2019'
-      vmImage: ${{ variables.os_windows_2019 }}
-      osType: 'Windows'
-      psVersion: ${{ variables.ps_7_2_x }}
-      dotnetVersion: ${{ variables.dotnet_sdk_6 }}
-      galleryName: ${{ parameters.GalleryName }}
-      pipelineBuildId: ${{ parameters.PipelineBuildId }}
-
-  - template: util/live-test-steps.yml
-    parameters:
-      name: 'ps_7_3_x_win_2019'
-      vmImage: ${{ variables.os_windows_2019 }}
-      osType: 'Windows'
-      psVersion: ${{ variables.ps_7_3_x }}
-      dotnetVersion: ${{ variables.dotnet_sdk_7 }}
+      dotnetVersion: ${{ variables.dotnet_sdk_8 }}
       galleryName: ${{ parameters.GalleryName }}
       pipelineBuildId: ${{ parameters.PipelineBuildId }}
 
@@ -97,31 +66,21 @@ stages:
 
   - template: util/live-test-steps.yml
     parameters:
-      name: 'ps_latest_win_2019'
+      name: 'ps_7_5_x_win_2019'
       vmImage: ${{ variables.os_windows_2019 }}
       osType: 'Windows'
-      psVersion: ${{ variables.ps_latest }}
+      psVersion: ${{ variables.ps_7_5_x }}
       dotnetVersion: ${{ variables.dotnet_sdk_9 }}
       galleryName: ${{ parameters.GalleryName }}
       pipelineBuildId: ${{ parameters.PipelineBuildId }}
 
   - template: util/live-test-steps.yml
     parameters:
-      name: 'ps_7_2_x_win_2022'
-      vmImage: ${{ variables.os_windows_2022 }}
+      name: 'ps_latest_win_2019'
+      vmImage: ${{ variables.os_windows_2019 }}
       osType: 'Windows'
-      psVersion: ${{ variables.ps_7_2_x }}
-      dotnetVersion: ${{ variables.dotnet_sdk_6 }}
-      galleryName: ${{ parameters.GalleryName }}
-      pipelineBuildId: ${{ parameters.PipelineBuildId }}
-
-  - template: util/live-test-steps.yml
-    parameters:
-      name: 'ps_7_3_x_win_2022'
-      vmImage: ${{ variables.os_windows_2022 }}
-      osType: 'Windows'
-      psVersion: ${{ variables.ps_7_3_x }}
-      dotnetVersion: ${{ variables.dotnet_sdk_7 }}
+      psVersion: ${{ variables.ps_latest }}
+      dotnetVersion: ${{ variables.dotnet_sdk_9 }}
       galleryName: ${{ parameters.GalleryName }}
       pipelineBuildId: ${{ parameters.PipelineBuildId }}
 
@@ -137,31 +96,21 @@ stages:
 
   - template: util/live-test-steps.yml
     parameters:
-      name: 'ps_latest_win_2022'
+      name: 'ps_7_5_x_win_2022'
       vmImage: ${{ variables.os_windows_2022 }}
       osType: 'Windows'
-      psVersion: ${{ variables.ps_latest }}
+      psVersion: ${{ variables.ps_7_5_x }}
       dotnetVersion: ${{ variables.dotnet_sdk_9 }}
       galleryName: ${{ parameters.GalleryName }}
       pipelineBuildId: ${{ parameters.PipelineBuildId }}
 
   - template: util/live-test-steps.yml
     parameters:
-      name: 'ps_7_2_x_linux'
-      vmImage: ${{ variables.os_linux }}
-      osType: 'Linux'
-      psVersion: ${{ variables.ps_7_2_x }}
-      dotnetVersion: ${{ variables.dotnet_sdk_6 }}
-      galleryName: ${{ parameters.GalleryName }}
-      pipelineBuildId: ${{ parameters.PipelineBuildId }}
-
-  - template: util/live-test-steps.yml
-    parameters:
-      name: 'ps_7_3_x_linux'
-      vmImage: ${{ variables.os_linux }}
-      osType: 'Linux'
-      psVersion: ${{ variables.ps_7_3_x }}
-      dotnetVersion: ${{ variables.dotnet_sdk_7 }}
+      name: 'ps_latest_win_2022'
+      vmImage: ${{ variables.os_windows_2022 }}
+      osType: 'Windows'
+      psVersion: ${{ variables.ps_latest }}
+      dotnetVersion: ${{ variables.dotnet_sdk_9 }}
       galleryName: ${{ parameters.GalleryName }}
       pipelineBuildId: ${{ parameters.PipelineBuildId }}
 
@@ -177,6 +126,16 @@ stages:
 
   - template: util/live-test-steps.yml
     parameters:
+      name: 'ps_7_5_x_linux'
+      vmImage: ${{ variables.os_linux }}
+      osType: 'Linux'
+      psVersion: ${{ variables.ps_7_5_x }}
+      dotnetVersion: ${{ variables.dotnet_sdk_9 }}
+      galleryName: ${{ parameters.GalleryName }}
+      pipelineBuildId: ${{ parameters.PipelineBuildId }}
+
+  - template: util/live-test-steps.yml
+    parameters:
       name: 'ps_latest_linux'
       vmImage: ${{ variables.os_linux }}
       osType: 'Linux'
@@ -187,27 +146,19 @@ stages:
 
   # - template: util/live-test-steps.yml
   #   parameters:
-  #     name: 'ps_7_2_x_macOS'
-  #     vmImage: ${{ variables.os_macos }}
-  #     osType: 'MacOS'
-  #     psVersion: ${{ variables.ps_7_2_x }}
-  #     dotnetVersion: ${{ variables.dotnet_sdk_6 }}
-
-  # - template: util/live-test-steps.yml
-  #   parameters:
-  #     name: 'ps_7_3_x_macOS'
-  #     vmImage: ${{ variables.os_macos }}
-  #     osType: 'MacOS'
-  #     psVersion: ${{ variables.ps_7_3_x }}
-  #     dotnetVersion: ${{ variables.dotnet_sdk_7 }}
-
-  # - template: util/live-test-steps.yml
-  #   parameters:
   #     name: 'ps_7_4_x_macOS'
   #     vmImage: ${{ variables.os_macos }}
   #     osType: 'MacOS'
   #     psVersion: ${{ variables.ps_7_4_x }}
   #     dotnetVersion: ${{ variables.dotnet_sdk_8 }}
+
+  # - template: util/live-test-steps.yml
+  #   parameters:
+  #     name: 'ps_7_5_x_macOS'
+  #     vmImage: ${{ variables.os_macos }}
+  #     osType: 'MacOS'
+  #     psVersion: ${{ variables.ps_7_5_x }}
+  #     dotnetVersion: ${{ variables.dotnet_sdk_9 }}
 
   # - template: util/live-test-steps.yml
   #   parameters:
@@ -248,7 +199,7 @@ stages:
 
     - task: AzurePowerShell@5
       displayName: Save live test results
-      condition: or(eq(variables['Build.Reason'], 'Schedule'), eq(variables['Build.SourceBranch'], 'refs/heads/internal/release'))
+      condition: or(in(variables['Build.SourceBranch'], 'refs/heads/main', 'refs/heads/internal/release'), startsWith(variables['Build.SourceBranch'], 'refs/heads/Daily/Release_'))
       inputs:
         pwsh: true
         azurePowerShellVersion: latestVersion

@@ -14,8 +14,8 @@ Creates a new Static Cidr.
 
 ```
 New-AzNetworkManagerIpamPoolStaticCidr -Name <String> -NetworkManagerName <String> -ResourceGroupName <String>
- -IpamPoolName <String> [-NumberOfIPAddressesToAllocate <String>]
- [-AddressPrefix <System.Collections.Generic.List`1[System.String]>] [-Description <String>] [-Force] [-AsJob]
+ -PoolName <String> [-NumberOfIPAddressesToAllocate <String>]
+ -AddressPrefix <System.Collections.Generic.List`1[System.String]> [-Description <String>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -56,7 +56,7 @@ Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -123,21 +123,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IpamPoolName
-IP Address Manager Pool resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Name
 Static Cidr allocation name.
 
@@ -178,6 +163,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PoolName
+IP Address Manager Pool resource name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

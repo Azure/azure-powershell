@@ -18,9 +18,15 @@ Invoke-AzReservationExchange [-SessionId <String>] [-DefaultProfile <PSObject>] 
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Post
+### PostViaJsonFilePath
 ```
-Invoke-AzReservationExchange -Body <IExchangeRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Invoke-AzReservationExchange -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PostViaJsonString
+```
+Invoke-AzReservationExchange -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -60,22 +66,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-Exchange request
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IExchangeRequest
-Parameter Sets: Post
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -86,6 +76,36 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Post operation
+
+```yaml
+Type: System.String
+Parameter Sets: PostViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Post operation
+
+```yaml
+Type: System.String
+Parameter Sets: PostViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -158,11 +178,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IExchangeRequest
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IExchangeOperationResultResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IExchangeOperationResultResponse
 
 ## NOTES
 

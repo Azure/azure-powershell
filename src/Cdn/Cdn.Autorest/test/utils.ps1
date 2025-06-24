@@ -55,13 +55,14 @@ function setupEnv() {
     $resourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 4)
     Write-Host -ForegroundColor Green "Start to create test group $($resourceGroupName)"
     New-AzResourceGroup -Name $resourceGroupName -Location $env.location
+    Write-Host -ForegroundColor Green "test group $($resourceGroupName) created"
 
     $env.Add("ResourceGroupName", $resourceGroupName)
 
     # Create profile, Standard Verizon SKU
     $verizonCdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
-    Write-Host -ForegroundColor Green "Start to create Standard_Verizon SKU profile : $($verizonCdnProfileName)"
-    New-AzCdnProfile -SkuName "Standard_Verizon" -Name $verizonCdnProfileName -ResourceGroupName $resourceGroupName -Location Global | Out-Null
+    Write-Host -ForegroundColor Green "Start to create Standard_Microsoft SKU profile : $($verizonCdnProfileName)"
+    New-AzCdnProfile -SkuName "Standard_Microsoft" -Name $verizonCdnProfileName -ResourceGroupName $resourceGroupName -Location Global | Out-Null
 
     # Create endpoint, Standard Verizon SKU
     $verizonEndpointName = 'e-' + (RandomString -allChars $false -len 6);
@@ -69,14 +70,14 @@ function setupEnv() {
         Name = "origin1"
         HostName = "host1.hello.com"
     };
-    Write-Host -ForegroundColor Green "Start to creat endpointName : $($verizonEndpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
+    Write-Host -ForegroundColor Green "Start to create endpointName : $($verizonEndpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
     New-AzCdnEndpoint -Name $verizonEndpointName -ResourceGroupName $resourceGroupName -ProfileName $verizonCdnProfileName -IsHttpAllowed -IsHttpsAllowed `
         -Location $env.location -Origin $origin -IsCompressionEnabled -ContentTypesToCompress "text/html","text/css" `
         -OriginHostHeader "www.bing.com" -OriginPath "/photos" -QueryStringCachingBehavior "IgnoreQueryString" | Out-Null
 
     $env.Add("VerizonCdnProfileName", $verizonCdnProfileName)
     $env.Add("VerizonEndpointName", $verizonEndpointName)
-    Write-Host -ForegroundColor Green "Standard_Verizon SKU resources have been added to the environment."
+    Write-Host -ForegroundColor Green "Standard_Microsoft SKU resources have been added to the environment."
 
     # Create profile, Standard Microsoft SKU
     $classicCdnProfileName = 'p-' + (RandomString -allChars $false -len 6)
@@ -86,12 +87,12 @@ function setupEnv() {
     # Hard-coding host and endpoint names due to requirement for DNS CNAME
     # DNA mapping use DNS Zone resource: ps.cdne2e.azfdtest.xyz 
     # Add RecordSets in 'DNS Management' blade: 
-    #    Name: ps-20240402-domain020
-    #    Tyep: CName
+    #    Name: ps-2024-0901-domain010
+    #    Type: CName
     #    Alias Record Set: No
-    #    Alias: ps-20240402-domain020.azureedge.net
-    $classicCdnEndpointName = 'ps-20240402-domain020'
-    $customDomainHostName = 'ps-20240402-domain020.ps.cdne2e.azfdtest.xyz'
+    #    Alias: ps-2024-0901-domain010.azureedge.net
+    $classicCdnEndpointName = 'ps-2024-0901-domain010'
+    $customDomainHostName = 'ps-2024-0901-domain010.ps.cdne2e.azfdtest.xyz'
     $customDomainName = 'cd-' + (RandomString -allChars $false -len 6);
     $location = "westus"
     $origin = @{
@@ -128,9 +129,10 @@ function setupEnv() {
     New-AzFrontDoorCdnProfile -SkuName "Standard_AzureFrontDoor" -Name $frontDoorCdnProfileName -ResourceGroupName $resourceGroupName -Location Global | Out-Null
 
     $frontDoorCustomDomainName = "domain-" + (RandomString -allChars $false -len 6);
+    $tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "ManagedCertificate" -MinimumTlsVersion "TLS12"
     Write-Host -ForegroundColor Green "Start to create Stand_AzureFrontDoor SKU custom domain : $($frontDoorCustomDomainName)"
     New-AzFrontDoorCdnCustomDomain -CustomDomainName $frontDoorCustomDomainName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $resourceGroupName `
-        -HostName "getdomain.dev.cdn.azure.cn" | Out-Null
+        -TlsSetting $tlsSetting -HostName "getdomain.dev.cdn.azure.cn" | Out-Null
 
     $frontDoorEndpointName = 'end-' + (RandomString -allChars $false -len 6);
     Write-Host -ForegroundColor Green "Start to create Stand_AzureFrontDoor SKU endpoint domain : $($frontDoorEndpointName)"

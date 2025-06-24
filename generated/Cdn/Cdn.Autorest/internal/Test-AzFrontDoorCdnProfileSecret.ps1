@@ -27,7 +27,7 @@ Validate a Secret in the profile.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateSecretOutput
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateSecretOutput
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -51,22 +51,28 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnprofilesecret
 #>
 function Test-AzFrontDoorCdnProfileSecret {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateSecretOutput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateSecretOutput])]
 [CmdletBinding(DefaultParameterSetName='ValidateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
     ${ProfileName},
 
     [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the Resource group within the Azure subscription.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaJsonFilePath')]
+    [Parameter(ParameterSetName='ValidateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -77,27 +83,41 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SecretType])]
+    [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("UrlSigningKey", "CustomerCertificate", "ManagedCertificate", "AzureFirstPartyManagedCertificate")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SecretType]
+    [System.String]
     # The secret type.
     ${SecretType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # Resource ID.
     ${SecretSourceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # Secret version, if customer is using a specific version.
     ${SecretVersion},
+
+    [Parameter(ParameterSetName='ValidateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Validate operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ValidateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Json string supplied to the Validate operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -155,14 +175,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             ValidateExpanded = 'Az.Cdn.private\Test-AzFrontDoorCdnProfileSecret_ValidateExpanded';
             ValidateViaIdentityExpanded = 'Az.Cdn.private\Test-AzFrontDoorCdnProfileSecret_ValidateViaIdentityExpanded';
+            ValidateViaJsonFilePath = 'Az.Cdn.private\Test-AzFrontDoorCdnProfileSecret_ValidateViaJsonFilePath';
+            ValidateViaJsonString = 'Az.Cdn.private\Test-AzFrontDoorCdnProfileSecret_ValidateViaJsonString';
         }
-        if (('ValidateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ValidateExpanded', 'ValidateViaJsonFilePath', 'ValidateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -171,6 +194,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

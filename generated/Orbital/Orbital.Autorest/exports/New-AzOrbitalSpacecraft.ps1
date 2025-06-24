@@ -16,16 +16,16 @@
 
 <#
 .Synopsis
-Creates or updates a spacecraft resource.
+create a spacecraft resource.
 .Description
-Creates or updates a spacecraft resource.
+create a spacecraft resource.
 .Example
 $linkObject = New-AzOrbitalSpacecraftLinkObject -BandwidthMHz 15 -CenterFrequencyMHz 8160 -Direction 'Downlink' -Name spacecraftlink -Polarization 'RHCP'
 
 New-AzOrbitalSpacecraft -Name AQUA -ResourceGroupName azpstest-gp -Location westus2 -Link $linkObject -NoradId 27424 -TitleLine "AQUA" -TleLine1 "1 27424U 02022A   23128.13172751  .00001518  00000+0  34030-3 0  9995" -TleLine2 "2 27424  98.2850  72.6931 0000969  56.1431 359.6436 14.58017750117525"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraft
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -34,14 +34,14 @@ To create the parameters described below, construct a hash table containing the 
 LINK <ISpacecraftLink[]>: Immutable list of Spacecraft links.
   BandwidthMHz <Single>: Bandwidth in MHz.
   CenterFrequencyMHz <Single>: Center Frequency in MHz.
-  Direction <Direction>: Direction (Uplink or Downlink).
+  Direction <String>: Direction (Uplink or Downlink).
   Name <String>: Link name.
-  Polarization <Polarization>: Polarization. e.g. (RHCP, LHCP).
+  Polarization <String>: Polarization. e.g. (RHCP, LHCP).
 .Link
 https://learn.microsoft.com/powershell/module/az.orbital/new-azorbitalspacecraft
 #>
 function New-AzOrbitalSpacecraft {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraft])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -65,50 +65,61 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraftLink[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraftLink[]]
     # Immutable list of Spacecraft links.
-    # To construct, see NOTES section for LINK properties and create a hash table.
     ${Link},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
     [System.String]
     # Title line of the two-line element set (TLE).
     ${TitleLine},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
     [System.String]
     # Line 1 of the two-line element set (TLE).
     ${TleLine1},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
     [System.String]
     # Line 2 of the two-line element set (TLE).
     ${TleLine2},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
     [System.String]
     # NORAD ID of the spacecraft.
     ${NoradId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -178,6 +189,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -198,10 +218,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Orbital.private\New-AzOrbitalSpacecraft_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.Orbital.private\New-AzOrbitalSpacecraft_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Orbital.private\New-AzOrbitalSpacecraft_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -215,6 +235,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzMobileNetworkSite
 
 ## SYNOPSIS
-Updates site tags.
+update site tags.
 
 ## SYNTAX
 
@@ -25,8 +25,28 @@ Update-AzMobileNetworkSite -InputObject <IMobileNetworkIdentity> [-Tag <Hashtabl
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityMobileNetworkExpanded
+```
+Update-AzMobileNetworkSite -MobileNetworkInputObject <IMobileNetworkIdentity> -SiteName <String>
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzMobileNetworkSite -MobileNetworkName <String> -ResourceGroupName <String> -SiteName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzMobileNetworkSite -MobileNetworkName <String> -ResourceGroupName <String> -SiteName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Updates site tags.
+update site tags.
 
 ## EXAMPLES
 
@@ -63,11 +83,55 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MobileNetworkInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: UpdateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: True
@@ -82,7 +146,7 @@ The name of the mobile network.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -98,7 +162,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -113,7 +177,7 @@ The name of the mobile network site.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMobileNetworkExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -128,7 +192,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -143,7 +207,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: False
@@ -193,7 +257,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISite
 
 ## NOTES
 

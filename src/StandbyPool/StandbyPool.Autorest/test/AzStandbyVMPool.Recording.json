@@ -1,15 +1,15 @@
 {
-  "AzStandbyVMPool+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2024-03-01+1": {
+  "AzStandbyVMPool+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2025-03-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2024-03-01",
-      "Content": "{\n  \"location\": \"eastasia\",\n  \"properties\": {\n    \"elasticityProfile\": {\n      \"maxReadyCapacity\": 1,\n      \"minReadyCapacity\": 1\n    },\n    \"virtualMachineState\": \"Running\",\n    \"attachedVirtualMachineScaleSetId\": \"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss\"\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2025-03-01",
+      "Content": "{\r\n  \"location\": \"eastasia\",\r\n  \"properties\": {\r\n    \"elasticityProfile\": {\r\n      \"maxReadyCapacity\": 1,\r\n      \"minReadyCapacity\": 1\r\n    },\r\n    \"virtualMachineState\": \"Running\",\r\n    \"attachedVirtualMachineScaleSetId\": \"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "364" ]
+        "Content-Length": [ "371" ]
       }
     },
     "Response": {
@@ -17,42 +17,45 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"ba004a25-0000-1900-0000-66c67db00000\"" ],
+        "ETag": [ "\"6b01a29f-0000-1900-0000-6807c2140000\"" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "Alt-Svc": [ "h3=\":31329\"" ],
+        "x-ms-operation-identifier": [ "tenantId=9d443c47-1ad7-4a6f-9cd7-7ae8f68d867a,objectId=5178a768-e5ce-4a6d-b586-2dba816d2f57/westus2/75358e37-ceb3-4682-b677-8868bd06b405" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "19998" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "2429e9ed-bfb5-4f13-8175-4300b2f2f8c9" ],
-        "x-ms-correlation-request-id": [ "a24816a5-2a3c-4d33-8c69-ec357cf78c55" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240821T235216Z:a24816a5-2a3c-4d33-8c69-ec357cf78c55" ],
+        "x-ms-request-id": [ "c6bce7de-f5cf-4aa1-a585-6dc765df0327" ],
+        "x-ms-correlation-request-id": [ "8a1b62e6-3b84-4774-a7b2-f9d52b053e72" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250422T162141Z:8a1b62e6-3b84-4774-a7b2-f9d52b053e72" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: BE68673184974F17BE4E7C5F76837EE6 Ref B: CO6AA3150218009 Ref C: 2024-08-21T23:52:11Z" ],
-        "Date": [ "Wed, 21 Aug 2024 23:52:16 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 9E6E569462DA4938B52338A7020BF336 Ref B: CO6AA3150219039 Ref C: 2025-04-22T16:21:37Z" ],
+        "Date": [ "Tue, 22 Apr 2025 16:21:40 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "806" ],
+        "Content-Length": [ "814" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool\",\"name\":\"testPool\",\"type\":\"microsoft.standbypool/standbyvirtualmachinepools\",\"location\":\"eastasia\",\"systemData\":{\"createdBy\":\"dev@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-21T23:52:14.877708Z\",\"lastModifiedBy\":\"dev@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-08-21T23:52:14.877708Z\"},\"properties\":{\"elasticityProfile\":{\"maxReadyCapacity\":1,\"minReadyCapacity\":1},\"virtualMachineState\":\"Running\",\"attachedVirtualMachineScaleSetId\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool\",\"name\":\"testPool\",\"type\":\"microsoft.standbypool/standbyvirtualmachinepools\",\"location\":\"eastasia\",\"tags\":{},\"systemData\":{\"createdBy\":\"carlosh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-22T16:21:39.4643292Z\",\"lastModifiedBy\":\"carlosh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-04-22T16:21:39.4643292Z\"},\"properties\":{\"elasticityProfile\":{\"maxReadyCapacity\":1,\"minReadyCapacity\":1},\"virtualMachineState\":\"Running\",\"attachedVirtualMachineScaleSetId\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "AzStandbyVMPool+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2024-03-01+2": {
+  "AzStandbyVMPool+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2025-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2024-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2025-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "ae642bea-2351-4430-9900-b9a21d60d52f" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "4dbd11d5-120b-422a-943b-23a31bd0ed00" ],
         "CommandName": [ "New-AzStandbyVMPool" ],
         "FullCommandName": [ "New-AzStandbyVMPool_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.StandbyPool/0.2.0" ]
+        "User-Agent": [ "AzurePowershell/v6.4.0", "PSVersion/v7.4.7", "Az.StandbyPool/0.2.1" ]
       },
       "ContentHeaders": {
       }
@@ -62,41 +65,42 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"ba004a25-0000-1900-0000-66c67db00000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "ETag": [ "\"6b01a29f-0000-1900-0000-6807c2140000\"" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250422T162212Z:2d4026e1-ba0d-42df-94d8-aa234b33974e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "199998" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "1b89a6e3-2a59-49ec-8d9b-7aeb5302568b" ],
-        "x-ms-correlation-request-id": [ "4d8e7c42-19ae-4c3a-97f2-bc3366834e26" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240821T235247Z:4d8e7c42-19ae-4c3a-97f2-bc3366834e26" ],
+        "x-ms-request-id": [ "0aece52a-4182-4542-a452-100c97d7cb08" ],
+        "x-ms-correlation-request-id": [ "2d4026e1-ba0d-42df-94d8-aa234b33974e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: FEECAB243F964248A5EE3383C25C8A07 Ref B: CO6AA3150218009 Ref C: 2024-08-21T23:52:47Z" ],
-        "Date": [ "Wed, 21 Aug 2024 23:52:47 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6A74BD067D454B768CE993ECA79D3813 Ref B: CO6AA3150219039 Ref C: 2025-04-22T16:22:11Z" ],
+        "Date": [ "Tue, 22 Apr 2025 16:22:11 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "806" ],
+        "Content-Length": [ "814" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool\",\"name\":\"testPool\",\"type\":\"microsoft.standbypool/standbyvirtualmachinepools\",\"location\":\"eastasia\",\"systemData\":{\"createdBy\":\"dev@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-21T23:52:14.877708Z\",\"lastModifiedBy\":\"dev@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-08-21T23:52:14.877708Z\"},\"properties\":{\"elasticityProfile\":{\"maxReadyCapacity\":1,\"minReadyCapacity\":1},\"virtualMachineState\":\"Running\",\"attachedVirtualMachineScaleSetId\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool\",\"name\":\"testPool\",\"type\":\"microsoft.standbypool/standbyvirtualmachinepools\",\"location\":\"eastasia\",\"tags\":{},\"systemData\":{\"createdBy\":\"carlosh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-22T16:21:39.4643292Z\",\"lastModifiedBy\":\"carlosh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-04-22T16:21:39.4643292Z\"},\"properties\":{\"elasticityProfile\":{\"maxReadyCapacity\":1,\"minReadyCapacity\":1},\"virtualMachineState\":\"Running\",\"attachedVirtualMachineScaleSetId\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "AzStandbyVMPool+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2024-03-01+3": {
+  "AzStandbyVMPool+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2025-03-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2024-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2025-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "ae642bea-2351-4430-9900-b9a21d60d52f" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "4dbd11d5-120b-422a-943b-23a31bd0ed00" ],
         "CommandName": [ "New-AzStandbyVMPool" ],
         "FullCommandName": [ "New-AzStandbyVMPool_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.StandbyPool/0.2.0" ]
+        "User-Agent": [ "AzurePowershell/v6.4.0", "PSVersion/v7.4.7", "Az.StandbyPool/0.2.1" ]
       },
       "ContentHeaders": {
       }
@@ -106,40 +110,41 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"ba004a25-0000-1900-0000-66c67db00000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "ETag": [ "\"6b01a29f-0000-1900-0000-6807c2140000\"" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "199994" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "f0cdc169-1983-480e-8b14-63d80dc21a5f" ],
-        "x-ms-correlation-request-id": [ "c98d4898-1e3d-4a5f-aa34-b0df8da37a52" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240821T235248Z:c98d4898-1e3d-4a5f-aa34-b0df8da37a52" ],
+        "x-ms-request-id": [ "31429631-17f3-4b2f-bbf9-2c7941487dc0" ],
+        "x-ms-correlation-request-id": [ "83bdb375-668c-4cc2-b383-8ac077f038bf" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250422T162212Z:83bdb375-668c-4cc2-b383-8ac077f038bf" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F8A050B0EECA497C8EE9A0DAED9BB887 Ref B: CO6AA3150218009 Ref C: 2024-08-21T23:52:47Z" ],
-        "Date": [ "Wed, 21 Aug 2024 23:52:47 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 30D1DCAFBBAC478693B8343F31800011 Ref B: CO6AA3150219039 Ref C: 2025-04-22T16:22:12Z" ],
+        "Date": [ "Tue, 22 Apr 2025 16:22:11 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "806" ],
+        "Content-Length": [ "814" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool\",\"name\":\"testPool\",\"type\":\"microsoft.standbypool/standbyvirtualmachinepools\",\"location\":\"eastasia\",\"systemData\":{\"createdBy\":\"dev@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-21T23:52:14.877708Z\",\"lastModifiedBy\":\"dev@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-08-21T23:52:14.877708Z\"},\"properties\":{\"elasticityProfile\":{\"maxReadyCapacity\":1,\"minReadyCapacity\":1},\"virtualMachineState\":\"Running\",\"attachedVirtualMachineScaleSetId\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool\",\"name\":\"testPool\",\"type\":\"microsoft.standbypool/standbyvirtualmachinepools\",\"location\":\"eastasia\",\"tags\":{},\"systemData\":{\"createdBy\":\"carlosh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-22T16:21:39.4643292Z\",\"lastModifiedBy\":\"carlosh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-04-22T16:21:39.4643292Z\"},\"properties\":{\"elasticityProfile\":{\"maxReadyCapacity\":1,\"minReadyCapacity\":1},\"virtualMachineState\":\"Running\",\"attachedVirtualMachineScaleSetId\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "AzStandbyVMPool+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2024-03-01+1": {
+  "AzStandbyVMPool+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2025-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2024-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2025-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "35eff8f9-7545-43d9-a861-68a7c75064ba" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "573c4cab-d410-47ae-9bf0-edb216d09373" ],
         "CommandName": [ "Get-AzStandbyVMPool" ],
         "FullCommandName": [ "Get-AzStandbyVMPool_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.StandbyPool/0.2.0" ],
+        "User-Agent": [ "AzurePowershell/v6.4.0", "PSVersion/v7.4.7", "Az.StandbyPool/0.2.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -150,40 +155,41 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"ba004a25-0000-1900-0000-66c67db00000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "ETag": [ "\"6b01a29f-0000-1900-0000-6807c2140000\"" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "199997" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "d20744b2-b651-4a24-8b0b-1e7127d3e943" ],
-        "x-ms-correlation-request-id": [ "c7aeb80a-0ecc-4eee-a20b-be4e7f7ec540" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240821T235248Z:c7aeb80a-0ecc-4eee-a20b-be4e7f7ec540" ],
+        "x-ms-request-id": [ "b9052223-078f-49de-ab52-dd578b7f5965" ],
+        "x-ms-correlation-request-id": [ "bb83f792-33a7-4886-b044-d57dda1204a8" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250422T162213Z:bb83f792-33a7-4886-b044-d57dda1204a8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 06CFC778C6F04B36809D90799885EFB8 Ref B: CO6AA3150218009 Ref C: 2024-08-21T23:52:48Z" ],
-        "Date": [ "Wed, 21 Aug 2024 23:52:48 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: EE1FA19AF2204D6D9359188E913073FD Ref B: CO6AA3150219039 Ref C: 2025-04-22T16:22:13Z" ],
+        "Date": [ "Tue, 22 Apr 2025 16:22:12 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "806" ],
+        "Content-Length": [ "814" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool\",\"name\":\"testPool\",\"type\":\"microsoft.standbypool/standbyvirtualmachinepools\",\"location\":\"eastasia\",\"systemData\":{\"createdBy\":\"dev@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-21T23:52:14.877708Z\",\"lastModifiedBy\":\"dev@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-08-21T23:52:14.877708Z\"},\"properties\":{\"elasticityProfile\":{\"maxReadyCapacity\":1,\"minReadyCapacity\":1},\"virtualMachineState\":\"Running\",\"attachedVirtualMachineScaleSetId\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool\",\"name\":\"testPool\",\"type\":\"microsoft.standbypool/standbyvirtualmachinepools\",\"location\":\"eastasia\",\"tags\":{},\"systemData\":{\"createdBy\":\"carlosh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-22T16:21:39.4643292Z\",\"lastModifiedBy\":\"carlosh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-04-22T16:21:39.4643292Z\"},\"properties\":{\"elasticityProfile\":{\"maxReadyCapacity\":1,\"minReadyCapacity\":1},\"virtualMachineState\":\"Running\",\"attachedVirtualMachineScaleSetId\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "AzStandbyVMPool+[NoContext]+GetRuntimeView+$GET+https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool/runtimeViews/latest?api-version=2024-03-01+1": {
+  "AzStandbyVMPool+[NoContext]+GetRuntimeView+$GET+https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool/runtimeViews/latest?api-version=2025-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool/runtimeViews/latest?api-version=2024-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool/runtimeViews/latest?api-version=2025-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "d9d4d964-3f7e-48e7-9624-614076b73747" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "3b0be65e-c7a1-48fa-a77b-53d3ecf3433b" ],
         "CommandName": [ "Get-AzStandbyVMPoolStatus" ],
         "FullCommandName": [ "Get-AzStandbyVMPoolStatus_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.StandbyPool/0.2.0" ],
+        "User-Agent": [ "AzurePowershell/v6.4.0", "PSVersion/v7.4.7", "Az.StandbyPool/0.2.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -195,37 +201,40 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-operation-identifier": [ "tenantId=9d443c47-1ad7-4a6f-9cd7-7ae8f68d867a,objectId=5178a768-e5ce-4a6d-b586-2dba816d2f57/westus2/53b81cf7-499b-478f-8e0a-03b05e5173fb" ],
+        "Alt-Svc": [ "h3=\":31329\"" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "199998" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "80fb191f-75ae-4f1d-aeb7-d7ccb4bc9584" ],
-        "x-ms-correlation-request-id": [ "6a628bcf-d789-424b-ad9b-e08cacde0690" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240821T235250Z:6a628bcf-d789-424b-ad9b-e08cacde0690" ],
+        "x-ms-request-id": [ "b54cb5d0-0c52-4455-b41a-12e36a377464" ],
+        "x-ms-correlation-request-id": [ "6bf99691-f5c1-44b0-833a-77d03a2cb79a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250422T162214Z:6bf99691-f5c1-44b0-833a-77d03a2cb79a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 3FFB34A5EBF34EBA9CFAF36521AAB326 Ref B: CO6AA3150218009 Ref C: 2024-08-21T23:52:49Z" ],
-        "Date": [ "Wed, 21 Aug 2024 23:52:49 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: A18BA8552DD34C17B846B527F4C42342 Ref B: CO6AA3150219039 Ref C: 2025-04-22T16:22:13Z" ],
+        "Date": [ "Tue, 22 Apr 2025 16:22:13 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "555" ],
+        "Content-Length": [ "659" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool/runtimeViews/latest\",\"name\":\"latest\",\"type\":\"Microsoft.StandbyPool/standbyVirtualMachinePools/runtimeViews\",\"properties\":{\"instanceCountSummary\":[{\"instanceCountsByState\":[{\"state\":\"Creating\",\"count\":1},{\"state\":\"Starting\",\"count\":0},{\"state\":\"Running\",\"count\":0},{\"state\":\"Deallocating\",\"count\":0},{\"state\":\"Deallocated\",\"count\":0},{\"state\":\"Deleting\",\"count\":0}]}],\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool/runtimeViews/latest\",\"name\":\"latest\",\"type\":\"Microsoft.StandbyPool/standbyVirtualMachinePools/runtimeViews\",\"properties\":{\"instanceCountSummary\":[{\"instanceCountsByState\":[{\"state\":\"Creating\",\"count\":1},{\"state\":\"Starting\",\"count\":0},{\"state\":\"Running\",\"count\":0},{\"state\":\"Deallocating\",\"count\":0},{\"state\":\"Deallocated\",\"count\":0},{\"state\":\"Hibernating\",\"count\":0},{\"state\":\"Deleting\",\"count\":0},{\"state\":\"Hibernated\",\"count\":0}]}],\"status\":{\"code\":\"HealthState/healthy\"},\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "AzStandbyVMPool+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2024-03-01+1": {
+  "AzStandbyVMPool+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2025-03-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2024-03-01",
-      "Content": "{\n  \"properties\": {\n    \"elasticityProfile\": {\n      \"maxReadyCapacity\": 2\n    }\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2025-03-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"elasticityProfile\": {\r\n      \"maxReadyCapacity\": 2\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "86" ]
+        "Content-Length": [ "92" ]
       }
     },
     "Response": {
@@ -233,41 +242,44 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"ba009e28-0000-1900-0000-66c67dd50000\"" ],
+        "ETag": [ "\"6b01e1a4-0000-1900-0000-6807c2390000\"" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "Alt-Svc": [ "h3=\":31329\"" ],
+        "x-ms-operation-identifier": [ "tenantId=9d443c47-1ad7-4a6f-9cd7-7ae8f68d867a,objectId=5178a768-e5ce-4a6d-b586-2dba816d2f57/westus2/e191aba3-715c-4193-ba9f-53edb79fb314" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "19999" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "acaa047c-8eaa-4f64-b755-9b9433bca7e0" ],
-        "x-ms-correlation-request-id": [ "93e73202-622c-416b-b10c-91c50d308b7f" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240821T235254Z:93e73202-622c-416b-b10c-91c50d308b7f" ],
+        "x-ms-request-id": [ "784054cc-0de8-43a7-aaa7-f2b8640cdb13" ],
+        "x-ms-correlation-request-id": [ "23e9d76c-af4e-40c7-8554-257fb9cba2b9" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250422T162217Z:23e9d76c-af4e-40c7-8554-257fb9cba2b9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6DF797D2C8B04EB79DB537CECB08502E Ref B: CO6AA3150218009 Ref C: 2024-08-21T23:52:50Z" ],
-        "Date": [ "Wed, 21 Aug 2024 23:52:53 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 2741D51771B74683A7E870FEFE087CC1 Ref B: CO6AA3150219039 Ref C: 2025-04-22T16:22:14Z" ],
+        "Date": [ "Tue, 22 Apr 2025 16:22:16 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "807" ],
+        "Content-Length": [ "814" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool\",\"name\":\"testPool\",\"type\":\"microsoft.standbypool/standbyvirtualmachinepools\",\"location\":\"eastasia\",\"systemData\":{\"createdBy\":\"dev@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-21T23:52:14.877708Z\",\"lastModifiedBy\":\"dev@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-08-21T23:52:52.9865873Z\"},\"properties\":{\"elasticityProfile\":{\"maxReadyCapacity\":2,\"minReadyCapacity\":1},\"virtualMachineState\":\"Running\",\"attachedVirtualMachineScaleSetId\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool\",\"name\":\"testPool\",\"type\":\"microsoft.standbypool/standbyvirtualmachinepools\",\"location\":\"eastasia\",\"tags\":{},\"systemData\":{\"createdBy\":\"carlosh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-22T16:21:39.4643292Z\",\"lastModifiedBy\":\"carlosh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-04-22T16:22:15.2793373Z\"},\"properties\":{\"elasticityProfile\":{\"maxReadyCapacity\":2,\"minReadyCapacity\":1},\"virtualMachineState\":\"Running\",\"attachedVirtualMachineScaleSetId\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "AzStandbyVMPool+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2024-03-01+1": {
+  "AzStandbyVMPool+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2025-03-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2024-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/test-sdks/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool?api-version=2025-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "cc474429-be7f-4bba-ba50-26f5713bb09e" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "ec2340f6-5ee6-42c2-a1e1-aaaf7a99fd49" ],
         "CommandName": [ "Remove-AzStandbyVMPool" ],
         "FullCommandName": [ "Remove-AzStandbyVMPool_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.StandbyPool/0.2.0" ],
+        "User-Agent": [ "AzurePowershell/v6.4.0", "PSVersion/v7.4.7", "Az.StandbyPool/0.2.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -278,20 +290,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"ba001029-0000-1900-0000-66c67dd80000\"" ],
-        "Location": [ "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/providers/Microsoft.StandbyPool/locations/EASTASIA/operationStatuses/8e6b855b-5775-4f2e-9eb6-aee6cc66795f*3262CD08E09091F3F5EEBA7B79CD746AAD5BC0FA4A48F87200F09B8C363E469A?api-version=2024-03-01\u0026t=638598811771111285\u0026c=MIIHpTCCBo2gAwIBAgITOgM6dTLGpzYZpvPtgQAEAzp1MjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSU5GUkEgQ0EgMDEwHhcNMjQwNjI2MDEzMjIxWhcNMjUwNjIxMDEzMjIxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAPPPKY5bDN03KptFFhiyLIyn86BlrXYFIZWYXA-hY7_WbLyWN0IxcLIUBW_I-9u-YsXOHk9WPMlUYHIFPgHW7A3FsSGfl9dd6YGapKoSSw0NkTpNXM58R54BBgLp7AhiWzK15D9T-XELNSU4Wq9sEeA5T24kazcgS2MUkzELH0I9dwu7g0dwJIuIJkoJjEzg1b1Q3Ie5HKHHNbjottJn7Q5LBS-9QtQyruuwaNTgSJpCoi4PBKVIOTBYL_Nv1wecmKmfWcT0mnhQE9zjhJTbcoN9hKSvAMqsDHtxWUFZosiw3JKIY0zb59CrVGSuOhfN3qaarwN9EAlXLqc4ZyKpsTkCAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CWTJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSU5GUkElMjBDQSUyMDAxKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MB0GA1UdDgQWBBRk_38CqdKjPVylWUR4uuqhbFGeHTAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTl2Ztn_PjsurvwwKidileIud8-YzAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAFsx7FtYAzSo98T5ydNFa0ukjPZ6XCQc9zo7ldqy235P_zJAUkaNgCU4EGOzbZJDoMa8mAfhyukL_0GfPeApUaY2e44ZOzoYAkeEuDiwcs-9zoQ1fCyXhn0pCumGFXRilX9KjAPaYTzDvQMEllTy_ZViwTahuKaGtFVamZguBPdaeYC_0oybtTVNQCs8hGnffhNZOMASB-5pFs35MNxsDWTVIQksDee419jqpsbWLkh6rnanILO1O_ihwb-WpvRQByQ5NGpG1-z0MQ6nRpr9wWxUi-DsrVsD38NTMIPc2uei4Ivf6qnGRvOOj0fmsciWuTTEXMaD-5a81mGlzhZc09Q\u0026s=mmQY9PXXX6P97nkg6W3YOHHA4EyUZdJN_dJqNZgiaSvNaUP-U2v9chRI5a0viC3G4gcAFdgfnlyCD5LIF1k6xMKf-kUK6hXsQw313iVsC3x0KU9-PqXC1fnKAfAdOFjbRBPLztr7zel9IYtfXGzGLsqIsRjYD32qvsUkjcw6fYlPEPddMkkBVG8g9o12V9CmLEnXA0jsvYyhD59eaI9KvPu2H70DL19GxJI_AjEjzsAFnrK-HS27zpKatzixIWFrWNq_VW3AFFkAGWiIxtHBR-O5N6X-at9wmqoFi8Ud_CagEW8vGTz41xUR0023B7k5w4hGJqTsYH8tbjcHRqznuQ\u0026h=qRx4CUuBRldvt-5HsO0abUNQHT115a5oOTOHOsHjnkY" ],
+        "ETag": [ "\"6b017ca5-0000-1900-0000-6807c23d0000\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/providers/Microsoft.StandbyPool/locations/EASTASIA/operationStatuses/b1bd330f-710b-4b82-b8e4-b2a645cb05fb*BFF484175310EC8D6B7784135F9D7EB863C3F919A198598BBDC3B68C4D23C54C?api-version=2025-03-01\u0026t=638809357417305653\u0026c=MIIHpTCCBo2gAwIBAgITOgWZuFmLREgOyTdeugAEBZm4WTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSU5GUkEgQ0EgMDEwHhcNMjUwNDE5MTQyMjI3WhcNMjUxMDE2MTQyMjI3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAPxDlNdj6r6H0vTzKfz228nqLQPXYSxPqEGQSSSCczQcCX3f_Xtnvc-lFdoleay-OVQlgfbWiMkGazl2q7FVj9BZUHJ3KXFg833nlMDzzIkfrA17t4t3OW-6po21aPw9TdEBtH-GReYxdd8YmK-hHhKfpllLkKKn29Z8r3ecn-VJ1URRr4gV1Dnhd8h62eio4oVWmqq_9ITkiyfphE8gKB3n-2ZGTlftv1uEX4hpgnUbyhP4GBPp9Ni0RdYmpukMEr1-GI3W5OnXgKOvoCRB0HZQKU-5u630M-76UA_GFyALd1X_xQwHcCHKvtBzX5EEcQ4AOj_B540c3Mp0HnljQsECAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CWTJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSU5GUkElMjBDQSUyMDAxKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MB0GA1UdDgQWBBRgocSx-jjjSuZiJXHuNlAhZPhmbjAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTl2Ztn_PjsurvwwKidileIud8-YzAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAK5mT0Rrym5x1NF2yah7nxZLo1y0madgpRkCREZyGAoW02DZD68DX6wagq4RbcOr_MAlhvWOTjVB8J52ZIsydOGq5NSpxte9Cy10m7-zSXWMn0yNE8YUToarDNRzmshQ5pEBXhjU6kSMEvqeNG8Fr3KrDZEVieQc5By_ZV8F9vtuv90XjrjiLw1qOrPVVvUFOTx-JlUR4aErF4Jldd_YA0aWCiYbvu3Bd1vWtXdnrkJSX-natlKNqGimVnj86nKEao8ktK5pKaHq6C8vbOLeNreXRy5C2fC1tgiZ00V2pHuk1qbOdhlzTDv8G0HZLm_T7_s92OBqMAwBJ1uChKnQm6M\u0026s=4nG8XdlS-n12c3jgE3qW1iK6NsbvtNDgeeApq01tTBkWFs4KXD0rGhAN0hQttzsjKzMjI-_EVog0A18S3aLFIkk2-ZbEW9cG1JIHnJKtdrTIWEw7yi2Ibg-DATu_2g0DtcU6LRjcTNeG3Pr9Ja0gDVHzX_u20bleFxHXzHXgCcFsSz0U624SWrYySbFPc6qN5Kfk6P2Lb6UzWAXMhNQCM7nqnGmeO9uisfIOQxthNgf1ghGtb_89Vhp37xZCiu-4MZqBMkJbndt0Z7QHcpadOSnpUJ43q55pTcYhija0HVK3gY5520fdJF5sU1VCJYKsL1aTGh1GGY0-mFdLXabaVg\u0026h=DQK0kDcld8xDL3JYatBujBdQX7YYdK0jkba5WUo5bts" ],
         "Vary": [ "Accept-Encoding" ],
+        "Alt-Svc": [ "h3=\":31329\"" ],
+        "x-ms-operation-identifier": [ "tenantId=9d443c47-1ad7-4a6f-9cd7-7ae8f68d867a,objectId=5178a768-e5ce-4a6d-b586-2dba816d2f57/westus2/4a49ce6e-0b24-433e-bc4f-e7b4686ac76d" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/providers/Microsoft.StandbyPool/locations/EASTASIA/operationStatuses/8e6b855b-5775-4f2e-9eb6-aee6cc66795f*3262CD08E09091F3F5EEBA7B79CD746AAD5BC0FA4A48F87200F09B8C363E469A?api-version=2024-03-01\u0026t=638598811770955020\u0026c=MIIHpTCCBo2gAwIBAgITOgM6dTLGpzYZpvPtgQAEAzp1MjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSU5GUkEgQ0EgMDEwHhcNMjQwNjI2MDEzMjIxWhcNMjUwNjIxMDEzMjIxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAPPPKY5bDN03KptFFhiyLIyn86BlrXYFIZWYXA-hY7_WbLyWN0IxcLIUBW_I-9u-YsXOHk9WPMlUYHIFPgHW7A3FsSGfl9dd6YGapKoSSw0NkTpNXM58R54BBgLp7AhiWzK15D9T-XELNSU4Wq9sEeA5T24kazcgS2MUkzELH0I9dwu7g0dwJIuIJkoJjEzg1b1Q3Ie5HKHHNbjottJn7Q5LBS-9QtQyruuwaNTgSJpCoi4PBKVIOTBYL_Nv1wecmKmfWcT0mnhQE9zjhJTbcoN9hKSvAMqsDHtxWUFZosiw3JKIY0zb59CrVGSuOhfN3qaarwN9EAlXLqc4ZyKpsTkCAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CWTJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSU5GUkElMjBDQSUyMDAxKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MB0GA1UdDgQWBBRk_38CqdKjPVylWUR4uuqhbFGeHTAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTl2Ztn_PjsurvwwKidileIud8-YzAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAFsx7FtYAzSo98T5ydNFa0ukjPZ6XCQc9zo7ldqy235P_zJAUkaNgCU4EGOzbZJDoMa8mAfhyukL_0GfPeApUaY2e44ZOzoYAkeEuDiwcs-9zoQ1fCyXhn0pCumGFXRilX9KjAPaYTzDvQMEllTy_ZViwTahuKaGtFVamZguBPdaeYC_0oybtTVNQCs8hGnffhNZOMASB-5pFs35MNxsDWTVIQksDee419jqpsbWLkh6rnanILO1O_ihwb-WpvRQByQ5NGpG1-z0MQ6nRpr9wWxUi-DsrVsD38NTMIPc2uei4Ivf6qnGRvOOj0fmsciWuTTEXMaD-5a81mGlzhZc09Q\u0026s=feH1PA54Bds9fFQsEhf06rRz_efUNnEQErmn70jeDj3ONo_Vp63TgttEhhP_eKSRuQFqeHB9PP-tfYPkWgZaDV3kyhN1j5PP1_TQ2bCx0w_WhQlYTUVIBbsk9_0j_JceWxPACqqGZ7FVcpfCw9DvJQTc1LOs_DUfO8xGP1bu2UQ8zDRwYpEz6RQtyf-61kDDNYo_fjNk-bgL7QPIRLJOg-OjC4hJko1rpbKVp2VrKVNn4W9p9eRWfE6qN-BP5I5nwGq_o6WrNCTGFoEIa503TtU2RxfrgUdClK3vr_fkSMaPdp_D6TMA34Ki3N_2HUHNRFOq9KVSWHDYfw2xhaTNSA\u0026h=TdrRFg0NT0y_WXY2HijepAJ3gYKuiQCy1PcQkHi8qVw" ],
-        "x-ms-request-id": [ "8e6b855b-5775-4f2e-9eb6-aee6cc66795f" ],
-        "x-ms-correlation-request-id": [ "138ac87b-f431-4311-9daf-b3b5b50a3f88" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240821T235257Z:138ac87b-f431-4311-9daf-b3b5b50a3f88" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/providers/Microsoft.StandbyPool/locations/EASTASIA/operationStatuses/b1bd330f-710b-4b82-b8e4-b2a645cb05fb*BFF484175310EC8D6B7784135F9D7EB863C3F919A198598BBDC3B68C4D23C54C?api-version=2025-03-01\u0026t=638809357417305653\u0026c=MIIHpTCCBo2gAwIBAgITOgWZuFmLREgOyTdeugAEBZm4WTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSU5GUkEgQ0EgMDEwHhcNMjUwNDE5MTQyMjI3WhcNMjUxMDE2MTQyMjI3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAPxDlNdj6r6H0vTzKfz228nqLQPXYSxPqEGQSSSCczQcCX3f_Xtnvc-lFdoleay-OVQlgfbWiMkGazl2q7FVj9BZUHJ3KXFg833nlMDzzIkfrA17t4t3OW-6po21aPw9TdEBtH-GReYxdd8YmK-hHhKfpllLkKKn29Z8r3ecn-VJ1URRr4gV1Dnhd8h62eio4oVWmqq_9ITkiyfphE8gKB3n-2ZGTlftv1uEX4hpgnUbyhP4GBPp9Ni0RdYmpukMEr1-GI3W5OnXgKOvoCRB0HZQKU-5u630M-76UA_GFyALd1X_xQwHcCHKvtBzX5EEcQ4AOj_B540c3Mp0HnljQsECAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CWTJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSU5GUkElMjBDQSUyMDAxKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MB0GA1UdDgQWBBRgocSx-jjjSuZiJXHuNlAhZPhmbjAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTl2Ztn_PjsurvwwKidileIud8-YzAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAK5mT0Rrym5x1NF2yah7nxZLo1y0madgpRkCREZyGAoW02DZD68DX6wagq4RbcOr_MAlhvWOTjVB8J52ZIsydOGq5NSpxte9Cy10m7-zSXWMn0yNE8YUToarDNRzmshQ5pEBXhjU6kSMEvqeNG8Fr3KrDZEVieQc5By_ZV8F9vtuv90XjrjiLw1qOrPVVvUFOTx-JlUR4aErF4Jldd_YA0aWCiYbvu3Bd1vWtXdnrkJSX-natlKNqGimVnj86nKEao8ktK5pKaHq6C8vbOLeNreXRy5C2fC1tgiZ00V2pHuk1qbOdhlzTDv8G0HZLm_T7_s92OBqMAwBJ1uChKnQm6M\u0026s=4nG8XdlS-n12c3jgE3qW1iK6NsbvtNDgeeApq01tTBkWFs4KXD0rGhAN0hQttzsjKzMjI-_EVog0A18S3aLFIkk2-ZbEW9cG1JIHnJKtdrTIWEw7yi2Ibg-DATu_2g0DtcU6LRjcTNeG3Pr9Ja0gDVHzX_u20bleFxHXzHXgCcFsSz0U624SWrYySbFPc6qN5Kfk6P2Lb6UzWAXMhNQCM7nqnGmeO9uisfIOQxthNgf1ghGtb_89Vhp37xZCiu-4MZqBMkJbndt0Z7QHcpadOSnpUJ43q55pTcYhija0HVK3gY5520fdJF5sU1VCJYKsL1aTGh1GGY0-mFdLXabaVg\u0026h=DQK0kDcld8xDL3JYatBujBdQX7YYdK0jkba5WUo5bts" ],
+        "x-ms-request-id": [ "b1bd330f-710b-4b82-b8e4-b2a645cb05fb" ],
+        "x-ms-correlation-request-id": [ "35cae4ff-c148-4d87-8afd-896ff16591c5" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250422T162221Z:35cae4ff-c148-4d87-8afd-896ff16591c5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 2E47F75E859E493B8A808699F6B6314D Ref B: CO6AA3150218009 Ref C: 2024-08-21T23:52:54Z" ],
-        "Date": [ "Wed, 21 Aug 2024 23:52:56 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 92A3B629FC5B4A3185D0371E1821DA20 Ref B: CO6AA3150219039 Ref C: 2025-04-22T16:22:17Z" ],
+        "Date": [ "Tue, 22 Apr 2025 16:22:20 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "4" ],

@@ -58,7 +58,6 @@ Remove-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -B
 
 This command deletes the new ANF backup with a the name "MyVolumeBackup" from Backup Vault "MyVault".
 
-
 ## PARAMETERS
 
 ### -AccountName

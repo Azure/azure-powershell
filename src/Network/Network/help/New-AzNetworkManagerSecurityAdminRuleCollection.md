@@ -16,7 +16,8 @@ Creates a security admin rule collection.
 New-AzNetworkManagerSecurityAdminRuleCollection -Name <String> -SecurityAdminConfigurationName <String>
  -NetworkManagerName <String> -ResourceGroupName <String> [-Description <String>]
  -AppliesToGroup <PSNetworkManagerSecurityGroupItem[]> [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

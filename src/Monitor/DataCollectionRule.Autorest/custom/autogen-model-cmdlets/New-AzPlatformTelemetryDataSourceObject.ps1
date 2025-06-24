@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PlatformTelemet
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azplatformtelemetrydatasourceobject
 #>
 function New-AzPlatformTelemetryDataSourceObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PlatformTelemetryDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

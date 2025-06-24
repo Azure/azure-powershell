@@ -14,7 +14,8 @@ Removes an existing ExpressRoutePort authorization.
 
 ```
 Remove-AzExpressRoutePortAuthorization -Name <String> -ExpressRoutePortObject <PSExpressRoutePort> [-Force]
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

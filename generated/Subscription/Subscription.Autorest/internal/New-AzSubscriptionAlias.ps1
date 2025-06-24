@@ -16,87 +16,129 @@
 
 <#
 .Synopsis
-Create Alias Subscription.
+create Alias Subscription.
 .Description
-Create Alias Subscription.
+create Alias Subscription.
 .Example
 New-AzSubscriptionAlias -AliasName test-subscription -SubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 .Example
 New-AzSubscriptionAlias -AliasName test-subscription -SubscriptionName "createSub" -BillingScope "/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}" -Workload 'Production' 
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionAliasResponse
+Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponse
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ISubscriptionIdentity>: Identity Parameter
+  [AliasName <String>]: AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
+  [BillingAccountId <String>]: Billing Account Id.
+  [Id <String>]: Resource identity path
+  [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
+  [SubscriptionId <String>]: Subscription Id.
 .Link
 https://learn.microsoft.com/powershell/module/az.subscription/new-azsubscriptionalias
 #>
 function New-AzSubscriptionAlias {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionAliasResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponse])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Path')]
     [System.String]
     # AliasName is the name for the subscription creation request.
     # Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
     ${AliasName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
     [System.String]
     # Billing scope of the subscription.For CustomerLed and FieldLed - /billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}For PartnerLed - /billingAccounts/{billingAccountName}/customers/{customerName}For Legacy EA - /billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}
     ${BillingScope},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
     [System.String]
     # Management group Id for the subscription.
     ${ManagementGroupId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
     [System.String]
     # Reseller Id
     ${ResellerId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
     [System.String]
     # This parameter can be used to create alias for existing subscription Id
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Alias('DisplayName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
     [System.String]
     # The friendly name of the subscription.
     ${SubscriptionName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
     [System.String]
     # Owner Id of the subscription
     ${SubscriptionOwnerId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
     [System.String]
     # Tenant Id of the subscription
     ${SubscriptionTenantId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IPutAliasRequestAdditionalPropertiesTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.IPutAliasRequestAdditionalPropertiesTags]))]
     [System.Collections.Hashtable]
     # Tags for the subscription
     ${Tag},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Support.Workload])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.PSArgumentCompleterAttribute("Production", "DevTest")]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Support.Workload]
+    [System.String]
     # The workload type of the subscription.
     # It can be either Production or DevTest.
     ${Workload},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -166,12 +208,21 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.Subscription.private\New-AzSubscriptionAlias_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.Subscription.private\New-AzSubscriptionAlias_CreateViaIdentityExpanded';
+            CreateViaJsonFilePath = 'Az.Subscription.private\New-AzSubscriptionAlias_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Subscription.private\New-AzSubscriptionAlias_CreateViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

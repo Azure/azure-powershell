@@ -16,21 +16,21 @@
 
 <#
 .Synopsis
-Create or update an identity in the specified subscription and resource group.
+update an identity in the specified subscription and resource group.
 .Description
-Create or update an identity in the specified subscription and resource group.
+update an identity in the specified subscription and resource group.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20181130.IIdentity
+Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IIdentity
 .Link
 https://learn.microsoft.com/powershell/module/az.hanaonazure/set-azuserassignedidentity
 #>
 function Set-AzUserAssignedIdentity {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20181130.IIdentity])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IIdentity])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -53,18 +53,30 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api10.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -122,13 +134,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             UpdateExpanded = 'Az.HanaOnAzure.private\Set-AzUserAssignedIdentity_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.HanaOnAzure.private\Set-AzUserAssignedIdentity_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.HanaOnAzure.private\Set-AzUserAssignedIdentity_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -137,6 +152,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

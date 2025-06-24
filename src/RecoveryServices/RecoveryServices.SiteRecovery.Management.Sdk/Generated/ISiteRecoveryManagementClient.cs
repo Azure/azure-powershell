@@ -48,18 +48,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
 
         /// <summary>
-        /// The name of the resource group where the recovery services vault is present.
-        /// </summary>
-        string ResourceGroupName { get; set;}
-
-
-        /// <summary>
-        /// The name of the recovery services vault.
-        /// </summary>
-        string ResourceName { get; set;}
-
-
-        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         string AcceptLanguage { get; set;}
@@ -67,15 +55,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         int? LongRunningOperationRetryTimeout { get; set;}
 
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         bool? GenerateClientRequestId { get; set;}
 
@@ -159,6 +147,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Gets the ITargetComputeSizesOperations
         /// </summary>
         ITargetComputeSizesOperations TargetComputeSizes { get; }
+
+        /// <summary>
+        /// Gets the IReplicationProtectionClustersOperations
+        /// </summary>
+        IReplicationProtectionClustersOperations ReplicationProtectionClusters { get; }
+
+        /// <summary>
+        /// Gets the IClusterRecoveryPointsOperations
+        /// </summary>
+        IClusterRecoveryPointsOperations ClusterRecoveryPoints { get; }
+
+        /// <summary>
+        /// Gets the IClusterRecoveryPointOperations
+        /// </summary>
+        IClusterRecoveryPointOperations ClusterRecoveryPoint { get; }
 
         /// <summary>
         /// Gets the IReplicationProtectionContainerMappingsOperations

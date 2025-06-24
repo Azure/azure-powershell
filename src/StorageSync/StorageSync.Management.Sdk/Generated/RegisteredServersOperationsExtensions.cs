@@ -156,9 +156,9 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='serverId'>
         /// GUID identifying the on-premises server.
         /// </param>
-        public static RegisteredServer Update(this IRegisteredServersOperations operations, string resourceGroupName, string storageSyncServiceName, string serverId, bool? identity = default(bool?))
+        public static RegisteredServer Update(this IRegisteredServersOperations operations, string resourceGroupName, string storageSyncServiceName, string serverId, RegisteredServerUpdateParameters parameters)
         {
-                return ((IRegisteredServersOperations)operations).UpdateAsync(resourceGroupName, storageSyncServiceName, serverId, identity).GetAwaiter().GetResult();
+                return ((IRegisteredServersOperations)operations).UpdateAsync(resourceGroupName, storageSyncServiceName, serverId, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -179,9 +179,9 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RegisteredServer> UpdateAsync(this IRegisteredServersOperations operations, string resourceGroupName, string storageSyncServiceName, string serverId, bool? identity = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RegisteredServer> UpdateAsync(this IRegisteredServersOperations operations, string resourceGroupName, string storageSyncServiceName, string serverId, RegisteredServerUpdateParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, serverId, identity, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, serverId, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -336,9 +336,9 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='serverId'>
         /// GUID identifying the on-premises server.
         /// </param>
-        public static RegisteredServer BeginUpdate(this IRegisteredServersOperations operations, string resourceGroupName, string storageSyncServiceName, string serverId, bool? identity = default(bool?))
+        public static RegisteredServer BeginUpdate(this IRegisteredServersOperations operations, string resourceGroupName, string storageSyncServiceName, string serverId, RegisteredServerUpdateParameters parameters)
         {
-                return ((IRegisteredServersOperations)operations).BeginUpdateAsync(resourceGroupName, storageSyncServiceName, serverId, identity).GetAwaiter().GetResult();
+                return ((IRegisteredServersOperations)operations).BeginUpdateAsync(resourceGroupName, storageSyncServiceName, serverId, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -359,9 +359,9 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RegisteredServer> BeginUpdateAsync(this IRegisteredServersOperations operations, string resourceGroupName, string storageSyncServiceName, string serverId, bool? identity = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RegisteredServer> BeginUpdateAsync(this IRegisteredServersOperations operations, string resourceGroupName, string storageSyncServiceName, string serverId, RegisteredServerUpdateParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, serverId, identity, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, serverId, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

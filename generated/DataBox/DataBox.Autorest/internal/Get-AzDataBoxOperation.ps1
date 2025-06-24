@@ -25,12 +25,12 @@ This method gets all the operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.databox/get-azdataboxoperation
 #>
 function Get-AzDataBoxOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

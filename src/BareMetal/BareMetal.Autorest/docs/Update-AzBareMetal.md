@@ -24,6 +24,18 @@ Update-AzBareMetal -InputObject <IBareMetalIdentity> [-Tag <Hashtable>] [-Defaul
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaJsonFilePath
+```
+Update-AzBareMetal -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzBareMetal -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Patches the Tags field of a Azure BareMetal instance for the specified subscription, resource group, and instance name.
 
@@ -75,7 +87,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IBareMetalIdentity
@@ -89,12 +100,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the Azure BareMetal on Azure instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: AzureBareMetalInstanceName
 
 Required: True
@@ -110,7 +151,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -125,7 +166,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -140,7 +181,7 @@ Tags field of the AzureBareMetal instance.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -190,7 +231,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IAzureBareMetalInstance
+### Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstance
 
 ## NOTES
 

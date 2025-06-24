@@ -19,6 +19,13 @@ Remove-AzFrontDoorCdnEndpoint -EndpointName <String> -ProfileName <String> -Reso
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityProfile
+```
+Remove-AzFrontDoorCdnEndpoint -EndpointName <String> -ProfileInputObject <ICdnIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzFrontDoorCdnEndpoint -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
@@ -82,7 +89,7 @@ Name of the endpoint under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityProfile
 Aliases:
 
 Required: True
@@ -94,7 +101,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -138,8 +144,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: DeleteViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProfileName
-Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
 
 ```yaml
 Type: System.String

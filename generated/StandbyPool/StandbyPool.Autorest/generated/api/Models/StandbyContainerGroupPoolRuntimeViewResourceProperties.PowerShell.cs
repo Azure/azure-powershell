@@ -116,6 +116,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolStatus) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolStatusTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Prediction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).Prediction = (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolPrediction) content.GetValueForProperty("Prediction",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).Prediction, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolPredictionTypeConverter.ConvertFrom);
+            }
             if (content.Contains("InstanceCountSummary"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).InstanceCountSummary = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummary>) content.GetValueForProperty("InstanceCountSummary",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).InstanceCountSummary, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummary>(__y, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ContainerGroupInstanceCountSummaryTypeConverter.ConvertFrom));
@@ -123,6 +131,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("StatusCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).StatusCode = (string) content.GetValueForProperty("StatusCode",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).StatusCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("StatusMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).StatusMessage = (string) content.GetValueForProperty("StatusMessage",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).StatusMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("PredictionForecastValue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).PredictionForecastValue = (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolForecastValues) content.GetValueForProperty("PredictionForecastValue",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).PredictionForecastValue, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolForecastValuesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PredictionForecastStartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).PredictionForecastStartTime = (global::System.DateTime?) content.GetValueForProperty("PredictionForecastStartTime",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).PredictionForecastStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("PredictionForecastInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).PredictionForecastInfo = (string) content.GetValueForProperty("PredictionForecastInfo",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).PredictionForecastInfo, global::System.Convert.ToString);
+            }
+            if (content.Contains("ForecastValueInstancesRequestedCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).ForecastValueInstancesRequestedCount = (System.Collections.Generic.List<long>) content.GetValueForProperty("ForecastValueInstancesRequestedCount",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).ForecastValueInstancesRequestedCount, __y => TypeConverterExtensions.SelectToList<long>(__y, (__w)=> (long) global::System.Convert.ChangeType(__w, typeof(long))));
             }
             AfterDeserializeDictionary(content);
         }
@@ -141,6 +173,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolStatus) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolStatusTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Prediction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).Prediction = (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolPrediction) content.GetValueForProperty("Prediction",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).Prediction, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolPredictionTypeConverter.ConvertFrom);
+            }
             if (content.Contains("InstanceCountSummary"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).InstanceCountSummary = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummary>) content.GetValueForProperty("InstanceCountSummary",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).InstanceCountSummary, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummary>(__y, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ContainerGroupInstanceCountSummaryTypeConverter.ConvertFrom));
@@ -148,6 +188,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("StatusCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).StatusCode = (string) content.GetValueForProperty("StatusCode",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).StatusCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("StatusMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).StatusMessage = (string) content.GetValueForProperty("StatusMessage",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).StatusMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("PredictionForecastValue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).PredictionForecastValue = (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolForecastValues) content.GetValueForProperty("PredictionForecastValue",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).PredictionForecastValue, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolForecastValuesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PredictionForecastStartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).PredictionForecastStartTime = (global::System.DateTime?) content.GetValueForProperty("PredictionForecastStartTime",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).PredictionForecastStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("PredictionForecastInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).PredictionForecastInfo = (string) content.GetValueForProperty("PredictionForecastInfo",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).PredictionForecastInfo, global::System.Convert.ToString);
+            }
+            if (content.Contains("ForecastValueInstancesRequestedCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).ForecastValueInstancesRequestedCount = (System.Collections.Generic.List<long>) content.GetValueForProperty("ForecastValueInstancesRequestedCount",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourcePropertiesInternal)this).ForecastValueInstancesRequestedCount, __y => TypeConverterExtensions.SelectToList<long>(__y, (__w)=> (long) global::System.Convert.ChangeType(__w, typeof(long))));
             }
             AfterDeserializePSObject(content);
         }

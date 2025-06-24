@@ -80,6 +80,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only",
         SerializedName = @"addressName",
         PossibleTypes = new [] { typeof(string) })]
@@ -88,6 +91,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -96,6 +102,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of Azure region.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
@@ -104,6 +113,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the order item",
         SerializedName = @"orderItemName",
         PossibleTypes = new [] { typeof(string) })]
@@ -112,6 +124,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the order",
         SerializedName = @"orderName",
         PossibleTypes = new [] { typeof(string) })]
@@ -120,6 +135,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -128,6 +146,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

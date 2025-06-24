@@ -11,9 +11,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <NetFxAssemblies Include="$(RepoSrc)lib\netfx\*.dll" />
-    <NetCore21Assemblies Include="$(RepoSrc)lib\netcoreapp2.1\*.dll" />
-    <NetCore31Assemblies Include="$(RepoSrc)lib\netcoreapp3.1\*.dll" />
+    <Net45Assemblies Include="$(RepoSrc)lib\net45\*.dll" />
+    <Net46Assemblies Include="$(RepoSrc)lib\net46\*.dll" />
+    <Net461Assemblies Include="$(RepoSrc)lib\net461\*.dll" />
+    <Net47Assemblies Include="$(RepoSrc)lib\net47\*.dll" />
     <NetStandardAssemblies Include="$(RepoSrc)lib\netstandard2.0\*.dll" />
     <StorageDependencies Include="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.dll" />
   </ItemGroup>
@@ -23,9 +24,10 @@
   </ItemGroup>
 
   <Target Name="CopyFiles" AfterTargets="Build">
-    <Copy SourceFiles="@(NetFxAssemblies)" DestinationFolder="$(TargetDir)lib\netfx" />
-    <Copy SourceFiles="@(NetCore21Assemblies)" DestinationFolder="$(TargetDir)lib\netcoreapp2.1" />
-    <Copy SourceFiles="@(NetCore31Assemblies)" DestinationFolder="$(TargetDir)lib\netcoreapp3.1" />
+    <Copy SourceFiles="@(Net45Assemblies)" DestinationFolder="$(TargetDir)lib\net45" />
+    <Copy SourceFiles="@(Net46Assemblies)" DestinationFolder="$(TargetDir)lib\net46" />
+    <Copy SourceFiles="@(Net461Assemblies)" DestinationFolder="$(TargetDir)lib\net461" />
+    <Copy SourceFiles="@(Net47Assemblies)" DestinationFolder="$(TargetDir)lib\net47" />
     <Copy SourceFiles="@(NetStandardAssemblies)" DestinationFolder="$(TargetDir)lib\netstandard2.0" />
     <Copy SourceFiles="@(StorageDependencies)" DestinationFolder="$(TargetDir)" />
     <!--To automatically launch pwsh for debugging when hitting F5, set below and UNCOMMENT Copy:

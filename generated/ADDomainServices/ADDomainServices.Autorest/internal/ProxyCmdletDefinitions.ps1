@@ -25,12 +25,12 @@ Lists all the available Domain Services operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IOperationEntity
+Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IOperationEntity
 .Link
 https://learn.microsoft.com/powershell/module/az.addomainservices/get-azaddomainserviceoperation
 #>
 function Get-AzADDomainServiceOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IOperationEntity])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IOperationEntity])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -89,12 +89,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.ADDomainServices.private\Get-AzADDomainServiceOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -126,10 +132,10 @@ end {
 
 <#
 .Synopsis
-The Create Domain Service operation creates a new domain service with the specified parameters.
+The create Domain Service operation create a new domain service with the specified parameters.
 If the specific service already exists, then any patchable properties will be updated and any immutable properties will remain unchanged.
 .Description
-The Create Domain Service operation creates a new domain service with the specified parameters.
+The create Domain Service operation create a new domain service with the specified parameters.
 If the specific service already exists, then any patchable properties will be updated and any immutable properties will remain unchanged.
 .Example
 $replicaSet = New-AzADDomainServiceReplicaSetObject -Location westus -SubnetId /subscriptions/********-****-****-****-**********/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default
@@ -144,7 +150,7 @@ $ldaps_pfx_pass = "MyStrongPassword"
 New-AzADDomainService -Name youriADdomain -ResourceGroupName youriAddomain -DomainName youriAddomain.com -ReplicaSet $replicaSet -LdapSettingLdaps Enabled -LdapSettingPfxCertificate $base64String -LdapSettingPfxCertificatePassword $($ldaps_pfx_pass | ConvertTo-SecureString -Force -AsPlainText)
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService
+Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainService
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -164,7 +170,7 @@ REPLICASET <IReplicaSet[]>: List of ReplicaSets
 https://learn.microsoft.com/powershell/module/az.addomainservices/new-azaddomainservice
 #>
 function New-AzADDomainService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainService])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -189,157 +195,167 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [ArgumentCompleter({'FullySynced', 'ResourceTrusting'})]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
     # Domain Configuration Type
     ${DomainConfigurationType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
     # The name of the Azure domain that the user would like to deploy Domain Services to.
     ${DomainName},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NtlmV1])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NtlmV1]
+    [System.String]
     # A flag to determine whether or not NtlmV1 is enabled or disabled.
     ${DomainSecuritySettingNtlmV1},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncKerberosPasswords])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncKerberosPasswords]
+    [System.String]
     # A flag to determine whether or not SyncKerberosPasswords is enabled or disabled.
     ${DomainSecuritySettingSyncKerberosPassword},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncNtlmPasswords])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncNtlmPasswords]
+    [System.String]
     # A flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
     ${DomainSecuritySettingSyncNtlmPassword},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncOnPremPasswords])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncOnPremPasswords]
+    [System.String]
     # A flag to determine whether or not SyncOnPremPasswords is enabled or disabled.
     ${DomainSecuritySettingSyncOnPremPassword},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.TlsV1])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.TlsV1]
+    [System.String]
     # A flag to determine whether or not TlsV1 is enabled or disabled.
     ${DomainSecuritySettingTlsV1},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
     # Resource etag
     ${Etag},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.FilteredSync])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.FilteredSync]
+    [System.String]
     # Enabled or Disabled flag to turn on Group-based filtered sync
     ${FilteredSync},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IForestTrust[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IForestTrust[]]
     # List of settings for Resource Forest
-    # To construct, see NOTES section for FORESTTRUST properties and create a hash table.
     ${ForestTrust},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.ExternalAccess])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.ExternalAccess]
+    [System.String]
     # A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled.
     ${LdapSettingExternalAccess},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.Ldaps])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.Ldaps]
+    [System.String]
     # A flag to determine whether or not Secure LDAP is enabled or disabled.
     ${LdapSettingLdaps},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
     # Input File for LdapSettingPfxCertificate (The certificate required to configure Secure LDAP.
     # The parameter passed here should be a base64encoded representation of the certificate pfx file.)
     ${LdapSettingPfxCertificateInputFile},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.Security.SecureString]
     # The password to decrypt the provided Secure LDAP certificate pfx file.
     ${LdapSettingPfxCertificatePassword},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.DefaultInfo(Name='Location Default', Description='Gets the Location from the first element in ReplicaSets.', Script='$ReplicaSet[0].Location')]
     [System.String]
     # Resource location
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String[]]
     # The list of additional recipients
     ${NotificationSettingAdditionalRecipient},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyDcAdmins])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyDcAdmins]
+    [System.String]
     # Should domain controller admins be notified
     ${NotificationSettingNotifyDcAdmin},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyGlobalAdmins])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyGlobalAdmins]
+    [System.String]
     # Should global admins be notified
     ${NotificationSettingNotifyGlobalAdmin},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IReplicaSet[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IReplicaSet[]]
     # List of ReplicaSets
-    # To construct, see NOTES section for REPLICASET properties and create a hash table.
     ${ReplicaSet},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
     # Resource Forest
     ${ResourceForest},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [ArgumentCompleter({'Standard', 'Enterprise', 'Premium'})]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
     # Sku Type
     ${Sku},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -409,24 +425,30 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.ADDomainServices.private\New-AzADDomainService_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.ADDomainServices.private\New-AzADDomainService_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ADDomainServices.private\New-AzADDomainService_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Location')) {
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Location') ) {
             $PSBoundParameters['Location'] = $ReplicaSet[0].Location
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

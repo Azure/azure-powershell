@@ -26,21 +26,21 @@ $rule = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAd
 New-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -SkuName Standard_AzureFrontDoor -Location Global -LogScrubbingRule $rule -LogScrubbingState Enabled
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 LOGSCRUBBINGRULE <IProfileScrubbingRules[]>: List of log scrubbing rules applied to the Azure Front Door profile logs.
-  MatchVariable <ScrubbingRuleEntryMatchVariable>: The variable to be scrubbed from the logs.
+  MatchVariable <String>: The variable to be scrubbed from the logs.
   [Selector <String>]: When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
-  [State <ScrubbingRuleEntryState?>]: Defines the state of a log scrubbing rule. Default value is enabled.
+  [State <String>]: Defines the state of a log scrubbing rule. Default value is enabled.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnprofile
 #>
 function New-AzFrontDoorCdnProfile {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -63,71 +63,83 @@ param(
     # Azure Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # Resource location.
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.Int32]
-    # Send and receive timeout on forwarding request to the origin.
-    # When timeout is reached, the request fails and returns.
-    ${OriginResponseTimeoutSecond},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName]
-    # Name of the pricing tier.
-    ${SkuName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ITrackedResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType]
+    [System.String]
     # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
     ${IdentityType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api40.IUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # The set of user assigned identities associated with the resource.
     # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
     # The dictionary values can be empty objects ({}) in requests.
     ${IdentityUserAssignedIdentity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileScrubbingRules[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules[]]
     # List of log scrubbing rules applied to the Azure Front Door profile logs.
-    # To construct, see NOTES section for LOGSCRUBBINGRULE properties and create a hash table.
     ${LogScrubbingRule},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProfileScrubbingState])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProfileScrubbingState]
+    [System.String]
     # State of the log scrubbing config.
     # Default value is Enabled.
     ${LogScrubbingState},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.Int32]
+    # Send and receive timeout on forwarding request to the origin.
+    # When timeout is reached, the request fails and returns.
+    ${OriginResponseTimeoutSecond},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Standard_Verizon", "Premium_Verizon", "Custom_Verizon", "Standard_Akamai", "Standard_ChinaCdn", "Standard_Microsoft", "Standard_AzureFrontDoor", "Premium_AzureFrontDoor", "Standard_955BandWidth_ChinaCdn", "Standard_AvgBandWidth_ChinaCdn", "StandardPlus_ChinaCdn", "StandardPlus_955BandWidth_ChinaCdn", "StandardPlus_AvgBandWidth_ChinaCdn")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Name of the pricing tier.
+    ${SkuName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -189,6 +201,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -209,10 +230,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Cdn.custom\New-AzFrontDoorCdnProfile';
+            CreateViaJsonFilePath = 'Az.Cdn.custom\New-AzFrontDoorCdnProfile';
+            CreateViaJsonString = 'Az.Cdn.custom\New-AzFrontDoorCdnProfile';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -226,6 +247,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

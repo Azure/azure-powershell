@@ -46,7 +46,7 @@ TriggerName Status
 Trigger1    Enabled
 ```
 
-This command will get the status of the subscribtion for BlobEnetTrigger1 trigger to the external service events.
+This command will get the status of the subscription for BlobEnetTrigger1 trigger to the external service events.
 
 ## PARAMETERS
 

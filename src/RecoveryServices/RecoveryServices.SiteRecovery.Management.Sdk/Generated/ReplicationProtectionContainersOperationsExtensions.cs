@@ -18,12 +18,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<ProtectionContainer> ListByReplicationFabrics(this IReplicationProtectionContainersOperations operations, string fabricName)
+        public static Microsoft.Rest.Azure.IPage<ProtectionContainer> ListByReplicationFabrics(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName)
         {
-                return ((IReplicationProtectionContainersOperations)operations).ListByReplicationFabricsAsync(fabricName).GetAwaiter().GetResult();
+                return ((IReplicationProtectionContainersOperations)operations).ListByReplicationFabricsAsync(resourceGroupName, resourceName, fabricName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -32,15 +39,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ProtectionContainer>> ListByReplicationFabricsAsync(this IReplicationProtectionContainersOperations operations, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ProtectionContainer>> ListByReplicationFabricsAsync(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByReplicationFabricsWithHttpMessagesAsync(fabricName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByReplicationFabricsWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -51,15 +65,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
         /// </param>
-        public static ProtectionContainer Get(this IReplicationProtectionContainersOperations operations, string fabricName, string protectionContainerName)
+        public static ProtectionContainer Get(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName)
         {
-                return ((IReplicationProtectionContainersOperations)operations).GetAsync(fabricName, protectionContainerName).GetAwaiter().GetResult();
+                return ((IReplicationProtectionContainersOperations)operations).GetAsync(resourceGroupName, resourceName, fabricName, protectionContainerName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -68,6 +89,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -77,9 +105,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ProtectionContainer> GetAsync(this IReplicationProtectionContainersOperations operations, string fabricName, string protectionContainerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ProtectionContainer> GetAsync(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(fabricName, protectionContainerName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -90,15 +118,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Unique fabric ARM name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Unique protection container ARM name.
         /// </param>
-        public static ProtectionContainer Create(this IReplicationProtectionContainersOperations operations, string fabricName, string protectionContainerName, CreateProtectionContainerInputProperties properties = default(CreateProtectionContainerInputProperties))
+        public static ProtectionContainer Create(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, CreateProtectionContainerInputProperties properties = default(CreateProtectionContainerInputProperties))
         {
-                return ((IReplicationProtectionContainersOperations)operations).CreateAsync(fabricName, protectionContainerName, properties).GetAwaiter().GetResult();
+                return ((IReplicationProtectionContainersOperations)operations).CreateAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -107,6 +142,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Unique fabric ARM name.
         /// </param>
@@ -116,18 +158,26 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ProtectionContainer> CreateAsync(this IReplicationProtectionContainersOperations operations, string fabricName, string protectionContainerName, CreateProtectionContainerInputProperties properties = default(CreateProtectionContainerInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ProtectionContainer> CreateAsync(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, CreateProtectionContainerInputProperties properties = default(CreateProtectionContainerInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateWithHttpMessagesAsync(fabricName, protectionContainerName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// The operation to a add a protectable item to a protection container(Add physical server).
+        /// The operation to a add a protectable item to a protection container(Add
+        /// physical server).
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// The name of the fabric.
@@ -135,16 +185,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='protectionContainerName'>
         /// The name of the protection container.
         /// </param>
-        public static ProtectionContainer DiscoverProtectableItem(this IReplicationProtectionContainersOperations operations, string fabricName, string protectionContainerName, DiscoverProtectableItemRequestProperties properties = default(DiscoverProtectableItemRequestProperties))
+        public static ProtectionContainer DiscoverProtectableItem(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, DiscoverProtectableItemRequestProperties properties = default(DiscoverProtectableItemRequestProperties))
         {
-                return ((IReplicationProtectionContainersOperations)operations).DiscoverProtectableItemAsync(fabricName, protectionContainerName, properties).GetAwaiter().GetResult();
+                return ((IReplicationProtectionContainersOperations)operations).DiscoverProtectableItemAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// The operation to a add a protectable item to a protection container(Add physical server).
+        /// The operation to a add a protectable item to a protection container(Add
+        /// physical server).
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// The name of the fabric.
@@ -155,9 +213,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ProtectionContainer> DiscoverProtectableItemAsync(this IReplicationProtectionContainersOperations operations, string fabricName, string protectionContainerName, DiscoverProtectableItemRequestProperties properties = default(DiscoverProtectableItemRequestProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ProtectionContainer> DiscoverProtectableItemAsync(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, DiscoverProtectableItemRequestProperties properties = default(DiscoverProtectableItemRequestProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DiscoverProtectableItemWithHttpMessagesAsync(fabricName, protectionContainerName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DiscoverProtectableItemWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -168,15 +226,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Unique fabric ARM name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Unique protection container ARM name.
         /// </param>
-        public static void Delete(this IReplicationProtectionContainersOperations operations, string fabricName, string protectionContainerName)
+        public static void Delete(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName)
         {
-                ((IReplicationProtectionContainersOperations)operations).DeleteAsync(fabricName, protectionContainerName).GetAwaiter().GetResult();
+                ((IReplicationProtectionContainersOperations)operations).DeleteAsync(resourceGroupName, resourceName, fabricName, protectionContainerName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -185,6 +250,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Unique fabric ARM name.
         /// </param>
@@ -194,15 +266,76 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IReplicationProtectionContainersOperations operations, string fabricName, string protectionContainerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(fabricName, protectionContainerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Operation to switch protection from one container to another or one replication provider to another.
+        /// Operation to switch protection from one container to another.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        public static ProtectionContainer SwitchClusterProtection(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, SwitchClusterProtectionInputProperties properties = default(SwitchClusterProtectionInputProperties))
+        {
+                return ((IReplicationProtectionContainersOperations)operations).SwitchClusterProtectionAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, properties).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Operation to switch protection from one container to another.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ProtectionContainer> SwitchClusterProtectionAsync(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, SwitchClusterProtectionInputProperties properties = default(SwitchClusterProtectionInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.SwitchClusterProtectionWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, properties, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Operation to switch protection from one container to another or one
+        /// replication provider to another.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Unique fabric name.
@@ -210,16 +343,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='protectionContainerName'>
         /// Protection container name.
         /// </param>
-        public static ProtectionContainer SwitchProtection(this IReplicationProtectionContainersOperations operations, string fabricName, string protectionContainerName, SwitchProtectionInputProperties properties = default(SwitchProtectionInputProperties))
+        public static ProtectionContainer SwitchProtection(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, SwitchProtectionInputProperties properties = default(SwitchProtectionInputProperties))
         {
-                return ((IReplicationProtectionContainersOperations)operations).SwitchProtectionAsync(fabricName, protectionContainerName, properties).GetAwaiter().GetResult();
+                return ((IReplicationProtectionContainersOperations)operations).SwitchProtectionAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Operation to switch protection from one container to another or one replication provider to another.
+        /// Operation to switch protection from one container to another or one
+        /// replication provider to another.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Unique fabric name.
@@ -230,9 +371,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ProtectionContainer> SwitchProtectionAsync(this IReplicationProtectionContainersOperations operations, string fabricName, string protectionContainerName, SwitchProtectionInputProperties properties = default(SwitchProtectionInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ProtectionContainer> SwitchProtectionAsync(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, SwitchProtectionInputProperties properties = default(SwitchProtectionInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.SwitchProtectionWithHttpMessagesAsync(fabricName, protectionContainerName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.SwitchProtectionWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -243,9 +384,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<ProtectionContainer> List(this IReplicationProtectionContainersOperations operations)
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ProtectionContainer> List(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName)
         {
-                return ((IReplicationProtectionContainersOperations)operations).ListAsync().GetAwaiter().GetResult();
+                return ((IReplicationProtectionContainersOperations)operations).ListAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -254,12 +402,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ProtectionContainer>> ListAsync(this IReplicationProtectionContainersOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ProtectionContainer>> ListAsync(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -270,15 +425,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Unique fabric ARM name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Unique protection container ARM name.
         /// </param>
-        public static ProtectionContainer BeginCreate(this IReplicationProtectionContainersOperations operations, string fabricName, string protectionContainerName, CreateProtectionContainerInputProperties properties = default(CreateProtectionContainerInputProperties))
+        public static ProtectionContainer BeginCreate(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, CreateProtectionContainerInputProperties properties = default(CreateProtectionContainerInputProperties))
         {
-                return ((IReplicationProtectionContainersOperations)operations).BeginCreateAsync(fabricName, protectionContainerName, properties).GetAwaiter().GetResult();
+                return ((IReplicationProtectionContainersOperations)operations).BeginCreateAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -287,6 +449,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Unique fabric ARM name.
         /// </param>
@@ -296,18 +465,26 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ProtectionContainer> BeginCreateAsync(this IReplicationProtectionContainersOperations operations, string fabricName, string protectionContainerName, CreateProtectionContainerInputProperties properties = default(CreateProtectionContainerInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ProtectionContainer> BeginCreateAsync(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, CreateProtectionContainerInputProperties properties = default(CreateProtectionContainerInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(fabricName, protectionContainerName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// The operation to a add a protectable item to a protection container(Add physical server).
+        /// The operation to a add a protectable item to a protection container(Add
+        /// physical server).
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// The name of the fabric.
@@ -315,16 +492,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='protectionContainerName'>
         /// The name of the protection container.
         /// </param>
-        public static ProtectionContainer BeginDiscoverProtectableItem(this IReplicationProtectionContainersOperations operations, string fabricName, string protectionContainerName, DiscoverProtectableItemRequestProperties properties = default(DiscoverProtectableItemRequestProperties))
+        public static ProtectionContainer BeginDiscoverProtectableItem(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, DiscoverProtectableItemRequestProperties properties = default(DiscoverProtectableItemRequestProperties))
         {
-                return ((IReplicationProtectionContainersOperations)operations).BeginDiscoverProtectableItemAsync(fabricName, protectionContainerName, properties).GetAwaiter().GetResult();
+                return ((IReplicationProtectionContainersOperations)operations).BeginDiscoverProtectableItemAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// The operation to a add a protectable item to a protection container(Add physical server).
+        /// The operation to a add a protectable item to a protection container(Add
+        /// physical server).
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// The name of the fabric.
@@ -335,9 +520,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ProtectionContainer> BeginDiscoverProtectableItemAsync(this IReplicationProtectionContainersOperations operations, string fabricName, string protectionContainerName, DiscoverProtectableItemRequestProperties properties = default(DiscoverProtectableItemRequestProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ProtectionContainer> BeginDiscoverProtectableItemAsync(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, DiscoverProtectableItemRequestProperties properties = default(DiscoverProtectableItemRequestProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDiscoverProtectableItemWithHttpMessagesAsync(fabricName, protectionContainerName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginDiscoverProtectableItemWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -348,15 +533,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Unique fabric ARM name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Unique protection container ARM name.
         /// </param>
-        public static void BeginDelete(this IReplicationProtectionContainersOperations operations, string fabricName, string protectionContainerName)
+        public static void BeginDelete(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName)
         {
-                ((IReplicationProtectionContainersOperations)operations).BeginDeleteAsync(fabricName, protectionContainerName).GetAwaiter().GetResult();
+                ((IReplicationProtectionContainersOperations)operations).BeginDeleteAsync(resourceGroupName, resourceName, fabricName, protectionContainerName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -365,6 +557,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Unique fabric ARM name.
         /// </param>
@@ -374,15 +573,76 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IReplicationProtectionContainersOperations operations, string fabricName, string protectionContainerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(fabricName, protectionContainerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Operation to switch protection from one container to another or one replication provider to another.
+        /// Operation to switch protection from one container to another.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        public static ProtectionContainer BeginSwitchClusterProtection(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, SwitchClusterProtectionInputProperties properties = default(SwitchClusterProtectionInputProperties))
+        {
+                return ((IReplicationProtectionContainersOperations)operations).BeginSwitchClusterProtectionAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, properties).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Operation to switch protection from one container to another.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ProtectionContainer> BeginSwitchClusterProtectionAsync(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, SwitchClusterProtectionInputProperties properties = default(SwitchClusterProtectionInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginSwitchClusterProtectionWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, properties, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Operation to switch protection from one container to another or one
+        /// replication provider to another.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Unique fabric name.
@@ -390,16 +650,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='protectionContainerName'>
         /// Protection container name.
         /// </param>
-        public static ProtectionContainer BeginSwitchProtection(this IReplicationProtectionContainersOperations operations, string fabricName, string protectionContainerName, SwitchProtectionInputProperties properties = default(SwitchProtectionInputProperties))
+        public static ProtectionContainer BeginSwitchProtection(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, SwitchProtectionInputProperties properties = default(SwitchProtectionInputProperties))
         {
-                return ((IReplicationProtectionContainersOperations)operations).BeginSwitchProtectionAsync(fabricName, protectionContainerName, properties).GetAwaiter().GetResult();
+                return ((IReplicationProtectionContainersOperations)operations).BeginSwitchProtectionAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Operation to switch protection from one container to another or one replication provider to another.
+        /// Operation to switch protection from one container to another or one
+        /// replication provider to another.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Unique fabric name.
@@ -410,9 +678,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ProtectionContainer> BeginSwitchProtectionAsync(this IReplicationProtectionContainersOperations operations, string fabricName, string protectionContainerName, SwitchProtectionInputProperties properties = default(SwitchProtectionInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ProtectionContainer> BeginSwitchProtectionAsync(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, SwitchProtectionInputProperties properties = default(SwitchProtectionInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginSwitchProtectionWithHttpMessagesAsync(fabricName, protectionContainerName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginSwitchProtectionWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

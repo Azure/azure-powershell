@@ -15,8 +15,9 @@ Creates a network manager.
 ```
 New-AzNetworkManager -Name <String> -ResourceGroupName <String> -Location <String> [-Description <String>]
  [-Tag <Hashtable>] -NetworkManagerScope <PSNetworkManagerScopes>
- -NetworkManagerScopeAccess <NetworkManagerScopeAccessType[]> [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NetworkManagerScopeAccess <NetworkManagerScopeAccessType[]>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -229,7 +230,7 @@ Parameter Sets: (All)
 Aliases:
 Accepted values: SecurityAdmin, Connectivity, Routing, SecurityUser
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

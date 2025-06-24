@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a StandbyContainerGroupPoolResource
+create a StandbyContainerGroupPoolResource
 .Description
-Create a StandbyContainerGroupPoolResource
+create a StandbyContainerGroupPoolResource
 .Example
 New-AzStandbyContainerGroupPool `
 -Name testPool `
@@ -30,6 +30,7 @@ New-AzStandbyContainerGroupPool `
 -ContainerProfileId /subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourcegroups/test-standbypool/providers/Microsoft.ContainerInstance/containerGroupProfiles/testCG `
 -ProfileRevision 1 `
 -SubnetId @{id="/subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default"} `
+-Zone @("1", "2", "3") `
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource
@@ -114,6 +115,13 @@ param(
     # Resource tags.
     ${Tag},
 
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Category('Body')]
+    [System.String[]]
+    # Specifies zones of standby container group pools.
+    ${Zone},
+
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Category('Body')]
     [System.String]
@@ -194,6 +202,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -218,8 +235,6 @@ begin {
             CreateViaJsonString = 'Az.StandbyPool.private\New-AzStandbyContainerGroupPool_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -233,6 +248,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

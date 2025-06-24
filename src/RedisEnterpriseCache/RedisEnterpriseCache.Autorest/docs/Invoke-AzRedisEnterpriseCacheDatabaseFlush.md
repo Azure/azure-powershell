@@ -70,6 +70,9 @@ Accept wildcard characters: False
 
 ### -ClusterName
 The name of the Redis Enterprise cluster.
+Name must be 1-60 characters long.
+Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+There can be no leading nor trailing nor consecutive hyphens
 
 ```yaml
 Type: System.String
@@ -150,7 +153,7 @@ Parameters for a Redis Enterprise active geo-replication flush operation
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IFlushParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IFlushParameters
 Parameter Sets: Flush, FlushViaIdentity
 Aliases:
 
@@ -243,7 +246,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IFlushParameters
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IFlushParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 

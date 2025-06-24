@@ -70,9 +70,9 @@ While((Get-AzDataProtectionOperationStatus -OperationId $operationId -Location $
 $backupnstanceCreate = New-AzDataProtectionBackupInstance -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -BackupInstance $backupInstanceClientObject
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -154,7 +154,7 @@ PROPERTY <IBackupInstance>: BackupInstanceResource properties
 https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupinstance
 #>
 function New-AzDataProtectionBackupInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -194,21 +194,21 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource]
     # BackupInstance Resource
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstance]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstance]
     # BackupInstanceResource properties
     # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IDppProxyResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IDppProxyResourceTags]))]
     [System.Collections.Hashtable]
     # Proxy Resource tags.
     ${Tag},

@@ -33,7 +33,7 @@ IDENTITYSOURCE <IIdentitySource[]>: vCenter Single Sign On Identity Sources
   [Alias <String>]: The domain's NetBIOS name
   [BaseGroupDn <String>]: The base distinguished name for groups
   [BaseUserDn <String>]: The base distinguished name for users
-  [Domain <String>]: The domain's dns name
+  [Domain <String>]: The domain's DNS name
   [Name <String>]: The name of the identity source
   [Password <SecureString>]: The password of the Active Directory user with a minimum of read-only access to         Base DN for users and groups.
   [PrimaryServer <String>]: Primary server URL
@@ -113,7 +113,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # Decides if enable a system assigned identity for the resource.
+    # Determines whether to enable a system-assigned identity for the resource.
     ${EnableSystemAssignedIdentity},
 
     [Parameter()]
@@ -243,6 +243,13 @@ param(
     ${VirtualNetworkId},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String[]]
+    # The availability zones.
+    ${Zone},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
@@ -310,13 +317,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.VMware.private\New-AzVMwarePrivateCloud_CreateExpanded';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -325,6 +333,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

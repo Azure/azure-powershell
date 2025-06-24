@@ -15,7 +15,8 @@ Gets information about a VPN client package.
 
 ```
 Get-AzVpnClientPackage -ResourceGroupName <String> -VirtualNetworkGatewayName <String>
- -ProcessorArchitecture <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -ProcessorArchitecture <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

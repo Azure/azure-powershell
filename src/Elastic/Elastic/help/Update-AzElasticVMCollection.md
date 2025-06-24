@@ -8,26 +8,40 @@ schema: 2.0.0
 # Update-AzElasticVMCollection
 
 ## SYNOPSIS
-Update the vm details that will be monitored by the Elastic monitor resource.
+update the vm details that will be monitored by the Elastic monitor resource.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzElasticVMCollection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-OperationName <OperationName>] [-VMResourceId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-OperationName <String>] [-VMResourceId <String>] [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzElasticVMCollection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzElasticVMCollection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzElasticVMCollection -InputObject <IElasticIdentity> [-OperationName <OperationName>]
- [-VMResourceId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzElasticVMCollection -InputObject <IElasticIdentity> [-OperationName <String>] [-VMResourceId <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update the vm details that will be monitored by the Elastic monitor resource.
+update the vm details that will be monitored by the Elastic monitor resource.
 
 ## EXAMPLES
 
@@ -65,7 +79,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
@@ -79,12 +92,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -98,8 +141,8 @@ Accept wildcard characters: False
 Operation to be performed for given VM.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.OperationName
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -130,7 +173,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -146,7 +189,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -161,7 +204,7 @@ ARM id of the VM resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

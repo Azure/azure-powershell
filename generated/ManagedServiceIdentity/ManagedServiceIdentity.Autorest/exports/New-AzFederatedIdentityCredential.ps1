@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create or update a federated identity credential under the specified user assigned identity.
+create a federated identity credential under the specified user assigned identity.
 .Description
-Create or update a federated identity credential under the specified user assigned identity.
+create a federated identity credential under the specified user assigned identity.
 .Example
 New-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 `
     -Name fic-pwsh01 -Issuer "https://kubernetes-oauth.azure.com" -Subject "system:serviceaccount:ns:svcaccount"
@@ -28,13 +28,13 @@ New-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName
     -Audience @("api://AzureADTokenExchange-Modified")
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IFederatedIdentityCredential
+Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IFederatedIdentityCredential
 .Link
 https://learn.microsoft.com/powershell/module/az.managedserviceidentity/new-azfederatedidentitycredential
 #>
 function New-AzFederatedIdentityCredential {
 [Alias('New-AzFederatedIdentityCredentials')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IFederatedIdentityCredential])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IFederatedIdentityCredential])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -63,7 +63,7 @@ param(
     # The Id of the Subscription to which the identity belongs.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.DefaultInfo(Script='@("api://AzureADTokenExchange")')]
@@ -71,17 +71,29 @@ param(
     # The list of audiences that can appear in the issued token.
     ${Audience},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Category('Body')]
     [System.String]
     # The URL of the issuer to be trusted.
     ${Issuer},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Category('Body')]
     [System.String]
     # The identifier of the external identity.
     ${Subject},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -139,6 +151,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -159,17 +180,17 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.ManagedServiceIdentity.private\New-AzFederatedIdentityCredential_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.ManagedServiceIdentity.private\New-AzFederatedIdentityCredential_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ManagedServiceIdentity.private\New-AzFederatedIdentityCredential_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Audience')) {
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Audience') ) {
             $PSBoundParameters['Audience'] = @("api://AzureADTokenExchange")
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -179,6 +200,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

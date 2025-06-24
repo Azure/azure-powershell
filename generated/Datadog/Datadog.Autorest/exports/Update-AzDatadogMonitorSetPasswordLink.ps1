@@ -27,7 +27,7 @@ Get-AzDatadogMonitor -ResourceGroupName azure-rg-Datadog -Name Datadog | Update-
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentity
 .Outputs
-System.String
+Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSetPasswordLink
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -44,7 +44,7 @@ INPUTOBJECT <IDatadogIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.datadog/update-azdatadogmonitorsetpasswordlink
 #>
 function Update-AzDatadogMonitorSetPasswordLink {
-[OutputType([System.String])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSetPasswordLink])]
 [CmdletBinding(DefaultParameterSetName='Refresh', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Refresh', Mandatory)]
@@ -71,7 +71,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -130,6 +129,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -152,9 +160,7 @@ begin {
             Refresh = 'Az.Datadog.private\Update-AzDatadogMonitorSetPasswordLink_Refresh';
             RefreshViaIdentity = 'Az.Datadog.private\Update-AzDatadogMonitorSetPasswordLink_RefreshViaIdentity';
         }
-        if (('Refresh') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Refresh') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -168,6 +174,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -8,10 +8,11 @@ schema: 2.0.0
 # New-AzFrontDoorCdnCustomDomain
 
 ## SYNOPSIS
-Creates a new domain within the specified profile.
+create a new domain within the specified profile.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AzureDnsZoneId <String>] [-ExtendedProperty <Hashtable>] [-HostName <String>]
@@ -20,16 +21,46 @@ New-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <String> 
  [<CommonParameters>]
 ```
 
+### CreateViaJsonString
+```
+New-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityProfileExpanded
+```
+New-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileInputObject <ICdnIdentity>
+ [-AzureDnsZoneId <String>] [-ExtendedProperty <Hashtable>] [-HostName <String>]
+ [-PropertiesPreValidatedCustomDomainResourceId <String>] [-TlsSetting <IAfdDomainHttpsParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityProfile
+```
+New-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileInputObject <ICdnIdentity>
+ -CustomDomain <IAfdDomain> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates a new domain within the specified profile.
+create a new domain within the specified profile.
 
 ## EXAMPLES
 
 ### Example 1: Creates an AzureFrontDoor domain within the specified AzureFrontDoor profile
 ```powershell
 $secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
-$secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
-$tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResoure
+$secretResource = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
+$tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResource
 New-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001 -HostName "pstest001.dev.cdn.azure.cn" -TlsSetting $tlsSetting
 ```
 
@@ -63,13 +94,29 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomDomain
+Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g.
+www.contoso.com.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain
+Parameter Sets: CreateViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -109,7 +156,7 @@ Key-Value pair representing migration properties for domains.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -125,10 +172,40 @@ Must be a domain name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -150,12 +227,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: CreateViaIdentityProfileExpanded, CreateViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProfileName
-Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -170,7 +262,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -185,7 +277,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -200,7 +292,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -213,11 +305,10 @@ Accept wildcard characters: False
 ### -TlsSetting
 The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate.
 If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
-To construct, see NOTES section for TLSSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomainHttpsParameters
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParameters
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -263,9 +354,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain
+
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomain
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain
 
 ## NOTES
 

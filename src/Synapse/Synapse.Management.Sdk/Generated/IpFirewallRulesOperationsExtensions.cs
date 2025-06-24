@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='ruleName'>
         /// The IP firewall rule name
         /// </param>
-        public static object Delete(this IIPFirewallRulesOperations operations, string resourceGroupName, string workspaceName, string ruleName)
+        public static IpFirewallRuleInfo Delete(this IIPFirewallRulesOperations operations, string resourceGroupName, string workspaceName, string ruleName)
         {
                 return ((IIPFirewallRulesOperations)operations).DeleteAsync(resourceGroupName, workspaceName, ruleName).GetAwaiter().GetResult();
         }
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> DeleteAsync(this IIPFirewallRulesOperations operations, string resourceGroupName, string workspaceName, string ruleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<IpFirewallRuleInfo> DeleteAsync(this IIPFirewallRulesOperations operations, string resourceGroupName, string workspaceName, string ruleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, ruleName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='ruleName'>
         /// The IP firewall rule name
         /// </param>
-        public static object BeginDelete(this IIPFirewallRulesOperations operations, string resourceGroupName, string workspaceName, string ruleName)
+        public static IpFirewallRuleInfo BeginDelete(this IIPFirewallRulesOperations operations, string resourceGroupName, string workspaceName, string ruleName)
         {
                 return ((IIPFirewallRulesOperations)operations).BeginDeleteAsync(resourceGroupName, workspaceName, ruleName).GetAwaiter().GetResult();
         }
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> BeginDeleteAsync(this IIPFirewallRulesOperations operations, string resourceGroupName, string workspaceName, string ruleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<IpFirewallRuleInfo> BeginDeleteAsync(this IIPFirewallRulesOperations operations, string resourceGroupName, string workspaceName, string ruleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, ruleName, null, cancellationToken).ConfigureAwait(false))
             {

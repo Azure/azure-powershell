@@ -17,8 +17,7 @@ Invoke debug action in data flow debug session.
 Invoke-AzSynapseDataFlowDebugSessionCommand -WorkspaceName <String> -SessionId <String> -Command <String>
  -StreamName <String> [-RowLimit <Int32>] [-Expression <String>]
  [-Column <System.Collections.Generic.List`1[System.String]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InvokeByObject
@@ -26,8 +25,7 @@ Invoke-AzSynapseDataFlowDebugSessionCommand -WorkspaceName <String> -SessionId <
 Invoke-AzSynapseDataFlowDebugSessionCommand -WorkspaceObject <PSSynapseWorkspace> -SessionId <String>
  -Command <String> -StreamName <String> [-RowLimit <Int32>] [-Expression <String>]
  [-Column <System.Collections.Generic.List`1[System.String]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

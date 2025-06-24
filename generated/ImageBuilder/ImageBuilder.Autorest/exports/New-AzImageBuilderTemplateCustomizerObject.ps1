@@ -31,20 +31,20 @@ New-AzImageBuilderTemplateCustomizerObject -RestartCustomizer -Name 'restcus' -R
 New-AzImageBuilderTemplateCustomizerObject -ShellCustomizer -Name downloadBuildArtifacts -ScriptUri "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh" 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateFileCustomizer
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateFileCustomizer
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplatePowerShellCustomizer
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplatePowerShellCustomizer
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateRestartCustomizer
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateRestartCustomizer
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateShellCustomizer
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateShellCustomizer
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateWindowsUpdateCustomizer
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateWindowsUpdateCustomizer
 .Link
 https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatecustomizerobject
 #>
 function New-AzImageBuilderTemplateCustomizerObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateFileCustomizer], [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplatePowerShellCustomizer], [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateRestartCustomizer], [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateShellCustomizer], [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateWindowsUpdateCustomizer])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateFileCustomizer], [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplatePowerShellCustomizer], [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateRestartCustomizer], [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateShellCustomizer], [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateWindowsUpdateCustomizer])]
 [CmdletBinding(DefaultParameterSetName='FileCustomizer', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='FileCustomizer', Mandatory)]
@@ -196,6 +196,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -228,6 +231,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -11,7 +11,7 @@ steps:
 - task: NodeTool@0
   displayName: Install autorest
   inputs:
-    versionSpec: '14.17.1'
+    versionSpec: '18.20.7'
     command: custom
     verbose: false
     customCommand: install autorest@latest
@@ -30,7 +30,7 @@ steps:
   displayName: 'Use .NET SDK'
   inputs:
     packageType: sdk
-    version: 8.0.x
+    version: 8.x
 
 - pwsh: 'Install-Module "platyPS", "PSScriptAnalyzer" -Force -Confirm:$false -Scope CurrentUser'
   displayName: 'Install PowerShell Dependencies'

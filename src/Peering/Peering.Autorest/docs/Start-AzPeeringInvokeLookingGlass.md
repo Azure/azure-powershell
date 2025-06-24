@@ -12,18 +12,10 @@ Run looking glass functionality
 
 ## SYNTAX
 
-### Invoke (Default)
 ```
-Start-AzPeeringInvokeLookingGlass -Command <LookingGlassCommand> -DestinationIP <String>
- -SourceLocation <String> -SourceType <LookingGlassSourceType> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### InvokeViaIdentity
-```
-Start-AzPeeringInvokeLookingGlass -InputObject <IPeeringIdentity> -Command <LookingGlassCommand>
- -DestinationIP <String> -SourceLocation <String> -SourceType <LookingGlassSourceType>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzPeeringInvokeLookingGlass -Command <String> -DestinationIP <String> -SourceLocation <String>
+ -SourceType <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,7 +42,7 @@ Invoke the given looking glass command
 The command to be executed: ping, traceroute, bgpRoute.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.LookingGlassCommand
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -92,22 +84,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
-Parameter Sets: InvokeViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -SourceLocation
 The location of the source.
 
@@ -127,7 +103,7 @@ Accept wildcard characters: False
 The type of the source: Edge site or Azure Region.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.LookingGlassSourceType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -143,7 +119,7 @@ The Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Invoke
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -189,11 +165,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ILookingGlassOutput
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ILookingGlassOutput
 
 ## NOTES
 

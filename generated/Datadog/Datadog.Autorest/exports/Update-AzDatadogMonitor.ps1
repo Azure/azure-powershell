@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update a monitor resource.
+update a monitor resource.
 .Description
-Update a monitor resource.
+update a monitor resource.
 .Example
 Update-AzDatadogMonitor -ResourceGroupName azure-rg-Datadog -Name Datadog -Tag @{'key1'='value1'; 'key2'='value2'}
 .Example
@@ -27,7 +27,7 @@ Get-AzDatadogMonitor -ResourceGroupName azure-rg-Datadog -Name Datadog | Update-
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogMonitorResource
+Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -44,10 +44,12 @@ INPUTOBJECT <IDatadogIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.datadog/update-azdatadogmonitor
 #>
 function Update-AzDatadogMonitor {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogMonitorResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('MonitorName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category('Path')]
     [System.String]
@@ -55,6 +57,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -62,6 +66,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -72,28 +78,42 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Support.MonitoringStatus])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Support.MonitoringStatus]
+    [System.String]
     # Flag specifying if the resource monitoring is enabled or disabled.
     ${MonitoringStatus},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category('Body')]
     [System.String]
     # Name of the SKU.
     ${SkuName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogMonitorResourceUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceUpdateParametersTags]))]
     [System.Collections.Hashtable]
     # The new tags of the monitor resource.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -163,6 +183,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -184,10 +213,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.Datadog.private\Update-AzDatadogMonitor_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Datadog.private\Update-AzDatadogMonitor_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.Datadog.private\Update-AzDatadogMonitor_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Datadog.private\Update-AzDatadogMonitor_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -201,6 +230,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

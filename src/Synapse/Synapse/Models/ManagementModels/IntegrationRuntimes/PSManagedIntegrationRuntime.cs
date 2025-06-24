@@ -69,6 +69,16 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public int? DataFlowTimeToLive => ManagedIntegrationRuntime.ComputeProperties?.DataFlowProperties?.TimeToLive;
 
+        public int? CopyComputeScaleDataIntegrationUnit => ManagedIntegrationRuntime.ComputeProperties?.CopyComputeScaleProperties?.DataIntegrationUnit;
+
+        public int? CopyComputeScaleTimeToLive => ManagedIntegrationRuntime.ComputeProperties?.CopyComputeScaleProperties?.TimeToLive;
+
+        public int? PipelineExternalComputeScaleTimeToLive => ManagedIntegrationRuntime.ComputeProperties?.PipelineExternalComputeScaleProperties?.TimeToLive;
+
+        public int? PipelineExternalComputeScaleNumberOfPipelineNodes => ManagedIntegrationRuntime.ComputeProperties?.PipelineExternalComputeScaleProperties?.NumberOfPipelineNodes;
+
+        public int? PipelineExternalComputeScaleNumberOfExternalNodes => ManagedIntegrationRuntime.ComputeProperties?.PipelineExternalComputeScaleProperties?.NumberOfExternalNodes;
+
         public string State => ManagedIntegrationRuntime.State;
 
         public string LicenseType => ManagedIntegrationRuntime.SsisProperties?.LicenseType;

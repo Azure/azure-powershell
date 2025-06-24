@@ -8,24 +8,59 @@ schema: 2.0.0
 # New-AzCdnEndpoint
 
 ## SYNOPSIS
-Creates a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzCdnEndpoint -Name <String> -ProfileName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Location <String> [-ContentTypesToCompress <String[]>] [-DefaultOriginGroupId <String>]
  [-DeliveryPolicyDescription <String>] [-DeliveryPolicyRule <IDeliveryRule[]>] [-GeoFilter <IGeoFilter[]>]
- [-IsCompressionEnabled] [-IsHttpAllowed] [-IsHttpsAllowed] [-OptimizationType <OptimizationType>]
+ [-IsCompressionEnabled] [-IsHttpAllowed] [-IsHttpsAllowed] [-OptimizationType <String>]
  [-Origin <IDeepCreatedOrigin[]>] [-OriginGroup <IDeepCreatedOriginGroup[]>] [-OriginHostHeader <String>]
- [-OriginPath <String>] [-ProbePath <String>] [-QueryStringCachingBehavior <QueryStringCachingBehavior>]
- [-Tag <Hashtable>] [-UrlSigningKey <IUrlSigningKey[]>] [-WebApplicationFirewallPolicyLinkId <String>]
+ [-OriginPath <String>] [-ProbePath <String>] [-QueryStringCachingBehavior <String>] [-Tag <Hashtable>]
+ [-UrlSigningKey <IUrlSigningKey[]>] [-WebApplicationFirewallPolicyLinkId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzCdnEndpoint -Name <String> -ProfileName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzCdnEndpoint -Name <String> -ProfileName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityProfileExpanded
+```
+New-AzCdnEndpoint -Name <String> -ProfileInputObject <ICdnIdentity> -Location <String>
+ [-ContentTypesToCompress <String[]>] [-DefaultOriginGroupId <String>] [-DeliveryPolicyDescription <String>]
+ [-DeliveryPolicyRule <IDeliveryRule[]>] [-GeoFilter <IGeoFilter[]>] [-IsCompressionEnabled] [-IsHttpAllowed]
+ [-IsHttpsAllowed] [-OptimizationType <String>] [-Origin <IDeepCreatedOrigin[]>]
+ [-OriginGroup <IDeepCreatedOriginGroup[]>] [-OriginHostHeader <String>] [-OriginPath <String>]
+ [-ProbePath <String>] [-QueryStringCachingBehavior <String>] [-Tag <Hashtable>]
+ [-UrlSigningKey <IUrlSigningKey[]>] [-WebApplicationFirewallPolicyLinkId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityProfile
+```
+New-AzCdnEndpoint -Name <String> -ProfileInputObject <ICdnIdentity> -Endpoint <IEndpoint>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 
 ## EXAMPLES
 
@@ -69,7 +104,7 @@ The value should be a valid MIME type.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -84,7 +119,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -115,7 +150,7 @@ User-friendly description of the policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -127,11 +162,10 @@ Accept wildcard characters: False
 
 ### -DeliveryPolicyRule
 A list of the delivery rules.
-To construct, see NOTES section for DELIVERYPOLICYRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRule[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRule[]
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -141,15 +175,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Endpoint
+CDN endpoint is the entity within a CDN profile containing configuration information such as origin, protocol, content caching and delivery behavior.
+The CDN endpoint uses the URL format \<endpointname\>.azureedge.net.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint
+Parameter Sets: CreateViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -GeoFilter
 List of rules defining the user's geo access within a CDN endpoint.
 Each geo filter defines an access rule to a specified path or content, e.g.
 block APAC for path /pictures/
-To construct, see NOTES section for GEOFILTER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IGeoFilter[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IGeoFilter[]
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -167,7 +216,7 @@ Content won't be compressed on CDN when requested content is smaller than 1 byte
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -184,7 +233,7 @@ At least one protocol (HTTP or HTTPS) must be allowed.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -201,10 +250,40 @@ At least one protocol (HTTP or HTTPS) must be allowed.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -216,7 +295,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: True
@@ -262,8 +341,8 @@ Download, Media services.
 With this information, CDN can apply scenario driven optimization.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.OptimizationType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -275,11 +354,10 @@ Accept wildcard characters: False
 
 ### -Origin
 The source of the content being delivered via CDN.
-To construct, see NOTES section for ORIGIN properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOrigin[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedOrigin[]
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -291,11 +369,10 @@ Accept wildcard characters: False
 
 ### -OriginGroup
 The origin groups comprising of origins that are used for load balancing the traffic based on availability.
-To construct, see NOTES section for ORIGINGROUP properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOriginGroup[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedOriginGroup[]
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -312,7 +389,7 @@ Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require th
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -328,7 +405,7 @@ contoso.cloudapp.net/originpath.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -345,7 +422,7 @@ This property is only relevant when using a single origin.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -355,12 +432,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: CreateViaIdentityProfileExpanded, CreateViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProfileName
 Name of the CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -375,8 +467,8 @@ Defines how CDN caches requests that include query strings.
 You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.QueryStringCachingBehavior
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -391,7 +483,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -406,7 +498,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -421,7 +513,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -433,11 +525,10 @@ Accept wildcard characters: False
 
 ### -UrlSigningKey
 List of keys used to validate the signed URL hashes.
-To construct, see NOTES section for URLSIGNINGKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IUrlSigningKey[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningKey[]
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -452,7 +543,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -498,9 +589,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint
 
 ## NOTES
 

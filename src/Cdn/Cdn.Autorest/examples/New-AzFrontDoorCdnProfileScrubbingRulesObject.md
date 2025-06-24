@@ -11,7 +11,7 @@ RequestIPAddress          EqualsAny             Enabled
 
 Create an in-memory object for ProfileScrubbingRules and the value of matchVariable is RequestIPAddress
 
-### Example 2: Create an in-memory object for ProfileScrubbingRules and disbale the Scrubbing rule
+### Example 2: Create an in-memory object for ProfileScrubbingRules and disable the Scrubbing rule
 ```powershell
 New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestUri -State Disabled
 ```
@@ -22,5 +22,4 @@ MatchVariable Selector SelectorMatchOperator State
 RequestUri             EqualsAny             Disabled
 ```
 
-Create an in-memory object for ProfileScrubbingRules and disbale the Scrubbing rule
-
+Create an in-memory object for ProfileScrubbingRules and disable the Scrubbing rule

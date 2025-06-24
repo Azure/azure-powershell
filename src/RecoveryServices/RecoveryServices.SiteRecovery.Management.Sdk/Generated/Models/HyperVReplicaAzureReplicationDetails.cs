@@ -110,6 +110,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="sqlServerLicenseType">The SQL Server license type.
         /// </param>
 
+        /// <param name="linuxLicenseType">The license type for Linux VM&#39;s.
+        /// Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;LinuxServer&#39;</param>
+
         /// <param name="lastRecoveryPointReceived">The last recovery point received time.
         /// </param>
 
@@ -127,7 +130,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="protectedManagedDisks">The list of protected managed disks.
         /// </param>
-        public HyperVReplicaAzureReplicationDetails(System.Collections.Generic.IList<AzureVmDiskDetails> azureVMDiskDetails = default(System.Collections.Generic.IList<AzureVmDiskDetails>), string recoveryAzureVMName = default(string), string recoveryAzureVMSize = default(string), string recoveryAzureStorageAccount = default(string), string recoveryAzureLogStorageAccountId = default(string), System.DateTime? lastReplicatedTime = default(System.DateTime?), long? rpoInSeconds = default(long?), System.DateTime? lastRpoCalculatedTime = default(System.DateTime?), string vmId = default(string), string vmProtectionState = default(string), string vmProtectionStateDescription = default(string), InitialReplicationDetails initialReplicationDetails = default(InitialReplicationDetails), System.Collections.Generic.IList<VMNicDetails> vmNics = default(System.Collections.Generic.IList<VMNicDetails>), string selectedRecoveryAzureNetworkId = default(string), string selectedSourceNicId = default(string), string encryption = default(string), OSDetails osDetails = default(OSDetails), int? sourceVMRamSizeInMb = default(int?), int? sourceVMCpuCount = default(int?), string enableRdpOnTargetOption = default(string), string recoveryAzureResourceGroupId = default(string), string recoveryAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string useManagedDisks = default(string), string licenseType = default(string), string sqlServerLicenseType = default(string), System.DateTime? lastRecoveryPointReceived = default(System.DateTime?), System.Collections.Generic.IDictionary<string, string> targetVMTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> seedManagedDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetManagedDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetNicTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<HyperVReplicaAzureManagedDiskDetails> protectedManagedDisks = default(System.Collections.Generic.IList<HyperVReplicaAzureManagedDiskDetails>))
+
+        /// <param name="allAvailableOSUpgradeConfigurations">A value indicating all available inplace OS Upgrade configurations.
+        /// </param>
+
+        /// <param name="targetVMSecurityProfile">The target VM security profile.
+        /// </param>
+        public HyperVReplicaAzureReplicationDetails(System.Collections.Generic.IList<AzureVmDiskDetails> azureVMDiskDetails = default(System.Collections.Generic.IList<AzureVmDiskDetails>), string recoveryAzureVMName = default(string), string recoveryAzureVMSize = default(string), string recoveryAzureStorageAccount = default(string), string recoveryAzureLogStorageAccountId = default(string), System.DateTime? lastReplicatedTime = default(System.DateTime?), long? rpoInSeconds = default(long?), System.DateTime? lastRpoCalculatedTime = default(System.DateTime?), string vmId = default(string), string vmProtectionState = default(string), string vmProtectionStateDescription = default(string), InitialReplicationDetails initialReplicationDetails = default(InitialReplicationDetails), System.Collections.Generic.IList<VMNicDetails> vmNics = default(System.Collections.Generic.IList<VMNicDetails>), string selectedRecoveryAzureNetworkId = default(string), string selectedSourceNicId = default(string), string encryption = default(string), OSDetails osDetails = default(OSDetails), int? sourceVMRamSizeInMb = default(int?), int? sourceVMCpuCount = default(int?), string enableRdpOnTargetOption = default(string), string recoveryAzureResourceGroupId = default(string), string recoveryAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string useManagedDisks = default(string), string licenseType = default(string), string sqlServerLicenseType = default(string), string linuxLicenseType = default(string), System.DateTime? lastRecoveryPointReceived = default(System.DateTime?), System.Collections.Generic.IDictionary<string, string> targetVMTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> seedManagedDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetManagedDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetNicTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<HyperVReplicaAzureManagedDiskDetails> protectedManagedDisks = default(System.Collections.Generic.IList<HyperVReplicaAzureManagedDiskDetails>), System.Collections.Generic.IList<OSUpgradeSupportedVersions> allAvailableOSUpgradeConfigurations = default(System.Collections.Generic.IList<OSUpgradeSupportedVersions>), SecurityProfileProperties targetVMSecurityProfile = default(SecurityProfileProperties))
 
         {
             this.AzureVMDiskDetails = azureVMDiskDetails;
@@ -157,12 +166,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.UseManagedDisks = useManagedDisks;
             this.LicenseType = licenseType;
             this.SqlServerLicenseType = sqlServerLicenseType;
+            this.LinuxLicenseType = linuxLicenseType;
             this.LastRecoveryPointReceived = lastRecoveryPointReceived;
             this.TargetVMTags = targetVMTags;
             this.SeedManagedDiskTags = seedManagedDiskTags;
             this.TargetManagedDiskTags = targetManagedDiskTags;
             this.TargetNicTags = targetNicTags;
             this.ProtectedManagedDisks = protectedManagedDisks;
+            this.AllAvailableOSUpgradeConfigurations = allAvailableOSUpgradeConfigurations;
+            this.TargetVMSecurityProfile = targetVMSecurityProfile;
             CustomInit();
         }
 
@@ -340,6 +352,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string SqlServerLicenseType {get; set; }
 
         /// <summary>
+        /// Gets or sets the license type for Linux VM&#39;s. Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;LinuxServer&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "linuxLicenseType")]
+        public string LinuxLicenseType {get; set; }
+
+        /// <summary>
         /// Gets the last recovery point received time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastRecoveryPointReceived")]
@@ -374,5 +392,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "protectedManagedDisks")]
         public System.Collections.Generic.IList<HyperVReplicaAzureManagedDiskDetails> ProtectedManagedDisks {get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating all available inplace OS Upgrade
+        /// configurations.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "allAvailableOSUpgradeConfigurations")]
+        public System.Collections.Generic.IList<OSUpgradeSupportedVersions> AllAvailableOSUpgradeConfigurations {get; set; }
+
+        /// <summary>
+        /// Gets or sets the target VM security profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetVmSecurityProfile")]
+        public SecurityProfileProperties TargetVMSecurityProfile {get; set; }
     }
 }

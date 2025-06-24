@@ -24,48 +24,15 @@ Get-AzReservationQuote -AppliedScopeType 'Shared' -BillingPlan 'Upfront' -billin
 .Example
 Get-AzReservationQuote -AppliedScopeType 'Shared' -BillingPlan 'Monthly' -billingScopeId '/subscriptions/b0f278e1-1f18-4378-84d7-b44dfa708665' -DisplayName 'yourRIName' -Location 'westus' -Quantity 1 -ReservedResourceType 'VirtualMachines' -Sku 'Standard_b1ls' -Term 'P1Y'
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPurchaseRequest
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculatePriceResponseProperties
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-BODY <IPurchaseRequest>: The request for reservation purchase
-  [AppliedScopePropertyDisplayName <String>]: Display name
-  [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
-  [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
-  [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
-  [AppliedScopePropertyTenantId <String>]: Tenant ID where the savings plan should apply benefit.
-  [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
-  [AppliedScopes <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
-  [BillingPlan <ReservationBillingPlan?>]: Represent the billing plans.
-  [BillingScopeId <String>]: Subscription that will be charged for purchasing reservation or savings plan
-  [DisplayName <String>]: Friendly name of the reservation
-  [InstanceFlexibility <InstanceFlexibility?>]: Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type.
-  [Location <String>]: The Azure region where the reserved resource lives.
-  [Quantity <Int32?>]: Quantity of the skus that are part of the reservation.
-  [Renew <Boolean?>]: Setting this to true will automatically purchase a new reservation on the expiration date time.
-  [ReservedResourceType <ReservedResourceType?>]: The type of the resource that is being reserved.
-  [ReviewDateTime <DateTime?>]: This is the date-time when the Azure hybrid benefit needs to be reviewed.
-  [Sku <String>]: 
-  [Term <ReservationTerm?>]: Represent the term of reservation.
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICalculatePriceResponse
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationquote
 #>
 function Get-AzReservationQuote {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculatePriceResponseProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICalculatePriceResponse])]
 [CmdletBinding(DefaultParameterSetName='CalculateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Calculate', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPurchaseRequest]
-    # The request for reservation purchase
-    # To construct, see NOTES section for BODY properties and create a hash table.
-    ${Body},
-
     [Parameter(ParameterSetName='CalculateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
@@ -106,16 +73,16 @@ param(
     ${AppliedScopePropertyTenantId},
 
     [Parameter(ParameterSetName='CalculateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.AppliedScopeType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.PSArgumentCompleterAttribute("Single", "Shared", "ManagementGroup")]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.AppliedScopeType]
+    [System.String]
     # Type of the Applied Scope.
     ${AppliedScopeType},
 
     [Parameter(ParameterSetName='CalculateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservationBillingPlan])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.PSArgumentCompleterAttribute("Upfront", "Monthly")]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservationBillingPlan]
+    [System.String]
     # Represent the billing plans.
     ${BillingPlan},
 
@@ -132,9 +99,9 @@ param(
     ${DisplayName},
 
     [Parameter(ParameterSetName='CalculateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.InstanceFlexibility])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.PSArgumentCompleterAttribute("On", "Off")]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.InstanceFlexibility]
+    [System.String]
     # Turning this on will apply the reservation discount to other VMs in the same VM size group.
     # Only specify for VirtualMachines reserved resource type.
     ${InstanceFlexibility},
@@ -158,9 +125,9 @@ param(
     ${Renew},
 
     [Parameter(ParameterSetName='CalculateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservedResourceType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.PSArgumentCompleterAttribute("VirtualMachines", "SqlDatabases", "SuseLinux", "CosmosDb", "RedHat", "SqlDataWarehouse", "VMwareCloudSimple", "RedHatOsa", "Databricks", "AppService", "ManagedDisk", "BlockBlob", "RedisCache", "AzureDataExplorer", "MySql", "MariaDb", "PostgreSql", "DedicatedHost", "SapHana", "SqlAzureHybridBenefit", "AVS", "DataFactory", "NetAppStorage", "AzureFiles", "SqlEdge", "VirtualMachineSoftware")]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservedResourceType]
+    [System.String]
     # The type of the resource that is being reserved.
     ${ReservedResourceType},
 
@@ -177,11 +144,23 @@ param(
     ${Sku},
 
     [Parameter(ParameterSetName='CalculateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservationTerm])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.PSArgumentCompleterAttribute("P1Y", "P3Y", "P5Y")]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservationTerm]
+    [System.String]
     # Represent the term of reservation.
     ${Term},
+
+    [Parameter(ParameterSetName='CalculateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Calculate operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CalculateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Json string supplied to the Calculate operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -239,6 +218,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -258,8 +246,9 @@ begin {
         }
 
         $mapping = @{
-            Calculate = 'Az.Reservations.private\Get-AzReservationQuote_Calculate';
             CalculateExpanded = 'Az.Reservations.private\Get-AzReservationQuote_CalculateExpanded';
+            CalculateViaJsonFilePath = 'Az.Reservations.private\Get-AzReservationQuote_CalculateViaJsonFilePath';
+            CalculateViaJsonString = 'Az.Reservations.private\Get-AzReservationQuote_CalculateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -268,6 +257,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

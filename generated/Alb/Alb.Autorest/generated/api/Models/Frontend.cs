@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Extensions;
 
-    /// <summary>Frontend Subresource of Traffic Controller.</summary>
+    /// <summary>Frontend Sub Resource of Traffic Controller.</summary>
     public partial class Frontend :
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend,
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontendInternal,
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
             await eventListener.AssertObjectIsValid(nameof(__trackedResource), __trackedResource);
         }
     }
-    /// Frontend Subresource of Traffic Controller.
+    /// Frontend Sub Resource of Traffic Controller.
     public partial interface IFrontend :
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrackedResource
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
         string ProvisioningState { get;  }
 
     }
-    /// Frontend Subresource of Traffic Controller.
+    /// Frontend Sub Resource of Traffic Controller.
     internal partial interface IFrontendInternal :
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrackedResourceInternal
     {

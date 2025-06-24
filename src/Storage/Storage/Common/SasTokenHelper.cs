@@ -755,6 +755,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             if (generateUserDelegationSas)
             {
+                if (context.StorageAccountName.StartsWith("["))
+                {
+                    throw new InvalidOperationException("Please provide '-Context' as a storage context created by cmdlet `New-AzStorageContext` with parameters include '-StorageAccountName'.");
+                }
                 global::Azure.Storage.Blobs.Models.UserDelegationKey userDelegationKey = null;
                 BlobServiceClient oauthService = new BlobServiceClient(context.StorageAccount.BlobEndpoint, context.Track2OauthToken, ClientOptions);
 
@@ -784,6 +788,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             if (generateUserDelegationSas)
             {
+                if (context.StorageAccountName.StartsWith("["))
+                {
+                    throw new InvalidOperationException("Please provide '-Context' as a storage context created by cmdlet `New-AzStorageContext` with parameters include '-StorageAccountName'.");
+                }
                 global::Azure.Storage.Files.DataLake.Models.UserDelegationKey userDelegationKey = null;
                 DataLakeServiceClient oauthService = new DataLakeServiceClient(context.StorageAccount.BlobEndpoint, context.Track2OauthToken, clientOptions);
 

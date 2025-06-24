@@ -74,6 +74,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerPropertiesInternal)Property).ProvisioningState = value; }
 
+        /// <summary>Internal Acessors for SecurityPolicy</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IResourceId> Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal.SecurityPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerPropertiesInternal)Property).SecurityPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerPropertiesInternal)Property).SecurityPolicy = value; }
+
+        /// <summary>Internal Acessors for SecurityPolicyConfiguration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicyConfigurations Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal.SecurityPolicyConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerPropertiesInternal)Property).SecurityPolicyConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerPropertiesInternal)Property).SecurityPolicyConfiguration = value; }
+
+        /// <summary>Internal Acessors for SecurityPolicyConfigurationWafSecurityPolicy</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IWafSecurityPolicy Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal.SecurityPolicyConfigurationWafSecurityPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerPropertiesInternal)Property).SecurityPolicyConfigurationWafSecurityPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerPropertiesInternal)Property).SecurityPolicyConfigurationWafSecurityPolicy = value; }
+
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Alb.Origin(Microsoft.Azure.PowerShell.Cmdlets.Alb.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.Alb.FormatTable(Index = 0)]
@@ -96,6 +105,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Alb.Origin(Microsoft.Azure.PowerShell.Cmdlets.Alb.PropertyOrigin.Owned)]
         [Microsoft.Azure.PowerShell.Cmdlets.Alb.FormatTable(Index = 1)]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
+
+        /// <summary>Security Policies References List</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Alb.Origin(Microsoft.Azure.PowerShell.Cmdlets.Alb.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Alb.DoNotFormat]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IResourceId> SecurityPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerPropertiesInternal)Property).SecurityPolicy; }
 
         /// <summary>
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -145,6 +159,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Alb.Origin(Microsoft.Azure.PowerShell.Cmdlets.Alb.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.Alb.DoNotFormat]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IResourceInternal)__trackedResource).Type; }
+
+        /// <summary>Resource ID of the Waf Security Policy</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Alb.Origin(Microsoft.Azure.PowerShell.Cmdlets.Alb.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Alb.DoNotFormat]
+        public string WafSecurityPolicyId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerPropertiesInternal)Property).WafSecurityPolicyId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerPropertiesInternal)Property).WafSecurityPolicyId = value ?? null; }
 
         /// <summary>Creates an new <see cref="TrafficController" /> instance.</summary>
         public TrafficController()
@@ -214,6 +233,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.PSArgumentCompleterAttribute("Provisioning", "Updating", "Deleting", "Accepted", "Succeeded", "Failed", "Canceled")]
         string ProvisioningState { get;  }
+        /// <summary>Security Policies References List</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Security Policies References List",
+        SerializedName = @"securityPolicies",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IResourceId) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IResourceId> SecurityPolicy { get;  }
+        /// <summary>Resource ID of the Waf Security Policy</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Resource ID of the Waf Security Policy",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        string WafSecurityPolicyId { get; set; }
 
     }
     /// Concrete tracked resource types can be created by aliasing this type using a specific property type.
@@ -231,6 +272,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
         /// <summary>The status of the last operation.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.PSArgumentCompleterAttribute("Provisioning", "Updating", "Deleting", "Accepted", "Succeeded", "Failed", "Canceled")]
         string ProvisioningState { get; set; }
+        /// <summary>Security Policies References List</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IResourceId> SecurityPolicy { get; set; }
+        /// <summary>Security Policy Configuration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicyConfigurations SecurityPolicyConfiguration { get; set; }
+        /// <summary>
+        /// Contains reference to a WAF-type security policy that is applied at the Traffic Controller level.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IWafSecurityPolicy SecurityPolicyConfigurationWafSecurityPolicy { get; set; }
+        /// <summary>Resource ID of the Waf Security Policy</summary>
+        string WafSecurityPolicyId { get; set; }
 
     }
 }

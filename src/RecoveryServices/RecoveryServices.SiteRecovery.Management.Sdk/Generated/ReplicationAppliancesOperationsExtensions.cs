@@ -21,9 +21,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='odataQuery'>
         /// 
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<ReplicationAppliance> List(this IReplicationAppliancesOperations operations, Microsoft.Rest.Azure.OData.ODataQuery<ApplianceQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ApplianceQueryParameter>))
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ReplicationAppliance> List(this IReplicationAppliancesOperations operations, string resourceGroupName, string resourceName, Microsoft.Rest.Azure.OData.ODataQuery<ApplianceQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ApplianceQueryParameter>))
         {
-                return ((IReplicationAppliancesOperations)operations).ListAsync(odataQuery).GetAwaiter().GetResult();
+                return ((IReplicationAppliancesOperations)operations).ListAsync(resourceGroupName, resourceName, odataQuery).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -35,12 +42,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='odataQuery'>
         /// 
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ReplicationAppliance>> ListAsync(this IReplicationAppliancesOperations operations, Microsoft.Rest.Azure.OData.ODataQuery<ApplianceQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ApplianceQueryParameter>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ReplicationAppliance>> ListAsync(this IReplicationAppliancesOperations operations, string resourceGroupName, string resourceName, Microsoft.Rest.Azure.OData.ODataQuery<ApplianceQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ApplianceQueryParameter>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(odataQuery, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, resourceName, odataQuery, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

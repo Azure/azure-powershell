@@ -14,7 +14,8 @@ Updates a network manager security admin rule.
 
 ```
 Set-AzNetworkManagerSecurityAdminRule -InputObject <PSNetworkManagerSecurityBaseAdminRule> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

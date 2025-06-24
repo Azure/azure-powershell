@@ -99,6 +99,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the kubernetes cluster.",
         SerializedName = @"clusterName",
         PossibleTypes = new [] { typeof(string) })]
@@ -109,6 +112,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.",
         SerializedName = @"clusterResourceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -119,6 +125,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.",
         SerializedName = @"clusterRp",
         PossibleTypes = new [] { typeof(string) })]
@@ -127,6 +136,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the Extension.",
         SerializedName = @"extensionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -135,6 +147,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the Flux Configuration.",
         SerializedName = @"fluxConfigurationName",
         PossibleTypes = new [] { typeof(string) })]
@@ -143,6 +158,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -151,6 +169,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"operation Id",
         SerializedName = @"operationId",
         PossibleTypes = new [] { typeof(string) })]
@@ -159,6 +180,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -167,6 +191,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the Source Control Configuration.",
         SerializedName = @"sourceControlConfigurationName",
         PossibleTypes = new [] { typeof(string) })]
@@ -175,6 +202,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

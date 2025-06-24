@@ -2474,7 +2474,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        public ManagedIdentitySqlControlSettingsModel UpdateManagedIdentitySqlControlSetting(string resourceGroupName, string workspaceName, ManagedIdentitySqlControlSettingsState desiredState)
+        public ManagedIdentitySqlControlSettingsModel UpdateManagedIdentitySqlControlSetting(string resourceGroupName, string workspaceName, DesiredState desiredState)
         {
             try
             {
@@ -2485,7 +2485,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 var managedIdentitySqlControlSettings = new ManagedIdentitySqlControlSettingsModel
                 {
-                    GrantSqlControlToManagedIdentity = new ManagedIdentitySqlControlSettingsModelPropertiesGrantSqlControlToManagedIdentity(desiredState: desiredState.ToString())
+                    GrantSqlControlToManagedIdentity = new ManagedIdentitySqlControlSettingsModelPropertiesGrantSqlControlToManagedIdentity(desiredState: desiredState)
                 };
                 
                 return this._synapseManagementClient.WorkspaceManagedIdentitySqlControlSettings.CreateOrUpdate(resourceGroupName, workspaceName, managedIdentitySqlControlSettings);

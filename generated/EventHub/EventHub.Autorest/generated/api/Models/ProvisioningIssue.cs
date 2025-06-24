@@ -16,11 +16,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 
         /// <summary>Description of the issue</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public string Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProvisioningIssuePropertiesInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProvisioningIssuePropertiesInternal)Property).Description = value ?? null; }
+        public string Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProvisioningIssuePropertiesInternal)Property).Description; }
 
         /// <summary>Type of Issue</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public string IssueType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProvisioningIssuePropertiesInternal)Property).IssueType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProvisioningIssuePropertiesInternal)Property).IssueType = value ?? null; }
+        public string IssueType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProvisioningIssuePropertiesInternal)Property).IssueType; }
+
+        /// <summary>Internal Acessors for Description</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProvisioningIssueInternal.Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProvisioningIssuePropertiesInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProvisioningIssuePropertiesInternal)Property).Description = value; }
+
+        /// <summary>Internal Acessors for IssueType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProvisioningIssueInternal.IssueType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProvisioningIssuePropertiesInternal)Property).IssueType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProvisioningIssuePropertiesInternal)Property).IssueType = value; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProvisioningIssueProperties Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProvisioningIssueInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ProvisioningIssueProperties()); set { {_property = value;} } }

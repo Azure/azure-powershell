@@ -849,6 +849,16 @@ namespace Commands.StorageSync.Interop.Clients
             m_connectionPointContainer.FindConnectionPoint(ref IID_IStableVersionDeepGcProgress, out cp);
             return cp;
         }
+
+        /// <summary>
+        /// Resets the server certificate settings registry.
+        /// </summary>
+        /// <returns>0 if successful</returns>
+        public int ResetServerCertificateSettingsRegistry()
+        {
+            return m_managementObject.ResetServerCertificateSettingsRegistry();
+        }
+
         /// <summary>
         /// Coes the set proxy blanket.
         /// </summary>
