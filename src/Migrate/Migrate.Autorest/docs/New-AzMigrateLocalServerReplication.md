@@ -14,20 +14,20 @@ Starts replication for the specified server.
 
 ### ByIdDefaultUser (Default)
 ```
-New-AzMigrateLocalServerReplication -MachineId <String> -OSDiskID <String> -TargetResourceGroupId <String>
- -TargetStoragePathId <String> -TargetVirtualSwitchId <String> -TargetVMName <String>
- [-IsDynamicMemoryEnabled <String>] [-SubscriptionId <String>] [-TargetTestVirtualSwitchId <String>]
- [-TargetVMCPUCore <Int32>] [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzMigrateLocalServerReplication -MachineId <String> -OSDiskID <String> -SourceApplianceName <String>
+ -TargetApplianceName <String> -TargetResourceGroupId <String> -TargetStoragePathId <String>
+ -TargetVirtualSwitchId <String> -TargetVMName <String> [-IsDynamicMemoryEnabled <String>]
+ [-SubscriptionId <String>] [-TargetTestVirtualSwitchId <String>] [-TargetVMCPUCore <Int32>]
+ [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByIdPowerUser
 ```
 New-AzMigrateLocalServerReplication -DiskToInclude <AzLocalDiskInput[]> -MachineId <String>
- -NicToInclude <AzLocalNicInput[]> -TargetResourceGroupId <String> -TargetStoragePathId <String>
- -TargetVMName <String> [-IsDynamicMemoryEnabled <String>] [-SubscriptionId <String>]
- [-TargetVMCPUCore <Int32>] [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -NicToInclude <AzLocalNicInput[]> -SourceApplianceName <String> -TargetApplianceName <String>
+ -TargetResourceGroupId <String> -TargetStoragePathId <String> -TargetVMName <String>
+ [-IsDynamicMemoryEnabled <String>] [-SubscriptionId <String>] [-TargetVMCPUCore <Int32>]
+ [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -209,6 +209,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SourceApplianceName
+Specifies the source appliance name for the AzLocal scenario.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Azure Subscription ID.
 
@@ -220,6 +235,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetApplianceName
+Specifies the target appliance name for the AzLocal scenario.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

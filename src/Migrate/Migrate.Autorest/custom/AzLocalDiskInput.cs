@@ -12,8 +12,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
             long diskSizeGB, 
             string diskFileFormat, 
             bool isOsDisk,
-            long? diskPhysicalSectorSize,
-            string storageContainerId)
+            long? diskPhysicalSectorSize)
         {
             DiskId = diskId;
             IsDynamic = isDynamic;
@@ -25,11 +24,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
                 (diskPhysicalSectorSize == 512 || diskPhysicalSectorSize == 4096) 
                 ? diskPhysicalSectorSize 
                 : null;
-
-            StorageContainerId = 
-                string.IsNullOrWhiteSpace(storageContainerId)
-                ? null
-                : storageContainerId;
         }
 
         /// <summary>Gets or sets the type of the virtual hard disk, vhd or vhdx.</summary>
@@ -52,8 +46,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
         
         /// <summary>Gets or sets a value indicating whether disk is os disk.</summary>
         public bool IsOSDisk { get; set; }
-
-        /// <summary>Gets or sets the target storage account ARM Id.</summary>
-        public string StorageContainerId { get; set; }
     }
 }

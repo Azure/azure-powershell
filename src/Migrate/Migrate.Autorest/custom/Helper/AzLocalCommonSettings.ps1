@@ -5,8 +5,8 @@ $AzLocalInstanceTypes = @{
 
 # Fabric instances
 $FabricInstanceTypes = @{
-    HyperVInstance     = "HyperVMigrate";
-    VMwareInstance     = "VMwareMigrate";
+    HyperVInstance = "HyperVMigrate";
+    VMwareInstance = "VMwareMigrate";
     AzLocalInstance = "AzStackHCI";
 }
 
@@ -99,6 +99,12 @@ $VMwareToolsStatus = @{
     NotRunning = "NotRunning";
     OK = "OK";
     NotInstalled = "NotInstalled";
+}
+
+$OsType = @{
+    LinuxGuest = "linuxguest";
+    WindowsGuest = "windowsguest";
+    OtherGuestFamily = "otherguestfamily";
 }
 
 $VmReplicationValidationMessage = "Replication could not be initiated. Please ensure the necessary changes are made, and allow up to 30 minutes before re-trying."
