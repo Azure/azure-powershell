@@ -1469,6 +1469,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyLogScrubbingRule, MNM.WebApplicationFirewallScrubbingRules>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRules, MNM.ManagedRulesDefinition>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRuleSet, MNM.ManagedRuleSet>();
+                cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRuleSetRuleGroup, MNM.ManagedRuleSetRuleGroup>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride, MNM.ManagedRuleGroupOverride>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRuleOverride, MNM.ManagedRuleOverride>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyExclusion, MNM.ApplicationGatewayFirewallExclusion>();
@@ -1573,6 +1574,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.WebApplicationFirewallScrubbingRules, CNM.PSApplicationGatewayFirewallPolicyLogScrubbingRule>();
                 cfg.CreateMap<MNM.ManagedRulesDefinition, CNM.PSApplicationGatewayFirewallPolicyManagedRules>();
                 cfg.CreateMap<MNM.ManagedRuleSet, CNM.PSApplicationGatewayFirewallPolicyManagedRuleSet>();
+                cfg.CreateMap<MNM.ManagedRuleSetRuleGroup, CNM.PSApplicationGatewayFirewallPolicyManagedRuleSetRuleGroup>();
                 cfg.CreateMap<MNM.ManagedRuleGroupOverride, CNM.PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride>();
                 cfg.CreateMap<MNM.ManagedRuleOverride, CNM.PSApplicationGatewayFirewallPolicyManagedRuleOverride>();
                 cfg.CreateMap<MNM.ApplicationGatewayFirewallExclusion, CNM.PSApplicationGatewayFirewallPolicyExclusion>();

@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft.  All rights reserved.
+// Copyright (c) Microsoft.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,22 +12,17 @@
 // limitations under the License.
 //
 
-using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public partial class PSApplicationGatewayFirewallPolicyManagedRuleSet
+    public class PSApplicationGatewayFirewallPolicyManagedRuleSetRuleGroup
     {
         [Ps1Xml(Target = ViewControl.Table)]
-        public string RuleSetType { get; set; }
+        public string RuleGroupName { get; set; }
+
         [Ps1Xml(Target = ViewControl.Table)]
-        public string RuleSetVersion { get; set; }
-        [Ps1Xml(Target = ViewControl.Table)]
-        public List<PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride> RuleGroupOverrides { get; set; }
-        [Ps1Xml(Target = ViewControl.Table)]
-        public List<PSApplicationGatewayFirewallPolicyManagedRuleSetRuleGroup> ComputedDisabledRules { get; private set; }
+        public List<string> Rules { get; set; }
     }
 }
