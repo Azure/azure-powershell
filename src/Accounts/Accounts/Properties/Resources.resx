@@ -632,9 +632,9 @@
     <value>If you encounter any problem, please open an issue at: https://aka.ms/azpsissue</value>
   </data>
   <data name="RopcDeprecationPublicCloud" xml:space="preserve">
-    <value>Starting July 01, 2025, MFA will be gradually enforced for Azure public cloud. The authentication with username and password in the command line is not supported with MFA. Consider using one of the compatible authentication methods. For more details, see https://go.microsoft.com/fwlink/?linkid=2276314</value>
+    <value>Starting {0}, MFA will be gradually enforced for Azure public cloud. The authentication with username and password in the command line is not supported with MFA. Consider using one of the compatible authentication methods. For more details, see https://go.microsoft.com/fwlink/?linkid=2276971</value>
   </data>
   <data name="RopcDeprecationSovereignClouds" xml:space="preserve">
-    <value>Using authentication with username and password in the command line is strongly discouraged. Consider using one of the recommended authentication methods. For more details, see https://go.microsoft.com/fwlink/?linkid=2276314</value>
+    <value>Using authentication with username and password in the command line is strongly discouraged. Consider using one of the recommended authentication methods. For more details, see https://go.microsoft.com/fwlink/?linkid=2276971</value>
   </data>
 </root>
