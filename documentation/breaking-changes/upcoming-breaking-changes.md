@@ -36,9 +36,51 @@ Preview modules are not included in this list. Read more about [module version t
 - Parameter breaking-change will happen to all parameter sets
   - `-OSType`
     - The parameter : 'OSType' is changing.
-    - Change description : Removing the default value of OSType parameter.
+    - Change description : Removing the default value of OSType parameter. 
     - This change will take effect on '5/21/2025'- The change is expected to take effect from Az version : '14.0.0'
     - The change is expected to take effect from version : '5.0.0'
+
+## Az.ManagedServices
+
+### `Get-AzManagedServicesAssignment`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - Change description : The types of the properties 'Authorization' and 'EligibleAuthorization' will be changed to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '9.0.0'
+
+### `Get-AzManagedServicesDefinition`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - Change description : The types of the properties 'Authorization' and 'EligibleAuthorization' will be changed to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '9.0.0'
+
+### `New-AzManagedServicesDefinition`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - Change description : The types of the properties 'DelegatedRoleDefinitionId' and 'JustInTimeAccessPolicyManagedByTenantApprover' will be changed to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '9.0.0'
+
+### `New-AzManagedServicesEligibleAuthorizationObject`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - Change description : The type of the property 'DelegatedRoleDefinitionId' will be changed from Array to List. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '9.0.0'
+
+### `Remove-AzManagedServicesDefinition`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - Change description : The types of the properties 'Authorization' and 'EligibleAuthorization' will be changed to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '9.0.0'
 
 ## Az.RecoveryServices
 
@@ -54,7 +96,7 @@ Preview modules are not included in this list. Read more about [module version t
 
 - Cmdlet breaking-change will happen to all parameter sets
   The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'PrivateEndpointConnection' will be changed to 'List'.
+  - Change description : The type of property 'PrivateEndpointConnection' will be changed to 'List'. 
   - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
   - The change is expected to take effect from version : '9.0.0'
 
@@ -62,6 +104,6 @@ Preview modules are not included in this list. Read more about [module version t
 
 - Cmdlet breaking-change will happen to all parameter sets
   The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'IPRule' will be changed to 'List'.
+  - Change description : The type of property 'IPRule' will be changed to 'List'. 
   - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
   - The change is expected to take effect from version : '9.0.0'
