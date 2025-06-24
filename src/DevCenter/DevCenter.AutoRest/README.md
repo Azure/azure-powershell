@@ -344,6 +344,26 @@ directive:
       subject: OperationStatuses
     set:
       subject: OperationStatus
+  #Breaking changes
+  - where:
+      subject: ^Plan$|^PlanMember$
+    set:
+      breaking-change:
+        change-description: The Plan and PlanMember resources will be deprecated.
+        deprecated-by-version: 3.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/01
+  - where:
+      subject: DevCenter
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: DevCenter
+        deprecated-output-properties:
+          - PlanId
+        change-description: PlanId is no longer part of DevCenter output. 
+        deprecated-by-version: 3.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/01
   - where:
       subject: ^(.*)
     set:
