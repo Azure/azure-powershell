@@ -1,4 +1,4 @@
-### Example 1: Stop a VM in a Cloud VM Cluster resource
+### Example 1: Stop a VM in a Exa Db  Cluster Node resource
 ```powershell
 $vmClusterName = "OFake_PowerShellTestVmCluster"
 $resourceGroup = "PowerShellTestRg"
@@ -7,7 +7,7 @@ $stopActionName = "Stop"
 $dbNodeList = Get-AzOracleExascaleDbNode -Exadbvmclustername $vmClusterName -ResourceGroupName $resourceGroup
 $dbNodeOcid1 = $dbNodeList[0].Name
             
-Invoke-AzOracleActionExascaleDbNode.md  -ExadbVMClusterName $vmClusterName -DbNodeOcid $dbNodeOcid1 -ResourceGroupName $resourceGroup -Action $stopActionName
+Invoke-AzOracleActionExascaleDbNode  -ExadbVMClusterName $vmClusterName -Name  $dbNodeOcid1 -ResourceGroupName $resourceGroup -Action $stopActionName
 ```
 
 ```output
