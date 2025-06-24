@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzLabServicesSchedule
 
 ## SYNOPSIS
-Operation to create or update a lab schedule.
+Operation to create a lab schedule.
 
 ## SYNTAX
 
@@ -16,22 +16,45 @@ Operation to create or update a lab schedule.
 ```
 New-AzLabServicesSchedule -Name <String> -LabName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Note <String>] [-RecurrencePatternExpirationDate <DateTime>]
- [-RecurrencePatternFrequency <RecurrenceFrequency>] [-RecurrencePatternInterval <Int32>]
- [-RecurrencePatternWeekDay <WeekDay[]>] [-StartAt <DateTime>] [-StopAt <DateTime>] [-TimeZoneId <String>]
+ [-RecurrencePatternFrequency <String>] [-RecurrencePatternInterval <Int32>]
+ [-RecurrencePatternWeekDay <String[]>] [-StartAt <DateTime>] [-StopAt <DateTime>] [-TimeZoneId <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzLabServicesSchedule -Name <String> -LabName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzLabServicesSchedule -Name <String> -LabName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Lab
 ```
 New-AzLabServicesSchedule -Name <String> [-SubscriptionId <String>] -Lab <Lab> [-Note <String>]
- [-RecurrencePatternExpirationDate <DateTime>] [-RecurrencePatternFrequency <RecurrenceFrequency>]
- [-RecurrencePatternInterval <Int32>] [-RecurrencePatternWeekDay <WeekDay[]>] [-StartAt <DateTime>]
+ [-RecurrencePatternExpirationDate <DateTime>] [-RecurrencePatternFrequency <String>]
+ [-RecurrencePatternInterval <Int32>] [-RecurrencePatternWeekDay <String[]>] [-StartAt <DateTime>]
+ [-StopAt <DateTime>] [-TimeZoneId <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityLabExpanded
+```
+New-AzLabServicesSchedule -Name <String> -LabInputObject <ILabServicesIdentity> [-Note <String>]
+ [-RecurrencePatternExpirationDate <DateTime>] [-RecurrencePatternFrequency <String>]
+ [-RecurrencePatternInterval <Int32>] [-RecurrencePatternWeekDay <String[]>] [-StartAt <DateTime>]
  [-StopAt <DateTime>] [-TimeZoneId <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Operation to create or update a lab schedule.
+Operation to create a lab schedule.
 
 ## EXAMPLES
 
@@ -76,12 +99,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Lab
-To construct, see NOTES section for LAB properties and create a hash table.
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Lab
+The object of lab service lab.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
 Parameter Sets: Lab
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LabInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: CreateViaIdentityLabExpanded
 Aliases:
 
 Required: True
@@ -97,7 +165,7 @@ Used in resource URIs.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -128,7 +196,7 @@ Notes for this schedule.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, Lab, CreateViaIdentityLabExpanded
 Aliases:
 
 Required: False
@@ -144,7 +212,7 @@ This date is inclusive.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, Lab, CreateViaIdentityLabExpanded
 Aliases:
 
 Required: False
@@ -158,8 +226,8 @@ Accept wildcard characters: False
 The frequency of the recurrence.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.RecurrenceFrequency
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, Lab, CreateViaIdentityLabExpanded
 Aliases:
 
 Required: False
@@ -176,7 +244,7 @@ When no interval is supplied, an interval of 1 is used.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, Lab, CreateViaIdentityLabExpanded
 Aliases:
 
 Required: False
@@ -191,8 +259,8 @@ The week days the schedule runs.
 Used for when the Frequency is set to Weekly.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.WeekDay[]
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: CreateExpanded, Lab, CreateViaIdentityLabExpanded
 Aliases:
 
 Required: False
@@ -208,7 +276,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -224,7 +292,7 @@ Timestamp offsets will be ignored and timeZoneId is used instead.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, Lab, CreateViaIdentityLabExpanded
 Aliases:
 
 Required: False
@@ -240,7 +308,7 @@ Timestamp offsets will be ignored and timeZoneId is used instead.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, Lab, CreateViaIdentityLabExpanded
 Aliases:
 
 Required: False
@@ -255,7 +323,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Lab
 Aliases:
 
 Required: False
@@ -270,7 +338,7 @@ The IANA timezone id for the schedule.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, Lab, CreateViaIdentityLabExpanded
 Aliases:
 
 Required: False
@@ -316,11 +384,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule
 
 ## NOTES
 

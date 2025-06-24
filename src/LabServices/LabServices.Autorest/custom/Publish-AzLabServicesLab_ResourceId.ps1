@@ -12,15 +12,32 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Publish or re-publish a lab.
+This will create or update all lab resources, such as virtual machines.
+.Description
+Publish or re-publish a lab.
+This will create or update all lab resources, such as virtual machines.
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/publish-azlabserviceslab
+#>
 function Publish-AzLabServicesLab_ResourceId {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter(Mandatory)]
         [System.String]
+        # The resource Id of lab service lab.
         ${ResourceId},
-
+        
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+        [System.Object]
+        # This parameter may not be available for use.
         ${AdditionalUsageQuota},
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]

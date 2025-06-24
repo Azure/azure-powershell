@@ -12,13 +12,26 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Operation to delete a schedule resource.
+.Description
+Operation to delete a schedule resource.
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Schedule
+.Outputs
+System.Boolean
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/remove-azlabservicesschedule
+#>
 function Remove-AzLabServicesSchedule_Schedule {
 [OutputType([System.Boolean])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Schedule]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Schedule]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    # The object of lab service schedule to remove.
     ${Schedule},
 
     [Parameter()]

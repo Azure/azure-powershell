@@ -12,13 +12,26 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Operation to delete a lab resource.
+.Description
+Operation to delete a lab resource.
+.Outputs
+System.Boolean
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/remove-azlabserviceslab
+#>
+
 function Remove-AzLabServicesLab_ResourceId {
     [OutputType([System.Boolean])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
         [System.String]
+        # The resource Id of lab service lab.
         ${ResourceId},
+        
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]

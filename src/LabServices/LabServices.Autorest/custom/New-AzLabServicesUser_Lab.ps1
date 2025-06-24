@@ -12,19 +12,33 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Operation to create a lab user.
+.Description
+Operation to create a lab user.
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/new-azlabservicesuser
+#>
+
 function New-AzLabServicesUser_Lab {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    # The object of lab service lab to create user in.
     ${Lab},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
-    # The name of the user that uniqely identifies it within containing lab.
+    # The name of the user that uniquely identifies it within containing lab.
     # Used in resource URIs.
     ${Name},
 
@@ -38,8 +52,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.TimeSpan]
     # The amount of usage quota time the user gets in addition to the lab usage quota.
-
     ${AdditionalUsageQuota},
+    
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]

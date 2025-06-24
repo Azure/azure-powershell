@@ -12,12 +12,25 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Action to stop a lab virtual machine.
+.Description
+Action to stop a lab virtual machine.
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
+.Outputs
+System.Boolean
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/stop-azlabservicesvm
+#>
 function Stop-AzLabServicesVM_ResourceId {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter(Mandatory)]
         [System.String]
+        # The resource Id of lab service virtual machine.
         ${ResourceId},
   
         [Parameter()]
