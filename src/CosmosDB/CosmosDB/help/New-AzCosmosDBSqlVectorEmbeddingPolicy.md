@@ -13,7 +13,9 @@ Creates a new CosmosDB Sql VectorEmbeddingPolicy object.
 ## SYNTAX
 
 ```
-New-AzCosmosDBSqlVectorEmbeddingPolicy [-VectorEmbedding <PSVectorEmbedding[]>]
+New-AzCosmosDBSqlVectorEmbeddingPolicy -VectorEmbedding <PSVectorEmbedding[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,11 +54,41 @@ Accept wildcard characters: False
 Array of objects of type Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorEmbedding (Represents a vector embedding. A vector embedding is used to define a vector field in the documents).
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorEmbedding[]
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSVectorEmbedding[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
