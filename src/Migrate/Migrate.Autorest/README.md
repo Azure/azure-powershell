@@ -54,7 +54,7 @@ input-file:
   - $(repo)/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2024-01-01/service.json
   - $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
 
-module-version: 3.0.10
+module-version: 3.0.12
 title: Migrate 
 subject-prefix: 'Migrate'
 
@@ -123,6 +123,9 @@ directive:
     - JobModelCustomProperties
     - TaskModel
     - TaskModelCustomProperties
+    - FabricAgentModelProperties
+    - FabricAgentModelCustomProperties
+    - VaultModelProperties
   # Remove variants not in scope
   - from: Microsoft.RecoveryServices/stable/2024-01-01/service.json
     where:
