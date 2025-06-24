@@ -125,7 +125,7 @@ Accept wildcard characters: False
 
 ### -DeletionId
 The deletion ID associated with the soft deleted path.
-You can get soft deleted paths and their assocaited deletion IDs with cmdlet 'Get-AzDataLakeGen2DeletedItem'.
+You can get soft deleted paths and their associated deletion IDs with cmdlet 'Get-AzDataLakeGen2DeletedItem'.
 
 ```yaml
 Type: System.String

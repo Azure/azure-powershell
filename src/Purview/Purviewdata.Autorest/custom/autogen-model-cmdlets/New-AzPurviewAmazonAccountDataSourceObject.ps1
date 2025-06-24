@@ -21,12 +21,13 @@ Create an in-memory object for AmazonAccountDataSource.
 Create an in-memory object for AmazonAccountDataSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonAccountDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonAccountDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAmazonAccountDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewamazonaccountdatasourceobject
 #>
 function New-AzPurviewAmazonAccountDataSourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonAccountDataSource')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonAccountDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -41,15 +42,11 @@ function New-AzPurviewAmazonAccountDataSourceObject {
         $CollectionType,
         [Parameter()]
         [string]
-        $RoleArn,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-        $Kind
+        $RoleArn
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonAccountDataSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonAccountDataSource]::New()
 
         if ($PSBoundParameters.ContainsKey('AwsAccountId')) {
             $Object.AwsAccountId = $AwsAccountId
@@ -62,9 +59,6 @@ function New-AzPurviewAmazonAccountDataSourceObject {
         }
         if ($PSBoundParameters.ContainsKey('RoleArn')) {
             $Object.RoleArn = $RoleArn
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         return $Object
     }

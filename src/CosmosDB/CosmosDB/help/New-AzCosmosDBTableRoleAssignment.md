@@ -29,8 +29,8 @@ New-AzCosmosDBTableRoleAssignment -ResourceGroupName <String> -AccountName <Stri
 ### ByParentObjectParameterSet
 ```
 New-AzCosmosDBTableRoleAssignment [-Id <String>] -Scope <String> -PrincipalId <String>
- -ParentObject <PSTableRoleDefinitionGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ParentObject <PSTableRoleDefinitionGetResults> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

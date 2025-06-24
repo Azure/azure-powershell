@@ -142,7 +142,7 @@ Name                 BlobType  Length          ContentType                    La
 blob2                BlockBlob 2097152         application/octet-stream       2020-07-03 16:19:16Z Hot                                     False      2020-07-03T16:19:16.2883167Z
 ```
 
-This command gets a single blobs verion with VersionId.
+This command gets a single blobs version with VersionId.
 
 ### Example 7: Get a single blob snapshot
 ```powershell
@@ -213,7 +213,7 @@ ExpiresOn                   PolicyMode
 9/17/2024 2:49:32 AM +00:00   Unlocked
 ```
 
-This example command gets the immutability property of a single blob. You can get a detailed list of blob prTooperties from the **BlobProperties** property, including but not limited to: LastModified, ContentLength, ContentHash, BlobType, LeaseState, AccessTier, ETag, ImmutabilityPolicy, etc...
+This example command gets the immutability property of a single blob. You can get a detailed list of blob properties from the **BlobProperties** property, including but not limited to: LastModified, ContentLength, ContentHash, BlobType, LeaseState, AccessTier, ETag, ImmutabilityPolicy, etc...
 To list multiple blobs (execute the cmdlet without blob name), use **ListBlobProperties.Properties** instead of **BlobProperties** for better performance.
 
 ## PARAMETERS

@@ -49,8 +49,8 @@ $destfile = Start-AzStorageFileCopy -SrcShareName "contososhare" -SrcFilePath "c
 $destfile | Get-AzStorageFileCopyState
 ```
 
-The first command starts copy file "contosofile" to "contosofile_copy", and output the destiantion file object. 
-The second command pipeline the destiantion file object to Get-AzStorageFileCopyState, to get file copy state.
+The first command starts copy file "contosofile" to "contosofile_copy", and output the destination file object. 
+The second command pipeline the destination file object to Get-AzStorageFileCopyState, to get file copy state.
 
 ## PARAMETERS
 

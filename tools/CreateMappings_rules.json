@@ -975,5 +975,13 @@
   {
     "alias": "MongoDB",
     "module": "MongoDB"
+  },
+  {
+    "module": "DependencyMap",
+    "alias": "DependencyMap"
+  },
+  {
+    "alias": "DataTransfer",
+    "module": "DataTransfer"
   }
 ]
