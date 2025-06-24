@@ -12,6 +12,20 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Action to stop a lab virtual machine.
+.Description
+Action to stop a lab virtual machine.
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
+.Outputs
+System.Boolean
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/stop-azlabservicesvm
+#>
 function Stop-AzLabServicesVM_VM {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
     [CmdletBinding(PositionalBinding=$false)]

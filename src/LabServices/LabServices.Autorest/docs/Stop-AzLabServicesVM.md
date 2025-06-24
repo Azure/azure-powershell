@@ -196,7 +196,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-
+The resource Id of lab service virtual machine.
 
 ```yaml
 Type: System.String
@@ -226,7 +226,7 @@ Accept wildcard characters: False
 ```
 
 ### -VM
-
+The object of lab service virtual machine to stop.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine

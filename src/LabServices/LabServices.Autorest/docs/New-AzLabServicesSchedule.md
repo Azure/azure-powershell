@@ -127,7 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -Lab
-
+The object of lab service lab.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab

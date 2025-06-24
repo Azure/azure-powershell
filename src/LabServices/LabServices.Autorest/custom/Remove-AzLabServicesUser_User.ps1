@@ -12,6 +12,18 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Operation to delete a user resource.
+.Description
+Operation to delete a user resource.
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User
+.Outputs
+System.Boolean
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/remove-azlabservicesuser
+#>
 function Remove-AzLabServicesUser_User {
 [OutputType([System.Boolean])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]

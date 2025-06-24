@@ -11,6 +11,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+<#
+.Synopsis
+Operation to delete a lab resource.
+.Description
+Operation to delete a lab resource.
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
+.Outputs
+System.Boolean
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/remove-azlabserviceslab
+#>
 
 function Remove-AzLabServicesLab_LabPlan {
 [OutputType([System.Boolean])]
@@ -19,7 +31,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    # The object of lab service lab plan to remove.
+    # The object of lab service lab plan to remove lab.
     ${LabPlan},
 
     [Parameter(Mandatory)]

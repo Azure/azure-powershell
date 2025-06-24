@@ -93,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -LabPlan
-
+The object of lab service lab plan to remove.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan

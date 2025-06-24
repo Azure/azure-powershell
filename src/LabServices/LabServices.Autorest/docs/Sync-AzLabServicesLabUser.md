@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -Lab
-
+The object of lab service lab to synchronize users in.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab

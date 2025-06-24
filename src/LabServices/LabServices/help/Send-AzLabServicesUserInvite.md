@@ -228,6 +228,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
+The resource Id of lab service user.
 
 ```yaml
 Type: System.String
@@ -272,6 +273,7 @@ Accept wildcard characters: False
 ```
 
 ### -User
+The object of lab service user to invite.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User

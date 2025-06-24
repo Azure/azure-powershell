@@ -12,6 +12,18 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Operation to invite a user to a lab.
+.Description
+Operation to invite a user to a lab.
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
+.Outputs
+System.Boolean
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/send-azlabservicesuserinvite
+#>
 function Send-AzLabServicesUserInvite_ResourceId {
     [OutputType([System.Boolean])]
     [CmdletBinding(PositionalBinding=$false)]

@@ -205,7 +205,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-
+The resource ID of lab service virtual machine.
 
 ```yaml
 Type: System.String
@@ -235,7 +235,7 @@ Accept wildcard characters: False
 ```
 
 ### -VM
-
+The object of lab service virtual machine.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine

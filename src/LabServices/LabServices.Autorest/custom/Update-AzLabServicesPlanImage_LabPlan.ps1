@@ -12,6 +12,18 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Update an image resource.
+.Description
+Update an image resource.
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IImage
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesplanimage
+#>
 function Update-AzLabServicesPlanImage_LabPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IImage])]
 [CmdletBinding(PositionalBinding=$false)]
@@ -25,7 +37,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
-    # The name of image.
+    # The image name.
     ${Name},
 
     [Parameter(Mandatory)]

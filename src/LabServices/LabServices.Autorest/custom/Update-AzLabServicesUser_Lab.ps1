@@ -13,6 +13,18 @@
 # ----------------------------------------------------------------------------------
 
 # this variant is duplicated with UpdateViaIdentityLabExpanded
+<#
+.Synopsis
+Operation to update a lab user.
+.Description
+Operation to update a lab user.
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesuser
+#>
 function Update-AzLabServicesUser_Lab {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser])]
 [CmdletBinding(PositionalBinding=$false)]

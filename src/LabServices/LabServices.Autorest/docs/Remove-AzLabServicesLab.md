@@ -103,7 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -Lab
-
+The object of lab service lab to remove lab.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
@@ -195,7 +195,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-
+The resource Id of lab service lab.
 
 ```yaml
 Type: System.String

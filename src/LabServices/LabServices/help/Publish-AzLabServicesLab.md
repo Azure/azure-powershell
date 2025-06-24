@@ -62,6 +62,7 @@ Publish the lab template.
 ## PARAMETERS
 
 ### -AdditionalUsageQuota
+This parameter may not be available for use.
 
 ```yaml
 Type: System.Object
@@ -122,6 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -Lab
+The object of lab service lab to publish.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
@@ -198,6 +200,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
+The resource Id of lab service lab.
 
 ```yaml
 Type: System.String

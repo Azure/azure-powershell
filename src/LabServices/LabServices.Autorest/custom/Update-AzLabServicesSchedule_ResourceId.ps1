@@ -12,6 +12,16 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Operation to update a lab schedule.
+.Description
+Operation to update a lab schedule.
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesschedule
+#>
 function Update-AzLabServicesSchedule_ResourceId {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule])]
 [CmdletBinding(PositionalBinding=$false)]

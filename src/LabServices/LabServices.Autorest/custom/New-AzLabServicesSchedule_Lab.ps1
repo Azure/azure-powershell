@@ -12,6 +12,19 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Operation to create a lab schedule.
+.Description
+Operation to create a lab schedule.
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/new-azlabservicesschedule
+#>
+
 function New-AzLabServicesSchedule_Lab {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule])]
     [CmdletBinding(PositionalBinding=$false)]
@@ -25,7 +38,8 @@ function New-AzLabServicesSchedule_Lab {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
         [System.String]
-        # The name of lab service schedule.
+        # The name of the schedule that uniquely identifies it within containing lab.
+        # Used in resource URIs.
         ${Name},
     
         [Parameter()]

@@ -13,6 +13,19 @@
 # ----------------------------------------------------------------------------------
 
 # this variant is duplicated with UpdateViaIdentityLabExpanded
+
+<#
+.Synopsis
+Operation to update a lab schedule.
+.Description
+Operation to update a lab schedule.
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesschedule
+#>
 function Update-AzLabServicesSchedule_Lab {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule])]
 [CmdletBinding(PositionalBinding=$false)]

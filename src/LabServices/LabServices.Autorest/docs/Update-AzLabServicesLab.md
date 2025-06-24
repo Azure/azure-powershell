@@ -15,12 +15,16 @@ Operation to update a lab resource.
 ### UpdateExpanded (Default)
 ```
 Update-AzLabServicesLab -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AdminUserPassword <SecureString>] [-AdminUserUsername <String>]
  [-AutoShutdownProfileDisconnectDelay <TimeSpan>] [-AutoShutdownProfileIdleDelay <TimeSpan>]
  [-AutoShutdownProfileNoConnectDelay <TimeSpan>] [-AutoShutdownProfileShutdownOnDisconnect <String>]
  [-AutoShutdownProfileShutdownOnIdle <String>] [-AutoShutdownProfileShutdownWhenNotConnected <String>]
  [-ConnectionProfileClientRdpAccess <String>] [-ConnectionProfileClientSshAccess <String>]
  [-ConnectionProfileWebRdpAccess <String>] [-ConnectionProfileWebSshAccess <String>] [-Description <String>]
- [-LabPlanId <String>] [-RosterProfileActiveDirectoryGroupId <String>] [-RosterProfileLmsInstance <String>]
+ [-ImageReferenceId <String>] [-ImageReferenceOffer <String>] [-ImageReferencePublisher <String>]
+ [-ImageReferenceSku <String>] [-ImageReferenceVersion <String>] [-LabPlanId <String>]
+ [-NonAdminUserPassword <SecureString>] [-NonAdminUserUsername <String>]
+ [-RosterProfileActiveDirectoryGroupId <String>] [-RosterProfileLmsInstance <String>]
  [-RosterProfileLtiClientId <String>] [-RosterProfileLtiContextId <String>]
  [-RosterProfileLtiRosterEndpoint <String>] [-SecurityProfileOpenAccess <String>] [-Tag <String[]>]
  [-Title <String>] [-VirtualMachineProfileUsageQuota <TimeSpan>] [-DefaultProfile <PSObject>] [-AsJob]
@@ -29,17 +33,21 @@ Update-AzLabServicesLab -Name <String> -ResourceGroupName <String> [-Subscriptio
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzLabServicesLab -InputObject <ILabServicesIdentity> [-AutoShutdownProfileDisconnectDelay <TimeSpan>]
+Update-AzLabServicesLab -InputObject <ILabServicesIdentity> [-AdminUserPassword <SecureString>]
+ [-AdminUserUsername <String>] [-AutoShutdownProfileDisconnectDelay <TimeSpan>]
  [-AutoShutdownProfileIdleDelay <TimeSpan>] [-AutoShutdownProfileNoConnectDelay <TimeSpan>]
  [-AutoShutdownProfileShutdownOnDisconnect <String>] [-AutoShutdownProfileShutdownOnIdle <String>]
  [-AutoShutdownProfileShutdownWhenNotConnected <String>] [-ConnectionProfileClientRdpAccess <String>]
  [-ConnectionProfileClientSshAccess <String>] [-ConnectionProfileWebRdpAccess <String>]
- [-ConnectionProfileWebSshAccess <String>] [-Description <String>] [-LabPlanId <String>]
- [-RosterProfileActiveDirectoryGroupId <String>] [-RosterProfileLmsInstance <String>]
- [-RosterProfileLtiClientId <String>] [-RosterProfileLtiContextId <String>]
- [-RosterProfileLtiRosterEndpoint <String>] [-SecurityProfileOpenAccess <String>] [-Tag <String[]>]
- [-Title <String>] [-VirtualMachineProfileUsageQuota <TimeSpan>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ConnectionProfileWebSshAccess <String>] [-Description <String>] [-ImageReferenceId <String>]
+ [-ImageReferenceOffer <String>] [-ImageReferencePublisher <String>] [-ImageReferenceSku <String>]
+ [-ImageReferenceVersion <String>] [-LabPlanId <String>] [-NonAdminUserPassword <SecureString>]
+ [-NonAdminUserUsername <String>] [-RosterProfileActiveDirectoryGroupId <String>]
+ [-RosterProfileLmsInstance <String>] [-RosterProfileLtiClientId <String>]
+ [-RosterProfileLtiContextId <String>] [-RosterProfileLtiRosterEndpoint <String>]
+ [-SecurityProfileOpenAccess <String>] [-Tag <String[]>] [-Title <String>]
+ [-VirtualMachineProfileUsageQuota <TimeSpan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -75,6 +83,37 @@ westus2  Lab Name
 This example updates the lab and enables the Shutdown on Disconnect option setting the delay at 25 minutes.
 
 ## PARAMETERS
+
+### -AdminUserPassword
+The password for the user.
+This is required for the TemplateVM createOption.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AdminUserUsername
+The username to use when signing in to lab VMs.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -272,6 +311,81 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ImageReferenceId
+Image resource ID
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImageReferenceOffer
+The image offer if applicable.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImageReferencePublisher
+The image publisher
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImageReferenceSku
+The image SKU
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImageReferenceVersion
+The image version specified on creation.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -344,6 +458,37 @@ Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: LabName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NonAdminUserPassword
+The password for the user.
+This is required for the TemplateVM createOption.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NonAdminUserUsername
+The username to use when signing in to lab VMs.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

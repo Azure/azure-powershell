@@ -263,7 +263,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-
+The resource ID of lab service user to update.
 
 ```yaml
 Type: System.String

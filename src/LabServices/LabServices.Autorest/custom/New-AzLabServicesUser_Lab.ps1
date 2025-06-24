@@ -12,6 +12,19 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Operation to create a lab user.
+.Description
+Operation to create a lab user.
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/new-azlabservicesuser
+#>
+
 function New-AzLabServicesUser_Lab {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser])]
 [CmdletBinding(PositionalBinding=$false)]

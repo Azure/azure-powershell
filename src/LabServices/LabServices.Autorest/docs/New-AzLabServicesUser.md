@@ -158,7 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -Lab
-
+The object of lab service lab to create user in.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab

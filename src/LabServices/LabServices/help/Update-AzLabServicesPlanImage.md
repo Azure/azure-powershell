@@ -81,6 +81,7 @@ This example enables the image for use in labs.
 ## PARAMETERS
 
 ### -AsJob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -183,6 +184,7 @@ Accept wildcard characters: False
 ```
 
 ### -LabPlan
+The object of lab service lab plan.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
@@ -243,6 +245,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -273,6 +276,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
+The resource ID of lan service lab plan image to update.
 
 ```yaml
 Type: System.String

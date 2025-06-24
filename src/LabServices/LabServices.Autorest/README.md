@@ -95,10 +95,21 @@ directive:
           "type": "string",
           "x-ms-secret": true,
           "x-ms-mutability": [
-            "create"
+            "create",
+            "update"
           ],
           "format": "password"
         }
+  # Fix update
+  - from: swagger-document
+    where: $.definitions.Credentials.properties.username
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.VirtualMachineAdditionalCapabilities.properties.installGpuDrivers
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.VirtualMachineProfile.properties.imageReference
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
   # Fix bug that the words of create or update will be replaced
   - from: source-file-csharp
     where: $
