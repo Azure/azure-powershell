@@ -57,13 +57,13 @@ This cmdlet updates an existing MongoDB user definition in a specified Cosmos DB
 
 ### Example 1
 ```powershell
-$subscriptionId = "bebf1773-330e-4db8-8df9-7b66b8a80868"
+$subscriptionId = "00000000-0000-0000-0000-000000000000"
 $rgName = "myResourceGroup"
 $AccountName = "myCosmosDBAccount"
 $DatabaseName = "myDatabase"
 $Username1 = "myUser"
 $UserDefinitionId1 = $DatabaseName + "." + $Username1
-$Pass1 = "myPassword"
+$Pass1 = "******"
 $Mechanisms = "SCRAM-SHA-256"
 $CustomData = "additionalInfo"
 $UpdatedRoles = @("role1", "role2")
