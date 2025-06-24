@@ -21,6 +21,10 @@
 ## Upcoming Release
 * Onboarded Application Gateway WAF Exceptions cmdlet.
     - `New-AzApplicationGatewayFirewallPolicyException`  
+* Added properties 'DedicatedBackendConnection', 'ValidateCertChainAndExpiry', 'ValidateSNI', and 'SniName' to Application Gateway Backend HTTP Settings, as well as support for them in the following cmdlets:
+    - `New-AzApplicationGatewayBackendHttpSetting`
+    - `Add-AzApplicationGatewayBackendHttpSetting`
+    - `Set-AzApplicationGatewayBackendHttpSetting`
 
 ## Version 7.17.0
 * Added properties 'PublicIpAddressesV6', 'PublicIpPrefixesV6', and 'SourceVirtualNetwork' to NatGateway, as well as support for it for the following cmdlets:
