@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.1.1
 * Updated the date in the message about multi-factor authentication (MFA). For more details, see https://go.microsoft.com/fwlink/?linkid=2276971
 
 ## Version 5.1.0
