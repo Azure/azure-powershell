@@ -54,7 +54,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'ComputeSchedule.AutoRest/bin/Az.ComputeSchedule.private.dll'
+RequiredAssemblies = 'ComputeSchedule.Autorest/bin/Az.ComputeSchedule.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 ScriptsToProcess = @()
@@ -63,10 +63,10 @@ ScriptsToProcess = @()
 TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'ComputeSchedule.AutoRest/Az.ComputeSchedule.format.ps1xml'
+FormatsToProcess = 'ComputeSchedule.Autorest/Az.ComputeSchedule.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('ComputeSchedule.AutoRest/Az.ComputeSchedule.psm1')
+NestedModules = @('ComputeSchedule.Autorest/Az.ComputeSchedule.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Get-AzComputeScheduleOperationError', 
