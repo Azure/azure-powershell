@@ -29,7 +29,7 @@ function Test-AzureMonitorRelatedCommands{
 		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
-		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential -Version $params.version `
+		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential -Version 5.1 `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion -VirtualNetworkId $params.virtualNetworkId -SubnetName "default"
 		Assert-NotNull $cluster
 
@@ -78,12 +78,12 @@ function Test-AzureMonitorAgentRelatedCommands{
 	# Create some resources that will be used throughout test 
 	try
 	{
-		# $location = "East Asia"
+		$location = "East US"
 		# prepare parameter for creating parameter
 		# $params= Prepare-ClusterCreateParameter -location $location
 
 		# create cluster that will be used throughout test
-		$cluster = Get-AzHDInsightCluster -ResourceGroupName "group-ps-test" -ClusterName "ps-test-cluster"
+		$cluster = Get-AzHDInsightCluster -ResourceGroupName yuchen-ps-test -ClusterName spark51
 		Assert-NotNull $cluster
 
 		$workspaceName = "ps-la"
@@ -102,7 +102,7 @@ function Test-AzureMonitorAgentRelatedCommands{
 
 		Assert-NotNull $workspaceId
 		Assert-NotNull $primaryKey
-		Enable-AzHDInsightAzureMonitorAgent -ClusterName $cluster.Name -ResourceGroup $cluster.ResourceGroup -WorkspaceId $workspaceId -PrimaryKey  $primaryKey
+		Enable-AzHDInsightAzureMonitorAgent -ClusterName $cluster.Name -ResourceGroup $cluster.ResourceGroup -WorkspaceId $workspaceId -Primary  $primaryKey
 		
 		$result = Get-AzHDInsightAzureMonitorAgent -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup
 		Assert-True {$result.ClusterMonitoringEnabled}
