@@ -7,7 +7,8 @@ Get-AzCloudHsm
 IdentityPrincipalId IdentityTenantId IdentityType Location      Name                 SkuCapacity SkuFamily SkuName
 ------------------- ---------------- ------------ --------      ----                 ----------- --------- -------
                                      UserAssigned ukwest        chsm1                      B         Standard_B1
-                                     UserAssigned ukwest        chsm2                      B         Standard_B1```
+                                     UserAssigned ukwest        chsm2                      B         Standard_B1
+```
 
 This command gets all the Cloud HSMs in your current subscription
 
