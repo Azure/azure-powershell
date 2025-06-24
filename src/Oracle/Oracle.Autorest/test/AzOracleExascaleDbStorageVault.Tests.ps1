@@ -5,6 +5,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzOracleExascaleDbStorageVaul
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
+  Write-Host "--- DEBUG: INSIDE THE PESTER TEST SCRIPT ---" -ForegroundColor Yellow
+  Write-Host "Checking the content of the loaded `$env` variable:"
+  # This will print the entire contents of the $env object that was loaded from env.json
+  $env | Format-List | Out-String | Write-Host
+  Write-Host "--- END OF PESTER SCRIPT DEBUG ---" -ForegroundColor Yellow
+
   $TestRecordingFile = Join-Path $PSScriptRoot 'AzOracleExascaleDbStorageVault.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
@@ -17,7 +23,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzOracleExascaleDbStorageVaul
 Describe 'AzOracleExascaleDbStorageVault' {
     It 'CreateOracleExascaleDbStorageVault' {
         {        
-            $oracleExascaleDbStorageVault = New-AzOracleExascaleDbStorageVault -Name $env.oracleExascaleDbStorageVaultName -ResourceGroupName $env.resourceGroup -Location $env.location -Zone $env.zone -AdditionalFlashCacheInPercent $env.additionalFlashCacheInPercent -Description $env.description -DisplayName $env.oracleExascaleDbStorageVaultName -HighCapacityDatabaseStorageInput $env.highCapacityDatabaseStorageInput -TimeZone $env.oracleExadbVMClusterTimeZone
+            $oracleExascaleDbStorageVault = New-AzOracleExascaleDbStorageVault -Name $env.oracleExascaleDbStorageVaultName -ResourceGroupName $env.resourceGroup -Location $env.location -Zone $env.zone -Description $env.description -DisplayName $env.oracleExascaleDbStorageVaultName -HighCapacityDatabaseStorageInput $env.highCapacityDatabaseStorageInput 
             $oracleExascaleDbStorageVault.Name | Should -Be $env.oracleExascaleDbStorageVaultName
         } | Should -Not -Throw
     }

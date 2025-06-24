@@ -22,7 +22,7 @@ Describe 'AzOracleExadbVMCluster' {
             $dbStorageVault = Get-AzOracleExascaleDbStorageVault -Name $env.oracleExascaleDbStorageVaultName -ResourceGroupName $env.resourceGroup
             $dbStorageVaultId = $dbStorageVault.Id
 
-            $oracleExadbVMCluster = New-AzOracleExadbVMCluster -Name $env.oracleExadbVMClusterName -ResourceGroupName $env.resourceGroup -Location $env.location -Zone $env.zone -ExascaleDbStorageVaultId $dbStorageVaultId -DisplayName $env.oracleExadbVMClusterName -EnabledEcpuCount $env.enabledEcpuCount -GridImageOcid $env.gridImageOcid -HostName $env.oracleExadbVMClusterHostName -NodeCount $env.nodeCount -Shape $env.shape -SshPublicKey $sshPublicKey -VnetId $env.vnetId -SubnetId $env.subnetId -TotalEcpuCount $env.totalEcpuCount -VMFileSystemStorage $env.VMFileSystemStorage
+            $oracleExadbVMCluster = New-AzOracleExadbVMCluster -Name $env.oracleExadbVMClusterName -ResourceGroupName $env.resourceGroup -Location $env.location -Zone $env.zone -ExascaleDbStorageVaultId $dbStorageVaultId -DisplayName $env.oracleExadbVMClusterName -EnabledEcpuCount $env.enabledEcpuCount -GridImageOcid $env.gridImageOcid -HostName $env.vmClusterHostName -NodeCount $env.nodeCount -Shape $env.exaScaleShape -SshPublicKey $sshPublicKey -VnetId $env.vnetId -SubnetId $env.subnetId -TotalEcpuCount $env.totalEcpuCount -VMFileSystemStorage $env.VMFileSystemStorage
             $oracleExadbVMCluster.Name | Should -Be $env.oracleExadbVMClusterName
         } | Should -Not -Throw
     }
