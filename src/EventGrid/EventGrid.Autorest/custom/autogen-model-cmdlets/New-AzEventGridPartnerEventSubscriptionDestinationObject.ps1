@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.PartnerEventSubscriptionDest
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridpartnereventsubscriptiondestinationobject
 #>
 function New-AzEventGridPartnerEventSubscriptionDestinationObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.PartnerEventSubscriptionDestination')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Extensions;
 
-    /// <summary>Any object</summary>
+    /// <summary>Anything</summary>
     public partial class Any :
         Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IAny,
         Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IAnyInternal
@@ -19,13 +19,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models
 
         }
     }
-    /// Any object
+    /// Anything
     public partial interface IAny :
         Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IJsonSerializable
     {
 
     }
-    /// Any object
+    /// Anything
     internal partial interface IAnyInternal
 
     {

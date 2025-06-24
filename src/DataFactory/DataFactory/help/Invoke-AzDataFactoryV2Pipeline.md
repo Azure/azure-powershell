@@ -285,7 +285,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzDataFactoryV2PipelineRun]()
+[Get-AzDataFactoryV2PipelineRun](Get-AzDataFactoryV2PipelineRun.md)
 
-[Get-AzDataFactoryV2ActivityRun]()
+[Get-AzDataFactoryV2ActivityRun](Get-AzDataFactoryV2ActivityRun.md)
 

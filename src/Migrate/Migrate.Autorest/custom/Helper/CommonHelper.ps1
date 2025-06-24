@@ -208,9 +208,35 @@ function InvokeAzMigrateGetCommandWithRetries {
     )
 
     process {
+        # Filter out ErrorAction and ErrorVariable from the parameters
+        $params = @{}
+        foreach ($key in $Parameters.Keys) {
+            if ($key -ne "ErrorAction" -and $key -ne "ErrorVariable") {
+                $params[$key] = $Parameters[$key]
+            }
+        }
+
+        # Extract user-specified ErrorAction and ErrorVariable or defaults
+        # but do not include them in $params
+        if ($Parameters.ContainsKey("ErrorVariable")) {
+            $errorVariable = $Parameters["ErrorVariable"]
+        }
+        else
+        {
+            $errorVariable = "notPresent"
+        }
+
+        if ($Parameters.ContainsKey("ErrorAction")) {
+            $errorAction = $Parameters["ErrorAction"]
+        }
+        else
+        {
+            $errorAction = "Continue"
+        }
+
         for ($i = 0; $i -le $MaxRetryCount; $i++) {
             try {
-                $result = & $CommandName @Parameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                $result = & $CommandName @params -ErrorVariable $errorVariable -ErrorAction $errorAction
 
                 if ($null -eq $result) {
                     throw $ErrorMessage
@@ -223,11 +249,55 @@ function InvokeAzMigrateGetCommandWithRetries {
                     Start-Sleep -Seconds $RetryDelayInSeconds
                 }
                 else {
-                    throw $ErrorMessage
+                    throw "Get command failed after $MaxRetryCount retries. Error: $($_.Exception)"
                 }
             }
         }
 
         return $result
+    }
+}
+
+function ValidateReplication {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param (
+        [Parameter(Mandatory)]
+        [PSCustomObject]
+        ${Machine},
+
+        [Parameter(Mandatory)]
+        [System.String]
+        ${MigrationType}
+    )
+    # Check if the VM is already protected
+    $protectedItem = Az.Migrate\Get-AzMigrateLocalServerReplication `
+        -DiscoveredMachineId $Machine.Id  `
+        -ErrorAction SilentlyContinue
+    if ($null -ne $protectedItem) {
+        throw $VmReplicationValidationMessages.AlreadyInReplication
+    }
+
+    if ($Machine.PowerStatus -eq $PowerStatus.OffVMware -or $Machine.PowerStatus -eq $PowerStatus.OffHyperV) {
+        throw $VmReplicationValidationMessages.VmPoweredOff
+    }
+
+    if ($MigrationType -eq $AzLocalInstanceTypes.HyperVToAzLocal) {
+        if (-not $Machine.OperatingSystemDetailOSType -or $Machine.OperatingSystemDetailOSType -eq "") {
+            throw $VmReplicationValidationMessages.OsTypeNotFound
+        }
+
+        if ($Machine.ClusterId -and $Machine.HighAvailability -eq $HighAvailability.NO) {
+            throw $VmReplicationValidationMessages.VmNotHighlyAvailable
+        }
+    }
+
+    if ($MigrationType -eq $AzLocalInstanceTypes.VMwareToAzLocal) {
+        if ($Machine.VMwareToolsStatus -eq $VMwareToolsStatus.NotRunning) {
+            throw $VmReplicationValidationMessages.VmWareToolsNotRunning
+        }
+
+        if ($Machine.VMwareToolsStatus -eq $VMwareToolsStatus.NotInstalled) {
+            throw $VmReplicationValidationMessages.VmWareToolsNotInstalled
+        }
     }
 }

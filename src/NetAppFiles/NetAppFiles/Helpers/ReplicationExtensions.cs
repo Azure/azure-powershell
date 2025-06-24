@@ -17,6 +17,7 @@ using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.Models;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
 {
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 ReplicationId = replication.ReplicationId,
                 EndpointType = replication.EndpointType,
                 RemoteVolumeRegion = replication.RemoteVolumeRegion,
-                RemoteVolumeResourceId = replication.RemoteVolumeResourceId,                
+                RemoteVolumeResourceId = replication.RemoteVolumeResourceId
             };
             return psReplicaitonObject;
         }
@@ -49,5 +50,21 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             return psSvmPeerCommandResponse;
         }
 
+        public static PSNetAppFilesDestinationReplication ConvertToPs(this Management.NetApp.Models.DestinationReplication destinationReplication)
+        {
+            PSNetAppFilesDestinationReplication pSNetAppFilesDestinationReplication = new PSNetAppFilesDestinationReplication
+            {
+                Region = destinationReplication.Region,
+                ReplicationType = destinationReplication.ReplicationType,
+                ResourceId = destinationReplication.ResourceId,
+                Zone = destinationReplication.Zone
+            };
+            return pSNetAppFilesDestinationReplication;
+        }
+
+        public static List<PSNetAppFilesDestinationReplication> ConvertToPs(this IEnumerable<Management.NetApp.Models.DestinationReplication> destinationReplications)
+        {
+            return destinationReplications.Select(e => e.ConvertToPs()).ToList();
+        }
     }
 }

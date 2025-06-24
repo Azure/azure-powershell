@@ -68,6 +68,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.",
         SerializedName = @"aliasName",
         PossibleTypes = new [] { typeof(string) })]
@@ -76,6 +79,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Billing Account Id.",
         SerializedName = @"billingAccountId",
         PossibleTypes = new [] { typeof(string) })]
@@ -84,6 +90,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -94,6 +103,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The operation ID, which can be found from the Location field in the generate recommendation response header.",
         SerializedName = @"operationId",
         PossibleTypes = new [] { typeof(string) })]
@@ -102,6 +114,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Subscription Id.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

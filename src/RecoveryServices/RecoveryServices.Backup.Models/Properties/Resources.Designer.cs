@@ -2852,5 +2852,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("InvalidSoftDeleteFeatureStateException", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Both Token and SecureToken parameters cannot be provided together.
+        /// </summary>
+        public static string BothTokenProvided
+        {
+            get
+            {
+                return ResourceManager.GetString("BothTokenProvided", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The Token parameter is deprecated and will be removed in future versions. Please use SecureToken instead.
+        /// </summary>
+        public static string TokenParameterDepricate
+        {
+            get
+            {
+                return ResourceManager.GetString("TokenParameterDepricate", resourceCulture);
+            }
+        }
     }
 }

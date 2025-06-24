@@ -14,8 +14,11 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Rest;
 using System;
+using System.Collections.Generic;
 using System.Security;
 
 namespace Microsoft.Azure.Commands.TestFx.Mocks
@@ -71,24 +74,12 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
 
         public IAccessToken Authenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Action<string> promptAction, IAzureTokenCache tokenCache, string resourceId = "ActiveDirectoryServiceEndpointResourceId")
         {
-            if (account.Id == null)
+            var optionalParameters = new Dictionary<string, object>()
             {
-                account.Id = "MockAccount";
-            }
-
-            if (TokenProvider == null)
-            {
-                return new MockAccessToken()
-                {
-                    AccessToken = account.Id,
-                    LoginType = LoginType.OrgId,
-                    UserId = account.Id
-                };
-            }
-            else
-            {
-                return TokenProvider(account, environment as AzureEnvironment, tenant);
-            }
+                {AuthenticationFactory.TokenCacheParameterName, tokenCache },
+                {AuthenticationFactory.ResourceIdParameterName, resourceId }
+            };
+            return Authenticate(account, environment, tenant, password, promptBehavior, promptAction, optionalParameters);
         }
 
         public IAccessToken Authenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Action<string> promptAction, string resourceId = "ActiveDirectoryServiceEndpointResourceId")
@@ -96,12 +87,12 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
             return Authenticate(account, environment, tenant, password, promptBehavior, promptAction, AzureSession.Instance.TokenCache, resourceId);
         }
 
-        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, ICmdletContext cmdletContext)
         {
             return new TokenCredentials(Token.AccessToken);
         }
 
-        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint, ICmdletContext cmdletContext)
         {
             return new TokenCredentials(Token.AccessToken);
         }
@@ -122,6 +113,43 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
         }
 
         public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IAccessToken Authenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Action<string> promptAction, IDictionary<string, object> optionalParameters)
+        {
+            if (account.Id == null)
+            {
+                account.Id = "MockAccount";
+            }
+
+            if (TokenProvider == null)
+            {
+                return new MockAccessToken()
+                {
+                    AccessToken = account.Id,
+                    LoginType = LoginType.OrgId,
+                    UserId = account.Id
+                };
+            }
+            else
+            {
+                return TokenProvider(account, environment as AzureEnvironment, tenant);
+            }
+        }
+
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
+        {
+            return GetServiceClientCredentials(context, AzureCmdletContext.CmdletNone);
+        }
+
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
+        {
+            return GetServiceClientCredentials(context, targetEndpoint, AzureCmdletContext.CmdletNone);
+        }
+
+        public void RemoveUser(IAzureAccount account, IAzureEnvironment environment)
         {
             throw new NotImplementedException();
         }

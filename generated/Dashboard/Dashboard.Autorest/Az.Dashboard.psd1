@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Dashboard.private.dll'
   FormatsToProcess = './Az.Dashboard.format.ps1xml'
-  FunctionsToExport = 'Get-AzGrafana', 'New-AzGrafana', 'New-AzGrafanaMonitorWorkspaceIntegrationObject', 'Remove-AzGrafana', 'Update-AzGrafana', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzGrafana', 'New-AzGrafana', 'New-AzGrafanaMonitorWorkspaceIntegrationObject', 'Remove-AzGrafana', 'Update-AzGrafana'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Dashboard'

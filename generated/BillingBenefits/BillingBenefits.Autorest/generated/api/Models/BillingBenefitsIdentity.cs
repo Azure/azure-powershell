@@ -60,6 +60,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -68,6 +71,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the reservation order alias",
         SerializedName = @"reservationOrderAliasName",
         PossibleTypes = new [] { typeof(string) })]
@@ -76,6 +82,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"ID of the savings plan",
         SerializedName = @"savingsPlanId",
         PossibleTypes = new [] { typeof(string) })]
@@ -84,6 +93,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the savings plan order alias",
         SerializedName = @"savingsPlanOrderAliasName",
         PossibleTypes = new [] { typeof(string) })]
@@ -92,6 +104,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Order ID of the savings plan",
         SerializedName = @"savingsPlanOrderId",
         PossibleTypes = new [] { typeof(string) })]

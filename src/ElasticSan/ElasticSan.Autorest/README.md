@@ -139,6 +139,10 @@ directive:
       subject: ^PrivateEndpointConnection$|^PrivateLinkResource$
     hide: true
   - where:
+      verb: ^New$
+      subject: ^ElasticSan$
+    hide: true
+  - where:
       verb: ^New$|^Update$
       subject: ^VolumeGroup$
     hide: true

@@ -16,16 +16,18 @@
 
 <#
 .Synopsis
-Creates or updates a resource type.
+Create a resource type.
 .Description
-Creates or updates a resource type.
+Create a resource type.
 .Example
 New-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType" -RoutingType "Default" -Regionality "Regional" -Endpoint @{ApiVersion = "2021-01-01-preview"; Location = "West US 2", "East US 2 EUAP"; RequiredFeature = "Microsoft.Contoso/SampleApp" } -SwaggerSpecification @{ApiVersion = "2021-01-01-preview"; SwaggerSpecFolderUri = "https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/" } -EnableAsyncOperation
 .Example
 New-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType/nestedResourceType" -RoutingType "Default" -Regionality "Global" -Endpoint @{ApiVersion = "2021-01-01-preview"; Location = ""; RequiredFeature = "Microsoft.Contoso/SampleApp" } -SwaggerSpecification @{ApiVersion = "2021-01-01-preview"; SwaggerSpecFolderUri = "https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/" }
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceTypeRegistration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,15 +38,15 @@ AUTHORIZATIONACTIONMAPPING <IAuthorizationActionMapping[]>: .
   [Original <String>]: 
 
 ENDPOINT <IResourceTypeEndpoint[]>: .
-  [ApiVersion <String[]>]: 
+  [ApiVersion <List<String>>]: 
   [Enabled <Boolean?>]: 
-  [Extension <IResourceTypeExtension[]>]: 
+  [Extension <List<IResourceTypeExtension>>]: 
     [EndpointUri <String>]: 
-    [ExtensionCategory <ExtensionCategory[]>]: 
+    [ExtensionCategory <List<String>>]: 
     [Timeout <TimeSpan?>]: 
   [FeatureRuleRequiredFeaturesPolicy <String>]: 
-  [Location <String[]>]: 
-  [RequiredFeature <String[]>]: 
+  [Location <List<String>>]: 
+  [RequiredFeature <List<String>>]: 
   [Timeout <TimeSpan?>]: 
 
 EXTENDEDLOCATION <IExtendedLocationOptions[]>: .
@@ -60,312 +62,372 @@ LINKEDACCESSCHECK <ILinkedAccessCheck[]>: .
 
 LOGGINGRULE <ILoggingRule[]>: .
   Action <String>: 
-  DetailLevel <LoggingDetails>: 
-  Direction <LoggingDirections>: 
-  [HiddenPropertyPathHiddenPathsOnRequest <String[]>]: 
-  [HiddenPropertyPathHiddenPathsOnResponse <String[]>]: 
+  DetailLevel <String>: 
+  Direction <String>: 
+  [HiddenPropertyPathHiddenPathsOnRequest <List<String>>]: 
+  [HiddenPropertyPathHiddenPathsOnResponse <List<String>>]: 
+
+PROVIDERREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 SERVICETREEINFO <IServiceTreeInfo[]>: .
   [ComponentId <String>]: 
   [ServiceId <String>]: 
 
 SUBSCRIPTIONLIFECYCLENOTIFICATIONSPECIFICATIONSUBSCRIPTIONSTATEOVERRIDEACTION <ISubscriptionStateOverrideAction[]>: .
-  Action <SubscriptionNotificationOperation>: 
-  State <SubscriptionTransitioningState>: 
+  Action <String>: 
+  State <String>: 
 
 SUBSCRIPTIONSTATERULE <ISubscriptionStateRule[]>: .
-  [AllowedAction <String[]>]: 
-  [State <SubscriptionState?>]: 
+  [AllowedAction <List<String>>]: 
+  [State <String>]: 
 
 SWAGGERSPECIFICATION <ISwaggerSpecification[]>: .
-  [ApiVersion <String[]>]: 
+  [ApiVersion <List<String>>]: 
   [SwaggerSpecFolderUri <String>]: 
 
 THROTTLINGRULE <IThrottlingRule[]>: .
   Action <String>: 
-  Metric <IThrottlingMetric[]>: 
+  Metric <List<IThrottlingMetric>>: 
     Limit <Int64>: 
-    Type <ThrottlingMetricType>: 
+    Type <String>: 
     [Interval <TimeSpan?>]: 
-  [RequiredFeature <String[]>]: 
+  [RequiredFeature <List<String>>]: 
 .Link
 https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubresourcetyperegistration
 #>
 function New-AzProviderHubResourceTypeRegistration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceTypeRegistration])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
-    [System.String]
-    # The name of the resource provider hosted within ProviderHub.
-    ${ProviderNamespace},
-
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The resource type.
     ${ResourceType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [System.String]
+    # The name of the resource provider hosted within ProviderHub.
+    ${ProviderNamespace},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ProviderRegistrationInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.String[]]
     # .
     ${AllowedUnauthorizedAction},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IAuthorizationActionMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IAuthorizationActionMapping[]]
     # .
-    # To construct, see NOTES section for AUTHORIZATIONACTIONMAPPING properties and create a hash table.
     ${AuthorizationActionMapping},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${CheckNameAvailabilitySpecificationEnableDefaultValidation},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.String[]]
     # .
     ${CheckNameAvailabilitySpecificationResourceTypesWithCustomValidation},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.String]
     # .
     ${DefaultApiVersion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.String[]]
     # .
     ${DisallowedActionVerb},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${EnableAsyncOperation},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${EnableThirdPartyS2S},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeEndpoint[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceTypeEndpoint[]]
     # .
-    # To construct, see NOTES section for ENDPOINT properties and create a hash table.
     ${Endpoint},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtendedLocationOptions[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IExtendedLocationOptions[]]
     # .
-    # To construct, see NOTES section for EXTENDEDLOCATION properties and create a hash table.
     ${ExtendedLocation},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "DoNotMergeExistingReadOnlyAndSecretProperties", "IncludeInternalMetadata")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String[]]
+    # .
+    ${ExtensionOptionResourceCreationBeginRequest},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "DoNotMergeExistingReadOnlyAndSecretProperties", "IncludeInternalMetadata")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String[]]
+    # .
+    ${ExtensionOptionResourceCreationBeginResponse},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.String]
     # .
     ${FeatureRuleRequiredFeaturesPolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.String]
     # .
     ${IdentityManagementApplicationId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "SystemAssigned", "UserAssigned", "Actor", "DelegatedResourceIdentity")]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes]
+    [System.String]
     # .
     ${IdentityManagementType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${IsPureProxy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILinkedAccessCheck[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ILinkedAccessCheck[]]
     # .
-    # To construct, see NOTES section for LINKEDACCESSCHECK properties and create a hash table.
     ${LinkedAccessCheck},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILoggingRule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ILoggingRule[]]
     # .
-    # To construct, see NOTES section for LOGGINGRULE properties and create a hash table.
     ${LoggingRule},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.MarketplaceType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "AddOn", "Bypass", "Store")]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.MarketplaceType]
+    [System.String]
     # .
     ${MarketplaceType},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "Accepted", "Running", "Creating", "Created", "Deleting", "Deleted", "Canceled", "Failed", "Succeeded", "MovingResources", "TransientFailure", "RolloutInProgress")]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState]
+    [System.String]
     # .
     ${ProvisioningState},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.Regionality])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "Global", "Regional")]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.Regionality]
+    [System.String]
     # .
     ${Regionality},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "SignedUserToken", "ClientGroupMembership", "SignedAuxiliaryTokens", "UnboundedClientGroupMembership")]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType]
+    [System.String]
     # .
     ${RequestHeaderOptionOptInHeader},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.String[]]
     # .
     ${RequiredFeature},
 
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "CascadeDeleteAll", "CascadeDeleteProxyOnlyChildren")]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[]]
-    # .
-    ${ResourceCreationBeginRequest},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[]]
-    # .
-    ${ResourceCreationBeginResponse},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceDeletionPolicy])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceDeletionPolicy]
+    [System.String]
     # .
     ${ResourceDeletionPolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${ResourceMovePolicyCrossResourceGroupMoveEnabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${ResourceMovePolicyCrossSubscriptionMoveEnabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${ResourceMovePolicyValidationRequired},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.RoutingType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("Default", "ProxyOnly", "HostBased", "Extension", "Tenant", "Fanout", "LocationBased", "Failover", "CascadeExtension")]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.RoutingType]
+    [System.String]
     # .
     ${RoutingType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IServiceTreeInfo[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IServiceTreeInfo[]]
     # .
-    # To construct, see NOTES section for SERVICETREEINFO properties and create a hash table.
     ${ServiceTreeInfo},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.TimeSpan]
     # .
     ${SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideAction[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISubscriptionStateOverrideAction[]]
     # .
-    # To construct, see NOTES section for SUBSCRIPTIONLIFECYCLENOTIFICATIONSPECIFICATIONSUBSCRIPTIONSTATEOVERRIDEACTION properties and create a hash table.
     ${SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateRule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISubscriptionStateRule[]]
     # .
-    # To construct, see NOTES section for SUBSCRIPTIONSTATERULE properties and create a hash table.
     ${SubscriptionStateRule},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISwaggerSpecification[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISwaggerSpecification[]]
     # .
-    # To construct, see NOTES section for SWAGGERSPECIFICATION properties and create a hash table.
     ${SwaggerSpecification},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("None", "ContinueDeploymentOnFailure", "DefaultValidationOnly")]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption[]]
+    [System.String[]]
     # .
     ${TemplateDeploymentOptionPreflightOption},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${TemplateDeploymentOptionPreflightSupported},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThrottlingRule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IThrottlingRule[]]
     # .
-    # To construct, see NOTES section for THROTTLINGRULE properties and create a hash table.
     ${ThrottlingRule},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -435,13 +497,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.ProviderHub.private\New-AzProviderHubResourceTypeRegistration_CreateExpanded';
+            CreateViaIdentityProviderRegistrationExpanded = 'Az.ProviderHub.private\New-AzProviderHubResourceTypeRegistration_CreateViaIdentityProviderRegistrationExpanded';
+            CreateViaJsonFilePath = 'Az.ProviderHub.private\New-AzProviderHubResourceTypeRegistration_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ProviderHub.private\New-AzProviderHubResourceTypeRegistration_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -450,6 +516,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

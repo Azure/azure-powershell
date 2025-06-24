@@ -85,10 +85,10 @@ namespace Microsoft.Azure.Management.Synapse.Models
         public string ContainerName {get; set; }
 
         /// <summary>
-        /// Gets or sets the last update time of the library.
+        /// Gets the last update time of the library.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "uploadedTimestamp")]
-        public System.DateTime? UploadedTimestamp {get; set; }
+        public System.DateTime? UploadedTimestamp {get; private set; }
 
         /// <summary>
         /// Gets or sets type of the library.

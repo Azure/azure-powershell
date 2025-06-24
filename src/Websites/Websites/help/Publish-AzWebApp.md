@@ -14,18 +14,18 @@ Deploys an Azure Web App from a ZIP, JAR, or WAR file using zipdeploy.
 
 ### FromWebApp (Default)
 ```
-Publish-AzWebApp -ArchivePath <String> [-Type <String>] [-Clean] [-Async] [-Restart] [-TargetPath <String>]
- [-IgnoreStack] [-Reset] [-Force] [-AsJob] [-Timeout <Double>] [-WebApp] <PSSite>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Publish-AzWebApp [-ArchivePath <String>] [-ArchiveURL <String>] [-Type <String>] [-Clean] [-Async] [-Restart]
+ [-TargetPath <String>] [-PullIdentity <String>] [-IgnoreStack] [-Reset] [-Force] [-AsJob] [-Timeout <Double>]
+ [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### FromResourceName
 ```
-Publish-AzWebApp -ArchivePath <String> [-Type <String>] [-Clean] [-Async] [-Restart] [-TargetPath <String>]
- [-IgnoreStack] [-Reset] [-Force] [-AsJob] [-Timeout <Double>] [-ResourceGroupName] <String> [-Name] <String>
- [[-Slot] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Publish-AzWebApp [-ArchivePath <String>] [-ArchiveURL <String>] [-Type <String>] [-Clean] [-Async] [-Restart]
+ [-TargetPath <String>] [-PullIdentity <String>] [-IgnoreStack] [-Reset] [-Force] [-AsJob] [-Timeout <Double>]
+ [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,7 +87,22 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ArchiveURL
+URL of the artifact. The webapp will pull the artifact from this URL. Ex: "http://mysite.com/files/myapp.war
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -196,6 +211,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PullIdentity
+AAD identity used for pull based deployments. 'system' will use the app's system assigned identity. An user assigned identity can be used by providing the client ID. Only available for Windows WebApps. Support for Linux WebApps coming soon.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -30,6 +30,12 @@ Get-AzSpringCloudCertificate -InputObject <ISpringCloudIdentity> [-DefaultProfil
  [<CommonParameters>]
 ```
 
+### GetViaIdentitySpring
+```
+Get-AzSpringCloudCertificate -Name <String> -SpringInputObject <ISpringCloudIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get the certificate resource.
 
@@ -81,7 +87,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
@@ -100,7 +105,7 @@ The name of the certificate resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentitySpring
 Aliases: CertificateName
 
 Required: True
@@ -141,6 +146,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpringInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: GetViaIdentitySpring
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -166,7 +186,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ICertificateResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificateResource
 
 ## NOTES
 

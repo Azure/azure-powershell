@@ -15,10 +15,11 @@ Create a new database migration to a given SQL Managed Instance.
 ```
 New-AzDataMigrationToSqlManagedInstance -ManagedInstanceName <String> -ResourceGroupName <String>
  -TargetDbName <String> [-SubscriptionId <String>] [-AzureBlobAccountKey <String>]
- [-AzureBlobContainerName <String>] [-AzureBlobStorageAccountResourceId <String>]
- [-FileSharePassword <SecureString>] [-FileSharePath <String>] [-FileShareUsername <String>]
- [-Kind <ResourceType>] [-MigrationService <String>] [-Offline] [-OfflineConfigurationLastBackupName <String>]
- [-Scope <String>] [-SourceDatabaseName <String>] [-SourceSqlConnectionAuthentication <String>]
+ [-AzureBlobAuthType <String>] [-AzureBlobContainerName <String>] [-AzureBlobIdentityType <String>]
+ [-AzureBlobStorageAccountResourceId <String>] [-FileSharePassword <SecureString>] [-FileSharePath <String>]
+ [-FileShareUsername <String>] [-AzureBlobUserAssignedIdentity <String[]>] [-Kind <ResourceType>]
+ [-MigrationService <String>] [-Offline] [-OfflineConfigurationLastBackupName <String>] [-Scope <String>]
+ [-SourceDatabaseName <String>] [-SourceSqlConnectionAuthentication <String>]
  [-SourceSqlConnectionDataSource <String>] [-SourceSqlConnectionEncryptConnection]
  [-SourceSqlConnectionPassword <SecureString>] [-SourceSqlConnectionTrustServerCertificate]
  [-SourceSqlConnectionUserName <String>] [-StorageAccountKey <String>] [-StorageAccountResourceId <String>]
@@ -33,8 +34,8 @@ Create a new database migration to a given SQL Managed Instance.
 
 ### Example 1: Start a Database Migration from the on-premise Source Sql Server to target Managed Instance
 ```powershell
-$sourcePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
-$filesharePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$sourcePassword = ConvertTo-SecureString -String $password -AsPlainText -Force
+$filesharePassword = ConvertTo-SecureString -String $password -AsPlainText -Force
 New-AzDataMigrationToSqlManagedInstance -ResourceGroupName "MyResourceGroup" -ManagedInstanceName "MyManagedInstance" -TargetDbName "MyDb" -Kind "SqlMI" -Scope "/subscriptions/0000-1111-2222-3333-4444/resourceGroups/MyResourceGroup/providers/Microsoft.Sql/managedInstances/MyManagedInstance" -MigrationService "/subscriptions/0000-1111-2222-3333-4444/resourceGroups/MyRG/providers/Microsoft.DataMigration/SqlMigrationServices/MySqlMigrationService" -StorageAccountResourceId "/subscriptions/0000-1111-2222-3333-4444/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/MyStorageAccount" -StorageAccountKey "aaaaacccccoouunntkkkkeeeyyy" -FileSharePath "\\filesharepath.com\SharedBackup\MyBackUps" -FileShareUsername "filesharepath\User" -FileSharePassword $filesharePassword -SourceSqlConnectionAuthentication "SqlAuthentication" -SourceSqlConnectionDataSource "LabServer.database.net" -SourceSqlConnectionUserName "User" -SourceSqlConnectionPassword $sourcePassword -SourceDatabaseName "AdventureWorks"
 ```
 
@@ -45,6 +46,51 @@ MyDb               Microsoft.DataMigration/databaseMigrations SqlMi Succeeded   
 ```
 
 This command starts a Database Migration from the Source Sql Server to target Managed Instance.
+This example is for online migration.
+To make it offline add -Offline to the parameters.
+
+### Example 2: Start DB Migration from Azure Blob to Managed Instance via System-Assigned Identity
+```powershell
+New-AzDataMigrationToSqlManagedInstance -ResourceGroupName "MyResourceGroup" -ManagedInstanceName "MyManagedInstance" -TargetDbName "MyDb" -Kind "SqlMI" -Scope "/subscriptions/0000-1111-2222-3333-4444/resourceGroups/MyResourceGroup/providers/Microsoft.Sql/managedInstances/MyManagedInstance" -MigrationService "/subscriptions/0000-1111-2222-3333-4444/resourceGroups/MyRG/providers/Microsoft.DataMigration/SqlMigrationServices/MySqlMigrationService" -AzureBlobAuthType "ManagedIdentity" -AzureBlobIdentityType "SystemAssigned" -AzureBlobStorageAccountResourceId "/subscriptions/0000-1111-2222-3333-4444/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/MyStorageAccount" -AzureBlobContainerName "container"
+```
+
+```output
+Name               Type                                       Kind  ProvisioningState MigrationStatus
+----               ----                                       ----  ----------------- ---------------
+MyDb               Microsoft.DataMigration/databaseMigrations SqlMi Succeeded         InProgress
+```
+
+This command starts a Database Migration from the Azure Blob to target Managed Instance.
+This example is for online migration.
+To make it offline add -Offline to the parameters.
+
+### Example 3: Start DB Migration from Azure Blob to Managed Instance via User-Assigned Identity
+```powershell
+New-AzDataMigrationToSqlManagedInstance -ResourceGroupName "MyResourceGroup" -ManagedInstanceName "MyManagedInstance" -TargetDbName "MyDb" -Kind "SqlMI" -Scope "/subscriptions/0000-1111-2222-3333-4444/resourceGroups/MyResourceGroup/providers/Microsoft.Sql/managedInstances/MyManagedInstance" -MigrationService "/subscriptions/0000-1111-2222-3333-4444/resourceGroups/MyRG/providers/Microsoft.DataMigration/SqlMigrationServices/MySqlMigrationService" -AzureBlobAuthType "ManagedIdentity" -AzureBlobIdentityType "UserAssigned" -AzureBlobUserAssignedIdentity "/subscriptions/0000-1111-2222-3333-4444/resourceGroups/MyResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MyUserAssignedIdentity" -AzureBlobStorageAccountResourceId "/subscriptions/0000-1111-2222-3333-4444/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/MyStorageAccount" -AzureBlobContainerName "container"
+```
+
+```output
+Name               Type                                       Kind  ProvisioningState MigrationStatus
+----               ----                                       ----  ----------------- ---------------
+MyDb               Microsoft.DataMigration/databaseMigrations SqlMi Succeeded         InProgress
+```
+
+This command starts a Database Migration from the Azure Blob to target Managed Instance.
+This example is for online migration.
+To make it offline add -Offline to the parameters.
+
+### Example 4: Start DB Migration from Azure Blob to Managed Instance via Storage Account Key
+```powershell
+New-AzDataMigrationToSqlManagedInstance -ResourceGroupName "MyResourceGroup" -ManagedInstanceName "MyManagedInstance" -TargetDbName "MyDb" -Kind "SqlMI" -Scope "/subscriptions/0000-1111-2222-3333-4444/resourceGroups/MyResourceGroup/providers/Microsoft.Sql/managedInstances/MyManagedInstance" -MigrationService "/subscriptions/0000-1111-2222-3333-4444/resourceGroups/MyRG/providers/Microsoft.DataMigration/SqlMigrationServices/MySqlMigrationService" -AzureBlobStorageAccountResourceId "/subscriptions/0000-1111-2222-3333-4444/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/MyStorageAccount" -AzureBlobContainerName "container" -AzureBlobAccountKey "accountKey"
+```
+
+```output
+Name               Type                                       Kind  ProvisioningState MigrationStatus
+----               ----                                       ----  ----------------- ---------------
+MyDb               Microsoft.DataMigration/databaseMigrations SqlMi Succeeded         InProgress
+```
+
+This command starts a Database Migration from the Azure Blob to target Managed Instance.
 This example is for online migration.
 To make it offline add -Offline to the parameters.
 
@@ -80,8 +126,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AzureBlobAuthType
+Authentication type used for accessing Azure Blob Storage.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AzureBlobContainerName
 Blob container name where backups are stored.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureBlobIdentityType
+Type of managed service identity.
 
 ```yaml
 Type: System.String
@@ -100,6 +176,21 @@ Resource Id of the storage account where backups are stored.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureBlobUserAssignedIdentity
+The set of user assigned identities associated with the resource.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -172,7 +263,7 @@ Accept wildcard characters: False
 ```
 
 ### -Kind
-.
+Resource type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType
@@ -187,7 +278,7 @@ Accept wildcard characters: False
 ```
 
 ### -ManagedInstanceName
-.
+Name of the target SQL Managed Instance.
 
 ```yaml
 Type: System.String
@@ -232,7 +323,7 @@ Accept wildcard characters: False
 ```
 
 ### -Offline
-Offline migration
+Offline migration.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -295,7 +386,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-Resource Id of the target resource (SQL VM or SQL Managed Instance)
+Resource Id of the target resource.
 
 ```yaml
 Type: System.String
@@ -527,7 +618,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlMi
 
 ## NOTES
 

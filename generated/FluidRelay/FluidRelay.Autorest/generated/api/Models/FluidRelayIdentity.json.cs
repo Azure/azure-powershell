@@ -64,11 +64,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroup = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Json.JsonString>("resourceGroup"), out var __jsonResourceGroup) ? (string)__jsonResourceGroup : (string)ResourceGroup;}
-            {_fluidRelayServerName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Json.JsonString>("fluidRelayServerName"), out var __jsonFluidRelayServerName) ? (string)__jsonFluidRelayServerName : (string)FluidRelayServerName;}
-            {_fluidRelayContainerName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Json.JsonString>("fluidRelayContainerName"), out var __jsonFluidRelayContainerName) ? (string)__jsonFluidRelayContainerName : (string)FluidRelayContainerName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroup = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Json.JsonString>("resourceGroup"), out var __jsonResourceGroup) ? (string)__jsonResourceGroup : (string)_resourceGroup;}
+            {_fluidRelayServerName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Json.JsonString>("fluidRelayServerName"), out var __jsonFluidRelayServerName) ? (string)__jsonFluidRelayServerName : (string)_fluidRelayServerName;}
+            {_fluidRelayContainerName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Json.JsonString>("fluidRelayContainerName"), out var __jsonFluidRelayContainerName) ? (string)__jsonFluidRelayContainerName : (string)_fluidRelayContainerName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

@@ -102,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpressRouteId
-The ID of the Private Cloud's ExpressRoute Circuit that is participating in theglobal reach connection
+The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection
 
 ```yaml
 Type: System.String

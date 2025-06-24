@@ -32,18 +32,8 @@ Describe 'Get-AzReservationQuote' {
     }
 
     It 'Calculate' {
-        $reservationToPurchase = @{
-            AppliedScopeType = "Shared"
-            BillingPlan = "Upfront"
-            billingScopeId = '/subscriptions/30000000-aaaa-bbbb-cccc-100000000005' 
-            DisplayName = "Testvm"
-            Location = "westus"
-            Quantity = 1
-            ReservedResourceType = "VirtualMachines"
-            Sku = "Standard_b1ls"
-            Term = "P1Y"
-        }
-        $response = Get-AzReservationQuote -Body $reservationToPurchase
+        $reservationToPurchase = "AppliedScopeType=Shared;BillingPlan=Upfront;billingScopeId=/subscriptions/30000000-aaaa-bbbb-cccc-100000000005;DisplayName=TestVm;Location=westus;Quantity=1;ReservedResourceType=VirtualMachines;Sku=Standard_b1ls;Term=P1Y"
+        $response = Get-AzReservationQuote -JsonString $reservationToPurchase
         ExecuteTestCases($response)
     }
 }

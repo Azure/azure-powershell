@@ -16,19 +16,19 @@
 
 <#
 .Synopsis
-Create a in-memory object for QueryComparisonExpression
+Create an in-memory object for QueryComparisonExpression.
 .Description
-Create a in-memory object for QueryComparisonExpression
+Create an in-memory object for QueryComparisonExpression.
 .Example
 New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Value @('East US', 'West Europe')
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryComparisonExpression
+Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryComparisonExpression
 .Link
-https://learn.microsoft.com/powershell/module/az.CostManagement/new-AzCostManagementQueryComparisonExpressionObject
+https://learn.microsoft.com/powershell/module/Az.CostManagement/new-azcostmanagementquerycomparisonexpressionobject
 #>
 function New-AzCostManagementQueryComparisonExpressionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryComparisonExpression])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryComparisonExpression])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -36,12 +36,6 @@ param(
     [System.String]
     # The name of the column to use in comparison.
     ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.OperatorType]
-    # The operator to use for comparison.
-    ${Operator},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
@@ -57,6 +51,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -85,6 +82,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

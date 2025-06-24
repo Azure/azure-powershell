@@ -1,6 +1,6 @@
 ---
 Module Name: Az.MarketplaceOrdering
-Module Guid: f781d2f9-c4c6-4d0b-bcfb-26973544c41d
+Module Guid: fe1b052f-8cbc-47f1-a3fb-428a015ab5ab
 Download Help Link: https://learn.microsoft.com/powershell/module/az.marketplaceordering
 Help Version: 1.0.0.0
 Locale: en-US

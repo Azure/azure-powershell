@@ -132,6 +132,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the attached data network.",
         SerializedName = @"attachedDataNetworkName",
         PossibleTypes = new [] { typeof(string) })]
@@ -140,6 +143,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the data network.",
         SerializedName = @"dataNetworkName",
         PossibleTypes = new [] { typeof(string) })]
@@ -148,6 +154,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -156,6 +165,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the mobile network.",
         SerializedName = @"mobileNetworkName",
         PossibleTypes = new [] { typeof(string) })]
@@ -164,6 +176,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the packet core control plane.",
         SerializedName = @"packetCoreControlPlaneName",
         PossibleTypes = new [] { typeof(string) })]
@@ -172,6 +187,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the packet core data plane.",
         SerializedName = @"packetCoreDataPlaneName",
         PossibleTypes = new [] { typeof(string) })]
@@ -180,6 +198,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -190,6 +211,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'",
         SerializedName = @"serviceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -198,6 +222,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the SIM Group.",
         SerializedName = @"simGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -206,6 +233,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the SIM.",
         SerializedName = @"simName",
         PossibleTypes = new [] { typeof(string) })]
@@ -214,6 +244,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the SIM policy.",
         SerializedName = @"simPolicyName",
         PossibleTypes = new [] { typeof(string) })]
@@ -222,6 +255,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the mobile network site.",
         SerializedName = @"siteName",
         PossibleTypes = new [] { typeof(string) })]
@@ -230,6 +266,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the network slice.",
         SerializedName = @"sliceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -238,6 +277,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -246,6 +288,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the packet core control plane version.",
         SerializedName = @"versionName",
         PossibleTypes = new [] { typeof(string) })]

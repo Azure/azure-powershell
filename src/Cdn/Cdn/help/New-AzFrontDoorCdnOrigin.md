@@ -8,24 +8,74 @@ schema: 2.0.0
 # New-AzFrontDoorCdnOrigin
 
 ## SYNOPSIS
-Creates a new origin within the specified origin group.
+create a new origin within the specified origin group.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzFrontDoorCdnOrigin -OriginGroupName <String> -OriginName <String> -ProfileName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-AzureOriginId <String>]
- [-EnabledState <EnabledState>] [-EnforceCertificateNameCheck] [-HostName <String>] [-HttpPort <Int32>]
+New-AzFrontDoorCdnOrigin -OriginName <String> -OriginGroupName <String> -ProfileName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-AzureOriginId <String>] [-EnabledState <String>]
+ [-EnforceCertificateNameCheck] [-HostName <String>] [-HttpPort <Int32>] [-HttpsPort <Int32>]
+ [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
+ [-SharedPrivateLinkResourceGroupId <String>] [-SharedPrivateLinkResourcePrivateLinkLocation <String>]
+ [-SharedPrivateLinkResourceRequestMessage <String>] [-SharedPrivateLinkResourceStatus <String>]
+ [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzFrontDoorCdnOrigin -OriginName <String> -OriginGroupName <String> -ProfileName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzFrontDoorCdnOrigin -OriginName <String> -OriginGroupName <String> -ProfileName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityProfileExpanded
+```
+New-AzFrontDoorCdnOrigin -OriginName <String> -OriginGroupName <String> -ProfileInputObject <ICdnIdentity>
+ [-AzureOriginId <String>] [-EnabledState <String>] [-EnforceCertificateNameCheck] [-HostName <String>]
+ [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>]
+ [-PrivateLinkId <String>] [-SharedPrivateLinkResourceGroupId <String>]
+ [-SharedPrivateLinkResourcePrivateLinkLocation <String>] [-SharedPrivateLinkResourceRequestMessage <String>]
+ [-SharedPrivateLinkResourceStatus <String>] [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityProfile
+```
+New-AzFrontDoorCdnOrigin -OriginName <String> -OriginGroupName <String> -ProfileInputObject <ICdnIdentity>
+ -Origin <IAfdOrigin> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityOriginGroupExpanded
+```
+New-AzFrontDoorCdnOrigin -OriginName <String> -OriginGroupInputObject <ICdnIdentity> [-AzureOriginId <String>]
+ [-EnabledState <String>] [-EnforceCertificateNameCheck] [-HostName <String>] [-HttpPort <Int32>]
  [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
  [-SharedPrivateLinkResourceGroupId <String>] [-SharedPrivateLinkResourcePrivateLinkLocation <String>]
- [-SharedPrivateLinkResourceRequestMessage <String>]
- [-SharedPrivateLinkResourceStatus <SharedPrivateLinkResourceStatus>] [-Weight <Int32>]
+ [-SharedPrivateLinkResourceRequestMessage <String>] [-SharedPrivateLinkResourceStatus <String>]
+ [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityOriginGroup
+```
+New-AzFrontDoorCdnOrigin -OriginName <String> -OriginGroupInputObject <ICdnIdentity> -Origin <IAfdOrigin>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new origin within the specified origin group.
+create a new origin within the specified origin group.
 
 ## EXAMPLES
 
@@ -64,7 +114,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityOriginGroupExpanded
 Aliases:
 
 Required: False
@@ -95,8 +145,8 @@ Whether to enable health probes to be made against backends defined under backen
 Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.EnabledState
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityOriginGroupExpanded
 Aliases:
 
 Required: False
@@ -111,7 +161,7 @@ Whether to enable certificate name check at origin level
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityOriginGroupExpanded
 Aliases:
 
 Required: False
@@ -127,7 +177,7 @@ Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be un
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityOriginGroupExpanded
 Aliases:
 
 Required: False
@@ -143,7 +193,7 @@ Must be between 1 and 65535.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityOriginGroupExpanded
 Aliases:
 
 Required: False
@@ -159,10 +209,40 @@ Must be between 1 and 65535.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityOriginGroupExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -184,12 +264,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Origin
+Azure Front Door origin is the source of the content being delivered via Azure Front Door.
+When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin
+Parameter Sets: CreateViaIdentityProfile, CreateViaIdentityOriginGroup
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -OriginGroupInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: CreateViaIdentityOriginGroupExpanded, CreateViaIdentityOriginGroup
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -OriginGroupName
 Name of the origin group which is unique within the profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityProfileExpanded, CreateViaIdentityProfile
 Aliases:
 
 Required: True
@@ -207,7 +318,7 @@ This overrides the host header defined at Endpoint
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityOriginGroupExpanded
 Aliases:
 
 Required: False
@@ -238,7 +349,7 @@ Higher priorities will not be used for load balancing if any lower priority orig
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityOriginGroupExpanded
 Aliases:
 
 Required: False
@@ -253,7 +364,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityOriginGroupExpanded
 Aliases:
 
 Required: False
@@ -263,12 +374,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: CreateViaIdentityProfileExpanded, CreateViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProfileName
-Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -283,7 +409,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -298,7 +424,7 @@ The group id from the provider of resource the shared private link resource is f
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityOriginGroupExpanded
 Aliases:
 
 Required: False
@@ -313,7 +439,7 @@ The location of the shared private link resource
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityOriginGroupExpanded
 Aliases:
 
 Required: False
@@ -328,7 +454,7 @@ The request message for requesting approval of the shared private link resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityOriginGroupExpanded
 Aliases:
 
 Required: False
@@ -343,8 +469,8 @@ Status of the shared private link resource.
 Can be Pending, Approved, Rejected, Disconnected, or Timeout.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SharedPrivateLinkResourceStatus
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityOriginGroupExpanded
 Aliases:
 
 Required: False
@@ -359,7 +485,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -375,7 +501,7 @@ Must be between 1 and 1000
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityOriginGroupExpanded
 Aliases:
 
 Required: False
@@ -421,9 +547,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin
+
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOrigin
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin
 
 ## NOTES
 

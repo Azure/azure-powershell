@@ -24,6 +24,12 @@ Remove-AzPeeringConnectionMonitorTest -InputObject <IPeeringIdentity> [-DefaultP
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityPeeringService
+```
+Remove-AzPeeringConnectionMonitorTest -Name <String> -PeeringServiceInputObject <IPeeringIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Deletes an existing connection monitor test with the specified name under the given subscription, resource group and peering service.
 
@@ -56,7 +62,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
@@ -75,7 +80,7 @@ The name of the connection monitor test
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityPeeringService
 Aliases: ConnectionMonitorTestName
 
 Required: True
@@ -97,6 +102,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PeeringServiceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
+Parameter Sets: DeleteViaIdentityPeeringService
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

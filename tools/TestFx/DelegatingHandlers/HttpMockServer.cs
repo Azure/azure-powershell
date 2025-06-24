@@ -17,6 +17,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.TestFx;
 using Microsoft.Azure.Commands.TestFx.Recorder;
+using Microsoft.Azure.PowerShell.Authenticators;
+using Microsoft.Azure.PowerShell.Authenticators.Factories;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -72,6 +74,15 @@ namespace Microsoft.Azure.Test.HttpRecorder
             {
                 AzureSession.Instance.ARMContextSaveMode = ContextSaveMode.CurrentUser;
                 ProtectedProfileProvider.InitializeResourceManagerProfile();
+
+                IAuthenticatorBuilder builder = new DefaultAuthenticatorBuilder();
+                AzureSession.Instance.RegisterComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, () => builder);
+
+                PowerShellTokenCacheProvider provider = new SharedTokenCacheProvider();
+                AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => provider);
+                
+                AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => new AzureCredentialFactory());
+                //AzureSession.Instance.RegisterComponent(nameof(MsalAccessTokenAcquirerFactory), () => new MsalAccessTokenAcquirerFactory());
             }
             else if (Mode == HttpRecorderMode.Playback)
             {

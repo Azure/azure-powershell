@@ -64,13 +64,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_addressName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Json.JsonString>("addressName"), out var __jsonAddressName) ? (string)__jsonAddressName : (string)AddressName;}
-            {_orderName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Json.JsonString>("orderName"), out var __jsonOrderName) ? (string)__jsonOrderName : (string)OrderName;}
-            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)Location;}
-            {_orderItemName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Json.JsonString>("orderItemName"), out var __jsonOrderItemName) ? (string)__jsonOrderItemName : (string)OrderItemName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_addressName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Json.JsonString>("addressName"), out var __jsonAddressName) ? (string)__jsonAddressName : (string)_addressName;}
+            {_orderName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Json.JsonString>("orderName"), out var __jsonOrderName) ? (string)__jsonOrderName : (string)_orderName;}
+            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
+            {_orderItemName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Json.JsonString>("orderItemName"), out var __jsonOrderItemName) ? (string)__jsonOrderItemName : (string)_orderItemName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

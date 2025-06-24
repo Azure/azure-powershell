@@ -1,0 +1,47 @@
+{
+  "resourceType": "clouds",
+  "apiVersion": "2023-10-07",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.scvmm"
+  },
+  "commands": [
+    {
+      "name": "Get-AzScVmmCloud",
+      "description": "Implements Cloud GET method.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/clouds/{cloudResourceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.scvmm/get-azscvmmcloud"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Implements Cloud GET method.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.cloudResourceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

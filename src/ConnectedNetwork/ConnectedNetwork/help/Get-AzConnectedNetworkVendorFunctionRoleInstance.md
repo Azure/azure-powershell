@@ -26,6 +26,27 @@ Get-AzConnectedNetworkVendorFunctionRoleInstance -LocationName <String> -Name <S
  [<CommonParameters>]
 ```
 
+### GetViaIdentityVendor
+```
+Get-AzConnectedNetworkVendorFunctionRoleInstance -Name <String> -ServiceKey <String>
+ -VendorInputObject <IConnectedNetworkIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityNetworkFunction
+```
+Get-AzConnectedNetworkVendorFunctionRoleInstance -Name <String>
+ -NetworkFunctionInputObject <IConnectedNetworkIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityLocation
+```
+Get-AzConnectedNetworkVendorFunctionRoleInstance -Name <String> -ServiceKey <String> -VendorName <String>
+ -LocationInputObject <IConnectedNetworkIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzConnectedNetworkVendorFunctionRoleInstance -InputObject <IConnectedNetworkIdentity>
@@ -102,11 +123,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
 Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LocationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
+Parameter Sets: GetViaIdentityLocation
 Aliases:
 
 Required: True
@@ -136,7 +171,7 @@ The name of the role instance of the vendor network function.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityVendor, GetViaIdentityNetworkFunction, GetViaIdentityLocation
 Aliases: RoleInstanceName
 
 Required: True
@@ -146,12 +181,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NetworkFunctionInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
+Parameter Sets: GetViaIdentityNetworkFunction
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ServiceKey
 The GUID for the vendor network function.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: List, Get, GetViaIdentityVendor, GetViaIdentityLocation
 Aliases:
 
 Required: True
@@ -176,12 +226,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VendorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
+Parameter Sets: GetViaIdentityVendor
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -VendorName
 The name of the vendor.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: List, Get, GetViaIdentityLocation
 Aliases:
 
 Required: True
@@ -200,7 +265,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IRoleInstance
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IRoleInstance
 
 ## NOTES
 

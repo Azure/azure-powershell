@@ -196,6 +196,10 @@ namespace Microsoft.Azure.Commands.Profile
             HelpMessage = "Microsoft Graph Url")]
         public string MicrosoftGraphUrl { get; set; }
 
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The scope for authentication when SSH to an Azure VM.")]
+        public string SshAuthScope { get; set; }
+
         protected override bool RequireDefaultContext()
         {
             return false;
@@ -364,6 +368,8 @@ namespace Microsoft.Azure.Commands.Profile
                                     nameof(MicrosoftGraphEndpointResourceId));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl,
                                     nameof(MicrosoftGraphUrl));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureSshAuthScope,
+                                    nameof(SshAuthScope));
                                 WriteObject(new PSAzureEnvironment(profileClient.AddOrSetEnvironment(newEnvironment)));
                             }
                         });

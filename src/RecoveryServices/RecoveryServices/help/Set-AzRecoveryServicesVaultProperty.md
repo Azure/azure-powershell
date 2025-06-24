@@ -13,24 +13,25 @@ Updates properties of a Vault.
 
 ## SYNTAX
 
-### AzureRSVaultSoftDelteParameterSet (Default)
+### AzureRSVaultSoftDeleteParameterSet (Default)
 ```
 Set-AzRecoveryServicesVaultProperty [-SoftDeleteFeatureState <String>]
  [-SoftDeleteRetentionPeriodInDays <Int32>] [-DisableHybridBackupSecurityFeature <Boolean>] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-Token <String>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-Token <String>] [-SecureToken <SecureString>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureRSVaultCMKParameterSet
 ```
 Set-AzRecoveryServicesVaultProperty [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-Token <String>] -EncryptionKeyId <String> [-KeyVaultSubscriptionId <String>] [-InfrastructureEncryption]
- [-UseSystemAssignedIdentity <Boolean>] [-UserAssignedIdentity <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Token <String>] [-SecureToken <SecureString>] -EncryptionKeyId <String> [-KeyVaultSubscriptionId <String>]
+ [-InfrastructureEncryption] [-UseSystemAssignedIdentity <Boolean>] [-UserAssignedIdentity <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Set-AzRecoveryServicesVaultProperty** cmdlet updates properties of a Recovery services vault. This cmdlet can be used to Enable/Disable/AlwaysON soft delete or set CMK encryption for a vault with two different parameter sets. 
-**SoftDeleteFeatureState** property of a vault can be disabled only if there are no registered containers in the vault. InfrastructurEncryption can only be set the first time a user updates the CMK vault.
+**SoftDeleteFeatureState** property of a vault can be disabled only if there are no registered containers in the vault. InfrastructureEncryption can only be set the first time a user updates the CMK vault.
 
 ## EXAMPLES
 
@@ -109,7 +110,7 @@ Optional flag ($true/$false) to disable/enable security setting for hybrid backu
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
-Parameter Sets: AzureRSVaultSoftDelteParameterSet
+Parameter Sets: AzureRSVaultSoftDeleteParameterSet
 Aliases:
 
 Required: False
@@ -164,12 +165,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SecureToken
+Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SoftDeleteFeatureState
 SoftDeleteFeatureState of the Recovery Services Vault. Allowed values are Disable, Enable, AlwaysON.
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureRSVaultSoftDelteParameterSet
+Parameter Sets: AzureRSVaultSoftDeleteParameterSet
 Aliases:
 Accepted values: Enable, Disable, AlwaysON
 
@@ -185,7 +201,7 @@ Specifies the retention period for soft deleted items in days.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: AzureRSVaultSoftDelteParameterSet
+Parameter Sets: AzureRSVaultSoftDeleteParameterSet
 Aliases:
 
 Required: False
@@ -226,7 +242,7 @@ Accept wildcard characters: False
 ```
 
 ### -UseSystemAssignedIdentity
-Boolean flag to indicate if SystemAssigned Identity will be used for CMK encryption. Accepted Vaules: $true, $false
+Boolean flag to indicate if SystemAssigned Identity will be used for CMK encryption. Accepted Values: $true, $false
 
 ```yaml
 Type: System.Boolean

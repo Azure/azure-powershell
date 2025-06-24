@@ -38,6 +38,34 @@ Clear-AzFrontDoorCdnEndpointContent -InputObject <ICdnIdentity> -ContentPath <St
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### PurgeViaIdentityProfile
+```
+Clear-AzFrontDoorCdnEndpointContent -EndpointName <String> -ProfileInputObject <ICdnIdentity>
+ -Content <IAfdPurgeParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### PurgeViaIdentityProfileExpanded
+```
+Clear-AzFrontDoorCdnEndpointContent -EndpointName <String> -ProfileInputObject <ICdnIdentity>
+ -ContentPath <String[]> [-Domain <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PurgeViaJsonFilePath
+```
+Clear-AzFrontDoorCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PurgeViaJsonString
+```
+Clear-AzFrontDoorCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Removes a content from AzureFrontDoor.
 
@@ -78,11 +106,10 @@ Accept wildcard characters: False
 
 ### -Content
 Parameters required for content purge.
-To construct, see NOTES section for CONTENT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdPurgeParameters
-Parameter Sets: Purge, PurgeViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdPurgeParameters
+Parameter Sets: Purge, PurgeViaIdentity, PurgeViaIdentityProfile
 Aliases:
 
 Required: True
@@ -98,7 +125,7 @@ Can describe a file path or a wild card directory.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: PurgeExpanded, PurgeViaIdentityExpanded
+Parameter Sets: PurgeExpanded, PurgeViaIdentityExpanded, PurgeViaIdentityProfileExpanded
 Aliases:
 
 Required: True
@@ -129,7 +156,7 @@ List of domains.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: PurgeExpanded, PurgeViaIdentityExpanded
+Parameter Sets: PurgeExpanded, PurgeViaIdentityExpanded, PurgeViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -144,7 +171,7 @@ Name of the endpoint under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: Purge, PurgeExpanded
+Parameter Sets: Purge, PurgeExpanded, PurgeViaIdentityProfile, PurgeViaIdentityProfileExpanded, PurgeViaJsonFilePath, PurgeViaJsonString
 Aliases:
 
 Required: True
@@ -156,7 +183,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -167,6 +193,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Purge operation
+
+```yaml
+Type: System.String
+Parameter Sets: PurgeViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Purge operation
+
+```yaml
+Type: System.String
+Parameter Sets: PurgeViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -200,12 +256,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: PurgeViaIdentityProfile, PurgeViaIdentityProfileExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProfileName
-Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Purge, PurgeExpanded
+Parameter Sets: Purge, PurgeExpanded, PurgeViaJsonFilePath, PurgeViaJsonString
 Aliases:
 
 Required: True
@@ -220,7 +291,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Purge, PurgeExpanded
+Parameter Sets: Purge, PurgeExpanded, PurgeViaJsonFilePath, PurgeViaJsonString
 Aliases:
 
 Required: True
@@ -235,7 +306,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Purge, PurgeExpanded
+Parameter Sets: Purge, PurgeExpanded, PurgeViaJsonFilePath, PurgeViaJsonString
 Aliases:
 
 Required: False
@@ -281,7 +352,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdPurgeParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdPurgeParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 

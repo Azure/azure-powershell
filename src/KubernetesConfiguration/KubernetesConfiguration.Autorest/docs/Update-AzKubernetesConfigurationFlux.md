@@ -28,8 +28,8 @@ Update-AzKubernetesConfigurationFlux -ClusterName <String> -ClusterType <String>
  [-RepositoryRefSemver <String>] [-RepositoryRefTag <String>] [-ServicePrincipalClientCertificate <String>]
  [-ServicePrincipalClientCertificatePassword <String>] [-ServicePrincipalClientCertificateSendChain]
  [-ServicePrincipalClientId <String>] [-ServicePrincipalClientSecret <String>]
- [-ServicePrincipalTenantId <String>] [-SourceKind <SourceKindType>] [-Suspend] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ServicePrincipalTenantId <String>] [-SourceKind <String>] [-Suspend] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -47,8 +47,8 @@ Update-AzKubernetesConfigurationFlux -InputObject <IKubernetesConfigurationIdent
  [-RepositoryRefSemver <String>] [-RepositoryRefTag <String>] [-ServicePrincipalClientCertificate <String>]
  [-ServicePrincipalClientCertificatePassword <String>] [-ServicePrincipalClientCertificateSendChain]
  [-ServicePrincipalClientId <String>] [-ServicePrincipalClientSecret <String>]
- [-ServicePrincipalTenantId <String>] [-SourceKind <SourceKindType>] [-Suspend] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ServicePrincipalTenantId <String>] [-SourceKind <String>] [-Suspend] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -726,7 +726,7 @@ Accept wildcard characters: False
 Source Kind to pull the configuration data from.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.SourceKindType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -807,7 +807,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IFluxConfiguration
 
 ## NOTES
 

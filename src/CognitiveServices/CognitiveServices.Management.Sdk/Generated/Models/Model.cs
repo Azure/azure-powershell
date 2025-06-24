@@ -24,20 +24,24 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// Initializes a new instance of the Model class.
         /// </summary>
 
-        /// <param name="modelProperty">Model Metadata.
+        /// <param name="modelProperty">Cognitive Services account Model.
         /// </param>
 
-        /// <param name="kind">The Kind of the Model.
+        /// <param name="kind">The kind (type) of cognitive service account.
         /// </param>
 
-        /// <param name="skuName">The SKU of the Model.
+        /// <param name="skuName">The name of SKU.
         /// </param>
-        public Model(AccountModel modelProperty = default(AccountModel), string kind = default(string), string skuName = default(string))
+
+        /// <param name="description">The description of the model.
+        /// </param>
+        public Model(AccountModel modelProperty = default(AccountModel), string kind = default(string), string skuName = default(string), string description = default(string))
 
         {
             this.ModelProperty = modelProperty;
             this.Kind = kind;
             this.SkuName = skuName;
+            this.Description = description;
             CustomInit();
         }
 
@@ -48,21 +52,27 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
 
 
         /// <summary>
-        /// Gets or sets model Metadata.
+        /// Gets or sets cognitive Services account Model.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "model")]
         public AccountModel ModelProperty {get; set; }
 
         /// <summary>
-        /// Gets or sets the Kind of the Model.
+        /// Gets or sets the kind (type) of cognitive service account.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
         public string Kind {get; set; }
 
         /// <summary>
-        /// Gets or sets the SKU of the Model.
+        /// Gets or sets the name of SKU.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "skuName")]
         public string SkuName {get; set; }
+
+        /// <summary>
+        /// Gets or sets the description of the model.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "description")]
+        public string Description {get; set; }
     }
 }

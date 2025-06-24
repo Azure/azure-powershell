@@ -76,10 +76,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
             {
                 return;
             }
-            {_reservationOrderId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Json.JsonString>("reservationOrderId"), out var __jsonReservationOrderId) ? (string)__jsonReservationOrderId : (string)ReservationOrderId;}
-            {_reservationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Json.JsonString>("reservationId"), out var __jsonReservationId) ? (string)__jsonReservationId : (string)ReservationId;}
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_reservationOrderId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Json.JsonString>("reservationOrderId"), out var __jsonReservationOrderId) ? (string)__jsonReservationOrderId : (string)_reservationOrderId;}
+            {_reservationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Json.JsonString>("reservationId"), out var __jsonReservationId) ? (string)__jsonReservationId : (string)_reservationId;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

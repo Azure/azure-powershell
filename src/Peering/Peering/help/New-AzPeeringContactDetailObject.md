@@ -1,7 +1,7 @@
 ---
 external help file: Az.Peering-help.xml
 Module Name: Az.Peering
-online version: https://learn.microsoft.com/powershell/module/Az.Peering/new-AzPeeringContactDetailObject
+online version: https://learn.microsoft.com/powershell/module/Az.Peering/new-azpeeringcontactdetailobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Create an in-memory object for ContactDetail.
 ## SYNTAX
 
 ```
-New-AzPeeringContactDetailObject [-Email <String>] [-Phone <String>] [-Role <Role>]
+New-AzPeeringContactDetailObject [-Email <String>] [-Phone <String>] [-Role <String>]
  [<CommonParameters>]
 ```
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 The role of the contact.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.Role
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -89,7 +89,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ContactDetail
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ContactDetail
 
 ## NOTES
 

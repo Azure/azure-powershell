@@ -15,8 +15,8 @@ Removes a managed private endpoint from a workspace.
 ### RemoveByName (Default)
 ```
 Remove-AzSynapseManagedPrivateEndpoint -WorkspaceName <String> -Name <String> [-VirtualNetworkName <String>]
- [-PassThru] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RemoveByObject
@@ -55,8 +55,8 @@ Remove a managed private endpoint called ContosoManagedPrivateEndpoint from the 
 
 ### Example 3
 ```powershell
-$privateendpint = Get-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace -Name ContosoManagedPrivateEndpoint
-$privateendpint | Remove-AzSynapseManagedPrivateEndpoint
+$privateendpoint = Get-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace -Name ContosoManagedPrivateEndpoint
+$privateendpoint | Remove-AzSynapseManagedPrivateEndpoint
 ```
 
 Remove a managed private endpoint called ContosoManagedPrivateEndpoint from the workspace ContosoWorkspace through pipeline.

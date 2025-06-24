@@ -45,17 +45,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -72,17 +75,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -193,6 +199,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -218,8 +233,6 @@ begin {
             List = 'Az.VMware.private\Get-AzVMwareAuthorization_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -233,6 +246,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -307,17 +323,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -334,17 +353,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -455,6 +477,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -480,8 +511,6 @@ begin {
             List = 'Az.VMware.private\Get-AzVMwareCloudLink_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -495,6 +524,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -638,6 +670,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -660,8 +701,6 @@ begin {
             List = 'Az.VMware.private\Get-AzVMwareClusterZone_List';
         }
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -675,6 +714,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -749,17 +791,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -776,17 +821,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -897,6 +945,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -922,8 +979,6 @@ begin {
             List = 'Az.VMware.private\Get-AzVMwareCluster_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -937,6 +992,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1011,17 +1069,20 @@ CLUSTERINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -1038,17 +1099,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -1065,17 +1129,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -1201,6 +1268,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1227,8 +1303,6 @@ begin {
             List = 'Az.VMware.private\Get-AzVMwareDatastore_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1242,6 +1316,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1316,17 +1393,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -1343,17 +1423,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -1464,6 +1547,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1489,8 +1581,6 @@ begin {
             List = 'Az.VMware.private\Get-AzVMwareGlobalReachConnection_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1504,6 +1594,333 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.VMware.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get a Host
+.Description
+Get a Host
+.Example
+Get-AzVMwareHost -ClusterName azps_test_cluster -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
+.Example
+Get-AzVMwareHost -ClusterName azps_test_cluster -Id esx03-r52.1111111111111111111.westcentralus.prod.azure.com -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHost
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CLUSTERINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon.
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization
+  [CloudLinkName <String>]: Name of the cloud link.
+  [ClusterName <String>]: Name of the cluster
+  [DatastoreName <String>]: Name of the datastore
+  [DhcpId <String>]: The ID of the DHCP configuration
+  [DnsServiceId <String>]: ID of the DNS service.
+  [DnsZoneId <String>]: ID of the DNS zone.
+  [GatewayId <String>]: The ID of the NSX Gateway
+  [GlobalReachConnectionName <String>]: Name of the global reach connection
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [PlacementPolicyName <String>]: Name of the placement policy.
+  [PortMirroringId <String>]: ID of the NSX port mirroring profile.
+  [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
+  [PublicIPId <String>]: ID of the DNS zone.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet.
+  [ScriptExecutionName <String>]: Name of the script cmdlet.
+  [ScriptPackageName <String>]: Name of the script package.
+  [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VMGroupId <String>]: ID of the VM group.
+  [VirtualMachineId <String>]: ID of the virtual machine.
+
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon.
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization
+  [CloudLinkName <String>]: Name of the cloud link.
+  [ClusterName <String>]: Name of the cluster
+  [DatastoreName <String>]: Name of the datastore
+  [DhcpId <String>]: The ID of the DHCP configuration
+  [DnsServiceId <String>]: ID of the DNS service.
+  [DnsZoneId <String>]: ID of the DNS zone.
+  [GatewayId <String>]: The ID of the NSX Gateway
+  [GlobalReachConnectionName <String>]: Name of the global reach connection
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [PlacementPolicyName <String>]: Name of the placement policy.
+  [PortMirroringId <String>]: ID of the NSX port mirroring profile.
+  [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
+  [PublicIPId <String>]: ID of the DNS zone.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet.
+  [ScriptExecutionName <String>]: Name of the script cmdlet.
+  [ScriptPackageName <String>]: Name of the script package.
+  [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VMGroupId <String>]: ID of the VM group.
+  [VirtualMachineId <String>]: ID of the virtual machine.
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon.
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization
+  [CloudLinkName <String>]: Name of the cloud link.
+  [ClusterName <String>]: Name of the cluster
+  [DatastoreName <String>]: Name of the datastore
+  [DhcpId <String>]: The ID of the DHCP configuration
+  [DnsServiceId <String>]: ID of the DNS service.
+  [DnsZoneId <String>]: ID of the DNS zone.
+  [GatewayId <String>]: The ID of the NSX Gateway
+  [GlobalReachConnectionName <String>]: Name of the global reach connection
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [PlacementPolicyName <String>]: Name of the placement policy.
+  [PortMirroringId <String>]: ID of the NSX port mirroring profile.
+  [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
+  [PublicIPId <String>]: ID of the DNS zone.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet.
+  [ScriptExecutionName <String>]: Name of the script cmdlet.
+  [ScriptPackageName <String>]: Name of the script package.
+  [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VMGroupId <String>]: ID of the VM group.
+  [VirtualMachineId <String>]: ID of the virtual machine.
+.Link
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwarehost
+#>
+function Get-AzVMwareHost {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHost])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [System.String]
+    # Name of the cluster
+    ${ClusterName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityCluster', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory)]
+    [Alias('HostId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [System.String]
+    # The host identifier.
+    ${Id},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [System.String]
+    # Name of the private cloud
+    ${PrivateCloudName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityCluster', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    ${ClusterInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    ${PrivateCloudInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.VMware.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.VMware.private\Get-AzVMwareHost_Get';
+            GetViaIdentity = 'Az.VMware.private\Get-AzVMwareHost_GetViaIdentity';
+            GetViaIdentityCluster = 'Az.VMware.private\Get-AzVMwareHost_GetViaIdentityCluster';
+            GetViaIdentityPrivateCloud = 'Az.VMware.private\Get-AzVMwareHost_GetViaIdentityPrivateCloud';
+            List = 'Az.VMware.private\Get-AzVMwareHost_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1576,17 +1993,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -1683,6 +2103,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1707,8 +2136,6 @@ begin {
             List = 'Az.VMware.private\Get-AzVMwareIscsiPath_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1722,6 +2149,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1796,17 +2226,20 @@ CLUSTERINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -1823,17 +2256,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -1850,17 +2286,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -1986,6 +2425,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2012,8 +2460,6 @@ begin {
             List = 'Az.VMware.private\Get-AzVMwarePlacementPolicy_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2027,6 +2473,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2164,6 +2613,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2186,8 +2644,6 @@ begin {
             List = 'Az.VMware.private\Get-AzVMwarePrivateCloudAdminCredential_List';
         }
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2201,6 +2657,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2277,17 +2736,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -2385,6 +2847,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2410,8 +2881,6 @@ begin {
             List1 = 'Az.VMware.private\Get-AzVMwarePrivateCloud_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2425,6 +2894,735 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.VMware.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get a ProvisionedNetwork
+.Description
+Get a ProvisionedNetwork
+.Example
+Get-AzVMwareProvisionedNetwork -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
+.Example
+Get-AzVMwareProvisionedNetwork -Name vsan -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProvisionedNetwork
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon.
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization
+  [CloudLinkName <String>]: Name of the cloud link.
+  [ClusterName <String>]: Name of the cluster
+  [DatastoreName <String>]: Name of the datastore
+  [DhcpId <String>]: The ID of the DHCP configuration
+  [DnsServiceId <String>]: ID of the DNS service.
+  [DnsZoneId <String>]: ID of the DNS zone.
+  [GatewayId <String>]: The ID of the NSX Gateway
+  [GlobalReachConnectionName <String>]: Name of the global reach connection
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [PlacementPolicyName <String>]: Name of the placement policy.
+  [PortMirroringId <String>]: ID of the NSX port mirroring profile.
+  [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
+  [PublicIPId <String>]: ID of the DNS zone.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet.
+  [ScriptExecutionName <String>]: Name of the script cmdlet.
+  [ScriptPackageName <String>]: Name of the script package.
+  [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VMGroupId <String>]: ID of the VM group.
+  [VirtualMachineId <String>]: ID of the virtual machine.
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon.
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization
+  [CloudLinkName <String>]: Name of the cloud link.
+  [ClusterName <String>]: Name of the cluster
+  [DatastoreName <String>]: Name of the datastore
+  [DhcpId <String>]: The ID of the DHCP configuration
+  [DnsServiceId <String>]: ID of the DNS service.
+  [DnsZoneId <String>]: ID of the DNS zone.
+  [GatewayId <String>]: The ID of the NSX Gateway
+  [GlobalReachConnectionName <String>]: Name of the global reach connection
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [PlacementPolicyName <String>]: Name of the placement policy.
+  [PortMirroringId <String>]: ID of the NSX port mirroring profile.
+  [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
+  [PublicIPId <String>]: ID of the DNS zone.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet.
+  [ScriptExecutionName <String>]: Name of the script cmdlet.
+  [ScriptPackageName <String>]: Name of the script package.
+  [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VMGroupId <String>]: ID of the VM group.
+  [VirtualMachineId <String>]: ID of the virtual machine.
+.Link
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareprovisionednetwork
+#>
+function Get-AzVMwareProvisionedNetwork {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProvisionedNetwork])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory)]
+    [Alias('ProvisionedNetworkName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [System.String]
+    # Name of the cloud link.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [System.String]
+    # Name of the private cloud
+    ${PrivateCloudName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    ${PrivateCloudInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.VMware.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.VMware.private\Get-AzVMwareProvisionedNetwork_Get';
+            GetViaIdentity = 'Az.VMware.private\Get-AzVMwareProvisionedNetwork_GetViaIdentity';
+            GetViaIdentityPrivateCloud = 'Az.VMware.private\Get-AzVMwareProvisionedNetwork_GetViaIdentityPrivateCloud';
+            List = 'Az.VMware.private\Get-AzVMwareProvisionedNetwork_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.VMware.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get a PureStoragePolicy
+.Description
+Get a PureStoragePolicy
+.Example
+Get-AzVMwarePureStoragePolicy -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
+.Example
+Get-AzVMwarePureStoragePolicy -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -StoragePolicyName azps_test_policy
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon.
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization
+  [CloudLinkName <String>]: Name of the cloud link.
+  [ClusterName <String>]: Name of the cluster
+  [DatastoreName <String>]: Name of the datastore
+  [DhcpId <String>]: The ID of the DHCP configuration
+  [DnsServiceId <String>]: ID of the DNS service.
+  [DnsZoneId <String>]: ID of the DNS zone.
+  [GatewayId <String>]: The ID of the NSX Gateway
+  [GlobalReachConnectionName <String>]: Name of the global reach connection
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [PlacementPolicyName <String>]: Name of the placement policy.
+  [PortMirroringId <String>]: ID of the NSX port mirroring profile.
+  [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
+  [PublicIPId <String>]: ID of the DNS zone.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet.
+  [ScriptExecutionName <String>]: Name of the script cmdlet.
+  [ScriptPackageName <String>]: Name of the script package.
+  [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VMGroupId <String>]: ID of the VM group.
+  [VirtualMachineId <String>]: ID of the virtual machine.
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon.
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization
+  [CloudLinkName <String>]: Name of the cloud link.
+  [ClusterName <String>]: Name of the cluster
+  [DatastoreName <String>]: Name of the datastore
+  [DhcpId <String>]: The ID of the DHCP configuration
+  [DnsServiceId <String>]: ID of the DNS service.
+  [DnsZoneId <String>]: ID of the DNS zone.
+  [GatewayId <String>]: The ID of the NSX Gateway
+  [GlobalReachConnectionName <String>]: Name of the global reach connection
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [PlacementPolicyName <String>]: Name of the placement policy.
+  [PortMirroringId <String>]: ID of the NSX port mirroring profile.
+  [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
+  [PublicIPId <String>]: ID of the DNS zone.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet.
+  [ScriptExecutionName <String>]: Name of the script cmdlet.
+  [ScriptPackageName <String>]: Name of the script package.
+  [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VMGroupId <String>]: ID of the VM group.
+  [VirtualMachineId <String>]: ID of the virtual machine.
+.Link
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwarepurestoragepolicy
+#>
+function Get-AzVMwarePureStoragePolicy {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [System.String]
+    # Name of the private cloud
+    ${PrivateCloudName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [System.String]
+    # Name of the storage policy.
+    ${StoragePolicyName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    ${PrivateCloudInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.VMware.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.VMware.private\Get-AzVMwarePureStoragePolicy_Get';
+            GetViaIdentity = 'Az.VMware.private\Get-AzVMwarePureStoragePolicy_GetViaIdentity';
+            GetViaIdentityPrivateCloud = 'Az.VMware.private\Get-AzVMwarePureStoragePolicy_GetViaIdentityPrivateCloud';
+            List = 'Az.VMware.private\Get-AzVMwarePureStoragePolicy_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.VMware.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+A list of SKUs.
+.Description
+A list of SKUs.
+.Example
+Get-AzVMwareSku
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceSku
+.Link
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwaresku
+#>
+function Get-AzVMwareSku {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceSku])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.VMware.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            List = 'Az.VMware.private\Get-AzVMwareSku_List';
+        }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2499,17 +3697,20 @@ CLUSTERINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -2526,17 +3727,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -2553,17 +3757,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -2689,6 +3896,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2715,8 +3931,6 @@ begin {
             List = 'Az.VMware.private\Get-AzVMwareVirtualMachine_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2730,6 +3944,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2802,17 +4019,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -2829,17 +4049,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -2965,6 +4188,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2989,8 +4221,6 @@ begin {
             CreateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\New-AzVMwareAuthorization_CreateViaIdentityPrivateCloudExpanded';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3004,6 +4234,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3076,17 +4309,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -3103,17 +4339,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -3239,6 +4478,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3263,8 +4511,6 @@ begin {
             CreateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\New-AzVMwareCloudLink_CreateViaIdentityPrivateCloudExpanded';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3278,6 +4524,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3350,17 +4599,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -3377,17 +4629,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -3562,6 +4817,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3586,8 +4850,6 @@ begin {
             CreateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\New-AzVMwareCluster_CreateViaIdentityPrivateCloudExpanded';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3601,6 +4863,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3673,17 +4938,20 @@ CLUSTERINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -3700,17 +4968,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -3727,17 +4998,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -3835,6 +5109,18 @@ param(
     ${NetAppVolumeId},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.Int32]
+    # Volume size to be used to create a Virtual Volumes (vVols) datastore
+    ${PureStorageVolumeSizeGb},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Azure resource ID of the Pure Storage Pool
+    ${PureStorageVolumeStoragePoolId},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
@@ -3902,6 +5188,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3927,8 +5222,6 @@ begin {
             CreateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\New-AzVMwareDatastore_CreateViaIdentityPrivateCloudExpanded';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3942,6 +5235,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4014,17 +5310,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -4041,17 +5340,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -4189,6 +5491,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4213,8 +5524,6 @@ begin {
             CreateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\New-AzVMwareGlobalReachConnection_CreateViaIdentityPrivateCloudExpanded';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4228,6 +5537,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4300,17 +5612,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -4422,6 +5737,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4445,8 +5769,6 @@ begin {
             CreateViaIdentityExpanded = 'Az.VMware.private\New-AzVMwareIscsiPath_CreateViaIdentityExpanded';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4460,6 +5782,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4536,17 +5861,20 @@ CLUSTERINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -4563,17 +5891,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -4590,17 +5921,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -4745,6 +6079,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4770,8 +6113,6 @@ begin {
             CreateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\New-AzVMwarePlacementPolicy_CreateViaIdentityPrivateCloudExpanded';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4785,6 +6126,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4857,17 +6201,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -4979,6 +6326,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5002,8 +6358,6 @@ begin {
             RotateViaIdentity = 'Az.VMware.private\New-AzVMwarePrivateCloudNsxtPassword_RotateViaIdentity';
         }
         if (('Rotate') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5017,6 +6371,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5089,17 +6446,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -5211,6 +6571,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5234,8 +6603,6 @@ begin {
             RotateViaIdentity = 'Az.VMware.private\New-AzVMwarePrivateCloudVcenterPassword_RotateViaIdentity';
         }
         if (('Rotate') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5249,6 +6616,304 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.VMware.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create a PureStoragePolicy
+.Description
+Create a PureStoragePolicy
+.Example
+New-AzVMwarePureStoragePolicy -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -StoragePolicyName azps_test_policy
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon.
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization
+  [CloudLinkName <String>]: Name of the cloud link.
+  [ClusterName <String>]: Name of the cluster
+  [DatastoreName <String>]: Name of the datastore
+  [DhcpId <String>]: The ID of the DHCP configuration
+  [DnsServiceId <String>]: ID of the DNS service.
+  [DnsZoneId <String>]: ID of the DNS zone.
+  [GatewayId <String>]: The ID of the NSX Gateway
+  [GlobalReachConnectionName <String>]: Name of the global reach connection
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [PlacementPolicyName <String>]: Name of the placement policy.
+  [PortMirroringId <String>]: ID of the NSX port mirroring profile.
+  [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
+  [PublicIPId <String>]: ID of the DNS zone.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet.
+  [ScriptExecutionName <String>]: Name of the script cmdlet.
+  [ScriptPackageName <String>]: Name of the script package.
+  [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VMGroupId <String>]: ID of the VM group.
+  [VirtualMachineId <String>]: ID of the virtual machine.
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon.
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization
+  [CloudLinkName <String>]: Name of the cloud link.
+  [ClusterName <String>]: Name of the cluster
+  [DatastoreName <String>]: Name of the datastore
+  [DhcpId <String>]: The ID of the DHCP configuration
+  [DnsServiceId <String>]: ID of the DNS service.
+  [DnsZoneId <String>]: ID of the DNS zone.
+  [GatewayId <String>]: The ID of the NSX Gateway
+  [GlobalReachConnectionName <String>]: Name of the global reach connection
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [PlacementPolicyName <String>]: Name of the placement policy.
+  [PortMirroringId <String>]: ID of the NSX port mirroring profile.
+  [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
+  [PublicIPId <String>]: ID of the DNS zone.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet.
+  [ScriptExecutionName <String>]: Name of the script cmdlet.
+  [ScriptPackageName <String>]: Name of the script package.
+  [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VMGroupId <String>]: ID of the VM group.
+  [VirtualMachineId <String>]: ID of the virtual machine.
+.Link
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwarepurestoragepolicy
+#>
+function New-AzVMwarePureStoragePolicy {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [System.String]
+    # Name of the private cloud
+    ${PrivateCloudName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [System.String]
+    # Name of the storage policy.
+    ${StoragePolicyName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    ${PrivateCloudInputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Definition of a Pure Storage Policy Based Management policy
+    ${StoragePolicyDefinition},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Azure resource ID of the Pure Storage Pool associated with the storage policy
+    ${StoragePoolId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.VMware.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.VMware.private\New-AzVMwarePureStoragePolicy_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.VMware.private\New-AzVMwarePureStoragePolicy_CreateViaIdentityExpanded';
+            CreateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\New-AzVMwarePureStoragePolicy_CreateViaIdentityPrivateCloudExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5325,17 +6990,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -5352,17 +7020,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -5488,6 +7159,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5512,8 +7192,6 @@ begin {
             DeleteViaIdentityPrivateCloud = 'Az.VMware.private\Remove-AzVMwareAuthorization_DeleteViaIdentityPrivateCloud';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5527,6 +7205,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5603,17 +7284,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -5630,17 +7314,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -5766,6 +7453,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5790,8 +7486,6 @@ begin {
             DeleteViaIdentityPrivateCloud = 'Az.VMware.private\Remove-AzVMwareCloudLink_DeleteViaIdentityPrivateCloud';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5805,6 +7499,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5881,17 +7578,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -5908,17 +7608,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -6044,6 +7747,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6068,8 +7780,6 @@ begin {
             DeleteViaIdentityPrivateCloud = 'Az.VMware.private\Remove-AzVMwareCluster_DeleteViaIdentityPrivateCloud';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6083,6 +7793,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6157,17 +7870,20 @@ CLUSTERINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -6184,17 +7900,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -6211,17 +7930,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -6361,6 +8083,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6386,8 +8117,6 @@ begin {
             DeleteViaIdentityPrivateCloud = 'Az.VMware.private\Remove-AzVMwareDatastore_DeleteViaIdentityPrivateCloud';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6401,6 +8130,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6477,17 +8209,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -6504,17 +8239,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -6640,6 +8378,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6664,8 +8411,6 @@ begin {
             DeleteViaIdentityPrivateCloud = 'Az.VMware.private\Remove-AzVMwareGlobalReachConnection_DeleteViaIdentityPrivateCloud';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6679,6 +8424,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6753,17 +8501,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -6875,6 +8626,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6898,8 +8658,6 @@ begin {
             DeleteViaIdentity = 'Az.VMware.private\Remove-AzVMwareIscsiPath_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6913,6 +8671,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6989,17 +8750,20 @@ CLUSTERINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -7016,17 +8780,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -7043,17 +8810,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -7193,6 +8963,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -7218,8 +8997,6 @@ begin {
             DeleteViaIdentityPrivateCloud = 'Az.VMware.private\Remove-AzVMwarePlacementPolicy_DeleteViaIdentityPrivateCloud';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -7233,6 +9010,298 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.VMware.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete a PureStoragePolicy
+.Description
+Delete a PureStoragePolicy
+.Example
+Remove-AzVMwarePureStoragePolicy -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -StoragePolicyName azps_test_policy
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon.
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization
+  [CloudLinkName <String>]: Name of the cloud link.
+  [ClusterName <String>]: Name of the cluster
+  [DatastoreName <String>]: Name of the datastore
+  [DhcpId <String>]: The ID of the DHCP configuration
+  [DnsServiceId <String>]: ID of the DNS service.
+  [DnsZoneId <String>]: ID of the DNS zone.
+  [GatewayId <String>]: The ID of the NSX Gateway
+  [GlobalReachConnectionName <String>]: Name of the global reach connection
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [PlacementPolicyName <String>]: Name of the placement policy.
+  [PortMirroringId <String>]: ID of the NSX port mirroring profile.
+  [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
+  [PublicIPId <String>]: ID of the DNS zone.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet.
+  [ScriptExecutionName <String>]: Name of the script cmdlet.
+  [ScriptPackageName <String>]: Name of the script package.
+  [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VMGroupId <String>]: ID of the VM group.
+  [VirtualMachineId <String>]: ID of the virtual machine.
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon.
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization
+  [CloudLinkName <String>]: Name of the cloud link.
+  [ClusterName <String>]: Name of the cluster
+  [DatastoreName <String>]: Name of the datastore
+  [DhcpId <String>]: The ID of the DHCP configuration
+  [DnsServiceId <String>]: ID of the DNS service.
+  [DnsZoneId <String>]: ID of the DNS zone.
+  [GatewayId <String>]: The ID of the NSX Gateway
+  [GlobalReachConnectionName <String>]: Name of the global reach connection
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [PlacementPolicyName <String>]: Name of the placement policy.
+  [PortMirroringId <String>]: ID of the NSX port mirroring profile.
+  [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
+  [PublicIPId <String>]: ID of the DNS zone.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet.
+  [ScriptExecutionName <String>]: Name of the script cmdlet.
+  [ScriptPackageName <String>]: Name of the script package.
+  [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VMGroupId <String>]: ID of the VM group.
+  [VirtualMachineId <String>]: ID of the virtual machine.
+.Link
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwarepurestoragepolicy
+#>
+function Remove-AzVMwarePureStoragePolicy {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [System.String]
+    # Name of the private cloud
+    ${PrivateCloudName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityPrivateCloud', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [System.String]
+    # Name of the storage policy.
+    ${StoragePolicyName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityPrivateCloud', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    ${PrivateCloudInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.VMware.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Delete = 'Az.VMware.private\Remove-AzVMwarePureStoragePolicy_Delete';
+            DeleteViaIdentity = 'Az.VMware.private\Remove-AzVMwarePureStoragePolicy_DeleteViaIdentity';
+            DeleteViaIdentityPrivateCloud = 'Az.VMware.private\Remove-AzVMwarePureStoragePolicy_DeleteViaIdentityPrivateCloud';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7363,6 +9432,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -7385,8 +9463,6 @@ begin {
             Check = 'Az.VMware.private\Test-AzVMwareLocationQuotaAvailability_Check';
         }
         if (('Check') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -7400,6 +9476,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7566,6 +9645,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -7588,8 +9676,6 @@ begin {
             CheckExpanded = 'Az.VMware.private\Test-AzVMwareLocationTrialAvailability_CheckExpanded';
         }
         if (('CheckExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -7603,6 +9689,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7675,17 +9764,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -7702,17 +9794,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -7838,6 +9933,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -7862,8 +9966,6 @@ begin {
             UpdateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\Update-AzVMwareAuthorization_UpdateViaIdentityPrivateCloudExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -7877,6 +9979,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7949,17 +10054,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -7976,17 +10084,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -8112,6 +10223,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -8136,8 +10256,6 @@ begin {
             UpdateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\Update-AzVMwareCloudLink_UpdateViaIdentityPrivateCloudExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -8151,6 +10269,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -8225,17 +10346,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -8252,17 +10376,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -8431,6 +10558,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -8455,8 +10591,6 @@ begin {
             UpdateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\Update-AzVMwareCluster_UpdateViaIdentityPrivateCloudExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -8470,6 +10604,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -8542,17 +10679,20 @@ CLUSTERINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -8569,17 +10709,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -8596,17 +10739,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -8704,6 +10850,18 @@ param(
     ${NetAppVolumeId},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.Int32]
+    # Volume size to be used to create a Virtual Volumes (vVols) datastore
+    ${PureStorageVolumeSizeGb},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Azure resource ID of the Pure Storage Pool
+    ${PureStorageVolumeStoragePoolId},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
@@ -8771,6 +10929,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -8796,8 +10963,6 @@ begin {
             UpdateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\Update-AzVMwareDatastore_UpdateViaIdentityPrivateCloudExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -8811,6 +10976,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -8883,17 +11051,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -8910,17 +11081,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -9058,6 +11232,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -9082,8 +11265,6 @@ begin {
             UpdateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\Update-AzVMwareGlobalReachConnection_UpdateViaIdentityPrivateCloudExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -9097,6 +11278,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -9169,17 +11353,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -9285,6 +11472,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -9308,8 +11504,6 @@ begin {
             UpdateViaIdentityExpanded = 'Az.VMware.private\Update-AzVMwareIscsiPath_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -9323,6 +11517,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -9397,17 +11594,20 @@ CLUSTERINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -9424,17 +11624,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -9451,17 +11654,20 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -9630,6 +11836,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -9655,8 +11870,6 @@ begin {
             UpdateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\Update-AzVMwarePlacementPolicy_UpdateViaIdentityPrivateCloudExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -9670,6 +11883,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -9736,7 +11952,7 @@ IDENTITYSOURCE <IIdentitySource[]>: vCenter Single Sign On Identity Sources
   [Alias <String>]: The domain's NetBIOS name
   [BaseGroupDn <String>]: The base distinguished name for groups
   [BaseUserDn <String>]: The base distinguished name for users
-  [Domain <String>]: The domain's dns name
+  [Domain <String>]: The domain's DNS name
   [Name <String>]: The name of the identity source
   [Password <SecureString>]: The password of the Active Directory user with a minimum of read-only access to         Base DN for users and groups.
   [PrimaryServer <String>]: Primary server URL
@@ -9756,17 +11972,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -9815,7 +12034,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
     [System.Nullable[System.Boolean]]
-    # Decides if enable a system assigned identity for the resource.
+    # Determines whether to enable a system-assigned identity for the resource.
     ${EnableSystemAssignedIdentity},
 
     [Parameter()]
@@ -9948,6 +12167,13 @@ param(
     ${VcenterPassword},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String[]]
+    # The availability zones.
+    ${Zone},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
@@ -10015,6 +12241,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -10038,8 +12273,6 @@ begin {
             UpdateViaIdentityExpanded = 'Az.VMware.private\Update-AzVMwarePrivateCloud_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -10053,6 +12286,304 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.VMware.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a PureStoragePolicy
+.Description
+Update a PureStoragePolicy
+.Example
+Update-AzVMwarePureStoragePolicy -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -StoragePolicyName azps_test_policy
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon.
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization
+  [CloudLinkName <String>]: Name of the cloud link.
+  [ClusterName <String>]: Name of the cluster
+  [DatastoreName <String>]: Name of the datastore
+  [DhcpId <String>]: The ID of the DHCP configuration
+  [DnsServiceId <String>]: ID of the DNS service.
+  [DnsZoneId <String>]: ID of the DNS zone.
+  [GatewayId <String>]: The ID of the NSX Gateway
+  [GlobalReachConnectionName <String>]: Name of the global reach connection
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [PlacementPolicyName <String>]: Name of the placement policy.
+  [PortMirroringId <String>]: ID of the NSX port mirroring profile.
+  [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
+  [PublicIPId <String>]: ID of the DNS zone.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet.
+  [ScriptExecutionName <String>]: Name of the script cmdlet.
+  [ScriptPackageName <String>]: Name of the script package.
+  [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VMGroupId <String>]: ID of the VM group.
+  [VirtualMachineId <String>]: ID of the virtual machine.
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon.
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization
+  [CloudLinkName <String>]: Name of the cloud link.
+  [ClusterName <String>]: Name of the cluster
+  [DatastoreName <String>]: Name of the datastore
+  [DhcpId <String>]: The ID of the DHCP configuration
+  [DnsServiceId <String>]: ID of the DNS service.
+  [DnsZoneId <String>]: ID of the DNS zone.
+  [GatewayId <String>]: The ID of the NSX Gateway
+  [GlobalReachConnectionName <String>]: Name of the global reach connection
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [PlacementPolicyName <String>]: Name of the placement policy.
+  [PortMirroringId <String>]: ID of the NSX port mirroring profile.
+  [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
+  [PublicIPId <String>]: ID of the DNS zone.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet.
+  [ScriptExecutionName <String>]: Name of the script cmdlet.
+  [ScriptPackageName <String>]: Name of the script package.
+  [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VMGroupId <String>]: ID of the VM group.
+  [VirtualMachineId <String>]: ID of the virtual machine.
+.Link
+https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwarepurestoragepolicy
+#>
+function Update-AzVMwarePureStoragePolicy {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [System.String]
+    # Name of the private cloud
+    ${PrivateCloudName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityPrivateCloudExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [System.String]
+    # Name of the storage policy.
+    ${StoragePolicyName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityPrivateCloudExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    ${PrivateCloudInputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Definition of a Pure Storage Policy Based Management policy
+    ${StoragePolicyDefinition},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Azure resource ID of the Pure Storage Pool associated with the storage policy
+    ${StoragePoolId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.VMware.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.VMware.private\Update-AzVMwarePureStoragePolicy_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.VMware.private\Update-AzVMwarePureStoragePolicy_UpdateViaIdentityExpanded';
+            UpdateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\Update-AzVMwarePureStoragePolicy_UpdateViaIdentityPrivateCloudExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -10127,17 +12658,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter To construct, see NOTES sectio
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -10240,6 +12774,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -10264,8 +12807,6 @@ begin {
             GetViaIdentity = 'Az.VMware.custom\Get-AzVMwareAddon';
         }
         if (('List', 'Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -10279,6 +12820,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -10441,6 +12985,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -10463,8 +13016,6 @@ begin {
             CreateExpanded = 'Az.VMware.custom\New-AzVMwareAddon';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -10478,6 +13029,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -10552,6 +13106,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -10580,6 +13137,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -10654,6 +13214,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -10682,6 +13245,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -10746,7 +13312,7 @@ IDENTITYSOURCE <IIdentitySource[]>: vCenter Single Sign On Identity Sources To c
   [Alias <String>]: The domain's NetBIOS name
   [BaseGroupDn <String>]: The base distinguished name for groups
   [BaseUserDn <String>]: The base distinguished name for users
-  [Domain <String>]: The domain's dns name
+  [Domain <String>]: The domain's DNS name
   [Name <String>]: The name of the identity source
   [Password <SecureString>]: The password of the Active Directory user with a minimum of read-only access to         Base DN for users and groups.
   [PrimaryServer <String>]: Primary server URL
@@ -10983,6 +13549,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -11005,8 +13580,6 @@ begin {
             CreateExpanded = 'Az.VMware.custom\New-AzVMwarePrivateCloud';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -11020,6 +13593,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -11107,6 +13683,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -11135,6 +13714,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -11216,6 +13798,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -11244,6 +13829,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -11324,6 +13912,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -11352,6 +13943,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -11466,6 +14060,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -11494,6 +14091,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -11588,6 +14188,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -11616,6 +14219,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -11692,17 +14298,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter To construct, see NOTES sectio
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -11820,6 +14429,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -11843,8 +14461,6 @@ begin {
             DeleteViaIdentity = 'Az.VMware.custom\Remove-AzVMwareAddon';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -11858,6 +14474,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -11934,17 +14553,20 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter To construct, see NOTES sectio
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -12056,6 +14678,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -12079,8 +14710,6 @@ begin {
             DeleteViaIdentity = 'Az.VMware.custom\Remove-AzVMwarePrivateCloud';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -12094,6 +14723,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

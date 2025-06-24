@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
     /// [OpenAPI] Get=>GET:"/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions/{registrationDefinitionId}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzManagedServicesDefinition_GetViaIdentity")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.CmdletBreakingChange("15.0.0", "9.0.0", "2025/11/03", ChangeDescription="The types of the properties 'Authorization' and 'EligibleAuthorization' will be changed to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Description(@"Gets the registration definition details.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Generated]

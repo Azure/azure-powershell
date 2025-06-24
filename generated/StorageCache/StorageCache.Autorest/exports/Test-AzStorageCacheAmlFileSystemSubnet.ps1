@@ -16,30 +16,14 @@
 
 <#
 .Synopsis
-Check that subnets will be valid for AML file system create calls.
+Check that subnets will be valid for AML file system check calls.
 .Description
-Check that subnets will be valid for AML file system create calls.
+Check that subnets will be valid for AML file system check calls.
 .Example
 Test-AzStorageCacheAmlFileSystemSubnet -Location eastus -Name "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_gp_storagecache/providers/Microsoft.Network/virtualNetworks/azps-virtual-network/subnets/azps-vnetwork-sub-kv" -SkuName "AMLFS-Durable-Premium-250" -StorageCapacityTiB 16 -PassThru
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
 .Outputs
 System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
-  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
-  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.storagecache/test-azstoragecacheamlfilesystemsubnet
 #>
@@ -47,44 +31,49 @@ function Test-AzStorageCacheAmlFileSystemSubnet {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='CheckExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CheckViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CheckExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
     # Region that the AML file system will be created in.
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CheckExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
     # Subnet used for managing the AML file system and for client-facing operations.
     # This subnet should have at least a /24 subnet mask within the VNET's address space.
     ${Name},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CheckExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
     # SKU name for this resource.
     ${SkuName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CheckExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.Single]
     # The size of the AML file system, in TiB.
     ${StorageCapacityTiB},
+
+    [Parameter(ParameterSetName='CheckViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Check operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CheckViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Json string supplied to the Check operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -148,6 +137,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -168,11 +166,10 @@ begin {
 
         $mapping = @{
             CheckExpanded = 'Az.StorageCache.private\Test-AzStorageCacheAmlFileSystemSubnet_CheckExpanded';
-            CheckViaIdentityExpanded = 'Az.StorageCache.private\Test-AzStorageCacheAmlFileSystemSubnet_CheckViaIdentityExpanded';
+            CheckViaJsonFilePath = 'Az.StorageCache.private\Test-AzStorageCacheAmlFileSystemSubnet_CheckViaJsonFilePath';
+            CheckViaJsonString = 'Az.StorageCache.private\Test-AzStorageCacheAmlFileSystemSubnet_CheckViaJsonString';
         }
-        if (('CheckExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CheckExpanded', 'CheckViaJsonFilePath', 'CheckViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -186,6 +183,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

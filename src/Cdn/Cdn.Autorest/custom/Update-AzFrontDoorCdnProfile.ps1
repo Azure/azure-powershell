@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -56,10 +56,12 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnprofile
 #>
 function Update-AzFrontDoorCdnProfile {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
         [Alias('ProfileName')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [System.String]
@@ -67,12 +69,16 @@ function Update-AzFrontDoorCdnProfile {
         ${Name},
     
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [System.String]
         # Name of the Resource group within the Azure subscription.
         ${ResourceGroupName},
     
         [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+        [Parameter(ParameterSetName='UpdateViaJsonString')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -83,61 +89,78 @@ function Update-AzFrontDoorCdnProfile {
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
         # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
-
-        [Parameter()]
-        [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileScrubbingRules[]]
-        # List of log scrubbing rules applied to the Azure Front Door profile logs.
-        # To construct, see NOTES section for LOGSCRUBBINGRULE properties and create a hash table.
-        ${LogScrubbingRule},
-
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProfileScrubbingState])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProfileScrubbingState]
-        # State of the log scrubbing config.
-        # Default value is Enabled.
-        ${LogScrubbingState},
     
-        [Parameter()]
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [System.Int32]
-        # Send and receive timeout on forwarding request to the origin.
-        # When timeout is reached, the request fails and returns.
-        ${OriginResponseTimeoutSecond},
-    
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileUpdateParametersTags]))]
-        [System.Collections.Hashtable]
-        # Profile tags
-        ${Tag},
-
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType]
+        [System.String]
         # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
         ${IdentityType},
-
-        [Parameter()]
+    
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api40.IUserAssignedIdentities]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities]))]
         [System.Collections.Hashtable]
         # The set of user assigned identities associated with the resource.
         # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
         # The dictionary values can be empty objects ({}) in requests.
         ${IdentityUserAssignedIdentity},
     
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+        [AllowEmptyCollection()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules[]]
+        # List of log scrubbing rules applied to the Azure Front Door profile logs.
+        ${LogScrubbingRule},
+    
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+        [System.String]
+        # State of the log scrubbing config.
+        # Default value is Enabled.
+        ${LogScrubbingState},
+    
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+        [System.Int32]
+        # Send and receive timeout on forwarding request to the origin.
+        # When timeout is reached, the request fails and returns.
+        ${OriginResponseTimeoutSecond},
+    
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpdateParametersTags]))]
+        [System.Collections.Hashtable]
+        # Profile tags
+        ${Tag},
+    
+        [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+        [System.String]
+        # Path of Json file supplied to the Update operation
+        ${JsonFilePath},
+    
+        [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+        [System.String]
+        # Json string supplied to the Update operation
+        ${JsonString},
+    
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
     
         [Parameter()]

@@ -2,7 +2,7 @@ parameters:
 - name: dotnet_sdk
   displayName: .NET SDK
   type: string
-  default: 8.0.x
+  default: 8.x
 - name: testFramework
   displayName: Test Framework
   type: string

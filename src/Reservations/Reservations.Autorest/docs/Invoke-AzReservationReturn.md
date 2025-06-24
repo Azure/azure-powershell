@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzReservationReturn
 
 ## SYNOPSIS
-Return a Reservation.
+Return a reservation and get refund information.
 
 ## SYNTAX
 
@@ -19,18 +19,6 @@ Invoke-AzReservationReturn -ReservationOrderId <String> -ReservationToReturnQuan
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Post
-```
-Invoke-AzReservationReturn -Body <IRefundRequest> -ReservationOrderId <String> [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### PostViaIdentity
-```
-Invoke-AzReservationReturn -InputObject <IReservationsIdentity> -Body <IRefundRequest> [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### PostViaIdentityExpanded
 ```
 Invoke-AzReservationReturn -InputObject <IReservationsIdentity> -ReservationToReturnQuantity <Int32>
@@ -38,8 +26,20 @@ Invoke-AzReservationReturn -InputObject <IReservationsIdentity> -ReservationToRe
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### PostViaJsonFilePath
+```
+Invoke-AzReservationReturn -ReservationOrderId <String> -JsonFilePath <String> [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### PostViaJsonString
+```
+Invoke-AzReservationReturn -ReservationOrderId <String> -JsonString <String> [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Return a Reservation.
+Return a reservation and get refund information.
 
 ## EXAMPLES
 
@@ -62,29 +62,12 @@ Proceed reservations return with session ID obtained from Invoke-AzReservationCa
 
 ## PARAMETERS
 
-### -Body
-The return request body.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundRequest
-Parameter Sets: Post, PostViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
-Parameter Sets: PostViaIdentity, PostViaIdentityExpanded
+Parameter Sets: PostViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -94,12 +77,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ReservationOrderId
-Reservation Order Id.
+### -JsonFilePath
+Path of Json file supplied to the Post operation
 
 ```yaml
 Type: System.String
-Parameter Sets: Post, PostExpanded
+Parameter Sets: PostViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Post operation
+
+```yaml
+Type: System.String
+Parameter Sets: PostViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReservationOrderId
+Order Id of the reservation
+
+```yaml
+Type: System.String
+Parameter Sets: PostExpanded, PostViaJsonFilePath, PostViaJsonString
 Aliases:
 
 Required: True
@@ -110,7 +123,8 @@ Accept wildcard characters: False
 ```
 
 ### -ReservationToReturnQuantity
-Quantity to return.
+Quantity to be returned.
+Must be greater than zero.
 
 ```yaml
 Type: System.Int32
@@ -125,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReservationToReturnReservationId
-Reservation Id to return.
+Fully qualified identifier of the reservation being returned
 
 ```yaml
 Type: System.String
@@ -140,7 +154,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReturnReason
-The reason for this reservation return.
+The reason of returning the reservation
 
 ```yaml
 Type: System.String
@@ -225,7 +239,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponse
 
 ## NOTES
 

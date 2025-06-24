@@ -12,9 +12,24 @@ Regenerates secret keys and returns them for the DirectLine Channel of a particu
 
 ## SYNTAX
 
+### RegenerateExpanded (Default)
 ```
-New-AzBotServiceDirectLineKey -ChannelName <RegenerateKeysChannelName> -ResourceGroupName <String>
- -ResourceName <String> [-SubscriptionId <String>] -Key <Key> -SiteName <String> [-DefaultProfile <PSObject>]
+New-AzBotServiceDirectLineKey -ChannelName <String> -ResourceGroupName <String> -ResourceName <String>
+ [-SubscriptionId <String>] -Key <String> -SiteName <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RegenerateViaJsonFilePath
+```
+New-AzBotServiceDirectLineKey -ChannelName <String> -ResourceGroupName <String> -ResourceName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RegenerateViaJsonString
+```
+New-AzBotServiceDirectLineKey -ChannelName <String> -ResourceGroupName <String> -ResourceName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,7 +51,7 @@ Regenerates secret keys and returns them for the DirectLine Channel of a particu
 The name of the Channel resource for which keys are to be regenerated.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.RegenerateKeysChannelName
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -63,12 +78,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Regenerate operation
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Regenerate operation
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Key
 Determines which key is to be regenerated
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Key
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: True
@@ -113,7 +158,7 @@ The site name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: True
@@ -176,7 +221,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotChannel
+### Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotChannel
 
 ## NOTES
 

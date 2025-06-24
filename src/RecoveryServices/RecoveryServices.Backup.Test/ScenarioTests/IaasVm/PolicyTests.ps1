@@ -344,3 +344,54 @@ function Test-AzureVMPolicy
 		Cleanup-ResourceGroup $resourceGroupName
 	}
 }
+
+function Test-AzureVMEnhancedPolicyAsDefault
+{ 
+	try
+    	{
+		$resourceGroupName = "sgholapCZRTesting"
+		$vaultName = "sgholapZRSTestingVault"
+		$owner = "sgholap"
+		$AzureVMPolicyName = "AzureVMPolicy"
+		$AzureFilesPolicyName = "AzureFilesPolicy"
+		# Subscription used for this test is sriramsa-IaaSVmBackup Canary Subscription(f2edfd5d-5496-4683-b94f-b3588c579009)
+
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+
+		$azureVMSchedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -ScheduleRunFrequency Weekly
+		Assert-NotNull $azureVMSchedulePolicy
+
+		$azureVMRetentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -ScheduleRunFrequency Weekly
+		Assert-NotNull $azureVMRetentionPolicy
+
+		$azureVMPolicy = New-AzRecoveryServicesBackupProtectionPolicy -Name $AzureVMPolicyName -WorkloadType AzureVM -BackupManagementType AzureVM -RetentionPolicy $azureVMRetentionPolicy -SchedulePolicy $azureVMSchedulePolicy -VaultId $vault.ID
+
+		Assert-NotNull $azureVMPolicy
+		Assert-AreEqual $azureVMPolicy.Name $AzureVMPolicyName
+		# Default policy type for AzureVM should be Enhanced
+		Assert-AreEqual $azureVMPolicy.PolicySubType "Enhanced"
+
+		$azureFilesSchedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles 
+		Assert-NotNull $azureVMSchedulePolicy
+
+		$azureFilesRetentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
+		Assert-NotNull $azureVMRetentionPolicy
+
+		$azureFilesPolicy = New-AzRecoveryServicesBackupProtectionPolicy -Name $AzureFilesPolicyName -WorkloadType AzureFiles -RetentionPolicy $azureFilesRetentionPolicy -SchedulePolicy $azureFilesSchedulePolicy -VaultId $vault.ID
+
+		Assert-NotNull $azureFilesPolicy
+		Assert-AreEqual $azureFilesPolicy.Name $AzureFilesPolicyName
+		# Default policy type for AzureFiles should be Standard
+		Assert-AreNotEqual $azureFilesPolicy.PolicySubType "Enhanced"
+	}
+	finally
+	{
+		# Cleanup		
+		# Delete policy
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $AzureVMPolicyName
+		Remove-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $policy -Force
+
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $AzureFilesPolicyName
+		Remove-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $policy -Force
+	}
+}

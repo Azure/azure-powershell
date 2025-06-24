@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='workspaceName'>
         /// The name of the workspace.
         /// </param>
-        public static object Delete(this IWorkspacesOperations operations, string resourceGroupName, string workspaceName)
+        public static Workspace Delete(this IWorkspacesOperations operations, string resourceGroupName, string workspaceName)
         {
                 return ((IWorkspacesOperations)operations).DeleteAsync(resourceGroupName, workspaceName).GetAwaiter().GetResult();
         }
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> DeleteAsync(this IWorkspacesOperations operations, string resourceGroupName, string workspaceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Workspace> DeleteAsync(this IWorkspacesOperations operations, string resourceGroupName, string workspaceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='workspaceName'>
         /// The name of the workspace.
         /// </param>
-        public static object BeginDelete(this IWorkspacesOperations operations, string resourceGroupName, string workspaceName)
+        public static Workspace BeginDelete(this IWorkspacesOperations operations, string resourceGroupName, string workspaceName)
         {
                 return ((IWorkspacesOperations)operations).BeginDeleteAsync(resourceGroupName, workspaceName).GetAwaiter().GetResult();
         }
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> BeginDeleteAsync(this IWorkspacesOperations operations, string resourceGroupName, string workspaceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Workspace> BeginDeleteAsync(this IWorkspacesOperations operations, string resourceGroupName, string workspaceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, null, cancellationToken).ConfigureAwait(false))
             {

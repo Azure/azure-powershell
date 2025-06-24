@@ -44,7 +44,7 @@ INPUTOBJECT <IMarketplaceOrderingIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms
 #>
 function Get-AzMarketplaceTerms {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IAgreementTerms])]
 [CmdletBinding(DefaultParameterSetName='Get1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -70,8 +70,8 @@ param(
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Category('Path')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType]
+    [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.PSArgumentCompleterAttribute("virtualmachine")]
+    [System.String]
     # Publisher identifier string of image being deployed.
     ${OfferType},
 

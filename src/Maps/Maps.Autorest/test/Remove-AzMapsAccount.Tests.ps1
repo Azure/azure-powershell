@@ -14,14 +14,14 @@ while(-not $mockingPath) {
 Describe 'Remove-AzMapsAccount' {
     It 'Delete' {
         { 
-          New-AzMapsAccount -ResourceGroupName $env.resourceGroup -Name $env.mapsName03 -SkuName S1 -Location $env.location
+          New-AzMapsAccount -ResourceGroupName $env.resourceGroup -Name $env.mapsName03 -SkuName G2 -Location $env.location
           Remove-AzMapsAccount -ResourceGroupName $env.resourceGroup -Name $env.mapsName03 
         } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' {
         { 
-          $maps = New-AzMapsAccount -ResourceGroupName $env.resourceGroup -Name $env.mapsName03 -SkuName S1 -Location $env.location
+          $maps = New-AzMapsAccount -ResourceGroupName $env.resourceGroup -Name $env.mapsName03 -SkuName G2 -Location $env.location
           Remove-AzMapsAccount -InputObject $maps
         } | Should -Not -Throw
     }

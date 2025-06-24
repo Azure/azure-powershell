@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a cluster.</summary>
+    /// <summary>create a cluster.</summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}/clusters/{clusterName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzHdInsightOnAksCluster_CreateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Description(@"Create a cluster.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Description(@"create a cluster.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}/clusters/{clusterName}", ApiVersion = "2024-05-01-preview")]
     public partial class NewAzHdInsightOnAksCluster_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
@@ -482,14 +482,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
         public long HistoryServerMemory { get => _hdInsightClusterBody.HistoryServerMemory ?? default(long); set => _hdInsightClusterBody.HistoryServerMemory = value; }
 
         /// <summary>
-        /// The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manageview=azuresql#authentication-and-authorization
+        /// The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manageview=azuresql#authentication-and-authorization")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manageview=azuresql#authentication-and-authorization",
+        Description = @"The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization",
         SerializedName = @"metastoreDbConnectionAuthenticationMode",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("SqlAuth", "IdentityAuth")]
@@ -777,14 +777,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentitySpec[] ManagedIdentityProfileIdentityList { get => _hdInsightClusterBody.ManagedIdentityProfileIdentityList?.ToArray() ?? null /* fixedArrayOf */; set => _hdInsightClusterBody.ManagedIdentityProfileIdentityList = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentitySpec>(value) : null); }
 
         /// <summary>
-        /// The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manageview=azuresql#authentication-and-authorization
+        /// The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manageview=azuresql#authentication-and-authorization")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manageview=azuresql#authentication-and-authorization",
+        Description = @"The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization",
         SerializedName = @"dbConnectionAuthenticationMode",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("SqlAuth", "IdentityAuth")]

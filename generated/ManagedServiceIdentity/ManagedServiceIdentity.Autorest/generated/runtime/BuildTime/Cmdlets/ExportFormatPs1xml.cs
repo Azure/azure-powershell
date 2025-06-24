@@ -20,11 +20,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Powe
     public string FilePath { get; set; }
 
     private const string ModelNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models";
-    private const string SupportNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Support";
+    private const string SupportNamespace = @"${$project.supportNamespace.fullName}";
     private const string PropertiesExcludedForTableview = @"Id,Type";
 
     private static readonly bool IsAzure = Convert.ToBoolean(@"true");
 
+    private static string SelectedBySuffix = @"#Multiple";
+    
     protected override void ProcessRecord()
     {
       try
@@ -76,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Powe
         Name = viewParameters.Type.FullName,
         ViewSelectedBy = new ViewSelectedBy
         {
-          TypeName = viewParameters.Type.FullName
+          TypeName = string.Concat(viewParameters.Type.FullName, SelectedBySuffix)
         },
         TableControl = new TableControl
         {

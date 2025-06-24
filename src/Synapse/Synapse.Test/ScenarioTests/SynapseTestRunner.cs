@@ -16,8 +16,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.TestFx;
 using Microsoft.Azure.Synapse;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Rest;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System.Collections.Generic;
 using Xunit.Abstractions;
 
@@ -71,16 +69,14 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
                         {"Microsoft.OperationalInsights", null},
                         {"Microsoft.Storage", null}
                     }
-                ).WithManagementClients(
-                    GetSynapseClient
+                )
+                .WithManagementClients(context =>
+                    {
+                        var creds = context.GetClientCredentials(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId);
+                        return new SynapseClient(creds, HttpMockServer.CreateInstance());
+                    }
                 )
                 .Build();
-        }
-
-        protected static SynapseClient GetSynapseClient(MockContext context)
-        {
-            var creds = TestEnvironmentFactory.GetTestEnvironment().GetAccessToken(AzureEnvironmentConstants.AzureSynapseAnalyticsEndpointResourceId);
-            return new SynapseClient(creds, HttpMockServer.CreateInstance());
         }
     }
 }

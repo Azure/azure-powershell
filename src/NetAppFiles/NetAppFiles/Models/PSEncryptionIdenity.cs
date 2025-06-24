@@ -32,5 +32,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// identity.userAssignedIdentities.
         /// </summary>        
         public string UserAssignedIdentity { get; set; }
+
+        /// <summary>
+        /// Gets or sets clientId of the multi-tenant AAD Application. Used to access
+        /// cross-tenant keyvaults.
+        /// </summary>
+        public string FederatedClientId { get; set; }
     }
 }

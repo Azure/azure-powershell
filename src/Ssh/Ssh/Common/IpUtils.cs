@@ -153,7 +153,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Ssh.Common
         #region Private Methods
         private string GetFirstPrivateIp(NetworkInterface nic)
         {
-            var privateIp = nic.IpConfigurations
+            var privateIp = nic.IPConfigurations
             .Where(ipconfig => !string.IsNullOrEmpty(ipconfig.PrivateIPAddress))
             .Select(ipconfig => ipconfig.PrivateIPAddress);          
 
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Ssh.Common
         
         private string GetFirstPublicIp(NetworkInterface nic)
         {
-            var publicIps = nic.IpConfigurations
+            var publicIps = nic.IPConfigurations
                 .Where(ipconfig => ipconfig.PublicIPAddress != null)
                 .Select(ipconfig => ipconfig.PublicIPAddress);
 
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Ssh.Common
                     continue;
                 }
 
-                var publicIpAddress = ipAddress.IpAddress;
+                var publicIpAddress = ipAddress.IPAddress;
 
                 if (!string.IsNullOrEmpty(publicIpAddress))
                 {

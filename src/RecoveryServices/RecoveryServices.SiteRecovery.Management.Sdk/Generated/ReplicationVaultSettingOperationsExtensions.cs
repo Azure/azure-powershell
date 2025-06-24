@@ -13,51 +13,83 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
     public static partial class ReplicationVaultSettingOperationsExtensions
     {
         /// <summary>
-        /// Gets the list of vault setting. This includes the Migration Hub connection settings.
+        /// Gets the list of vault setting. This includes the Migration Hub connection
+        /// settings.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<VaultSetting> List(this IReplicationVaultSettingOperations operations)
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<VaultSetting> List(this IReplicationVaultSettingOperations operations, string resourceGroupName, string resourceName)
         {
-                return ((IReplicationVaultSettingOperations)operations).ListAsync().GetAwaiter().GetResult();
+                return ((IReplicationVaultSettingOperations)operations).ListAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Gets the list of vault setting. This includes the Migration Hub connection settings.
+        /// Gets the list of vault setting. This includes the Migration Hub connection
+        /// settings.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VaultSetting>> ListAsync(this IReplicationVaultSettingOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VaultSetting>> ListAsync(this IReplicationVaultSettingOperations operations, string resourceGroupName, string resourceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Gets the vault setting. This includes the Migration Hub connection settings.
+        /// Gets the vault setting. This includes the Migration Hub connection
+        /// settings.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='vaultSettingName'>
         /// Vault setting name.
         /// </param>
-        public static VaultSetting Get(this IReplicationVaultSettingOperations operations, string vaultSettingName)
+        public static VaultSetting Get(this IReplicationVaultSettingOperations operations, string resourceGroupName, string resourceName, string vaultSettingName)
         {
-                return ((IReplicationVaultSettingOperations)operations).GetAsync(vaultSettingName).GetAwaiter().GetResult();
+                return ((IReplicationVaultSettingOperations)operations).GetAsync(resourceGroupName, resourceName, vaultSettingName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Gets the vault setting. This includes the Migration Hub connection settings.
+        /// Gets the vault setting. This includes the Migration Hub connection
+        /// settings.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='vaultSettingName'>
         /// Vault setting name.
@@ -65,9 +97,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VaultSetting> GetAsync(this IReplicationVaultSettingOperations operations, string vaultSettingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VaultSetting> GetAsync(this IReplicationVaultSettingOperations operations, string resourceGroupName, string resourceName, string vaultSettingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(vaultSettingName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, resourceName, vaultSettingName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -78,12 +110,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='vaultSettingName'>
         /// Vault setting name.
         /// </param>
-        public static VaultSetting Create(this IReplicationVaultSettingOperations operations, string vaultSettingName, VaultSettingCreationInputProperties properties)
+        public static VaultSetting Create(this IReplicationVaultSettingOperations operations, string resourceGroupName, string resourceName, string vaultSettingName, VaultSettingCreationInputProperties properties)
         {
-                return ((IReplicationVaultSettingOperations)operations).CreateAsync(vaultSettingName, properties).GetAwaiter().GetResult();
+                return ((IReplicationVaultSettingOperations)operations).CreateAsync(resourceGroupName, resourceName, vaultSettingName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -92,15 +131,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='vaultSettingName'>
         /// Vault setting name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VaultSetting> CreateAsync(this IReplicationVaultSettingOperations operations, string vaultSettingName, VaultSettingCreationInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VaultSetting> CreateAsync(this IReplicationVaultSettingOperations operations, string resourceGroupName, string resourceName, string vaultSettingName, VaultSettingCreationInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateWithHttpMessagesAsync(vaultSettingName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, resourceName, vaultSettingName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -111,12 +157,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='vaultSettingName'>
         /// Vault setting name.
         /// </param>
-        public static VaultSetting BeginCreate(this IReplicationVaultSettingOperations operations, string vaultSettingName, VaultSettingCreationInputProperties properties)
+        public static VaultSetting BeginCreate(this IReplicationVaultSettingOperations operations, string resourceGroupName, string resourceName, string vaultSettingName, VaultSettingCreationInputProperties properties)
         {
-                return ((IReplicationVaultSettingOperations)operations).BeginCreateAsync(vaultSettingName, properties).GetAwaiter().GetResult();
+                return ((IReplicationVaultSettingOperations)operations).BeginCreateAsync(resourceGroupName, resourceName, vaultSettingName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -125,21 +178,29 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='vaultSettingName'>
         /// Vault setting name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VaultSetting> BeginCreateAsync(this IReplicationVaultSettingOperations operations, string vaultSettingName, VaultSettingCreationInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VaultSetting> BeginCreateAsync(this IReplicationVaultSettingOperations operations, string resourceGroupName, string resourceName, string vaultSettingName, VaultSettingCreationInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(vaultSettingName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, resourceName, vaultSettingName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Gets the list of vault setting. This includes the Migration Hub connection settings.
+        /// Gets the list of vault setting. This includes the Migration Hub connection
+        /// settings.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -153,7 +214,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        /// Gets the list of vault setting. This includes the Migration Hub connection settings.
+        /// Gets the list of vault setting. This includes the Migration Hub connection
+        /// settings.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

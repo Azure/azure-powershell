@@ -13,12 +13,12 @@ Creates a new CosmosDB Gremlin Database to Restore object(PSGremlinDatabaseToRes
 ## SYNTAX
 
 ```
-New-AzCosmosDBGremlinDatabaseToRestore -DatabaseName <String> [-GraphNames <String[]>]
+New-AzCosmosDBGremlinDatabaseToRestore -DatabaseName <String> [-GraphName <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new CosmosDB GremlinDatabaseToRestore object(PSGremlinDatabaseToRestore). This returned object can be uses to speficy the subset of databases and graphs to restore.
+Creates a new CosmosDB GremlinDatabaseToRestore object(PSGremlinDatabaseToRestore). This returned object can be used to specify the subset of databases and graphs to restore.
 
 ## EXAMPLES
 
@@ -67,9 +67,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GraphNames
-The names of the graphs to be restored.
-(If not provided, all the graphs will be restored)
+### -GraphName
+The names of the graphs to be restored. (If not provided, all the graphs will be restored)
 
 ```yaml
 Type: System.String[]

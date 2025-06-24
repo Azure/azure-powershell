@@ -21,12 +21,13 @@ Create an in-memory object for PrometheusRuleGroupAction.
 Create an in-memory object for PrometheusRuleGroupAction.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRuleGroupAction
+Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.PrometheusRuleGroupAction
 .Link
-https://learn.microsoft.com/powershell/module/Az.AlertsManagement/new-AzPrometheusRuleGroupActionObject
+https://learn.microsoft.com/powershell/module/Az.AlertsManagement/new-azprometheusrulegroupactionobject
 #>
 function New-AzPrometheusRuleGroupActionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRuleGroupAction')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.PrometheusRuleGroupAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -34,12 +35,12 @@ function New-AzPrometheusRuleGroupActionObject {
         [string]
         $ActionGroupId,
         [Parameter(HelpMessage="The properties of an action group object.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupActionProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupActionProperties]
         $ActionProperty
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRuleGroupAction]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.PrometheusRuleGroupAction]::New()
 
         if ($PSBoundParameters.ContainsKey('ActionGroupId')) {
             $Object.ActionGroupId = $ActionGroupId

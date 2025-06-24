@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroup))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Description(@"update a pipeline group instance")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/pipelineGroups/{pipelineGroupName}", ApiVersion = "2023-10-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/pipelineGroups/{pipelineGroupName}", ApiVersion = "2024-10-01-preview")]
     public partial class UpdateAzPipelineGroup_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.IContext
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Cmdlets
         /// <summary>A buffer to record first returned object in response.</summary>
         private object _firstResponse = null;
 
-        /// <summary>The type used for update operations of the PipelineGroup.</summary>
+        /// <summary>A pipeline group definition.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdate _propertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupUpdate();
 
         /// <summary>
@@ -272,8 +272,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdateTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdateTags Tag { get => _propertiesBody.Tag ?? null /* object */; set => _propertiesBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags Tag { get => _propertiesBody.Tag ?? null /* object */; set => _propertiesBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what

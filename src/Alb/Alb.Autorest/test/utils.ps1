@@ -47,15 +47,20 @@ function setupEnv() {
     $env.vnetName = "test-vnet"
     $env.subnetName = "alb-subnet"
     $env.extraSubnetName = "extra-alb-subnet"
+    $env.wafPolicyName = "test-wafPolicy"
+    $env.extraWafPolicyName = "extra-test-wafPolicy"
     $env.albName = "test-alb"
     $env.removeAlbName = ("remove-{0}" -f $env.albName)
     $env.deleteAlbName = ("delete-{0}" -f $env.albName)
     $env.associationAlbName = ("association-{0}" -f $env.albName)
     $env.albAssociationName = "test-association"
     $env.albFrontendName = "test-frontend"
+    $env.albWafSecurityPolicyName = "test-wafSecurityPolicy"
     $env.region = "northcentralus"
     $env.subnetId = ("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualNetworks/{2}/subnets/{3}" -f $env.SubscriptionId, $env.resourceGroup, $env.vnetName, $env.subnetName)
     $env.extraSubnetId = ("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualNetworks/{2}/subnets/{3}" -f $env.SubscriptionId, $env.resourceGroup, $env.vnetName, $env.extraSubnetName)
+    $env.wafPolicyId = ("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{2}" -f $env.SubscriptionId, $env.resourceGroup, $env.wafPolicyName)
+    $env.extraWafPolicyId = ("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{2}" -f $env.SubscriptionId, $env.resourceGroup, $env.extrawafPolicyName)
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'

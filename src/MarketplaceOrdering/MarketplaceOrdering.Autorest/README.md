@@ -35,14 +35,7 @@ input-file:
 
 title: MarketplaceOrdering
 subject-prefix: Marketplace
-
-identity-correction-for-post: true
-nested-object-to-string: true
 inlining-threshold: 50
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   - where:
@@ -55,16 +48,27 @@ directive:
     set:
       subject: SignTerms
 
+  # The type 'SetAzMarketplaceTerms_CreateExpanded' already contains a definition for 'Publisher' and 'Product'
+  # Customize create variant
   - where: 
       subject: ^MarketplaceTerms$
-      variant: ^CreateExpanded$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+      variant: ^Create(.*(JsonFilePath|JsonString))
+    remove: true
+  - where: 
+      subject: ^MarketplaceTerms$
+      variant: ^CreateExpanded$
+    remove: true
+  # Set cmdlet contains update verb.
+  - where:
+      verb: Update
+      subject: MarketplaceTerms
     remove: true
 
   # List response not mapp swagger define.
   - where:
       verb: Get
       subject: MarketplaceTerms
-      variant: ^List$|^GetViaIdentity1$|^GetViaIdentity$
+      variant: ^(?!Get$|Get1$)
     remove: true
 
   # For map old cmdlet

@@ -19,6 +19,12 @@ Start-AzCdnEndpoint -Name <String> -ProfileName <String> -ResourceGroupName <Str
  [<CommonParameters>]
 ```
 
+### StartViaIdentityProfile
+```
+Start-AzCdnEndpoint -Name <String> -ProfileInputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### StartViaIdentity
 ```
 Start-AzCdnEndpoint -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
@@ -91,7 +97,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -110,7 +115,7 @@ Name of the endpoint under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Start, StartViaIdentityProfile
 Aliases: EndpointName
 
 Required: True
@@ -132,6 +137,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: StartViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -220,7 +240,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint
 
 ## NOTES
 

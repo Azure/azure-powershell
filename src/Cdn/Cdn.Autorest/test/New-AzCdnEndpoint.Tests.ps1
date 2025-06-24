@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnEndpoint'))
 
 Describe 'New-AzCdnEndpoint'  {
     It 'CreateExpanded' {
-            $endpointName = 'e-clipstest020'
+            $endpointName = 'e-clipstest310-24-09-01'
             $origin = @{
                 Name = "origin1"
                 HostName = "host1.hello.com"

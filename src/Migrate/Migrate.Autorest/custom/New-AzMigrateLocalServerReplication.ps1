@@ -188,19 +188,22 @@ function New-AzMigrateLocalServerReplication {
         $null = $PSBoundParameters.Remove('Confirm')
         
         $MachineIdArray = $MachineId.Split("/")
+        if ($MachineIdArray.Length -lt 11) {
+            throw "Invalid machine ARM ID '$MachineId'"
+        }
         $SiteType = $MachineIdArray[7]
         $SiteName = $MachineIdArray[8]
         $ResourceGroupName = $MachineIdArray[4]
         $MachineName = $MachineIdArray[10]
-       
-        if (($SiteType -ne $SiteTypes.HyperVSites) -and ($SiteType -ne $SiteTypes.VMwareSites)) {
-            throw "Site type is not supported. Site type '$SiteType'. Check MachineId provided."
-        }
 
         # Get the source site and the discovered machine
         $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
         $null = $PSBoundParameters.Add("SiteName", $SiteName)
         $null = $PSBoundParameters.Add("MachineName", $MachineName)
+
+        if (($SiteType -ne $SiteTypes.HyperVSites) -and ($SiteType -ne $SiteTypes.VMwareSites)) {
+            throw "Site type is not supported. Site type '$SiteType'. Check MachineId provided."
+        }
         
         if ($SiteType -eq $SiteTypes.HyperVSites) {
             $instanceType = $AzLocalInstanceTypes.HyperVToAzLocal
@@ -231,6 +234,9 @@ function New-AzMigrateLocalServerReplication {
                 -ErrorMessage "Machine site '$SiteName' with Type '$SiteType' not found."
         }
 
+        # Validate the VM
+        ValidateReplication -Machine $machine -MigrationType $instanceType
+        
         # $siteObject is not null or exception would have been thrown
         $ProjectName = $siteObject.DiscoverySolutionId.Split("/")[8]
 
@@ -419,23 +425,23 @@ function New-AzMigrateLocalServerReplication {
             if ($SiteType -eq $SiteTypes.HyperVSites) {
                 $osDisk = $machine.Disk | Where-Object { $_.InstanceId -eq $OSDiskID }
                 if ($null -eq $osDisk) {
-                    throw "No Disk found with InstanceId '$OSDiskID' from discovered machine disks."
+                    throw "No Disk found with InstanceId $OSDiskID from discovered machine disks."
                 }
 
                 $diskName = Split-Path $osDisk.Path -leaf
                 if (IsReservedOrTrademarked($diskName)) {
-                    throw "The disk name '$diskName' or part of the name is a trademarked or reserved word."
+                    throw "The disk name $diskName or part of the name is a trademarked or reserved word."
                 }
             }
             elseif ($SiteType -eq $SiteTypes.VMwareSites) {  
                 $osDisk = $machine.Disk | Where-Object { $_.Uuid -eq $OSDiskID }
                 if ($null -eq $osDisk) {
-                    throw "No Disk found with Uuid '$OSDiskID' from discovered machine disks."
+                    throw "No Disk found with Uuid $OSDiskID from discovered machine disks."
                 }
 
                 $diskName = Split-Path $osDisk.Path -leaf
                 if (IsReservedOrTrademarked($diskName)) {
-                    throw "The disk name '$diskName' or part of the name is a trademarked or reserved word."
+                    throw "The disk name $diskName or part of the name is a trademarked or reserved word."
                 }
             }
 
@@ -495,7 +501,7 @@ function New-AzMigrateLocalServerReplication {
 
                 $diskName = Split-Path -Path $discoveredDisk.Path -Leaf
                 if (IsReservedOrTrademarked($diskName)) {
-                    throw "The disk name '$diskName' or part of the name is a trademarked or reserved word."
+                    throw "The disk name $diskName or part of the name is a trademarked or reserved word."
                 }
 
                 if ($uniqueDisks.Contains($disk.DiskId)) {

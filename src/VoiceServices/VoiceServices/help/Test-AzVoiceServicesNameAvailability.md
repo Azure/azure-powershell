@@ -12,10 +12,23 @@ Check whether the resource name is available in the given region.
 
 ## SYNTAX
 
+### CheckExpanded (Default)
 ```
 Test-AzVoiceServicesNameAvailability -Location <String> [-SubscriptionId <String>] [-Name <String>]
  [-Type <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### CheckViaJsonFilePath
+```
+Test-AzVoiceServicesNameAvailability -Location <String> [-SubscriptionId <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CheckViaJsonString
+```
+Test-AzVoiceServicesNameAvailability -Location <String> [-SubscriptionId <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,6 +67,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The location in which uniqueness will be verified.
 
@@ -74,7 +117,7 @@ The name of the resource for which availability needs to be checked.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: False
@@ -104,7 +147,7 @@ The resource type.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: False
@@ -152,7 +195,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICheckNameAvailabilityResponse
+### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ICheckNameAvailabilityResponse
 
 ## NOTES
 

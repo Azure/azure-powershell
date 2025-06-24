@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Cmdlets
     using System;
 
     /// <summary>
-    /// Create a new AppComplianceAutomation report or update an exiting AppComplianceAutomation report.
+    /// create a new AppComplianceAutomation report or create an exiting AppComplianceAutomation report.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/providers/Microsoft.AppComplianceAutomation/reports/{reportName}"
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzAppComplianceAutomationReport_CreateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Description(@"Create a new AppComplianceAutomation report or update an exiting AppComplianceAutomation report.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Description(@"create a new AppComplianceAutomation report or create an exiting AppComplianceAutomation report.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.HttpPath(Path = "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}", ApiVersion = "2024-06-27")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.NotSuggestDefaultParameterSet]

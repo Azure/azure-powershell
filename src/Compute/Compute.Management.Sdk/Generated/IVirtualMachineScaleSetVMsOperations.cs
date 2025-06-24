@@ -221,8 +221,11 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='expand'>
         /// The expand expression to apply on the operation. 'InstanceView'
         /// will retrieve the instance view of the virtual machine. 'UserData'
-        /// will retrieve the UserData of the virtual machine. Possible values
-        /// include: 'instanceView', 'userData'
+        /// will retrieve the UserData of the virtual machine. 'resiliencyView'
+        /// will retrieve the instance view of the Virtual machine (if
+        /// applicable) and include 'resilientVMDeletionStatus' as part of it.
+        /// Possible values include: 'instanceView', 'userData',
+        /// 'resiliencyView'
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -239,7 +242,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualMachineScaleSetVM>> GetWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, InstanceViewTypes? expand = default(InstanceViewTypes?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualMachineScaleSetVM>> GetWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, VmssVMInstanceViewTypes? expand = default(VmssVMInstanceViewTypes?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the status of a virtual machine from a VM scale set.
         /// </summary>
@@ -304,7 +307,8 @@ namespace Microsoft.Azure.Management.Compute
         /// Power off (stop) a virtual machine in a VM scale set. Note that
         /// resources are still attached and you are getting charged for the
         /// resources. Instead, use deallocate to release resources and avoid
-        /// charges.
+        /// charges. Additionally, this operation is not allowed on a virtual
+        /// machine that is being deallocated or already has been deallocated.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -745,7 +749,8 @@ namespace Microsoft.Azure.Management.Compute
         /// Power off (stop) a virtual machine in a VM scale set. Note that
         /// resources are still attached and you are getting charged for the
         /// resources. Instead, use deallocate to release resources and avoid
-        /// charges.
+        /// charges. Additionally, this operation is not allowed on a virtual
+        /// machine that is being deallocated or already has been deallocated.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

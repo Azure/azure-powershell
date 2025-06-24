@@ -18,6 +18,18 @@ Stop-AzMarketplaceTerms -Name <String> -Product <String> -Publisher <String> [-S
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CancelViaIdentityOffer
+```
+Stop-AzMarketplaceTerms -Name <String> -OfferInputObject <IMarketplaceOrderingIdentity>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CancelViaIdentityAgreement
+```
+Stop-AzMarketplaceTerms -Name <String> -Product <String> -AgreementInputObject <IMarketplaceOrderingIdentity>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### CancelViaIdentity
 ```
 Stop-AzMarketplaceTerms -InputObject <IMarketplaceOrderingIdentity> [-DefaultProfile <PSObject>]
@@ -57,6 +69,21 @@ This command cancel marketplace terms by pipeline.
 
 ## PARAMETERS
 
+### -AgreementInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity
+Parameter Sets: CancelViaIdentityAgreement
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -75,7 +102,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity
@@ -94,7 +120,7 @@ Plan identifier string of image being deployed.
 
 ```yaml
 Type: System.String
-Parameter Sets: Cancel
+Parameter Sets: Cancel, CancelViaIdentityOffer, CancelViaIdentityAgreement
 Aliases:
 
 Required: True
@@ -104,12 +130,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OfferInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity
+Parameter Sets: CancelViaIdentityOffer
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Product
 Offer identifier string of image being deployed.
 
 ```yaml
 Type: System.String
-Parameter Sets: Cancel
+Parameter Sets: Cancel, CancelViaIdentityAgreement
 Aliases:
 
 Required: True
@@ -189,7 +230,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms
+### Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IAgreementTerms
 
 ## NOTES
 

@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StaticRoutingEnrichment
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridstaticroutingenrichmentobject
 #>
 function New-AzEventGridStaticRoutingEnrichmentObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StaticRoutingEnrichment')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

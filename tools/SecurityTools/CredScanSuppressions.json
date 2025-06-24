@@ -790,6 +790,10 @@
       "_justification": "Legitimate session record, Key will be revoked after test"
     },
     {
+      "file": "src\\DataMigration\\DataMigration.Autorest\\test\\Remove-AzDataMigrationToSqlDb.Recording.json",
+      "_justification": "Legitimate session record, Resources will be deleted after test"
+    },
+    {
       "file": "src\\RedisCache\\RedisCache\\help\\Export-AzRedisCache.md",
       "_justification": "Example data export"
     },
@@ -1355,6 +1359,30 @@
     },
     {
       "file": "src\\RecoveryServices\\RecoveryServices.Backup.Providers\\Providers\\IaasVmPsBackupProvider.cs",
+      "_justification": "False positive, there are no cred in this file."
+    },
+    {
+      "file": "src\\DataBox\\DataBox.Autorest\\test\\New-AzDataBoxJob.Tests.ps1",
+      "_justification": "The test is for a scenario where the customer chooses to use a password of their choice. There are validations in place for the password. So having it as *** will cause the test to fail"
+    },
+    {
+      "file": "src\\DataBox\\DataBox.Autorest\\test\\New-AzDataBoxJob.Recording.json",
+      "_justification": "Recording of the test New-AzDataBoxJob.Tests.ps1, which is also a part of the cred scan supression."
+    },
+    {
+      "file": "src\\EventHub\\EventHub.Autorest\\test\\New-AzEventHubKey.Recording.json",
+      "_justification": "False positive, there are no cred in this file."
+    },
+    {
+      "file": "src\\EventHub\\EventHub.Autorest\\test\\env.json",
+      "_justification": "False positive, there are no cred in this file."
+    },
+    {
+      "file": "src\\EventHub\\EventHub.Autorest\\test\\Get-AzEventHubKey.Recording.json",
+      "_justification": "False positive, there are no cred in this file."
+    },
+    {
+      "file": "src\\EventHub\\EventHub.Autorest\\test\\New-AzEventHubGeoDRConfiguration.Recording.json",
       "_justification": "False positive, there are no cred in this file."
     }
   ]

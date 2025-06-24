@@ -1,17 +1,17 @@
 {
-  "Get-AzRedisEnterpriseCacheKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/2a959a08-44f9-4451-bc9b-d9c138a3988b/resourceGroups/ps-redisenterprise-rg-ornqihb4/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-qobi1rj2/databases/default/listKeys?api-version=2024-09-01-preview+1": {
+  "Get-AzRedisEnterpriseCacheKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9508734a-8a49-4b3e-bd1e-d039b249a023/resourceGroups/ps-redisenterprise-rg-ohp2ur5g/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-30hygucx/databases/default/listKeys?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/2a959a08-44f9-4451-bc9b-d9c138a3988b/resourceGroups/ps-redisenterprise-rg-ornqihb4/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-qobi1rj2/databases/default/listKeys?api-version=2024-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9508734a-8a49-4b3e-bd1e-d039b249a023/resourceGroups/ps-redisenterprise-rg-ohp2ur5g/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-30hygucx/databases/default/listKeys?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "87" ],
-        "x-ms-client-request-id": [ "9aaa69ce-d089-4e55-90b4-34221bcd6bdf" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "b1dde57e-efd9-4c7e-a50e-39b4491ca4b6" ],
         "CommandName": [ "Az.RedisEnterpriseCache.internal\\Get-AzRedisEnterpriseCacheKey" ],
         "FullCommandName": [ "Get-AzRedisEnterpriseCacheKey_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v9.7.1", "PSVersion/v7.4.5", "Az.RedisEnterpriseCache/1.0.0" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.0", "Az.RedisEnterpriseCache/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,25 +22,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "456f963d-ba50-43eb-b55d-0e6f1b429297" ],
-        "x-rp-server-mvid": [ "1524d2a5-4080-43b6-8129-46c2093aeac1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-operation-identifier": [ "tenantId=9c316ff9-a7d3-4712-be96-3804ef586c13,objectId=39b3a669-2838-4d72-acd1-f5c0dc8c6fb5/northeurope/d93320e3-d75e-4cf0-9c7a-d19de85baa06" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "bb27c343-b303-4f15-ad7e-f30c175c0d62" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20240919T080604Z:bb27c343-b303-4f15-ad7e-f30c175c0d62" ],
+        "x-rp-server-mvid": [ "4846ea4d-6beb-4c22-adc0-f642ad4fd996" ],
+        "x-ms-request-id": [ "edb10827-22a7-4a1e-aa7f-2fe5c68d4f03" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=f39f71e1-608c-4626-8485-ddf5a519b312/westindia/5bc2fd84-2fa4-46ce-8c4e-7f5dbc870791" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "557187c4-f2de-4130-b3dc-cd1349b910fd" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20250417T080807Z:557187c4-f2de-4130-b3dc-cd1349b910fd" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E82D9584B73949E6AD4E32AC223899C5 Ref B: MAA201060516019 Ref C: 2024-09-19T08:06:04Z" ],
-        "Date": [ "Thu, 19 Sep 2024 08:06:04 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 90FC8C4150554052A23EE0C20B8D2A23 Ref B: MAA201060515051 Ref C: 2025-04-17T08:08:06Z" ],
+        "Date": [ "Thu, 17 Apr 2025 08:08:06 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"primaryKey\": \"__FAKE_PRIMARY__KEY__\",\r\n  \"secondaryKey\": \"__FAKE_SECONDARY__KEY__\"\r\n}",
+      "Content": "{\r\n  \"primaryKey\": \"****\",\r\n  \"secondaryKey\": \"***\"\r\n}",
       "isContentBase64": false
     }
   }

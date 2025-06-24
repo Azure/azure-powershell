@@ -69,8 +69,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
-        /// <summary>Decides if enable a system assigned identity for the resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Decides if enable a system assigned identity for the resource.")]
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
         public System.Boolean? EnableSystemAssignedIdentity { get; set; }
 
         /// <summary>Accessor for extensibleParameters.</summary>

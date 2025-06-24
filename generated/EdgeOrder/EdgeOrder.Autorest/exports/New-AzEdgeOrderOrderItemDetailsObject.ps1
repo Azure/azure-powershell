@@ -24,7 +24,7 @@ $HierarchyInformation=New-AzEdgeOrderHierarchyInformationObject -ProductFamilyNa
 $details = New-AzEdgeOrderOrderItemDetailsObject -OrderItemType "Purchase"  -ProductDetail  @{"HierarchyInformation"=$HierarchyInformation}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemDetails
+Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderItemDetails
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -32,14 +32,14 @@ To create the parameters described below, construct a hash table containing the 
 
 PREFERENCE <IPreferences>: Customer notification Preferences.
   [EncryptionPreference <IEncryptionPreferences>]: Preferences related to the Encryption.
-    [DoubleEncryptionStatus <DoubleEncryptionStatus?>]: Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured.
+    [DoubleEncryptionStatus <String>]: Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured.
   [ManagementResourcePreference <IManagementResourcePreferences>]: Preferences related to the Management resource.
     [PreferredManagementResourceId <String>]: Customer preferred Management resource ARM ID
-  [NotificationPreference <INotificationPreference[]>]: Notification preferences.
+  [NotificationPreference <List<INotificationPreference>>]: Notification preferences.
     SendNotification <Boolean>: Notification is required or not.
-    StageName <NotificationStageName>: Name of the stage.
+    StageName <String>: Name of the stage.
   [TransportPreference <ITransportPreferences>]: Preferences related to the shipment logistics of the order.
-    PreferredShipmentType <TransportShipmentTypes>: Indicates Shipment Logistics type that the customer preferred.
+    PreferredShipmentType <String>: Indicates Shipment Logistics type that the customer preferred.
 
 PRODUCTDETAIL <IProductDetails>: Unique identifier for configuration.
   HierarchyInformation <IHierarchyInformation>: Hierarchy of the product which uniquely identifies the product
@@ -48,24 +48,23 @@ PRODUCTDETAIL <IProductDetails>: Unique identifier for configuration.
     [ProductLineName <String>]: Represents product line name that uniquely identifies product line
     [ProductName <String>]: Represents product name that uniquely identifies product
 .Link
-https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-AzEdgeOrderOrderItemDetailsObject
+https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-azedgeorderorderitemdetailsobject
 #>
 function New-AzEdgeOrderOrderItemDetailsObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemDetails])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderItemDetails])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Support.OrderItemType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.PSArgumentCompleterAttribute("Purchase", "Rental")]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Support.OrderItemType]
+    [System.String]
     # Order item type.
     ${OrderItemType},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IProductDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IProductDetails]
     # Unique identifier for configuration.
-    # To construct, see NOTES section for PRODUCTDETAIL properties and create a hash table.
     ${ProductDetail},
 
     [Parameter()]
@@ -76,9 +75,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IPreferences]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IPreferences]
     # Customer notification Preferences.
-    # To construct, see NOTES section for PREFERENCE properties and create a hash table.
     ${Preference}
 )
 
@@ -89,6 +87,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -117,6 +118,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

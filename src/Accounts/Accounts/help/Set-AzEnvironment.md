@@ -28,8 +28,9 @@ Set-AzEnvironment [-Name] <String> [[-PublishSettingsFileUrl] <String>] [[-Servi
  [-AzureAnalysisServicesEndpointResourceId <String>] [-AzureAttestationServiceEndpointSuffix <String>]
  [-AzureAttestationServiceEndpointResourceId <String>] [-AzureSynapseAnalyticsEndpointSuffix <String>]
  [-ContainerRegistryEndpointSuffix <String>] [-AzureSynapseAnalyticsEndpointResourceId <String>]
- [-MicrosoftGraphEndpointResourceId <String>] [-MicrosoftGraphUrl <String>] [-Scope <ContextModificationScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MicrosoftGraphEndpointResourceId <String>] [-MicrosoftGraphUrl <String>] [-SshAuthScope <String>]
+ [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ARMEndpoint
@@ -76,7 +77,7 @@ ActiveDirectoryServiceEndpointResourceId          : TestADApplicationId
 AdTenant                                          :
 GalleryUrl                                        : TestGalleryEndpoint
 ManagementPortalUrl                               :
-ServiceManagementUrl                              : 
+ServiceManagementUrl                              :
 PublishSettingsFileUrl                            :
 ResourceManagerUrl                                : TestRMEndpoint
 SqlDatabaseDnsSuffix                              :
@@ -594,6 +595,21 @@ Aliases:
 
 Required: False
 Position: 13
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SshAuthScope
+The scope for authentication when SSH to an Azure VM.
+
+```yaml
+Type: System.String
+Parameter Sets: Name
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

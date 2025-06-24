@@ -14,8 +14,9 @@ Creates a file share.
 ## SYNTAX
 
 ```
-New-AzStorageShare [-Name] <String> [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+New-AzStorageShare [-Name] <String> [-Protocol <String>] [-EnableSnapshotVirtualDirectoryAccess <Boolean>]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
@@ -30,6 +31,13 @@ New-AzStorageShare -Name "ContosoShare06"
 ```
 
 This command creates a file share named ContosoShare06.
+
+### Example 2: Create a file share with NFS protocol and EnableSnapshotVirtualDirectoryAccess
+```powershell
+New-AzStorageShare -Name "contososhare07" -Protocol Nfs -EnableSnapshotVirtualDirectoryAccess $true
+```
+
+This command creates a file share named contososhare07 with NFS protocol, and EnableSnapshotVirtualDirectoryAccess as true.
 
 ## PARAMETERS
 
@@ -100,6 +108,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSnapshotVirtualDirectoryAccess
+Only applicable for premium file storage accounts. Specifies whether the snapshot virtual directory should be accessible at the root of share mount point when NFS is enabled. If not specified, the default is true.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of a file share.
 This cmdlet creates a file share that has the name that this parameter specifies.
@@ -113,6 +136,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -Protocol
+The protocols to enable for the share.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

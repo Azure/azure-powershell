@@ -102,7 +102,7 @@ Restarts a server.
 Restarts a server.
 
 ### [Restore-AzMySqlFlexibleServer](Restore-AzMySqlFlexibleServer.md)
-Restore a server from an existing backup
+Restore a server from an existing backup using GeoRestore
 
 ### [Restore-AzMySqlServer](Restore-AzMySqlServer.md)
 Restore a server from an existing backup

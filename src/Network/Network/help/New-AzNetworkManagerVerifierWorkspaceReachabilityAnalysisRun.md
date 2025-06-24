@@ -13,7 +13,7 @@ To create network manager verifier workspace reachability analysis run
 ## SYNTAX
 
 ```
-New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -Name <String> -NetworkManagerName <String>
+New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun [-Name <String>] -NetworkManagerName <String>
  -ResourceGroupName <String> -VerifierWorkspaceName <String> [-Description <String>] -IntentId <String>
  [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -26,7 +26,7 @@ New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -Name <String> -Net
 
 ### Example 1
 ```powershell
-New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceGroupName "testRG"  -VerifierWorkspaceName "paigeVNV" -Name "TestReachabilityAnalysisRun3" -NetworkManagerName "testNM" -IntentId “/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/testNM/verifierWorkspaces/paigeVNV/reachabilityAnalysisIntents/test”
+New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceGroupName "testRG"  -VerifierWorkspaceName "paigeVNV" -Name "TestReachabilityAnalysisRun3" -NetworkManagerName "testNM" -IntentId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/testNM/verifierWorkspaces/paigeVNV/reachabilityAnalysisIntents/test"
 ```
 
 ```output
@@ -136,7 +136,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -233,6 +233,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun](./Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun.md)
 
 [Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun](./Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun.md)

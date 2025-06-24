@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
 {
 
-    /// <summary>Defines Hardware level encryption (Only for disk)</summary>
+    /// <summary>Hardware encryption support for a given sku for a given region.</summary>
     public partial class HardwareEncryptionTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

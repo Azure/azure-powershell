@@ -43,7 +43,7 @@ Describe 'Get-AzFrontDoorCdnRoute'  {
         -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
         -CacheConfigurationQueryParameter "a=test" `
         -CacheConfigurationIsCompressionEnabled "Enabled" `
-        -CacheConfigurationCacheBehavior "HonorOrigin"
+        -CacheConfigurationCacheBehavior "HonorOrigin" 
         $actions = @($overrideAction);
         
         $ruleName = 'ruleName010'

@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.WindowsIotServices.private.dll'
   FormatsToProcess = './Az.WindowsIotServices.format.ps1xml'
-  FunctionsToExport = 'Get-AzWindowsIotServicesDevice', 'New-AzWindowsIotServicesDevice', 'Remove-AzWindowsIotServicesDevice', 'Update-AzWindowsIotServicesDevice', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzWindowsIotServicesDevice', 'New-AzWindowsIotServicesDevice', 'Remove-AzWindowsIotServicesDevice', 'Update-AzWindowsIotServicesDevice'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'WindowsIotServices'

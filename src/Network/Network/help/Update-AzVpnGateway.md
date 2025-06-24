@@ -17,8 +17,8 @@ Updates a scalable VPN gateway.
 Update-AzVpnGateway -ResourceGroupName <String> -Name <String> [-VpnConnection <PSVpnConnection[]>]
  [-VpnGatewayNatRule <PSVpnGatewayNatRule[]>] [-VpnGatewayScaleUnit <UInt32>]
  [-BgpPeeringAddress <PSIpConfigurationBgpPeeringAddress[]>] [-EnableBgpRouteTranslationForNat <Boolean>]
- [-Tag <Hashtable>] [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Tag <Hashtable>] [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnGatewayObject
@@ -26,8 +26,8 @@ Update-AzVpnGateway -ResourceGroupName <String> -Name <String> [-VpnConnection <
 Update-AzVpnGateway -InputObject <PSVpnGateway> [-VpnConnection <PSVpnConnection[]>]
  [-VpnGatewayNatRule <PSVpnGatewayNatRule[]>] [-VpnGatewayScaleUnit <UInt32>]
  [-BgpPeeringAddress <PSIpConfigurationBgpPeeringAddress[]>] [-EnableBgpRouteTranslationForNat <Boolean>]
- [-Tag <Hashtable>] [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Tag <Hashtable>] [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnGatewayResourceId
@@ -35,8 +35,8 @@ Update-AzVpnGateway -InputObject <PSVpnGateway> [-VpnConnection <PSVpnConnection
 Update-AzVpnGateway -ResourceId <String> [-VpnConnection <PSVpnConnection[]>]
  [-VpnGatewayNatRule <PSVpnGatewayNatRule[]>] [-VpnGatewayScaleUnit <UInt32>]
  [-BgpPeeringAddress <PSIpConfigurationBgpPeeringAddress[]>] [-EnableBgpRouteTranslationForNat <Boolean>]
- [-Tag <Hashtable>] [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Tag <Hashtable>] [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

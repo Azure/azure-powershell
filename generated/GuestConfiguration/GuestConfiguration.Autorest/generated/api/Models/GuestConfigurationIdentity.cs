@@ -91,6 +91,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the guest configuration assignment.",
         SerializedName = @"guestConfigurationAssignmentName",
         PossibleTypes = new [] { typeof(string) })]
@@ -99,6 +102,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -107,6 +113,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the ARC machine.",
         SerializedName = @"machineName",
         PossibleTypes = new [] { typeof(string) })]
@@ -115,6 +124,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The guest configuration assignment name.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
@@ -123,6 +135,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The GUID for the guest configuration assignment report.",
         SerializedName = @"reportId",
         PossibleTypes = new [] { typeof(string) })]
@@ -131,6 +146,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The resource group name.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -142,6 +160,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -150,6 +171,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the virtual machine.",
         SerializedName = @"vmName",
         PossibleTypes = new [] { typeof(string) })]
@@ -158,6 +182,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the virtual machine scale set.",
         SerializedName = @"vmssName",
         PossibleTypes = new [] { typeof(string) })]

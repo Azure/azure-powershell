@@ -104,7 +104,7 @@ $customerDiskDetails = New-AzDataBoxCustomerDiskJobDetailsObject -Type "DataBoxC
 New-AzDataBoxJob -Name "testJobName2" -SubscriptionId "YourSubscriptionId" -ResourceGroupName "YourResourceGroup" -TransferType "ExportFromAzure" -Detail $customerDiskDetails -Location "westus" -SkuName "DataBoxCustomerDisk"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -184,7 +184,7 @@ DETAIL <IJobDetails>: Details of a job run. This field will only be sent for exp
 https://learn.microsoft.com/powershell/module/az.databox/new-azdataboxjob
 #>
 function New-AzDataBoxJob {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -246,7 +246,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobDetails]
     # Details of a job run.
     # This field will only be sent for expand details filter.
     # To construct, see NOTES section for DETAIL properties and create a hash table.
@@ -271,8 +271,17 @@ param(
     ${SkuFamily},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ModelName])]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ModelName]
+    # The customer friendly name of the combination of version and capacity of the device.
+    # This field is necessary only at the time of ordering the newer generation device i.e.
+    # AzureDataBox120 and AzureDataBox525 as of Feb/2025
+    ${SkuModel},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IResourceTags]))]
     [System.Collections.Hashtable]
     # The list of key value pairs that describe the resource.
     # These tags can be used in viewing and grouping this resource (across resource groups).
@@ -280,7 +289,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IResourceIdentityUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IResourceIdentityUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # User Assigned Identities
     ${UserAssignedIdentity},

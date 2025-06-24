@@ -74,7 +74,7 @@ Name                             Type
 ApplicationGroupName/DesktopName Microsoft.DesktopVirtualization/applicationgroups/desktops
 ```
 
-This command updates a Azure Virtual Desktop Desktop in an applicaton Group.
+This command updates a Azure Virtual Desktop Desktop in an application Group.
 
 ## PARAMETERS
 

@@ -205,6 +205,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                 }
                 catch (Rest.Azure.CloudException ex)
                 {
+                    WriteVerbose($"Cloud failed with exception {ex.Body?.Message}");
                     throw new StorageSyncCloudException(ex);
                 }
             }

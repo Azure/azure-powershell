@@ -26,7 +26,8 @@ New-AzApplicationGatewayUrlPathMapConfig -Name <String> -PathRules <PSApplicatio
 ```
 New-AzApplicationGatewayUrlPathMapConfig -Name <String> -PathRules <PSApplicationGatewayPathRule[]>
  -DefaultBackendAddressPoolId <String> -DefaultBackendHttpSettingsId <String>
- [-DefaultRewriteRuleSetId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultRewriteRuleSetId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### RedirectSetByResource
@@ -246,5 +247,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzApplicationGatewayUrlPathMapConfig](./Remove-AzApplicationGatewayUrlPathMapConfig.md)
 
 [Set-AzApplicationGatewayUrlPathMapConfig](./Set-AzApplicationGatewayUrlPathMapConfig.md)
-
-

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.PowerShell;
 
-    /// <summary>Frontend Subresource of Traffic Controller.</summary>
+    /// <summary>Frontend Sub Resource of Traffic Controller.</summary>
     [System.ComponentModel.TypeConverter(typeof(FrontendTypeConverter))]
     public partial class Frontend
     {
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
             return ToJsonString();
         }
     }
-    /// Frontend Subresource of Traffic Controller.
+    /// Frontend Sub Resource of Traffic Controller.
     [System.ComponentModel.TypeConverter(typeof(FrontendTypeConverter))]
     public partial interface IFrontend
 

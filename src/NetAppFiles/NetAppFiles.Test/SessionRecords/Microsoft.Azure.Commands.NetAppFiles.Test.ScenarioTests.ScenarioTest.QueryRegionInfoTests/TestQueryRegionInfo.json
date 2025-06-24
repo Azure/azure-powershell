@@ -1,18 +1,18 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/regionInfos/default?api-version=2024-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy9lYXN0dXMvcmVnaW9uSW5mb3MvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDI0LTA3LTAx",
+      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/regionInfos/default?api-version=2025-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy9lYXN0dXMvcmVnaW9uSW5mb3MvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDI1LTAxLTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "ce7c82ec-3046-4e6a-815c-0e6df588630f"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "x-ms-client-request-id": [
+          "e0dd96c2-2d2e-4d8e-94c1-0e7a7691cd8b"
+        ],
         "User-Agent": [
-          "FxVersion/6.0.3324.36610",
+          "FxVersion/8.0.1425.11118",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22631",
           "Microsoft.Azure.Management.NetApp.NetAppManagementClient/0.0.0.0"
@@ -27,13 +27,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "01b4df67-ccb9-4b92-aee0-438a66384370"
+          "9484945a-09dc-4c47-9540-637ff82d1fcb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-Powered-By": [
           "ASP.NET"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=29ee0da0-a37f-4d77-8704-0c32607c900f/northeurope/b9d51c93-af88-4e66-ae5a-3e73935de692"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -42,10 +45,10 @@
           "16499"
         ],
         "x-ms-correlation-request-id": [
-          "4d026927-6d53-4100-8c1b-7434d0d313b5"
+          "06663b88-1540-4077-85a0-d046e3d23d74"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20241022T134251Z:4d026927-6d53-4100-8c1b-7434d0d313b5"
+          "NORTHEUROPE:20250414T173231Z:06663b88-1540-4077-85a0-d046e3d23d74"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -54,10 +57,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: E2CA2D63F8344B859BD0A4E4D829AFAE Ref B: AMS231032609009 Ref C: 2024-10-22T13:42:50Z"
+          "Ref A: 6541C6F6CCF64829913E5B17DF6B2590 Ref B: AMS231032609021 Ref C: 2025-04-14T17:32:31Z"
         ],
         "Date": [
-          "Tue, 22 Oct 2024 13:42:51 GMT"
+          "Mon, 14 Apr 2025 17:32:31 GMT"
         ],
         "Content-Length": [
           "421"

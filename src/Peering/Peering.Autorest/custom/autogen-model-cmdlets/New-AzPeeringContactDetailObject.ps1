@@ -21,12 +21,13 @@ Create an in-memory object for ContactDetail.
 Create an in-memory object for ContactDetail.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ContactDetail
+Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ContactDetail
 .Link
-https://learn.microsoft.com/powershell/module/Az.Peering/new-AzPeeringContactDetailObject
+https://learn.microsoft.com/powershell/module/Az.Peering/new-azpeeringcontactdetailobject
 #>
 function New-AzPeeringContactDetailObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ContactDetail')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ContactDetail')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -37,13 +38,13 @@ function New-AzPeeringContactDetailObject {
         [string]
         $Phone,
         [Parameter(HelpMessage="The role of the contact.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.Role])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.Role]
+        [Microsoft.Azure.PowerShell.Cmdlets.Peering.PSArgumentCompleterAttribute("Noc", "Policy", "Technical", "Service", "Escalation", "Other")]
+        [string]
         $Role
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ContactDetail]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ContactDetail]::New()
 
         if ($PSBoundParameters.ContainsKey('Email')) {
             $Object.Email = $Email

@@ -990,3 +990,123 @@ function Test-GalleryImageDefinitionDefaults
     }
 }
 
+<#
+.SYNOPSIS
+#>
+function TestGen-BlockDeletionBeforeEndOfLife
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $galleryName = 'gallery' + $rgname;
+    $imageDefinitionName = 'imageDef' + $rgname;
+    $imageVersionName = '1.0.0';
+    $loc = "eastus2"
+    $vmname = "testvmgallery"
+
+    try
+    {
+
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # SimpleParameterSet, no config, scenario.
+        # create credential 
+        $password = Get-PasswordForVM;
+        $user = Get-ComputeTestResourceName;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Step 1: Create a new virtual machine in Azure
+        New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname -Credential $cred -Size "Standard_D2s_v3" -Image "Win2022AzureEdition" -SecurityType "TrustedLaunch"
+        $vm = get-azvm -ResourceGroupName $rgname -Name $vmname
+
+        # Create a gallery
+        $gallery = New-AzGallery -ResourceGroupName $rgname -Location $loc -Name $galleryName 
+
+        # Create a gallery image definition
+        $imageDef = New-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Location $loc -Name $imageDefinitionName -OsType 'Windows' -OsState 'Specialized' -Publisher 'Contoso' -Offer 'OfferName' -Sku 'SkuName' -Feature @{Name='SecurityType';Value='TrustedLaunch'}
+
+        # Test creating a gallery image version with BlockDeletionBeforeEndOfLife set to true
+        $imagever = New-AzGalleryImageVersion `
+            -GalleryImageDefinitionName $imageDef.Name `
+            -GalleryImageVersionName $imageVersionName `
+            -GalleryName $gallery.Name  `
+            -ResourceGroupName $rgname `
+            -Location $loc `
+            -SourceImageVMId $vm.Id.ToString() `
+            -PublishingProfileEndOfLifeDate '2024-12-01' `
+            -BlockDeletionBeforeEndOfLife 
+
+        Assert-AreEqual $imagever.SafetyProfile.BlockDeletionBeforeEndOfLife $True
+
+        $imagever = Update-AzGalleryImageVersion `
+            -GalleryImageDefinitionName $imageDef.Name `
+            -GalleryImageVersionName $imageVersionName `
+            -GalleryName $gallery.Name  `
+            -ResourceGroupName $rgname `
+            -BlockDeletionBeforeEndOfLife $False
+        Assert-AreEqual $imagever.SafetyProfile.BlockDeletionBeforeEndOfLife $False
+
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue;
+    }
+}
+
+<#
+.SYNOPSIS
+#>
+function TestGen-newazgallery
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $galleryName = 'gallery' + $rgname;
+    $imageDefinitionName = 'imageDef' + $rgname;
+    $imageVersionName = '1.0.0';
+    $loc = "eastus2"
+    $vmname = "vmgallerytest"
+    $domainNameLabel="123"+$rgname
+
+    try
+    {
+
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # SimpleParameterSet, no config, scenario.
+        # create credential 
+        $password = Get-PasswordForVM;
+        $user = Get-ComputeTestResourceName;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Step 1: Create a new virtual machine in Azure
+        New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname -Credential $cred -Size "Standard_D2s_v3" -Image "Win2022AzureEdition" -SecurityType "TrustedLaunch" -DomainNameLabel $domainNameLabel
+        $vm = get-azvm -ResourceGroupName $rgname -Name $vmname
+
+        # Create a gallery
+        $gallery = New-AzGallery -ResourceGroupName $rgname -Location $loc -Name $galleryName 
+
+        # Create a gallery image definition
+        $imageDef = New-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Location $loc -Name $imageDefinitionName -OsType 'Windows' -OsState 'Specialized' -Publisher 'Contoso' -Offer 'OfferName' -Sku 'SkuName' -Feature @{Name='SecurityType';Value='TrustedLaunch'}
+
+        # Test creating a gallery image version with ReplicationMode = Full
+        $imagever = New-AzGalleryImageVersion `
+            -GalleryImageDefinitionName $imageDef.Name `
+            -GalleryImageVersionName $imageVersionName `
+            -GalleryName $gallery.Name  `
+            -ResourceGroupName $rgname `
+            -Location $loc `
+            -SourceImageVMId $vm.Id.ToString() `
+            -PublishingProfileEndOfLifeDate '2030-12-01' `
+            -ReplicationMode 'Full'
+
+        Assert-AreEqual $imagever.PublishingProfile.ReplicationMode 'Full'
+
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue;
+    }
+}

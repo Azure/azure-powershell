@@ -54,21 +54,17 @@ title: ConnectedKubernetes
 module-version: 0.1.0
 subject-prefix: $(service-name)
 
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   - where:
       subject: ^ConnectedCluster(.*)
     set:
       subject: $1
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded))
+      subject-prefix: ConnectedKubernetes
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
       subject-prefix: ConnectedKubernetes
     remove: true
   - where:

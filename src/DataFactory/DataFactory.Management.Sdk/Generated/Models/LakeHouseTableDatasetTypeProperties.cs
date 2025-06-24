@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     using System.Linq;
 
     /// <summary>
-    /// Microsoft Fabric LakeHouse Table dataset properties.
+    /// Microsoft Fabric Lakehouse Table dataset properties.
     /// </summary>
     public partial class LakeHouseTableDatasetTypeProperties
     {
@@ -24,11 +24,11 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the LakeHouseTableDatasetTypeProperties class.
         /// </summary>
 
-        /// <param name="schema">The schema name of Microsoft Fabric LakeHouse Table. Type: string (or
+        /// <param name="schema">The schema name of Microsoft Fabric Lakehouse Table. Type: string (or
         /// Expression with resultType string).
         /// </param>
 
-        /// <param name="table">The name of Microsoft Fabric LakeHouse Table. Type: string (or Expression
+        /// <param name="table">The name of Microsoft Fabric Lakehouse Table. Type: string (or Expression
         /// with resultType string).
         /// </param>
         public LakeHouseTableDatasetTypeProperties(object schema = default(object), object table = default(object))
@@ -46,14 +46,14 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
 
         /// <summary>
-        /// Gets or sets the schema name of Microsoft Fabric LakeHouse Table. Type:
+        /// Gets or sets the schema name of Microsoft Fabric Lakehouse Table. Type:
         /// string (or Expression with resultType string).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "schema")]
         public object Schema {get; set; }
 
         /// <summary>
-        /// Gets or sets the name of Microsoft Fabric LakeHouse Table. Type: string (or
+        /// Gets or sets the name of Microsoft Fabric Lakehouse Table. Type: string (or
         /// Expression with resultType string).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "table")]

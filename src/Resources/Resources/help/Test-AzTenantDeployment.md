@@ -14,121 +14,127 @@ Validates a deployment at tenant scope.
 
 ### ByTemplateFileWithNoParameters (Default)
 ```
-Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>] -TemplateFile <String>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>] [-ValidationLevel <String>]
+ [-SuppressDiagnostics] -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterObject
 ```
-Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>]
- -TemplateParameterObject <Hashtable> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>] [-ValidationLevel <String>]
+ [-SuppressDiagnostics] -TemplateParameterObject <Hashtable> -TemplateObject <Hashtable>
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterObject
 ```
-Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>]
- -TemplateParameterObject <Hashtable> -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>] [-ValidationLevel <String>]
+ [-SuppressDiagnostics] -TemplateParameterObject <Hashtable> -TemplateFile <String>
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterObject
 ```
-Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>]
- -TemplateParameterObject <Hashtable> -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>] [-ValidationLevel <String>]
+ [-SuppressDiagnostics] -TemplateParameterObject <Hashtable> -TemplateUri <String>
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateSpecResourceIdAndParamsObject
 ```
-Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>]
- -TemplateParameterObject <Hashtable> -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>] [-ValidationLevel <String>]
+ [-SuppressDiagnostics] -TemplateParameterObject <Hashtable> -TemplateSpecId <String>
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterFile
 ```
-Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>]
- -TemplateParameterFile <String> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>] [-ValidationLevel <String>]
+ [-SuppressDiagnostics] -TemplateParameterFile <String> -TemplateObject <Hashtable>
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterFile
 ```
-Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>]
- -TemplateParameterFile <String> -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>] [-ValidationLevel <String>]
+ [-SuppressDiagnostics] -TemplateParameterFile <String> -TemplateFile <String> [-SkipTemplateParameterPrompt]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterFile
 ```
-Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>]
- -TemplateParameterFile <String> -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>] [-ValidationLevel <String>]
+ [-SuppressDiagnostics] -TemplateParameterFile <String> -TemplateUri <String> [-SkipTemplateParameterPrompt]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecResourceIdAndParams
 ```
-Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>]
- -TemplateParameterFile <String> -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>] [-ValidationLevel <String>]
+ [-SuppressDiagnostics] -TemplateParameterFile <String> -TemplateSpecId <String> [-SkipTemplateParameterPrompt]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByParameterFileWithNoTemplate
 ```
-Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>]
- -TemplateParameterFile <String> [-SkipTemplateParameterPrompt] [-Pre]
+Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>] [-ValidationLevel <String>]
+ [-SuppressDiagnostics] -TemplateParameterFile <String> [-SkipTemplateParameterPrompt] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterUri
 ```
-Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>]
- -TemplateParameterUri <String> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>] [-ValidationLevel <String>]
+ [-SuppressDiagnostics] -TemplateParameterUri <String> -TemplateObject <Hashtable>
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterUri
 ```
-Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>]
- -TemplateParameterUri <String> -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>] [-ValidationLevel <String>]
+ [-SuppressDiagnostics] -TemplateParameterUri <String> -TemplateFile <String> [-SkipTemplateParameterPrompt]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterUri
 ```
-Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>]
- -TemplateParameterUri <String> -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>] [-ValidationLevel <String>]
+ [-SuppressDiagnostics] -TemplateParameterUri <String> -TemplateUri <String> [-SkipTemplateParameterPrompt]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecResourceIdAndParamsUri
 ```
-Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>]
- -TemplateParameterUri <String> -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>] [-ValidationLevel <String>]
+ [-SuppressDiagnostics] -TemplateParameterUri <String> -TemplateSpecId <String> [-SkipTemplateParameterPrompt]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectWithNoParameters
 ```
-Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>] -TemplateObject <Hashtable>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>] [-ValidationLevel <String>]
+ [-SuppressDiagnostics] -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithNoParameters
 ```
-Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>] -TemplateUri <String>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>] [-ValidationLevel <String>]
+ [-SuppressDiagnostics] -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecResourceId
 ```
-Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>] -TemplateSpecId <String>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>] [-ValidationLevel <String>]
+ [-SuppressDiagnostics] -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -254,6 +260,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SuppressDiagnostics
+When set, validation diagnostics will not be shown for valid deployments.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TemplateFile
 Local path to the template file. Supported template file type: json and bicep.
 
@@ -356,6 +377,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ValidationLevel
+Sets the validation level for validate/what-if. ValidationLevel can be Template(Skips provider validation), Provider(Performs full validation), or ProviderNoRbac(Performs full validation using RBAC read checks instead of RBAC write checks for provider validation).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None(Provider)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

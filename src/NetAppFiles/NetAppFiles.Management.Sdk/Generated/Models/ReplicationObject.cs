@@ -44,7 +44,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="remoteVolumeRegion">The remote region for the other end of the Volume Replication.
         /// </param>
-        public ReplicationObject(string replicationId = default(string), string endpointType = default(string), string replicationSchedule = default(string), string remoteVolumeResourceId = default(string), RemotePath remotePath = default(RemotePath), string remoteVolumeRegion = default(string))
+
+        /// <param name="destinationReplications">A list of destination replications
+        /// </param>
+        public ReplicationObject(string replicationId = default(string), string endpointType = default(string), string replicationSchedule = default(string), string remoteVolumeResourceId = default(string), RemotePath remotePath = default(RemotePath), string remoteVolumeRegion = default(string), System.Collections.Generic.IList<DestinationReplication> destinationReplications = default(System.Collections.Generic.IList<DestinationReplication>))
 
         {
             this.ReplicationId = replicationId;
@@ -53,6 +56,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.RemoteVolumeResourceId = remoteVolumeResourceId;
             this.RemotePath = remotePath;
             this.RemoteVolumeRegion = remoteVolumeRegion;
+            this.DestinationReplications = destinationReplications;
             CustomInit();
         }
 
@@ -100,6 +104,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "remoteVolumeRegion")]
         public string RemoteVolumeRegion {get; set; }
+
+        /// <summary>
+        /// Gets a list of destination replications
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "destinationReplications")]
+        public System.Collections.Generic.IList<DestinationReplication> DestinationReplications {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -116,6 +126,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             {
                 this.RemotePath.Validate();
             }
+
 
         }
     }

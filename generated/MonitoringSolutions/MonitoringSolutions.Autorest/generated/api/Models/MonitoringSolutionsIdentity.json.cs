@@ -76,15 +76,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_solutionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("solutionName"), out var __jsonSolutionName) ? (string)__jsonSolutionName : (string)SolutionName;}
-            {_providerName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("providerName"), out var __jsonProviderName) ? (string)__jsonProviderName : (string)ProviderName;}
-            {_resourceType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("resourceType"), out var __jsonResourceType) ? (string)__jsonResourceType : (string)ResourceType;}
-            {_resourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("resourceName"), out var __jsonResourceName) ? (string)__jsonResourceName : (string)ResourceName;}
-            {_managementAssociationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("managementAssociationName"), out var __jsonManagementAssociationName) ? (string)__jsonManagementAssociationName : (string)ManagementAssociationName;}
-            {_managementConfigurationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("managementConfigurationName"), out var __jsonManagementConfigurationName) ? (string)__jsonManagementConfigurationName : (string)ManagementConfigurationName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_solutionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("solutionName"), out var __jsonSolutionName) ? (string)__jsonSolutionName : (string)_solutionName;}
+            {_providerName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("providerName"), out var __jsonProviderName) ? (string)__jsonProviderName : (string)_providerName;}
+            {_resourceType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("resourceType"), out var __jsonResourceType) ? (string)__jsonResourceType : (string)_resourceType;}
+            {_resourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("resourceName"), out var __jsonResourceName) ? (string)__jsonResourceName : (string)_resourceName;}
+            {_managementAssociationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("managementAssociationName"), out var __jsonManagementAssociationName) ? (string)__jsonManagementAssociationName : (string)_managementAssociationName;}
+            {_managementConfigurationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("managementConfigurationName"), out var __jsonManagementConfigurationName) ? (string)__jsonManagementConfigurationName : (string)_managementConfigurationName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

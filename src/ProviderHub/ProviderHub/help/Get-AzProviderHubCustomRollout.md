@@ -24,6 +24,12 @@ Get-AzProviderHubCustomRollout -ProviderNamespace <String> -RolloutName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityProviderRegistration
+```
+Get-AzProviderHubCustomRollout -RolloutName <String> -ProviderRegistrationInputObject <IProviderHubIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzProviderHubCustomRollout -InputObject <IProviderHubIdentity> [-DefaultProfile <PSObject>]
@@ -37,7 +43,7 @@ Gets the custom rollout details.
 
 ### Example 1: Get a custom rollout by rollout name.
 ```powershell
-Get-AzProviderHubCustomRollout -ProviderNamespace "Microsft.Contoso" -RolloutName "customRollout1"
+Get-AzProviderHubCustomRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "customRollout1"
 ```
 
 ```output
@@ -68,7 +74,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
@@ -97,12 +102,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProviderRegistrationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
+Parameter Sets: GetViaIdentityProviderRegistration
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -RolloutName
 The rollout name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityProviderRegistration
 Aliases:
 
 Required: True
@@ -136,7 +156,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICustomRollout
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ICustomRollout
 
 ## NOTES
 

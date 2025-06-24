@@ -42,14 +42,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         /// <summary>Internal Acessors for NetworkSecurityPerimeter</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeter Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal.NetworkSecurityPerimeter { get => (this._networkSecurityPerimeter = this._networkSecurityPerimeter ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.NetworkSecurityPerimeter()); set { {_networkSecurityPerimeter = value;} } }
 
+        /// <summary>Internal Acessors for NetworkSecurityPerimeterGuid</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal.NetworkSecurityPerimeterGuid { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterInternal)NetworkSecurityPerimeter).PerimeterGuid; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterInternal)NetworkSecurityPerimeter).PerimeterGuid = value; }
+
+        /// <summary>Internal Acessors for NetworkSecurityPerimeterId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal.NetworkSecurityPerimeterId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterInternal)NetworkSecurityPerimeter).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterInternal)NetworkSecurityPerimeter).Id = value; }
+
+        /// <summary>Internal Acessors for NetworkSecurityPerimeterLocation</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal.NetworkSecurityPerimeterLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterInternal)NetworkSecurityPerimeter).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterInternal)NetworkSecurityPerimeter).Location = value; }
+
         /// <summary>Internal Acessors for ParentAssociationName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal.ParentAssociationName { get => this._parentAssociationName; set { {_parentAssociationName = value;} } }
 
         /// <summary>Internal Acessors for Profile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesProfile Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal.Profile { get => (this._profile = this._profile ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.NetworkSecurityPerimeterConfigurationPropertiesProfile()); set { {_profile = value;} } }
 
+        /// <summary>Internal Acessors for ProfileAccessRule</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRule> Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal.ProfileAccessRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesProfileInternal)Profile).AccessRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesProfileInternal)Profile).AccessRule = value; }
+
+        /// <summary>Internal Acessors for ProfileAccessRulesVersion</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal.ProfileAccessRulesVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesProfileInternal)Profile).AccessRulesVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesProfileInternal)Profile).AccessRulesVersion = value; }
+
+        /// <summary>Internal Acessors for ProfileName</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal.ProfileName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesProfileInternal)Profile).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesProfileInternal)Profile).Name = value; }
+
         /// <summary>Internal Acessors for ResourceAssociation</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesResourceAssociation Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal.ResourceAssociation { get => (this._resourceAssociation = this._resourceAssociation ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation()); set { {_resourceAssociation = value;} } }
+
+        /// <summary>Internal Acessors for ResourceAssociationAccessMode</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal.ResourceAssociationAccessMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesResourceAssociationInternal)ResourceAssociation).AccessMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesResourceAssociationInternal)ResourceAssociation).AccessMode = value; }
+
+        /// <summary>Internal Acessors for ResourceAssociationName</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal.ResourceAssociationName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesResourceAssociationInternal)ResourceAssociation).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesResourceAssociationInternal)ResourceAssociation).Name = value; }
 
         /// <summary>Internal Acessors for SourceResourceId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal.SourceResourceId { get => this._sourceResourceId; set { {_sourceResourceId = value;} } }
@@ -63,15 +87,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 
         /// <summary>Guid of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public string NetworkSecurityPerimeterGuid { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterInternal)NetworkSecurityPerimeter).PerimeterGuid; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterInternal)NetworkSecurityPerimeter).PerimeterGuid = value ?? null; }
+        public string NetworkSecurityPerimeterGuid { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterInternal)NetworkSecurityPerimeter).PerimeterGuid; }
 
         /// <summary>Fully qualified identifier of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public string NetworkSecurityPerimeterId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterInternal)NetworkSecurityPerimeter).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterInternal)NetworkSecurityPerimeter).Id = value ?? null; }
+        public string NetworkSecurityPerimeterId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterInternal)NetworkSecurityPerimeter).Id; }
 
         /// <summary>Location of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public string NetworkSecurityPerimeterLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterInternal)NetworkSecurityPerimeter).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterInternal)NetworkSecurityPerimeter).Location = value ?? null; }
+        public string NetworkSecurityPerimeterLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterInternal)NetworkSecurityPerimeter).Location; }
 
         /// <summary>Backing field for <see cref="ParentAssociationName" /> property.</summary>
         private string _parentAssociationName;
@@ -89,15 +113,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 
         /// <summary>List of Access Rules</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRule> ProfileAccessRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesProfileInternal)Profile).AccessRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesProfileInternal)Profile).AccessRule = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRule> ProfileAccessRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesProfileInternal)Profile).AccessRule; }
 
         /// <summary>Current access rules version</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public string ProfileAccessRulesVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesProfileInternal)Profile).AccessRulesVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesProfileInternal)Profile).AccessRulesVersion = value ?? null; }
+        public string ProfileAccessRulesVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesProfileInternal)Profile).AccessRulesVersion; }
 
         /// <summary>Name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public string ProfileName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesProfileInternal)Profile).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesProfileInternal)Profile).Name = value ?? null; }
+        public string ProfileName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesProfileInternal)Profile).Name; }
 
         /// <summary>Backing field for <see cref="ProvisioningIssue" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProvisioningIssue> _provisioningIssue;
@@ -122,11 +146,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 
         /// <summary>Access Mode of the resource association</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public string ResourceAssociationAccessMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesResourceAssociationInternal)ResourceAssociation).AccessMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesResourceAssociationInternal)ResourceAssociation).AccessMode = value ?? null; }
+        public string ResourceAssociationAccessMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesResourceAssociationInternal)ResourceAssociation).AccessMode; }
 
         /// <summary>Name of the resource association</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public string ResourceAssociationName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesResourceAssociationInternal)ResourceAssociation).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesResourceAssociationInternal)ResourceAssociation).Name = value ?? null; }
+        public string ResourceAssociationName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeterConfigurationPropertiesResourceAssociationInternal)ResourceAssociation).Name; }
 
         /// <summary>Backing field for <see cref="SourceResourceId" /> property.</summary>
         private string _sourceResourceId;

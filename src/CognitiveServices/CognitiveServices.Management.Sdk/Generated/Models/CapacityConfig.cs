@@ -35,13 +35,17 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
 
         /// <param name="defaultProperty">The default capacity.
         /// </param>
-        public CapacityConfig(int? minimum = default(int?), int? maximum = default(int?), int? step = default(int?), int? defaultProperty = default(int?))
+
+        /// <param name="allowedValues">The array of allowed values for capacity.
+        /// </param>
+        public CapacityConfig(int? minimum = default(int?), int? maximum = default(int?), int? step = default(int?), int? defaultProperty = default(int?), System.Collections.Generic.IList<int?> allowedValues = default(System.Collections.Generic.IList<int?>))
 
         {
             this.Minimum = minimum;
             this.Maximum = maximum;
             this.Step = step;
             this.DefaultProperty = defaultProperty;
+            this.AllowedValues = allowedValues;
             CustomInit();
         }
 
@@ -74,5 +78,11 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "default")]
         public int? DefaultProperty {get; set; }
+
+        /// <summary>
+        /// Gets or sets the array of allowed values for capacity.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "allowedValues")]
+        public System.Collections.Generic.IList<int?> AllowedValues {get; set; }
     }
 }

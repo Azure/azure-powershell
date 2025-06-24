@@ -368,6 +368,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string Premium_ZRS = "Premium_ZRS";
 
         /// <summary>
+        ///     Represents PremiumV2_LRS storage account.
+        /// </summary>
+        public const string PremiumV2_LRS = "PremiumV2_LRS";
+
+        /// <summary>
+        ///     Represents UltraSSD_LRS storage account.
+        /// </summary>
+        public const string UltraSSD_LRS = "UltraSSD_LRS";
+        /// <summary>
         ///     Represents primary location.
         /// </summary>
         public const string PrimaryLocation = "Primary";

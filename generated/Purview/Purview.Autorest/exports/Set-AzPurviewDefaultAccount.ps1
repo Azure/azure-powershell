@@ -23,59 +23,72 @@ Sets the default account for the scope.
 Set-AzPurviewDefaultAccount -AccountName test-pa -ResourceGroupName test-rg -ScopeTenantId xxxxxxxx-38d6-4fb2-bad9-b7b93a3e9c5a
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload
+Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IDefaultAccountPayload
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/set-azpurviewdefaultaccount
 #>
 function Set-AzPurviewDefaultAccount {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IDefaultAccountPayload])]
 [CmdletBinding(DefaultParameterSetName='SetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='SetExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
     [System.String]
     # The name of the account that is set as the default.
     ${AccountName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='SetExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
     [System.String]
     # The resource group name of the account that is set as the default.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='SetExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
     [System.String]
     # The scope tenant in which the default account is set.
     ${ScopeTenantId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='SetExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
     [System.String]
     # The scope object ID.
     # For example, sub ID or tenant ID.
     ${Scope},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScopeType])]
+    [Parameter(ParameterSetName='SetExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.PSArgumentCompleterAttribute("Tenant", "Subscription")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScopeType]
+    [System.String]
     # The scope where the default account is set.
     ${ScopeType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='SetExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The subscription ID of the account that is set as the default.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='SetViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Set operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='SetViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
+    [System.String]
+    # Json string supplied to the Set operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -125,6 +138,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -145,10 +167,10 @@ begin {
 
         $mapping = @{
             SetExpanded = 'Az.Purview.custom\Set-AzPurviewDefaultAccount';
+            SetViaJsonFilePath = 'Az.Purview.custom\Set-AzPurviewDefaultAccount';
+            SetViaJsonString = 'Az.Purview.custom\Set-AzPurviewDefaultAccount';
         }
-        if (('SetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('SetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -162,6 +184,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

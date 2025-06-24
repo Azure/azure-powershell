@@ -17,13 +17,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzAksMaintenanceConfigura
 Describe 'New-AzAksMaintenanceConfiguration' {
     It 'CreateExpanded' {
         $MaintenanceConfigName = 'aks_maintenance_config'
-        $TimeSpan = New-AzAksTimeSpanObject -Start (Get-Date -Year 2023 -Month 3 -Day 1) -End (Get-Date -Year 2023 -Month 3 -Day 2)
+        $TimeSpan = New-AzAksTimeSpanObject -Start (Get-Date -Year 2025 -Month 4 -Day 29) -End (Get-Date -Year 2025 -Month 5 -Day 2)
         $TimeInWeek = New-AzAksTimeInWeekObject -Day 'Sunday' -HourSlot 1,2
         $MaintenanceConfig = New-AzAksMaintenanceConfiguration -ResourceGroupName $env.ResourceGroupName -ResourceName $env.AksName -ConfigName $MaintenanceConfigName -TimeInWeek $TimeInWeek -NotAllowedTime $TimeSpan
         
         $MaintenanceConfig.Name | Should -Be $MaintenanceConfigName
-        $MaintenanceConfig.NotAllowedTime.Start.ToString("M/d/yyyy") | Should -Be '3/1/2023'
-        $MaintenanceConfig.NotAllowedTime.End.ToString("M/d/yyyy") | Should -Be '3/2/2023'
+        $MaintenanceConfig.NotAllowedTime.Start.ToString("M-d-yyyy") | Should -Be '4-29-2025'
+        $MaintenanceConfig.NotAllowedTime.End.ToString("M-d-yyyy") | Should -Be '5-2-2025'
         $MaintenanceConfig.TimeInWeek.Day | Should -Be 'Sunday'
         $MaintenanceConfig.TimeInWeek.HourSlot.Count | Should -Be 2
         $MaintenanceConfig.TimeInWeek.HourSlot.Contains(1) | Should -Be $true

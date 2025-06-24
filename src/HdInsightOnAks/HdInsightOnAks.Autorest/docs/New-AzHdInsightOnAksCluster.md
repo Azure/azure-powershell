@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzHdInsightOnAksCluster
 
 ## SYNOPSIS
-Create a cluster.
+create a cluster.
 
 ## SYNTAX
 
@@ -173,7 +173,7 @@ New-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName
 ```
 
 ## DESCRIPTION
-Create a cluster.
+create a cluster.
 
 ## EXAMPLES
 
@@ -1197,7 +1197,7 @@ Accept wildcard characters: False
 
 ### -HiveMetastoreDbConnectionAuthenticationMode
 The authentication mode to connect to your Hive metastore database.
-More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manageview=azuresql#authentication-and-authorization
+More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
 
 ```yaml
 Type: System.String
@@ -1577,7 +1577,7 @@ Accept wildcard characters: False
 
 ### -MetastoreSpecDbConnectionAuthenticationMode
 The authentication mode to connect to your Hive metastore database.
-More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manageview=azuresql#authentication-and-authorization
+More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
 
 ```yaml
 Type: System.String

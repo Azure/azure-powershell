@@ -21,12 +21,13 @@ New-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> [-Subs
  [-MarketplaceDetailSubscriptionStatus <String>] [-OfferDetailOfferId <String>] [-OfferDetailPlanId <String>]
  [-OfferDetailPlanName <String>] [-OfferDetailPublisherId <String>] [-OfferDetailTermId <String>]
  [-OfferDetailTermUnit <String>] [-PartnerOrganizationPropertyOrganizationId <String>]
- [-PartnerOrganizationPropertyOrganizationName <String>] [-SingleSignOnPropertyAadDomain <String[]>]
- [-SingleSignOnPropertyEnterpriseAppId <String>] [-SingleSignOnPropertySingleSignOnState <String>]
- [-SingleSignOnPropertySingleSignOnUrl <String>] [-Tag <Hashtable>] [-UserDetailEmailAddress <String>]
- [-UserDetailFirstName <String>] [-UserDetailLastName <String>] [-UserDetailPhoneNumber <String>]
- [-UserDetailUpn <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PartnerOrganizationPropertyOrganizationName <String>] [-ProjectProperty <IProjectProperties>]
+ [-SingleSignOnPropertyAadDomain <String[]>] [-SingleSignOnPropertyEnterpriseAppId <String>]
+ [-SingleSignOnPropertySingleSignOnState <String>] [-SingleSignOnPropertySingleSignOnUrl <String>]
+ [-Tag <Hashtable>] [-UserDetailEmailAddress <String>] [-UserDetailFirstName <String>]
+ [-UserDetailLastName <String>] [-UserDetailPhoneNumber <String>] [-UserDetailUpn <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -436,6 +437,21 @@ Organization name in partner's system
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProjectProperty
+Neon Project Properties
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectProperties
 Parameter Sets: CreateExpanded
 Aliases:
 
