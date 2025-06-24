@@ -28,7 +28,7 @@ Describe 'Restore-AzCloudHsm' {
     }
 
     It 'Restore' -skip {
-        #We must skip this test because we need activated resource and this operations can only be executed once per resource. 
+        #We must skip this test because we need activated resource and this operations can only be executed once per resource. Additional manuall steps must be completed from the dev for this test to run. Run this test locally and then skip. 
         $restore = Restore-AzCloudHsm -ClusterName chsm1 -ResourceGroupName ps-test -BlobContainerUri "https://pstestbackup.blob.core.windows.net/testbackup" -backupId cloudhsm-eb0e0bf9-9d12-4201-b38c-567c8a452dd5-2025061208354444
         $restore.status.Contains("Succeeded") | Should -Be $true
     }

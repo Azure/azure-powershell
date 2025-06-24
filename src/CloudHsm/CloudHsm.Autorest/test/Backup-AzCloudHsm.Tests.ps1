@@ -27,7 +27,8 @@ Describe 'Backup-AzCloudHsm' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Backup' {
+    It 'Backup' -skip {
+        #We must skip this test because we need activated resource. The resource must be activated manually be the dev, so we cannot run these test as part of the pipeline. Run this test locally and then skip. 
         $backup = Backup-AzCloudHsm -ClusterName chsm1 -ResourceGroupName ps-test -BlobContainerUri "https://pstestbackup.blob.core.windows.net/testbackup"
         $backup.status.Contains("Succeeded") | Should -Be $true
     }
