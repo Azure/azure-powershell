@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed incorrect help documents for MongoDB cmdlets.
 
 ## Version 1.18.0
 * Added support for creating containers with Vector Embedding Policy.
