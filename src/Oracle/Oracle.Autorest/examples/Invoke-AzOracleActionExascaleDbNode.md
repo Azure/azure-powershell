@@ -7,7 +7,7 @@ $stopActionName = "Stop"
 $dbNodeList = Get-AzOracleExascaleDbNode -Exadbvmclustername $vmClusterName -ResourceGroupName $resourceGroup
 $dbNodeOcid1 = $dbNodeList[0].Name
             
-Invoke-AzOracleActionExascaleDbNode  -ExadbVMClusterName $vmClusterName -Name  $dbNodeOcid1 -ResourceGroupName $resourceGroup -Action $stopActionName
+Invoke-AzOracleActionExascaleDbNode -ExadbVMClusterName $vmClusterName -ExascaleDbNodeName $dbNodeOcid1 -ResourceGroupName $resourceGroup -Action $stopActionName
 ```
 
 ```output
