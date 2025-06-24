@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Removed unavailable variant Get-AzRoleEligibleChildResource cmdlet for InputObject parameter.
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
 * Fixed empty warning output issue for cmdlet `Test-AzResourceGroupDeployment` [#27888]
 
 ## Version 8.0.0
