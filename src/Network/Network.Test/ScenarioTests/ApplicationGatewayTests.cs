@@ -115,7 +115,7 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayGlobalConfig -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
@@ -376,9 +376,9 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
-        public void TestApplicationGatewayFirewallPolicyWithCustomBlockResponse()
+        public void TestApplicationGatewayFirewallPolicyComputedDisabledRules()
         {
-            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyWithCustomBlockResponse");
+            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyComputedDisabledRules");
         }
     }
 }

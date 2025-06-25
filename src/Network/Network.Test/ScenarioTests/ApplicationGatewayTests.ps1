@@ -5769,3 +5769,239 @@ function Test-ApplicationGatewayHeaderValueMatcher
 		Clean-ResourceGroup $rgname
 	}
 }
+
+<#
+.SYNOPSIS
+Tests WAF Policy ComputedDisabledRules functionality (presence and content) with comprehensive validation
+#>
+function Test-ApplicationGatewayFirewallPolicyComputedDisabledRules
+{
+    # Setup
+    $location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US"
+    $rgname = Get-ResourceGroupName
+    $wafPolicyName = Get-ResourceName
+
+    try
+    {
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+
+        # Create a basic WAF policy for testing
+        $policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70
+        $managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
+        $managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet
+        New-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule -PolicySetting $policySettings
+
+        # Get the initial policy
+        $policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+
+        # Validate initial state - ComputedDisabledRules should exist but may be empty initially
+        Assert-NotNull $policy.ManagedRules "ManagedRules should not be null"
+        Assert-NotNull $policy.ManagedRules.ManagedRuleSets "ManagedRuleSets should not be null"
+        Assert-AreEqual $policy.ManagedRules.ManagedRuleSets.Count 1 "Should have exactly one managed rule set"
+
+		# Test Scenario 1: Create a WAF policy with default OWASP 3.2 rules and validate ComputedDisabledRules are correctly populated from Manifest
+        Write-Host "Testing Scenario 1: Validate ComputedDisabledRules are correctly populated from the Manifest"
+
+		# Get the dynamic manifest to understand default disabled rules
+		$manifest = Get-AzApplicationGatewayWafDynamicManifest -Location $location
+		Assert-NotNull $manifest "Dynamic manifest should not be null"
+		Assert-NotNull $manifest.AvailableRuleSets "Available rule sets should not be null"
+
+		# Find the OWASP 3.2 rule set in the manifest
+		$owaspRuleSet = $manifest.AvailableRuleSets | Where-Object { $_.RuleSetType -eq "OWASP" -and $_.RuleSetVersion -eq "3.2" }
+		Assert-NotNull $owaspRuleSet "OWASP 3.2 rule set should be available in manifest"
+
+		# Get default disabled rules from manifest
+		$expectedDefaultDisabledRules = @()
+		foreach ($ruleGroup in $owaspRuleSet.RuleGroups) {
+			foreach ($rule in $ruleGroup.Rules) {
+				if ($rule.State -eq "Disabled") {
+					$expectedDefaultDisabledRules += @{
+						RuleGroupName = $ruleGroup.RuleGroupName
+						RuleId = $rule.RuleId
+					}
+				}
+			}
+		}
+
+		# Validate that ComputedDisabledRules initially contains exactly the default disabled rules from manifest
+		$ruleSet = $policy.ManagedRules.ManagedRuleSets[0]
+		$actualDisabledRuleCount = 0
+		if ($ruleSet.ComputedDisabledRules) {
+			foreach ($ruleGroup in $ruleSet.ComputedDisabledRules) {
+				if ($ruleGroup.Rules) {
+					$actualDisabledRuleCount += $ruleGroup.Rules.Count
+				}
+			}
+		}
+
+		Assert-AreEqual $expectedDefaultDisabledRules.Count $actualDisabledRuleCount "ComputedDisabledRules should initially contain exactly the default disabled rules from manifest"
+		Write-Host "Initial validation: ComputedDisabledRules contains $actualDisabledRuleCount disabled rules matching manifest defaults"
+
+		# Verify each expected default disabled rule is present in ComputedDisabledRules
+		foreach ($expectedRule in $expectedDefaultDisabledRules) {
+			$computedGroup = $ruleSet.ComputedDisabledRules | Where-Object { $_.RuleGroupName -eq $expectedRule.RuleGroupName }
+			Assert-NotNull $computedGroup "Rule group $($expectedRule.RuleGroupName) should exist in ComputedDisabledRules"
+			
+			$computedRule = $computedGroup.Rules | Where-Object { $_.RuleId -eq $expectedRule.RuleId }
+			Assert-NotNull $computedRule "Default disabled rule $($expectedRule.RuleId) should exist in ComputedDisabledRules"
+			Assert-AreEqual $computedRule.State "Disabled" "Default disabled rule should have State = Disabled"
+		}
+
+		Write-Host "Scenario 1 passed: ComputedDisabledRules correctly populated from manifest"
+        
+        # Test Scenario 2: Add a rule override with disabled state and verify it appears in ComputedDisabledRules
+        Write-Host "Testing Scenario 2: Override rule with disabled state"
+        
+        # Find the REQUEST-920-PROTOCOL-ENFORCEMENT rule group
+        $protocolGroup = $owaspRuleSet.RuleGroups | Where-Object { $_.RuleGroupName -eq "REQUEST-920-PROTOCOL-ENFORCEMENT" }
+        Assert-NotNull $protocolGroup "REQUEST-920-PROTOCOL-ENFORCEMENT rule group should exist in manifest"
+        
+        # Find rule 920420 in the manifest
+        $targetRule = $protocolGroup.Rules | Where-Object { $_.RuleId -eq "920420" }
+        Assert-NotNull $targetRule "Rule 920420 should exist in REQUEST-920-PROTOCOL-ENFORCEMENT group"
+
+        $ruleOverride = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId 920420 -State Disabled
+        $ruleGroupOverride = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName "REQUEST-920-PROTOCOL-ENFORCEMENT" -Rule $ruleOverride
+        $updatedManagedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2" -RuleGroupOverride $ruleGroupOverride
+        $updatedManagedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $updatedManagedRuleSet
+        
+        $policy.ManagedRules = $updatedManagedRule
+        Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
+        
+        # Get the updated policy and verify ComputedDisabledRules
+        $updatedPolicy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+        $updatedRuleSet = $updatedPolicy.ManagedRules.ManagedRuleSets[0]
+        
+        Assert-NotNull $updatedRuleSet.ComputedDisabledRules "ComputedDisabledRules should not be null after override"
+        
+        # Find the disabled rule in ComputedDisabledRules
+        $disabledProtocolGroup = $updatedRuleSet.ComputedDisabledRules | Where-Object { $_.RuleGroupName -eq "REQUEST-920-PROTOCOL-ENFORCEMENT" }
+        Assert-NotNull $disabledProtocolGroup "REQUEST-920-PROTOCOL-ENFORCEMENT group should appear in ComputedDisabledRules"
+        
+		$disabledRule = $disabledProtocolGroup.Rules | Where-Object { $_ -eq "920420" }
+		Assert-NotNull $disabledRule "Rule 920420 should appear in ComputedDisabledRules when overridden as disabled"
+        
+        Write-Host "Scenario 2 passed: Disabled override rule appears in ComputedDisabledRules"
+        
+        # Test Scenario 3: Remove all overrides and verify the rule is removed from ComputedDisabledRules
+        Write-Host "Testing Scenario 3: Remove overrides and verify rule removal from ComputedDisabledRules"
+        
+        # Create a policy with no overrides (clean managed rule set)
+        $cleanManagedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
+        $cleanManagedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $cleanManagedRuleSet
+        
+        $policy.ManagedRules = $cleanManagedRule
+        Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
+        
+        # Get the policy after removing overrides
+        $cleanPolicy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+        $cleanRuleSet = $cleanPolicy.ManagedRules.ManagedRuleSets[0]
+        
+        Assert-NotNull $cleanRuleSet.ComputedDisabledRules "ComputedDisabledRules should not be null after removing overrides"
+        
+        # Verify that rule 920420 is no longer in ComputedDisabledRules (if it's not disabled by default in manifest)
+        $cleanProtocolGroup = $cleanRuleSet.ComputedDisabledRules | Where-Object { $_.RuleGroupName -eq "REQUEST-920-PROTOCOL-ENFORCEMENT" }
+        if ($cleanProtocolGroup) {
+            $removedRule = $cleanProtocolGroup.Rules | Where-Object { $_ -eq "920420" }
+            
+            # Check if the rule was disabled by default in the manifest
+            $isDefaultDisabled = $targetRule.State -eq "Disabled"
+            
+            if ($isDefaultDisabled) {
+                Assert-NotNull $removedRule "Rule 920420 should still appear in ComputedDisabledRules because it's disabled by default in manifest"
+                Write-Host "Rule 920420 remains in ComputedDisabledRules because it's disabled by default in manifest"
+            } else {
+                Assert-Null $removedRule "Rule 920420 should NOT appear in ComputedDisabledRules after removing disabled override (not disabled by default)"
+                Write-Host "Rule 920420 successfully removed from ComputedDisabledRules after removing override"
+            }
+        } else {
+            # If no REQUEST-920-PROTOCOL-ENFORCEMENT group exists in ComputedDisabledRules, the rule is definitely not there
+            if ($targetRule.State -ne "Disabled") {
+                Write-Host "REQUEST-920-PROTOCOL-ENFORCEMENT group not found in ComputedDisabledRules - rule 920420 successfully removed"
+            }
+        }
+        
+        Write-Host "Scenario 3 passed: Override removal correctly updates ComputedDisabledRules"
+        
+        # Test Scenario 4: Test the computed logic (Disabled Overrides ∪ Default Disabled - Enabled Overrides). 
+		# The intereseting case is where Default Disabled Rules exist in Manifest but there's an Enabled Override.
+        Write-Host "Testing Scenario 4: Computed logic with enabled override"
+        
+        # Add an enabled override for rule 920420
+        $enabledRuleOverride = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId 920420 -State Enabled
+        $enabledRuleGroupOverride = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName "REQUEST-920-PROTOCOL-ENFORCEMENT" -Rule $enabledRuleOverride
+        $enabledManagedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2" -RuleGroupOverride $enabledRuleGroupOverride
+        $enabledManagedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $enabledManagedRuleSet
+        
+        $policy.ManagedRules = $enabledManagedRule
+        Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
+        
+        # Get the policy with enabled override
+        $enabledPolicy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+        $enabledRuleSet = $enabledPolicy.ManagedRules.ManagedRuleSets[0]
+        
+        Assert-NotNull $enabledRuleSet.ComputedDisabledRules "ComputedDisabledRules should not be null"
+        
+        # Verify that the explicitly enabled rule does NOT appear in ComputedDisabledRules
+        $enabledProtocolGroup = $enabledRuleSet.ComputedDisabledRules | Where-Object { $_.RuleGroupName -eq "REQUEST-920-PROTOCOL-ENFORCEMENT" }
+        if ($enabledProtocolGroup) {
+            $enabledRule = $enabledProtocolGroup.Rules | Where-Object { $_ -eq "920420" }
+            Assert-Null $enabledRule "Rule 920420 should NOT appear in ComputedDisabledRules when explicitly enabled"
+        }
+        
+        Write-Host "Scenario 4 passed: Enabled override removes rule from ComputedDisabledRules"
+        
+		# Test Scenario 5: Validate multiple rule overrides and their impact on ComputedDisabledRules
+        Write-Host "Testing Scenario 5: Multiple rule overrides with mixed states"
+        
+        # Add multiple overrides - some disabled, some enabled
+        $rule1Override = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId 920420 -State Enabled
+        $rule2Override = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId 920430 -State Disabled
+        $multiRuleGroupOverride = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName "REQUEST-920-PROTOCOL-ENFORCEMENT" -Rule $rule1Override,$rule2Override
+        $multiManagedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2" -RuleGroupOverride $multiRuleGroupOverride
+        $multiManagedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $multiManagedRuleSet
+        
+        $policy.ManagedRules = $multiManagedRule
+        Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
+        
+        # Verify the final state
+        $finalPolicy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+        $finalRuleSet = $finalPolicy.ManagedRules.ManagedRuleSets[0]
+        
+        Assert-NotNull $finalRuleSet.ComputedDisabledRules "ComputedDisabledRules should not be null in final state"
+        
+        # Verify rule 920420 (enabled) appears in ComputedDisabledRules
+        $finalProtocolGroup = $finalRuleSet.ComputedDisabledRules | Where-Object { $_.RuleGroupName -eq "REQUEST-920-PROTOCOL-ENFORCEMENT" }
+        if ($finalProtocolGroup) {
+            $disabledRule = $finalProtocolGroup.Rules | Where-Object { $_ -eq "920430" }
+            Assert-NotNull $disabledRule "Disabled rule 920430 should appear in ComputedDisabledRules"
+            
+            # Verify rule 920430 (disabled) does NOT appear in ComputedDisabledRules
+            $enabledRule = $finalProtocolGroup.Rules | Where-Object { $_ -eq "920420" }
+            Assert-Null $enabledRule "Enabled rule 920420 should NOT appear in ComputedDisabledRules"
+        }
+        
+        Write-Host "Scenario 5 passed: Multiple rule overrides correctly impact ComputedDisabledRules"
+        
+        # Validate ComputedDisabledRules structure
+        foreach ($computedGroup in $finalRuleSet.ComputedDisabledRules) {
+            Assert-NotNull $computedGroup.RuleGroupName "Rule group name should not be null in ComputedDisabledRules"
+            Assert-True { $computedGroup.RuleGroupName.Length -gt 0 } "Rule group name should not be empty"
+            
+            if ($computedGroup.Rules) {
+                foreach ($computedRule in $computedGroup.Rules) {
+                    Assert-NotNull $computedRule "Rule ID should not be null in ComputedDisabledRules"
+                    Assert-True { $computedRule -match '^\d+$' } "Rule ID should be numeric"
+                }
+            }
+        }
+        
+        Write-Host "ComputedDisabledRules test completed successfully"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
