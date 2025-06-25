@@ -26,13 +26,13 @@
     - `Add-AzApplicationGatewayBackendHttpSetting`
     - `Set-AzApplicationGatewayBackendHttpSetting`
 * Added a read-only property `ComputedDisabledRules` to `ApplicationGatewayFirewallPolicyManagedRuleSet`. This property displays the effective disabled rules based on WAF policy overrides and default disabled rules.
-Primary affected Cmdlet (returns the modified object directly):
-    - `New-AzApplicationGatewayFirewallPolicyManagedRuleSet`
-Secondary affected Cmdlets (object is nested within their returned result):
-    - `New-AzApplicationGatewayFirewallPolicyManagedRules`
-    - `Get-AzApplicationGatewayFirewallPolicy`
-    - `Set-AzApplicationGatewayFirewallPolicy`
-    - `New-AzApplicationGatewayFirewallPolicy`
+    * Primary affected Cmdlet (returns the modified object directly):
+        - `New-AzApplicationGatewayFirewallPolicyManagedRuleSet`
+    * Secondary affected Cmdlets (object is nested within their returned result):
+        - `New-AzApplicationGatewayFirewallPolicyManagedRules`
+        - `Get-AzApplicationGatewayFirewallPolicy`
+        - `Set-AzApplicationGatewayFirewallPolicy`
+        - `New-AzApplicationGatewayFirewallPolicy`
 
 
 ## Version 7.17.0
