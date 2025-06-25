@@ -8,7 +8,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "start": "node build/index.js"
+    "start": "node build/index.js",
+    "fresh": "npm run build && npm run start"
   },
   "files": [
     "build"

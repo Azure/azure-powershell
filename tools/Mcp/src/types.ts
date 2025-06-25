@@ -1,7 +1,7 @@
 export type toolParameterSchema = {
     name: string;
     type: string;
-    description: string;
+    text: string;
 }
 
 export type toolSchema = {

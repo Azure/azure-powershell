@@ -2,9 +2,17 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 import { toolParameterSchema, toolSchema } from "./types.js";
-import specs from "./specs/Specs.json" assert { type: "json" };
-import responses from "./specs/responses.json" assert { type: "json" };
 import { toolServices } from "./services/toolServices.js";
+
+import { readFileSync } from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const srcPath = path.resolve(__dirname, "..", "src");
+
+const specs = JSON.parse(readFileSync(path.join(srcPath, "specs/Specs.json"), "utf-8"));
+const responses = JSON.parse(readFileSync(path.join(srcPath, "specs/responses.json"), "utf-8"));
 
 export class CodegenServer {
     private static _instance: CodegenServer;
@@ -76,7 +84,7 @@ export class CodegenServer {
     }
 
     initResponses() {
-        responses?.forEach(response => {
+        (responses as toolParameterSchema[])?.forEach((response: toolParameterSchema) => {
             this._responses.set(response.name, response.text);
         });
     }
@@ -86,16 +94,16 @@ export class CodegenServer {
         for (const schema of schemas) {
             switch (schema.type) {
                 case "string":
-                    parameter[schema.name] = z.string().describe(schema.description);
+                    parameter[schema.name] = z.string().describe(schema.text);
                     break;
                 case "number":
-                    parameter[schema.name] = z.number().describe(schema.description);
+                    parameter[schema.name] = z.number().describe(schema.text);
                     break;
                 case "boolean": 
-                parameter[schema.name] = z.boolean().describe(schema.description);
+                parameter[schema.name] = z.boolean().describe(schema.text);
                     break;
                 case "array":
-                    parameter[schema.name] = z.array(z.string()).describe(schema.description);
+                    parameter[schema.name] = z.array(z.string()).describe(schema.text);
                     break;
                 // object parameter not supported yet    
                 // case "object":
