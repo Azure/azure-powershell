@@ -1,10 +1,53 @@
 {
   "resourceType": "locations/publishers/extensionTypes/versions",
-  "apiVersion": "2024-07-31-preview",
+  "apiVersion": "2024-11-10-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.connectedmachine"
   },
   "commands": [
+    {
+      "name": "Get-AzConnectedExtensionMetadataV2",
+      "description": "Gets an Extension Metadata based on location, publisher, extensionType and version",
+      "path": "/providers/Microsoft.HybridCompute/locations/{location}/publishers/{publisher}/extensionTypes/{extensionType}/versions/{version}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedextensionmetadatav2"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ExtensionType <String>",
+              "-Location <String>",
+              "-Publisher <String>",
+              "-Version <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets an Extension Metadata based on location, publisher, extensionType and version",
+          "parameters": [
+            {
+              "name": "-ExtensionType",
+              "value": "[Path.extensionType]"
+            },
+            {
+              "name": "-Location",
+              "value": "[Path.location]"
+            },
+            {
+              "name": "-Publisher",
+              "value": "[Path.publisher]"
+            },
+            {
+              "name": "-Version",
+              "value": "[Path.version]"
+            }
+          ]
+        }
+      ]
+    },
     {
       "name": "Get-AzConnectedExtensionMetadata",
       "description": "Gets an Extension Metadata based on location, publisher, extensionType and version",

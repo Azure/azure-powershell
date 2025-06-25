@@ -1,0 +1,45 @@
+{
+  "Get-AzConnectedExtensionPublisher+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.HybridCompute/locations/eastus/publishers?api-version=2024-11-10-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridCompute/locations/eastus/publishers?api-version=2024-11-10-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "34af78ed-547f-4ff1-80c3-5c4af34f91dc" ],
+        "CommandName": [ "Get-AzConnectedExtensionPublisher" ],
+        "FullCommandName": [ "Get-AzConnectedExtensionPublisher_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.1", "Az.ConnectedMachine/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "9cdb4e2a-d209-415f-b444-af3b2b7f7d11" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "2199" ],
+        "x-ms-correlation-request-id": [ "c3149261-501f-4a15-8f9f-f96d8d12527a" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250523T032705Z:c3149261-501f-4a15-8f9f-f96d8d12527a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 893AC2864B864136B4DD7B378854AA35 Ref B: MNZ221060618033 Ref C: 2025-05-23T03:27:05Z" ],
+        "Date": [ "Fri, 23 May 2025 03:27:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5762" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/azurestackhci.telemetry.agent\",\"name\":\"azurestackhci.telemetry.agent\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/datadog.agent\",\"name\":\"datadog.agent\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/dynatrace.ruxit\",\"name\":\"dynatrace.ruxit\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.admincenter\",\"name\":\"microsoft.admincenter\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.aksarcforlinux\",\"name\":\"microsoft.aksarcforlinux\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azure.activedirectory\",\"name\":\"microsoft.azure.activedirectory\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azure.automation.hybridworker\",\"name\":\"microsoft.azure.automation.hybridworker\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azure.azuredefenderforservers\",\"name\":\"microsoft.azure.azuredefenderforservers\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azure.azuredefenderforsql\",\"name\":\"microsoft.azure.azuredefenderforsql\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azure.changetrackingandinventory\",\"name\":\"microsoft.azure.changetrackingandinventory\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azure.extensions\",\"name\":\"microsoft.azure.extensions\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azure.geneva\",\"name\":\"microsoft.azure.geneva\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azure.keyvault\",\"name\":\"microsoft.azure.keyvault\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azure.meshvpn\",\"name\":\"microsoft.azure.meshvpn\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azure.monitor\",\"name\":\"microsoft.azure.monitor\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azure.monitoring.dependencyagent\",\"name\":\"microsoft.azure.monitoring.dependencyagent\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azure.networkwatcher\",\"name\":\"microsoft.azure.networkwatcher\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azure.openssh\",\"name\":\"microsoft.azure.openssh\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azure.recoveryservices.workloadbackup\",\"name\":\"microsoft.azure.recoveryservices.workloadbackup\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azure.scommi\",\"name\":\"microsoft.azure.scommi\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azure.security\",\"name\":\"microsoft.azure.security\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azure.security.linuxattestation\",\"name\":\"microsoft.azure.security.linuxattestation\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azure.security.monitoring\",\"name\":\"microsoft.azure.security.monitoring\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azure.security.windowsattestation\",\"name\":\"microsoft.azure.security.windowsattestation\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azuredata\",\"name\":\"microsoft.azuredata\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azurestack.arcvirtualization\",\"name\":\"microsoft.azurestack.arcvirtualization\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azurestack.hci.alerts\",\"name\":\"microsoft.azurestack.hci.alerts\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azurestack.observability\",\"name\":\"microsoft.azurestack.observability\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azurestack.orchestration\",\"name\":\"microsoft.azurestack.orchestration\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.compute\",\"name\":\"microsoft.compute\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.cplat.core\",\"name\":\"microsoft.cplat.core\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.edge\",\"name\":\"microsoft.edge\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.edge.backup\",\"name\":\"microsoft.edge.backup\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.enterprisecloud.monitoring\",\"name\":\"microsoft.enterprisecloud.monitoring\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.sentinel.azuremonitoragentextensions\",\"name\":\"microsoft.sentinel.azuremonitoragentextensions\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.serviceshub\",\"name\":\"microsoft.serviceshub\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.siterecovery.dra\",\"name\":\"microsoft.siterecovery.dra\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.softwareupdatemanagement\",\"name\":\"microsoft.softwareupdatemanagement\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.sqlserver.management\",\"name\":\"microsoft.sqlserver.management\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/newrelic.infrastructure.extensions\",\"name\":\"newrelic.infrastructure.extensions\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/qualys\",\"name\":\"qualys\"}]}",
+      "isContentBase64": false
+    }
+  }
+}
