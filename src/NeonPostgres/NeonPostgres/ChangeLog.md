@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.0
 * Support to Manage Neon Projects
         - List Neon Projects in a given Neon Postgres Organizations
         - Get Neon Project details
