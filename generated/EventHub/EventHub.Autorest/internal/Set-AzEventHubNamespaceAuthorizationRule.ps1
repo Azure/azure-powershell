@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an AuthorizationRule for a Namespace.
+Update an AuthorizationRule for a Namespace.
 .Description
-update an AuthorizationRule for a Namespace.
+Update an AuthorizationRule for a Namespace.
 .Example
 {{ Add code here }}
 .Example

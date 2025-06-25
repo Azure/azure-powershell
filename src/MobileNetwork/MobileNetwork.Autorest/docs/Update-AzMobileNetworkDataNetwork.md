@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzMobileNetworkDataNetwork
 
 ## SYNOPSIS
-update a data network.
+Update a data network.
 Must be created in the same location as its parent mobile network.
 
 ## SYNTAX
@@ -34,7 +34,7 @@ Update-AzMobileNetworkDataNetwork -MobileNetworkInputObject <IMobileNetworkIdent
 ```
 
 ## DESCRIPTION
-update a data network.
+Update a data network.
 Must be created in the same location as its parent mobile network.
 
 ## EXAMPLES

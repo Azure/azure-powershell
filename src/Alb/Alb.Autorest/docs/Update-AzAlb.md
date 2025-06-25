@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzAlb
 
 ## SYNOPSIS
-update a TrafficController
+Update a TrafficController
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Update-AzAlb -InputObject <IAlbIdentity> [-Property <Hashtable>] [-Tag <Hashtabl
 ```
 
 ## DESCRIPTION
-update a TrafficController
+Update a TrafficController
 
 ## EXAMPLES
 

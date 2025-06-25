@@ -92,22 +92,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         public string Format { get => this._format; set => this._format = value; }
 
         /// <summary>Internal Acessors for DataSetConfiguration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDatasetConfiguration Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICommonExportPropertiesInternal.DataSetConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDefinitionInternal)Definition).DataSetConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDefinitionInternal)Definition).DataSetConfiguration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDatasetConfiguration Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICommonExportPropertiesInternal.DataSetConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDefinitionInternal)Definition).DataSetConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDefinitionInternal)Definition).DataSetConfiguration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Definition</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDefinition Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICommonExportPropertiesInternal.Definition { get => (this._definition = this._definition ?? new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ExportDefinition()); set { {_definition = value;} } }
 
         /// <summary>Internal Acessors for DefinitionDataSet</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDataset Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICommonExportPropertiesInternal.DefinitionDataSet { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDefinitionInternal)Definition).DataSet; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDefinitionInternal)Definition).DataSet = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDataset Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICommonExportPropertiesInternal.DefinitionDataSet { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDefinitionInternal)Definition).DataSet; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDefinitionInternal)Definition).DataSet = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for DefinitionTimePeriod</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportTimePeriod Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICommonExportPropertiesInternal.DefinitionTimePeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDefinitionInternal)Definition).TimePeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDefinitionInternal)Definition).TimePeriod = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportTimePeriod Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICommonExportPropertiesInternal.DefinitionTimePeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDefinitionInternal)Definition).TimePeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDefinitionInternal)Definition).TimePeriod = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for DeliveryInfo</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDeliveryInfo Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICommonExportPropertiesInternal.DeliveryInfo { get => (this._deliveryInfo = this._deliveryInfo ?? new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ExportDeliveryInfo()); set { {_deliveryInfo = value;} } }
 
         /// <summary>Internal Acessors for DeliveryInfoDestination</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDeliveryDestination Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICommonExportPropertiesInternal.DeliveryInfoDestination { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDeliveryInfoInternal)DeliveryInfo).Destination; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDeliveryInfoInternal)DeliveryInfo).Destination = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDeliveryDestination Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICommonExportPropertiesInternal.DeliveryInfoDestination { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDeliveryInfoInternal)DeliveryInfo).Destination; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDeliveryInfoInternal)DeliveryInfo).Destination = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for NextRunTimeEstimate</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICommonExportPropertiesInternal.NextRunTimeEstimate { get => this._nextRunTimeEstimate; set { {_nextRunTimeEstimate = value;} } }
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportExecutionListResult Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICommonExportPropertiesInternal.RunHistory { get => (this._runHistory = this._runHistory ?? new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ExportExecutionListResult()); set { {_runHistory = value;} } }
 
         /// <summary>Internal Acessors for RunHistoryValue</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportExecution> Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICommonExportPropertiesInternal.RunHistoryValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportExecutionListResultInternal)RunHistory).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportExecutionListResultInternal)RunHistory).Value = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportExecution> Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICommonExportPropertiesInternal.RunHistoryValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportExecutionListResultInternal)RunHistory).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportExecutionListResultInternal)RunHistory).Value = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="NextRunTimeEstimate" /> property.</summary>
         private global::System.DateTime? _nextRunTimeEstimate;

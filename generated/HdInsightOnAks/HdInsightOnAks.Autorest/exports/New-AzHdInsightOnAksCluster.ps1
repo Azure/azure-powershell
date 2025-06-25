@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a cluster.
+Create a cluster.
 .Description
-create a cluster.
+Create a cluster.
 .Example
 # Create Simple Trino Cluster
 $clusterPoolName="{your cluster pool name}";
@@ -350,7 +350,7 @@ COMPUTEPROFILENODE <INodeProfile[]>: The nodes definitions.
   VMSize <String>: The virtual machine SKU.
 
 HDINSIGHTONAKSCLUSTER <ICluster>: The cluster.
-  Location <String>: The geo-location where the resource lives
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [AccessProfileEnableInternalIngress <Boolean?>]: Whether to create cluster using private IP instead of public IP. This property must be set at create time.

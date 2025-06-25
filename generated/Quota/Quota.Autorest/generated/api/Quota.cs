@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
     {
 
         /// <summary>
-        /// Update the quota limit for the specified resource with the requested value. To update the quota, follow these steps:
+        /// update the quota limit for the specified resource with the requested value. To update the quota, follow these steps:
         /// 1. Use the GET operation for quotas and usages to determine how much quota remains for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
         /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
         }
 
         /// <summary>
-        /// Update the quota limit for the specified resource with the requested value. To update the quota, follow these steps:
+        /// update the quota limit for the specified resource with the requested value. To update the quota, follow these steps:
         /// 1. Use the GET operation for quotas and usages to determine how much quota remains for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
         /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
         }
 
         /// <summary>
-        /// Update the quota limit for the specified resource with the requested value. To update the quota, follow these steps:
+        /// update the quota limit for the specified resource with the requested value. To update the quota, follow these steps:
         /// 1. Use the GET operation for quotas and usages to determine how much quota remains for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
         /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
         }
 
         /// <summary>
-        /// Update the quota limit for the specified resource with the requested value. To update the quota, follow these steps:
+        /// update the quota limit for the specified resource with the requested value. To update the quota, follow these steps:
         /// 1. Use the GET operation for quotas and usages to determine how much quota remains for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
         /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
         }
 
         /// <summary>
-        /// Update the quota limit for the specified resource with the requested value. To update the quota, follow these steps:
+        /// update the quota limit for the specified resource with the requested value. To update the quota, follow these steps:
         /// 1. Use the GET operation for quotas and usages to determine how much quota remains for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
         /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
         }
 
         /// <summary>
-        /// Update the quota limit for the specified resource with the requested value. To update the quota, follow these steps:
+        /// update the quota limit for the specified resource with the requested value. To update the quota, follow these steps:
         /// 1. Use the GET operation for quotas and usages to determine how much quota remains for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
         /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
@@ -373,16 +373,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: original-uri
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -395,7 +396,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -523,16 +527,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: original-uri
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -545,7 +550,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -1005,7 +1013,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
 
         /// <summary>
         /// Get a list of current quota limits of all resources for the specified scope. The response from this GET operation can
-        /// be leveraged to submit requests to update a quota.
+        /// be leveraged to submit requests to list a quota.
         /// </summary>
         /// <param name="scope">The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
         /// This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotas`, then
@@ -1048,7 +1056,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
 
         /// <summary>
         /// Get a list of current quota limits of all resources for the specified scope. The response from this GET operation can
-        /// be leveraged to submit requests to update a quota.
+        /// be leveraged to submit requests to list a quota.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1099,7 +1107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
 
         /// <summary>
         /// Get a list of current quota limits of all resources for the specified scope. The response from this GET operation can
-        /// be leveraged to submit requests to update a quota.
+        /// be leveraged to submit requests to list a quota.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1148,7 +1156,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
 
         /// <summary>
         /// Get a list of current quota limits of all resources for the specified scope. The response from this GET operation can
-        /// be leveraged to submit requests to update a quota.
+        /// be leveraged to submit requests to list a quota.
         /// </summary>
         /// <param name="scope">The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
         /// This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotas`, then
@@ -2317,7 +2325,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
         }
 
         /// <summary>
-        /// Update the quota limit for a specific resource to the specified value:
+        /// update the quota limit for a specific resource to the specified value:
         /// 1. Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
         /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
@@ -2374,7 +2382,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
         }
 
         /// <summary>
-        /// Update the quota limit for a specific resource to the specified value:
+        /// update the quota limit for a specific resource to the specified value:
         /// 1. Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
         /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
@@ -2436,7 +2444,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
         }
 
         /// <summary>
-        /// Update the quota limit for a specific resource to the specified value:
+        /// update the quota limit for a specific resource to the specified value:
         /// 1. Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
         /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
@@ -2496,7 +2504,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
         }
 
         /// <summary>
-        /// Update the quota limit for a specific resource to the specified value:
+        /// update the quota limit for a specific resource to the specified value:
         /// 1. Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
         /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
@@ -2552,7 +2560,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
         }
 
         /// <summary>
-        /// Update the quota limit for a specific resource to the specified value:
+        /// update the quota limit for a specific resource to the specified value:
         /// 1. Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
         /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
@@ -2606,7 +2614,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
         }
 
         /// <summary>
-        /// Update the quota limit for a specific resource to the specified value:
+        /// update the quota limit for a specific resource to the specified value:
         /// 1. Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
         /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
@@ -2675,16 +2683,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: original-uri
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -2697,7 +2706,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -2825,16 +2837,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: original-uri
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -2847,7 +2860,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener

@@ -832,9 +832,9 @@ end {
 
 <#
 .Synopsis
-update a Bot Service
+Update a Bot Service
 .Description
-update a Bot Service
+Update a Bot Service
 .Example
 Update-AzBotService -Name 'youri-apptest' -ResourceGroupName 'youriBotTest' -kind Bot
 .Example

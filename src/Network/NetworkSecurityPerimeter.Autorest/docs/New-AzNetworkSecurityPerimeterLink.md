@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkSecurityPerimeterLink
 
 ## SYNOPSIS
-create NSP link resource.
+Create NSP link resource.
 
 ## SYNTAX
 
@@ -64,7 +64,7 @@ New-AzNetworkSecurityPerimeterLink -Name <String> -ResourceGroupName <String> -S
 ```
 
 ## DESCRIPTION
-create NSP link resource.
+Create NSP link resource.
 
 ## EXAMPLES
 

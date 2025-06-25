@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new delivery rule within the specified rule set.
+Create a new delivery rule within the specified rule set.
 .Description
-create a new delivery rule within the specified rule set.
+Create a new delivery rule within the specified rule set.
 .Example
 $conditions = @(
     New-AzFrontDoorCdnRuleClientPortConditionObject -Name ClientPort -ParameterOperator Equal -ParameterMatchValue 80,81

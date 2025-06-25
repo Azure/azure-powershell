@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Mdp
-Module Guid: c9f4a15f-58e0-4476-821d-a0d998e51a11
+Module Guid: d7f0a42e-d707-4550-b376-89c73987fee3
 Download Help Link: https://learn.microsoft.com/powershell/module/az.mdp
 Help Version: 1.0.0.0
 Locale: en-US
@@ -21,11 +21,11 @@ List ResourceDetailsObject resources by Pool
 List ResourceSku resources by subscription ID
 
 ### [New-AzMdpPool](New-AzMdpPool.md)
-create a Pool
+Create a Pool
 
 ### [Remove-AzMdpPool](Remove-AzMdpPool.md)
 Delete a Pool
 
 ### [Update-AzMdpPool](Update-AzMdpPool.md)
-update a Pool
+Update a Pool
 

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update device tags.
+Update device tags.
 .Description
-update device tags.
+Update device tags.
 .Example
 $tags = @{ NewTag = "NewTagValue"}
 Update-AzConnectedNetworkDeviceTag -DeviceName "myMecDevice" -ResourceGroupName "myResources" -Tag $tags

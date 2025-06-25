@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-update a Maps Account.
+Update a Maps Account.
 Only a subset of the parameters may be updated after creation, such as Sku, Tags, Properties.
 .Description
-update a Maps Account.
+Update a Maps Account.
 Only a subset of the parameters may be updated after creation, such as Sku, Tags, Properties.
 .Example
 Update-AzMapsAccount -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount03 -Tag @{'key1'='value1'; 'key2'='value2'}

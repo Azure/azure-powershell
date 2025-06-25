@@ -102,7 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models
         Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models.IMarketplaceDetails Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models.IOrganizationPropertiesInternal.MarketplaceDetail { get => (this._marketplaceDetail = this._marketplaceDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models.MarketplaceDetails()); set { {_marketplaceDetail = value;} } }
 
         /// <summary>Internal Acessors for MarketplaceDetailOfferDetail</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models.IOfferDetails Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models.IOrganizationPropertiesInternal.MarketplaceDetailOfferDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models.IMarketplaceDetailsInternal)MarketplaceDetail).OfferDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models.IMarketplaceDetailsInternal)MarketplaceDetail).OfferDetail = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models.IOfferDetails Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models.IOrganizationPropertiesInternal.MarketplaceDetailOfferDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models.IMarketplaceDetailsInternal)MarketplaceDetail).OfferDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models.IMarketplaceDetailsInternal)MarketplaceDetail).OfferDetail = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models.IOrganizationPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }

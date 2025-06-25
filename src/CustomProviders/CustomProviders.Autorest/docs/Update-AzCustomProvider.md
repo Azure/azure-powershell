@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzCustomProvider
 
 ## SYNOPSIS
-update an existing custom resource provider.
+Update an existing custom resource provider.
 The only value that can be updated via PATCH currently is the tags.
 
 ## SYNTAX
@@ -38,7 +38,7 @@ Update-AzCustomProvider -Name <String> -ResourceGroupName <String> -JsonString <
 ```
 
 ## DESCRIPTION
-update an existing custom resource provider.
+Update an existing custom resource provider.
 The only value that can be updated via PATCH currently is the tags.
 
 ## EXAMPLES

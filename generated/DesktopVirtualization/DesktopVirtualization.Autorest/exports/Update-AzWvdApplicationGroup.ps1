@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an applicationGroup.
+Update an applicationGroup.
 .Description
-update an applicationGroup.
+Update an applicationGroup.
 .Example
 New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                           -Name ApplicationGroupName `

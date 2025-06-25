@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Purview
-Module Guid: 349e9634-6886-45d0-a8b3-23cd2d2958f4
+Module Guid: 924b7c60-e825-4a70-b860-bf36010d68de
 Download Help Link: https://learn.microsoft.com/powershell/module/az.purview
 Help Version: 1.0.0.0
 Locale: en-US

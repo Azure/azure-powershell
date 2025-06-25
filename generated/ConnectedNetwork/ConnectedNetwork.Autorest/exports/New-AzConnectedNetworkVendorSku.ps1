@@ -16,11 +16,11 @@
 
 <#
 .Synopsis
-create a sku.
+Create a sku.
 This operation can take up to 2 hours to complete.
 This is expected service behavior.
 .Description
-create a sku.
+Create a sku.
 This operation can take up to 2 hours to complete.
 This is expected service behavior.
 .Example

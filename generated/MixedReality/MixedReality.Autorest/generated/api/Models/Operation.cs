@@ -50,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models
         Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IOperationProperties Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IOperationInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.OperationProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ServiceSpecification</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IServiceSpecification Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IOperationInternal.ServiceSpecification { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IOperationPropertiesInternal)Property).ServiceSpecification; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IOperationPropertiesInternal)Property).ServiceSpecification = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IServiceSpecification Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IOperationInternal.ServiceSpecification { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IOperationPropertiesInternal)Property).ServiceSpecification; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IOperationPropertiesInternal)Property).ServiceSpecification = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

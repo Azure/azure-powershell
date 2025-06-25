@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.App.Models.CustomDomain
 https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappcustomdomainobject
 #>
 function New-AzContainerAppCustomDomainObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.App.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.CustomDomain')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

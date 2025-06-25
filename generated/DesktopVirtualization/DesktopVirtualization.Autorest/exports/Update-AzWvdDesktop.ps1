@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a desktop.
+Update a desktop.
 .Description
-update a desktop.
+Update a desktop.
 .Example
 Update-AzWvdDesktop -ResourceGroupName ResourceGroupName `
                     -ApplicationGroupName ApplicationGroupName `

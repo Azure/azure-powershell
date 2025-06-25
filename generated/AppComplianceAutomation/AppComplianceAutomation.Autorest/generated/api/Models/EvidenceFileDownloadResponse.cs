@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models
         Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IEvidenceFileDownloadResponseEvidenceFile Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IEvidenceFileDownloadResponseInternal.EvidenceFile { get => (this._evidenceFile = this._evidenceFile ?? new Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.EvidenceFileDownloadResponseEvidenceFile()); set { {_evidenceFile = value;} } }
 
         /// <summary>Internal Acessors for EvidenceFileUrl</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IEvidenceFileDownloadResponseInternal.EvidenceFileUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IEvidenceFileDownloadResponseEvidenceFileInternal)EvidenceFile).Url; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IEvidenceFileDownloadResponseEvidenceFileInternal)EvidenceFile).Url = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IEvidenceFileDownloadResponseInternal.EvidenceFileUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IEvidenceFileDownloadResponseEvidenceFileInternal)EvidenceFile).Url; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IEvidenceFileDownloadResponseEvidenceFileInternal)EvidenceFile).Url = value ?? null; }
 
         /// <summary>Creates an new <see cref="EvidenceFileDownloadResponse" /> instance.</summary>
         public EvidenceFileDownloadResponse()

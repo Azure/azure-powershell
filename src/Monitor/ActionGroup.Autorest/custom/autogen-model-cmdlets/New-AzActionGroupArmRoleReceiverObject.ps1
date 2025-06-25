@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ArmRoleReceiver
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azactiongrouparmrolereceiverobject
 #>
 function New-AzActionGroupArmRoleReceiverObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ArmRoleReceiver')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.VoiceReceiver
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azactiongroupvoicereceiverobject
 #>
 function New-AzActionGroupVoiceReceiverObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.VoiceReceiver')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

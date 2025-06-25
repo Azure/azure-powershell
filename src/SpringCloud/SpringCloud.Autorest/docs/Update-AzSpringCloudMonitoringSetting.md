@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSpringCloudMonitoringSetting
 
 ## SYNOPSIS
-update the Monitoring Setting.
+Update the Monitoring Setting.
 
 ## SYNTAX
 
@@ -43,7 +43,7 @@ Update-AzSpringCloudMonitoringSetting -Name <String> -ResourceGroupName <String>
 ```
 
 ## DESCRIPTION
-update the Monitoring Setting.
+Update the Monitoring Setting.
 
 ## EXAMPLES
 

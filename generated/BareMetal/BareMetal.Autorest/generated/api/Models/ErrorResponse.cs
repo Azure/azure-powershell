@@ -35,16 +35,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IErrorDefinitionInternal)Error).Message; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IErrorResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IErrorDefinitionInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IErrorDefinitionInternal)Error).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IErrorResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IErrorDefinitionInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IErrorDefinitionInternal)Error).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Detail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IErrorDefinition> Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IErrorResponseInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IErrorDefinitionInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IErrorDefinitionInternal)Error).Detail = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IErrorDefinition> Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IErrorResponseInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IErrorDefinitionInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IErrorDefinitionInternal)Error).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Error</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IErrorDefinition Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IErrorResponseInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.ErrorDefinition()); set { {_error = value;} } }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IErrorResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IErrorDefinitionInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IErrorDefinitionInternal)Error).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IErrorResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IErrorDefinitionInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IErrorDefinitionInternal)Error).Message = value ?? null; }
 
         /// <summary>Creates an new <see cref="ErrorResponse" /> instance.</summary>
         public ErrorResponse()

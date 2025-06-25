@@ -45,7 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerResources Microsoft.Azure.PowerShell.Cmdlets.App.Models.IBaseContainerInternal.Resource { get => (this._resource = this._resource ?? new Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerResources()); set { {_resource = value;} } }
 
         /// <summary>Internal Acessors for ResourceEphemeralStorage</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IBaseContainerInternal.ResourceEphemeralStorage { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerResourcesInternal)Resource).EphemeralStorage; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerResourcesInternal)Resource).EphemeralStorage = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IBaseContainerInternal.ResourceEphemeralStorage { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerResourcesInternal)Resource).EphemeralStorage; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerResourcesInternal)Resource).EphemeralStorage = value ?? null; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

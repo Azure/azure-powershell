@@ -65,10 +65,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetails Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicensePropertiesInternal.LicenseDetail { get => (this._licenseDetail = this._licenseDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseDetails()); set { {_licenseDetail = value;} } }
 
         /// <summary>Internal Acessors for LicenseDetailAssignedLicense</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicensePropertiesInternal.LicenseDetailAssignedLicense { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)LicenseDetail).AssignedLicense; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)LicenseDetail).AssignedLicense = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicensePropertiesInternal.LicenseDetailAssignedLicense { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)LicenseDetail).AssignedLicense; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)LicenseDetail).AssignedLicense = value ?? default(int); }
 
         /// <summary>Internal Acessors for LicenseDetailImmutableId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicensePropertiesInternal.LicenseDetailImmutableId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)LicenseDetail).ImmutableId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)LicenseDetail).ImmutableId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicensePropertiesInternal.LicenseDetailImmutableId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)LicenseDetail).ImmutableId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)LicenseDetail).ImmutableId = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicensePropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }

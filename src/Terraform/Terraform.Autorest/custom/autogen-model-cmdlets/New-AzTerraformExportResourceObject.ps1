@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.ExportResource
 https://learn.microsoft.com/powershell/module/Az.Terraform/new-azterraformexportresourceobject
 #>
 function New-AzTerraformExportResourceObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Terraform.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.ExportResource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

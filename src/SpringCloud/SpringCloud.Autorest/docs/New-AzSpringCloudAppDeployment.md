@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSpringCloudAppDeployment
 
 ## SYNOPSIS
-create a new Deployment or create an exiting Deployment.
+Create a new Deployment or create an exiting Deployment.
 
 ## SYNTAX
 
@@ -54,7 +54,7 @@ New-AzSpringCloudAppDeployment -AppName <String> -Name <String> -ResourceGroupNa
 ```
 
 ## DESCRIPTION
-create a new Deployment or create an exiting Deployment.
+Create a new Deployment or create an exiting Deployment.
 
 ## EXAMPLES
 

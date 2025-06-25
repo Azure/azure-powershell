@@ -1056,10 +1056,10 @@ end {
 
 <#
 .Synopsis
-create a Maps Account.
+Create a Maps Account.
 A Maps Account holds the keys which allow access to the Maps REST APIs.
 .Description
-create a Maps Account.
+Create a Maps Account.
 A Maps Account holds the keys which allow access to the Maps REST APIs.
 .Example
 New-AzMapsAccount -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount01 -SkuName S0 -Location eastus
@@ -1290,11 +1290,11 @@ end {
 
 <#
 .Synopsis
-create a Maps Creator resource.
+Create a Maps Creator resource.
 Creator resource will manage Azure resources required to populate a custom set of mapping data.
 It requires an account to exist before it can be created.
 .Description
-create a Maps Creator resource.
+Create a Maps Creator resource.
 Creator resource will manage Azure resources required to populate a custom set of mapping data.
 It requires an account to exist before it can be created.
 .Example
@@ -1992,10 +1992,10 @@ end {
 
 <#
 .Synopsis
-update a Maps Account.
+Update a Maps Account.
 Only a subset of the parameters may be updated after creation, such as Sku, Tags, Properties.
 .Description
-update a Maps Account.
+Update a Maps Account.
 Only a subset of the parameters may be updated after creation, such as Sku, Tags, Properties.
 .Example
 Update-AzMapsAccount -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount03 -Tag @{'key1'='value1'; 'key2'='value2'}
@@ -2255,10 +2255,10 @@ end {
 
 <#
 .Synopsis
-update the Maps Creator resource.
+Update the Maps Creator resource.
 Only a subset of the parameters may be updated after creation, such as Tags.
 .Description
-update the Maps Creator resource.
+Update the Maps Creator resource.
 Only a subset of the parameters may be updated after creation, such as Tags.
 .Example
 Update-AzMapsCreator -ResourceGroupName azure-rg-test -AccountName pwsh-mapsAccount03 -Name creator-01 -Tag @{'key1'='value1'; 'key2'='value2'}

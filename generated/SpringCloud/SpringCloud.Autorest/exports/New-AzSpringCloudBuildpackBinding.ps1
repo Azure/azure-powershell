@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a buildpack binding.
+Create a buildpack binding.
 .Description
-create a buildpack binding.
+Create a buildpack binding.
 .Example
 New-AzSpringCloudBuildpackBinding -ResourceGroupName springcloudrg -ServiceName sspring-portal0 -BuilderName default -Name binging01 -BindingType 'AppDynamics'
 

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a federated identity credential under the specified user assigned identity.
+Create a federated identity credential under the specified user assigned identity.
 .Description
-create a federated identity credential under the specified user assigned identity.
+Create a federated identity credential under the specified user assigned identity.
 .Example
 New-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 `
     -Name fic-pwsh01 -Issuer "https://kubernetes-oauth.azure.com" -Subject "system:serviceaccount:ns:svcaccount"

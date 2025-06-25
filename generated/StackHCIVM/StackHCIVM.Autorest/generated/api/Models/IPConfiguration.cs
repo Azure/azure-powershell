@@ -22,16 +22,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         public string IPAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationPropertiesInternal)Property).PrivateIPAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationPropertiesInternal)Property).PrivateIPAddress = value ?? null; }
 
         /// <summary>Internal Acessors for Gateway</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationInternal.Gateway { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationPropertiesInternal)Property).Gateway; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationPropertiesInternal)Property).Gateway = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationInternal.Gateway { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationPropertiesInternal)Property).Gateway; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationPropertiesInternal)Property).Gateway = value ?? null; }
 
         /// <summary>Internal Acessors for PrefixLength</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationInternal.PrefixLength { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationPropertiesInternal)Property).PrefixLength; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationPropertiesInternal)Property).PrefixLength = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationInternal.PrefixLength { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationPropertiesInternal)Property).PrefixLength; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationPropertiesInternal)Property).PrefixLength = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationProperties Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IPConfigurationProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for Subnet</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationPropertiesSubnet Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationInternal.Subnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationPropertiesInternal)Property).Subnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationPropertiesInternal)Property).Subnet = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationPropertiesSubnet Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationInternal.Subnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationPropertiesInternal)Property).Subnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfigurationPropertiesInternal)Property).Subnet = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

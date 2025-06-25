@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzAlbAssociation
 
 ## SYNOPSIS
-update a Association
+Update a Association
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ Update-AzAlbAssociation -Name <String> -TrafficControllerInputObject <IAlbIdenti
 ```
 
 ## DESCRIPTION
-update a Association
+Update a Association
 
 ## EXAMPLES
 

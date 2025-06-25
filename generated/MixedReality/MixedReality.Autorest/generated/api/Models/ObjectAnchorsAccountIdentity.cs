@@ -18,10 +18,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models
         private Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentity __identity = new Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Identity();
 
         /// <summary>Internal Acessors for PrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal.PrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)__identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)__identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal.PrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)__identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)__identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for TenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal.TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)__identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)__identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal.TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)__identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)__identity).TenantId = value ?? null; }
 
         /// <summary>The principal ID of resource identity.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Origin(Microsoft.Azure.PowerShell.Cmdlets.MixedReality.PropertyOrigin.Inherited)]

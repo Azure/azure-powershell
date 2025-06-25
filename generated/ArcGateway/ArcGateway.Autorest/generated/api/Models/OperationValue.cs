@@ -47,16 +47,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueDisplay Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueInternal.Display { get => (this._display = this._display ?? new Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.OperationValueDisplay()); set { {_display = value;} } }
 
         /// <summary>Internal Acessors for DisplayDescription</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueInternal.DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueDisplayInternal)Display).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueDisplayInternal)Display).Description = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueInternal.DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueDisplayInternal)Display).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueDisplayInternal)Display).Description = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayOperation</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueInternal.DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueDisplayInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueDisplayInternal)Display).Operation = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueInternal.DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueDisplayInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueDisplayInternal)Display).Operation = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayProvider</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueInternal.DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueDisplayInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueDisplayInternal)Display).Provider = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueInternal.DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueDisplayInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueDisplayInternal)Display).Provider = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayResource</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueInternal.DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueDisplayInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueDisplayInternal)Display).Resource = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueInternal.DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueDisplayInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueDisplayInternal)Display).Resource = value ?? null; }
 
         /// <summary>Internal Acessors for IsDataAction</summary>
         bool? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOperationValueInternal.IsDataAction { get => this._isDataAction; set { {_isDataAction = value;} } }

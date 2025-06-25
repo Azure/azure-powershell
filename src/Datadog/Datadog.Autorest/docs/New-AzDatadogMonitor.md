@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDatadogMonitor
 
 ## SYNOPSIS
-create a monitor resource.
+Create a monitor resource.
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ New-AzDatadogMonitor -Name <String> -ResourceGroupName <String> -JsonString <Str
 ```
 
 ## DESCRIPTION
-create a monitor resource.
+Create a monitor resource.
 
 ## EXAMPLES
 

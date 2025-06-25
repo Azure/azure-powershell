@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCustomProvider
 
 ## SYNOPSIS
-create the custom resource provider.
+Create the custom resource provider.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzCustomProvider -Name <String> -ResourceGroupName <String> -JsonString <Str
 ```
 
 ## DESCRIPTION
-create the custom resource provider.
+Create the custom resource provider.
 
 ## EXAMPLES
 

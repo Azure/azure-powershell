@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMapsCreator
 
 ## SYNOPSIS
-create a Maps Creator resource.
+Create a Maps Creator resource.
 Creator resource will manage Azure resources required to populate a custom set of mapping data.
 It requires an account to exist before it can be created.
 
@@ -40,7 +40,7 @@ New-AzMapsCreator -AccountName <String> -Name <String> -ResourceGroupName <Strin
 ```
 
 ## DESCRIPTION
-create a Maps Creator resource.
+Create a Maps Creator resource.
 Creator resource will manage Azure resources required to populate a custom set of mapping data.
 It requires an account to exist before it can be created.
 

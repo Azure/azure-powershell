@@ -37,10 +37,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPPoolInfo Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPPoolInternal.Info { get => (this._info = this._info ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IPPoolInfo()); set { {_info = value;} } }
 
         /// <summary>Internal Acessors for InfoAvailable</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPPoolInternal.InfoAvailable { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPPoolInfoInternal)Info).Available; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPPoolInfoInternal)Info).Available = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPPoolInternal.InfoAvailable { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPPoolInfoInternal)Info).Available; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPPoolInfoInternal)Info).Available = value ?? null; }
 
         /// <summary>Internal Acessors for InfoUsed</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPPoolInternal.InfoUsed { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPPoolInfoInternal)Info).Used; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPPoolInfoInternal)Info).Used = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPPoolInternal.InfoUsed { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPPoolInfoInternal)Info).Used; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPPoolInfoInternal)Info).Used = value ?? null; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

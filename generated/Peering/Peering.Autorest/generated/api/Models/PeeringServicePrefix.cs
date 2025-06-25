@@ -44,31 +44,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         public string LearnedType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixPropertiesInternal)Property).LearnedType; }
 
         /// <summary>Internal Acessors for ErrorMessage</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixInternal.ErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixPropertiesInternal)Property).ErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixPropertiesInternal)Property).ErrorMessage = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixInternal.ErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixPropertiesInternal)Property).ErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixPropertiesInternal)Property).ErrorMessage = value ?? null; }
 
         /// <summary>Internal Acessors for Event</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixEvent> Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixInternal.Event { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixPropertiesInternal)Property).Event; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixPropertiesInternal)Property).Event = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixEvent> Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixInternal.Event { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixPropertiesInternal)Property).Event; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixPropertiesInternal)Property).Event = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for LearnedType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixInternal.LearnedType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixPropertiesInternal)Property).LearnedType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixPropertiesInternal)Property).LearnedType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixInternal.LearnedType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixPropertiesInternal)Property).LearnedType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixPropertiesInternal)Property).LearnedType = value ?? null; }
 
         /// <summary>Internal Acessors for PrefixValidationState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixInternal.PrefixValidationState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixPropertiesInternal)Property).PrefixValidationState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixPropertiesInternal)Property).PrefixValidationState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixInternal.PrefixValidationState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixPropertiesInternal)Property).PrefixValidationState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixPropertiesInternal)Property).PrefixValidationState = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixProperties Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServicePrefixProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePrefixPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Type = value ?? null; }
 
         /// <summary>The name of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Peering.Origin(Microsoft.Azure.PowerShell.Cmdlets.Peering.PropertyOrigin.Inherited)]

@@ -105,7 +105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal.BfdConfiguration { get => (this._bfdConfiguration = this._bfdConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BfdConfiguration()); set { {_bfdConfiguration = value;} } }
 
         /// <summary>Internal Acessors for BfdConfigurationAdministrativeState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal.BfdConfigurationAdministrativeState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfigurationInternal)BfdConfiguration).AdministrativeState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfigurationInternal)BfdConfiguration).AdministrativeState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal.BfdConfigurationAdministrativeState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfigurationInternal)BfdConfiguration).AdministrativeState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfigurationInternal)BfdConfiguration).AdministrativeState = value ?? null; }
 
         /// <summary>Internal Acessors for FabricAsn</summary>
         long? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal.FabricAsn { get => this._fabricAsn; set { {_fabricAsn = value;} } }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzIoTOperationsServiceInstance
 
 ## SYNOPSIS
-create a InstanceResource
+Create a InstanceResource
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzIoTOperationsServiceInstance -Name <String> -ResourceGroupName <String> -J
 ```
 
 ## DESCRIPTION
-create a InstanceResource
+Create a InstanceResource
 
 ## EXAMPLES
 

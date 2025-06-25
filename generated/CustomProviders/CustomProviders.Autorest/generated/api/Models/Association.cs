@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models
         Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IAssociationProperties Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IAssociationInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.AssociationProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IAssociationInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IAssociationPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IAssociationPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IAssociationInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IAssociationPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IAssociationPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IAssociationInternal.Type { get => this._type; set { {_type = value;} } }

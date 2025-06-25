@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPeeringRegisteredPrefix
 
 ## SYNOPSIS
-create a new registered prefix with the specified name under the given subscription, resource group and peering.
+Create a new registered prefix with the specified name under the given subscription, resource group and peering.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzPeeringRegisteredPrefix -Name <String> -PeeringName <String> -ResourceGrou
 ```
 
 ## DESCRIPTION
-create a new registered prefix with the specified name under the given subscription, resource group and peering.
+Create a new registered prefix with the specified name under the given subscription, resource group and peering.
 
 ## EXAMPLES
 

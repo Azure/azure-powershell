@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzContainerAppConnectedEnvCert
 
 ## SYNOPSIS
-create a Certificate.
+Create a Certificate.
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ New-AzContainerAppConnectedEnvCert -ConnectedEnvironmentName <String> -Name <Str
 ```
 
 ## DESCRIPTION
-create a Certificate.
+Create a Certificate.
 
 ## EXAMPLES
 
