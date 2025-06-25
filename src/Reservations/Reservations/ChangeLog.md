@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.14.1
 * Fixed purchase request missing update x-ms-mutability for location property.
 
 ## Version 0.14.0
