@@ -252,7 +252,9 @@ function Bump-AzVersion
         return
     }
 
-    $newVersion = Get-BumpedVersion -Version $localAz.ModuleVersion -VersionBump $versionBump
+    # $newVersion = Get-BumpedVersion -Version $localAz.ModuleVersion -VersionBump $versionBump
+    # workaround a GA issue
+    $newVersion = "14.2.0"
 
     Write-Host "New version of Az: $newVersion" -ForegroundColor Green
 
