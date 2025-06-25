@@ -11,7 +11,7 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const srcPath = path.resolve(__dirname, "..", "src");
 
-const specs = JSON.parse(readFileSync(path.join(srcPath, "specs/Specs.json"), "utf-8"));
+const specs = JSON.parse(readFileSync(path.join(srcPath, "specs/specs.json"), "utf-8"));
 const responses = JSON.parse(readFileSync(path.join(srcPath, "specs/responses.json"), "utf-8"));
 
 export class CodegenServer {
