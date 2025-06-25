@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkCloud", "NetworkCloud\NetworkCloud.csproj", "{13B52C8D-AC21-493E-98FF-641CED72F9CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.NetworkCloud", "NetworkCloud.Autorest\Az.NetworkCloud.csproj", "{FDCE6826-F05A-4EB5-9436-21F5E8FFB1A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.NetworkCloud", "NetworkCloud.Autorest\Az.NetworkCloud.csproj", "{E7BF6BF9-D64E-4A0B-AB2F-9A0FAB52D75B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{13B52C8D-AC21-493E-98FF-641CED72F9CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13B52C8D-AC21-493E-98FF-641CED72F9CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13B52C8D-AC21-493E-98FF-641CED72F9CA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FDCE6826-F05A-4EB5-9436-21F5E8FFB1A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FDCE6826-F05A-4EB5-9436-21F5E8FFB1A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FDCE6826-F05A-4EB5-9436-21F5E8FFB1A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FDCE6826-F05A-4EB5-9436-21F5E8FFB1A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7BF6BF9-D64E-4A0B-AB2F-9A0FAB52D75B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7BF6BF9-D64E-4A0B-AB2F-9A0FAB52D75B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7BF6BF9-D64E-4A0B-AB2F-9A0FAB52D75B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7BF6BF9-D64E-4A0B-AB2F-9A0FAB52D75B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BC968D43-2720-4809-93B6-0EB81C5AFDEC} = {705FDC1F-054D-4648-804A-D1BF94195930}

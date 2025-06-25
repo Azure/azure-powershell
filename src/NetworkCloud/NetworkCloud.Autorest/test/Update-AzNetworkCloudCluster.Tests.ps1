@@ -78,8 +78,8 @@ Describe 'Update-AzNetworkCloudCluster' {
                 -AnalyticsOutputSettingsAssociatedIdentityType $clusterconfig.identityType `
                 -AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId $clusterconfig.miUserAssignedIdentityResourceId `
                 -CommandOutputSettingContainerUrl $clusterconfig.containerUrlUpdate `
-                -AssociatedIdentityType $clusterconfig.identityType `
-                -AssociatedIdentityUserAssignedIdentityResourceId $clusterconfig.miUserAssignedIdentityResourceId `
+                -CommandOutputSettingsAssociatedIdentityType $clusterconfig.identityType `
+                -CommandOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId $clusterconfig.miUserAssignedIdentityResourceId `
                 -ComputeDeploymentThresholdGrouping $clusterconfig.computeDeploymentThresholdGrouping `
                 -ComputeDeploymentThresholdType $clusterconfig.computeDeploymentThresholdType `
                 -ComputeDeploymentThresholdValue $clusterconfig.computeDeploymentThresholdValue `

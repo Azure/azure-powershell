@@ -86,8 +86,8 @@ Describe 'New-AzNetworkCloudCluster' {
                 -AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId $clusterconfig.miUserAssignedIdentityResourceId `
                 -ClusterType $clusterconfig.clusterType -ClusterVersion $clusterconfig.clusterVersion `
                 -CommandOutputSettingContainerUrl $clusterconfig.containerUrl `
-                -AssociatedIdentityType $clusterconfig.identityType `
-                -AssociatedIdentityUserAssignedIdentityResourceId $clusterconfig.miUserAssignedIdentityResourceId `
+                -CommandOutputSettingsAssociatedIdentityType $clusterconfig.identityType `
+                -CommandOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId $clusterconfig.miUserAssignedIdentityResourceId `
                 -ExtendedLocationName $clusterconfig.miExtendedLocation -ExtendedLocationType $common.customLocationType `
                 -Location $common.location `
                 -SubscriptionId $clusterconfig.subscriptionId `
