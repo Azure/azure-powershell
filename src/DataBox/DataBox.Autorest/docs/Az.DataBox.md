@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DataBox
-Module Guid: 6d70be0a-2155-4537-a3e8-04b3521e9b22
+Module Guid: 5b8a4f9c-59e3-409f-b250-4ddf95975b46
 Download Help Link: https://learn.microsoft.com/powershell/module/az.databox
 Help Version: 1.0.0.0
 Locale: en-US
@@ -30,8 +30,8 @@ Create an in-memory object for DataBoxDiskJobDetails.
 Create an in-memory object for DataBoxHeavyJobDetails.
 
 ### [New-AzDataBoxJob](New-AzDataBoxJob.md)
-Creates a new job with the specified parameters.
-Existing job cannot be updated with this API and should instead be updated with the Update job API.
+Create a new job with the specified parameters.
+Existing job cannot be updated with this API and should instead be updated with the create job API.
 
 ### [New-AzDataBoxJobDetailsObject](New-AzDataBoxJobDetailsObject.md)
 Create an in-memory object for DataBoxJobDetails.
@@ -58,5 +58,5 @@ Deletes a job.
 CancelJob.
 
 ### [Update-AzDataBoxJob](Update-AzDataBoxJob.md)
-Updates the properties of an existing job.
+Update the properties of an existing job.
 
