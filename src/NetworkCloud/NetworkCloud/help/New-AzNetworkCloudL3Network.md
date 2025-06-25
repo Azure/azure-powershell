@@ -8,21 +8,21 @@ schema: 2.0.0
 # New-AzNetworkCloudL3Network
 
 ## SYNOPSIS
-Create a new layer 3 (L3) network or update the properties of the existing network.
+create a new layer 3 (L3) network or create the properties of the existing network.
 
 ## SYNTAX
 
 ```
 New-AzNetworkCloudL3Network -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -ExtendedLocationName <String> -ExtendedLocationType <String> -L3IsolationDomainId <String> -Location <String>
- -Vlan <Int64> [-HybridAksIpamEnabled <HybridAksIpamEnabled>] [-HybridAksPluginType <HybridAksPluginType>]
- [-IPAllocationType <IPAllocationType>] [-InterfaceName <String>] [-Ipv4ConnectedPrefix <String>]
- [-Ipv6ConnectedPrefix <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Vlan <Int64> [-HybridAksIpamEnabled <String>] [-HybridAksPluginType <String>] [-IPAllocationType <String>]
+ [-InterfaceName <String>] [-Ipv4ConnectedPrefix <String>] [-Ipv6ConnectedPrefix <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new layer 3 (L3) network or update the properties of the existing network.
+create a new layer 3 (L3) network or create the properties of the existing network.
 
 ## EXAMPLES
 
@@ -108,7 +108,7 @@ The field was previously optional, now it will have no defined behavior and will
 The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.HybridAksIpamEnabled
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -125,7 +125,7 @@ The field was previously optional, now it will have no defined behavior and will
 The network plugin type for Hybrid AKS.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.HybridAksPluginType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 The type of the IP address allocation, defaulted to "DualStack".
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.IPAllocationType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -359,7 +359,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IL3Network
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL3Network
 
 ## NOTES
 

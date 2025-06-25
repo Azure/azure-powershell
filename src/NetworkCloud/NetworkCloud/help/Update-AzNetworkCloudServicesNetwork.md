@@ -8,16 +8,15 @@ schema: 2.0.0
 # Update-AzNetworkCloudServicesNetwork
 
 ## SYNOPSIS
-Update properties of the provided cloud services network, or update the tags associated with it.
-Properties and tag updates can be done independently.
+update properties of the provided cloud services network, or update the tags associated with it.
+Properties and tag update can be done independently.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzNetworkCloudServicesNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AdditionalEgressEndpoint <IEgressEndpoint[]>]
- [-EnableDefaultEgressEndpoint <CloudServicesNetworkEnableDefaultEgressEndpoints>] [-Tag <Hashtable>]
+ [-AdditionalEgressEndpoint <IEgressEndpoint[]>] [-EnableDefaultEgressEndpoint <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -25,15 +24,14 @@ Update-AzNetworkCloudServicesNetwork -Name <String> -ResourceGroupName <String> 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkCloudServicesNetwork -InputObject <INetworkCloudIdentity>
- [-AdditionalEgressEndpoint <IEgressEndpoint[]>]
- [-EnableDefaultEgressEndpoint <CloudServicesNetworkEnableDefaultEgressEndpoints>] [-Tag <Hashtable>]
+ [-AdditionalEgressEndpoint <IEgressEndpoint[]>] [-EnableDefaultEgressEndpoint <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update properties of the provided cloud services network, or update the tags associated with it.
-Properties and tag updates can be done independently.
+update properties of the provided cloud services network, or update the tags associated with it.
+Properties and tag update can be done independently.
 
 ## EXAMPLES
 
@@ -62,10 +60,9 @@ This command updates the egress endpoint for the cloud services network.
 ### -AdditionalEgressEndpoint
 The list of egress endpoints.
 This allows for connection from a Hybrid AKS cluster to the specified endpoint.
-To construct, see NOTES section for ADDITIONALEGRESSENDPOINT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IEgressEndpoint[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IEgressEndpoint[]
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +108,7 @@ Accept wildcard characters: False
 The indicator of whether the platform default endpoints are allowed for the egress traffic.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.CloudServicesNetworkEnableDefaultEgressEndpoints
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -124,7 +121,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -255,7 +251,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ICloudServicesNetwork
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetwork
 
 ## NOTES
 

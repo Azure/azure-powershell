@@ -8,21 +8,30 @@ schema: 2.0.0
 # New-AzNetworkCloudBareMetalMachineKeySet
 
 ## SYNOPSIS
-Create a new bare metal machine key set or update the existing one for the provided cluster.
+create a new bare metal machine key set or create the existing one for the provided cluster.
 
 ## SYNTAX
 
+### CreateViaIdentityClusterExpanded (Default)
 ```
-New-AzNetworkCloudBareMetalMachineKeySet -ClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -AzureGroupId <String> -Expiration <DateTime> -ExtendedLocationName <String>
- -ExtendedLocationType <String> -JumpHostsAllowed <String[]> -Location <String>
- -PrivilegeLevel <BareMetalMachineKeySetPrivilegeLevel> -UserList <IKeySetUser[]> [-OSGroupName <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+New-AzNetworkCloudBareMetalMachineKeySet -Name <String> -ClusterInputObject <INetworkCloudIdentity>
+ -AzureGroupId <String> -Expiration <DateTime> -ExtendedLocationName <String> -ExtendedLocationType <String>
+ -JumpHostsAllowed <String[]> -Location <String> -PrivilegeLevel <String> -UserList <IKeySetUser[]>
+ [-OSGroupName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateExpanded
+```
+New-AzNetworkCloudBareMetalMachineKeySet -Name <String> -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -AzureGroupId <String> -Expiration <DateTime> -ExtendedLocationName <String>
+ -ExtendedLocationType <String> -JumpHostsAllowed <String[]> -Location <String> -PrivilegeLevel <String>
+ -UserList <IKeySetUser[]> [-OSGroupName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create a new bare metal machine key set or update the existing one for the provided cluster.
+create a new bare metal machine key set or create the existing one for the provided cluster.
 
 ## EXAMPLES
 
@@ -83,12 +92,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: CreateViaIdentityClusterExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -238,7 +262,7 @@ Accept wildcard characters: False
 The access level allowed for the users in this key set.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.BareMetalMachineKeySetPrivilegeLevel
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -255,7 +279,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -271,7 +295,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -298,10 +322,9 @@ Accept wildcard characters: False
 
 ### -UserList
 The unique list of permitted users.
-To construct, see NOTES section for USERLIST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKeySetUser[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKeySetUser[]
 Parameter Sets: (All)
 Aliases:
 
@@ -348,9 +371,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineKeySet
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySet
 
 ## NOTES
 

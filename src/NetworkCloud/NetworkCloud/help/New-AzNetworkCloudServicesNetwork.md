@@ -8,21 +8,20 @@ schema: 2.0.0
 # New-AzNetworkCloudServicesNetwork
 
 ## SYNOPSIS
-Create a new cloud services network or update the properties of the existing cloud services network.
+create a new cloud services network or create the properties of the existing cloud services network.
 
 ## SYNTAX
 
 ```
-New-AzNetworkCloudServicesNetwork -CloudServicesNetworkName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String>
- [-AdditionalEgressEndpoint <IEgressEndpoint[]>]
- [-EnableDefaultEgressEndpoint <CloudServicesNetworkEnableDefaultEgressEndpoints>] [-Tag <Hashtable>]
+New-AzNetworkCloudServicesNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String>
+ [-AdditionalEgressEndpoint <IEgressEndpoint[]>] [-EnableDefaultEgressEndpoint <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new cloud services network or update the properties of the existing cloud services network.
+create a new cloud services network or create the properties of the existing cloud services network.
 
 ## EXAMPLES
 
@@ -49,10 +48,9 @@ This command creates a cloud services network.
 ### -AdditionalEgressEndpoint
 The list of egress endpoints.
 This allows for connection from a Hybrid AKS cluster to the specified endpoint.
-To construct, see NOTES section for ADDITIONALEGRESSENDPOINT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IEgressEndpoint[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IEgressEndpoint[]
 Parameter Sets: (All)
 Aliases:
 
@@ -72,21 +70,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CloudServicesNetworkName
-The name of the cloud services network.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -113,7 +96,7 @@ Accept wildcard characters: False
 The indicator of whether the platform default endpoints are allowed for the egress traffic.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.CloudServicesNetworkEnableDefaultEgressEndpoints
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -161,6 +144,21 @@ The geo-location where the resource lives
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the cloud services network.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: CloudServicesNetworkName
 
 Required: True
 Position: Named
@@ -269,7 +267,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ICloudServicesNetwork
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetwork
 
 ## NOTES
 
