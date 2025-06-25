@@ -4,10 +4,10 @@ $vmClusterName = "OFake_PowerShellTestVmCluster"
 $resourceGroup = "PowerShellTestRg"
 $stopActionName = "Stop"
             
-$dbNodeList = Get-AzOracleExascaleDbNode -exadbVmClusterName $vmClusterName -ResourceGroupName $resourceGroup
+$dbNodeList = Get-AzOracleDbNode -Cloudvmclustername $vmClusterName -ResourceGroupName $resourceGroup
 $dbNodeOcid1 = $dbNodeList[0].Name
             
-Invoke-AzOracleActionDbNode -ResourceGroupName $resourceGroup -exadbVmClusterName $vmClusterName -Dbnodeocid $dbNodeOcid1  -Action $stopActionName
+Invoke-AzOracleActionDbNode -ResourceGroupName $resourceGroup -Cloudvmclustername $vmClusterName -Dbnodeocid $dbNodeOcid1  -Action $stopActionName
 ```
 
 ```output
