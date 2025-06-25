@@ -80,6 +80,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.GalleryImageVersion, TO.PSGalleryImageVersionList>();
                 cfg.CreateMap<TO.PSGalleryImageVersionList, TO.PSGalleryImageVersion>();
                 cfg.CreateMap<TO.PSGalleryImageVersion, TO.PSGalleryImageVersionList>();
+
+                cfg.CreateMap<FROM.GalleryInVMAccessControlProfile, TO.PSGalleryInVMAccessControlProfileList>();
+                cfg.CreateMap<TO.PSGalleryInVMAccessControlProfileList, TO.PSGalleryInVMAccessControlProfile>();
+                cfg.CreateMap<TO.PSGalleryInVMAccessControlProfile, TO.PSGalleryInVMAccessControlProfileList>();
+
+                cfg.CreateMap<FROM.GalleryInVMAccessControlProfileVersion, TO.PSGalleryInVMAccessControlProfileVersionList>();
+                cfg.CreateMap<TO.PSGalleryInVMAccessControlProfileVersionList, TO.PSGalleryInVMAccessControlProfileVersion>();
+                cfg.CreateMap<TO.PSGalleryInVMAccessControlProfileVersion, TO.PSGalleryInVMAccessControlProfileVersionList>();
+
                 cfg.CreateMap<FROM.Image, TO.PSImageList>();
                 cfg.CreateMap<TO.PSImageList, TO.PSImage>();
                 cfg.CreateMap<TO.PSImage, TO.PSImageList>();
