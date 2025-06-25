@@ -129,7 +129,7 @@ usedDataStorageSizeInTbs    : null
 ocid                        : ocid1..aaaaa
 ```
 
-Change an Autonomous Database Disaster recovery configuration .
+Change an Autonomous Database Disaster recovery configuration.
 For more information, execute `Get-Help Rename-AzOracleAutonomousDatabaseDisasterRecoveryConfiguration`.
 
 ## PARAMETERS

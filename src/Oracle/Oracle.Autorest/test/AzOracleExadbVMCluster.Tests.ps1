@@ -51,10 +51,10 @@ Describe 'AzOracleExadbVMCluster' {
             $stopActionName = "Stop"
             
             # Get Db Node Ocids
-            $dbNodeList = Get-AzOracleExascaleDbNode -OracleExadbVMClustername $env.oracleExadbVMClusterName -ResourceGroupName $env.resourceGroup
+            $dbNodeList = Get-AzOracleExascaleDbNode -Exadbvmclustername $env.oracleExadbVMClusterName -ResourceGroupName $env.resourceGroup
             $dbNodeOcid1 = $dbNodeList[0].Name
             
-            Invoke-AzOracleActionExascaleDbNode -OracleExadbVMClustername $env.oracleExadbVMClusterName -DbNodeOcid $dbNodeOcid1 -ResourceGroupName $env.resourceGroup -Action $stopActionName
+            Invoke-AzOracleActionExascaleDbNode -Exadbvmclustername $env.oracleExadbVMClusterName -DbNodeOcid $dbNodeOcid1 -ResourceGroupName $env.resourceGroup -Action $stopActionName
         } | Should -Not -Throw
     }
     It 'StartVm' {
@@ -62,10 +62,10 @@ Describe 'AzOracleExadbVMCluster' {
             $startActionName = "Start"
             
             # Get Db Node Ocids
-            $dbNodeList = Get-AzOracleExascaleDbNode -OracleExadbVMClustername $env.oracleExadbVMClusterName -ResourceGroupName $env.resourceGroup
+            $dbNodeList = Get-AzOracleExascaleDbNode -Exadbvmclustername $env.oracleExadbVMClusterName -ResourceGroupName $env.resourceGroup
             $dbNodeOcid1 = $dbNodeList[0].Name
             
-            Invoke-AzOracleActionDbNode -OracleExadbVMClustername $env.oracleExadbVMClusterName -DbNodeOcid $dbNodeOcid1 -ResourceGroupName $env.resourceGroup -Action $startActionName
+            Invoke-AzOracleActionDbNode -Exadbvmclustername $env.oracleExadbVMClusterName -DbNodeOcid $dbNodeOcid1 -ResourceGroupName $env.resourceGroup -Action $startActionName
         } | Should -Not -Throw
     }
     It 'DeleteOracleExadbVMCluster' {
