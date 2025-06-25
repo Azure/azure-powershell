@@ -30,17 +30,31 @@ jobs:
           foreach ($branch in $branches) {
             $name = $branch.name
             if ($name -match "^Daily/Release_(\d{14})$") {
-                $timestamp = $matches[1]
-                try {
-                    $branchDate = [datetime]::ParseExact($timestamp, "yyyyMMddHHmmss", [System.Globalization.CultureInfo]::InvariantCulture)
-                } catch {
-                  Write-Warning "Failed to parse timestamp for $name"
-                  continue
-                }
+              $timestamp = $matches[1]
+              try {
+                  $branchDate = [datetime]::ParseExact($timestamp, "yyyyMMddHHmmss", [System.Globalization.CultureInfo]::InvariantCulture)
+              } catch {
+                Write-Warning "Failed to parse timestamp for $name"
+                continue
+              }
 
-                if ($branchDate -lt $cutoffDate) {
-                  Write-Host "Deleting old branch: $name (created $branchDate)"
+              if ($branchDate -lt $cutoffDate) {
+                Write-Host "Deleting old daily release branch: $name (created $branchDate)"
+                gh api -X DELETE "repos/$repo/git/refs/heads/$name"
+              }
+            }
+
+            elseif ($name -match "^batch-generation/branch-(\d{2})-(\d{2})-(\d{2})-(\d+)$") {
+              $yy = $matches[1]
+              $mm = $matches[2]
+              $dd = $matches[3]
+
+              $year = [int]"20$yy"
+              $branchDate = Get-Date -Year $year -Month $mm -Day $dd -Hour 0 -Minute 0 -Second 0
+
+              if ($branchDate -lt $cutoffDate) {
+                  Write-Host "Deleting old batch generation branch: $name (created $branchDate)"
                   gh api -X DELETE "repos/$repo/git/refs/heads/$name"
-                }
+              }
             }
           }
