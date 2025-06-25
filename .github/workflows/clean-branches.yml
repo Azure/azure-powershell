@@ -41,6 +41,7 @@ jobs:
               if ($branchDate -lt $cutoffDate) {
                 Write-Host "Deleting old daily release branch: $name (created $branchDate)"
                 gh api -X DELETE "repos/$repo/git/refs/heads/$name"
+                Write-Host
               }
             }
 
@@ -55,6 +56,7 @@ jobs:
               if ($branchDate -lt $cutoffDate) {
                   Write-Host "Deleting old batch generation branch: $name (created $branchDate)"
                   gh api -X DELETE "repos/$repo/git/refs/heads/$name"
+                  Write-Host
               }
             }
           }
