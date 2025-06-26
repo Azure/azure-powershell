@@ -350,7 +350,53 @@ namespace Microsoft.Azure.Management.Sql
                 return _result.Body;
             }
         }
+        /// <summary>
+        /// Exports a database.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        public static ImportExportOperationResult Export(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, ExportDatabaseDefinition parameters)
+        {
+                return ((IDatabasesOperations)operations).ExportAsync(resourceGroupName, serverName, databaseName, parameters).GetAwaiter().GetResult();
+        }
 
+        /// <summary>
+        /// Exports a database.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ImportExportOperationResult> ExportAsync(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, ExportDatabaseDefinition parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ExportWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
         /// <summary>
         /// Failovers a database.
         /// </summary>
@@ -718,9 +764,8 @@ namespace Microsoft.Azure.Management.Sql
                 return _result.Body;
             }
         }
-
         /// <summary>
-        /// Exports a database.
+        /// Creates a new database or updates an existing database.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -735,13 +780,13 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='databaseName'>
         /// The name of the database.
         /// </param>
-        public static ImportExportOperationResult Export(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, ExportDatabaseDefinition parameters)
+        public static Database BeginCreateOrUpdate(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, Database parameters)
         {
-                return ((IDatabasesOperations)operations).ExportAsync(resourceGroupName, serverName, databaseName, parameters).GetAwaiter().GetResult();
+                return ((IDatabasesOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, serverName, databaseName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Exports a database.
+        /// Creates a new database or updates an existing database.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -759,14 +804,13 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ImportExportOperationResult> ExportAsync(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, ExportDatabaseDefinition parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Database> BeginCreateOrUpdateAsync(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, Database parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ExportWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
-
         /// <summary>
         /// Deletes the database.
         /// </summary>
@@ -858,7 +902,53 @@ namespace Microsoft.Azure.Management.Sql
                 return _result.Body;
             }
         }
+        /// <summary>
+        /// Exports a database.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        public static ImportExportOperationResult BeginExport(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, ExportDatabaseDefinition parameters)
+        {
+                return ((IDatabasesOperations)operations).BeginExportAsync(resourceGroupName, serverName, databaseName, parameters).GetAwaiter().GetResult();
+        }
 
+        /// <summary>
+        /// Exports a database.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ImportExportOperationResult> BeginExportAsync(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, ExportDatabaseDefinition parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginExportWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
         /// <summary>
         /// Failovers a database.
         /// </summary>
@@ -909,7 +999,53 @@ namespace Microsoft.Azure.Management.Sql
         {
             (await operations.BeginFailoverWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, replicaType, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
+        /// <summary>
+        /// Imports a bacpac into a new database.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        public static ImportExportOperationResult BeginImport(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, ImportExistingDatabaseDefinition parameters)
+        {
+                return ((IDatabasesOperations)operations).BeginImportAsync(resourceGroupName, serverName, databaseName, parameters).GetAwaiter().GetResult();
+        }
 
+        /// <summary>
+        /// Imports a bacpac into a new database.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ImportExportOperationResult> BeginImportAsync(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, ImportExistingDatabaseDefinition parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginImportWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
         /// <summary>
         /// Pauses a database.
         /// </summary>
@@ -1023,150 +1159,6 @@ namespace Microsoft.Azure.Management.Sql
         public static void BeginUpgradeDataWarehouse(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName)
         {
                 ((IDatabasesOperations)operations).BeginUpgradeDataWarehouseAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates a new database or updates an existing database.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        public static Database BeginCreateOrUpdate(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, Database parameters)
-        {
-                return ((IDatabasesOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, serverName, databaseName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates a new database or updates an existing database.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Database> BeginCreateOrUpdateAsync(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, Database parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-
-        /// <summary>
-        /// Exports a database.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        public static ImportExportOperationResult BeginExport(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, ExportDatabaseDefinition parameters)
-        {
-                return ((IDatabasesOperations)operations).BeginExportAsync(resourceGroupName, serverName, databaseName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Exports a database.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ImportExportOperationResult> BeginExportAsync(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, ExportDatabaseDefinition parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginExportWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-
-        /// <summary>
-        /// Imports a bacpac into a new database.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        public static ImportExportOperationResult BeginImport(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, ImportExistingDatabaseDefinition parameters)
-        {
-                return ((IDatabasesOperations)operations).BeginImportAsync(resourceGroupName, serverName, databaseName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Imports a bacpac into a new database.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ImportExportOperationResult> BeginImportAsync(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, ImportExistingDatabaseDefinition parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginImportWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
         }
 
         /// <summary>

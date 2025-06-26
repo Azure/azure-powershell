@@ -280,25 +280,6 @@ namespace Microsoft.Azure.Management.Sql
                 return _result.Body;
             }
         }
-
-        /// <summary>
-        /// Refresh external governance enablement status.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        public static RefreshExternalGovernanceStatusOperationResult RefreshStatus(this IServersOperations operations, string resourceGroupName, string serverName)
-        {
-                return ((IServersOperations)operations).RefreshStatusAsync(resourceGroupName, serverName).GetAwaiter().GetResult();
-        }
-
         /// <summary>
         /// Imports a bacpac into a new database.
         /// </summary>
@@ -339,6 +320,23 @@ namespace Microsoft.Azure.Management.Sql
             {
                 return _result.Body;
             }
+        }
+        /// <summary>
+        /// Refresh external governance enablement status.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        public static RefreshExternalGovernanceStatusOperationResult RefreshStatus(this IServersOperations operations, string resourceGroupName, string serverName)
+        {
+                return ((IServersOperations)operations).RefreshStatusAsync(resourceGroupName, serverName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -484,25 +482,6 @@ namespace Microsoft.Azure.Management.Sql
                 return _result.Body;
             }
         }
-
-        /// <summary>
-        /// Refresh external governance enablement status.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        public static RefreshExternalGovernanceStatusOperationResult BeginRefreshStatus(this IServersOperations operations, string resourceGroupName, string serverName)
-        {
-                return ((IServersOperations)operations).BeginRefreshStatusAsync(resourceGroupName, serverName).GetAwaiter().GetResult();
-        }
-
         /// <summary>
         /// Imports a bacpac into a new database.
         /// </summary>
@@ -543,6 +522,23 @@ namespace Microsoft.Azure.Management.Sql
             {
                 return _result.Body;
             }
+        }
+        /// <summary>
+        /// Refresh external governance enablement status.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        public static RefreshExternalGovernanceStatusOperationResult BeginRefreshStatus(this IServersOperations operations, string resourceGroupName, string serverName)
+        {
+                return ((IServersOperations)operations).BeginRefreshStatusAsync(resourceGroupName, serverName).GetAwaiter().GetResult();
         }
 
         /// <summary>
