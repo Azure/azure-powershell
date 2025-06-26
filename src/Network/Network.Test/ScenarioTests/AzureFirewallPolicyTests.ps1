@@ -1599,7 +1599,7 @@ function Test-AzureFirewallPolicyExplicitProxyCRUD {
     $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
     $location = "westus2"
     $vnetName = Get-ResourceName
-    $pacFile ="https://packetcapturesdev.blob.core.windows.net/explicit-proxy/pacfile.pac?sp=r&st=2022-06-02T21:14:54Z&se=2022-07-15T05:14:54Z&spr=https&sv=2021-06-08&sr=b&sig=VqX7Jfqb0P2HhuoDFDCeGLHvtM65Tu8lpkV96kCWZn0%3D"
+    $pacFile = "fake_pacfile_url"
    
     try {
 
