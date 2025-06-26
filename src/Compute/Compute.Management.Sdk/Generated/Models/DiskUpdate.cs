@@ -97,11 +97,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// for disks that are not detached and attached frequently as it
         /// causes the disks to not align with the fault domain of the virtual
         /// machine.</param>
+        /// <param name="availabilityPolicy">Determines how platform treats
+        /// disk failures</param>
         /// <param name="tags">Resource tags</param>
         /// <param name="sku">The disks sku name. Can be Standard_LRS,
         /// Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS,
         /// StandardSSD_ZRS, or PremiumV2_LRS.</param>
-        public DiskUpdate(OperatingSystemTypes? osType = default(OperatingSystemTypes?), int? diskSizeGB = default(int?), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), long? diskIOPSReadWrite = default(long?), long? diskMBpsReadWrite = default(long?), long? diskIOPSReadOnly = default(long?), long? diskMBpsReadOnly = default(long?), int? maxShares = default(int?), Encryption encryption = default(Encryption), string networkAccessPolicy = default(string), string diskAccessId = default(string), string tier = default(string), bool? burstingEnabled = default(bool?), PurchasePlan purchasePlan = default(PurchasePlan), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), PropertyUpdatesInProgress propertyUpdatesInProgress = default(PropertyUpdatesInProgress), bool? supportsHibernation = default(bool?), string publicNetworkAccess = default(string), string dataAccessAuthMode = default(string), bool? optimizedForFrequentAttach = default(bool?), IDictionary<string, string> tags = default(IDictionary<string, string>), DiskSku sku = default(DiskSku))
+        public DiskUpdate(OperatingSystemTypes? osType = default(OperatingSystemTypes?), int? diskSizeGB = default(int?), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), long? diskIOPSReadWrite = default(long?), long? diskMBpsReadWrite = default(long?), long? diskIOPSReadOnly = default(long?), long? diskMBpsReadOnly = default(long?), int? maxShares = default(int?), Encryption encryption = default(Encryption), string networkAccessPolicy = default(string), string diskAccessId = default(string), string tier = default(string), bool? burstingEnabled = default(bool?), PurchasePlan purchasePlan = default(PurchasePlan), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), PropertyUpdatesInProgress propertyUpdatesInProgress = default(PropertyUpdatesInProgress), bool? supportsHibernation = default(bool?), string publicNetworkAccess = default(string), string dataAccessAuthMode = default(string), bool? optimizedForFrequentAttach = default(bool?), AvailabilityPolicy availabilityPolicy = default(AvailabilityPolicy), IDictionary<string, string> tags = default(IDictionary<string, string>), DiskSku sku = default(DiskSku))
         {
             OsType = osType;
             DiskSizeGB = diskSizeGB;
@@ -123,6 +125,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             PublicNetworkAccess = publicNetworkAccess;
             DataAccessAuthMode = dataAccessAuthMode;
             OptimizedForFrequentAttach = optimizedForFrequentAttach;
+            AvailabilityPolicy = availabilityPolicy;
             Tags = tags;
             Sku = sku;
             CustomInit();
@@ -287,6 +290,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.optimizedForFrequentAttach")]
         public bool? OptimizedForFrequentAttach { get; set; }
+
+        /// <summary>
+        /// Gets or sets determines how platform treats disk failures
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.availabilityPolicy")]
+        public AvailabilityPolicy AvailabilityPolicy { get; set; }
 
         /// <summary>
         /// Gets or sets resource tags

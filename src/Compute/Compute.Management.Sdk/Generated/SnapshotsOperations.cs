@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2024-03-02";
+            string apiVersion = "2025-01-02";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Management.Compute
                     throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
                 }
             }
-            string apiVersion = "2024-03-02";
+            string apiVersion = "2025-01-02";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -479,7 +479,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "snapshotName");
             }
-            string apiVersion = "2024-03-02";
+            string apiVersion = "2025-01-02";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -827,7 +827,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 snapshot.Validate();
             }
-            string apiVersion = "2024-03-02";
+            string apiVersion = "2025-01-02";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1048,7 +1048,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "snapshot");
             }
-            string apiVersion = "2024-03-02";
+            string apiVersion = "2025-01-02";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1259,7 +1259,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "snapshotName");
             }
-            string apiVersion = "2024-03-02";
+            string apiVersion = "2025-01-02";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1460,7 +1460,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 grantAccessData.Validate();
             }
-            string apiVersion = "2024-03-02";
+            string apiVersion = "2025-01-02";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1671,7 +1671,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "snapshotName");
             }
-            string apiVersion = "2024-03-02";
+            string apiVersion = "2025-01-02";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;

@@ -62,12 +62,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Possible values include: 'AzureActiveDirectory', 'None'</param>
         /// <param name="supportedCapabilities">List of supported capabilities
         /// for the image from which the OS disk was created.</param>
+        /// <param name="snapshotAccessState">The state of snapshot which
+        /// determines the access availability of the snapshot. Possible values
+        /// include: 'Unknown', 'Pending', 'Available', 'InstantAccess',
+        /// 'AvailableWithInstantAccess'</param>
         /// <param name="tags">Resource tags</param>
         /// <param name="sku">The snapshots sku name. Can be Standard_LRS,
         /// Premium_LRS, or Standard_ZRS. This is an optional parameter for
         /// incremental snapshot and the default behavior is the SKU will be
         /// set to the same sku as the previous snapshot</param>
-        public SnapshotUpdate(OperatingSystemTypes? osType = default(OperatingSystemTypes?), int? diskSizeGB = default(int?), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), Encryption encryption = default(Encryption), string networkAccessPolicy = default(string), string diskAccessId = default(string), bool? supportsHibernation = default(bool?), string publicNetworkAccess = default(string), string dataAccessAuthMode = default(string), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), IDictionary<string, string> tags = default(IDictionary<string, string>), SnapshotSku sku = default(SnapshotSku))
+        public SnapshotUpdate(OperatingSystemTypes? osType = default(OperatingSystemTypes?), int? diskSizeGB = default(int?), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), Encryption encryption = default(Encryption), string networkAccessPolicy = default(string), string diskAccessId = default(string), bool? supportsHibernation = default(bool?), string publicNetworkAccess = default(string), string dataAccessAuthMode = default(string), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), string snapshotAccessState = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SnapshotSku sku = default(SnapshotSku))
         {
             OsType = osType;
             DiskSizeGB = diskSizeGB;
@@ -79,6 +83,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             PublicNetworkAccess = publicNetworkAccess;
             DataAccessAuthMode = dataAccessAuthMode;
             SupportedCapabilities = supportedCapabilities;
+            SnapshotAccessState = snapshotAccessState;
             Tags = tags;
             Sku = sku;
             CustomInit();
@@ -162,6 +167,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.supportedCapabilities")]
         public SupportedCapabilities SupportedCapabilities { get; set; }
+
+        /// <summary>
+        /// Gets the state of snapshot which determines the access availability
+        /// of the snapshot. Possible values include: 'Unknown', 'Pending',
+        /// 'Available', 'InstantAccess', 'AvailableWithInstantAccess'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.snapshotAccessState")]
+        public string SnapshotAccessState { get; private set; }
 
         /// <summary>
         /// Gets or sets resource tags

@@ -104,6 +104,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="dataAccessAuthMode">Additional authentication
         /// requirements when exporting or uploading to a disk or snapshot.
         /// Possible values include: 'AzureActiveDirectory', 'None'</param>
+        /// <param name="snapshotAccessState">The state of snapshot which
+        /// determines the access availability of the snapshot. Possible values
+        /// include: 'Unknown', 'Pending', 'Available', 'InstantAccess',
+        /// 'AvailableWithInstantAccess'</param>
         /// <param name="managedBy">Unused. Always Null.</param>
         /// <param name="sku">The snapshots sku name. Can be Standard_LRS,
         /// Premium_LRS, or Standard_ZRS. This is an optional parameter for
@@ -112,7 +116,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="extendedLocation">The extended location where the
         /// snapshot will be created. Extended location cannot be
         /// changed.</param>
-        public Snapshot(string location, CreationData creationData, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), string hyperVGeneration = default(string), PurchasePlan purchasePlan = default(PurchasePlan), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), int? diskSizeGB = default(int?), long? diskSizeBytes = default(long?), string diskState = default(string), string uniqueId = default(string), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), string provisioningState = default(string), bool? incremental = default(bool?), string incrementalSnapshotFamilyId = default(string), Encryption encryption = default(Encryption), string networkAccessPolicy = default(string), string diskAccessId = default(string), DiskSecurityProfile securityProfile = default(DiskSecurityProfile), bool? supportsHibernation = default(bool?), string publicNetworkAccess = default(string), double? completionPercent = default(double?), CopyCompletionError copyCompletionError = default(CopyCompletionError), string dataAccessAuthMode = default(string), string managedBy = default(string), SnapshotSku sku = default(SnapshotSku), ExtendedLocation extendedLocation = default(ExtendedLocation))
+        public Snapshot(string location, CreationData creationData, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), string hyperVGeneration = default(string), PurchasePlan purchasePlan = default(PurchasePlan), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), int? diskSizeGB = default(int?), long? diskSizeBytes = default(long?), string diskState = default(string), string uniqueId = default(string), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), string provisioningState = default(string), bool? incremental = default(bool?), string incrementalSnapshotFamilyId = default(string), Encryption encryption = default(Encryption), string networkAccessPolicy = default(string), string diskAccessId = default(string), DiskSecurityProfile securityProfile = default(DiskSecurityProfile), bool? supportsHibernation = default(bool?), string publicNetworkAccess = default(string), double? completionPercent = default(double?), CopyCompletionError copyCompletionError = default(CopyCompletionError), string dataAccessAuthMode = default(string), string snapshotAccessState = default(string), string managedBy = default(string), SnapshotSku sku = default(SnapshotSku), ExtendedLocation extendedLocation = default(ExtendedLocation))
             : base(location, id, name, type, tags)
         {
             TimeCreated = timeCreated;
@@ -138,6 +142,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             CompletionPercent = completionPercent;
             CopyCompletionError = copyCompletionError;
             DataAccessAuthMode = dataAccessAuthMode;
+            SnapshotAccessState = snapshotAccessState;
             ManagedBy = managedBy;
             Sku = sku;
             ExtendedLocation = extendedLocation;
@@ -312,6 +317,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.dataAccessAuthMode")]
         public string DataAccessAuthMode { get; set; }
+
+        /// <summary>
+        /// Gets the state of snapshot which determines the access availability
+        /// of the snapshot. Possible values include: 'Unknown', 'Pending',
+        /// 'Available', 'InstantAccess', 'AvailableWithInstantAccess'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.snapshotAccessState")]
+        public string SnapshotAccessState { get; private set; }
 
         /// <summary>
         /// Gets unused. Always Null.

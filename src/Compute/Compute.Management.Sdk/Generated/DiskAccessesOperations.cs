@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2024-03-02";
+            string apiVersion = "2025-01-02";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Management.Compute
                     throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
                 }
             }
-            string apiVersion = "2024-03-02";
+            string apiVersion = "2025-01-02";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -480,7 +480,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "diskAccessName");
             }
-            string apiVersion = "2024-03-02";
+            string apiVersion = "2025-01-02";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -770,7 +770,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "diskAccessName");
             }
-            string apiVersion = "2024-03-02";
+            string apiVersion = "2025-01-02";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -986,7 +986,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "privateEndpointConnectionName");
             }
-            string apiVersion = "2024-03-02";
+            string apiVersion = "2025-01-02";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1257,7 +1257,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "diskAccessName");
             }
-            string apiVersion = "2024-03-02";
+            string apiVersion = "2025-01-02";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1476,7 +1476,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 diskAccess.Validate();
             }
-            string apiVersion = "2024-03-02";
+            string apiVersion = "2025-01-02";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1694,7 +1694,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "diskAccessName");
             }
-            string apiVersion = "2024-03-02";
+            string apiVersion = "2025-01-02";
             DiskAccessUpdate diskAccess = new DiskAccessUpdate();
             if (tags != null)
             {
@@ -1911,7 +1911,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "diskAccessName");
             }
-            string apiVersion = "2024-03-02";
+            string apiVersion = "2025-01-02";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2117,7 +2117,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "privateLinkServiceConnectionState");
             }
-            string apiVersion = "2024-03-02";
+            string apiVersion = "2025-01-02";
             PrivateEndpointConnection privateEndpointConnection = new PrivateEndpointConnection();
             if (privateLinkServiceConnectionState != null)
             {
@@ -2343,7 +2343,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "privateEndpointConnectionName");
             }
-            string apiVersion = "2024-03-02";
+            string apiVersion = "2025-01-02";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;

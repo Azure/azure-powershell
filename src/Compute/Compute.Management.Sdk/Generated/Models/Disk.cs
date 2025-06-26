@@ -137,6 +137,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// disk was last attached or detached from a VM or the time when the
         /// VM to which the disk was attached was deallocated or
         /// started.</param>
+        /// <param name="availabilityPolicy">Determines how platform treats
+        /// disk failures</param>
         /// <param name="managedBy">A relative URI containing the ID of the VM
         /// that has the disk attached.</param>
         /// <param name="managedByExtended">List of relative URIs containing
@@ -149,7 +151,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="zones">The Logical zone list for Disk.</param>
         /// <param name="extendedLocation">The extended location where the disk
         /// will be created. Extended location cannot be changed.</param>
-        public Disk(string location, CreationData creationData, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), string hyperVGeneration = default(string), PurchasePlan purchasePlan = default(PurchasePlan), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), int? diskSizeGB = default(int?), long? diskSizeBytes = default(long?), string uniqueId = default(string), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), string provisioningState = default(string), long? diskIOPSReadWrite = default(long?), long? diskMBpsReadWrite = default(long?), long? diskIOPSReadOnly = default(long?), long? diskMBpsReadOnly = default(long?), string diskState = default(string), Encryption encryption = default(Encryption), int? maxShares = default(int?), IList<ShareInfoElement> shareInfo = default(IList<ShareInfoElement>), string networkAccessPolicy = default(string), string diskAccessId = default(string), System.DateTime? burstingEnabledTime = default(System.DateTime?), string tier = default(string), bool? burstingEnabled = default(bool?), PropertyUpdatesInProgress propertyUpdatesInProgress = default(PropertyUpdatesInProgress), bool? supportsHibernation = default(bool?), DiskSecurityProfile securityProfile = default(DiskSecurityProfile), double? completionPercent = default(double?), string publicNetworkAccess = default(string), string dataAccessAuthMode = default(string), bool? optimizedForFrequentAttach = default(bool?), System.DateTime? lastOwnershipUpdateTime = default(System.DateTime?), string managedBy = default(string), IList<string> managedByExtended = default(IList<string>), DiskSku sku = default(DiskSku), IList<string> zones = default(IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation))
+        public Disk(string location, CreationData creationData, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), string hyperVGeneration = default(string), PurchasePlan purchasePlan = default(PurchasePlan), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), int? diskSizeGB = default(int?), long? diskSizeBytes = default(long?), string uniqueId = default(string), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), string provisioningState = default(string), long? diskIOPSReadWrite = default(long?), long? diskMBpsReadWrite = default(long?), long? diskIOPSReadOnly = default(long?), long? diskMBpsReadOnly = default(long?), string diskState = default(string), Encryption encryption = default(Encryption), int? maxShares = default(int?), IList<ShareInfoElement> shareInfo = default(IList<ShareInfoElement>), string networkAccessPolicy = default(string), string diskAccessId = default(string), System.DateTime? burstingEnabledTime = default(System.DateTime?), string tier = default(string), bool? burstingEnabled = default(bool?), PropertyUpdatesInProgress propertyUpdatesInProgress = default(PropertyUpdatesInProgress), bool? supportsHibernation = default(bool?), DiskSecurityProfile securityProfile = default(DiskSecurityProfile), double? completionPercent = default(double?), string publicNetworkAccess = default(string), string dataAccessAuthMode = default(string), bool? optimizedForFrequentAttach = default(bool?), System.DateTime? lastOwnershipUpdateTime = default(System.DateTime?), AvailabilityPolicy availabilityPolicy = default(AvailabilityPolicy), string managedBy = default(string), IList<string> managedByExtended = default(IList<string>), DiskSku sku = default(DiskSku), IList<string> zones = default(IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation))
             : base(location, id, name, type, tags)
         {
             TimeCreated = timeCreated;
@@ -184,6 +186,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             DataAccessAuthMode = dataAccessAuthMode;
             OptimizedForFrequentAttach = optimizedForFrequentAttach;
             LastOwnershipUpdateTime = lastOwnershipUpdateTime;
+            AvailabilityPolicy = availabilityPolicy;
             ManagedBy = managedBy;
             ManagedByExtended = managedByExtended;
             Sku = sku;
@@ -436,6 +439,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.LastOwnershipUpdateTime")]
         public System.DateTime? LastOwnershipUpdateTime { get; private set; }
+
+        /// <summary>
+        /// Gets or sets determines how platform treats disk failures
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.availabilityPolicy")]
+        public AvailabilityPolicy AvailabilityPolicy { get; set; }
 
         /// <summary>
         /// Gets a relative URI containing the ID of the VM that has the disk
