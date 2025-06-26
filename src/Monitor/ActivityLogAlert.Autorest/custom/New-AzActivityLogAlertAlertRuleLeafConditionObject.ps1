@@ -26,11 +26,11 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.A
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzActivityLogAlertAlertRuleLeafConditionObject
 #>
 function New-AzActivityLogAlertAlertRuleLeafConditionObject {
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleLeafCondition", "15.0.0", "7.0.0", "2025/11/03", DeprecatedOutputProperties="ContainsAny", NewOutputProperties="List[ContainsAny]")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.CmdletBreakingChange("15.0.0", "7.0.0", "2025/11/03", ChangeDescription="The type of property 'ContainsAny' has changed from array to List.")]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleLeafCondition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.ParameterBreakingChange("ContainsAny", "15.0.0", "7.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
+
         [Parameter(HelpMessage="The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.")]
         [string[]]
         $ContainsAny,
