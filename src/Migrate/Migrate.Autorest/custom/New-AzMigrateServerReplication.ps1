@@ -472,7 +472,6 @@ function New-AzMigrateServerReplication {
             $null = $PSBoundParameters.Remove('SubscriptionId')
             $null = $PSBoundParameters.Add('Location', $TargetRegion)
             #Get-AzVMSku -Location is deprecated, replicate using Get-AzComputeResourceSKU and a where clause
-            $null = $PSBoundParameters.Add('Location', $TargetRegion)
             $allAvailableSkus = Get-AzComputeResourceSKU @PSBoundParameters| Where-Object { $_.ResourceType.Contains("virtualMachines") }
             if ($null -ne $allAvailableSkus) {
                 $matchingComputeSku = $allAvailableSkus | Where-Object { $_.Name -eq $TargetVMSize }
