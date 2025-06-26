@@ -142,14 +142,14 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
             TestRunner.RunTestScript("Test-ProvisionCosmosDBAccountBackupPolicyWithContinuous7DaysCmdLets");
         }
 
-        [Fact(Skip = "Flaky test: Working on windows but pipelines failing on Macos")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCrossRegionRestoreAccountCmdlets()
         {
             TestRunner.RunTestScript("Test-CrossRegionRestoreAccountCmdlets");
         }
 
-        [Fact(Skip = "Flaky test: Working on windows but pipelines failing on Macos")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCrossRegionRestoreSingleRegionAccountCmdlets()
         {
