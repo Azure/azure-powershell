@@ -16,7 +16,8 @@ Construct and perform HTTP request to Azure resource management endpoint only
 ```
 Invoke-AzRestMethod -Path <String> [-Method <String>] [-Payload <String>] [-AsJob] [-WaitForCompletion]
  [-PollFrom <String>] [-FinalResultFrom <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>] [-FollowNextLink]
+ [-NextLinkName <String>] [-PageableItemName <String>] [-MaxPageSize <Int32>]]
 ```
 
 ### ByParameters
@@ -24,7 +25,8 @@ Invoke-AzRestMethod -Path <String> [-Method <String>] [-Payload <String>] [-AsJo
 Invoke-AzRestMethod [-SubscriptionId <String>] [-ResourceGroupName <String>] [-ResourceProviderName <String>]
  [-ResourceType <String[]>] [-Name <String[]>] -ApiVersion <String> [-Method <String>] [-Payload <String>]
  [-AsJob] [-WaitForCompletion] [-PollFrom <String>] [-FinalResultFrom <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-FollowNextLink]
+ [-NextLinkName <String>] [-PageableItemName <String>] [-MaxPageSize <Int32>]]
  [<CommonParameters>]
 ```
 
@@ -32,7 +34,8 @@ Invoke-AzRestMethod [-SubscriptionId <String>] [-ResourceGroupName <String>] [-R
 ```
 Invoke-AzRestMethod [-Uri] <Uri> [-ResourceId <Uri>] [-Method <String>] [-Payload <String>] [-AsJob]
  [-WaitForCompletion] [-PollFrom <String>] [-FinalResultFrom <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-FollowNextLink]
+ [-NextLinkName <String>] [-PageableItemName <String>] [-MaxPageSize <Int32>]]
  [<CommonParameters>]
 ```
 
@@ -161,7 +164,7 @@ Invoke-AzRestMethod -Method POST -Uri https://graph.microsoft.com/v1.0/servicePr
 
 Call Microsoft Graph API to assign App Role by constructing a hashtable, converting to a JSON string, and passing the payload to `Invoke-AzRestMethod`.
 
-### Example 5
+### Example 6
 ```powershell
 # This example demonstrates creating or updating a resource with a long-running PUT request.
 Invoke-AzRestMethod -Method PUT -Uri "https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.KeyVault/managedHSMs/{hsm-name}?api-version=2023-07-01" `
@@ -245,6 +248,57 @@ Version    : 1.1
 
 Sends a long-running PUT request to create or update a Managed HSM resource in Azure, polling until completion if the operation requires it.
 This example uses placeholders ({subscription-id}, {resource-group}, {hsm-name}, {tenant-id}, and {admin-object-id}) that the user should replace with their specific values.
+
+
+### Example 7
+```powershell
+# This example shows how to use server-side pagination to get results from a paginated GET endpoint by following nextLink references in the response.
+
+Invoke-AzRest -SubscriptionId $subscriptionId -ResourceProviderName "Microsoft.Compute" -ResourceType "virtualMachines" -ApiVersion "2024-11-01" -Method "GET" -FollowNextLink
+
+```
+
+```output
+StatusCode : 200
+Content    : {
+               "value": [
+                 {
+                   "name": "VM000",
+                   "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Compute/virtualMachines/VM000",
+                   "type": "Microsoft.Compute/virtualMachines",
+                   "location": "{region}",
+                   "tags": {},
+                   "identity": {},
+                   "properties": {},
+                   "resources": []
+                 },
+                 {
+                   "name": "VM001",
+                   "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Compute/virtualMachines/VM001",
+                   "type": "Microsoft.Compute/virtualMachines",
+                   "location": "{region}",
+                   "tags": {},
+                   "identity": {},
+                   "properties": {},
+                   "resources": []
+                 }
+              ]
+             }
+Headers    : {
+               "Pragma": "no-cache",
+               "x-ms-request-id": "{request-id}",
+               "x-ms-correlation-request-id": "{correlation-request-id}",
+               "x-ms-routing-request-id": "{routing-request-id}",
+               "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+               "X-Content-Type-Options": "nosniff",
+               "Date": "Wed, 23 Jul 2025 07:49:56 GMT"
+             }
+Method     : GET
+RequestUri : https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/virtualMachines?api-version=2024-11-01
+Version    : 1.1
+
+```
+
 
 ## PARAMETERS
 
@@ -521,6 +575,67 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### -FollowNextLink
+Enables server-driven pagination from paginated GET endpoints.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NextLinkName
+Specifies the name of the next link JSON property to follow for pagination.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: nextLink
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PageableItemName
+Specifies the name of the JSON property that contains the items in a paginated response.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: value
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaxPageSize
+Specifies the maximum number of pages to retrieve when following next links in a paginated response.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value:
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
