@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Azure Compute resource management API.",
-    "version": "2024-03-02",
+    "version": "2025-01-02",
     "description": "Compute Client",
     "x-typespec-generated": [
       {
@@ -1905,6 +1905,11 @@
           "type": "string",
           "description": "A SAS uri for accessing a VM guest state.",
           "readOnly": true
+        },
+        "securityMetadataAccessSAS": {
+          "type": "string",
+          "description": "A SAS uri for accessing a VM metadata.",
+          "readOnly": true
         }
       }
     },
@@ -1926,6 +1931,40 @@
           {
             "name": "Arm64",
             "value": "Arm64"
+          }
+        ]
+      }
+    },
+    "AvailabilityPolicy": {
+      "type": "object",
+      "description": "In the case of an availability or connectivity issue with the data disk, specify the behavior of your VM",
+      "properties": {
+        "actionOnDiskDelay": {
+          "$ref": "#/definitions/AvailabilityPolicyDiskDelay",
+          "description": "Determines on how to handle disks with slow I/O."
+        }
+      }
+    },
+    "AvailabilityPolicyDiskDelay": {
+      "type": "string",
+      "description": "Determines on how to handle disks with slow I/O.",
+      "enum": [
+        "None",
+        "AutomaticReattach"
+      ],
+      "x-ms-enum": {
+        "name": "AvailabilityPolicyDiskDelay",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "None",
+            "value": "None",
+            "description": "Defaults to behavior without av policy specified, which is VM restart upon slow disk io."
+          },
+          {
+            "name": "AutomaticReattach",
+            "value": "AutomaticReattach",
+            "description": "Upon a disk io failure or slow response, try detaching then reattaching the disk."
           }
         ]
       }
@@ -2013,6 +2052,11 @@
           "type": "string",
           "description": "If createOption is ImportSecure, this is the URI of a blob to be imported into VM guest state."
         },
+        "securityMetadataUri": {
+          "type": "string",
+          "format": "uri",
+          "description": "If createOption is ImportSecure, this is the URI of a blob to be imported into VM metadata for Confidential VM."
+        },
         "performancePlus": {
           "type": "boolean",
           "description": "Set this flag to true to get a boost on the performance target of the disk deployed, see here on the respective performance target. This flag can only be set on disk creation time and cannot be disabled after enabled."
@@ -2024,6 +2068,12 @@
         "provisionedBandwidthCopySpeed": {
           "$ref": "#/definitions/ProvisionedBandwidthCopyOption",
           "description": "If this field is set on a snapshot and createOption is CopyStart, the snapshot will be copied at a quicker speed."
+        },
+        "instantAccessDurationMinutes": {
+          "type": "integer",
+          "format": "int64",
+          "description": "For snapshots created from Premium SSD v2 or Ultra disk, this property determines the time in minutes the snapshot is retained for instant access to enable faster restore.",
+          "minimum": 1
         }
       },
       "required": [
@@ -2238,12 +2288,12 @@
           {
             "name": "ImportSecure",
             "value": "ImportSecure",
-            "description": "Similar to Import create option. Create a new Trusted Launch VM or Confidential VM supported disk by importing additional blob for VM guest state specified by securityDataUri in storage account specified by storageAccountId"
+            "description": "Similar to Import create option. Create a new Trusted Launch VM or Confidential VM supported disk by importing additional blobs for VM guest state specified by securityDataUri and VM metadata specified by securityMetadataUri in storage account specified by storageAccountId. The VM metadata is optional and only required for certain Confidential VM configurations and not required for Trusted Launch VM."
           },
           {
             "name": "UploadPreparedSecure",
             "value": "UploadPreparedSecure",
-            "description": "Similar to Upload create option. Create a new Trusted Launch VM or Confidential VM supported disk and upload using write token in both disk and VM guest state"
+            "description": "Similar to Upload create option. Create a new Trusted Launch VM or Confidential VM supported disk and upload using write token in disk, VM guest state and VM metadata. The VM metadata is optional and only required for certain Confidential VM configurations and not required for Trusted Launch VM."
           },
           {
             "name": "CopyFromSanSnapshot",
@@ -2578,6 +2628,10 @@
           "description": "The UTC time when the ownership state of the disk was last changed i.e., the time the disk was last attached or detached from a VM or the time when the VM to which the disk was attached was deallocated or started.",
           "readOnly": true,
           "x-ms-client-name": "lastOwnershipUpdateTime"
+        },
+        "availabilityPolicy": {
+          "$ref": "#/definitions/AvailabilityPolicy",
+          "description": "Determines how platform treats disk failures"
         }
       },
       "required": [
@@ -3035,6 +3089,10 @@
         "optimizedForFrequentAttach": {
           "type": "boolean",
           "description": "Setting this property to true improves reliability and performance of data disks that are frequently (more than 5 times a day) by detached from one virtual machine and attached to another. This property should not be set for disks that are not detached and attached frequently as it causes the disks to not align with the fault domain of the virtual machine."
+        },
+        "availabilityPolicy": {
+          "$ref": "#/definitions/AvailabilityPolicy",
+          "description": "Determines how platform treats disk failures"
         }
       }
     },
@@ -3718,6 +3776,48 @@
         }
       ]
     },
+    "SnapshotAccessState": {
+      "type": "string",
+      "description": "The state of snapshot which determines the access availability of the snapshot.",
+      "enum": [
+        "Unknown",
+        "Pending",
+        "Available",
+        "InstantAccess",
+        "AvailableWithInstantAccess"
+      ],
+      "x-ms-enum": {
+        "name": "SnapshotAccessState",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "Unknown",
+            "value": "Unknown",
+            "description": "Default value."
+          },
+          {
+            "name": "Pending",
+            "value": "Pending",
+            "description": "The snapshot cannot be used for restore, copy or download to offline."
+          },
+          {
+            "name": "Available",
+            "value": "Available",
+            "description": "The snapshot can be used for restore, copy to different region, and download to offline."
+          },
+          {
+            "name": "InstantAccess",
+            "value": "InstantAccess",
+            "description": "The snapshot can be used for restoring disks with fast performance but cannot be copied or downloaded."
+          },
+          {
+            "name": "AvailableWithInstantAccess",
+            "value": "AvailableWithInstantAccess",
+            "description": "The snapshot can be used for restoring disks with fast performance, copied and downloaded."
+          }
+        ]
+      }
+    },
     "SnapshotList": {
       "type": "object",
       "description": "The List Snapshots operation response.",
@@ -3844,6 +3944,11 @@
         "dataAccessAuthMode": {
           "$ref": "#/definitions/DataAccessAuthMode",
           "description": "Additional authentication requirements when exporting or uploading to a disk or snapshot."
+        },
+        "snapshotAccessState": {
+          "$ref": "#/definitions/SnapshotAccessState",
+          "description": "The state of snapshot which determines the access availability of the snapshot.",
+          "readOnly": true
         }
       },
       "required": [
@@ -3961,6 +4066,11 @@
         "supportedCapabilities": {
           "$ref": "#/definitions/SupportedCapabilities",
           "description": "List of supported capabilities for the image from which the OS disk was created."
+        },
+        "snapshotAccessState": {
+          "$ref": "#/definitions/SnapshotAccessState",
+          "description": "The state of snapshot which determines the access availability of the snapshot.",
+          "readOnly": true
         }
       }
     },
@@ -3989,7 +4099,35 @@
         "architecture": {
           "$ref": "#/definitions/Architecture",
           "description": "CPU architecture supported by an OS disk."
+        },
+        "supportedSecurityOption": {
+          "$ref": "#/definitions/SupportedSecurityOption",
+          "description": "Refers to the security capability of the disk supported to create a Trusted launch or Confidential VM"
         }
+      }
+    },
+    "SupportedSecurityOption": {
+      "type": "string",
+      "description": "Refers to the security capability of the disk supported to create a Trusted launch or Confidential VM",
+      "enum": [
+        "TrustedLaunchSupported",
+        "TrustedLaunchAndConfidentialVMSupported"
+      ],
+      "x-ms-enum": {
+        "name": "SupportedSecurityOption",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "TrustedLaunchSupported",
+            "value": "TrustedLaunchSupported",
+            "description": "The disk supports creating Trusted Launch VMs."
+          },
+          {
+            "name": "TrustedLaunchAndConfidentialVMSupported",
+            "value": "TrustedLaunchAndConfidentialVMSupported",
+            "description": "The disk supports creating both Trusted Launch and Confidential VMs."
+          }
+        ]
       }
     },
     "TypeSpec.Http.OkResponse": {
