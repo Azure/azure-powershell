@@ -1,9 +1,9 @@
 {
-  "ActivityLogAlert+[NoContext]+CRUD+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/activity-log-alert-groupyfzqpb/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0?api-version=2020-10-01+1": {
+  "ActivityLogAlert+[NoContext]+CRUD+$PUT+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/activity-log-alert-groupdofyqv/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0?api-version=2020-10-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/activity-log-alert-groupyfzqpb/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0?api-version=2020-10-01",
-      "Content": "{\r\n  \"location\": \"global\",\r\n  \"properties\": {\r\n    \"condition\": {\r\n      \"allOf\": [\r\n        {\r\n          \"field\": \"category\",\r\n          \"equals\": \"Administrative\"\r\n        },\r\n        {\r\n          \"field\": \"level\",\r\n          \"equals\": \"Error\"\r\n        },\r\n        {\r\n          \"anyOf\": [\r\n            {\r\n              \"field\": \"properties.incidentType\",\r\n              \"equals\": \"Maintenance\"\r\n            },\r\n            {\r\n              \"field\": \"properties.incidentType\",\r\n              \"equals\": \"Incident\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"actions\": {\r\n      \"actionGroups\": [\r\n        {\r\n          \"actionGroupId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/activity-log-alert-groupyfzqpb/providers/microsoft.insights/actionGroups/test-action-groupyd95li\",\r\n          \"webhookProperties\": {\r\n            \"sampleWebhookProperty\": \"SamplePropertyValue\"\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"scopes\": [ \"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f\" ]\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/activity-log-alert-groupdofyqv/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0?api-version=2020-10-01",
+      "Content": "{\r\n  \"location\": \"global\",\r\n  \"properties\": {\r\n    \"condition\": {\r\n      \"allOf\": [\r\n        {\r\n          \"field\": \"category\",\r\n          \"equals\": \"Administrative\"\r\n        },\r\n        {\r\n          \"field\": \"level\",\r\n          \"equals\": \"Error\"\r\n        },\r\n        {\r\n          \"anyOf\": [\r\n            {\r\n              \"field\": \"properties.incidentType\",\r\n              \"equals\": \"Maintenance\"\r\n            },\r\n            {\r\n              \"field\": \"properties.incidentType\",\r\n              \"equals\": \"Incident\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"actions\": {\r\n      \"actionGroups\": [\r\n        {\r\n          \"actionGroupId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/activity-log-alert-groupdofyqv/providers/microsoft.insights/actionGroups/test-action-groupikf8e5\",\r\n          \"webhookProperties\": {\r\n            \"sampleWebhookProperty\": \"SamplePropertyValue\"\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"scopes\": [ \"subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590\" ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -17,41 +17,44 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "6cd44502-06ff-43ce-8319-d02681075476", "6cd44502-06ff-43ce-8319-d02681075476" ],
-        "api-supported-versions": [ "2017-03-01-preview, 2017-04-01, 2020-10-01" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "8ed3af84-7f8a-41e7-ae3f-34e9ba223926", "8ed3af84-7f8a-41e7-ae3f-34e9ba223926" ],
+        "api-supported-versions": [ "2017-03-01-preview, 2017-04-01, 2020-10-01, 2023-01-01-preview" ],
         "Arr-Disable-Session-Affinity": [ "true" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "6cd44502-06ff-43ce-8319-d02681075476" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220915T085540Z:6cd44502-06ff-43ce-8319-d02681075476" ],
-        "Date": [ "Thu, 15 Sep 2022 08:55:39 GMT" ]
+        "x-ms-operation-identifier": [ "tenantId=54826b22-38d6-4fb2-bad9-b7b93a3e9c5a,objectId=0f876fc3-c749-4607-ad50-c13ef1569cea/indonesiacentral/42e27850-8965-4f24-93bc-15ec48ebbe27" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "8ed3af84-7f8a-41e7-ae3f-34e9ba223926" ],
+        "x-ms-routing-request-id": [ "INDONESIACENTRAL:20250626T061540Z:8ed3af84-7f8a-41e7-ae3f-34e9ba223926" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 88B768F75D6F4A859D125E402E91840A Ref B: MAA201060515009 Ref C: 2025-06-26T06:15:34Z" ],
+        "Date": [ "Thu, 26 Jun 2025 06:15:39 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1324" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/activity-log-alert-groupyfzqpb/providers/microsoft.insights/activityLogAlerts/test-alertyrkbq0\",\r\n  \"name\": \"test-alertyrkbq0\",\r\n  \"type\": \"Microsoft.Insights/ActivityLogAlerts\",\r\n  \"location\": \"Global\",\r\n  \"properties\": {\r\n    \"scopes\": [\r\n      \"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f\"\r\n    ],\r\n    \"condition\": {\r\n      \"allOf\": [\r\n        {\r\n          \"field\": \"category\",\r\n          \"equals\": \"Administrative\"\r\n        },\r\n        {\r\n          \"field\": \"level\",\r\n          \"equals\": \"Error\"\r\n        },\r\n        {\r\n          \"anyOf\": [\r\n            {\r\n              \"field\": \"properties.incidentType\",\r\n              \"equals\": \"Maintenance\"\r\n            },\r\n            {\r\n              \"field\": \"properties.incidentType\",\r\n              \"equals\": \"Incident\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"actions\": {\r\n      \"actionGroups\": [\r\n        {\r\n          \"actionGroupId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/activity-log-alert-groupyfzqpb/providers/microsoft.insights/actionGroups/test-action-groupyd95li\",\r\n          \"webhookProperties\": {\r\n            \"sampleWebhookProperty\": \"SamplePropertyValue\"\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"enabled\": false\r\n  }\r\n}",
+      "Content": "{\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/activity-log-alert-groupdofyqv/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0\",\r\n  \"name\": \"test-alertyrkbq0\",\r\n  \"type\": \"Microsoft.Insights/ActivityLogAlerts\",\r\n  \"location\": \"global\",\r\n  \"properties\": {\r\n    \"scopes\": [\r\n      \"subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590\"\r\n    ],\r\n    \"condition\": {\r\n      \"allOf\": [\r\n        {\r\n          \"field\": \"category\",\r\n          \"equals\": \"Administrative\"\r\n        },\r\n        {\r\n          \"field\": \"level\",\r\n          \"equals\": \"Error\"\r\n        },\r\n        {\r\n          \"anyOf\": [\r\n            {\r\n              \"field\": \"properties.incidentType\",\r\n              \"equals\": \"Maintenance\"\r\n            },\r\n            {\r\n              \"field\": \"properties.incidentType\",\r\n              \"equals\": \"Incident\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"actions\": {\r\n      \"actionGroups\": [\r\n        {\r\n          \"actionGroupId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/activity-log-alert-groupdofyqv/providers/microsoft.insights/actionGroups/test-action-groupikf8e5\",\r\n          \"webhookProperties\": {\r\n            \"sampleWebhookProperty\": \"SamplePropertyValue\"\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"enabled\": false\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "ActivityLogAlert+[NoContext]+CRUD+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/activity-log-alert-groupyfzqpb/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0?api-version=2020-10-01+2": {
+  "ActivityLogAlert+[NoContext]+CRUD+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/activity-log-alert-groupdofyqv/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0?api-version=2020-10-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/activity-log-alert-groupyfzqpb/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0?api-version=2020-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/activity-log-alert-groupdofyqv/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0?api-version=2020-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "d0494945-8d40-4ee6-a71c-e8247c16de75" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "266de5f8-c447-4e13-b128-7cbb483b07fd" ],
         "CommandName": [ "Get-AzActivityLogAlert" ],
         "FullCommandName": [ "Get-AzActivityLogAlert_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.ActivityLogAlert/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.ActivityLogAlert/6.0.2" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -63,32 +66,35 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "b783d0b0-cb8b-44ba-9de0-71056da8a9ba", "b783d0b0-cb8b-44ba-9de0-71056da8a9ba" ],
-        "api-supported-versions": [ "2017-03-01-preview, 2017-04-01, 2020-10-01" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "8b47db54-f542-415c-9aaf-877fb29d0b04", "8b47db54-f542-415c-9aaf-877fb29d0b04" ],
+        "x-ms-orig-api-version": [ "2020-10-01" ],
+        "api-supported-versions": [ "2017-03-01-preview, 2017-04-01, 2020-10-01, 2023-01-01-preview" ],
         "Arr-Disable-Session-Affinity": [ "true" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "b783d0b0-cb8b-44ba-9de0-71056da8a9ba" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220915T085540Z:b783d0b0-cb8b-44ba-9de0-71056da8a9ba" ],
-        "Date": [ "Thu, 15 Sep 2022 08:55:40 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "8b47db54-f542-415c-9aaf-877fb29d0b04" ],
+        "x-ms-routing-request-id": [ "INDONESIACENTRAL:20250626T061541Z:8b47db54-f542-415c-9aaf-877fb29d0b04" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 84F6C68778224ABABE1EDDB57E84FDCC Ref B: MAA201060515009 Ref C: 2025-06-26T06:15:40Z" ],
+        "Date": [ "Thu, 26 Jun 2025 06:15:40 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1339" ],
+        "Content-Length": [ "1324" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/activity-log-alert-groupyfzqpb/providers/microsoft.insights/activityLogAlerts/test-alertyrkbq0\",\r\n  \"name\": \"test-alertyrkbq0\",\r\n  \"type\": \"Microsoft.Insights/ActivityLogAlerts\",\r\n  \"location\": \"Global\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"scopes\": [\r\n      \"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f\"\r\n    ],\r\n    \"condition\": {\r\n      \"allOf\": [\r\n        {\r\n          \"field\": \"category\",\r\n          \"equals\": \"Administrative\"\r\n        },\r\n        {\r\n          \"field\": \"level\",\r\n          \"equals\": \"Error\"\r\n        },\r\n        {\r\n          \"anyOf\": [\r\n            {\r\n              \"field\": \"properties.incidentType\",\r\n              \"equals\": \"Maintenance\"\r\n            },\r\n            {\r\n              \"field\": \"properties.incidentType\",\r\n              \"equals\": \"Incident\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"actions\": {\r\n      \"actionGroups\": [\r\n        {\r\n          \"actionGroupId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/activity-log-alert-groupyfzqpb/providers/microsoft.insights/actionGroups/test-action-groupyd95li\",\r\n          \"webhookProperties\": {\r\n            \"sampleWebhookProperty\": \"SamplePropertyValue\"\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"enabled\": false\r\n  }\r\n}",
+      "Content": "{\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/activity-log-alert-groupdofyqv/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0\",\r\n  \"name\": \"test-alertyrkbq0\",\r\n  \"type\": \"Microsoft.Insights/ActivityLogAlerts\",\r\n  \"location\": \"global\",\r\n  \"properties\": {\r\n    \"scopes\": [\r\n      \"subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590\"\r\n    ],\r\n    \"condition\": {\r\n      \"allOf\": [\r\n        {\r\n          \"field\": \"category\",\r\n          \"equals\": \"Administrative\"\r\n        },\r\n        {\r\n          \"field\": \"level\",\r\n          \"equals\": \"Error\"\r\n        },\r\n        {\r\n          \"anyOf\": [\r\n            {\r\n              \"field\": \"properties.incidentType\",\r\n              \"equals\": \"Maintenance\"\r\n            },\r\n            {\r\n              \"field\": \"properties.incidentType\",\r\n              \"equals\": \"Incident\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"actions\": {\r\n      \"actionGroups\": [\r\n        {\r\n          \"actionGroupId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/activity-log-alert-groupdofyqv/providers/microsoft.insights/actionGroups/test-action-groupikf8e5\",\r\n          \"webhookProperties\": {\r\n            \"sampleWebhookProperty\": \"SamplePropertyValue\"\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"enabled\": false\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "ActivityLogAlert+[NoContext]+CRUD+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/activity-log-alert-groupyfzqpb/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0?api-version=2020-10-01+3": {
+  "ActivityLogAlert+[NoContext]+CRUD+$PATCH+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/activity-log-alert-groupdofyqv/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0?api-version=2020-10-01+3": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/activity-log-alert-groupyfzqpb/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0?api-version=2020-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/activity-log-alert-groupdofyqv/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0?api-version=2020-10-01",
       "Content": "{\r\n  \"tags\": {\r\n    \"key\": \"val\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -104,41 +110,44 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "e4c800fd-a1a9-403e-a868-1d7ba92e8884", "e4c800fd-a1a9-403e-a868-1d7ba92e8884" ],
-        "api-supported-versions": [ "2017-03-01-preview, 2017-04-01, 2020-10-01" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "8171035c-24a2-46cd-9c90-6849f892e598", "8171035c-24a2-46cd-9c90-6849f892e598" ],
+        "api-supported-versions": [ "2017-03-01-preview, 2017-04-01, 2020-10-01, 2023-01-01-preview" ],
         "Arr-Disable-Session-Affinity": [ "true" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "e4c800fd-a1a9-403e-a868-1d7ba92e8884" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220915T085544Z:e4c800fd-a1a9-403e-a868-1d7ba92e8884" ],
-        "Date": [ "Thu, 15 Sep 2022 08:55:44 GMT" ]
+        "x-ms-operation-identifier": [ "tenantId=54826b22-38d6-4fb2-bad9-b7b93a3e9c5a,objectId=0f876fc3-c749-4607-ad50-c13ef1569cea/indonesiacentral/aa6830a6-c661-4c12-80e8-834baace08ec" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "198" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2998" ],
+        "x-ms-correlation-request-id": [ "8171035c-24a2-46cd-9c90-6849f892e598" ],
+        "x-ms-routing-request-id": [ "INDONESIACENTRAL:20250626T061545Z:8171035c-24a2-46cd-9c90-6849f892e598" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3A50CBA298D34795A592A4E3DA2BE4E0 Ref B: MAA201060515009 Ref C: 2025-06-26T06:15:41Z" ],
+        "Date": [ "Thu, 26 Jun 2025 06:15:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1361" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/activity-log-alert-groupyfzqpb/providers/microsoft.insights/activityLogAlerts/test-alertyrkbq0\",\r\n  \"name\": \"test-alertyrkbq0\",\r\n  \"type\": \"Microsoft.Insights/ActivityLogAlerts\",\r\n  \"location\": \"Global\",\r\n  \"tags\": {\r\n    \"key\": \"val\"\r\n  },\r\n  \"properties\": {\r\n    \"scopes\": [\r\n      \"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f\"\r\n    ],\r\n    \"condition\": {\r\n      \"allOf\": [\r\n        {\r\n          \"field\": \"category\",\r\n          \"equals\": \"Administrative\"\r\n        },\r\n        {\r\n          \"field\": \"level\",\r\n          \"equals\": \"Error\"\r\n        },\r\n        {\r\n          \"anyOf\": [\r\n            {\r\n              \"field\": \"properties.incidentType\",\r\n              \"equals\": \"Maintenance\"\r\n            },\r\n            {\r\n              \"field\": \"properties.incidentType\",\r\n              \"equals\": \"Incident\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"actions\": {\r\n      \"actionGroups\": [\r\n        {\r\n          \"actionGroupId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/activity-log-alert-groupyfzqpb/providers/microsoft.insights/actionGroups/test-action-groupyd95li\",\r\n          \"webhookProperties\": {\r\n            \"sampleWebhookProperty\": \"SamplePropertyValue\"\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"enabled\": false\r\n  }\r\n}",
+      "Content": "{\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/activity-log-alert-groupdofyqv/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0\",\r\n  \"name\": \"test-alertyrkbq0\",\r\n  \"type\": \"Microsoft.Insights/ActivityLogAlerts\",\r\n  \"location\": \"global\",\r\n  \"tags\": {\r\n    \"key\": \"val\"\r\n  },\r\n  \"properties\": {\r\n    \"scopes\": [\r\n      \"subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590\"\r\n    ],\r\n    \"condition\": {\r\n      \"allOf\": [\r\n        {\r\n          \"field\": \"category\",\r\n          \"equals\": \"Administrative\"\r\n        },\r\n        {\r\n          \"field\": \"level\",\r\n          \"equals\": \"Error\"\r\n        },\r\n        {\r\n          \"anyOf\": [\r\n            {\r\n              \"field\": \"properties.incidentType\",\r\n              \"equals\": \"Maintenance\"\r\n            },\r\n            {\r\n              \"field\": \"properties.incidentType\",\r\n              \"equals\": \"Incident\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"actions\": {\r\n      \"actionGroups\": [\r\n        {\r\n          \"actionGroupId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/activity-log-alert-groupdofyqv/providers/microsoft.insights/actionGroups/test-action-groupikf8e5\",\r\n          \"webhookProperties\": {\r\n            \"sampleWebhookProperty\": \"SamplePropertyValue\"\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"enabled\": false\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "ActivityLogAlert+[NoContext]+CRUD+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/activity-log-alert-groupyfzqpb/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0?api-version=2020-10-01+4": {
+  "ActivityLogAlert+[NoContext]+CRUD+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/activity-log-alert-groupdofyqv/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0?api-version=2020-10-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/activity-log-alert-groupyfzqpb/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0?api-version=2020-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/activity-log-alert-groupdofyqv/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0?api-version=2020-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "b7aa6a80-474d-47de-9d40-3cf32e7c1e05" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "09244862-ee9c-4a97-8f83-e78a17a2903e" ],
         "CommandName": [ "Get-AzActivityLogAlert" ],
         "FullCommandName": [ "Get-AzActivityLogAlert_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.ActivityLogAlert/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.ActivityLogAlert/6.0.2" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -150,41 +159,44 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "d4367656-3204-4f97-9784-c61924cc4dee", "d4367656-3204-4f97-9784-c61924cc4dee" ],
-        "api-supported-versions": [ "2017-03-01-preview, 2017-04-01, 2020-10-01" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "5e08105d-6650-4595-8a4e-b2fbc31f6434", "5e08105d-6650-4595-8a4e-b2fbc31f6434" ],
+        "x-ms-orig-api-version": [ "2020-10-01" ],
+        "api-supported-versions": [ "2017-03-01-preview, 2017-04-01, 2020-10-01, 2023-01-01-preview" ],
         "Arr-Disable-Session-Affinity": [ "true" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-correlation-request-id": [ "d4367656-3204-4f97-9784-c61924cc4dee" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220915T085545Z:d4367656-3204-4f97-9784-c61924cc4dee" ],
-        "Date": [ "Thu, 15 Sep 2022 08:55:44 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "5e08105d-6650-4595-8a4e-b2fbc31f6434" ],
+        "x-ms-routing-request-id": [ "INDONESIACENTRAL:20250626T061546Z:5e08105d-6650-4595-8a4e-b2fbc31f6434" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 78F22E610A84461FBDFCD13369919FBA Ref B: MAA201060515009 Ref C: 2025-06-26T06:15:45Z" ],
+        "Date": [ "Thu, 26 Jun 2025 06:15:45 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1361" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/activity-log-alert-groupyfzqpb/providers/microsoft.insights/activityLogAlerts/test-alertyrkbq0\",\r\n  \"name\": \"test-alertyrkbq0\",\r\n  \"type\": \"Microsoft.Insights/ActivityLogAlerts\",\r\n  \"location\": \"Global\",\r\n  \"tags\": {\r\n    \"key\": \"val\"\r\n  },\r\n  \"properties\": {\r\n    \"scopes\": [\r\n      \"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f\"\r\n    ],\r\n    \"condition\": {\r\n      \"allOf\": [\r\n        {\r\n          \"field\": \"category\",\r\n          \"equals\": \"Administrative\"\r\n        },\r\n        {\r\n          \"field\": \"level\",\r\n          \"equals\": \"Error\"\r\n        },\r\n        {\r\n          \"anyOf\": [\r\n            {\r\n              \"field\": \"properties.incidentType\",\r\n              \"equals\": \"Maintenance\"\r\n            },\r\n            {\r\n              \"field\": \"properties.incidentType\",\r\n              \"equals\": \"Incident\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"actions\": {\r\n      \"actionGroups\": [\r\n        {\r\n          \"actionGroupId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/activity-log-alert-groupyfzqpb/providers/microsoft.insights/actionGroups/test-action-groupyd95li\",\r\n          \"webhookProperties\": {\r\n            \"sampleWebhookProperty\": \"SamplePropertyValue\"\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"enabled\": false\r\n  }\r\n}",
+      "Content": "{\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/activity-log-alert-groupdofyqv/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0\",\r\n  \"name\": \"test-alertyrkbq0\",\r\n  \"type\": \"Microsoft.Insights/ActivityLogAlerts\",\r\n  \"location\": \"global\",\r\n  \"tags\": {\r\n    \"key\": \"val\"\r\n  },\r\n  \"properties\": {\r\n    \"scopes\": [\r\n      \"subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590\"\r\n    ],\r\n    \"condition\": {\r\n      \"allOf\": [\r\n        {\r\n          \"field\": \"category\",\r\n          \"equals\": \"Administrative\"\r\n        },\r\n        {\r\n          \"field\": \"level\",\r\n          \"equals\": \"Error\"\r\n        },\r\n        {\r\n          \"anyOf\": [\r\n            {\r\n              \"field\": \"properties.incidentType\",\r\n              \"equals\": \"Maintenance\"\r\n            },\r\n            {\r\n              \"field\": \"properties.incidentType\",\r\n              \"equals\": \"Incident\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"actions\": {\r\n      \"actionGroups\": [\r\n        {\r\n          \"actionGroupId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/activity-log-alert-groupdofyqv/providers/microsoft.insights/actionGroups/test-action-groupikf8e5\",\r\n          \"webhookProperties\": {\r\n            \"sampleWebhookProperty\": \"SamplePropertyValue\"\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"enabled\": false\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "ActivityLogAlert+[NoContext]+CRUD+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/activity-log-alert-groupyfzqpb/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0?api-version=2020-10-01+5": {
+  "ActivityLogAlert+[NoContext]+CRUD+$DELETE+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/activity-log-alert-groupdofyqv/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0?api-version=2020-10-01+5": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/activity-log-alert-groupyfzqpb/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0?api-version=2020-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/activity-log-alert-groupdofyqv/providers/Microsoft.Insights/activityLogAlerts/test-alertyrkbq0?api-version=2020-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "0a05293a-1901-4541-8cba-ea2cb1fae9a2" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "e29a19a3-9504-4f05-9d75-8732c17eb48e" ],
         "CommandName": [ "Remove-AzActivityLogAlert" ],
         "FullCommandName": [ "Remove-AzActivityLogAlert_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.ActivityLogAlert/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.ActivityLogAlert/6.0.2" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -195,18 +207,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "b2fd3bea-6535-4374-a1f4-43ed618dab7e", "b2fd3bea-6535-4374-a1f4-43ed618dab7e" ],
-        "api-supported-versions": [ "2017-03-01-preview, 2017-04-01, 2020-10-01" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "63068b81-4ed1-4748-8b26-a7d87f4e3a41", "63068b81-4ed1-4748-8b26-a7d87f4e3a41" ],
+        "api-supported-versions": [ "2017-03-01-preview, 2017-04-01, 2020-10-01, 2023-01-01-preview" ],
         "Arr-Disable-Session-Affinity": [ "true" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-correlation-request-id": [ "b2fd3bea-6535-4374-a1f4-43ed618dab7e" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220915T085549Z:b2fd3bea-6535-4374-a1f4-43ed618dab7e" ],
-        "Date": [ "Thu, 15 Sep 2022 08:55:48 GMT" ]
+        "x-ms-operation-identifier": [ "tenantId=54826b22-38d6-4fb2-bad9-b7b93a3e9c5a,objectId=0f876fc3-c749-4607-ad50-c13ef1569cea/indonesiacentral/f12da249-1082-4e08-88c4-ef5fe31850c9" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "63068b81-4ed1-4748-8b26-a7d87f4e3a41" ],
+        "x-ms-routing-request-id": [ "INDONESIACENTRAL:20250626T061553Z:63068b81-4ed1-4748-8b26-a7d87f4e3a41" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 935EC4E90856446C9EDAC6DDFA13B122 Ref B: MAA201060515009 Ref C: 2025-06-26T06:15:46Z" ],
+        "Date": [ "Thu, 26 Jun 2025 06:15:52 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],

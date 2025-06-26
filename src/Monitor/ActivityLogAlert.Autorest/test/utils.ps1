@@ -47,21 +47,28 @@ function setupEnv() {
 
     $null = $env.Add("scope", "subscriptions/"+$env.SubscriptionId)
 
-    $resourceGroupName = 'activity-log-alert-group' + (RandomString -allChars $false -len 6)
-    write-host "start to create test group $resourceGroupName"
-    New-AzResourceGroup -Name $resourceGroupName -Location eastus
-    $null = $env.Add("resourceGroupName", $resourceGroupName)
+    # $resourceGroupName = 'activity-log-alert-group' + (RandomString -allChars $false -len 6)
+    # write-host "start to create test group $resourceGroupName"
+    # New-AzResourceGroup -Name $resourceGroupName -Location eastus
+    # $null = $env.Add("resourceGroupName", $resourceGroupName)
 
-    $receiverName = 'test-receiver' + (RandomString -allChars $false -len 6)
-    $actionGroupName = 'test-action-group' + (RandomString -allChars $false -len 6)
-    $null = $env.Add("receiverName", $receiverName)
-    $null = $env.Add("actionGroupName", $actionGroupName)
-    $script = {param([string]$actionGroupName, [string]$receiverName, [string]$resourceGroupName); write-host "start to create action group $actionGroupName"; Import-Module Az.Monitor; $receiver = New-AzActionGroupReceiver -Name $receiverName -EmailAddress test@microsoft.com; Set-AzActionGroup -ResourceGroupName $resourceGroupName -Name $actionGroupName -ShortName 'short' -Receiver $receiver}
+    # $receiverName = 'test-receiver' + (RandomString -allChars $false -len 6)
+    # $actionGroupName = 'test-action-group' + (RandomString -allChars $false -len 6)
+    # $null = $env.Add("receiverName", $receiverName)
+    # $null = $env.Add("actionGroupName", $actionGroupName)
+    # $script = {param([string]$actionGroupName, [string]$receiverName, [string]$resourceGroupName); write-host "start to create action group $actionGroupName"; $email = New-AzActionGroupEmailReceiverObject -EmailAddress test@microsoft.com -Name $receiverName; New-AzActionGroup -Name $actionGroupName -ResourceGroupName $resourceGroupName -Location eastus -GroupShortName 'short' -EmailReceiver $email}
 
-    $pwsh = [System.Diagnostics.Process]::GetCurrentProcess().Path
-    & "$pwsh" -NonInteractive -NoLogo -NoProfile -Command "& {$script} $actionGroupName $receiverName $resourceGroupName"
-    $null = $env.Add("actionGroupResourceId", "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroupName)/providers/microsoft.insights/actionGroups/$($env.actionGroupName)")
-    $null = $env.Add('alertName', 'test-alert' + (RandomString -allChars $false -len 6))
+    # $pwsh = [System.Diagnostics.Process]::GetCurrentProcess().Path
+    # & "$pwsh" -NonInteractive -NoLogo -NoProfile -Command "& {$script} $actionGroupName $receiverName $resourceGroupName"
+
+    # $null = $env.Add("actionGroupResourceId", "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroupName)/providers/microsoft.insights/actionGroups/$($env.actionGroupName)")
+    # $null = $env.Add('alertName', 'test-alert' + (RandomString -allChars $false -len 6))
+
+    $env.resourceGroupName = 'activity-log-alert-groupdofyqv'
+    $env.actionGroupName = 'test-action-groupikf8e5'
+    $env.receiverName = 'test-receiverjvg7p9'
+    $env.actionGroupResourceId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroupName)/providers/microsoft.insights/actionGroups/$($env.actionGroupName)"
+    $env.alertName = 'test-alertyrkbq0'
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
