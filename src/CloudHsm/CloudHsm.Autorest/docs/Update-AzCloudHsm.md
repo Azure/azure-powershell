@@ -68,7 +68,7 @@ Adds 3 Tags to a Cloud HSM named myCloudHsm.
 
 ### Example 2: Update Cloud HSM to add remove user Assigned Identity.
 ```powershell
-Update-AzCloudHsm -Name myCloudHsm -ResourceGroupName group  -UserAssignedIdentity @()
+Update-AzCloudHsm -Name myCloudHsm -ResourceGroupName group -UserAssignedIdentity @()
 ```
 
 ```output
