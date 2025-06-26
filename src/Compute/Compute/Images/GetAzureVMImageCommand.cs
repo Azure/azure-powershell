@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Commands.Compute
                             this.PublisherName,
                             this.Offer,
                             this.Skus,
-                            this.Expand,
+                            expand: this.Expand,
                             top: this.Top,
                             orderby: this.OrderBy
                             ).GetAwaiter().GetResult();

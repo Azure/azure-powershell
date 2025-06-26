@@ -24,29 +24,17 @@ namespace Microsoft.Azure.Management.Compute
     public partial interface IGalleryApplicationVersionsOperations
     {
         /// <summary>
-        /// Create or update a gallery Application Version.
+        /// List gallery Application Versions in a gallery Application
+        /// Definition.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the Shared Application Gallery in which the Application
-        /// Definition resides.
+        /// The name of the Shared Image Gallery.
         /// </param>
         /// <param name='galleryApplicationName'>
-        /// The name of the gallery Application Definition in which the
-        /// Application Version is to be created.
-        /// </param>
-        /// <param name='galleryApplicationVersionName'>
-        /// The name of the gallery Application Version to be created. Needs to
-        /// follow semantic version name pattern: The allowed characters are
-        /// digit and period. Digits must be within the range of a 32-bit
-        /// integer. Format:
-        /// &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
-        /// </param>
-        /// <param name='galleryApplicationVersion'>
-        /// Parameters supplied to the create or update gallery Application
-        /// Version operation.
+        /// The name of the gallery Application Definition to be retrieved.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -63,61 +51,18 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<GalleryApplicationVersion>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, GalleryApplicationVersion galleryApplicationVersion, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Update a gallery Application Version.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='galleryName'>
-        /// The name of the Shared Application Gallery in which the Application
-        /// Definition resides.
-        /// </param>
-        /// <param name='galleryApplicationName'>
-        /// The name of the gallery Application Definition in which the
-        /// Application Version is to be updated.
-        /// </param>
-        /// <param name='galleryApplicationVersionName'>
-        /// The name of the gallery Application Version to be updated. Needs to
-        /// follow semantic version name pattern: The allowed characters are
-        /// digit and period. Digits must be within the range of a 32-bit
-        /// integer. Format:
-        /// &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
-        /// </param>
-        /// <param name='galleryApplicationVersion'>
-        /// Parameters supplied to the update gallery Application Version
-        /// operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<GalleryApplicationVersion>> UpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, GalleryApplicationVersionUpdate galleryApplicationVersion, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<GalleryApplicationVersion>>> ListByGalleryApplicationWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryApplicationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Retrieves information about a gallery Application Version.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the Shared Application Gallery in which the Application
-        /// Definition resides.
+        /// The name of the Shared Image Gallery.
         /// </param>
         /// <param name='galleryApplicationName'>
-        /// The name of the gallery Application Definition in which the
-        /// Application Version resides.
+        /// The name of the gallery Application Definition to be retrieved.
         /// </param>
         /// <param name='galleryApplicationVersionName'>
         /// The name of the gallery Application Version to be retrieved.
@@ -143,86 +88,19 @@ namespace Microsoft.Azure.Management.Compute
         /// </exception>
         Task<AzureOperationResponse<GalleryApplicationVersion>> GetWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Delete a gallery Application Version.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='galleryName'>
-        /// The name of the Shared Application Gallery in which the Application
-        /// Definition resides.
-        /// </param>
-        /// <param name='galleryApplicationName'>
-        /// The name of the gallery Application Definition in which the
-        /// Application Version resides.
-        /// </param>
-        /// <param name='galleryApplicationVersionName'>
-        /// The name of the gallery Application Version to be deleted.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// List gallery Application Versions in a gallery Application
-        /// Definition.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='galleryName'>
-        /// The name of the Shared Application Gallery in which the Application
-        /// Definition resides.
-        /// </param>
-        /// <param name='galleryApplicationName'>
-        /// The name of the Shared Application Gallery Application Definition
-        /// from which the Application Versions are to be listed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<GalleryApplicationVersion>>> ListByGalleryApplicationWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryApplicationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Create or update a gallery Application Version.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the Shared Application Gallery in which the Application
-        /// Definition resides.
+        /// The name of the Shared Image Gallery.
         /// </param>
         /// <param name='galleryApplicationName'>
-        /// The name of the gallery Application Definition in which the
-        /// Application Version is to be created.
+        /// The name of the gallery Application Definition to be retrieved.
         /// </param>
         /// <param name='galleryApplicationVersionName'>
-        /// The name of the gallery Application Version to be created. Needs to
-        /// follow semantic version name pattern: The allowed characters are
-        /// digit and period. Digits must be within the range of a 32-bit
-        /// integer. Format:
-        /// &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
+        /// The name of the gallery Application Version to be retrieved.
         /// </param>
         /// <param name='galleryApplicationVersion'>
         /// Parameters supplied to the create or update gallery Application
@@ -243,27 +121,21 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<GalleryApplicationVersion>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, GalleryApplicationVersion galleryApplicationVersion, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<GalleryApplicationVersion,GalleryApplicationVersionsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, GalleryApplicationVersion galleryApplicationVersion, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Update a gallery Application Version.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the Shared Application Gallery in which the Application
-        /// Definition resides.
+        /// The name of the Shared Image Gallery.
         /// </param>
         /// <param name='galleryApplicationName'>
-        /// The name of the gallery Application Definition in which the
-        /// Application Version is to be updated.
+        /// The name of the gallery Application Definition to be retrieved.
         /// </param>
         /// <param name='galleryApplicationVersionName'>
-        /// The name of the gallery Application Version to be updated. Needs to
-        /// follow semantic version name pattern: The allowed characters are
-        /// digit and period. Digits must be within the range of a 32-bit
-        /// integer. Format:
-        /// &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
+        /// The name of the gallery Application Version to be retrieved.
         /// </param>
         /// <param name='galleryApplicationVersion'>
         /// Parameters supplied to the update gallery Application Version
@@ -284,23 +156,119 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<GalleryApplicationVersion>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, GalleryApplicationVersionUpdate galleryApplicationVersion, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<GalleryApplicationVersion,GalleryApplicationVersionsUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, GalleryApplicationVersionUpdate galleryApplicationVersion, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Delete a gallery Application Version.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the Shared Application Gallery in which the Application
-        /// Definition resides.
+        /// The name of the Shared Image Gallery.
         /// </param>
         /// <param name='galleryApplicationName'>
-        /// The name of the gallery Application Definition in which the
-        /// Application Version resides.
+        /// The name of the gallery Application Definition to be retrieved.
         /// </param>
         /// <param name='galleryApplicationVersionName'>
-        /// The name of the gallery Application Version to be deleted.
+        /// The name of the gallery Application Version to be retrieved.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Create or update a gallery Application Version.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='galleryName'>
+        /// The name of the Shared Image Gallery.
+        /// </param>
+        /// <param name='galleryApplicationName'>
+        /// The name of the gallery Application Definition to be retrieved.
+        /// </param>
+        /// <param name='galleryApplicationVersionName'>
+        /// The name of the gallery Application Version to be retrieved.
+        /// </param>
+        /// <param name='galleryApplicationVersion'>
+        /// Parameters supplied to the create or update gallery Application
+        /// Version operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<GalleryApplicationVersion,GalleryApplicationVersionsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, GalleryApplicationVersion galleryApplicationVersion, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Update a gallery Application Version.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='galleryName'>
+        /// The name of the Shared Image Gallery.
+        /// </param>
+        /// <param name='galleryApplicationName'>
+        /// The name of the gallery Application Definition to be retrieved.
+        /// </param>
+        /// <param name='galleryApplicationVersionName'>
+        /// The name of the gallery Application Version to be retrieved.
+        /// </param>
+        /// <param name='galleryApplicationVersion'>
+        /// Parameters supplied to the update gallery Application Version
+        /// operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<GalleryApplicationVersion,GalleryApplicationVersionsUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, GalleryApplicationVersionUpdate galleryApplicationVersion, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Delete a gallery Application Version.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='galleryName'>
+        /// The name of the Shared Image Gallery.
+        /// </param>
+        /// <param name='galleryApplicationName'>
+        /// The name of the gallery Application Definition to be retrieved.
+        /// </param>
+        /// <param name='galleryApplicationVersionName'>
+        /// The name of the gallery Application Version to be retrieved.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

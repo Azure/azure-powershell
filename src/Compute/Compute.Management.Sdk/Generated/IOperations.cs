@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Compute
     public partial interface IOperations
     {
         /// <summary>
-        /// Gets a list of compute operations.
+        /// List the operations for the provider
         /// </summary>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -41,6 +41,6 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IEnumerable<ComputeOperationValue>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IEnumerable<object>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

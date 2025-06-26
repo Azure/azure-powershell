@@ -35,6 +35,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="scheduledDeprecationTime">The time, in future, at
         /// which this image will be marked as deprecated. This scheduled time
         /// is chosen by the Publisher.</param>
+        /// <param name="alternativeOption">Describes the alternative option
+        /// specified by the Publisher for this image when this image is
+        /// deprecated.</param>
         public ImageDeprecationStatus(string imageState = default(string), System.DateTime? scheduledDeprecationTime = default(System.DateTime?), AlternativeOption alternativeOption = default(AlternativeOption))
         {
             ImageState = imageState;
@@ -64,6 +67,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         public System.DateTime? ScheduledDeprecationTime { get; set; }
 
         /// <summary>
+        /// Gets or sets describes the alternative option specified by the
+        /// Publisher for this image when this image is deprecated.
         /// </summary>
         [JsonProperty(PropertyName = "alternativeOption")]
         public AlternativeOption AlternativeOption { get; set; }

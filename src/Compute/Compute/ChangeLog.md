@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Compute DiskRP related cmdlets will now use 2025-01-02 version of the DiskRP API.
 
 ## Version 10.0.1
 * Added breaking change message for `New-AzVM` and `New-AzVmss` cmdlets.
