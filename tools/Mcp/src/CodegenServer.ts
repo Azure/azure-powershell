@@ -85,7 +85,7 @@ export class CodegenServer {
 
     initResponses() {
         (responses as toolParameterSchema[])?.forEach((response: toolParameterSchema) => {
-            this._responses.set(response.name, response.text);
+            this._responses.set(response.name, response.description);
         });
     }
 
@@ -94,16 +94,16 @@ export class CodegenServer {
         for (const schema of schemas) {
             switch (schema.type) {
                 case "string":
-                    parameter[schema.name] = z.string().describe(schema.text);
+                    parameter[schema.name] = z.string().describe(schema.description);
                     break;
                 case "number":
-                    parameter[schema.name] = z.number().describe(schema.text);
+                    parameter[schema.name] = z.number().describe(schema.description);
                     break;
                 case "boolean": 
-                parameter[schema.name] = z.boolean().describe(schema.text);
+                parameter[schema.name] = z.boolean().describe(schema.description);
                     break;
                 case "array":
-                    parameter[schema.name] = z.array(z.string()).describe(schema.text);
+                    parameter[schema.name] = z.array(z.string()).describe(schema.description);
                     break;
                 // object parameter not supported yet    
                 // case "object":
