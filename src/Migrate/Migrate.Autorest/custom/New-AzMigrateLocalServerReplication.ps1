@@ -22,7 +22,7 @@ The New-AzMigrateLocalServerReplication cmdlet starts the replication for a part
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratelocalserverreplication
 #>
 function New-AzMigrateLocalServerReplication {
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is based on a preview API version and may experience breaking changes in future releases.")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel])]
     [CmdletBinding(DefaultParameterSetName = 'ByIdDefaultUser', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
@@ -593,9 +593,14 @@ function New-AzMigrateLocalServerReplication {
             # Validate DiskToInclude
             [PSCustomObject[]]$uniqueDisks = @()
             foreach ($disk in $DiskToInclude) {
-                # Check if disk format is valid per Hyper-V Generation
+                # VHD is not supported in Gen2 VMs
                 if ($customProperties.HyperVGeneration -eq "2" -and $disk.DiskFileFormat -eq "VHD") {
                     throw "VHD disks are not supported in Hyper-V Generation 2 VMs. Please replace disk with id '$($disk.DiskId)' in -DiskToInclude by re-running New-AzMigrateLocalDiskMappingObject with 'VHDX' as Format."
+                }
+
+                # PhysicalSectorSize must be 512 for VHD format
+                if ($disk.DiskFileFormat -eq "VHD" -and $disk.DiskPhysicalSectorSize -ne 512) {
+                    throw "PhysicalSectorSize must be 512 for VHD format. Please replace disk with id '$($disk.DiskId)' in -DiskToInclude by re-running New-AzMigrateLocalDiskMappingObject with 512 as PhysicalSectorSize."
                 }
 
                 if ($SiteType -eq $SiteTypes.HyperVSites) {

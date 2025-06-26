@@ -23,7 +23,7 @@ https://learn.microsoft.com/powershell/module/az.migrate/initialize-azmigrateloc
 #>
 
 function Initialize-AzMigrateLocalReplicationInfrastructure {
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is based on a preview API version and may experience breaking changes in future releases.")]
     [OutputType([System.Boolean], ParameterSetName = 'AzLocal')]
     [CmdletBinding(DefaultParameterSetName = 'AzLocal', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
