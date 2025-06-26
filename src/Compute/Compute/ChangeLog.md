@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Compute DiskRP related cmdlets will now use 2025-01-02 version of the DiskRP API.
 
 ## Version 10.0.0
 * Added new properties `Architecture`, `HyperVGeneration`, and `ImageDeprecationStatus` to be returned in `Get-AzVMImage` ListVMImage parameter set.
