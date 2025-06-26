@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.A
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject
 #>
 function New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.CmdletBreakingChange("15.0.0", "7.0.0", "2025/11/03", ChangeDescription="The type of property 'AnyOf' and 'ContainsAny' will be changed from array to List.")]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleAnyOfOrLeafCondition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -19,6 +19,12 @@
 -->
 
 ## Upcoming Release
+* Added breaking change announcement for below cmdlets from single object or fixed array to list.
+  - `Get-AzActivityLogAlert`
+  - `New-AzActivityLogAlert`
+  - `Update-AzActivityLogAlert`
+  - `New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject`
+  - `New-AzActivityLogAlertAlertRuleLeafConditionObject`
 
 ## Version 6.0.2
 * Pipeline Group upgraded API version to 2024-10-01-preview
