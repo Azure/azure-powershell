@@ -1,7 +1,7 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
-import { toolParameterSchema, toolSchema } from "./types.js";
+import { responseSchema, toolParameterSchema, toolSchema } from "./types.js";
 import { toolServices } from "./services/toolServices.js";
 
 import { readFileSync } from "fs";
@@ -84,8 +84,8 @@ export class CodegenServer {
     }
 
     initResponses() {
-        (responses as toolParameterSchema[])?.forEach((response: toolParameterSchema) => {
-            this._responses.set(response.name, response.description);
+        (responses as responseSchema[])?.forEach((response: responseSchema) => {
+            this._responses.set(response.name, response.text);
         });
     }
 

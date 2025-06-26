@@ -11,6 +11,12 @@ export type toolSchema = {
     callbackName: string;
 }
 
+export type responseSchema = {
+    name: string;
+    type: string;
+    text: string;
+}
+
 export type yamlContent = {
     [key: string]: any;
 }
