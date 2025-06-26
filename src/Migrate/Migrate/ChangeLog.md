@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 2.8.0
 * Fixed bugs in `New-AzMigrateServerReplication` caused by deprecation of `Get-AzVmSize -location`
   
 ## Version 2.8.0
