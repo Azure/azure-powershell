@@ -877,6 +877,12 @@ function Test-CrossRegionRestoreSingleRegionAccountCmdlets {
 
   $restoredCosmosDBAccount = Restore-AzCosmosDBAccount -RestoreTimestampInUtc $restoreTimestampInUtc -SourceDatabaseAccountName $sourceCosmosDBAccountName -SourceBackupLocation $sourceBackupLocation -Location $targetLocation -TargetResourceGroupName $rgName -TargetDatabaseAccountName $cosmosDBAccountName -DatabasesToRestore $datatabaseToRestore
 
+  $restoredCosmosDBAccount | ConvertTo-Json -Depth 5 | Out-File ./restoredCosmosDBAccount.json
+  $filePath = (Get-ChildItem restoredCosmosDBAccount.json).FullName
+  $newFilePath = Join-Path ($filePath -split 'src')[0] 'artifacts' 'restoredCosmosDBAccount.json'
+  Copy-Item -Path $filePath -Destination $newFilePath
+  $newFilePath | Out-File ./restoredCosmosDBAccount.txt
+
   Assert-NotNull $sourceRestorableAccount
   Assert-AreEqual $restoredCosmosDBAccount.Name $cosmosDBAccountName
   Assert-AreEqual $restoredCosmosDBAccount.CreateMode "Restore"
