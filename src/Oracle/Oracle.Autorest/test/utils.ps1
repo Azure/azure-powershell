@@ -77,7 +77,7 @@ function setupEnv() {
 
     # VM Cluster Properties
 
-    $vmClusterName = "OFake_PowerShellTestVmCluster"
+    $vmClusterName = "OFake_PSVmCluster"
     $env.Add("vmClusterName", $vmClusterName)
 
     $vmClusterHostName = "host"
@@ -118,7 +118,7 @@ function setupEnv() {
 
     # ADBS Properties
 
-    $adbsName = "OFakePowerShellTestAdbs"
+    $adbsName = "OFakePowerShellAdbs"
     $env.Add("adbsName", $adbsName)
 
     $adbsDbWorkload = "OLTP"
@@ -182,9 +182,16 @@ function setupEnv() {
 
     $oracleExascaleDbStorageVaultName = "Ofake_VaultPS" 
     $env.Add("oracleExascaleDbStorageVaultName", $oracleExascaleDbStorageVaultName)
-    New-AzOracleExascaleDbStorageVault -Name $env.oracleExascaleDbStorageVaultName -ResourceGroupName $env.resourceGroup -Location $env.location -Zone $env.zone -Description $env.description -HighCapacityDatabaseStorageInput $env.highCapacityDatabaseStorageInput -DisplayName $env.oracleExascaleDbStorageVaultName
-    $dbStorageVault = Get-AzOracleExascaleDbStorageVault -Name $env.oracleExascaleDbStorageVaultName -ResourceGroupName $env.resourceGroup
+    #New-AzOracleExascaleDbStorageVault -Name $env.oracleExascaleDbStorageVaultName -ResourceGroupName $env.resourceGroup -Location $env.location -Zone $env.zone -Description $env.description -HighCapacityDatabaseStorageInput $env.highCapacityDatabaseStorageInput -DisplayName $env.oracleExascaleDbStorageVaultName
+    #$dbStorageVault = Get-AzOracleExascaleDbStorageVault -Name $env.oracleExascaleDbStorageVaultName -ResourceGroupName $env.resourceGroup
 
+   #prerequisite resources
+   $adbsDNDName = "DNDDoNotDeleteDFedorch5"
+   $env.Add("adbsDNDName", $adbsDNDName)
+   $VmClusterDNDName = "OfakeVmCLusterDND"
+   $env.Add("VmClusterDNDName", $VmClusterDNDName)
+   $ExaInfraDNDName = "OfakeDND"
+   $env.Add("ExaInfraDNDName", $ExaInfraDNDName)
 
 
     # For any resources you created for test, you should add it to $env here.
