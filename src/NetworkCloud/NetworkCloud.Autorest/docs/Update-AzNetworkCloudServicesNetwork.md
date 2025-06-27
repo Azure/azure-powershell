@@ -16,15 +16,15 @@ Properties and tag updates can be done independently.
 ### UpdateExpanded (Default)
 ```
 Update-AzNetworkCloudServicesNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AdditionalEgressEndpoint <IEgressEndpoint[]>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-AdditionalEgressEndpoint <IEgressEndpoint[]>]
  [-EnableDefaultEgressEndpoint <CloudServicesNetworkEnableDefaultEgressEndpoints>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzNetworkCloudServicesNetwork -InputObject <INetworkCloudIdentity>
- [-AdditionalEgressEndpoint <IEgressEndpoint[]>]
+Update-AzNetworkCloudServicesNetwork -InputObject <INetworkCloudIdentity> [-IfMatch <String>]
+ [-IfNoneMatch <String>] [-AdditionalEgressEndpoint <IEgressEndpoint[]>]
  [-EnableDefaultEgressEndpoint <CloudServicesNetworkEnableDefaultEgressEndpoints>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -63,7 +63,7 @@ This allows for connection from a Hybrid AKS cluster to the specified endpoint.
 To construct, see NOTES section for ADDITIONALEGRESSENDPOINT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IEgressEndpoint[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IEgressEndpoint[]
 Parameter Sets: (All)
 Aliases:
 
@@ -110,6 +110,39 @@ The indicator of whether the platform default endpoints are allowed for the egre
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.CloudServicesNetworkEnableDefaultEgressEndpoints
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfMatch
+The ETag of the transformation.
+Omit this value to always overwrite the current resource.
+Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfNoneMatch
+Set to '*' to allow a new record set to be created, but to prevent updating an existing resource.
+Other values will result in error from server as they are not supported.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -253,7 +286,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ICloudServicesNetwork
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ICloudServicesNetwork
 
 ## NOTES
 
