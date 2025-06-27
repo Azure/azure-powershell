@@ -75,15 +75,19 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void ExecuteCmdlet()
         {
+            System.IO.File.WriteAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 1");
             DateTime utcRestoreDateTime;
             if (RestoreTimestampInUtc.Kind == DateTimeKind.Unspecified)
             {
+                System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 1-1");
                 utcRestoreDateTime = RestoreTimestampInUtc;
             }
             else
             {
+                System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 1-2");
                 utcRestoreDateTime = RestoreTimestampInUtc.ToUniversalTime();
             }
+            System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 2");
 
             // Fail if provided restoretimesamp is greater than current timestamp
             if (utcRestoreDateTime > DateTime.UtcNow)
@@ -91,6 +95,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 WriteWarning($"Restore timestamp {utcRestoreDateTime} should be less than current timestamp {DateTime.UtcNow}");
                 return;
             }
+            System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 3");
 
             bool isSourceRestorableAccountDeleted = false;
             List<RestorableDatabaseAccountGetResult> restorableDatabaseAccounts = CosmosDBManagementClient.RestorableDatabaseAccounts.ListWithHttpMessagesAsync().GetAwaiter().GetResult().Body.ToList();
@@ -99,50 +104,71 @@ namespace Microsoft.Azure.Commands.CosmosDB
             List<RestorableDatabaseAccountGetResult> accountsWithMatchingName = restorableDatabaseAccounts.Where(databaseAccount => databaseAccount.AccountName.Equals(SourceDatabaseAccountName, StringComparison.OrdinalIgnoreCase)).ToList();
             if (accountsWithMatchingName.Count > 0)
             {
+                System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 4");
                 foreach (RestorableDatabaseAccountGetResult restorableAccount in accountsWithMatchingName)
                 {
+                    System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 5");
                     if (restorableAccount.CreationTime.HasValue &&
                         restorableAccount.CreationTime < utcRestoreDateTime)
                     {
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 6");
                         if (restorableAccount.DeletionTime.HasValue)
                         {
+                            System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 7");
                             if (restorableAccount.DeletionTime >= utcRestoreDateTime)
                             {
+                                System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 8");
                                 sourceAccountToRestore = restorableAccount;
                                 isSourceRestorableAccountDeleted = true;
                                 break;
                             }
+                            System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 9");
                         }
                         else
                         {
+                            System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 10");
                             sourceAccountToRestore = restorableAccount;
                             isSourceRestorableAccountDeleted = false;
                             break;
                         }
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 11");
                     }
                 }
             }
 
+            System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 12");
+
             if (sourceAccountToRestore == null)
             {
+                System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 13");
                 WriteWarning($"No database accounts found with matching account name {SourceDatabaseAccountName} that was alive at given utc-timestamp {utcRestoreDateTime}");
                 return;
             }
+            System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 14");
 
             // Validate if source account is empty if the source account is a live account.
             if (!isSourceRestorableAccountDeleted)
             {
+                System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 15");
                 string sourceLocation = Location;
                 if (!string.IsNullOrEmpty(SourceBackupLocation))
                 {
+                    System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 16");
                     sourceLocation = SourceBackupLocation;
                 }
+                System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 17");
 
                 bool restorableResourcesNotFound = false;
                 if (sourceAccountToRestore.ApiType.Equals("Sql", StringComparison.OrdinalIgnoreCase))
                 {
+                    System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 18");
                     try
                     {
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 19");
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 19: Location = " + sourceAccountToRestore.Location);
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 19: Name = " + sourceAccountToRestore.Name);
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 19: sourceLocation = " + sourceLocation);
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 19: utcRestoreDateTime = " + utcRestoreDateTime.ToString());
                         IEnumerable<RestorableSqlResourcesGetResult> restorableResources = CosmosDBManagementClient.RestorableSqlResources.ListWithHttpMessagesAsync(
                             sourceAccountToRestore.Location,
                             sourceAccountToRestore.Name,
@@ -150,17 +176,23 @@ namespace Microsoft.Azure.Commands.CosmosDB
                             utcRestoreDateTime.ToString()).GetAwaiter().GetResult().Body;
 
                         restorableResourcesNotFound = restorableResources == null || !restorableResources.Any();
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 20");
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 21");
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 21, exception: " + ex.ToString());
                         WriteWarning($"No database accounts found with matching account name {SourceDatabaseAccountName} that was alive at given utc-timestamp {utcRestoreDateTime} in location {sourceLocation}");
                         return;
                     }
+                    System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 22");
                 }
                 else if (sourceAccountToRestore.ApiType.Equals("MongoDB", StringComparison.OrdinalIgnoreCase))
                 {
+                    System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 23");
                     try
                     {
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 24");
                         IEnumerable<RestorableMongodbResourcesGetResult> restorableResources = CosmosDBManagementClient.RestorableMongodbResources.ListWithHttpMessagesAsync(
                         sourceAccountToRestore.Location,
                         sourceAccountToRestore.Name,
@@ -168,17 +200,22 @@ namespace Microsoft.Azure.Commands.CosmosDB
                         utcRestoreDateTime.ToString()).GetAwaiter().GetResult().Body;
 
                         restorableResourcesNotFound = restorableResources == null || !restorableResources.Any();
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 25");
                     }
                     catch (Exception)
                     {
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 26");
                         WriteWarning($"No database accounts found with matching account name {SourceDatabaseAccountName} that was alive at given utc-timestamp {utcRestoreDateTime} in location {sourceLocation}");
                         return;
                     }
+                    System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 27");
                 }
                 else if (sourceAccountToRestore.ApiType.Equals("Gremlin, Sql", StringComparison.OrdinalIgnoreCase))
                 {
+                    System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 28");
                     try
                     {
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 29");
                         IEnumerable<RestorableGremlinResourcesGetResult> restorableResources = CosmosDBManagementClient.RestorableGremlinResources.ListWithHttpMessagesAsync(
                         sourceAccountToRestore.Location,
                         sourceAccountToRestore.Name,
@@ -186,17 +223,22 @@ namespace Microsoft.Azure.Commands.CosmosDB
                         utcRestoreDateTime.ToString()).GetAwaiter().GetResult().Body;
 
                         restorableResourcesNotFound = restorableResources == null || !restorableResources.Any();
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 30");
                     }
                     catch (Exception)
                     {
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 31");
                         WriteWarning($"No database accounts found with matching account name {SourceDatabaseAccountName} that was alive at given utc-timestamp {utcRestoreDateTime} in location {sourceLocation}");
                         return;
                     }
+                    System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 32");
                 }
                 else if (sourceAccountToRestore.ApiType.Equals("Table, Sql", StringComparison.OrdinalIgnoreCase))
                 {
+                    System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 33");
                     try
                     {
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 34");
                         IEnumerable<RestorableTableResourcesGetResult> restorableResources = CosmosDBManagementClient.RestorableTableResources.ListWithHttpMessagesAsync(
                         sourceAccountToRestore.Location,
                         sourceAccountToRestore.Name,
@@ -204,24 +246,32 @@ namespace Microsoft.Azure.Commands.CosmosDB
                         utcRestoreDateTime.ToString()).GetAwaiter().GetResult().Body;
 
                         restorableResourcesNotFound = restorableResources == null || !restorableResources.Any();
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 35");
                     }
                     catch (Exception)
                     {
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 36");
                         WriteWarning($"No database accounts found with matching account name {SourceDatabaseAccountName} that was alive at given utc-timestamp {utcRestoreDateTime} in location {sourceLocation}");
                         return;
                     }
+                    System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 37");
                 }
                 else
                 {
+                    System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 38");
                     WriteWarning($"Provided API Type {sourceAccountToRestore.ApiType} is not supported");
                     return;
                 }
 
+                System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 39");
+
                 if (restorableResourcesNotFound)
                 {
+                    System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 40");
                     WriteWarning($"Database account {SourceDatabaseAccountName} contains no restorable resources in location {sourceLocation} at given restore timestamp {utcRestoreDateTime} in location {sourceLocation}");
                     return;
                 }
+                System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 41");
             }
 
             // Trigger restore
@@ -235,10 +285,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 GremlinDatabasesToRestore = GremlinDatabasesToRestore,
                 SourceBackupLocation = SourceBackupLocation
             };
+            System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 41");
 
             Collection<Location> LocationCollection = new Collection<Location>();
             Location loc = new Location(locationName: Location, failoverPriority: 0);
             LocationCollection.Add(loc);
+            System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 42");
 
             string apiKind = "GlobalDocumentDB";
             if (sourceAccountToRestore.ApiType.Equals("MongoDB", StringComparison.OrdinalIgnoreCase))
@@ -246,6 +298,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 apiKind = "MongoDB";
             }
 
+            System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 43");
             DatabaseAccountCreateUpdateParameters databaseAccountCreateUpdateParameters = new DatabaseAccountCreateUpdateParameters(locations: LocationCollection, location: sourceAccountToRestore.Location, name: TargetDatabaseAccountName)
             {
                 Kind = apiKind,
@@ -253,6 +306,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 RestoreParameters = restoreParameters.ToSDKModel(),
                 PublicNetworkAccess = PublicNetworkAccess
             };
+            System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 44");
 
             if (ShouldProcess(TargetDatabaseAccountName,
                 string.Format(
@@ -261,9 +315,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     sourceAccountToRestore.Id,
                     RestoreTimestampInUtc)))
             {
+                System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 45");
                 DatabaseAccountGetResults cosmosDBAccount = CosmosDBManagementClient.DatabaseAccounts.CreateOrUpdateWithHttpMessagesAsync(TargetResourceGroupName, TargetDatabaseAccountName, databaseAccountCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSDatabaseAccountGetResults(cosmosDBAccount));
+                System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 46");
             }
+            System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 47");
 
             return;
         }

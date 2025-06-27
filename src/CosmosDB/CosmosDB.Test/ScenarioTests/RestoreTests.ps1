@@ -875,7 +875,21 @@ function Test-CrossRegionRestoreSingleRegionAccountCmdlets {
   Start-TestSleep -s 3662
   $restoreTimestampInUtc = $sourceRestorableAccount.CreationTime.AddSeconds(3610)
 
+  $restoreTimestampInUtc.GetType().FullName | Out-File ./restoreTimestampInUtc.log
+  $restoreTimestampInUtc | ConvertTo-Json -Depth 5 | Out-File ./restoreTimestampInUtc.json
+
   $restoredCosmosDBAccount = Restore-AzCosmosDBAccount -RestoreTimestampInUtc $restoreTimestampInUtc -SourceDatabaseAccountName $sourceCosmosDBAccountName -SourceBackupLocation $sourceBackupLocation -Location $targetLocation -TargetResourceGroupName $rgName -TargetDatabaseAccountName $cosmosDBAccountName -DatabasesToRestore $datatabaseToRestore
+
+  $restoredCosmosDBAccount | ConvertTo-Json -Depth 5 | Out-File ./restoredCosmosDBAccount.json
+  $filePath = (Get-ChildItem restoredCosmosDBAccount.json).FullName
+  $newFilePath = Join-Path ($filePath -split 'src')[0] 'artifacts' 'restoredCosmosDBAccount.json'
+  Copy-Item -Path $filePath -Destination $newFilePath
+  $newFilePath | Out-File ./restoredCosmosDBAccount.txt
+
+  $filePath2 = (Get-ChildItem RestoreAzCosmosDBAccount.log).FullName
+  $newFilePath2 = Join-Path ($filePath2 -split 'src')[0] 'artifacts' 'RestoreAzCosmosDBAccount.log'
+  Copy-Item -Path $filePath2 -Destination $newFilePath2
+  $newFilePath2 | Out-File ./restoredCosmosDBAccount.txt -Append
 
   Assert-NotNull $sourceRestorableAccount
   Assert-AreEqual $restoredCosmosDBAccount.Name $cosmosDBAccountName
