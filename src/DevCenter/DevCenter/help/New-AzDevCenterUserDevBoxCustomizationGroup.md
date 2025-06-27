@@ -61,14 +61,14 @@ $tasks = @($task)
 New-AzDevCenterUserDevBoxCustomizationGroup -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -UserId 786a823c-8037-48ab-89b8-8599901e67d0 -DevBoxName myDevBox -CustomizationGroupName Provisioning -Task $tasks
 ```
 
-This command creates the customization group "Provisioning" for the dev box "myDevBox".
+This command creates the customization group "Provisoning" for the dev box "myDevBox".
 
 ### Example 2: Create a customization group by dev center
 ```powershell
 New-AzDevCenterUserDevBoxCustomizationGroup -DevCenterName Contoso -ProjectName DevProject -UserId "me" -DevBoxName myDevBox -CustomizationGroupName Provisioning -Task $tasks
 ```
 
-This command creates the customization group "Provisioning" for the dev box "myDevBox".
+This command creates the customization group "Provisoning" for the dev box "myDevBox".
 
 ### Example 3: Create a customization group by endpoint and InputObject
 ```powershell
@@ -76,7 +76,7 @@ $customizationGroupInput = @{"CustomizationGroupName" = "Provisioning"; "DevBoxN
 New-AzDevCenterUserDevBoxCustomizationGroup -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $customizationGroupInput -Task $tasks
 ```
 
-This command creates the customization group "Provisioning" for the dev box "myDevBox".
+This command creates the customization group "Provisoning" for the dev box "myDevBox".
 
 ### Example 4: Create a customization group by dev center and InputObject
 ```powershell
@@ -84,7 +84,7 @@ $customizationGroupInput = @{"CustomizationGroupName" = "Provisioning"; "DevBoxN
 New-AzDevCenterUserDevBoxCustomizationGroup -DevCenterName Contoso -InputObject $customizationGroupInput -Task $tasks
 ```
 
-This command creates the customization group "Provisioning" for the dev box "myDevBox".
+This command creates the customization group "Provisoning" for the dev box "myDevBox".
 
 ## PARAMETERS
 
@@ -197,12 +197,12 @@ Accept wildcard characters: False
 
 ### -Task
 Tasks to apply.
-Note by default tasks are excluded from the response when listing customization groups.
+Note by default tasks are excluded from the response whenlisting customization groups.
 To include them, use the `include=tasks` queryparameter.
 To construct, see NOTES section for TASK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationTask[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationTask[]
 Parameter Sets: (All)
 Aliases:
 
@@ -215,8 +215,7 @@ Accept wildcard characters: False
 
 ### -UserId
 The AAD object id of the user.
-If value is 'me', the identity is taken from the 
- authentication context.
+If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
@@ -270,7 +269,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationGroup
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationGroup
 
 ## NOTES
 
