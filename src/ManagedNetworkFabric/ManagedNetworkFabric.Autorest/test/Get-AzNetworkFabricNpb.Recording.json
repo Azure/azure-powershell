@@ -1,8 +1,8 @@
 {
-  "Get-AzNetworkFabricNpb+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers?api-version=2023-06-15+1": {
+  "Get-AzNetworkFabricNpb+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers?api-version=2024-06-15-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers?api-version=2023-06-15",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers?api-version=2024-06-15-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -40,10 +40,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkFabricNpb+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers/fabricname-npb?api-version=2023-06-15+1": {
+  "Get-AzNetworkFabricNpb+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers/fabricname-npb?api-version=2024-06-15-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers/fabricname-npb?api-version=2023-06-15",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers/fabricname-npb?api-version=2024-06-15-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -82,10 +82,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkFabricNpb+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers?api-version=2023-06-15+1": {
+  "Get-AzNetworkFabricNpb+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers?api-version=2024-06-15-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers?api-version=2023-06-15",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers?api-version=2024-06-15-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

@@ -1,8 +1,8 @@
 {
-  "Remove-AzNetworkFabricNni+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabrics/fabricNameTest/networkToNetworkInterconnects/nniName?api-version=2023-06-15+1": {
+  "Remove-AzNetworkFabricNni+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabrics/fabricNameTest/networkToNetworkInterconnects/nniName?api-version=2024-06-15-preview+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabrics/fabricNameTest/networkToNetworkInterconnects/nniName?api-version=2023-06-15",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabrics/fabricNameTest/networkToNetworkInterconnects/nniName?api-version=2024-06-15-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -23,13 +23,13 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"0400c1da-0000-0100-0000-650d61530000\"" ],
-        "Location": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/980f734c-fc57-475b-9400-a6d7f116aef2*D5AB1A46921B1540B038BD67CD0D1491E721733BA532AB51B3E3213052BD5A74?api-version=2023-06-15" ],
+        "Location": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/980f734c-fc57-475b-9400-a6d7f116aef2*D5AB1A46921B1540B038BD67CD0D1491E721733BA532AB51B3E3213052BD5A74?api-version=2024-06-15-preview" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "96307bd8-2271-4e37-859f-731d772490c2" ],
         "x-ms-request-id": [ "cf040cfc-19f9-4547-8462-82cfb21a57a5" ],
         "x-ms-correlation-request-id": [ "23ad7e28-77ab-4622-a3dd-a9e076cd4ebe" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/980f734c-fc57-475b-9400-a6d7f116aef2*D5AB1A46921B1540B038BD67CD0D1491E721733BA532AB51B3E3213052BD5A74?api-version=2023-06-15" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/980f734c-fc57-475b-9400-a6d7f116aef2*D5AB1A46921B1540B038BD67CD0D1491E721733BA532AB51B3E3213052BD5A74?api-version=2024-06-15-preview" ],
         "x-ms-routing-request-id": [ "SOUTHINDIA:20230922T094139Z:23ad7e28-77ab-4622-a3dd-a9e076cd4ebe" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
@@ -44,10 +44,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNetworkFabricNni+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/980f734c-fc57-475b-9400-a6d7f116aef2*D5AB1A46921B1540B038BD67CD0D1491E721733BA532AB51B3E3213052BD5A74?api-version=2023-06-15+2": {
+  "Remove-AzNetworkFabricNni+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/980f734c-fc57-475b-9400-a6d7f116aef2*D5AB1A46921B1540B038BD67CD0D1491E721733BA532AB51B3E3213052BD5A74?api-version=2024-06-15-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/980f734c-fc57-475b-9400-a6d7f116aef2*D5AB1A46921B1540B038BD67CD0D1491E721733BA532AB51B3E3213052BD5A74?api-version=2023-06-15",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/980f734c-fc57-475b-9400-a6d7f116aef2*D5AB1A46921B1540B038BD67CD0D1491E721733BA532AB51B3E3213052BD5A74?api-version=2024-06-15-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -85,10 +85,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNetworkFabricNni+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/980f734c-fc57-475b-9400-a6d7f116aef2*D5AB1A46921B1540B038BD67CD0D1491E721733BA532AB51B3E3213052BD5A74?api-version=2023-06-15+3": {
+  "Remove-AzNetworkFabricNni+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/980f734c-fc57-475b-9400-a6d7f116aef2*D5AB1A46921B1540B038BD67CD0D1491E721733BA532AB51B3E3213052BD5A74?api-version=2024-06-15-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/980f734c-fc57-475b-9400-a6d7f116aef2*D5AB1A46921B1540B038BD67CD0D1491E721733BA532AB51B3E3213052BD5A74?api-version=2023-06-15",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/980f734c-fc57-475b-9400-a6d7f116aef2*D5AB1A46921B1540B038BD67CD0D1491E721733BA532AB51B3E3213052BD5A74?api-version=2024-06-15-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
