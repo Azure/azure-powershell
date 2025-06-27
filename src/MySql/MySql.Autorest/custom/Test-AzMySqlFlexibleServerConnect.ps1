@@ -41,6 +41,12 @@ function Test-AzMySqlFlexibleServerConnect {
         [System.String]
         ${QueryText},
 
+        [Parameter(HelpMessage = 'The timeout in seconds for query execution. Valid range is 1-31536000 seconds.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+        [ValidateRange(1, 31536000)]
+        [System.Int32]
+        ${Timeout},
+
         [Parameter(ParameterSetName = 'TestViaIdentity', Mandatory, ValueFromPipeline, HelpMessage = 'The server to connect.')]
         [Parameter(ParameterSetName = 'TestViaIdentityAndQuery', Mandatory, ValueFromPipeline, HelpMessage = 'The server to connect.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
@@ -117,6 +123,12 @@ function Test-AzMySqlFlexibleServerConnect {
             $null = $PSBoundParameters.Remove('QueryText')
         }
 
+        $TimeoutValue = 0
+        if ($PSBoundParameters.ContainsKey('Timeout')) {
+            $TimeoutValue = $PSBoundParameters.Timeout
+            $null = $PSBoundParameters.Remove('Timeout')
+        }
+
         $DatabaseName = [string]::Empty
         if ($PSBoundParameters.ContainsKey('DatabaseName')) {
             $DatabaseName = $PSBoundParameters.DatabaseName
@@ -147,12 +159,18 @@ function Test-AzMySqlFlexibleServerConnect {
         $Credential = New-Object System.Management.Automation.PSCredential($AdministratorUserName, $SecurePassword)
         
         try {
-            if ([string]::IsNullOrEmpty($DatabaseName)) {
-                Open-MySqlConnection -Database "mysql" -Server $HostAddr -Credential $Credential  -SSLMode Required -WarningAction 'silentlycontinue'
+            $DbToUse = if ([string]::IsNullOrEmpty($DatabaseName)) { "mysql" } else { $DatabaseName }
+            $OpenConnParams = @{
+                Database    = $DbToUse
+                Server      = $HostAddr
+                Credential  = $Credential
+                SSLMode     = 'Required'
+                WarningAction = 'SilentlyContinue'
             }
-            else {
-                Open-MySqlConnection -Database  $DatabaseName -Server $HostAddr -Credential $Credential -SSLMode Required -WarningAction 'silentlycontinue'
+            if ($TimeoutValue -gt 0) {
+                $OpenConnParams['CommandTimeout'] = $TimeoutValue
             }
+            Open-MySqlConnection @OpenConnParams
         }
         catch {
             Write-Host $_.Exception.GetType().FullName
