@@ -204,9 +204,8 @@ function New-GeneratedFileFromTemplate {
     $templateFile = $templateFile -replace '{ModuleNamePlaceHolder}', $SubModuleName
     $templateFile = $templateFile -replace '{LowCaseModuleNamePlaceHolder}', $SubModuleName.ToLower()
     if ($SubModuleNameFull) {
-        $templateFile = $templateFile -replace '{ModuleFullNamePlaceHolder}', $SubModuleNameFull
-    }
-    else {
+        $templateFile = $templateFile -replace '{ModuleFolderPlaceHolder}', $SubModuleNameFull
+    } else {
         $templateFile = $templateFile -replace '{ModuleFolderPlaceHolder}', "$SubModuleName.Autorest"
     }
     $templateFile = $templateFile -replace '{RootModuleNamePlaceHolder}', $ModuleRootName
