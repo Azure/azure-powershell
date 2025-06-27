@@ -1,8 +1,8 @@
 {
-  "AzAdbsBackup+[NoContext]+CreateAdbsBackup+$PUT+https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/adbsDNDP/autonomousDatabaseBackups/testId12345?api-version=2025-03-01+1": {
+  "AzAdbsBackup+[NoContext]+CreateAdbsBackup+$PUT+https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/adbsDND/autonomousDatabaseBackups/testId12345?api-version=2025-03-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/adbsDNDP/autonomousDatabaseBackups/testId12345?api-version=2025-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/adbsDND/autonomousDatabaseBackups/testId12345?api-version=2025-03-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"retentionPeriodInDays\": 90\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -38,14 +38,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/adbsDNDP/autonomousDatabaseBackups/testId12345\",\"name\":\"testId12345\",\"type\":\"oracle.database/autonomousdatabases/autonomousdatabasebackups\",\"systemData\":{\"createdBy\":\"mihret.kidane@oracle.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-27T05:23:17.4963919Z\",\"lastModifiedBy\":\"mihret.kidane@oracle.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-06-27T05:23:17.4963919Z\"},\"properties\":{\"autonomousDatabaseOcid\":null,\"databaseSizeInTbs\":null,\"dbVersion\":null,\"displayName\":null,\"ocid\":null,\"isAutomatic\":null,\"isRestorable\":null,\"lifecycleDetails\":null,\"lifecycleState\":\"Creating\",\"retentionPeriodInDays\":90,\"sizeInTbs\":null,\"timeAvailableTil\":null,\"timeStarted\":null,\"timeEnded\":null,\"backupType\":null,\"provisioningState\":\"Accepted\"}}",
+      "Content": "{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/adbsDND/autonomousDatabaseBackups/testId12345\",\"name\":\"testId12345\",\"type\":\"oracle.database/autonomousdatabases/autonomousdatabasebackups\",\"systemData\":{\"createdBy\":\"mihret.kidane@oracle.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-27T05:23:17.4963919Z\",\"lastModifiedBy\":\"mihret.kidane@oracle.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-06-27T05:23:17.4963919Z\"},\"properties\":{\"autonomousDatabaseOcid\":null,\"databaseSizeInTbs\":null,\"dbVersion\":null,\"displayName\":null,\"ocid\":null,\"isAutomatic\":null,\"isRestorable\":null,\"lifecycleDetails\":null,\"lifecycleState\":\"Creating\",\"retentionPeriodInDays\":90,\"sizeInTbs\":null,\"timeAvailableTil\":null,\"timeStarted\":null,\"timeEnded\":null,\"backupType\":null,\"provisioningState\":\"Accepted\"}}",
       "isContentBase64": false
     }
   },
-  "AzAdbsBackup+[NoContext]+ListAdbsBackups+$GET+https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/adbsDNDP/autonomousDatabaseBackups?api-version=2025-03-01+1": {
+  "AzAdbsBackup+[NoContext]+ListAdbsBackups+$GET+https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/adbsDND/autonomousDatabaseBackups?api-version=2025-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/adbsDNDP/autonomousDatabaseBackups?api-version=2025-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/adbsDND/autonomousDatabaseBackups?api-version=2025-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
