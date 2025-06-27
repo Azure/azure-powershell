@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMobileNetworkAttachedDataNetwork
 
 ## SYNOPSIS
-create an attached data network.
+Create an attached data network.
 Must be created in the same location as its parent packet core data plane.
 
 ## SYNTAX
@@ -83,7 +83,7 @@ New-AzMobileNetworkAttachedDataNetwork -Name <String> -PacketCoreControlPlaneNam
 ```
 
 ## DESCRIPTION
-create an attached data network.
+Create an attached data network.
 Must be created in the same location as its parent packet core data plane.
 
 ## EXAMPLES

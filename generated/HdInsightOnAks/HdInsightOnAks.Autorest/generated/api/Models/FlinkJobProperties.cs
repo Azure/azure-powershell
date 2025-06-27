@@ -110,7 +110,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         public string LastSavePoint { get => this._lastSavePoint; }
 
         /// <summary>Internal Acessors for JobType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJobPropertiesInternal.JobType { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJobPropertiesInternal)__clusterJobProperties).JobType; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJobPropertiesInternal)__clusterJobProperties).JobType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJobPropertiesInternal.JobType { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJobPropertiesInternal)__clusterJobProperties).JobType; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJobPropertiesInternal)__clusterJobProperties).JobType = value ; }
 
         /// <summary>Internal Acessors for ActionResult</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobPropertiesInternal.ActionResult { get => this._actionResult; set { {_actionResult = value;} } }

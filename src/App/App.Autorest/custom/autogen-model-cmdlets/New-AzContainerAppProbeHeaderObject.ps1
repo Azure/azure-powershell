@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppProbeHttpGetHttpHeader
 https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappprobeheaderobject
 #>
 function New-AzContainerAppProbeHeaderObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.App.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppProbeHttpGetHttpHeadersItem')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -54,16 +54,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models
         Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationDisplay Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationInternal.Display { get => (this._display = this._display ?? new Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.SingleOperationDisplay()); set { {_display = value;} } }
 
         /// <summary>Internal Acessors for DisplayDescription</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationInternal.DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationDisplayInternal)Display).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationDisplayInternal)Display).Description = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationInternal.DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationDisplayInternal)Display).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationDisplayInternal)Display).Description = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayOperation</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationInternal.DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationDisplayInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationDisplayInternal)Display).Operation = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationInternal.DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationDisplayInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationDisplayInternal)Display).Operation = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayProvider</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationInternal.DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationDisplayInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationDisplayInternal)Display).Provider = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationInternal.DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationDisplayInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationDisplayInternal)Display).Provider = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayResource</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationInternal.DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationDisplayInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationDisplayInternal)Display).Resource = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationInternal.DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationDisplayInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISingleOperationDisplayInternal)Display).Resource = value ?? null; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

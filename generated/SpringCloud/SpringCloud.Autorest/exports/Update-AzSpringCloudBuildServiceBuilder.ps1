@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a KPack builder.
+Update a KPack builder.
 .Description
-update a KPack builder.
+Update a KPack builder.
 .Example
 Update-AzSpringCloudBuildServiceBuilder -ResourceGroupName springcloudrg -ServiceName sspring-portal01 -Name builder01 -StackId 'io.buildpacks.stacks.bionic' -StackVersion 'base'
 

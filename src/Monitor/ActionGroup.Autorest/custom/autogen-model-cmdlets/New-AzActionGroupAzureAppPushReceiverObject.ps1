@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.AzureAppPushReceiv
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azactiongroupazureapppushreceiverobject
 #>
 function New-AzActionGroupAzureAppPushReceiverObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.AzureAppPushReceiver')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

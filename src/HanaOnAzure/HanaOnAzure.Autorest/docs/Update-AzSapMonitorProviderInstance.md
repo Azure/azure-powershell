@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSapMonitorProviderInstance
 
 ## SYNOPSIS
-update a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
+Update a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Update-AzSapMonitorProviderInstance -Name <String> -SapMonitorInputObject <IHana
 ```
 
 ## DESCRIPTION
-update a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
+Update a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
 
 ## EXAMPLES
 

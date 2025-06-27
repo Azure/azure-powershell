@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a SIM group.
+Create a SIM group.
 .Description
-create a SIM group.
+Create a SIM group.
 .Example
 New-AzMobileNetworkSimGroup -Name azps-mn-simgroup -ResourceGroupName azps_test_group -Location eastus -MobileNetworkId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn"
 

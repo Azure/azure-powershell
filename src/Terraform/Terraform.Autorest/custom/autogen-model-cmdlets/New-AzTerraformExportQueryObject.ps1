@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.ExportQuery
 https://learn.microsoft.com/powershell/module/Az.Terraform/new-azterraformexportqueryobject
 #>
 function New-AzTerraformExportQueryObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Terraform.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.ExportQuery')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

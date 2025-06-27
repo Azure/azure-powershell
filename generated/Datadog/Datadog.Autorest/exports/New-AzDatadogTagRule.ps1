@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a tag rule set for a given monitor resource.
+Create a tag rule set for a given monitor resource.
 .Description
-create a tag rule set for a given monitor resource.
+Create a tag rule set for a given monitor resource.
 .Example
 $ftobjArray = @()
 $ftobjArray += New-AzDatadogFilteringTagObject -Action "Include" -Value "Prod" -Name "Environment"

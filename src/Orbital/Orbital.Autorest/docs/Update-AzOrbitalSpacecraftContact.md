@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzOrbitalSpacecraftContact
 
 ## SYNOPSIS
-update a contact.
+Update a contact.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ Update-AzOrbitalSpacecraftContact -Name <String> -SpacecraftInputObject <IOrbita
 ```
 
 ## DESCRIPTION
-update a contact.
+Update a contact.
 
 ## EXAMPLES
 

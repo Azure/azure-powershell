@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update the Defender for Storage settings on a specified storage account.</summary>
+    /// <summary>update the Defender for Storage settings on a specified storage account.</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/{resourceId}/providers/Microsoft.Security/defenderForStorageSettings/{settingName}"
     /// [OpenAPI] Create=>PUT:"/{resourceId}/providers/Microsoft.Security/defenderForStorageSettings/{settingName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzSecurityDefenderForStorage_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IDefenderForStorageSetting))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Description(@"Update the Defender for Storage settings on a specified storage account.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Description(@"update the Defender for Storage settings on a specified storage account.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Generated]
     public partial class UpdateAzSecurityDefenderForStorage_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Runtime.IEventListener,

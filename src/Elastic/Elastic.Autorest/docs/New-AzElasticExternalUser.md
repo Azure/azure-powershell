@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzElasticExternalUser
 
 ## SYNOPSIS
-create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+Create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ New-AzElasticExternalUser -MonitorName <String> -ResourceGroupName <String> -Jso
 ```
 
 ## DESCRIPTION
-create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+Create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
 
 ## EXAMPLES
 

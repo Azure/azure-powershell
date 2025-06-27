@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMobileNetwork
 
 ## SYNOPSIS
-create a mobile network.
+Create a mobile network.
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ New-AzMobileNetwork -Name <String> -ResourceGroupName <String> -JsonString <Stri
 ```
 
 ## DESCRIPTION
-create a mobile network.
+Create a mobile network.
 
 ## EXAMPLES
 

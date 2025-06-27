@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the config server.
+Update the config server.
 .Description
-update the config server.
+Update the config server.
 .Example
 Update-AzSpringCloudConfigServer -ResourceGroupName SpringCloud-gp-junxi -Name springcloud-service
 .Example

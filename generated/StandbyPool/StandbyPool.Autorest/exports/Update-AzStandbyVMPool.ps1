@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a StandbyVirtualMachinePoolResource
+Update a StandbyVirtualMachinePoolResource
 .Description
-update a StandbyVirtualMachinePoolResource
+Update a StandbyVirtualMachinePoolResource
 .Example
 Update-AzStandbyVMPool `
 -SubscriptionId f8da6e30-a9d8-48ab-b05c-3f7fe482e13b `

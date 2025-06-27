@@ -33,16 +33,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).Location; }
 
         /// <summary>Internal Acessors for ConfigurationStoreId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStoreInternal.ConfigurationStoreId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).ConfigurationStoreId; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).ConfigurationStoreId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStoreInternal.ConfigurationStoreId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).ConfigurationStoreId; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).ConfigurationStoreId = value ?? null; }
 
         /// <summary>Internal Acessors for DeletionDate</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStoreInternal.DeletionDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).DeletionDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).DeletionDate = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStoreInternal.DeletionDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).DeletionDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).DeletionDate = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStoreInternal.Id { get => this._id; set { {_id = value;} } }
 
         /// <summary>Internal Acessors for Location</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStoreInternal.Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).Location = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStoreInternal.Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).Location = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStoreInternal.Name { get => this._name; set { {_name = value;} } }
@@ -51,13 +51,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStoreProperties Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStoreInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.DeletedConfigurationStoreProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for PurgeProtectionEnabled</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStoreInternal.PurgeProtectionEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).PurgeProtectionEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).PurgeProtectionEnabled = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStoreInternal.PurgeProtectionEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).PurgeProtectionEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).PurgeProtectionEnabled = value ?? default(bool); }
 
         /// <summary>Internal Acessors for ScheduledPurgeDate</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStoreInternal.ScheduledPurgeDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).ScheduledPurgeDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).ScheduledPurgeDate = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStoreInternal.ScheduledPurgeDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).ScheduledPurgeDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).ScheduledPurgeDate = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Tag</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesTags Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStoreInternal.Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).Tag = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesTags Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStoreInternal.Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStorePropertiesInternal)Property).Tag = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStoreInternal.Type { get => this._type; set { {_type = value;} } }

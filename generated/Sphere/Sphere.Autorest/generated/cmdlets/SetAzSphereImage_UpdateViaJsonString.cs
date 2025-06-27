@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a Image</summary>
+    /// <summary>update a Image</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/images/{imageName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzSphereImage_UpdateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IImage))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Description(@"Update a Image")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Description(@"update a Image")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/images/{imageName}", ApiVersion = "2024-04-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.NotSuggestDefaultParameterSet]

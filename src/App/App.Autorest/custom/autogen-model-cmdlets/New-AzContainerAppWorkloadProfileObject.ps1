@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.App.Models.WorkloadProfile
 https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappworkloadprofileobject
 #>
 function New-AzContainerAppWorkloadProfileObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.App.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.WorkloadProfile')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

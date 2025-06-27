@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedNetworkVendorSku
 
 ## SYNOPSIS
-update a sku.
+Update a sku.
 This operation can take up to 2 hours to complete.
 This is expected service behavior.
 
@@ -44,7 +44,7 @@ Update-AzConnectedNetworkVendorSku -SkuName <String> -VendorInputObject <IConnec
 ```
 
 ## DESCRIPTION
-update a sku.
+Update a sku.
 This operation can take up to 2 hours to complete.
 This is expected service behavior.
 

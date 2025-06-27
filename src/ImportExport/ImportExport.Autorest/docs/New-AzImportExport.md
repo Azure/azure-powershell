@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzImportExport
 
 ## SYNOPSIS
-create a new job or create an existing job in the specified subscription.
+Create a new job or create an existing job in the specified subscription.
 
 ## SYNTAX
 
@@ -51,7 +51,7 @@ New-AzImportExport -Name <String> -ResourceGroupName <String> -JsonString <Strin
 ```
 
 ## DESCRIPTION
-create a new job or create an existing job in the specified subscription.
+Create a new job or create an existing job in the specified subscription.
 
 ## EXAMPLES
 

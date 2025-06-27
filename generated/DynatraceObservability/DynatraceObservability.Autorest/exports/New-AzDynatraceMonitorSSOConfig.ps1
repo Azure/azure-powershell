@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a DynatraceSingleSignOnResource
+Create a DynatraceSingleSignOnResource
 .Description
-create a DynatraceSingleSignOnResource
+Create a DynatraceSingleSignOnResource
 .Example
 New-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -AadDomain "mpliftrlogz20210811outlook.onmicrosoft.com"
 

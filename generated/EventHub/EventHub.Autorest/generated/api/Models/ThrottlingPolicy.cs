@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         public string MetricId { get => this._metricId; set => this._metricId = value; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IApplicationGroupPolicyInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IApplicationGroupPolicyInternal)__applicationGroupPolicy).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IApplicationGroupPolicyInternal)__applicationGroupPolicy).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IApplicationGroupPolicyInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IApplicationGroupPolicyInternal)__applicationGroupPolicy).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IApplicationGroupPolicyInternal)__applicationGroupPolicy).Type = value ; }
 
         /// <summary>The Name of this policy</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inherited)]

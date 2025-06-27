@@ -92,13 +92,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INicIPSettings Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INetworkInterfaceInternal.IPSetting { get => (this._iPSetting = this._iPSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.NicIPSettings()); set { {_iPSetting = value;} } }
 
         /// <summary>Internal Acessors for IPSettingIpaddressInfo</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INicIPAddressSettings> Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INetworkInterfaceInternal.IPSettingIpaddressInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INicIPSettingsInternal)IPSetting).IPAddressInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INicIPSettingsInternal)IPSetting).IPAddressInfo = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INicIPAddressSettings> Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INetworkInterfaceInternal.IPSettingIpaddressInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INicIPSettingsInternal)IPSetting).IPAddressInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INicIPSettingsInternal)IPSetting).IPAddressInfo = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for IPSettingPrimaryWinsServer</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INetworkInterfaceInternal.IPSettingPrimaryWinsServer { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INicIPSettingsInternal)IPSetting).PrimaryWinsServer; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INicIPSettingsInternal)IPSetting).PrimaryWinsServer = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INetworkInterfaceInternal.IPSettingPrimaryWinsServer { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INicIPSettingsInternal)IPSetting).PrimaryWinsServer; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INicIPSettingsInternal)IPSetting).PrimaryWinsServer = value ?? null; }
 
         /// <summary>Internal Acessors for IPSettingSecondaryWinsServer</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INetworkInterfaceInternal.IPSettingSecondaryWinsServer { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INicIPSettingsInternal)IPSetting).SecondaryWinsServer; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INicIPSettingsInternal)IPSetting).SecondaryWinsServer = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INetworkInterfaceInternal.IPSettingSecondaryWinsServer { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INicIPSettingsInternal)IPSetting).SecondaryWinsServer; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INicIPSettingsInternal)IPSetting).SecondaryWinsServer = value ?? null; }
 
         /// <summary>Internal Acessors for Label</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INetworkInterfaceInternal.Label { get => this._label; set { {_label = value;} } }

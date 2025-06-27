@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a monitor resource.
+Update a monitor resource.
 .Description
-update a monitor resource.
+Update a monitor resource.
 .Example
 Update-AzDatadogMonitor -ResourceGroupName azure-rg-Datadog -Name Datadog -Tag @{'key1'='value1'; 'key2'='value2'}
 .Example

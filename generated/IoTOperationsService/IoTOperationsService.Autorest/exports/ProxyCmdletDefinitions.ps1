@@ -2041,9 +2041,9 @@ end {
 
 <#
 .Synopsis
-create a BrokerAuthenticationResource
+Create a BrokerAuthenticationResource
 .Description
-create a BrokerAuthenticationResource
+Create a BrokerAuthenticationResource
 .Example
 New-AzIoTOperationsServiceBrokerAuthentication `
   -AuthenticationName "my-authn" `
@@ -2308,9 +2308,9 @@ end {
 
 <#
 .Synopsis
-create a BrokerAuthorizationResource
+Create a BrokerAuthorizationResource
 .Description
-create a BrokerAuthorizationResource
+Create a BrokerAuthorizationResource
 .Example
 New-AzIoTOperationsServiceBrokerAuthorization `
   -AuthorizationName "my-authz" `
@@ -2602,9 +2602,9 @@ end {
 
 <#
 .Synopsis
-create a BrokerListenerResource
+Create a BrokerListenerResource
 .Description
-create a BrokerListenerResource
+Create a BrokerListenerResource
 .Example
 New-AzIoTOperationsServiceBrokerListener -BrokerName "my-broker" -InstanceName  "aio-instance-name" -ListenerName my-listener -ResourceGroupName "aio-validation-116116143" -ExtendedLocationName  "/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.ExtendedLocation/customLocations/location-116116143"  -Port @(@{ port = 1883 })
 
@@ -2873,9 +2873,9 @@ end {
 
 <#
 .Synopsis
-create a BrokerResource
+Create a BrokerResource
 .Description
-create a BrokerResource
+Create a BrokerResource
 .Example
 New-AzIoTOperationsServiceBroker -InstanceName "aio-instance-name" -Name "my-broker" -ResourceGroupName "aio-validation-116116143" -ExtendedLocationName  "/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.ExtendedLocation/customLocations/location-116116143" 
 
@@ -3335,9 +3335,9 @@ end {
 
 <#
 .Synopsis
-create a DataflowEndpointResource
+Create a DataflowEndpointResource
 .Description
-create a DataflowEndpointResource
+Create a DataflowEndpointResource
 .Example
 New-AzIoTOperationsServiceDataflowEndpoint  -InstanceName  "aio-instance-name"   -Name "local-storage-endpoint"  -ResourceGroupName "aio-validation-116116143"  -ExtendedLocationName "/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.ExtendedLocation/customLocations/location-116116143"   -EndpointType "LocalStorage"  -LocalStorageSettingPersistentVolumeClaimRef "myPersistentVolumeClaim" 
 
@@ -3812,9 +3812,9 @@ end {
 
 <#
 .Synopsis
-create a DataflowProfileResource
+Create a DataflowProfileResource
 .Description
-create a DataflowProfileResource
+Create a DataflowProfileResource
 .Example
 New-AzIoTOperationsServiceDataflowProfile -InstanceName  "aio-117832708" -Name "dataflowprofile-name" -ResourceGroupName "aio-validation-117832708" -ExtendedLocationName  "/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-117832708/providers/Microsoft.ExtendedLocation/customLocations/location-117832708" 
 
@@ -4054,9 +4054,9 @@ end {
 
 <#
 .Synopsis
-create a DataflowResource
+Create a DataflowResource
 .Description
-create a DataflowResource
+Create a DataflowResource
 .Example
 New-AzIoTOperationsServiceDataflow -InstanceName "aio-117832708" `
   -Name "dataflow-name" `
@@ -4372,9 +4372,9 @@ end {
 
 <#
 .Synopsis
-create a InstanceResource
+Create a InstanceResource
 .Description
-create a InstanceResource
+Create a InstanceResource
 .Example
 New-AzIoTOperationsServiceInstance -Name "aio-instance-name" -ResourceGroupName "aio-validation-116116143" -ExtendedLocationName  "/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.ExtendedLocation/customLocations/location-116116143"  -Location "eastus2" -Description test -SchemaRegistryRefResourceId  "/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-dd5644c861" 
 
@@ -6759,9 +6759,9 @@ end {
 
 <#
 .Synopsis
-update a BrokerAuthenticationResource
+Update a BrokerAuthenticationResource
 .Description
-update a BrokerAuthenticationResource
+Update a BrokerAuthenticationResource
 .Example
 Set-AzIoTOperationsServiceBrokerAuthentication `
   -AuthenticationName "my-authn" `
@@ -7026,9 +7026,9 @@ end {
 
 <#
 .Synopsis
-update a BrokerAuthorizationResource
+Update a BrokerAuthorizationResource
 .Description
-update a BrokerAuthorizationResource
+Update a BrokerAuthorizationResource
 .Example
 Set-AzIoTOperationsServiceBrokerAuthorization -BrokerName "default" -InstanceName "aio-117832708" -ResourceGroupName "aio-validation-117832708"
 
@@ -7286,9 +7286,9 @@ end {
 
 <#
 .Synopsis
-update a BrokerListenerResource
+Update a BrokerListenerResource
 .Description
-update a BrokerListenerResource
+Update a BrokerListenerResource
 .Example
 Set-AzIoTOperationsServiceBrokerListener -BrokerName "my-broker" -InstanceName "aio-instance-name" -ListenerName my-listener -ResourceGroupName "aio-validation-116116143" -ExtendedLocationName  "/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.ExtendedLocation/customLocations/location-116116143"  -Port @(@{ port = 1883 })
 
@@ -7557,9 +7557,9 @@ end {
 
 <#
 .Synopsis
-update a BrokerResource
+Update a BrokerResource
 .Description
-update a BrokerResource
+Update a BrokerResource
 .Example
 Set-AzIoTOperationsServiceBroker -InstanceName "aio-instance-name" -Name "my-broker" -ResourceGroupName "aio-validation-116116143" -ExtendedLocationName  "/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.ExtendedLocation/customLocations/location-116116143" 
 
@@ -8019,9 +8019,9 @@ end {
 
 <#
 .Synopsis
-update a DataflowEndpointResource
+Update a DataflowEndpointResource
 .Description
-update a DataflowEndpointResource
+Update a DataflowEndpointResource
 .Example
 New-AzIoTOperationsServiceDataflowEndpoint  -InstanceName  "aio-instance-name"   -Name "local-storage-endpoint"  -ResourceGroupName "aio-validation-116116143"  -ExtendedLocationName "/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.ExtendedLocation/customLocations/location-116116143"  -EndpointType "LocalStorage"  -LocalStorageSettingPersistentVolumeClaimRef "myPersistentVolumeClaim" 
 
@@ -8496,9 +8496,9 @@ end {
 
 <#
 .Synopsis
-update a DataflowProfileResource
+Update a DataflowProfileResource
 .Description
-update a DataflowProfileResource
+Update a DataflowProfileResource
 .Example
 New-AzIoTOperationsServiceDataflowProfile -InstanceName "aio-instance-name" -Name dataflowprofile-name -ResourceGroupName "aio-validation-116116143" -ExtendedLocationName  "/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.ExtendedLocation/customLocations/location-116116143" 
 
@@ -8738,9 +8738,9 @@ end {
 
 <#
 .Synopsis
-update a DataflowResource
+Update a DataflowResource
 .Description
-update a DataflowResource
+Update a DataflowResource
 .Example
 Set-AzIoTOperationsServiceDataflow -InstanceName "aio-117832708" `
   -Name "dataflow-name" `
@@ -9056,9 +9056,9 @@ end {
 
 <#
 .Synopsis
-update a InstanceResource
+Update a InstanceResource
 .Description
-update a InstanceResource
+Update a InstanceResource
 .Example
 Set-AzIoTOperationsServiceInstance -Name "aio-instance-name" -ResourceGroupName "aio-validation-116116143" -ExtendedLocationName  "/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.ExtendedLocation/customLocations/location-116116143"  -Location "eastus2" -Description "new-description" -SchemaRegistryRefResourceId  "/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-dd5644c861" 
 
@@ -9312,9 +9312,9 @@ end {
 
 <#
 .Synopsis
-update a BrokerAuthenticationResource
+Update a BrokerAuthenticationResource
 .Description
-update a BrokerAuthenticationResource
+Update a BrokerAuthenticationResource
 .Example
 Update-AzIoTOperationsServiceBrokerAuthentication `
   -AuthenticationName "my-authn" `
@@ -9623,9 +9623,9 @@ end {
 
 <#
 .Synopsis
-update a BrokerAuthorizationResource
+Update a BrokerAuthorizationResource
 .Description
-update a BrokerAuthorizationResource
+Update a BrokerAuthorizationResource
 .Example
 Update-AzIoTOperationsServiceBrokerAuthorization -BrokerName "default" -InstanceName "aio-117832708" -ResourceGroupName "aio-validation-117832708"
 
@@ -9928,9 +9928,9 @@ end {
 
 <#
 .Synopsis
-update a BrokerListenerResource
+Update a BrokerListenerResource
 .Description
-update a BrokerListenerResource
+Update a BrokerListenerResource
 .Example
 Update-AzIoTOperationsServiceBrokerListener -BrokerName "my-broker" -InstanceName "aio-instance-name" -ListenerName "my-listener" -ResourceGroupName "aio-validation-116116143"  -Port @(@{ port = 1883 })
 
@@ -10244,9 +10244,9 @@ end {
 
 <#
 .Synopsis
-update a BrokerResource
+Update a BrokerResource
 .Description
-update a BrokerResource
+Update a BrokerResource
 .Example
 Update-AzIoTOperationsServiceBroker -InstanceName "aio-instance-name" -Name "my-broker" -ResourceGroupName "aio-validation-116116143" 
 
@@ -10558,9 +10558,9 @@ end {
 
 <#
 .Synopsis
-update a DataflowEndpointResource
+Update a DataflowEndpointResource
 .Description
-update a DataflowEndpointResource
+Update a DataflowEndpointResource
 .Example
 Update-AzIoTOperationsServiceDataflowEndpoint  -InstanceName  "aio-instance-name"   -Name "local-storage-endpoint"  -ResourceGroupName "aio-validation-116116143"  -EndpointType "LocalStorage"  -LocalStorageSettingPersistentVolumeClaimRef "myPersistentVolumeClaim" 
 
@@ -11058,9 +11058,9 @@ end {
 
 <#
 .Synopsis
-update a DataflowProfileResource
+Update a DataflowProfileResource
 .Description
-update a DataflowProfileResource
+Update a DataflowProfileResource
 .Example
 Update-AzIoTOperationsServiceDataflowProfile -InstanceName "aio-instance-name" -Name dataflowprofile-name -ResourceGroupName "aio-validation-116116143"
 
@@ -11327,9 +11327,9 @@ end {
 
 <#
 .Synopsis
-update a DataflowResource
+Update a DataflowResource
 .Description
-update a DataflowResource
+Update a DataflowResource
 .Example
 Update-AzIoTOperationsServiceDataflow -InstanceName "aio-117832708" `
   -Name "dataflow-name" `
@@ -11689,9 +11689,9 @@ end {
 
 <#
 .Synopsis
-update a InstanceResource
+Update a InstanceResource
 .Description
-update a InstanceResource
+Update a InstanceResource
 .Example
 Update-AzIoTOperationsServiceInstance -Name "aio-instance-name" -ResourceGroupName "aio-validation-116116143" -Description "new-description" -SchemaRegistryRefResourceId "/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-dd5644c861" 
 

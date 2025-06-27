@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a CommunicationsGateway
+Update a CommunicationsGateway
 .Description
-update a CommunicationsGateway
+Update a CommunicationsGateway
 .Example
 Update-AzVoiceServicesCommunicationsGateway -ResourceGroupName vtest-communication-rg -Name vsc-gateway-pwsh01 -Tag @{'key1'='value1'}
 .Example

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a TrafficController
+Update a TrafficController
 .Description
-update a TrafficController
+Update a TrafficController
 .Example
 Update-AzAlb -Name test-alb -ResourceGroupName test-rg -Tag @{TestTag="Test tag value"}
 

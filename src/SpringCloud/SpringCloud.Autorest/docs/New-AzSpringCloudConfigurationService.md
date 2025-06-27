@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSpringCloudConfigurationService
 
 ## SYNOPSIS
-create the default Application Configuration Service or create the existing Application Configuration Service.
+Create the default Application Configuration Service or create the existing Application Configuration Service.
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ New-AzSpringCloudConfigurationService -ResourceGroupName <String> -ServiceName <
 ```
 
 ## DESCRIPTION
-create the default Application Configuration Service or create the existing Application Configuration Service.
+Create the default Application Configuration Service or create the existing Application Configuration Service.
 
 ## EXAMPLES
 

@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a DevOps Configuration.</summary>
+    /// <summary>update a DevOps Configuration.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}/devops/default"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzSecurityConnectorDevOpsConfiguration_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDevOpsConfiguration))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Security.Description(@"Update a DevOps Configuration.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Security.Description(@"update a DevOps Configuration.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Security.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Security.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}/devops/default", ApiVersion = "2023-09-01-preview")]
     public partial class UpdateAzSecurityConnectorDevOpsConfiguration_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,

@@ -56,13 +56,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         public string ManifestVersion { get => this._manifestVersion; set => this._manifestVersion = value; }
 
         /// <summary>Internal Acessors for RequestBodyTimePeriod</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostDetailsTimePeriod Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportManifestInternal.RequestBodyTimePeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IRequestContextInternal)RequestContext).RequestBodyTimePeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IRequestContextInternal)RequestContext).RequestBodyTimePeriod = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostDetailsTimePeriod Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportManifestInternal.RequestBodyTimePeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IRequestContextInternal)RequestContext).RequestBodyTimePeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IRequestContextInternal)RequestContext).RequestBodyTimePeriod = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for RequestContext</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IRequestContext Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportManifestInternal.RequestContext { get => (this._requestContext = this._requestContext ?? new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.RequestContext()); set { {_requestContext = value;} } }
 
         /// <summary>Internal Acessors for RequestContextRequestBody</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IGenerateCostDetailsReportRequestDefinition Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportManifestInternal.RequestContextRequestBody { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IRequestContextInternal)RequestContext).RequestBody; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IRequestContextInternal)RequestContext).RequestBody = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IGenerateCostDetailsReportRequestDefinition Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportManifestInternal.RequestContextRequestBody { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IRequestContextInternal)RequestContext).RequestBody; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IRequestContextInternal)RequestContext).RequestBody = value ?? null /* model class */; }
 
         /// <summary>
         /// This parameter can be used only by Enterprise Agreement customers. Use the YearMonth(e.g. 202008) format. This parameter

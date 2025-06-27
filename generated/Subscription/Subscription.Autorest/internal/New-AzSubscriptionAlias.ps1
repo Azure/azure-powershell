@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create Alias Subscription.
+Create Alias Subscription.
 .Description
-create Alias Subscription.
+Create Alias Subscription.
 .Example
 New-AzSubscriptionAlias -AliasName test-subscription -SubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 .Example

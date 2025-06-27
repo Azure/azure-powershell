@@ -55,16 +55,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringPropertiesDirect Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringPropertiesInternal.Direct { get => (this._direct = this._direct ?? new Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringPropertiesDirect()); set { {_direct = value;} } }
 
         /// <summary>Internal Acessors for DirectPeerAsn</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ISubResource Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringPropertiesInternal.DirectPeerAsn { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringPropertiesDirectInternal)Direct).PeerAsn; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringPropertiesDirectInternal)Direct).PeerAsn = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ISubResource Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringPropertiesInternal.DirectPeerAsn { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringPropertiesDirectInternal)Direct).PeerAsn; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringPropertiesDirectInternal)Direct).PeerAsn = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for DirectUseForPeeringService</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringPropertiesInternal.DirectUseForPeeringService { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringPropertiesDirectInternal)Direct).UseForPeeringService; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringPropertiesDirectInternal)Direct).UseForPeeringService = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringPropertiesInternal.DirectUseForPeeringService { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringPropertiesDirectInternal)Direct).UseForPeeringService; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringPropertiesDirectInternal)Direct).UseForPeeringService = value ?? default(bool); }
 
         /// <summary>Internal Acessors for Exchange</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringPropertiesExchange Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringPropertiesInternal.Exchange { get => (this._exchange = this._exchange ?? new Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringPropertiesExchange()); set { {_exchange = value;} } }
 
         /// <summary>Internal Acessors for ExchangePeerAsn</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ISubResource Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringPropertiesInternal.ExchangePeerAsn { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringPropertiesExchangeInternal)Exchange).PeerAsn; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringPropertiesExchangeInternal)Exchange).PeerAsn = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ISubResource Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringPropertiesInternal.ExchangePeerAsn { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringPropertiesExchangeInternal)Exchange).PeerAsn; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringPropertiesExchangeInternal)Exchange).PeerAsn = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }

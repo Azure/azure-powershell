@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAdminSpec Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal.RangerAdmin { get => (this._rangerAdmin = this._rangerAdmin ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerAdminSpec()); set { {_rangerAdmin = value;} } }
 
         /// <summary>Internal Acessors for RangerAdminDatabase</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAdminSpecDatabase Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal.RangerAdminDatabase { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAdminSpecInternal)RangerAdmin).Database; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAdminSpecInternal)RangerAdmin).Database = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAdminSpecDatabase Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal.RangerAdminDatabase { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAdminSpecInternal)RangerAdmin).Database; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAdminSpecInternal)RangerAdmin).Database = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for RangerAudit</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAuditSpec Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal.RangerAudit { get => (this._rangerAudit = this._rangerAudit ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerAuditSpec()); set { {_rangerAudit = value;} } }

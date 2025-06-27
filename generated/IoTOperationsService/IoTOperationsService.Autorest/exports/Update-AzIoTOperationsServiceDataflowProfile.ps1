@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a DataflowProfileResource
+Update a DataflowProfileResource
 .Description
-update a DataflowProfileResource
+Update a DataflowProfileResource
 .Example
 Update-AzIoTOperationsServiceDataflowProfile -InstanceName "aio-instance-name" -Name dataflowprofile-name -ResourceGroupName "aio-validation-116116143"
 

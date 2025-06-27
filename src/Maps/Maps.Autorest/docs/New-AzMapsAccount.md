@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMapsAccount
 
 ## SYNOPSIS
-create a Maps Account.
+Create a Maps Account.
 A Maps Account holds the keys which allow access to the Maps REST APIs.
 
 ## SYNTAX
@@ -33,7 +33,7 @@ New-AzMapsAccount -Name <String> -ResourceGroupName <String> -JsonString <String
 ```
 
 ## DESCRIPTION
-create a Maps Account.
+Create a Maps Account.
 A Maps Account holds the keys which allow access to the Maps REST APIs.
 
 ## EXAMPLES

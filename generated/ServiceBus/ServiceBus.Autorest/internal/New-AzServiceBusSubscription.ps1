@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a topic subscription.
+Create a topic subscription.
 .Description
-create a topic subscription.
+Create a topic subscription.
 .Example
 New-AzServiceBusSubscription -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -Name mySubscription -DefaultMessageTimeToLive (New-TimeSpan -Days 6) -EnableBatchedOperations
 

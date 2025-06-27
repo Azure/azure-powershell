@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a packet core control plane.
+Update a packet core control plane.
 .Description
-update a packet core control plane.
+Update a packet core control plane.
 .Example
 Update-AzMobileNetworkPacketCoreControlPlane -PacketCoreControlPlaneName azps-mn-pccp -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
 

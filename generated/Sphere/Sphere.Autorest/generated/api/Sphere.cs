@@ -341,7 +341,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Update a Catalog</summary>
+        /// <summary>update a Catalog</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
@@ -390,7 +390,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Update a Catalog</summary>
+        /// <summary>update a Catalog</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Update a Catalog</summary>
+        /// <summary>update a Catalog</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Update a Catalog</summary>
+        /// <summary>update a Catalog</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Update a Catalog</summary>
+        /// <summary>update a Catalog</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
@@ -600,7 +600,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Update a Catalog</summary>
+        /// <summary>update a Catalog</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
@@ -662,13 +662,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -816,13 +816,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -1085,13 +1085,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -3846,7 +3846,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Update a Catalog</summary>
+        /// <summary>update a Catalog</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
@@ -3895,7 +3895,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Update a Catalog</summary>
+        /// <summary>update a Catalog</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The resource properties to be updated.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3954,7 +3954,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Update a Catalog</summary>
+        /// <summary>update a Catalog</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The resource properties to be updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4011,7 +4011,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Update a Catalog</summary>
+        /// <summary>update a Catalog</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
@@ -4059,7 +4059,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Update a Catalog</summary>
+        /// <summary>update a Catalog</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
@@ -4105,7 +4105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Update a Catalog</summary>
+        /// <summary>update a Catalog</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
@@ -4290,11 +4290,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Upload an image. Use this action when the image ID is unknown.</summary>
+        /// <summary>upload an image. Use this action when the image ID is unknown.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
         /// <param name="body">Image upload request body.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4303,7 +4304,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CatalogsUploadImage(string subscriptionId, string resourceGroupName, string catalogName, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IImage body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task CatalogsUploadImage(string subscriptionId, string resourceGroupName, string catalogName, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IImage body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2024-04-01";
             // Constant Parameters
@@ -4335,13 +4336,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.CatalogsUploadImage_Call (request, onDefault,eventListener,sender);
+                await this.CatalogsUploadImage_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Upload an image. Use this action when the image ID is unknown.</summary>
+        /// <summary>upload an image. Use this action when the image ID is unknown.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Image upload request body.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4350,7 +4352,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CatalogsUploadImageViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IImage body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task CatalogsUploadImageViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IImage body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2024-04-01";
             // Constant Parameters
@@ -4394,15 +4396,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.CatalogsUploadImage_Call (request, onDefault,eventListener,sender);
+                await this.CatalogsUploadImage_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Upload an image. Use this action when the image ID is unknown.</summary>
+        /// <summary>upload an image. Use this action when the image ID is unknown.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
         /// <param name="jsonString">Json string supplied to the CatalogsUploadImage operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4410,7 +4413,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CatalogsUploadImageViaJsonString(string subscriptionId, string resourceGroupName, string catalogName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CatalogsUploadImageViaJsonString(string subscriptionId, string resourceGroupName, string catalogName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2024-04-01";
             // Constant Parameters
@@ -4442,12 +4445,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.CatalogsUploadImage_Call (request, onDefault,eventListener,sender);
+                await this.CatalogsUploadImage_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "CatalogsUploadImage" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4455,20 +4459,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CatalogsUploadImage_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CatalogsUploadImage_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -4564,6 +4568,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -6147,7 +6157,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
+        /// update a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
         /// name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -6209,7 +6219,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
+        /// update a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
         /// name.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -6280,7 +6290,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
+        /// update a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
         /// name.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -6349,7 +6359,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
+        /// update a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
         /// name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -6410,7 +6420,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
+        /// update a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
         /// name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -6469,7 +6479,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
+        /// update a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
         /// name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -6545,13 +6555,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -6699,13 +6709,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -7002,13 +7012,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -7984,6 +7994,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         /// <param name="productName">Name of product.</param>
         /// <param name="deviceGroupName">Name of device group.</param>
         /// <param name="body">Bulk claim devices request body.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7992,7 +8003,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DeviceGroupsClaimDevices(string subscriptionId, string resourceGroupName, string catalogName, string productName, string deviceGroupName, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IClaimDevicesRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task DeviceGroupsClaimDevices(string subscriptionId, string resourceGroupName, string catalogName, string productName, string deviceGroupName, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IClaimDevicesRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2024-04-01";
             // Constant Parameters
@@ -8028,7 +8039,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DeviceGroupsClaimDevices_Call (request, onDefault,eventListener,sender);
+                await this.DeviceGroupsClaimDevices_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -8038,6 +8049,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Bulk claim devices request body.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8046,7 +8058,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DeviceGroupsClaimDevicesViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IClaimDevicesRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task DeviceGroupsClaimDevicesViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IClaimDevicesRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2024-04-01";
             // Constant Parameters
@@ -8096,7 +8108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DeviceGroupsClaimDevices_Call (request, onDefault,eventListener,sender);
+                await this.DeviceGroupsClaimDevices_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -8110,6 +8122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         /// <param name="productName">Name of product.</param>
         /// <param name="deviceGroupName">Name of device group.</param>
         /// <param name="jsonString">Json string supplied to the DeviceGroupsClaimDevices operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8117,7 +8130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DeviceGroupsClaimDevicesViaJsonString(string subscriptionId, string resourceGroupName, string catalogName, string productName, string deviceGroupName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DeviceGroupsClaimDevicesViaJsonString(string subscriptionId, string resourceGroupName, string catalogName, string productName, string deviceGroupName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2024-04-01";
             // Constant Parameters
@@ -8153,12 +8166,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DeviceGroupsClaimDevices_Call (request, onDefault,eventListener,sender);
+                await this.DeviceGroupsClaimDevices_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "DeviceGroupsClaimDevices" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8166,20 +8180,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DeviceGroupsClaimDevices_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DeviceGroupsClaimDevices_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -8275,6 +8289,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -8697,7 +8717,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
+        /// update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
         /// group name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -8755,7 +8775,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
+        /// update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
         /// group name.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -8823,7 +8843,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
+        /// update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
         /// group name.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -8889,7 +8909,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
+        /// update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
         /// group name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -8946,7 +8966,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
+        /// update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
         /// group name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -9001,7 +9021,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
+        /// update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
         /// group name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -9073,13 +9093,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -9227,13 +9247,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -9520,13 +9540,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -10458,7 +10478,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
+        /// update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
         /// group name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -10516,7 +10536,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
+        /// update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
         /// group name.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -10584,7 +10604,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
+        /// update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
         /// group name.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -10650,7 +10670,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
+        /// update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
         /// group name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -10707,7 +10727,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
+        /// update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
         /// group name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -10762,7 +10782,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
+        /// update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
         /// group name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -10832,13 +10852,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -10987,13 +11007,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -11148,7 +11168,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
+        /// update a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
         /// only.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -11209,7 +11229,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
+        /// update a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
         /// only.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -11280,7 +11300,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
+        /// update a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
         /// only.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -11349,7 +11369,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
+        /// update a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
         /// only.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -11409,7 +11429,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
+        /// update a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
         /// only.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -11467,7 +11487,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
+        /// update a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
         /// only.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -11540,13 +11560,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -11694,13 +11714,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -11990,13 +12010,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -12557,13 +12577,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -12712,13 +12732,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -13625,7 +13645,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Device. Use '.unassigned' or '.default' for the device group and product names to move a device to the catalog
+        /// update a Device. Use '.unassigned' or '.default' for the device group and product names to move a device to the catalog
         /// level.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -13686,7 +13706,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Device. Use '.unassigned' or '.default' for the device group and product names to move a device to the catalog
+        /// update a Device. Use '.unassigned' or '.default' for the device group and product names to move a device to the catalog
         /// level.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -13757,7 +13777,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Device. Use '.unassigned' or '.default' for the device group and product names to move a device to the catalog
+        /// update a Device. Use '.unassigned' or '.default' for the device group and product names to move a device to the catalog
         /// level.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -13826,7 +13846,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Device. Use '.unassigned' or '.default' for the device group and product names to move a device to the catalog
+        /// update a Device. Use '.unassigned' or '.default' for the device group and product names to move a device to the catalog
         /// level.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -13886,7 +13906,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Device. Use '.unassigned' or '.default' for the device group and product names to move a device to the catalog
+        /// update a Device. Use '.unassigned' or '.default' for the device group and product names to move a device to the catalog
         /// level.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -13944,7 +13964,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Device. Use '.unassigned' or '.default' for the device group and product names to move a device to the catalog
+        /// update a Device. Use '.unassigned' or '.default' for the device group and product names to move a device to the catalog
         /// level.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -14017,13 +14037,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -14172,13 +14192,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -14335,7 +14355,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Update a Image</summary>
+        /// <summary>update a Image</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
@@ -14387,7 +14407,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Update a Image</summary>
+        /// <summary>update a Image</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -14449,7 +14469,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Update a Image</summary>
+        /// <summary>update a Image</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -14509,7 +14529,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Update a Image</summary>
+        /// <summary>update a Image</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
@@ -14560,7 +14580,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Update a Image</summary>
+        /// <summary>update a Image</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
@@ -14609,7 +14629,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Update a Image</summary>
+        /// <summary>update a Image</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
@@ -14674,13 +14694,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -14828,13 +14848,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -15105,13 +15125,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -16614,7 +16634,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
+        /// update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -16668,7 +16688,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
+        /// update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
@@ -16732,7 +16752,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
+        /// update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
@@ -16794,7 +16814,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
+        /// update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -16847,7 +16867,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
+        /// update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -16898,7 +16918,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
+        /// update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -16964,13 +16984,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -17118,13 +17138,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -17400,13 +17420,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -18592,7 +18612,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
+        /// update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -18646,7 +18666,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
+        /// update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The resource properties to be updated.</param>
@@ -18710,7 +18730,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
+        /// update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The resource properties to be updated.</param>
@@ -18772,7 +18792,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
+        /// update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -18825,7 +18845,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
+        /// update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -18876,7 +18896,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
+        /// update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -18942,13 +18962,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -19097,13 +19117,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");

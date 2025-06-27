@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a KPack builder.
+Create a KPack builder.
 .Description
-create a KPack builder.
+Create a KPack builder.
 .Example
 New-AzSpringCloudBuildServiceBuilder -ResourceGroupName springcloudrg -ServiceName sspring-portal01 -Name builder01 -StackId 'io.buildpacks.stacks.bionic' -StackVersion 'base'
 

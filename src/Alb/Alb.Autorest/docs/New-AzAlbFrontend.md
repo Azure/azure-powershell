@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzAlbFrontend
 
 ## SYNOPSIS
-create a Frontend
+Create a Frontend
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzAlbFrontend -AlbName <String> -Name <String> -ResourceGroupName <String> -
 ```
 
 ## DESCRIPTION
-create a Frontend
+Create a Frontend
 
 ## EXAMPLES
 

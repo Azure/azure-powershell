@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Informatica
-Module Guid: 2cc23942-2b17-4b45-84c4-ebd4d2af2292
+Module Guid: 336c93b5-7175-4c43-94ab-8a013831762f
 Download Help Link: https://learn.microsoft.com/powershell/module/az.informatica
 Help Version: 1.0.0.0
 Locale: en-US

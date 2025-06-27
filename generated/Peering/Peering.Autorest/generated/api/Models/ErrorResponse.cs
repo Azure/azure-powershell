@@ -29,13 +29,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IErrorDetailInternal)Error).Message; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IErrorResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IErrorDetailInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IErrorDetailInternal)Error).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IErrorResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IErrorDetailInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IErrorDetailInternal)Error).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Error</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IErrorResponseInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ErrorDetail()); set { {_error = value;} } }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IErrorResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IErrorDetailInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IErrorDetailInternal)Error).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IErrorResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IErrorDetailInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IErrorDetailInternal)Error).Message = value ?? null; }
 
         /// <summary>Creates an new <see cref="ErrorResponse" /> instance.</summary>
         public ErrorResponse()

@@ -41,43 +41,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>Internal Acessors for AddressDetail</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressDetails Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResourceInternal.AddressDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).AddressDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).AddressDetail = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressDetails Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResourceInternal.AddressDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).AddressDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).AddressDetail = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for AddressDetailForwardAddress</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressProperties Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResourceInternal.AddressDetailForwardAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).AddressDetailForwardAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).AddressDetailForwardAddress = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressProperties Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResourceInternal.AddressDetailForwardAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).AddressDetailForwardAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).AddressDetailForwardAddress = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for AddressDetailReturnAddress</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressProperties Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResourceInternal.AddressDetailReturnAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).AddressDetailReturnAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).AddressDetailReturnAddress = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressProperties Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResourceInternal.AddressDetailReturnAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).AddressDetailReturnAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).AddressDetailReturnAddress = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ForwardAddressValidationStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResourceInternal.ForwardAddressValidationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).ForwardAddressValidationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).ForwardAddressValidationStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResourceInternal.ForwardAddressValidationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).ForwardAddressValidationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).ForwardAddressValidationStatus = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemProperties Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResourceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderItemProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ReturnAddressContactDetail</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IContactDetails Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResourceInternal.ReturnAddressContactDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).ReturnAddressContactDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).ReturnAddressContactDetail = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IContactDetails Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResourceInternal.ReturnAddressContactDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).ReturnAddressContactDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).ReturnAddressContactDetail = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ReturnAddressShippingAddress</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IShippingAddress Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResourceInternal.ReturnAddressShippingAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).ReturnAddressShippingAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).ReturnAddressShippingAddress = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IShippingAddress Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResourceInternal.ReturnAddressShippingAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).ReturnAddressShippingAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).ReturnAddressShippingAddress = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ReturnAddressValidationStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResourceInternal.ReturnAddressValidationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).ReturnAddressValidationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).ReturnAddressValidationStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResourceInternal.ReturnAddressValidationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).ReturnAddressValidationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).ReturnAddressValidationStatus = value ?? null; }
 
         /// <summary>Internal Acessors for StartTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResourceInternal.StartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).StartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).StartTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResourceInternal.StartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).StartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemPropertiesInternal)Property).StartTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResourceInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.SystemData()); set { {_systemData = value;} } }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.PropertyOrigin.Inherited)]

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a network access rule.
+Create a network access rule.
 .Description
-create a network access rule.
+Create a network access rule.
 .Example
 New-AzNetworkSecurityPerimeterAccessRule -Name access-rule-test-1 -ProfileName profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -AddressPrefix '10.10.0.0/16' -Direction 'Inbound'
 .Example

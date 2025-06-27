@@ -35,37 +35,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IResourceInternal)__resource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IResourceInternal)__resource).Location = value ?? null; }
 
         /// <summary>Internal Acessors for BillingPlanId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceInternal.BillingPlanId { get => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourcePropertiesInternal)Property).BillingPlanId; set => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourcePropertiesInternal)Property).BillingPlanId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceInternal.BillingPlanId { get => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourcePropertiesInternal)Property).BillingPlanId; set => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourcePropertiesInternal)Property).BillingPlanId = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceProperties Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.AccountResourceProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourcePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourcePropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourcePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourcePropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceSystemData Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.AccountResourceSystemData()); set { {_systemData = value;} } }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceSystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceSystemDataInternal)SystemData).CreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceSystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceSystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceSystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceSystemDataInternal)SystemData).CreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceSystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceSystemDataInternal)SystemData).CreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceSystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceSystemDataInternal)SystemData).LastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceSystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceSystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceSystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceSystemDataInternal)SystemData).LastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceSystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResourceSystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IResourceInternal)__resource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IResourceInternal)__resource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IResourceInternal)__resource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IResourceInternal)__resource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IResourceInternal)__resource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IResourceInternal)__resource).Type = value ?? null; }
 
         /// <summary>Azure resource name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.GraphServices.PropertyOrigin.Inherited)]

@@ -53,43 +53,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).Location = value ?? null; }
 
         /// <summary>Internal Acessors for PropertiesProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotChannelInternal.PropertiesProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotChannelInternal)__botChannel).PropertiesProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotChannelInternal)__botChannel).PropertiesProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotChannelInternal.PropertiesProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotChannelInternal)__botChannel).PropertiesProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotChannelInternal)__botChannel).PropertiesProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannel Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotChannelInternal.Property { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotChannelInternal)__botChannel).Property; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotChannelInternal)__botChannel).Property = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannel Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotChannelInternal.Property { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotChannelInternal)__botChannel).Property; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotChannelInternal)__botChannel).Property = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Resource</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannel Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IListChannelWithKeysResponseInternal.Resource { get => (this._resource = this._resource ?? new Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Channel()); set { {_resource = value;} } }
 
         /// <summary>Internal Acessors for ResourceProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IListChannelWithKeysResponseInternal.ResourceProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)Resource).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)Resource).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IListChannelWithKeysResponseInternal.ResourceProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)Resource).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)Resource).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Setting</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelSettings Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IListChannelWithKeysResponseInternal.Setting { get => (this._setting = this._setting ?? new Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ChannelSettings()); set { {_setting = value;} } }
 
         /// <summary>Internal Acessors for SettingExtensionKey1</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IListChannelWithKeysResponseInternal.SettingExtensionKey1 { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelSettingsInternal)Setting).ExtensionKey1; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelSettingsInternal)Setting).ExtensionKey1 = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IListChannelWithKeysResponseInternal.SettingExtensionKey1 { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelSettingsInternal)Setting).ExtensionKey1; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelSettingsInternal)Setting).ExtensionKey1 = value ?? null; }
 
         /// <summary>Internal Acessors for SettingExtensionKey2</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IListChannelWithKeysResponseInternal.SettingExtensionKey2 { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelSettingsInternal)Setting).ExtensionKey2; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelSettingsInternal)Setting).ExtensionKey2 = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IListChannelWithKeysResponseInternal.SettingExtensionKey2 { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelSettingsInternal)Setting).ExtensionKey2; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelSettingsInternal)Setting).ExtensionKey2 = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Sku</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).Sku = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).Sku = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SkuTier</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).SkuTier; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).SkuTier = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).SkuTier; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).SkuTier = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).Type = value ?? null; }
 
         /// <summary>Internal Acessors for Zone</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.Zone { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).Zone; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).Zone = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.Zone { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).Zone; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__botChannel).Zone = value ?? null /* arrayOf */; }
 
         /// <summary>Specifies the name of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inherited)]

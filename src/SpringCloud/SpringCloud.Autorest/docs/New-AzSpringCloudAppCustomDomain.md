@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSpringCloudAppCustomDomain
 
 ## SYNOPSIS
-create custom domain of one lifecycle application.
+Create custom domain of one lifecycle application.
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ New-AzSpringCloudAppCustomDomain -AppName <String> -Name <String> -ResourceGroup
 ```
 
 ## DESCRIPTION
-create custom domain of one lifecycle application.
+Create custom domain of one lifecycle application.
 
 ## EXAMPLES
 

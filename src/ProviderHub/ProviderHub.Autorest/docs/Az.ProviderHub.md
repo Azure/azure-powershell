@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ProviderHub
-Module Guid: 95c8f444-a907-430e-baab-c2bf0cdb6ed0
+Module Guid: ca7191e9-ef2d-4917-a573-308536d9cfa0
 Download Help Link: https://learn.microsoft.com/powershell/module/az.providerhub
 Help Version: 1.0.0.0
 Locale: en-US

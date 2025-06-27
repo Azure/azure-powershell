@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create virtual machine template.</summary>
+    /// <summary>create virtual machine template.</summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/{virtualMachineTemplateName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzConnectedVMwareVMTemplate_CreateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualMachineTemplate))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Description(@"Create virtual machine template.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Description(@"create virtual machine template.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/{virtualMachineTemplateName}", ApiVersion = "2023-10-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.NotSuggestDefaultParameterSet]
