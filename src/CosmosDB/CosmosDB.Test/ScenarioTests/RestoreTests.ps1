@@ -883,6 +883,11 @@ function Test-CrossRegionRestoreSingleRegionAccountCmdlets {
   Copy-Item -Path $filePath -Destination $newFilePath
   $newFilePath | Out-File ./restoredCosmosDBAccount.txt
 
+  $filePath2 = (Get-ChildItem RestoreAzCosmosDBAccount.log).FullName
+  $newFilePath2 = Join-Path ($filePath2 -split 'src')[0] 'artifacts' 'RestoreAzCosmosDBAccount.log'
+  Copy-Item -Path $filePath2 -Destination $newFilePath2
+  $newFilePath2 | Out-File ./restoredCosmosDBAccount.txt -Append
+
   Assert-NotNull $sourceRestorableAccount
   Assert-AreEqual $restoredCosmosDBAccount.Name $cosmosDBAccountName
   Assert-AreEqual $restoredCosmosDBAccount.CreateMode "Restore"
