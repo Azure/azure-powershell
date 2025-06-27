@@ -48,9 +48,10 @@ if ($ModuleRootName -in $rootToParentMap.keys) {
     $parentModuleName = $rootToParentMap[$ModuleRootName]
 }
 
-$subModuleNameTrimmed = $SubModuleName
-$SubModuleName = "$SubModuleName.Autorest"
 $moduleRootPath = Join-Path $SourceDirectory $ModuleRootName
+$subModuleNameTrimmed = $SubModuleName
+$subModuleName = Get-ChildItem -Path $moduleRootPath -Directory | Where-Object { $_.Name -match '$(subModuleNameTrimmed)\.' } | ForEach-Object { $_.Name }
+
 $parentModulePath = Join-Path $moduleRootPath $parentModuleName
 $subModulePath = Join-Path $moduleRootPath $SubModuleName
 $slnPath = Join-Path $moduleRootPath "$ModuleRootName.sln"
@@ -177,7 +178,7 @@ try{
     $subModuleCsprojPath = Join-Path $subModulePath $csprojName
     $tempCsprojPath = Join-Path $subModulePath 'tmpCsproj'
     Move-Item $subModuleCsprojPath $tempCsprojPath -Force
-    New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName $csprojName -GeneratedDirectory $subModulePath -ModuleRootName $ModuleRootName -SubModuleName $subModuleNameTrimmed
+    New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName $csprojName -GeneratedDirectory $subModulePath -ModuleRootName $ModuleRootName -SubModuleName $subModuleNameTrimmed -SubModuleNameFull $subModuleName
 
     dotnet sln $slnPath add $subModuleCsprojPath
     Write-Host "Building $slnPath ..." -ForegroundColor DarkGreen
