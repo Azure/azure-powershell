@@ -103,35 +103,35 @@ stages:
       galleryName: ${{ parameters.GalleryName }}
       pipelineBuildId: ${{ parameters.PipelineBuildId }}
 
-  # - template: util/live-test-steps.yml
-  #   parameters:
-  #     name: 'ps_7_4_x_macos'
-  #     vmImage: ${{ variables.os_macos }}
-  #     osType: 'MacOS'
-  #     psVersion: ${{ variables.ps_7_4_x }}
-  #     dotnetVersion: ${{ variables.dotnet_sdk_8 }}
-  #     galleryName: ${{ parameters.GalleryName }}
-  #     pipelineBuildId: ${{ parameters.PipelineBuildId }}
+  - template: util/live-test-steps.yml
+    parameters:
+      name: 'ps_7_4_x_macos'
+      vmImage: ${{ variables.os_macos }}
+      osType: 'MacOS'
+      psVersion: ${{ variables.ps_7_4_x }}
+      dotnetVersion: ${{ variables.dotnet_sdk_8 }}
+      galleryName: ${{ parameters.GalleryName }}
+      pipelineBuildId: ${{ parameters.PipelineBuildId }}
 
-  # - template: util/live-test-steps.yml
-  #   parameters:
-  #     name: 'ps_7_5_x_macos'
-  #     vmImage: ${{ variables.os_macos }}
-  #     osType: 'MacOS'
-  #     psVersion: ${{ variables.ps_7_5_x }}
-  #     dotnetVersion: ${{ variables.dotnet_sdk_9 }}
-  #     galleryName: ${{ parameters.GalleryName }}
-  #     pipelineBuildId: ${{ parameters.PipelineBuildId }}
+  - template: util/live-test-steps.yml
+    parameters:
+      name: 'ps_7_5_x_macos'
+      vmImage: ${{ variables.os_macos }}
+      osType: 'MacOS'
+      psVersion: ${{ variables.ps_7_5_x }}
+      dotnetVersion: ${{ variables.dotnet_sdk_9 }}
+      galleryName: ${{ parameters.GalleryName }}
+      pipelineBuildId: ${{ parameters.PipelineBuildId }}
 
-  # - template: util/live-test-steps.yml
-  #   parameters:
-  #     name: 'ps_latest_macos'
-  #     vmImage: ${{ variables.os_macos }}
-  #     osType: 'MacOS'
-  #     psVersion: ${{ variables.ps_latest }}
-  #     dotnetVersion: ${{ variables.dotnet_sdk_9 }}
-  #     galleryName: ${{ parameters.GalleryName }}
-  #     pipelineBuildId: ${{ parameters.PipelineBuildId }}
+  - template: util/live-test-steps.yml
+    parameters:
+      name: 'ps_latest_macos'
+      vmImage: ${{ variables.os_macos }}
+      osType: 'MacOS'
+      psVersion: ${{ variables.ps_latest }}
+      dotnetVersion: ${{ variables.dotnet_sdk_9 }}
+      galleryName: ${{ parameters.GalleryName }}
+      pipelineBuildId: ${{ parameters.PipelineBuildId }}
 
 - stage: Report
   displayName: Send Report
