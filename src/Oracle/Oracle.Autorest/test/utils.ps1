@@ -186,11 +186,11 @@ function setupEnv() {
     #$dbStorageVault = Get-AzOracleExascaleDbStorageVault -Name $env.oracleExascaleDbStorageVaultName -ResourceGroupName $env.resourceGroup
 
    #prerequisite resources
-   $adbsDNDName = "adbsDND"
+   $adbsDNDName = "adbsDNDP"
    $env.Add("adbsDNDName", $adbsDNDName)
-   $VmClusterDNDName = "OfakeVmCLusterDND"
+   $VmClusterDNDName = "OfakeDNDVM"
    $env.Add("VmClusterDNDName", $VmClusterDNDName)
-   $ExaInfraDNDName = "OfakeDND"
+   $ExaInfraDNDName = "OfakeExaDND"
    $env.Add("ExaInfraDNDName", $ExaInfraDNDName)
 
 

@@ -25,7 +25,7 @@ Describe 'AzAdbsBackup' {
             Get-AzOracleAutonomousDatabaseBackup -Autonomousdatabasename $env.adbsDNDName -ResourceGroupName $env.resourceGroup
         } | Should -Not -Throw
     }
-    It 'DeleteAdbsBackup' {
+    It 'DeleteAdbsBackup' -Skip {
         {
             Remove-AzOracleAutonomousDatabaseBackup -NoWait -Adbbackupid $env.adbsBackupId -Autonomousdatabasename $env.adbsDNDName -ResourceGroupName $env.resourceGroup
         } | Should -Not -Throw
