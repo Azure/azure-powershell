@@ -1,0 +1,83 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/f6cb8187-b300-4c2d-9b23-c00e7e98d799/providers/Microsoft.Network/azureFirewallFqdnTags?api-version=2024-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjZjYjgxODctYjMwMC00YzJkLTliMjMtYzAwZTdlOThkNzk5L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9henVyZUZpcmV3YWxsRnFkblRhZ3M/YXBpLXZlcnNpb249MjAyNC0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "cb0a7b2a-65a4-4010-8bd6-d0097e4e3ded"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.1725.26602",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/27.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "9eadc3ba-9249-41b5-a978-1cd633c9b616"
+        ],
+        "x-ms-correlation-request-id": [
+          "f627eef2-e5c0-4245-b2c6-caadc6a85428"
+        ],
+        "x-ms-arm-service-request-id": [
+          "44f95411-c05d-415a-9ee2-f41d85087206"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3dee0754-63ae-459a-8ca7-46bd9624aa60/westus/bef0fede-6617-476a-b5df-940a2ad4c85f"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20250625T231232Z:f627eef2-e5c0-4245-b2c6-caadc6a85428"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 3E8D091609954F46A4C35256B7C2768C Ref B: SJC211051205037 Ref C: 2025-06-25T23:12:31Z"
+        ],
+        "Date": [
+          "Wed, 25 Jun 2025 23:12:32 GMT"
+        ],
+        "Content-Length": [
+          "6148"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"AppServiceEnvironment\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"AppServiceEnvironment\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"AzureBackup\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"AzureBackup\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"AzureKubernetesService\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"AzureKubernetesService\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"HDInsight\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"HDInsight\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"MicrosoftActiveProtectionService\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"MicrosoftActiveProtectionService\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"MicrosoftIntune\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"MicrosoftIntune\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Windows365\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"Windows365\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"WindowsDiagnostics\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"WindowsDiagnostics\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"WindowsUpdate\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"WindowsUpdate\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"WindowsVirtualDesktop\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"WindowsVirtualDesktop\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"citrixHdxPlusForWindows365\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"citrixHdxPlusForWindows365\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Office365.Exchange.Optimize\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"Office365.Exchange.Optimize\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Office365.Exchange.Default.Required\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"Office365.Exchange.Default.Required\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Office365.Exchange.Allow.Required\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"Office365.Exchange.Allow.Required\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Office365.Skype.Allow.Required\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"Office365.Skype.Allow.Required\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Office365.Skype.Default.Required\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"Office365.Skype.Default.Required\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Office365.Skype.Default.NotRequired\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"Office365.Skype.Default.NotRequired\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Office365.SharePoint.Optimize\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"Office365.SharePoint.Optimize\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Office365.SharePoint.Default.NotRequired\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"Office365.SharePoint.Default.NotRequired\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Office365.SharePoint.Default.Required\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"Office365.SharePoint.Default.Required\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Office365.Common.Allow.Required\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"Office365.Common.Allow.Required\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Office365.Common.Default.Required\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"Office365.Common.Default.Required\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Office365.Common.Default.NotRequired\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"Office365.Common.Default.NotRequired\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "f6cb8187-b300-4c2d-9b23-c00e7e98d799"
+  }
+}
