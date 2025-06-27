@@ -398,10 +398,6 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         public virtual IInstanceFailoverGroupsOperations InstanceFailoverGroups { get; private set; }
         /// <summary>
-        /// Gets the IServersOperations
-        /// </summary>
-        public virtual IServersOperations Servers { get; private set; }
-        /// <summary>
         /// Gets the IServerConfigurationOptionsOperations
         /// </summary>
         public virtual IServerConfigurationOptionsOperations ServerConfigurationOptions { get; private set; }
@@ -429,6 +425,14 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the IStartStopManagedInstanceSchedulesOperations
         /// </summary>
         public virtual IStartStopManagedInstanceSchedulesOperations StartStopManagedInstanceSchedules { get; private set; }
+        /// <summary>
+        /// Gets the IDatabaseSchemasOperations
+        /// </summary>
+        public virtual IDatabaseSchemasOperations DatabaseSchemas { get; private set; }
+        /// <summary>
+        /// Gets the IServersOperations
+        /// </summary>
+        public virtual IServersOperations Servers { get; private set; }
         /// <summary>
         /// Initializes a new instance of the SqlManagementClient class.
         /// </summary>
@@ -633,6 +637,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -749,7 +756,6 @@ namespace Microsoft.Azure.Management.Sql
             this.RecoverableDatabases = new RecoverableDatabasesOperations(this);
             this.RestorableDroppedDatabases = new RestorableDroppedDatabasesOperations(this);
             this.InstanceFailoverGroups = new InstanceFailoverGroupsOperations(this);
-            this.Servers = new ServersOperations(this);
             this.ServerConfigurationOptions = new ServerConfigurationOptionsOperations(this);
             this.ManagedLedgerDigestUploads = new ManagedLedgerDigestUploadsOperations(this);
             this.ManagedDatabases = new ManagedDatabasesOperations(this);
@@ -757,6 +763,8 @@ namespace Microsoft.Azure.Management.Sql
             this.ManagedDatabaseMoveOperations = new ManagedDatabaseMoveOperations(this);
             this.ManagedInstances = new ManagedInstancesOperations(this);
             this.StartStopManagedInstanceSchedules = new StartStopManagedInstanceSchedulesOperations(this);
+            this.DatabaseSchemas = new DatabaseSchemasOperations(this);
+            this.Servers = new ServersOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;

@@ -490,11 +490,6 @@ namespace Microsoft.Azure.Management.Sql
         IInstanceFailoverGroupsOperations InstanceFailoverGroups { get; }
 
         /// <summary>
-        /// Gets the IServersOperations
-        /// </summary>
-        IServersOperations Servers { get; }
-
-        /// <summary>
         /// Gets the IServerConfigurationOptionsOperations
         /// </summary>
         IServerConfigurationOptionsOperations ServerConfigurationOptions { get; }
@@ -528,6 +523,16 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the IStartStopManagedInstanceSchedulesOperations
         /// </summary>
         IStartStopManagedInstanceSchedulesOperations StartStopManagedInstanceSchedules { get; }
+
+        /// <summary>
+        /// Gets the IDatabaseSchemasOperations
+        /// </summary>
+        IDatabaseSchemasOperations DatabaseSchemas { get; }
+
+        /// <summary>
+        /// Gets the IServersOperations
+        /// </summary>
+        IServersOperations Servers { get; }
 
     }
 }
