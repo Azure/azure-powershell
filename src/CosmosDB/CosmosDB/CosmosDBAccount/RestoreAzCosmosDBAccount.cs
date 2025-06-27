@@ -79,10 +79,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
             DateTime utcRestoreDateTime;
             if (RestoreTimestampInUtc.Kind == DateTimeKind.Unspecified)
             {
+                System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 1-1");
                 utcRestoreDateTime = RestoreTimestampInUtc;
             }
             else
             {
+                System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 1-2");
                 utcRestoreDateTime = RestoreTimestampInUtc.ToUniversalTime();
             }
             System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 2");
@@ -163,6 +165,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     try
                     {
                         System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 19");
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 19: Location = " + sourceAccountToRestore.Location);
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 19: Name = " + sourceAccountToRestore.Name);
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 19: Location = " + sourceAccountToRestore.Location);
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 19: utcRestoreDateTime = " + utcRestoreDateTime.ToString());
                         IEnumerable<RestorableSqlResourcesGetResult> restorableResources = CosmosDBManagementClient.RestorableSqlResources.ListWithHttpMessagesAsync(
                             sourceAccountToRestore.Location,
                             sourceAccountToRestore.Name,
