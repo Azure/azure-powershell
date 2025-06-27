@@ -84,6 +84,8 @@ stages:
           script: |
             $prepareModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'prepare.ps1'
             & $prepareModulesPath -RepoRoot "$(Build.SourcesDirectory)" -MaxParallelJobs "${{ variables.MaxParallelGenerateJobs }}"
+        env:
+          SKIPPED_MODULES: $(SkippedModules)
 
       - task: PublishPipelineArtifact@1
         displayName: 'Upload generated targets'

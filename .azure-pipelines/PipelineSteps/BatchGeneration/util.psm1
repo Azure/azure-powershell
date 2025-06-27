@@ -1,18 +1,26 @@
-function Get-AutorestV4ModuleMap {
+function Get-BatchGenerationModuleMap {
     param (
         [string]$srcPath
     )
-    
+    $skippedModules = $env:SKIPPED_MODULES -split ',' | ForEach-Object { $_.Trim() }
     $result = @{}
+    $modules = Get-ChildItem -Path $srcPath -Directory
 
-    Get-ChildItem -Path $srcPath -Directory | ForEach-Object {
-        $module = $_
-
-        Get-ChildItem -Path $module.FullName -Directory | Where-Object { 
+    foreach($module in $modules) {
+        if ($skippedModules -contains $module.Name) {
+            Write-Warning "Skipping module: $($module.Name) as it is in the skipped modules list."
+            continue
+        }
+        $subModules = Get-ChildItem -Path $module.FullName -Directory | Where-Object { 
             $_.Name -like '*.autorest'
-        } | ForEach-Object {
-            $subModule = $_
-            
+        }
+        foreach ($subModule in $subModules) {
+            $tspPath = Join-Path $subModule.FullName 'tsp-location.yaml'
+            if (Test-Path $tspPath){
+                Write-Warning "tsp-location.yaml found in $($subModule.FullName), skipping."
+                continue
+            }
+                       
             $readmePath = Join-Path $subModule.FullName 'README.md'
 
             if (Test-Path $readmePath) {
