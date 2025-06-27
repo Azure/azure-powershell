@@ -26,11 +26,11 @@ Update-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String> [-Subscr
  [-AnalyticOutputSettingAnalyticsWorkspaceId <String>]
  [-AnalyticsOutputSettingsAssociatedIdentityType <ManagedServiceIdentitySelectorType>]
  [-AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId <String>]
- [-ClusterLocation <String>] [-ClusterServicePrincipalApplicationId <String>]
- [-ClusterServicePrincipalId <String>] [-ClusterServicePrincipalPassword <SecureString>]
- [-ClusterServicePrincipalTenantId <String>] [-CommandOutputSettingContainerUrl <String>]
- [-CommandOutputSettingsAssociatedIdentityType <ManagedServiceIdentitySelectorType>]
- [-CommandOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId <String>]
+ [-AssociatedIdentityType <ManagedServiceIdentitySelectorType>]
+ [-AssociatedIdentityUserAssignedIdentityResourceId <String>] [-ClusterLocation <String>]
+ [-ClusterServicePrincipalApplicationId <String>] [-ClusterServicePrincipalId <String>]
+ [-ClusterServicePrincipalPassword <SecureString>] [-ClusterServicePrincipalTenantId <String>]
+ [-CommandOutputSettingContainerUrl <String>]
  [-ComputeDeploymentThresholdGrouping <ValidationThresholdGrouping>]
  [-ComputeDeploymentThresholdType <ValidationThresholdType>] [-ComputeDeploymentThresholdValue <Int64>]
  [-ComputeRackDefinition <IRackDefinition[]>] [-IdentityType <ManagedServiceIdentityType>]
@@ -61,11 +61,11 @@ Update-AzNetworkCloudCluster -InputObject <INetworkCloudIdentity> [-IfMatch <Str
  [-AnalyticOutputSettingAnalyticsWorkspaceId <String>]
  [-AnalyticsOutputSettingsAssociatedIdentityType <ManagedServiceIdentitySelectorType>]
  [-AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId <String>]
- [-ClusterLocation <String>] [-ClusterServicePrincipalApplicationId <String>]
- [-ClusterServicePrincipalId <String>] [-ClusterServicePrincipalPassword <SecureString>]
- [-ClusterServicePrincipalTenantId <String>] [-CommandOutputSettingContainerUrl <String>]
- [-CommandOutputSettingsAssociatedIdentityType <ManagedServiceIdentitySelectorType>]
- [-CommandOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId <String>]
+ [-AssociatedIdentityType <ManagedServiceIdentitySelectorType>]
+ [-AssociatedIdentityUserAssignedIdentityResourceId <String>] [-ClusterLocation <String>]
+ [-ClusterServicePrincipalApplicationId <String>] [-ClusterServicePrincipalId <String>]
+ [-ClusterServicePrincipalPassword <SecureString>] [-ClusterServicePrincipalTenantId <String>]
+ [-CommandOutputSettingContainerUrl <String>]
  [-ComputeDeploymentThresholdGrouping <ValidationThresholdGrouping>]
  [-ComputeDeploymentThresholdType <ValidationThresholdType>] [-ComputeDeploymentThresholdValue <Int64>]
  [-ComputeRackDefinition <IRackDefinition[]>] [-IdentityType <ManagedServiceIdentityType>]
@@ -313,6 +313,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AssociatedIdentityType
+The type of associated identity for CommandOutputSettings.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AssociatedIdentityUserAssignedIdentityResourceId
+The resource ID of the user assigned identity for CommandOutputSettings.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ClusterLocation
 The customer-provided location information to identify where the cluster resides.
 
@@ -390,37 +420,6 @@ Accept wildcard characters: False
 
 ### -CommandOutputSettingContainerUrl
 The URL of the storage account container that is to be used by the specified identities.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CommandOutputSettingsAssociatedIdentityType
-The type of managed identity that is being selected.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CommandOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId
-The user assigned managed identity resource ID to use.
-Mutually exclusive with a system assigned identity type.
 
 ```yaml
 Type: System.String

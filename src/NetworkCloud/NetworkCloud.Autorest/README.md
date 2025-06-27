@@ -255,6 +255,16 @@ directive:
       parameter-name: BgpServiceLoadBalancerConfigurationIPAddressPool
     set:
       parameter-name: BgpIPAddressPool
+  - where:
+      parameter-name: CommandOutputSettingsAssociatedIdentityType
+    set:
+      parameter-name: AssociatedIdentityType
+      parameter-description: The type of associated identity for CommandOutputSettings.
+  - where:
+      parameter-name: CommandOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId
+    set:
+      parameter-name: AssociatedIdentityUserAssignedIdentityResourceId
+      parameter-description: The resource ID of the user assigned identity for CommandOutputSettings.
   # property renames
   - where:
       model-name: Cluster
