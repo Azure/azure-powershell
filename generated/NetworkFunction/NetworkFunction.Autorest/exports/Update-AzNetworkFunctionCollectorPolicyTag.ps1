@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the specified Collector Policy tags.
+Update the specified Collector Policy tags.
 .Description
-update the specified Collector Policy tags.
+Update the specified Collector Policy tags.
 .Example
 Update-AzNetworkFunctionCollectorPolicyTag -collectorpolicyname cp1 -azuretrafficcollectorname atc -resourcegroupname rg1 | Format-List
 

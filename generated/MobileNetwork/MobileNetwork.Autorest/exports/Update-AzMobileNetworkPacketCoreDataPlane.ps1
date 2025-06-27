@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-update a packet core data plane.
+Update a packet core data plane.
 Must be created in the same location as its parent packet core control plane.
 .Description
-update a packet core data plane.
+Update a packet core data plane.
 Must be created in the same location as its parent packet core control plane.
 .Example
 Update-AzMobileNetworkPacketCoreDataPlane -PacketCoreControlPlaneName azps-mn-pccp -PacketCoreDataPlaneName azps-mn-pcdp -ResourceGroupName azps_test_group -Tag @{"abc"="123"}

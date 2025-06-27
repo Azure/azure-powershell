@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a Custom Location in the specified Subscription and Resource Group</summary>
+    /// <summary>update a Custom Location in the specified Subscription and Resource Group</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{resourceName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{resourceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzCustomLocation_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocation))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Description(@"Update a Custom Location in the specified Subscription and Resource Group")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Description(@"update a Custom Location in the specified Subscription and Resource Group")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Generated]
     public partial class UpdateAzCustomLocation_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.IEventListener,
@@ -125,8 +125,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string DisplayName { get => _parametersBody.DisplayName ?? null; set => _parametersBody.DisplayName = value; }
 
-        /// <summary>Decides if enable a system assigned identity for the resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Decides if enable a system assigned identity for the resource.")]
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
         public System.Boolean? EnableSystemAssignedIdentity { get; set; }
 
         /// <summary>Accessor for extensibleParameters.</summary>

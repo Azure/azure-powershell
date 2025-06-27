@@ -2244,9 +2244,9 @@ end {
 
 <#
 .Synopsis
-create a checkpoint in virtual machine instance.
+Create a checkpoint in virtual machine instance.
 .Description
-create a checkpoint in virtual machine instance.
+Create a checkpoint in virtual machine instance.
 .Example
 New-AzScVmmVMCheckpoint -Name "test-vm" -ResourceGroupName "test-rg-01" -CheckpointName "Test-01" -CheckpointDescription "Test-Desc-01"
 .Example
@@ -2808,9 +2808,9 @@ end {
 
 <#
 .Synopsis
-create GuestAgent.
+Create GuestAgent.
 .Description
-create GuestAgent.
+Create GuestAgent.
 .Example
 $securePassword = ConvertTo-SecureString "*****" -AsPlainText -Force
 New-AzScVmmVMGuestAgent -Name "test-vm" -ResourceGroupName "test-rg-01" -CredentialsPassword $securePassword -CredentialsUsername 'testUser'

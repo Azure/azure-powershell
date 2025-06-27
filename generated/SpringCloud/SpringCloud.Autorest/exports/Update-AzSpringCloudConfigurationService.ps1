@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the default Application Configuration Service or update the existing Application Configuration Service.
+Update the default Application Configuration Service or update the existing Application Configuration Service.
 .Description
-update the default Application Configuration Service or update the existing Application Configuration Service.
+Update the default Application Configuration Service or update the existing Application Configuration Service.
 .Example
 Update-AzSpringCloudConfigurationService -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01 -GitRepository ***
 

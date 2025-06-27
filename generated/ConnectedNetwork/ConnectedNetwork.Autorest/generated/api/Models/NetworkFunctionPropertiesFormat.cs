@@ -49,7 +49,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISubResource Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunctionPropertiesFormatInternal.ManagedApplication { get => (this._managedApplication = this._managedApplication ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.SubResource()); set { {_managedApplication = value;} } }
 
         /// <summary>Internal Acessors for ManagedApplicationId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunctionPropertiesFormatInternal.ManagedApplicationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISubResourceInternal)ManagedApplication).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISubResourceInternal)ManagedApplication).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunctionPropertiesFormatInternal.ManagedApplicationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISubResourceInternal)ManagedApplication).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISubResourceInternal)ManagedApplication).Id = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunctionPropertiesFormatInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }

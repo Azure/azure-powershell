@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.Alb
-online version: https://learn.microsoft.com/powershell/module/az.alb/new-azalbsecuritypolicy
+online version: https://learn.microsoft.com/powershell/module/az.alb/new-azalbsecuritypolicywaf
 schema: 2.0.0
 ---
 
 # New-AzAlbSecurityPolicyWaf
 
 ## SYNOPSIS
-create a SecurityPolicy
+Create a SecurityPolicy
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzAlbSecurityPolicyWaf -AlbName <String> -Name <String> -ResourceGroupName <
 ```
 
 ## DESCRIPTION
-create a SecurityPolicy
+Create a SecurityPolicy
 
 ## EXAMPLES
 

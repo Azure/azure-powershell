@@ -44,19 +44,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models
         Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IOverviewStatus Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportComplianceStatusInternal.M365 { get => (this._m365 = this._m365 ?? new Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.OverviewStatus()); set { {_m365 = value;} } }
 
         /// <summary>Internal Acessors for M365FailedCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportComplianceStatusInternal.M365FailedCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IOverviewStatusInternal)M365).FailedCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IOverviewStatusInternal)M365).FailedCount = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportComplianceStatusInternal.M365FailedCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IOverviewStatusInternal)M365).FailedCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IOverviewStatusInternal)M365).FailedCount = value ?? default(int); }
 
         /// <summary>Internal Acessors for M365ManualCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportComplianceStatusInternal.M365ManualCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IOverviewStatusInternal)M365).ManualCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IOverviewStatusInternal)M365).ManualCount = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportComplianceStatusInternal.M365ManualCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IOverviewStatusInternal)M365).ManualCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IOverviewStatusInternal)M365).ManualCount = value ?? default(int); }
 
         /// <summary>Internal Acessors for M365NotApplicableCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportComplianceStatusInternal.M365NotApplicableCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IOverviewStatusInternal)M365).NotApplicableCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IOverviewStatusInternal)M365).NotApplicableCount = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportComplianceStatusInternal.M365NotApplicableCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IOverviewStatusInternal)M365).NotApplicableCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IOverviewStatusInternal)M365).NotApplicableCount = value ?? default(int); }
 
         /// <summary>Internal Acessors for M365PassedCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportComplianceStatusInternal.M365PassedCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IOverviewStatusInternal)M365).PassedCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IOverviewStatusInternal)M365).PassedCount = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportComplianceStatusInternal.M365PassedCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IOverviewStatusInternal)M365).PassedCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IOverviewStatusInternal)M365).PassedCount = value ?? default(int); }
 
         /// <summary>Internal Acessors for M365PendingCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportComplianceStatusInternal.M365PendingCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IOverviewStatusInternal)M365).PendingCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IOverviewStatusInternal)M365).PendingCount = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportComplianceStatusInternal.M365PendingCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IOverviewStatusInternal)M365).PendingCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IOverviewStatusInternal)M365).PendingCount = value ?? default(int); }
 
         /// <summary>Creates an new <see cref="ReportComplianceStatus" /> instance.</summary>
         public ReportComplianceStatus()

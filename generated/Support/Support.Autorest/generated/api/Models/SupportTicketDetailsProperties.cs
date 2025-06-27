@@ -133,13 +133,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support.Models
         Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IServiceLevelAgreement Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportTicketDetailsPropertiesInternal.ServiceLevelAgreement { get => (this._serviceLevelAgreement = this._serviceLevelAgreement ?? new Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ServiceLevelAgreement()); set { {_serviceLevelAgreement = value;} } }
 
         /// <summary>Internal Acessors for ServiceLevelAgreementExpirationTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportTicketDetailsPropertiesInternal.ServiceLevelAgreementExpirationTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IServiceLevelAgreementInternal)ServiceLevelAgreement).ExpirationTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IServiceLevelAgreementInternal)ServiceLevelAgreement).ExpirationTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportTicketDetailsPropertiesInternal.ServiceLevelAgreementExpirationTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IServiceLevelAgreementInternal)ServiceLevelAgreement).ExpirationTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IServiceLevelAgreementInternal)ServiceLevelAgreement).ExpirationTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for ServiceLevelAgreementSlaMinute</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportTicketDetailsPropertiesInternal.ServiceLevelAgreementSlaMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IServiceLevelAgreementInternal)ServiceLevelAgreement).SlaMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IServiceLevelAgreementInternal)ServiceLevelAgreement).SlaMinute = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportTicketDetailsPropertiesInternal.ServiceLevelAgreementSlaMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IServiceLevelAgreementInternal)ServiceLevelAgreement).SlaMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IServiceLevelAgreementInternal)ServiceLevelAgreement).SlaMinute = value ?? default(int); }
 
         /// <summary>Internal Acessors for ServiceLevelAgreementStartTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportTicketDetailsPropertiesInternal.ServiceLevelAgreementStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IServiceLevelAgreementInternal)ServiceLevelAgreement).StartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IServiceLevelAgreementInternal)ServiceLevelAgreement).StartTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportTicketDetailsPropertiesInternal.ServiceLevelAgreementStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IServiceLevelAgreementInternal)ServiceLevelAgreement).StartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IServiceLevelAgreementInternal)ServiceLevelAgreement).StartTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Status</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportTicketDetailsPropertiesInternal.Status { get => this._status; set { {_status = value;} } }
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support.Models
         Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportEngineer Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportTicketDetailsPropertiesInternal.SupportEngineer { get => (this._supportEngineer = this._supportEngineer ?? new Microsoft.Azure.PowerShell.Cmdlets.Support.Models.SupportEngineer()); set { {_supportEngineer = value;} } }
 
         /// <summary>Internal Acessors for SupportEngineerEmailAddress</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportTicketDetailsPropertiesInternal.SupportEngineerEmailAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportEngineerInternal)SupportEngineer).EmailAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportEngineerInternal)SupportEngineer).EmailAddress = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportTicketDetailsPropertiesInternal.SupportEngineerEmailAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportEngineerInternal)SupportEngineer).EmailAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportEngineerInternal)SupportEngineer).EmailAddress = value ?? null; }
 
         /// <summary>Internal Acessors for SupportPlanDisplayName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportTicketDetailsPropertiesInternal.SupportPlanDisplayName { get => this._supportPlanDisplayName; set { {_supportPlanDisplayName = value;} } }

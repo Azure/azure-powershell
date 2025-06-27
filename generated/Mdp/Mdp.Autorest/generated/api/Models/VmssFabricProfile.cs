@@ -37,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models
         Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IOSProfile Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IVmssFabricProfileInternal.OSProfile { get => (this._oSProfile = this._oSProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.OSProfile()); set { {_oSProfile = value;} } }
 
         /// <summary>Internal Acessors for OSProfileSecretsManagementSetting</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.ISecretsManagementSettings Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IVmssFabricProfileInternal.OSProfileSecretsManagementSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IOSProfileInternal)OSProfile).SecretsManagementSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IOSProfileInternal)OSProfile).SecretsManagementSetting = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.ISecretsManagementSettings Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IVmssFabricProfileInternal.OSProfileSecretsManagementSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IOSProfileInternal)OSProfile).SecretsManagementSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IOSProfileInternal)OSProfile).SecretsManagementSetting = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IDevOpsAzureSku Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IVmssFabricProfileInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.DevOpsAzureSku()); set { {_sku = value;} } }

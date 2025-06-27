@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IServiceSpecification Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationPropertiesInternal.ServiceSpecification { get => (this._serviceSpecification = this._serviceSpecification ?? new Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ServiceSpecification()); set { {_serviceSpecification = value;} } }
 
         /// <summary>Internal Acessors for ServiceSpecificationMetricSpecification</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IMetricSpecification> Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationPropertiesInternal.ServiceSpecificationMetricSpecification { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IServiceSpecificationInternal)ServiceSpecification).MetricSpecification; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IServiceSpecificationInternal)ServiceSpecification).MetricSpecification = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IMetricSpecification> Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationPropertiesInternal.ServiceSpecificationMetricSpecification { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IServiceSpecificationInternal)ServiceSpecification).MetricSpecification; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IServiceSpecificationInternal)ServiceSpecification).MetricSpecification = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="ServiceSpecification" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IServiceSpecification _serviceSpecification;

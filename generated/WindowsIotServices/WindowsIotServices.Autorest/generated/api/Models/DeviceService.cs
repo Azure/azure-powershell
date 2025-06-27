@@ -49,16 +49,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models
         Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IDeviceServiceProperties Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IDeviceServiceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.DeviceServiceProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for StartDate</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IDeviceServiceInternal.StartDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IDeviceServicePropertiesInternal)Property).StartDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IDeviceServicePropertiesInternal)Property).StartDate = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IDeviceServiceInternal.StartDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IDeviceServicePropertiesInternal)Property).StartDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IDeviceServicePropertiesInternal)Property).StartDate = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.PropertyOrigin.Inherited)]

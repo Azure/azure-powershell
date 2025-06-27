@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a BrokerResource
+Update a BrokerResource
 .Description
-update a BrokerResource
+Update a BrokerResource
 .Example
 Update-AzIoTOperationsServiceBroker -InstanceName "aio-instance-name" -Name "my-broker" -ResourceGroupName "aio-validation-116116143" 
 

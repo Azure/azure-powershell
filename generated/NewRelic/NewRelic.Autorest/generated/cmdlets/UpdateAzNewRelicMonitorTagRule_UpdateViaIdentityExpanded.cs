@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a TagRule</summary>
+    /// <summary>update a TagRule</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/tagRules/{ruleSetName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzNewRelicMonitorTagRule_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"Update a TagRule")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"update a TagRule")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/tagRules/{ruleSetName}", ApiVersion = "2024-01-01")]
     public partial class UpdateAzNewRelicMonitorTagRule_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,

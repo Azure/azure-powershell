@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a OpenAI integration rule for a given monitor resource.
+Create a OpenAI integration rule for a given monitor resource.
 .Description
-create a OpenAI integration rule for a given monitor resource.
+Create a OpenAI integration rule for a given monitor resource.
 .Example
 New-AzElasticOpenAi -IntegrationName default -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 

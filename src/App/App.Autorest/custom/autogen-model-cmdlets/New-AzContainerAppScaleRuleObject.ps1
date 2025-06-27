@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.App.Models.ScaleRule
 https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappscaleruleobject
 #>
 function New-AzContainerAppScaleRuleObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.App.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.ScaleRule')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

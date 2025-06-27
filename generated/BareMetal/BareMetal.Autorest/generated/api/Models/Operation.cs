@@ -49,16 +49,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models
         Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisplay Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IOperationInternal.Display { get => (this._display = this._display ?? new Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Display()); set { {_display = value;} } }
 
         /// <summary>Internal Acessors for DisplayDescription</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IOperationInternal.DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisplayInternal)Display).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisplayInternal)Display).Description = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IOperationInternal.DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisplayInternal)Display).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisplayInternal)Display).Description = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayOperation</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IOperationInternal.DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisplayInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisplayInternal)Display).Operation = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IOperationInternal.DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisplayInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisplayInternal)Display).Operation = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayProvider</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IOperationInternal.DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisplayInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisplayInternal)Display).Provider = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IOperationInternal.DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisplayInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisplayInternal)Display).Provider = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayResource</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IOperationInternal.DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisplayInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisplayInternal)Display).Resource = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IOperationInternal.DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisplayInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisplayInternal)Display).Resource = value ?? null; }
 
         /// <summary>Internal Acessors for IsDataAction</summary>
         bool? Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IOperationInternal.IsDataAction { get => this._isDataAction; set { {_isDataAction = value;} } }

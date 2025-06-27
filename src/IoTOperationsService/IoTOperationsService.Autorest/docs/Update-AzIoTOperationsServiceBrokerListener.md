@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzIoTOperationsServiceBrokerListener
 
 ## SYNOPSIS
-update a BrokerListenerResource
+Update a BrokerListenerResource
 
 ## SYNTAX
 
@@ -43,7 +43,7 @@ Update-AzIoTOperationsServiceBrokerListener -BrokerName <String>
 ```
 
 ## DESCRIPTION
-update a BrokerListenerResource
+Update a BrokerListenerResource
 
 ## EXAMPLES
 

@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Action
 https://learn.microsoft.com/powershell/module/Az.Chaos/new-azchaosactionobject
 #>
 function New-AzChaosActionObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Action')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

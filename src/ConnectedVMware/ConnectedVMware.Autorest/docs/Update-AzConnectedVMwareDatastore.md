@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedVMwareDatastore
 
 ## SYNOPSIS
-API to Update certain properties of the datastore resource.
+API to update certain properties of the datastore resource.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzConnectedVMwareDatastore -Name <String> -ResourceGroupName <String> -Js
 ```
 
 ## DESCRIPTION
-API to Update certain properties of the datastore resource.
+API to update certain properties of the datastore resource.
 
 ## EXAMPLES
 

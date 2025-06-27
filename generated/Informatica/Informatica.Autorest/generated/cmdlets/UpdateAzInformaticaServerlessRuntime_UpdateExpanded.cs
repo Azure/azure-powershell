@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Informatica.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Informatica.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a InformaticaServerlessRuntimeResource</summary>
+    /// <summary>update a InformaticaServerlessRuntimeResource</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Informatica.DataManagement/organizations/{organizationName}/serverlessRuntimes/{serverlessRuntimeName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzInformaticaServerlessRuntime_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models.IInformaticaServerlessRuntimeResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Informatica.Description(@"Update a InformaticaServerlessRuntimeResource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Informatica.Description(@"update a InformaticaServerlessRuntimeResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Informatica.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Informatica.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Informatica.DataManagement/organizations/{organizationName}/serverlessRuntimes/{serverlessRuntimeName}", ApiVersion = "2024-05-08")]
     public partial class UpdateAzInformaticaServerlessRuntime_UpdateExpanded : global::System.Management.Automation.PSCmdlet,

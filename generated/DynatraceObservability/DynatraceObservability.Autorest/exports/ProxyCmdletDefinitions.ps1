@@ -2241,9 +2241,9 @@ end {
 
 <#
 .Synopsis
-create a DynatraceSingleSignOnResource
+Create a DynatraceSingleSignOnResource
 .Description
-create a DynatraceSingleSignOnResource
+Create a DynatraceSingleSignOnResource
 .Example
 New-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -AadDomain "mpliftrlogz20210811outlook.onmicrosoft.com"
 
@@ -2510,9 +2510,9 @@ end {
 
 <#
 .Synopsis
-create a TagRule
+Create a TagRule
 .Description
-create a TagRule
+Create a TagRule
 .Example
 $tagFilter = New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
 New-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -LogRuleFilteringTag $tagFilter
@@ -2814,9 +2814,9 @@ end {
 
 <#
 .Synopsis
-create a MonitorResource
+Create a MonitorResource
 .Description
-create a MonitorResource
+Create a MonitorResource
 .Example
 New-AzDynatraceMonitor -ResourceGroupName dyobrg -Name dyob-pwsh02 -Location eastus2euap -UserFirstName 'Lucas' -UserLastName 'Yao' -UserEmailAddress 'v-diya@microsoft.com' -PlanUsageType "COMMITTED" -PlanBillingCycle "Monthly" -PlanDetail "azureportalintegration_privatepreview@TIDhjdtn7tfnxcy" -SingleSignOnAadDomain "mpliftrlogz20210811outlook.onmicrosoft.com"
 
@@ -3656,9 +3656,9 @@ end {
 
 <#
 .Synopsis
-update a DynatraceSingleSignOnResource
+Update a DynatraceSingleSignOnResource
 .Description
-update a DynatraceSingleSignOnResource
+Update a DynatraceSingleSignOnResource
 .Example
 Update-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -AadDomain "mpliftrlogz20210811outlook.onmicrosoft.com"
 
@@ -3916,9 +3916,9 @@ end {
 
 <#
 .Synopsis
-update a TagRule
+Update a TagRule
 .Description
-update a TagRule
+Update a TagRule
 .Example
 $tagFilter = New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
 Update-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -LogRuleFilteringTag $tagFilter
@@ -4209,9 +4209,9 @@ end {
 
 <#
 .Synopsis
-update a MonitorResource
+Update a MonitorResource
 .Description
-update a MonitorResource
+Update a MonitorResource
 .Example
 Update-AzDynatraceMonitor -ResourceGroupName dyobrg -Name dyob-pwsh02 -Tag @{'key' = 'test'}
 .Example

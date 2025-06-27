@@ -116,7 +116,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPropertiesInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Sku()); set { {_sku = value;} } }
 
         /// <summary>Internal Acessors for SkuFamily</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPropertiesInternal.SkuFamily { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISkuInternal)Sku).Family; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISkuInternal)Sku).Family = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPropertiesInternal.SkuFamily { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISkuInternal)Sku).Family; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISkuInternal)Sku).Family = value ; }
 
         /// <summary>Backing field for <see cref="NetworkAcls" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.INetworkRuleSet _networkAcls;

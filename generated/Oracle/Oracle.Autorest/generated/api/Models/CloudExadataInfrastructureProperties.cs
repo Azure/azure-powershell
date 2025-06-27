@@ -270,16 +270,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTime Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.EstimatedPatchingTime { get => (this._estimatedPatchingTime = this._estimatedPatchingTime ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.EstimatedPatchingTime()); set { {_estimatedPatchingTime = value;} } }
 
         /// <summary>Internal Acessors for EstimatedPatchingTimeEstimatedDbServerPatchingTime</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.EstimatedPatchingTimeEstimatedDbServerPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedDbServerPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedDbServerPatchingTime = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.EstimatedPatchingTimeEstimatedDbServerPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedDbServerPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedDbServerPatchingTime = value ?? default(int); }
 
         /// <summary>Internal Acessors for EstimatedPatchingTimeEstimatedNetworkSwitchesPatchingTime</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.EstimatedPatchingTimeEstimatedNetworkSwitchesPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedNetworkSwitchesPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedNetworkSwitchesPatchingTime = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.EstimatedPatchingTimeEstimatedNetworkSwitchesPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedNetworkSwitchesPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedNetworkSwitchesPatchingTime = value ?? default(int); }
 
         /// <summary>Internal Acessors for EstimatedPatchingTimeEstimatedStorageServerPatchingTime</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.EstimatedPatchingTimeEstimatedStorageServerPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedStorageServerPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedStorageServerPatchingTime = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.EstimatedPatchingTimeEstimatedStorageServerPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedStorageServerPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedStorageServerPatchingTime = value ?? default(int); }
 
         /// <summary>Internal Acessors for EstimatedPatchingTimeTotalEstimatedPatchingTime</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.EstimatedPatchingTimeTotalEstimatedPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).TotalEstimatedPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).TotalEstimatedPatchingTime = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.EstimatedPatchingTimeTotalEstimatedPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).TotalEstimatedPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).TotalEstimatedPatchingTime = value ?? default(int); }
 
         /// <summary>Internal Acessors for LastMaintenanceRunId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.LastMaintenanceRunId { get => this._lastMaintenanceRunId; set { {_lastMaintenanceRunId = value;} } }
@@ -883,7 +883,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         string ProvisioningState { get;  }
         /// <summary>The model name of the cloud Exadata infrastructure resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,

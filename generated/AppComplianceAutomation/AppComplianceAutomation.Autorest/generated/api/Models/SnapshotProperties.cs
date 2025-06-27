@@ -42,6 +42,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models
         /// <summary>Internal Acessors for ReportSystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISnapshotPropertiesInternal.ReportSystemData { get => (this._reportSystemData = this._reportSystemData ?? new Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.SystemData()); set { {_reportSystemData = value;} } }
 
+        /// <summary>Internal Acessors for ReportSystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISnapshotPropertiesInternal.ReportSystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).CreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for ReportSystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISnapshotPropertiesInternal.ReportSystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).CreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for ReportSystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISnapshotPropertiesInternal.ReportSystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).CreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for ReportSystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISnapshotPropertiesInternal.ReportSystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for ReportSystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISnapshotPropertiesInternal.ReportSystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).LastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for ReportSystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISnapshotPropertiesInternal.ReportSystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).LastModifiedByType = value ?? null; }
+
         /// <summary>Internal Acessors for SnapshotName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISnapshotPropertiesInternal.SnapshotName { get => this._snapshotName; set { {_snapshotName = value;} } }
 
@@ -68,27 +86,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PropertyOrigin.Inlined)]
-        public global::System.DateTime? ReportSystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).CreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? ReportSystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).CreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PropertyOrigin.Inlined)]
-        public string ReportSystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).CreatedBy = value ?? null; }
+        public string ReportSystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).CreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PropertyOrigin.Inlined)]
-        public string ReportSystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).CreatedByType = value ?? null; }
+        public string ReportSystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).CreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PropertyOrigin.Inlined)]
-        public global::System.DateTime? ReportSystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? ReportSystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).LastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PropertyOrigin.Inlined)]
-        public string ReportSystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).LastModifiedBy = value ?? null; }
+        public string ReportSystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).LastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PropertyOrigin.Inlined)]
-        public string ReportSystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).LastModifiedByType = value ?? null; }
+        public string ReportSystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemDataInternal)ReportSystemData).LastModifiedByType; }
 
         /// <summary>Backing field for <see cref="SnapshotName" /> property.</summary>
         private string _snapshotName;

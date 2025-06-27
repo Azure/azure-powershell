@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzQuantumWorkspace
 
 ## SYNOPSIS
-update an existing workspace's tags.
+Update an existing workspace's tags.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzQuantumWorkspace -Name <String> -ResourceGroupName <String> -JsonString
 ```
 
 ## DESCRIPTION
-update an existing workspace's tags.
+Update an existing workspace's tags.
 
 ## EXAMPLES
 

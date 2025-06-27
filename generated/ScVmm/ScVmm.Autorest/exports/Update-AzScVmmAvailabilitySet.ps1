@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the AvailabilitySets resource.
+Update the AvailabilitySets resource.
 .Description
-update the AvailabilitySets resource.
+Update the AvailabilitySets resource.
 .Example
 Update-AzScVmmAvailabilitySet -Name "test-avset" -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000d" -Tag @{"key-1"="value-1"}
 

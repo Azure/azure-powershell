@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzPipelineGroup
 
 ## SYNOPSIS
-update a pipeline group instance
+Update a pipeline group instance
 
 ## SYNTAX
 
@@ -44,7 +44,7 @@ Update-AzPipelineGroup -Name <String> -ResourceGroupName <String> -JsonString <S
 ```
 
 ## DESCRIPTION
-update a pipeline group instance
+Update a pipeline group instance
 
 ## EXAMPLES
 

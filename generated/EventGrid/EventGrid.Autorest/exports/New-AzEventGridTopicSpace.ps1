@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a topic space with the specified parameters.
+Create a topic space with the specified parameters.
 .Description
-create a topic space with the specified parameters.
+Create a topic space with the specified parameters.
 .Example
 New-AzEventGridTopicSpace -Name azps-topicspace -NamespaceName azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -TopicTemplate "filter1"
 

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update tags for a peering with the specified name under the given subscription and resource group.
+Update tags for a peering with the specified name under the given subscription and resource group.
 .Description
-update tags for a peering with the specified name under the given subscription and resource group.
+Update tags for a peering with the specified name under the given subscription and resource group.
 .Example
 $tags=@{hello='world'}
 Update-AzPeering -Name DemoPeering -ResourceGroupName DemoRG -Tag $tags

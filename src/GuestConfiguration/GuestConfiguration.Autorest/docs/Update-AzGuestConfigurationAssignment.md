@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzGuestConfigurationAssignment
 
 ## SYNOPSIS
-update an association between a ARC machine and guest configuration
+Update an association between a ARC machine and guest configuration
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Update-AzGuestConfigurationAssignment -InputObject <IGuestConfigurationIdentity>
 ```
 
 ## DESCRIPTION
-update an association between a ARC machine and guest configuration
+Update an association between a ARC machine and guest configuration
 
 ## EXAMPLES
 

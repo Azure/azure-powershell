@@ -126,7 +126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
             }
             if (content.Contains("UsageValue"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).UsageValue = (int) content.GetValueForProperty("UsageValue",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).UsageValue, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).UsageValue = (int?) content.GetValueForProperty("UsageValue",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).UsageValue, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("UsageUsagesType"))
             {
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
             }
             if (content.Contains("UsageValue"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).UsageValue = (int) content.GetValueForProperty("UsageValue",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).UsageValue, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).UsageValue = (int?) content.GetValueForProperty("UsageValue",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).UsageValue, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("UsageUsagesType"))
             {

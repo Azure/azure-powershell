@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPeeringService
 
 ## SYNOPSIS
-create a new peering service or create an existing peering with the specified name under the given subscription and resource group.
+Create a new peering service or create an existing peering with the specified name under the given subscription and resource group.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ New-AzPeeringService -Name <String> -ResourceGroupName <String> -Location <Strin
 ```
 
 ## DESCRIPTION
-create a new peering service or create an existing peering with the specified name under the given subscription and resource group.
+Create a new peering service or create an existing peering with the specified name under the given subscription and resource group.
 
 ## EXAMPLES
 

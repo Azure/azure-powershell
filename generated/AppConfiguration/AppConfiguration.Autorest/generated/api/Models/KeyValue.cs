@@ -57,22 +57,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         public bool? Locked { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValuePropertiesInternal)Property).Locked; }
 
         /// <summary>Internal Acessors for ETag</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValueInternal.ETag { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValuePropertiesInternal)Property).ETag; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValuePropertiesInternal)Property).ETag = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValueInternal.ETag { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValuePropertiesInternal)Property).ETag; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValuePropertiesInternal)Property).ETag = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValueInternal.Id { get => this._id; set { {_id = value;} } }
 
         /// <summary>Internal Acessors for Key</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValueInternal.Key { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValuePropertiesInternal)Property).Key; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValuePropertiesInternal)Property).Key = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValueInternal.Key { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValuePropertiesInternal)Property).Key; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValuePropertiesInternal)Property).Key = value ?? null; }
 
         /// <summary>Internal Acessors for Label</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValueInternal.Label { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValuePropertiesInternal)Property).Label; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValuePropertiesInternal)Property).Label = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValueInternal.Label { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValuePropertiesInternal)Property).Label; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValuePropertiesInternal)Property).Label = value ?? null; }
 
         /// <summary>Internal Acessors for LastModified</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValueInternal.LastModified { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValuePropertiesInternal)Property).LastModified; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValuePropertiesInternal)Property).LastModified = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValueInternal.LastModified { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValuePropertiesInternal)Property).LastModified; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValuePropertiesInternal)Property).LastModified = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Locked</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValueInternal.Locked { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValuePropertiesInternal)Property).Locked; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValuePropertiesInternal)Property).Locked = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValueInternal.Locked { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValuePropertiesInternal)Property).Locked; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValuePropertiesInternal)Property).Locked = value ?? default(bool); }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyValueInternal.Name { get => this._name; set { {_name = value;} } }

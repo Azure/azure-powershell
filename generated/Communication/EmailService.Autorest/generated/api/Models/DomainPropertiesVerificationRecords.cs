@@ -120,73 +120,73 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models
         Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecord Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.Dkim2 { get => (this._dkim2 = this._dkim2 ?? new Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.DnsRecord()); set { {_dkim2 = value;} } }
 
         /// <summary>Internal Acessors for Dkim2Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.Dkim2Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim2).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim2).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.Dkim2Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim2).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim2).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Dkim2Ttl</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.Dkim2Ttl { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim2).Ttl; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim2).Ttl = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.Dkim2Ttl { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim2).Ttl; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim2).Ttl = value ?? default(int); }
 
         /// <summary>Internal Acessors for Dkim2Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.Dkim2Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim2).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim2).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.Dkim2Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim2).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim2).Type = value ?? null; }
 
         /// <summary>Internal Acessors for Dkim2Value</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.Dkim2Value { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim2).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim2).Value = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.Dkim2Value { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim2).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim2).Value = value ?? null; }
 
         /// <summary>Internal Acessors for DkimName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DkimName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DkimName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim).Name = value ?? null; }
 
         /// <summary>Internal Acessors for DkimTtl</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DkimTtl { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim).Ttl; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim).Ttl = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DkimTtl { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim).Ttl; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim).Ttl = value ?? default(int); }
 
         /// <summary>Internal Acessors for DkimType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DkimType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DkimType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim).Type = value ?? null; }
 
         /// <summary>Internal Acessors for DkimValue</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DkimValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim).Value = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DkimValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dkim).Value = value ?? null; }
 
         /// <summary>Internal Acessors for Dmarc</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecord Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.Dmarc { get => (this._dmarc = this._dmarc ?? new Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.DnsRecord()); set { {_dmarc = value;} } }
 
         /// <summary>Internal Acessors for DmarcName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DmarcName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dmarc).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dmarc).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DmarcName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dmarc).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dmarc).Name = value ?? null; }
 
         /// <summary>Internal Acessors for DmarcTtl</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DmarcTtl { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dmarc).Ttl; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dmarc).Ttl = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DmarcTtl { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dmarc).Ttl; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dmarc).Ttl = value ?? default(int); }
 
         /// <summary>Internal Acessors for DmarcType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DmarcType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dmarc).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dmarc).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DmarcType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dmarc).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dmarc).Type = value ?? null; }
 
         /// <summary>Internal Acessors for DmarcValue</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DmarcValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dmarc).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dmarc).Value = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DmarcValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dmarc).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Dmarc).Value = value ?? null; }
 
         /// <summary>Internal Acessors for Domain</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecord Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.Domain { get => (this._domain = this._domain ?? new Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.DnsRecord()); set { {_domain = value;} } }
 
         /// <summary>Internal Acessors for DomainName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DomainName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Domain).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Domain).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DomainName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Domain).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Domain).Name = value ?? null; }
 
         /// <summary>Internal Acessors for DomainTtl</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DomainTtl { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Domain).Ttl; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Domain).Ttl = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DomainTtl { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Domain).Ttl; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Domain).Ttl = value ?? default(int); }
 
         /// <summary>Internal Acessors for DomainType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DomainType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Domain).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Domain).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DomainType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Domain).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Domain).Type = value ?? null; }
 
         /// <summary>Internal Acessors for DomainValue</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DomainValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Domain).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Domain).Value = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.DomainValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Domain).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Domain).Value = value ?? null; }
 
         /// <summary>Internal Acessors for Spf</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecord Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.Spf { get => (this._spf = this._spf ?? new Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.DnsRecord()); set { {_spf = value;} } }
 
         /// <summary>Internal Acessors for SpfName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.SpfName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Spf).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Spf).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.SpfName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Spf).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Spf).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SpfTtl</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.SpfTtl { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Spf).Ttl; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Spf).Ttl = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.SpfTtl { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Spf).Ttl; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Spf).Ttl = value ?? default(int); }
 
         /// <summary>Internal Acessors for SpfType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.SpfType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Spf).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Spf).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.SpfType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Spf).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Spf).Type = value ?? null; }
 
         /// <summary>Internal Acessors for SpfValue</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.SpfValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Spf).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Spf).Value = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecordsInternal.SpfValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Spf).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecordInternal)Spf).Value = value ?? null; }
 
         /// <summary>Backing field for <see cref="Spf" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDnsRecord _spf;

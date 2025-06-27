@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSpringCloudCertificate
 
 ## SYNOPSIS
-create certificate resource.
+Create certificate resource.
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ New-AzSpringCloudCertificate -Name <String> -ResourceGroupName <String> -Service
 ```
 
 ## DESCRIPTION
-create certificate resource.
+Create certificate resource.
 
 ## EXAMPLES
 

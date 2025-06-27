@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
         Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ILinuxProfileProperties Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ILinuxProfileInternal.LinuxProfile1 { get => (this._linuxProfile1 = this._linuxProfile1 ?? new Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.LinuxProfileProperties()); set { {_linuxProfile1 = value;} } }
 
         /// <summary>Internal Acessors for Ssh</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ILinuxProfilePropertiesSsh Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ILinuxProfileInternal.Ssh { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ILinuxProfilePropertiesInternal)LinuxProfile1).Ssh; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ILinuxProfilePropertiesInternal)LinuxProfile1).Ssh = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ILinuxProfilePropertiesSsh Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ILinuxProfileInternal.Ssh { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ILinuxProfilePropertiesInternal)LinuxProfile1).Ssh; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ILinuxProfilePropertiesInternal)LinuxProfile1).Ssh = value ?? null /* model class */; }
 
         /// <summary>
         /// The list of SSH public keys used to authenticate with VMs. A maximum of 1 key may be specified.

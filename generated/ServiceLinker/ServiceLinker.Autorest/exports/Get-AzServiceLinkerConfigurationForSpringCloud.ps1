@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-list source configurations for a linker in spring cloud.
+List source configurations for a linker in spring cloud.
 .Description
-list source configurations for a linker in spring cloud.
+List source configurations for a linker in spring cloud.
 .Example
 Get-AzServiceLinkerConfigurationForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -ResourceGroupName servicelinker-test-group -LinkerName postgresql_linker | Format-List
 

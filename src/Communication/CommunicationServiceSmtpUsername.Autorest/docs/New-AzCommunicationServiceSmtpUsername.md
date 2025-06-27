@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCommunicationServiceSmtpUsername
 
 ## SYNOPSIS
-create an SmtpUsernameResource.
+Create an SmtpUsernameResource.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzCommunicationServiceSmtpUsername -CommunicationServiceName <String> -Resou
 ```
 
 ## DESCRIPTION
-create an SmtpUsernameResource.
+Create an SmtpUsernameResource.
 
 ## EXAMPLES
 

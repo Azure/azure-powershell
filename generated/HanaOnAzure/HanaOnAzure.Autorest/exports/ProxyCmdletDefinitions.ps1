@@ -480,9 +480,9 @@ end {
 
 <#
 .Synopsis
-create a SAP monitor for the specified subscription, resource group, and resource name.
+Create a SAP monitor for the specified subscription, resource group, and resource name.
 .Description
-create a SAP monitor for the specified subscription, resource group, and resource name.
+Create a SAP monitor for the specified subscription, resource group, and resource name.
 .Example
 $Workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName nancyc-hn1 -Name sapmonitor-test  -Location westus2 -Sku "Standard"
 $WorkspaceKey = Get-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName nancyc-hn1 -Name sapmonitor-test
@@ -1222,9 +1222,9 @@ end {
 
 <#
 .Synopsis
-update a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
+Update a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
 .Description
-update a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
+Update a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
 .Example
 $jsonString = '{
   "HanaHostname": "hdb1-0",

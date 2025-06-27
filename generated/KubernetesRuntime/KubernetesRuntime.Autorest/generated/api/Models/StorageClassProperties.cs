@@ -232,7 +232,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models
         string ProvisioningState { get;  }
         /// <summary>Properties of the StorageClass</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,

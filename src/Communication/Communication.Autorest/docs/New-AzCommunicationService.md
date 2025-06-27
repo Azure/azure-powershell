@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCommunicationService
 
 ## SYNOPSIS
-create a new CommunicationService or create an existing CommunicationService.
+Create a new CommunicationService or create an existing CommunicationService.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzCommunicationService -Name <String> -ResourceGroupName <String> -JsonStrin
 ```
 
 ## DESCRIPTION
-create a new CommunicationService or create an existing CommunicationService.
+Create a new CommunicationService or create an existing CommunicationService.
 
 ## EXAMPLES
 

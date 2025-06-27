@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a packet core control plane.
+Create a packet core control plane.
 .Description
-create a packet core control plane.
+Create a packet core control plane.
 .Example
 $siteResourceId = New-AzMobileNetworkSiteResourceIdObject -Id /subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/sites/azps-mn-site
 

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Aks
-Module Guid: c58774ba-be69-4451-842a-3d5d9ccc6473
+Module Guid: 5474f4e5-fd65-4b67-8ea3-0e3d4906affc
 Download Help Link: https://learn.microsoft.com/powershell/module/az.aks
 Help Version: 1.0.0.0
 Locale: en-US
@@ -54,10 +54,10 @@ If the operation completes before cancellation can take place, a 409 error code 
 Rotates the service account signing keys of a managed cluster.
 
 ### [New-AzAksMaintenanceConfiguration](New-AzAksMaintenanceConfiguration.md)
-create a maintenance configuration in the specified managed cluster.
+Create a maintenance configuration in the specified managed cluster.
 
 ### [New-AzAksSnapshot](New-AzAksSnapshot.md)
-create a snapshot.
+Create a snapshot.
 
 ### [New-AzAksTimeInWeekObject](New-AzAksTimeInWeekObject.md)
 Create an in-memory object for TimeInWeek.
@@ -86,5 +86,5 @@ A cluster does not accrue charges while it is stopped.
 See [stopping a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about stopping a cluster.
 
 ### [Update-AzAksMaintenanceConfiguration](Update-AzAksMaintenanceConfiguration.md)
-update a maintenance configuration in the specified managed cluster.
+Update a maintenance configuration in the specified managed cluster.
 

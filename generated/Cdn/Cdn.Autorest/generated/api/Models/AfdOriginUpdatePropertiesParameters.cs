@@ -75,7 +75,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourceProperties Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal.SharedPrivateLinkResource { get => (this._sharedPrivateLinkResource = this._sharedPrivateLinkResource ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SharedPrivateLinkResourceProperties()); set { {_sharedPrivateLinkResource = value;} } }
 
         /// <summary>Internal Acessors for SharedPrivateLinkResourcePrivateLink</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal.SharedPrivateLinkResourcePrivateLink { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourcePropertiesInternal)SharedPrivateLinkResource).PrivateLink; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourcePropertiesInternal)SharedPrivateLinkResource).PrivateLink = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal.SharedPrivateLinkResourcePrivateLink { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourcePropertiesInternal)SharedPrivateLinkResource).PrivateLink; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourcePropertiesInternal)SharedPrivateLinkResource).PrivateLink = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="OriginGroupName" /> property.</summary>
         private string _originGroupName;

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         public int? Count { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolComputeProfileInternal)__clusterPoolComputeProfile).Count; }
 
         /// <summary>Internal Acessors for Count</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolComputeProfileInternal.Count { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolComputeProfileInternal)__clusterPoolComputeProfile).Count; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolComputeProfileInternal)__clusterPoolComputeProfile).Count = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolComputeProfileInternal.Count { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolComputeProfileInternal)__clusterPoolComputeProfile).Count; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolComputeProfileInternal)__clusterPoolComputeProfile).Count = value ?? default(int); }
 
         /// <summary>The virtual machine SKU.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]

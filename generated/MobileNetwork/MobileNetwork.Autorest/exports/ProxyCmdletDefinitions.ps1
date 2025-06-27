@@ -3380,10 +3380,10 @@ end {
 
 <#
 .Synopsis
-create an attached data network.
+Create an attached data network.
 Must be created in the same location as its parent packet core data plane.
 .Description
-create an attached data network.
+Create an attached data network.
 Must be created in the same location as its parent packet core data plane.
 .Example
 $dns=@("1.1.1.1", "1.1.1.2")
@@ -3877,10 +3877,10 @@ end {
 
 <#
 .Synopsis
-create a data network.
+Create a data network.
 Must be created in the same location as its parent mobile network.
 .Description
-create a data network.
+Create a data network.
 Must be created in the same location as its parent mobile network.
 .Example
 New-AzMobileNetworkDataNetwork -MobileNetworkName azps-mn -Name azps-mn-datanetwork -ResourceGroupName azps_test_group -Location eastus
@@ -4183,9 +4183,9 @@ end {
 
 <#
 .Synopsis
-create a packet core control plane.
+Create a packet core control plane.
 .Description
-create a packet core control plane.
+Create a packet core control plane.
 .Example
 $siteResourceId = New-AzMobileNetworkSiteResourceIdObject -Id /subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/sites/azps-mn-site
 
@@ -4596,10 +4596,10 @@ end {
 
 <#
 .Synopsis
-create a packet core data plane.
+Create a packet core data plane.
 Must be created in the same location as its parent packet core control plane.
 .Description
-create a packet core data plane.
+Create a packet core data plane.
 Must be created in the same location as its parent packet core control plane.
 .Example
 New-AzMobileNetworkPacketCoreDataPlane -Name azps-mn-pcdp -PacketCoreControlPlaneName azps-mn-pccp -ResourceGroupName azps_test_group -Location eastus -UserPlaneAccessInterfaceIpv4Address 10.0.1.10 -UserPlaneAccessInterfaceIpv4Gateway 10.0.1.1 -UserPlaneAccessInterfaceIpv4Subnet 10.0.1.0/24 -UserPlaneAccessInterfaceName N3
@@ -4927,10 +4927,10 @@ end {
 
 <#
 .Synopsis
-create a service.
+Create a service.
 Must be created in the same location as its parent mobile network.
 .Description
-create a service.
+Create a service.
 Must be created in the same location as its parent mobile network.
 .Example
 $ServiceDataFlowTemplate = New-AzMobileNetworkServiceDataFlowTemplateObject -Direction "Bidirectional" -Protocol "255" -RemoteIPList "any" -TemplateName azps-mn-flow-template
@@ -5328,9 +5328,9 @@ end {
 
 <#
 .Synopsis
-create a SIM group.
+Create a SIM group.
 .Description
-create a SIM group.
+Create a SIM group.
 .Example
 New-AzMobileNetworkSimGroup -Name azps-mn-simgroup -ResourceGroupName azps_test_group -Location eastus -MobileNetworkId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn"
 
@@ -5620,10 +5620,10 @@ end {
 
 <#
 .Synopsis
-create a SIM policy.
+Create a SIM policy.
 Must be created in the same location as its parent mobile network.
 .Description
-create a SIM policy.
+Create a SIM policy.
 Must be created in the same location as its parent mobile network.
 .Example
 $ServiceResourceId = New-AzMobileNetworkServiceResourceIdObject -Id "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/services/azps-mn-service"
@@ -5992,9 +5992,9 @@ end {
 
 <#
 .Synopsis
-create a SIM.
+Create a SIM.
 .Description
-create a SIM.
+Create a SIM.
 .Example
 $staticIp = New-AzMobileNetworkSimStaticIPPropertiesObject -StaticIPIpv4Address 10.0.0.20
 
@@ -6338,10 +6338,10 @@ end {
 
 <#
 .Synopsis
-create a network slice.
+Create a network slice.
 Must be created in the same location as its parent mobile network.
 .Description
-create a network slice.
+Create a network slice.
 Must be created in the same location as its parent mobile network.
 .Example
 New-AzMobileNetworkSlice -MobileNetworkName azps-mn -ResourceGroupName azps_test_group -SliceName azps-mn-slice -Location eastus -SnssaiSst 1 -SnssaiSd "1abcde"
@@ -6659,9 +6659,9 @@ end {
 
 <#
 .Synopsis
-create a mobile network.
+Create a mobile network.
 .Description
-create a mobile network.
+Create a mobile network.
 .Example
 New-AzMobileNetwork -Name azps-mn -ResourceGroupName azps_test_group -Location eastus -PublicLandMobileNetworkIdentifierMcc 001 -PublicLandMobileNetworkIdentifierMnc 01 -Tag @{"china"="move"}
 
@@ -10283,10 +10283,10 @@ end {
 
 <#
 .Synopsis
-update an attached data network.
+Update an attached data network.
 Must be created in the same location as its parent packet core data plane.
 .Description
-update an attached data network.
+Update an attached data network.
 Must be created in the same location as its parent packet core data plane.
 .Example
 Update-AzMobileNetworkAttachedDataNetwork -AttachedDataNetworkName azps-mn-adn -PacketCoreControlPlaneName azps-mn-pccp -PacketCoreDataPlaneName azps_test_group -ResourceGroupName -Tag @{"abc"="123"}
@@ -11269,10 +11269,10 @@ end {
 
 <#
 .Synopsis
-update a data network.
+Update a data network.
 Must be created in the same location as its parent mobile network.
 .Description
-update a data network.
+Update a data network.
 Must be created in the same location as its parent mobile network.
 .Example
 Update-AzMobileNetworkDataNetwork -MobileNetworkName azps-mn -DataNetworkName azps-mn-datanetwork -ResourceGroupName azps_test_group -Tag @{"abc"="12"}
@@ -11541,9 +11541,9 @@ end {
 
 <#
 .Synopsis
-update a packet core control plane.
+Update a packet core control plane.
 .Description
-update a packet core control plane.
+Update a packet core control plane.
 .Example
 Update-AzMobileNetworkPacketCoreControlPlane -PacketCoreControlPlaneName azps-mn-pccp -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
 
@@ -11905,10 +11905,10 @@ end {
 
 <#
 .Synopsis
-update a packet core data plane.
+Update a packet core data plane.
 Must be created in the same location as its parent packet core control plane.
 .Description
-update a packet core data plane.
+Update a packet core data plane.
 Must be created in the same location as its parent packet core control plane.
 .Example
 Update-AzMobileNetworkPacketCoreDataPlane -PacketCoreControlPlaneName azps-mn-pccp -PacketCoreDataPlaneName azps-mn-pcdp -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
@@ -12196,9 +12196,9 @@ end {
 
 <#
 .Synopsis
-update a SIM group.
+Update a SIM group.
 .Description
-update a SIM group.
+Update a SIM group.
 .Example
 Update-AzMobileNetworkSimGroup -SimGroupName azps-mn-simgroup -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
 
@@ -12456,10 +12456,10 @@ end {
 
 <#
 .Synopsis
-update a SIM policy.
+Update a SIM policy.
 Must be created in the same location as its parent mobile network.
 .Description
-update a SIM policy.
+Update a SIM policy.
 Must be created in the same location as its parent mobile network.
 .Example
 Update-AzMobileNetworkSimPolicy -MobileNetworkName azps-mn -SimPolicyName azps-mn-simpolicy -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
@@ -12778,9 +12778,9 @@ end {
 
 <#
 .Synopsis
-update a SIM.
+Update a SIM.
 .Description
-update a SIM.
+Update a SIM.
 .Example
 Update-AzMobileNetworkSim -GroupName azps-mn-simgroup -Name azps-mn-sim -ResourceGroupName azps_test_group -AuthenticationKey 00112233445566778899AABBCCDDEEFF -DeviceType Mobile -IntegratedCircuitCardIdentifier 8900000000000000001 -OperatorKeyCode 00000000000000000000000000000001 -SimPolicyId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/simPolicies/azps-mn-simpolicy"
 
@@ -13080,9 +13080,9 @@ end {
 
 <#
 .Synopsis
-update site tags.
+Update site tags.
 .Description
-update site tags.
+Update site tags.
 .Example
 Update-AzMobileNetworkSite -MobileNetworkName azps-mn -SiteName azps-mn-site -ResourceGroupName azps_test_group -Tag @{"site"="123"}
 
@@ -13355,9 +13355,9 @@ end {
 
 <#
 .Synopsis
-update mobile network tags.
+Update mobile network tags.
 .Description
-update mobile network tags.
+Update mobile network tags.
 .Example
 Update-AzMobileNetwork -MobileNetworkName azps-mn -ResourceGroupName azps_test_group -Tag @{"123"="abc"}
 

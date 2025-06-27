@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a Custom Location in the specified Subscription and Resource Group</summary>
+    /// <summary>create a Custom Location in the specified Subscription and Resource Group</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{resourceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzCustomLocation_CreateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocation))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Description(@"Create a Custom Location in the specified Subscription and Resource Group")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Description(@"create a Custom Location in the specified Subscription and Resource Group")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.HttpPath(Path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{resourceName}", ApiVersion = "2021-08-31-preview")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.NotSuggestDefaultParameterSet]

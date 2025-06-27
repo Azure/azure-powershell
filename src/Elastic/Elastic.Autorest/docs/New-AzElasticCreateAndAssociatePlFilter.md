@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzElasticCreateAndAssociatePlFilter
 
 ## SYNOPSIS
-create and Associate private link traffic filter for the given deployment.
+Create and Associate private link traffic filter for the given deployment.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ New-AzElasticCreateAndAssociatePlFilter -InputObject <IElasticIdentity> [-Name <
 ```
 
 ## DESCRIPTION
-create and Associate private link traffic filter for the given deployment.
+Create and Associate private link traffic filter for the given deployment.
 
 ## EXAMPLES
 

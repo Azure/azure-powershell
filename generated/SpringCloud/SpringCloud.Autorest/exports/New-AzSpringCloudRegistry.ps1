@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create the default Service Registry or create the existing Service Registry.
+Create the default Service Registry or create the existing Service Registry.
 .Description
-create the default Service Registry or create the existing Service Registry.
+Create the default Service Registry or create the existing Service Registry.
 .Example
 New-AzSpringCloudRegistry -ResourceGroupName <String> -ServiceName <String>
 

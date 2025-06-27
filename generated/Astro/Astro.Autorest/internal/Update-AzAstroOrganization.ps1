@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a OrganizationResource
+Update a OrganizationResource
 .Description
-update a OrganizationResource
+Update a OrganizationResource
 .Example
 Update-AzAstroOrganization -Name UT.7.test -ResourceGroupName astro-user -UserUpn example@microsoft.com -PartnerOrganizationPropertyOrganizationId cccccccc -PartnerOrganizationPropertyWorkspaceId dddddddd -PartnerOrganizationPropertyWorkspaceName eeeeeee -PartnerOrganizationPropertyOrganizationName kkkkkkkkkkkk -SingleSignOnPropertyEnterpriseAppId llllllll -SingleSignOnPropertyAadDomain MicrosoftCustomerLed.onmicrosoft.com
 
@@ -276,6 +276,9 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
 
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
         $mapping = @{
             UpdateExpanded = 'Az.Astro.private\Update-AzAstroOrganization_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Astro.private\Update-AzAstroOrganization_UpdateViaIdentityExpanded';
@@ -283,8 +286,6 @@ begin {
             UpdateViaJsonString = 'Az.Astro.private\Update-AzAstroOrganization_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -293,6 +294,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

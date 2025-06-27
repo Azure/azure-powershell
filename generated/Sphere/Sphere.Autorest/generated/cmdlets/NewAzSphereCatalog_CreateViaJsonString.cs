@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a Catalog</summary>
+    /// <summary>create a Catalog</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzSphereCatalog_CreateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICatalog))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Description(@"Create a Catalog")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Description(@"create a Catalog")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}", ApiVersion = "2024-04-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.NotSuggestDefaultParameterSet]

@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-create an order item.
+Create an order item.
 Existing order item cannot be updated with this api and should instead be updated with the create order item API.
 .Description
-create an order item.
+Create an order item.
 Existing order item cannot be updated with this api and should instead be updated with the create order item API.
 .Example
 $contactDetail = New-AzEdgeOrderContactDetailsObject -ContactName ContactName -EmailList @("emailId") -Phone Phone

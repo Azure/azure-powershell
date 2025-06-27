@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an evidence a specified report
+Update an evidence a specified report
 .Description
-update an evidence a specified report
+Update an evidence a specified report
 .Example
 {{ Add code here }}
 .Example
