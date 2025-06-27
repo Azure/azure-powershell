@@ -5888,3 +5888,81 @@ function Test-EncryptionIdentityNotPartOfAzureVmssConfig{
         clean-ResourceGroup $rgName;
     }
 }
+
+<#
+.SYNOPSIS
+Test Proxy Agent Setting 
+#>
+function Test-ProxyAgentSetting
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "westus2";
+
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssName = 'vmss' + $rgname;
+        $domainNameLabel1 = "d1" + $rgname;
+        
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+
+        # Case 1: Create using simple parameter set 
+        
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Location $loc -Credential $cred -VMScaleSetName $vmssName -DomainNameLabel $domainNameLabel1 -EnableProxyAgent
+
+        # verify
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Enabled $true
+       
+        # Case 2: Create using default parameter set 
+        $vmssName = $vmssName + "DefaultParam";
+        $vmssSize = 'Standard_D4s_v3'
+
+        # SRP
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
+
+        $publisher = "MicrosoftWindowsServer";
+        $offer = "WindowsServer";
+        $imgSku = "2022-DataCenter";
+        $version = "latest";
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        Assert-NotNull $vnet.Subnets
+        $subnetId = $vnet.Subnets[0].Id;
+        
+
+        $ipName = Get-ComputeTestResourceName
+        $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId -PublicIPAddressConfigurationName $ipName -PublicIPAddressConfigurationIdleTimeoutInMinutes 10 -DnsSetting "testvmssdnscom" -PublicIPAddressVersion "IPv4";
+
+        $vmss = New-AzVmssConfig -Location $loc  -SkuName $vmssSize
+        Add-AzVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmss -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+                -ImageReferenceOffer $offer -ImageReferenceSku $imgSku -ImageReferenceVersion $version `
+                -ImageReferencePublisher $publisher `
+            | Set-AzVmssProxyAgentSetting -EnableProxyAgent $true -ImdsMode Audit 
+
+        $vmssResult = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss
+
+        # verify 
+        Assert-AreEqual $vmssResult.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Enabled $true
+        Assert-AreEqual $vmssResult.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Imds.Mode "Audit";
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}

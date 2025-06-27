@@ -36,3 +36,8 @@ Az.Compute,New-AzVmssConfig,5,3,Invalid_Cmdlet,5000,1,New-AzResourceGroup is not
 "Az.Compute","New-AzVMConfig","1","4","Invalid_Cmdlet","5000","1","New-AzResourceGroup is not a valid command name.","New-AzResourceGroup -Name $rgname -Location $loc -Force","Check the spell of New-AzResourceGroup."
 "Az.Compute","New-AzVMConfig","2","5","Invalid_Cmdlet","5000","1","New-AzResourceGroup is not a valid command name.","New-AzResourceGroup -Name $rgname -Location $loc -Force","Check the spell of New-AzResourceGroup."
 "Az.Compute","New-AzVMConfig","3","3","Invalid_Cmdlet","5000","1","New-AzResourceGroup is not a valid command name.","New-AzResourceGroup -Name $rgname -Location $loc -Force","Check the spell of New-AzResourceGroup."
+"Az.Compute","Set-AzVMProxyAgentSetting","1","1","Unassigned_Variable","5110","2","New-AzVMConfig -VMName $vmName is a null-valued parameter value.","-VMName","Assign value for $vmName."
+"Az.Compute","Update-AzVmssVM","1","1","Unassigned_Variable","5110","2","Get-AzDisk -ResourceGroupName $rgname is a null-valued parameter value.","-ResourceGroupName","Assign value for $rgname."
+"Az.Compute","Update-AzVmssVM","1","1","Unassigned_Variable","5110","2","Get-AzDisk -DiskName $diskname0 is a null-valued parameter value.","-DiskName","Assign value for $diskname0."
+"Az.Compute","Update-AzVmssVM","2","1","Unassigned_Variable","5110","2","Get-AzDisk -ResourceGroupName $rgname is a null-valued parameter value.","-ResourceGroupName","Assign value for $rgname."
+"Az.Compute","Update-AzVmssVM","2","1","Unassigned_Variable","5110","2","Get-AzDisk -DiskName $diskname0 is a null-valued parameter value.","-DiskName","Assign value for $diskname0."
