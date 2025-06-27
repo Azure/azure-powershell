@@ -189,7 +189,9 @@ function New-GeneratedFileFromTemplate {
         [string]
         $ModuleRootName,
         [string]
-        $SubModuleName
+        $SubModuleName,
+        [string]
+        $SubModuleNameFull
     )
     $TemplatePath = Join-Path $PSScriptRoot "Templates"
     $templateFile = Join-Path $TemplatePath $TemplateName
@@ -201,7 +203,12 @@ function New-GeneratedFileFromTemplate {
     }
     $templateFile = $templateFile -replace '{ModuleNamePlaceHolder}', $SubModuleName
     $templateFile = $templateFile -replace '{LowCaseModuleNamePlaceHolder}', $SubModuleName.ToLower()
-    $templateFile = $templateFile -replace '{ModuleFolderPlaceHolder}', "$SubModuleName.Autorest"
+    if ($SubModuleNameFull) {
+        $templateFile = $templateFile -replace '{ModuleFullNamePlaceHolder}', $SubModuleNameFull
+    }
+    else {
+        $templateFile = $templateFile -replace '{ModuleFolderPlaceHolder}', "$SubModuleName.Autorest"
+    }
     $templateFile = $templateFile -replace '{RootModuleNamePlaceHolder}', $ModuleRootName
     Write-Host "Copying template: $TemplateName." -ForegroundColor Yellow
     $templateFile | Set-Content $GeneratedFile -force

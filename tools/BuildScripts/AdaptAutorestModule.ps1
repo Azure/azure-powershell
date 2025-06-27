@@ -178,7 +178,7 @@ try{
     $subModuleCsprojPath = Join-Path $subModulePath $csprojName
     $tempCsprojPath = Join-Path $subModulePath 'tmpCsproj'
     Move-Item $subModuleCsprojPath $tempCsprojPath -Force
-    New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName $csprojName -GeneratedDirectory $subModulePath -ModuleRootName $ModuleRootName -SubModuleName $subModuleNameTrimmed
+    New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName $csprojName -GeneratedDirectory $subModulePath -ModuleRootName $ModuleRootName -SubModuleName $subModuleNameTrimmed -SubModuleNameFull $subModuleName
 
     dotnet sln $slnPath add $subModuleCsprojPath
     Write-Host "Building $slnPath ..." -ForegroundColor DarkGreen
