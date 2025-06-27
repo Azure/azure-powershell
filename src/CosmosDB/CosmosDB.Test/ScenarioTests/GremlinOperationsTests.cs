@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
             TestRunner.RunTestScript("Test-GremlinInAccountRestoreOperationsSharedRUResourcesCmdlets");
         }
 
-        [Fact]
+        [Fact(Skip = "Feature requires subscription registration. Will be generic in next version.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGremlinRoleCmdlets()
         {
