@@ -124,7 +124,7 @@ export async function getExamplesFromSpecs(workingDirectory: string): Promise<st
             
             const list = await response.json();
             for (const ex of list) {
-                if (!exampleSet.has(ex.dowwnload_url)) {
+                if (!exampleSet.has(ex.download_url)) {
                     const exResponse = await fetch(ex.download_url);
                     if (!exResponse.ok) {
                         console.warn(`Invalid file at ${ex.download_url}`);

@@ -1,10 +1,18 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
-import { toolParameterSchema, toolSchema } from "./types.js";
-import specs from "./specs/Specs.json" assert { type: "json" };
-import responses from "./specs/responses.json" assert { type: "json" };
+import { responseSchema, toolParameterSchema, toolSchema } from "./types.js";
 import { toolServices } from "./services/toolServices.js";
+
+import { readFileSync } from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const srcPath = path.resolve(__dirname, "..", "src");
+
+const specs = JSON.parse(readFileSync(path.join(srcPath, "specs/specs.json"), "utf-8"));
+const responses = JSON.parse(readFileSync(path.join(srcPath, "specs/responses.json"), "utf-8"));
 
 export class CodegenServer {
     private static _instance: CodegenServer;
@@ -76,7 +84,7 @@ export class CodegenServer {
     }
 
     initResponses() {
-        responses?.forEach(response => {
+        (responses as responseSchema[])?.forEach((response: responseSchema) => {
             this._responses.set(response.name, response.text);
         });
     }

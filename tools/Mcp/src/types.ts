@@ -1,7 +1,7 @@
 export type toolParameterSchema = {
     name: string;
-    type: string;
     description: string;
+    type: string;
 }
 
 export type toolSchema = {
@@ -9,6 +9,12 @@ export type toolSchema = {
     description: string;
     parameters: toolParameterSchema[];
     callbackName: string;
+}
+
+export type responseSchema = {
+    name: string;
+    type: string;
+    text: string;
 }
 
 export type yamlContent = {
