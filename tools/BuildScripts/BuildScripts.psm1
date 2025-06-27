@@ -161,7 +161,7 @@ function Update-GeneratedSubModule {
         Copy-Item -Path $moveFrom -Destination $moveTo -Recurse -Force
     }
     # regenerate csproj
-    New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName "Az.$subModuleNameTrimmed.csproj" -GeneratedDirectory $GeneratedDirectory -ModuleRootName $ModuleRootName -SubModuleName $subModuleNameTrimmed
+    New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName "Az.$subModuleNameTrimmed.csproj" -GeneratedDirectory $GeneratedDirectory -ModuleRootName $ModuleRootName -SubModuleName $subModuleNameTrimmed -SubModuleNameFull $SubModuleName
     
     # revert guid in psd1 so that no conflict in updating this file
     if ($guid) {
