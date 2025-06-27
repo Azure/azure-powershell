@@ -875,6 +875,7 @@ function Test-CrossRegionRestoreSingleRegionAccountCmdlets {
   Start-TestSleep -s 3662
   $restoreTimestampInUtc = $sourceRestorableAccount.CreationTime.AddSeconds(3610)
 
+  $restoreTimestampInUtc.GetType().FullName | Out-File ./restoreTimestampInUtc.log
   $restoreTimestampInUtc | ConvertTo-Json -Depth 5 | Out-File ./restoreTimestampInUtc.json
 
   $restoredCosmosDBAccount = Restore-AzCosmosDBAccount -RestoreTimestampInUtc $restoreTimestampInUtc -SourceDatabaseAccountName $sourceCosmosDBAccountName -SourceBackupLocation $sourceBackupLocation -Location $targetLocation -TargetResourceGroupName $rgName -TargetDatabaseAccountName $cosmosDBAccountName -DatabasesToRestore $datatabaseToRestore

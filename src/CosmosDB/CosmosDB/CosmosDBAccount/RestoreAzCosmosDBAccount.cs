@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                         System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 19");
                         System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 19: Location = " + sourceAccountToRestore.Location);
                         System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 19: Name = " + sourceAccountToRestore.Name);
-                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 19: Location = " + sourceAccountToRestore.Location);
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 19: sourceLocation = " + sourceLocation);
                         System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 19: utcRestoreDateTime = " + utcRestoreDateTime.ToString());
                         IEnumerable<RestorableSqlResourcesGetResult> restorableResources = CosmosDBManagementClient.RestorableSqlResources.ListWithHttpMessagesAsync(
                             sourceAccountToRestore.Location,
@@ -178,9 +178,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
                         restorableResourcesNotFound = restorableResources == null || !restorableResources.Any();
                         System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 20");
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 21");
+                        System.IO.File.AppendAllText("RestoreAzCosmosDBAccount.log", "\nin ExecuteCmdlet ---- step 21, exception: " + ex.ToString());
                         WriteWarning($"No database accounts found with matching account name {SourceDatabaseAccountName} that was alive at given utc-timestamp {utcRestoreDateTime} in location {sourceLocation}");
                         return;
                     }
