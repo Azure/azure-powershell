@@ -39,16 +39,6 @@ title: ActivityLogAlert
 module-version: 0.1.0
 subject-prefix: ActivityLogAlert
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert
-resourcegroup-append: true
-nested-object-to-string: true
-
-# If there are post APIs for some kinds of actions in the RP, you may need to 
-# uncomment following line to support viaIdentity for these post APIs
-# identity-correction-for-post: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs
@@ -85,7 +75,7 @@ directive:
       subject-prefix: ""
 
   - model-cmdlet:
-    - AlertRuleAnyOfOrLeafCondition
-    - AlertRuleLeafCondition
-    - ActionGroup
+    - model-name: AlertRuleAnyOfOrLeafCondition
+    - model-name: AlertRuleLeafCondition
+    - model-name: ActionGroup
 ```
