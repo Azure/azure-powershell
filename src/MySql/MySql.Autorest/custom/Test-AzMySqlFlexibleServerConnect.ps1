@@ -14,18 +14,18 @@
 
 function Test-AzMySqlFlexibleServerConnect {
     [OutputType([System.String])]
-    [CmdletBinding(DefaultParameterSetName='Test', PositionalBinding=$false)]
+    [CmdletBinding(DefaultParameterSetName = 'Test', PositionalBinding = $false)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Description('Test out the connection to the database server')]
     param(
-        [Parameter(ParameterSetName='Test', Mandatory, HelpMessage = 'The name of the server to connect.')]
-        [Parameter(ParameterSetName='TestAndQuery', Mandatory, HelpMessage = 'The name of the server to connect.')]
+        [Parameter(ParameterSetName = 'Test', Mandatory, HelpMessage = 'The name of the server to connect.')]
+        [Parameter(ParameterSetName = 'TestAndQuery', Mandatory, HelpMessage = 'The name of the server to connect.')]
         [Alias('ServerName')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
         [System.String]
         ${Name},
 
-        [Parameter(ParameterSetName='Test', Mandatory, HelpMessage = 'The name of the resource group that contains the resource, You can obtain this value from the Azure Resource Manager API or the portal.')]
-        [Parameter(ParameterSetName='TestAndQuery', Mandatory, HelpMessage = 'The name of the resource group that contains the resource, You can obtain this value from the Azure Resource Manager API or the portal.')]
+        [Parameter(ParameterSetName = 'Test', Mandatory, HelpMessage = 'The name of the resource group that contains the resource, You can obtain this value from the Azure Resource Manager API or the portal.')]
+        [Parameter(ParameterSetName = 'TestAndQuery', Mandatory, HelpMessage = 'The name of the resource group that contains the resource, You can obtain this value from the Azure Resource Manager API or the portal.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
         [System.String]
         ${ResourceGroupName},
@@ -35,14 +35,20 @@ function Test-AzMySqlFlexibleServerConnect {
         [System.String]
         ${DatabaseName},
 
-        [Parameter(ParameterSetName='TestViaIdentityAndQuery', Mandatory, HelpMessage = 'The query for the database to test')]
-        [Parameter(ParameterSetName='TestAndQuery', Mandatory, HelpMessage = 'The query for the database to test')]
+        [Parameter(ParameterSetName = 'TestViaIdentityAndQuery', Mandatory, HelpMessage = 'The query for the database to test')]
+        [Parameter(ParameterSetName = 'TestAndQuery', Mandatory, HelpMessage = 'The query for the database to test')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
         [System.String]
         ${QueryText},
 
-        [Parameter(ParameterSetName='TestViaIdentity', Mandatory, ValueFromPipeline, HelpMessage = 'The server to connect.')]
-        [Parameter(ParameterSetName='TestViaIdentityAndQuery', Mandatory, ValueFromPipeline, HelpMessage = 'The server to connect.')]
+        [Parameter(HelpMessage = 'The timeout in seconds for query execution. Valid range is 1-31536000 seconds.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+        [ValidateRange(1, 31536000)]
+        [System.Int32]
+        ${Timeout},
+
+        [Parameter(ParameterSetName = 'TestViaIdentity', Mandatory, ValueFromPipeline, HelpMessage = 'The server to connect.')]
+        [Parameter(ParameterSetName = 'TestViaIdentityAndQuery', Mandatory, ValueFromPipeline, HelpMessage = 'The server to connect.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity]
         ${InputObject},
@@ -105,7 +111,7 @@ function Test-AzMySqlFlexibleServerConnect {
     )
 
     process {
-        if (!(Get-Module -ListAvailable -Name SimplySQL)){
+        if (!(Get-Module -ListAvailable -Name SimplySQL)) {
             Write-Error "This cmdlet requires SimplySQL module. Please install the module first by running Install-Module -Name SimplySQL."
             exit
         }
@@ -115,6 +121,12 @@ function Test-AzMySqlFlexibleServerConnect {
         if ($PSBoundParameters.ContainsKey('QueryText')) {
             $Query = $PSBoundParameters.QueryText
             $null = $PSBoundParameters.Remove('QueryText')
+        }
+
+        $TimeoutValue = 0
+        if ($PSBoundParameters.ContainsKey('Timeout')) {
+            $TimeoutValue = $PSBoundParameters.Timeout
+            $null = $PSBoundParameters.Remove('Timeout')
         }
 
         $DatabaseName = [string]::Empty
@@ -135,21 +147,32 @@ function Test-AzMySqlFlexibleServerConnect {
         $Server = Az.MySql\Get-AzMySqlFlexibleServer @PSBoundParameters
         $HostAddr = $Server.FullyQualifiedDomainName
 
-        if ($Server.NetworkPublicNetworkAccess -eq 'Disabled'){
+        if ($Server.NetworkPublicNetworkAccess -eq 'Disabled') {
             Write-Host "You have to run the test cmdlet in the subnet your server is linked."
         }
         if ([string]::IsNullOrEmpty($AdministratorUserName)) {
             $AdministratorUserName = $Server.AdministratorLogin
         }
+
+        # Create PSCredential object for database connection
+        $SecurePassword = ConvertTo-SecureString -String $Password -AsPlainText -Force
+        $Credential = New-Object System.Management.Automation.PSCredential($AdministratorUserName, $SecurePassword)
         
         try {
-            if ([string]::IsNullOrEmpty($DatabaseName)){
-                Open-MySqlConnection -Database $DatabaseName -Server $HostAddr -UserName $AdministratorUserName -Password $Password -SSLMode Required -WarningAction 'silentlycontinue'
+            $DbToUse = if ([string]::IsNullOrEmpty($DatabaseName)) { "mysql" } else { $DatabaseName }
+            $OpenConnParams = @{
+                Database    = $DbToUse
+                Server      = $HostAddr
+                Credential  = $Credential
+                SSLMode     = 'Required'
+                WarningAction = 'SilentlyContinue'
             }
-            else {
-                Open-MySqlConnection -Database "mysql" -Server $HostAddr -UserName $AdministratorUserName -Password $Password -SSLMode Required -WarningAction 'silentlycontinue'
+            if ($TimeoutValue -gt 0) {
+                $OpenConnParams['CommandTimeout'] = $TimeoutValue
             }
-        } catch {
+            Open-MySqlConnection @OpenConnParams
+        }
+        catch {
             Write-Host $_.Exception.GetType().FullName
             Write-Host $_.Exception.Message
             exit
