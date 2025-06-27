@@ -48,9 +48,10 @@ if ($ModuleRootName -in $rootToParentMap.keys) {
     $parentModuleName = $rootToParentMap[$ModuleRootName]
 }
 
-$subModuleNameTrimmed = $SubModuleName
-$SubModuleName = "$SubModuleName.Autorest"
 $moduleRootPath = Join-Path $SourceDirectory $ModuleRootName
+$subModuleNameTrimmed = $SubModuleName
+$subModuleName = Get-ChildItem -Path $moduleRootPath -Directory | Where-Object { $_.Name -match '$(subModuleNameTrimmed)\.' } | ForEach-Object { $_.Name }
+
 $parentModulePath = Join-Path $moduleRootPath $parentModuleName
 $subModulePath = Join-Path $moduleRootPath $SubModuleName
 $slnPath = Join-Path $moduleRootPath "$ModuleRootName.sln"
