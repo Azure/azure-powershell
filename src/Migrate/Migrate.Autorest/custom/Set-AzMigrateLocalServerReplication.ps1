@@ -49,7 +49,7 @@ function Set-AzMigrateLocalServerReplication {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemDynamicMemoryConfig]
-        # Specifies the dynamic memory configration of RAM.
+        # Specifies the dynamic memory configuration of RAM.
         ${DynamicMemoryConfig},
 
         [Parameter()]
