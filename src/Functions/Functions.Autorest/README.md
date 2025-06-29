@@ -142,7 +142,7 @@ directive:
     where: $..produces
     #transform: $ = $.filter( each => each === 'application/json');
     transform: $ = ["application/json"];
-    reason: this spec adds produces application/xml and text/json erronously.
+    reason: this spec adds produces application/xml and text/json erroneously.
   - where:
       subject: Operation
     hide: true

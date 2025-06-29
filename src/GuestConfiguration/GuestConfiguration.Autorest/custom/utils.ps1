@@ -25,7 +25,7 @@ function TransformPSBoundParameters{
             $PSBoundParameters.Add("VmssName", $Matches.vmssName)
             $PSBoundParameters.Add("Name", $Matches.guestConfigurationAssignmentName)
         }else {
-            throw "Unrecogized InputObject"
+            throw "Unrecognized InputObject"
         }
        $null = $PSBoundParameters.Remove("InputObject")
     }

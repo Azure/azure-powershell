@@ -229,8 +229,8 @@ function New-AzSapMonitorProviderInstance {
                     hanaDbName     = $HanaDatabaseName
                     hanaDbSqlPort  = $HanaDatabaseSqlPort
                     hanaDbUsername = $HanaDatabaseUsername
-                    # To suppport descryption accross different platforms and PowerShell versions, we implement a script Unprotect-SecureString.ps1
-                    # to convert securesting to plaintext
+                    # To support descryption across different platforms and PowerShell versions, we implement a script Unprotect-SecureString.ps1
+                    # to convert securestring to plaintext
                     hanaDbPassword = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $HanaDatabasePassword
                 }
             }

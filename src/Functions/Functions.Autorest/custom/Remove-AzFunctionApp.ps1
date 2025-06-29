@@ -108,7 +108,7 @@ function Remove-AzFunctionApp {
         {
             if ($Force.IsPresent  -or $PsCmdlet.ShouldContinue("Delete function app '$Name'? This operation cannot be undone. Are you sure?", "Deleting function app"))
             {
-                # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets
+                # Remove bound parameters from the dictionary that cannot be process by the internal cmdlets
                 if ($PSBoundParameters.ContainsKey("Force"))
                 {
                     $PSBoundParameters.Remove("Force")  | Out-Null

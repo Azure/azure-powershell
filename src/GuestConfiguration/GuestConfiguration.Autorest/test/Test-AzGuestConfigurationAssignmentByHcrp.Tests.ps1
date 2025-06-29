@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzGuestConfigurationAssi
 }
 
 Describe 'Test-AzGuestConfigurationAssignmentByHcrp' {
-    # No ARC marchine to test
+    # No ARC machine to test
     It 'CreateExpanded' -skip{
         New-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName $env.assignmentName -ResourceGroupName $env.resourcegroupName -MachineName "test" -GuestConfigurationName $env.guestConfigName -GuestConfigurationVersion "1.0.0.3" -GuestConfigurationContentUri "https://thisisfake/package" -GuestConfigurationContentHash "123contenthash"
         Get-AzGuestConfigurationAssignment -ResourceGroupName $env.resourcegroupName -MachineName "test"
