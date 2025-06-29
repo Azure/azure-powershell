@@ -37,7 +37,7 @@ Kind      Location Name                                Type
 ReadWrite East US  testnewkustocluster/mykustodatabase Microsoft.Kusto/Clusters/Databases
 ```
 
-The above command creates a new datebase named "mykustodatabase" in the resource group "testrg".
+The above command creates a new database named "mykustodatabase" in the resource group "testrg".
 
 ## PARAMETERS
 

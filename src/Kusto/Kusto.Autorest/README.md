@@ -80,7 +80,7 @@ directive:
   - from: swagger-document
     where: $..produces
     transform: $ = $.filter( each => each === 'application/json');
-    reason: this spec adds produces application/xml and text/json erronously.
+    reason: this spec adds produces application/xml and text/json erroneously.
   # Fix the case mismatch between swagger and RP
   - from: swagger-document
     where: $
