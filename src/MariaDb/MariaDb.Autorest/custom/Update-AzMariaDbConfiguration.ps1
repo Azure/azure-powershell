@@ -19,7 +19,7 @@ Updates a configuration of a server.
 Use Update-AzMariaDbServer instead if you want update AdministratorLoginPassword, sku, etc.
 .Description
 Updates a configuration of a server.
-Use Update-AzMariaDberver instead if you want update AdministratorLoginPassword, sku, etc.
+Use Update-AzMariaDbServer instead if you want update AdministratorLoginPassword, sku, etc.
 #>
 function Update-AzMariaDbConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration])]

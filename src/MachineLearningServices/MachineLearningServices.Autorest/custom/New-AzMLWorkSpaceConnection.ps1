@@ -191,7 +191,7 @@ function New-AzMLWorkspaceConnection {
     )
         
     process {
-        # Create with extanded parameter
+        # Create with extended parameter
         $hasAuthType = $PSBoundParameters.Remove('AuthType')
         $hasCategory =  $PSBoundParameters.Remove('Category')
         $hasExpiryTime =  $PSBoundParameters.Remove('ExpiryTime')

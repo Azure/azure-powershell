@@ -115,7 +115,7 @@ directive:
       subject: PrivateStore
     remove: true
 
-    # Change commads names to Get
+    # Change command names to Get
   - where:
       verb: Invoke
       subject: CollectionPrivateStoreToSubscriptionMapping

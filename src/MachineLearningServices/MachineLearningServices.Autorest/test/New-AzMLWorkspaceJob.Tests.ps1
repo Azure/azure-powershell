@@ -24,7 +24,7 @@ Describe 'New-AzMLWorkspaceJob' { #Moved
             -DisplayName 'commandJob03' -ExperimentName 'commandjobexperiment'
             New-AzMLWorkspaceJob -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name commandJob03 -Job $commandJob
             Stop-AzMLWorkspaceJob -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name commandJob03 
-            # Remove operation exists 404 status code during runing operation.
+            # Remove operation exists 404 status code during running operation.
             # Remove-AzMLWorkspaceJob -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name commandJob03
         } | Should -Not -Throw
     }

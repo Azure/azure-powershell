@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         }
 
         /// <summary>
-        /// Checks whether the integration account certifcate exists or not. 
+        /// Checks whether the integration account certificate exists or not. 
         /// </summary>
         /// <param name="resourceGroupName">The integration account resource group name.</param>
         /// <param name="integrationAccountName">The integration account object.</param>
