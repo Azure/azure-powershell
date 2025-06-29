@@ -59,7 +59,7 @@ directive:
       model-name: ElasticSan|Volume|VolumeGroup|Snapshot
     set:
       suppress-format: true
-  # Set alias for Name paramaters
+  # Set alias for Name parameters
   - where:
       subject: ElasticSan
       parameter-name: Name

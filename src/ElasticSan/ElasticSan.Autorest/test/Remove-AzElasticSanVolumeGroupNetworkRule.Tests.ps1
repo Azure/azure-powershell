@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzElasticSanVolumeGrou
 
 Describe 'Remove-AzElasticSanVolumeGroupNetworkRule' {
     It 'NetworkRuleResourceId' {
-        # Clear exsiting rules 
+        # Clear existing rules 
         Update-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $env.VolumeGroupName -NetworkAclsVirtualNetworkRule @()    
         # Add rules 
         $rules = Add-AzElasticSanVolumeGroupNetworkRule -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -VolumeGroupName $env.VolumeGroupName -NetworkAclsVirtualNetworkResourceId $env.vnetResourceId1,$env.vnetResourceId2
@@ -29,7 +29,7 @@ Describe 'Remove-AzElasticSanVolumeGroupNetworkRule' {
     It 'NetworkRuleObject' {
         $vnetRule1 = New-AzElasticSanVirtualNetworkRuleObject -VirtualNetworkResourceId $env.vnetResourceId1 -Action "Allow"
         $vnetRule2 = New-AzElasticSanVirtualNetworkRuleObject -VirtualNetworkResourceId $env.vnetResourceId2 -Action "Allow"
-        # Clear exsiting rules 
+        # Clear existing rules 
         Update-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $env.VolumeGroupName -NetworkAclsVirtualNetworkRule @()    
         # Add rules 
         $rules = Add-AzElasticSanVolumeGroupNetworkRule -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -VolumeGroupName $env.VolumeGroupName -NetworkAclsVirtualNetworkRule $vnetRule1,$vnetRule2

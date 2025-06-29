@@ -30,7 +30,7 @@ Get-AzElasticVersion -Region westus2
 ```output
 version
 ---------
-8.15.2 (Lattest)
+8.15.2 (Latest)
 8.14.3
 7.17.24
 ```

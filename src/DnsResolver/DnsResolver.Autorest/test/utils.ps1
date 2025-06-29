@@ -70,7 +70,7 @@ function setupEnv() {
         $null = $env.Add("NRP_SIMULATOR_URI", $nrpSimulatorUri);
     }
 
-    # Provison of virtual network and generating DNS Resolver names.
+    # Provision of virtual network and generating DNS Resolver names.
     # New-cmdlet uses 0 - 12
     # Get-cmdlet uses 13 - 21
     # Remove-cmdlet uses 22-32

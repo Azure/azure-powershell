@@ -52,7 +52,7 @@ Describe 'Get-AzDnsForwardingRuleset' {
         $dnsForwardingRuleset | Should -BeSuccessfullyCreatedDnsForwardingRuleset
     }
 
-    It 'List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved' {
+    It 'List all DNS forwarding ruleset under the resource group, expect all DNS forwarding rulesets retrieved' {
         # ARRANGE
         $dnsResolverName = "psdnsresolvername29";
         $outboundEndpointName =  "psoutboundendpointname29";

@@ -121,7 +121,7 @@
     <value>Create a new shared access policy in an Azure IoT Hub Device Provisioning Service</value>
   </data>
   <data name="AddCertificate" xml:space="preserve">
-    <value>Create /upload an Azure IoT Hub Device Provisioing Service certificate</value>
+    <value>Create /upload an Azure IoT Hub Device Provisioning Service certificate</value>
   </data>
   <data name="AddDeviceProvisioningService" xml:space="preserve">
     <value>Add a Device Provisioning Service</value>
@@ -136,7 +136,7 @@
     <value>Create a linked IoT Hub in an Azure IoT Hub Device Provisioning Service</value>
   </data>
   <data name="NewCertificateVerificationCode" xml:space="preserve">
-    <value>Create new an Azure IoT Hub Device Provisioing Service certificate verification code</value>
+    <value>Create new an Azure IoT Hub Device Provisioning Service certificate verification code</value>
   </data>
   <data name="RemoveAccessPolicy" xml:space="preserve">
     <value>Delete a shared access policies in an Azure IoT Hub Device Provisioning Service</value>
