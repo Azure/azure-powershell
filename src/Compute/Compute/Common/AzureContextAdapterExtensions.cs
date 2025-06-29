@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Compute
         /// Get a CloudStorageAccount client for the given storage service using the given storage service provider
         /// </summary>
         /// <param name="provider">The storage service provider to retrieve storage service details</param>
-        /// <param name="accountName">The storage accoutn name</param>
+        /// <param name="accountName">The storage account name</param>
         /// <param name="resourceGroupName"></param>
         /// <returns>A CloudStorageAccount client for storage data plane tasks</returns>
         public static CloudStorageAccount GetCloudStorageAccount(this IStorageServiceProvider provider, string accountName, string resourceGroupName = null)

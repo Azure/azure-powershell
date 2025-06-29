@@ -80,7 +80,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Download
 
             if (segments.Length < 2)
             {
-                return false; //Must have atleast a containerName and BlobName
+                return false; //Must have at least a containerName and BlobName
             }
 
             blobName = HttpUtility.UrlDecode(

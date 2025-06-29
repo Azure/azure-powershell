@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Compute
         public SecureString ServicePrincipalSecret { get; set; }
 
         /// <summary>
-        /// Initialzies a new instance of the <see cref="NewAzureVMSqlServerKeyVaultCredentialConfigCommand"/> class.
+        /// Initializes a new instance of the <see cref="NewAzureVMSqlServerKeyVaultCredentialConfigCommand"/> class.
         /// </summary>
         public NewAzureVMSqlServerKeyVaultCredentialConfigCommand()
         {

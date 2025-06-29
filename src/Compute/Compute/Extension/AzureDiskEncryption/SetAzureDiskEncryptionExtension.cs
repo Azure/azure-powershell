@@ -710,7 +710,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 vmConfig.VMName = VMName;
                 vmConfig.VirtualMachineExtensionType = VirtualMachineExtensionType;
                 string tag = string.Format("{0}{1}", "AzureEnc", Guid.NewGuid().ToString());
-                // this would create shapshot only for Linux box. and we should wait for the snapshot found.
+                // this would create snapshot only for Linux box. and we should wait for the snapshot found.
                 azureBackupExtensionUtil.CreateSnapshotForDisks(vmConfig, tag, this);
                 WriteWarning(string.Format("one snapshot for disks are created with tag,{0}, you can use {1}-{2} to remove it.", tag, VerbsCommon.Remove,
     ProfileNouns.AzureVMBackup));

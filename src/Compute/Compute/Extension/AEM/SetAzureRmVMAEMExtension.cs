@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
                 Mandatory = false,
                 ValueFromPipelineByPropertyName = false,
-                HelpMessage = "If this parameter is provided, the commandlet will enable Windows Azure Diagnostics for this virtual machine.")]
+                HelpMessage = "If this parameter is provided, the cmdlet will enable Windows Azure Diagnostics for this virtual machine.")]
         public SwitchParameter EnableWAD { get; set; }
 
         [Parameter(
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Commands.Compute
         private void SetNewExtension(VirtualMachine selectedVM, VirtualMachineInstanceView selectedVMStatus)
         {
             // check VM identity
-            // give VM idenity access to resources/resource groups
+            // give VM identity access to resources/resource groups
             // deploy extension on VM
 
             bool blnIsUserAssigned = !string.IsNullOrEmpty(this.PathUserIdentity);
@@ -811,7 +811,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }).GetAwaiter().GetResult();
 
                 this._Helper.WriteHost("[INFO] Azure Enhanced Monitoring Extension for SAP configuration updated. It can take up to 15 Minutes for the monitoring data to appear in the SAP system.");
-                this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzVMAEMExtension commandlet.");
+                this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzVMAEMExtension cmdlet.");
 
                 var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                 WriteObject(result);
@@ -833,7 +833,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }).GetAwaiter().GetResult();
 
                 this._Helper.WriteHost("[INFO] Azure Enhanced Monitoring Extension for SAP configuration updated. It can take up to 15 Minutes for the monitoring data to appear in the SAP system.");
-                this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzVMAEMExtension commandlet.");
+                this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzVMAEMExtension cmdlet.");
 
                 var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                 WriteObject(result);

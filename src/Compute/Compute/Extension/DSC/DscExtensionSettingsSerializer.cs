@@ -149,7 +149,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
         }
 
         /// <summary>
-        /// Converte SecureString to String.
+        /// Convert SecureString to String.
         /// </summary>
         /// <remarks>
         /// This method creates a managed object with sensitive information and undetermined lifecycle.

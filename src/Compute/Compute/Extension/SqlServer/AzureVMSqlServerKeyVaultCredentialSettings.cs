@@ -28,12 +28,12 @@ namespace Microsoft.Azure.Commands.Compute
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Defines if the Key Vault Credentails feature is enabled or disabled
+        /// Defines if the Key Vault Credentials feature is enabled or disabled
         /// </summary>
         public bool Enable { get; set; }
 
         /// <summary>
-        /// Key Vault credentails name
+        /// Key Vault Credentials name
         /// </summary>
         public string CredentialName { get; set; }
 

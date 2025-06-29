@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Commands.Compute
         public string DayOfWeek { get; set; }
 
         /// <summary>
-        /// Maintainance Windows Start hour ( 0 to 23 ) 
+        /// Maintenance Windows Start hour ( 0 to 23 ) 
         /// </summary>
         public int MaintenanceWindowStartingHour { get; set; }
 
         /// <summary>
-        /// Maintainance window duration in minutes
+        /// Maintenance window duration in minutes
         /// </summary>
         public int MaintenanceWindowDuration { get; set; }
 
