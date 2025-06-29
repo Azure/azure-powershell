@@ -294,7 +294,7 @@ function Get-HelmChart {
 }
 
 # This method exists to allow us to effectively Mock the call operator (&).
-# We cannnot do that directly so instead we have this wrapper, which we can mock!
+# We can not do that directly so instead we have this wrapper, which we can mock!
 function Invoke-ExternalCommand {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param (
@@ -413,7 +413,7 @@ function Confirm-HelmVersion {
         }
         $HelmVersion = helm version --short --kubeconfig $KubeConfig
 
-        # Compare the helm version to 3.8 in a symantic versioning valid way
+        # Compare the helm version to 3.8 in a semantic versioning valid way
         # Strip the leading "v" from the helm version and discard any metadata
         $HelmVersion = $HelmVersion.Substring(1)
         $HelmVersion = $HelmVersion.Split('+')[0]

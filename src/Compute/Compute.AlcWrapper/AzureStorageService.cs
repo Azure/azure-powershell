@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         public PSBlobDownloadInfo DownloadBlob()
         {
-            //TODO: Please repalce with your real account
+            //TODO: Please replace with your real account
             BlobClient client = new BlobClient("", "", "");
             BlobDownloadInfo info = client.Download().Value;
             return new PSBlobDownloadInfo(info);
