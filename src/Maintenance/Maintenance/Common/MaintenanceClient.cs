@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Maintenance
         {
         }
 
-        public MaintenanceClient(IMaintenanceManagementClient maintenancManagementClient)
+        public MaintenanceClient(IMaintenanceManagementClient maintenanceManagementClient)
         {
             MaintenanceManagementClient = maintenancManagementClient;
         }

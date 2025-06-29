@@ -84,7 +84,7 @@ function Test-GetAzMaintenanceConfiguration
             Write-Host "Retrieved $($retrievedConfigurations.Count) maintenance configurations."
         }
 
-        # Update the configurations & Testing 2 sifferent input styles
+        # Update the configurations & Testing 2 different input styles
         for ($i = 0; $i -lt $retrievedConfigurations.Count; $i++) {
             try {
                 Update-AzMaintenanceConfiguration -ResourceGroupName $resourceGroups[$i] -Name $maintenanceConfigurationName -Configuration $retrievedConfigurations[$i]
@@ -433,14 +433,14 @@ function Test-AzConfigurationAssignmentDynamicGroupForSubscription
         $maintenanceConfigurationInGuestPatchCreated = New-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationInGuestPatchName -MaintenanceScope "InGuestPatch" -Location $location -Timezone "UTC" -StartDateTime "2025-10-09 12:30" -Duration "3:00" -RecurEvery "Day" -LinuxParameterPackageNameMaskToInclude "apt","httpd" -ExtensionProperty @{inGuestPatchMode="User"} -InstallPatchRebootSetting "IfRequired"
 
         ## Dynamic Group Subscription level
-        # Dyamic scope ResourceGroup assignment
+        # Dynamic scope ResourceGroup assignment
         $configurationAssignmentCreated = New-AzConfigurationAssignment -ConfigurationAssignmentName $maintenanceConfigurationName -MaintenanceConfigurationId $maintenanceConfigurationInGuestPatchCreated.Id
 
         Assert-AreEqual $configurationAssignmentCreated.Name $maintenanceConfigurationName
 		Assert-AreEqual $configurationAssignmentCreated.Type "Microsoft.Maintenance/configurationAssignments"
         Assert-AreEqual $configurationAssignmentCreated.MaintenanceConfigurationId $maintenanceConfigurationInGuestPatchCreated.Id
 
-        # Dyamic scope ResourceGroup assignment locations filter
+        # Dynamic scope ResourceGroup assignment locations filter
         $configurationAssignmentCreated = New-AzConfigurationAssignment -ConfigurationAssignmentName $maintenanceConfigurationName -MaintenanceConfigurationId $maintenanceConfigurationInGuestPatchCreated.Id -FilterLocation eastus2euap,centraluseuap
 
         Assert-AreEqual $configurationAssignmentCreated.Name $maintenanceConfigurationName
@@ -450,7 +450,7 @@ function Test-AzConfigurationAssignmentDynamicGroupForSubscription
         Assert-AreEqual $configurationAssignmentCreated.FilterLocation[0] "eastus2euap"
         Assert-AreEqual $configurationAssignmentCreated.FilterLocation[1] "centraluseuap"
 
-        # Dyamic scope ResourceGroup assignment locations and resourceType filter
+        # Dynamic scope ResourceGroup assignment locations and resourceType filter
         $configurationAssignmentCreated = New-AzConfigurationAssignment -ConfigurationAssignmentName $maintenanceConfigurationName -MaintenanceConfigurationId $maintenanceConfigurationInGuestPatchCreated.Id -FilterLocation eastus2euap,centraluseuap -FilterResourceType microsoft.compute/virtualmachines,microsoft.hybridcompute/machines
 
         Assert-AreEqual $configurationAssignmentCreated.Name $maintenanceConfigurationName
@@ -463,7 +463,7 @@ function Test-AzConfigurationAssignmentDynamicGroupForSubscription
         Assert-AreEqual $configurationAssignmentCreated.FilterResourceType[0] "microsoft.compute/virtualmachines"
         Assert-AreEqual $configurationAssignmentCreated.FilterResourceType[1] "microsoft.hybridcompute/machines"
 
-        # Dyamic scope ResourceGroup assignment tags, locations, os Filter
+        # Dynamic scope ResourceGroup assignment tags, locations, os Filter
         $configurationAssignmentCreated = New-AzConfigurationAssignment -ConfigurationAssignmentName $maintenanceConfigurationName -MaintenanceConfigurationId $maintenanceConfigurationInGuestPatchCreated.Id -FilterLocation eastus2euap,centraluseuap -FilterOsType Windows,Linux -FilterTag '{"tagKey1" : ["tagKey1Value1", "tagKey1Value2"], "tagKey2" : ["tagKey2Value1", "tagKey2Value2", "tagKey2Value3"] }' -FilterOperator "Any"
 
         Assert-AreEqual $configurationAssignmentCreated.Name $maintenanceConfigurationName
@@ -514,8 +514,8 @@ function Test-AzConfigurationAssignmentDynamicGroupForResourceGroup
         ### InGuestPatch maintenance config
         $maintenanceConfigurationInGuestPatchCreated = New-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationInGuestPatchName -MaintenanceScope "InGuestPatch" -Location $location -Timezone "UTC" -StartDateTime "2025-10-09 12:30" -Duration "3:00" -RecurEvery "Day" -LinuxParameterPackageNameMaskToInclude "apt","httpd" -ExtensionProperty @{inGuestPatchMode="User"} -InstallPatchRebootSetting "IfRequired"
 
-        # Dyamic Scope - Resource Group
-        # Dyamic scope ResourceGroup assignment locations filter
+        # Dynamic Scope - Resource Group
+        # Dynamic scope ResourceGroup assignment locations filter
         $configurationAssignmentCreated = New-AzConfigurationAssignment -ResourceGroupName $resourceGroupNameForConfigAssignment -ConfigurationAssignmentName $maintenanceConfigurationName -MaintenanceConfigurationId $maintenanceConfigurationInGuestPatchCreated.Id -Location $location -FilterLocation eastus2euap,centraluseuap
 
         Assert-AreEqual $configurationAssignmentCreated.Name $maintenanceConfigurationName
@@ -525,7 +525,7 @@ function Test-AzConfigurationAssignmentDynamicGroupForResourceGroup
         Assert-AreEqual $configurationAssignmentCreated.FilterLocation[0] "eastus2euap"
         Assert-AreEqual $configurationAssignmentCreated.FilterLocation[1] "centraluseuap"
 
-        # Dyamic scope ResourceGroup assignment locations and resourceType filter
+        # Dynamic scope ResourceGroup assignment locations and resourceType filter
         $configurationAssignmentCreated = New-AzConfigurationAssignment -ResourceGroupName $resourceGroupNameForConfigAssignment -ConfigurationAssignmentName $maintenanceConfigurationName -MaintenanceConfigurationId $maintenanceConfigurationInGuestPatchCreated.Id -Location $location -FilterLocation eastus2euap,centraluseuap -FilterResourceType microsoft.compute/virtualmachines,microsoft.hybridcompute/machines
 
         Assert-AreEqual $configurationAssignmentCreated.Name $maintenanceConfigurationName
@@ -538,7 +538,7 @@ function Test-AzConfigurationAssignmentDynamicGroupForResourceGroup
         Assert-AreEqual $configurationAssignmentCreated.FilterResourceType[0] "microsoft.compute/virtualmachines"
         Assert-AreEqual $configurationAssignmentCreated.FilterResourceType[1] "microsoft.hybridcompute/machines"
 
-        # Dyamic scope ResourceGroup assignment tags, locations, os Filter
+        # Dynamic scope ResourceGroup assignment tags, locations, os Filter
         $configurationAssignmentCreated = New-AzConfigurationAssignment -ResourceGroupName $resourceGroupNameForConfigAssignment -ConfigurationAssignmentName $maintenanceConfigurationName -MaintenanceConfigurationId $maintenanceConfigurationInGuestPatchCreated.Id -Location $location -FilterLocation eastus2euap,centraluseuap -FilterOsType Windows,Linux -FilterTag '{"tagKey1" : ["tagKey1Value1", "tagKey1Value2"], "tagKey2" : ["tagKey2Value1", "tagKey2Value2", "tagKey2Value3"] }' -FilterOperator "Any"
 
         Assert-AreEqual $configurationAssignmentCreated.Name $maintenanceConfigurationName
@@ -832,13 +832,13 @@ function Test-GetAzApplyUpdateWithoutParentResource
 
 <#
 .SYNOPSIS
-Assert a maintenace configuration object.
+Assert a maintenance configuration object.
 
 .PARAMETER expected
-The expected maintenace configuration object.
+The expected maintenance configuration object.
 
 .PARAMETER actual
-The actual maintenace configuration object.
+The actual maintenance configuration object.
 #>
 function Assert-MaintenanceConfiguration
 {

@@ -126,7 +126,7 @@ function setupEnv() {
         $storageAccount1 = Get-AzStorageAccount -Name $StorageAccountName1 -ResourceGroupName $env.DataGroupName -ErrorAction Stop
         Write-Host 'Get storage account, go ahead'
     } catch {
-        # Must be public newwork access to use
+        # Must be public network access to use
         $storageAccount1 = New-AzStorageAccount -SkuName "Standard_LRS" -Kind StorageV2 -ResourceGroupName $env.DataGroupName -Name $StorageAccountName1 -Location $env.region
     }
 
