@@ -603,8 +603,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             }
             else
             {
-                WriteError("Unkown disk size for Premium Storage - {0}", diskSize);
-                throw new ArgumentException("Unkown disk size for Premium Storage");
+                WriteError("Unknown disk size for Premium Storage - {0}", diskSize);
+                throw new ArgumentException("Unknown disk size for Premium Storage");
             }
 
             return sla;
