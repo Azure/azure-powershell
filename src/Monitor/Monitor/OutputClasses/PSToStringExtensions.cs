@@ -21,7 +21,7 @@ using System.Text;
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Extensions to the ToString methods to allow for indentation to be added when displying the results
+    /// Extensions to the ToString methods to allow for indentation to be added when displaying the results
     /// </summary>
     public static class PSToStringExtensions
     {
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// A string representation of the Dimension including indentation
         /// </summary>
         /// <param name="inputString">The input string</param>
-        /// <param name="localizedValue">Flag to inidicate if the localized value must be printed or not</param>
+        /// <param name="localizedValue">Flag to indicate if the localized value must be printed or not</param>
         /// <returns>A string representation of the LocalizableString</returns>
         public static string ToString(this LocalizableString inputString, bool localizedValue)
         {

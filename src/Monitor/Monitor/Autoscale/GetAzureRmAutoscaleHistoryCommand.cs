@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// <summary>
         /// Gets or sets the ResourceId (Uri) parameter of the cmdlet
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resouceId (Uri) name of the query")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resourceId (Uri) name of the query")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// A predicate to filter in/out the records from original list of records obtained from the SDK.
         /// <para>This method is intended to allow descendants of this class to further filter the results.</para>
         /// <para>An example of this is when the filtering is needed based on EventSource and ResourceUri at the same time. 
-        /// The SDK does not allow these two fields to be in the query filter togheter. So the call should filter by one and then use this function to filter by the second one.</para>
+        /// The SDK does not allow these two fields to be in the query filter together. So the call should filter by one and then use this function to filter by the second one.</para>
         /// </summary>
         /// <param name="record">A record from the original list of records obtained from the sdk</param>
         /// <returns>true if the record should kept in the result, false if it should be filtered out</returns>
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
 
         /// <summary>
         /// Processes the particular parameters if this cmdlet.
-        /// <para>In this case it adds the condition for eventSource to be of a particular value in order to retrive only autoscale-related events</para>
+        /// <para>In this case it adds the condition for eventSource to be of a particular value in order to retrieve only autoscale-related events</para>
         /// </summary>
         /// <param name="currentQueryFilter">The current query filter</param>
         /// <returns>Modified query filter including the condition for eventSource</returns>
