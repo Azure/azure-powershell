@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                         }
                         else
                         {
-                            throw new ArgumentException("Endorsement key is requried.");
+                            throw new ArgumentException("Endorsement key is required.");
                         }
                         break;
                     case PSAttestationMechanismType.X509:

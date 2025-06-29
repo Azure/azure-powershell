@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models
     using Newtonsoft.Json;
 
     /// <summary>
-    /// List of possible provisoning service SKUs.
+    /// List of possible provisioning service SKUs.
     /// </summary>
     public partial class PSIotDpsSkuInfo
     {

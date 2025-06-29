@@ -78,7 +78,7 @@ function Test-AzIotDpsEnrollmentLifeCycle
 	Assert-ThrowsContains { Add-AzIoTDeviceProvisioningServiceEnrollment -ResourceGroupName $ResourceGroupName -DpsName $IotDpsName -RegistrationId $symEnroll -AttestationType SymmetricKey -PrimaryKey "123456" } $errorMessage
 
 	# Expecting error while creating device enrollment with TPM attestation mechanism
-	$errorMessage = "Endorsement key is requried"
+	$errorMessage = "Endorsement key is required"
 	Assert-ThrowsContains { Add-AzIoTDeviceProvisioningServiceEnrollment -ResourceGroupName $ResourceGroupName -DpsName $IotDpsName -RegistrationId $tpmEnroll -AttestationType Tpm } $errorMessage
 
 	# Expecting error while creating device enrollment with X509 attestation mechanism

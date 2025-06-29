@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Dns
     {
         private uint? ttl_value;
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the records inthis record set (relative to the name of the zone and without a terminating dot).")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the records in this record set (relative to the name of the zone and without a terminating dot).")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

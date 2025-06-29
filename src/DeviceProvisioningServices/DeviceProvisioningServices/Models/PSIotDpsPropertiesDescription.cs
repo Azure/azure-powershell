@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models
     using Newtonsoft.Json;
 
     /// <summary>
-    /// the service specific properties of a provisoning service, including
+    /// the service specific properties of a provisioning service, including
     /// keys, linked iot hubs, current state, and system generated properties
     /// such as hostname and idScope
     /// </summary>
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models
         public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets or sets list of IoT hubs assosciated with this provisioning
+        /// Gets or sets list of IoT hubs associated with this provisioning
         /// service.
         /// </summary>
         [JsonProperty(PropertyName = "iotHubs")]

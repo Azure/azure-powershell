@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Dns
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DnsRecordSet"), OutputType(typeof(DnsRecordSet))]
     public class GetAzureDnsRecordSet : DnsBaseCmdlet
     {
-        [Parameter(Mandatory = false, ParameterSetName = "Fields", ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the records inthis record set (relative to the name of the zone and without a terminating dot).")]
+        [Parameter(Mandatory = false, ParameterSetName = "Fields", ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the records in this record set (relative to the name of the zone and without a terminating dot).")]
         [Parameter(Mandatory = false, ParameterSetName = "Object")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }

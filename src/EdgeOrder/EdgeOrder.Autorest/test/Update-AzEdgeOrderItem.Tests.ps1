@@ -18,6 +18,6 @@ Describe 'Update-AzEdgeOrderItem' {
     It 'UpdateExpanded' {
         $contactDetail = New-AzEdgeOrderContactDetailsObject -ContactName $env.ContactName -EmailList $env.EmailList -Phone $env.Phone
         $ShippingDetails = New-AzEdgeOrderShippingAddressObject -StreetAddress1 $env.StreetAddress1 -StateOrProvince $env.StateOrProvince -Country $env.Country -City $env.City -PostalCode $env.PostalCode -AddressType $env.AddressType 
-        Update-AzEdgeOrderItem -Name $env.OrderItemNameTest -ResourceGroupName $env.ResourceGroup -SubscriptionId $env.SubscriptionId -ForwardAddressContactDetail $contactDetail -ForwardAddressShippingAddres $ShippingDetails 
+        Update-AzEdgeOrderItem -Name $env.OrderItemNameTest -ResourceGroupName $env.ResourceGroup -SubscriptionId $env.SubscriptionId -ForwardAddressContactDetail $contactDetail -ForwardAddressShippingAddress $ShippingDetails 
     }
 }
