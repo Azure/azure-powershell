@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
         public int Count;
 
         [Parameter(Mandatory = false,
-            HelpMessage = "If specified, return random number as base-64 digit. By default, this command retruns random number as byte array.")]
+            HelpMessage = "If specified, return random number as base-64 digit. By default, this command returns random number as byte array.")]
         public SwitchParameter AsBase64String;
 
         #endregion
