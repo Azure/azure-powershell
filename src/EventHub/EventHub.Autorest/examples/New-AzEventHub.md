@@ -20,7 +20,7 @@ Location                     : eastus
 MessageRetentionInDay        : 7
 Name                         : myEventHub
 PartitionCount               : 5
-PartitionId                  : {0, 1, 2, 3…}
+PartitionId                  : {0, 1, 2, 3ï¿½}
 ResourceGroupName            : myResourceGroup
 RetentionTimeInHour          : 168
 SizeLimitInBytes             :
@@ -39,7 +39,7 @@ UpdatedAt                    : 4/25/2023 3:55:46 AM
 ```
 
 
-Creates a new eventhub entity `myEventHub` on namespace `myNamespace` with CleaupPolicy `Delete`.
+Creates a new eventhub entity `myEventHub` on namespace `myNamespace` with CleanupPolicy `Delete`.
 
 ### Example 2: Create EventHub with Capture Enabled
 ```powershell
@@ -112,4 +112,4 @@ Type                         : Microsoft.EventHub/namespaces/eventhubs
 UpdatedAt                    : 4/25/2023 4:05:58 AM
 ```
 
-Creates a new eventhub entity `myEventHub` on namespace `myNamespace` with CleaupPolicy `Compact`.
+Creates a new eventhub entity `myEventHub` on namespace `myNamespace` with CleanupPolicy `Compact`.
