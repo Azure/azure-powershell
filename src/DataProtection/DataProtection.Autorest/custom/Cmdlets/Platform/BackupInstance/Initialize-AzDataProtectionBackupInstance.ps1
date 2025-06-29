@@ -4,7 +4,7 @@
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Initializes Backup instance Request object for configuring backup')]
 
     param(
-        [Parameter(Mandatory=$false, HelpMessage='Policy Id to be assiciated to Datasource')]
+        [Parameter(Mandatory=$false, HelpMessage='Policy Id to be associated to Datasource')]
         [System.String]
         [ValidatePattern("/subscriptions/([A-z0-9\-]+)/resourceGroups/(?<rg>.+)/providers/(?<provider>.+)/backupVaults/(?<vault>.+)/backupPolicies/(?<name>.+)")]
         ${PolicyId},
@@ -31,7 +31,7 @@
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreTypes]
         ${SecretStoreType},
 
-        [Parameter(Mandatory=$false, HelpMessage='Sanpshot Resource Group')]
+        [Parameter(Mandatory=$false, HelpMessage='Snapshot Resource Group')]
         [System.String]
         [ValidatePattern("/subscriptions/([A-z0-9\-]+)/resourceGroups/(?<rg>.+)")]
         ${SnapshotResourceGroupId},

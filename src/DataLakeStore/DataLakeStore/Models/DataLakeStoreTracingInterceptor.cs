@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             var adlException = exception as AdlsErrorException;
             if (adlException == null)
             {
-                Logger.LogError("exception ocurred: {0}, invocationId={1}", exception, invocationId);
+                Logger.LogError("exception occurred: {0}, invocationId={1}", exception, invocationId);
             }
             else
             {

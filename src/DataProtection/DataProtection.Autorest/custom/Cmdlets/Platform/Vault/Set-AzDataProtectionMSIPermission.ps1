@@ -67,7 +67,7 @@ function Set-AzDataProtectionMSIPermission {
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupRestoreRequest]
         ${RestoreRequest},
 
-        [Parameter(ParameterSetName="SetPermissionsForRestore", Mandatory=$false, HelpMessage='Sanpshot Resource Group')]
+        [Parameter(ParameterSetName="SetPermissionsForRestore", Mandatory=$false, HelpMessage='Snapshot Resource Group')]
         [System.String]
         [ValidatePattern("/subscriptions/([A-z0-9\-]+)/resourceGroups/(?<rg>.+)")]
         ${SnapshotResourceGroupId},

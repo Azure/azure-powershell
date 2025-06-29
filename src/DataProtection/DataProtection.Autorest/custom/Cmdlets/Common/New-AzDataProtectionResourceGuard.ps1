@@ -23,7 +23,7 @@ function New-AzDataProtectionResourceGuard
         [System.String]
         ${ETag},
 
-        [Parameter(ParameterSetName="CreateResourceGuard", Mandatory=$false, HelpMessage='This parameter is no longer in use and will be depricated')]
+        [Parameter(ParameterSetName="CreateResourceGuard", Mandatory=$false, HelpMessage='This parameter is no longer in use and will be deprecated')]
         [System.String]
         ${IdentityType},
                 
@@ -83,7 +83,7 @@ function New-AzDataProtectionResourceGuard
             $null = $PSBoundParameters.Remove("IdentityType")
 
             # TODO : need to move this to parameter level 
-            Write-Warning "Parameter IdentityType is no longer in use and will be depricated in upcoming breaking change release"
+            Write-Warning "Parameter IdentityType is no longer in use and will be deprecated in upcoming breaking change release"
         }
         Az.DataProtection.Internal\New-AzDataProtectionResourceGuard @PSBoundParameters
     }
