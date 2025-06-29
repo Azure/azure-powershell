@@ -67,7 +67,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 
-TASK <ICustomizationTask[]>: Tasks to apply. Note by default tasks are excluded from the response whenlisting customization groups. To include them, use the `include=tasks` queryparameter.
+TASK <ICustomizationTask[]>: Tasks to apply. Note by default tasks are excluded from the response when listing customization groups. To include them, use the `include=tasks` queryparameter.
   Name <String>: Name of the task.
   [DisplayName <String>]: Display name to help differentiate multiple instances of the same task.
   [Parameter <ICustomizationTaskParameters>]: Parameters for the task.
@@ -140,7 +140,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationTask[]]
     # Tasks to apply.
-    # Note by default tasks are excluded from the response whenlisting customization groups.
+    # Note by default tasks are excluded from the response when listing customization groups.
     # To include them, use the `include=tasks` queryparameter.
     # To construct, see NOTES section for TASK properties and create a hash table.
     ${Task},
