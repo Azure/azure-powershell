@@ -51,7 +51,7 @@ Get disks object to provide input for New-AzMigrateServerReplication
 ## PARAMETERS
 
 ### -DiskEncryptionSetID
-Specifies the disk encyption set to be used.
+Specifies the disk encryption set to be used.
 
 ```yaml
 Type: System.String

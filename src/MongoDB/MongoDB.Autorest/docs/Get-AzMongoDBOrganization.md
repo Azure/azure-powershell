@@ -52,7 +52,7 @@ East US 2 test-mongodb-1 5/16/2025 6:03:20 AM  yashikajain@microsoft.com User   
 East US 2 test-mongodb-3 5/24/2025 12:14:55 PM yashikajain@microsoft.com User                    5/24/2025 12:16:00 PM    b059abce-70fd-4c8f-a117-96d2192e90e1 Application                  yashika-rg
 ```
 
-This command will get all organization details for all resources in a resoure group in a given subscription.
+This command will get all organization details for all resources in a resource group in a given subscription.
 
 ### Example 2: Get a specific Organization in a Resource Group
 ```powershell

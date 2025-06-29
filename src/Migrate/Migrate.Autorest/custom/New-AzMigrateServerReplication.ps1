@@ -197,7 +197,7 @@ function New-AzMigrateServerReplication {
         [Parameter(ParameterSetName = 'ByInputObjectDefaultUser')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the disk encyption set to be used.
+        # Specifies the disk encryption set to be used.
         ${DiskEncryptionSetID},
     
         [Parameter()]

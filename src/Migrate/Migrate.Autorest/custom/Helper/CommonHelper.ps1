@@ -84,7 +84,7 @@ function IsReservedOrTrademarked {
 
     $uppercased = $Value.ToUpper();
 
-    # cannot be exactly one of these, but could be slighlty differnet (e.g. hololens2)
+    # cannot be exactly one of these, but could be slightly different (e.g. hololens2)
     $reservedWords = @(
         "ACCESS",
         "APP_CODE",
