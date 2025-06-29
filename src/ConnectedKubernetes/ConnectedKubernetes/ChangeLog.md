@@ -39,7 +39,7 @@
 ## Version 0.11.0
 * Added support for Workload Identity Federation and OIDC Issuer features to the ConnectedKubernetes cmdlets.
 * Added support for arc gateway feature in cmdlet New-AzConnectedKubernetes.
-* Added Set-AzConnectedKubernetes cmdlet to support updateing arc gateway features on existing resource.
+* Added Set-AzConnectedKubernetes cmdlet to support updating arc gateway features on existing resource.
 
 ## Version 0.10.3
 * Fixed secrets exposure in example documentation.

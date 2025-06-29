@@ -675,7 +675,7 @@ function Set-AzConnectedKubernetes {
         #             protected settings.
         #
         #          This DOES mean that code changes are required both in the
-        #          Config DP annd this Powershell script if a new Kubernetes
+        #          Config DP and this Powershell script if a new Kubernetes
         #          feature is added.
         # Do not send protected settings to CCRP
         $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration `

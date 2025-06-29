@@ -132,7 +132,7 @@ function Test-WithUserAssignedIdentity() {
 		$vm = Get-AzVM -ResourceGroupName $rgname -Name $vm.Name
 		$nul = Assert-AreEqual $vm.Extensions.Count 0 "VM Extensions count does not equal 0"
 		$result = Test-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name
-		Assert-True {-not $result.Result } "Test of extension was positiv but should have failed"
+		Assert-True {-not $result.Result } "Test of extension was positive but should have failed"
 
 		$vmUpd = Update-AzVM -ResourceGroupName $rgname -VM $vm -IdentityType UserAssigned -IdentityID $ident.Id
 		$vm = Get-AzVM -ResourceGroupName $rgname -Name $vm.Name	
@@ -164,7 +164,7 @@ function Test-WithoutIdentity() {
 		$vm = Get-AzVM -ResourceGroupName $rgname -Name $vm.Name
 		$nul = Assert-AreEqual $vm.Extensions.Count 0 "VM Extensions count does not equal 0"
 		$result = Test-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name
-		Assert-True {-not $result.Result } "Test of extension was positiv but should have failed"
+		Assert-True {-not $result.Result } "Test of extension was positive but should have failed"
 
 		$vmUpd = Update-AzVM -ResourceGroupName $rgname -VM $vm -IdentityType None
 		$vm = Get-AzVM -ResourceGroupName $rgname -Name $vm.Name
@@ -200,7 +200,7 @@ function Test-WithSystemAssignedIdentity() {
 		$nul = Assert-AreEqual $vm.Identity.Type "SystemAssigned"
 		$nul = Assert-AreEqual $vm.Extensions.Count 0 "VM Extensions count does not equal 0"
 		$result = Test-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name
-		Assert-True {-not $result.Result } "Test of extension was positiv but should have failed"
+		Assert-True {-not $result.Result } "Test of extension was positive but should have failed"
 
 		Set-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name -InstallNewExtension
 
@@ -227,7 +227,7 @@ function Test-ExtensionReinstall() {
 		$vm = Get-AzVM -ResourceGroupName $rgname -Name $vm.Name
 		$nul = Assert-AreEqual $vm.Extensions.Count 0 "VM Extensions count does not equal 0"
 		$result = Test-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name
-		Assert-True {-not $result.Result } "Test of extension was positiv but should have failed"
+		Assert-True {-not $result.Result } "Test of extension was positive but should have failed"
 
 		Write-Verbose "`tInstalling new extension"
 		Set-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name -InstallNewExtension
@@ -260,7 +260,7 @@ function Test-OldExtensionReinstall() {
 		$vm = Get-AzVM -ResourceGroupName $rgname -Name $vm.Name
 		$nul = Assert-AreEqual $vm.Extensions.Count 0 "VM Extensions count does not equal 0"
 		$result = Test-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name
-		Assert-True {-not $result.Result } "Test of extension was positiv but should have failed"
+		Assert-True {-not $result.Result } "Test of extension was positive but should have failed"
 
 		Write-Verbose "`tInstalling old extension"
 		Set-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name
@@ -295,7 +295,7 @@ function Test-ExtensionDowngrade() {
 		$vm = Get-AzVM -ResourceGroupName $rgname -Name $vm.Name
 		$nul = Assert-AreEqual $vm.Extensions.Count 0 "VM Extensions count does not equal 0"
 		$result = Test-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name
-		Assert-True {-not $result.Result } "Test of extension was positiv but should have failed"
+		Assert-True {-not $result.Result } "Test of extension was positive but should have failed"
 
 		Write-Verbose "`tInstalling new extension"
 		Set-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name -InstallNewExtension
@@ -332,7 +332,7 @@ function Test-ExtensionUpgrade() {
 		$vm = Get-AzVM -ResourceGroupName $rgname -Name $vm.Name
 		$nul = Assert-AreEqual $vm.Extensions.Count 0 "VM Extensions count does not equal 0"
 		$result = Test-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name
-		Assert-True {-not $result.Result } "Test of extension was positiv but should have failed"
+		Assert-True {-not $result.Result } "Test of extension was positive but should have failed"
 
 		Write-Verbose "`tInstalling old extension"
 		Set-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name
@@ -370,7 +370,7 @@ function Test-NewExtensionDiskAdd() {
 		$vm = Get-AzVM -ResourceGroupName $rgname -Name $vm.Name
 		$nul = Assert-AreEqual $vm.Extensions.Count 0 "VM Extensions count does not equal 0"
 		$result = Test-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name
-		Assert-True {-not $result.Result } "Test of extension was positiv but should have failed"
+		Assert-True {-not $result.Result } "Test of extension was positive but should have failed"
 
 		Write-Verbose "`tInstalling new extension"
 		Set-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name -InstallNewExtension -SetAccessToIndividualResources
@@ -381,7 +381,7 @@ function Test-NewExtensionDiskAdd() {
 		Add-AzVMDataDisk -VM $vm -StorageAccountType Premium_LRS -Lun $nextLun -CreateOption Empty -DiskSizeInGB 32 | Update-AzVM
 
 		$result = Test-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name
-		Assert-True {-not $result.Result } "Test of extension was positiv but should have failed because of missing permissions to the added data disk"
+		Assert-True {-not $result.Result } "Test of extension was positive but should have failed because of missing permissions to the added data disk"
 
 		Write-Verbose "`tUpdating new extension"
 		Set-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name -InstallNewExtension -SetAccessToIndividualResources	

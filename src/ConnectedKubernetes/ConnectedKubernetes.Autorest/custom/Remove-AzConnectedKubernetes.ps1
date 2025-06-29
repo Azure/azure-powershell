@@ -66,10 +66,10 @@ function Remove-AzConnectedKubernetes {
         # Path to the kube config file
         ${KubeConfig},
 
-        [Parameter(HelpMessage = "Kubconfig context from current machine")]
+        [Parameter(HelpMessage = "Kubeconfig context from current machine")]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [System.String]
-        # Kubconfig context from current machine
+        # Kubeconfig context from current machine
         ${KubeContext},
 
         [Parameter(ParameterSetName = 'Delete')]

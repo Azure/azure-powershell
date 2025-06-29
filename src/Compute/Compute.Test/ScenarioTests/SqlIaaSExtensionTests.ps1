@@ -3,12 +3,12 @@
 	1) Installs the SqlIaaS extension by calling Set-AzVMSqlServerExtension cmdlet on a VM.
 	2) Calls Get-AzVMSqlServerExtension cmdlet to check the status of the extension installation.
 	3) Verifies settings are correct given input
-    4) Verfies AutoUpgradeMinorVersion
+    4) Verifies AutoUpgradeMinorVersion
 	5) Update extension values
 	6) Verify changes
 	7) Test with correct Name and Version
 	8) Test with correct Name and incorrect Version
-	9) Test with incorrect Name and crrect Version
+	9) Test with incorrect Name and correct Version
 	10) Test with incorrect Name and incorrect Version
 #>
 

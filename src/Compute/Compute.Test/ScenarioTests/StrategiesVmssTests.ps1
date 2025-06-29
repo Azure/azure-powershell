@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Test Simple Paremeter Set for New Vm
+Test Simple Parameter Set for New Vm
 #>
 function Test-SimpleNewVmss
 {
@@ -59,7 +59,7 @@ function Test-SimpleNewVmss
 
 <#
 .SYNOPSIS
-Test Simple Paremeter Set for New Vm
+Test Simple Parameter Set for New Vm
 #>
 function Test-SimpleNewVmssFromSIGImage
 {
@@ -109,7 +109,7 @@ function Test-SimpleNewVmssFromSIGImage
 
 <#
 .SYNOPSIS
-Test Simple Paremeter Set for New Vm
+Test Simple Parameter Set for New Vm
 #>
 function Test-SimpleNewVmssWithUltraSSD
 {
@@ -125,8 +125,8 @@ function Test-SimpleNewVmssWithUltraSSD
         [string]$domainNameLabel = "$vmssname$vmssname".tolower();
 
         # Common
-        #As of now the ultrasd feature is only supported in east us 2 and in the size Standard_D2s_v3, on the features GA the restriction will be lifted
-        #Use the follwing command to figure out the one to use 
+        #As of now the ultrassd feature is only supported in east us 2 and in the size Standard_D2s_v3, on the features GA the restriction will be lifted
+        #Use the following command to figure out the one to use 
         #Get-AzComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }
         $x = New-AzVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -LoadBalancerName $lbName -Location "east us 2" -EnableUltraSSD -Zone 3 -VmSize "Standard_D2s_v3"
 
@@ -156,7 +156,7 @@ function Test-SimpleNewVmssWithUltraSSD
 
 <#
 .SYNOPSIS
-Test Simple Paremeter Set for New Vm failure when custom load balancer exists
+Test Simple Parameter Set for New Vm failure when custom load balancer exists
 #>
 function Test-SimpleNewVmssLbErrorScenario
 {
@@ -301,7 +301,7 @@ function Test-SimpleNewVmssWithsystemAssignedUserAssignedIdentity
 
 <#
 .SYNOPSIS
-Test Simple Paremeter Set for New Vm
+Test Simple Parameter Set for New Vm
 #>
 function Test-SimpleNewVmssImageName
 {
@@ -376,7 +376,7 @@ function Test-SimpleNewVmssWithoutDomainName
 
 <#
 .SYNOPSIS
-Test Simple Paremeter Set for New Vm
+Test Simple Parameter Set for New Vm
 #>
 function Test-SimpleNewVmssPpg
 {
@@ -413,7 +413,7 @@ function Test-SimpleNewVmssPpg
 
 <#
 .SYNOPSIS
-Test Simple Paremeter Set With HostGroup (automatic placement)
+Test Simple Parameter Set With HostGroup (automatic placement)
 #>
 function Test-SimpleNewVmssHostGroup
 {

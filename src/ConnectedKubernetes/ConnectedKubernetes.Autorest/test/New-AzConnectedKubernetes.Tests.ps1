@@ -55,7 +55,7 @@ Describe 'Invoke-ConfigDPHealthCheck' {
         # Actually expect the error message to be "Error while performing DP health check, StatusCode: $StatusCode"
         # But we now Mock Invoke-RestMethod not Invoke-RestMethodWithUriParameters, and Invoke-RestMethod 
         # can only return unhealthy response with error thrown, which creates a terminating error and will be 
-        # cauhgt by pester
+        # caught by pester
         { Invoke-ConfigDPHealthCheck } | Should -Throw
         Assert-MockCalled "Invoke-RestMethod" -Times 1
         Assert-VerifiableMock
@@ -167,7 +167,7 @@ Describe 'Get-ConfigDpEndpoint' {
 }
 
 Describe 'Get-AzCloudMetadata' {
-    # For some reason Pester fails to "see" Get-AzureEnvirnomment so we create
+    # For some reason Pester fails to "see" Get-AzureEnvironment so we create
     # and empty instance here that we can the mock.
     BeforeEach {
         Function Get-AzEnvironment {

@@ -140,7 +140,7 @@ param(
 )
 
     process {
-        # Get a confluent orgnization via name or object.      
+        # Get a confluent organization via name or object.      
         if ($PSBoundParameters.ContainsKey('InputObject')) {
             $confluentOrg = ($InputObject | Get-AzConfluentOrganization)
         } else {
@@ -148,7 +148,7 @@ param(
         }
 
         # Check plan id of the confluent organization.
-        # Print pay warning mssage if the planid maps to payg type. Otherwise print commit warning message.    
+        # Print pay warning message if the planid maps to payg type. Otherwise print commit warning message.    
         if (('confluent-cloud-azure-payg-prod', 'confluent-cloud-azure-payg-stag').Contains($confluentOrg.OfferDetailPlanId)){
             $warnningMsg = (Get-Content -Path (Join-Path $PSScriptRoot "payWarning.txt")) -join "`n"
         } else {

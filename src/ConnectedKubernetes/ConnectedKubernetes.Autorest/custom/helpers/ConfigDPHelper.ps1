@@ -119,7 +119,7 @@ function Invoke-RestMethodWithUriParameters {
         Write-Error "Error while issuing REST request: $_"
     } 
     finally {
-        # Note need to explcitly clear WhatIf for this method otherwise the value is
+        # Note need to explicitly clear WhatIf for this method otherwise the value is
         # not passed back during What-If testing.
         Set-Variable -Name "${statusCodeVariable}" -Value $statusCode -Scope Script -WhatIf:$false
     }
