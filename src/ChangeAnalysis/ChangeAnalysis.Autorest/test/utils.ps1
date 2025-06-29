@@ -45,7 +45,7 @@ function setupEnv() {
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 
     # Deploy keyvault for test
-    Write-Host -ForegroundColor Green "Deloying Key Vault..."
+    Write-Host -ForegroundColor Green "Deploying Key Vault..."
     $kvName = 'keyvalult-' + (RandomString -allChars $false -len 6)
     $kvPara = Get-Content .\test\deployment-templates\key-vault\parameters.json | ConvertFrom-Json
     $kvPara.parameters.vaults_name.value = $kvName
