@@ -161,7 +161,7 @@ for a better powershell experience and as a result would witness breaking change
 * Fix for issue #9786 : cannot create a rule with Listen only rights
 
 ## Version 1.3.0
-* Added new cmmdlet added for generating SAS token : New-AzEventHubAuthorizationRuleSASToken
+* Added new cmdlet added for generating SAS token : New-AzEventHubAuthorizationRuleSASToken
 * added verification and error message for authorizationrules rights if only 'Manage' is assigned
 
 ## Version 1.2.0
