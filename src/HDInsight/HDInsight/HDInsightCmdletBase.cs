@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
                   state.Equals("Operational", StringComparison.OrdinalIgnoreCase)))
             {
                 throw new NotSupportedException(
-                    string.Format("The cluster {0} is in the {1} state and canot be used at this time.", clusterName,
+                    string.Format("The cluster {0} is in the {1} state and cannot be used at this time.", clusterName,
                         state));
             }
 
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
             {
                 BillingResponseListResult billingResponseListResult = HDInsightManagementClient.ListBillingSpecs(location);
 
-                /* The result is KeyValuePair<ZOOKEEPERNODEROLE, KeyValulePair<SPARK, STANDARD_A2_V2>> */
+                /* The result is KeyValuePair<ZOOKEEPERNODEROLE, KeyValuePair<SPARK, STANDARD_A2_V2>> */
                 var nodeTypeAndClusterTypeAndVmSizePairs = billingResponseListResult.VMSizeFilters.Where(filter => filter.FilterMode.Equals(FilterMode.Default)).SelectMany(x =>
                 {
                     var clusterTypeAndVmSizePairs = x.ClusterFlavors.SelectMany(clusterType => x.VMSizes, (clusterType, vmSize) =>

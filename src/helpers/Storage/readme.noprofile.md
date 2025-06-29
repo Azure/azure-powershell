@@ -62,7 +62,7 @@ subject-prefix: ''
 # skip-model-cmdlets: true
 
 directive:
-  # Remove unnedded cmdlets
+  # Remove unneeded cmdlets
   - where:
       subject: ^BlobContainerLegalHold$
     remove: true

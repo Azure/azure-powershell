@@ -40,7 +40,7 @@
         /// <param name="storageAccountName">Storage account to be created.</param>
         /// <param name="skuName">Storage SKU.</param>
         /// <param name="storageKind">Storage kind.</param>
-        /// <returns>Stoprage account.</returns>
+        /// <returns>Storage account.</returns>
         public StorageAccount CreateStorageAccount(string storageAccountName, string skuName = null, string storageKind = null)
         {
             var sku = string.IsNullOrEmpty(skuName) ? DefaultSkuName : skuName;
