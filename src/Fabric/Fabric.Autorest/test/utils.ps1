@@ -80,7 +80,7 @@ function setupEnv() {
     $updatedParams | Set-Content -Path $templateParametersFilePath
 
     # Deploy
-    Write-Output "Deploying the temaplte file $templateFilePath to resource group $($env.ResourceGroupName) ..."
+    Write-Output "Deploying the template file $templateFilePath to resource group $($env.ResourceGroupName) ..."
     New-AzDeployment -Mode Incremental -TemplateFile $templateFilePath -TemplateParameterFile $templateParametersFilePath -ResourceGroupName $env.ResourceGroupName
     Write-Output "Deployment complete with provisioning state: " $deploymentResult.ProvisioningState
 

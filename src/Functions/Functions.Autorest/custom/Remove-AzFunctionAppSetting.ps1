@@ -88,7 +88,7 @@ function Remove-AzFunctionAppSetting {
 
         RegisterFunctionsTabCompleters
 
-        # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets
+        # Remove bound parameters from the dictionary that cannot be process by the internal cmdlets
         $paramsToRemove = @(
             "AppSettingName"
             "Force"

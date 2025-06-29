@@ -125,7 +125,7 @@ function New-AzFunctionAppPlan {
 
         RegisterFunctionsTabCompleters
 
-        # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets.
+        # Remove bound parameters from the dictionary that cannot be process by the internal cmdlets.
         foreach ($paramName in @("Sku", "WorkerType", "MaximumWorkerCount", "MinimumWorkerCount", "Location", "Tag"))
         {
             if ($PSBoundParameters.ContainsKey($paramName))

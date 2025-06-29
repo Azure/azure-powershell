@@ -40,7 +40,7 @@
 ## Version 4.0.7
 * Used ARM API to get Stacks information for Functions [#14682]
 * Removed support to create v3 function apps (Functions v3 has reached EOL) [#20838]
-* Removeed Preview flag for Java 17 function apps [#20009]
+* Removed Preview flag for Java 17 function apps [#20009]
 * Added support to create dotnet-isolated apps [#16349]
 * Added support for custom handler [#12542]
 * Redacted appsettings output on Get-AzFunctionApp and Update-AzFunctionAppSetting [#23241]

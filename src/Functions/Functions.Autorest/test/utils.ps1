@@ -35,7 +35,7 @@ $env = @{}
 function setupEnv() {
 
     # Set the test mode for the Az.Functions module
-    # This is requried to support playback mode (given that we need to have the same values in teh payload for each function app creation)
+    # This is required to support playback mode (given that we need to have the same values in teh payload for each function app creation)
     # Currently this flag is used to have a constant share name when creation an app
     $env:FunctionsTestMode = $true
 

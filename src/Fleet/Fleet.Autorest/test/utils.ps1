@@ -28,7 +28,7 @@ function setupEnv() {
     }
 
     $createKubernetesVersion = '1.27.7'
-    # create default version 1.27.7, cluster upgrading will block the removation of memeber
+    # create default version 1.27.7, cluster upgrading will block the removal of member
     $env.UpgradeKubernetesVersion = '1.27.7'
     $clusterName11 = 'FleetCluster11'
     $clusterName12 = 'FleetCluster12'

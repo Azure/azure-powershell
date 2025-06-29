@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 ProvisioningState = sdkFrontDoor.ProvisioningState,
                 BackendPoolsSetting = sdkFrontDoor.BackendPoolsSettings?.ToPSBackendPoolsSetting(),
                 // PSFrontDoor parameter EnforceCertificateNameCheck is no longer actively used, in favor of BackendPoolsSetting which 
-                // encapsulates this property. However, for backwards compability, we set this field so that it is still displayed to users.
+                // encapsulates this property. However, for backwards compatibility, we set this field so that it is still displayed to users.
                 EnforceCertificateNameCheck = sdkFrontDoor.BackendPoolsSettings == null
                                                 ? (PSEnforceCertificateNameCheck?)null
                                                 : (PSEnforceCertificateNameCheck)Enum.Parse(typeof(PSEnforceCertificateNameCheck), sdkFrontDoor.BackendPoolsSettings.EnforceCertificateNameCheck),
