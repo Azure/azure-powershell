@@ -54,7 +54,7 @@ function setupEnv() {
     New-AzDatadogMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName01 -SkuName 'drawdown_testing_20200904_Monthly' -Location 'eastus2euap' -UserInfoEmailAddress 'user@microsoft.com' -UserInfoName 'user' -UserInfoPhoneNumber '11111111111' -IdentityType SystemAssigned
     New-AzDatadogMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName02 -SkuName 'drawdown_testing_20200904_Monthly' -Location 'eastus2euap' -UserInfoEmailAddress 'user@microsoft.com' -UserInfoName 'user' -UserInfoPhoneNumber '11111111111' -IdentityType SystemAssigned
 
-    # Eable SSO
+    # Enable SSO
     Write-Host -ForegroundColor Green "Enable SSO for $($env.monitorName01) monitor."
     New-AzDatadogSingleSignOnConfiguration -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01 -Name 'default' -SingleSignOnState Enable -EnterpriseAppId $env.enterpriseAppId
 
