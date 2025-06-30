@@ -1,8 +1,13 @@
 parameters:
 - name: TestChangedModulesOnly
-  displayName: 'Only run tests on modules that are changed by regeneration'
   type: string
   default: 'True'
+- name: SelectedTargetModules
+  type: string
+  default: ''
+- name: NotificationReceiversOverride
+  type: string
+  default: ''
 
 variables:
   IntermediateStepTimeoutInMinutes: 30
@@ -38,6 +43,25 @@ stages:
       timeoutInMinutes: ${{ variables.IntermediateStepTimeoutInMinutes }}
       pool: ${{ variables.WindowsAgentPoolName }}
       steps:
+
+      - task: PowerShell@2
+        name: showVariables
+        displayName: 'Show Variables'
+        inputs:
+          targetType: inline
+          pwsh: true
+          script: |
+            Write-Host "Pipeline variable SKIPPED_MODULES: $($env:SKIPPED_MODULES)"
+            Write-Host "Pipeline variable GENERATION_BASE_BRANCH: $($env:GENERATION_BASE_BRANCH)"
+            Write-Host "Pipeline variable FailedJobNotificationReceivers: $($env:FailedJobNotificationReceivers)"
+
+            Write-Host "Parameter TestChangedModulesOnly: ${{ parameters.TestChangedModulesOnly }}"
+            Write-Host "Parameter SelectedTargetModules: ${{ parameters.SelectedTargetModules }}"
+            Write-Host "Parameter NotificationReceiversOverride: ${{ parameters.NotificationReceiversOverride }}"
+
+            Write-Host "FINAL_NOTIFICATION_RECEIVERS: $($env:FINAL_NOTIFICATION_RECEIVERS)"
+        env:
+          FINAL_NOTIFICATION_RECEIVERS: ${{ coalesce(parameters.NotificationReceiversOverride, variables.FailedJobNotificationReceivers) }}
 
       # TODO: (Bernard) Uncomment the no checkout step after automatically install repo into agents 
       # - checkout: none
