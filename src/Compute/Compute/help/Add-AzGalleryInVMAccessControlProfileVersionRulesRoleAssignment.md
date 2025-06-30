@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Adds a Rules Role Assignment to a PSGalleryInVmAccessControlProfileVersion object.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment** cmdlet adds a Rules Role Assignment to the provided PSGalleryInVmAccessControlProfileVersion object.
 
 ## EXAMPLES
 

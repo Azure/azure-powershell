@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzGalleryInVMAccessControlProfileVersionRulesRole
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a Rules Role from a PSGalleryInVmAccessControlProfileVersion object.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Remove-AzGalleryInVMAccessControlProfileVersionRulesRole
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzGalleryInVMAccessControlProfileVersionRulesRole** cmdlet removes a Rules Role from the provided PSGalleryInVmAccessControlProfileVersion object based on the role name.
 
 ## EXAMPLES
 

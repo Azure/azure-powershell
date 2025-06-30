@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Adds a Rules Identity to a PSGalleryInVmAccessControlProfileVersion object.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity** cmdlet adds a Rules Identity to the provided PSGalleryInVmAccessControlProfileVersion object.
 
 ## EXAMPLES
 

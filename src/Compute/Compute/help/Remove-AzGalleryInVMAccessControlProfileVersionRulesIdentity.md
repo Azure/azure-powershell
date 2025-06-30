@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzGalleryInVMAccessControlProfileVersionRulesIdentity
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a Rules Identity from a PSGalleryInVmAccessControlProfileVersion object.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Remove-AzGalleryInVMAccessControlProfileVersionRulesIdentity
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzGalleryInVMAccessControlProfileVersionRulesIdentity** cmdlet removes a Rules Identity from the provided PSGalleryInVmAccessControlProfileVersion object based on the specified identity name.
 
 ## EXAMPLES
 

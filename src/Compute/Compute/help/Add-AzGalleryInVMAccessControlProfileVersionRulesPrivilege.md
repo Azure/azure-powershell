@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzGalleryInVMAccessControlProfileVersionRulesPrivilege
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Adds a Rules Privilege to a PSGalleryInVmAccessControlProfileVersion object.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Add-AzGalleryInVMAccessControlProfileVersionRulesPrivilege
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Add-AzGalleryInVMAccessControlProfileVersionRulesPrivilege** cmdlet adds a Rules Privilege to the provided PSGalleryInVmAccessControlProfileVersion object.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzGalleryInVMAccessControlProfileVersionRulesPrivilege
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a Rules Privilege from a PSGalleryInVmAccessControlProfileVersion object.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Remove-AzGalleryInVMAccessControlProfileVersionRulesPrivilege
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzGalleryInVMAccessControlProfileVersionRulesPrivilege** cmdlet removes a Rules Privilege from the provided PSGalleryInVmAccessControlProfileVersion object based on the privilege name.
 
 ## EXAMPLES
 
