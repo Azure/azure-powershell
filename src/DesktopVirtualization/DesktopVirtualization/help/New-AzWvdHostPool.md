@@ -15,41 +15,41 @@ create a host pool.
 ### CreateExpanded (Default)
 ```
 New-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -HostPoolType <String>
- -LoadBalancerType <String> -Location <String> -PreferredAppGroupType <String> [-ManagementType <String>]
+ -LoadBalancerType <String> -Location <String> -PreferredAppGroupType <String>
  [-AgentUpdateMaintenanceWindow <IMaintenanceWindowProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <String>]
  [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
  [-DirectUdp <String>] [-ExpirationTime <DateTime>] [-FriendlyName <String>] [-IdentityType <String>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>] [-ManagedBy <String>]
- [-ManagedPrivateUdp <String>] [-MaxSessionLimit <Int32>] [-PersonalDesktopAssignmentType <String>]
- [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
- [-PlanVersion <String>] [-PublicNetworkAccess <String>] [-PublicUdp <String>]
- [-RegistrationInfoToken <String>] [-RegistrationTokenOperation <String>] [-RelayUdp <String>] [-Ring <Int32>]
- [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
- [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>] [-SsoSecretType <String>]
- [-SsoadfsAuthority <String>] [-StartVMOnConnect] [-Tag <Hashtable>] [-VMTemplate <String>]
- [-ValidationEnvironment] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ManagedPrivateUdp <String>] [-ManagementType <String>] [-MaxSessionLimit <Int32>]
+ [-PersonalDesktopAssignmentType <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
+ [-PublicNetworkAccess <String>] [-PublicUdp <String>] [-RegistrationInfoToken <String>]
+ [-RegistrationTokenOperation <String>] [-RelayUdp <String>] [-Ring <Int32>] [-SkuCapacity <Int32>]
+ [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-SsoClientId <String>]
+ [-SsoClientSecretKeyVaultPath <String>] [-SsoSecretType <String>] [-SsoadfsAuthority <String>]
+ [-StartVMOnConnect] [-Tag <Hashtable>] [-VMTemplate <String>] [-ValidationEnvironment]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FullScenarioCreate
 ```
 New-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -HostPoolType <String>
- -LoadBalancerType <String> -Location <String> -PreferredAppGroupType <String> [-ManagementType <String>]
- [-DesktopAppGroupName <String>] [-WorkspaceName <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -LoadBalancerType <String> -Location <String> -PreferredAppGroupType <String> [-DesktopAppGroupName <String>]
+ [-WorkspaceName <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -452,7 +452,7 @@ The default value is Automated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, FullScenarioCreate
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -596,21 +596,6 @@ Parameter Sets: CreateExpanded, FullScenarioCreate
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

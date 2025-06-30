@@ -1,6 +1,6 @@
 {
   "resourceType": "hostPools",
-  "apiVersion": "2024-11-01-preview",
+  "apiVersion": "2025-03-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization"
   },
@@ -216,6 +216,44 @@
       "examples": [
         {
           "description": "Get a SessionHostManagement.",
+          "parameters": [
+            {
+              "name": "-HostPoolName",
+              "value": "[Path.hostPoolName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzWvdSessionHostProvisioningStatuses",
+      "description": "Get the session host provisioning status for a given hostpool.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default/sessionHostProvisioningStatuses/default",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdsessionhostprovisioningstatuses"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HostPoolName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the session host provisioning status for a given hostpool.",
           "parameters": [
             {
               "name": "-HostPoolName",

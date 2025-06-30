@@ -17,12 +17,12 @@ update a SessionHostConfiguration.
 Update-AzWvdSessionHostConfiguration -HostPoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AvailabilityZone <Int32[]>] [-BootDiagnosticInfoEnabled]
  [-BootDiagnosticInfoStorageUri <String>] [-CustomConfigurationScriptUrl <String>]
- [-CustomInfoResourceId <String>] [-DiskInfoType <String>]
+ [-CustomInfoResourceId <String>] [-DiffDiskSettingOption <String>] [-DiffDiskSettingPlacement <String>]
  [-DomainCredentialsPasswordKeyVaultSecretUri <String>] [-DomainCredentialsUsernameKeyVaultSecretUri <String>]
- [-FriendlyName <String>] [-ImageInfoImageType <String>] [-MarketplaceInfoExactVersion <String>]
- [-MarketplaceInfoOffer <String>] [-MarketplaceInfoPublisher <String>] [-MarketplaceInfoSku <String>]
- [-NetworkInfoSecurityGroupId <String>] [-NetworkInfoSubnetId <String>] [-SecurityInfoSecureBootEnabled]
- [-SecurityInfoType <String>] [-SecurityInfoVTpmEnabled]
+ [-FriendlyName <String>] [-ImageInfoImageType <String>] [-ManagedDiskType <String>]
+ [-MarketplaceInfoExactVersion <String>] [-MarketplaceInfoOffer <String>] [-MarketplaceInfoPublisher <String>]
+ [-MarketplaceInfoSku <String>] [-NetworkInfoSecurityGroupId <String>] [-NetworkInfoSubnetId <String>]
+ [-SecurityInfoSecureBootEnabled] [-SecurityInfoType <String>] [-SecurityInfoVTpmEnabled]
  [-VMAdminCredentialsPasswordKeyVaultSecretUri <String>]
  [-VMAdminCredentialsUsernameKeyVaultSecretUri <String>] [-VMLocation <String>] [-VMNamePrefix <String>]
  [-VMResourceGroup <String>] [-VMSizeId <String>] [-VMTag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
@@ -33,9 +33,10 @@ Update-AzWvdSessionHostConfiguration -HostPoolName <String> -ResourceGroupName <
 ```
 Update-AzWvdSessionHostConfiguration -InputObject <IDesktopVirtualizationIdentity>
  [-AvailabilityZone <Int32[]>] [-BootDiagnosticInfoEnabled] [-BootDiagnosticInfoStorageUri <String>]
- [-CustomConfigurationScriptUrl <String>] [-CustomInfoResourceId <String>] [-DiskInfoType <String>]
- [-DomainCredentialsPasswordKeyVaultSecretUri <String>] [-DomainCredentialsUsernameKeyVaultSecretUri <String>]
- [-FriendlyName <String>] [-ImageInfoImageType <String>] [-MarketplaceInfoExactVersion <String>]
+ [-CustomConfigurationScriptUrl <String>] [-CustomInfoResourceId <String>] [-DiffDiskSettingOption <String>]
+ [-DiffDiskSettingPlacement <String>] [-DomainCredentialsPasswordKeyVaultSecretUri <String>]
+ [-DomainCredentialsUsernameKeyVaultSecretUri <String>] [-FriendlyName <String>]
+ [-ImageInfoImageType <String>] [-ManagedDiskType <String>] [-MarketplaceInfoExactVersion <String>]
  [-MarketplaceInfoOffer <String>] [-MarketplaceInfoPublisher <String>] [-MarketplaceInfoSku <String>]
  [-NetworkInfoSecurityGroupId <String>] [-NetworkInfoSubnetId <String>] [-SecurityInfoSecureBootEnabled]
  [-SecurityInfoType <String>] [-SecurityInfoVTpmEnabled]
@@ -206,8 +207,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DiskInfoType
-The disk type used by virtual machine in hostpool session host.
+### -DiffDiskSettingOption
+Specifies the ephemeral disk settings for operating system disk.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DiffDiskSettingPlacement
+Gets or sets specifies the ephemeral disk placement for operating system disk.
+The defaulting behavior is: CacheDisk if one is configured for the VM size otherwise ResourceDisk is used.
+Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk.
+Possible values include: 'CacheDisk', 'ResourceDisk'
 
 ```yaml
 Type: System.String
@@ -335,6 +354,21 @@ Parameter Sets: UpdateViaJsonString
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedDiskType
+The disk type used by virtual machine in hostpool session host.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

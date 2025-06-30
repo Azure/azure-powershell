@@ -71,6 +71,9 @@ Get a SessionHostManagement.
 ### [Get-AzWvdSessionHostManagementsUpdateStatus](Get-AzWvdSessionHostManagementsUpdateStatus.md)
 Get the session host get status for a given hostpool.
 
+### [Get-AzWvdSessionHostProvisioningStatuses](Get-AzWvdSessionHostProvisioningStatuses.md)
+Get the session host provisioning status for a given hostpool.
+
 ### [Get-AzWvdStartMenuItem](Get-AzWvdStartMenuItem.md)
 List start menu items in the given application group.
 
@@ -82,6 +85,9 @@ Get a workspace.
 
 ### [Import-AzWvdAppAttachPackageInfo](Import-AzWvdAppAttachPackageInfo.md)
 Gets information from a package given the path to the package.
+
+### [Invoke-AzWvdControlSessionHostProvisioning](Invoke-AzWvdControlSessionHostProvisioning.md)
+Control provisioning of a hostpool.
 
 ### [Invoke-AzWvdControlSessionHostUpdate](Invoke-AzWvdControlSessionHostUpdate.md)
 Control post of a hostpool.

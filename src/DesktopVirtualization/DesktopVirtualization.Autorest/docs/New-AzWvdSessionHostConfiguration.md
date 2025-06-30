@@ -14,20 +14,20 @@ create a SessionHostConfiguration.
 
 ### CreateExpanded (Default)
 ```
-New-AzWvdSessionHostConfiguration -HostPoolName <String> -ResourceGroupName <String> -DiskInfoType <String>
+New-AzWvdSessionHostConfiguration -HostPoolName <String> -ResourceGroupName <String>
  -DomainInfoJoinType <String> -ImageInfoImageType <String> -NetworkInfoSubnetId <String>
  -VMAdminCredentialsPasswordKeyVaultSecretUri <String> -VMAdminCredentialsUsernameKeyVaultSecretUri <String>
  -VMNamePrefix <String> -VMSizeId <String> [-SubscriptionId <String>]
  [-ActiveDirectoryInfoDomainName <String>] [-ActiveDirectoryInfoOuPath <String>] [-AvailabilityZone <Int32[]>]
  [-AzureActiveDirectoryInfoMdmProviderGuid <String>] [-BootDiagnosticInfoEnabled]
  [-BootDiagnosticInfoStorageUri <String>] [-CustomConfigurationScriptUrl <String>]
- [-CustomInfoResourceId <String>] [-DomainCredentialsPasswordKeyVaultSecretUri <String>]
- [-DomainCredentialsUsernameKeyVaultSecretUri <String>] [-FriendlyName <String>]
- [-MarketplaceInfoExactVersion <String>] [-MarketplaceInfoOffer <String>] [-MarketplaceInfoPublisher <String>]
- [-MarketplaceInfoSku <String>] [-NetworkInfoSecurityGroupId <String>] [-SecurityInfoSecureBootEnabled]
- [-SecurityInfoType <String>] [-SecurityInfoVTpmEnabled] [-VMLocation <String>] [-VMResourceGroup <String>]
- [-VMTag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-CustomInfoResourceId <String>] [-DiffDiskSettingOption <String>] [-DiffDiskSettingPlacement <String>]
+ [-DomainCredentialsPasswordKeyVaultSecretUri <String>] [-DomainCredentialsUsernameKeyVaultSecretUri <String>]
+ [-FriendlyName <String>] [-ManagedDiskType <String>] [-MarketplaceInfoExactVersion <String>]
+ [-MarketplaceInfoOffer <String>] [-MarketplaceInfoPublisher <String>] [-MarketplaceInfoSku <String>]
+ [-NetworkInfoSecurityGroupId <String>] [-SecurityInfoSecureBootEnabled] [-SecurityInfoType <String>]
+ [-SecurityInfoVTpmEnabled] [-VMLocation <String>] [-VMResourceGroup <String>] [-VMTag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -53,7 +53,7 @@ create a SessionHostConfiguration.
 ```powershell
 New-AzWvdSessionHostConfiguration -ResourceGroupName ResourceGroupName `
                             -HostPoolName HostPoolName `
-                            -DiskInfoType "Standard_LRS" `
+                            -ManagedDiskType "Standard_LRS" `
                             -DomainInfoJoinType "AzureActiveDirectory" `
                             -ImageInfoImageType "Marketplace" `
                             -NetworkInfoSubnetId "/subscriptions/{subscriptionId}/resourceGroups/resourceGrouName/providers/Microsoft.Network/virtualNetworks/{vNetName}/subnets/default" `
@@ -237,15 +237,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DiskInfoType
-The disk type used by virtual machine in hostpool session host.
+### -DiffDiskSettingOption
+Specifies the ephemeral disk settings for operating system disk.
 
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DiffDiskSettingPlacement
+Gets or sets specifies the ephemeral disk placement for operating system disk.
+The defaulting behavior is: CacheDisk if one is configured for the VM size otherwise ResourceDisk is used.
+Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk.
+Possible values include: 'CacheDisk', 'ResourceDisk'
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -366,6 +384,21 @@ Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedDiskType
+The disk type used by virtual machine in hostpool session host.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

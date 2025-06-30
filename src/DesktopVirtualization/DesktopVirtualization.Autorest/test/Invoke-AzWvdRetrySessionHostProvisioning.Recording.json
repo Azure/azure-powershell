@@ -1,17 +1,17 @@
 {
-  "Invoke-AzWvdRetrySessionHostProvisioning+[NoContext]+Retry+$POST+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/poshSHMHP/sessionHosts/shm-1/retryProvisioning?api-version=2024-11-01-preview+1": {
+  "Invoke-AzWvdRetrySessionHostProvisioning+[NoContext]+Retry+$POST+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/poshSHMHP/sessionHosts/shm-1/retryProvisioning?api-version=2025-03-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/poshSHMHP/sessionHosts/shm-1/retryProvisioning?api-version=2024-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/poshSHMHP/sessionHosts/shm-1/retryProvisioning?api-version=2025-03-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "179" ],
-        "x-ms-client-request-id": [ "47ff8f5e-2bb9-48c4-b3e9-4ab3591ab800" ],
+        "x-ms-unique-id": [ "177" ],
+        "x-ms-client-request-id": [ "3c25a887-2a4c-4ac7-b76f-e14b00854149" ],
         "CommandName": [ "Invoke-AzWvdRetrySessionHostProvisioning" ],
         "FullCommandName": [ "Invoke-AzWvdRetrySessionHostProvisioning_Retry" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v8.1.0", "PSVersion/v7.4.7", "Az.DesktopVirtualization/5.4.1" ],
+        "User-Agent": [ "AzurePowershell/v8.1.0", "PSVersion/v7.5.1", "Az.DesktopVirtualization/5.4.2" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,24 +22,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Set-Cookie": [ "ARRAffinity=f08099ddc6d1b5b480ee26565f489b862c28fda9abd95391f75b0cea107d6318;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=f08099ddc6d1b5b480ee26565f489b862c28fda9abd95391f75b0cea107d6318;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
+        "Set-Cookie": [ "ARRAffinity=6c9336690260758db9d8ce02be6e38bbba14e4b1138b556a6f4be7b30c6c8995;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=6c9336690260758db9d8ce02be6e38bbba14e4b1138b556a6f4be7b30c6c8995;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
         "X-Rate-Limit-Limit": [ "0" ],
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvcG9zaFNITUhQL3Nlc3Npb25Ib3N0cy9zaG0tMQ==" ],
-        "x-ms-lamport-ts": [ "196801648" ],
-        "x-ms-correlation-id": [ "920d9c4d-a5bf-4cda-af01-532cb4146fb2" ],
-        "x-ms-request-id": [ "47ff8f5e-2bb9-48c4-b3e9-4ab3591ab800" ],
+        "x-ms-lamport-ts": [ "212363627" ],
+        "x-ms-correlation-id": [ "c1ee9c48-0e8a-4a48-935a-b92c7516598f" ],
+        "x-ms-request-id": [ "3c25a887-2a4c-4ac7-b76f-e14b00854149" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-operation-identifier": [ "tenantId=74bc2df0-fc57-4361-b150-2d6dd51cb663,objectId=6af0f1bf-5c93-4451-a61d-ebfd80741d5b/southeastasia/3cb909e9-095e-4250-ac9c-f187eb0362f1" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "b8de006c-5bbb-4752-bcc4-3c7566a555c8" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250304T080443Z:b8de006c-5bbb-4752-bcc4-3c7566a555c8" ],
+        "x-ms-correlation-request-id": [ "d8e3c5a5-e03a-4c24-8bca-f69f76ce90a7" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250626T024449Z:d8e3c5a5-e03a-4c24-8bca-f69f76ce90a7" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 855D22465C1E46DAB9845E9033DEFA1A Ref B: MAA201060514045 Ref C: 2025-03-04T08:04:42Z" ],
-        "Date": [ "Tue, 04 Mar 2025 08:04:42 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 869DB71AE61B42B69883F0A07515A3F4 Ref B: MAA201060515011 Ref C: 2025-06-26T02:44:47Z" ],
+        "Date": [ "Thu, 26 Jun 2025 02:44:49 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
