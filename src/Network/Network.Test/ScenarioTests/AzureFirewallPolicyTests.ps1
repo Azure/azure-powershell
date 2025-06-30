@@ -1057,7 +1057,7 @@ function Test-AzureFirewallPolicyPremiumWithTerminateTLSEnabled {
         Assert-AreEqual $appRule1Fqdn1 $appRule.TargetFqdns[0]
         Assert-AreEqual $appRule1Fqdn2 $appRule.TargetFqdns[1]
 
-        # Verify TerminatTLS flag is set
+        # Verify TerminateTLS flag is set
         Assert-AreEqual true $appRule.TerminateTLS
 
         $testPipelineRg = Get-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -AzureFirewallPolicyName $getAzureFirewallPolicy.Name -ResourceGroupName $rgname
@@ -1171,7 +1171,7 @@ function Test-AzureFirewallPolicyPremiumWithTerminateTLSDisabledAndTargetUrls {
         Assert-AreEqual $appRule1TargetUrl1 $appRule.TargetUrls[0]
         Assert-AreEqual $appRule1TargetUrl2 $appRule.TargetUrls[1]
 
-        # Verify TerminatTLS flag is NOT set
+        # Verify TerminateTLS flag is NOT set
         Assert-AreEqual false $appRule.TerminateTLS
 
         $testPipelineRg = Get-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -AzureFirewallPolicyName $getAzureFirewallPolicy.Name -ResourceGroupName $rgname
@@ -1290,7 +1290,7 @@ function Test-AzureFirewallPolicyPremiumWithTerminateTLSEnabledAndTargetUrls {
         Assert-AreEqual $appRule1TargetUrl1 $appRule.TargetUrls[0]
         Assert-AreEqual $appRule1TargetUrl2 $appRule.TargetUrls[1]
 
-        # Verify TerminatTLS flag is set
+        # Verify TerminateTLS flag is set
         Assert-AreEqual true $appRule.TerminateTLS
 
         $testPipelineRg = Get-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -AzureFirewallPolicyName $getAzureFirewallPolicy.Name -ResourceGroupName $rgname

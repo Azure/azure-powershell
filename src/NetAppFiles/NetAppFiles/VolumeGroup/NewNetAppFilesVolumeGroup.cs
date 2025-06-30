@@ -51,11 +51,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
         public const string DefaultOracleSystemId = "ORA1";
         public const int DefaultCapacityOverhead = 50;
         public const int DefaultDataVolumes = 2;
-        private const string DefaultCapacityOverheadHelp = "50"; //do to limitation of current compliler this must be text 
+        private const string DefaultCapacityOverheadHelp = "50"; //do to limitation of current compiler this must be text 
         public const int DefaultStartingHostId = 1;
-        private const string DefaultStartingHostIdHelp = "1"; //do to limitation of current compliler this must be text 
+        private const string DefaultStartingHostIdHelp = "1"; //do to limitation of current compiler this must be text 
         public const int DefaultHostCount = 1;
-        private const string DefaultHostCountHelp = "1"; //do to limitation of current compliler this must be text 
+        private const string DefaultHostCountHelp = "1"; //do to limitation of current compiler this must be text 
         private const string DefaultSubnetName = "Default";
         private readonly string[] DefaultProtocoTypes = new string[] { VolumeProtocolTypes.NSFv41 };
 
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify capacity (in GiB). If ommited DataSize will be autocalculated or specify an integer value representing size.")]
+            HelpMessage = "Specify capacity (in GiB). If omitted DataSize will be autocalculated or specify an integer value representing size.")]
         public long? DataSize { get; set; }
 
         [Parameter(
@@ -230,17 +230,17 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify throughput in MiB/s. If ommited DataPerformance will be autocalculated or specify and integer value representing throughput.")]
+            HelpMessage = "Specify throughput in MiB/s. If omitted DataPerformance will be autocalculated or specify and integer value representing throughput.")]
         public int? DataPerformance { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify capacity (in GiB). If ommited LogSize will be autocalculated or specify an integer value representing size.")]
+            HelpMessage = "Specify capacity (in GiB). If omitted LogSize will be autocalculated or specify an integer value representing size.")]
         public long? LogSize { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify throughput in MiB/s. If ommited LogPerformance will be autocalculated or specify and integer value representing throughput.")]
+            HelpMessage = "Specify throughput in MiB/s. If omitted LogPerformance will be autocalculated or specify and integer value representing throughput.")]
         public int? LogPerformance { get; set; }
 
         [Parameter(
@@ -260,12 +260,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify capacity (in GiB). If ommited SharedSize will be autocalculated or specify an integer value representing size.")]
+            HelpMessage = "Specify capacity (in GiB). If omitted SharedSize will be autocalculated or specify an integer value representing size.")]
         public long? SharedSize { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify throughput in MiB/s. If ommited SharedPerformance will be autocalculated or specify and integer value representing throughput.")]
+            HelpMessage = "Specify throughput in MiB/s. If omitted SharedPerformance will be autocalculated or specify and integer value representing throughput.")]
         public int? SharedPerformance { get; set; }
 
         [Parameter(
@@ -285,12 +285,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify capacity (in GiB). If ommited DataSize will be autocalculated or specify an integer value representing size.")]
+            HelpMessage = "Specify capacity (in GiB). If omitted DataSize will be autocalculated or specify an integer value representing size.")]
         public long? DataBackupSize { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify throughput in MiB/s. If ommited DataBackupPerformance will be autocalculated or specify an integer value representing throughput.")]
+            HelpMessage = "Specify throughput in MiB/s. If omitted DataBackupPerformance will be autocalculated or specify an integer value representing throughput.")]
         public int? DataBackupPerformance { get; set; }
 
         [Parameter(
@@ -310,12 +310,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify capacity (in GiB). If ommited DataSize will be autocalculated or specify an integer value representing size.")]
+            HelpMessage = "Specify capacity (in GiB). If omitted DataSize will be autocalculated or specify an integer value representing size.")]
         public long? LogBackupSize { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify throughput in MiB/s. If ommited LogBackupPerformance will be autocalculated or specify an integer value representing throughput.")]
+            HelpMessage = "Specify throughput in MiB/s. If omitted LogBackupPerformance will be autocalculated or specify an integer value representing throughput.")]
         public int? LogBackupPerformance { get; set; }
 
         [Parameter(
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "HANA System Replication (HSR): Replication between the same SID instance on hosts in the same region, or differerent regions. This could be Scale-Up or Scale-Out configurations.")]
+            HelpMessage = "HANA System Replication (HSR): Replication between the same SID instance on hosts in the same region, or different regions. This could be Scale-Up or Scale-Out configurations.")]
         [PSDefaultValue(Help = "Default true", Value = false)]
         public SwitchParameter HannaSystemReplication { get; set; }
 
@@ -411,13 +411,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify capacity (in GiB). If ommited a DataSize size for disk 2 will be autocalculated or specify an integer value representing size.For Oracle Application Volume Groups only",
+            HelpMessage = "Specify capacity (in GiB). If omitted a DataSize size for disk 2 will be autocalculated or specify an integer value representing size.For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName )]
         public long? DataSize2 { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify throughput in MiB/s. If ommited DataPerformance for disk 2 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only",
+            HelpMessage = "Specify throughput in MiB/s. If omitted DataPerformance for disk 2 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public int? Data2Performance { get; set; }
 
@@ -438,13 +438,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify capacity (in GiB). If ommited DataSize for disk 3 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 3 this will be ignored. For Oracle Application Volume Groups only",
+            HelpMessage = "Specify capacity (in GiB). If omitted DataSize for disk 3 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 3 this will be ignored. For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public long? DataSize3 { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify throughput in MiB/s. If ommited DataPerformance for disk 3 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only",
+            HelpMessage = "Specify throughput in MiB/s. If omitted DataPerformance for disk 3 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public int? Data3Performance { get; set; }
 
@@ -465,13 +465,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify capacity (in GiB). If ommited DataSize for disk 4 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 4 this will be ignored. For Oracle Application Volume Groups only",
+            HelpMessage = "Specify capacity (in GiB). If omitted DataSize for disk 4 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 4 this will be ignored. For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public long? Data4Size { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify throughput in MiB/s. If ommited DataPerformance for disk 4 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only",
+            HelpMessage = "Specify throughput in MiB/s. If omitted DataPerformance for disk 4 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public int? Data4Performance { get; set; }
 
@@ -492,13 +492,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify capacity (in GiB). If ommited DataSize for disk 5 will be autocalculated or specify an integer value representing size.If NumberOfDataVolume is less than 5 this will be ignored. For Oracle Application Volume Groups only",
+            HelpMessage = "Specify capacity (in GiB). If omitted DataSize for disk 5 will be autocalculated or specify an integer value representing size.If NumberOfDataVolume is less than 5 this will be ignored. For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public long? Data5Size { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify throughput in MiB/s. If ommited DataPerformance for disk 5 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only",
+            HelpMessage = "Specify throughput in MiB/s. If omitted DataPerformance for disk 5 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public int? Data5Performance { get; set; }
 
@@ -519,13 +519,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify capacity (in GiB). If ommited DataSize for disk 6 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 6 this will be ignored. For Oracle Application Volume Groups only",
+            HelpMessage = "Specify capacity (in GiB). If omitted DataSize for disk 6 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 6 this will be ignored. For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public long? Data6Size { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify throughput in MiB/s. If ommited DataPerformance for disk 6 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only",
+            HelpMessage = "Specify throughput in MiB/s. If omitted DataPerformance for disk 6 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public int? Data6Performance { get; set; }
 
@@ -546,13 +546,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify capacity (in GiB). If ommited DataSize for disk 7 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 7 this will be ignored. For Oracle Application Volume Groups only",
+            HelpMessage = "Specify capacity (in GiB). If omitted DataSize for disk 7 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 7 this will be ignored. For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public long? Data7Size { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify throughput in MiB/s. If ommited DataPerformance for disk 7 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only",
+            HelpMessage = "Specify throughput in MiB/s. If omitted DataPerformance for disk 7 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName
             )]
         public int? Data7Performance { get; set; }
@@ -574,13 +574,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify capacity (in GiB). If ommited DataSize for disk 8 will be autocalculated or specify an integer value representing size.If NumberOfDataVolume is less than 8 this will be ignored. For Oracle Application Volume Groups only",
+            HelpMessage = "Specify capacity (in GiB). If omitted DataSize for disk 8 will be autocalculated or specify an integer value representing size.If NumberOfDataVolume is less than 8 this will be ignored. For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public long? DataSize8 { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify throughput in MiB/s. If ommited DataPerformance for disk 8 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only",
+            HelpMessage = "Specify throughput in MiB/s. If omitted DataPerformance for disk 8 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public int? DataPerformance8 { get; set; }
 
@@ -601,13 +601,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify capacity (in GiB). If ommited Size for BinarySize will be autocalculated or specify an integer value representing size.For Oracle Application Volume Groups only",
+            HelpMessage = "Specify capacity (in GiB). If omitted Size for BinarySize will be autocalculated or specify an integer value representing size.For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public long? BinarySize { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify throughput in MiB/s. If ommited BinaryPerformance will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only",
+            HelpMessage = "Specify throughput in MiB/s. If omitted BinaryPerformance will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public int? BinaryPerformance { get; set; }
 
@@ -628,13 +628,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify capacity (in GiB). If ommited Size for BackupSize will be autocalculated or specify an integer value representing size.For Oracle Application Volume Groups only",
+            HelpMessage = "Specify capacity (in GiB). If omitted Size for BackupSize will be autocalculated or specify an integer value representing size.For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public long? BackupSize { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify throughput in MiB/s. If ommited BackupPerformance will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only",
+            HelpMessage = "Specify throughput in MiB/s. If omitted BackupPerformance will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public int? BackupPerformance { get; set; }
 
@@ -655,13 +655,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify capacity (in GiB). If ommited Size for LogMirrorSize will be autocalculated or specify an integer value representing size.For Oracle Application Volume Groups only",
+            HelpMessage = "Specify capacity (in GiB). If omitted Size for LogMirrorSize will be autocalculated or specify an integer value representing size.For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public long? LogMirrorSize { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify throughput in MiB/s. If ommited LogMirrorPerformance will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only",
+            HelpMessage = "Specify throughput in MiB/s. If omitted LogMirrorPerformance will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public int? LogMirrorPerformance { get; set; }
 

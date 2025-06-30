@@ -143,7 +143,7 @@ function Test-VirtualRouterPeerCRUD
 
 <#
 .SYNOPSIS
-Test virtual router peer learned and advertiesd routes (bgp routes)
+Test virtual router peer learned and advertised routes (bgp routes)
 #>
 function Test-VirtualRouterPeerRoutes
 {

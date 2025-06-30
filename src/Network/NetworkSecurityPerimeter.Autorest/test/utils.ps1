@@ -200,13 +200,13 @@ function cleanupEnv() {
 						Write-Host -ForegroundColor Green "[CLEANUP] Success remove link"
 					}
 					catch{
-						Write-Host -ForegroundColor Red "Error occcured with removing link"
+						Write-Host -ForegroundColor Red "Error occured with removing link"
 						$_.Exception.ToString()
 					}
 				}
 	    	}
 	    	catch{
-	    		Write-Host -ForegroundColor Red "Error occcured with listing link"
+	    		Write-Host -ForegroundColor Red "Error occured with listing link"
 				$_.Exception.ToString()
 
 	    	}
@@ -224,14 +224,14 @@ function cleanupEnv() {
 	    				Remove-AzNetworkSecurityPerimeterLinkReference -Name $ref.Name -ResourceGroupName $rg -SecurityPerimeterName $nsp
 	    			Write-Host -ForegroundColor Green "[CLEANUP] Success remove reference"
 	    			}catch{
-	    			Write-Host -ForegroundColor Red "Error occcured with removing link reference"
+	    			Write-Host -ForegroundColor Red "Error occured with removing link reference"
 	    				$_.Exception.ToString()
 	    			}
 	    		}
 
 	    	}
 	    	catch{
-		    	Write-Host -ForegroundColor Red "Error occcured with listing link ref"
+		    	Write-Host -ForegroundColor Red "Error occured with listing link ref"
 				$_.Exception.ToString()
 	    	}
 
@@ -241,7 +241,7 @@ function cleanupEnv() {
 				Write-Host -ForegroundColor Green "[CLEANUP] Success remove nsp"
 	    	}
 	    	catch{
-		    	Write-Host -ForegroundColor Red "Error occcured with removing nsp"
+		    	Write-Host -ForegroundColor Red "Error occured with removing nsp"
 	    		$_.Exception.ToString()
 	    	}
 	    }
@@ -252,12 +252,12 @@ function cleanupEnv() {
 			Write-Host -ForegroundColor Green "[CLEANUP] Success remove resource group"
     	}
     	catch{
-	    	Write-Host -ForegroundColor Red "Error occcured with removing rg"
+	    	Write-Host -ForegroundColor Red "Error occured with removing rg"
     		$_.Exception.ToString()
     	}
     }
     catch{
-        Write-Host -ForegroundColor Red "Error occcured with listing nsps"
+        Write-Host -ForegroundColor Red "Error occured with listing nsps"
     }
 
     Write-Host -ForegroundColor Magenta "Removing resources done, check previous logs for details."

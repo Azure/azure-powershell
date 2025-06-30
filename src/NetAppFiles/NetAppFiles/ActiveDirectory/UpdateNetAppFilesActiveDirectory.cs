@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                 var anfAccount = AzureNetAppFilesManagementClient.Accounts.Get(ResourceGroupName, AccountName);
                 if (anfAccount == null)
                 {
-                    throw new ArgumentException($"Specified NetAppAccount with name '{this.AccountName}' does not extist in Resource Group '{this.ResourceGroupName}'");
+                    throw new ArgumentException($"Specified NetAppAccount with name '{this.AccountName}' does not exist in Resource Group '{this.ResourceGroupName}'");
                 }
                 string dnsStr = null;
                 if (Dns != null)

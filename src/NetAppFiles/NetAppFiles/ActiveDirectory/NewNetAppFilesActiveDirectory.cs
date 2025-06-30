@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
                 var anfAccount = AzureNetAppFilesManagementClient.Accounts.Get(ResourceGroupName, AccountName);
                 if (anfAccount == null)
                 {
-                    throw new ArgumentException($"Specified NetAppAccount with name '{this.AccountName}' does not extist in Resource Group '{this.ResourceGroupName}'");
+                    throw new ArgumentException($"Specified NetAppAccount with name '{this.AccountName}' does not exist in Resource Group '{this.ResourceGroupName}'");
                 }
                                 
                 var activeDirectory = new Management.NetApp.Models.ActiveDirectory

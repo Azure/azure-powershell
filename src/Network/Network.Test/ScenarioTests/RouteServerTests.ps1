@@ -148,7 +148,7 @@ function Test-RouteServerPeerCRUD
 
 <#
 .SYNOPSIS
-Test route server peer learned and advertiesd routes (bgp routes)
+Test route server peer learned and advertised routes (bgp routes)
 #>
 function Test-RouteServerPeerRoutes
 {

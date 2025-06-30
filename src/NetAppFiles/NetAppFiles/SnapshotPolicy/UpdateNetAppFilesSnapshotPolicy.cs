@@ -96,13 +96,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "A hashtable array which represents the montly Schedule")]
+            HelpMessage = "A hashtable array which represents the monthly Schedule")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesWeeklySchedule WeeklySchedule { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "A hashtable array which represents the montly Schedule")]
+            HelpMessage = "A hashtable array which represents the monthly Schedule")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesMonthlySchedule MonthlySchedule { get; set; }
 

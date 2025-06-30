@@ -52,7 +52,7 @@
 ## Version 0.18.0
 * Fixed some minor issues
 * Added `SnapshotName` to `New-AzNetAppFilesBackup`
-* Fixed `New-AzNetAppFilesBackup`, `Label` is not a requred parameter
+* Fixed `New-AzNetAppFilesBackup`, `Label` is not a required parameter
 
 ## Version 0.17.0
 * Updated to api-version 2024-03-01
@@ -121,9 +121,9 @@ Breaking change:
 * Added cmdLet `Update-NetAppFilesAccountCredential`
 * Added properties `Identity`, `Encryption` and `DisableShowmount` to `PSNetAppFilesAccount`
 * Added properties `Encrypted` and `Zones`, `DeleteBaseSnapshot`, `KeyVaultPrivateEndpointResourceId`,`SmbAccessBasedEnumeration`, `SmbNonBrowsable`, `EncryptionKeySource`, `VolumeSpecName` to `PSNetAppFilesVolume`
-* Added paramter `CoolAccess` to `Update-AzNetAppFilesPool`
-* Added paramter `DeleteBaseSnapshot`, `SmbAccessBasedEnumeration`, `SmbNonBrowsable`, `EncryptionKeySource` and `KeyVaultPrivateEndpointResourceId` to `New-AzNetAppFilesVolume`
-* Added paramter `CoolAccess`, `CoolnessPeriod`, `EncryptionKeySource` and `KeyVaultPrivateEndpointResourceId` to `Update-AzNetAppFilesVolume`
+* Added parameter `CoolAccess` to `Update-AzNetAppFilesPool`
+* Added parameter `DeleteBaseSnapshot`, `SmbAccessBasedEnumeration`, `SmbNonBrowsable`, `EncryptionKeySource` and `KeyVaultPrivateEndpointResourceId` to `New-AzNetAppFilesVolume`
+* Added parameter `CoolAccess`, `CoolnessPeriod`, `EncryptionKeySource` and `KeyVaultPrivateEndpointResourceId` to `Update-AzNetAppFilesVolume`
 * Planning to deprecate the cmdLet `Get-AzNetAppFilesVault` as it will not be needed 
 
 ## Version 0.10.0
@@ -144,7 +144,7 @@ Breaking change:
 * Added `CapacityPoolResourceId`, `ProximityPlacementGroup`, `VolumeSpecName` and `PlacementRules` to `Volume`
 
 Breaking change:
-* The `Administrators` parameter in `New-AzNetAppFilesActiveDirectory` and `Update-AzNetAppFilesActiveDirectory` is changed to singularform `Administrator` to follow Powrshell convetion
+* The `Administrators` parameter in `New-AzNetAppFilesActiveDirectory` and `Update-AzNetAppFilesActiveDirectory` is changed to singularform `Administrator` to follow Powershell convention
 
 ## Version 0.8.0
 * Added list NetAppAccounts by subscription
@@ -221,14 +221,14 @@ Breaking change:
      - BackupId
      - SecurityStyle
      - KerberosEnabled
-* Add paramters to `Update-AzNetAppFilesVolume`
+* Add parameters to `Update-AzNetAppFilesVolume`
      - Backup to to enable Backups and Backup Policy
      - totalThroughputMips
 * Add property StatusDetails to Account
 * Add properties to support LDAP over SSL/TLS to ActiveDirectory
 * Add properties to support Kerberos to ExportPolicy rule
 * Add QosType parameter to Pool `New-AzNetAppFilesPool` and `Update-AzNetAppFilesPool`
-* Breaking Removed ServiecLevel from `Update-AzNetAppFilesPool` as that updating servie level is not supported
+* Breaking Removed ServiecLevel from `Update-AzNetAppFilesPool` as that updating service level is not supported
 * Add `Initialize-AzNetAppFilesReplication` cmdLet
 * Add ForceBreak parameter to `Suspend-AzNetAppFilesReplication` to force break the replication if replication is in status transferring
 

@@ -58,7 +58,7 @@ function Test-PrivateLinkServiceCRUD
         $job | Wait-Job
         $ilbcreate = $job | Receive-Job
 
-        # Verfify if load balancer is created successfully
+        # Verify if load balancer is created successfully
         Assert-NotNull $ilbcreate;
         Assert-AreEqual $ilbName $ilbcreate.Name;
         Assert-AreEqual (Normalize-Location $location) $ilbcreate.Location;
@@ -294,7 +294,7 @@ function Test-PrivateLinkServiceInEdgeZone
         $beaddresspool= New-AzLoadBalancerBackendAddressPoolConfig -Name $ilbBackendName
         $ilbcreate = New-AzLoadBalancer -ResourceGroupName $rgname -Name $ilbName -Location $location -FrontendIpConfiguration $frontendIP -BackendAddressPool $beaddresspool -Sku "Standard" -EdgeZone $edgeZone
 
-        # Verfify if load balancer is created successfully
+        # Verify if load balancer is created successfully
         Assert-NotNull $ilbcreate
         Assert-AreEqual $ilbName $ilbcreate.Name
         Assert-AreEqual (Normalize-Location $location) $ilbcreate.Location

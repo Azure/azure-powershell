@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string AccountName { get; set; }
 
         /// <summary>
-        /// Id of the active drectory.
+        /// Id of the active directory.
         /// Value of this property can not be set by user.
         /// </summary>
         /// <value>Id of the Active Directory.</value>
