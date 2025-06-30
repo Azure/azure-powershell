@@ -66,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
         Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRefundPolicyResult Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRefundResponsePropertiesInternal.PolicyResult { get => (this._policyResult = this._policyResult ?? new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.RefundPolicyResult()); set { {_policyResult = value;} } }
 
         /// <summary>Internal Acessors for PolicyResultProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRefundPolicyResultProperty Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRefundResponsePropertiesInternal.PolicyResultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRefundPolicyResultInternal)PolicyResult).Property; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRefundPolicyResultInternal)PolicyResult).Property = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRefundPolicyResultProperty Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRefundResponsePropertiesInternal.PolicyResultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRefundPolicyResultInternal)PolicyResult).Property; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRefundPolicyResultInternal)PolicyResult).Property = value ?? null /* model class */; }
 
         /// <summary>Refund Policy errors</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Origin(Microsoft.Azure.PowerShell.Cmdlets.Reservations.PropertyOrigin.Inlined)]

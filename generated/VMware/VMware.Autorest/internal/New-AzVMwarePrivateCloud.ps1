@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a PrivateCloud
+Create a PrivateCloud
 .Description
-create a PrivateCloud
+Create a PrivateCloud
 .Example
 New-AzVMwarePrivateCloud -Name azps_test_cloud -ResourceGroupName azps_test_group -NetworkBlock 192.168.48.0/22 -Sku av36 -ManagementClusterSize 3 -Location australiaeast
 
@@ -33,7 +33,7 @@ IDENTITYSOURCE <IIdentitySource[]>: vCenter Single Sign On Identity Sources
   [Alias <String>]: The domain's NetBIOS name
   [BaseGroupDn <String>]: The base distinguished name for groups
   [BaseUserDn <String>]: The base distinguished name for users
-  [Domain <String>]: The domain's dns name
+  [Domain <String>]: The domain's DNS name
   [Name <String>]: The name of the identity source
   [Password <SecureString>]: The password of the Active Directory user with a minimum of read-only access to         Base DN for users and groups.
   [PrimaryServer <String>]: Primary server URL
@@ -241,6 +241,13 @@ param(
     [System.String]
     # Azure resource ID of the virtual network
     ${VirtualNetworkId},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String[]]
+    # The availability zones.
+    ${Zone},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

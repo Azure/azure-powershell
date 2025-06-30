@@ -49,6 +49,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeSchedule.Runtime.PowerShell
         public PsHelpInfo HelpInfo { get; }
         public bool IsGenerated { get; }
         public bool IsInternal { get; }
+        public bool IsModelCmdlet { get; }
         public string OutputFolder { get; }
         public string FileName { get; }
         public string FilePath { get; }
@@ -83,6 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeSchedule.Runtime.PowerShell
             HelpInfo = Variants.Select(v => v.HelpInfo).FirstOrDefault() ?? new PsHelpInfo();
             IsGenerated = Variants.All(v => v.Attributes.OfType<GeneratedAttribute>().Any());
             IsInternal = isInternal;
+            IsModelCmdlet = Variants.All(v => v.IsModelCmdlet);
             OutputFolder = outputFolder;
             FileName = $"{CmdletName}{(isTest ? ".Tests" : String.Empty)}.ps1";
             FilePath = Path.Combine(OutputFolder, FileName);
@@ -143,6 +145,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeSchedule.Runtime.PowerShell
         public Parameter[] Parameters { get; }
         public Parameter[] CmdletOnlyParameters { get; }
         public bool IsInternal { get; }
+        public bool IsModelCmdlet { get; }
         public bool IsDoNotExport { get; }
         public bool IsNotSuggestDefaultParameterSet { get; }
         public string[] Profiles { get; }
@@ -165,6 +168,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeSchedule.Runtime.PowerShell
             Parameters = this.ToParameters().OrderBy(p => p.OrderCategory).ThenByDescending(p => p.IsMandatory).ToArray();
             IsInternal = Attributes.OfType<InternalExportAttribute>().Any();
             IsDoNotExport = Attributes.OfType<DoNotExportAttribute>().Any();
+            IsModelCmdlet = Attributes.OfType<ModelCmdletAttribute>().Any();
             IsNotSuggestDefaultParameterSet = Attributes.OfType<NotSuggestDefaultParameterSetAttribute>().Any();
             CmdletOnlyParameters = Parameters.Where(p => !p.Categories.Any(c => c == ParameterCategory.Azure || c == ParameterCategory.Runtime)).ToArray();
             Profiles = Attributes.OfType<ProfileAttribute>().SelectMany(pa => pa.Profiles).ToArray();
@@ -388,6 +392,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeSchedule.Runtime.PowerShell
             var helpInfo = variantGroup.HelpInfo;
             Description = variantGroup.Variants.SelectMany(v => v.Attributes).OfType<DescriptionAttribute>().FirstOrDefault()?.Description.NullIfEmpty()
                           ?? helpInfo.Description.EmptyIfNull();
+            Description = PsHelpInfo.CapitalizeFirstLetter(Description);
             // If there is no Synopsis, PowerShell may put in the Syntax string as the Synopsis. This seems unintended, so we remove the Synopsis in this situation.
             var synopsis = helpInfo.Synopsis.EmptyIfNull().Trim().StartsWith(variantGroup.CmdletName) ? String.Empty : helpInfo.Synopsis;
             Synopsis = synopsis.NullIfEmpty() ?? Description;

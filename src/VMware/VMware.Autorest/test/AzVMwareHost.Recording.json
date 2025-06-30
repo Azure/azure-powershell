@@ -1,0 +1,74 @@
+{
+  "AzVMwareHost+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/clusters/82e7ug/hosts?api-version=2024-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/clusters/82e7ug/hosts?api-version=2024-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "61" ],
+        "x-ms-client-request-id": [ "376e7bc6-5516-47de-97c2-c93e989f6283" ],
+        "CommandName": [ "Get-AzVMwareHost" ],
+        "FullCommandName": [ "Get-AzVMwareHost_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
+        "Access-Control-Allow-Headers": [ "*" ],
+        "Access-Control-Allow-Credentials": [ "true" ],
+        "Date": [ "Mon, 16 Jun 2025 20:26:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1496" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/hosts/esx03-r52.1111111111111111111.westcentralus.prod.azure.com\",\"name\":\"esx03-r52.1111111111111111111.westcentralus.prod.azure.com\",\"type\":\"Microsoft.AVS/privateClouds/clusters/hosts\",\"properties\":{\"kind\":\"General\",\"displayName\":\"esx03-r52.1111111111111111111.westcentralus.prod.azure.com\",\"moRefId\":\"host-209\",\"fqdn\":\"esx03-r52.1111111111111111111.westcentralus.prod.azure.com\",\"faultDomain\":\"1\"},\"zones\":[\"1\"],\"sku\":{\"name\":\"av64\"}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/hosts/esx03-r60.1111111111111111111.westcentralus.prod.azure.com\",\"name\":\"esx03-r60.1111111111111111111.westcentralus.prod.azure.com\",\"type\":\"Microsoft.AVS/privateClouds/clusters/hosts\",\"properties\":{\"kind\":\"General\",\"displayName\":\"esx03-r60.1111111111111111111.westcentralus.prod.azure.com\",\"moRefId\":\"host-128\",\"maintenance\":\"Replacement\"},\"zones\":[\"1\"],\"sku\":{\"name\":\"av64\"}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/hosts/esx03-r65.1111111111111111111.westcentralus.prod.azure.com\",\"name\":\"esx03-r65.1111111111111111111.westcentralus.prod.azure.com\",\"type\":\"Microsoft.AVS/privateClouds/clusters/hosts\",\"properties\":{\"kind\":\"Specialized\"},\"zones\":[\"1\"]}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareHost+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/clusters/82e7ug/hosts/esx03-r52.1111111111111111111.westcentralus.prod.azure.com?api-version=2024-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/clusters/82e7ug/hosts/esx03-r52.1111111111111111111.westcentralus.prod.azure.com?api-version=2024-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "62" ],
+        "x-ms-client-request-id": [ "f058fba5-e384-4359-8e94-9e5904009c3b" ],
+        "CommandName": [ "Get-AzVMwareHost" ],
+        "FullCommandName": [ "Get-AzVMwareHost_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
+        "Access-Control-Allow-Headers": [ "*" ],
+        "Access-Control-Allow-Credentials": [ "true" ],
+        "Date": [ "Mon, 16 Jun 2025 20:26:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "580" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/Hosts/esx03-r52.1111111111111111111.westcentralus.prod.azure.com\",\"name\":\"esx03-r52.1111111111111111111.westcentralus.prod.azure.com\",\"type\":\"Microsoft.AVS/privateClouds/clusters/hosts\",\"properties\":{\"kind\":\"General\",\"displayName\":\"esx03-r52.1111111111111111111.westcentralus.prod.azure.com\",\"moRefId\":\"host-209\",\"fqdn\":\"esx03-r52.1111111111111111111.westcentralus.prod.azure.com\",\"faultDomain\":\"1\"},\"zones\":[\"1\"],\"sku\":{\"name\":\"av64\"}}",
+      "isContentBase64": false
+    }
+  }
+}
