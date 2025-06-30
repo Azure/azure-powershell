@@ -240,7 +240,7 @@ function setupEnv() {
     $bookmarkExpansionId = (New-Guid).Guid
     $null = $env.Add('bookmarkExpansionId', $bookmarkExpansionId)
 
-    #Create Bookmark Realtion
+    #Create Bookmark Relation
     Write-Host "Start to create test bookmark Relation"
     $null = $env.Add('NewBookmarkRelationName', ("NewbookmarkRelation"+ (RandomString -allChars $false -len 6)))
     $null = $env.Add('NewBookmarkRelationId', ((New-Guid).Guid))
@@ -370,7 +370,7 @@ function setupEnv() {
     #cant pre-create to test.
 
     #OnboardingState
-    #create additonal workspaces in first template
+    #create additional workspaces in first template
 
     #Setting
     #Nothing to create
@@ -379,7 +379,7 @@ function setupEnv() {
     #SourceControlRepository
     #nothing to create
 
-    #ThreatIntelligeneceIndicator
+    #ThreatIntelligenceIndicator
     Write-Host "Start to create test threat intelligence indicator"
     Create-ThreatIntelligenceIndicator -PSVerb Get -WorkspaceName $env.workspaceName -IP "8.8.8.1"
     Create-ThreatIntelligenceIndicator -PSVerb Remove -WorkspaceName $env.workspaceName -IP "8.8.8.2"
@@ -387,7 +387,7 @@ function setupEnv() {
     Create-ThreatIntelligenceIndicator -PSVerb Update -WorkspaceName $env.workspaceName -IP "8.8.8.4"
     Create-ThreatIntelligenceIndicator -PSVerb UpdateViaId -WorkspaceName $env.workspaceName -IP "8.8.8.5"
 
-    #ThreatIntelligeneceIndicatorMetric
+    #ThreatIntelligenceIndicatorMetric
     #nothing to create
 
     # For any resources you created for test, you should add it to $env here.

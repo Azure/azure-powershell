@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public override void ExecuteCmdlet()
         {
             this.SetParams();
-            if (ShouldProcess(target: this.Name, action: string.Format("Remove Extenions {0} from node type {1}", this.Name, this.NodeTypeName)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Remove Extensions {0} from node type {1}", this.Name, this.NodeTypeName)))
             {
                 try
                 {

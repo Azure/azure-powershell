@@ -194,29 +194,29 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public SwitchParameter ConsiderWarningAsError { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
-            HelpMessage = "Specifies the maximum percent of unhelthy partitions per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
+            HelpMessage = "Specifies the maximum percent of unhealthy partitions per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
         [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
-            HelpMessage = "Specifies the maximum percent of unhelthy partitions per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
+            HelpMessage = "Specifies the maximum percent of unhealthy partitions per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
         [Parameter(Mandatory = false, ParameterSetName = ByInputObject,
-            HelpMessage = "Specifies the maximum percent of unhelthy partitions per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
+            HelpMessage = "Specifies the maximum percent of unhealthy partitions per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
         [ValidateRange(0, 100)]
         public int DefaultServiceTypeMaxPercentUnhealthyPartitionsPerService { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
-            HelpMessage = "Specifies the maximum percent of unhelthy replicas per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
+            HelpMessage = "Specifies the maximum percent of unhealthy replicas per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
         [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
-            HelpMessage = "Specifies the maximum percent of unhelthy replicas per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
+            HelpMessage = "Specifies the maximum percent of unhealthy replicas per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
         [Parameter(Mandatory = false, ParameterSetName = ByInputObject,
-            HelpMessage = "Specifies the maximum percent of unhelthy replicas per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
+            HelpMessage = "Specifies the maximum percent of unhealthy replicas per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
         [ValidateRange(0, 100)]
         public int DefaultServiceTypeMaxPercentUnhealthyReplicasPerPartition { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
-            HelpMessage = "Specifies the maximum percent of unhelthy services allowed by the health policy for the default service type to use for the monitored upgrade.")]
+            HelpMessage = "Specifies the maximum percent of unhealthy services allowed by the health policy for the default service type to use for the monitored upgrade.")]
         [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
-            HelpMessage = "Specifies the maximum percent of unhelthy services allowed by the health policy for the default service type to use for the monitored upgrade.")]
+            HelpMessage = "Specifies the maximum percent of unhealthy services allowed by the health policy for the default service type to use for the monitored upgrade.")]
         [Parameter(Mandatory = false, ParameterSetName = ByInputObject,
-            HelpMessage = "Specifies the maximum percent of unhelthy services allowed by the health policy for the default service type to use for the monitored upgrade.")]
+            HelpMessage = "Specifies the maximum percent of unhealthy services allowed by the health policy for the default service type to use for the monitored upgrade.")]
         [ValidateRange(0, 100)]
         public int DefaultServiceTypeUnhealthyServicesMaxPercent { get; set; }
 

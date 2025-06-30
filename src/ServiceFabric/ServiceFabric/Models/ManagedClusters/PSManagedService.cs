@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
             }
             else
             {
-                throw new PSInvalidCastException(string.Format("Unable to cast service properties as stateles or stateful. Type {0}", service.Properties.GetType()));
+                throw new PSInvalidCastException(string.Format("Unable to cast service properties as stateless or stateful. Type {0}", service.Properties.GetType()));
             }
         }
 

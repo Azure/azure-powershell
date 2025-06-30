@@ -60,7 +60,7 @@ Message NameAvailable Reason
         True 
 ```
 
-Checks if resource name is avilabale/unique for the scope or not
+Checks if resource name is available/unique for the scope or not
 
 ## PARAMETERS
 

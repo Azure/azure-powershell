@@ -100,7 +100,7 @@
     "certificateIssuerThumbprint": {
       "type": "string",
       "metadata": {
-        "description": "Certificate Issuer thumprints separated by comma"
+        "description": "Certificate Issuer thumbprints separated by comma"
       }
     },
     "sourceVaultValue": {

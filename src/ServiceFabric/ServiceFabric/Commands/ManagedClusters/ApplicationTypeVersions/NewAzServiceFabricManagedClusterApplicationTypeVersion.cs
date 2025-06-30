@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedClusterApplicationTypeVersion", SupportsShouldProcess = true), OutputType(typeof(PSManagedApplicationTypeVersion))]
     public class NewAzServiceFabricManagedClustersApplicationTypeVersion : ManagedApplicationCmdletBase
     {
-        #region Paramters
+        #region Parameters
         [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
         [ResourceGroupCompleter]

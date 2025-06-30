@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             if (currentCluster.Clients == null || currentCluster.Clients.Count() == 0)
             {
-                throw new InvalidOperationException("The cluster has no client certifices registered.");
+                throw new InvalidOperationException("The cluster has no client certificates registered.");
             }
 
             int initialSize = currentCluster.Clients.Count();

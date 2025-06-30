@@ -147,7 +147,7 @@
 
 ## Version 1.2.0
 * Fixed typo in example for `Update-AzServiceFabricReliability` reference documentation
-* Adding new cmdlets to manage appliaction and services:
+* Adding new cmdlets to manage application and services:
     - New-AzServiceFabricApplication
     - New-AzServiceFabricApplicationType
     - New-AzServiceFabricApplicationTypeVersion
@@ -186,6 +186,6 @@
 ## Version 1.0.0
 * General availability of `Az.ServiceFabric` module
 * Upgraded Service Fabric SDK dependency to version 1.1.0.
-    - This change allows the cmdlets to suport certifiates by common names.
-* Added optinal parameters -CertCommonName and -CertIssuerThumbprint to `New-AzureRmServiceFabricCluster` to support creating cluster with certificate by common name.
+    - This change allows the cmdlets to support certificates by common names.
+* Added optional parameters -CertCommonName and -CertIssuerThumbprint to `New-AzureRmServiceFabricCluster` to support creating cluster with certificate by common name.
 * Added optional parameters -CertCommonName and -CertIssuerThumbprint to `Add-AzureRmServiceFabricClusterCertificate` to support adding certificate by common name.
