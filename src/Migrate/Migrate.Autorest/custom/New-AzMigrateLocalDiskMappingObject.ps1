@@ -22,7 +22,7 @@ The New-AzMigrateLocalDiskMappingObject cmdlet creates a mapping of the source d
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratelocaldiskmappingobject
 #>
 function New-AzMigrateLocalDiskMappingObject {
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is based on a preview API version and may experience breaking changes in future releases.")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalDiskInput])]
     [CmdletBinding(PositionalBinding = $false)]
     param(
@@ -59,7 +59,7 @@ function New-AzMigrateLocalDiskMappingObject {
         [ArgumentCompleter( { "VHD", "VHDX" })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the disk format.
+        # Specifies the disk format. 'VHD' or 'VHDX' for Hyper-V Generation 1; 'VHDX' for Hyper-V Generation 2.
         ${Format},
 
         [Parameter()]
@@ -68,18 +68,16 @@ function New-AzMigrateLocalDiskMappingObject {
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.Int64]
         # Specifies the disk physical sector size in bytes.
-        ${PhysicalSectorSize},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [string]
-        # Specifies the storage path ARM ID where the disk will be stored.
-        ${TargetStoragePathId}
+        ${PhysicalSectorSize}
     )
     
     process {
         $isDynamicDisk = [System.Convert]::ToBoolean($IsDynamic)
         $osDisk = [System.Convert]::ToBoolean($IsOSDisk)
+
+        if ($Format -eq "VHD" -and $PhysicalSectorSize -ne 512) {
+            throw "PhysicalSectorSize must be 512 for VHD format."
+        }
 
         $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalDiskInput]::new(
             $DiskID, 
@@ -87,8 +85,7 @@ function New-AzMigrateLocalDiskMappingObject {
             $Size, 
             $Format, 
             $osDisk,
-            $PhysicalSectorSize,
-            $TargetStoragePathId
+            $PhysicalSectorSize
         )
 
         return $DiskObject 
