@@ -25,7 +25,7 @@ The **Remove-AzGalleryInVMAccessControlProfileVersionRulesPrivilege** cmdlet rem
 
 ### Example 1
 ```powershell
-$inVMAccessControlProfileVersion  = New-AzGalleryInVMAccessControlProfileVersionConfig -Name "myProfileVersion" -Location "West US 2" -Mode "Audit" -DefaultAccess "Deny" -TargetLocations @("West US 2")
+$inVMAccessControlProfileVersion  = New-AzGalleryInVMAccessControlProfileVersionConfig -Name "myProfileVersion" -Location "West US 2" -Mode "Audit" -DefaultAccess "Deny" -TargetLocation @("West US 2")
 
 Add-AzGalleryInVMAccessControlProfileVersionRulesPrivilege -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -PrivilegeName "GoalState" -Path "/machine" -QueryParameter @{ comp = "goalstate" } 
 Add-AzGalleryInVMAccessControlProfileVersionRulesPrivilege -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -PrivilegeName "GoalState2" -Path "/machine" -QueryParameter @{ comp = "goalstate" } 

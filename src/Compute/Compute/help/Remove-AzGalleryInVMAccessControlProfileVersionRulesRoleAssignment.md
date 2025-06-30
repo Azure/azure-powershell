@@ -25,7 +25,7 @@ The **Remove-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment** cmdle
 
 ### Example 1
 ```powershell
-$inVMAccessControlProfileVersion  = New-AzGalleryInVMAccessControlProfileVersionConfig -Name "myProfileVersion" -Location "West US 2" -Mode "Audit" -DefaultAccess "Deny" -TargetLocations @("West US 2")
+$inVMAccessControlProfileVersion  = New-AzGalleryInVMAccessControlProfileVersionConfig -Name "myProfileVersion" -Location "West US 2" -Mode "Audit" -DefaultAccess "Deny" -TargetLocation @("West US 2")
 
 Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -Role "Provisioning" -Identity @("WinPA") 
 Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -Role "Provisioning2" -Identity @("WinPA") 
