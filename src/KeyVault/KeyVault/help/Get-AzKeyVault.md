@@ -203,6 +203,32 @@ Tags                :
 
 This command gets all the key vaults in the subscription that start with "myvault".
 
+### Example 7: Get key vaults using advanced filtering
+```powershell
+Get-AzKeyVault -VaultName 'myvault*'
+```
+
+```output
+Vault Name          : myvault2
+Resource Group Name : myrg1
+Location            : westus
+Resource ID         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg1/providers/Microsoft.Ke
+                      yVault/vaults/myvault2
+Tags                :
+
+Vault Name          : myvault3
+Resource Group Name : myrg1
+Location            : westus
+Resource ID         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg1/providers/Microsoft.Ke
+                      yVault/vaults/myvault3
+Tags                :
+Email               : advanceduser@microsoft.com
+UserSecrets         : mysecrets123
+ResourceGUID        : ecd349a0-1150-493c-8852-cf987dd06e8e
+```
+
+This command gets all the key vaults in the subscription that start with "myvault".
+
 ## PARAMETERS
 
 ### -DefaultProfile
