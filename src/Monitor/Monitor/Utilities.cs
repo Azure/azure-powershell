@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Insights
     using System.Linq;
 
     /// <summary>
-    /// Static class contaning common functions
+    /// Static class containing common functions
     /// </summary>
     public static class Utilities
     {
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Insights
         /// <summary>
         /// Gets a string with a default description for artifacts like alert rules or autoscale settings
         /// </summary>
-        /// <param name="artifactName">The name of the artifact to deacribe, e.g.: alert rule, autoscale setting</param>
+        /// <param name="artifactName">The name of the artifact to describe, e.g.: alert rule, autoscale setting</param>
         /// <returns>A string with a default description for artifacts like alert rules or autoscale settings</returns>
         public static string GetDefaultDescription(string artifactName)
         {
