@@ -25,8 +25,8 @@ Sets the Proxy Agent settings properties for a PSVirtualMachine object.
 
 ### Example 1
 ```powershell
-$vmconfig = New-AzVMConfig -VMName $vmName -vmSize "Standard_D2s_v3"
-Set-AzVMProxyAgentSetting -VM $vmconfig -EnableProxyAgent $true -WireServerMode "Enforce" -ImdsProfile "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}".
+$vmconfig = New-AzVMConfig -VMName $vmName -VMSize "Standard_D2s_v3"
+Set-AzVMProxyAgentSetting -VM $vmconfig -EnableProxyAgent $true -WireServerMode "Enforce" -ImdsProfile "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}"
 ```
 
 This command sets the Proxy Agent settings for a virtual machine configuration object `$vmconfig`. 
