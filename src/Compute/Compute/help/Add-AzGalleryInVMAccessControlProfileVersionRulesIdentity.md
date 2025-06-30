@@ -26,10 +26,13 @@ The **Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity** cmdlet adds a 
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$inVMAccessControlProfileVersion  = New-AzGalleryInVMAccessControlProfileVersionConfig -Name "myProfileVersion" -Location "West US 2" -Mode "Audit" -DefaultAccess "Deny" -TargetLocations @("West US 2")
+
+Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -IdentityName "WinPA" -UserName "SYSTEM" -GroupName "Administrators" -ExePath "C:\Windows\System32\cscript.exe" -ProcessName "cscript" 
+Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -IdentityName "WinPA2" -UserName "SYSTEM" -GroupName "Administrators" -ExePath "C:\Windows\System32\cscript.exe" -ProcessName "cscript" 
 ```
 
-{{ Add example description here }}
+Creates a local PSGalleryInVMAccessControlProfileVersion object, then add two rule identities.
 
 ## PARAMETERS
 

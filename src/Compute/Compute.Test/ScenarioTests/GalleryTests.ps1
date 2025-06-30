@@ -1153,35 +1153,35 @@ function Test-InVMAccessControlProfileVersion
         Update-AzGalleryInVMAccessControlProfile -ResourceGroupName  $resourceGroup  -GalleryName $galleryName   -GalleryInVMAccessControlProfileName $InVMAccessControlProfileName -Location $location -Description "this test2" 
 
         # Create CPversion config 
-        $inVMAccessConrolProfileVersion = New-AzGalleryInVMAccessControlProfileVersionConfig -Name $inVMAccessControlProfileVersionName  -Location $location -Mode "Audit"  -DefaultAccess "Deny" -TargetLocation $targetLocations  -ExcludeFromLatest 
+        $inVMAccessControlProfileVersion = New-AzGalleryInVMAccessControlProfileVersionConfig -Name $inVMAccessControlProfileVersionName  -Location $location -Mode "Audit"  -DefaultAccess "Deny" -TargetLocation $targetLocations  -ExcludeFromLatest 
 
         # Set AccessRoles
         ## Add Privilege
-        Add-AzGalleryInVMAccessControlProfileVersionRulesPrivilege -GalleryInVmAccessControlProfileVersion $inVMAccessConrolProfileVersion -PrivilegeName "GoalState" -Path "/machine" -QueryParameter @{ comp = "goalstate" } 
-        Add-AzGalleryInVMAccessControlProfileVersionRulesPrivilege -GalleryInVmAccessControlProfileVersion $inVMAccessConrolProfileVersion -PrivilegeName "GoalState2" -Path "/machine" -QueryParameter @{ comp = "goalstate" } 
+        Add-AzGalleryInVMAccessControlProfileVersionRulesPrivilege -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -PrivilegeName "GoalState" -Path "/machine" -QueryParameter @{ comp = "goalstate" } 
+        Add-AzGalleryInVMAccessControlProfileVersionRulesPrivilege -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -PrivilegeName "GoalState2" -Path "/machine" -QueryParameter @{ comp = "goalstate" } 
 
         ## Add Roles 
-        Add-AzGalleryInVMAccessControlProfileVersionRulesRole -GalleryInVmAccessControlProfileVersion $inVMAccessConrolProfileVersion -RoleName "Provisioning" -Privilege @("GoalState") 
-        Add-AzGalleryInVMAccessControlProfileVersionRulesRole -GalleryInVmAccessControlProfileVersion $inVMAccessConrolProfileVersion -RoleName "Provisioning2" -Privilege @("GoalState") 
+        Add-AzGalleryInVMAccessControlProfileVersionRulesRole -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -RoleName "Provisioning" -Privilege @("GoalState") 
+        Add-AzGalleryInVMAccessControlProfileVersionRulesRole -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -RoleName "Provisioning2" -Privilege @("GoalState") 
 
         ## Add Identity 
-        Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity -GalleryInVmAccessControlProfileVersion $inVMAccessConrolProfileVersion -IdentityName "WinPA" -UserName "SYSTEM" -GroupName "Administrators" -ExePath "C:\Windows\System32\cscript.exe" -ProcessName "cscript" 
-        Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity -GalleryInVmAccessControlProfileVersion $inVMAccessConrolProfileVersion -IdentityName "WinPA2" -UserName "SYSTEM" -GroupName "Administrators" -ExePath "C:\Windows\System32\cscript.exe" -ProcessName "cscript" 
+        Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -IdentityName "WinPA" -UserName "SYSTEM" -GroupName "Administrators" -ExePath "C:\Windows\System32\cscript.exe" -ProcessName "cscript" 
+        Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -IdentityName "WinPA2" -UserName "SYSTEM" -GroupName "Administrators" -ExePath "C:\Windows\System32\cscript.exe" -ProcessName "cscript" 
 
         ## Add Role Assignment
-        Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment -GalleryInVmAccessControlProfileVersion $inVMAccessConrolProfileVersion -Role "Provisioning" -Identity @("WinPA") 
-        Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment -GalleryInVmAccessControlProfileVersion $inVMAccessConrolProfileVersion -Role "Provisioning2" -Identity @("WinPA") 
+        Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -Role "Provisioning" -Identity @("WinPA") 
+        Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -Role "Provisioning2" -Identity @("WinPA") 
 
         # Validate CP Version Config 
-        Assert-AreEqual $inVMAccessConrolProfileVersion.TargetLocations.count 3
-        Assert-AreEqual $inVMAccessConrolProfileVersion.ExcludeFromLatest $true
-        Assert-AreEqual $inVMAccessConrolProfileVersion.Rules.Roles.count 2 
-        Assert-AreEqual $inVMAccessConrolProfileVersion.Rules.Identities.count 2 
-        Assert-AreEqual $inVMAccessConrolProfileVersion.Rules.Privileges.count 2 
-        Assert-AreEqual $inVMAccessConrolProfileVersion.Rules.RoleAssignments.count 2 
+        Assert-AreEqual $inVMAccessControlProfileVersion.TargetLocations.count 3
+        Assert-AreEqual $inVMAccessControlProfileVersion.ExcludeFromLatest $true
+        Assert-AreEqual $inVMAccessControlProfileVersion.Rules.Roles.count 2 
+        Assert-AreEqual $inVMAccessControlProfileVersion.Rules.Identities.count 2 
+        Assert-AreEqual $inVMAccessControlProfileVersion.Rules.Privileges.count 2 
+        Assert-AreEqual $inVMAccessControlProfileVersion.Rules.RoleAssignments.count 2 
 
         # Create CP Version 
-        New-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName $resourceGroup -GalleryName $galleryName -GalleryInVMAccessControlProfileName   $InVMAccessControlProfileName   -GalleryInVmAccessControlProfileVersion $inVMAccessConrolProfileVersion  
+        New-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName $resourceGroup -GalleryName $galleryName -GalleryInVMAccessControlProfileName   $InVMAccessControlProfileName   -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion  
 
         # Get CP version 
         $ver = Get-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName  $resourceGroup -GalleryName $galleryName -GalleryInVMAccessControlProfileName $InVMAccessControlProfileName -GalleryInVMAccessControlProfileVersionName  $inVMAccessControlProfileVersionName 

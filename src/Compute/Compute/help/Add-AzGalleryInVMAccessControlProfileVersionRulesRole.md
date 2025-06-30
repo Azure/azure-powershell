@@ -26,10 +26,13 @@ The **Add-AzGalleryInVMAccessControlProfileVersionRulesRole** cmdlet adds a Rule
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$inVMAccessControlProfileVersion  = New-AzGalleryInVMAccessControlProfileVersionConfig -Name "myProfileVersion" -Location "West US 2" -Mode "Audit" -DefaultAccess "Deny" -TargetLocations @("West US 2")
+
+Add-AzGalleryInVMAccessControlProfileVersionRulesRole -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -RoleName "Provisioning" -Privilege @("GoalState") 
+Add-AzGalleryInVMAccessControlProfileVersionRulesRole -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -RoleName "Provisioning2" -Privilege @("GoalState") 
 ```
 
-{{ Add example description here }}
+Creates a local PSGalleryInVMAccessControlProfileVersion object, then add two rule roles.
 
 ## PARAMETERS
 

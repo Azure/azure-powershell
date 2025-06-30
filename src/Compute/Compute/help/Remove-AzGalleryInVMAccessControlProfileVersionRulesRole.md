@@ -25,10 +25,15 @@ The **Remove-AzGalleryInVMAccessControlProfileVersionRulesRole** cmdlet removes 
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$inVMAccessControlProfileVersion  = New-AzGalleryInVMAccessControlProfileVersionConfig -Name "myProfileVersion" -Location "West US 2" -Mode "Audit" -DefaultAccess "Deny" -TargetLocations @("West US 2")
+
+Add-AzGalleryInVMAccessControlProfileVersionRulesRole -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -RoleName "Provisioning" -Privilege @("GoalState") 
+Add-AzGalleryInVMAccessControlProfileVersionRulesRole -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -RoleName "Provisioning2" -Privilege @("GoalState") 
+
+Remove-AzGalleryInVMAccessControlProfileVersionRulesRole -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -RoleName "Provisioning2"
 ```
 
-{{ Add example description here }}
+Creates a local PSGalleryInVMAccessControlProfileVersion object, add two rule roles, then remove the role with name "Provisioning2". 
 
 ## PARAMETERS
 

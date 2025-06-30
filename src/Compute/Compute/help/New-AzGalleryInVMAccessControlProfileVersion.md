@@ -29,10 +29,39 @@ This cmdlet takes in PSGalleryInVMAccessControlProfileVersion object created fro
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+New-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName "myResourceGroup" -GalleryName "myGallery" -GalleryInVMAccessControlProfileName "myProfile" -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion  
 ```
 
-{{ Add example description here }}
+Creates a version of a gallery inVMAccessControlProfile.
+
+### Example 2
+```powershell
+$rgname = "myResourceGroup"
+$location = "West US 2"
+$galleryName = "myGallery"
+$inVMAccessProfileName = "myProfile"
+$inVMAccessProfileVersionName = "myProfileVersion"
+
+# Create a gallery 
+New-AzGallery -ResourceGroupName $rgname -GalleryName $galleryName -Location $location -Description "My custom image gallery"
+
+# Create a gallery inVMAccessControlProfile 
+New-AzGalleryInVMAccessControlProfile -ResourceGroupName  $rgname -GalleryName $galleryName -GalleryInVMAccessControlProfileName $InVMAccessControlProfileName -Location $location -OsType "Windows" -ApplicableHostEndPoint "WireServer" 
+
+# Create a gallery inVMAccessControlProfile version config 
+$inVMAccessControlProfileVersion = New-AzGalleryInVMAccessControlProfileVersionConfig -Name $inVMAccessControlProfileVersionName -Location $location -Mode "Audit" -DefaultAccess "Deny" -TargetLocation @("Wesut US2", "West US") -ExcludeFromLatest 
+
+# Add rules to PSGalleryInVMAccessControlProfileVersion
+Add-AzGalleryInVMAccessControlProfileVersionRulesPrivilege -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -PrivilegeName "GoalState" -Path "/machine" -QueryParameter @{ comp = "goalstate" } 
+Add-AzGalleryInVMAccessControlProfileVersionRulesRole -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -RoleName "Provisioning" -Privilege @("GoalState") 
+Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -IdentityName "WinPA" -UserName "SYSTEM" -GroupName "Administrators" -ExePath "C:\Windows\System32\cscript.exe" -ProcessName "cscript" 
+Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -Role "Provisioning" -Identity @("WinPA") 
+
+# Create the gallery inVMAccessControlProfile version resource in Azure
+New-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryInVMAccessControlProfileName $inVMAccessProfileName -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion  
+```
+
+Creates a complete InVM Access Control Profile setup by first creating a gallery and InVM Access Control Profile, then building a local profile version configuration with rules, and finally deploying it to Azure.
 
 ## PARAMETERS
 

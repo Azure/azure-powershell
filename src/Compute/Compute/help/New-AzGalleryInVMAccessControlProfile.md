@@ -26,10 +26,10 @@ The **New-AzGalleryInVMAccessControlProfile** cmdlet creates a new gallery inVMA
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+New-AzGalleryInVMAccessControlProfile -ResourceGroupName "myResourceGroup" -GalleryName "myGallery" -GalleryInVMAccessControlProfileName "myProfile" -Location "West US 2" -OsType "Windows" -ApplicableHostEndPoint "WireServer" -Description "My description."
 ```
 
-{{ Add example description here }}
+Creates a new gallery inVMAccessControlProfile.
 
 ## PARAMETERS
 
