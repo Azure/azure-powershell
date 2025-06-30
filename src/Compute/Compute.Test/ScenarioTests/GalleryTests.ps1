@@ -1127,7 +1127,8 @@ function Test-InVMAccessControlProfileVersion
         $location = $loc;
         $resourceGroup = $rgname 
 
-        $InVMAccessControlProfileName= "TestMspCp"
+        $galleryName = "mspGallery" 
+        $InVMAccessControlProfileName= "testMspCp"
 
         $inVMAccessControlProfileVersionName= "1.0.0" 
         $targetRegions= @("EastUS2EUAP", "CentralUSEUAP", "westUS2") 
@@ -1139,20 +1140,17 @@ function Test-InVMAccessControlProfileVersion
         New-AzGallery -ResourceGroupName $rgname -GalleryName $galleryName -Location $location -Description "My custom image gallery" 
  
         # CP creation 
-        New-AzGalleryInVMAccessControlProfile -ResourceGroupName  $rgname -GalleryName $galleryName   -GalleryInVMAccessControlProfileName $InVMAccessControlProfileName -Location $location -OsType "Windows" -ApplicableHostEndPoint "WireServer" -Description "this test1" 
+        New-AzGalleryInVMAccessControlProfile -ResourceGroupName $rgname -GalleryName $galleryName   -GalleryInVMAccessControlProfileName $InVMAccessControlProfileName -Location $location -OsType "Windows" -ApplicableHostEndPoint "WireServer" -Description "this test1" 
         $cp = Get-AzGalleryInVMAccessControlProfile -ResourceGroupName  $resourceGroup  -GalleryName $galleryName   -GalleryInVMAccessControlProfileName $InVMAccessControlProfileName 
 
         # Validate 
-        # location 
-        # os profile 
-        # host endpoint 
-        # description
+        Assert-AreEqual $cp.Name $InVMAccessControlProfileName 
+        Assert-AreEqual $cp.Properties.OsType "Windows"  
+        Assert-AreEqual $cp.Properties.ApplicableHostEndPoint "WireServer" 
+        Assert-AreEqual $cp.Properties.Description "this test1" 
 
         # Update CP
         Update-AzGalleryInVMAccessControlProfile -ResourceGroupName  $resourceGroup  -GalleryName $galleryName   -GalleryInVMAccessControlProfileName $InVMAccessControlProfileName -Location $location -Description "this test2" 
-
-        # Validate 
-        # description 
 
         # Create CPversion config 
         $inVMAccessConrolProfileVersion = New-AzGalleryInVMAccessControlProfileVersionConfig -Name $inVMAccessControlProfileVersionName  -Location $location -Mode "Audit"  -DefaultAccess "Deny" -TargetRegion $targetRegions  -ExcludeFromLatest 
@@ -1175,9 +1173,12 @@ function Test-InVMAccessControlProfileVersion
         Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment -GalleryInVmAccessControlProfileVersion $inVMAccessConrolProfileVersion -Role "Provisioning2" -Identity @("WinPA") 
 
         # Validate CP Version Config 
-        # target region 
-        # exclude from latest
-        # check rules counts == 2 
+        Assert-AreEqual $inVMAccessConrolProfileVersion.TargetLocations.count 3
+        Assert-AreEqual $inVMAccessConrolProfileVersion.ExcludeFromLatest $true
+        Assert-AreEqual $inVMAccessConrolProfileVersion.Rules.Roles.count 2 
+        Assert-AreEqual $inVMAccessConrolProfileVersion.Rules.Identities.count 2 
+        Assert-AreEqual $inVMAccessConrolProfileVersion.Rules.Privileges.count 2 
+        Assert-AreEqual $inVMAccessConrolProfileVersion.Rules.RoleAssignments.count 2 
 
         # Create CP Version 
         New-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName $resourceGroup -GalleryName $galleryName -GalleryInVMAccessControlProfileName   $InVMAccessControlProfileName   -GalleryInVmAccessControlProfileVersion $inVMAccessConrolProfileVersion  
@@ -1186,9 +1187,12 @@ function Test-InVMAccessControlProfileVersion
         $ver = Get-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName  $resourceGroup -GalleryName $galleryName -GalleryInVMAccessControlProfileName $InVMAccessControlProfileName -GalleryInVMAccessControlProfileVersionName  $inVMAccessControlProfileVersionName 
 
         # validate CP version 
-        # target region 
-        # exclude from latest
-        # check rules counts == 2 
+        Assert-AreEqual $ver.TargetLocations.count 3
+        Assert-AreEqual $ver.ExcludeFromLatest $true
+        Assert-AreEqual $ver.Rules.Roles.count 2 
+        Assert-AreEqual $ver.Rules.Identities.count 2 
+        Assert-AreEqual $ver.Rules.Privileges.count 2 
+        Assert-AreEqual $ver.Rules.RoleAssignments.count 2 
 
         # update CP version 
         $targetRegions= @("westus2") 
@@ -1196,8 +1200,8 @@ function Test-InVMAccessControlProfileVersion
 
         # validate
         $ver = Get-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName  $resourceGroup -GalleryName $galleryName -GalleryInVMAccessControlProfileName $InVMAccessControlProfileName -GalleryInVMAccessControlProfileVersionName  $inVMAccessControlProfileVersionName 
-        # target region list 1 
-        # exclude from latest false 
+        Assert-AreEqual $ver.TargetLocations.count 1
+        Assert-AreEqual $ver.ExcludeFromLatest $false
 
 
         # remove CP version 
@@ -1205,14 +1209,14 @@ function Test-InVMAccessControlProfileVersion
         $ver = Get-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName  $resourceGroup -GalleryName $galleryName -GalleryInVMAccessControlProfileName $InVMAccessControlProfileName
 
         # validate 
-        # $ver.count 
+        Assert-AreEqual $ver.count 0 
 
         # remove CP
         Remove-AzGalleryInVMAccessControlProfile -ResourceGroupName  $resourceGroup  -GalleryName $galleryName   -GalleryInVMAccessControlProfileName $InVMAccessControlProfileName -Force
         $profile = Get-AzGalleryInVMAccessControlProfile -ResourceGroupName  $resourceGroup  -GalleryName $galleryName  
 
         # validate
-        # $profile.count
+        Assert-AreEqual $profile.count 0
 
     }
     finally 
