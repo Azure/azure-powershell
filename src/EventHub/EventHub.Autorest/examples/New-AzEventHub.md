@@ -20,7 +20,7 @@ Location                     : eastus
 MessageRetentionInDay        : 7
 Name                         : myEventHub
 PartitionCount               : 5
-PartitionId                  : {0, 1, 2, 3�}
+PartitionId                  : {0, 1, 2, 3…}
 ResourceGroupName            : myResourceGroup
 RetentionTimeInHour          : 168
 SizeLimitInBytes             :
