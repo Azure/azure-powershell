@@ -4,10 +4,10 @@ parameters:
   default: 'True'
 - name: SelectedTargetModules
   type: string
-  default: ''
+  default: 'None'
 - name: NotificationReceiversOverride
   type: string
-  default: ''
+  default: 'None'
 
 variables:
   IntermediateStepTimeoutInMinutes: 30
@@ -58,10 +58,6 @@ stages:
             Write-Host "Parameter TestChangedModulesOnly: ${{ parameters.TestChangedModulesOnly }}"
             Write-Host "Parameter SelectedTargetModules: ${{ parameters.SelectedTargetModules }}"
             Write-Host "Parameter NotificationReceiversOverride: ${{ parameters.NotificationReceiversOverride }}"
-
-            Write-Host "FINAL_NOTIFICATION_RECEIVERS: $($env:FINAL_NOTIFICATION_RECEIVERS)"
-        env:
-          FINAL_NOTIFICATION_RECEIVERS: ${{ coalesce(parameters.NotificationReceiversOverride, variables.FailedJobNotificationReceivers) }}
 
       # TODO: (Bernard) Uncomment the no checkout step after automatically install repo into agents 
       # - checkout: none
