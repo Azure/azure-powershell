@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzGalleryInVMAccessControlProfile
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new gallery inVMAccessControlProfile.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ New-AzGalleryInVMAccessControlProfile -ResourceGroupName <String> -GalleryName <
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzGalleryInVMAccessControlProfile** cmdlet creates a new gallery inVMAccessControlProfile. 
 
 ## EXAMPLES
 

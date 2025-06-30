@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzGalleryInVMAccessControlProfileVersion
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a specific version of a gallery inVMAccessControlProfile.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Remove-AzGalleryInVMAccessControlProfileVersion [-Force] -InputObject <PSGallery
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzGalleryInVMAccessControlProfileVersion** cmdlet removes a specific version of a gallery inVMAccessControlProfile.
 
 ## EXAMPLES
 

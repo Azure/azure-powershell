@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzGalleryInVMAccessControlProfile
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates a gallery inVMAccessControlProfile.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Update-AzGalleryInVMAccessControlProfile -ResourceGroupName <String> -GalleryNam
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Update-AzGalleryInVMAccessControlProfile** cmdlet updates a gallery inVMAccessControlProfile.
 
 ## EXAMPLES
 

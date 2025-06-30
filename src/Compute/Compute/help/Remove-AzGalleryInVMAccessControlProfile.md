@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzGalleryInVMAccessControlProfile
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a gallery inVMAccessControlProfile.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Remove-AzGalleryInVMAccessControlProfile [-Force] -InputObject <PSGalleryInVMAcc
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzGalleryInVMAccessControlProfile** cmdlet removes a gallery inVMAccessControlProfile.
 
 ## EXAMPLES
 

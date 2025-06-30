@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzGalleryInVMAccessControlProfileVersion
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the specified version of a gallery inVMAccessControlProfile or a list of versions from the specified gallery inVMAccessControlProfile.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Get-AzGalleryInVMAccessControlProfileVersion [-ResourceId] <String> [-DefaultPro
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzGalleryInVMAccessControlProfileVersion** cmdlet retrieves the specified version of a gallery inVMAccessControlProfile when the optional parameter GalleryInVMAccessControlProfileVersionName is provided. Otherwise, it returns a list of versions from the specified gallery inVMAccessControlProfile.
 
 ## EXAMPLES
 

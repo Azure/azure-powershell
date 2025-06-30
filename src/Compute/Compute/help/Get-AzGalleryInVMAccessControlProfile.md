@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzGalleryInVMAccessControlProfile
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the specified gallery inVMAccessControlProfile or a list of gallery inVMAccessControlProfiles from the specified gallery.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Get-AzGalleryInVMAccessControlProfile [-ResourceId] <String> [-DefaultProfile <I
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzGalleryInVMAccessControlProfile** cmdlet retrieves the specified gallery inVMAccessControlProfile when optional parameter GalleryInVMAccessControlProfileName is provided. Otherwise it returns a list of gallery inVMAccessControlProfiles from the specified gallery.
 
 ## EXAMPLES
 

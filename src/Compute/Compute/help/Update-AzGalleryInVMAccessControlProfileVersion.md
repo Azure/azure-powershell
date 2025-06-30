@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzGalleryInVMAccessControlProfileVersion
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates a specific version of a gallery inVMAccessControlProfile.
 
 ## SYNTAX
 
@@ -20,7 +20,9 @@ Update-AzGalleryInVMAccessControlProfileVersion
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Update-AzGalleryInVMAccessControlProfileVersion** cmdlet updates a specific version of a gallery inVMAccessControlProfile. <br>
+The gallery inVMAccessControlVersion to be updated can be passed by providing the PSGalleryInVMAccessControlProfileVersion object retrieved from the [Get-AzGalleryInVMAccessControlProfileVersion](https://learn.microsoft.com/en-us/powershell/module/az.compute/Get-AzGalleryInVMAccessControlProfileVersion) cmdlet.
+
 
 ## EXAMPLES
 
