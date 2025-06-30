@@ -40,10 +40,10 @@ The **Remove-AzGalleryInVMAccessControlProfile** cmdlet removes a gallery inVMAc
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Remove-AzGalleryInVMAccessControlProfile -ResourceGroupName "myResourceGroup" -GalleryName "myGallery" -GalleryInVMAccessControlProfileName "myControlProfile" 
 ```
 
-{{ Add example description here }}
+Delete the specified gallery inVMAccessControlProfile.
 
 ## PARAMETERS
 

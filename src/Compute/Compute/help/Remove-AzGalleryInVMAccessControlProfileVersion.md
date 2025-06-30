@@ -41,10 +41,10 @@ The **Remove-AzGalleryInVMAccessControlProfileVersion** cmdlet removes a specifi
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Remove-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName "myResourceGroup" -GalleryName "myGallery" -GalleryInVMAccessControlProfileName "myControlProfile" -GalleryInVMAccessControlProfileVersionName "myControlProfileVersion"
 ```
 
-{{ Add example description here }}
+Delete the specified gallery inVMAccessControlProfile version.
 
 ## PARAMETERS
 
