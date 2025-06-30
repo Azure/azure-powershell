@@ -32,10 +32,17 @@ The **Get-AzGalleryInVMAccessControlProfile** cmdlet retrieves the specified gal
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Get-AzGalleryInVMAccessControlProfile -ResourceGroupName "myResourceGroup" -GalleryName "myGallery" -GalleryInVMAccessControlProfileName "myProfile"
 ```
 
-{{ Add example description here }}
+Gets the specified gallery inVMAccessControlProfile named "myProfile" from the gallery "myGallery" in the resource group "myResourceGroup".
+
+### Example 2
+```powershell
+Get-AzGalleryInVMAccessControlProfile -ResourceGroupName "myResourceGroup" -GalleryName "myGallery" 
+```
+
+Gets the list of all gallery inVMAccessControlProfiles from the gallery "myGallery" in the resource group "myResourceGroup".
 
 ## PARAMETERS
 

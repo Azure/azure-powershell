@@ -32,10 +32,17 @@ The **Get-AzGalleryInVMAccessControlProfileVersion** cmdlet retrieves the specif
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Get-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName "myResourceGroup" -GalleryName "myGallery" -GalleryInVMAccessControlProfileName "myProfile" -GalleryInVMAccessControlProfileVersionName "myProfileVersion"
 ```
 
-{{ Add example description here }}
+Gets the specified version of the gallery inVMAccessControlProfile named "myProfileVersion" from the gallery "myGallery" in the resource group "myResourceGroup".
+
+### Example 2
+```powershell
+Get-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName "myResourceGroup" -GalleryName "myGallery" -GalleryInVMAccessControlProfileName "myProfile"
+```
+
+Gets the list of all versions of the gallery inVMAccessControlProfile from the gallery "myGallery" in the resource group "myResourceGroup".
 
 ## PARAMETERS
 
