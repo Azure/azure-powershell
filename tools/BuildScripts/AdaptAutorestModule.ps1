@@ -50,7 +50,7 @@ if ($ModuleRootName -in $rootToParentMap.keys) {
 
 $moduleRootPath = Join-Path $SourceDirectory $ModuleRootName
 $subModuleNameTrimmed = $SubModuleName
-$subModuleName = Get-ChildItem -Path $moduleRootPath -Directory | Where-Object { $_.Name -match '${subModuleNameTrimmed}\.' } | ForEach-Object { $_.Name }
+$subModuleName = Get-ChildItem -Path $moduleRootPath -Directory | Where-Object { $_.Name -match "${subModuleNameTrimmed}\." } | ForEach-Object { $_.Name }
 
 $parentModulePath = Join-Path $moduleRootPath $parentModuleName
 $subModulePath = Join-Path $moduleRootPath $SubModuleName
