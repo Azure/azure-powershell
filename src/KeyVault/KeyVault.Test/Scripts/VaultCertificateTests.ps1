@@ -196,7 +196,7 @@ function Test_ImportBase64EncodedStringWithoutPasswordAsCertificate
 
 <#
 .SYNOPSIS
-Merge a cer (signed CSR) into a non-existant key pair
+Merge a cer (signed CSR) into a non-existent key pair
 #>
 
 function Test_MergeCerWithNonExistantKeyPair
@@ -212,7 +212,7 @@ function Test_MergeCerWithNonExistantKeyPair
 
 <#
 .SYNOPSIS
-Merge a cer (signed CSR) into a non-existant key pair
+Merge a cer (signed CSR) into a non-existent key pair
 #>
 
 function Test_MergeCerWithMismatchKeyPair
@@ -250,7 +250,7 @@ function Test_GetCertificate
 
 <#
 .SYNOPSIS
-Get a non existant certificate
+Get a non existent certificate
 #>
 
 function Test_GetCertificateNonExistant
