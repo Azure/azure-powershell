@@ -42,44 +42,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSGalleryInVMAccessControlProfileVersion))]
     public partial class UpdateAzureRmGalleryInVMAccessControlProfileVersion : ComputeAutomationBaseCmdlet
     {
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the resource group.")]
-        [ResourceGroupCompleter]
-        public string ResourceGroupName { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the gallery.")]
-        public string GalleryName { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the Gallery In VM Access Control Profile.")]
-        public string GalleryInVMAccessControlProfileName { get; set; }
-
-        [Alias("GalleryInVMAccessControlProfileVersionName")]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the Gallery In VM Access Control Profile Version.")]
-        public string Name { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "PSGalleryInVmAccessControlProfileVersion object created from New-AzGalleryInVMAccessControlProfileVersionConfig.")]
         public PSGalleryInVMAccessControlProfileVersion GalleryInVmAccessControlProfileVersion { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "This property allows you to specify if the requests will be allowed to access the host endpoints.")]
-        [PSArgumentCompleter("Allow", "Deny")]
-        public string DefaultAccess { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -93,29 +61,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "If set to true, Virtual Machines deployed from the latest version of the Resource Profile won't use this Profile version.")]
         public bool? ExcludeFromLatest { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The location of the Gallery In VM Access Control Profile.")]
-        public string Location { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                PSGalleryInVMAccessControlProfileVersion psGalleryInVMAccessControlProfileVersion;
-                if (this.IsParameterBound(c => c.GalleryInVmAccessControlProfileVersion))
-                {
-                    psGalleryInVMAccessControlProfileVersion = this.GalleryInVmAccessControlProfileVersion;
-                }
-                else
-                {
-                    psGalleryInVMAccessControlProfileVersion = new PSGalleryInVMAccessControlProfileVersion();
-                }
+                PSGalleryInVMAccessControlProfileVersion psGalleryInVMAccessControlProfileVersion = this.GalleryInVmAccessControlProfileVersion;
 
-                psGalleryInVMAccessControlProfileVersion.Location = this.Location;
-                psGalleryInVMAccessControlProfileVersion.DefaultAccess = this.IsParameterBound(c => c.DefaultAccess) ? this.DefaultAccess : psGalleryInVMAccessControlProfileVersion.DefaultAccess;
+                string resourceGroupName = GetResourceGroupName(psGalleryInVMAccessControlProfileVersion.Id);
+                string galleryName = GetGalleryNameFromInVMAccessControlProfileResourceId(psGalleryInVMAccessControlProfileVersion.Id);
+                string galleryInVMAccessControlProfileName = GetInVMAccessControlProfileNameFromInVMAccessControlProfileResourceId(psGalleryInVMAccessControlProfileVersion.Id);
+                string galleryInVMAccessControlProfileVersionName = GetInVMAccessControlProfileVersionNameFromInVMAccessControlProfileVersionResourceId(psGalleryInVMAccessControlProfileVersion.Id);
+
                 psGalleryInVMAccessControlProfileVersion.ExcludeFromLatest = this.IsParameterBound(c => c.ExcludeFromLatest) ? this.ExcludeFromLatest : psGalleryInVMAccessControlProfileVersion.ExcludeFromLatest;
                 if (this.IsParameterBound(c => c.TargetRegion))
                 {
@@ -137,7 +94,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 GalleryInVMAccessControlProfileVersion galleryInVMAccessControlProfileVersion = new GalleryInVMAccessControlProfileVersion();
                 ComputeAutomationAutoMapperProfile.Mapper.Map<PSGalleryInVMAccessControlProfileVersion, GalleryInVMAccessControlProfileVersion>(psGalleryInVMAccessControlProfileVersion, galleryInVMAccessControlProfileVersion);
-                var result = GalleryInVMAccessControlProfileVersionClient.CreateOrUpdate(this.ResourceGroupName, this.GalleryName, this.GalleryInVMAccessControlProfileName, this.Name, galleryInVMAccessControlProfileVersion);
+                var result = GalleryInVMAccessControlProfileVersionClient.CreateOrUpdate(resourceGroupName, galleryName, galleryInVMAccessControlProfileName, galleryInVMAccessControlProfileVersionName, galleryInVMAccessControlProfileVersion);
                 var psObject = new PSGalleryInVMAccessControlProfileVersion();
                 ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryInVMAccessControlProfileVersion, PSGalleryInVMAccessControlProfileVersion>(result, psObject);
                 WriteObject(psObject);

@@ -13,11 +13,10 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Update-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName <String> -GalleryName <String>
- -GalleryInVMAccessControlProfileName <String> -Name <String>
- [-GalleryInVmAccessControlProfileVersion <PSGalleryInVMAccessControlProfileVersion>] [-DefaultAccess <String>]
- [-TargetRegion <String[]>] [-ExcludeFromLatest <Boolean>] -Location <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Update-AzGalleryInVMAccessControlProfileVersion
+ -GalleryInVmAccessControlProfileVersion <PSGalleryInVMAccessControlProfileVersion> [-TargetRegion <String[]>]
+ [-ExcludeFromLatest <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,21 +32,6 @@ PS C:\> {{ Add example code here }}
 {{ Add example description here }}
 
 ## PARAMETERS
-
-### -DefaultAccess
-This property allows you to specify if the requests will be allowed to access the host endpoints.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -79,21 +63,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -GalleryInVMAccessControlProfileName
-The name of the Gallery In VM Access Control Profile.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -GalleryInVmAccessControlProfileVersion
 PSGalleryInVmAccessControlProfileVersion object created from New-AzGalleryInVMAccessControlProfileVersionConfig.
 
@@ -101,51 +70,6 @@ PSGalleryInVmAccessControlProfileVersion object created from New-AzGalleryInVMAc
 Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSGalleryInVMAccessControlProfileVersion
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -GalleryName
-The name of the gallery.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Location
-The location of the Gallery In VM Access Control Profile.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the Gallery In VM Access Control Profile Version.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: GalleryInVMAccessControlProfileVersionName
 
 Required: True
 Position: Named
@@ -166,21 +90,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The name of the resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
