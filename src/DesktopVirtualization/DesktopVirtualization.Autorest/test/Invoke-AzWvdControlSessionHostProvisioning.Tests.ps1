@@ -15,7 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzWvdControlSessionHos
 }
 
 Describe 'Invoke-AzWvdControlSessionHostProvisioning' {
-    It 'PostExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'PostExpanded' {
+         try {
+             Invoke-AzWvdControlSessionHostProvisioning -HostPoolName $env.AutomatedHostpoolPersistent -ResourceGroupName $env.ResourceGroupPersistent `
+            -SubscriptionId $env.subscriptionId
+         }
+         catch {
+             $_.Exception.Message.contains("There is no session host provisioning running") | Should -BeTrue
+         }
     }
 }
