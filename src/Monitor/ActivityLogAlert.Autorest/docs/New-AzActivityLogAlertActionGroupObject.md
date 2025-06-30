@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Monitor
-online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzActivityLogAlertActionGroupObject
+online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-azactivitylogalertactiongroupobject
 schema: 2.0.0
 ---
 
@@ -50,10 +50,9 @@ Accept wildcard characters: False
 ### -WebhookProperty
 the dictionary of custom properties to include with the post operation.
 These data are appended to the webhook payload.
-To construct, see NOTES section for WEBHOOKPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActionGroupWebhookProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActionGroupWebhookProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +70,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.ActionGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.ActionGroup
 
 ## NOTES
 

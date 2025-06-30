@@ -56,10 +56,11 @@ function setupEnv() {
     $actionGroupName = 'test-action-group' + (RandomString -allChars $false -len 6)
     $null = $env.Add("receiverName", $receiverName)
     $null = $env.Add("actionGroupName", $actionGroupName)
-    $script = {param([string]$actionGroupName, [string]$receiverName, [string]$resourceGroupName); write-host "start to create action group $actionGroupName"; Import-Module Az.Monitor; $receiver = New-AzActionGroupReceiver -Name $receiverName -EmailAddress test@microsoft.com; Set-AzActionGroup -ResourceGroupName $resourceGroupName -Name $actionGroupName -ShortName 'short' -Receiver $receiver}
+    $script = {param([string]$actionGroupName, [string]$receiverName, [string]$resourceGroupName); write-host "start to create action group $actionGroupName"; Import-Module -Name Az.Accounts -RequiredVersion (Get-Module -Name Az.Accounts -ListAvailable | Sort-Object -Property Version -Descending)[0].Version; Import-Module Az.Monitor; $email = New-AzActionGroupEmailReceiverObject -EmailAddress test@microsoft.com -Name $receiverName; New-AzActionGroup -Name $actionGroupName -ResourceGroupName $resourceGroupName -Location eastus -GroupShortName 'short' -EmailReceiver $email}
 
     $pwsh = [System.Diagnostics.Process]::GetCurrentProcess().Path
     & "$pwsh" -NonInteractive -NoLogo -NoProfile -Command "& {$script} $actionGroupName $receiverName $resourceGroupName"
+
     $null = $env.Add("actionGroupResourceId", "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroupName)/providers/microsoft.insights/actionGroups/$($env.actionGroupName)")
     $null = $env.Add('alertName', 'test-alert' + (RandomString -allChars $false -len 6))
 
