@@ -584,7 +584,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The paramater -RollbackToLastDeployment and -RollBackDeploymentName can&apos;t be defined at the same time..
+        ///   Looks up a localized string similar to The parameter -RollbackToLastDeployment and -RollBackDeploymentName can&apos;t be defined at the same time..
         /// </summary>
         internal static string InvalidRollbackParameters {
             get {

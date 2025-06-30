@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 }
                 catch (Common.MSGraph.Version1_0.DirectoryObjects.Models.OdataErrorException)
                 {
-                    // Swallow OdataErroException
+                    // Swallow OdataErrorException
                 }
             }
             return result;

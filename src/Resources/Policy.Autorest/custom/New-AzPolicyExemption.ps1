@@ -181,7 +181,7 @@ process {
         Write-Host -ForegroundColor Cyan "process:New-AzPolicyExemption(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
 
-    # remomve $null and empty values to avoid validation failures on pipeline input
+    # remove $null and empty values to avoid validation failures on pipeline input
     $calledParameters = @{}
     foreach ($parameterName in $PSBoundParameters.Keys) {
         $value = $PSBoundParameters.($parameterName)

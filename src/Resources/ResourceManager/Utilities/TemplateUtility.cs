@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             }
             catch (TemplateSpecsErrorException e)
             {
-                // If the templateSpec resourceID is pointing to a non existant resource
+                // If the templateSpec resourceID is pointing to a non existent resource
                 if (!e.Response.StatusCode.Equals(HttpStatusCode.NotFound))
                 {
                     // Throw for any other error that is not due to a 404 for the template resource.

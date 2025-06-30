@@ -3,7 +3,7 @@
 // license information.
 //
 // This is a wrapper class for Microsoft.Rest.Serialization.SafeJsonConvert. We create this class to support string values to
-// Deployment.Properties.Template and Deployment.Properties.Parameters. The string values must be valid JSON payloads for tempalte
+// Deployment.Properties.Template and Deployment.Properties.Parameters. The string values must be valid JSON payloads for template
 // and parameters respectively. 
 //
 

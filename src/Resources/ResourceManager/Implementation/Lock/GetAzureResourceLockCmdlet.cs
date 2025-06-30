@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     public class GetAzureResourceLockCmdlet : ResourceLockManagementCmdletBase
     {
         /// <summary>
-        /// Contains the errors that encountered while satifying the request.
+        /// Contains the errors that encountered while satisfying the request.
         /// </summary>
         private readonly ConcurrentBag<ErrorRecord> errors = new ConcurrentBag<ErrorRecord>();
 

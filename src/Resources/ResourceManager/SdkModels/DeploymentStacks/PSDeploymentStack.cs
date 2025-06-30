@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         /// <summary>
         /// This conversion method is required to fit the outputs in the deployment stack response object into a custom powershell object that has additional structure and 
-        /// custom output formatting. It also enables type population for outputs that are not returned with an explict type.
+        /// custom output formatting. It also enables type population for outputs that are not returned with an explicit type.
         /// </summary>
         /// <param name="outputs">The outputs of the deployment stack response object.</param>
         internal static Dictionary<string, DeploymentVariable> ConvertOutputDictionary(object outputs)
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         /// <summary>
         /// This conversion method is required to fit the parameters in the deployment stack response object into a custom powershell object that has additional structure and 
-        /// custom output formatting. It also enables type population for parameters that are not returned with an explict type.
+        /// custom output formatting. It also enables type population for parameters that are not returned with an explicit type.
         /// </summary>
         /// <param name="parameters">The deployment parameters of the deployment stack response object.</param>
         internal static Dictionary<string, PSDeploymentStackParameter> ConvertParameterDictionary(IDictionary<string, DeploymentParameter> parameters)
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         internal static DeploymentVariable ExtractDeploymentVariableFromJObject(JObject jObject)
         {
-            // Attempt to desialize the DeploymentVariable:
+            // Attempt to deserialize the DeploymentVariable:
             var dVar = jObject.ToString().FromJson<DeploymentVariable>();
 
             // If the type is null, attempt to infer the type:

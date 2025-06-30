@@ -3,7 +3,7 @@ param ($TargetTestName)
 
 Write-Host -ForegroundColor DarkGreen "Loading Current.ps1 with TestName=[$($TestName)] and TargetTestName=[$($TargetTestName)]"
 
-# The below initialization is only peformed following these rules:
+# The below initialization is only performed following these rules:
 #   if $TargetTestName is provided, we will set up the test environment for that named test if
 #      the current test ($TestName) matches the named target test or
 #      there is no current test, which means all tests are being performed

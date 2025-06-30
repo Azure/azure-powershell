@@ -247,7 +247,7 @@ function Test-RemoveTemplateSpec
 
 <#
 .SYNOPSIS
-Tests that using a non-existant TemplateSpec throws the correct type of error
+Tests that using a non-existent TemplateSpec throws the correct type of error
 #>
 function Test-TemplateSpecErrorType
 {

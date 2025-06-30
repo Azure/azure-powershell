@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Utility method to test CreeteOrUpdate for Tags within tracked resources and subscription.
+Utility method to test CreateOrUpdate for Tags within tracked resources and subscription.
 #>
 function Test-TagCreateOrUpdateWithResourceIdParams($resourceId)
 {
@@ -127,7 +127,7 @@ function Test-UpdateWithResourceIdParams($resourceId)
         }
 
         {
-            # repalce operation
+            # replace operation
             $replaced = @{"key1"="value1"; "key3"="value3";}
             $res = Update-AzTag -ResourceId $resourceId -Tag $replaced -Operation Replace
 
@@ -452,7 +452,7 @@ function NewTestResource
 
 <#
 .SYNOPSIS
-utility method to creare resource
+utility method to create resource
 #>
 function NewTestResourcePurviewAccount
 {

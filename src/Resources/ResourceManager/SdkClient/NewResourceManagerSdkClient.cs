@@ -1022,7 +1022,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         /// <summary>
-        /// List deployments with fiter options.
+        /// List deployments with filter options.
         /// </summary>
         /// <param name="options">The filtering options</param>
         private List<PSDeployment> ListDeployments(FilterDeploymentOptions options)

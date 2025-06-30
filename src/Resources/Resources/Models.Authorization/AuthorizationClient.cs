@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             }
             else
             {
-                // Assignments to different roleDefintion Ids. This can happen only if roleDefinition name was provided and multiple roles exists with same name.
+                // Assignments to different roleDefinition Ids. This can happen only if roleDefinition name was provided and multiple roles exists with same name.
                 throw new InvalidOperationException(string.Format(ProjectResources.MultipleRoleDefinitionsFoundWithSameName, options.RoleDefinitionName));
             }
 
@@ -468,7 +468,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         }
 
         /// <summary>
-        /// Updates a role definiton.
+        /// Updates a role definition.
         /// </summary>
         /// <param name="roleDefinition">The role definition to update.</param>
         /// <returns>The updated role definition.</returns>

@@ -545,7 +545,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             if (deleteResponse.Response.StatusCode == System.Net.HttpStatusCode.NoContent)
             {
                 throw new PSArgumentException(
-                        $"DeploymentStack '{name}' not found in the curent subscription scope."
+                        $"DeploymentStack '{name}' not found in the current subscription scope."
                     );
             }
 
@@ -843,7 +843,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 BypassStackOutOfSyncError = bypassStackOutOfSyncError
             };
 
-            // Evaulate Template:
+            // Evaluate Template:
             if (templateSpec != null)
             {
                 deploymentStackModel.TemplateLink = new DeploymentStacksTemplateLink

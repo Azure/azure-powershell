@@ -231,7 +231,7 @@ DynamicParam
         Write-Host -ForegroundColor Cyan "begin:New-AzPolicyAssignment(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
 
-    # generate dynamic parameters for assignement based on the policy definition being assigned
+    # generate dynamic parameters for assignment based on the policy definition being assigned
     if ($PolicyDefinition)
     {
         $parameters = [PSObject]$PolicyDefinition.Parameter

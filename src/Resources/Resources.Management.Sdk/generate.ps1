@@ -1,6 +1,6 @@
 # Running Start-AutoRestCodeGeneration will overwrite the files present in SdkGenerationDirectory based on AutoRestCodeGenerationFlags
 # As ARM has multiple tag packages, it is safer to first Generate the files in a different directory
-# and copy these new set of files to the main Generated folder. This way exisiting files will not be deleted.
+# and copy these new set of files to the main Generated folder. This way existing files will not be deleted.
 
 # Generate package with resources tag
 # Start-AutoRestCodeGeneration -ResourceProvider "resources/resource-manager" -SdkRepoRootPath "$PSScriptRoot\..\..\..\.." -AutoRestVersion "v2" -AutoRestCodeGenerationFlags "--tag=package-resources-2024-11" -SdkGenerationDirectory "$PSScriptRoot\Generated\Resources"

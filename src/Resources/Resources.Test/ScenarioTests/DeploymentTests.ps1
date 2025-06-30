@@ -419,7 +419,7 @@ function Test-CrossResourceGroupDeploymentFromTemplateFile
 
 <#
 .SYNOPSIS
-Tests nested errors displayed when temployment put fails.
+Tests nested errors displayed when deployment put fails.
 #>
 function Test-NestedErrorsDisplayed
 {

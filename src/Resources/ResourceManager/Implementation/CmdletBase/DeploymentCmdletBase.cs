@@ -190,13 +190,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Attempts to load dynamic parameters from populated template/template parameter properties.
         /// Runs on every tab complete and before processing on execution.
-        /// It will silently fail (exception is caught and not visible to user) until required properties are popluated.
+        /// It will silently fail (exception is caught and not visible to user) until required properties are populated.
         /// </summary>
         public new virtual object GetDynamicParameters()
         {
             var isBicepParamFile = BicepUtility.IsBicepparamFile(TemplateParameterFile);
 
-            // Ensure required properties are populated for dynamic parameter extration:
+            // Ensure required properties are populated for dynamic parameter extraction:
             DynamicParameterValidityCheck(isBicepParamFile);
 
             if (isBicepParamFile)
