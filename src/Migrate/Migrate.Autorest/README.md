@@ -388,7 +388,7 @@ directive:
       subject: ^Job$
     set:
       subject: LocalReplicationJob      
-  # Hide cmldets used by custom
+  # Hide cmdlets used by custom
   - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     where:
       verb: Set$

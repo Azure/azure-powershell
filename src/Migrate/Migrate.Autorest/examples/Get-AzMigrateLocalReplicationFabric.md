@@ -77,7 +77,7 @@ Type                         : Microsoft.DataReplication/replicationFabrics
 
 Retrieves all fabrics from a resource group by name.
 
-### Example 4: List all fabircs
+### Example 4: List all fabrics
 ```powershell
 Get-AzMigrateLocalReplicationFabric
 ```
