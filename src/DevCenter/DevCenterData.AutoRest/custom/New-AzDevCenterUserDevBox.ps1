@@ -61,6 +61,7 @@ https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteruserde
 function New-AzDevCenterUserDevBox {
   [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBox])]
   [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+  [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ParameterBreakingChangeAttribute("LocalAdministrator", "15.0.0", "3.0.0", "2025/11/01")]
   param(
       [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
       [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
