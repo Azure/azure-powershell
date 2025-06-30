@@ -28,7 +28,7 @@ The gallery inVMAccessControlVersion to be updated can be passed by providing th
 ### Example 1
 ```powershell
 $CPversion = Get-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName "myResourceGroup" -GalleryName "myGallery" -GalleryInVMAccessControlProfileName "myProfile" -GalleryInVMAccessControlProfileVersionName "myProfileVersion"
-Update-AzGalleryInVMAccessControlProfileVersion -GalleryInVmAccessControlProfileVersion $CPversion -TargetRegion @("West US 2", "West US") -ExcludeFromLatest $true
+Update-AzGalleryInVMAccessControlProfileVersion -GalleryInVmAccessControlProfileVersion $CPversion -TargetLocation @("West US 2", "West US") -ExcludeFromLatest $true
 ```
 
 This example first uses Get-AzGalleryInVMAccessControlProfileVersion to retrieves the specified version of the gallery inVMAccessControlProfile that needs to be updated.
