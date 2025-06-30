@@ -8,7 +8,7 @@ $utilFilePath = Join-Path $RepoRoot '.azure-pipelines' 'PipelineSteps' 'BatchGen
 Import-Module $utilFilePath -Force
 
 $srcPath = Join-Path $RepoRoot 'src'
-$moduleMap = Get-AutorestV4ModuleMap -srcPath $srcPath
+$moduleMap = Get-BatchGenerationModuleMap -srcPath $srcPath
 Write-Host "Total matched modules: $($moduleMap.Count)"
 
 $modules = @($moduleMap.Keys | Sort-Object)
