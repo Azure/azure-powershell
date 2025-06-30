@@ -1110,3 +1110,114 @@ function TestGen-newazgallery
         Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue;
     }
 }
+
+<#
+.SYNOPSIS
+Tests InVMAccessControlProfileVersions 
+#>
+function Test-InVMAccessControlProfileVersion
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "westus2"
+    
+    try
+    {
+    
+        $location = $loc;
+        $resourceGroup = $rgname 
+
+        $InVMAccessControlProfileName= "TestMspCp"
+
+        $inVMAccessControlProfileVersionName= "1.0.0" 
+        $targetRegions= @("EastUS2EUAP", "CentralUSEUAP", "westUS2") 
+
+        # create resource group 
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # gallery creation 
+        New-AzGallery -ResourceGroupName $rgname -GalleryName $galleryName -Location $location -Description "My custom image gallery" 
+ 
+        # CP creation 
+        New-AzGalleryInVMAccessControlProfile -ResourceGroupName  $rgname -GalleryName $galleryName   -GalleryInVMAccessControlProfileName $InVMAccessControlProfileName -Location $location -OsType "Windows" -ApplicableHostEndPoint "WireServer" -Description "this test1" 
+        $cp = Get-AzGalleryInVMAccessControlProfile -ResourceGroupName  $resourceGroup  -GalleryName $galleryName   -GalleryInVMAccessControlProfileName $InVMAccessControlProfileName 
+
+        # Validate 
+        # location 
+        # os profile 
+        # host endpoint 
+        # description
+
+        # Update CP
+        Update-AzGalleryInVMAccessControlProfile -ResourceGroupName  $resourceGroup  -GalleryName $galleryName   -GalleryInVMAccessControlProfileName $InVMAccessControlProfileName -Location $location -Description "this test2" 
+
+        # Validate 
+        # description 
+
+        # Create CPversion config 
+        $inVMAccessConrolProfileVersion = New-AzGalleryInVMAccessControlProfileVersionConfig -Name $inVMAccessControlProfileVersionName  -Location $location -Mode "Audit"  -DefaultAccess "Deny" -TargetRegion $targetRegions  -ExcludeFromLatest 
+
+        # Set AccessRoles
+        ## Add Privilege
+        Add-AzGalleryInVMAccessControlProfileVersionRulesPrivilege -GalleryInVmAccessControlProfileVersion $inVMAccessConrolProfileVersion -PrivilegeName "GoalState" -Path "/machine" -QueryParameter @{ comp = "goalstate" } 
+        Add-AzGalleryInVMAccessControlProfileVersionRulesPrivilege -GalleryInVmAccessControlProfileVersion $inVMAccessConrolProfileVersion -PrivilegeName "GoalState2" -Path "/machine" -QueryParameter @{ comp = "goalstate" } 
+
+        ## Add Roles 
+        Add-AzGalleryInVMAccessControlProfileVersionRulesRole -GalleryInVmAccessControlProfileVersion $inVMAccessConrolProfileVersion -RoleName "Provisioning" -Privilege @("GoalState") 
+        Add-AzGalleryInVMAccessControlProfileVersionRulesRole -GalleryInVmAccessControlProfileVersion $inVMAccessConrolProfileVersion -RoleName "Provisioning2" -Privilege @("GoalState") 
+
+        ## Add Identity 
+        Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity -GalleryInVmAccessControlProfileVersion $inVMAccessConrolProfileVersion -IdentityName "WinPA" -UserName "SYSTEM" -GroupName "Administrators" -ExePath "C:\Windows\System32\cscript.exe" -ProcessName "cscript" 
+        Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity -GalleryInVmAccessControlProfileVersion $inVMAccessConrolProfileVersion -IdentityName "WinPA2" -UserName "SYSTEM" -GroupName "Administrators" -ExePath "C:\Windows\System32\cscript.exe" -ProcessName "cscript" 
+
+        ## Add Role Assignment
+        Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment -GalleryInVmAccessControlProfileVersion $inVMAccessConrolProfileVersion -Role "Provisioning" -Identity @("WinPA") 
+        Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment -GalleryInVmAccessControlProfileVersion $inVMAccessConrolProfileVersion -Role "Provisioning2" -Identity @("WinPA") 
+
+        # Validate CP Version Config 
+        # target region 
+        # exclude from latest
+        # check rules counts == 2 
+
+        # Create CP Version 
+        New-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName $resourceGroup -GalleryName $galleryName -GalleryInVMAccessControlProfileName   $InVMAccessControlProfileName   -GalleryInVmAccessControlProfileVersion $inVMAccessConrolProfileVersion  
+
+        # Get CP version 
+        $ver = Get-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName  $resourceGroup -GalleryName $galleryName -GalleryInVMAccessControlProfileName $InVMAccessControlProfileName -GalleryInVMAccessControlProfileVersionName  $inVMAccessControlProfileVersionName 
+
+        # validate CP version 
+        # target region 
+        # exclude from latest
+        # check rules counts == 2 
+
+        # update CP version 
+        $targetRegions= @("westus2") 
+        Update-AzGalleryInVMAccessControlProfileVersion -GalleryInVMAccessControlProfileVersion $ver -TargetRegion $targetRegions -ExcludeFromLatest $false 
+
+        # validate
+        $ver = Get-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName  $resourceGroup -GalleryName $galleryName -GalleryInVMAccessControlProfileName $InVMAccessControlProfileName -GalleryInVMAccessControlProfileVersionName  $inVMAccessControlProfileVersionName 
+        # target region list 1 
+        # exclude from latest false 
+
+
+        # remove CP version 
+        Remove-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName $resourceGroup -GalleryName $galleryName -GalleryInVMAccessControlProfileName $InVMAccessControlProfileName -GalleryInVMAccessControlProfileVersionName  $inVMAccessControlProfileVersionName -Force
+        $ver = Get-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName  $resourceGroup -GalleryName $galleryName -GalleryInVMAccessControlProfileName $InVMAccessControlProfileName
+
+        # validate 
+        # $ver.count 
+
+        # remove CP
+        Remove-AzGalleryInVMAccessControlProfile -ResourceGroupName  $resourceGroup  -GalleryName $galleryName   -GalleryInVMAccessControlProfileName $InVMAccessControlProfileName -Force
+        $profile = Get-AzGalleryInVMAccessControlProfile -ResourceGroupName  $resourceGroup  -GalleryName $galleryName  
+
+        # validate
+        # $profile.count
+
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
