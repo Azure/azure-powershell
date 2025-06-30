@@ -141,7 +141,7 @@
 * Added new parameter `-VirtualMachineScaleSetId` to `Update-AzVm` cmdlet.
 * Fixed `New-AzVmss` and `New-Azvm` to use `SharedGalleryImageId` parameter.
 * Reduced File Permissions from 0644 to 0600 for SSH Private Key File in `New-AzVm`.
-* Removed GuestAttestaion vm extension installation for Vmss and Vm creation cmdlets.
+* Removed GuestAttestation vm extension installation for Vmss and Vm creation cmdlets.
 
 
 ## Version 6.3.0
@@ -288,7 +288,7 @@
 * For `Add-AzVhd` upon upload failure using DirectUploadToManagedDisk parameter set, the SAS will be revoked and the created managed disk will be deleted.
 * An unresolved path can be passed in for '-LocalFilePath' for `Add-AzVhd`. The cmdlet with unresolve the path itself.
 * Added `-DataAccessAuthMode` parameter to Add-AzVhd DirectUploadToManagedDisk parameter set.
-* Added `-EnabldUltraSSD` parameter to New-AzHostGroup.
+* Added `-EnableUltraSSD` parameter to New-AzHostGroup.
 
 ## Version 4.27.0
 * Edited `New-AzVm` cmdlet internal logic to use the `PlatformFaultDomain` value in the `PSVirtualMachine` object passed to it in the new virtual machine.

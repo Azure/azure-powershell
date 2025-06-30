@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         // Gets or sets the property of 'Tags'
         public IDictionary<string, string> Tags { get; set; }
 
-        // Gets or sets the reference Id of the availailbity set to which this virtual machine belongs.
+        // Gets or sets the reference Id of the availability set to which this virtual machine belongs.
         public SubResource AvailabilitySetReference { get; set; }
 
         // Gets or sets the diagnostics profile.
