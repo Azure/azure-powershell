@@ -26,10 +26,10 @@ The **Update-AzGalleryInVMAccessControlProfile** cmdlet updates a gallery inVMAc
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Update-AzGalleryInVMAccessControlProfile -ResourceGroupName "myResourceGroup" -GalleryName "myGallery" -GalleryInVMAccessControlProfileName "myProfile" -Location "West US 2" -Description "New description."
 ```
 
-{{ Add example description here }}
+Updates the gallery inVMAccessControlProfile named "myProfile" in the gallery "myGallery" located in the resource group "myResourceGroup" with a new description.
 
 ## PARAMETERS
 

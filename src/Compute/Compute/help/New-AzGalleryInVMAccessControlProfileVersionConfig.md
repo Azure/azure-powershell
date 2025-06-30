@@ -14,7 +14,7 @@ Creates a local PSGalleryInVmAccessControlProfileVersion object.
 
 ```
 New-AzGalleryInVMAccessControlProfileVersionConfig -Name <String> -Location <String> -Mode <String>
- -DefaultAccess <String> -TargetRegion <String[]> [-ExcludeFromLatest]
+ -DefaultAccess <String> -TargetLocation <String[]> [-ExcludeFromLatest]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
@@ -39,7 +39,7 @@ PS C:\> {{ Add example code here }}
 This property allows you to specify if the requests will be allowed to access the host endpoints.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 If set to true, Virtual Machines deployed from the latest version of the Resource Profile won't use this Profile version.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 The location of the Gallery In VM Access Control Profile Version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 This property allows you to specify whether the access control rules are in Audit mode, in Enforce mode or Disabled.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 The name of the Gallery In VM Access Control Profile Version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: GalleryInVMAccessControlProfileVersionName
 
@@ -129,7 +129,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -140,12 +140,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetRegion
-The names of the target regions where the Resource Profile version is going to be replicated to.
-This property is updatable.
+### -TargetLocation
+The names of the target regions where the Resource Profile version is going to be replicated to. This property is updatable.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

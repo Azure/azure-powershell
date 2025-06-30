@@ -1131,7 +1131,7 @@ function Test-InVMAccessControlProfileVersion
         $InVMAccessControlProfileName= "testMspCp"
 
         $inVMAccessControlProfileVersionName= "1.0.0" 
-        $targetRegions= @("EastUS2EUAP", "CentralUSEUAP", "westUS2") 
+        $targetLocations= @("EastUS2EUAP", "CentralUSEUAP", "westUS2") 
 
         # create resource group 
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
@@ -1153,7 +1153,7 @@ function Test-InVMAccessControlProfileVersion
         Update-AzGalleryInVMAccessControlProfile -ResourceGroupName  $resourceGroup  -GalleryName $galleryName   -GalleryInVMAccessControlProfileName $InVMAccessControlProfileName -Location $location -Description "this test2" 
 
         # Create CPversion config 
-        $inVMAccessConrolProfileVersion = New-AzGalleryInVMAccessControlProfileVersionConfig -Name $inVMAccessControlProfileVersionName  -Location $location -Mode "Audit"  -DefaultAccess "Deny" -TargetRegion $targetRegions  -ExcludeFromLatest 
+        $inVMAccessConrolProfileVersion = New-AzGalleryInVMAccessControlProfileVersionConfig -Name $inVMAccessControlProfileVersionName  -Location $location -Mode "Audit"  -DefaultAccess "Deny" -TargetLocation $targetLocations  -ExcludeFromLatest 
 
         # Set AccessRoles
         ## Add Privilege
@@ -1195,8 +1195,8 @@ function Test-InVMAccessControlProfileVersion
         Assert-AreEqual $ver.Rules.RoleAssignments.count 2 
 
         # update CP version 
-        $targetRegions= @("westus2") 
-        Update-AzGalleryInVMAccessControlProfileVersion -GalleryInVMAccessControlProfileVersion $ver -TargetRegion $targetRegions -ExcludeFromLatest $false 
+        $targetLocations = @("westus2") 
+        Update-AzGalleryInVMAccessControlProfileVersion -GalleryInVMAccessControlProfileVersion $ver -TargetLocation $targetLocations -ExcludeFromLatest $false 
 
         # validate
         $ver = Get-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName  $resourceGroup -GalleryName $galleryName -GalleryInVMAccessControlProfileName $InVMAccessControlProfileName -GalleryInVMAccessControlProfileVersionName  $inVMAccessControlProfileVersionName 

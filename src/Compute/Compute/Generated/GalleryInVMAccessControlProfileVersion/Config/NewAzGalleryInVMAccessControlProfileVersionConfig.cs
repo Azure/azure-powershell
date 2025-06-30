@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The names of the target regions where the Resource Profile version is going to be replicated to. This property is updatable.")]
-        public string[] TargetRegion { get; set; }
+        public string[] TargetLocation { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             List<TargetRegion> targetRegions = new List<TargetRegion>();
 
             // loop through this.TargetRegion
-            foreach (var region in this.TargetRegion)
+            foreach (var region in this.TargetLocation)
             {
                 // create TargetRegion and assign name 
                 TargetRegion targetRegion = new TargetRegion

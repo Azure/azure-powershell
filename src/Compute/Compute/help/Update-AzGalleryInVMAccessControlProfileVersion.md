@@ -14,24 +14,25 @@ Updates a specific version of a gallery inVMAccessControlProfile.
 
 ```
 Update-AzGalleryInVMAccessControlProfileVersion
- -GalleryInVmAccessControlProfileVersion <PSGalleryInVMAccessControlProfileVersion> [-TargetRegion <String[]>]
- [-ExcludeFromLatest <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+ -GalleryInVmAccessControlProfileVersion <PSGalleryInVMAccessControlProfileVersion>
+ [-TargetLocation <String[]>] [-ExcludeFromLatest <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Update-AzGalleryInVMAccessControlProfileVersion** cmdlet updates a specific version of a gallery inVMAccessControlProfile. <br>
 The gallery inVMAccessControlVersion to be updated can be passed by providing the PSGalleryInVMAccessControlProfileVersion object retrieved from the [Get-AzGalleryInVMAccessControlProfileVersion](https://learn.microsoft.com/en-us/powershell/module/az.compute/Get-AzGalleryInVMAccessControlProfileVersion) cmdlet.
 
-
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$CPversion = Get-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName "myResourceGroup" -GalleryName "myGallery" -GalleryInVMAccessControlProfileName "myProfile" -GalleryInVMAccessControlProfileVersionName "myProfileVersion"
+Update-AzGalleryInVMAccessControlProfileVersion -GalleryInVmAccessControlProfileVersion $CPversion -TargetRegion @("West US 2", "West US") -ExcludeFromLatest $true
 ```
 
-{{ Add example description here }}
+This example first uses Get-AzGalleryInVMAccessControlProfileVersion to retrieves the specified version of the gallery inVMAccessControlProfile that needs to be updated.
+Then it uses Update-AzGalleryInVMAccessControlProfileVersion to update its TargetLocation and excludeFromLatest property. 
 
 ## PARAMETERS
 
@@ -95,9 +96,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetRegion
-The names of the target regions where the Resource Profile version is going to be replicated to.
-This property is updatable.
+### -TargetLocation
+The names of the target regions where the Resource Profile version is going to be replicated to. This property is updatable.
 
 ```yaml
 Type: System.String[]
