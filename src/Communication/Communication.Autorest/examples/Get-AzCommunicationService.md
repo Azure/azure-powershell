@@ -16,7 +16,7 @@ Global   ContosoAcsResource5 6/09/2024 4:41:40 AM contosouser5@microsoft.com  Us
 
 Returns a list of all ACS resources under that subscription.
 
-### Example 2: Get infomation on specified Azure Communication resource
+### Example 2: Get information on specified Azure Communication resource
 
 ```powershell
 Get-AzCommunicationService -Name ContosoAcsResource34 -ResourceGroupName ContosoResourceProvider1

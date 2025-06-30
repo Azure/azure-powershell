@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         private const string NetWorkRuleStringParameterSet = "NetWorkRuleString";
 
         /// <summary>
-        /// IpRule in String paremeter set name
+        /// IpRule in String parameter set name
         /// </summary>
         private const string IpRuleStringParameterSet = "IpRuleString";
 
