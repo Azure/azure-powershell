@@ -87,7 +87,7 @@ Gets information about integration runtime resources.
 Gets keys for a self-hosted integration runtime.
 
 ### [Get-AzSynapseIntegrationRuntimeMetric](Get-AzSynapseIntegrationRuntimeMetric.md)
-Gets metric data for an integration runtime. 
+Gets metric data for an integration runtime.
 
 ### [Get-AzSynapseIntegrationRuntimeNode](Get-AzSynapseIntegrationRuntimeNode.md)
 Gets an integration runtime node information.
@@ -310,7 +310,6 @@ Creates managed virtual network configuration.
 
 ### [New-AzSynapseRoleAssignment](New-AzSynapseRoleAssignment.md)
 Creates a Synapse Analytics role assignment.
- 
 
 ### [New-AzSynapseSparkConfiguration](New-AzSynapseSparkConfiguration.md)
 Creates or updates a spark configuration in a workspace.

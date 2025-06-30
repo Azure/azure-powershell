@@ -157,7 +157,7 @@ SystemDataLastModifiedByType : User
 Type                         : Microsoft.DigitalTwins/digitalTwinsInstances/endpoints
 ```
 
-Create an AzDigitalTwinsEndpoint for ServicBus by PrimaryConnectionString
+Create an AzDigitalTwinsEndpoint for ServiceBus by PrimaryConnectionString
 
 ## PARAMETERS
 

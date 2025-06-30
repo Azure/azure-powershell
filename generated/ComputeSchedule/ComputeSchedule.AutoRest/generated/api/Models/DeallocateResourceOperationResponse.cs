@@ -64,7 +64,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeSchedule.Models
         string Description { get; set; }
         /// <summary>The location of the deallocate request eg westus</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeSchedule.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,

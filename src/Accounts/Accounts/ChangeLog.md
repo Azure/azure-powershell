@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 5.1.1
+* Updated the date in the message about multi-factor authentication (MFA). For more details, see https://go.microsoft.com/fwlink/?linkid=2276971
+
 ## Version 5.1.0
 * Enabled setting the authentication scope for SSH cmdlets by `Set-AzEnvironment -SshAuthScope <String>`.
 
@@ -35,7 +38,7 @@
 * Increased the timeout for tab-completion of location, resource group, etc. to 10 seconds.
 
 ## Version 4.2.0
-* Updated warning message about MFA. For more details, see https://go.microsoft.com/fwlink/?linkid=2276314
+* Updated warning message about MFA. For more details, see https://go.microsoft.com/fwlink/?linkid=2276971
 * Fixed token in auxiliary authentication header.
 * Collected authentication method for telemetry in end process of cmdlet.
 

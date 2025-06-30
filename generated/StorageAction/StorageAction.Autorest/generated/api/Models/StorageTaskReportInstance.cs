@@ -33,61 +33,79 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).Id; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>Internal Acessors for FinishTime</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.FinishTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).FinishTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).FinishTime = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.FinishTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).FinishTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).FinishTime = value ?? null; }
 
         /// <summary>Internal Acessors for ObjectFailedCount</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.ObjectFailedCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).ObjectFailedCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).ObjectFailedCount = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.ObjectFailedCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).ObjectFailedCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).ObjectFailedCount = value ?? null; }
 
         /// <summary>Internal Acessors for ObjectsOperatedOnCount</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.ObjectsOperatedOnCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsOperatedOnCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsOperatedOnCount = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.ObjectsOperatedOnCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsOperatedOnCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsOperatedOnCount = value ?? null; }
 
         /// <summary>Internal Acessors for ObjectsSucceededCount</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.ObjectsSucceededCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsSucceededCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsSucceededCount = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.ObjectsSucceededCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsSucceededCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsSucceededCount = value ?? null; }
 
         /// <summary>Internal Acessors for ObjectsTargetedCount</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.ObjectsTargetedCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsTargetedCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsTargetedCount = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.ObjectsTargetedCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsTargetedCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsTargetedCount = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportProperties Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.StorageTaskReportProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for RunResult</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.RunResult { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).RunResult; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).RunResult = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.RunResult { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).RunResult; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).RunResult = value ?? null; }
 
         /// <summary>Internal Acessors for RunStatusEnum</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.RunStatusEnum { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).RunStatusEnum; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).RunStatusEnum = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.RunStatusEnum { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).RunStatusEnum; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).RunStatusEnum = value ?? null; }
 
         /// <summary>Internal Acessors for RunStatusError</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.RunStatusError { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).RunStatusError; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).RunStatusError = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.RunStatusError { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).RunStatusError; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).RunStatusError = value ?? null; }
 
         /// <summary>Internal Acessors for StartTime</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.StartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).StartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).StartTime = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.StartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).StartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).StartTime = value ?? null; }
 
         /// <summary>Internal Acessors for StorageAccountId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.StorageAccountId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).StorageAccountId; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).StorageAccountId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.StorageAccountId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).StorageAccountId; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).StorageAccountId = value ?? null; }
 
         /// <summary>Internal Acessors for SummaryReportPath</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.SummaryReportPath { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).SummaryReportPath; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).SummaryReportPath = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.SummaryReportPath { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).SummaryReportPath; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).SummaryReportPath = value ?? null; }
 
         /// <summary>Internal Acessors for TaskAssignmentId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.TaskAssignmentId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).TaskAssignmentId; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).TaskAssignmentId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.TaskAssignmentId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).TaskAssignmentId; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).TaskAssignmentId = value ?? null; }
 
         /// <summary>Internal Acessors for TaskId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.TaskId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).TaskId; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).TaskId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.TaskId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).TaskId; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).TaskId = value ?? null; }
 
         /// <summary>Internal Acessors for TaskVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.TaskVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).TaskVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).TaskVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstanceInternal.TaskVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).TaskVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportPropertiesInternal)Property).TaskVersion = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageAction.PropertyOrigin.Inherited)]
@@ -165,31 +183,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageAction.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageAction.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageAction.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageAction.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageAction.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageAction.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageAction.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; }
 
         /// <summary>Resource ID of the Storage Task Assignment associated with this reported run.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageAction.PropertyOrigin.Inlined)]

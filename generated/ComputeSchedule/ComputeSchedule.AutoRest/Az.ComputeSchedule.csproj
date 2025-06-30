@@ -2,7 +2,7 @@
   <PropertyGroup>
     <PsModuleName>ComputeSchedule</PsModuleName>
     <PsRootModuleName>ComputeSchedule</PsRootModuleName>
-    <PsModuleFolder>ComputeSchedule.AutoRest</PsModuleFolder>
+    <PsModuleFolder>ComputeSchedule.Autorest</PsModuleFolder>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />
