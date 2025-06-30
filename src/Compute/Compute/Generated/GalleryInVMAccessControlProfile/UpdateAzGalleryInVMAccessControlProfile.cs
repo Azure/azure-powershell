@@ -38,7 +38,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "GalleryInVMAccessControlProfile")]
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "GalleryInVMAccessControlProfile", SupportsShouldProcess = true)]
     [OutputType(typeof(PSGalleryInVMAccessControlProfile))]
     public partial class UpdateAzureRmGalleryInVMAccessControlProfile : ComputeAutomationBaseCmdlet
     {

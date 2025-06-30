@@ -38,7 +38,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "GalleryInVMAccessControlProfileVersion")]
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "GalleryInVMAccessControlProfileVersion", SupportsShouldProcess = true)]
     [OutputType(typeof(PSGalleryInVMAccessControlProfileVersion))]
     public partial class UpdateAzureRmGalleryInVMAccessControlProfileVersion : ComputeAutomationBaseCmdlet
     {
@@ -66,38 +66,41 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                PSGalleryInVMAccessControlProfileVersion psGalleryInVMAccessControlProfileVersion = this.GalleryInVmAccessControlProfileVersion;
-
-                string resourceGroupName = GetResourceGroupName(psGalleryInVMAccessControlProfileVersion.Id);
-                string galleryName = GetGalleryNameFromInVMAccessControlProfileResourceId(psGalleryInVMAccessControlProfileVersion.Id);
-                string galleryInVMAccessControlProfileName = GetInVMAccessControlProfileNameFromInVMAccessControlProfileResourceId(psGalleryInVMAccessControlProfileVersion.Id);
-                string galleryInVMAccessControlProfileVersionName = GetInVMAccessControlProfileVersionNameFromInVMAccessControlProfileVersionResourceId(psGalleryInVMAccessControlProfileVersion.Id);
-
-                psGalleryInVMAccessControlProfileVersion.ExcludeFromLatest = this.IsParameterBound(c => c.ExcludeFromLatest) ? this.ExcludeFromLatest : psGalleryInVMAccessControlProfileVersion.ExcludeFromLatest;
-                if (this.IsParameterBound(c => c.TargetLocation))
+                if (ShouldProcess(this.GalleryInVmAccessControlProfileVersion.Name, VerbsData.Update))
                 {
-                    List<TargetRegion> targetRegions = new List<TargetRegion>();
+                    PSGalleryInVMAccessControlProfileVersion psGalleryInVMAccessControlProfileVersion = this.GalleryInVmAccessControlProfileVersion;
 
-                    // loop through this.TargetRegion
-                    foreach (var region in this.TargetLocation)
+                    string resourceGroupName = GetResourceGroupName(psGalleryInVMAccessControlProfileVersion.Id);
+                    string galleryName = GetGalleryNameFromInVMAccessControlProfileResourceId(psGalleryInVMAccessControlProfileVersion.Id);
+                    string galleryInVMAccessControlProfileName = GetInVMAccessControlProfileNameFromInVMAccessControlProfileResourceId(psGalleryInVMAccessControlProfileVersion.Id);
+                    string galleryInVMAccessControlProfileVersionName = GetInVMAccessControlProfileVersionNameFromInVMAccessControlProfileVersionResourceId(psGalleryInVMAccessControlProfileVersion.Id);
+
+                    psGalleryInVMAccessControlProfileVersion.ExcludeFromLatest = this.IsParameterBound(c => c.ExcludeFromLatest) ? this.ExcludeFromLatest : psGalleryInVMAccessControlProfileVersion.ExcludeFromLatest;
+                    if (this.IsParameterBound(c => c.TargetLocation))
                     {
-                        // create TargetRegion and assign name 
-                        TargetRegion targetRegion = new TargetRegion
-                        {
-                            Name = region
-                        };
-                        // add to list of TargetRegions
-                        targetRegions.Add(targetRegion);
-                    }
-                    psGalleryInVMAccessControlProfileVersion.TargetLocations = targetRegions;
-                }
+                        List<TargetRegion> targetRegions = new List<TargetRegion>();
 
-                GalleryInVMAccessControlProfileVersion galleryInVMAccessControlProfileVersion = new GalleryInVMAccessControlProfileVersion();
-                ComputeAutomationAutoMapperProfile.Mapper.Map<PSGalleryInVMAccessControlProfileVersion, GalleryInVMAccessControlProfileVersion>(psGalleryInVMAccessControlProfileVersion, galleryInVMAccessControlProfileVersion);
-                var result = GalleryInVMAccessControlProfileVersionClient.CreateOrUpdate(resourceGroupName, galleryName, galleryInVMAccessControlProfileName, galleryInVMAccessControlProfileVersionName, galleryInVMAccessControlProfileVersion);
-                var psObject = new PSGalleryInVMAccessControlProfileVersion();
-                ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryInVMAccessControlProfileVersion, PSGalleryInVMAccessControlProfileVersion>(result, psObject);
-                WriteObject(psObject);
+                        // loop through this.TargetRegion
+                        foreach (var region in this.TargetLocation)
+                        {
+                            // create TargetRegion and assign name 
+                            TargetRegion targetRegion = new TargetRegion
+                            {
+                                Name = region
+                            };
+                            // add to list of TargetRegions
+                            targetRegions.Add(targetRegion);
+                        }
+                        psGalleryInVMAccessControlProfileVersion.TargetLocations = targetRegions;
+                    }
+
+                    GalleryInVMAccessControlProfileVersion galleryInVMAccessControlProfileVersion = new GalleryInVMAccessControlProfileVersion();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSGalleryInVMAccessControlProfileVersion, GalleryInVMAccessControlProfileVersion>(psGalleryInVMAccessControlProfileVersion, galleryInVMAccessControlProfileVersion);
+                    var result = GalleryInVMAccessControlProfileVersionClient.CreateOrUpdate(resourceGroupName, galleryName, galleryInVMAccessControlProfileName, galleryInVMAccessControlProfileVersionName, galleryInVMAccessControlProfileVersion);
+                    var psObject = new PSGalleryInVMAccessControlProfileVersion();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryInVMAccessControlProfileVersion, PSGalleryInVMAccessControlProfileVersion>(result, psObject);
+                    WriteObject(psObject);
+                }
             });
         }
     }
