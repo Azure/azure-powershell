@@ -349,7 +349,7 @@ directive:
       subject: ^Plan$|^PlanMember$
     set:
       breaking-change:
-        change-description: The Plan and PlanMember resources will be deprecated.
+        change-description: The Plan and PlanMember resources will be removed.
         deprecated-by-version: 3.0.0
         deprecated-by-azversion: 15.0.0
         change-effective-date: 2025/11/01
@@ -357,10 +357,91 @@ directive:
       subject: DevCenter
     set:
       breaking-change:
+        replacement-cmdlet: $.replace("DevCenter", "DevCenterAdmin")
         deprecated-cmdlet-output-type: DevCenter
         deprecated-output-properties:
           - PlanId
-        change-description: PlanId is no longer part of DevCenter output. 
+        change-description: PlanId will be removed from the DevCenter output.
+        deprecated-by-version: 3.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/01
+  - where:
+      verb: Connect
+      subject: ^Catalog$|^ProjectCatalog$
+    set:
+      breaking-change:
+        replacement-cmdlet: $.replace("DevCenter", "DevCenterAdmin")
+        change-description: PlanName and MemberName will be removed from the InputObject parameter.
+        deprecated-by-version: 3.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/01
+  - where:
+      verb: Get
+      subject: ^AttachedNetwork$|^Catalog$|^CatalogSyncErrorDetail$|^CustomizationTask$|^CustomizationTaskErrorDetail$|^DevBoxDefinition$|^DevCenter$|^EnvironmentDefinition$|^EnvironmentDefinitionErrorDetail$|^EnvironmentType$|^Gallery$|^Image$|^ImageVersion$|^NetworkConnection$|^NetworkConnectionHealthDetail$|^OperationStatus$|^Pool$|^Project$|^ProjectAllowedEnvironmentType$|^ProjectCatalog$|^ProjectCatalogSyncErrorDetail$|^ProjectEnvironmentDefinition$|^ProjectEnvironmentType$|^ProjectInheritedSetting$|^ProjectEnvironmentDefinitionErrorDetail$|^Schedule$
+    set:
+      breaking-change:
+        replacement-cmdlet: $.replace("DevCenter", "DevCenterAdmin")
+        change-description: PlanName and MemberName will be removed from the InputObject parameter.
+        deprecated-by-version: 3.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/01
+  - where:
+      verb: Invoke
+      subject: ^ExecuteCheckNameAvailability$|^ExecuteCheckScopedNameAvailability$
+    set:
+      breaking-change:
+        replacement-cmdlet: $.replace("DevCenter", "DevCenterAdmin")
+        change-description: PlanName and MemberName will be removed from the InputObject parameter.
+        deprecated-by-version: 3.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/01
+  - where:
+      verb: New
+      subject: ^AttachedNetwork$|^Catalog$|^DevBoxDefinition$|^DevCenter$|^EnvironmentType$|^Gallery$|^NetworkConnection$|^Pool$|^Project$|^ProjectCatalog$|^ProjectEnvironmentType$|^Schedule$
+    set:
+      breaking-change:
+        replacement-cmdlet: $.replace("DevCenter", "DevCenterAdmin")
+        change-description: PlanName and MemberName will be removed from the InputObject parameter.
+        deprecated-by-version: 3.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/01
+  - where:
+      verb: Remove
+      subject: ^AttachedNetwork$|^Catalog$|^DevBoxDefinition$|^DevCenter$|^EnvironmentType$|^Gallery$|^NetworkConnection$|^Pool$|^Project$|^ProjectCatalog$|^ProjectEnvironmentType$|^Schedule$
+    set:
+      breaking-change:
+        replacement-cmdlet: $.replace("DevCenter", "DevCenterAdmin")
+        change-description: PlanName and MemberName will be removed from the InputObject parameter.
+        deprecated-by-version: 3.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/01
+  - where:
+      verb: Start
+      subject: ^NetworkConnectionHealthCheck$|^PoolHealthCheck$
+    set:
+      breaking-change:
+        replacement-cmdlet: $.replace("DevCenter", "DevCenterAdmin")
+        change-description: PlanName and MemberName will be removed from the InputObject parameter.
+        deprecated-by-version: 3.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/01
+  - where:
+      verb: Sync
+      subject: ^Catalog$|^ProjectCatalog$
+    set:
+      breaking-change:
+        replacement-cmdlet: $.replace("DevCenter", "DevCenterAdmin")
+        change-description: PlanName and MemberName will be removed from the InputObject parameter.
+        deprecated-by-version: 3.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/01
+  - where:
+      verb: Update
+      subject: ^Catalog$|^DevBoxDefinition$|^DevCenter$|^EnvironmentType$|^NetworkConnection$|^Pool$|^Project$|^ProjectCatalog$|^ProjectEnvironmentType$|^Schedule$
+    set:
+      breaking-change:
+        replacement-cmdlet: The cmdlet will not replaced
+        change-description: PlanName and MemberName will be removed from the InputObject parameter.
         deprecated-by-version: 3.0.0
         deprecated-by-azversion: 15.0.0
         change-effective-date: 2025/11/01
