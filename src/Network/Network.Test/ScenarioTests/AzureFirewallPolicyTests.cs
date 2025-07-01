@@ -228,5 +228,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureFirewallPolicyRCGDraft");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallPolicyApplicationRuleFqdnTagDefaultProtocol()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallPolicyApplicationRuleFqdnTagDefaultProtocol");
+        }
     }
 }
