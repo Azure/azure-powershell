@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.TrustedSigning
             rootcert.CopyTo(fileStream);
             fileStream.Dispose();
 
-            //read thumbprint and subject namme
+            //read thumbprint and subject name
             byte[] rawData = File.ReadAllBytes(downloadPath);
             X509Certificate2 x509 = new X509Certificate2(rawData);
 

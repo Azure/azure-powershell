@@ -23,7 +23,7 @@
 * Upgraded nuget package to signed package.
 
 ## Version 0.1.1
-* Fixed descrption for this module
+* Fixed description for this module
 
 ## Version 0.1.0
 * First preview release for module Az.Terraform

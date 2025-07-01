@@ -720,7 +720,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 }
                 else if (string.IsNullOrWhiteSpace(VNetId) ^ string.IsNullOrWhiteSpace(Subnet))
                 {
-                    // Only one of the two pramaters is set
+                    // Only one of the two parameters is set
                     throw new PSArgumentException(string.Format(
                             CultureInfo.InvariantCulture,
                             Resources.IntegrationRuntimeInvalidVnet),

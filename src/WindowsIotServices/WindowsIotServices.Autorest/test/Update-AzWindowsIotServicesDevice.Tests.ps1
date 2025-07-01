@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Update-AzWindowsIotServicesDevice' {
     It 'UpdateExpanded' {
-        # Cannot update paramter tag and the azure portal cannot update it.
+        # Cannot update parameter tag and the azure portal cannot update it.
         $wis = Update-AzWindowsIotServicesDevice -ResourceGroupName $env.resourceGroup -Name $env.wis01 -Quantity 100 #-Tag @{'key1'=1;'key2'=1}
         $wis.Quantity | Should -Be 100
         # $wis.Tag.Count | Should -be 2

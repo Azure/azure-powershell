@@ -15,7 +15,7 @@
 <#
 .SYNOPSIS
 Tests end to end scenario of Data Classification on a SQL pool.
-TODO: currently ther is no Rank property in SDK model so we
+TODO: currently there is no Rank property in SDK model so we
 comment some assertions out for now.
 #>
 function Test-DataClassificationOnSqlPool
@@ -249,7 +249,7 @@ function Create-SqlDataClassificationTestEnvironment ($testSuffix, $location = "
 
 <#
 .SYNOPSIS
-Tests enable and disable recommdations on columns in a SQL pool.
+Tests enable and disable recommendations on columns in a SQL pool.
 #>
 function Test-EnableDisableRecommendationsOnSqlPool
 {
@@ -295,7 +295,7 @@ function Test-EnableDisableRecommendationsOnSqlPool
 		Assert-NotNullOrEmpty $secondInformationType
 		Assert-NotNullOrEmpty $secondSensitivityLabel
 
-		# Disable first two recommdations, second recommdation is disabled using pipeline.
+		# Disable first two recommendations, second recommendation is disabled using pipeline.
 		Disable-AzSynapseSqlPoolSensitivityRecommendation -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -SqlPoolName $params.sqlPoolName -SchemaName $firstSchemaName -TableName $firstTableName -ColumnName $firstColumnName
 		Get-AzSynapseSqlPool -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -SqlPoolName $params.sqlPoolName | Disable-AzSynapseSqlPoolSensitivityRecommendation -SchemaName $secondSchemaName -TableName $secondTableName -ColumnName $secondColumnName
 
@@ -306,13 +306,13 @@ function Test-EnableDisableRecommendationsOnSqlPool
 		Assert-AreEqual $params.sqlPoolName $recommendations.SqlPoolName
 		Assert-AreEqual 2 ($recommendations.SensitivityLabels).count
 
-		# Verify disabled recommdations are not part of the new recommdations.
+		# Verify disabled recommendations are not part of the new recommendations.
 		Assert-AreNotEqual $firstColumnName ($recommendations.SensitivityLabels)[0].ColumnName
 		Assert-AreNotEqual $firstColumnName ($recommendations.SensitivityLabels)[1].ColumnName
 		Assert-AreNotEqual $secondColumnName ($recommendations.SensitivityLabels)[0].ColumnName
 		Assert-AreNotEqual $secondColumnName ($recommendations.SensitivityLabels)[1].ColumnName
 
-		# Enable second disabled recommdation.
+		# Enable second disabled recommendation.
 		Enable-AzSynapseSqlPoolSensitivityRecommendation -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -SqlPoolName $params.sqlPoolName -SchemaName $secondSchemaName -TableName $secondTableName -ColumnName $secondColumnName
 
 		# Get, using pipeline, recommended sensitivity labels, and verify.
@@ -322,7 +322,7 @@ function Test-EnableDisableRecommendationsOnSqlPool
 		Assert-AreEqual $params.workspaceName $recommendations.WorkspaceName
 		Assert-AreEqual $params.sqlPoolName $recommendations.SqlPoolName
 
-		# Verify disabled recommdation is not part of the new recommdations.
+		# Verify disabled recommendation is not part of the new recommendations.
 		Assert-AreNotEqual $firstColumnName ($recommendations.SensitivityLabels)[0].ColumnName
 		Assert-AreNotEqual $firstColumnName ($recommendations.SensitivityLabels)[1].ColumnName
 		Assert-AreNotEqual $firstColumnName ($recommendations.SensitivityLabels)[2].ColumnName
@@ -330,17 +330,17 @@ function Test-EnableDisableRecommendationsOnSqlPool
 		# Disable, using pipeline, all recommended columns.
 		Get-AzSynapseSqlPool -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -SqlPoolName $params.sqlPoolName | Get-AzSynapseSqlPoolSensitivityRecommendation | Disable-AzSynapseSqlPoolSensitivityRecommendation
 
-		# Verify no recommdations are retrieved since all are disabled.
+		# Verify no recommendations are retrieved since all are disabled.
 		$recommendations = Get-AzSynapseSqlPool -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -SqlPoolName $params.sqlPoolName | Get-AzSynapseSqlPoolSensitivityRecommendation
 		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
 		Assert-AreEqual $params.workspaceName $recommendations.WorkspaceName
 		Assert-AreEqual $params.sqlPoolName $recommendations.SqlPoolName
 		Assert-AreEqual 0 ($recommendations.SensitivityLabels).count
 
-		# Enable, using pipeline, second disabled recommdation and verify
+		# Enable, using pipeline, second disabled recommendation and verify
 		Get-AzSynapseSqlPool -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -SqlPoolName $params.sqlPoolName | Enable-AzSynapseSqlPoolSensitivityRecommendation -SchemaName $secondSchemaName -TableName $secondTableName -ColumnName $secondColumnName
 
-		# Verify enabled recommdation is now part of the recommendations.
+		# Verify enabled recommendation is now part of the recommendations.
 		$recommendations = Get-AzSynapseSqlPool -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -SqlPoolName $params.sqlPoolName | Get-AzSynapseSqlPoolSensitivityRecommendation
 		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
 		Assert-AreEqual $params.workspaceName $recommendations.WorkspaceName

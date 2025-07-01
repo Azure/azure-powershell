@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Synapse
             }
             else
             {
-                // List all workspaces in given resource group if avaliable otherwise all workspaces in the subscription
+                // List all workspaces in given resource group if available otherwise all workspaces in the subscription
                 WriteObject(SynapseAnalyticsClient.ListWorkspaces(ResourceGroupName).Select(element => new PSSynapseWorkspace(element)), true);
             }
         }

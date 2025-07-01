@@ -84,10 +84,10 @@
 
 ## Version 2.2.0
 * Added breaking change message for  `-SparkConfigFilePath`. It will be deprecated around the middle of December.
-* Updated `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` to support for setting spark pool configuration artifact by `-SparkCongifuration`. `-SparkCongifuration` is an alternative of parameter `-SparkConfigFilePath`.
+* Updated `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` to support for setting spark pool configuration artifact by `-SparkConfiguration`. `-SparkConfiguration` is an alternative of parameter `-SparkConfigFilePath`.
 
 ## Version 2.1.0
-* Updated `Update-AzSynaspeWorkSpace` and `New-AzSynpaseWorkspace` to support for Workspace Encrytion Managed Identity setting
+* Updated `Update-AzSynaspeWorkSpace` and `New-AzSynpaseWorkspace` to support for Workspace Encryption Managed Identity setting
 
 ## Version 2.0.0
 * [Breaking Change] Updated models of Synapse Link for Azure Sql Database
@@ -151,7 +151,7 @@
     - Added `New-AzSynapseKqlScript` cmdlet
 * Updated `New-AzSynapseSqlPool` to support new parameter [-StorageAccountType]
 * Updated `Restore-AzSynapseSqlPool` to support new parameter [-Tag] and [-StorageAccountType]
-* Renamed parameter FolderName in `Set-AzSynapseSqlScript` to FolderPath and keeped FolderName as alias
+* Renamed parameter FolderName in `Set-AzSynapseSqlScript` to FolderPath and keep FolderName as alias
 * Updated `Set-AzSynapseNoteBook` and `Set-AzSynapseSparkJobDefinition` to support new parameter [-FolderPath]
 * Added cmdlets for Synapse Spark Configuration
     - Added `Get-AzSynapseSparkConfiguration` cmdlet
@@ -219,7 +219,7 @@
 * Updated `Set-AzSynapseSqlActiveDirectoryAdministrator` to support for setting SQL Admin by `DisplayName` or by `ObjectId`
 * Renamed `Update-AzSynapseWorkspaceKey` to `Enable-AzSynapseWorkspace` to activate a new synapse workspace without `-Activate` parameter
 * Added `New-AzSynapseGitRepositoryConfig` cmdlet to create Git repository configuration
-* Updated `New-AzSynapseWorkspace` and `Update-AzSynapseWorkspace` to support for connecting a workspace to a Git reposirory
+* Updated `New-AzSynapseWorkspace` and `Update-AzSynapseWorkspace` to support for connecting a workspace to a Git repository
   - Added parameters `-GitRepositoryType`
 * Added support for workspace package
 	- Added `New-AzSynapseWorkspacePackage` cmdlet

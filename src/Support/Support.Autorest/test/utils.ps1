@@ -70,7 +70,7 @@ function setupEnv() {
     $fileWorkspaceNameSubscription = "test-ps-$testGuid"
     $fileWorkspaceNameNoSubscription = "test-ps-$testGuid"
 
-    # File workpace names for create file tests
+    # File workspace names for create file tests
     $fileWorkspaceNameSubscriptionForCreate = "test-for-create-ps-$testGuid"
     $fileWorkspaceNameNoSubscriptionForCreate = "test-for-create-ps-$testGuid"
 

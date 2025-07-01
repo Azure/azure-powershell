@@ -21,13 +21,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
     public partial class NewAzWorkloadsSapVirtualInstance_CreateWithJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener
     {
-        /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
+        /// <summary>A unique id generated for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
 
         /// <summary>A copy of the Invocation Info (necessary to allow asJob to clone this cmdlet)</summary>
         private global::System.Management.Automation.InvocationInfo __invocationInfo;
 
-        /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
+        /// <summary>A unique id generated for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
 
         /// <summary>
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzWorkloadsSapVirtualInstance_CreateWithJsonString" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzWorkloadsSapVirtualInstance_CreateWithJsonString" /> cmdlet class.
         /// </summary>
         public NewAzWorkloadsSapVirtualInstance_CreateWithJsonString()
         {
