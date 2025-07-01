@@ -62,7 +62,7 @@ https://learn.microsoft.com/powershell/module/az.devcenter/remove-azdevcenteradm
 function Remove-AzDevCenterAdminSchedule {
   [OutputType([System.Boolean])]
   [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-  [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.GenericBreakingChangeAttribute("MemberName and PlanName will be removed from InputObject", "15.0.0", "3.0.0", "2025/11/01")]
+  [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.GenericBreakingChangeAttribute("MemberName and PlanName will be removed from InputObject", "15.0.0", "3.0.0", "2025/11/18")]
   param(
       [Parameter(ParameterSetName='Delete', Mandatory)]
       [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]

@@ -62,7 +62,7 @@ https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradmins
 function Get-AzDevCenterAdminSchedule {
   [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ISchedule])]
   [CmdletBinding(DefaultParameterSetName = 'GetWithDefault', PositionalBinding = $false)]
-  [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.GenericBreakingChangeAttribute("MemberName and PlanName will be removed from InputObject", "15.0.0", "3.0.0", "2025/11/01")]
+  [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.GenericBreakingChangeAttribute("MemberName and PlanName will be removed from InputObject", "15.0.0", "3.0.0", "2025/11/18")]
   param(
       [Parameter(ParameterSetName = 'GetWithDefault', Mandatory)]
       [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]

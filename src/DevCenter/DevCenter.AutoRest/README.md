@@ -352,7 +352,7 @@ directive:
         change-description: The Plan and PlanMember resources will be removed.
         deprecated-by-version: 3.0.0
         deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/01
+        change-effective-date: 2025/11/18
   - where:
       subject: DevCenter
     set:
@@ -364,7 +364,7 @@ directive:
         change-description: PlanId will be removed from the DevCenter output.
         deprecated-by-version: 3.0.0
         deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/01
+        change-effective-date: 2025/11/18
   - where:
       verb: Connect
       subject: ^Catalog$|^ProjectCatalog$
@@ -374,7 +374,7 @@ directive:
         change-description: PlanName and MemberName will be removed from the InputObject parameter.
         deprecated-by-version: 3.0.0
         deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/01
+        change-effective-date: 2025/11/18
   - where:
       verb: Get
       subject: ^AttachedNetwork$|^Catalog$|^CatalogSyncErrorDetail$|^CustomizationTask$|^CustomizationTaskErrorDetail$|^DevBoxDefinition$|^DevCenter$|^EnvironmentDefinition$|^EnvironmentDefinitionErrorDetail$|^EnvironmentType$|^Gallery$|^Image$|^ImageVersion$|^NetworkConnection$|^NetworkConnectionHealthDetail$|^OperationStatus$|^Pool$|^Project$|^ProjectAllowedEnvironmentType$|^ProjectCatalog$|^ProjectCatalogSyncErrorDetail$|^ProjectEnvironmentDefinition$|^ProjectEnvironmentType$|^ProjectInheritedSetting$|^ProjectEnvironmentDefinitionErrorDetail$|^Schedule$
@@ -384,7 +384,25 @@ directive:
         change-description: PlanName and MemberName will be removed from the InputObject parameter.
         deprecated-by-version: 3.0.0
         deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/01
+        change-effective-date: 2025/11/18
+  - where:
+      verb: Get
+      subject: ImageVersion
+      variant: List
+    set:
+      breaking-change:
+        change-description: The default parameter set will change from list dev center image versions to list project image versions.
+        deprecated-by-version: 3.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/18
+  - where:
+      parameter-name: PlanId
+    set:
+      breaking-change:
+        change-description: PlanId parameter will be removed.
+        deprecated-by-version: 3.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/18
   - where:
       verb: Invoke
       subject: ^ExecuteCheckNameAvailability$|^ExecuteCheckScopedNameAvailability$
@@ -394,7 +412,7 @@ directive:
         change-description: PlanName and MemberName will be removed from the InputObject parameter.
         deprecated-by-version: 3.0.0
         deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/01
+        change-effective-date: 2025/11/18
   - where:
       verb: New
       subject: ^AttachedNetwork$|^Catalog$|^DevBoxDefinition$|^DevCenter$|^EnvironmentType$|^Gallery$|^NetworkConnection$|^Pool$|^Project$|^ProjectCatalog$|^ProjectEnvironmentType$|^Schedule$
@@ -404,7 +422,7 @@ directive:
         change-description: PlanName and MemberName will be removed from the InputObject parameter.
         deprecated-by-version: 3.0.0
         deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/01
+        change-effective-date: 2025/11/18
   - where:
       verb: Remove
       subject: ^AttachedNetwork$|^Catalog$|^DevBoxDefinition$|^DevCenter$|^EnvironmentType$|^Gallery$|^NetworkConnection$|^Pool$|^Project$|^ProjectCatalog$|^ProjectEnvironmentType$|^Schedule$
@@ -414,7 +432,7 @@ directive:
         change-description: PlanName and MemberName will be removed from the InputObject parameter.
         deprecated-by-version: 3.0.0
         deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/01
+        change-effective-date: 2025/11/18
   - where:
       verb: Start
       subject: ^NetworkConnectionHealthCheck$|^PoolHealthCheck$
@@ -424,7 +442,7 @@ directive:
         change-description: PlanName and MemberName will be removed from the InputObject parameter.
         deprecated-by-version: 3.0.0
         deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/01
+        change-effective-date: 2025/11/18
   - where:
       verb: Sync
       subject: ^Catalog$|^ProjectCatalog$
@@ -434,7 +452,7 @@ directive:
         change-description: PlanName and MemberName will be removed from the InputObject parameter.
         deprecated-by-version: 3.0.0
         deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/01
+        change-effective-date: 2025/11/18
   - where:
       verb: Update
       subject: ^Catalog$|^DevBoxDefinition$|^DevCenter$|^EnvironmentType$|^NetworkConnection$|^Pool$|^Project$|^ProjectCatalog$|^ProjectEnvironmentType$|^Schedule$
@@ -444,7 +462,7 @@ directive:
         change-description: PlanName and MemberName will be removed from the InputObject parameter.
         deprecated-by-version: 3.0.0
         deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/01
+        change-effective-date: 2025/11/18
   - where:
       subject: ^(.*)
     set:

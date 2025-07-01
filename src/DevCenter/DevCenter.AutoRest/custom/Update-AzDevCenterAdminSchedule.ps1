@@ -62,7 +62,7 @@ https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteradm
 function Update-AzDevCenterAdminSchedule {
   [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ISchedule])]
   [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-  [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.GenericBreakingChangeAttribute("MemberName and PlanName will be removed from InputObject", "15.0.0", "3.0.0", "2025/11/01")]
+  [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.GenericBreakingChangeAttribute("MemberName and PlanName will be removed from InputObject", "15.0.0", "3.0.0", "2025/11/18")]
   param(
       [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
       [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
