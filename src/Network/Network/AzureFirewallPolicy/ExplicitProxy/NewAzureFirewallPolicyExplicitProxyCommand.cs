@@ -31,10 +31,10 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Port number for explicit proxy http protocol.")]
         public int? HttpPort { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Port number for explicit proxy https protocol.")]
-        public int? HttpsPort { get; set; }
+        //[Parameter(
+        //    Mandatory = false,
+        //    HelpMessage = "Port number for explicit proxy https protocol.")]
+        //public int? HttpsPort { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "SAS URL for PAC file.")]
+            HelpMessage = "URL for PAC file.")]
         public string PacFile { get; set; }
 
         public override void Execute()
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 EnableExplicitProxy = this.EnableExplicitProxy.IsPresent ? true : (bool?)null,
                 HttpPort = this.HttpPort,
-                HttpsPort = this.HttpsPort,
+                //HttpsPort = this.HttpsPort,
                 EnablePacFile = this.EnablePacFile.IsPresent ? true : (bool?)null,
                 PacFilePort = this.PacFilePort,
                 PacFile = this.PacFile
