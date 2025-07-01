@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+- Aligned with SimplySql, use a PSCredential object instead of UserName/Password parameters when calling Open-PostGreConnection
+- Introduced a Timeout value when running Test-AzPostgreSqlFlexibleServerConnect with long running query
 
 ## Version 1.3.0
 * Added support for Geo-restore in `Restore-AzPostgreSqlFlexibleServer` cmdlets.
