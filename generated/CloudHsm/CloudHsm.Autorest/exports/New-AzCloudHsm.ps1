@@ -20,9 +20,9 @@ Creates a Cloud HSM.
 .Description
 The New-AzCloudHsm cmdlet creates a Cloud HSM in the specified resource group.
 .Example
-New-AzCloudHsm -Name myCloudHsm -ResourceGroupName  group -Location UkWest -Tag @{ CloudHsmRegion = "UkWest"; Department = "Engineering"}
+New-AzCloudHsm -Name myCloudHsm -ResourceGroupName group -Location UkWest -Tag @{ CloudHsmRegion = "UkWest"; Department = "Engineering"}
 .Example
-New-AzCloudHsm -Name myCloudHsm -ResourceGroupName group -Location UkWest -Sku "Standard_B1" -UserAssignedIdentity  "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity"
+New-AzCloudHsm -Name myCloudHsm -ResourceGroupName group -Location UkWest -Sku "Standard_B1" -UserAssignedIdentity "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster
