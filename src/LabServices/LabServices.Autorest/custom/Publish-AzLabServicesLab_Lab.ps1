@@ -36,11 +36,6 @@ function Publish-AzLabServicesLab_Lab {
         # The object of lab service lab to publish.
         ${Lab},
 
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-        [System.Object]
-        # This parameter may not be available for use.
-        ${AdditionalUsageQuota},
-
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]

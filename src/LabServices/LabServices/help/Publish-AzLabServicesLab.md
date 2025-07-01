@@ -15,9 +15,8 @@ This will create or update all lab resources, such as virtual machines.
 
 ### ResourceId (Default)
 ```
-Publish-AzLabServicesLab [-SubscriptionId <String>] [-AdditionalUsageQuota <Object>] -ResourceId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Publish-AzLabServicesLab [-SubscriptionId <String>] -ResourceId <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Publish
@@ -29,9 +28,8 @@ Publish-AzLabServicesLab -Name <String> -ResourceGroupName <String> [-Subscripti
 
 ### Lab
 ```
-Publish-AzLabServicesLab [-SubscriptionId <String>] -Lab <Lab> [-AdditionalUsageQuota <Object>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Publish-AzLabServicesLab [-SubscriptionId <String>] -Lab <Lab> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PublishViaIdentity
@@ -60,21 +58,6 @@ eastus2  Lab Name
 Publish the lab template.
 
 ## PARAMETERS
-
-### -AdditionalUsageQuota
-This parameter may not be available for use.
-
-```yaml
-Type: System.Object
-Parameter Sets: ResourceId, Lab
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run the command as a job

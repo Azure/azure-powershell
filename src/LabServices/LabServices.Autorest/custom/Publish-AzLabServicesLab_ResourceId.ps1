@@ -33,11 +33,6 @@ function Publish-AzLabServicesLab_ResourceId {
         # The resource Id of lab service lab.
         ${ResourceId},
         
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-        [System.Object]
-        # This parameter may not be available for use.
-        ${AdditionalUsageQuota},
-
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
