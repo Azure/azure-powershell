@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceSchedule.Cmdlet
         /// <summary>
         /// Gets or sets schedule items
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "Array of valid SheduleItem objects.")]
+        [Parameter(Mandatory = true, HelpMessage = "Array of valid ScheduleItem objects.")]
         public ScheduleItem[] ScheduleList { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The description of the schedule.")]
