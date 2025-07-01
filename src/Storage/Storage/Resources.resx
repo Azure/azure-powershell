@@ -148,7 +148,7 @@
   </data>
   <data name="DownloadBlobFailed" xml:space="preserve">
     <value>Cannot download the blob '{0}' in container '{1}' into local file '{2}'. Error: {3}</value>
-    <comment>place holder 0 for blob name, 1 for blob's container name, 2 for download destination in local machine. 3 for excpetion error message.</comment>
+    <comment>place holder 0 for blob name, 1 for blob's container name, 2 for download destination in local machine. 3 for exception error message.</comment>
   </data>
   <data name="DownloadBlobSuccessful" xml:space="preserve">
     <value>Download blob '{0}' successful.</value>
@@ -333,7 +333,7 @@
     <value>https://</value>
   </data>
   <data name="CurrentStorageAccountNotFoundOnAzure" xml:space="preserve">
-    <value>Can not found current storage account '{0}' of subsciption '{1}' on azure, please check whether the specified storage account exists.</value>
+    <value>Can not found current storage account '{0}' of subscription '{1}' on azure, please check whether the specified storage account exists.</value>
     <comment>0 storage account name, 1 subscription name</comment>
   </data>
   <data name="UseCurrentStorageAccountFromSubscription" xml:space="preserve">
@@ -416,7 +416,7 @@
   </data>
   <data name="FileNameFormatForSnapShot" xml:space="preserve">
     <value>{0} ({1}){2}</value>
-    <comment>0 for blob name, 1 for snaphsot time, 2 blob name extension</comment>
+    <comment>0 for blob name, 1 for snapshot time, 2 blob name extension</comment>
   </data>
   <data name="SkipDownloadSnapshot" xml:space="preserve">
     <value>Skip to download blob '{0}' with snapshot time '{0}'.</value>
