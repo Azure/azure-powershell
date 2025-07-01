@@ -105,6 +105,10 @@ stages:
           targetType: inline
           pwsh: true
           script: |
+            Write-Host "Checkout to GenerationBranch: $(checkout.GenerationBranch)"
+            git fetch origin "$(checkout.GenerationBranch)"
+            git checkout "$(checkout.GenerationBranch)"
+
             $prepareModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'prepare.ps1'
             & $prepareModulesPath -RepoRoot "$(Build.SourcesDirectory)" -MaxParallelJobs "${{ variables.MaxParallelGenerateJobs }}"
         env:
