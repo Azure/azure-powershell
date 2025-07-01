@@ -124,6 +124,12 @@ function Test-AzPostgreSqlFlexibleServerConnect {
             $null = $PSBoundParameters.Remove('QueryText')
         }
 
+        $TimeoutValue = 0
+        if ($PSBoundParameters.ContainsKey('Timeout')) {
+            $TimeoutValue = $PSBoundParameters.Timeout
+            $null = $PSBoundParameters.Remove('Timeout')
+        }
+
         $DatabaseName = [string]::Empty
         if ($PSBoundParameters.ContainsKey('DatabaseName')) {
             $DatabaseName = $PSBoundParameters.DatabaseName
