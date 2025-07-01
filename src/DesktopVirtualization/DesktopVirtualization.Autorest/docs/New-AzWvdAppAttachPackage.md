@@ -88,13 +88,6 @@ This command creates or updates an Azure Virtual Desktop App attach package in a
 
 ### Example 2: Create or update an Azure Virtual Desktop app attach package from an appAttachPackage object
 ```powershell
-
-```
-
-
-
-### Example 2: Create or update an Azure Virtual Desktop app attach package from an appAttachPackage object
-```powershell
 New-AzWvdAppAttachPackage -Name PackageArmObjectName `
                          -ResourceGroupName ResourceGroupName `
                          -SubscriptionId SubscriptionId `
