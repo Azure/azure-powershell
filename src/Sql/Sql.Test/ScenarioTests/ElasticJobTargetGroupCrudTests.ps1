@@ -266,7 +266,7 @@ function Test-RemoveTargetGroupWithDefaultParam ($a1)
 
 <#
     .SYNOPSIS
-    Tests removing a target group with inpuut object
+    Tests removing a target group with input object
     .DESCRIPTION
     SmokeTest
 #>

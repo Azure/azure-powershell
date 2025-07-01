@@ -173,7 +173,7 @@ function Test-RemoveDatabaseInternal  ($serverVersion, $location = "westcentralu
 			-CollationName "SQL_Latin1_General_CP1_CI_AS" -MaxSizeBytes 250GB -Edition Stretch -RequestedServiceObjectiveName DS100
 		Assert-AreEqual $databaseName $stretchdb.DatabaseName
 
-		# Remove stretch databse
+		# Remove stretch database
 		Remove-AzSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $stretchdb.DatabaseName -Force
 		
 		# Check total number of databases after removal 

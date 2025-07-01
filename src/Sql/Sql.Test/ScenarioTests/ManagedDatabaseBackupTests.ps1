@@ -262,7 +262,7 @@ function Test-ManagedInstanceLongTermRetentionResourceGroupBasedBackup
 	# Set the weekly retention on the database so that the first backup gets picked up, for example:
 	# Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroup $resourceGroup -InstanceName $managedInstanceName -DatabaseName $databaseName -WeeklyRetention P1W
 	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
-	# Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaeName $databaseName -ResourceGroupName $resourceGroup
+	# Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $databaseName -ResourceGroupName $resourceGroup
 	$resourceGroup = "v-sntani-test-mi-rg"
 	$locationName = "westcentralus"
 	$managedInstanceName = "managedinstancearm"

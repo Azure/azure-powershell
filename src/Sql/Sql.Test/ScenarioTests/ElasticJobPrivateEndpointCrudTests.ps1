@@ -33,7 +33,7 @@ function Test-CreateJobPrivateEndpoint
 
 		$pe1 = Get-AzSqlElasticJobPrivateEndpoint -ElasticJobAgentObject $a1 -Name $peName
 
-		# valide agent level properties
+		# valid agent level properties
 		Assert-AreEqual $pe1.ResourceGroupName $a1.ResourceGroupName
 		Assert-AreEqual $pe1.ServerName $a1.ServerName
 		Assert-AreEqual $pe1.AgentName $a1.AgentName
@@ -74,7 +74,7 @@ function Test-GetJobPrivateEndpoint
 		# Validate with Default set
 		$pe1 = Get-AzSqlElasticJobPrivateEndpoint -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -Name $peName
 
-		## valide agent level properties
+		## valid agent level properties
 		Assert-AreEqual $pe1.ResourceGroupName $a1.ResourceGroupName
 		Assert-AreEqual $pe1.ServerName $a1.ServerName
 		Assert-AreEqual $pe1.AgentName $a1.AgentName
@@ -90,7 +90,7 @@ function Test-GetJobPrivateEndpoint
 		# Validate with Parent object
 		$pe1 = Get-AzSqlElasticJobPrivateEndpoint -ElasticJobAgentObject $a1 -Name $peName
 
-		## valide agent level properties
+		## valid agent level properties
 		Assert-AreEqual $pe1.ResourceGroupName $a1.ResourceGroupName
 		Assert-AreEqual $pe1.ServerName $a1.ServerName
 		Assert-AreEqual $pe1.AgentName $a1.AgentName
@@ -106,7 +106,7 @@ function Test-GetJobPrivateEndpoint
 		# Validate with Piping 
 		$pe1 = $a1 | Get-AzSqlElasticJobPrivateEndpoint -Name $peName
 
-		## valide agent level properties
+		## valid agent level properties
 		Assert-AreEqual $pe1.ResourceGroupName $a1.ResourceGroupName
 		Assert-AreEqual $pe1.ServerName $a1.ServerName
 		Assert-AreEqual $pe1.AgentName $a1.AgentName
@@ -147,7 +147,7 @@ function Test-RemoveJobPrivateEndpoint
 
 		$pe1 = Get-AzSqlElasticJobPrivateEndpoint -ElasticJobAgentObject $a1 -Name $peName
 
-		# valide agent level properties
+		# valid agent level properties
 		Assert-AreEqual $pe1.ResourceGroupName $a1.ResourceGroupName
 		Assert-AreEqual $pe1.ServerName $a1.ServerName
 		Assert-AreEqual $pe1.AgentName $a1.AgentName
@@ -162,7 +162,7 @@ function Test-RemoveJobPrivateEndpoint
 
 		$pe1 = Remove-AzSqlElasticJobPrivateEndpoint -ElasticJobAgentObject $a1 -Name $peName -Force
 
-		# valide agent level properties
+		# valid agent level properties
 		Assert-AreEqual $pe1.ResourceGroupName $a1.ResourceGroupName
 		Assert-AreEqual $pe1.ServerName $a1.ServerName
 		Assert-AreEqual $pe1.AgentName $a1.AgentName

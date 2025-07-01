@@ -417,7 +417,7 @@ function ValidateElasticPool($responseAdvisor, $expectedElasticPool)
 <#
 	.SYNOPSIS
 	Validates properties in Advisor response
-	Some Advisor properties are volatile and var with DB worload, so we exlude them from validation in tests.
+	Some Advisor properties are volatile and var with DB workload, so we exclude them from validation in tests.
 #>
 function ValidateAdvisorProperties($advisor, $expanded = $false)
 {

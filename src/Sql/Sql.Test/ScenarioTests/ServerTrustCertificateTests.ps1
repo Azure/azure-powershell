@@ -170,15 +170,15 @@ function Test-ServerTrustCertificate
         Assert-AreEqual	$delCert1.Thumbprint $thumbprint1
         Assert-AreEqual $delCert1.PublicKey $certVal1
 
-        # Delete non existant cert #1 THROWS (via DeleteByParentObjectParameterSet)
+        # Delete non existent cert #1 THROWS (via DeleteByParentObjectParameterSet)
         $msgExcDel = "The requested resource of type '" + $certType + "' with name '" + $certName1 + "' was not found."
         Assert-Throws { Remove-AzSqlInstanceServerTrustCertificate -InstanceObject $instance -CertificateName $certName1 } $msgExc
         
-        # Delete non existant cert #1 THROWS (via DeleteByInputObjectParameterSet)
+        # Delete non existent cert #1 THROWS (via DeleteByInputObjectParameterSet)
         $msgExcDel = "The requested resource of type '" + $certType + "' with name '" + $certName1 + "' was not found."
         Assert-Throws { Remove-AzSqlInstanceServerTrustCertificate -InputObject $getCert1ByInstanceResourceIdParameterSet} $msgExc
 
-        # Get non existant cert #1 THROWS (via DeleteByInputObjectParameterSet)
+        # Get non existent cert #1 THROWS (via DeleteByInputObjectParameterSet)
         $msgExcGet = "The requested resource of type '" + $certType + "' with name '" + $certName1 + "' was not found."
         Assert-Throws { Get-AzSqlInstanceServerTrustCertificate -InputObject $getCert1ByInstanceResourceIdParameterSet } $msgExc
         
@@ -253,11 +253,11 @@ function Test-ServerTrustCertificateErrHandling
         # Delete certificate #1
         $delCert1 = Remove-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName $certName1 -PassThru
         Assert-NotNull $delCert1
-        # Delete non existant cert #1 THROWS
+        # Delete non existent cert #1 THROWS
         $msgExcDel = "The requested resource of type '" + $certType + "' with name '" + $certName1 + "' was not found."
         Assert-Throws { Remove-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName $certName1 } $msgExc
         
-        # Get non existant cert #1 THROWS
+        # Get non existent cert #1 THROWS
         $msgExcGet = "The requested resource of type '" + $certType + "' with name '" + $certName1 + "' was not found."
         Assert-Throws { Get-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName $certName1 } $msgExc
 

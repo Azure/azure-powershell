@@ -93,7 +93,7 @@ function Test-GetTransparentDataEncryption
 
 <#
 	.SYNOPSIS
-	Tests Getting a server transpagrent data encryption protector
+	Tests Getting a server transparent data encryption protector
 #>
 function Test-GetTransparentDataEncryptionProtector
 {

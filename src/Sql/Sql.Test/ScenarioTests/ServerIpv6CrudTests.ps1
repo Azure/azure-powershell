@@ -175,7 +175,7 @@ function Test-UpdateIpv6FirewallRule
 		Assert-AreEqual $updateIPv6FR.StartIpv6Address $startIpv6Address1
 		Assert-AreEqual $updateIPv6FR.EndIpv6Address $endIpv6Address1
 
-		# Update an unknow IPv6 Firewall rule
+		# Update an unknown IPv6 Firewall rule
 		try
 		{
 			$updateUnknowIPv6FR = Set-AzSqlServerIpv6FirewallRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -Ipv6FirewallRuleName "testSetUnknowIpv6FR" -StartIpv6Address $startIpv6Address -EndIpv6Address $endIpv6Address

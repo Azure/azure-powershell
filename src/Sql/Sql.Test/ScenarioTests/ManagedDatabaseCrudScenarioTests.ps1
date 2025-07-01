@@ -193,7 +193,7 @@ function Test-RestoreManagedDatabase
 		$targetManagedDatabaseName = Get-ManagedDatabaseName
 		$pointInTime = (Get-date).AddMinutes(5)
 
-		# Once database is created, backup service will automaticly take log backups every 5 minutes. We are waiting 450s to ensure backups are taken to which we can restore.
+		# Once database is created, backup service will automatically take log backups every 5 minutes. We are waiting 450s to ensure backups are taken to which we can restore.
 		if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
 			Wait-Seconds 450
 		}
@@ -257,7 +257,7 @@ function Test-RestoreDeletedManagedDatabase
 		# Test remove using all parameters
 		Remove-AzSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -Force
 		
-		# Wait to stabilaze
+		# Wait to stabilize
 		Wait-Seconds 60
 
 		# Get deleted database

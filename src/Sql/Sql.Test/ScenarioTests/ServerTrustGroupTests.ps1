@@ -48,7 +48,7 @@ function Test-ServerTrustGroup()
 		Assert-AreEqual $serverTrustGroup.TrustScope.Count 1 "Got unexpected trust scope."
 		Assert-AreEqual $serverTrustGroup.GroupMember.Count 3 "Got unexpected number of group members."
 
-		# Get Server Trust Group in specified locaiton
+		# Get Server Trust Group in specified location
 		$serverTrustGroups = Get-AzSqlServerTrustGroup -ResourceGroupName $rg.ResourceGroupName -Location $location
 		Assert-NotNull $serverTrustGroups
 		Assert-AreEqual $serverTrustGroups.Count 1 "Unexpected number of Server Trust Groups in location $location. ($($serverTrustGroups.Count))."

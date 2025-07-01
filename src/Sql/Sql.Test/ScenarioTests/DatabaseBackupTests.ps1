@@ -243,7 +243,7 @@ function Test-LongTermRetentionV2
 	# Set the weekly retention on the database so that the first backup gets picked up, for example:
 	# Set-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
 	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
-	# Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaeName $databaseName
+	# Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $databaseName
 	$resourceGroup = "brandong-test"
 	$locationName = "eastus"
 	$serverName = "brandong-ltr-test"
@@ -299,7 +299,7 @@ function Test-LongTermRetentionV2ResourceGroupBased
 	# Set the weekly retention on the database so that the first backup gets picked up, for example:
 	# Set-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
 	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
-	# Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaeName $databaseName -ResourceGroupName $resourceGroup
+	# Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $databaseName -ResourceGroupName $resourceGroup
 	$resourceGroup = "brandong-test"
 	$locationName = "eastus"
 	$serverName = "brandong-ltr-test"

@@ -890,7 +890,7 @@ function Test-ExtendedAuditOnServer
 
 	try
 	{
-		# Enable auditing policy, without speficying a predicate expression, and verify it.
+		# Enable auditing policy, without specifying a predicate expression, and verify it.
 		Set-AzSqlServerAudit -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
 		$policy = Get-AzSqlServerAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
@@ -901,7 +901,7 @@ function Test-ExtendedAuditOnServer
 		Assert-AreEqual "Primary" $policy.StorageKeyType
 		Assert-AreEqual "" $policy.PredicateExpression
 
-		# Enable Extended auditing policy, speficying a predicate expression, and verify it.
+		# Enable Extended auditing policy, specifying a predicate expression, and verify it.
 		Set-AzSqlServerAudit -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 -PredicateExpression "statement <> 'select 1'"
 		$policy = Get-AzSqlServerAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
@@ -917,7 +917,7 @@ function Test-ExtendedAuditOnServer
 		$policy = Get-AzSqlServerAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
 		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
 
-		# Enable Extended auditing policy, without speficying a predicate expression, and verify it.
+		# Enable Extended auditing policy, without specifying a predicate expression, and verify it.
 		Set-AzSqlServerAudit -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
 		$policy = Get-AzSqlServerAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
@@ -962,7 +962,7 @@ function Test-ExtendedAuditOnDatabase
 
 	try
 	{
-		# Enable auditing policy, without speficying a predicate expression, and verify it.
+		# Enable auditing policy, without specifying a predicate expression, and verify it.
 		Set-AzSqlDatabaseAudit -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
 		$policy = Get-AzSqlDatabaseAudit -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
@@ -973,7 +973,7 @@ function Test-ExtendedAuditOnDatabase
 		Assert-AreEqual "Primary" $policy.StorageKeyType
 		Assert-AreEqual "" $policy.PredicateExpression
 
-		# Enable Extended auditing policy, speficying a predicate expression, and verify it.
+		# Enable Extended auditing policy, specifying a predicate expression, and verify it.
 		Set-AzSqlDatabaseAudit -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 -PredicateExpression "statement <> 'select 1'"
 		$policy = Get-AzSqlDatabaseAudit -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
@@ -989,7 +989,7 @@ function Test-ExtendedAuditOnDatabase
 		$policy = Get-AzSqlDatabaseAudit -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
 
-		# Enable Extended auditing policy, without speficying a predicate expression, and verify it.
+		# Enable Extended auditing policy, without specifying a predicate expression, and verify it.
 		Set-AzSqlDatabaseAudit -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
 		$policy = Get-AzSqlDatabaseAudit -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
@@ -1457,7 +1457,7 @@ function Test-MSSupportServerAuditingToStorageInVNet
 
 <#
 .SYNOPSIS
-Test Database Auditing to storage acount in VNet
+Test Database Auditing to storage account in VNet
 #>
 function Test-DatabaseAuditingToStorageInVNet
 {
