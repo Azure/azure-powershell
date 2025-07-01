@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWvdApplicationGroup
 
 ## SYNOPSIS
-update an applicationGroup.
+Update an applicationGroup.
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ Update-AzWvdApplicationGroup -InputObject <IDesktopVirtualizationIdentity> [-Des
 ```
 
 ## DESCRIPTION
-update an applicationGroup.
+Update an applicationGroup.
 
 ## EXAMPLES
 

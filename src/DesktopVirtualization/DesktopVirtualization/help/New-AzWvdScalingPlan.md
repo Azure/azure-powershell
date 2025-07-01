@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWvdScalingPlan
 
 ## SYNOPSIS
-create a scaling plan.
+Create a scaling plan.
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ New-AzWvdScalingPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId
 ```
 
 ## DESCRIPTION
-create a scaling plan.
+Create a scaling plan.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWvdSessionHostConfiguration
 
 ## SYNOPSIS
-update a SessionHostConfiguration.
+Update a SessionHostConfiguration.
 
 ## SYNTAX
 
@@ -61,7 +61,7 @@ Update-AzWvdSessionHostConfiguration -HostPoolName <String> -ResourceGroupName <
 ```
 
 ## DESCRIPTION
-update a SessionHostConfiguration.
+Update a SessionHostConfiguration.
 
 ## EXAMPLES
 
@@ -69,7 +69,7 @@ update a SessionHostConfiguration.
 ```powershell
 Update-AzWvdSessionHostConfiguration -ResourceGroupName ResourceGroupName `
                             -HostPoolName HostPoolName `
-                            -DiskInfoType "Standard_LRS" `
+                            -ManagedDiskType "Standard_LRS" `
                             -ImageInfoImageType "Marketplace" `
                             -NetworkInfoSubnetId "/subscriptions/{subscriptionId}/resourceGroups/resourceGrouName/providers/Microsoft.Network/virtualNetworks/{vNetName}/subnets/default" `
                             -VMAdminCredentialsPasswordKeyvaultSecretUri "PasswordSecretUri" `

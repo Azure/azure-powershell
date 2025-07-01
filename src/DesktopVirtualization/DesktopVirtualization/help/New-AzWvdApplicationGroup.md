@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWvdApplicationGroup
 
 ## SYNOPSIS
-create an applicationGroup.
+Create an applicationGroup.
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ New-AzWvdApplicationGroup -Name <String> -ResourceGroupName <String> [-Subscript
 ```
 
 ## DESCRIPTION
-create an applicationGroup.
+Create an applicationGroup.
 
 ## EXAMPLES
 

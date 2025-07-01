@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWvdAppAttachPackage
 
 ## SYNOPSIS
-update an App Attach Package
+Update an App Attach Package
 
 ## SYNTAX
 
@@ -63,7 +63,7 @@ Update-AzWvdAppAttachPackage -InputObject <IDesktopVirtualizationIdentity> [-Cus
 ```
 
 ## DESCRIPTION
-update an App Attach Package
+Update an App Attach Package
 
 ## EXAMPLES
 

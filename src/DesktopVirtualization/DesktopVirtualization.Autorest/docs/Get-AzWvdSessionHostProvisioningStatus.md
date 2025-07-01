@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdsessionhostprovisioningstatuses
+online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdsessionhostprovisioningstatus
 schema: 2.0.0
 ---
 
-# Get-AzWvdSessionHostProvisioningStatuses
+# Get-AzWvdSessionHostProvisioningStatus
 
 ## SYNOPSIS
 Get the session host provisioning status for a given hostpool.
@@ -14,13 +14,13 @@ Get the session host provisioning status for a given hostpool.
 
 ### Get (Default)
 ```
-Get-AzWvdSessionHostProvisioningStatuses -HostPoolName <String> -ResourceGroupName <String>
+Get-AzWvdSessionHostProvisioningStatus -HostPoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzWvdSessionHostProvisioningStatuses -InputObject <IDesktopVirtualizationIdentity>
+Get-AzWvdSessionHostProvisioningStatus -InputObject <IDesktopVirtualizationIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -29,18 +29,18 @@ Get the session host provisioning status for a given hostpool.
 
 ## EXAMPLES
 
-### Example 1: Get a Azure Virtual Desktop SessionHostProvisioningStatuses by HostPoolName
+### Example 1: Get a Azure Virtual Desktop SessionHostProvisioningStatus by HostPoolName
 ```powershell
-Get-AzWvdSessionHostProvisioningStatuses -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
+Get-AzWvdSessionHostProvisioningStatus -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 ```
 
 ```output
 Location   Name                 Type
 --------   ----                 ----
-eastus     default Microsoft.DesktopVirtualization/hostpools/sessionhostProvisioningStatuses
+eastus     default Microsoft.DesktopVirtualization/hostpools/sessionhostManagements/sessionHostProvisioningStatuses
 ```
 
-This command gets a Azure Virtual Desktop SessionHostProvisioningStatuses in a HostPool.
+This command gets a Azure Virtual Desktop SessionHostProvisioningStatus in a HostPool.
 
 ## PARAMETERS
 

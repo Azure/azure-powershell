@@ -16,20 +16,20 @@ Control post of a hostpool.
 ```
 Invoke-AzWvdControlSessionHostUpdate -HostPoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Action <String> [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PostViaJsonString
 ```
 Invoke-AzWvdControlSessionHostUpdate -HostPoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PostViaJsonFilePath
 ```
 Invoke-AzWvdControlSessionHostUpdate -HostPoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,14 +37,14 @@ Invoke-AzWvdControlSessionHostUpdate -HostPoolName <String> -ResourceGroupName <
 ```
 Invoke-AzWvdControlSessionHostUpdate -HostPoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -HostPoolUpdateControlParameter <IHostPoolUpdateControlParameter>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### PostViaIdentityExpanded
 ```
 Invoke-AzWvdControlSessionHostUpdate -InputObject <IDesktopVirtualizationIdentity> -Action <String>
- [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -52,7 +52,7 @@ Invoke-AzWvdControlSessionHostUpdate -InputObject <IDesktopVirtualizationIdentit
 ```
 Invoke-AzWvdControlSessionHostUpdate -InputObject <IDesktopVirtualizationIdentity>
  -HostPoolUpdateControlParameter <IHostPoolUpdateControlParameter> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -212,6 +212,21 @@ Accept wildcard characters: False
 
 ### -NoWait
 Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

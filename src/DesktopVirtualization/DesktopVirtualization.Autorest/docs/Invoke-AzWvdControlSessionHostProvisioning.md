@@ -16,42 +16,42 @@ Control provisioning of a hostpool.
 ```
 Invoke-AzWvdControlSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Post
 ```
 Invoke-AzWvdControlSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
  -HostPoolProvisioningControlParameter <IHostPoolProvisioningControlParameter> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PostViaIdentity
 ```
 Invoke-AzWvdControlSessionHostProvisioning -InputObject <IDesktopVirtualizationIdentity>
  -HostPoolProvisioningControlParameter <IHostPoolProvisioningControlParameter> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PostViaIdentityExpanded
 ```
 Invoke-AzWvdControlSessionHostProvisioning -InputObject <IDesktopVirtualizationIdentity>
- [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### PostViaJsonFilePath
 ```
 Invoke-AzWvdControlSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PostViaJsonString
 ```
 Invoke-AzWvdControlSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -194,6 +194,21 @@ Accept wildcard characters: False
 
 ### -NoWait
 Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

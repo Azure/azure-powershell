@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Get-AzWvdSessionHostProvisioningStatuses'))
+if(($null -eq $TestName) -or ($TestName -contains 'Get-AzWvdSessionHostProvisioningStatus'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzWvdSessionHostProvisioningStatuses.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzWvdSessionHostProvisioningStatus.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,9 +14,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzWvdSessionHostProvision
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzWvdSessionHostProvisioningStatuses' {
+Describe 'Get-AzWvdSessionHostProvisioningStatus' {
     It 'Get' {
-        $sessionHostManagement = Get-AzWvdSessionHostProvisioningStatuses -SubscriptionId $env.SubscriptionId `
+        $sessionHostManagement = Get-AzWvdSessionHostProvisioningStatus -SubscriptionId $env.SubscriptionId `
              -ResourceGroupName $env.ResourceGroupPersistent `
              -HostPoolName $env.AutomatedHostpoolPersistent
         $sessionHostManagement.Count -gt 0 | Should -Be $true

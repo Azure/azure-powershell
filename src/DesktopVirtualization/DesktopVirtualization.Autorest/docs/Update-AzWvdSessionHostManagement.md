@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWvdSessionHostManagement
 
 ## SYNOPSIS
-update a SessionHostManagement.
+Update a SessionHostManagement.
 
 ## SYNTAX
 
@@ -43,7 +43,7 @@ Update-AzWvdSessionHostManagement -HostPoolName <String> -ResourceGroupName <Str
 ```
 
 ## DESCRIPTION
-update a SessionHostManagement.
+Update a SessionHostManagement.
 
 ## EXAMPLES
 

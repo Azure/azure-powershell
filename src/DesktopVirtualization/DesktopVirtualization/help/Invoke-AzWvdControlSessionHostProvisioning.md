@@ -16,20 +16,20 @@ Control provisioning of a hostpool.
 ```
 Invoke-AzWvdControlSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PostViaJsonString
 ```
 Invoke-AzWvdControlSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PostViaJsonFilePath
 ```
 Invoke-AzWvdControlSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,14 +37,14 @@ Invoke-AzWvdControlSessionHostProvisioning -HostPoolName <String> -ResourceGroup
 ```
 Invoke-AzWvdControlSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -HostPoolProvisioningControlParameter <IHostPoolProvisioningControlParameter>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### PostViaIdentityExpanded
 ```
 Invoke-AzWvdControlSessionHostProvisioning -InputObject <IDesktopVirtualizationIdentity>
- [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -52,7 +52,7 @@ Invoke-AzWvdControlSessionHostProvisioning -InputObject <IDesktopVirtualizationI
 ```
 Invoke-AzWvdControlSessionHostProvisioning -InputObject <IDesktopVirtualizationIdentity>
  -HostPoolProvisioningControlParameter <IHostPoolProvisioningControlParameter> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -195,6 +195,21 @@ Accept wildcard characters: False
 
 ### -NoWait
 Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

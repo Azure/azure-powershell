@@ -16,41 +16,41 @@ Control post of a hostpool.
 ```
 Invoke-AzWvdControlSessionHostUpdate -HostPoolName <String> -ResourceGroupName <String> -Action <String>
  [-SubscriptionId <String>] [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Post
 ```
 Invoke-AzWvdControlSessionHostUpdate -HostPoolName <String> -ResourceGroupName <String>
  -HostPoolUpdateControlParameter <IHostPoolUpdateControlParameter> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PostViaIdentity
 ```
 Invoke-AzWvdControlSessionHostUpdate -InputObject <IDesktopVirtualizationIdentity>
  -HostPoolUpdateControlParameter <IHostPoolUpdateControlParameter> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PostViaIdentityExpanded
 ```
 Invoke-AzWvdControlSessionHostUpdate -InputObject <IDesktopVirtualizationIdentity> -Action <String>
- [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### PostViaJsonFilePath
 ```
 Invoke-AzWvdControlSessionHostUpdate -HostPoolName <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### PostViaJsonString
 ```
 Invoke-AzWvdControlSessionHostUpdate -HostPoolName <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -211,6 +211,21 @@ Accept wildcard characters: False
 
 ### -NoWait
 Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

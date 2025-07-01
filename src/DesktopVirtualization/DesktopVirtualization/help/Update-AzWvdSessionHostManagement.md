@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWvdSessionHostManagement
 
 ## SYNOPSIS
-update a SessionHostManagement.
+Update a SessionHostManagement.
 
 ## SYNTAX
 
@@ -47,7 +47,7 @@ Update-AzWvdSessionHostManagement -InputObject <IDesktopVirtualizationIdentity>
 ```
 
 ## DESCRIPTION
-update a SessionHostManagement.
+Update a SessionHostManagement.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWvdSessionHostConfiguration
 
 ## SYNOPSIS
-create a SessionHostConfiguration.
+Create a SessionHostConfiguration.
 
 ## SYNTAX
 
@@ -46,7 +46,7 @@ New-AzWvdSessionHostConfiguration -HostPoolName <String> -ResourceGroupName <Str
 ```
 
 ## DESCRIPTION
-create a SessionHostConfiguration.
+Create a SessionHostConfiguration.
 
 ## EXAMPLES
 

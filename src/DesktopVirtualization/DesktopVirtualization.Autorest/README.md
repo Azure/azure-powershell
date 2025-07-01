@@ -121,4 +121,9 @@ directive:
     set:
       preview-announcement:
         preview-message: The IdentityType property is not currently supported and will be enabled in a future update.
+  - where:
+      verb: Get
+      subject: SessionHostProvisioningStatuses
+    set:
+      subject: SessionHostProvisioningStatus
 ```

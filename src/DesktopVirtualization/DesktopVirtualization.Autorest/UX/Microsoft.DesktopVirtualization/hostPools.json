@@ -234,12 +234,12 @@
       ]
     },
     {
-      "name": "Get-AzWvdSessionHostProvisioningStatuses",
+      "name": "Get-AzWvdSessionHostProvisioningStatus",
       "description": "Get the session host provisioning status for a given hostpool.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default/sessionHostProvisioningStatuses/default",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdsessionhostprovisioningstatuses"
+          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdsessionhostprovisioningstatus"
         },
         "parameterSets": [
           {

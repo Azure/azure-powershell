@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWvdWorkspace
 
 ## SYNOPSIS
-update a workspace.
+Update a workspace.
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ Update-AzWvdWorkspace -InputObject <IDesktopVirtualizationIdentity> [-Applicatio
 ```
 
 ## DESCRIPTION
-update a workspace.
+Update a workspace.
 
 ## EXAMPLES
 

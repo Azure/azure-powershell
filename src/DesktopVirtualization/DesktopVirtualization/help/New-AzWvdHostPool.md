@@ -8,36 +8,36 @@ schema: 2.0.0
 # New-AzWvdHostPool
 
 ## SYNOPSIS
-create a host pool.
+Create a host pool.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -HostPoolType <String>
- -LoadBalancerType <String> -Location <String> -PreferredAppGroupType <String>
+ -LoadBalancerType <String> -Location <String> -PreferredAppGroupType <String> [-ManagementType <String>]
  [-AgentUpdateMaintenanceWindow <IMaintenanceWindowProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <String>]
  [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
  [-DirectUdp <String>] [-ExpirationTime <DateTime>] [-FriendlyName <String>] [-IdentityType <String>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>] [-ManagedBy <String>]
- [-ManagedPrivateUdp <String>] [-ManagementType <String>] [-MaxSessionLimit <Int32>]
- [-PersonalDesktopAssignmentType <String>] [-PlanName <String>] [-PlanProduct <String>]
- [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
- [-PublicNetworkAccess <String>] [-PublicUdp <String>] [-RegistrationInfoToken <String>]
- [-RegistrationTokenOperation <String>] [-RelayUdp <String>] [-Ring <Int32>] [-SkuCapacity <Int32>]
- [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-SsoClientId <String>]
- [-SsoClientSecretKeyVaultPath <String>] [-SsoSecretType <String>] [-SsoadfsAuthority <String>]
- [-StartVMOnConnect] [-Tag <Hashtable>] [-VMTemplate <String>] [-ValidationEnvironment]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ManagedPrivateUdp <String>] [-MaxSessionLimit <Int32>] [-PersonalDesktopAssignmentType <String>]
+ [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
+ [-PlanVersion <String>] [-PublicNetworkAccess <String>] [-PublicUdp <String>]
+ [-RegistrationInfoToken <String>] [-RegistrationTokenOperation <String>] [-RelayUdp <String>] [-Ring <Int32>]
+ [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
+ [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>] [-SsoSecretType <String>]
+ [-SsoadfsAuthority <String>] [-StartVMOnConnect] [-Tag <Hashtable>] [-VMTemplate <String>]
+ [-ValidationEnvironment] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### FullScenarioCreate
 ```
 New-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -HostPoolType <String>
- -LoadBalancerType <String> -Location <String> -PreferredAppGroupType <String> [-DesktopAppGroupName <String>]
- [-WorkspaceName <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -LoadBalancerType <String> -Location <String> -PreferredAppGroupType <String> [-ManagementType <String>]
+ [-DesktopAppGroupName <String>] [-WorkspaceName <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -53,7 +53,7 @@ New-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <S
 ```
 
 ## DESCRIPTION
-create a host pool.
+Create a host pool.
 
 ## EXAMPLES
 
@@ -452,7 +452,7 @@ The default value is Automated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, FullScenarioCreate
 Aliases:
 
 Required: False
