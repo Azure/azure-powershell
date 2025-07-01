@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlet `New-AzFirewallPolicyApplicationRule` to use HTTPS as the default protocol when creating a new FQDN Tag application rule.
 
 ## Version 7.18.0
 * Added a new command which creates an object for CaptureSetting, and added properties 'FileCount', 'FileSizeInBytes', and 'SessionTimeLimitInSeconds', which helps to configure the capture setting for packet capture as well as support for it for the following cmdlets:
@@ -27,7 +28,6 @@
     - `New-AzNetworkWatcherPacketCaptureV2`
 * Onboarded Application Gateway WAF Exceptions cmdlet.
     - `New-AzApplicationGatewayFirewallPolicyException` 
-* Updated cmdlet `New-AzFirewallPolicyApplicationRule` to use HTTPS as the default protocol when creating a new FQDN Tag application rule.
 
 ## Version 7.17.0
 * Added properties 'PublicIpAddressesV6', 'PublicIpPrefixesV6', and 'SourceVirtualNetwork' to NatGateway, as well as support for it for the following cmdlets:
