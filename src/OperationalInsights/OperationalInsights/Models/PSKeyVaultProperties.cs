@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         }
 
         /// <summary>
-        /// Creates an instance of PSKeyVaultProperties taht serves the response from the SDK only
+        /// Creates an instance of PSKeyVaultProperties that serves the response from the SDK only
         /// KeyRsaSize property can be set with a value only from the SDK response - not user configurable
         /// </summary>
         /// <param name="kv"></param>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         }
 
         /// <summary>
-        /// Creates an instance of PSKeyVaultProperties taht serves the response from the SDK only
+        /// Creates an instance of PSKeyVaultProperties that serves the response from the SDK only
         /// </summary>
         /// <returns>An instance of PSKeyVaultProperties</returns>
         public static PSKeyVaultProperties GetKVPropertiesFromSDK(KeyVaultProperties kv)
