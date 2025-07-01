@@ -100,7 +100,8 @@ function Publish-AzLabServicesLab_ResourceId {
     )
     
     process {
-        $resourceHash = & $PSScriptRoot\Utilities\HandleLabResourceId.ps1 -ResourceId $ResourceId
+        $HandleLabResourceId = Join-Path $PSScriptRoot '/Utilities/HandleLabResourceId.ps1'
+        $resourceHash = . $HandleLabResourceId -ResourceId $ResourceId
         $PSBoundParameters.Remove("SubscriptionId")
         if ($resourceHash) {
             $resourceHash.Keys | ForEach-Object {

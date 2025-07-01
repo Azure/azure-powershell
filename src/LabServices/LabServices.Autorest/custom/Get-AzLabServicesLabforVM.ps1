@@ -88,8 +88,8 @@ function Get-AzLabServicesLabForVM {
     )
     
     process {
-        $resourceHash = & $PSScriptRoot\Utilities\HandleVMResourceId.ps1 -ResourceId $ResourceId
-
+        $HandleLabResourceId = Join-Path $PSScriptRoot '/Utilities/HandleLabResourceId.ps1'
+        $resourceHash = . $HandleLabResourceId -ResourceId $ResourceId
         if ($resourceHash) {
             $PSBoundParameters.Remove("SubscriptionId") > $null
             $PSBoundParameters.Remove("VirtualMachineName") > $null

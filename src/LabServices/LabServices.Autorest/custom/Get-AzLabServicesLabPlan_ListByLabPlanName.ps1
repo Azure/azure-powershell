@@ -89,10 +89,10 @@ param(
 )
 
 process {
-
+    $CheckForWildcards = Join-Path $PSScriptRoot '/Utilities/CheckForWildcards.ps1'
     $currentLabPlan = $PSBoundParameters.Name
     $PSBoundParameters.Remove('Name') > $null
-    if ($(& $PSScriptRoot\Utilities\CheckForWildcards.ps1 -ResourceId $currentLabPlan))
+    if ($(. $CheckForWildcards -ResourceId $currentLabPlan))
     {
         # Uses Powershell wildcards
         return Az.LabServices.private\Get-AzLabServicesLabPlan_List @PSBoundParameters |  Where-Object { $_.Name -like $currentLabPlan }

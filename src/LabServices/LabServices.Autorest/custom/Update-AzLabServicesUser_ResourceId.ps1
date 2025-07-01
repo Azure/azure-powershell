@@ -106,7 +106,8 @@ param(
 )
 
 process {
-    $resourceHash = & $PSScriptRoot\Utilities\HandleUserResourceId.ps1 -ResourceId $ResourceId
+    $HandleUserResourceId = Join-Path $PSScriptRoot '/Utilities/HandleUserResourceId.ps1'
+    $resourceHash = . $HandleUserResourceId -ResourceId $ResourceId
     $PSBoundParameters.Remove("SubscriptionId")
     if ($resourceHash) {
         $resourceHash.Keys | ForEach-Object {

@@ -115,7 +115,8 @@ function Reset-AzLabServicesVMPassword_ResourceId {
     )
     
     process {
-        $resourceHash = & $PSScriptRoot\Utilities\HandleVMResourceId.ps1 -ResourceId $ResourceId
+        $HandleVMResourceId = Join-Path $PSScriptRoot '/Utilities/HandleVMResourceId.ps1'
+        $resourceHash = . $HandleVMResourceId -ResourceId $ResourceId
         $PSBoundParameters.Remove("SubscriptionId") > $null
         
         if ($resourceHash) {

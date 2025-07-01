@@ -88,8 +88,8 @@ function Get-AzLabServicesSchedule_LabObject {
     )
     
     process {
-
-        $resourceHash = & $PSScriptRoot\Utilities\HandleScheduleResourceId.ps1 -ResourceId $ResourceId
+        $HandleScheduleResourceId = Join-Path $PSScriptRoot '/Utilities/HandleScheduleResourceId.ps1'
+        $resourceHash = . $HandleScheduleResourceId -ResourceId $ResourceId
         $PSBoundParameters.Remove("SubscriptionId") > $null
         if ($resourceHash) {
             $resourceHash.Keys | ForEach-Object {
