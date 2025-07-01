@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             throw new ArgumentException("The value for AssignIdentityType is not valid, the valid value are: \"None\", \"SystemAssigned\", \"UserAssigned\", or \"SystemAssignedUserAssigned\"", "AssignIdentityType");
         }
 
-        // Make the input string value case is aligned with the test API defination.
+        // Make the input string value case is aligned with the test API definition.
         public static string NormalizeString<T>(string input)
         {
             foreach (var field in typeof(T).GetFields())
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             return input;
         }
 
-        // Make the input string[] value case is aligned with the test API defination.
+        // Make the input string[] value case is aligned with the test API definition.
         public static string[] NormalizeStringArray<T>(string[] input)
         {
             if (input != null)
