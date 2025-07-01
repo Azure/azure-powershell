@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Set-AzDevCenterUserEnvironment'))
+if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterUserDevBoxAddOn'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Set-AzDevCenterUserEnvironment.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzDevCenterUserDevBoxAddOn.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,12 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzDevCenterUserEnvironmen
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Set-AzDevCenterUserEnvironment' {
-    It 'ReplaceExpanded' -skip {
+Describe 'Remove-AzDevCenterUserDevBoxAddOn' {
+    It 'Delete' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Replace' -skip {
+    It 'DeleteViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
