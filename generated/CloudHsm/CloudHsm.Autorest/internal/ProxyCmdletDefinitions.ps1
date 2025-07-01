@@ -20,7 +20,7 @@ Backup a backup of the Cloud HSM Cluster in the specified subscription
 .Description
 Backup a backup of the Cloud HSM Cluster in the specified subscription
 .Example
-Backup-AzCloudHsm -ClusterName chsm1 -ResourceGroupName group -BlobContainerUri  "https://{accountName}.blob.core.windows.net/{containerName}"
+Backup-AzCloudHsm -ClusterName chsm1 -ResourceGroupName group -BlobContainerUri "https://{accountName}.blob.core.windows.net/{containerName}"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupResult
@@ -184,9 +184,9 @@ Gets the specified Cloud HSM Cluster
 .Example
 Get-AzCloudHsm
 .Example
-Get-AzCloudHsm -Name chsm1
+Get-AzCloudHsm -Name chsm1 -ResourceGroupName 'group'
 .Example
-Get-AzCloudHsm  -ResourceGroupName 'group'
+Get-AzCloudHsm -ResourceGroupName 'group'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster
@@ -333,9 +333,9 @@ Create a Cloud HSM Cluster in the specified subscription.
 .Description
 Create a Cloud HSM Cluster in the specified subscription.
 .Example
-New-AzCloudHsm -Name myCloudHsm -ResourceGroupName  group -Location UkWest -Tag @{ CloudHsmRegion = "UkWest"; Department = "Engineering"}
+New-AzCloudHsm -Name myCloudHsm -ResourceGroupName group -Location UkWest -Tag @{ CloudHsmRegion = "UkWest"; Department = "Engineering"}
 .Example
-New-AzCloudHsm -Name myCloudHsm -ResourceGroupName group -Location UkWest -Sku "Standard_B1" -UserAssignedIdentity  "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity"
+New-AzCloudHsm -Name myCloudHsm -ResourceGroupName group -Location UkWest -Sku "Standard_B1" -UserAssignedIdentity "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster
@@ -869,7 +869,7 @@ Update a Cloud HSM Cluster in the specified subscription.
 .Example
 Update-AzCloudHsm -Name myCloudHsm -ResourceGroupName group -Tag @{ CloudHsmRegion = "UkWest"; Department = "Engineering"; DepartmentNo = "1"}
 .Example
-Update-AzCloudHsm -Name myCloudHsm -ResourceGroupName group  -UserAssignedIdentity @()
+Update-AzCloudHsm -Name myCloudHsm -ResourceGroupName group -UserAssignedIdentity @()
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster

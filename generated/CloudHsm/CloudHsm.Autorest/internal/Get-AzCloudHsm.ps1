@@ -22,9 +22,9 @@ Gets the specified Cloud HSM Cluster
 .Example
 Get-AzCloudHsm
 .Example
-Get-AzCloudHsm -Name chsm1
+Get-AzCloudHsm -Name chsm1 -ResourceGroupName 'group'
 .Example
-Get-AzCloudHsm  -ResourceGroupName 'group'
+Get-AzCloudHsm -ResourceGroupName 'group'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster
