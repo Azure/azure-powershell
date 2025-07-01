@@ -93,7 +93,7 @@
   - Fetch the available roles for a device
 
 * Added cmdlet `Get-AzDataBoxEdgeShare`
-  - Gets the creted shares for this device
+  - Gets the created shares for this device
 
 * Added cmdlet `Get-AzDataBoxEdgeStorageAccountCredential`
   - Get the Storage Account credential corresponding to device and storage account
@@ -126,13 +126,13 @@
   - Remove a device
 
 * Added cmdlet `Remove-AzDataBoxEdgeRole`
-  - Removes the assosciated Role for the device
+  - Removes the associated Role for the device
 
 * Added cmdlet `Remove-AzDataBoxEdgeRole`
-  - Removes the assosciated Role for the device
+  - Removes the associated Role for the device
 
 * Added cmdlet `Remove-AzDataBoxEdgeStorageAccountCredential`
-  - Removes a storage account credentail object for the device
+  - Removes a storage account credential object for the device
 
 * Added cmdlet `Remove-AzDataBoxEdgeUser`
   - Removes the user

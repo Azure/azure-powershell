@@ -47,6 +47,42 @@ use-extension:
   "@autorest/powershell": "3.x"
 
 directive:
+  - where:
+      verb: Get
+      subject: RegistrationAssignment
+    set:
+      breaking-change:
+        change-description: "The types of the properties 'Authorization' and 'EligibleAuthorization' will be changed to 'List'."
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+
+  - where:
+      subject: RegistrationDefinition
+    set:
+      breaking-change:
+        change-description: "The types of the properties 'Authorization' and 'EligibleAuthorization' will be changed to 'List'."
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      verb: New
+      subject: RegistrationDefinition
+    set:
+      breaking-change:
+        change-description: "The types of the properties 'DelegatedRoleDefinitionId' and 'JustInTimeAccessPolicyManagedByTenantApprover' will be changed to 'List'."
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+
+  - where:
+      subject: MarketplaceRegistrationDefinition
+    set:
+      breaking-change:
+        change-description: "The types of the properties 'Authorization' and 'EligibleAuthorization' will be changed to 'List'."
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
 
   # Remove unnecessary cmdlet.
   - where:

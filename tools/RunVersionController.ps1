@@ -175,10 +175,30 @@ function Bump-AzVersion
     Write-Host "Getting local Az information..." -ForegroundColor Yellow
     $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot\Az\Az.psd1"
     Write-Host "Getting Az $ReleaseType information from gallery..." -ForegroundColor Yellow
+
     if("LTS" -eq $ReleaseType){
-        $galleryAz = (Find-Module -Name Az -Repository $GalleryName -AllVersions | Where-Object {([System.Version]($_.Version)).Major%2 -eq 0} | Sort-Object {[System.Version]$_.Version} -Descending)[0]
-    }else{
-        $galleryAz = Find-Module -Name Az -Repository $GalleryName
+        if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
+            Write-Host "Using DEFAULT_PS_REPOSITORY_NAME: $Env:DEFAULT_PS_REPOSITORY_NAME"
+            $AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force
+            $credentialsObject = [pscredential]::new("ONEBRANCH_TOKEN", $AccessTokenSecureString)
+            $galleryAz = Find-PSResource -Name AzPreview -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject -TrustRepository
+        }
+        else {
+            $galleryAz = Find-PSResource -Name AzPreview -Repository $GalleryName -Version *
+        }
+        $galleryAz = $galleryAz | Where-Object { ([System.Version]($_.Version)).Major%2 -eq 0 } | Sort-Object {[System.Version]$_.Version} -Descending
+    }
+    else
+    {
+        if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
+            Write-Host "Using DEFAULT_PS_REPOSITORY_NAME: $Env:DEFAULT_PS_REPOSITORY_NAME"
+            $AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force
+            $credentialsObject = [pscredential]::new("ONEBRANCH_TOKEN", $AccessTokenSecureString)
+            $galleryAz = Find-PSResource -Name AzPreview -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject -TrustRepository
+        }
+        else {
+            $galleryAz = Find-PSResource -Name AzPreview -Repository $GalleryName
+        }
     }
 
     $versionBump = [PSVersion]::NONE
@@ -197,11 +217,7 @@ function Bump-AzVersion
             continue
         }
 
-        $galleryVersion = $galleryDependency.RequiredVersion
-        if ([string]::IsNullOrEmpty($galleryVersion))
-        {
-            $galleryVersion = $galleryDependency.MinimumVersion
-        }
+        $galleryVersion = $galleryDependency.VersionRange.MinVersion.OriginalVersion
 
         $localVersion = $localDependency.RequiredVersion
         # Az.Accounts uses ModuleVersion to annote Version
@@ -325,7 +341,15 @@ function Update-AzPreviewChangelog
     $AzPreviewVersion = (Import-PowerShellDataFile "$PSScriptRoot\Az\Az.psd1").ModuleVersion
     $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot\AzPreview\AzPreview.psd1"
     Write-Host "Getting gallery AzPreview information..." -ForegroundColor Yellow
-    $galleryAz = Find-Module -Name AzPreview -Repository $GalleryName
+    if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
+        Write-Host "Using DEFAULT_PS_REPOSITORY_NAME: $Env:DEFAULT_PS_REPOSITORY_NAME"
+        $AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force
+        $credentialsObject = [pscredential]::new("ONEBRANCH_TOKEN", $AccessTokenSecureString)
+        $galleryAz = Find-PSResource -Name AzPreview -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject -TrustRepository
+    }
+    else {
+        $galleryAz = Find-PSResource -Name AzPreview -Repository $GalleryName
+    }
     $updatedModules = @()
     foreach ($localDependency in $localAz.RequiredModules)
     {
@@ -337,11 +361,7 @@ function Update-AzPreviewChangelog
             continue
         }
 
-        $galleryVersion = $galleryDependency.RequiredVersion
-        if ([string]::IsNullOrEmpty($galleryVersion))
-        {
-            $galleryVersion = $galleryDependency.MinimumVersion
-        }
+        $galleryVersion = $galleryDependency.VersionRange.MinVersion.OriginalVersion
 
         $localVersion = $localDependency.RequiredVersion
         # Az.Accounts uses ModuleVersion to annote Version
@@ -480,6 +500,7 @@ switch ($PSCmdlet.ParameterSetName)
     {
         # clean the unnecessary SerializedCmdlets json file
         $ExistSerializedCmdletJsonFile = Get-ExistSerializedCmdletJsonFile
+        $GAModules = @() # with "Az."
         $ExpectJsonHashSet = @{}
         $SrcPath = Join-Path -Path $PSScriptRoot -ChildPath "..\src"
         foreach ($ModuleName in $(Get-ChildItem $SrcPath -Directory).Name)
@@ -490,9 +511,10 @@ switch ($PSCmdlet.ParameterSetName)
             if ($null -ne $Psd1FilePath)
             {
                 $Psd1Object = Import-PowerShellDataFile $Psd1FilePath
-                if ($Psd1Object.ModuleVersion -ge "1.0.0")
+                if ([Version]$Psd1Object.ModuleVersion -ge [Version]"1.0.0")
                 {
                     $ExpectJsonHashSet.Add("Az.${ModuleName}.json", $true)
+                    $GAModules += "Az.${ModuleName}"
                 }
             }
         }
@@ -501,7 +523,7 @@ switch ($PSCmdlet.ParameterSetName)
             $ModuleName = $JsonFile.Replace('.json', '')
             if (!$ExpectJsonHashSet.Contains($JsonFile))
             {
-                Write-Host "Module ${ModuleName} is not GA yet. The json file: ${JsonFile} is for reference"
+                Write-Host "Module ${ModuleName} is pre-GA. The serialized cmdlets file: ${JsonFile} is for reference only"
             }
         }
 
@@ -514,12 +536,10 @@ switch ($PSCmdlet.ParameterSetName)
         Update-AzPreview
         Update-AzPreviewChangelog
         Update-AzSyntaxChangelog
-        # We need to generate the upcoming-breaking-changes.md after the process of bump version in minor release
-        if ([PSVersion]::MINOR -Eq $versionBump)
-        {
-            Import-Module $PSScriptRoot/BreakingChanges/GetUpcomingBreakingChange.psm1
-            Export-AllBreakingChangeMessageUnderArtifacts -ArtifactsPath $PSScriptRoot/../artifacts/Release/ -MarkdownPath $PSScriptRoot/../documentation/breaking-changes/upcoming-breaking-changes.md
-        }
+
+        # Update the doc of upcoming breaking change
+        Import-Module $PSScriptRoot/BreakingChanges/GetUpcomingBreakingChange.psm1
+        Export-AllBreakingChangeMessageUnderArtifacts -ArtifactsPath $PSScriptRoot/../artifacts/Release/ -MarkdownPath $PSScriptRoot/../documentation/breaking-changes/upcoming-breaking-changes.md -Module $GAModules
     }
 }
 

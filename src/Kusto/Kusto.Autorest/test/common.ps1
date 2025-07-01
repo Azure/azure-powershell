@@ -40,7 +40,7 @@ function Get-Database-Resource-Id
 
 <#
 .SYNOPSIS
-Gets a database soft delet perios in days parameter
+Gets a database soft delete period in days parameter
 #>
 function Get-Soft-Delete-Period-In-Days
 {
@@ -58,7 +58,7 @@ function Get-Hot-Cache-Period-In-Days
 
 <#
 .SYNOPSIS
-Gets a different  database soft delet perios in days parameter ( for testing update)
+Gets a different  database soft delete period in days parameter ( for testing update)
 #>
 function Get-Updated-Soft-Delete-Period-In-Days
 {
