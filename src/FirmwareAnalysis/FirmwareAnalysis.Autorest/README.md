@@ -24,11 +24,12 @@ For information on how to develop for `Az.FirmwareAnalysis`, see [how-to.md](how
 <!-- endregion -->
 
 ### AutoRest Configuration
+
 > see https://aka.ms/autorest
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: ef348fed285ae01b78cf6afd394ad2c4c8b6da7e
+commit: 09f3dd2d269324277e8909230e1dc4c1f274cb3a
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -39,17 +40,7 @@ require:
 # - (this-folder)/relative-path-to-your-local-readme.md
 
 input-file:
-  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/firmwares.json
-  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/workspaces.json
-  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/binaryHardeningResults.json
-  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/sbomComponents.json
-  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/cves.json
-  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/cryptoCertificates.json  
-  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/cryptoKeys.json
-  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/passwordHashes.json
-  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/summaries.json  
-  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/common.json  
-  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/operations.json 
+  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/preview/2025-04-01-preview/iotfirmwaredefense.json
 
 try-require: 
   - /swagger/fist/resource-manager/readme.powershell.md
