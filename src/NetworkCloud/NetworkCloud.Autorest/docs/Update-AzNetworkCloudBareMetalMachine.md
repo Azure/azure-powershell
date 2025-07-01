@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Patch properties of the provided bare metal machine, or update tags associated with the bare metal machine.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ## SYNTAX
 
@@ -28,7 +28,7 @@ Update-AzNetworkCloudBareMetalMachine -InputObject <INetworkCloudIdentity> [-Mac
 
 ## DESCRIPTION
 Patch properties of the provided bare metal machine, or update tags associated with the bare metal machine.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ## EXAMPLES
 
@@ -80,7 +80,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -226,7 +225,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachine
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachine
 
 ## NOTES
 

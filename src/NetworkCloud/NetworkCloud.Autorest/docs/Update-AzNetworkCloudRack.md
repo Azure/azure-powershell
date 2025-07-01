@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Patch properties of the provided rack, or update the tags associated with the rack.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ## SYNTAX
 
@@ -29,7 +29,7 @@ Update-AzNetworkCloudRack -InputObject <INetworkCloudIdentity> [-RackLocation <S
 
 ## DESCRIPTION
 Patch properties of the provided rack, or update the tags associated with the rack.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ## EXAMPLES
 
@@ -75,7 +75,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -238,7 +237,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IRack
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IRack
 
 ## NOTES
 

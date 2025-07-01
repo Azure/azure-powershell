@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Patch properties of bare metal machine key set for the provided cluster, or update the tags associated with it.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ## SYNTAX
 
@@ -21,6 +21,13 @@ Update-AzNetworkCloudBareMetalMachineKeySet -ClusterName <String> -Name <String>
  [<CommonParameters>]
 ```
 
+### UpdateViaIdentityClusterExpanded
+```
+Update-AzNetworkCloudBareMetalMachineKeySet -ClusterInputObject <INetworkCloudIdentity> -Name <String>
+ [-Expiration <DateTime>] [-JumpHostsAllowed <String[]>] [-Tag <Hashtable>] [-UserList <IKeySetUser[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkCloudBareMetalMachineKeySet -InputObject <INetworkCloudIdentity> [-Expiration <DateTime>]
@@ -30,7 +37,7 @@ Update-AzNetworkCloudBareMetalMachineKeySet -InputObject <INetworkCloudIdentity>
 
 ## DESCRIPTION
 Patch properties of bare metal machine key set for the provided cluster, or update the tags associated with it.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ## EXAMPLES
 
@@ -70,6 +77,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: UpdateViaIdentityClusterExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -121,7 +143,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -155,7 +176,7 @@ The name of the bare metal machine key set.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityClusterExpanded
 Aliases: BareMetalMachineKeySetName
 
 Required: True
@@ -229,10 +250,9 @@ Accept wildcard characters: False
 
 ### -UserList
 The unique list of permitted users.
-To construct, see NOTES section for USERLIST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKeySetUser[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKeySetUser[]
 Parameter Sets: (All)
 Aliases:
 
@@ -283,7 +303,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineKeySet
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySet
 
 ## NOTES
 
