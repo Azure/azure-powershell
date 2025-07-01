@@ -100,11 +100,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// it is done this way to guarantee that by the time we finish any directory
         /// all of its subdirectories/files had been visited
         /// Note:
-        /// if operaiton is cancelled - not all notifications will be emited,
+        /// if operation is cancelled - not all notifications will be emitted,
         /// and namespace information will be partial.
         /// </summary>
         /// <param name="root">directory to scan</param>
-        /// <param name="cancelationCallback">function to consult with for cancelation</param>
+        /// <param name="cancelationCallback">function to consult with for cancellation</param>
         /// <exception cref="System.IO.DirectoryNotFoundException">Cannot access directory: {root.FullName}</exception>
         private void EnumeratePostOrderNonRecursive(IDirectoryInfo root, Func<bool> cancelationCallback = null)
         {

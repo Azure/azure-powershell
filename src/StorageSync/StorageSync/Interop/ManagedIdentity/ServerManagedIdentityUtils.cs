@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
 
         /// <summary>
         /// Obtaining tokens on an Arc server is restricted to privileged applications or processes. 
-        /// To enforce this, there is an additional chellenge/response check when requesting a token. 
+        /// To enforce this, there is an additional challenge/response check when requesting a token. 
         /// </summary>
         /// <param name="requestUri"> himds uri to request token from </param>
         /// <param name="client"> HttpClient used to request token if provided </param>
