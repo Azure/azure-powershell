@@ -1,0 +1,153 @@
+{
+  "resourceType": "projects/catalogs/imageDefinitions",
+  "apiVersion": "2025-04-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.devcenter"
+  },
+  "commands": [
+    {
+      "name": "Build-AzDevCenterAdminProjectCatalogImageDefinitionImage",
+      "description": "Builds an image for the specified Image Definition.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/buildImage",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.devcenter/build-azdevcenteradminprojectcatalogimagedefinitionimage"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CatalogName <String>",
+              "-ImageDefinitionName <String>",
+              "-ProjectName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Builds an image for the specified Image Definition.",
+          "parameters": [
+            {
+              "name": "-CatalogName",
+              "value": "[Path.catalogName]"
+            },
+            {
+              "name": "-ImageDefinitionName",
+              "value": "[Path.imageDefinitionName]"
+            },
+            {
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzDevCenterAdminProjectCatalogImageDefinitionErrorDetail",
+      "description": "Gets Image Definition error details",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/getErrorDetails",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminprojectcatalogimagedefinitionerrordetail"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CatalogName <String>",
+              "-ImageDefinitionName <String>",
+              "-ProjectName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets Image Definition error details",
+          "parameters": [
+            {
+              "name": "-CatalogName",
+              "value": "[Path.catalogName]"
+            },
+            {
+              "name": "-ImageDefinitionName",
+              "value": "[Path.imageDefinitionName]"
+            },
+            {
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzDevCenterAdminProjectCatalogImageDefinition",
+      "description": "Gets an Image Definition from the catalog",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminprojectcatalogimagedefinition"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CatalogName <String>",
+              "-ImageDefinitionName <String>",
+              "-ProjectName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets an Image Definition from the catalog",
+          "parameters": [
+            {
+              "name": "-CatalogName",
+              "value": "[Path.catalogName]"
+            },
+            {
+              "name": "-ImageDefinitionName",
+              "value": "[Path.imageDefinitionName]"
+            },
+            {
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
