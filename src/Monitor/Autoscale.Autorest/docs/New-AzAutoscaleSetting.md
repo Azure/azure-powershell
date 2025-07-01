@@ -8,14 +8,17 @@ schema: 2.0.0
 # New-AzAutoscaleSetting
 
 ## SYNOPSIS
-Creates or updates an autoscale setting.
+Create an autoscale setting.
 
 ## SYNTAX
 
-### CreateViaIdentity (Default)
+### CreateViaIdentityExpanded (Default)
 ```
-New-AzAutoscaleSetting -InputObject <IAutoscaleIdentity> -Parameter <IAutoscaleSettingResource>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzAutoscaleSetting -InputObject <IAutoscaleIdentity> -Location <String> -Profile <IAutoscaleProfile[]>
+ [-Enabled] [-Notification <IAutoscaleNotification[]>]
+ [-PredictiveAutoscalePolicyScaleLookAheadTime <TimeSpan>] [-PredictiveAutoscalePolicyScaleMode <String>]
+ [-PropertiesName <String>] [-Tag <Hashtable>] [-TargetResourceLocation <String>]
+ [-TargetResourceUri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -23,13 +26,13 @@ New-AzAutoscaleSetting -InputObject <IAutoscaleIdentity> -Parameter <IAutoscaleS
 New-AzAutoscaleSetting -Name <String> -ResourceGroupName <String> -Location <String>
  -Profile <IAutoscaleProfile[]> [-SubscriptionId <String>] [-Enabled]
  [-Notification <IAutoscaleNotification[]>] [-PredictiveAutoscalePolicyScaleLookAheadTime <TimeSpan>]
- [-PredictiveAutoscalePolicyScaleMode <PredictiveAutoscalePolicyScaleMode>] [-PropertiesName <String>]
- [-Tag <Hashtable>] [-TargetResourceLocation <String>] [-TargetResourceUri <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PredictiveAutoscalePolicyScaleMode <String>] [-PropertiesName <String>] [-Tag <Hashtable>]
+ [-TargetResourceLocation <String>] [-TargetResourceUri <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates an autoscale setting.
+Create an autoscale setting.
 
 ## EXAMPLES
 
@@ -70,7 +73,7 @@ The default value is 'false'.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -82,11 +85,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleIdentity
-Parameter Sets: CreateViaIdentity
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -101,7 +103,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -128,11 +130,10 @@ Accept wildcard characters: False
 
 ### -Notification
 the collection of notifications.
-To construct, see NOTES section for NOTIFICATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleNotification[]
-Parameter Sets: CreateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleNotification[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -142,29 +143,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-The autoscale setting resource.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource
-Parameter Sets: CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -PredictiveAutoscalePolicyScaleLookAheadTime
 the amount of time to specify by which instances are launched in advance.
 It must be between 1 minute and 60 minutes in ISO 8601 format.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -178,8 +163,8 @@ Accept wildcard characters: False
 the predictive autoscale mode
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.PredictiveAutoscalePolicyScaleMode
-Parameter Sets: CreateExpanded
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -192,11 +177,10 @@ Accept wildcard characters: False
 ### -Profile
 the collection of automatic scaling profiles that specify different scaling parameters for different time periods.
 A maximum of 20 profiles can be specified.
-To construct, see NOTES section for PROFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfile[]
-Parameter Sets: CreateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleProfile[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -211,7 +195,7 @@ the name of the autoscale setting.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -260,7 +244,7 @@ Each tag must have a key no greater in length than 128 characters and a value no
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -275,7 +259,7 @@ the location of the resource that the autoscale setting should be added to.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -290,7 +274,7 @@ the resource identifier of the resource that the autoscale setting should be add
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -336,13 +320,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleSettingResource
 
 ## NOTES
 

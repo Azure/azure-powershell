@@ -21,12 +21,13 @@ Create an in-memory object for ScaleRuleMetricDimension.
 Create an in-memory object for ScaleRuleMetricDimension.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRuleMetricDimension
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.ScaleRuleMetricDimension
 .Link
-https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzAutoscaleScaleRuleMetricDimensionObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-azautoscalescalerulemetricdimensionobject
 #>
 function New-AzAutoscaleScaleRuleMetricDimensionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRuleMetricDimension')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.ScaleRuleMetricDimension')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -34,8 +35,8 @@ function New-AzAutoscaleScaleRuleMetricDimensionObject {
         [string]
         $DimensionName,
         [Parameter(Mandatory, HelpMessage="the dimension operator. Only 'Equals' and 'NotEquals' are supported. 'Equals' being equal to any of the values. 'NotEquals' being not equal to all of the values.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.ScaleRuleMetricDimensionOperationType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.ScaleRuleMetricDimensionOperationType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.PSArgumentCompleterAttribute("Equals", "NotEquals")]
+        [string]
         $Operator,
         [Parameter(Mandatory, HelpMessage="list of dimension values. For example: [`"App1`",`"App2`"].")]
         [string[]]
@@ -43,7 +44,7 @@ function New-AzAutoscaleScaleRuleMetricDimensionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRuleMetricDimension]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.ScaleRuleMetricDimension]::New()
 
         if ($PSBoundParameters.ContainsKey('DimensionName')) {
             $Object.DimensionName = $DimensionName
