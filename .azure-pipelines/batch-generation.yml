@@ -51,8 +51,8 @@ stages:
           targetType: inline
           pwsh: true
           script: |
-            Write-Host "Pipeline variable SKIPPED_MODULES: $($env:SKIPPED_MODULES)"
-            Write-Host "Pipeline variable GENERATION_BASE_BRANCH: $($env:GENERATION_BASE_BRANCH)"
+            Write-Host "Pipeline variable SkippedModules: $($env:SkippedModules)"
+            Write-Host "Pipeline variable GenerationBaseBranch: $($env:GenerationBaseBranch)"
             Write-Host "Pipeline variable FailedJobNotificationReceivers: $($env:FailedJobNotificationReceivers)"
 
             Write-Host "Parameter TestChangedModulesOnly: ${{ parameters.TestChangedModulesOnly }}"
@@ -106,6 +106,7 @@ stages:
             & $prepareModulesPath -RepoRoot "$(Build.SourcesDirectory)" -MaxParallelJobs "${{ variables.MaxParallelGenerateJobs }}"
         env:
           SKIPPED_MODULES: $(SkippedModules)
+          SELECTED_TARGET_MODULES: ${{ parameters.SelectedTargetModules }}
 
       - task: PublishPipelineArtifact@1
         displayName: 'Upload generated targets'
@@ -535,3 +536,4 @@ stages:
             env:
               TEAMS_URL: $(TEAMS_URL)
               FailedJobNotificationReceivers: $(FailedJobNotificationReceivers)
+              NotificationReceiversOverride: ${{ parameters.NotificationReceiversOverride }}
