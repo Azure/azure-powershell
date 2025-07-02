@@ -23,12 +23,12 @@ Create an in-memory object for KeySetUser.
 New-AzNetworkCloudKeySetUserObject -AzureUserName azureUserName -SshPublicKeyData "ssh-rsa-key" -Description "userDescription"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KeySetUser
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.KeySetUser
 .Link
 https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudKeySetUserObject
 #>
 function New-AzNetworkCloudKeySetUserObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KeySetUser])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.KeySetUser])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
