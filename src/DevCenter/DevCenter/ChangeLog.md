@@ -18,8 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added preannouncement breaking change messages.
+
 ## Version 2.0.2
-* Add preannouncement breaking change messages.
 
 ## Version 2.0.1
 * Upgraded nuget package to signed package.
