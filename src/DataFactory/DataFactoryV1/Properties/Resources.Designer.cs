@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A gateway with the name {0} already exsits in the data factory {1}..
+        ///   Looks up a localized string similar to A gateway with the name {0} already exists in the data factory {1}..
         /// </summary>
         internal static string DataFactoryGatewayExists {
             get {

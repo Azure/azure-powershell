@@ -15,10 +15,11 @@ Create a new layer 3 (L3) network or update the properties of the existing netwo
 ```
 New-AzNetworkCloudL3Network -Name <String> -ResourceGroupName <String> -ExtendedLocationName <String>
  -ExtendedLocationType <String> -L3IsolationDomainId <String> -Location <String> -Vlan <Int64>
- [-SubscriptionId <String>] [-HybridAksIpamEnabled <HybridAksIpamEnabled>]
- [-HybridAksPluginType <HybridAksPluginType>] [-InterfaceName <String>] [-IPAllocationType <IPAllocationType>]
- [-Ipv4ConnectedPrefix <String>] [-Ipv6ConnectedPrefix <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-HybridAksIpamEnabled <HybridAksIpamEnabled>] [-HybridAksPluginType <HybridAksPluginType>]
+ [-InterfaceName <String>] [-IPAllocationType <IPAllocationType>] [-Ipv4ConnectedPrefix <String>]
+ [-Ipv6ConnectedPrefix <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -136,6 +137,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IfMatch
+The ETag of the transformation.
+Omit this value to always overwrite the current resource.
+Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfNoneMatch
+Set to '*' to allow a new record set to be created, but to prevent updating an existing resource.
+Other values will result in error from server as they are not supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InterfaceName
 The default interface name for this L3 network in the virtual machine.
 This name can be overridden by the name supplied in the network attachment configuration of that virtual machine.
@@ -169,7 +203,7 @@ Accept wildcard characters: False
 
 ### -Ipv4ConnectedPrefix
 The IPV4 prefix (CIDR) assigned to this L3 network.
-Required when the IP allocation typeis IPV4 or DualStack.
+Required when the IP allocation type is IPV4 or DualStack.
 
 ```yaml
 Type: System.String
@@ -185,7 +219,7 @@ Accept wildcard characters: False
 
 ### -Ipv6ConnectedPrefix
 The IPV6 prefix (CIDR) assigned to this L3 network.
-Required when the IP allocation typeis IPV6 or DualStack.
+Required when the IP allocation type is IPV6 or DualStack.
 
 ```yaml
 Type: System.String
@@ -359,7 +393,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IL3Network
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL3Network
 
 ## NOTES
 

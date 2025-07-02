@@ -17,11 +17,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         private string _peerDbId;
 
         /// <summary>
-        /// The database OCID of the Disaster Recovery peer database, which is located in a different region from the current peer
-        /// database.
+        /// The Azure resource ID of the Disaster Recovery peer database, which is located in a different region from the current
+        /// peer database.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public string PeerDbId { get => this._peerDbId; set => this._peerDbId = value; }
+
+        /// <summary>Backing field for <see cref="PeerDbLocation" /> property.</summary>
+        private string _peerDbLocation;
+
+        /// <summary>The location of the Disaster Recovery peer database.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public string PeerDbLocation { get => this._peerDbLocation; set => this._peerDbLocation = value; }
+
+        /// <summary>Backing field for <see cref="PeerDbOcid" /> property.</summary>
+        private string _peerDbOcid;
+
+        /// <summary>
+        /// Ocid of the Disaster Recovery peer database, which is located in a different region from the current peer database.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public string PeerDbOcid { get => this._peerDbOcid; set => this._peerDbOcid = value; }
 
         /// <summary>Creates an new <see cref="PeerDbDetails" /> instance.</summary>
         public PeerDbDetails()
@@ -34,8 +50,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IJsonSerializable
     {
         /// <summary>
-        /// The database OCID of the Disaster Recovery peer database, which is located in a different region from the current peer
-        /// database.
+        /// The Azure resource ID of the Disaster Recovery peer database, which is located in a different region from the current
+        /// peer database.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -43,10 +59,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The database OCID of the Disaster Recovery peer database, which is located in a different region from the current peer database.",
+        Description = @"The Azure resource ID of the Disaster Recovery peer database, which is located in a different region from the current peer database.",
         SerializedName = @"peerDbId",
         PossibleTypes = new [] { typeof(string) })]
         string PeerDbId { get; set; }
+        /// <summary>The location of the Disaster Recovery peer database.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The location of the Disaster Recovery peer database.",
+        SerializedName = @"peerDbLocation",
+        PossibleTypes = new [] { typeof(string) })]
+        string PeerDbLocation { get; set; }
+        /// <summary>
+        /// Ocid of the Disaster Recovery peer database, which is located in a different region from the current peer database.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Ocid of the Disaster Recovery peer database, which is located in a different region from the current peer database.",
+        SerializedName = @"peerDbOcid",
+        PossibleTypes = new [] { typeof(string) })]
+        string PeerDbOcid { get; set; }
 
     }
     /// PeerDb Details
@@ -54,10 +94,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
 
     {
         /// <summary>
-        /// The database OCID of the Disaster Recovery peer database, which is located in a different region from the current peer
-        /// database.
+        /// The Azure resource ID of the Disaster Recovery peer database, which is located in a different region from the current
+        /// peer database.
         /// </summary>
         string PeerDbId { get; set; }
+        /// <summary>The location of the Disaster Recovery peer database.</summary>
+        string PeerDbLocation { get; set; }
+        /// <summary>
+        /// Ocid of the Disaster Recovery peer database, which is located in a different region from the current peer database.
+        /// </summary>
+        string PeerDbOcid { get; set; }
 
     }
 }

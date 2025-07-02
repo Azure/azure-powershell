@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.Fixtures
             var reg = resourceManagementClient.Providers.Register(providerName);
             StorageCacheTestUtilities.ThrowIfTrue(reg == null, $"Failed to register provider {providerName}");
             var result = resourceManagementClient.Providers.Get(providerName);
-            StorageCacheTestUtilities.ThrowIfTrue(result == null, $"Failed to register provier {providerName}");
+            StorageCacheTestUtilities.ThrowIfTrue(result == null, $"Failed to register provider {providerName}");
         }
 
         /// <summary>

@@ -40,7 +40,7 @@ Gets a gallery image.
 
 ## EXAMPLES
 
-### Example 1: List iamges in a dev center
+### Example 1: List images in a dev center
 ```powershell
 Get-AzDevCenterAdminImage -ResourceGroupName testRg -DevCenterName Contoso
 ```

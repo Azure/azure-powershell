@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Method to list Azure Recovery Services Vaults
         /// </summary>
-        /// <param name="resouceGroupName">Name of the resouce group</param>
+        /// <param name="resouceGroupName">Name of the resource group</param>
         /// <returns>vault list response object.</returns>
         public List<Vault> GetVaultsInResouceGroup(string resouceGroupName)
         {
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Method to get Azure Recovery Services Vault
         /// </summary>
-        /// <param name="resouceGroupName">Name of the resouce group</param>
+        /// <param name="resouceGroupName">Name of the resource group</param>
         /// <param name="resourceName">Name of the resource</param>
         /// <returns>vault response object.</returns>
         public Vault GetVault(string resouceGroupName, string resourceName)
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Method to create Azure Recovery Services Vault
         /// </summary>
-        /// <param name="resouceGroupName">Name of the resouce group</param>
+        /// <param name="resouceGroupName">Name of the resource group</param>
         /// <param name="vaultName">Name of the vault</param>
         /// <param name="vault">Vault creation input object</param>
         /// <returns>Create response object.</returns>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Method to create or update Recovery Services Vault.
         /// </summary>
-        /// <param name="resourceGroupName">Name of the resouce group</param>
+        /// <param name="resourceGroupName">Name of the resource group</param>
         /// <param name="vaultName">Name of the vault</param>
         /// <param name="vault">patch vault object to patch the recovery services Vault</param>
         /// <param name="auxiliaryAccessToken">cross tenant access token for MUA</param>
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Method to delete Azure Recovery Services Vault
         /// </summary>
-        /// <param name="resouceGroupName">Name of the resouce group</param>
+        /// <param name="resouceGroupName">Name of the resource group</param>
         /// <param name="vaultName">Name of the vault</param>
         public Rest.Azure.AzureOperationHeaderResponse<VaultsDeleteHeaders> DeleteVault(string resouceGroupName, string vaultName)
         {
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Method to Update Azure Recovery Services Vault Backup Properties
         /// </summary>
-        /// <param name="resouceGroupName">Name of the resouce group</param>
+        /// <param name="resouceGroupName">Name of the resource group</param>
         /// <param name="vaultName">Name of the vault</param>
         /// <param name="backupStorageConfig">Backup Properties Update</param>
         /// <returns>Azure Operation response object.</returns>
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Method to Patch Azure Recovery Services Vault Backup Properties
         /// </summary>
-        /// <param name="resouceGroupName">Name of the resouce group</param>
+        /// <param name="resouceGroupName">Name of the resource group</param>
         /// <param name="vaultName">Name of the vault</param>
         /// <param name="backupStorageConfig">Backup Properties Update</param>
         /// <returns>Azure Operation response object.</returns>

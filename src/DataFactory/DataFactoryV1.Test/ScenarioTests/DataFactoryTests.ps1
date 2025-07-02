@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Nagative test. Get resources from an non-existing empty group.
+Negative test. Get resources from an non-existing empty group.
 #>
 function Test-GetNonExistingDataFactory
 {	

@@ -47,7 +47,7 @@ function Get-AzureRmSecurityCompliance-ResourceId
 	$subscriptionId = $context.Subscription.Id
 	
 
-    $fetchedCompliance = Get-AzSecurityCompliance -ResourceId "/subscriptions/$subscriptionId/providers/Microsoft.Seucurity/locations/$location/compliances/$($compliance.Name)"
+    $fetchedCompliance = Get-AzSecurityCompliance -ResourceId "/subscriptions/$subscriptionId/providers/Microsoft.Security/locations/$location/compliances/$($compliance.Name)"
 	Validate-Compliances $fetchedCompliance
 }
 

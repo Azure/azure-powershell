@@ -91,7 +91,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         public System.Collections.Generic.List<int> MaintenanceWindowWeeksOfMonth { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureUpdatePropertiesInternal)Property).MaintenanceWindowWeeksOfMonth; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureUpdatePropertiesInternal)Property).MaintenanceWindowWeeksOfMonth = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for MaintenanceWindow</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IMaintenanceWindow Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureUpdateInternal.MaintenanceWindow { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureUpdatePropertiesInternal)Property).MaintenanceWindow; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureUpdatePropertiesInternal)Property).MaintenanceWindow = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IMaintenanceWindow Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureUpdateInternal.MaintenanceWindow { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureUpdatePropertiesInternal)Property).MaintenanceWindow; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureUpdatePropertiesInternal)Property).MaintenanceWindow = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.CloudExadataInfrastructureUpdateProperties()); set { {_property = value;} } }
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureUpdateProperties _property;
 
-        /// <summary>The updatable properties of the CloudExadataInfrastructure.</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureUpdateProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.CloudExadataInfrastructureUpdateProperties()); set => this._property = value; }
 
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// will be performed.
         /// </summary>
         System.Collections.Generic.List<int> MaintenanceWindowWeeksOfMonth { get; set; }
-        /// <summary>The updatable properties of the CloudExadataInfrastructure.</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureUpdateProperties Property { get; set; }
         /// <summary>The number of storage servers for the cloud Exadata infrastructure.</summary>
         int? StorageCount { get; set; }

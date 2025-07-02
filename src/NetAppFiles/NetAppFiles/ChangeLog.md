@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated to api-version 2025-03-01
 
 ## Version 0.24.0
 * Added `NfsV4IdDomain` to `New-AzNetAppFilesAccount` and `Update-AzNetAppFilesAccount`

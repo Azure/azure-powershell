@@ -34,6 +34,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'T2'", "T2", global::System.Management.Automation.CompletionResultType.ParameterValue, "T2");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "T3".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'T3'", "T3", global::System.Management.Automation.CompletionResultType.ParameterValue, "T3");
+            }
         }
     }
 }

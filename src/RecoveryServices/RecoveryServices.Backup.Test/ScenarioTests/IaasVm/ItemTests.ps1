@@ -398,7 +398,7 @@ function Test-AzureVMMUA
 		$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM | Where-Object { $_.Name -match $vmFriendlyName }
 		Enable-AzRecoveryServicesBackupProtection -Item $item -Policy $pol -VaultId $vault.ID
 
-		# Start Suspend Bakcup scenario with MUA
+		# Start Suspend Backup scenario with MUA
 		$updateVault = Update-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vault.Name -ImmutabilityState Unlocked
 		Assert-True { $updateVault.Properties.ImmutabilitySettings.ImmutabilityState -eq "Unlocked" }
 
@@ -415,7 +415,7 @@ function Test-AzureVMMUA
 	}
 	finally
 	{		
-		# dsiable softDelete 
+		# disable softDelete 
 		Set-AzRecoveryServicesVaultProperty -SoftDeleteFeatureState Disable -VaultId $vault.ID
 
 		#disable protection with RemoveRecoveryPoints

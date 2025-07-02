@@ -65,6 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 return;
             }
+            {_remoteDisasterRecoveryConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonObject>("remoteDisasterRecoveryConfiguration"), out var __jsonRemoteDisasterRecoveryConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DisasterRecoveryConfigurationDetails.FromJson(__jsonRemoteDisasterRecoveryConfiguration) : _remoteDisasterRecoveryConfiguration;}
             {_localStandbyDb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonObject>("localStandbyDb"), out var __jsonLocalStandbyDb) ? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.AutonomousDatabaseStandbySummary.FromJson(__jsonLocalStandbyDb) : _localStandbyDb;}
             {_scheduledOperation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonObject>("scheduledOperations"), out var __jsonScheduledOperations) ? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ScheduledOperationsType.FromJson(__jsonScheduledOperations) : _scheduledOperation;}
             {_apexDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonObject>("apexDetails"), out var __jsonApexDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ApexDetailsType.FromJson(__jsonApexDetails) : _apexDetail;}
@@ -88,6 +89,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {_isLocalDataGuardEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonBoolean>("isLocalDataGuardEnabled"), out var __jsonIsLocalDataGuardEnabled) ? (bool?)__jsonIsLocalDataGuardEnabled : _isLocalDataGuardEnabled;}
             {_isRemoteDataGuardEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonBoolean>("isRemoteDataGuardEnabled"), out var __jsonIsRemoteDataGuardEnabled) ? (bool?)__jsonIsRemoteDataGuardEnabled : _isRemoteDataGuardEnabled;}
             {_localDisasterRecoveryType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("localDisasterRecoveryType"), out var __jsonLocalDisasterRecoveryType) ? (string)__jsonLocalDisasterRecoveryType : (string)_localDisasterRecoveryType;}
+            {_timeDisasterRecoveryRoleChanged = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("timeDisasterRecoveryRoleChanged"), out var __jsonTimeDisasterRecoveryRoleChanged) ? global::System.DateTime.TryParse((string)__jsonTimeDisasterRecoveryRoleChanged, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonTimeDisasterRecoveryRoleChangedValue) ? __jsonTimeDisasterRecoveryRoleChangedValue : _timeDisasterRecoveryRoleChanged : _timeDisasterRecoveryRoleChanged;}
             {_failedDataRecoveryInSecond = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("failedDataRecoveryInSeconds"), out var __jsonFailedDataRecoveryInSeconds) ? (int?)__jsonFailedDataRecoveryInSeconds : _failedDataRecoveryInSecond;}
             {_isMtlsConnectionRequired = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonBoolean>("isMtlsConnectionRequired"), out var __jsonIsMtlsConnectionRequired) ? (bool?)__jsonIsMtlsConnectionRequired : _isMtlsConnectionRequired;}
             {_licenseModel = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("licenseModel"), out var __jsonLicenseModel) ? (string)__jsonLicenseModel : (string)_licenseModel;}
@@ -162,6 +164,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
                 {
                     return new AutonomousDatabaseCloneProperties(json);
                 }
+                case "CrossRegionDisasterRecovery":
+                {
+                    return new AutonomousDatabaseCrossRegionDisasterRecoveryProperties(json);
+                }
+                case "CloneFromBackupTimestamp":
+                {
+                    return new AutonomousDatabaseFromBackupTimestampProperties(json);
+                }
                 case "Regular":
                 {
                     return new AutonomousDatabaseProperties(json);
@@ -188,6 +198,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (returnNow)
             {
                 return container;
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._remoteDisasterRecoveryConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) this._remoteDisasterRecoveryConfiguration.ToJson(null,serializationMode) : null, "remoteDisasterRecoveryConfiguration" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
             {
@@ -275,6 +289,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._localDisasterRecoveryType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._localDisasterRecoveryType.ToString()) : null, "localDisasterRecoveryType" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._timeDisasterRecoveryRoleChanged ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._timeDisasterRecoveryRoleChanged?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "timeDisasterRecoveryRoleChanged" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
             {

@@ -51,6 +51,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
         public string DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdatePropertiesInternal)Property).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdatePropertiesInternal)Property).DisplayName = value ?? null; }
 
+        /// <summary>Array of mount path and size.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails> FileSystemConfigurationDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdatePropertiesInternal)Property).FileSystemConfigurationDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdatePropertiesInternal)Property).FileSystemConfigurationDetail = value ?? null /* arrayOf */; }
+
         /// <summary>
         /// The Oracle license model that applies to the cloud VM cluster. The default is LICENSE_INCLUDED.
         /// </summary>
@@ -62,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         public int? MemorySizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdatePropertiesInternal)Property).MemorySizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdatePropertiesInternal)Property).MemorySizeInGb = value ?? default(int); }
 
         /// <summary>Internal Acessors for DataCollectionOption</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDataCollectionOptions Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdateInternal.DataCollectionOption { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdatePropertiesInternal)Property).DataCollectionOption; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdatePropertiesInternal)Property).DataCollectionOption = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDataCollectionOptions Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdateInternal.DataCollectionOption { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdatePropertiesInternal)Property).DataCollectionOption; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdatePropertiesInternal)Property).DataCollectionOption = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.CloudVMClusterUpdateProperties()); set { {_property = value;} } }
@@ -76,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdateProperties _property;
 
-        /// <summary>The updatable properties of the CloudVmCluster.</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdateProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.CloudVMClusterUpdateProperties()); set => this._property = value; }
 
@@ -201,6 +205,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
         string DisplayName { get; set; }
+        /// <summary>Array of mount path and size.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = false,
+        Update = true,
+        Description = @"Array of mount path and size.",
+        SerializedName = @"fileSystemConfigurationDetails",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails> FileSystemConfigurationDetail { get; set; }
         /// <summary>
         /// The Oracle license model that applies to the cloud VM cluster. The default is LICENSE_INCLUDED.
         /// </summary>
@@ -306,6 +321,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         int? DbNodeStorageSizeInGb { get; set; }
         /// <summary>Display Name</summary>
         string DisplayName { get; set; }
+        /// <summary>Array of mount path and size.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails> FileSystemConfigurationDetail { get; set; }
         /// <summary>
         /// The Oracle license model that applies to the cloud VM cluster. The default is LICENSE_INCLUDED.
         /// </summary>
@@ -317,7 +334,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// The number of OCPU cores to enable on the cloud VM cluster. Only 1 decimal place is allowed for the fractional part.
         /// </summary>
         float? OcpuCount { get; set; }
-        /// <summary>The updatable properties of the CloudVmCluster.</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdateProperties Property { get; set; }
         /// <summary>
         /// The public key portion of one or more key pairs used for SSH access to the cloud VM cluster.

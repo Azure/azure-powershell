@@ -199,7 +199,7 @@
     <value>Unexpected ContainerType - expected:{0}, current:{1}</value>
   </data>
   <data name="AllRetentionSchedulesEmptyException" xml:space="preserve">
-    <value>All retention schedules are empty in RetentionPolicy. Alteast one is expected.</value>
+    <value>All retention schedules are empty in RetentionPolicy. At least one is expected.</value>
   </data>
   <data name="BackupAndRetentionTimesMismatch" xml:space="preserve">
     <value>RetentionTime in retention schedule should be same as backup time specified in SchedulePolicy</value>
@@ -596,7 +596,7 @@ Please contact Microsoft for further assistance.</value>
     <value>Both Inclusion and Exclusion lists provided. Please provide only one of them.</value>
   </data>
   <data name="TargetRGUnmanagedRestoreDuplicateParamsException" xml:space="preserve">
-    <value>Both RestoreAsUnmanagedDisks and TargetResourceGroupName can't be spceified. Please give Only one parameter and retry.</value>
+    <value>Both RestoreAsUnmanagedDisks and TargetResourceGroupName can't be specified. Please give Only one parameter and retry.</value>
   </data>
   <data name="UnmanagedVMRestoreWarning" xml:space="preserve">
     <value>This is a managed disk recovery point and hence please provide a target resource group for the managed disks to be restored into with the TargetResourceGroupName parameter. Otherwise, please explicitly state that the managed disks should be restored into the staging storage account as unmanaged disks with restoreAsUnmanagedDisks parameter</value>
@@ -614,7 +614,7 @@ Please contact Microsoft for further assistance.</value>
     <value>Target ResourceGroup is not applicable and restore will proceed as unmanaged disk restore since this is unmanaged VM</value>
   </data>
   <data name="InvalidTargetStorageAccount" xml:space="preserve">
-    <value>Please provide a vaild target storage account</value>
+    <value>Please provide a valid target storage account</value>
   </data>
   <data name="RecoveryPointVaultRecoveryTypeException" xml:space="preserve">
     <value>Please ensure that the given RP recovery type is either 'VaultStandard' or SnapshotAndVaultStandard, or remove TargetZone</value>

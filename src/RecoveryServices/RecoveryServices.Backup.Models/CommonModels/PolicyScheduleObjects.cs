@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
                 DateTime windowStartTime = (DateTime)ScheduleWindowStartTime;                
 
-                // If ScheduleWindowDuration is greator than (23:30 - ScheduleWindowStartTime) then throw exception  
+                // If ScheduleWindowDuration is greater than (23:30 - ScheduleWindowStartTime) then throw exception  
                 // if non-UTC times (timeZones already allowed) are allowed then this exception needs to change 
                 if (windowStartTime.Minute % 30 != 0 || windowStartTime.Second != 0 || windowStartTime.Millisecond != 0)
                 {

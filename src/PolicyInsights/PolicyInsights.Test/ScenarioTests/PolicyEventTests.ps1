@@ -32,7 +32,7 @@ function Get-AzureRmPolicyEvent-ManagementGroupScope-Paging {
    $managementGroupName = Get-TestManagementGroupName
    $from = Get-TestQueryIntervalStart
 
-   # Apply filters\selection to recude the session recording size
+   # Apply filters\selection to reduce the session recording size
    $policyEvents = Get-AzPolicyEvent -ManagementGroupName $managementGroupName -From $from -Top 1001 -Select "Timestamp" -Filter "PolicyDefinitionAction eq 'modify'"
    Assert-True { $policyEvents.Count -eq 1001 }
 
@@ -58,7 +58,7 @@ Get multiple pages of policy events at subscription scope
 function Get-AzureRmPolicyEvent-SubscriptionScope-Paging {
    $from = Get-TestQueryIntervalStart
 
-   # Apply filters\selection to recude the session recording size
+   # Apply filters\selection to reduce the session recording size
    $policyEvents = Get-AzPolicyEvent -Top 1001 -From $from  -Select "Timestamp" -Filter "PolicyDefinitionAction eq 'modify'"
    Assert-True { $policyEvents.Count -eq 1001 }
 

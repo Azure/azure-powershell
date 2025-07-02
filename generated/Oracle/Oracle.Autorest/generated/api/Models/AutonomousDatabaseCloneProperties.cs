@@ -34,21 +34,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// but supports the fewest number of concurrent SQL statements.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string AllConnectionStringHigh { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).AllConnectionStringHigh; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).AllConnectionStringHigh = value ?? null; }
+        public string AllConnectionStringHigh { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).AllConnectionStringHigh; }
 
         /// <summary>
         /// The Low database service provides the least level of resources to each SQL statement, but supports the most number of
         /// concurrent SQL statements.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string AllConnectionStringLow { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).AllConnectionStringLow; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).AllConnectionStringLow = value ?? null; }
+        public string AllConnectionStringLow { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).AllConnectionStringLow; }
 
         /// <summary>
         /// The Medium database service provides a lower level of resources to each SQL statement potentially resulting a lower level
         /// of performance, but supports more concurrent SQL statements.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string AllConnectionStringMedium { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).AllConnectionStringMedium; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).AllConnectionStringMedium = value ?? null; }
+        public string AllConnectionStringMedium { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).AllConnectionStringMedium; }
 
         /// <summary>
         /// The amount of storage currently allocated for the database tables and billed for, rounded up.
@@ -58,15 +58,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
 
         /// <summary>Information about Oracle APEX Application Development.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IApexDetailsType ApexDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ApexDetail; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IApexDetailsType ApexDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ApexDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ApexDetail = value ?? null /* model class */; }
 
         /// <summary>The Oracle APEX Application Development version.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string ApexDetailApexVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ApexDetailApexVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ApexDetailApexVersion = value ?? null; }
+        public string ApexDetailApexVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ApexDetailApexVersion; }
 
         /// <summary>The Oracle REST Data Services (ORDS) version.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string ApexDetailOrdsVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ApexDetailOrdsVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ApexDetailOrdsVersion = value ?? null; }
+        public string ApexDetailOrdsVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ApexDetailOrdsVersion; }
 
         /// <summary>Autonomous Database ID</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
@@ -108,87 +108,87 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
 
         /// <summary>The connection string used to connect to the Autonomous Database.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IConnectionStringType ConnectionString { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionString; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IConnectionStringType ConnectionString { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionString; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionString = value ?? null /* model class */; }
 
         /// <summary>
         /// Returns all connection strings that can be used to connect to the Autonomous Database.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAllConnectionStringType ConnectionStringAllConnectionString { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringAllConnectionString; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringAllConnectionString = value ?? null /* model class */; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAllConnectionStringType ConnectionStringAllConnectionString { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringAllConnectionString; }
 
         /// <summary>
         /// The database service provides the least level of resources to each SQL statement, but supports the most number of concurrent
         /// SQL statements.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string ConnectionStringDedicated { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringDedicated; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringDedicated = value ?? null; }
+        public string ConnectionStringDedicated { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringDedicated; }
 
         /// <summary>
         /// The High database service provides the highest level of resources to each SQL statement resulting in the highest performance,
         /// but supports the fewest number of concurrent SQL statements.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string ConnectionStringHigh { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringHigh; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringHigh = value ?? null; }
+        public string ConnectionStringHigh { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringHigh; }
 
         /// <summary>
         /// The Low database service provides the least level of resources to each SQL statement, but supports the most number of
         /// concurrent SQL statements.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string ConnectionStringLow { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringLow; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringLow = value ?? null; }
+        public string ConnectionStringLow { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringLow; }
 
         /// <summary>
         /// The Medium database service provides a lower level of resources to each SQL statement potentially resulting a lower level
         /// of performance, but supports more concurrent SQL statements.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string ConnectionStringMedium { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringMedium; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringMedium = value ?? null; }
+        public string ConnectionStringMedium { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringMedium; }
 
         /// <summary>
         /// A list of connection string profiles to allow clients to group, filter and select connection string values based on structured
         /// metadata.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IProfileType> ConnectionStringProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringProfile = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IProfileType> ConnectionStringProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringProfile; }
 
         /// <summary>
         /// The URLs for accessing Oracle Application Express (APEX) and SQL Developer Web with a browser from a Compute instance
         /// within your VCN or that has a direct connection to your VCN.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IConnectionUrlType ConnectionUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrl; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IConnectionUrlType ConnectionUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrl = value ?? null /* model class */; }
 
         /// <summary>Oracle Application Express (APEX) URL.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string ConnectionUrlApexUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlApexUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlApexUrl = value ?? null; }
+        public string ConnectionUrlApexUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlApexUrl; }
 
         /// <summary>The URL of the Database Transforms for the Autonomous Database.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string ConnectionUrlDatabaseTransformsUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlDatabaseTransformsUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlDatabaseTransformsUrl = value ?? null; }
+        public string ConnectionUrlDatabaseTransformsUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlDatabaseTransformsUrl; }
 
         /// <summary>The URL of the Graph Studio for the Autonomous Database.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string ConnectionUrlGraphStudioUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlGraphStudioUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlGraphStudioUrl = value ?? null; }
+        public string ConnectionUrlGraphStudioUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlGraphStudioUrl; }
 
         /// <summary>
         /// The URL of the Oracle Machine Learning (OML) Notebook for the Autonomous Database.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string ConnectionUrlMachineLearningNotebookUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlMachineLearningNotebookUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlMachineLearningNotebookUrl = value ?? null; }
+        public string ConnectionUrlMachineLearningNotebookUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlMachineLearningNotebookUrl; }
 
         /// <summary>The URL of the MongoDB API for the Autonomous Database.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string ConnectionUrlMongoDbUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlMongoDbUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlMongoDbUrl = value ?? null; }
+        public string ConnectionUrlMongoDbUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlMongoDbUrl; }
 
         /// <summary>
         /// The Oracle REST Data Services (ORDS) URL of the Web Access for the Autonomous Database.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string ConnectionUrlOrdsUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlOrdsUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlOrdsUrl = value ?? null; }
+        public string ConnectionUrlOrdsUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlOrdsUrl; }
 
         /// <summary>Oracle SQL Developer Web URL.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string ConnectionUrlSqlDevWebUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlSqlDevWebUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlSqlDevWebUrl = value ?? null; }
+        public string ConnectionUrlSqlDevWebUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlSqlDevWebUrl; }
 
         /// <summary>The number of CPU cores to be made available to the database.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
@@ -322,34 +322,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
 
         /// <summary>Local Autonomous Disaster Recovery standby database details.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseStandbySummary LocalStandbyDb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDb; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseStandbySummary LocalStandbyDb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDb = value ?? null /* model class */; }
 
         /// <summary>
         /// The amount of time, in seconds, that the data of the standby database lags the data of the primary database. Can be used
         /// to determine the potential data loss in the event of a failover.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public int? LocalStandbyDbLagTimeInSecond { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbLagTimeInSecond; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbLagTimeInSecond = value ?? default(int); }
+        public int? LocalStandbyDbLagTimeInSecond { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbLagTimeInSecond; }
 
         /// <summary>Additional information about the current lifecycle state.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string LocalStandbyDbLifecycleDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbLifecycleDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbLifecycleDetail = value ?? null; }
+        public string LocalStandbyDbLifecycleDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbLifecycleDetail; }
 
         /// <summary>The current state of the Autonomous Database.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string LocalStandbyDbLifecycleState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbLifecycleState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbLifecycleState = value ?? null; }
+        public string LocalStandbyDbLifecycleState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbLifecycleState; }
 
         /// <summary>
         /// The date and time the Autonomous Data Guard role was switched for the standby Autonomous Database.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string LocalStandbyDbTimeDataGuardRoleChanged { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbTimeDataGuardRoleChanged; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbTimeDataGuardRoleChanged = value ?? null; }
+        public string LocalStandbyDbTimeDataGuardRoleChanged { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbTimeDataGuardRoleChanged; }
 
         /// <summary>
         /// The date and time the Disaster Recovery role was switched for the standby Autonomous Database.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string LocalStandbyDbTimeDisasterRecoveryRoleChanged { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbTimeDisasterRecoveryRoleChanged; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbTimeDisasterRecoveryRoleChanged = value ?? null; }
+        public string LocalStandbyDbTimeDisasterRecoveryRoleChanged { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbTimeDisasterRecoveryRoleChanged; }
 
         /// <summary>Details for the long-term backup schedule.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
@@ -381,136 +381,224 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         public int? MemoryPerOracleComputeUnitInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).MemoryPerOracleComputeUnitInGb; }
 
         /// <summary>Internal Acessors for ActualUsedDataStorageSizeInTb</summary>
-        double? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ActualUsedDataStorageSizeInTb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ActualUsedDataStorageSizeInTb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ActualUsedDataStorageSizeInTb = value; }
+        double? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ActualUsedDataStorageSizeInTb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ActualUsedDataStorageSizeInTb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ActualUsedDataStorageSizeInTb = value ?? default(double); }
+
+        /// <summary>Internal Acessors for AllConnectionStringHigh</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.AllConnectionStringHigh { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).AllConnectionStringHigh; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).AllConnectionStringHigh = value ?? null; }
+
+        /// <summary>Internal Acessors for AllConnectionStringLow</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.AllConnectionStringLow { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).AllConnectionStringLow; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).AllConnectionStringLow = value ?? null; }
+
+        /// <summary>Internal Acessors for AllConnectionStringMedium</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.AllConnectionStringMedium { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).AllConnectionStringMedium; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).AllConnectionStringMedium = value ?? null; }
 
         /// <summary>Internal Acessors for AllocatedStorageSizeInTb</summary>
-        double? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.AllocatedStorageSizeInTb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).AllocatedStorageSizeInTb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).AllocatedStorageSizeInTb = value; }
+        double? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.AllocatedStorageSizeInTb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).AllocatedStorageSizeInTb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).AllocatedStorageSizeInTb = value ?? default(double); }
 
         /// <summary>Internal Acessors for ApexDetail</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IApexDetailsType Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ApexDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ApexDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ApexDetail = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IApexDetailsType Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ApexDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ApexDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ApexDetail = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for ApexDetailApexVersion</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ApexDetailApexVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ApexDetailApexVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ApexDetailApexVersion = value ?? null; }
+
+        /// <summary>Internal Acessors for ApexDetailOrdsVersion</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ApexDetailOrdsVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ApexDetailOrdsVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ApexDetailOrdsVersion = value ?? null; }
 
         /// <summary>Internal Acessors for AvailableUpgradeVersion</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.AvailableUpgradeVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).AvailableUpgradeVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).AvailableUpgradeVersion = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.AvailableUpgradeVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).AvailableUpgradeVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).AvailableUpgradeVersion = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for ConnectionString</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IConnectionStringType Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ConnectionString { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionString; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionString = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IConnectionStringType Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ConnectionString { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionString; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionString = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ConnectionStringAllConnectionString</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAllConnectionStringType Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ConnectionStringAllConnectionString { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringAllConnectionString; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringAllConnectionString = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAllConnectionStringType Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ConnectionStringAllConnectionString { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringAllConnectionString; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringAllConnectionString = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for ConnectionStringDedicated</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ConnectionStringDedicated { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringDedicated; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringDedicated = value ?? null; }
+
+        /// <summary>Internal Acessors for ConnectionStringHigh</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ConnectionStringHigh { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringHigh; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringHigh = value ?? null; }
+
+        /// <summary>Internal Acessors for ConnectionStringLow</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ConnectionStringLow { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringLow; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringLow = value ?? null; }
+
+        /// <summary>Internal Acessors for ConnectionStringMedium</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ConnectionStringMedium { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringMedium; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringMedium = value ?? null; }
+
+        /// <summary>Internal Acessors for ConnectionStringProfile</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IProfileType> Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ConnectionStringProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionStringProfile = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for ConnectionUrl</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IConnectionUrlType Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ConnectionUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrl = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IConnectionUrlType Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ConnectionUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrl = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for ConnectionUrlApexUrl</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ConnectionUrlApexUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlApexUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlApexUrl = value ?? null; }
+
+        /// <summary>Internal Acessors for ConnectionUrlDatabaseTransformsUrl</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ConnectionUrlDatabaseTransformsUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlDatabaseTransformsUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlDatabaseTransformsUrl = value ?? null; }
+
+        /// <summary>Internal Acessors for ConnectionUrlGraphStudioUrl</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ConnectionUrlGraphStudioUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlGraphStudioUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlGraphStudioUrl = value ?? null; }
+
+        /// <summary>Internal Acessors for ConnectionUrlMachineLearningNotebookUrl</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ConnectionUrlMachineLearningNotebookUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlMachineLearningNotebookUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlMachineLearningNotebookUrl = value ?? null; }
+
+        /// <summary>Internal Acessors for ConnectionUrlMongoDbUrl</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ConnectionUrlMongoDbUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlMongoDbUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlMongoDbUrl = value ?? null; }
+
+        /// <summary>Internal Acessors for ConnectionUrlOrdsUrl</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ConnectionUrlOrdsUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlOrdsUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlOrdsUrl = value ?? null; }
+
+        /// <summary>Internal Acessors for ConnectionUrlSqlDevWebUrl</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ConnectionUrlSqlDevWebUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlSqlDevWebUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ConnectionUrlSqlDevWebUrl = value ?? null; }
 
         /// <summary>Internal Acessors for DataSafeStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.DataSafeStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).DataSafeStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).DataSafeStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.DataSafeStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).DataSafeStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).DataSafeStatus = value ?? null; }
 
         /// <summary>Internal Acessors for FailedDataRecoveryInSecond</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.FailedDataRecoveryInSecond { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).FailedDataRecoveryInSecond; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).FailedDataRecoveryInSecond = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.FailedDataRecoveryInSecond { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).FailedDataRecoveryInSecond; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).FailedDataRecoveryInSecond = value ?? default(int); }
 
         /// <summary>Internal Acessors for InMemoryAreaInGb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.InMemoryAreaInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).InMemoryAreaInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).InMemoryAreaInGb = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.InMemoryAreaInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).InMemoryAreaInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).InMemoryAreaInGb = value ?? default(int); }
 
         /// <summary>Internal Acessors for IsPreview</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.IsPreview { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).IsPreview; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).IsPreview = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.IsPreview { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).IsPreview; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).IsPreview = value ?? default(bool); }
 
         /// <summary>Internal Acessors for IsRemoteDataGuardEnabled</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.IsRemoteDataGuardEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).IsRemoteDataGuardEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).IsRemoteDataGuardEnabled = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.IsRemoteDataGuardEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).IsRemoteDataGuardEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).IsRemoteDataGuardEnabled = value ?? default(bool); }
 
         /// <summary>Internal Acessors for LifecycleDetail</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.LifecycleDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LifecycleDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LifecycleDetail = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.LifecycleDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LifecycleDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LifecycleDetail = value ?? null; }
 
         /// <summary>Internal Acessors for LifecycleState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.LifecycleState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LifecycleState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LifecycleState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.LifecycleState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LifecycleState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LifecycleState = value ?? null; }
 
         /// <summary>Internal Acessors for LocalDisasterRecoveryType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.LocalDisasterRecoveryType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalDisasterRecoveryType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalDisasterRecoveryType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.LocalDisasterRecoveryType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalDisasterRecoveryType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalDisasterRecoveryType = value ?? null; }
 
         /// <summary>Internal Acessors for LocalStandbyDb</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseStandbySummary Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.LocalStandbyDb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDb = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseStandbySummary Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.LocalStandbyDb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDb = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for LocalStandbyDbLagTimeInSecond</summary>
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.LocalStandbyDbLagTimeInSecond { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbLagTimeInSecond; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbLagTimeInSecond = value ?? default(int); }
+
+        /// <summary>Internal Acessors for LocalStandbyDbLifecycleDetail</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.LocalStandbyDbLifecycleDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbLifecycleDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbLifecycleDetail = value ?? null; }
+
+        /// <summary>Internal Acessors for LocalStandbyDbLifecycleState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.LocalStandbyDbLifecycleState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbLifecycleState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbLifecycleState = value ?? null; }
+
+        /// <summary>Internal Acessors for LocalStandbyDbTimeDataGuardRoleChanged</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.LocalStandbyDbTimeDataGuardRoleChanged { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbTimeDataGuardRoleChanged; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbTimeDataGuardRoleChanged = value ?? null; }
+
+        /// <summary>Internal Acessors for LocalStandbyDbTimeDisasterRecoveryRoleChanged</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.LocalStandbyDbTimeDisasterRecoveryRoleChanged { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbTimeDisasterRecoveryRoleChanged; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LocalStandbyDbTimeDisasterRecoveryRoleChanged = value ?? null; }
 
         /// <summary>Internal Acessors for LongTermBackupSchedule</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ILongTermBackUpScheduleDetails Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.LongTermBackupSchedule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LongTermBackupSchedule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LongTermBackupSchedule = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ILongTermBackUpScheduleDetails Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.LongTermBackupSchedule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LongTermBackupSchedule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).LongTermBackupSchedule = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for MemoryPerOracleComputeUnitInGb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.MemoryPerOracleComputeUnitInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).MemoryPerOracleComputeUnitInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).MemoryPerOracleComputeUnitInGb = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.MemoryPerOracleComputeUnitInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).MemoryPerOracleComputeUnitInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).MemoryPerOracleComputeUnitInGb = value ?? default(int); }
 
         /// <summary>Internal Acessors for NextLongTermBackupTimeStamp</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.NextLongTermBackupTimeStamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).NextLongTermBackupTimeStamp; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).NextLongTermBackupTimeStamp = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.NextLongTermBackupTimeStamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).NextLongTermBackupTimeStamp; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).NextLongTermBackupTimeStamp = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for OciUrl</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.OciUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).OciUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).OciUrl = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.OciUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).OciUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).OciUrl = value ?? null; }
 
         /// <summary>Internal Acessors for Ocid</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.Ocid { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).Ocid; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).Ocid = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.Ocid { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).Ocid; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).Ocid = value ?? null; }
 
         /// <summary>Internal Acessors for OperationsInsightsStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.OperationsInsightsStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).OperationsInsightsStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).OperationsInsightsStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.OperationsInsightsStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).OperationsInsightsStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).OperationsInsightsStatus = value ?? null; }
 
         /// <summary>Internal Acessors for PeerDbIds</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.PeerDbIds { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).PeerDbIds; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).PeerDbIds = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.PeerDbIds { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).PeerDbIds; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).PeerDbIds = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for PrivateEndpoint</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.PrivateEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).PrivateEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).PrivateEndpoint = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.PrivateEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).PrivateEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).PrivateEndpoint = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisionableCpu</summary>
-        System.Collections.Generic.List<int> Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ProvisionableCpu { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ProvisionableCpu; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ProvisionableCpu = value; }
+        System.Collections.Generic.List<int> Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ProvisionableCpu { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ProvisionableCpu; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ProvisionableCpu = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ProvisioningState = value ?? null; }
+
+        /// <summary>Internal Acessors for RemoteDisasterRecoveryConfiguration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDisasterRecoveryConfigurationDetails Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.RemoteDisasterRecoveryConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).RemoteDisasterRecoveryConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).RemoteDisasterRecoveryConfiguration = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for RemoteDisasterRecoveryConfigurationDisasterRecoveryType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.RemoteDisasterRecoveryConfigurationDisasterRecoveryType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).RemoteDisasterRecoveryConfigurationDisasterRecoveryType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).RemoteDisasterRecoveryConfigurationDisasterRecoveryType = value ?? null; }
+
+        /// <summary>
+        /// Internal Acessors for RemoteDisasterRecoveryConfigurationIsReplicateAutomaticBackup
+        /// </summary>
+        bool? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.RemoteDisasterRecoveryConfigurationIsReplicateAutomaticBackup { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).RemoteDisasterRecoveryConfigurationIsReplicateAutomaticBackup; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).RemoteDisasterRecoveryConfigurationIsReplicateAutomaticBackup = value ?? default(bool); }
+
+        /// <summary>Internal Acessors for RemoteDisasterRecoveryConfigurationIsSnapshotStandby</summary>
+        bool? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.RemoteDisasterRecoveryConfigurationIsSnapshotStandby { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).RemoteDisasterRecoveryConfigurationIsSnapshotStandby; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).RemoteDisasterRecoveryConfigurationIsSnapshotStandby = value ?? default(bool); }
+
+        /// <summary>
+        /// Internal Acessors for RemoteDisasterRecoveryConfigurationTimeSnapshotStandbyEnabledTill
+        /// </summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.RemoteDisasterRecoveryConfigurationTimeSnapshotStandbyEnabledTill { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).RemoteDisasterRecoveryConfigurationTimeSnapshotStandbyEnabledTill; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).RemoteDisasterRecoveryConfigurationTimeSnapshotStandbyEnabledTill = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for ScheduledOperation</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ScheduledOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ScheduledOperation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ScheduledOperation = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ScheduledOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ScheduledOperation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ScheduledOperation = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ScheduledOperationDayOfWeek</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDayOfWeek Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ScheduledOperationDayOfWeek { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ScheduledOperationDayOfWeek; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ScheduledOperationDayOfWeek = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDayOfWeek Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ScheduledOperationDayOfWeek { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ScheduledOperationDayOfWeek; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ScheduledOperationDayOfWeek = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ServiceConsoleUrl</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ServiceConsoleUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ServiceConsoleUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ServiceConsoleUrl = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.ServiceConsoleUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ServiceConsoleUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).ServiceConsoleUrl = value ?? null; }
 
         /// <summary>Internal Acessors for SqlWebDeveloperUrl</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.SqlWebDeveloperUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).SqlWebDeveloperUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).SqlWebDeveloperUrl = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.SqlWebDeveloperUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).SqlWebDeveloperUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).SqlWebDeveloperUrl = value ?? null; }
 
         /// <summary>Internal Acessors for SupportedRegionsToCloneTo</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.SupportedRegionsToCloneTo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).SupportedRegionsToCloneTo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).SupportedRegionsToCloneTo = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.SupportedRegionsToCloneTo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).SupportedRegionsToCloneTo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).SupportedRegionsToCloneTo = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for TimeCreated</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.TimeCreated { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeCreated; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeCreated = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.TimeCreated { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeCreated; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeCreated = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for TimeDataGuardRoleChanged</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.TimeDataGuardRoleChanged { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeDataGuardRoleChanged; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeDataGuardRoleChanged = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.TimeDataGuardRoleChanged { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeDataGuardRoleChanged; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeDataGuardRoleChanged = value ?? null; }
 
         /// <summary>Internal Acessors for TimeDeletionOfFreeAutonomousDatabase</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.TimeDeletionOfFreeAutonomousDatabase { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeDeletionOfFreeAutonomousDatabase; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeDeletionOfFreeAutonomousDatabase = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.TimeDeletionOfFreeAutonomousDatabase { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeDeletionOfFreeAutonomousDatabase; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeDeletionOfFreeAutonomousDatabase = value ?? null; }
+
+        /// <summary>Internal Acessors for TimeDisasterRecoveryRoleChanged</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.TimeDisasterRecoveryRoleChanged { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeDisasterRecoveryRoleChanged; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeDisasterRecoveryRoleChanged = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for TimeLocalDataGuardEnabled</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.TimeLocalDataGuardEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeLocalDataGuardEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeLocalDataGuardEnabled = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.TimeLocalDataGuardEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeLocalDataGuardEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeLocalDataGuardEnabled = value ?? null; }
 
         /// <summary>Internal Acessors for TimeMaintenanceBegin</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.TimeMaintenanceBegin { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeMaintenanceBegin; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeMaintenanceBegin = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.TimeMaintenanceBegin { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeMaintenanceBegin; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeMaintenanceBegin = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for TimeMaintenanceEnd</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.TimeMaintenanceEnd { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeMaintenanceEnd; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeMaintenanceEnd = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.TimeMaintenanceEnd { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeMaintenanceEnd; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeMaintenanceEnd = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for TimeOfLastFailover</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.TimeOfLastFailover { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeOfLastFailover; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeOfLastFailover = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.TimeOfLastFailover { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeOfLastFailover; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeOfLastFailover = value ?? null; }
 
         /// <summary>Internal Acessors for TimeOfLastRefresh</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.TimeOfLastRefresh { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeOfLastRefresh; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeOfLastRefresh = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.TimeOfLastRefresh { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeOfLastRefresh; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeOfLastRefresh = value ?? null; }
 
         /// <summary>Internal Acessors for TimeOfLastRefreshPoint</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.TimeOfLastRefreshPoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeOfLastRefreshPoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeOfLastRefreshPoint = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.TimeOfLastRefreshPoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeOfLastRefreshPoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeOfLastRefreshPoint = value ?? null; }
 
         /// <summary>Internal Acessors for TimeOfLastSwitchover</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.TimeOfLastSwitchover { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeOfLastSwitchover; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeOfLastSwitchover = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.TimeOfLastSwitchover { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeOfLastSwitchover; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeOfLastSwitchover = value ?? null; }
 
         /// <summary>Internal Acessors for TimeReclamationOfFreeAutonomousDatabase</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.TimeReclamationOfFreeAutonomousDatabase { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeReclamationOfFreeAutonomousDatabase; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeReclamationOfFreeAutonomousDatabase = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.TimeReclamationOfFreeAutonomousDatabase { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeReclamationOfFreeAutonomousDatabase; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeReclamationOfFreeAutonomousDatabase = value ?? null; }
 
         /// <summary>Internal Acessors for UsedDataStorageSizeInGb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.UsedDataStorageSizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).UsedDataStorageSizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).UsedDataStorageSizeInGb = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.UsedDataStorageSizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).UsedDataStorageSizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).UsedDataStorageSizeInGb = value ?? default(int); }
 
         /// <summary>Internal Acessors for UsedDataStorageSizeInTb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.UsedDataStorageSizeInTb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).UsedDataStorageSizeInTb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).UsedDataStorageSizeInTb = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal.UsedDataStorageSizeInTb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).UsedDataStorageSizeInTb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).UsedDataStorageSizeInTb = value ?? default(int); }
 
         /// <summary>Internal Acessors for IsReconnectCloneEnabled</summary>
         bool? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseClonePropertiesInternal.IsReconnectCloneEnabled { get => this._isReconnectCloneEnabled; set { {_isReconnectCloneEnabled = value;} } }
@@ -546,16 +634,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         public string OperationsInsightsStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).OperationsInsightsStatus; }
 
         /// <summary>
-        /// The database OCID of the Disaster Recovery peer database, which is located in a different region from the current peer
-        /// database.
+        /// The Azure resource ID of the Disaster Recovery peer database, which is located in a different region from the current
+        /// peer database.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
         public string PeerDbId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).PeerDbId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).PeerDbId = value ?? null; }
 
         /// <summary>
-        /// The list of [OCIDs](https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of standby databases located
-        /// in Autonomous Data Guard remote regions that are associated with the source database. Note that for Autonomous Database
-        /// Serverless instances, standby databases located in the same region as the source primary database do not have OCIDs.
+        /// The list of Azure resource IDs of standby databases located in Autonomous Data Guard remote regions that are associated
+        /// with the source database. Note that for Autonomous Database Serverless instances, standby databases located in the same
+        /// region as the source primary database do not have Azure IDs.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
         public System.Collections.Generic.List<string> PeerDbIds { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).PeerDbIds; }
@@ -598,6 +686,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public string RefreshableStatus { get => this._refreshableStatus; }
 
+        /// <summary>Indicates remote disaster recovery configuration</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDisasterRecoveryConfigurationDetails RemoteDisasterRecoveryConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).RemoteDisasterRecoveryConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).RemoteDisasterRecoveryConfiguration = value ?? null /* model class */; }
+
+        /// <summary>
+        /// Indicates the disaster recovery (DR) type of the Autonomous Database Serverless instance. Autonomous Data Guard (ADG)
+        /// DR type provides business critical DR with a faster recovery time objective (RTO) during failover or switchover. Backup-based
+        /// DR type provides lower cost DR with a slower RTO during failover or switchover.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
+        public string RemoteDisasterRecoveryConfigurationDisasterRecoveryType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).RemoteDisasterRecoveryConfigurationDisasterRecoveryType; }
+
+        /// <summary>
+        /// If true, 7 days worth of backups are replicated across regions for Cross-Region ADB or Backup-Based DR between Primary
+        /// and Standby. If false, the backups taken on the Primary are not replicated to the Standby database.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
+        public bool? RemoteDisasterRecoveryConfigurationIsReplicateAutomaticBackup { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).RemoteDisasterRecoveryConfigurationIsReplicateAutomaticBackup; }
+
+        /// <summary>
+        /// Indicates if user wants to convert to a snapshot standby. For example, true would set a standby database to snapshot standby
+        /// database. False would set a snapshot standby database back to regular standby database.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
+        public bool? RemoteDisasterRecoveryConfigurationIsSnapshotStandby { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).RemoteDisasterRecoveryConfigurationIsSnapshotStandby; }
+
+        /// <summary>
+        /// Time and date stored as an RFC 3339 formatted timestamp string. For example, 2022-01-01T12:00:00.000Z would set a limit
+        /// for the snapshot standby to be converted back to a cross-region standby database.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
+        public global::System.DateTime? RemoteDisasterRecoveryConfigurationTimeSnapshotStandbyEnabledTill { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).RemoteDisasterRecoveryConfigurationTimeSnapshotStandbyEnabledTill; }
+
         /// <summary>
         /// The Data Guard role of the Autonomous Container Database or Autonomous Database, if Autonomous Data Guard is enabled.
         /// </summary>
@@ -635,7 +756,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         private string _sourceId;
 
         /// <summary>
-        /// The Azure ID of the Autonomous Database that was cloned to create the current Autonomous Database.
+        /// The Azure resource ID of the Autonomous Database that was cloned to create the current Autonomous Database.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public string SourceId { get => this._sourceId; set => this._sourceId = value; }
@@ -669,6 +790,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
         public string TimeDeletionOfFreeAutonomousDatabase { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeDeletionOfFreeAutonomousDatabase; }
+
+        /// <summary>
+        /// The date and time the Disaster Recovery role was switched for the standby Autonomous Database.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
+        public global::System.DateTime? TimeDisasterRecoveryRoleChanged { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)__autonomousDatabaseBaseProperties).TimeDisasterRecoveryRoleChanged; }
 
         /// <summary>
         /// The date and time that Autonomous Data Guard was enabled for an Autonomous Database where the standby was provisioned
@@ -761,7 +888,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
     {
         /// <summary>The Autonomous Database clone type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = false,
         Create = true,
@@ -830,15 +957,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("None", "Database", "BackupFromId", "BackupFromTimestamp", "CloneToRefreshable", "CrossRegionDataguard", "CrossRegionDisasterRecovery")]
         string Source { get; set; }
         /// <summary>
-        /// The Azure ID of the Autonomous Database that was cloned to create the current Autonomous Database.
+        /// The Azure resource ID of the Autonomous Database that was cloned to create the current Autonomous Database.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = false,
-        Description = @"The Azure ID of the Autonomous Database that was cloned to create the current Autonomous Database.",
+        Description = @"The Azure resource ID of the Autonomous Database that was cloned to create the current Autonomous Database.",
         SerializedName = @"sourceId",
         PossibleTypes = new [] { typeof(string) })]
         string SourceId { get; set; }
@@ -879,7 +1006,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("None", "Database", "BackupFromId", "BackupFromTimestamp", "CloneToRefreshable", "CrossRegionDataguard", "CrossRegionDisasterRecovery")]
         string Source { get; set; }
         /// <summary>
-        /// The Azure ID of the Autonomous Database that was cloned to create the current Autonomous Database.
+        /// The Azure resource ID of the Autonomous Database that was cloned to create the current Autonomous Database.
         /// </summary>
         string SourceId { get; set; }
         /// <summary>

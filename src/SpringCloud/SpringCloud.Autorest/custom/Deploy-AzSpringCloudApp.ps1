@@ -66,22 +66,22 @@ param(
     ${SubscriptionId},
 
 
-    [Parameter(Mandatory, HelpMessage='The path of the file need to be deploied. The file supports Jar, NetcoreZip and Source.')]
+    [Parameter(Mandatory, HelpMessage='The path of the file need to be deployed. The file supports Jar, NetcoreZip and Source.')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
-    # The path of the file need to be deploied. The file supports Jar, NetcoreZip and Source.
+    # The path of the file need to be deployed. The file supports Jar, NetcoreZip and Source.
     ${FilePath},
 
     [Parameter(Mandatory, ParameterSetName = "DeployAppForEnterprise", HelpMessage='The resource id of builder to build the source code.')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
-    # The path of the file need to be deploied. The file supports Jar, NetcoreZip and Source.
+    # The path of the file need to be deployed. The file supports Jar, NetcoreZip and Source.
     ${BuilderId},
 
     [Parameter(Mandatory, ParameterSetName = "DeployAppForEnterprise", HelpMessage='The resource id of agent pool.')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
-    # The path of the file need to be deploied. The file supports Jar, NetcoreZip and Source.
+    # The path of the file need to be deployed. The file supports Jar, NetcoreZip and Source.
     ${AgentPoolId},
 
     [Parameter()]

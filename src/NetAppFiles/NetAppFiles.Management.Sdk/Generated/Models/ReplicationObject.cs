@@ -73,11 +73,11 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public string ReplicationId {get; private set; }
 
         /// <summary>
-        /// Gets or sets indicates whether the local volume is the source or
-        /// destination for the Volume Replication Possible values include: &#39;src&#39;, &#39;dst&#39;
+        /// Gets indicates whether the local volume is the source or destination for
+        /// the Volume Replication Possible values include: &#39;src&#39;, &#39;dst&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "endpointType")]
-        public string EndpointType {get; set; }
+        public string EndpointType {get; private set; }
 
         /// <summary>
         /// Gets or sets schedule Possible values include: &#39;_10minutely&#39;, &#39;hourly&#39;, &#39;daily&#39;

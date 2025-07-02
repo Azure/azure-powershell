@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Cmdlets;
     using System;
 
-    /// <summary>List GiVersion resources by Location</summary>
+    /// <summary>List GiVersion resources by SubscriptionLocationResource</summary>
     /// <remarks>
     /// [OpenAPI] ListByLocation=>GET:"/subscriptions/{subscriptionId}/providers/Oracle.Database/locations/{location}/giVersions"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzOracleGiVersion_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IGiVersion))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Description(@"List GiVersion resources by Location")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Description(@"List GiVersion resources by SubscriptionLocationResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Oracle.Database/locations/{location}/giVersions", ApiVersion = "2023-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Oracle.Database/locations/{location}/giVersions", ApiVersion = "2025-03-01")]
     public partial class GetAzOracleGiVersion_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IContext
@@ -137,6 +137,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
+        /// <summary>Backing field for <see cref="Shape" /> property.</summary>
+        private string _shape;
+
+        /// <summary>If provided, filters the results for the given shape</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "If provided, filters the results for the given shape")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"If provided, filters the results for the given shape",
+        SerializedName = @"shape",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.ParameterCategory.Query)]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Exadata.X9M", "Exadata.X11M", "ExaDbXS")]
+        public string Shape { get => this._shape; set => this._shape = value; }
+
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string[] _subscriptionId;
 
@@ -155,6 +170,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.ParameterCategory.Path)]
         public string[] SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
+
+        /// <summary>Backing field for <see cref="Zone" /> property.</summary>
+        private string _zone;
+
+        /// <summary>Filters the result for the given Azure Availability Zone</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Filters the result for the given Azure Availability Zone")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Filters the result for the given Azure Availability Zone",
+        SerializedName = @"zone",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.ParameterCategory.Query)]
+        public string Zone { get => this._zone; set => this._zone = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -372,13 +401,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.GiVersionsListByLocation(SubscriptionId, Location, onOk, onDefault, this, Pipeline);
+                        await this.Client.GiVersionsListByLocation(SubscriptionId, Location, this.InvocationInformation.BoundParameters.ContainsKey("Shape") ? Shape : null, this.InvocationInformation.BoundParameters.ContainsKey("Zone") ? Zone : null, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,Location=Location})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,Location=Location,Shape=this.InvocationInformation.BoundParameters.ContainsKey("Shape") ? Shape : null,Zone=this.InvocationInformation.BoundParameters.ContainsKey("Zone") ? Zone : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });

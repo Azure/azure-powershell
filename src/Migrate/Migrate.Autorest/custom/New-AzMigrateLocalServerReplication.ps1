@@ -280,7 +280,7 @@ function New-AzMigrateLocalServerReplication {
         }
 
         if ($null -eq $sourceFabric) {
-            throw "No connected source appliances are found. Kindly deploy an appliance by completing the Discover step of the migration jounery on the source cluster."
+            throw "No connected source appliances are found. Kindly deploy an appliance by completing the Discover step of the migration journey on the source cluster."
         }
 
         if ($null -eq $targetFabric) {
@@ -291,7 +291,7 @@ function New-AzMigrateLocalServerReplication {
         $sourceDras = InvokeAzMigrateGetCommandWithRetries `
             -CommandName 'Az.Migrate.Internal\Get-AzMigrateFabricAgent' `
             -Parameters @{ FabricName = $sourceFabric.Name; ResourceGroupName = $ResourceGroupName } `
-            -ErrorMessage "No connected source appliances are found. Kindly deploy an appliance by completing the Discover step of the migration jounery on the source cluster."
+            -ErrorMessage "No connected source appliances are found. Kindly deploy an appliance by completing the Discover step of the migration journey on the source cluster."
 
         $sourceDra = $sourceDras[0]
 

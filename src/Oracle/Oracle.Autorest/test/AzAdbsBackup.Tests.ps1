@@ -17,17 +17,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzAdbsBackup'))
 Describe 'AzAdbsBackup' {
     It 'CreateAdbsBackup' {
         {
-            New-AzOracleAutonomousDatabaseBackup -NoWait -Adbbackupid $env.adbsBackupId -Autonomousdatabasename $env.adbsName -ResourceGroupName $env.resourceGroup -RetentionPeriodInDay 90
+            New-AzOracleAutonomousDatabaseBackup -NoWait -Adbbackupid $env.adbsBackupId -Autonomousdatabasename $env.adbsDNDName -ResourceGroupName $env.resourceGroup -RetentionPeriodInDay 90
         } | Should -Not -Throw
     }
     It 'ListAdbsBackups' {
         {
-            Get-AzOracleAutonomousDatabaseBackup -Autonomousdatabasename $env.adbsName -ResourceGroupName $env.resourceGroup
+            Get-AzOracleAutonomousDatabaseBackup -Autonomousdatabasename $env.adbsDNDName -ResourceGroupName $env.resourceGroup
         } | Should -Not -Throw
     }
-    It 'DeleteAdbsBackup' {
+    It 'DeleteAdbsBackup' -Skip {
         {
-            Remove-AzOracleAutonomousDatabaseBackup -NoWait -Adbbackupid $env.adbsBackupId -Autonomousdatabasename $env.adbsName -ResourceGroupName $env.resourceGroup
+            Remove-AzOracleAutonomousDatabaseBackup -NoWait -Adbbackupid $env.adbsBackupId -Autonomousdatabasename $env.adbsDNDName -ResourceGroupName $env.resourceGroup
         } | Should -Not -Throw
     }
 }

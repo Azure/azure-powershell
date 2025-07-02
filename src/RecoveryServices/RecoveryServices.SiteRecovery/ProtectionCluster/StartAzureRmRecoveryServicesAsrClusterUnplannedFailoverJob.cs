@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter LatestProcessedRecoveryPoint { get; set; }
 
         /// <summary>
-        ///     Gets or sets a custom clster recovery point to test failover the protected cluster to.
+        ///     Gets or sets a custom cluster recovery point to test failover the protected cluster to.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByObject,

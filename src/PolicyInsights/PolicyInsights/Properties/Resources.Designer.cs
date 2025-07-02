@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;An attestion with name &apos;{0}&apos; in scope &apos;{1}&apos; already exists. Please use Set-AzAttestation to update an existing Attestation.&quot;.
+        ///   Looks up a localized string similar to &quot;An attestation with name &apos;{0}&apos; in scope &apos;{1}&apos; already exists. Please use Set-AzAttestation to update an existing Attestation.&quot;.
         /// </summary>
         internal static string Error_AttestationAlreadyExists {
             get {
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;An attestion with name &apos;{0}&apos; in scope &apos;{1}&apos; does not exist. Please use New-AzAttestation to create a new Attestation with these properties.&quot;.
+        ///   Looks up a localized string similar to &quot;An attestation with name &apos;{0}&apos; in scope &apos;{1}&apos; does not exist. Please use New-AzAttestation to create a new Attestation with these properties.&quot;.
         /// </summary>
         internal static string Error_AttestationDoesNotExists {
             get {

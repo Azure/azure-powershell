@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Test Gremlin CRUD cmdlets using Name paramter set
+Test Gremlin CRUD cmdlets using Name parameter set
 #>
 function Test-GremlinOperationsCmdlets
 {
@@ -148,7 +148,7 @@ function Test-GremlinOperationsCmdlets
 
 <#
 .SYNOPSIS
-Test Gremlin CRUD cmdlets using Parent Object and InputObject paramter set
+Test Gremlin CRUD cmdlets using Parent Object and InputObject parameter set
 #>
 function Test-GremlinOperationsCmdletsUsingInputObject
 {
@@ -266,7 +266,7 @@ function Test-GremlinOperationsCmdletsUsingInputObject
 
 <#
 .SYNOPSIS
-Test Gremlin throughput cmdlets using all paramter sets
+Test Gremlin throughput cmdlets using all parameter sets
 #>
 function Test-GremlinThroughputCmdlets
 {
@@ -397,7 +397,7 @@ function Test-GremlinMigrateThroughputCmdlets
 
 <#
 .SYNOPSIS
-Test Gremlin InAccount Restore cmdlets using Name paramter set
+Test Gremlin InAccount Restore cmdlets using Name parameter set
 #>
 function Test-GremlinInAccountRestoreOperationsCmdlets
 {
@@ -698,7 +698,7 @@ function Test-GremlinInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
 
 <#
 .SYNOPSIS
-Test Gremlin InAccount Restore cmdlets using Name paramter set
+Test Gremlin InAccount Restore cmdlets using Name parameter set
 #>
 function Test-GremlinInAccountRestoreOperationsNoTimestampCmdlets
 {
@@ -817,7 +817,7 @@ function Test-GremlinInAccountRestoreOperationsNoTimestampCmdlets
 
 <#
 .SYNOPSIS
-Test Gremlin InAccount Restore cmdlets using Name paramter set
+Test Gremlin InAccount Restore cmdlets using Name parameter set
 #>
 function Test-GremlinInAccountRestoreOperationsSharedRUResourcesCmdlets
 {

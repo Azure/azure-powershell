@@ -1,17 +1,17 @@
 {
-  "Get-AzOracleAutonomousDatabaseVersion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/autonomousDbVersions?api-version=2023-09-01+1": {
+  "Get-AzOracleAutonomousDatabaseVersion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDbVersions?api-version=2025-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/autonomousDbVersions?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDbVersions?api-version=2025-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "74eb4271-f8fe-4310-b8bf-f4db00a3082a" ],
+        "x-ms-unique-id": [ "98" ],
+        "x-ms-client-request-id": [ "24c15949-bc38-473b-b1dc-56d0d663f5ee" ],
         "CommandName": [ "Get-AzOracleAutonomousDatabaseVersion" ],
         "FullCommandName": [ "Get-AzOracleAutonomousDatabaseVersion_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.Oracle/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,25 +22,27 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "Vary": [ "Origin", "Accept-Encoding" ],
+        "x-ms-operation-identifier": [ "tenantId=9ef05df2-ad7c-4737-aba9-a5e1b3fa5ae1,objectId=ed0404db-6d52-44c6-a09d-182ac122b912/northcentralus/4332c02d-b26f-4a46-8ff8-df467fe7250d" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "opc-request-id": [ "/375F40190A1CC258168D9635EEDEA058/F5E5823046DA9CDE4EDA9538DA1ED467" ],
+        "opc-request-id": [ "/D313796AC62E93B093CB1582C979FECB/605FB75E41F2B81EA6354CCBB15DF06B" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "a4032185-f3af-4663-9fa3-516af98981e9" ],
-        "x-ms-correlation-request-id": [ "4dbad3be-4e9d-4b24-a868-e21cba3548cf" ],
+        "x-ms-request-id": [ "52e9b224-81f3-4ce1-bace-80054d17d653" ],
+        "x-ms-correlation-request-id": [ "e8e956a2-844f-42c6-afdf-a3c7d14d382c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-routing-request-id": [ "UKSOUTH:20240705T104649Z:4dbad3be-4e9d-4b24-a868-e21cba3548cf" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20250625T180713Z:e8e956a2-844f-42c6-afdf-a3c7d14d382c" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1A9A3538202D4260843014B67E5695DF Ref B: AMS231020512019 Ref C: 2024-07-05T10:46:47Z" ],
-        "Date": [ "Fri, 05 Jul 2024 10:46:49 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 07A4C8883E68461B911E124C6DBE91A6 Ref B: DM2AA1091213021 Ref C: 2025-06-25T18:07:11Z" ],
+        "Date": [ "Wed, 25 Jun 2025 18:07:13 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1344" ],
+        "Content-Length": [ "2689" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/autonomousDbVersions/19c\",\"name\":\"19c\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"AJD\",\"isDefaultForFree\":false,\"isDefaultForPaid\":true,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"19c\"}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/autonomousDbVersions/19c\",\"name\":\"19c\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"DW\",\"isDefaultForFree\":false,\"isDefaultForPaid\":true,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"19c\"}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/autonomousDbVersions/19c\",\"name\":\"19c\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"APEX\",\"isDefaultForFree\":false,\"isDefaultForPaid\":true,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"19c\"}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/autonomousDbVersions/19c\",\"name\":\"19c\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"OLTP\",\"isDefaultForFree\":false,\"isDefaultForPaid\":true,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"19c\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDbVersions/19c\",\"name\":\"19c\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"DW\",\"isDefaultForFree\":true,\"isDefaultForPaid\":true,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"19c\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDbVersions/19c\",\"name\":\"19c\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"AJD\",\"isDefaultForFree\":false,\"isDefaultForPaid\":false,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"19c\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDbVersions/19c\",\"name\":\"19c\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"OLTP\",\"isDefaultForFree\":true,\"isDefaultForPaid\":true,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"19c\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDbVersions/19c\",\"name\":\"19c\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"APEX\",\"isDefaultForFree\":true,\"isDefaultForPaid\":true,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"19c\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDbVersions/23ai\",\"name\":\"23ai\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"DW\",\"isDefaultForFree\":false,\"isDefaultForPaid\":false,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"23ai\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDbVersions/23ai\",\"name\":\"23ai\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"OLTP\",\"isDefaultForFree\":false,\"isDefaultForPaid\":false,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"23ai\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDbVersions/23ai\",\"name\":\"23ai\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"AJD\",\"isDefaultForFree\":true,\"isDefaultForPaid\":true,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"23ai\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDbVersions/23ai\",\"name\":\"23ai\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"APEX\",\"isDefaultForFree\":false,\"isDefaultForPaid\":false,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"23ai\"}}]}",
       "isContentBase64": false
     }
   }

@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
             // other properties
             this.Properties = cognitiveServicesAccount.Properties;
 
-            // Read-only properties, should not add more as they can be retrived from properties
+            // Read-only properties, should not add more as they can be retrieved from properties
             this.PrivateEndpointConnections = cognitiveServicesAccount.Properties.PrivateEndpointConnections;
             this.Capabilities = cognitiveServicesAccount.Properties.Capabilities;
             this.Endpoint = cognitiveServicesAccount.Properties.Endpoint;

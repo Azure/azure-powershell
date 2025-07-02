@@ -40,6 +40,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
         public int? ComputeCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).ComputeCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).ComputeCount = value ?? default(int); }
 
+        /// <summary>The compute model of the Exadata Infrastructure</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
+        public string ComputeModel { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).ComputeModel; }
+
         /// <summary>The total number of CPU cores allocated.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
         public int? CpuCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).CpuCount; }
@@ -57,6 +61,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
         public double? DataStorageSizeInTb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).DataStorageSizeInTb; }
 
+        /// <summary>The database server model type of the cloud Exadata infrastructure resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
+        public string DatabaseServerType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).DatabaseServerType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).DatabaseServerType = value ?? null; }
+
         /// <summary>The local node storage to be allocated in GBs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
         public int? DbNodeStorageSizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).DbNodeStorageSizeInGb; }
@@ -66,6 +74,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
         public string DbServerVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).DbServerVersion; }
+
+        /// <summary>Defined file system configurations</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDefinedFileSystemConfiguration> DefinedFileSystemConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).DefinedFileSystemConfiguration; }
 
         /// <summary>The name for the Exadata infrastructure.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
@@ -107,7 +119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ITrackedResourceInternal)__trackedResource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>
         /// Determines the amount of time the system will wait before the start of each database server patching operation. Custom
@@ -190,109 +202,133 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         public int? MemorySizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MemorySizeInGb; }
 
         /// <summary>Internal Acessors for ActivatedStorageCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.ActivatedStorageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).ActivatedStorageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).ActivatedStorageCount = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.ActivatedStorageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).ActivatedStorageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).ActivatedStorageCount = value ?? default(int); }
 
         /// <summary>Internal Acessors for AdditionalStorageCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.AdditionalStorageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).AdditionalStorageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).AdditionalStorageCount = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.AdditionalStorageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).AdditionalStorageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).AdditionalStorageCount = value ?? default(int); }
 
         /// <summary>Internal Acessors for AvailableStorageSizeInGb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.AvailableStorageSizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).AvailableStorageSizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).AvailableStorageSizeInGb = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.AvailableStorageSizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).AvailableStorageSizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).AvailableStorageSizeInGb = value ?? default(int); }
+
+        /// <summary>Internal Acessors for ComputeModel</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.ComputeModel { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).ComputeModel; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).ComputeModel = value ?? null; }
 
         /// <summary>Internal Acessors for CpuCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.CpuCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).CpuCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).CpuCount = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.CpuCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).CpuCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).CpuCount = value ?? default(int); }
 
         /// <summary>Internal Acessors for DataStorageSizeInTb</summary>
-        double? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.DataStorageSizeInTb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).DataStorageSizeInTb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).DataStorageSizeInTb = value; }
+        double? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.DataStorageSizeInTb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).DataStorageSizeInTb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).DataStorageSizeInTb = value ?? default(double); }
 
         /// <summary>Internal Acessors for DbNodeStorageSizeInGb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.DbNodeStorageSizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).DbNodeStorageSizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).DbNodeStorageSizeInGb = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.DbNodeStorageSizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).DbNodeStorageSizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).DbNodeStorageSizeInGb = value ?? default(int); }
 
         /// <summary>Internal Acessors for DbServerVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.DbServerVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).DbServerVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).DbServerVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.DbServerVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).DbServerVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).DbServerVersion = value ?? null; }
+
+        /// <summary>Internal Acessors for DefinedFileSystemConfiguration</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDefinedFileSystemConfiguration> Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.DefinedFileSystemConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).DefinedFileSystemConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).DefinedFileSystemConfiguration = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for EstimatedPatchingTime</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTime Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.EstimatedPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).EstimatedPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).EstimatedPatchingTime = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTime Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.EstimatedPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).EstimatedPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).EstimatedPatchingTime = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for EstimatedPatchingTimeEstimatedDbServerPatchingTime</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.EstimatedPatchingTimeEstimatedDbServerPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).EstimatedPatchingTimeEstimatedDbServerPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).EstimatedPatchingTimeEstimatedDbServerPatchingTime = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.EstimatedPatchingTimeEstimatedDbServerPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).EstimatedPatchingTimeEstimatedDbServerPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).EstimatedPatchingTimeEstimatedDbServerPatchingTime = value ?? default(int); }
 
         /// <summary>Internal Acessors for EstimatedPatchingTimeEstimatedNetworkSwitchesPatchingTime</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.EstimatedPatchingTimeEstimatedNetworkSwitchesPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).EstimatedPatchingTimeEstimatedNetworkSwitchesPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).EstimatedPatchingTimeEstimatedNetworkSwitchesPatchingTime = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.EstimatedPatchingTimeEstimatedNetworkSwitchesPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).EstimatedPatchingTimeEstimatedNetworkSwitchesPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).EstimatedPatchingTimeEstimatedNetworkSwitchesPatchingTime = value ?? default(int); }
 
         /// <summary>Internal Acessors for EstimatedPatchingTimeEstimatedStorageServerPatchingTime</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.EstimatedPatchingTimeEstimatedStorageServerPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).EstimatedPatchingTimeEstimatedStorageServerPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).EstimatedPatchingTimeEstimatedStorageServerPatchingTime = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.EstimatedPatchingTimeEstimatedStorageServerPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).EstimatedPatchingTimeEstimatedStorageServerPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).EstimatedPatchingTimeEstimatedStorageServerPatchingTime = value ?? default(int); }
 
         /// <summary>Internal Acessors for EstimatedPatchingTimeTotalEstimatedPatchingTime</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.EstimatedPatchingTimeTotalEstimatedPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).EstimatedPatchingTimeTotalEstimatedPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).EstimatedPatchingTimeTotalEstimatedPatchingTime = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.EstimatedPatchingTimeTotalEstimatedPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).EstimatedPatchingTimeTotalEstimatedPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).EstimatedPatchingTimeTotalEstimatedPatchingTime = value ?? default(int); }
 
         /// <summary>Internal Acessors for LastMaintenanceRunId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.LastMaintenanceRunId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).LastMaintenanceRunId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).LastMaintenanceRunId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.LastMaintenanceRunId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).LastMaintenanceRunId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).LastMaintenanceRunId = value ?? null; }
 
         /// <summary>Internal Acessors for LifecycleDetail</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.LifecycleDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).LifecycleDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).LifecycleDetail = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.LifecycleDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).LifecycleDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).LifecycleDetail = value ?? null; }
 
         /// <summary>Internal Acessors for LifecycleState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.LifecycleState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).LifecycleState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).LifecycleState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.LifecycleState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).LifecycleState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).LifecycleState = value ?? null; }
 
         /// <summary>Internal Acessors for MaintenanceWindow</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IMaintenanceWindow Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.MaintenanceWindow { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MaintenanceWindow; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MaintenanceWindow = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IMaintenanceWindow Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.MaintenanceWindow { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MaintenanceWindow; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MaintenanceWindow = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for MaxCpuCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.MaxCpuCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MaxCpuCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MaxCpuCount = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.MaxCpuCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MaxCpuCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MaxCpuCount = value ?? default(int); }
 
         /// <summary>Internal Acessors for MaxDataStorageInTb</summary>
-        double? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.MaxDataStorageInTb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MaxDataStorageInTb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MaxDataStorageInTb = value; }
+        double? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.MaxDataStorageInTb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MaxDataStorageInTb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MaxDataStorageInTb = value ?? default(double); }
 
         /// <summary>Internal Acessors for MaxDbNodeStorageSizeInGb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.MaxDbNodeStorageSizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MaxDbNodeStorageSizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MaxDbNodeStorageSizeInGb = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.MaxDbNodeStorageSizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MaxDbNodeStorageSizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MaxDbNodeStorageSizeInGb = value ?? default(int); }
 
         /// <summary>Internal Acessors for MaxMemoryInGb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.MaxMemoryInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MaxMemoryInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MaxMemoryInGb = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.MaxMemoryInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MaxMemoryInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MaxMemoryInGb = value ?? default(int); }
 
         /// <summary>Internal Acessors for MemorySizeInGb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.MemorySizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MemorySizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MemorySizeInGb = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.MemorySizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MemorySizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MemorySizeInGb = value ?? default(int); }
 
         /// <summary>Internal Acessors for MonthlyDbServerVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.MonthlyDbServerVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MonthlyDbServerVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MonthlyDbServerVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.MonthlyDbServerVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MonthlyDbServerVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MonthlyDbServerVersion = value ?? null; }
 
         /// <summary>Internal Acessors for MonthlyStorageServerVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.MonthlyStorageServerVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MonthlyStorageServerVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MonthlyStorageServerVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.MonthlyStorageServerVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MonthlyStorageServerVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).MonthlyStorageServerVersion = value ?? null; }
 
         /// <summary>Internal Acessors for NextMaintenanceRunId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.NextMaintenanceRunId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).NextMaintenanceRunId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).NextMaintenanceRunId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.NextMaintenanceRunId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).NextMaintenanceRunId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).NextMaintenanceRunId = value ?? null; }
 
         /// <summary>Internal Acessors for OciUrl</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.OciUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).OciUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).OciUrl = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.OciUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).OciUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).OciUrl = value ?? null; }
 
         /// <summary>Internal Acessors for Ocid</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.Ocid { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).Ocid; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).Ocid = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.Ocid { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).Ocid; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).Ocid = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureProperties Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.CloudExadataInfrastructureProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for StorageServerVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.StorageServerVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).StorageServerVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).StorageServerVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.StorageServerVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).StorageServerVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).StorageServerVersion = value ?? null; }
 
         /// <summary>Internal Acessors for TimeCreated</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.TimeCreated { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).TimeCreated; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).TimeCreated = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.TimeCreated { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).TimeCreated; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).TimeCreated = value ?? null; }
 
         /// <summary>Internal Acessors for TotalStorageSizeInGb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.TotalStorageSizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).TotalStorageSizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).TotalStorageSizeInGb = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal.TotalStorageSizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).TotalStorageSizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).TotalStorageSizeInGb = value ?? default(int); }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>Monthly Db Server version</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
@@ -341,6 +377,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
         public int? StorageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).StorageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).StorageCount = value ?? default(int); }
 
+        /// <summary>The storage server model type of the cloud Exadata infrastructure resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
+        public string StorageServerType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).StorageServerType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)Property).StorageServerType = value ?? null; }
+
         /// <summary>
         /// The software version of the storage servers (cells) in the Exadata infrastructure.
         /// </summary>
@@ -351,31 +391,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
@@ -477,6 +517,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"computeCount",
         PossibleTypes = new [] { typeof(int) })]
         int? ComputeCount { get; set; }
+        /// <summary>The compute model of the Exadata Infrastructure</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The compute model of the Exadata Infrastructure",
+        SerializedName = @"computeModel",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("ECPU", "OCPU")]
+        string ComputeModel { get;  }
         /// <summary>The total number of CPU cores allocated.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -515,6 +567,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"dataStorageSizeInTbs",
         PossibleTypes = new [] { typeof(double) })]
         double? DataStorageSizeInTb { get;  }
+        /// <summary>The database server model type of the cloud Exadata infrastructure resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"The database server model type of the cloud Exadata infrastructure resource.",
+        SerializedName = @"databaseServerType",
+        PossibleTypes = new [] { typeof(string) })]
+        string DatabaseServerType { get; set; }
         /// <summary>The local node storage to be allocated in GBs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -539,6 +602,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"dbServerVersion",
         PossibleTypes = new [] { typeof(string) })]
         string DbServerVersion { get;  }
+        /// <summary>Defined file system configurations</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Defined file system configurations",
+        SerializedName = @"definedFileSystemConfiguration",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDefinedFileSystemConfiguration) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDefinedFileSystemConfiguration> DefinedFileSystemConfiguration { get;  }
         /// <summary>The name for the Exadata infrastructure.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -904,6 +978,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"storageCount",
         PossibleTypes = new [] { typeof(int) })]
         int? StorageCount { get; set; }
+        /// <summary>The storage server model type of the cloud Exadata infrastructure resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"The storage server model type of the cloud Exadata infrastructure resource.",
+        SerializedName = @"storageServerType",
+        PossibleTypes = new [] { typeof(string) })]
+        string StorageServerType { get; set; }
         /// <summary>
         /// The software version of the storage servers (cells) in the Exadata infrastructure.
         /// </summary>
@@ -972,6 +1057,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         int? AvailableStorageSizeInGb { get; set; }
         /// <summary>The number of compute servers for the cloud Exadata infrastructure.</summary>
         int? ComputeCount { get; set; }
+        /// <summary>The compute model of the Exadata Infrastructure</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("ECPU", "OCPU")]
+        string ComputeModel { get; set; }
         /// <summary>The total number of CPU cores allocated.</summary>
         int? CpuCount { get; set; }
         /// <summary>
@@ -983,12 +1071,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICustomerContact> CustomerContact { get; set; }
         /// <summary>The quantity of data in the database, in terabytes.</summary>
         double? DataStorageSizeInTb { get; set; }
+        /// <summary>The database server model type of the cloud Exadata infrastructure resource.</summary>
+        string DatabaseServerType { get; set; }
         /// <summary>The local node storage to be allocated in GBs.</summary>
         int? DbNodeStorageSizeInGb { get; set; }
         /// <summary>
         /// The software version of the database servers (dom0) in the Exadata infrastructure.
         /// </summary>
         string DbServerVersion { get; set; }
+        /// <summary>Defined file system configurations</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDefinedFileSystemConfiguration> DefinedFileSystemConfiguration { get; set; }
         /// <summary>The name for the Exadata infrastructure.</summary>
         string DisplayName { get; set; }
         /// <summary>
@@ -1084,6 +1176,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         string Shape { get; set; }
         /// <summary>The number of storage servers for the cloud Exadata infrastructure.</summary>
         int? StorageCount { get; set; }
+        /// <summary>The storage server model type of the cloud Exadata infrastructure resource.</summary>
+        string StorageServerType { get; set; }
         /// <summary>
         /// The software version of the storage servers (cells) in the Exadata infrastructure.
         /// </summary>

@@ -10,9 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support
     public partial struct VirtualMachineDeviceModelType :
         System.IEquatable<VirtualMachineDeviceModelType>
     {
+        /// <summary>Traditional and most compatible device virtualization interface.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineDeviceModelType T1 = @"T1";
 
+        /// <summary>Modern and enhanced device virtualization interface.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineDeviceModelType T2 = @"T2";
+
+        /// <summary>
+        /// Improved security and functionality (including TPM and secure boot support). Required for windows 11 and server 2025.
+        /// </summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineDeviceModelType T3 = @"T3";
 
         /// <summary>
         /// the value for an instance of the <see cref="VirtualMachineDeviceModelType" /> Enum.

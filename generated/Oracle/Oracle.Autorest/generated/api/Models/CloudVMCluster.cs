@@ -37,6 +37,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
         public string CompartmentId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).CompartmentId; }
 
+        /// <summary>The compute model of the VM Cluster.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
+        public string ComputeModel { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ComputeModel; }
+
         /// <summary>The list of compute servers to be added to the cloud VM cluster.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<string> ComputeNode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ComputeNode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ComputeNode = value ?? null /* arrayOf */; }
@@ -98,6 +102,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
         public string Domain { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).Domain; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).Domain = value ?? null; }
 
+        /// <summary>Array of mount path and size.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails> FileSystemConfigurationDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).FileSystemConfigurationDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).FileSystemConfigurationDetail = value ?? null /* arrayOf */; }
+
         /// <summary>Oracle Grid Infrastructure (GI) software version</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
         public string GiVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).GiVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).GiVersion = value ?? null; }
@@ -114,19 +122,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
 
         /// <summary>An array of IORM settings for all the database in the Exadata DB system.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbIormConfig> IormConfigCacheDbPlan { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCacheDbPlan; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCacheDbPlan = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbIormConfig> IormConfigCacheDbPlan { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCacheDbPlan; }
 
         /// <summary>Additional information about the current lifecycleState.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string IormConfigCacheLifecycleDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCacheLifecycleDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCacheLifecycleDetail = value ?? null; }
+        public string IormConfigCacheLifecycleDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCacheLifecycleDetail; }
 
         /// <summary>The current state of IORM configuration for the Exadata DB system.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string IormConfigCacheLifecycleState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCacheLifecycleState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCacheLifecycleState = value ?? null; }
+        public string IormConfigCacheLifecycleState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCacheLifecycleState; }
 
         /// <summary>The current value for the IORM objective. The default is AUTO.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string IormConfigCacheObjective { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCacheObjective; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCacheObjective = value ?? null; }
+        public string IormConfigCacheObjective { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCacheObjective; }
 
         /// <summary>
         /// If true, database backup on local Exadata storage is configured for the cloud VM cluster. If false, database backup on
@@ -165,86 +173,119 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ITrackedResourceInternal)__trackedResource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>The memory to be allocated in GBs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
         public int? MemorySizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).MemorySizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).MemorySizeInGb = value ?? default(int); }
 
         /// <summary>Internal Acessors for CompartmentId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.CompartmentId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).CompartmentId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).CompartmentId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.CompartmentId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).CompartmentId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).CompartmentId = value ?? null; }
+
+        /// <summary>Internal Acessors for ComputeModel</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.ComputeModel { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ComputeModel; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ComputeModel = value ?? null; }
 
         /// <summary>Internal Acessors for DataCollectionOption</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDataCollectionOptions Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.DataCollectionOption { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).DataCollectionOption; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).DataCollectionOption = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDataCollectionOptions Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.DataCollectionOption { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).DataCollectionOption; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).DataCollectionOption = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for DiskRedundancy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.DiskRedundancy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).DiskRedundancy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).DiskRedundancy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.DiskRedundancy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).DiskRedundancy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).DiskRedundancy = value ?? null; }
 
         /// <summary>Internal Acessors for IormConfigCache</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfig Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.IormConfigCache { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCache; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCache = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfig Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.IormConfigCache { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCache; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCache = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for IormConfigCacheDbPlan</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbIormConfig> Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.IormConfigCacheDbPlan { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCacheDbPlan; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCacheDbPlan = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for IormConfigCacheLifecycleDetail</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.IormConfigCacheLifecycleDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCacheLifecycleDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCacheLifecycleDetail = value ?? null; }
+
+        /// <summary>Internal Acessors for IormConfigCacheLifecycleState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.IormConfigCacheLifecycleState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCacheLifecycleState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCacheLifecycleState = value ?? null; }
+
+        /// <summary>Internal Acessors for IormConfigCacheObjective</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.IormConfigCacheObjective { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCacheObjective; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).IormConfigCacheObjective = value ?? null; }
 
         /// <summary>Internal Acessors for LastUpdateHistoryEntryId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.LastUpdateHistoryEntryId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).LastUpdateHistoryEntryId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).LastUpdateHistoryEntryId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.LastUpdateHistoryEntryId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).LastUpdateHistoryEntryId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).LastUpdateHistoryEntryId = value ?? null; }
 
         /// <summary>Internal Acessors for LifecycleDetail</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.LifecycleDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).LifecycleDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).LifecycleDetail = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.LifecycleDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).LifecycleDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).LifecycleDetail = value ?? null; }
 
         /// <summary>Internal Acessors for LifecycleState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.LifecycleState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).LifecycleState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).LifecycleState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.LifecycleState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).LifecycleState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).LifecycleState = value ?? null; }
 
         /// <summary>Internal Acessors for ListenerPort</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.ListenerPort { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ListenerPort; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ListenerPort = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.ListenerPort { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ListenerPort; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ListenerPort = value ?? default(long); }
 
         /// <summary>Internal Acessors for NodeCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.NodeCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).NodeCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).NodeCount = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.NodeCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).NodeCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).NodeCount = value ?? default(int); }
 
         /// <summary>Internal Acessors for NsgUrl</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.NsgUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).NsgUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).NsgUrl = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.NsgUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).NsgUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).NsgUrl = value ?? null; }
 
         /// <summary>Internal Acessors for OciUrl</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.OciUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).OciUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).OciUrl = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.OciUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).OciUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).OciUrl = value ?? null; }
 
         /// <summary>Internal Acessors for Ocid</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.Ocid { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).Ocid; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).Ocid = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.Ocid { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).Ocid; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).Ocid = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterProperties Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.CloudVMClusterProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for ScanDnsName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.ScanDnsName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ScanDnsName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ScanDnsName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.ScanDnsName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ScanDnsName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ScanDnsName = value ?? null; }
 
         /// <summary>Internal Acessors for ScanDnsRecordId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.ScanDnsRecordId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ScanDnsRecordId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ScanDnsRecordId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.ScanDnsRecordId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ScanDnsRecordId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ScanDnsRecordId = value ?? null; }
 
         /// <summary>Internal Acessors for ScanIPId</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.ScanIPId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ScanIPId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ScanIPId = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.ScanIPId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ScanIPId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).ScanIPId = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Shape</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.Shape { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).Shape; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).Shape = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.Shape { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).Shape; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).Shape = value ?? null; }
 
         /// <summary>Internal Acessors for SubnetOcid</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.SubnetOcid { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).SubnetOcid; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).SubnetOcid = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.SubnetOcid { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).SubnetOcid; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).SubnetOcid = value ?? null; }
 
         /// <summary>Internal Acessors for TimeCreated</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.TimeCreated { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).TimeCreated; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).TimeCreated = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.TimeCreated { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).TimeCreated; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).TimeCreated = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for VipId</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.VipId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).VipId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).VipId = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal.VipId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).VipId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)Property).VipId = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
@@ -349,31 +390,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
 
         /// <summary>Operating system version of the image.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
@@ -485,6 +526,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"compartmentId",
         PossibleTypes = new [] { typeof(string) })]
         string CompartmentId { get;  }
+        /// <summary>The compute model of the VM Cluster.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The compute model of the VM Cluster.",
+        SerializedName = @"computeModel",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("ECPU", "OCPU")]
+        string ComputeModel { get;  }
         /// <summary>The list of compute servers to be added to the cloud VM cluster.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -631,6 +684,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"domain",
         PossibleTypes = new [] { typeof(string) })]
         string Domain { get; set; }
+        /// <summary>Array of mount path and size.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = false,
+        Update = true,
+        Description = @"Array of mount path and size.",
+        SerializedName = @"fileSystemConfigurationDetails",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails> FileSystemConfigurationDetail { get; set; }
         /// <summary>Oracle Grid Infrastructure (GI) software version</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -1089,6 +1153,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         string ClusterName { get; set; }
         /// <summary>Cluster compartmentId</summary>
         string CompartmentId { get; set; }
+        /// <summary>The compute model of the VM Cluster.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("ECPU", "OCPU")]
+        string ComputeModel { get; set; }
         /// <summary>The list of compute servers to be added to the cloud VM cluster.</summary>
         System.Collections.Generic.List<string> ComputeNode { get; set; }
         /// <summary>The number of CPU cores enabled on the cloud VM cluster.</summary>
@@ -1131,6 +1198,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         string DisplayName { get; set; }
         /// <summary>The domain name for the cloud VM cluster.</summary>
         string Domain { get; set; }
+        /// <summary>Array of mount path and size.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails> FileSystemConfigurationDetail { get; set; }
         /// <summary>Oracle Grid Infrastructure (GI) software version</summary>
         string GiVersion { get; set; }
         /// <summary>The hostname for the cloud VM cluster.</summary>

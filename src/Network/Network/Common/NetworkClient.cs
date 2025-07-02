@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Commands.Network
             DateTime startTime = DateTime.UtcNow;
             DateTime giveUpAt = DateTime.UtcNow.AddMinutes(3);
 
-            // Send the Get locationResults request for operaitonId till either we get StatusCode 200 or it time outs (3 minutes in this case)
+            // Send the Get locationResults request for operationId till either we get StatusCode 200 or it time outs (3 minutes in this case)
             while (true)
             {
                 HttpRequestMessage newHttpRequest = new HttpRequestMessage();
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Commands.Network
             DateTime startTime = DateTime.UtcNow;
             DateTime giveUpAt = DateTime.UtcNow.AddMinutes(3);
 
-            // Send the Get locationResults request for operaitonId till either we get StatusCode 200 or it time outs (3 minutes in this case)
+            // Send the Get locationResults request for operationId till either we get StatusCode 200 or it time outs (3 minutes in this case)
             while (true)
             {
                 HttpRequestMessage newHttpRequest = new HttpRequestMessage();
@@ -503,7 +503,7 @@ namespace Microsoft.Azure.Commands.Network
             DateTime startTime = DateTime.UtcNow;
             DateTime giveUpAt = DateTime.UtcNow.AddMinutes(3);
 
-            // Send the Get locationResults request for operaitonId till either we get StatusCode 200 or it time outs (3 minutes in this case)
+            // Send the Get locationResults request for operationId till either we get StatusCode 200 or it time outs (3 minutes in this case)
             while (true)
             {
                 HttpRequestMessage newHttpRequest = new HttpRequestMessage();
@@ -785,7 +785,7 @@ namespace Microsoft.Azure.Commands.Network
             DateTime startTime = DateTime.UtcNow;
             DateTime giveUpAt = DateTime.UtcNow.AddMinutes(3);
 
-            // Send the Get locationResults request for operaitonId till either we get StatusCode 200 or it time outs (3 minutes in this case)
+            // Send the Get locationResults request for operationId till either we get StatusCode 200 or it time outs (3 minutes in this case)
             while (true)
             {
                 HttpRequestMessage newHttpRequest = new HttpRequestMessage();

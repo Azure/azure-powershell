@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating new workspace colleciton &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Creating new workspace collection &apos;{0}&apos;.
         /// </summary>
         internal static string NewWorkspaceCollectionDescription {
             get {
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to reset access key &apos;{0}&apos; on workspace colleciton &apos;{1}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to reset access key &apos;{0}&apos; on workspace collection &apos;{1}&apos;?.
         /// </summary>
         internal static string ResetWorkspaceCollectionAccessKeyWarning {
             get {

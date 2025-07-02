@@ -642,7 +642,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Logger.Instance.WriteDebug("Storage account was already registered");
             }
 
-            //get unregistered storage account, trigger dicovery if not found.
+            //get unregistered storage account, trigger discovery if not found.
             bool isBreak = false;
             bool isRefreshed = false; // have we triggered discovery yet
             while (!isRegistered && !isBreak )

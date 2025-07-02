@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Generating that authentication token here and sending it via http headers.
         /// </summary>
         /// <param name="clientRequestId">Unique identifier for the client's request</param>
-        /// <param name="dateTime">Optional , datetime used for header genertion</param>
+        /// <param name="dateTime">Optional , datetime used for header generation</param>
         /// <returns>The authentication token for the provider</returns>
         public static string GenerateAgentAuthenticationHeader(
             string clientRequestId,

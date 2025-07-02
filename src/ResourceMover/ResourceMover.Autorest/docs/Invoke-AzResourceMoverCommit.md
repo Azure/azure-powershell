@@ -31,7 +31,7 @@ To aid the user to prerequisite the operation the client can call operation with
 
 ## EXAMPLES
 
-### Example 1: Validate the dependecies before commit of the resources.
+### Example 1: Validate the dependencies before commit of the resources.
 ```powershell
 Invoke-AzResourceMoverCommit -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemorm-vnet') -MoveResourceInputType "MoveResourceId" -ValidateOnly
 ```

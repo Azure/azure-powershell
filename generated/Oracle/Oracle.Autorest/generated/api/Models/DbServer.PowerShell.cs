@@ -124,6 +124,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbServerInternal)this).Ocid = (string) content.GetValueForProperty("Ocid",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbServerInternal)this).Ocid, global::System.Convert.ToString);
             }
+            if (content.Contains("ComputeModel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbServerInternal)this).ComputeModel = (string) content.GetValueForProperty("ComputeModel",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbServerInternal)this).ComputeModel, global::System.Convert.ToString);
+            }
             if (content.Contains("PatchingDetail"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbServerInternal)this).PatchingDetail = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbServerPatchingDetails) content.GetValueForProperty("PatchingDetail",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbServerInternal)this).PatchingDetail, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbServerPatchingDetailsTypeConverter.ConvertFrom);
@@ -280,6 +284,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("Ocid"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbServerInternal)this).Ocid = (string) content.GetValueForProperty("Ocid",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbServerInternal)this).Ocid, global::System.Convert.ToString);
+            }
+            if (content.Contains("ComputeModel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbServerInternal)this).ComputeModel = (string) content.GetValueForProperty("ComputeModel",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbServerInternal)this).ComputeModel, global::System.Convert.ToString);
             }
             if (content.Contains("PatchingDetail"))
             {

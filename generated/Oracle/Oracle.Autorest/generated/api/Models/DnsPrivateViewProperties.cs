@@ -18,54 +18,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
 
         /// <summary>The display name of the view resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
-        public string DisplayName { get => this._displayName; }
+        public string DisplayName { get => this._displayName; set => this._displayName = value; }
 
         /// <summary>Backing field for <see cref="IsProtected" /> property.</summary>
-        private bool? _isProtected;
+        private bool _isProtected;
 
         /// <summary>
         /// A Boolean flag indicating whether or not parts of the resource are unable to be explicitly managed.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
-        public bool? IsProtected { get => this._isProtected; }
+        public bool IsProtected { get => this._isProtected; set => this._isProtected = value; }
 
         /// <summary>Backing field for <see cref="LifecycleState" /> property.</summary>
         private string _lifecycleState;
 
         /// <summary>Views lifecycleState</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
-        public string LifecycleState { get => this._lifecycleState; }
-
-        /// <summary>Internal Acessors for DisplayName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal.DisplayName { get => this._displayName; set { {_displayName = value;} } }
-
-        /// <summary>Internal Acessors for IsProtected</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal.IsProtected { get => this._isProtected; set { {_isProtected = value;} } }
-
-        /// <summary>Internal Acessors for LifecycleState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal.LifecycleState { get => this._lifecycleState; set { {_lifecycleState = value;} } }
-
-        /// <summary>Internal Acessors for Ocid</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal.Ocid { get => this._ocid; set { {_ocid = value;} } }
+        public string LifecycleState { get => this._lifecycleState; set => this._lifecycleState = value; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
-
-        /// <summary>Internal Acessors for Self</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal.Self { get => this._self; set { {_self = value;} } }
-
-        /// <summary>Internal Acessors for TimeCreated</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal.TimeCreated { get => this._timeCreated; set { {_timeCreated = value;} } }
-
-        /// <summary>Internal Acessors for TimeUpdated</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal.TimeUpdated { get => this._timeUpdated; set { {_timeUpdated = value;} } }
 
         /// <summary>Backing field for <see cref="Ocid" /> property.</summary>
         private string _ocid;
 
         /// <summary>The OCID of the view</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
-        public string Ocid { get => this._ocid; }
+        public string Ocid { get => this._ocid; set => this._ocid = value; }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
@@ -79,21 +58,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
 
         /// <summary>The canonical absolute URL of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
-        public string Self { get => this._self; }
+        public string Self { get => this._self; set => this._self = value; }
 
         /// <summary>Backing field for <see cref="TimeCreated" /> property.</summary>
-        private global::System.DateTime? _timeCreated;
+        private global::System.DateTime _timeCreated;
 
         /// <summary>views timeCreated</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
-        public global::System.DateTime? TimeCreated { get => this._timeCreated; }
+        public global::System.DateTime TimeCreated { get => this._timeCreated; set => this._timeCreated = value; }
 
         /// <summary>Backing field for <see cref="TimeUpdated" /> property.</summary>
-        private global::System.DateTime? _timeUpdated;
+        private global::System.DateTime _timeUpdated;
 
         /// <summary>views timeCreated</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
-        public global::System.DateTime? TimeUpdated { get => this._timeUpdated; }
+        public global::System.DateTime TimeUpdated { get => this._timeUpdated; set => this._timeUpdated = value; }
 
         /// <summary>Creates an new <see cref="DnsPrivateViewProperties" /> instance.</summary>
         public DnsPrivateViewProperties()
@@ -107,51 +86,51 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
     {
         /// <summary>The display name of the view resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The display name of the view resource",
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
-        string DisplayName { get;  }
+        string DisplayName { get; set; }
         /// <summary>
         /// A Boolean flag indicating whether or not parts of the resource are unable to be explicitly managed.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"A Boolean flag indicating whether or not parts of the resource are unable to be explicitly managed.",
         SerializedName = @"isProtected",
         PossibleTypes = new [] { typeof(bool) })]
-        bool? IsProtected { get;  }
+        bool IsProtected { get; set; }
         /// <summary>Views lifecycleState</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"Views lifecycleState",
         SerializedName = @"lifecycleState",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Active", "Deleted", "Deleting", "Updating")]
-        string LifecycleState { get;  }
+        string LifecycleState { get; set; }
         /// <summary>The OCID of the view</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The OCID of the view",
         SerializedName = @"ocid",
         PossibleTypes = new [] { typeof(string) })]
-        string Ocid { get;  }
+        string Ocid { get; set; }
         /// <summary>Azure resource provisioning state.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -166,37 +145,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         string ProvisioningState { get;  }
         /// <summary>The canonical absolute URL of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The canonical absolute URL of the resource.",
         SerializedName = @"self",
         PossibleTypes = new [] { typeof(string) })]
-        string Self { get;  }
+        string Self { get; set; }
         /// <summary>views timeCreated</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"views timeCreated",
         SerializedName = @"timeCreated",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? TimeCreated { get;  }
+        global::System.DateTime TimeCreated { get; set; }
         /// <summary>views timeCreated</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"views timeCreated",
         SerializedName = @"timeUpdated",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? TimeUpdated { get;  }
+        global::System.DateTime TimeUpdated { get; set; }
 
     }
     /// Views resource model
@@ -208,7 +187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// <summary>
         /// A Boolean flag indicating whether or not parts of the resource are unable to be explicitly managed.
         /// </summary>
-        bool? IsProtected { get; set; }
+        bool IsProtected { get; set; }
         /// <summary>Views lifecycleState</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Active", "Deleted", "Deleting", "Updating")]
         string LifecycleState { get; set; }
@@ -220,9 +199,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// <summary>The canonical absolute URL of the resource.</summary>
         string Self { get; set; }
         /// <summary>views timeCreated</summary>
-        global::System.DateTime? TimeCreated { get; set; }
+        global::System.DateTime TimeCreated { get; set; }
         /// <summary>views timeCreated</summary>
-        global::System.DateTime? TimeUpdated { get; set; }
+        global::System.DateTime TimeUpdated { get; set; }
 
     }
 }

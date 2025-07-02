@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded to the stable version 2025-03-01
 
 ## Version 1.1.1
 * Fixed module name in module metadata

@@ -148,10 +148,10 @@
     <value>Updating an attestation with name '{0}' in scope '{1}'.</value>
   </data>
   <data name="Error_AttestationAlreadyExists" xml:space="preserve">
-    <value>"An attestion with name '{0}' in scope '{1}' already exists. Please use Set-AzAttestation to update an existing Attestation."</value>
+    <value>"An attestation with name '{0}' in scope '{1}' already exists. Please use Set-AzAttestation to update an existing Attestation."</value>
   </data>
   <data name="Error_AttestationDoesNotExists" xml:space="preserve">
-    <value>"An attestion with name '{0}' in scope '{1}' does not exist. Please use New-AzAttestation to create a new Attestation with these properties."</value>
+    <value>"An attestation with name '{0}' in scope '{1}' does not exist. Please use New-AzAttestation to create a new Attestation with these properties."</value>
   </data>
   <data name="Error_InvalidMetadata" xml:space="preserve">
     <value>The given metadata '{0}' is invalid</value>

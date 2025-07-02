@@ -48,8 +48,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     }
                     catch (Exception)
                     {
-                        // In case running the senario tests, HttpClient will complain it is not the first time running,
-                        // the property can't be changed. Just suppress the excetion.
+                        // In case running the scenario tests, HttpClient will complain it is not the first time running,
+                        // the property can't be changed. Just suppress the execution.
                     }
 
                     this.DataFactoryClient.StopIntegrationRuntimeAsync(

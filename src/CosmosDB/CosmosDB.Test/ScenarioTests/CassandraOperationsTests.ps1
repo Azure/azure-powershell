@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Test Cassandra CRUD cmdlets using Name paramter set
+Test Cassandra CRUD cmdlets using Name parameter set
 #>
 function Test-CassandraCreateUpdateGetCmdlets
 {
@@ -150,7 +150,7 @@ function Test-CassandraCreateUpdateGetCmdlets
 
 <#
 .SYNOPSIS
-Test Cassandra CRUD cmdlets using Parent Object and InputObject paramter set
+Test Cassandra CRUD cmdlets using Parent Object and InputObject parameter set
 #>
 function Test-CassandraCreateUpdateGetCmdletsByPiping
 {
@@ -249,7 +249,7 @@ function Test-CassandraCreateUpdateGetCmdletsByPiping
 
 <#
 .SYNOPSIS
-Test Cassandra Throughput cmdlets using all paramter sets
+Test Cassandra Throughput cmdlets using all parameter sets
 #>
 function Test-CassandraThroughputCmdlets
 {

@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
-    /// Weekly rentention schedule.
+    /// Weekly retention schedule.
     /// </summary>
     public class WeeklyRetentionSchedule : RetentionScheduleBase
     {
@@ -442,7 +442,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
-    /// Monthly rentention schedule.
+    /// Monthly retention schedule.
     /// </summary>
     public class MonthlyRetentionSchedule : RetentionScheduleBase
     {
@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
-    /// Yearly rentention schedule.
+    /// Yearly retention schedule.
     /// </summary>
     public class YearlyRetentionSchedule : RetentionScheduleBase
     {
@@ -625,7 +625,7 @@ public void Validate(ScheduleRunType ScheduleRunFrequency = 0, int MinDuration =
     }
 
     /// <summary>
-    /// Daily rentention format.
+    /// Daily retention format.
     /// </summary>
     public class DailyRetentionFormat
     {
@@ -672,7 +672,7 @@ public void Validate(ScheduleRunType ScheduleRunFrequency = 0, int MinDuration =
     }
 
     /// <summary>
-    /// Weekly rentention format.
+    /// Weekly retention format.
     /// </summary>
     public class WeeklyRetentionFormat
     {

@@ -67,7 +67,7 @@ ExpiresAt     : 3/30/2022 10:29:53 AM +00:00
 SasCredential :
 ```
 
-Enable remort support by providing consent.
+Enable remote support by providing consent.
 In this case, user is not prompted for consent
 
 ## PARAMETERS

@@ -373,7 +373,7 @@ directive:
       verb: Set
     remove: true
 
-  # In "Microsoft.HybridCompute/stable/2024-07-10/HybridCompute.json" service team just to use "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}" and "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/extensions/{extensionName}", so remvoe ohter subjects.
+  # In "Microsoft.HybridCompute/stable/2024-07-10/HybridCompute.json" service team just to use "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}" and "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/extensions/{extensionName}", so remove other subjects.
   - where:
       subject: MachinePatch|AssessMachinePatch|Gateway|License|LicenseProfile|MachineRunCommand|AgentVersion|ExtensionMetadata|HybridIdentityMetadata|NetworkProfile|Setting
     remove: true

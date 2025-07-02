@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='location'>
         /// The name of the Azure region.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<SubscriptionQuotaItem> List(this INetAppResourceQuotaLimitsOperations operations, string location)
+        public static Microsoft.Rest.Azure.IPage<SubscriptionQuotaItem> List(this INetAppResourceQuotaLimitsOperations operations, string location)
         {
                 return ((INetAppResourceQuotaLimitsOperations)operations).ListAsync(location).GetAwaiter().GetResult();
         }
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<SubscriptionQuotaItem>> ListAsync(this INetAppResourceQuotaLimitsOperations operations, string location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SubscriptionQuotaItem>> ListAsync(this INetAppResourceQuotaLimitsOperations operations, string location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
             {
@@ -80,6 +80,39 @@ namespace Microsoft.Azure.Management.NetApp
         public static async System.Threading.Tasks.Task<SubscriptionQuotaItem> GetAsync(this INetAppResourceQuotaLimitsOperations operations, string location, string quotaLimitName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(location, quotaLimitName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Get the default and current limits for quotas
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<SubscriptionQuotaItem> ListNext(this INetAppResourceQuotaLimitsOperations operations, string nextPageLink)
+        {
+                return ((INetAppResourceQuotaLimitsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get the default and current limits for quotas
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SubscriptionQuotaItem>> ListNextAsync(this INetAppResourceQuotaLimitsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

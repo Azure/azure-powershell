@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
     public class RemoveAzureOperationalInsightsStorageInsightCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
-            HelpMessage = "The workspace that containts the storage insight.")]
+            HelpMessage = "The workspace that contains the storage insight.")]
         [ValidateNotNull]
         public PSWorkspace Workspace { get; set; }
 

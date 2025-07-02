@@ -124,7 +124,7 @@
     <value>Are you sure you want to remove the gateway '{0}' in the data factory '{1}'?</value>
   </data>
   <data name="DataFactoryGatewayExists" xml:space="preserve">
-    <value>A gateway with the name {0} already exsits in the data factory {1}.</value>
+    <value>A gateway with the name {0} already exists in the data factory {1}.</value>
   </data>
   <data name="DataFactoryGatewayRemoving" xml:space="preserve">
     <value>Removing the gateway '{0}' in the data factory '{1}'.</value>

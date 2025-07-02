@@ -886,7 +886,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 }
                 else if (string.Compare(subProtectionPolicy.PolicyType, "Log") == 0)
                 {
-                    // timeZone paased as input but not used in below method calls
+                    // timeZone passed as input but not used in below method calls
                     azureVmWorkloadPolicyModel.LogBackupSchedulePolicy = PolicyHelpers.GetPSLogSchedulePolicy((ServiceClientModel.LogSchedulePolicy)
                     subProtectionPolicy.SchedulePolicy,
                     ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone);

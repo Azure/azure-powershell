@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a AutonomousDatabase</summary>
+    /// <summary>update a AutonomousDatabase</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/autonomousDatabases/{autonomousdatabasename}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzOracleAutonomousDatabase_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabase))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Description(@"Update a AutonomousDatabase")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Description(@"update a AutonomousDatabase")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/autonomousDatabases/{autonomousdatabasename}", ApiVersion = "2023-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/autonomousDatabases/{autonomousdatabasename}", ApiVersion = "2025-03-01")]
     public partial class UpdateAzOracleAutonomousDatabase_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IContext
@@ -386,15 +386,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         public string OpenMode { get => _propertiesBody.OpenMode ?? null; set => _propertiesBody.OpenMode = value; }
 
         /// <summary>
-        /// The database OCID of the Disaster Recovery peer database, which is located in a different region from the current peer
-        /// database.
+        /// The Azure resource ID of the Disaster Recovery peer database, which is located in a different region from the current
+        /// peer database.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The database OCID of the Disaster Recovery peer database, which is located in a different region from the current peer database.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Azure resource ID of the Disaster Recovery peer database, which is located in a different region from the current peer database.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The database OCID of the Disaster Recovery peer database, which is located in a different region from the current peer database.",
+        Description = @"The Azure resource ID of the Disaster Recovery peer database, which is located in a different region from the current peer database.",
         SerializedName = @"peerDbId",
         PossibleTypes = new [] { typeof(string) })]
         public string PeerDbId { get => _propertiesBody.PeerDbId ?? null; set => _propertiesBody.PeerDbId = value; }

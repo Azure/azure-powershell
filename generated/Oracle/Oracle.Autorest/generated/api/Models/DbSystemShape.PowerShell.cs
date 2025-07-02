@@ -120,9 +120,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
+            if (content.Contains("ComputeModel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).ComputeModel = (string) content.GetValueForProperty("ComputeModel",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).ComputeModel, global::System.Convert.ToString);
+            }
             if (content.Contains("ShapeFamily"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).ShapeFamily = (string) content.GetValueForProperty("ShapeFamily",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).ShapeFamily, global::System.Convert.ToString);
+            }
+            if (content.Contains("ShapeName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).ShapeName = (string) content.GetValueForProperty("ShapeName",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).ShapeName, global::System.Convert.ToString);
             }
             if (content.Contains("AvailableCoreCount"))
             {
@@ -199,6 +207,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("AvailableCoreCountPerNode"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).AvailableCoreCountPerNode = (int?) content.GetValueForProperty("AvailableCoreCountPerNode",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).AvailableCoreCountPerNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AreServerTypesSupported"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).AreServerTypesSupported = (bool?) content.GetValueForProperty("AreServerTypesSupported",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).AreServerTypesSupported, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("DisplayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).DisplayName, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -261,9 +277,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
+            if (content.Contains("ComputeModel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).ComputeModel = (string) content.GetValueForProperty("ComputeModel",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).ComputeModel, global::System.Convert.ToString);
+            }
             if (content.Contains("ShapeFamily"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).ShapeFamily = (string) content.GetValueForProperty("ShapeFamily",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).ShapeFamily, global::System.Convert.ToString);
+            }
+            if (content.Contains("ShapeName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).ShapeName = (string) content.GetValueForProperty("ShapeName",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).ShapeName, global::System.Convert.ToString);
             }
             if (content.Contains("AvailableCoreCount"))
             {
@@ -340,6 +364,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("AvailableCoreCountPerNode"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).AvailableCoreCountPerNode = (int?) content.GetValueForProperty("AvailableCoreCountPerNode",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).AvailableCoreCountPerNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AreServerTypesSupported"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).AreServerTypesSupported = (bool?) content.GetValueForProperty("AreServerTypesSupported",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).AreServerTypesSupported, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("DisplayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal)this).DisplayName, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

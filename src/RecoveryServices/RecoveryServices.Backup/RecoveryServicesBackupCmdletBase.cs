@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         /// <summary>
         /// Wrapper method which executes the cmdlet processing blocks. 
-        /// Catches and logs any exception occuring during the execution.
+        /// Catches and logs any exception occurring during the execution.
         /// </summary>
         /// <param name="action">Delegate representing the cmdlet processing block</param>
         /// <param name="shouldProcess"></param>

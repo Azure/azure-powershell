@@ -10,7 +10,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support
     public partial struct OSDiskCreateOption :
         System.IEquatable<OSDiskCreateOption>
     {
+        /// <summary>Utilize the local storage of the host machine.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.OSDiskCreateOption Ephemeral = @"Ephemeral";
+
+        /// <summary>Utilize a storage appliance backed volume to host the disk.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.OSDiskCreateOption Persistent = @"Persistent";
 
         /// <summary>the value for an instance of the <see cref="OSDiskCreateOption" /> Enum.</summary>
         private string _value { get; set; }

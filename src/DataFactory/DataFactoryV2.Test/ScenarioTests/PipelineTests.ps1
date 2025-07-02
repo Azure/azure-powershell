@@ -65,7 +65,7 @@ function Test-Pipeline
 <#
 .SYNOPSIS
 Creates a sample pipeline with all of its dependencies. Then does a Get to compare the results.
-Delete sthe created pipeline with resource id at the end.
+Deletes the created pipeline with resource id at the end.
 #>
 function Test-PipelineWithResourceId
 {
@@ -110,7 +110,7 @@ function Test-PipelineWithResourceId
 <#
 .SYNOPSIS
 Creates a sample pipeline with all of its dependencies. Then does a Get to compare the results.
-Delete sthe created pipeline with resource id at the end.
+Deletes the created pipeline with resource id at the end.
 #>
 function Test-PipelineWithExistsActivity
 {

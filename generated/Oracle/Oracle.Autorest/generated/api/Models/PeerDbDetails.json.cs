@@ -76,6 +76,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
                 return;
             }
             {_peerDbId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("peerDbId"), out var __jsonPeerDbId) ? (string)__jsonPeerDbId : (string)_peerDbId;}
+            {_peerDbOcid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("peerDbOcid"), out var __jsonPeerDbOcid) ? (string)__jsonPeerDbOcid : (string)_peerDbOcid;}
+            {_peerDbLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("peerDbLocation"), out var __jsonPeerDbLocation) ? (string)__jsonPeerDbLocation : (string)_peerDbLocation;}
             AfterFromJson(json);
         }
 
@@ -99,6 +101,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
                 return container;
             }
             AddIf( null != (((object)this._peerDbId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._peerDbId.ToString()) : null, "peerDbId" ,container.Add );
+            AddIf( null != (((object)this._peerDbOcid)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._peerDbOcid.ToString()) : null, "peerDbOcid" ,container.Add );
+            AddIf( null != (((object)this._peerDbLocation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._peerDbLocation.ToString()) : null, "peerDbLocation" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

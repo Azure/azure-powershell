@@ -35,7 +35,7 @@ $env = @{}
 function setupEnv() {
     Write-Warning "Need to use  Az.Resources module, Please check if installed  Az.Resources(1.8.0 or Greater)."
     # Az.KeyVault,, Az.CosmosDB Az.KeyVault(2.0.0 or Greater),  and Az.CosmosDB(0.1.4 or Greater)
-    # Import az moduel
+    # Import az module
     # Import-Module -Name Az.Resources
     # Import-Module -Name Az.KeyVault
     # Import-Module -Name Az.CosmosDB
@@ -151,7 +151,7 @@ function setupEnv() {
     # deploy key vault
     Write-Host -ForegroundColor Green "Start deploying key vault for test..."
     $keyVaultPara = Get-Content (Join-Path $PSScriptRoot '.\deployment-templates\key-vault\parameters.json') | ConvertFrom-Json
-    $keyVaultPara.parameters.key_valut_name.value = $env.name
+    $keyVaultPara.parameters.key_vault_name.value = $env.name
     set-content -Path (Join-Path $PSScriptRoot '.\deployment-templates\key-vault\parameters.json') -Value (ConvertTo-Json $keyVaultPara)
     New-AzDeployment -Mode Incremental -TemplateFile (Join-Path $PSScriptRoot '.\deployment-templates\key-vault\template.json') -TemplateParameterFile (Join-Path $PSScriptRoot '.\deployment-templates\key-vault\parameters.json') -ResourceGroupName $env.resourceGroup
 

@@ -48,7 +48,7 @@ use-extension:
   "@autorest/powershell": "4.x"
 
 directive:
-  # The regex(^/(?<scope>[^/]+)/) mathch failed because the scope inlcude '/' character.
+  # The regex(^/(?<scope>[^/]+)/) match failed because the scope include '/' character.
   # Replace regex to fixed it. 
   - from: source-file-csharp
     where: $

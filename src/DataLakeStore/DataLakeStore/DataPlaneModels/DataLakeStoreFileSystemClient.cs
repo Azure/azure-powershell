@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 }
             }
 
-            // Keep this outside if block because it is also used for diagnostic file loggind for BulkCopy
+            // Keep this outside if block because it is also used for diagnostic file logging for BulkCopy
             _adlsLoggerConfig = new LoggingConfiguration();
             if (_isDebugEnabled)
             {
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             {
                 System.Progress<AclProcessorStats> progressTracker = null;
                 ProgressRecord progress = null;
-                // If passing null, then we do not want progreess tracking
+                // If passing null, then we do not want progress tracking
                 if (trackProgress)
                 {
                     progress = new ProgressRecord(_uniqueActivityIdGenerator.Next(0, 10000000),
@@ -344,13 +344,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="sourcePath">Source Path</param>
         /// <param name="accountName">Account name</param>
         /// <param name="destinationPath">Destination path</param>
-        /// <returns>True if rename is successful else fale</returns>
+        /// <returns>True if rename is successful else false</returns>
         public bool RenameFileOrDirectory(string sourcePath, string accountName, string destinationPath)
         {
             return AdlsClientFactory.GetAdlsClient(accountName, _context).Rename(sourcePath, destinationPath);
         }
         /// <summary>
-        /// Reads the lines, updates the number of lines and returns the last positio of \r or \n in the byte buffer.
+        /// Reads the lines, updates the number of lines and returns the last position of \r or \n in the byte buffer.
         /// If a combined newline (\r\n), the index returned is that of the first character in the sequence.
         /// </summary>
         /// <param name="buffer">The buffer to search in.</param>
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                             charPos -= bytesPerChar;
                         }
                     }
-                    // prevPos will always point to the last byte of the charcter previous to \n or \r
+                    // prevPos will always point to the last byte of the character previous to \n or \r
                     prevPos = charPos;
                 }
             }
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     readerAdl.Seek(initialOffset, SeekOrigin.Begin);
 
                     int dataActuallyRead = readerAdl.Read(buffer, 0, dataPerRead);
-                    // Reads the lines, updates the number of lines and returns the last poisiotn of \r or \n
+                    // Reads the lines, updates the number of lines and returns the last position of \r or \n
                     int newLineOffset = ReadNewLinesReverse(buffer, dataActuallyRead, encoding, numRows, ref toReturn, ref readRows);
                     if (newLineOffset != -1)
                     {
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="path">File Path</param>
         /// <param name="accountName">Account name</param>
         /// <param name="numThreads">Concurrency</param>
-        /// <param name="cancelToken">Cancelation token</param>
+        /// <param name="cancelToken">Cancellation token</param>
         /// <returns></returns>
         public ContentSummary GetContentSummary(string path, string accountName, int numThreads, CancellationToken cancelToken)
         {
@@ -818,7 +818,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         #region private helpers
         /// <summary>
-        /// Tracks the task and shows the task progress or debug nessages after a regular interval in the PowerShell console.
+        /// Tracks the task and shows the task progress or debug messages after a regular interval in the PowerShell console.
         /// Call this method only if you want to do something for a task - like show progress, show debug messages
         /// </summary>
         /// <param name="task">The task that tracks the upload.</param>

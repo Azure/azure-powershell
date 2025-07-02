@@ -47,6 +47,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public int? ComputeCount { get => this._computeCount; set => this._computeCount = value; }
 
+        /// <summary>Backing field for <see cref="ComputeModel" /> property.</summary>
+        private string _computeModel;
+
+        /// <summary>The compute model of the Exadata Infrastructure</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public string ComputeModel { get => this._computeModel; }
+
         /// <summary>Backing field for <see cref="CpuCount" /> property.</summary>
         private int? _cpuCount;
 
@@ -73,6 +80,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public double? DataStorageSizeInTb { get => this._dataStorageSizeInTb; }
 
+        /// <summary>Backing field for <see cref="DatabaseServerType" /> property.</summary>
+        private string _databaseServerType;
+
+        /// <summary>The database server model type of the cloud Exadata infrastructure resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public string DatabaseServerType { get => this._databaseServerType; set => this._databaseServerType = value; }
+
         /// <summary>Backing field for <see cref="DbNodeStorageSizeInGb" /> property.</summary>
         private int? _dbNodeStorageSizeInGb;
 
@@ -88,6 +102,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public string DbServerVersion { get => this._dbServerVersion; }
+
+        /// <summary>Backing field for <see cref="DefinedFileSystemConfiguration" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDefinedFileSystemConfiguration> _definedFileSystemConfiguration;
+
+        /// <summary>Defined file system configurations</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDefinedFileSystemConfiguration> DefinedFileSystemConfiguration { get => this._definedFileSystemConfiguration; }
 
         /// <summary>Backing field for <see cref="DisplayName" /> property.</summary>
         private string _displayName;
@@ -254,6 +275,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// <summary>Internal Acessors for AvailableStorageSizeInGb</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.AvailableStorageSizeInGb { get => this._availableStorageSizeInGb; set { {_availableStorageSizeInGb = value;} } }
 
+        /// <summary>Internal Acessors for ComputeModel</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.ComputeModel { get => this._computeModel; set { {_computeModel = value;} } }
+
         /// <summary>Internal Acessors for CpuCount</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.CpuCount { get => this._cpuCount; set { {_cpuCount = value;} } }
 
@@ -266,20 +290,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// <summary>Internal Acessors for DbServerVersion</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.DbServerVersion { get => this._dbServerVersion; set { {_dbServerVersion = value;} } }
 
+        /// <summary>Internal Acessors for DefinedFileSystemConfiguration</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDefinedFileSystemConfiguration> Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.DefinedFileSystemConfiguration { get => this._definedFileSystemConfiguration; set { {_definedFileSystemConfiguration = value;} } }
+
         /// <summary>Internal Acessors for EstimatedPatchingTime</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTime Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.EstimatedPatchingTime { get => (this._estimatedPatchingTime = this._estimatedPatchingTime ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.EstimatedPatchingTime()); set { {_estimatedPatchingTime = value;} } }
 
         /// <summary>Internal Acessors for EstimatedPatchingTimeEstimatedDbServerPatchingTime</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.EstimatedPatchingTimeEstimatedDbServerPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedDbServerPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedDbServerPatchingTime = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.EstimatedPatchingTimeEstimatedDbServerPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedDbServerPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedDbServerPatchingTime = value ?? default(int); }
 
         /// <summary>Internal Acessors for EstimatedPatchingTimeEstimatedNetworkSwitchesPatchingTime</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.EstimatedPatchingTimeEstimatedNetworkSwitchesPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedNetworkSwitchesPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedNetworkSwitchesPatchingTime = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.EstimatedPatchingTimeEstimatedNetworkSwitchesPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedNetworkSwitchesPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedNetworkSwitchesPatchingTime = value ?? default(int); }
 
         /// <summary>Internal Acessors for EstimatedPatchingTimeEstimatedStorageServerPatchingTime</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.EstimatedPatchingTimeEstimatedStorageServerPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedStorageServerPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedStorageServerPatchingTime = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.EstimatedPatchingTimeEstimatedStorageServerPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedStorageServerPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).EstimatedStorageServerPatchingTime = value ?? default(int); }
 
         /// <summary>Internal Acessors for EstimatedPatchingTimeTotalEstimatedPatchingTime</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.EstimatedPatchingTimeTotalEstimatedPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).TotalEstimatedPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).TotalEstimatedPatchingTime = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.EstimatedPatchingTimeTotalEstimatedPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).TotalEstimatedPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).TotalEstimatedPatchingTime = value ?? default(int); }
 
         /// <summary>Internal Acessors for LastMaintenanceRunId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.LastMaintenanceRunId { get => this._lastMaintenanceRunId; set { {_lastMaintenanceRunId = value;} } }
@@ -391,6 +418,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public int? StorageCount { get => this._storageCount; set => this._storageCount = value; }
 
+        /// <summary>Backing field for <see cref="StorageServerType" /> property.</summary>
+        private string _storageServerType;
+
+        /// <summary>The storage server model type of the cloud Exadata infrastructure resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public string StorageServerType { get => this._storageServerType; set => this._storageServerType = value; }
+
         /// <summary>Backing field for <see cref="StorageServerVersion" /> property.</summary>
         private string _storageServerVersion;
 
@@ -476,6 +510,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"computeCount",
         PossibleTypes = new [] { typeof(int) })]
         int? ComputeCount { get; set; }
+        /// <summary>The compute model of the Exadata Infrastructure</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The compute model of the Exadata Infrastructure",
+        SerializedName = @"computeModel",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("ECPU", "OCPU")]
+        string ComputeModel { get;  }
         /// <summary>The total number of CPU cores allocated.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -514,6 +560,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"dataStorageSizeInTbs",
         PossibleTypes = new [] { typeof(double) })]
         double? DataStorageSizeInTb { get;  }
+        /// <summary>The database server model type of the cloud Exadata infrastructure resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"The database server model type of the cloud Exadata infrastructure resource.",
+        SerializedName = @"databaseServerType",
+        PossibleTypes = new [] { typeof(string) })]
+        string DatabaseServerType { get; set; }
         /// <summary>The local node storage to be allocated in GBs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -538,6 +595,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"dbServerVersion",
         PossibleTypes = new [] { typeof(string) })]
         string DbServerVersion { get;  }
+        /// <summary>Defined file system configurations</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Defined file system configurations",
+        SerializedName = @"definedFileSystemConfiguration",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDefinedFileSystemConfiguration) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDefinedFileSystemConfiguration> DefinedFileSystemConfiguration { get;  }
         /// <summary>The name for the Exadata infrastructure.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = true,
@@ -883,7 +951,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         string ProvisioningState { get;  }
         /// <summary>The model name of the cloud Exadata infrastructure resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -903,6 +971,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"storageCount",
         PossibleTypes = new [] { typeof(int) })]
         int? StorageCount { get; set; }
+        /// <summary>The storage server model type of the cloud Exadata infrastructure resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"The storage server model type of the cloud Exadata infrastructure resource.",
+        SerializedName = @"storageServerType",
+        PossibleTypes = new [] { typeof(string) })]
+        string StorageServerType { get; set; }
         /// <summary>
         /// The software version of the storage servers (cells) in the Exadata infrastructure.
         /// </summary>
@@ -960,6 +1039,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         int? AvailableStorageSizeInGb { get; set; }
         /// <summary>The number of compute servers for the cloud Exadata infrastructure.</summary>
         int? ComputeCount { get; set; }
+        /// <summary>The compute model of the Exadata Infrastructure</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("ECPU", "OCPU")]
+        string ComputeModel { get; set; }
         /// <summary>The total number of CPU cores allocated.</summary>
         int? CpuCount { get; set; }
         /// <summary>
@@ -971,12 +1053,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICustomerContact> CustomerContact { get; set; }
         /// <summary>The quantity of data in the database, in terabytes.</summary>
         double? DataStorageSizeInTb { get; set; }
+        /// <summary>The database server model type of the cloud Exadata infrastructure resource.</summary>
+        string DatabaseServerType { get; set; }
         /// <summary>The local node storage to be allocated in GBs.</summary>
         int? DbNodeStorageSizeInGb { get; set; }
         /// <summary>
         /// The software version of the database servers (dom0) in the Exadata infrastructure.
         /// </summary>
         string DbServerVersion { get; set; }
+        /// <summary>Defined file system configurations</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDefinedFileSystemConfiguration> DefinedFileSystemConfiguration { get; set; }
         /// <summary>The name for the Exadata infrastructure.</summary>
         string DisplayName { get; set; }
         /// <summary>
@@ -1070,6 +1156,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         string Shape { get; set; }
         /// <summary>The number of storage servers for the cloud Exadata infrastructure.</summary>
         int? StorageCount { get; set; }
+        /// <summary>The storage server model type of the cloud Exadata infrastructure resource.</summary>
+        string StorageServerType { get; set; }
         /// <summary>
         /// The software version of the storage servers (cells) in the Exadata infrastructure.
         /// </summary>

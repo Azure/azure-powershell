@@ -23,7 +23,7 @@ Trigger the continuation of an update for a cluster with a matching update strat
 Invoke-AzNetworkCloudClusterContinueVersionUpdate -ResourceGroupName resourceGroupName -ClusterName clusterName -SubscriptionId subscriptionId -MachineGroupTargetingMode "AlphaByRack"  
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IClusterContinueUpdateVersionParameters
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterContinueUpdateVersionParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 .Outputs
@@ -101,7 +101,7 @@ param(
     [Parameter(ParameterSetName='Continue', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ContinueViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IClusterContinueUpdateVersionParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterContinueUpdateVersionParameters]
     # ClusterContinueUpdateVersionParameters represents the body of the request to continue the update of a cluster version.
     # To construct, see NOTES section for CLUSTERCONTINUEUPDATEVERSIONPARAMETER properties and create a hash table.
     ${ClusterContinueUpdateVersionParameter},

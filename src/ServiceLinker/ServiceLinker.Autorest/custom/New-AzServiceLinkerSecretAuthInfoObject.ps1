@@ -44,7 +44,7 @@ function New-AzServiceLinkerSecretAuthInfoObject {
         [Parameter(HelpMessage="The Key Vault Uri of secret.")]
         [string]
         $SecretKeyVaultUri,
-        [Parameter(HelpMessage="The name of secret in keyvault refenced by -SecretStoreKeyVaultId.")]
+        [Parameter(HelpMessage="The name of secret in keyvault referenced by -SecretStoreKeyVaultId.")]
         [string]
         $SecretNameInKeyVault
     )

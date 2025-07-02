@@ -66,7 +66,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
                 return;
             }
             {_shapeFamily = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("shapeFamily"), out var __jsonShapeFamily) ? (string)__jsonShapeFamily : (string)_shapeFamily;}
-            {_availableCoreCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("availableCoreCount"), out var __jsonAvailableCoreCount) ? (int?)__jsonAvailableCoreCount : _availableCoreCount;}
+            {_shapeName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("shapeName"), out var __jsonShapeName) ? (string)__jsonShapeName : (string)_shapeName;}
+            {_availableCoreCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("availableCoreCount"), out var __jsonAvailableCoreCount) ? (int)__jsonAvailableCoreCount : _availableCoreCount;}
             {_minimumCoreCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("minimumCoreCount"), out var __jsonMinimumCoreCount) ? (int?)__jsonMinimumCoreCount : _minimumCoreCount;}
             {_runtimeMinimumCoreCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("runtimeMinimumCoreCount"), out var __jsonRuntimeMinimumCoreCount) ? (int?)__jsonRuntimeMinimumCoreCount : _runtimeMinimumCoreCount;}
             {_coreCountIncrement = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("coreCountIncrement"), out var __jsonCoreCountIncrement) ? (int?)__jsonCoreCountIncrement : _coreCountIncrement;}
@@ -85,6 +86,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {_minimumNodeCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("minimumNodeCount"), out var __jsonMinimumNodeCount) ? (int?)__jsonMinimumNodeCount : _minimumNodeCount;}
             {_maximumNodeCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("maximumNodeCount"), out var __jsonMaximumNodeCount) ? (int?)__jsonMaximumNodeCount : _maximumNodeCount;}
             {_availableCoreCountPerNode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("availableCoreCountPerNode"), out var __jsonAvailableCoreCountPerNode) ? (int?)__jsonAvailableCoreCountPerNode : _availableCoreCountPerNode;}
+            {_computeModel = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("computeModel"), out var __jsonComputeModel) ? (string)__jsonComputeModel : (string)_computeModel;}
+            {_areServerTypesSupported = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonBoolean>("areServerTypesSupported"), out var __jsonAreServerTypesSupported) ? (bool?)__jsonAreServerTypesSupported : _areServerTypesSupported;}
+            {_displayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("displayName"), out var __jsonDisplayName) ? (string)__jsonDisplayName : (string)_displayName;}
             AfterFromJson(json);
         }
 
@@ -119,86 +123,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 return container;
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._shapeFamily)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._shapeFamily.ToString()) : null, "shapeFamily" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._availableCoreCount ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._availableCoreCount) : null, "availableCoreCount" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._minimumCoreCount ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._minimumCoreCount) : null, "minimumCoreCount" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._runtimeMinimumCoreCount ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._runtimeMinimumCoreCount) : null, "runtimeMinimumCoreCount" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._coreCountIncrement ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._coreCountIncrement) : null, "coreCountIncrement" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._minStorageCount ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._minStorageCount) : null, "minStorageCount" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._maxStorageCount ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._maxStorageCount) : null, "maxStorageCount" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._availableDataStoragePerServerInTb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((double)this._availableDataStoragePerServerInTb) : null, "availableDataStoragePerServerInTbs" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._availableMemoryPerNodeInGb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._availableMemoryPerNodeInGb) : null, "availableMemoryPerNodeInGbs" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._availableDbNodePerNodeInGb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._availableDbNodePerNodeInGb) : null, "availableDbNodePerNodeInGbs" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._minCoreCountPerNode ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._minCoreCountPerNode) : null, "minCoreCountPerNode" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._availableMemoryInGb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._availableMemoryInGb) : null, "availableMemoryInGbs" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._minMemoryPerNodeInGb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._minMemoryPerNodeInGb) : null, "minMemoryPerNodeInGbs" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._availableDbNodeStorageInGb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._availableDbNodeStorageInGb) : null, "availableDbNodeStorageInGbs" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._minDbNodeStoragePerNodeInGb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._minDbNodeStoragePerNodeInGb) : null, "minDbNodeStoragePerNodeInGbs" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._availableDataStorageInTb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._availableDataStorageInTb) : null, "availableDataStorageInTbs" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._minDataStorageInTb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._minDataStorageInTb) : null, "minDataStorageInTbs" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._minimumNodeCount ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._minimumNodeCount) : null, "minimumNodeCount" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._maximumNodeCount ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._maximumNodeCount) : null, "maximumNodeCount" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._availableCoreCountPerNode ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._availableCoreCountPerNode) : null, "availableCoreCountPerNode" ,container.Add );
-            }
+            AddIf( null != (((object)this._shapeFamily)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._shapeFamily.ToString()) : null, "shapeFamily" ,container.Add );
+            AddIf( null != (((object)this._shapeName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._shapeName.ToString()) : null, "shapeName" ,container.Add );
+            AddIf( (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber(this._availableCoreCount), "availableCoreCount" ,container.Add );
+            AddIf( null != this._minimumCoreCount ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._minimumCoreCount) : null, "minimumCoreCount" ,container.Add );
+            AddIf( null != this._runtimeMinimumCoreCount ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._runtimeMinimumCoreCount) : null, "runtimeMinimumCoreCount" ,container.Add );
+            AddIf( null != this._coreCountIncrement ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._coreCountIncrement) : null, "coreCountIncrement" ,container.Add );
+            AddIf( null != this._minStorageCount ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._minStorageCount) : null, "minStorageCount" ,container.Add );
+            AddIf( null != this._maxStorageCount ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._maxStorageCount) : null, "maxStorageCount" ,container.Add );
+            AddIf( null != this._availableDataStoragePerServerInTb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((double)this._availableDataStoragePerServerInTb) : null, "availableDataStoragePerServerInTbs" ,container.Add );
+            AddIf( null != this._availableMemoryPerNodeInGb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._availableMemoryPerNodeInGb) : null, "availableMemoryPerNodeInGbs" ,container.Add );
+            AddIf( null != this._availableDbNodePerNodeInGb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._availableDbNodePerNodeInGb) : null, "availableDbNodePerNodeInGbs" ,container.Add );
+            AddIf( null != this._minCoreCountPerNode ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._minCoreCountPerNode) : null, "minCoreCountPerNode" ,container.Add );
+            AddIf( null != this._availableMemoryInGb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._availableMemoryInGb) : null, "availableMemoryInGbs" ,container.Add );
+            AddIf( null != this._minMemoryPerNodeInGb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._minMemoryPerNodeInGb) : null, "minMemoryPerNodeInGbs" ,container.Add );
+            AddIf( null != this._availableDbNodeStorageInGb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._availableDbNodeStorageInGb) : null, "availableDbNodeStorageInGbs" ,container.Add );
+            AddIf( null != this._minDbNodeStoragePerNodeInGb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._minDbNodeStoragePerNodeInGb) : null, "minDbNodeStoragePerNodeInGbs" ,container.Add );
+            AddIf( null != this._availableDataStorageInTb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._availableDataStorageInTb) : null, "availableDataStorageInTbs" ,container.Add );
+            AddIf( null != this._minDataStorageInTb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._minDataStorageInTb) : null, "minDataStorageInTbs" ,container.Add );
+            AddIf( null != this._minimumNodeCount ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._minimumNodeCount) : null, "minimumNodeCount" ,container.Add );
+            AddIf( null != this._maximumNodeCount ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._maximumNodeCount) : null, "maximumNodeCount" ,container.Add );
+            AddIf( null != this._availableCoreCountPerNode ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._availableCoreCountPerNode) : null, "availableCoreCountPerNode" ,container.Add );
+            AddIf( null != (((object)this._computeModel)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._computeModel.ToString()) : null, "computeModel" ,container.Add );
+            AddIf( null != this._areServerTypesSupported ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonBoolean((bool)this._areServerTypesSupported) : null, "areServerTypesSupported" ,container.Add );
+            AddIf( null != (((object)this._displayName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._displayName.ToString()) : null, "displayName" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

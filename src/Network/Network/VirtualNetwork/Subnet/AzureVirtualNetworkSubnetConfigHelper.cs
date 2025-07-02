@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
 
         private void RemoveExistingServiceWithoutIdentifier(PSSubnet subnet, PSServiceEndpoint item)
         {
-            //delete any existing Service with the same name but without NetworkIdentier
+            //delete any existing Service with the same name but without NetworkIdentifier
             var existingService = subnet.ServiceEndpoints.FirstOrDefault(s => s.Service == item.Service && s.NetworkIdentifier == null);
             if (existingService != null)
             {

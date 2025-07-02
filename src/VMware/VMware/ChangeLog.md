@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.8.0
 * Updated the AVS VMware cmdlets api version to `2024-09-01`. 
 * Added cmdlet:
     - `Get-AzVMwareHost`

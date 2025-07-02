@@ -152,7 +152,7 @@ function Update-AzLoad {
     
     process {
         try {
-            # if encyyption identity has a value, populate the encryption identity type and encryption identity resource id
+            # if encryption identity has a value, populate the encryption identity type and encryption identity resource id
             # if encryption identity has value SystemAssigned, populate the encryption identity type as SystemAssigned and encryption identity resource id as null
             # else populate the encryption identity type as UserAssigned and encryption identity resource id as the value of encryption identity
             if ($PSBoundParameters.ContainsKey('EncryptionIdentity')) {

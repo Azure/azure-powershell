@@ -1,3 +1,9 @@
+parameters:
+- name: TestChangedModulesOnly
+  displayName: 'Only run tests on modules that are changed by regeneration'
+  type: string
+  default: 'True'
+
 variables:
   IntermediateStepTimeoutInMinutes: 30
   GenerateTimeoutInMinutes: 120
@@ -78,6 +84,8 @@ stages:
           script: |
             $prepareModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'prepare.ps1'
             & $prepareModulesPath -RepoRoot "$(Build.SourcesDirectory)" -MaxParallelJobs "${{ variables.MaxParallelGenerateJobs }}"
+        env:
+          SKIPPED_MODULES: $(SkippedModules)
 
       - task: PublishPipelineArtifact@1
         displayName: 'Upload generated targets'
@@ -212,7 +220,7 @@ stages:
               -ChangedFiles $changedFiles `
               -RepoRoot "$(Build.SourcesDirectory)"
         env:
-            RUN_TEST_ON_ALL_MODULES: $(RUN_TEST_ON_ALL_MODULES)
+            TEST_CHANGED_MODULES_ONLY: ${{ parameters.TestChangedModulesOnly }}
 
       - task: PublishPipelineArtifact@1
         displayName: 'Upload filtered targets'

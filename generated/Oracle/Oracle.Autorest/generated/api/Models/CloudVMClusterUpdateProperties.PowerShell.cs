@@ -84,6 +84,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdatePropertiesInternal)this).StorageSizeInGb = (int?) content.GetValueForProperty("StorageSizeInGb",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdatePropertiesInternal)this).StorageSizeInGb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
+            if (content.Contains("FileSystemConfigurationDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdatePropertiesInternal)this).FileSystemConfigurationDetail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails>) content.GetValueForProperty("FileSystemConfigurationDetail",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdatePropertiesInternal)this).FileSystemConfigurationDetail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.FileSystemConfigurationDetailsTypeConverter.ConvertFrom));
+            }
             if (content.Contains("DataStorageSizeInTb"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdatePropertiesInternal)this).DataStorageSizeInTb = (double?) content.GetValueForProperty("DataStorageSizeInTb",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdatePropertiesInternal)this).DataStorageSizeInTb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
@@ -156,6 +160,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("StorageSizeInGb"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdatePropertiesInternal)this).StorageSizeInGb = (int?) content.GetValueForProperty("StorageSizeInGb",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdatePropertiesInternal)this).StorageSizeInGb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("FileSystemConfigurationDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdatePropertiesInternal)this).FileSystemConfigurationDetail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails>) content.GetValueForProperty("FileSystemConfigurationDetail",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterUpdatePropertiesInternal)this).FileSystemConfigurationDetail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.FileSystemConfigurationDetailsTypeConverter.ConvertFrom));
             }
             if (content.Contains("DataStorageSizeInTb"))
             {

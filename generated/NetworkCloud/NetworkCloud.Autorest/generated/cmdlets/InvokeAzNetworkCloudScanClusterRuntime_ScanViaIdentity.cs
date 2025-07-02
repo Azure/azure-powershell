@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Triggers the execution of a runtime protection scan to detect and remediate detected issues, in accordance with the cluster configuration.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/scanRuntime", ApiVersion = "2024-07-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/scanRuntime", ApiVersion = "2025-02-01")]
     public partial class InvokeAzNetworkCloudScanClusterRuntime_ScanViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener
     {
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.NetworkCloud Client => Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Module.Instance.ClientAPI;
 
         /// <summary>Backing field for <see cref="ClusterScanRuntimeParameter" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IClusterScanRuntimeParameters _clusterScanRuntimeParameter;
+        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterScanRuntimeParameters _clusterScanRuntimeParameter;
 
         /// <summary>
         /// ClusterScanRuntimeParameters defines the parameters for the cluster scan runtime operation.
@@ -62,8 +62,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"ClusterScanRuntimeParameters defines the parameters for the cluster scan runtime operation.",
         SerializedName = @"clusterScanRuntimeParameters",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IClusterScanRuntimeParameters) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IClusterScanRuntimeParameters ClusterScanRuntimeParameter { get => this._clusterScanRuntimeParameter; set => this._clusterScanRuntimeParameter = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterScanRuntimeParameters) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterScanRuntimeParameters ClusterScanRuntimeParameter { get => this._clusterScanRuntimeParameter; set => this._clusterScanRuntimeParameter = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet

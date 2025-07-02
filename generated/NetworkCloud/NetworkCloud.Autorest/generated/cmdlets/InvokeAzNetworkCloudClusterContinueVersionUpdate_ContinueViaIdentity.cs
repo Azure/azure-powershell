@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Trigger the continuation of an update for a cluster with a matching update strategy that has paused after completing a segment of the update.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/continueUpdateVersion", ApiVersion = "2024-07-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/continueUpdateVersion", ApiVersion = "2025-02-01")]
     public partial class InvokeAzNetworkCloudClusterContinueVersionUpdate_ContinueViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener
     {
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         /// <summary>
         /// Backing field for <see cref="ClusterContinueUpdateVersionParameter" /> property.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IClusterContinueUpdateVersionParameters _clusterContinueUpdateVersionParameter;
+        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterContinueUpdateVersionParameters _clusterContinueUpdateVersionParameter;
 
         /// <summary>
         /// ClusterContinueUpdateVersionParameters represents the body of the request to continue the update of a cluster version.
@@ -64,8 +64,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"ClusterContinueUpdateVersionParameters represents the body of the request to continue the update of a cluster version.",
         SerializedName = @"clusterContinueUpdateVersionParameters",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IClusterContinueUpdateVersionParameters) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IClusterContinueUpdateVersionParameters ClusterContinueUpdateVersionParameter { get => this._clusterContinueUpdateVersionParameter; set => this._clusterContinueUpdateVersionParameter = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterContinueUpdateVersionParameters) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterContinueUpdateVersionParameters ClusterContinueUpdateVersionParameter { get => this._clusterContinueUpdateVersionParameter; set => this._clusterContinueUpdateVersionParameter = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet

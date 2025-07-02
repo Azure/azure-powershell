@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         const string ByWorkspaceNameByName = "ByWorkspaceNameByName";
 
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObjectByName, Mandatory = true, ValueFromPipeline = true,
-            HelpMessage = "The workspace that containts the datasource(s).")]
+            HelpMessage = "The workspace that contains the datasource(s).")]
         [Parameter(ParameterSetName = ByWorkspaceObjectByKind)]
         [ValidateNotNull]
         public PSWorkspace Workspace { get; set; }

@@ -112,7 +112,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             }
             if (content.Contains("IsProtected"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).IsProtected = (bool?) content.GetValueForProperty("IsProtected",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).IsProtected, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).IsProtected = (bool) content.GetValueForProperty("IsProtected",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).IsProtected, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("LifecycleState"))
             {
@@ -124,11 +124,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             }
             if (content.Contains("TimeCreated"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).TimeCreated = (global::System.DateTime?) content.GetValueForProperty("TimeCreated",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).TimeCreated, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).TimeCreated = (global::System.DateTime) content.GetValueForProperty("TimeCreated",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).TimeCreated, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("TimeUpdated"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).TimeUpdated = (global::System.DateTime?) content.GetValueForProperty("TimeUpdated",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).TimeUpdated, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).TimeUpdated = (global::System.DateTime) content.GetValueForProperty("TimeUpdated",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).TimeUpdated, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("ProvisioningState"))
             {
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             }
             if (content.Contains("IsProtected"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).IsProtected = (bool?) content.GetValueForProperty("IsProtected",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).IsProtected, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).IsProtected = (bool) content.GetValueForProperty("IsProtected",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).IsProtected, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("LifecycleState"))
             {
@@ -173,11 +173,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             }
             if (content.Contains("TimeCreated"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).TimeCreated = (global::System.DateTime?) content.GetValueForProperty("TimeCreated",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).TimeCreated, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).TimeCreated = (global::System.DateTime) content.GetValueForProperty("TimeCreated",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).TimeCreated, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("TimeUpdated"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).TimeUpdated = (global::System.DateTime?) content.GetValueForProperty("TimeUpdated",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).TimeUpdated, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).TimeUpdated = (global::System.DateTime) content.GetValueForProperty("TimeUpdated",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateViewPropertiesInternal)this).TimeUpdated, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("ProvisioningState"))
             {

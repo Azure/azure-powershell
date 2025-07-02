@@ -158,7 +158,7 @@ function New-AzLoad {
 
     process {
         try {
-            # if encyyption identity has a value, populate the encryption identity type and encryption identity resource id
+            # if encryption identity has a value, populate the encryption identity type and encryption identity resource id
             # add the managed identity to the list of user assigned identities
             if ($PSBoundParameters.ContainsKey('EncryptionIdentity')) {
                 $null = $PSBoundParameters.Add("EncryptionIdentityResourceId", $PSBoundParameters['EncryptionIdentity'])

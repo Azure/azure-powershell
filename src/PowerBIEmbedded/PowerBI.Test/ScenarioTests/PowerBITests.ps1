@@ -53,7 +53,7 @@ function Test-PowerBIEmbeddedCapacity
 		Assert-AreEqual "Microsoft.PowerBIDedicated/capacities" $capacityUpdated.Type
 		Assert-True {$capacityUpdated.Id -like "*$resourceGroupName*"}
 
-		# List all capacitys in resource group
+		# List all capacities in resource group
 		[array]$capacitysInResourceGroup = Get-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName
 		Assert-True {$capacitysInResourceGroup.Count -ge 1}
 
@@ -94,7 +94,7 @@ function Test-PowerBIEmbeddedCapacity
 
 		# Suspend PowerBI Embedded capacity
 		$capacityGetItem = Suspend-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru
-		# this is to ensure backward compatibility compatibility. The servie side would make change to differenciate state and provisioningState in future
+		# this is to ensure backward compatibility compatibility. The service side would make change to differentiate state and provisioningState in future
 		Assert-True {$capacityGetItem.State -like "Paused"}
 		Assert-AreEqual $resourceGroupName $capacityGetItem.ResourceGroup
 
@@ -158,7 +158,7 @@ function Test-PowerBIEmbeddedCapacityScale
 		Assert-AreEqual A2 $capacityUpdated.Sku
 
 		$capacityGetItem = Suspend-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru
-		# this is to ensure backward compatibility compatibility. The servie side would make change to differenciate state and provisioningState in future
+		# this is to ensure backward compatibility compatibility. The service side would make change to differentiate state and provisioningState in future
 		Assert-True {$capacityGetItem.State -like "Paused"}
 
 		# Scale down A2 -> A1

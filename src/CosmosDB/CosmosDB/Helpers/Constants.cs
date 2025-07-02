@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         //Sql cmdlets help messages
         public const string DatabaseNameHelpMessage = "Database name.";
         public const string ContainerNameHelpMessage = "Container name.";
-        public const string StoredProcedureNameHelpMessage = "Stored Prcodecure Name.";
+        public const string StoredProcedureNameHelpMessage = "Stored Procedure Name.";
         public const string UserDefinedFunctionNameHelpMessage = "User Defined Function Name.";
         public const string TriggerNameHelpMessage = "Trigger name.";
         public const string SqlIndexingPolicyHelpMessage = "Indexing Policy Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlIndexingPolicy.";
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ManagedCassandraClientCertificatesHelpMessage = "If specified, enables client certificate authentication to the Cassandra API.";
         public const string ManagedCassandraNodeCountHelpMessage = "The number of Cassandra virtual machines in this data center. The minimum value is 3.";
         public const string ManagedCassandraExternalGossipCertificatesHelpMessage = "A list of certificates that the managed cassandra data center's should accept.";
-        public const string ManagedCassandraInitialCassandraAdminPasswordHelpMessage = "The intial password to be configured when a cluster is created for AuthenticationMethod Cassandra.";
+        public const string ManagedCassandraInitialCassandraAdminPasswordHelpMessage = "The initial password to be configured when a cluster is created for AuthenticationMethod Cassandra.";
         public const string ManagedCassandraBase64EncodedCassandraYamlFragment = "This is a Base64 encoded yaml file that is a subset of cassandra.yaml. Supported fields will be honored and others will be ignored.";
         public const string ManagedCassandraDataCenterDelegatedSubnetIdHelpMessage = "The resource id of a subnet where ip addresses of the Cassandra virtual machines will be allocated. This must be in the same region as datacenter location.";
         public const string ManagedCassandraAuthenticationMethodHelpMessage = "Authentication mode can be None or Cassandra. If None, no authentication will be required to connect to the Cassandra API. If Cassandra, then passwords will be used.";

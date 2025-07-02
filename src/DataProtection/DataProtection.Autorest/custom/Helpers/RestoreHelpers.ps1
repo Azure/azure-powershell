@@ -77,7 +77,7 @@ function ValidateRestoreOptions {
 		
 		#  if RestoreAsFiles and itemLevelRecovey passed together
 		if(($RestoreTargetType -eq "RestoreAsFiles") -and $ItemLevelRecovery){
-			$errormsg = "RestoreType RestoreAsFiles doesn't support item level recovey"
+			$errormsg = "RestoreType RestoreAsFiles doesn't support item level recovery"
 			throw $errormsg
 		}
 

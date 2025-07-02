@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
     public class GetAzureOperationalInsightsStorageInsightCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
-            HelpMessage = "The workspace that containts the storage insight(s).")]
+            HelpMessage = "The workspace that contains the storage insight(s).")]
         [ValidateNotNull]
         public PSWorkspace Workspace { get; set; }
 

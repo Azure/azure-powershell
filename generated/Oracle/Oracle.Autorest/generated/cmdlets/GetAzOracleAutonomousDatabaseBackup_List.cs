@@ -12,13 +12,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
 
     /// <summary>List AutonomousDatabaseBackup resources by AutonomousDatabase</summary>
     /// <remarks>
-    /// [OpenAPI] ListByAutonomousDatabase=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/autonomousDatabases/{autonomousdatabasename}/autonomousDatabaseBackups"
+    /// [OpenAPI] ListByParent=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/autonomousDatabases/{autonomousdatabasename}/autonomousDatabaseBackups"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzOracleAutonomousDatabaseBackup_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBackup))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Description(@"List AutonomousDatabaseBackup resources by AutonomousDatabase")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/autonomousDatabases/{autonomousdatabasename}/autonomousDatabaseBackups", ApiVersion = "2023-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/autonomousDatabases/{autonomousdatabasename}/autonomousDatabaseBackups", ApiVersion = "2025-03-01")]
     public partial class GetAzOracleAutonomousDatabaseBackup_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IContext
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.AutonomousDatabaseBackupsListByAutonomousDatabase(SubscriptionId, ResourceGroupName, Autonomousdatabasename, onOk, onDefault, this, Pipeline);
+                        await this.Client.AutonomousDatabaseBackupsListByParent(SubscriptionId, ResourceGroupName, Autonomousdatabasename, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
@@ -524,7 +524,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
                         {
                             requestMessage = requestMessage.Clone(new global::System.Uri( _nextLink ),Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Method.Get );
                             await ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                            await this.Client.AutonomousDatabaseBackupsListByAutonomousDatabase_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                            await this.Client.AutonomousDatabaseBackupsListByParent_Call(requestMessage, onOk, onDefault, this, Pipeline);
                         }
                     }
                 }

@@ -983,5 +983,9 @@
   {
     "alias": "DataTransfer",
     "module": "DataTransfer"
+  },
+  {
+    "alias": "CloudHsm",
+    "module": "CloudHsm"
   }
 ]

@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public int MatchIndex { get; set; }
 
         /// <summary>
-        /// Gets or sets the numberd group.
+        /// Gets or sets the numbered group.
         /// </summary>
         [JsonProperty(PropertyName = "numberdGroup")]
         public string NumberdGroup { get; set; }

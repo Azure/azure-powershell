@@ -24,7 +24,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
-    # The name of the user that uniqely identifies it within containing lab.
+    # The name of the user that uniquely identifies it within containing lab.
     # Used in resource URIs.
     ${Name},
 

@@ -1976,7 +1976,7 @@ namespace Microsoft.Azure.Commands.Network.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to No test configuraiton is provided.
+        ///   Looks up a localized string similar to No test configuration is provided.
         /// </summary>
         internal static string TestConfiguration
         {

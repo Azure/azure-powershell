@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         private IAzureContext _context;
 
         /// <summary>
-        /// For lazy instanciating. Please use properties instead of fields.
+        /// For lazy instantiating. Please use properties instead of fields.
         /// </summary>
         private Track2VaultClient VaultClient => _vaultClient ?? (_vaultClient = new Track2VaultClient(_authFactory, _context));
         private Track2HsmClient HsmClient => _hsmClient ?? (_hsmClient = new Track2HsmClient(_authFactory, _context));

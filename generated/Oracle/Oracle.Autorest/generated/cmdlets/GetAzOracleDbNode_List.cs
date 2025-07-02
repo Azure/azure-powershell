@@ -12,13 +12,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
 
     /// <summary>List DbNode resources by CloudVmCluster</summary>
     /// <remarks>
-    /// [OpenAPI] ListByCloudVmCluster=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/cloudVmClusters/{cloudvmclustername}/dbNodes"
+    /// [OpenAPI] ListByParent=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/cloudVmClusters/{cloudvmclustername}/dbNodes"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzOracleDbNode_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNode))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Description(@"List DbNode resources by CloudVmCluster")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/cloudVmClusters/{cloudvmclustername}/dbNodes", ApiVersion = "2023-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/cloudVmClusters/{cloudvmclustername}/dbNodes", ApiVersion = "2025-03-01")]
     public partial class GetAzOracleDbNode_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IContext
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.DbNodesListByCloudVMCluster(SubscriptionId, ResourceGroupName, Cloudvmclustername, onOk, onDefault, this, Pipeline);
+                        await this.Client.DbNodesListByParent(SubscriptionId, ResourceGroupName, Cloudvmclustername, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
@@ -524,7 +524,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
                         {
                             requestMessage = requestMessage.Clone(new global::System.Uri( _nextLink ),Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Method.Get );
                             await ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                            await this.Client.DbNodesListByCloudVMCluster_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                            await this.Client.DbNodesListByParent_Call(requestMessage, onOk, onDefault, this, Pipeline);
                         }
                     }
                 }

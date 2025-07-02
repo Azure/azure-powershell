@@ -95,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecretNameInKeyVault
-The name of secret in keyvault refenced by -SecretStoreKeyVaultId.
+The name of secret in keyvault referenced by -SecretStoreKeyVaultId.
 
 ```yaml
 Type: System.String

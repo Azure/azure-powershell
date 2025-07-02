@@ -64,7 +64,7 @@ function setupEnv() {
 
 function cleanupEnv() {
     # Removing resourcegroup will clean all the resources created for testing.
-    Write-Host -ForegroundColor Green "Deleteing resource group..."
+    Write-Host -ForegroundColor Green "Deleting resource group..."
     Remove-AzResourceGroup -Name $env.resourceGroup -SubscriptionId $env.SubscriptionId
 }
 

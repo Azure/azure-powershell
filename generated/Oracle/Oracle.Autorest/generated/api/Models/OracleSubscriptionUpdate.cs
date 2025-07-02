@@ -62,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleSubscriptionUpdateProperties _property;
 
-        /// <summary>The updatable properties of the OracleSubscription.</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleSubscriptionUpdateProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.OracleSubscriptionUpdateProperties()); set => this._property = value; }
 
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         string PlanVersion { get; set; }
         /// <summary>Product code for the term unit</summary>
         string ProductCode { get; set; }
-        /// <summary>The updatable properties of the OracleSubscription.</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleSubscriptionUpdateProperties Property { get; set; }
 
     }

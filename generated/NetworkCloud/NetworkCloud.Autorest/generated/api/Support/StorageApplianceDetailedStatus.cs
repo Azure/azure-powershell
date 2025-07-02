@@ -12,6 +12,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support
     {
         public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.StorageApplianceDetailedStatus Available = @"Available";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.StorageApplianceDetailedStatus Degraded = @"Degraded";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.StorageApplianceDetailedStatus Error = @"Error";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.StorageApplianceDetailedStatus Provisioning = @"Provisioning";

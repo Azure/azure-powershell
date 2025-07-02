@@ -114,24 +114,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         public global::System.DateTime? LongTermBackupScheduleTimeOfBackup { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)Property).LongTermBackupScheduleTimeOfBackup; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)Property).LongTermBackupScheduleTimeOfBackup = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for LongTermBackupSchedule</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ILongTermBackUpScheduleDetails Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdateInternal.LongTermBackupSchedule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)Property).LongTermBackupSchedule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)Property).LongTermBackupSchedule = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ILongTermBackUpScheduleDetails Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdateInternal.LongTermBackupSchedule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)Property).LongTermBackupSchedule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)Property).LongTermBackupSchedule = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.AutonomousDatabaseUpdateProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ScheduledOperation</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdate Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdateInternal.ScheduledOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)Property).ScheduledOperation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)Property).ScheduledOperation = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdate Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdateInternal.ScheduledOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)Property).ScheduledOperation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)Property).ScheduledOperation = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ScheduledOperationDayOfWeek</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDayOfWeekUpdate Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdateInternal.ScheduledOperationDayOfWeek { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)Property).ScheduledOperationDayOfWeek; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)Property).ScheduledOperationDayOfWeek = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDayOfWeekUpdate Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdateInternal.ScheduledOperationDayOfWeek { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)Property).ScheduledOperationDayOfWeek; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)Property).ScheduledOperationDayOfWeek = value ?? null /* model class */; }
 
         /// <summary>Indicates the Autonomous Database mode.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
         public string OpenMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)Property).OpenMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)Property).OpenMode = value ?? null; }
 
         /// <summary>
-        /// The database OCID of the Disaster Recovery peer database, which is located in a different region from the current peer
-        /// database.
+        /// The Azure resource ID of the Disaster Recovery peer database, which is located in a different region from the current
+        /// peer database.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
         public string PeerDbId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)Property).PeerDbId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)Property).PeerDbId = value ?? null; }
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdateProperties _property;
 
-        /// <summary>The updatable properties of the AutonomousDatabase.</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdateProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.AutonomousDatabaseUpdateProperties()); set => this._property = value; }
 
@@ -450,8 +450,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("ReadOnly", "ReadWrite")]
         string OpenMode { get; set; }
         /// <summary>
-        /// The database OCID of the Disaster Recovery peer database, which is located in a different region from the current peer
-        /// database.
+        /// The Azure resource ID of the Disaster Recovery peer database, which is located in a different region from the current
+        /// peer database.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -459,7 +459,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         Read = false,
         Create = false,
         Update = true,
-        Description = @"The database OCID of the Disaster Recovery peer database, which is located in a different region from the current peer database.",
+        Description = @"The Azure resource ID of the Disaster Recovery peer database, which is located in a different region from the current peer database.",
         SerializedName = @"peerDbId",
         PossibleTypes = new [] { typeof(string) })]
         string PeerDbId { get; set; }
@@ -611,14 +611,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("ReadOnly", "ReadWrite")]
         string OpenMode { get; set; }
         /// <summary>
-        /// The database OCID of the Disaster Recovery peer database, which is located in a different region from the current peer
-        /// database.
+        /// The Azure resource ID of the Disaster Recovery peer database, which is located in a different region from the current
+        /// peer database.
         /// </summary>
         string PeerDbId { get; set; }
         /// <summary>The Autonomous Database permission level.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Restricted", "Unrestricted")]
         string PermissionLevel { get; set; }
-        /// <summary>The updatable properties of the AutonomousDatabase.</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdateProperties Property { get; set; }
         /// <summary>
         /// The Data Guard role of the Autonomous Container Database or Autonomous Database, if Autonomous Data Guard is enabled.

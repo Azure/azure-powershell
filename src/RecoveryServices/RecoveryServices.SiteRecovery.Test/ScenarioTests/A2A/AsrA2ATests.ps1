@@ -934,7 +934,7 @@ function Test-ReplicateProximityPlacementGroupVm {
     $job = New-AzRecoveryServicesAsrNetworkMapping -AzureToAzure -Name $primaryNetMapping -PrimaryFabric $pf -PrimaryAzureNetworkId $PrimaryAzureNetworkId -RecoveryFabric $rf -RecoveryAzureNetworkId $RecoveryAzureNetworkId
     WaitForJobCompletion -JobId $job.Name
 
-    #Reverse Conatiner mapping
+    #Reverse Container mapping
     $job = New-AzRecoveryServicesAsrProtectionContainerMapping -Name $recMappingName -Policy $policy -PrimaryProtectionContainer $rc -RecoveryProtectionContainer $pc
     WaitForJobCompletion -JobId $job.Name
     $revMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Name $recMappingName -ProtectionContainer $rc  
@@ -1077,7 +1077,7 @@ function Test-VMNicConfig {
     $job = New-AzRecoveryServicesAsrNetworkMapping -AzureToAzure -Name $primaryNetMapping -PrimaryFabric $pf -PrimaryAzureNetworkId $PrimaryAzureNetworkId -RecoveryFabric $rf -RecoveryAzureNetworkId $RecoveryAzureNetworkId
     WaitForJobCompletion -JobId $job.Name
 
-    #Reverse Conatiner mapping
+    #Reverse Container mapping
     $job = New-AzRecoveryServicesAsrProtectionContainerMapping -Name $recMappingName -Policy $policy -PrimaryProtectionContainer $rc -RecoveryProtectionContainer $pc
     WaitForJobCompletion -JobId $job.Name
     $revMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Name $recMappingName -ProtectionContainer $rc  

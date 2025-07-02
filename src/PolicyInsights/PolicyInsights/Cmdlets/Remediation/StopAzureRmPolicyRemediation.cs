@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
             {
                 var remediation = this.PolicyInsightsClient.Remediations.CancelAtResource(resourceId: rootScope, remediationName: remediationName);
                 
-                // Wait for the cancelation to complete before returning
+                // Wait for the cancellation to complete before returning
                 this.WaitForTerminalState(remediation);
                 if (this.PassThru.IsPresent)
                 {

@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "P2S Client Connection Configuration that assiociate between address and policy group")]
+            HelpMessage = "P2S Client Connection Configuration that associate between address and policy group")]
         public PSClientConnectionConfiguration[] ClientConnectionConfiguration { get; set; }
 
         [Parameter(

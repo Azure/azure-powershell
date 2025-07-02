@@ -87,4 +87,4 @@ Type                                       : microsoft.scvmm/virtualmachineinsta
 ```
 
 Update Network Interface of the SCVMM Virtual Machine.
-It might take some time to sync the MacAddewss and Ipv4Address in the response. Use `Get-AzScVmmVM` command to fetch the latest configuration of the virtual machine.
+It might take some time to sync the MacAddress and Ipv4Address in the response. Use `Get-AzScVmmVM` command to fetch the latest configuration of the virtual machine.

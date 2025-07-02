@@ -200,7 +200,7 @@ $ErrorActionPreference = "Stop"
     Read-Host;
 
 ########################################################################################################################
-# To encrypt one VM in given resource group of the logged in subscritpion, assign $vmName and uncomment below section
+# To encrypt one VM in given resource group of the logged in subscription, assign $vmName and uncomment below section
 ########################################################################################################################
 #$vmName = "Your VM Name";
 #$allVMs = Get-AzVm -ResourceGroupName $resourceGroupName -Name $vmName;

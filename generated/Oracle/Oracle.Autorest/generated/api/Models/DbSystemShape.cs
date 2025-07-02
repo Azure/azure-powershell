@@ -18,54 +18,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ProxyResource();
 
+        /// <summary>Indicates if the shape supports database and storage server types</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
+        public bool? AreServerTypesSupported { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AreServerTypesSupported; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AreServerTypesSupported = value ?? default(bool); }
+
         /// <summary>
         /// The maximum number of CPU cores that can be enabled on the DB system for this shape.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public int? AvailableCoreCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableCoreCount; }
+        public int? AvailableCoreCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableCoreCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableCoreCount = value ?? default(int); }
 
         /// <summary>
         /// The maximum number of CPU cores per database node that can be enabled for this shape. Only applicable to the flex Exadata
         /// shape and ExaCC Elastic shapes.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public int? AvailableCoreCountPerNode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableCoreCountPerNode; }
+        public int? AvailableCoreCountPerNode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableCoreCountPerNode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableCoreCountPerNode = value ?? default(int); }
 
         /// <summary>The maximum DATA storage that can be enabled for this shape.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public int? AvailableDataStorageInTb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableDataStorageInTb; }
+        public int? AvailableDataStorageInTb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableDataStorageInTb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableDataStorageInTb = value ?? default(int); }
 
         /// <summary>
         /// The maximum data storage available per storage server for this shape. Only applicable to ExaCC Elastic shapes.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public double? AvailableDataStoragePerServerInTb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableDataStoragePerServerInTb; }
+        public double? AvailableDataStoragePerServerInTb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableDataStoragePerServerInTb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableDataStoragePerServerInTb = value ?? default(double); }
 
         /// <summary>
         /// The maximum Db Node storage available per database node for this shape. Only applicable to ExaCC Elastic shapes.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public int? AvailableDbNodePerNodeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableDbNodePerNodeInGb; }
+        public int? AvailableDbNodePerNodeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableDbNodePerNodeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableDbNodePerNodeInGb = value ?? default(int); }
 
         /// <summary>The maximum Db Node storage that can be enabled for this shape.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public int? AvailableDbNodeStorageInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableDbNodeStorageInGb; }
+        public int? AvailableDbNodeStorageInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableDbNodeStorageInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableDbNodeStorageInGb = value ?? default(int); }
 
         /// <summary>The maximum memory that can be enabled for this shape.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public int? AvailableMemoryInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableMemoryInGb; }
+        public int? AvailableMemoryInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableMemoryInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableMemoryInGb = value ?? default(int); }
 
         /// <summary>
         /// The maximum memory available per database node for this shape. Only applicable to ExaCC Elastic shapes.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public int? AvailableMemoryPerNodeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableMemoryPerNodeInGb; }
+        public int? AvailableMemoryPerNodeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableMemoryPerNodeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableMemoryPerNodeInGb = value ?? default(int); }
+
+        /// <summary>The compute model of the Exadata Infrastructure</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
+        public string ComputeModel { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).ComputeModel; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).ComputeModel = value ?? null; }
 
         /// <summary>
         /// The discrete number by which the CPU core count for this shape can be increased or decreased.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public int? CoreCountIncrement { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).CoreCountIncrement; }
+        public int? CoreCountIncrement { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).CoreCountIncrement; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).CoreCountIncrement = value ?? default(int); }
+
+        /// <summary>The display name of the shape used for the DB system</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
+        public string DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).DisplayName = value ?? null; }
 
         /// <summary>
         /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -77,118 +89,76 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// The maximum number of Exadata storage servers available for the Exadata infrastructure.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public int? MaxStorageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MaxStorageCount; }
+        public int? MaxStorageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MaxStorageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MaxStorageCount = value ?? default(int); }
 
         /// <summary>The maximum number of database nodes available for this shape.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public int? MaximumNodeCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MaximumNodeCount; }
-
-        /// <summary>Internal Acessors for AvailableCoreCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal.AvailableCoreCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableCoreCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableCoreCount = value; }
-
-        /// <summary>Internal Acessors for AvailableCoreCountPerNode</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal.AvailableCoreCountPerNode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableCoreCountPerNode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableCoreCountPerNode = value; }
-
-        /// <summary>Internal Acessors for AvailableDataStorageInTb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal.AvailableDataStorageInTb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableDataStorageInTb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableDataStorageInTb = value; }
-
-        /// <summary>Internal Acessors for AvailableDataStoragePerServerInTb</summary>
-        double? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal.AvailableDataStoragePerServerInTb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableDataStoragePerServerInTb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableDataStoragePerServerInTb = value; }
-
-        /// <summary>Internal Acessors for AvailableDbNodePerNodeInGb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal.AvailableDbNodePerNodeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableDbNodePerNodeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableDbNodePerNodeInGb = value; }
-
-        /// <summary>Internal Acessors for AvailableDbNodeStorageInGb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal.AvailableDbNodeStorageInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableDbNodeStorageInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableDbNodeStorageInGb = value; }
-
-        /// <summary>Internal Acessors for AvailableMemoryInGb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal.AvailableMemoryInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableMemoryInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableMemoryInGb = value; }
-
-        /// <summary>Internal Acessors for AvailableMemoryPerNodeInGb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal.AvailableMemoryPerNodeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableMemoryPerNodeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).AvailableMemoryPerNodeInGb = value; }
-
-        /// <summary>Internal Acessors for CoreCountIncrement</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal.CoreCountIncrement { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).CoreCountIncrement; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).CoreCountIncrement = value; }
-
-        /// <summary>Internal Acessors for MaxStorageCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal.MaxStorageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MaxStorageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MaxStorageCount = value; }
-
-        /// <summary>Internal Acessors for MaximumNodeCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal.MaximumNodeCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MaximumNodeCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MaximumNodeCount = value; }
-
-        /// <summary>Internal Acessors for MinCoreCountPerNode</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal.MinCoreCountPerNode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinCoreCountPerNode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinCoreCountPerNode = value; }
-
-        /// <summary>Internal Acessors for MinDataStorageInTb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal.MinDataStorageInTb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinDataStorageInTb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinDataStorageInTb = value; }
-
-        /// <summary>Internal Acessors for MinDbNodeStoragePerNodeInGb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal.MinDbNodeStoragePerNodeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinDbNodeStoragePerNodeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinDbNodeStoragePerNodeInGb = value; }
-
-        /// <summary>Internal Acessors for MinMemoryPerNodeInGb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal.MinMemoryPerNodeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinMemoryPerNodeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinMemoryPerNodeInGb = value; }
-
-        /// <summary>Internal Acessors for MinStorageCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal.MinStorageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinStorageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinStorageCount = value; }
-
-        /// <summary>Internal Acessors for MinimumCoreCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal.MinimumCoreCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinimumCoreCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinimumCoreCount = value; }
-
-        /// <summary>Internal Acessors for MinimumNodeCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal.MinimumNodeCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinimumNodeCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinimumNodeCount = value; }
+        public int? MaximumNodeCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MaximumNodeCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MaximumNodeCount = value ?? default(int); }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeProperties Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbSystemShapeProperties()); set { {_property = value;} } }
 
-        /// <summary>Internal Acessors for RuntimeMinimumCoreCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal.RuntimeMinimumCoreCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).RuntimeMinimumCoreCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).RuntimeMinimumCoreCount = value; }
-
-        /// <summary>Internal Acessors for ShapeFamily</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapeInternal.ShapeFamily { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).ShapeFamily; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).ShapeFamily = value; }
-
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>The minimum number of CPU cores that can be enabled per node for this shape.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public int? MinCoreCountPerNode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinCoreCountPerNode; }
+        public int? MinCoreCountPerNode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinCoreCountPerNode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinCoreCountPerNode = value ?? default(int); }
 
         /// <summary>The minimum data storage that need be allocated for this shape.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public int? MinDataStorageInTb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinDataStorageInTb; }
+        public int? MinDataStorageInTb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinDataStorageInTb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinDataStorageInTb = value ?? default(int); }
 
         /// <summary>The minimum Db Node storage that need be allocated per node for this shape.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public int? MinDbNodeStoragePerNodeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinDbNodeStoragePerNodeInGb; }
+        public int? MinDbNodeStoragePerNodeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinDbNodeStoragePerNodeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinDbNodeStoragePerNodeInGb = value ?? default(int); }
 
         /// <summary>The minimum memory that need be allocated per node for this shape.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public int? MinMemoryPerNodeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinMemoryPerNodeInGb; }
+        public int? MinMemoryPerNodeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinMemoryPerNodeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinMemoryPerNodeInGb = value ?? default(int); }
 
         /// <summary>
         /// The minimum number of Exadata storage servers available for the Exadata infrastructure.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public int? MinStorageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinStorageCount; }
+        public int? MinStorageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinStorageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinStorageCount = value ?? default(int); }
 
         /// <summary>
         /// The minimum number of CPU cores that can be enabled on the DB system for this shape.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public int? MinimumCoreCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinimumCoreCount; }
+        public int? MinimumCoreCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinimumCoreCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinimumCoreCount = value ?? default(int); }
 
         /// <summary>The minimum number of database nodes available for this shape.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public int? MinimumNodeCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinimumNodeCount; }
+        public int? MinimumNodeCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinimumNodeCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).MinimumNodeCount = value ?? default(int); }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
@@ -209,41 +179,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// The runtime minimum number of CPU cores that can be enabled on the DB system for this shape.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public int? RuntimeMinimumCoreCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).RuntimeMinimumCoreCount; }
+        public int? RuntimeMinimumCoreCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).RuntimeMinimumCoreCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).RuntimeMinimumCoreCount = value ?? default(int); }
 
         /// <summary>The family of the shape used for the DB system.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string ShapeFamily { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).ShapeFamily; }
+        public string ShapeFamily { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).ShapeFamily; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).ShapeFamily = value ?? null; }
+
+        /// <summary>The shape used for the DB system.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
+        public string ShapeName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).ShapeName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).ShapeName = value ?? null; }
 
         /// <summary>
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; }
 
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -274,253 +248,300 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IProxyResource
     {
+        /// <summary>Indicates if the shape supports database and storage server types</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates if the shape supports database and storage server types",
+        SerializedName = @"areServerTypesSupported",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? AreServerTypesSupported { get; set; }
         /// <summary>
         /// The maximum number of CPU cores that can be enabled on the DB system for this shape.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The maximum number of CPU cores that can be enabled on the DB system for this shape.",
         SerializedName = @"availableCoreCount",
         PossibleTypes = new [] { typeof(int) })]
-        int? AvailableCoreCount { get;  }
+        int? AvailableCoreCount { get; set; }
         /// <summary>
         /// The maximum number of CPU cores per database node that can be enabled for this shape. Only applicable to the flex Exadata
         /// shape and ExaCC Elastic shapes.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The maximum number of CPU cores per database node that can be enabled for this shape. Only applicable to the flex Exadata shape and ExaCC Elastic shapes.",
         SerializedName = @"availableCoreCountPerNode",
         PossibleTypes = new [] { typeof(int) })]
-        int? AvailableCoreCountPerNode { get;  }
+        int? AvailableCoreCountPerNode { get; set; }
         /// <summary>The maximum DATA storage that can be enabled for this shape.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The maximum DATA storage that can be enabled for this shape.",
         SerializedName = @"availableDataStorageInTbs",
         PossibleTypes = new [] { typeof(int) })]
-        int? AvailableDataStorageInTb { get;  }
+        int? AvailableDataStorageInTb { get; set; }
         /// <summary>
         /// The maximum data storage available per storage server for this shape. Only applicable to ExaCC Elastic shapes.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The maximum data storage available per storage server for this shape. Only applicable to ExaCC Elastic shapes.",
         SerializedName = @"availableDataStoragePerServerInTbs",
         PossibleTypes = new [] { typeof(double) })]
-        double? AvailableDataStoragePerServerInTb { get;  }
+        double? AvailableDataStoragePerServerInTb { get; set; }
         /// <summary>
         /// The maximum Db Node storage available per database node for this shape. Only applicable to ExaCC Elastic shapes.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The maximum Db Node storage available per database node for this shape. Only applicable to ExaCC Elastic shapes.",
         SerializedName = @"availableDbNodePerNodeInGbs",
         PossibleTypes = new [] { typeof(int) })]
-        int? AvailableDbNodePerNodeInGb { get;  }
+        int? AvailableDbNodePerNodeInGb { get; set; }
         /// <summary>The maximum Db Node storage that can be enabled for this shape.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The maximum Db Node storage that can be enabled for this shape.",
         SerializedName = @"availableDbNodeStorageInGbs",
         PossibleTypes = new [] { typeof(int) })]
-        int? AvailableDbNodeStorageInGb { get;  }
+        int? AvailableDbNodeStorageInGb { get; set; }
         /// <summary>The maximum memory that can be enabled for this shape.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The maximum memory that can be enabled for this shape.",
         SerializedName = @"availableMemoryInGbs",
         PossibleTypes = new [] { typeof(int) })]
-        int? AvailableMemoryInGb { get;  }
+        int? AvailableMemoryInGb { get; set; }
         /// <summary>
         /// The maximum memory available per database node for this shape. Only applicable to ExaCC Elastic shapes.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The maximum memory available per database node for this shape. Only applicable to ExaCC Elastic shapes.",
         SerializedName = @"availableMemoryPerNodeInGbs",
         PossibleTypes = new [] { typeof(int) })]
-        int? AvailableMemoryPerNodeInGb { get;  }
+        int? AvailableMemoryPerNodeInGb { get; set; }
+        /// <summary>The compute model of the Exadata Infrastructure</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The compute model of the Exadata Infrastructure",
+        SerializedName = @"computeModel",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("ECPU", "OCPU")]
+        string ComputeModel { get; set; }
         /// <summary>
         /// The discrete number by which the CPU core count for this shape can be increased or decreased.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The discrete number by which the CPU core count for this shape can be increased or decreased.",
         SerializedName = @"coreCountIncrement",
         PossibleTypes = new [] { typeof(int) })]
-        int? CoreCountIncrement { get;  }
+        int? CoreCountIncrement { get; set; }
+        /// <summary>The display name of the shape used for the DB system</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The display name of the shape used for the DB system",
+        SerializedName = @"displayName",
+        PossibleTypes = new [] { typeof(string) })]
+        string DisplayName { get; set; }
         /// <summary>
         /// The maximum number of Exadata storage servers available for the Exadata infrastructure.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The maximum number of Exadata storage servers available for the Exadata infrastructure.",
         SerializedName = @"maxStorageCount",
         PossibleTypes = new [] { typeof(int) })]
-        int? MaxStorageCount { get;  }
+        int? MaxStorageCount { get; set; }
         /// <summary>The maximum number of database nodes available for this shape.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The maximum number of database nodes available for this shape.",
         SerializedName = @"maximumNodeCount",
         PossibleTypes = new [] { typeof(int) })]
-        int? MaximumNodeCount { get;  }
+        int? MaximumNodeCount { get; set; }
         /// <summary>The minimum number of CPU cores that can be enabled per node for this shape.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The minimum number of CPU cores that can be enabled per node for this shape.",
         SerializedName = @"minCoreCountPerNode",
         PossibleTypes = new [] { typeof(int) })]
-        int? MinCoreCountPerNode { get;  }
+        int? MinCoreCountPerNode { get; set; }
         /// <summary>The minimum data storage that need be allocated for this shape.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The minimum data storage that need be allocated for this shape.",
         SerializedName = @"minDataStorageInTbs",
         PossibleTypes = new [] { typeof(int) })]
-        int? MinDataStorageInTb { get;  }
+        int? MinDataStorageInTb { get; set; }
         /// <summary>The minimum Db Node storage that need be allocated per node for this shape.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The minimum Db Node storage that need be allocated per node for this shape.",
         SerializedName = @"minDbNodeStoragePerNodeInGbs",
         PossibleTypes = new [] { typeof(int) })]
-        int? MinDbNodeStoragePerNodeInGb { get;  }
+        int? MinDbNodeStoragePerNodeInGb { get; set; }
         /// <summary>The minimum memory that need be allocated per node for this shape.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The minimum memory that need be allocated per node for this shape.",
         SerializedName = @"minMemoryPerNodeInGbs",
         PossibleTypes = new [] { typeof(int) })]
-        int? MinMemoryPerNodeInGb { get;  }
+        int? MinMemoryPerNodeInGb { get; set; }
         /// <summary>
         /// The minimum number of Exadata storage servers available for the Exadata infrastructure.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The minimum number of Exadata storage servers available for the Exadata infrastructure.",
         SerializedName = @"minStorageCount",
         PossibleTypes = new [] { typeof(int) })]
-        int? MinStorageCount { get;  }
+        int? MinStorageCount { get; set; }
         /// <summary>
         /// The minimum number of CPU cores that can be enabled on the DB system for this shape.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The minimum number of CPU cores that can be enabled on the DB system for this shape.",
         SerializedName = @"minimumCoreCount",
         PossibleTypes = new [] { typeof(int) })]
-        int? MinimumCoreCount { get;  }
+        int? MinimumCoreCount { get; set; }
         /// <summary>The minimum number of database nodes available for this shape.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The minimum number of database nodes available for this shape.",
         SerializedName = @"minimumNodeCount",
         PossibleTypes = new [] { typeof(int) })]
-        int? MinimumNodeCount { get;  }
+        int? MinimumNodeCount { get; set; }
         /// <summary>
         /// The runtime minimum number of CPU cores that can be enabled on the DB system for this shape.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The runtime minimum number of CPU cores that can be enabled on the DB system for this shape.",
         SerializedName = @"runtimeMinimumCoreCount",
         PossibleTypes = new [] { typeof(int) })]
-        int? RuntimeMinimumCoreCount { get;  }
+        int? RuntimeMinimumCoreCount { get; set; }
         /// <summary>The family of the shape used for the DB system.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The family of the shape used for the DB system.",
         SerializedName = @"shapeFamily",
         PossibleTypes = new [] { typeof(string) })]
-        string ShapeFamily { get;  }
+        string ShapeFamily { get; set; }
+        /// <summary>The shape used for the DB system.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The shape used for the DB system.",
+        SerializedName = @"shapeName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ShapeName { get; set; }
 
     }
     /// DbSystemShape resource definition
     internal partial interface IDbSystemShapeInternal :
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IProxyResourceInternal
     {
+        /// <summary>Indicates if the shape supports database and storage server types</summary>
+        bool? AreServerTypesSupported { get; set; }
         /// <summary>
         /// The maximum number of CPU cores that can be enabled on the DB system for this shape.
         /// </summary>
@@ -548,10 +569,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// The maximum memory available per database node for this shape. Only applicable to ExaCC Elastic shapes.
         /// </summary>
         int? AvailableMemoryPerNodeInGb { get; set; }
+        /// <summary>The compute model of the Exadata Infrastructure</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("ECPU", "OCPU")]
+        string ComputeModel { get; set; }
         /// <summary>
         /// The discrete number by which the CPU core count for this shape can be increased or decreased.
         /// </summary>
         int? CoreCountIncrement { get; set; }
+        /// <summary>The display name of the shape used for the DB system</summary>
+        string DisplayName { get; set; }
         /// <summary>
         /// The maximum number of Exadata storage servers available for the Exadata infrastructure.
         /// </summary>
@@ -584,6 +610,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         int? RuntimeMinimumCoreCount { get; set; }
         /// <summary>The family of the shape used for the DB system.</summary>
         string ShapeFamily { get; set; }
+        /// <summary>The shape used for the DB system.</summary>
+        string ShapeName { get; set; }
 
     }
 }
