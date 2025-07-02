@@ -84,6 +84,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).EstimatedPatchingTime = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTime) content.GetValueForProperty("EstimatedPatchingTime",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).EstimatedPatchingTime, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.EstimatedPatchingTimeTypeConverter.ConvertFrom);
             }
+            if (content.Contains("DefinedFileSystemConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).DefinedFileSystemConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDefinedFileSystemConfiguration>) content.GetValueForProperty("DefinedFileSystemConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).DefinedFileSystemConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDefinedFileSystemConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DefinedFileSystemConfigurationTypeConverter.ConvertFrom));
+            }
             if (content.Contains("Ocid"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).Ocid = (string) content.GetValueForProperty("Ocid",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).Ocid, global::System.Convert.ToString);
@@ -199,6 +203,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("MonthlyStorageServerVersion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).MonthlyStorageServerVersion = (string) content.GetValueForProperty("MonthlyStorageServerVersion",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).MonthlyStorageServerVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatabaseServerType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).DatabaseServerType = (string) content.GetValueForProperty("DatabaseServerType",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).DatabaseServerType, global::System.Convert.ToString);
+            }
+            if (content.Contains("StorageServerType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).StorageServerType = (string) content.GetValueForProperty("StorageServerType",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).StorageServerType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ComputeModel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).ComputeModel = (string) content.GetValueForProperty("ComputeModel",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).ComputeModel, global::System.Convert.ToString);
             }
             if (content.Contains("MaintenanceWindowPreference"))
             {
@@ -281,6 +297,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).EstimatedPatchingTime = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTime) content.GetValueForProperty("EstimatedPatchingTime",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).EstimatedPatchingTime, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.EstimatedPatchingTimeTypeConverter.ConvertFrom);
             }
+            if (content.Contains("DefinedFileSystemConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).DefinedFileSystemConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDefinedFileSystemConfiguration>) content.GetValueForProperty("DefinedFileSystemConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).DefinedFileSystemConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDefinedFileSystemConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DefinedFileSystemConfigurationTypeConverter.ConvertFrom));
+            }
             if (content.Contains("Ocid"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).Ocid = (string) content.GetValueForProperty("Ocid",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).Ocid, global::System.Convert.ToString);
@@ -396,6 +416,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("MonthlyStorageServerVersion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).MonthlyStorageServerVersion = (string) content.GetValueForProperty("MonthlyStorageServerVersion",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).MonthlyStorageServerVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatabaseServerType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).DatabaseServerType = (string) content.GetValueForProperty("DatabaseServerType",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).DatabaseServerType, global::System.Convert.ToString);
+            }
+            if (content.Contains("StorageServerType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).StorageServerType = (string) content.GetValueForProperty("StorageServerType",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).StorageServerType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ComputeModel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).ComputeModel = (string) content.GetValueForProperty("ComputeModel",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal)this).ComputeModel, global::System.Convert.ToString);
             }
             if (content.Contains("MaintenanceWindowPreference"))
             {

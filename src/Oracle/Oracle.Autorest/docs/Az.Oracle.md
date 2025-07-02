@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Oracle
-Module Guid: 50196261-2b3a-4dac-808d-3a2a25b147cd
+Module Guid: 9eb7cf7c-0f09-484c-a6ab-9c0ae0b365ce
 Download Help Link: https://learn.microsoft.com/powershell/module/az.oracle
 Help Version: 1.0.0.0
 Locale: en-US
@@ -50,11 +50,29 @@ Get a DnsPrivateView
 ### [Get-AzOracleDnsPrivateZone](Get-AzOracleDnsPrivateZone.md)
 Get a DnsPrivateZone
 
+### [Get-AzOracleExadbVMCluster](Get-AzOracleExadbVMCluster.md)
+Get a ExadbVmCluster
+
+### [Get-AzOracleExascaleDbNode](Get-AzOracleExascaleDbNode.md)
+Get a ExascaleDbNode
+
+### [Get-AzOracleExascaleDbStorageVault](Get-AzOracleExascaleDbStorageVault.md)
+Get a ExascaleDbStorageVault
+
+### [Get-AzOracleFlexComponent](Get-AzOracleFlexComponent.md)
+Get a FlexComponent
+
+### [Get-AzOracleGiMinorVersion](Get-AzOracleGiMinorVersion.md)
+Get a GiMinorVersion
+
 ### [Get-AzOracleGiVersion](Get-AzOracleGiVersion.md)
 Get a GiVersion
 
 ### [Invoke-AzOracleActionDbNode](Invoke-AzOracleActionDbNode.md)
 VM actions on DbNode of VM Cluster by the provided filter
+
+### [Invoke-AzOracleActionExascaleDbNode](Invoke-AzOracleActionExascaleDbNode.md)
+VM actions on DbNode of ExadbVmCluster by the provided filter
 
 ### [Invoke-AzOracleSwitchoverAutonomousDatabase](Invoke-AzOracleSwitchoverAutonomousDatabase.md)
 Perform switchover action on Autonomous Database
@@ -74,6 +92,12 @@ Create a CloudVmCluster
 ### [New-AzOracleCustomerContactObject](New-AzOracleCustomerContactObject.md)
 Create an in-memory object for CustomerContact.
 
+### [New-AzOracleExadbVMCluster](New-AzOracleExadbVMCluster.md)
+Create a ExadbVmCluster
+
+### [New-AzOracleExascaleDbStorageVault](New-AzOracleExascaleDbStorageVault.md)
+Create a ExascaleDbStorageVault
+
 ### [New-AzOracleNsgCidrObject](New-AzOracleNsgCidrObject.md)
 Create an in-memory object for NsgCidr.
 
@@ -92,6 +116,18 @@ Delete a CloudVmCluster
 ### [Remove-AzOracleCloudVMClusterVM](Remove-AzOracleCloudVMClusterVM.md)
 Remove VMs from the VM Cluster
 
+### [Remove-AzOracleExadbVMCluster](Remove-AzOracleExadbVMCluster.md)
+Delete a ExadbVmCluster
+
+### [Remove-AzOracleExadbVMClusterVM](Remove-AzOracleExadbVMClusterVM.md)
+Remove VMs from the VM Cluster
+
+### [Remove-AzOracleExascaleDbStorageVault](Remove-AzOracleExascaleDbStorageVault.md)
+Delete a ExascaleDbStorageVault
+
+### [Rename-AzOracleAutonomousDatabaseDisasterRecoveryConfiguration](Rename-AzOracleAutonomousDatabaseDisasterRecoveryConfiguration.md)
+Perform ChangeDisasterRecoveryConfiguration action on Autonomous Database
+
 ### [Restore-AzOracleAutonomousDatabase](Restore-AzOracleAutonomousDatabase.md)
 Restores an Autonomous Database based on the provided request parameters.
 
@@ -103,4 +139,10 @@ Update a CloudExadataInfrastructure
 
 ### [Update-AzOracleCloudVMCluster](Update-AzOracleCloudVMCluster.md)
 Update a CloudVmCluster
+
+### [Update-AzOracleExadbVMCluster](Update-AzOracleExadbVMCluster.md)
+Update a ExadbVmCluster
+
+### [Update-AzOracleExascaleDbStorageVault](Update-AzOracleExascaleDbStorageVault.md)
+Update a ExascaleDbStorageVault
 

@@ -32,8 +32,8 @@ Describe 'New-AzNetworkCloudServicesNetwork' {
             $endpointEgressList += $additionalEgressEndpoint
             New-AzNetworkCloudServicesNetwork -CloudServicesNetworkName $cnsconfig.cnsName `
                 -ResourceGroupName $cnsconfig.resourceGroup `
-                -ExtendedLocationName $common.extendedLocation `
-                -ExtendedLocationType $common.customLocationType `
+                -ExtendedLocationName $cnsconfig.extendedLocation `
+                -ExtendedLocationType $cnsconfig.customLocationType `
                 -Location $common.Location -Tag $tagHash `
                 -AdditionalEgressEndpoint $endpointEgressList `
                 -EnableDefaultEgressEndpoint $cnsconfig.enableDefaultEgressEndpoint `
