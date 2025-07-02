@@ -19,12 +19,12 @@ API to start the assigned vm for the user.
 API to start the assigned vm for the user.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/start-azlabservicesuservm
 #>
 function Start-AzLabServicesUserVM_Start {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     param(
         [Parameter()]
@@ -37,18 +37,20 @@ function Start-AzLabServicesUserVM_Start {
         [Parameter(Mandatory)]
         [System.String]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+        # The name of the resource group.
+        # The name is case insensitive.
         ${ResourceGroupName},
 
         [Parameter(Mandatory)]
         [System.String]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+        # The name of lab service lab.
         ${LabName},
    
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
         [System.String]
-        # The name of the user that uniquely identifies it within containing lab.
-        # Used in resource URIs.
+        # Email address of the user that can use virtual machines.
         ${Email},
     
         [Parameter()]

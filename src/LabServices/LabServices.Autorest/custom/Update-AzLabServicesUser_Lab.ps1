@@ -12,20 +12,33 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+# this variant is duplicated with UpdateViaIdentityLabExpanded
+<#
+.Synopsis
+Operation to update a lab user.
+.Description
+Operation to update a lab user.
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesuser
+#>
 function Update-AzLabServicesUser_Lab {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    # The object of lab service lab.
     ${Lab},
    
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
-    # The name of the user that uniquely identifies it within containing lab.
-    # Used in resource URIs.
+    # The name of lab service user.
     ${Name},
 
     [Parameter()]
