@@ -16,12 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzWvdControlSessionHos
 
 Describe 'Invoke-AzWvdControlSessionHostProvisioning' {
     It 'PostExpanded' {
-         try {
-             Invoke-AzWvdControlSessionHostProvisioning -HostPoolName $env.AutomatedHostpoolPersistent -ResourceGroupName $env.ResourceGroupPersistent `
-            -SubscriptionId $env.subscriptionId
-         }
-         catch {
-             $_.Exception.Message.contains("There is no session host provisioning running") | Should -BeTrue
-         }
+             Update-AzWvdSessionHostManagement -ProvisioningInstanceCount 3 -ResourceGroup $env.ResourceGroupPersistent -HostPoolName $env.SHPHostPoolPersistent -SubscriptionId $env.subscriptionId
+             Invoke-AzWvdControlSessionHostProvisioning -HostPoolName $env.SHPHostPoolPersistent -ResourceGroupName $env.ResourceGroupPersistent -SubscriptionId $env.subscriptionId -CancelMessage "Giving up" -NoWait
     }
 }
