@@ -4076,6 +4076,25 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
+              label: Storage Action
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Storage Action
+        then:
+        - mentionUsers:
+            mentionees:
+            - blueww
+            - sshankMSFT
+            - golddove
+            - S-J-M
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
               label: StorageSync
         - hasLabel:
             label: Service Attention
