@@ -13,12 +13,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal
     {
 
-        /// <summary>Backing field for <see cref="Type" /> property.</summary>
-        private string _type;
+        /// <summary>Backing field for <see cref="DiffDiskSetting" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiffDiskProperties _diffDiskSetting;
+
+        /// <summary>
+        /// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiffDiskProperties DiffDiskSetting { get => (this._diffDiskSetting = this._diffDiskSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.DiffDiskProperties()); set => this._diffDiskSetting = value; }
+
+        /// <summary>Specifies the ephemeral disk settings for operating system disk.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public string DiffDiskSettingOption { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiffDiskPropertiesInternal)DiffDiskSetting).Option; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiffDiskPropertiesInternal)DiffDiskSetting).Option = value ?? null; }
+
+        /// <summary>
+        /// Gets or sets specifies the ephemeral disk placement for operating system disk. The defaulting behavior is: CacheDisk if
+        /// one is configured for the VM size otherwise ResourceDisk is used. Refer to the VM size documentation for Windows VM at
+        /// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes
+        /// to check which VM sizes exposes a cache disk. Possible values include: 'CacheDisk', 'ResourceDisk'
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public string DiffDiskSettingPlacement { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiffDiskPropertiesInternal)DiffDiskSetting).Placement; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiffDiskPropertiesInternal)DiffDiskSetting).Placement = value ?? null; }
+
+        /// <summary>Backing field for <see cref="ManagedDisk" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedDiskProperties _managedDisk;
+
+        /// <summary>The managed disk parameters.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedDiskProperties ManagedDisk { get => (this._managedDisk = this._managedDisk ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ManagedDiskProperties()); set => this._managedDisk = value; }
 
         /// <summary>The disk type used by virtual machine in hostpool session host.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
-        public string Type { get => this._type; set => this._type = value; }
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public string ManagedDiskType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedDiskPropertiesInternal)ManagedDisk).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedDiskPropertiesInternal)ManagedDisk).Type = value ?? null; }
+
+        /// <summary>Internal Acessors for DiffDiskSetting</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiffDiskProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal.DiffDiskSetting { get => (this._diffDiskSetting = this._diffDiskSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.DiffDiskProperties()); set { {_diffDiskSetting = value;} } }
+
+        /// <summary>Internal Acessors for ManagedDisk</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedDiskProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal.ManagedDisk { get => (this._managedDisk = this._managedDisk ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ManagedDiskProperties()); set { {_managedDisk = value;} } }
 
         /// <summary>Creates an new <see cref="DiskInfoProperties" /> instance.</summary>
         public DiskInfoProperties()
@@ -30,9 +62,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     public partial interface IDiskInfoProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
+        /// <summary>Specifies the ephemeral disk settings for operating system disk.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Specifies the ephemeral disk settings for operating system disk.",
+        SerializedName = @"option",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Local")]
+        string DiffDiskSettingOption { get; set; }
+        /// <summary>
+        /// Gets or sets specifies the ephemeral disk placement for operating system disk. The defaulting behavior is: CacheDisk if
+        /// one is configured for the VM size otherwise ResourceDisk is used. Refer to the VM size documentation for Windows VM at
+        /// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes
+        /// to check which VM sizes exposes a cache disk. Possible values include: 'CacheDisk', 'ResourceDisk'
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Gets or sets specifies the ephemeral disk placement for operating system disk. The defaulting behavior is: CacheDisk if one is configured for the VM size otherwise ResourceDisk is used. Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk. Possible values include: 'CacheDisk', 'ResourceDisk'",
+        SerializedName = @"placement",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("CacheDisk", "ResourceDisk")]
+        string DiffDiskSettingPlacement { get; set; }
         /// <summary>The disk type used by virtual machine in hostpool session host.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -41,16 +102,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Standard_LRS", "Premium_LRS", "StandardSSD_LRS")]
-        string Type { get; set; }
+        string ManagedDiskType { get; set; }
 
     }
     /// Disk information.
     internal partial interface IDiskInfoPropertiesInternal
 
     {
+        /// <summary>
+        /// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiffDiskProperties DiffDiskSetting { get; set; }
+        /// <summary>Specifies the ephemeral disk settings for operating system disk.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Local")]
+        string DiffDiskSettingOption { get; set; }
+        /// <summary>
+        /// Gets or sets specifies the ephemeral disk placement for operating system disk. The defaulting behavior is: CacheDisk if
+        /// one is configured for the VM size otherwise ResourceDisk is used. Refer to the VM size documentation for Windows VM at
+        /// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes
+        /// to check which VM sizes exposes a cache disk. Possible values include: 'CacheDisk', 'ResourceDisk'
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("CacheDisk", "ResourceDisk")]
+        string DiffDiskSettingPlacement { get; set; }
+        /// <summary>The managed disk parameters.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedDiskProperties ManagedDisk { get; set; }
         /// <summary>The disk type used by virtual machine in hostpool session host.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Standard_LRS", "Premium_LRS", "StandardSSD_LRS")]
-        string Type { get; set; }
+        string ManagedDiskType { get; set; }
 
     }
 }

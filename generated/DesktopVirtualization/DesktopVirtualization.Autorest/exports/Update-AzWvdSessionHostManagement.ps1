@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a SessionHostManagement.
+Update a SessionHostManagement.
 .Description
-update a SessionHostManagement.
+Update a SessionHostManagement.
 .Example
 Update-AzWvdSessionHostManagement -ResourceGroupName ResourceGroupName `
                             -HostPoolName HostPoolName `
@@ -92,6 +92,36 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
     ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("KeepAll", "KeepOne", "KeepNone")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # The policy that should be applied when the Session Host provisioning operation fails.
+    ${FailedSessionHostCleanupPolicy},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Auto", "Never", "Always")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Policy on whether a Canary VM should be provisioned during a session host provisioning operation.
+    ${ProvisioningCanaryPolicy},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.Int32]
+    # the number of session hosts to exist in the Host Pool.
+    ${ProvisioningInstanceCount},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Whether the session host should be set in drain mode following provisioning.
+    ${ProvisioningSetDrainMode},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]

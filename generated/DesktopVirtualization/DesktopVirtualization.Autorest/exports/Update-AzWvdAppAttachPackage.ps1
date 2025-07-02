@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an App Attach Package
+Update an App Attach Package
 .Description
-update an App Attach Package
+Update an App Attach Package
 .Example
 $apps = "<PackagedApplication>"
 $deps = "<PackageDependencies>"
@@ -66,7 +66,6 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 APPATTACHPACKAGE <AppAttachPackage>: 
-  Location <String>: The geo-location where the resource lives
   [CustomData <String>]: Field that can be populated with custom data and filtered on in list GET calls
   [FailHealthCheckOnStagingFailure <String>]: Parameter indicating how the health check should behave if this package fails staging
   [HostPoolReference <List<String>>]: List of Hostpool resource Ids.
@@ -99,6 +98,7 @@ APPATTACHPACKAGE <AppAttachPackage>:
   [KeyVaultUrl <String>]: URL of keyvault location to store certificate
   [PackageLookbackUrl <String>]: Lookback url to third party control plane, is null for native app attach packages
   [PackageOwnerName <String>]: Specific name of package owner, is "AppAttach" for native app attach packages
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 

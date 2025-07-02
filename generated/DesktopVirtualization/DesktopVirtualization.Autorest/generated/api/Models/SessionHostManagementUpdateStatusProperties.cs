@@ -7,9 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>
-    /// Properties bag to hold custom RP properties for sessionHostManagement Update Statuses.
-    /// </summary>
+    /// <summary>Properties bag for sessionHostManagement Update Statuses.</summary>
     public partial class SessionHostManagementUpdateStatusProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusProperties,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal
@@ -18,33 +16,60 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Backing field for <see cref="CorrelationId" /> property.</summary>
         private string _correlationId;
 
-        /// <summary>The Log Analytics.</summary>
+        /// <summary>The correlation Id for Log Analytics.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string CorrelationId { get => this._correlationId; set => this._correlationId = value; }
 
+        /// <summary>
+        /// The policy that should be applied when the Session Host provisioning operation fails.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public string FailedSessionHostCleanupPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementInternal)SessionHostManagement).FailedSessionHostCleanupPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementInternal)SessionHostManagement).FailedSessionHostCleanupPolicy = value ?? null; }
+
         /// <summary>Internal Acessors for Progress</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementOperationProgress Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal.Progress { get => (this._progress = this._progress ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagementOperationProgress()); set { {_progress = value;} } }
+
+        /// <summary>Internal Acessors for Provisioning</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostProvisioningConfigurationProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal.Provisioning { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementInternal)SessionHostManagement).Provisioning; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementInternal)SessionHostManagement).Provisioning = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SessionHostManagement</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagement Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal.SessionHostManagement { get => (this._sessionHostManagement = this._sessionHostManagement ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagement()); set { {_sessionHostManagement = value;} } }
 
         /// <summary>Internal Acessors for SessionHostManagementId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal.SessionHostManagementId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal.SessionHostManagementId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).Id = value ?? null; }
 
         /// <summary>Internal Acessors for SessionHostManagementName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal.SessionHostManagementName { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal.SessionHostManagementName { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SessionHostManagementProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal.SessionHostManagementProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementInternal)SessionHostManagement).Property; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementInternal)SessionHostManagement).Property = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal.SessionHostManagementProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementInternal)SessionHostManagement).Property; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementInternal)SessionHostManagement).Property = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SessionHostManagementSystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal.SessionHostManagementSystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal.SessionHostManagementSystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SessionHostManagementSystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal.SessionHostManagementSystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SessionHostManagementSystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal.SessionHostManagementSystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SessionHostManagementSystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal.SessionHostManagementSystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SessionHostManagementSystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal.SessionHostManagementSystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SessionHostManagementSystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal.SessionHostManagementSystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SessionHostManagementSystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal.SessionHostManagementSystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SessionHostManagementType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal.SessionHostManagementType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal.SessionHostManagementType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).Type = value ?? null; }
 
         /// <summary>Internal Acessors for Update</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolUpdateConfigurationProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal.Update { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementInternal)SessionHostManagement).Update; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementInternal)SessionHostManagement).Update = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolUpdateConfigurationProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal.Update { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementInternal)SessionHostManagement).Update; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementInternal)SessionHostManagement).Update = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Progress" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementOperationProgress _progress;
@@ -76,6 +101,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public int? ProgressTotalSessionHost { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementOperationProgressInternal)Progress).TotalSessionHost; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementOperationProgressInternal)Progress).TotalSessionHost = value ?? default(int); }
+
+        /// <summary>
+        /// Policy on whether a Canary VM should be provisioned during a session host provisioning operation.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public string ProvisioningCanaryPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementInternal)SessionHostManagement).ProvisioningCanaryPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementInternal)SessionHostManagement).ProvisioningCanaryPolicy = value ?? null; }
+
+        /// <summary>the number of session hosts to exist in the Host Pool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public int? ProvisioningInstanceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementInternal)SessionHostManagement).ProvisioningInstanceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementInternal)SessionHostManagement).ProvisioningInstanceCount = value ?? default(int); }
+
+        /// <summary>Whether the session host should be set in drain mode following provisioning.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public bool? ProvisioningSetDrainMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementInternal)SessionHostManagement).ProvisioningSetDrainMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementInternal)SessionHostManagement).ProvisioningSetDrainMode = value ?? default(bool); }
 
         /// <summary>Backing field for <see cref="ScheduledDateTime" /> property.</summary>
         private global::System.DateTime? _scheduledDateTime;
@@ -110,27 +149,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SessionHostManagementSystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SessionHostManagementSystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string SessionHostManagementSystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataCreatedBy = value ?? null; }
+        public string SessionHostManagementSystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string SessionHostManagementSystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataCreatedByType = value ?? null; }
+        public string SessionHostManagementSystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SessionHostManagementSystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SessionHostManagementSystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string SessionHostManagementSystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataLastModifiedBy = value ?? null; }
+        public string SessionHostManagementSystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string SessionHostManagementSystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataLastModifiedByType = value ?? null; }
+        public string SessionHostManagementSystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)SessionHostManagement).SystemDataLastModifiedByType; }
 
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -162,21 +201,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         }
     }
-    /// Properties bag to hold custom RP properties for sessionHostManagement Update Statuses.
+    /// Properties bag for sessionHostManagement Update Statuses.
     public partial interface ISessionHostManagementUpdateStatusProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
-        /// <summary>The Log Analytics.</summary>
+        /// <summary>The correlation Id for Log Analytics.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The Log Analytics.",
+        Description = @"The correlation Id for Log Analytics.",
         SerializedName = @"correlationId",
         PossibleTypes = new [] { typeof(string) })]
         string CorrelationId { get; set; }
+        /// <summary>
+        /// The policy that should be applied when the Session Host provisioning operation fails.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The policy that should be applied when the Session Host provisioning operation fails.",
+        SerializedName = @"failedSessionHostCleanupPolicy",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("KeepAll", "KeepOne", "KeepNone")]
+        string FailedSessionHostCleanupPolicy { get; set; }
         /// <summary>Time that the sessionHostManagement operation was created.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -236,6 +289,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"totalSessionHosts",
         PossibleTypes = new [] { typeof(int) })]
         int? ProgressTotalSessionHost { get; set; }
+        /// <summary>
+        /// Policy on whether a Canary VM should be provisioned during a session host provisioning operation.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Policy on whether a Canary VM should be provisioned during a session host provisioning operation.",
+        SerializedName = @"canaryPolicy",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Auto", "Never", "Always")]
+        string ProvisioningCanaryPolicy { get; set; }
+        /// <summary>the number of session hosts to exist in the Host Pool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"the number of session hosts to exist in the Host Pool.",
+        SerializedName = @"instanceCount",
+        PossibleTypes = new [] { typeof(int) })]
+        int? ProvisioningInstanceCount { get; set; }
+        /// <summary>Whether the session host should be set in drain mode following provisioning.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Whether the session host should be set in drain mode following provisioning.",
+        SerializedName = @"setDrainMode",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? ProvisioningSetDrainMode { get; set; }
         /// <summary>The timestamp that the update is scheduled for.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -412,12 +501,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         int? UpdateMaxVmsRemoved { get; set; }
 
     }
-    /// Properties bag to hold custom RP properties for sessionHostManagement Update Statuses.
+    /// Properties bag for sessionHostManagement Update Statuses.
     internal partial interface ISessionHostManagementUpdateStatusPropertiesInternal
 
     {
-        /// <summary>The Log Analytics.</summary>
+        /// <summary>The correlation Id for Log Analytics.</summary>
         string CorrelationId { get; set; }
+        /// <summary>
+        /// The policy that should be applied when the Session Host provisioning operation fails.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("KeepAll", "KeepOne", "KeepNone")]
+        string FailedSessionHostCleanupPolicy { get; set; }
         /// <summary>Progress information on the sessionHostManagement operation.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementOperationProgress Progress { get; set; }
         /// <summary>Time that the sessionHostManagement operation was created.</summary>
@@ -434,6 +528,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// The number of sessionHosts to be started in the sessionHostManagement operation.
         /// </summary>
         int? ProgressTotalSessionHost { get; set; }
+        /// <summary>Parameters that apply when session hosts are provisioned.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostProvisioningConfigurationProperties Provisioning { get; set; }
+        /// <summary>
+        /// Policy on whether a Canary VM should be provisioned during a session host provisioning operation.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Auto", "Never", "Always")]
+        string ProvisioningCanaryPolicy { get; set; }
+        /// <summary>the number of session hosts to exist in the Host Pool.</summary>
+        int? ProvisioningInstanceCount { get; set; }
+        /// <summary>Whether the session host should be set in drain mode following provisioning.</summary>
+        bool? ProvisioningSetDrainMode { get; set; }
         /// <summary>The timestamp that the update is scheduled for.</summary>
         global::System.DateTime? ScheduledDateTime { get; set; }
         /// <summary>

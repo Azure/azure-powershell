@@ -119,9 +119,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).Update = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolUpdateConfigurationPatchProperties) content.GetValueForProperty("Update",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).Update, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.HostPoolUpdateConfigurationPatchPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Provisioning"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).Provisioning = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostProvisioningConfigurationPatchProperties) content.GetValueForProperty("Provisioning",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).Provisioning, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostProvisioningConfigurationPatchPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ScheduledDateTimeZone"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).ScheduledDateTimeZone = (string) content.GetValueForProperty("ScheduledDateTimeZone",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).ScheduledDateTimeZone, global::System.Convert.ToString);
+            }
+            if (content.Contains("FailedSessionHostCleanupPolicy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).FailedSessionHostCleanupPolicy = (string) content.GetValueForProperty("FailedSessionHostCleanupPolicy",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).FailedSessionHostCleanupPolicy, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningCanaryPolicy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).ProvisioningCanaryPolicy = (string) content.GetValueForProperty("ProvisioningCanaryPolicy",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).ProvisioningCanaryPolicy, global::System.Convert.ToString);
             }
             if (content.Contains("UpdateDeleteOriginalVM"))
             {
@@ -138,6 +150,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("UpdateLogOffMessage"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).UpdateLogOffMessage = (string) content.GetValueForProperty("UpdateLogOffMessage",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).UpdateLogOffMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningSetDrainMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).ProvisioningSetDrainMode = (bool?) content.GetValueForProperty("ProvisioningSetDrainMode",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).ProvisioningSetDrainMode, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ProvisioningInstanceCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).ProvisioningInstanceCount = (int?) content.GetValueForProperty("ProvisioningInstanceCount",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).ProvisioningInstanceCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -164,9 +184,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).Update = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolUpdateConfigurationPatchProperties) content.GetValueForProperty("Update",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).Update, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.HostPoolUpdateConfigurationPatchPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Provisioning"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).Provisioning = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostProvisioningConfigurationPatchProperties) content.GetValueForProperty("Provisioning",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).Provisioning, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostProvisioningConfigurationPatchPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ScheduledDateTimeZone"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).ScheduledDateTimeZone = (string) content.GetValueForProperty("ScheduledDateTimeZone",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).ScheduledDateTimeZone, global::System.Convert.ToString);
+            }
+            if (content.Contains("FailedSessionHostCleanupPolicy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).FailedSessionHostCleanupPolicy = (string) content.GetValueForProperty("FailedSessionHostCleanupPolicy",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).FailedSessionHostCleanupPolicy, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningCanaryPolicy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).ProvisioningCanaryPolicy = (string) content.GetValueForProperty("ProvisioningCanaryPolicy",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).ProvisioningCanaryPolicy, global::System.Convert.ToString);
             }
             if (content.Contains("UpdateDeleteOriginalVM"))
             {
@@ -183,6 +215,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("UpdateLogOffMessage"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).UpdateLogOffMessage = (string) content.GetValueForProperty("UpdateLogOffMessage",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).UpdateLogOffMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningSetDrainMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).ProvisioningSetDrainMode = (bool?) content.GetValueForProperty("ProvisioningSetDrainMode",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).ProvisioningSetDrainMode, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ProvisioningInstanceCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).ProvisioningInstanceCount = (int?) content.GetValueForProperty("ProvisioningInstanceCount",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal)this).ProvisioningInstanceCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializePSObject(content);
         }

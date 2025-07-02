@@ -102,9 +102,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Type"))
+            if (content.Contains("ManagedDisk"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).Type, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).ManagedDisk = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedDiskProperties) content.GetValueForProperty("ManagedDisk",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).ManagedDisk, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ManagedDiskPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DiffDiskSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).DiffDiskSetting = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiffDiskProperties) content.GetValueForProperty("DiffDiskSetting",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).DiffDiskSetting, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.DiffDiskPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ManagedDiskType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).ManagedDiskType = (string) content.GetValueForProperty("ManagedDiskType",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).ManagedDiskType, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiffDiskSettingOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).DiffDiskSettingOption = (string) content.GetValueForProperty("DiffDiskSettingOption",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).DiffDiskSettingOption, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiffDiskSettingPlacement"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).DiffDiskSettingPlacement = (string) content.GetValueForProperty("DiffDiskSettingPlacement",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).DiffDiskSettingPlacement, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -123,9 +139,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Type"))
+            if (content.Contains("ManagedDisk"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).Type, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).ManagedDisk = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedDiskProperties) content.GetValueForProperty("ManagedDisk",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).ManagedDisk, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ManagedDiskPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DiffDiskSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).DiffDiskSetting = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiffDiskProperties) content.GetValueForProperty("DiffDiskSetting",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).DiffDiskSetting, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.DiffDiskPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ManagedDiskType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).ManagedDiskType = (string) content.GetValueForProperty("ManagedDiskType",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).ManagedDiskType, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiffDiskSettingOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).DiffDiskSettingOption = (string) content.GetValueForProperty("DiffDiskSettingOption",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).DiffDiskSettingOption, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiffDiskSettingPlacement"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).DiffDiskSettingPlacement = (string) content.GetValueForProperty("DiffDiskSettingPlacement",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPropertiesInternal)this).DiffDiskSettingPlacement, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

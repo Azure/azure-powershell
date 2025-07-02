@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagement))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Description(@"create a SessionHostManagement.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default", ApiVersion = "2024-11-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default", ApiVersion = "2025-03-01-preview")]
     public partial class NewAzWvdSessionHostManagement_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IContext
@@ -76,6 +76,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
+        /// <summary>
+        /// The policy that should be applied when the Session Host provisioning operation fails.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The policy that should be applied when the Session Host provisioning operation fails.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The policy that should be applied when the Session Host provisioning operation fails.",
+        SerializedName = @"failedSessionHostCleanupPolicy",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("KeepAll", "KeepOne", "KeepNone")]
+        public string FailedSessionHostCleanupPolicy { get => _sessionHostManagementBody.FailedSessionHostCleanupPolicy ?? null; set => _sessionHostManagementBody.FailedSessionHostCleanupPolicy = value; }
+
         /// <summary>Backing field for <see cref="HostPoolName" /> property.</summary>
         private string _hostPoolName;
 
@@ -117,6 +131,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.HttpPipeline Pipeline { get; set; }
+
+        /// <summary>
+        /// Policy on whether a Canary VM should be provisioned during a session host provisioning operation.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Policy on whether a Canary VM should be provisioned during a session host provisioning operation.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Policy on whether a Canary VM should be provisioned during a session host provisioning operation.",
+        SerializedName = @"canaryPolicy",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Auto", "Never", "Always")]
+        public string ProvisioningCanaryPolicy { get => _sessionHostManagementBody.ProvisioningCanaryPolicy ?? null; set => _sessionHostManagementBody.ProvisioningCanaryPolicy = value; }
+
+        /// <summary>the number of session hosts to exist in the Host Pool.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "the number of session hosts to exist in the Host Pool.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"the number of session hosts to exist in the Host Pool.",
+        SerializedName = @"instanceCount",
+        PossibleTypes = new [] { typeof(int) })]
+        public int ProvisioningInstanceCount { get => _sessionHostManagementBody.ProvisioningInstanceCount ?? default(int); set => _sessionHostManagementBody.ProvisioningInstanceCount = value; }
+
+        /// <summary>Whether the session host should be set in drain mode following provisioning.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether the session host should be set in drain mode following provisioning.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Whether the session host should be set in drain mode following provisioning.",
+        SerializedName = @"setDrainMode",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter ProvisioningSetDrainMode { get => _sessionHostManagementBody.ProvisioningSetDrainMode ?? default(global::System.Management.Automation.SwitchParameter); set => _sessionHostManagementBody.ProvisioningSetDrainMode = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a scaling plan.
+Create a scaling plan.
 .Description
-create a scaling plan.
+Create a scaling plan.
 .Example
 New-AzWvdScalingPlan `
             -ResourceGroupName ResourceGroupName `
