@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Only one of DestinationAddress/DestinationIpGroup or DestinationFqdns is allowed
-            // Eventually we may want to have exclusitivity with IpGroup too but for now not doing that
+            // Eventually we may want to have exclusivity with IpGroup too but for now not doing that
             if (((DestinationAddress != null) || (DestinationIpGroup != null)) && (DestinationFqdn != null))
             {
                 throw new ArgumentException("Both DestinationAddress or DestinationIpGroup and DestinationFqdns not allowed");

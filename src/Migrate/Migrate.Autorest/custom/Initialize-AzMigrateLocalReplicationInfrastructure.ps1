@@ -641,7 +641,7 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             $cacheStorageAccountName = "migratersa" + $suffix
             $cacheStorageAccountId = "/subscriptions/$($SubscriptionId)/resourceGroups/$($ResourceGroupName)/providers/Microsoft.Storage/storageAccounts/$($cacheStorageAccountName)"
 
-            # Check if default Cache Storage Account already exists, which it shoudln't
+            # Check if default Cache Storage Account already exists, which it shouldn't
             $cacheStorageAccount = Get-AzStorageAccount `
                 -ResourceGroupName $ResourceGroupName `
                 -Name $cacheStorageAccountName `
@@ -694,7 +694,7 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             }
 
             if ($null -eq $cacheStorageAccount -or $null -eq $cacheStorageAccount.ProvisioningState) {
-                throw "Unexpected error occurs during Cache Storgae Account creation process. Please re-run this command or provide -CacheStorageAccountId of the one created own your own."
+                throw "Unexpected error occurs during Cache Storage Account creation process. Please re-run this command or provide -CacheStorageAccountId of the one created own your own."
             }
             elseif ($cacheStorageAccount.ProvisioningState -ne [StorageAccountProvisioningState]::Succeeded) {
                 throw "Cache Storage Account with Id '$($cacheStorageAccount.Id)' times out with Provisioning State: '$($cacheStorageAccount.ProvisioningState)' during creation process. Please remove it manually and re-run this command or contact support if help needed."
@@ -705,7 +705,7 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         if ($null -eq $cacheStorageAccount -or
             $null -eq $cacheStorageAccount.ProvisioningState -or
             $cacheStorageAccount.ProvisioningState -ne [StorageAccountProvisioningState]::Succeeded) {
-            throw "Unexpected error occurs during Cache Storgae Account selection process. Please re-run this command or contact support if help needed."
+            throw "Unexpected error occurs during Cache Storage Account selection process. Please re-run this command or contact support if help needed."
         }
 
         $params = @{
