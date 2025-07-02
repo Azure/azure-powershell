@@ -1744,6 +1744,34 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.DiffDiskProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.DiffDiskProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Option</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Placement</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Option</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Placement</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.DomainInfoProperties</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.DomainInfoProperties#Multiple</TypeName>
@@ -2531,6 +2559,34 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ValidationEnvironment</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.HostPoolProvisioningControlParameter</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.HostPoolProvisioningControlParameter#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Action</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CancelMessage</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Action</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CancelMessage</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -5939,12 +5995,18 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>FailedSessionHostCleanupPolicy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ScheduledDateTimeZone</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>FailedSessionHostCleanupPolicy</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ScheduledDateTimeZone</PropertyName>
               </TableColumnItem>
@@ -5961,6 +6023,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>FailedSessionHostCleanupPolicy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ScheduledDateTimeZone</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -5968,7 +6033,136 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>FailedSessionHostCleanupPolicy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>ScheduledDateTimeZone</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagementProvisioningOperationProgress</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagementProvisioningOperationProgress#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ExecutionStartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FinalSessionHostsCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>InitialSessionHostsCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SessionHostsCompleted</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SessionHostsInProgress</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ExecutionStartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FinalSessionHostsCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InitialSessionHostsCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SessionHostsCompleted</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SessionHostsInProgress</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagementProvisioningStatus</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagementProvisioningStatus#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PercentComplete</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PercentComplete</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagementProvisioningStatusProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagementProvisioningStatusProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CorrelationId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScheduledDateTime</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CorrelationId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ScheduledDateTime</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -6283,6 +6477,74 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>VirtualMachineId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostProvisioningConfigurationPatchProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostProvisioningConfigurationPatchProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CanaryPolicy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>InstanceCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SetDrainMode</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CanaryPolicy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InstanceCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SetDrainMode</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostProvisioningConfigurationProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostProvisioningConfigurationProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CanaryPolicy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>InstanceCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SetDrainMode</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CanaryPolicy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InstanceCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SetDrainMode</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

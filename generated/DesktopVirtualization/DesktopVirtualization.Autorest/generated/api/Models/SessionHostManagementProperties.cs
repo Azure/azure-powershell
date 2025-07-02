@@ -13,8 +13,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPropertiesInternal
     {
 
+        /// <summary>Backing field for <see cref="FailedSessionHostCleanupPolicy" /> property.</summary>
+        private string _failedSessionHostCleanupPolicy;
+
+        /// <summary>
+        /// The policy that should be applied when the Session Host provisioning operation fails.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        public string FailedSessionHostCleanupPolicy { get => this._failedSessionHostCleanupPolicy; set => this._failedSessionHostCleanupPolicy = value; }
+
+        /// <summary>Internal Acessors for Provisioning</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostProvisioningConfigurationProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPropertiesInternal.Provisioning { get => (this._provisioning = this._provisioning ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostProvisioningConfigurationProperties()); set { {_provisioning = value;} } }
+
         /// <summary>Internal Acessors for Update</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolUpdateConfigurationProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPropertiesInternal.Update { get => (this._update = this._update ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.HostPoolUpdateConfigurationProperties()); set { {_update = value;} } }
+
+        /// <summary>Backing field for <see cref="Provisioning" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostProvisioningConfigurationProperties _provisioning;
+
+        /// <summary>Parameters that apply when session hosts are provisioned.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostProvisioningConfigurationProperties Provisioning { get => (this._provisioning = this._provisioning ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostProvisioningConfigurationProperties()); set => this._provisioning = value; }
+
+        /// <summary>
+        /// Policy on whether a Canary VM should be provisioned during a session host provisioning operation.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public string ProvisioningCanaryPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostProvisioningConfigurationPropertiesInternal)Provisioning).CanaryPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostProvisioningConfigurationPropertiesInternal)Provisioning).CanaryPolicy = value ?? null; }
+
+        /// <summary>the number of session hosts to exist in the Host Pool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public int? ProvisioningInstanceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostProvisioningConfigurationPropertiesInternal)Provisioning).InstanceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostProvisioningConfigurationPropertiesInternal)Provisioning).InstanceCount = value ?? default(int); }
+
+        /// <summary>Whether the session host should be set in drain mode following provisioning.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public bool? ProvisioningSetDrainMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostProvisioningConfigurationPropertiesInternal)Provisioning).SetDrainMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostProvisioningConfigurationPropertiesInternal)Provisioning).SetDrainMode = value ?? default(bool); }
 
         /// <summary>Backing field for <see cref="ScheduledDateTimeZone" /> property.</summary>
         private string _scheduledDateTimeZone;
@@ -59,6 +92,56 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     public partial interface ISessionHostManagementProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
+        /// <summary>
+        /// The policy that should be applied when the Session Host provisioning operation fails.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The policy that should be applied when the Session Host provisioning operation fails.",
+        SerializedName = @"failedSessionHostCleanupPolicy",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("KeepAll", "KeepOne", "KeepNone")]
+        string FailedSessionHostCleanupPolicy { get; set; }
+        /// <summary>
+        /// Policy on whether a Canary VM should be provisioned during a session host provisioning operation.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Policy on whether a Canary VM should be provisioned during a session host provisioning operation.",
+        SerializedName = @"canaryPolicy",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Auto", "Never", "Always")]
+        string ProvisioningCanaryPolicy { get; set; }
+        /// <summary>the number of session hosts to exist in the Host Pool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"the number of session hosts to exist in the Host Pool.",
+        SerializedName = @"instanceCount",
+        PossibleTypes = new [] { typeof(int) })]
+        int? ProvisioningInstanceCount { get; set; }
+        /// <summary>Whether the session host should be set in drain mode following provisioning.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Whether the session host should be set in drain mode following provisioning.",
+        SerializedName = @"setDrainMode",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? ProvisioningSetDrainMode { get; set; }
         /// <summary>
         /// Time zone for sessionHostManagement operations as defined in https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid.
         /// Must be set if useLocalTime is true.
@@ -123,6 +206,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     internal partial interface ISessionHostManagementPropertiesInternal
 
     {
+        /// <summary>
+        /// The policy that should be applied when the Session Host provisioning operation fails.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("KeepAll", "KeepOne", "KeepNone")]
+        string FailedSessionHostCleanupPolicy { get; set; }
+        /// <summary>Parameters that apply when session hosts are provisioned.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostProvisioningConfigurationProperties Provisioning { get; set; }
+        /// <summary>
+        /// Policy on whether a Canary VM should be provisioned during a session host provisioning operation.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Auto", "Never", "Always")]
+        string ProvisioningCanaryPolicy { get; set; }
+        /// <summary>the number of session hosts to exist in the Host Pool.</summary>
+        int? ProvisioningInstanceCount { get; set; }
+        /// <summary>Whether the session host should be set in drain mode following provisioning.</summary>
+        bool? ProvisioningSetDrainMode { get; set; }
         /// <summary>
         /// Time zone for sessionHostManagement operations as defined in https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid.
         /// Must be set if useLocalTime is true.

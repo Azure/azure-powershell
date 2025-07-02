@@ -7,10 +7,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>Disk information.</summary>
-    public partial class DiskInfoPatchProperties :
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPatchProperties,
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPatchPropertiesInternal
+    /// <summary>Managed Disk information.</summary>
+    public partial class ManagedDiskProperties :
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedDiskProperties,
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedDiskPropertiesInternal
     {
 
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
@@ -20,14 +20,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string Type { get => this._type; set => this._type = value; }
 
-        /// <summary>Creates an new <see cref="DiskInfoPatchProperties" /> instance.</summary>
-        public DiskInfoPatchProperties()
+        /// <summary>Creates an new <see cref="ManagedDiskProperties" /> instance.</summary>
+        public ManagedDiskProperties()
         {
 
         }
     }
-    /// Disk information.
-    public partial interface IDiskInfoPatchProperties :
+    /// Managed Disk information.
+    public partial interface IManagedDiskProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
         /// <summary>The disk type used by virtual machine in hostpool session host.</summary>
@@ -44,8 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string Type { get; set; }
 
     }
-    /// Disk information.
-    internal partial interface IDiskInfoPatchPropertiesInternal
+    /// Managed Disk information.
+    internal partial interface IManagedDiskPropertiesInternal
 
     {
         /// <summary>The disk type used by virtual machine in hostpool session host.</summary>

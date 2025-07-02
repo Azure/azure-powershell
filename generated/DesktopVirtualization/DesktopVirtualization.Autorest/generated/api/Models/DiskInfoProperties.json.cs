@@ -65,7 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 return;
             }
-            {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
+            {_managedDisk = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject>("managedDisk"), out var __jsonManagedDisk) ? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ManagedDiskProperties.FromJson(__jsonManagedDisk) : _managedDisk;}
+            {_diffDiskSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject>("diffDiskSettings"), out var __jsonDiffDiskSettings) ? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.DiffDiskProperties.FromJson(__jsonDiffDiskSettings) : _diffDiskSetting;}
             AfterFromJson(json);
         }
 
@@ -100,7 +101,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 return container;
             }
-            AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
+            AddIf( null != this._managedDisk ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) this._managedDisk.ToJson(null,serializationMode) : null, "managedDisk" ,container.Add );
+            AddIf( null != this._diffDiskSetting ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) this._diffDiskSetting.ToJson(null,serializationMode) : null, "diffDiskSettings" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -40,9 +40,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string CustomInfoResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).CustomInfoResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).CustomInfoResourceId = value ?? null; }
 
-        /// <summary>The disk type used by virtual machine in hostpool session host.</summary>
+        /// <summary>Specifies the ephemeral disk settings for operating system disk.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string DiskInfoType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).DiskInfoType; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).DiskInfoType = value ?? null; }
+        public string DiffDiskSettingOption { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).DiffDiskSettingOption; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).DiffDiskSettingOption = value ?? null; }
+
+        /// <summary>
+        /// Gets or sets specifies the ephemeral disk placement for operating system disk. The defaulting behavior is: CacheDisk if
+        /// one is configured for the VM size otherwise ResourceDisk is used. Refer to the VM size documentation for Windows VM at
+        /// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes
+        /// to check which VM sizes exposes a cache disk. Possible values include: 'CacheDisk', 'ResourceDisk'
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public string DiffDiskSettingPlacement { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).DiffDiskSettingPlacement; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).DiffDiskSettingPlacement = value ?? null; }
 
         /// <summary>The uri to access the secret that the password is stored in.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
@@ -59,6 +68,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>The type of image session hosts use in the hostpool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string ImageInfoImageType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).ImageInfoImageType; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).ImageInfoImageType = value ?? null; }
+
+        /// <summary>The disk type used by virtual machine in hostpool session host.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public string ManagedDiskType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).ManagedDiskType; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).ManagedDiskType = value ?? null; }
 
         /// <summary>The exact version of the image.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
@@ -77,40 +90,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         public string MarketplaceInfoSku { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).MarketplaceInfoSku; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).MarketplaceInfoSku = value ?? null; }
 
         /// <summary>Internal Acessors for ActiveDirectoryInfoDomainCredentials</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IKeyVaultCredentialsPatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.ActiveDirectoryInfoDomainCredentials { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).ActiveDirectoryInfoDomainCredentials; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).ActiveDirectoryInfoDomainCredentials = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IKeyVaultCredentialsPatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.ActiveDirectoryInfoDomainCredentials { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).ActiveDirectoryInfoDomainCredentials; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).ActiveDirectoryInfoDomainCredentials = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for BootDiagnosticsInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IBootDiagnosticsInfoPatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.BootDiagnosticsInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).BootDiagnosticsInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).BootDiagnosticsInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IBootDiagnosticsInfoPatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.BootDiagnosticsInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).BootDiagnosticsInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).BootDiagnosticsInfo = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for DiskInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.DiskInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).DiskInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).DiskInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.DiskInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).DiskInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).DiskInfo = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for DiskInfoDiffDiskSetting</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiffDiskProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.DiskInfoDiffDiskSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).DiskInfoDiffDiskSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).DiskInfoDiffDiskSetting = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for DiskInfoManagedDisk</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedDiskProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.DiskInfoManagedDisk { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).DiskInfoManagedDisk; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).DiskInfoManagedDisk = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for DomainInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDomainInfoPatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.DomainInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).DomainInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).DomainInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDomainInfoPatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.DomainInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).DomainInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).DomainInfo = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for DomainInfoActiveDirectoryInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IActiveDirectoryInfoPatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.DomainInfoActiveDirectoryInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).DomainInfoActiveDirectoryInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).DomainInfoActiveDirectoryInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IActiveDirectoryInfoPatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.DomainInfoActiveDirectoryInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).DomainInfoActiveDirectoryInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).DomainInfoActiveDirectoryInfo = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ImageInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IImageInfoPatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.ImageInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).ImageInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).ImageInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IImageInfoPatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.ImageInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).ImageInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).ImageInfo = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ImageInfoCustomInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICustomInfoPatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.ImageInfoCustomInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).ImageInfoCustomInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).ImageInfoCustomInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICustomInfoPatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.ImageInfoCustomInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).ImageInfoCustomInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).ImageInfoCustomInfo = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ImageInfoMarketplaceInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.ImageInfoMarketplaceInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).ImageInfoMarketplaceInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).ImageInfoMarketplaceInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.ImageInfoMarketplaceInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).ImageInfoMarketplaceInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).ImageInfoMarketplaceInfo = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for NetworkInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.INetworkInfoPatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.NetworkInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).NetworkInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).NetworkInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.INetworkInfoPatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.NetworkInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).NetworkInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).NetworkInfo = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationPatchProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for SecurityInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISecurityInfoPatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.SecurityInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).SecurityInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).SecurityInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISecurityInfoPatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.SecurityInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).SecurityInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).SecurityInfo = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VMAdminCredentials</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IKeyVaultCredentialsPatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.VMAdminCredentials { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).VMAdminCredentials; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).VMAdminCredentials = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IKeyVaultCredentialsPatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchInternal.VMAdminCredentials { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).VMAdminCredentials; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatchPropertiesInternal)Property).VMAdminCredentials = value ?? null /* model class */; }
 
         /// <summary>
         /// The resource ID of the security group. Any allowable/open ports should be specified in the Network Security Group(NSG).
@@ -246,18 +265,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"resourceId",
         PossibleTypes = new [] { typeof(string) })]
         string CustomInfoResourceId { get; set; }
-        /// <summary>The disk type used by virtual machine in hostpool session host.</summary>
+        /// <summary>Specifies the ephemeral disk settings for operating system disk.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The disk type used by virtual machine in hostpool session host.",
-        SerializedName = @"type",
+        Description = @"Specifies the ephemeral disk settings for operating system disk.",
+        SerializedName = @"option",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Standard_LRS", "Premium_LRS", "StandardSSD_LRS")]
-        string DiskInfoType { get; set; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Local")]
+        string DiffDiskSettingOption { get; set; }
+        /// <summary>
+        /// Gets or sets specifies the ephemeral disk placement for operating system disk. The defaulting behavior is: CacheDisk if
+        /// one is configured for the VM size otherwise ResourceDisk is used. Refer to the VM size documentation for Windows VM at
+        /// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes
+        /// to check which VM sizes exposes a cache disk. Possible values include: 'CacheDisk', 'ResourceDisk'
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Gets or sets specifies the ephemeral disk placement for operating system disk. The defaulting behavior is: CacheDisk if one is configured for the VM size otherwise ResourceDisk is used. Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk. Possible values include: 'CacheDisk', 'ResourceDisk'",
+        SerializedName = @"placement",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("CacheDisk", "ResourceDisk")]
+        string DiffDiskSettingPlacement { get; set; }
         /// <summary>The uri to access the secret that the password is stored in.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -303,6 +339,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Marketplace", "Custom")]
         string ImageInfoImageType { get; set; }
+        /// <summary>The disk type used by virtual machine in hostpool session host.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The disk type used by virtual machine in hostpool session host.",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Standard_LRS", "Premium_LRS", "StandardSSD_LRS")]
+        string ManagedDiskType { get; set; }
         /// <summary>The exact version of the image.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -514,11 +562,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string CustomConfigurationScriptUrl { get; set; }
         /// <summary>The resource id of the custom image.</summary>
         string CustomInfoResourceId { get; set; }
+        /// <summary>Specifies the ephemeral disk settings for operating system disk.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Local")]
+        string DiffDiskSettingOption { get; set; }
+        /// <summary>
+        /// Gets or sets specifies the ephemeral disk placement for operating system disk. The defaulting behavior is: CacheDisk if
+        /// one is configured for the VM size otherwise ResourceDisk is used. Refer to the VM size documentation for Windows VM at
+        /// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes
+        /// to check which VM sizes exposes a cache disk. Possible values include: 'CacheDisk', 'ResourceDisk'
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("CacheDisk", "ResourceDisk")]
+        string DiffDiskSettingPlacement { get; set; }
         /// <summary>Disk information.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoPatchProperties DiskInfo { get; set; }
-        /// <summary>The disk type used by virtual machine in hostpool session host.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Standard_LRS", "Premium_LRS", "StandardSSD_LRS")]
-        string DiskInfoType { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoProperties DiskInfo { get; set; }
+        /// <summary>
+        /// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiffDiskProperties DiskInfoDiffDiskSetting { get; set; }
+        /// <summary>The managed disk parameters.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedDiskProperties DiskInfoManagedDisk { get; set; }
         /// <summary>The uri to access the secret that the password is stored in.</summary>
         string DomainCredentialsPasswordKeyVaultSecretUri { get; set; }
         /// <summary>The uri to access the secret that the username is stored in.</summary>
@@ -542,6 +604,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// The values to uniquely identify a marketplace image. Only one should be populated based on the image type.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchProperties ImageInfoMarketplaceInfo { get; set; }
+        /// <summary>The disk type used by virtual machine in hostpool session host.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Standard_LRS", "Premium_LRS", "StandardSSD_LRS")]
+        string ManagedDiskType { get; set; }
         /// <summary>The exact version of the image.</summary>
         string MarketplaceInfoExactVersion { get; set; }
         /// <summary>The offer of the image.</summary>

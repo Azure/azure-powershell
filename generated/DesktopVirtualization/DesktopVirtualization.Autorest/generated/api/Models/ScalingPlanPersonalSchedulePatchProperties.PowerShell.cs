@@ -220,35 +220,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             }
             if (content.Contains("RampUpStartTimeHour"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampUpStartTimeHour = (int) content.GetValueForProperty("RampUpStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampUpStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampUpStartTimeHour = (int?) content.GetValueForProperty("RampUpStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampUpStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("RampUpStartTimeMinute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampUpStartTimeMinute = (int) content.GetValueForProperty("RampUpStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampUpStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampUpStartTimeMinute = (int?) content.GetValueForProperty("RampUpStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampUpStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("PeakStartTimeHour"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).PeakStartTimeHour = (int) content.GetValueForProperty("PeakStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).PeakStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).PeakStartTimeHour = (int?) content.GetValueForProperty("PeakStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).PeakStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("PeakStartTimeMinute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).PeakStartTimeMinute = (int) content.GetValueForProperty("PeakStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).PeakStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).PeakStartTimeMinute = (int?) content.GetValueForProperty("PeakStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).PeakStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("RampDownStartTimeHour"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampDownStartTimeHour = (int) content.GetValueForProperty("RampDownStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampDownStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampDownStartTimeHour = (int?) content.GetValueForProperty("RampDownStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampDownStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("RampDownStartTimeMinute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampDownStartTimeMinute = (int) content.GetValueForProperty("RampDownStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampDownStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampDownStartTimeMinute = (int?) content.GetValueForProperty("RampDownStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampDownStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("OffPeakStartTimeHour"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).OffPeakStartTimeHour = (int) content.GetValueForProperty("OffPeakStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).OffPeakStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).OffPeakStartTimeHour = (int?) content.GetValueForProperty("OffPeakStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).OffPeakStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("OffPeakStartTimeMinute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).OffPeakStartTimeMinute = (int) content.GetValueForProperty("OffPeakStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).OffPeakStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).OffPeakStartTimeMinute = (int?) content.GetValueForProperty("OffPeakStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).OffPeakStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -373,35 +373,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             }
             if (content.Contains("RampUpStartTimeHour"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampUpStartTimeHour = (int) content.GetValueForProperty("RampUpStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampUpStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampUpStartTimeHour = (int?) content.GetValueForProperty("RampUpStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampUpStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("RampUpStartTimeMinute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampUpStartTimeMinute = (int) content.GetValueForProperty("RampUpStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampUpStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampUpStartTimeMinute = (int?) content.GetValueForProperty("RampUpStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampUpStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("PeakStartTimeHour"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).PeakStartTimeHour = (int) content.GetValueForProperty("PeakStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).PeakStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).PeakStartTimeHour = (int?) content.GetValueForProperty("PeakStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).PeakStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("PeakStartTimeMinute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).PeakStartTimeMinute = (int) content.GetValueForProperty("PeakStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).PeakStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).PeakStartTimeMinute = (int?) content.GetValueForProperty("PeakStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).PeakStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("RampDownStartTimeHour"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampDownStartTimeHour = (int) content.GetValueForProperty("RampDownStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampDownStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampDownStartTimeHour = (int?) content.GetValueForProperty("RampDownStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampDownStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("RampDownStartTimeMinute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampDownStartTimeMinute = (int) content.GetValueForProperty("RampDownStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampDownStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampDownStartTimeMinute = (int?) content.GetValueForProperty("RampDownStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).RampDownStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("OffPeakStartTimeHour"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).OffPeakStartTimeHour = (int) content.GetValueForProperty("OffPeakStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).OffPeakStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).OffPeakStartTimeHour = (int?) content.GetValueForProperty("OffPeakStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).OffPeakStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("OffPeakStartTimeMinute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).OffPeakStartTimeMinute = (int) content.GetValueForProperty("OffPeakStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).OffPeakStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).OffPeakStartTimeMinute = (int?) content.GetValueForProperty("OffPeakStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)this).OffPeakStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializePSObject(content);
         }

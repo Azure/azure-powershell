@@ -78,7 +78,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
                 return;
             }
             {_update = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject>("update"), out var __jsonUpdate) ? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.HostPoolUpdateConfigurationProperties.FromJson(__jsonUpdate) : _update;}
+            {_provisioning = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject>("provisioning"), out var __jsonProvisioning) ? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostProvisioningConfigurationProperties.FromJson(__jsonProvisioning) : _provisioning;}
             {_scheduledDateTimeZone = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("scheduledDateTimeZone"), out var __jsonScheduledDateTimeZone) ? (string)__jsonScheduledDateTimeZone : (string)_scheduledDateTimeZone;}
+            {_failedSessionHostCleanupPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("failedSessionHostCleanupPolicy"), out var __jsonFailedSessionHostCleanupPolicy) ? (string)__jsonFailedSessionHostCleanupPolicy : (string)_failedSessionHostCleanupPolicy;}
             AfterFromJson(json);
         }
 
@@ -102,7 +104,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
                 return container;
             }
             AddIf( null != this._update ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) this._update.ToJson(null,serializationMode) : null, "update" ,container.Add );
+            AddIf( null != this._provisioning ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) this._provisioning.ToJson(null,serializationMode) : null, "provisioning" ,container.Add );
             AddIf( null != (((object)this._scheduledDateTimeZone)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._scheduledDateTimeZone.ToString()) : null, "scheduledDateTimeZone" ,container.Add );
+            AddIf( null != (((object)this._failedSessionHostCleanupPolicy)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._failedSessionHostCleanupPolicy.ToString()) : null, "failedSessionHostCleanupPolicy" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

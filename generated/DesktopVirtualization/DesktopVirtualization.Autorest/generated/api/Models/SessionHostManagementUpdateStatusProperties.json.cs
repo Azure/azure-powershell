@@ -7,9 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>
-    /// Properties bag to hold custom RP properties for sessionHostManagement Update Statuses.
-    /// </summary>
+    /// <summary>Properties bag for sessionHostManagement Update Statuses.</summary>
     public partial class SessionHostManagementUpdateStatusProperties
     {
 

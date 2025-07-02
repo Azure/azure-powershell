@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create an application.
+Create an application.
 .Description
-create an application.
+Create an application.
 .Example
 New-AzWvdApplication -ResourceGroupName ResourceGroupName `
                              -GroupName ApplicationGroupName `

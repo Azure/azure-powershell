@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a session host.
+Update a session host.
 .Description
-update a session host.
+Update a session host.
 .Example
 Update-AzWvdSessionHost -ResourceGroupName ResourceGroupName `
                             -HostPoolName HostPoolName `
