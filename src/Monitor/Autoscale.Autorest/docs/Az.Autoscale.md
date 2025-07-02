@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Autoscale
-Module Guid: e83a8252-8dcb-4f34-8fbf-4ded92174cad
+Module Guid: 4143e1e8-0843-4db4-b364-011977121247
 Download Help Link: https://learn.microsoft.com/powershell/module/az.autoscale
 Help Version: 1.0.0.0
 Locale: en-US
@@ -12,7 +12,7 @@ Microsoft Azure PowerShell: Autoscale cmdlets
 
 ## Az.Autoscale Cmdlets
 ### [Get-AzAutoscalePredictiveMetric](Get-AzAutoscalePredictiveMetric.md)
-get predictive autoscale metric future data
+Get predictive autoscale metric future data
 
 ### [Get-AzAutoscaleSetting](Get-AzAutoscaleSetting.md)
 Gets an autoscale setting
@@ -30,7 +30,7 @@ Create an in-memory object for ScaleRuleMetricDimension.
 Create an in-memory object for ScaleRule.
 
 ### [New-AzAutoscaleSetting](New-AzAutoscaleSetting.md)
-Creates or updates an autoscale setting.
+Create an autoscale setting.
 
 ### [New-AzAutoscaleWebhookNotificationObject](New-AzAutoscaleWebhookNotificationObject.md)
 Create an in-memory object for WebhookNotification.
