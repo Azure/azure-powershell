@@ -67,12 +67,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             }
             {_dataCollectionOption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonObject>("dataCollectionOptions"), out var __jsonDataCollectionOptions) ? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DataCollectionOptions.FromJson(__jsonDataCollectionOptions) : _dataCollectionOption;}
             {_storageSizeInGb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("storageSizeInGbs"), out var __jsonStorageSizeInGbs) ? (int?)__jsonStorageSizeInGbs : _storageSizeInGb;}
+            {_fileSystemConfigurationDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("fileSystemConfigurationDetails"), out var __jsonFileSystemConfigurationDetails) ? If( __jsonFileSystemConfigurationDetails as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails) (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.FileSystemConfigurationDetails.FromJson(__u) )) ))() : null : _fileSystemConfigurationDetail;}
             {_dataStorageSizeInTb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("dataStorageSizeInTbs"), out var __jsonDataStorageSizeInTbs) ? (double?)__jsonDataStorageSizeInTbs : _dataStorageSizeInTb;}
             {_dbNodeStorageSizeInGb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("dbNodeStorageSizeInGbs"), out var __jsonDbNodeStorageSizeInGbs) ? (int?)__jsonDbNodeStorageSizeInGbs : _dbNodeStorageSizeInGb;}
             {_memorySizeInGb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("memorySizeInGbs"), out var __jsonMemorySizeInGbs) ? (int?)__jsonMemorySizeInGbs : _memorySizeInGb;}
             {_cpuCoreCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("cpuCoreCount"), out var __jsonCpuCoreCount) ? (int?)__jsonCpuCoreCount : _cpuCoreCount;}
             {_ocpuCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("ocpuCount"), out var __jsonOcpuCount) ? (float?)__jsonOcpuCount : _ocpuCount;}
-            {_sshPublicKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("sshPublicKeys"), out var __jsonSshPublicKeys) ? If( __jsonSshPublicKeys as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _sshPublicKey;}
+            {_sshPublicKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("sshPublicKeys"), out var __jsonSshPublicKeys) ? If( __jsonSshPublicKeys as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(string) (__p is Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString __o ? (string)(__o.ToString()) : null)) ))() : null : _sshPublicKey;}
             {_licenseModel = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("licenseModel"), out var __jsonLicenseModel) ? (string)__jsonLicenseModel : (string)_licenseModel;}
             {_displayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("displayName"), out var __jsonDisplayName) ? (string)__jsonDisplayName : (string)_displayName;}
             AfterFromJson(json);
@@ -114,6 +115,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 AddIf( null != this._storageSizeInGb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._storageSizeInGb) : null, "storageSizeInGbs" ,container.Add );
             }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeUpdate))
+            {
+                if (null != this._fileSystemConfigurationDetail)
+                {
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._fileSystemConfigurationDetail )
+                    {
+                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                    }
+                    container.Add("fileSystemConfigurationDetails",__w);
+                }
+            }
             AddIf( null != this._dataStorageSizeInTb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((double)this._dataStorageSizeInTb) : null, "dataStorageSizeInTbs" ,container.Add );
             AddIf( null != this._dbNodeStorageSizeInGb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._dbNodeStorageSizeInGb) : null, "dbNodeStorageSizeInGbs" ,container.Add );
             AddIf( null != this._memorySizeInGb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._memorySizeInGb) : null, "memorySizeInGbs" ,container.Add );
@@ -121,12 +134,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             AddIf( null != this._ocpuCount ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((float)this._ocpuCount) : null, "ocpuCount" ,container.Add );
             if (null != this._sshPublicKey)
             {
-                var __w = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
-                foreach( var __x in this._sshPublicKey )
+                var __r = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
+                foreach( var __s in this._sshPublicKey )
                 {
-                    AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                    AddIf(null != (((object)__s)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(__s.ToString()) : null ,__r.Add);
                 }
-                container.Add("sshPublicKeys",__w);
+                container.Add("sshPublicKeys",__r);
             }
             AddIf( null != (((object)this._licenseModel)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._licenseModel.ToString()) : null, "licenseModel" ,container.Add );
             AddIf( null != (((object)this._displayName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._displayName.ToString()) : null, "displayName" ,container.Add );
@@ -134,12 +147,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 if (null != this._computeNode)
                 {
-                    var __r = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
-                    foreach( var __s in this._computeNode )
+                    var __m = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
+                    foreach( var __n in this._computeNode )
                     {
-                        AddIf(null != (((object)__s)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(__s.ToString()) : null ,__r.Add);
+                        AddIf(null != (((object)__n)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(__n.ToString()) : null ,__m.Add);
                     }
-                    container.Add("computeNodes",__r);
+                    container.Add("computeNodes",__m);
                 }
             }
             AfterToJson(ref container);
