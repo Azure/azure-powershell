@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWvdMsixPackage
 
 ## SYNOPSIS
-create a MSIX package.
+Create a MSIX package.
 
 ## SYNTAX
 
@@ -19,32 +19,32 @@ New-AzWvdMsixPackage -HostPoolName <String> -ResourceGroupName <String> -FullNam
  [-LastUpdated <DateTime>] [-PackageApplication <IMsixPackageApplications[]>]
  [-PackageDependency <IMsixPackageDependencies[]>] [-PackageFamilyName <String>] [-PackageName <String>]
  [-PackageRelativePath <String>] [-Version <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzWvdMsixPackage -HostPoolName <String> -ResourceGroupName <String> -FullName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzWvdMsixPackage -HostPoolName <String> -ResourceGroupName <String> -FullName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PackageAlias
 ```
 New-AzWvdMsixPackage -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DisplayName <String>] [-ImagePath <String>] [-IsActive] [-IsRegularRegistration] -PackageAlias <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a MSIX package.
+Create a MSIX package.
 
 ## EXAMPLES
 
@@ -324,21 +324,6 @@ Relative Path to the package inside the image.
 Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

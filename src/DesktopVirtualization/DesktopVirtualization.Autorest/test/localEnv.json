@@ -32,6 +32,7 @@
   "PrivateEndpointNameHP": "pwshTestPrivateEndpointHP",
   "PrivateEndpointConnectionNameHP1": "pwshTestPECHP1",
   "SHMHostPoolPersistent": "poshSHMHP",
+  "SHPHostPoolPersistent": "powershellshpHP",
   "ResourceGroupPersistent": "alecbUserSessionTests",
   "PrivateEndpointNameWS1": "pwshTestPrivateEndpointWS1",
   "PrivateEndpointNameWS": "pwshTestPrivateEndpointWS",

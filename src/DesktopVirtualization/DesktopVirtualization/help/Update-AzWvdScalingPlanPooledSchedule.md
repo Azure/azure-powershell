@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWvdScalingPlanPooledSchedule
 
 ## SYNOPSIS
-update a ScalingPlanPooledSchedule.
+Update a ScalingPlanPooledSchedule.
 
 ## SYNTAX
 
@@ -26,21 +26,21 @@ Update-AzWvdScalingPlanPooledSchedule -ResourceGroupName <String> -ScalingPlanNa
  [-RampDownStopHostsWhen <String>] [-RampDownWaitTimeMinute <Int32>] [-RampUpCapacityThresholdPct <Int32>]
  [-RampUpLoadBalancingAlgorithm <String>] [-RampUpMinimumHostsPct <Int32>] [-RampUpStartTimeHour <Int32>]
  [-RampUpStartTimeMinute <Int32>] [-ScalingMethod <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzWvdScalingPlanPooledSchedule -ResourceGroupName <String> -ScalingPlanName <String>
  -ScalingPlanScheduleName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzWvdScalingPlanPooledSchedule -ResourceGroupName <String> -ScalingPlanName <String>
  -ScalingPlanScheduleName <String> [-SubscriptionId <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityScalingPlanExpanded
@@ -56,7 +56,7 @@ Update-AzWvdScalingPlanPooledSchedule -ScalingPlanScheduleName <String>
  [-RampDownStartTimeMinute <Int32>] [-RampDownStopHostsWhen <String>] [-RampDownWaitTimeMinute <Int32>]
  [-RampUpCapacityThresholdPct <Int32>] [-RampUpLoadBalancingAlgorithm <String>]
  [-RampUpMinimumHostsPct <Int32>] [-RampUpStartTimeHour <Int32>] [-RampUpStartTimeMinute <Int32>]
- [-ScalingMethod <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-ScalingMethod <String>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -65,7 +65,7 @@ Update-AzWvdScalingPlanPooledSchedule -ScalingPlanScheduleName <String>
 Update-AzWvdScalingPlanPooledSchedule -ScalingPlanScheduleName <String>
  -ScalingPlanInputObject <IDesktopVirtualizationIdentity>
  -ScalingPlanSchedule <IScalingPlanPooledSchedulePatch> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -81,11 +81,11 @@ Update-AzWvdScalingPlanPooledSchedule -InputObject <IDesktopVirtualizationIdenti
  [-RampDownStopHostsWhen <String>] [-RampDownWaitTimeMinute <Int32>] [-RampUpCapacityThresholdPct <Int32>]
  [-RampUpLoadBalancingAlgorithm <String>] [-RampUpMinimumHostsPct <Int32>] [-RampUpStartTimeHour <Int32>]
  [-RampUpStartTimeMinute <Int32>] [-ScalingMethod <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update a ScalingPlanPooledSchedule.
+Update a ScalingPlanPooledSchedule.
 
 ## EXAMPLES
 
@@ -351,21 +351,6 @@ The minute.
 Type: System.Int32
 Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

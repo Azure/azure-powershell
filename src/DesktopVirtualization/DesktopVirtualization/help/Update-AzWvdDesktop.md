@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWvdDesktop
 
 ## SYNOPSIS
-update a desktop.
+Update a desktop.
 
 ## SYNTAX
 
@@ -16,46 +16,46 @@ update a desktop.
 ```
 Update-AzWvdDesktop -ApplicationGroupName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Description <String>] [-FriendlyName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzWvdDesktop -ApplicationGroupName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzWvdDesktop -ApplicationGroupName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityApplicationGroupExpanded
 ```
 Update-AzWvdDesktop -Name <String> -ApplicationGroupInputObject <IDesktopVirtualizationIdentity>
  [-Description <String>] [-FriendlyName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityApplicationGroup
 ```
 Update-AzWvdDesktop -Name <String> -ApplicationGroupInputObject <IDesktopVirtualizationIdentity>
- -Desktop <IDesktopPatch> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ -Desktop <IDesktopPatch> [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzWvdDesktop -InputObject <IDesktopVirtualizationIdentity> [-Description <String>]
- [-FriendlyName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-FriendlyName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update a desktop.
+Update a desktop.
 
 ## EXAMPLES
 
@@ -74,7 +74,7 @@ Name                             Type
 ApplicationGroupName/DesktopName Microsoft.DesktopVirtualization/applicationgroups/desktops
 ```
 
-This command updates a Azure Virtual Desktop Desktop in an application Group.
+This command updates a Azure Virtual Desktop Desktop in an applicaton Group.
 
 ## PARAMETERS
 
@@ -223,21 +223,6 @@ Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Upda
 Aliases: DesktopName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

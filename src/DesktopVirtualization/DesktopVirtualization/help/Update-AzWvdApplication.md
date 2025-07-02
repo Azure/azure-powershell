@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWvdApplication
 
 ## SYNOPSIS
-update an application.
+Update an application.
 
 ## SYNTAX
 
@@ -19,14 +19,14 @@ Update-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <S
  [-ApplicationType <String>] [-CommandLineArgument <String>] [-CommandLineSetting <String>]
  [-FilePath <String>] [-IconIndex <Int32>] [-IconPath <String>] [-MsixPackageApplicationId <String>]
  [-MsixPackageFamilyName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResetIcon
 ```
 Update-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Description <String>] [-FriendlyName <String>] [-ShowInPortal]
- [-SetToDefaultIcon] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-SetToDefaultIcon] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -34,14 +34,14 @@ Update-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <S
 ```
 Update-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityApplicationGroupExpanded
@@ -50,13 +50,13 @@ Update-AzWvdApplication -Name <String> [-Description <String>] [-FriendlyName <S
  -ApplicationGroupInputObject <IDesktopVirtualizationIdentity> [-ApplicationType <String>]
  [-CommandLineArgument <String>] [-CommandLineSetting <String>] [-FilePath <String>] [-IconIndex <Int32>]
  [-IconPath <String>] [-MsixPackageApplicationId <String>] [-MsixPackageFamilyName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityApplicationGroup
 ```
 Update-AzWvdApplication -Name <String> -ApplicationGroupInputObject <IDesktopVirtualizationIdentity>
- -Application <IApplicationPatch> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ -Application <IApplicationPatch> [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -66,11 +66,11 @@ Update-AzWvdApplication [-Description <String>] [-FriendlyName <String>] [-ShowI
  -InputObject <IDesktopVirtualizationIdentity> [-ApplicationType <String>] [-CommandLineArgument <String>]
  [-CommandLineSetting <String>] [-FilePath <String>] [-IconIndex <Int32>] [-IconPath <String>]
  [-MsixPackageApplicationId <String>] [-MsixPackageFamilyName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update an application.
+Update an application.
 
 ## EXAMPLES
 
@@ -94,7 +94,7 @@ Name                                 Type
 ApplicationGroupName/ApplicationName Microsoft.DesktopVirtualization/applicationgroups/applications
 ```
 
-This command updates a Azure Virtual Desktop Application in an application Group.
+This command updates a Azure Virtual Desktop Application in an applicaton Group.
 
 ## PARAMETERS
 
@@ -363,21 +363,6 @@ Parameter Sets: UpdateExpanded, ResetIcon, UpdateViaJsonString, UpdateViaJsonFil
 Aliases: ApplicationName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

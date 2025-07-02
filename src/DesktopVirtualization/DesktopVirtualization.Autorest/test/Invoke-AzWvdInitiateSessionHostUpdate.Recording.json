@@ -1,8 +1,8 @@
 {
-  "Invoke-AzWvdInitiateSessionHostUpdate+[NoContext]+PostExpanded+$POST+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/initiateSessionHostUpdate?api-version=2024-11-01-preview+1": {
+  "Invoke-AzWvdInitiateSessionHostUpdate+[NoContext]+PostExpanded+$POST+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/initiateSessionHostUpdate?api-version=2025-03-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/initiateSessionHostUpdate?api-version=2024-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/initiateSessionHostUpdate?api-version=2025-03-01-preview",
       "Content": "{\r\n  \"update\": {\r\n    \"deleteOriginalVm\": true,\r\n    \"maxVmsRemoved\": 1,\r\n    \"logOffDelayMinutes\": 0,\r\n    \"logOffMessage\": \"Updating Session Hosts. Will Log off\"\r\n  },\r\n  \"scheduledDateTimeZone\": \"Pacific Standard Time\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,26 +17,29 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Set-Cookie": [ "ARRAffinity=bcbcd66544f5ddaf4cbead41410626b9ca9d605ee7d3a04c141d9e19b964fb41;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=bcbcd66544f5ddaf4cbead41410626b9ca9d605ee7d3a04c141d9e19b964fb41;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
+        "Set-Cookie": [ "ARRAffinity=6c9336690260758db9d8ce02be6e38bbba14e4b1138b556a6f4be7b30c6c8995;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=6c9336690260758db9d8ce02be6e38bbba14e4b1138b556a6f4be7b30c6c8995;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
         "X-Rate-Limit-Limit": [ "0" ],
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JocHVIUC9zZXNzaW9uSG9zdE1hbmFnZW1lbnRzL2RlZmF1bHQ=" ],
-        "x-ms-lamport-ts": [ "196801611" ],
-        "x-ms-correlation-id": [ "745ef6b4-bbd0-498f-b4fc-2ace2c68dac8" ],
-        "x-ms-request-id": [ "1646fd7c-012b-4825-87e8-a482f31acd40" ],
+        "x-ms-lamport-ts": [ "212363616" ],
+        "x-ms-correlation-id": [ "986191a4-5f92-45a8-a534-ccef692c3152" ],
+        "x-ms-request-id": [ "44f55e1c-bc24-405e-b4bd-7ac309b2f069" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-operation-identifier": [ "tenantId=74bc2df0-fc57-4361-b150-2d6dd51cb663,objectId=6af0f1bf-5c93-4451-a61d-ebfd80741d5b/southeastasia/d0001a0d-748b-474c-843b-619cea53c27f" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "57994c80-fc9c-43c6-bca4-70a795472e4a" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250304T080442Z:57994c80-fc9c-43c6-bca4-70a795472e4a" ],
+        "x-ms-correlation-request-id": [ "7a7e6443-bedb-4388-9e96-51fc8dac5c1e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250626T024445Z:7a7e6443-bedb-4388-9e96-51fc8dac5c1e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: CA9E2C07B60C43BF91E2996DF3337699 Ref B: MAA201060514045 Ref C: 2025-03-04T08:04:41Z" ],
-        "Date": [ "Tue, 04 Mar 2025 08:04:41 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 357EB762B91947FEB70F2965F8D256EE Ref B: MAA201060515011 Ref C: 2025-06-26T02:44:44Z" ],
+        "Date": [ "Thu, 26 Jun 2025 02:44:45 GMT" ]
       },
       "ContentHeaders": {
+        "Content-Length": [ "200" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
       "Content": null,

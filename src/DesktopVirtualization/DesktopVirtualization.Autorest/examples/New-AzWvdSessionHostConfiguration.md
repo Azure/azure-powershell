@@ -2,7 +2,7 @@
 ```powershell
 New-AzWvdSessionHostConfiguration -ResourceGroupName ResourceGroupName `
                             -HostPoolName HostPoolName `
-                            -DiskInfoType "Standard_LRS" `
+                            -ManagedDiskType "Standard_LRS" `
                             -DomainInfoJoinType "AzureActiveDirectory" `
                             -ImageInfoImageType "Marketplace" `
                             -NetworkInfoSubnetId "/subscriptions/{subscriptionId}/resourceGroups/resourceGrouName/providers/Microsoft.Network/virtualNetworks/{vNetName}/subnets/default" `

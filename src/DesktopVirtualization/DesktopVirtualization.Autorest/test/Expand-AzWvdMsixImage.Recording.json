@@ -1,8 +1,8 @@
 {
-  "Expand-AzWvdMsixImage+[NoContext]+Expand+$POST+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbRemoteAppHP/expandMsixImage?api-version=2024-11-01-preview+1": {
+  "Expand-AzWvdMsixImage+[NoContext]+Expand+$POST+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbRemoteAppHP/expandMsixImage?api-version=2025-03-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbRemoteAppHP/expandMsixImage?api-version=2024-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbRemoteAppHP/expandMsixImage?api-version=2025-03-01-preview",
       "Content": "{\r\n  \"uri\": \"C:\\\\AppAttach\\\\Firefox20110.0.1.vhdx\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,24 +18,25 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "Set-Cookie": [ "ARRAffinity=bcbcd66544f5ddaf4cbead41410626b9ca9d605ee7d3a04c141d9e19b964fb41;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=bcbcd66544f5ddaf4cbead41410626b9ca9d605ee7d3a04c141d9e19b964fb41;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "Set-Cookie": [ "ARRAffinity=f5a17254951e5cf9c5b38779db50e2bfcb7bdbef0315c86a85e59a1c7e1471bf;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=f5a17254951e5cf9c5b38779db50e2bfcb7bdbef0315c86a85e59a1c7e1471bf;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
+        "x-ms-operation-identifier": [ "tenantId=74bc2df0-fc57-4361-b150-2d6dd51cb663,objectId=6af0f1bf-5c93-4451-a61d-ebfd80741d5b/southeastasia/36ebc912-88f0-4eab-8483-9484e6a66518" ],
         "X-Rate-Limit-Limit": [ "0" ],
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JSZW1vdGVBcHBIUA==" ],
-        "x-ms-lamport-ts": [ "196800759" ],
-        "x-ms-correlation-id": [ "8859eef0-5de0-4ed2-9b5e-897917cdce4e" ],
-        "x-ms-request-id": [ "4fcea2a7-e43e-494a-8439-c7d40a4943bc" ],
+        "x-ms-lamport-ts": [ "212362602" ],
+        "x-ms-correlation-id": [ "b8185964-d216-47ac-acfe-be080066e14a" ],
+        "x-ms-request-id": [ "2b567f9d-83de-4775-af26-8a82bd814191" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "4ba51f91-42bd-42f1-8ac2-15fab3ab7900" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250304T075530Z:4ba51f91-42bd-42f1-8ac2-15fab3ab7900" ],
+        "x-ms-correlation-request-id": [ "e9721a05-1aff-4737-bf1e-1448392fbb00" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250626T023621Z:e9721a05-1aff-4737-bf1e-1448392fbb00" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F574D915022D4A0B86C7F055B8479A79 Ref B: MAA201060514045 Ref C: 2025-03-04T07:55:29Z" ],
-        "Date": [ "Tue, 04 Mar 2025 07:55:30 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 353E944A757F4213BD15E7B80DCC9587 Ref B: MAA201060515011 Ref C: 2025-06-26T02:36:18Z" ],
+        "Date": [ "Thu, 26 Jun 2025 02:36:20 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "62431" ],

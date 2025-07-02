@@ -1,17 +1,17 @@
 {
-  "Get-AzWvdActiveSessionHostConfiguration+[NoContext]+List+$GET+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/activeSessionHostConfigurations/default?api-version=2024-11-01-preview+1": {
+  "Get-AzWvdActiveSessionHostConfiguration+[NoContext]+List+$GET+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/activeSessionHostConfigurations/default?api-version=2025-03-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/activeSessionHostConfigurations/default?api-version=2024-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/activeSessionHostConfigurations/default?api-version=2025-03-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "fa0a3633-dfe6-4fc3-b93b-7ec1c920beb9" ],
+        "x-ms-client-request-id": [ "6805f870-31b1-4e90-9cd9-6e236d196ba4" ],
         "CommandName": [ "Get-AzWvdActiveSessionHostConfiguration" ],
         "FullCommandName": [ "Get-AzWvdActiveSessionHostConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v8.1.0", "PSVersion/v7.4.7", "Az.DesktopVirtualization/5.4.1" ],
+        "User-Agent": [ "AzurePowershell/v8.1.0", "PSVersion/v7.5.1", "Az.DesktopVirtualization/5.4.2" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,31 +23,32 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "Set-Cookie": [ "ARRAffinity=bcbcd66544f5ddaf4cbead41410626b9ca9d605ee7d3a04c141d9e19b964fb41;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=bcbcd66544f5ddaf4cbead41410626b9ca9d605ee7d3a04c141d9e19b964fb41;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "Set-Cookie": [ "ARRAffinity=6c9336690260758db9d8ce02be6e38bbba14e4b1138b556a6f4be7b30c6c8995;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=6c9336690260758db9d8ce02be6e38bbba14e4b1138b556a6f4be7b30c6c8995;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
+        "x-ms-operation-identifier": [ "tenantId=74bc2df0-fc57-4361-b150-2d6dd51cb663,objectId=6af0f1bf-5c93-4451-a61d-ebfd80741d5b/southeastasia/20ea1276-c3de-463e-a7d4-b2cf207e60f3" ],
         "X-Rate-Limit-Limit": [ "0" ],
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JocHVIUC9hY3RpdmVTZXNzaW9uSG9zdENvbmZpZ3VyYXRpb25zL2RlZmF1bHQ=" ],
-        "x-ms-lamport-ts": [ "196800765" ],
-        "x-ms-correlation-id": [ "4ba6c0fa-48f6-449a-94de-ee6c4d66ffed" ],
-        "x-ms-request-id": [ "fa0a3633-dfe6-4fc3-b93b-7ec1c920beb9" ],
+        "x-ms-lamport-ts": [ "212362582" ],
+        "x-ms-correlation-id": [ "e7b31c8c-99e3-4791-9565-bad3a67173bf" ],
+        "x-ms-request-id": [ "6805f870-31b1-4e90-9cd9-6e236d196ba4" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-correlation-request-id": [ "dc6259e1-0430-4917-bc5e-11b237ff6199" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250304T075534Z:dc6259e1-0430-4917-bc5e-11b237ff6199" ],
+        "x-ms-correlation-request-id": [ "fb98f490-8117-49ad-9960-95ea0e9db436" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250626T023623Z:fb98f490-8117-49ad-9960-95ea0e9db436" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5F6698EF55114FB0B7D166554EF521BB Ref B: MAA201060514045 Ref C: 2025-03-04T07:55:31Z" ],
-        "Date": [ "Tue, 04 Mar 2025 07:55:33 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: EB30F687C3D04E2AAC1329FB8A8218C6 Ref B: MAA201060515011 Ref C: 2025-06-26T02:36:22Z" ],
+        "Date": [ "Thu, 26 Jun 2025 02:36:22 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1675" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"default\",\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/activeSessionHostConfigurations/default\",\"type\":\"Microsoft.DesktopVirtualization/hostPools/sessionHostConfigurations\",\"properties\":{\"version\":\"2024-10-17T22:52:56Z\",\"provisioningState\":\"Succeeded\",\"vmSizeId\":\"Standard_D2s_v3\",\"vmLocation\":\"westus2\",\"friendlyName\":\"dymmy\",\"vmTags\":{\"cm-resource-parent\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/alecbhpuHP\"},\"vmResourceGroup\":\"alecbUserSessionTests\",\"vmNamePrefix\":\"updateTest\",\"availabilityZones\":null,\"networkInfo\":{\"subnetId\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.Network/virtualNetworks/alecbUserSession-vnet/subnets/default\",\"securityGroupId\":null},\"diskInfo\":{\"type\":\"Standard_LRS\"},\"imageInfo\":{\"type\":\"Marketplace\",\"marketplaceInfo\":{\"offer\":\"office-365\",\"publisher\":\"microsoftwindowsdesktop\",\"sku\":\"win11-23h2-avd-m365\",\"exactVersion\":\"22631.4317.241009\"},\"customInfo\":null},\"domainInfo\":{\"joinType\":\"AzureActiveDirectory\",\"activeDirectoryInfo\":null,\"azureActiveDirectoryInfo\":{\"mdmProviderGuid\":\"\"}},\"vmAdminCredentials\":{\"usernameKeyVaultSecretUri\":\"https://hpuposhkv.vault.azure.net/secrets/LocalAdminUserName\",\"passwordKeyVaultSecretUri\":\"https://hpuposhkv.vault.azure.net/secrets/LocalAdminPW\"},\"bootDiagnosticsInfo\":{\"enabled\":true,\"storageUri\":null},\"securityInfo\":{\"type\":\"TrustedLaunch\",\"secureBootEnabled\":true,\"vTpmEnabled\":true},\"customConfigurationScriptUrl\":null}}",
+      "Content": "{\"name\":\"default\",\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/activeSessionHostConfigurations/default\",\"type\":\"Microsoft.DesktopVirtualization/hostPools/sessionHostConfigurations\",\"properties\":{\"version\":\"2025-04-16T04:10:21Z\",\"provisioningState\":\"Succeeded\",\"vmSizeId\":\"Standard_D2s_v3\",\"vmLocation\":\"westus2\",\"friendlyName\":\"dymmy\",\"vmTags\":{\"cm-resource-parent\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/alecbhpuHP\"},\"vmResourceGroup\":\"alecbUserSessionTests\",\"vmNamePrefix\":\"updateTest\",\"availabilityZones\":null,\"networkInfo\":{\"subnetId\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.Network/virtualNetworks/alecbUserSession-vnet/subnets/default\",\"securityGroupId\":null},\"diskInfo\":{\"type\":\"Standard_LRS\"},\"imageInfo\":{\"type\":\"Marketplace\",\"marketplaceInfo\":{\"offer\":\"office-365\",\"publisher\":\"microsoftwindowsdesktop\",\"sku\":\"win11-23h2-avd-m365\",\"exactVersion\":\"22631.4460.241113\"},\"customInfo\":null},\"domainInfo\":{\"joinType\":\"AzureActiveDirectory\",\"activeDirectoryInfo\":null,\"azureActiveDirectoryInfo\":{\"mdmProviderGuid\":\"\"}},\"vmAdminCredentials\":{\"usernameKeyVaultSecretUri\":\"https://hpuposhkv.vault.azure.net/secrets/LocalAdminUserName\",\"passwordKeyVaultSecretUri\":\"https://hpuposhkv.vault.azure.net/secrets/LocalAdminPW\"},\"bootDiagnosticsInfo\":{\"enabled\":true,\"storageUri\":null},\"securityInfo\":{\"type\":\"TrustedLaunch\",\"secureBootEnabled\":true,\"vTpmEnabled\":true},\"customConfigurationScriptUrl\":null}}",
       "isContentBase64": false
     }
   }

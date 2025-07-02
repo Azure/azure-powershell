@@ -57,6 +57,7 @@ function setupEnv() {
     $null = $env.Add("PersistentRemoteAppGroup", "alecbRemoteAppHP-RAG")
     $null = $env.Add("VnetName", "alecbUserSession-vnet")
     $null = $env.Add("SHMHostPoolPersistent", "poshSHMHP")
+    $null = $env.Add("SHPHostPoolPersistent", "powershellshpHP")
     # The context in which the tests are run will change the tenant and subscription ID when -record is run. 
     # Currently the scaling tests need to be run in a context with @microsoft, while the other tests are run with a test account
     # Modify the env.json manually after recording the necessary tests to get around this issue.

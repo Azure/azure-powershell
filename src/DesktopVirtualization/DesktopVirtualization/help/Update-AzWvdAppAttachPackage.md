@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWvdAppAttachPackage
 
 ## SYNOPSIS
-update an App Attach Package
+Update an App Attach Package
 
 ## SYNTAX
 
@@ -23,7 +23,7 @@ Update-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> [-Subscr
  [-ImagePackageFamilyName <String>] [-ImagePackageFullName <String>] [-ImagePackageName <String>]
  [-ImagePackageRelativePath <String>] [-ImagePath <String>] [-ImageVersion <String>]
  [-PackageLookbackUrl <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ImageObject
@@ -31,20 +31,20 @@ Update-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> [-Subscr
 Update-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-FailHealthCheckOnStagingFailure <String>] [-HostPoolReference <String[]>] [-ImageDisplayName <String>]
  [-ImageIsActive] [-ImageIsRegularRegistration] [-AppAttachPackage] <AppAttachPackage> [-PassThru]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -59,11 +59,11 @@ Update-AzWvdAppAttachPackage -InputObject <IDesktopVirtualizationIdentity> [-Cus
  [-ImagePackageFamilyName <String>] [-ImagePackageFullName <String>] [-ImagePackageName <String>]
  [-ImagePackageRelativePath <String>] [-ImagePath <String>] [-ImageVersion <String>]
  [-PackageLookbackUrl <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update an App Attach Package
+Update an App Attach Package
 
 ## EXAMPLES
 
@@ -522,21 +522,6 @@ Accept wildcard characters: False
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ImageObject
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

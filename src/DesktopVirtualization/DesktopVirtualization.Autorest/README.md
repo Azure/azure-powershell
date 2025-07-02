@@ -44,13 +44,13 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 8b5fd8aab1f6bc0ee4f4bb901ac8b28c3f56fb2d
+commit: 329a4253c5cd315641a0f87636c25f70dccc4700
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 sanitize-names: true
 subject-prefix: 'Wvd'
 input-file:
-- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/preview/2024-11-01-preview/desktopvirtualization.json
+- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/preview/2025-03-01-preview/desktopvirtualization.json
 
 module-version: 2.1.0
 title: DesktopVirtualizationClient
@@ -121,4 +121,9 @@ directive:
     set:
       preview-announcement:
         preview-message: The IdentityType property is not currently supported and will be enabled in a future update.
+  - where:
+      verb: Get
+      subject: SessionHostProvisioningStatuses
+    set:
+      subject: SessionHostProvisioningStatus
 ```

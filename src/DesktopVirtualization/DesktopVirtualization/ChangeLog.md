@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgrade API version to 2025-03-01-preview
+    - Added session host provisioning control cmdlets
+    - Updated SessionHostConfiguration DiskInfo to more closely match compute definition and enable ephemeral disk support
 
 ## Version 5.4.2
 * Upgrade API version to 2024-11-01-preview

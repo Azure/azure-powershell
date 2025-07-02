@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWvdScalingPlanPersonalSchedule
 
 ## SYNOPSIS
-create a ScalingPlanPersonalSchedule.
+Create a ScalingPlanPersonalSchedule.
 
 ## SYNTAX
 
@@ -27,25 +27,25 @@ New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlanNam
  [-RampDownStartVMOnConnect <String>] [-RampUpActionOnDisconnect <String>] [-RampUpActionOnLogoff <String>]
  [-RampUpAutoStartHost <String>] [-RampUpMinutesToWaitOnDisconnect <Int32>]
  [-RampUpMinutesToWaitOnLogoff <Int32>] [-RampUpStartVMOnConnect <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlanName <String>
  -ScalingPlanScheduleName <String> [-SubscriptionId <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlanName <String>
  -ScalingPlanScheduleName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a ScalingPlanPersonalSchedule.
+Create a ScalingPlanPersonalSchedule.
 
 ## EXAMPLES
 
@@ -358,21 +358,6 @@ The desired configuration of Start VM On Connect for the hostpool during the pea
 Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

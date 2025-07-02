@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWvdAppAttachPackage
 
 ## SYNOPSIS
-create an App Attach package.
+Create an App Attach package.
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ New-AzWvdAppAttachPackage [-AppAttachPackage] <AppAttachPackage> -Name <String> 
 ```
 
 ## DESCRIPTION
-create an App Attach package.
+Create an App Attach package.
 
 ## EXAMPLES
 
@@ -85,13 +85,6 @@ eastus     PackageArmObjectName Microsoft.DesktopVirtualization/appattachpackage
 ```
 
 This command creates or updates an Azure Virtual Desktop App attach package in a resource group.
-
-### Example 2: Create or update an Azure Virtual Desktop app attach package from an appAttachPackage object
-```powershell
-
-```
-
-
 
 ### Example 2: Create or update an Azure Virtual Desktop app attach package from an appAttachPackage object
 ```powershell

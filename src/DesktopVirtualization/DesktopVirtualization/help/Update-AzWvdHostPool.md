@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWvdHostPool
 
 ## SYNOPSIS
-update a host pool.
+Update a host pool.
 
 ## SYNTAX
 
@@ -24,20 +24,20 @@ Update-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId
  [-RegistrationInfoRegistrationTokenOperation <String>] [-RelayUdp <String>] [-Ring <Int32>]
  [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>] [-SsoSecretType <String>]
  [-SsoadfsAuthority <String>] [-StartVMOnConnect] [-Tag <Hashtable>] [-VMTemplate <String>]
- [-ValidationEnvironment] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-ValidationEnvironment] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -53,12 +53,12 @@ Update-AzWvdHostPool -InputObject <IDesktopVirtualizationIdentity>
  [-RegistrationInfoRegistrationTokenOperation <String>] [-RelayUdp <String>] [-Ring <Int32>]
  [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>] [-SsoSecretType <String>]
  [-SsoadfsAuthority <String>] [-StartVMOnConnect] [-Tag <Hashtable>] [-VMTemplate <String>]
- [-ValidationEnvironment] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-ValidationEnvironment] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update a host pool.
+Update a host pool.
 
 ## EXAMPLES
 
@@ -352,21 +352,6 @@ The type of preferred application group type, default to Desktop Application Gro
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

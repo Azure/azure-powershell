@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWvdSessionHost
 
 ## SYNOPSIS
-update a session host.
+Update a session host.
 
 ## SYNTAX
 
@@ -16,34 +16,34 @@ update a session host.
 ```
 Update-AzWvdSessionHost -HostPoolName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Force] [-AllowNewSession] [-AssignedUser <String>] [-FriendlyName <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzWvdSessionHost -HostPoolName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Force] -JsonString <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzWvdSessionHost -HostPoolName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Force] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityHostPoolExpanded
 ```
 Update-AzWvdSessionHost -Name <String> -HostPoolInputObject <IDesktopVirtualizationIdentity> [-Force]
  [-AllowNewSession] [-AssignedUser <String>] [-FriendlyName <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityHostPool
 ```
 Update-AzWvdSessionHost -Name <String> -HostPoolInputObject <IDesktopVirtualizationIdentity> [-Force]
- -SessionHost <ISessionHostPatch> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ -SessionHost <ISessionHostPatch> [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -51,11 +51,11 @@ Update-AzWvdSessionHost -Name <String> -HostPoolInputObject <IDesktopVirtualizat
 ```
 Update-AzWvdSessionHost -InputObject <IDesktopVirtualizationIdentity> [-Force] [-AllowNewSession]
  [-AssignedUser <String>] [-FriendlyName <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update a session host.
+Update a session host.
 
 ## EXAMPLES
 
@@ -237,21 +237,6 @@ Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Upda
 Aliases: SessionHostName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

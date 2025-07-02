@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWvdScalingPlanPooledSchedule
 
 ## SYNOPSIS
-create a ScalingPlanPooledSchedule.
+Create a ScalingPlanPooledSchedule.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ New-AzWvdScalingPlanPooledSchedule -ResourceGroupName <String> -ScalingPlanName 
  [-PeakLoadBalancingAlgorithm <String>] [-RampDownForceLogoffUser] [-RampDownLoadBalancingAlgorithm <String>]
  [-RampDownMinimumHostsPct <Int32>] [-RampDownNotificationMessage <String>] [-RampDownStopHostsWhen <String>]
  [-RampDownWaitTimeMinute <Int32>] [-RampUpLoadBalancingAlgorithm <String>] [-RampUpMinimumHostsPct <Int32>]
- [-ScalingMethod <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-ScalingMethod <String>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,18 +33,18 @@ New-AzWvdScalingPlanPooledSchedule -ResourceGroupName <String> -ScalingPlanName 
 ```
 New-AzWvdScalingPlanPooledSchedule -ResourceGroupName <String> -ScalingPlanName <String>
  -ScalingPlanScheduleName <String> [-SubscriptionId <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzWvdScalingPlanPooledSchedule -ResourceGroupName <String> -ScalingPlanName <String>
  -ScalingPlanScheduleName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a ScalingPlanPooledSchedule.
+Create a ScalingPlanPooledSchedule.
 
 ## EXAMPLES
 
@@ -297,21 +297,6 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
