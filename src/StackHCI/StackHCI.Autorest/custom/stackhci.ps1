@@ -436,13 +436,14 @@ Function Write-NodeEventLog{
         if($IsManagementNode)
         {
             Write-VerboseLog ("Connecting from management node")
+            $ComputerNameWithDNSSuffix = $ComputerName + '.' + (Get-WmiObject Win32_ComputerSystem).Domain
             if($Null -eq $Credentials)
             {
-                $session = New-PSSession -ComputerName $ComputerName
+                $session = New-PSSession -ComputerName $ComputerNameWithDNSSuffix
             }
             else
             {
-                $session = New-PSSession -ComputerName $ComputerName -Credential $Credentials
+                $session = New-PSSession -ComputerName $ComputerNameWithDNSSuffix -Credential $Credentials
             }
         }
         else
@@ -2268,13 +2269,14 @@ param(
 
     if($IsManagementNode)
     {
+        $ComputerNameWithDNSSuffix = "$ComputerName.$ClusterDNSSuffix"
         if($Credential -eq $Null)
         {
-            $session = New-PSSession -ComputerName $ComputerName
+            $session = New-PSSession -ComputerName $ComputerNameWithDNSSuffix
         }
         else
         {
-            $session = New-PSSession -ComputerName $ComputerName -Credential $Credential
+            $session = New-PSSession -ComputerName $ComputerNameWithDNSSuffix -Credential $Credential
         }
     }
     else
@@ -2516,13 +2518,14 @@ param(
     if($IsManagementNode)
     {
         Write-VerboseLog ("connecting via Management node")
+        $ComputerNameWithDNSSuffix = "$ComputerName.$ClusterDNSSuffix"
         if($Credential -eq $Null)
         {
-            $session = New-PSSession -ComputerName $ComputerName
+            $session = New-PSSession -ComputerName $ComputerNameWithDNSSuffix
         }
         else
         {
-            $session = New-PSSession -ComputerName $ComputerName -Credential $Credential
+            $session = New-PSSession -ComputerName $ComputerNameWithDNSSuffix -Credential $Credential
         }
     }
     else
@@ -4672,7 +4675,8 @@ function Get-SetupLoggingDetails
 
     if($isManagementNode)
     {
-        $nodeSessionParams.Add('ComputerName', $ComputerName)
+        $ComputerNameWithDNSSuffix = $ComputerName + '.' + (Get-WmiObject Win32_ComputerSystem).Domain
+        $nodeSessionParams.Add('ComputerName', $ComputerNameWithDNSSuffix)
 
         if($null -ne $Credential)
         {
