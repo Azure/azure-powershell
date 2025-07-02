@@ -8,22 +8,24 @@ schema: 2.0.0
 # New-AzWvdScalingPlanPooledSchedule
 
 ## SYNOPSIS
-create a ScalingPlanPooledSchedule.
+Create a ScalingPlanPooledSchedule.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzWvdScalingPlanPooledSchedule -ResourceGroupName <String> -ScalingPlanName <String>
- -ScalingPlanScheduleName <String> [-SubscriptionId <String>] [-DaysOfWeek <String[]>]
- [-OffPeakLoadBalancingAlgorithm <String>] [-OffPeakStartTimeHour <Int32>] [-OffPeakStartTimeMinute <Int32>]
- [-PeakLoadBalancingAlgorithm <String>] [-PeakStartTimeHour <Int32>] [-PeakStartTimeMinute <Int32>]
- [-RampDownCapacityThresholdPct <Int32>] [-RampDownForceLogoffUser] [-RampDownLoadBalancingAlgorithm <String>]
- [-RampDownMinimumHostsPct <Int32>] [-RampDownNotificationMessage <String>] [-RampDownStartTimeHour <Int32>]
- [-RampDownStartTimeMinute <Int32>] [-RampDownStopHostsWhen <String>] [-RampDownWaitTimeMinute <Int32>]
- [-RampUpCapacityThresholdPct <Int32>] [-RampUpLoadBalancingAlgorithm <String>]
- [-RampUpMinimumHostsPct <Int32>] [-RampUpStartTimeHour <Int32>] [-RampUpStartTimeMinute <Int32>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ScalingPlanScheduleName <String> -DaysOfWeek <String[]> -OffPeakStartTimeHour <Int32>
+ -OffPeakStartTimeMinute <Int32> -PeakStartTimeHour <Int32> -PeakStartTimeMinute <Int32>
+ -RampDownCapacityThresholdPct <Int32> -RampDownStartTimeHour <Int32> -RampDownStartTimeMinute <Int32>
+ -RampUpCapacityThresholdPct <Int32> -RampUpStartTimeHour <Int32> -RampUpStartTimeMinute <Int32>
+ [-SubscriptionId <String>] [-CreateDeleteRampDownMaximumHostPoolSize <Int32>]
+ [-CreateDeleteRampDownMinimumHostPoolSize <Int32>] [-CreateDeleteRampUpMaximumHostPoolSize <Int32>]
+ [-CreateDeleteRampUpMinimumHostPoolSize <Int32>] [-OffPeakLoadBalancingAlgorithm <String>]
+ [-PeakLoadBalancingAlgorithm <String>] [-RampDownForceLogoffUser] [-RampDownLoadBalancingAlgorithm <String>]
+ [-RampDownMinimumHostsPct <Int32>] [-RampDownNotificationMessage <String>] [-RampDownStopHostsWhen <String>]
+ [-RampDownWaitTimeMinute <Int32>] [-RampUpLoadBalancingAlgorithm <String>] [-RampUpMinimumHostsPct <Int32>]
+ [-ScalingMethod <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -41,7 +43,7 @@ New-AzWvdScalingPlanPooledSchedule -ResourceGroupName <String> -ScalingPlanName 
 ```
 
 ## DESCRIPTION
-create a ScalingPlanPooledSchedule.
+Create a ScalingPlanPooledSchedule.
 
 ## EXAMPLES
 
@@ -83,6 +85,72 @@ Add a Scaling Plan Pooled Schedule to an existing Scaling Plan.
 
 ## PARAMETERS
 
+### -CreateDeleteRampDownMaximumHostPoolSize
+Maximum number of session hosts that may be created by the Scaling Service.
+This requires the assigned hostpool to have a session host config property.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CreateDeleteRampDownMinimumHostPoolSize
+Minimum number of session hosts that will be be created by the Scaling Service.
+Scaling will not delete any hosts when this limit is met.
+This requires the assigned hostpool to have a session host config property.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CreateDeleteRampUpMaximumHostPoolSize
+Maximum number of session hosts that may be created by the Scaling Service.
+This requires the assigned hostpool to have a session host config property.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CreateDeleteRampUpMinimumHostPoolSize
+Minimum number of session hosts that will be be created by the Scaling Service.
+Scaling will not delete any hosts when this limit is met.
+This requires the assigned hostpool to have a session host config property.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DaysOfWeek
 Set of days of the week on which this schedule is active.
 
@@ -91,7 +159,7 @@ Type: System.String[]
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -167,7 +235,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -182,7 +250,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -212,7 +280,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -227,7 +295,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -242,7 +310,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -317,7 +385,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -332,7 +400,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -377,7 +445,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -422,7 +490,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -437,7 +505,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -454,6 +522,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScalingMethod
+The desired scaling method to be used to scale the hosts in the assigned host pool.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

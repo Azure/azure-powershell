@@ -30,7 +30,8 @@ Describe 'Get-AzWvdHostPool' {
                                 -Ring $null `
                                 -ValidationEnvironment:$false `
                                 -PreferredAppGroupType 'Desktop' ` `
-                                -StartVMOnConnect:$false
+                                -StartVMOnConnect:$false `
+                                -ManagementType 'Standard'
 
             $hostPool = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
@@ -44,9 +45,9 @@ Describe 'Get-AzWvdHostPool' {
                 $hostPool.FriendlyName | Should -Be 'fri'
                 $hostPool.MaxSessionLimit | Should -Be 5
                 $hostPool.VMTemplate | Should -Be $null
-                # @todo not correct since it should be null need to look into it
+                # @todo not corrct since it should be null need to look into it
                 # $hostPool.CustomRdpProperty | Should -Be ""
-                $hostPool.Ring | Should -Be $null
+                $hostPool.Ring | Should -Be 1
                 # @todo need to check this
                 # $hostPool.ValidationEnvironment | Should -Be $false
                 $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
@@ -77,7 +78,8 @@ Describe 'Get-AzWvdHostPool' {
                                 -Ring $null `
                                 -ValidationEnvironment:$false `
                                 -PreferredAppGroupType 'Desktop' `
-                                -StartVMOnConnect:$false
+                                -StartVMOnConnect:$false `
+                                -ManagementType 'Standard'
 
             $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
@@ -95,7 +97,8 @@ Describe 'Get-AzWvdHostPool' {
                                 -Ring $null `
                                 -ValidationEnvironment:$false `
                                 -PreferredAppGroupType 'Desktop' `
-                                -StartVMOnConnect:$false
+                                -StartVMOnConnect:$false `
+                                -ManagementType 'Standard'
 
             $hostPools = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
@@ -110,9 +113,9 @@ Describe 'Get-AzWvdHostPool' {
                 $hostPools[0].FriendlyName | Should -Be 'fri'
                 $hostPools[0].MaxSessionLimit | Should -Be 5
                 $hostPools[0].VMTemplate | Should -Be $null
-                # @todo not correct since it should be null need to look into it
+                # @todo not corrct since it should be null need to look into it
                 # $hostPools[0].CustomRdpProperty | Should -Be ""
-                $hostPools[0].Ring | Should -Be $null
+                $hostPools[0].Ring | Should -Be 1
                 # @todo need to check this
                 # $hostPools[0].ValidationEnvironment | Should -Be $false
                 $hostPools[0].PreferredAppGroupType | Should -Be 'Desktop'
@@ -127,9 +130,9 @@ Describe 'Get-AzWvdHostPool' {
                 $hostPools[1].FriendlyName | Should -Be 'fri'
                 $hostPools[1].MaxSessionLimit | Should -Be 5
                 $hostPools[1].VMTemplate | Should -Be $null
-                # @todo not correct since it should be null need to look into it
+                # @todo not corrct since it should be null need to look into it
                 # $hostPools[1].CustomRdpProperty | Should -Be ""
-                $hostPools[1].Ring | Should -Be $null
+                $hostPools[1].Ring | Should -Be 1
                 # @todo need to check this
                 # $hostPools[1].ValidationEnvironment | Should -Be $false
                 $hostPools[1].PreferredAppGroupType | Should -Be 'Desktop'
@@ -164,7 +167,8 @@ Describe 'Get-AzWvdHostPool' {
                                 -Ring $null `
                                 -ValidationEnvironment:$false `
                                 -PreferredAppGroupType 'Desktop' `
-                                -StartVMOnConnect:$false
+                                -StartVMOnConnect:$false `
+                                -ManagementType 'Standard'
 
             $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
@@ -182,7 +186,8 @@ Describe 'Get-AzWvdHostPool' {
                                 -Ring $null `
                                 -ValidationEnvironment:$false `
                                 -PreferredAppGroupType 'Desktop' `
-                                -StartVMOnConnect:$false
+                                -StartVMOnConnect:$false `
+                                -ManagementType 'Standard'
 
             $hostPools = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                                 | Where-Object -Property Name -Match 'HostPoolPowershellContained*' `
@@ -196,9 +201,9 @@ Describe 'Get-AzWvdHostPool' {
                 $hostPools[0].FriendlyName | Should -Be 'fri'
                 $hostPools[0].MaxSessionLimit | Should -Be 5
                 $hostPools[0].VMTemplate | Should -Be $null
-                # @todo not correct since it should be null need to look into it
+                # @todo not corrct since it should be null need to look into it
                 # $hostPools[0].CustomRdpProperty | Should -Be ""
-                $hostPools[0].Ring | Should -Be $null
+                $hostPools[0].Ring | Should -Be 1
                 # @todo need to check this
                 # $hostPools[0].ValidationEnvironment | Should -Be $false
                 $hostPools[0].PreferredAppGroupType | Should -Be 'Desktop'
@@ -213,9 +218,9 @@ Describe 'Get-AzWvdHostPool' {
                 $hostPools[1].FriendlyName | Should -Be 'fri'
                 $hostPools[1].MaxSessionLimit | Should -Be 5
                 $hostPools[1].VMTemplate | Should -Be $null
-                # @todo not correct since it should be null need to look into it
+                # @todo not corrct since it should be null need to look into it
                 # $hostPools[1].CustomRdpProperty | Should -Be ""
-                $hostPools[1].Ring | Should -Be $null
+                $hostPools[1].Ring | Should -Be 1
                 # @todo need to check this
                 # $hostPools[1].ValidationEnvironment | Should -Be $false
                 $hostPools[1].PreferredAppGroupType | Should -Be 'Desktop'

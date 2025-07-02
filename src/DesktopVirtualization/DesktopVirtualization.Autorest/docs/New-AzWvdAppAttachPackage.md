@@ -8,22 +8,23 @@ schema: 2.0.0
 # New-AzWvdAppAttachPackage
 
 ## SYNOPSIS
-create an App Attach package.
+Create an App Attach package.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-FailHealthCheckOnStagingFailure <String>] [-HostPoolReference <String[]>]
- [-ImageCertificateExpiry <DateTime>] [-ImageCertificateName <String>] [-ImageDisplayName <String>]
- [-ImageIsActive] [-ImageIsPackageTimestamped <String>] [-ImageIsRegularRegistration]
- [-ImageLastUpdated <DateTime>] [-ImagePackageAlias <String>]
+ [-SubscriptionId <String>] [-CustomData <String>] [-FailHealthCheckOnStagingFailure <String>]
+ [-HostPoolReference <String[]>] [-ImageCertificateExpiry <DateTime>] [-ImageCertificateName <String>]
+ [-ImageDisplayName <String>] [-ImageIsActive] [-ImageIsPackageTimestamped <String>]
+ [-ImageIsRegularRegistration] [-ImageLastUpdated <DateTime>] [-ImagePackageAlias <String>]
  [-ImagePackageApplication <IMsixPackageApplications[]>]
  [-ImagePackageDependency <IMsixPackageDependencies[]>] [-ImagePackageFamilyName <String>]
  [-ImagePackageFullName <String>] [-ImagePackageName <String>] [-ImagePackageRelativePath <String>]
- [-ImagePath <String>] [-ImageVersion <String>] [-KeyVaultUrl <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ImagePath <String>] [-ImageVersion <String>] [-KeyVaultUrl <String>] [-PackageLookbackUrl <String>]
+ [-PackageOwnerName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -47,7 +48,7 @@ New-AzWvdAppAttachPackage [-AppAttachPackage] <AppAttachPackage> -Name <String> 
 ```
 
 ## DESCRIPTION
-create an App Attach package.
+Create an App Attach package.
 
 ## EXAMPLES
 
@@ -125,6 +126,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -CustomData
+Field that can be populated with custom data and filtered on in list GET calls
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -265,7 +281,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImageLastUpdated
-Date Package was last updated, found in the appxmanifest.xml.
+Date the package source was last updated, for Msix packages this is found in the appxmanifest.xml.
 
 ```yaml
 Type: System.DateTime
@@ -326,8 +342,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImagePackageFamilyName
-Package Family Name from appxmanifest.xml.
-Contains Package Name and Publisher name.
+Identifier not including the package version, for Msix packages it is the family name from the appxmanifest.xml.
 
 ```yaml
 Type: System.String
@@ -342,7 +357,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImagePackageFullName
-Package Full Name from appxmanifest.xml.
+Identifier including the package version, for Msix packages it is the full name from the appxmanifest.xml.
 
 ```yaml
 Type: System.String
@@ -387,7 +402,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImagePath
-VHD/CIM image path on Network Share.
+VHD/CIM/APP-V image path on Network Share.
 
 ```yaml
 Type: System.String
@@ -402,7 +417,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImageVersion
-Package version found in the appxmanifest.xml.
+Package Version found in the appxmanifest.xml.
 
 ```yaml
 Type: System.String
@@ -447,7 +462,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVaultUrl
-URL path to certificate name located in keyVault
+URL of keyvault location to store certificate
 
 ```yaml
 Type: System.String
@@ -477,7 +492,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the App Attach package
+The name of the App Attach package arm object
 
 ```yaml
 Type: System.String
@@ -485,6 +500,36 @@ Parameter Sets: (All)
 Aliases: AppAttachPackageName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PackageLookbackUrl
+Lookback url to third party control plane, is null for native app attach packages
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PackageOwnerName
+Specific name of package owner, is "AppAttach" for native app attach packages
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

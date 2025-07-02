@@ -8,34 +8,36 @@ schema: 2.0.0
 # New-AzWvdHostPool
 
 ## SYNOPSIS
-create a host pool.
+Create a host pool.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -HostPoolType <String>
- -LoadBalancerType <String> -Location <String> -PreferredAppGroupType <String>
+ -LoadBalancerType <String> -Location <String> -PreferredAppGroupType <String> [-ManagementType <String>]
  [-AgentUpdateMaintenanceWindow <IMaintenanceWindowProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <String>]
  [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
- [-ExpirationTime <DateTime>] [-FriendlyName <String>] [-IdentityType <String>] [-Kind <String>]
- [-ManagedBy <String>] [-MaxSessionLimit <Int32>] [-PersonalDesktopAssignmentType <String>]
+ [-DirectUdp <String>] [-ExpirationTime <DateTime>] [-FriendlyName <String>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>] [-ManagedBy <String>]
+ [-ManagedPrivateUdp <String>] [-MaxSessionLimit <Int32>] [-PersonalDesktopAssignmentType <String>]
  [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
- [-PlanVersion <String>] [-PublicNetworkAccess <String>] [-RegistrationInfoToken <String>]
- [-RegistrationTokenOperation <String>] [-Ring <Int32>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
- [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-SsoClientId <String>]
- [-SsoClientSecretKeyVaultPath <String>] [-SsoSecretType <String>] [-SsoadfsAuthority <String>]
- [-StartVMOnConnect] [-Tag <Hashtable>] [-VMTemplate <String>] [-ValidationEnvironment]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PlanVersion <String>] [-PublicNetworkAccess <String>] [-PublicUdp <String>]
+ [-RegistrationInfoToken <String>] [-RegistrationTokenOperation <String>] [-RelayUdp <String>] [-Ring <Int32>]
+ [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
+ [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>] [-SsoSecretType <String>]
+ [-SsoadfsAuthority <String>] [-StartVMOnConnect] [-Tag <Hashtable>] [-VMTemplate <String>]
+ [-ValidationEnvironment] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### FullScenarioCreate
 ```
 New-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -HostPoolType <String>
- -LoadBalancerType <String> -Location <String> -PreferredAppGroupType <String> [-DesktopAppGroupName <String>]
- [-WorkspaceName <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -LoadBalancerType <String> -Location <String> -PreferredAppGroupType <String> [-ManagementType <String>]
+ [-DesktopAppGroupName <String>] [-WorkspaceName <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -51,11 +53,11 @@ New-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <S
 ```
 
 ## DESCRIPTION
-create a host pool.
+Create a host pool.
 
 ## EXAMPLES
 
-### Example 1: Create a Windows Virtual Desktop HostPool by name
+### Example 1: Create a Azure Virtual Desktop HostPool by name
 ```powershell
 New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -Name HostPoolName `
@@ -83,9 +85,9 @@ Location   Name                 Type
 eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools
 ```
 
-This command creates a Windows Virtual Desktop HostPool in a Resource Group.
+This command creates a Azure Virtual Desktop HostPool in a Resource Group.
 
-### Example 2: Create a Windows Virtual Desktop HostPool by name
+### Example 2: Create a Azure Virtual Desktop HostPool by name
 ```powershell
 New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -Name HostPoolName `
@@ -113,7 +115,7 @@ Location   Name                 Type
 eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools
 ```
 
-This command creates a Windows Virtual Desktop HostPool in a Resource Group.
+This command creates a Azure Virtual Desktop HostPool in a Resource Group.
 
 ## PARAMETERS
 
@@ -240,6 +242,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DirectUdp
+Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections.
+This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ExpirationTime
 Expiration time of registration token.
 
@@ -286,10 +304,27 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-The identity type.
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityUserAssignedIdentity
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -386,6 +421,38 @@ If this is present, complete mode deployment will not delete the resource if it 
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedPrivateUdp
+Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections.
+This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagementType
+The type of management for this hostpool, Automated or Standard.
+The default value is Automated.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, FullScenarioCreate
 Aliases:
 
 Required: False
@@ -550,6 +617,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PublicUdp
+Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections.
+This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RegistrationInfoToken
 The registration token base64 encoded string.
 
@@ -567,6 +650,22 @@ Accept wildcard characters: False
 
 ### -RegistrationTokenOperation
 The type of resetting the token.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RelayUdp
+Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections.
+This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
 
 ```yaml
 Type: System.String

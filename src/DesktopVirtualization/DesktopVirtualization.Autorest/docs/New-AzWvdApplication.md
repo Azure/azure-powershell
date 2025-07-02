@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWvdApplication
 
 ## SYNOPSIS
-create an application.
+Create an application.
 
 ## SYNTAX
 
@@ -41,11 +41,11 @@ New-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <Stri
 ```
 
 ## DESCRIPTION
-create an application.
+Create an application.
 
 ## EXAMPLES
 
-### Example 1: Create a Windows Virtual Desktop Application
+### Example 1: Create a Azure Virtual Desktop Application
 ```powershell
 New-AzWvdApplication -ResourceGroupName ResourceGroupName `
                              -GroupName ApplicationGroupName `
@@ -65,7 +65,7 @@ Name                                 Type
 ApplicationGroupName/ApplicationName Microsoft.DesktopVirtualization/applicationgroups/applications
 ```
 
-This command creates a Windows Virtual Desktop Application in an application Group.
+This command creates a Azure Virtual Desktop Application in an application Group.
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWvdScalingPlan
 
 ## SYNOPSIS
-create a scaling plan.
+Create a scaling plan.
 
 ## SYNTAX
 
@@ -17,8 +17,8 @@ create a scaling plan.
 New-AzWvdScalingPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  -TimeZone <String> [-Description <String>] [-ExclusionTag <String>] [-FriendlyName <String>]
  [-HostPoolReference <IScalingHostPoolReference[]>] [-HostPoolType <String>] [-IdentityType <String>]
- [-Kind <String>] [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>]
- [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>] [-ManagedBy <String>] [-PlanName <String>]
+ [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
  [-Schedule <IScalingSchedule[]>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
  [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -38,11 +38,11 @@ New-AzWvdScalingPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId
 ```
 
 ## DESCRIPTION
-create a scaling plan.
+Create a scaling plan.
 
 ## EXAMPLES
 
-### Example 1: Create a Windows Virtual Desktop Scaling Plan without a schedule
+### Example 1: Create a Azure Virtual Desktop Scaling Plan without a schedule
 ```powershell
 New-AzWvdScalingPlan `
             -ResourceGroupName ResourceGroupName `
@@ -67,9 +67,9 @@ Location      Name         Type
 westcentralus scalingPlan1 Microsoft.DesktopVirtualization/scalingplans
 ```
 
-This command creates a new Windows Virtual Desktop Scaling Plan in a Resource Group.
+This command creates a new Azure Virtual Desktop Scaling Plan in a Resource Group.
 
-### Example 2: Create a Windows Virtual Desktop Scaling Plan with a pooled schedule (Only available for Pooled HostPools)
+### Example 2: Create a Azure Virtual Desktop Scaling Plan with a pooled schedule (Only available for Pooled HostPools)
 ```powershell
 New-AzWvdScalingPlan `
             -ResourceGroupName ResourceGroupName `
@@ -130,7 +130,7 @@ Location      Name         Type
 westcentralus scalingPlan1 Microsoft.DesktopVirtualization/scalingplans
 ```
 
-This command creates a new Windows Virtual Desktop Scaling Plan in a Resource Group with a pooled schedule assigned at creation.
+This command creates a new Azure Virtual Desktop Scaling Plan in a Resource Group with a pooled schedule assigned at creation.
 This method is only available for pooled host pools.
 Please create a scaling plan, and then use New-AzWvdScalingPersonalSchedule or New-AzWvdScalingPooledSchedule to assign schedules after scaling plan creation.
 
@@ -228,10 +228,27 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-The identity type.
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityUserAssignedIdentity
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -434,7 +451,7 @@ Accept wildcard characters: False
 ```
 
 ### -Schedule
-List of ScalingPlanPooledSchedule definitions.
+List of Pooled ScalingSchedule definitions.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingSchedule[]

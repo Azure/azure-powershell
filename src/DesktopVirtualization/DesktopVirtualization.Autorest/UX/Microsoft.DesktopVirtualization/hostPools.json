@@ -1,13 +1,51 @@
 {
   "resourceType": "hostPools",
-  "apiVersion": "2024-04-03",
+  "apiVersion": "2025-03-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization"
   },
   "commands": [
     {
+      "name": "Get-AzWvdActiveSessionHostConfiguration",
+      "description": "Get the ActiveSessionHostConfiguration for the hostPool that is currently being used for get operations.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/activeSessionHostConfigurations/default",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdactivesessionhostconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HostPoolName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the ActiveSessionHostConfiguration for the hostPool that is currently being used for get operations.",
+          "parameters": [
+            {
+              "name": "-HostPoolName",
+              "value": "[Path.hostPoolName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Get-AzWvdHostPoolRegistrationToken",
-      "description": "Operation to list the RegistrationTokens associated with the HostPool",
+      "description": "Operation to list the RegistrationTokens associated with the HostPool.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/retrieveRegistrationToken",
       "help": {
         "learnMore": {
@@ -67,6 +105,158 @@
           "parameters": [
             {
               "name": "-Name",
+              "value": "[Path.hostPoolName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzWvdSessionHostConfiguration",
+      "description": "Get a SessionHostConfiguration.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostConfigurations/default",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdsessionhostconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HostPoolName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a SessionHostConfiguration.",
+          "parameters": [
+            {
+              "name": "-HostPoolName",
+              "value": "[Path.hostPoolName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzWvdSessionHostManagementsUpdateStatus",
+      "description": "Get the session host get status for a given hostpool.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default/sessionHostUpdateStatuses/default",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdsessionhostmanagementsupdatestatus"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HostPoolName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the session host get status for a given hostpool.",
+          "parameters": [
+            {
+              "name": "-HostPoolName",
+              "value": "[Path.hostPoolName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzWvdSessionHostManagement",
+      "description": "Get a SessionHostManagement.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdsessionhostmanagement"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HostPoolName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a SessionHostManagement.",
+          "parameters": [
+            {
+              "name": "-HostPoolName",
+              "value": "[Path.hostPoolName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzWvdSessionHostProvisioningStatus",
+      "description": "Get the session host provisioning status for a given hostpool.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default/sessionHostProvisioningStatuses/default",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdsessionhostprovisioningstatus"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HostPoolName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the session host provisioning status for a given hostpool.",
+          "parameters": [
+            {
+              "name": "-HostPoolName",
               "value": "[Path.hostPoolName]"
             },
             {

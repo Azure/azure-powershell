@@ -8,26 +8,26 @@ schema: 2.0.0
 # New-AzWvdScalingPlanPersonalSchedule
 
 ## SYNOPSIS
-create a ScalingPlanPersonalSchedule.
+Create a ScalingPlanPersonalSchedule.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlanName <String>
- -ScalingPlanScheduleName <String> [-SubscriptionId <String>] [-DaysOfWeek <String[]>]
- [-OffPeakActionOnDisconnect <String>] [-OffPeakActionOnLogoff <String>]
- [-OffPeakMinutesToWaitOnDisconnect <Int32>] [-OffPeakMinutesToWaitOnLogoff <Int32>]
- [-OffPeakStartTimeHour <Int32>] [-OffPeakStartTimeMinute <Int32>] [-OffPeakStartVMOnConnect <String>]
- [-PeakActionOnDisconnect <String>] [-PeakActionOnLogoff <String>] [-PeakMinutesToWaitOnDisconnect <Int32>]
- [-PeakMinutesToWaitOnLogoff <Int32>] [-PeakStartTimeHour <Int32>] [-PeakStartTimeMinute <Int32>]
+ -ScalingPlanScheduleName <String> [-SubscriptionId <String>] -DaysOfWeek <String[]>
+ -OffPeakStartTimeHour <Int32> -OffPeakStartTimeMinute <Int32> -PeakStartTimeHour <Int32>
+ -PeakStartTimeMinute <Int32> -RampDownStartTimeHour <Int32> -RampDownStartTimeMinute <Int32>
+ -RampUpStartTimeHour <Int32> -RampUpStartTimeMinute <Int32> [-OffPeakActionOnDisconnect <String>]
+ [-OffPeakActionOnLogoff <String>] [-OffPeakMinutesToWaitOnDisconnect <Int32>]
+ [-OffPeakMinutesToWaitOnLogoff <Int32>] [-OffPeakStartVMOnConnect <String>] [-PeakActionOnDisconnect <String>]
+ [-PeakActionOnLogoff <String>] [-PeakMinutesToWaitOnDisconnect <Int32>] [-PeakMinutesToWaitOnLogoff <Int32>]
  [-PeakStartVMOnConnect <String>] [-RampDownActionOnDisconnect <String>] [-RampDownActionOnLogoff <String>]
  [-RampDownMinutesToWaitOnDisconnect <Int32>] [-RampDownMinutesToWaitOnLogoff <Int32>]
- [-RampDownStartTimeHour <Int32>] [-RampDownStartTimeMinute <Int32>] [-RampDownStartVMOnConnect <String>]
- [-RampUpActionOnDisconnect <String>] [-RampUpActionOnLogoff <String>] [-RampUpAutoStartHost <String>]
- [-RampUpMinutesToWaitOnDisconnect <Int32>] [-RampUpMinutesToWaitOnLogoff <Int32>]
- [-RampUpStartTimeHour <Int32>] [-RampUpStartTimeMinute <Int32>] [-RampUpStartVMOnConnect <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RampDownStartVMOnConnect <String>] [-RampUpActionOnDisconnect <String>] [-RampUpActionOnLogoff <String>]
+ [-RampUpAutoStartHost <String>] [-RampUpMinutesToWaitOnDisconnect <Int32>]
+ [-RampUpMinutesToWaitOnLogoff <Int32>] [-RampUpStartVMOnConnect <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -45,7 +45,7 @@ New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlanNam
 ```
 
 ## DESCRIPTION
-create a ScalingPlanPersonalSchedule.
+Create a ScalingPlanPersonalSchedule.
 
 ## EXAMPLES
 
@@ -103,7 +103,7 @@ Type: System.String[]
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -224,7 +224,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -239,7 +239,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -329,7 +329,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -344,7 +344,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -434,7 +434,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -449,7 +449,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -554,7 +554,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -569,7 +569,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

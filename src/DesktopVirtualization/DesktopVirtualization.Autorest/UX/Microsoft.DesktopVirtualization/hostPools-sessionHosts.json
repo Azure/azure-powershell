@@ -1,6 +1,6 @@
 {
   "resourceType": "hostPools/sessionHosts",
-  "apiVersion": "2024-04-03",
+  "apiVersion": "2025-03-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization"
   },
@@ -39,6 +39,49 @@
             {
               "name": "-ResourceGroupName",
               "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzWvdRetrySessionHostProvisioning",
+      "description": "Retry provisioning on a SessionHost.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}/retryProvisioning",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/invoke-azwvdretrysessionhostprovisioning"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HostPoolName <String>",
+              "-ResourceGroupName <String>",
+              "-SessionHostName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Retry provisioning on a SessionHost.",
+          "parameters": [
+            {
+              "name": "-HostPoolName",
+              "value": "[Path.hostPoolName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SessionHostName",
+              "value": "[Path.sessionHostName]"
             },
             {
               "name": "-SubscriptionId",

@@ -5,31 +5,6 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
-function Start-TestSleep {
-    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
-    param(
-        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
-        [ValidateRange(0.0, 2147483.0)]
-        [double] $Seconds,
-
-        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
-        [ValidateRange('NonNegative')]
-        [Alias('ms')]
-        [int] $Milliseconds
-    )
-
-    if ($TestMode -ne 'playback') {
-        switch ($PSCmdlet.ParameterSetName) {
-            'SleepBySeconds' {
-                Start-Sleep -Seconds $Seconds
-            }
-            'SleepByMilliseconds' {
-                Start-Sleep -Milliseconds $Milliseconds
-            }
-        }
-    }
-}
-
 function setupEnv() {
     $env = @{}
     # Preload subscriptionId and tenant from context, which will be used in test
@@ -50,6 +25,8 @@ function setupEnv() {
     $null = $env.Add("PvtLinkHP", "PrivateLinkHostPool")
     $null = $env.Add("RemoteApplicationGroup", "ApplicationGroupPowershell2")
     $null = $env.Add("DesktopApplicationGroup", "ApplicationGroupPowershell1")
+    #TODO: Need to make this not local
+    $null = $env.Add("MSIXImagePath", "C:\AppAttach\Firefox20110.0.1.vhdx")
     $null = $env.Add("PrivateEndpointConnectionNameWS", "pwshTestPECWS")
     $null = $env.Add("PrivateEndpointConnectionNameWS1", "pwshTestPECWS1")
     $null = $env.Add("PrivateEndpointConnectionNameHP", "pwshTestPECHP")
@@ -66,22 +43,22 @@ function setupEnv() {
     $null = $env.Add("HostPoolArmPath2", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroup + "/providers/Microsoft.DesktopVirtualization/hostpools/"+ $env.HostPool2)
     $null = $env.Add("DesktopApplicationGroupPath", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroup + "/providers/Microsoft.DesktopVirtualization/applicationgroups/" + $env.DesktopApplicationGroup)
     $null = $env.Add("RemoteApplicationGroupPath", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroup + "/providers/Microsoft.DesktopVirtualization/applicationgroups/" + $env.RemoteApplicationGroup)
-
+    
     #---------- Persistent Resources ----------
     # The following resources are manually created and removed by the operator.
     $null = $env.Add("ResourceGroupPersistent", "alecbUserSessionTests")
     $null = $env.Add("HostPoolPersistent", "alecbUserSessionHP")
     $null = $env.Add("HostPoolPersistent2", "alecbRemoteAppHP")
+    $null = $env.Add("AutomatedHostpoolPersistent", "alecbhpuHP")
     $null = $env.Add("HostPoolPersistentArmPath", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroupPersistent + "/providers/Microsoft.DesktopVirtualization/hostpools/"+ $env.HostPoolPersistent)
     $null = $env.Add("SessionHostName", "userSess-sh-0")
-    #Increment this number for each test run up to 7 successful remove runs.
-    $null = $env.Add("SessionHostNameRemove", "userSess-sh-1")
+    $null = $env.Add("SessionHostNameRemove", "Delete4Test-0")
     $null = $env.Add("PersistentDesktopAppGroup", "alecbUserSessionHP-DAG")
     $null = $env.Add("PersistentRemoteAppGroup", "alecbRemoteAppHP-RAG")
     $null = $env.Add("VnetName", "alecbUserSession-vnet")
-    #TODO: Instead of this being a persistent resource on the HP, we should add the vhd to a Storage Account and access it from there.
-    $null = $env.Add("MSIXImagePath", "C:\AppAttach\Firefox20110.0.1.vhdx")
-    # The context in which the tests are run will change the tenant and subscription ID when -record is run.
+    $null = $env.Add("SHMHostPoolPersistent", "poshSHMHP")
+    $null = $env.Add("SHPHostPoolPersistent", "powershellshpHP")
+    # The context in which the tests are run will change the tenant and subscription ID when -record is run. 
     # Currently the scaling tests need to be run in a context with @microsoft, while the other tests are run with a test account
     # Modify the env.json manually after recording the necessary tests to get around this issue.
 
@@ -144,7 +121,8 @@ function setupEnv() {
             -Ring $null `
             -ValidationEnvironment:$false `
             -PreferredAppGroupType 'Desktop' `
-            -StartVMOnConnect:$false
+            -StartVMOnConnect:$false `
+            -ManagementType 'Standard'
 
         $privateLinkServiceConnectionHP = New-AzPrivateLinkServiceConnection -Name $env.PrivateEndpointConnectionNameHP `
                                             -PrivateLinkServiceId $hostpool.ID `
@@ -176,6 +154,10 @@ function setupEnv() {
         Write-Host -ForegroundColor Red $_.Exception.Message
     }
 
+    #Grab latest Marketplace images
+    $imageList = Get-AzVMImage -Location $env.Location -PublisherName "microsoftwindowsdesktop" -Offer "office-365" -Sku "win11-23h2-avd-m365" | Select Version
+    $env.Add("MarketplaceImageVersion", $imageList[0].Version)
+    Write-Host -ForegroundColor Green 'Marketplace image version: ' $env.MarketplaceImageVersion
     #Wrap up and create JSON file for tests to use
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -205,7 +187,7 @@ function cleanupEnv() {
 
     Remove-AzWvdHostPool -ResourceGroupName $ResourceGroup `
                          -Name $PvtLinkHP
-
+    
     Remove-AzPrivateEndpoint -ResourceGroupName $ResourceGroup `
                              -Name $PrivateEndpointNameHP `
                              -Force
@@ -214,4 +196,3 @@ function cleanupEnv() {
                              -Name $PrivateEndpointNameHP1 `
                              -Force
 }
-

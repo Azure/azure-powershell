@@ -66,6 +66,34 @@ eastus     packageName1  Microsoft.DesktopVirtualization/appattachpackages
 eastus     packageName2  Microsoft.DesktopVirtualization/appattachpackages
 ```
 
+This command lists Azure Virtual Desktop App Attach Packages in a resource group.
+
+### Example 3: List all Azure Virtual Desktop App Attach Packages in a specified subscription
+```powershell
+Get-AzWvdAppAttachPackage -SubscriptionId subscriptionId
+```
+
+```output
+Location   Name          Type
+--------   ----          ----
+eastus     packageName1  Microsoft.DesktopVirtualization/appattachpackages
+eastus     packageName2  Microsoft.DesktopVirtualization/appattachpackages
+```
+
+This command lists Azure Virtual Desktop App Attach Packages in a subscription.
+
+### Example 4: List all Azure Virtual Desktop App Attach Packages in the current subscription
+```powershell
+Get-AzWvdAppAttachPackage
+```
+
+```output
+Location   Name          Type
+--------   ----          ----
+eastus     packageName1  Microsoft.DesktopVirtualization/appattachpackages
+eastus     packageName2  Microsoft.DesktopVirtualization/appattachpackages
+```
+
 This command lists Azure Virtual Desktop App Attach Packages in a subscription.
 
 ## PARAMETERS
@@ -88,7 +116,7 @@ Accept wildcard characters: False
 
 ### -Filter
 OData filter expression.
-Valid properties for filtering are package name and host pool.
+Valid properties for filtering are package name, host pool, package owner name, and custom data.
 
 ```yaml
 Type: System.String
@@ -118,7 +146,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the App Attach package
+The name of the App Attach package arm object
 
 ```yaml
 Type: System.String

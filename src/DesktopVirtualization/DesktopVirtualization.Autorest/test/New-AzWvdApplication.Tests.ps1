@@ -29,7 +29,8 @@ Describe 'New-AzWvdApplication' {
                                 -CustomRdpProperty $null `
                                 -Ring $null `
                                 -ValidationEnvironment:$false `
-                                -PreferredAppGroupType 'Desktop'
+                                -PreferredAppGroupType 'Desktop' `
+                                -ManagementType 'Standard'
 
             $applicationGroup = New-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `

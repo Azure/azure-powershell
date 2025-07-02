@@ -8,7 +8,7 @@ schema: 2.0.0
 # Unregister-AzWvdApplicationGroup
 
 ## SYNOPSIS
-Unregister the Windows virtual desktop application group.
+Unregister the Azure Virtual Desktop application group.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Unregister-AzWvdApplicationGroup -ResourceGroupName <String> -WorkspaceName <Str
 ```
 
 ## DESCRIPTION
-Unregister the Windows virtual desktop application group.
+Unregister the Azure Virtual Desktop application group.
 
 ## EXAMPLES
 

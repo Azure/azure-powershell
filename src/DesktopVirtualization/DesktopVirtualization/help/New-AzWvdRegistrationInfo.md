@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWvdRegistrationInfo
 
 ## SYNOPSIS
-Create Windows virtual desktop registration info.
+Create Azure Virtual Desktop registration info.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzWvdRegistrationInfo -ResourceGroupName <String> -HostPoolName <String> -Ex
 ```
 
 ## DESCRIPTION
-Create Windows virtual desktop registration info.
+Create Azure Virtual Desktop registration info.
 
 ## EXAMPLES
 

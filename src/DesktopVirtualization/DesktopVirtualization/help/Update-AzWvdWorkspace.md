@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWvdWorkspace
 
 ## SYNOPSIS
-update a workspace.
+Update a workspace.
 
 ## SYNTAX
 
@@ -42,11 +42,11 @@ Update-AzWvdWorkspace -InputObject <IDesktopVirtualizationIdentity> [-Applicatio
 ```
 
 ## DESCRIPTION
-update a workspace.
+Update a workspace.
 
 ## EXAMPLES
 
-### Example 1: Update a Windows Virtual Desktop Workspace by name
+### Example 1: Update a Azure Virtual Desktop Workspace by name
 ```powershell
 Update-AzWvdWorkspace -ResourceGroupName ResourceGroupName `
                         -Name WorkspaceName `
@@ -61,7 +61,7 @@ Location   Name                 Type
 eastus     WorkspaceName Microsoft.DesktopVirtualization/workspaces
 ```
 
-This command updates a Windows Virtual Desktop Workspace in a Resource Group.
+This command updates a Azure Virtual Desktop Workspace in a Resource Group.
 
 ## PARAMETERS
 

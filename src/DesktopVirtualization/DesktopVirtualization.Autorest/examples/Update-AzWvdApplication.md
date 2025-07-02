@@ -1,4 +1,4 @@
-### Example 1: Update a Windows Virtual Desktop Application
+### Example 1: Update a Azure Virtual Desktop Application
 ```powershell
 Update-AzWvdApplication -ResourceGroupName ResourceGroupName `
                              -GroupName ApplicationGroupName `
@@ -18,5 +18,5 @@ Name                                 Type
 ApplicationGroupName/ApplicationName Microsoft.DesktopVirtualization/applicationgroups/applications
 ```
 
-This command updates a Windows Virtual Desktop Application in an application Group.
+This command updates a Azure Virtual Desktop Application in an applicaton Group.
 

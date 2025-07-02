@@ -29,7 +29,8 @@ Describe 'Get-AzWvdRegistrationInfo' {
             -CustomRdpProperty $null `
             -Ring $null `
             -ValidationEnvironment:$false `
-            -PreferredAppGroupType 'Desktop'
+            -PreferredAppGroupType 'Desktop' `
+            -ManagementType 'Standard'
 
             $regToken = Get-AzWvdRegistrationInfo -SubscriptionId $env.SubscriptionId `
             -ResourceGroupName $env.ResourceGroup `

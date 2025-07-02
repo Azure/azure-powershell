@@ -22,7 +22,7 @@ List start menu items in the given application group.
 
 ## EXAMPLES
 
-### Example 2: List Windows Virtual Desktop Start Menu Items
+### Example 2: List Azure Virtual Desktop Start Menu Items
 ```powershell
 Get-AzWvdStartMenuItem -ResourceGroupName ResourceGroupName -ApplicationGroupName ApplicationGroupName
 ```
@@ -36,7 +36,7 @@ ApplicationGroupName/Disk Cleanup                   Microsoft.DesktopVirtualizat
 ApplicationGroupName/Internet Explorer              Microsoft.DesktopVirtualization/applicationgroups/startmenuitems
 ```
 
-This command Lists Windows Virtual Desktop Start Menu Items in an application Group.
+This command Lists Azure Virtual Desktop Start Menu Items in an applicaton Group.
 
 ## PARAMETERS
 

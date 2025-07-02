@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzWvdRegistrationInfo
 
 ## SYNOPSIS
-Get the Windows virtual desktop registration info.
+Get the Azure Virtual Desktop registration info.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzWvdRegistrationInfo -ResourceGroupName <String> -HostPoolName <String> [-S
 ```
 
 ## DESCRIPTION
-Get the Windows virtual desktop registration info.
+Get the Azure Virtual Desktop registration info.
 
 ## EXAMPLES
 

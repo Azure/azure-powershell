@@ -8,35 +8,41 @@ schema: 2.0.0
 # Update-AzWvdScalingPlanPooledSchedule
 
 ## SYNOPSIS
-update a ScalingPlanPooledSchedule.
+Update a ScalingPlanPooledSchedule.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzWvdScalingPlanPooledSchedule -ResourceGroupName <String> -ScalingPlanName <String>
- -ScalingPlanScheduleName <String> [-SubscriptionId <String>] [-DaysOfWeek <String[]>]
- [-OffPeakLoadBalancingAlgorithm <String>] [-OffPeakStartTimeHour <Int32>] [-OffPeakStartTimeMinute <Int32>]
- [-PeakLoadBalancingAlgorithm <String>] [-PeakStartTimeHour <Int32>] [-PeakStartTimeMinute <Int32>]
- [-RampDownCapacityThresholdPct <Int32>] [-RampDownForceLogoffUser] [-RampDownLoadBalancingAlgorithm <String>]
- [-RampDownMinimumHostsPct <Int32>] [-RampDownNotificationMessage <String>] [-RampDownStartTimeHour <Int32>]
- [-RampDownStartTimeMinute <Int32>] [-RampDownStopHostsWhen <String>] [-RampDownWaitTimeMinute <Int32>]
- [-RampUpCapacityThresholdPct <Int32>] [-RampUpLoadBalancingAlgorithm <String>]
- [-RampUpMinimumHostsPct <Int32>] [-RampUpStartTimeHour <Int32>] [-RampUpStartTimeMinute <Int32>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ScalingPlanScheduleName <String> [-SubscriptionId <String>]
+ [-CreateDeleteRampDownMaximumHostPoolSize <Int32>] [-CreateDeleteRampDownMinimumHostPoolSize <Int32>]
+ [-CreateDeleteRampUpMaximumHostPoolSize <Int32>] [-CreateDeleteRampUpMinimumHostPoolSize <Int32>]
+ [-DaysOfWeek <String[]>] [-OffPeakLoadBalancingAlgorithm <String>] [-OffPeakStartTimeHour <Int32>]
+ [-OffPeakStartTimeMinute <Int32>] [-PeakLoadBalancingAlgorithm <String>] [-PeakStartTimeHour <Int32>]
+ [-PeakStartTimeMinute <Int32>] [-RampDownCapacityThresholdPct <Int32>] [-RampDownForceLogoffUser]
+ [-RampDownLoadBalancingAlgorithm <String>] [-RampDownMinimumHostsPct <Int32>]
+ [-RampDownNotificationMessage <String>] [-RampDownStartTimeHour <Int32>] [-RampDownStartTimeMinute <Int32>]
+ [-RampDownStopHostsWhen <String>] [-RampDownWaitTimeMinute <Int32>] [-RampUpCapacityThresholdPct <Int32>]
+ [-RampUpLoadBalancingAlgorithm <String>] [-RampUpMinimumHostsPct <Int32>] [-RampUpStartTimeHour <Int32>]
+ [-RampUpStartTimeMinute <Int32>] [-ScalingMethod <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWvdScalingPlanPooledSchedule -InputObject <IDesktopVirtualizationIdentity> [-DaysOfWeek <String[]>]
- [-OffPeakLoadBalancingAlgorithm <String>] [-OffPeakStartTimeHour <Int32>] [-OffPeakStartTimeMinute <Int32>]
- [-PeakLoadBalancingAlgorithm <String>] [-PeakStartTimeHour <Int32>] [-PeakStartTimeMinute <Int32>]
- [-RampDownCapacityThresholdPct <Int32>] [-RampDownForceLogoffUser] [-RampDownLoadBalancingAlgorithm <String>]
- [-RampDownMinimumHostsPct <Int32>] [-RampDownNotificationMessage <String>] [-RampDownStartTimeHour <Int32>]
- [-RampDownStartTimeMinute <Int32>] [-RampDownStopHostsWhen <String>] [-RampDownWaitTimeMinute <Int32>]
- [-RampUpCapacityThresholdPct <Int32>] [-RampUpLoadBalancingAlgorithm <String>]
- [-RampUpMinimumHostsPct <Int32>] [-RampUpStartTimeHour <Int32>] [-RampUpStartTimeMinute <Int32>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzWvdScalingPlanPooledSchedule -InputObject <IDesktopVirtualizationIdentity>
+ [-CreateDeleteRampDownMaximumHostPoolSize <Int32>] [-CreateDeleteRampDownMinimumHostPoolSize <Int32>]
+ [-CreateDeleteRampUpMaximumHostPoolSize <Int32>] [-CreateDeleteRampUpMinimumHostPoolSize <Int32>]
+ [-DaysOfWeek <String[]>] [-OffPeakLoadBalancingAlgorithm <String>] [-OffPeakStartTimeHour <Int32>]
+ [-OffPeakStartTimeMinute <Int32>] [-PeakLoadBalancingAlgorithm <String>] [-PeakStartTimeHour <Int32>]
+ [-PeakStartTimeMinute <Int32>] [-RampDownCapacityThresholdPct <Int32>] [-RampDownForceLogoffUser]
+ [-RampDownLoadBalancingAlgorithm <String>] [-RampDownMinimumHostsPct <Int32>]
+ [-RampDownNotificationMessage <String>] [-RampDownStartTimeHour <Int32>] [-RampDownStartTimeMinute <Int32>]
+ [-RampDownStopHostsWhen <String>] [-RampDownWaitTimeMinute <Int32>] [-RampUpCapacityThresholdPct <Int32>]
+ [-RampUpLoadBalancingAlgorithm <String>] [-RampUpMinimumHostsPct <Int32>] [-RampUpStartTimeHour <Int32>]
+ [-RampUpStartTimeMinute <Int32>] [-ScalingMethod <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityScalingPlan
@@ -49,14 +55,17 @@ Update-AzWvdScalingPlanPooledSchedule -ScalingPlanInputObject <IDesktopVirtualiz
 ### UpdateViaIdentityScalingPlanExpanded
 ```
 Update-AzWvdScalingPlanPooledSchedule -ScalingPlanInputObject <IDesktopVirtualizationIdentity>
- -ScalingPlanScheduleName <String> [-DaysOfWeek <String[]>] [-OffPeakLoadBalancingAlgorithm <String>]
- [-OffPeakStartTimeHour <Int32>] [-OffPeakStartTimeMinute <Int32>] [-PeakLoadBalancingAlgorithm <String>]
- [-PeakStartTimeHour <Int32>] [-PeakStartTimeMinute <Int32>] [-RampDownCapacityThresholdPct <Int32>]
- [-RampDownForceLogoffUser] [-RampDownLoadBalancingAlgorithm <String>] [-RampDownMinimumHostsPct <Int32>]
- [-RampDownNotificationMessage <String>] [-RampDownStartTimeHour <Int32>] [-RampDownStartTimeMinute <Int32>]
- [-RampDownStopHostsWhen <String>] [-RampDownWaitTimeMinute <Int32>] [-RampUpCapacityThresholdPct <Int32>]
- [-RampUpLoadBalancingAlgorithm <String>] [-RampUpMinimumHostsPct <Int32>] [-RampUpStartTimeHour <Int32>]
- [-RampUpStartTimeMinute <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ScalingPlanScheduleName <String> [-CreateDeleteRampDownMaximumHostPoolSize <Int32>]
+ [-CreateDeleteRampDownMinimumHostPoolSize <Int32>] [-CreateDeleteRampUpMaximumHostPoolSize <Int32>]
+ [-CreateDeleteRampUpMinimumHostPoolSize <Int32>] [-DaysOfWeek <String[]>]
+ [-OffPeakLoadBalancingAlgorithm <String>] [-OffPeakStartTimeHour <Int32>] [-OffPeakStartTimeMinute <Int32>]
+ [-PeakLoadBalancingAlgorithm <String>] [-PeakStartTimeHour <Int32>] [-PeakStartTimeMinute <Int32>]
+ [-RampDownCapacityThresholdPct <Int32>] [-RampDownForceLogoffUser] [-RampDownLoadBalancingAlgorithm <String>]
+ [-RampDownMinimumHostsPct <Int32>] [-RampDownNotificationMessage <String>] [-RampDownStartTimeHour <Int32>]
+ [-RampDownStartTimeMinute <Int32>] [-RampDownStopHostsWhen <String>] [-RampDownWaitTimeMinute <Int32>]
+ [-RampUpCapacityThresholdPct <Int32>] [-RampUpLoadBalancingAlgorithm <String>]
+ [-RampUpMinimumHostsPct <Int32>] [-RampUpStartTimeHour <Int32>] [-RampUpStartTimeMinute <Int32>]
+ [-ScalingMethod <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -74,7 +83,7 @@ Update-AzWvdScalingPlanPooledSchedule -ResourceGroupName <String> -ScalingPlanNa
 ```
 
 ## DESCRIPTION
-update a ScalingPlanPooledSchedule.
+Update a ScalingPlanPooledSchedule.
 
 ## EXAMPLES
 
@@ -115,6 +124,72 @@ spName/scheduleName
 Updates an existing PooledSchedule in a Scaling Plan.
 
 ## PARAMETERS
+
+### -CreateDeleteRampDownMaximumHostPoolSize
+Maximum number of session hosts that may be created by the Scaling Service.
+This requires the assigned hostpool to have a session host config property.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityScalingPlanExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CreateDeleteRampDownMinimumHostPoolSize
+Minimum number of session hosts that will be be created by the Scaling Service.
+Scaling will not delete any hosts when this limit is met.
+This requires the assigned hostpool to have a session host config property.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityScalingPlanExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CreateDeleteRampUpMaximumHostPoolSize
+Maximum number of session hosts that may be created by the Scaling Service.
+This requires the assigned hostpool to have a session host config property.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityScalingPlanExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CreateDeleteRampUpMinimumHostPoolSize
+Minimum number of session hosts that will be be created by the Scaling Service.
+Scaling will not delete any hosts when this limit is met.
+This requires the assigned hostpool to have a session host config property.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityScalingPlanExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DaysOfWeek
 Set of days of the week on which this schedule is active.
@@ -502,6 +577,21 @@ Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScalingMethod
+The desired scaling method to be used to scale the hosts in the assigned host pool.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityScalingPlanExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
