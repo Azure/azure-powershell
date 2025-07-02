@@ -136,6 +136,7 @@ $StartingCloudManagementMessage = "Starting Cloud Management agent."
 $RemoteSupportConsentText = "`r`n`r`nBy approving this request, the Microsoft support organization or the Azure engineering team supporting this feature ('Microsoft Support Engineer') will be given direct access to your device for troubleshooting purposes and/or resolving the technical issue described in the Microsoft support case. `r`n`r`nDuring a remote support session, a Microsoft Support Engineer may need to collect logs. By enabling remote support, you have agreed to a diagnostic logs collection by Microsoft Support Engineer to address a support case You also acknowledge and consent to the upload and retention of those logs in an Azure storage account managed and controlled by Microsoft. These logs may be accessed by Microsoft in the context of a support case and to improve the health of Azure Stack HCI. `r`n`r`nThe data will be used only to troubleshoot failures that are subject to a support ticket, and will not be used for marketing, advertising, or any other commercial purposes without your consent. The data may be retained for up to ninety (90) days and will be handled following our standard privacy practices (https://privacy.microsoft.com/en-US/). Any data previously collected with your consent will not be affected by the revocation of your permission."
 
 $UpgradeOSMessage = "Your system is running Azure Local, version 22H2, and will no longer receive security updates and support after May 31, 2025. To continue receiving security updates and support, you must upgrade your operating system. Visit https://aka.ms/azlocal-os-upgrade to learn more."
+$UpgradeToSolutionMessage = "Your system is not running the Azure Local solution. Install the solution upgrade to get the latest features and capabilities. Visit https://aka.ms/azlocal-solution-upgrade to learn more."
 
 $AlreadyLoggedFlag = "Already Logged"
 #endregion
@@ -516,6 +517,51 @@ function Confirm-UserAcknowledgmentToUpgradeOS {
     if( -not $doNotAbort)
     {
         throw "Aborting based on user input"
+    }
+}
+
+function Confirm-UserAcknowledgmentUpgradeToSolution {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$true)]
+        [System.Management.Automation.Runspaces.PSSession]
+        $ClusterNodeSession
+    )
+
+    $osVersionDetectoid = { $displayVersion = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").DisplayVersion; $buildNumber = (Get-CimInstance -ClassName CIM_OperatingSystem).BuildNumber; New-Object -TypeName PSObject -Property @{'DisplayVersion'=$displayVersion; 'BuildNumber'=$buildNumber} }
+    $osVersionInfo = Invoke-Command -Session $clusterNodeSession -ScriptBlock $osVersionDetectoid
+
+    # Combined script block to check both deployment and ECE service status
+    $solutionDetectoid = { 
+        # Check deployment registry key
+        $deploymentRegKey = Get-ItemProperty -Path "HKLM:\Software\Microsoft\AzureStackStampInformation" -Name "DeployType" -ErrorAction SilentlyContinue
+        $hasDeploymentReg = $false
+        if ($null -ne $deploymentRegKey) {
+            $deployType = $deploymentRegKey.DeployType
+            $hasDeploymentReg = ($deployType -ieq "Deployment")
+        }
+        
+        # Check ECE service
+        $eceWindowsService = Get-Service | Where-Object Name -in @("Azure Stack HCI Orchestrator Service", "ECE Windows Service")
+        $hasECEService = ($null -ne $eceWindowsService)
+
+        New-Object -TypeName PSObject -Property @{
+            'HasDeploymentReg' = $hasDeploymentReg
+            'HasECEService' = $hasECEService
+        }
+    }
+
+    # Warning - if the OS version is 23H2 or later with no solution running
+    if (([Int]::Parse($osVersionInfo.BuildNumber) -ge $23H2BuildNumber))
+    {
+        Write-VerboseLog "Checking solution deployment status."
+        $solutionStatus = Invoke-Command -Session $ClusterNodeSession -ScriptBlock $solutionDetectoid
+        
+        # If neither deployment registry key nor ECE service indicates solution is running
+        if (-not $solutionStatus.HasDeploymentReg -and -not $solutionStatus.HasECEService)
+        {
+            Write-Warning $UpgradeToSolutionMessage
+        }
     }
 }
 
@@ -2949,6 +2995,11 @@ param(
 
         Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
+        if ($RepairRegistration -eq $true)
+        {
+            Confirm-UserAcknowledgmentUpgradeToSolution -ClusterNodeSession $clusterNodeSession
+        }
+
         $global:HCILogsDirectory = Setup-Logging -LogsDirectory $LogsDirectory -LogFilePrefix "RegisterHCI" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -IsClusterRegistered $IsClusterRegistered -ClusterNodeSession $clusterNodeSession
         
         if($IsClusterRegistered -and !([string]::IsNullOrEmpty($LogsDirectory)))
@@ -4198,6 +4249,7 @@ param(
         $regContext, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails -ComputerName $ComputerName -Credential $Credential -IsManagementNode $isManagementNode
 
         Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
+        Confirm-UserAcknowledgmentUpgradeToSolution -ClusterNodeSession $clusterNodeSession
 
         $global:HCILogsDirectory = Setup-Logging -LogFilePrefix "UnregisterHCI" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -IsClusterRegistered $IsClusterRegistered -ClusterNodeSession $clusterNodeSession 
 
