@@ -18,10 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-* General availability for module Az.Oracle to include stable version 2025-03-01
-
-## Version 1.2.1
+* Upgraded to the stable version 2025-03-01
 
 ## Version 1.1.1
 * Fixed module name in module metadata
