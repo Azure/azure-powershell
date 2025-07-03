@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 2.1.1
+* Added breaking change announcement for below commands.
+  - `Get-AzRelayNamespace`
+  - `Get-AzRelayNamespaceNetworkRuleSet`
+  - `Set-AzRelayNamespaceNetworkRuleSet`
+
 ## Version 2.1.0
 * Upgraded nuget package to signed package.
 

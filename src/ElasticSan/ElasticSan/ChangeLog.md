@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 1.4.1
+* Added warning message for data integrity checking when create/update a volume group.
+    - `New-AzElasticSanVolumeGroup`
+    - `Update-AzElasticSanVolumeGroup`
+
 ## Version 1.4.0
 * Changed parameters `BaseSizeTiB` and `ExtendedCapacitySizeTiB` in cmdlet `New-AzElasticSan` to be optional.
     - `New-AzElasticSan`

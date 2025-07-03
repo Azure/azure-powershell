@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Whether to use use Uptime SLA.")]
         public SwitchParameter EnableUptimeSLA { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Whether to enalbe OIDC issuer feature.")]
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable OIDC issuer feature.")]
         public SwitchParameter EnableOidcIssuer { get; set; }
 
         private ManagedCluster BuildNewCluster()

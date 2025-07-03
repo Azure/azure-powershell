@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.INetworkProfileOutboundIPs Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.INetworkProfileInternal.OutboundIP { get => (this._outboundIP = this._outboundIP ?? new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.NetworkProfileOutboundIPs()); set { {_outboundIP = value;} } }
 
         /// <summary>Internal Acessors for OutboundIPPublicIP</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.INetworkProfileInternal.OutboundIPPublicIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.INetworkProfileOutboundIPsInternal)OutboundIP).PublicIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.INetworkProfileOutboundIPsInternal)OutboundIP).PublicIP = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.INetworkProfileInternal.OutboundIPPublicIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.INetworkProfileOutboundIPsInternal)OutboundIP).PublicIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.INetworkProfileOutboundIPsInternal)OutboundIP).PublicIP = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for RequiredTraffic</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IRequiredTraffic> Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.INetworkProfileInternal.RequiredTraffic { get => this._requiredTraffic; set { {_requiredTraffic = value;} } }

@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = DirectUploadToManagedDiskSet,
-            HelpMessage = "Posssible values are: 'V1', 'V2'")]
+            HelpMessage = "Possible values are: 'V1', 'V2'")]
         [PSArgumentCompleter("V1", "V2")]
         public string DiskHyperVGeneration { get; set; }
 

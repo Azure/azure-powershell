@@ -287,7 +287,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
                         
             ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
-                       
+
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
+            bool isMUAProtected = true;
+
             // do validations
             ValidateAzureVMDisableProtectionRequest(itemBase);
 
@@ -310,7 +313,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 protectedItemUri,
                 serviceClientRequest,
                 vaultName: vaultName,
-                resourceGroupName: resourceGroupName);
+                resourceGroupName: resourceGroupName,
+                auxiliaryAccessToken,
+                isMUAProtected,
+                true);
         }
 
         /// <summary>
@@ -1385,7 +1391,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 CmdletModel.SimpleSchedulePolicyV2 defaultSchedule = new CmdletModel.SimpleSchedulePolicyV2();
                 
-                //Default is daily scedule at 10:30 AM local time
+                //Default is daily schedule at 10:30 AM local time
                 defaultSchedule.ScheduleRunFrequency = scheduleRunFrequency;
                 DateTime scheduleTime = AzureWorkloadProviderHelper.GenerateRandomScheduleTime();
 
@@ -1423,7 +1429,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 CmdletModel.SimpleSchedulePolicy defaultSchedule = new CmdletModel.SimpleSchedulePolicy();
                 
-                //Default is daily scedule at 10:30 AM local time
+                //Default is daily schedule at 10:30 AM local time
                 defaultSchedule.ScheduleRunFrequency = scheduleRunFrequency;
 
                 if (scheduleRunFrequency == CmdletModel.ScheduleRunType.Daily || scheduleRunFrequency == CmdletModel.ScheduleRunType.Weekly)
@@ -2001,7 +2007,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             Regex rgx = new Regex(pattern);
             content = rgx.Replace(content, replacement);
 
-            // ecode back to Base 64 format
+            // decode back to Base 64 format
             contentBytes = Encoding.UTF8.GetBytes(content);
             content = Convert.ToBase64String(contentBytes);
 

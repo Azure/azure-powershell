@@ -74,10 +74,10 @@ Accept wildcard characters: False
 
 ### -AutoCreateTopicWithFirstSubscription
 This Boolean is used to specify the creation mechanism for 'all' the Event Grid Domain Topics associated with this Event Grid Domain resource.In this context, creation of domain topic can be auto-managed (when true) or self-managed (when false).
-The default value for this property is true.When this property is null or set to true, Event Grid is responsible of automatically creating the domain topic when the first event subscription iscreated at the scope of the domain topic.
-If this property is set to false, then creating the first event subscription will require creating a domain topicby the user.
-The self-management mode can be used if the user wants full control of when the domain topic is created, while auto-managed mode provides theflexibility to perform less operations and manage fewer resources by the user.
-Also, note that in auto-managed creation mode, user is allowed to create thedomain topic on demand if needed.
+The default value for this property is true.When this property is null or set to true, Event Grid is responsible of automatically creating the domain topic when the first event subscription is created at the scope of the domain topic.
+If this property is set to false, then creating the first event subscription will require creating a domain topic by the user.
+The self-management mode can be used if the user wants full control of when the domain topic is created, while auto-managed mode provides the flexibility to perform less operations and manage fewer resources by the user.
+Also, note that in auto-managed creation mode, user is allowed to create the domain topic on demand if needed.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -93,9 +93,9 @@ Accept wildcard characters: False
 
 ### -AutoDeleteTopicWithLastSubscription
 This Boolean is used to specify the deletion mechanism for 'all' the Event Grid Domain Topics associated with this Event Grid Domain resource.In this context, deletion of domain topic can be auto-managed (when true) or self-managed (when false).
-The default value for this property is true.When this property is set to true, Event Grid is responsible of automatically deleting the domain topic when the last event subscription at the scopeof the domain topic is deleted.
+The default value for this property is true.When this property is set to true, Event Grid is responsible of automatically deleting the domain topic when the last event subscription at the scope of the domain topic is deleted.
 If this property is set to false, then the user needs to manually delete the domain topic when it is no longer needed(e.g., when last event subscription is deleted and the resource needs to be cleaned up).
-The self-management mode can be used if the user wants fullcontrol of when the domain topic needs to be deleted, while auto-managed mode provides the flexibility to perform less operations and manage fewerresources by the user.
+The self-management mode can be used if the user wants full control of when the domain topic needs to be deleted, while auto-managed mode provides the flexibility to perform less operations and manage fewer resources by the user.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

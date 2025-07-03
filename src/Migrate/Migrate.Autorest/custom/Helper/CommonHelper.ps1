@@ -84,7 +84,7 @@ function IsReservedOrTrademarked {
 
     $uppercased = $Value.ToUpper();
 
-    # cannot be exactly one of these, but could be slighlty differnet (e.g. hololens2)
+    # cannot be exactly one of these, but could be slightly different (e.g. hololens2)
     $reservedWords = @(
         "ACCESS",
         "APP_CODE",
@@ -208,9 +208,35 @@ function InvokeAzMigrateGetCommandWithRetries {
     )
 
     process {
+        # Filter out ErrorAction and ErrorVariable from the parameters
+        $params = @{}
+        foreach ($key in $Parameters.Keys) {
+            if ($key -ne "ErrorAction" -and $key -ne "ErrorVariable") {
+                $params[$key] = $Parameters[$key]
+            }
+        }
+
+        # Extract user-specified ErrorAction and ErrorVariable or defaults
+        # but do not include them in $params
+        if ($Parameters.ContainsKey("ErrorVariable")) {
+            $errorVariable = $Parameters["ErrorVariable"]
+        }
+        else
+        {
+            $errorVariable = "notPresent"
+        }
+
+        if ($Parameters.ContainsKey("ErrorAction")) {
+            $errorAction = $Parameters["ErrorAction"]
+        }
+        else
+        {
+            $errorAction = "Continue"
+        }
+
         for ($i = 0; $i -le $MaxRetryCount; $i++) {
             try {
-                $result = & $CommandName @Parameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                $result = & $CommandName @params -ErrorVariable $errorVariable -ErrorAction $errorAction
 
                 if ($null -eq $result) {
                     throw $ErrorMessage
@@ -223,7 +249,7 @@ function InvokeAzMigrateGetCommandWithRetries {
                     Start-Sleep -Seconds $RetryDelayInSeconds
                 }
                 else {
-                    throw $ErrorMessage
+                    throw "Get command failed after $MaxRetryCount retries. Error: $($_.Exception)"
                 }
             }
         }
@@ -231,6 +257,7 @@ function InvokeAzMigrateGetCommandWithRetries {
         return $result
     }
 }
+
 function ValidateReplication {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
     param (
@@ -250,12 +277,14 @@ function ValidateReplication {
         throw $VmReplicationValidationMessages.AlreadyInReplication
     }
 
+    # Check the VM power status
     if ($Machine.PowerStatus -eq $PowerStatus.OffVMware -or $Machine.PowerStatus -eq $PowerStatus.OffHyperV) {
         throw $VmReplicationValidationMessages.VmPoweredOff
     }
 
     if ($MigrationType -eq $AzLocalInstanceTypes.HyperVToAzLocal) {
-        if (-not $Machine.OperatingSystemDetailOSType -or $Machine.OperatingSystemDetailOSType -eq "") {
+        if ([string]::IsNullOrEmpty($Machine.OperatingSystemDetailOSType) -or
+            ($Machine.OperatingSystemDetailOSType -eq $OsType.OtherGuestFamily -and [string]::IsNullOrEmpty($Machine.GuestOSDetailOsname))) {
             throw $VmReplicationValidationMessages.OsTypeNotFound
         }
 
@@ -265,6 +294,7 @@ function ValidateReplication {
     }
 
     if ($MigrationType -eq $AzLocalInstanceTypes.VMwareToAzLocal) {
+        # Once VMware tools are installed, OS type should be available.
         if ($Machine.VMwareToolsStatus -eq $VMwareToolsStatus.NotRunning) {
             throw $VmReplicationValidationMessages.VmWareToolsNotRunning
         }

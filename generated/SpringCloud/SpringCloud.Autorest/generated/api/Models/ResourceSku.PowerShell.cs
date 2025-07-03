@@ -139,7 +139,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
             }
             if (content.Contains("CapacityMinimum"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceSkuInternal)this).CapacityMinimum = (int) content.GetValueForProperty("CapacityMinimum",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceSkuInternal)this).CapacityMinimum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceSkuInternal)this).CapacityMinimum = (int?) content.GetValueForProperty("CapacityMinimum",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceSkuInternal)this).CapacityMinimum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("CapacityMaximum"))
             {
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
             }
             if (content.Contains("CapacityMinimum"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceSkuInternal)this).CapacityMinimum = (int) content.GetValueForProperty("CapacityMinimum",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceSkuInternal)this).CapacityMinimum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceSkuInternal)this).CapacityMinimum = (int?) content.GetValueForProperty("CapacityMinimum",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceSkuInternal)this).CapacityMinimum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("CapacityMaximum"))
             {

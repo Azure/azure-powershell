@@ -37,7 +37,7 @@ Get Online Endpoint.
 
 ## EXAMPLES
 
-### Example 1: Lists all online enpoints under a workspace
+### Example 1: Lists all online endpoints under a workspace
 ```powershell
 Get-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01
 ```
@@ -50,9 +50,9 @@ eastus   online-cli01  5/19/2022 2:47:34 AM UserName (Example)                  
 eastus   online-pwsh01 5/18/2022 9:44:06 AM UserName (Example)                  5/18/2022 9:44:48 AM                                                                                   Managed ml-rg-test
 ```
 
-Lists all online enpoints under a workspace
+Lists all online endpoints under a workspace
 
-### Example 2: Get a online enpoint by name
+### Example 2: Get a online endpoint by name
 ```powershell
 Get-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name online-cli01
 ```
@@ -63,7 +63,7 @@ Location Name         SystemDataCreatedAt  SystemDataCreatedBy                 S
 eastus   online-cli01 5/19/2022 2:47:34 AM UserName (Example)                  5/19/2022 2:48:26 AM                                                                                   Managed ml-rg-test
 ```
 
-Get a online enpoint by name
+Get a online endpoint by name
 
 ## PARAMETERS
 

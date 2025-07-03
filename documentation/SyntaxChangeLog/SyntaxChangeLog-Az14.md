@@ -1,3 +1,27 @@
+## 14.2.0 - July 2025
+#### Az.Network 7.18.0 
+* Modified cmdlet `New-AzApplicationGatewayFirewallPolicyManagedRule`
+   - Added parameter `-Exception`
+* Modified cmdlet `New-AzNetworkWatcherPacketCaptureV2`
+   - Added parameters `-ContinuousCapture`, `-LocalPath`, `-CaptureSetting`
+* Added cmdlet `New-AzApplicationGatewayFirewallPolicyException`, `New-AzPacketCaptureSettingsConfig`
+#### Az.Storage 9.1.0 
+* Modified cmdlet `New-AzStorageAccount`
+   - Added parameter `-SasExpirationAction`
+* Modified cmdlet `Set-AzStorageAccount`
+   - Added parameter `-SasExpirationAction`
+* Added cmdlet `Get-AzStorageTaskAssignment`, `Get-AzStorageTaskAssignmentInstancesReport`, `New-AzStorageTaskAssignment`, `Remove-AzStorageTaskAssignment`, `Update-AzStorageTaskAssignment`
+
+## 14.1.0 - June 2025
+#### Az.Migrate 2.8.0 
+* Added cmdlet `Get-AzMigrateServerMigrationStatus`
+#### Az.MySql 1.4.0 
+* Modified cmdlet `Restore-AzMySqlFlexibleServer`
+   - Added parameters `-Location`, `-UseGeoRestore`, `-Sku`, `-Tag`
+#### Az.PostgreSql 1.3.0 
+* Modified cmdlet `Restore-AzPostgreSqlFlexibleServer`
+   - Added parameters `-UseGeoRestore`, `-Sku`, `-Tag`
+
 ## 14.0.0 - May 2025
 #### Az.Aks 7.0.0 
 * Modified cmdlet `Get-AzAksMaintenanceConfiguration`
@@ -491,5 +515,7 @@
 #### Az.Storage 9.0.0 
 * Modified cmdlet `Start-AzStorageAccountMigration`
    - Added parameter `-Force`
+
+
 
 

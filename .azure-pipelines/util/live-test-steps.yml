@@ -47,7 +47,7 @@ jobs:
         New-Item -Name $(ArtifactsName) -Path $(Pipeline.Workspace) -ItemType Directory -Force
 
   - task: DownloadPipelineArtifact@2
-    condition: ${{ in(parameters.galleryName, 'DailyBuild', 'Sign') }}
+    condition: and(ne(variables['skipLatest'], 'true'), ${{ in(parameters.galleryName, 'DailyBuild', 'Sign') }})
     displayName: Download artifacts from ${{ parameters.galleryName }}
     inputs:
       buildType: 'specific'
@@ -96,6 +96,17 @@ jobs:
       secretName: $(LiveTestServicePrincipalSecretName)
       outVar: 'LiveTestServicePrincipalSecret'
       execCondition: and(succeeded(), ne(variables['skipLatest'], 'true'))
+
+  - task: Bash@3
+    displayName: Clean up Azure Identity Keys from MacOS Keychain
+    condition: and(succeeded(), ne(variables['skipLatest'], 'true'), ${{ eq(parameters.osType, 'MacOS') }})
+    continueOnError: true
+    inputs:
+      targetType: filePath
+      filePath: ./tools/TestFx/Live/CleanAzureIdentityKeysForMacOS
+      failOnStderr: false
+    env:
+      KEYCHAIN_SERVICES: '$(AzureIdentityKeychainServices)'
 
   - task: PowerShell@2
     displayName: Connect Azure with live test service principal
