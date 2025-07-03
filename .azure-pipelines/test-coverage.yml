@@ -79,7 +79,7 @@ jobs:
 
   - task: PowerShell@2
     displayName: Test Autorest-Based Cmdlets
-    condition: succeeded()
+    condition: succeededOrFailed()
     inputs:
       pwsh: true
       targetType: inline
@@ -97,7 +97,7 @@ jobs:
 
   - task: PowerShell@2
     displayName: Analyze Test Coverage
-    condition: succeeded()
+    condition: succeededOrFailed()
     inputs:
       pwsh: true
       targetType: filePath
