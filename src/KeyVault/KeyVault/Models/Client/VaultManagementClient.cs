@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// Update an existing vault. Only EnablePurgeProtection, EnableRbacAuthorization and Tags can be updated currently.
         /// </summary>
         /// <param name="existingVault">the existing vault</param>
-        /// <param name="updatedParamater">updated paramater</param>
+        /// <param name="updatedParamater">updated parameter</param>
         /// <param name="graphClient">the active directory client</param>
         /// <returns>the updated vault</returns>
         public PSKeyVault UpdateVault(

@@ -1,6 +1,6 @@
 ### Example 1: Create Cloud HSM with Tags
 ```powershell
-New-AzCloudHsm -Name myCloudHsm -ResourceGroupName  group -Location UkWest -Tag @{ CloudHsmRegion = "UkWest"; Department = "Engineering"}
+New-AzCloudHsm -Name myCloudHsm -ResourceGroupName group -Location UkWest -Tag @{ CloudHsmRegion = "UkWest"; Department = "Engineering"}
 ```
 
 ```output   
@@ -41,7 +41,7 @@ This command creates a Cloud HSM named myCloudHsm, in the Azure region UK West. 
 
 ### Example 2: Create Cloud HSM with User Assigned Identity
 ```powershell
-New-AzCloudHsm -Name myCloudHsm -ResourceGroupName group -Location UkWest -Sku "Standard_B1" -UserAssignedIdentity  "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity"
+New-AzCloudHsm -Name myCloudHsm -ResourceGroupName group -Location UkWest -Sku "Standard_B1" -UserAssignedIdentity "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity"
 ```
 
 ```output

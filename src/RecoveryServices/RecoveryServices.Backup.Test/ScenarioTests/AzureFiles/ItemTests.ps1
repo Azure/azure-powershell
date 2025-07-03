@@ -421,7 +421,7 @@ function Test-AzureFSFullRestore
 
 		Assert-True { $restoreJob.Status -eq "Completed" }
     
-		# Test without storage account dependancy
+		# Test without storage account dependency
 		# Item level restore at alternate location
 		$restoreJob1 = Restore-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
@@ -438,7 +438,7 @@ function Test-AzureFSFullRestore
 		
 		Assert-True { $restoreJob1.Status -eq "Completed" }
     
-		# Test without storage account dependancy
+		# Test without storage account dependency
 		# Full share restore at alternate location
 		$restoreJob2 = Restore-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
@@ -452,7 +452,7 @@ function Test-AzureFSFullRestore
 		$restoreJob2 = $restoreJob2 | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 		Assert-True { $restoreJob2.Status -eq "Completed" }
 
-		# Test without storage account dependancy
+		# Test without storage account dependency
 		# Item level restore at original location
 		$restoreJob3 = Restore-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
@@ -466,7 +466,7 @@ function Test-AzureFSFullRestore
 
 		Assert-True { $restoreJob3.Status -eq "Completed" }
 
-		# Test without storage account dependancy
+		# Test without storage account dependency
 		# Full share restore at original location
 		$restoreJob4 = Restore-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `

@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.IPAddressAvailabilityResult, CNM.PSIPAddressAvailabilityResult>();
 
-                // Avaliable endpoint services
+                // Available endpoint services
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSEndpointServiceResult, MNM.EndpointServiceResult>();
 
@@ -973,7 +973,7 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.NetworkSecurityGroup, CNM.PSNetworkSecurityGroup>();
 
-                // NetworkSecrityRule
+                // NetworkSecurityRule
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSSecurityRule, MNM.SecurityRule>()
                     .AfterMap((src, dest) =>
@@ -1155,7 +1155,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ExpressRouteCircuitRoutesTable, CNM.PSExpressRouteCircuitRoutesTable>();
                 cfg.CreateMap<MNM.ExpressRouteCircuitRoutesTableSummary, CNM.PSExpressRouteCircuitRoutesTableSummary>();
 
-                // ExoressRouteCircuitAuthorization
+                // ExpressRouteCircuitAuthorization
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSExpressRouteCircuitAuthorization, MNM.ExpressRouteCircuitAuthorization>();
 

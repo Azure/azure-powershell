@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge
                 // Get the initialization vector from the encrypted stream
                 aesAlg.IV = ReadByteArray(memoryDecrypt);
 
-                // Create a decrytor to perform the stream transform.
+                // Create a decryptor to perform the stream transform.
                 ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
                 using (CryptoStream cryptoDecrypt = new CryptoStream(memoryDecrypt, decryptor, CryptoStreamMode.Read))
                 {
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge
                 aesAlg.Key = key.GetBytes(aesAlg.KeySize / 8);
                 // Get the initialization vector from the encrypted stream
                 aesAlg.IV = ReadByteArray(msDecrypt);
-                // Create a decrytor to perform the stream transform.
+                // Create a decryptor to perform the stream transform.
                 ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
                 using (CryptoStream csDecrypt =
                     new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
