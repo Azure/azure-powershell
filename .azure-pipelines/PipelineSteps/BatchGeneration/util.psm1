@@ -3,6 +3,15 @@ function Get-BatchGenerationModuleMap {
         [string]$srcPath
     )
     $skippedModules = $env:SKIPPED_MODULES -split ',' | ForEach-Object { $_.Trim() }
+    $selectedTargetModules = @{}
+    if ($env:SELECTED_TARGET_MODULES -ne "none") {
+        $env:SELECTED_TARGET_MODULES -split ',' | ForEach-Object {
+            $key = $_.Trim()
+            if ($key -ne '') {
+                $selectedTargetModules[$key] = $true
+            }
+        }
+    }
     $result = @{}
     $modules = Get-ChildItem -Path $srcPath -Directory
 
@@ -11,6 +20,12 @@ function Get-BatchGenerationModuleMap {
             Write-Warning "Skipping module: $($module.Name) as it is in the skipped modules list."
             continue
         }
+
+        if ($selectedTargetModules.Count -gt 0 -and -not $selectedTargetModules.ContainsKey($module.Name)) {
+            Write-Warning "Skipping module: $($module.Name) as it is not in the selected target modules list."
+            continue
+        }
+
         $subModules = Get-ChildItem -Path $module.FullName -Directory | Where-Object { 
             $_.Name -like '*.autorest'
         }

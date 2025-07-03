@@ -15,7 +15,7 @@ $artifactsDir = Join-Path $RepoRoot 'artifacts'
 
 $changedModulesDict = @{}
 $changedSubModulesDict = @{}
-if ($env:TEST_CHANGED_MODULES_ONLY -eq "True") {
+if ($env:TEST_CHANGED_MODULES_ONLY -eq 'true') {
     Write-Host "Run test on generated folder changed modules"
     # Only generated folder change should trigger the test
     for ($i = 0; $i -lt $ChangedFiles.Count; $i++) {
