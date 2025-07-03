@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         private static readonly Regex AuthenticationChallengeRegex = new Regex(AuthenticationChallengePattern);
         private static readonly Regex ChallengeParameterRegex = new Regex(ChallengeParameterPattern);
 
-        public static string GetClaimsChallenge(HttpResponseMessage response)
+        private static string GetClaimsChallenge(HttpResponseMessage response)
         {
             return ParseWwwAuthenticate(response)?
                 .Where((p) => string.Equals(p.Item1, "claims", StringComparison.OrdinalIgnoreCase))
@@ -46,15 +46,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return string.Join(string.Empty, ParseWwwAuthenticate(response)?.Select(p => $"{p.Item1}: {p.Item2}{Environment.NewLine}"));
         }
 
-        public static bool MatchClaimsChallengePattern(this HttpResponseMessage response)
+        public static bool MatchClaimsChallengePattern(this HttpResponseMessage response, out string claimsChallenge)
         {
-            return response.StatusCode == System.Net.HttpStatusCode.Unauthorized && response.Headers.WwwAuthenticate?.Count > 0;
+            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized && response.Headers.WwwAuthenticate?.Count > 0)
+            {
+                claimsChallenge = GetClaimsChallenge(response);
+                return true;
+            }
+
+            claimsChallenge = null;
+            return false;
         }
 
         private static IEnumerable<(string, string)> ParseWwwAuthenticate(HttpResponseMessage response)
         {
             return Enumerable.Repeat(response, 1)
-                .Where(r => r.MatchClaimsChallengePattern())
                 .Select(r => r.Headers.WwwAuthenticate.FirstOrDefault().ToString())
                 .SelectMany(h => ParseChallenges(h))
                 .Where(c => string.Equals(c.Item1, "Bearer", StringComparison.OrdinalIgnoreCase))
@@ -78,6 +84,45 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             for (int i = 0; i < paramMatches.Count; i++)
             {
                 yield return (paramMatches[i].Groups[1].Value, paramMatches[i].Groups[2].Value);
+            }
+        }
+
+        /// <summary>
+        /// Format the error message from the response content of the original failed request.
+        /// If the error is caused by CAE (continuous Access Evaluation), this will include why the request failed, and which policy was violated.
+        /// </summary>
+        /// <param name="claimsChallenge"></param>
+        /// <param name="responseContent"></param>
+        /// <returns></returns>
+        public static string FormatClaimsChallengeErrorMessage(string claimsChallenge, string responseContent)
+        {
+            var errorMessage = TryGetErrorMessageFromOriginalResponse(responseContent);
+            // Convert claimsChallenge to base64
+            var claimsChallengeBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(claimsChallenge ?? string.Empty));
+            // todo: use resource string
+            return $@"[This message needs review] Interactive authentication is required. Please run the following cmdlet and add additional parameters as needed:
+Connect-AzAccount -ClaimsChallenge ""{claimsChallengeBase64}""
+
+Error details:
+{errorMessage}";
+        }
+
+        private static string TryGetErrorMessageFromOriginalResponse(string content)
+        {
+            if (string.IsNullOrWhiteSpace(content))
+            {
+                return content;
+            }
+
+            try
+            {
+                var parsedJson = Newtonsoft.Json.Linq.JToken.Parse(content);
+                return parsedJson["error"].Value<string>("message");
+            }
+            catch
+            {
+                // If parsing fails, return the original content
+                return content;
             }
         }
     }
