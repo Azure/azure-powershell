@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location for which resource usage is queried.
+            /// The name of Azure region.
             /// </param>
             public static IPage<Usage> List(this IUsageOperations operations, string location)
             {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location for which resource usage is queried.
+            /// The name of Azure region.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

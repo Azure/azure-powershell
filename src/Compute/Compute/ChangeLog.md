@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Compute DiskRP related cmdlets will now use 2025-01-02 version of the DiskRP API.
 * Added `-EnableProxyAgent` parameter to `New-AzVM` and `New-AzVmss` simple parameter sets.
 * Added `-ProxyAgentKeyIncarnationId`parameter to `Update-AzVmssVM` cmdlet.
 * Added new cmdlets `Set-AzVmssProxyAgent` and `Set-AzVMProxyAgent` to set the proxy agent settings for VM and VMSS.`

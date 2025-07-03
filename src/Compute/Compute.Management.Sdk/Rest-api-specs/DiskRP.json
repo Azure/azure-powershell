@@ -1,0 +1,4154 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Azure Compute resource management API.",
+    "version": "2025-01-02",
+    "description": "Compute Client",
+    "x-typespec-generated": [
+      {
+        "emitter": "@azure-tools/typespec-autorest"
+      }
+    ]
+  },
+  "schemes": [
+    "https"
+  ],
+  "host": "management.azure.com",
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "flow": "implicit",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Disks"
+    },
+    {
+      "name": "DiskAccesses"
+    },
+    {
+      "name": "PrivateEndpointConnections"
+    },
+    {
+      "name": "DiskEncryptionSets"
+    },
+    {
+      "name": "DiskRestorePoints"
+    },
+    {
+      "name": "Snapshots"
+    }
+  ],
+  "paths": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/diskAccesses": {
+      "get": {
+        "operationId": "DiskAccesses_List",
+        "tags": [
+          "DiskAccesses"
+        ],
+        "description": "Lists all the disk access resources under a subscription.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request has succeeded.",
+            "schema": {
+              "$ref": "#/definitions/DiskAccessList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/diskEncryptionSets": {
+      "get": {
+        "operationId": "DiskEncryptionSets_List",
+        "tags": [
+          "DiskEncryptionSets"
+        ],
+        "description": "Lists all the disk encryption sets under a subscription.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request has succeeded.",
+            "schema": {
+              "$ref": "#/definitions/DiskEncryptionSetList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/disks": {
+      "get": {
+        "operationId": "Disks_List",
+        "tags": [
+          "Disks"
+        ],
+        "description": "Lists all the disks under a subscription.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request has succeeded.",
+            "schema": {
+              "$ref": "#/definitions/DiskList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/snapshots": {
+      "get": {
+        "operationId": "Snapshots_List",
+        "tags": [
+          "Snapshots"
+        ],
+        "description": "Lists snapshots under a subscription.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request has succeeded.",
+            "schema": {
+              "$ref": "#/definitions/SnapshotList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses": {
+      "get": {
+        "operationId": "DiskAccesses_ListByResourceGroup",
+        "tags": [
+          "DiskAccesses"
+        ],
+        "description": "Lists all the disk access resources under a resource group.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request has succeeded.",
+            "schema": {
+              "$ref": "#/definitions/DiskAccessList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}": {
+      "get": {
+        "operationId": "DiskAccesses_Get",
+        "tags": [
+          "DiskAccesses"
+        ],
+        "description": "Gets information about a disk access resource.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "diskAccessName",
+            "in": "path",
+            "description": "The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/DiskAccess"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "DiskAccesses_CreateOrUpdate",
+        "tags": [
+          "DiskAccesses"
+        ],
+        "description": "Creates or updates a disk access resource",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "diskAccessName",
+            "in": "path",
+            "description": "The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "diskAccess",
+            "in": "body",
+            "description": "disk access object supplied in the body of the Put disk access operation.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DiskAccess"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource 'DiskAccess' update operation succeeded",
+            "schema": {
+              "$ref": "#/definitions/DiskAccess"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      },
+      "patch": {
+        "operationId": "DiskAccesses_Update",
+        "tags": [
+          "DiskAccesses"
+        ],
+        "description": "Updates (patches) a disk access resource.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "diskAccessName",
+            "in": "path",
+            "description": "The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "diskAccess",
+            "in": "body",
+            "description": "disk access object supplied in the body of the Patch disk access operation.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DiskAccessUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/DiskAccess"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      },
+      "delete": {
+        "operationId": "DiskAccesses_Delete",
+        "tags": [
+          "DiskAccesses"
+        ],
+        "description": "Deletes a disk access resource.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "diskAccessName",
+            "in": "path",
+            "description": "The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource deleted successfully."
+          },
+          "204": {
+            "description": "Resource does not exist."
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}/privateEndpointConnections": {
+      "get": {
+        "operationId": "DiskAccesses_ListPrivateEndpointConnections",
+        "tags": [
+          "PrivateEndpointConnections"
+        ],
+        "description": "List information about private endpoint connections under a disk access resource",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "diskAccessName",
+            "in": "path",
+            "description": "The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request has succeeded.",
+            "schema": {
+              "$ref": "#/definitions/PrivateEndpointConnectionListResult"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}/privateEndpointConnections/{privateEndpointConnectionName}": {
+      "get": {
+        "operationId": "DiskAccesses_GetAPrivateEndpointConnection",
+        "tags": [
+          "PrivateEndpointConnections"
+        ],
+        "description": "Gets information about a private endpoint connection under a disk access resource.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "diskAccessName",
+            "in": "path",
+            "description": "The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "privateEndpointConnectionName",
+            "in": "path",
+            "description": "The name of the private endpoint connection.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/PrivateEndpointConnection"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "DiskAccesses_UpdateAPrivateEndpointConnection",
+        "tags": [
+          "PrivateEndpointConnections"
+        ],
+        "description": "Approve or reject a private endpoint connection under disk access resource, this can't be used to create a new private endpoint connection.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "diskAccessName",
+            "in": "path",
+            "description": "The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "privateEndpointConnectionName",
+            "in": "path",
+            "description": "The name of the private endpoint connection.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "privateEndpointConnection",
+            "in": "body",
+            "description": "private endpoint connection object supplied in the body of the Put private endpoint connection operation.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PrivateEndpointConnection"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource 'PrivateEndpointConnection' update operation succeeded",
+            "schema": {
+              "$ref": "#/definitions/PrivateEndpointConnection"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      },
+      "delete": {
+        "operationId": "DiskAccesses_DeleteAPrivateEndpointConnection",
+        "tags": [
+          "PrivateEndpointConnections"
+        ],
+        "description": "Deletes a private endpoint connection under a disk access resource.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "diskAccessName",
+            "in": "path",
+            "description": "The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "privateEndpointConnectionName",
+            "in": "path",
+            "description": "The name of the private endpoint connection.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource deleted successfully."
+          },
+          "204": {
+            "description": "Resource does not exist."
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}/privatelinkresources": {
+      "get": {
+        "operationId": "DiskAccesses_GetPrivateLinkResources",
+        "tags": [
+          "DiskAccesses"
+        ],
+        "description": "Gets the private link resources possible under disk access resource",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "diskAccessName",
+            "in": "path",
+            "description": "The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/PrivateLinkResourceListResult"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets": {
+      "get": {
+        "operationId": "DiskEncryptionSets_ListByResourceGroup",
+        "tags": [
+          "DiskEncryptionSets"
+        ],
+        "description": "Lists all the disk encryption sets under a resource group.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request has succeeded.",
+            "schema": {
+              "$ref": "#/definitions/DiskEncryptionSetList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}": {
+      "get": {
+        "operationId": "DiskEncryptionSets_Get",
+        "tags": [
+          "DiskEncryptionSets"
+        ],
+        "description": "Gets information about a disk encryption set.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "diskEncryptionSetName",
+            "in": "path",
+            "description": "The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/DiskEncryptionSet"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "DiskEncryptionSets_CreateOrUpdate",
+        "tags": [
+          "DiskEncryptionSets"
+        ],
+        "description": "Creates or updates a disk encryption set",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "diskEncryptionSetName",
+            "in": "path",
+            "description": "The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "diskEncryptionSet",
+            "in": "body",
+            "description": "disk encryption set object supplied in the body of the Put disk encryption set operation.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DiskEncryptionSet"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource 'DiskEncryptionSet' update operation succeeded",
+            "schema": {
+              "$ref": "#/definitions/DiskEncryptionSet"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      },
+      "patch": {
+        "operationId": "DiskEncryptionSets_Update",
+        "tags": [
+          "DiskEncryptionSets"
+        ],
+        "description": "Updates (patches) a disk encryption set.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "diskEncryptionSetName",
+            "in": "path",
+            "description": "The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "diskEncryptionSet",
+            "in": "body",
+            "description": "disk encryption set object supplied in the body of the Patch disk encryption set operation.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DiskEncryptionSetUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/DiskEncryptionSet"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      },
+      "delete": {
+        "operationId": "DiskEncryptionSets_Delete",
+        "tags": [
+          "DiskEncryptionSets"
+        ],
+        "description": "Deletes a disk encryption set.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "diskEncryptionSetName",
+            "in": "path",
+            "description": "The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource deleted successfully."
+          },
+          "204": {
+            "description": "Resource does not exist."
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}/associatedResources": {
+      "get": {
+        "operationId": "DiskEncryptionSets_ListAssociatedResources",
+        "tags": [
+          "DiskEncryptionSets"
+        ],
+        "description": "Lists all resources that are encrypted with this disk encryption set.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "diskEncryptionSetName",
+            "in": "path",
+            "description": "The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/ResourceUriList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks": {
+      "get": {
+        "operationId": "Disks_ListByResourceGroup",
+        "tags": [
+          "Disks"
+        ],
+        "description": "Lists all the disks under a resource group.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request has succeeded.",
+            "schema": {
+              "$ref": "#/definitions/DiskList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}": {
+      "get": {
+        "operationId": "Disks_Get",
+        "tags": [
+          "Disks"
+        ],
+        "description": "Gets information about a disk.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "diskName",
+            "in": "path",
+            "description": "The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/Disk"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "Disks_CreateOrUpdate",
+        "tags": [
+          "Disks"
+        ],
+        "description": "Creates or updates a disk.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "diskName",
+            "in": "path",
+            "description": "The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "disk",
+            "in": "body",
+            "description": "Disk object supplied in the body of the Put disk operation.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Disk"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource 'Disk' update operation succeeded",
+            "schema": {
+              "$ref": "#/definitions/Disk"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      },
+      "patch": {
+        "operationId": "Disks_Update",
+        "tags": [
+          "Disks"
+        ],
+        "description": "Updates (patches) a disk.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "diskName",
+            "in": "path",
+            "description": "The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "disk",
+            "in": "body",
+            "description": "Disk object supplied in the body of the Patch disk operation.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DiskUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/Disk"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      },
+      "delete": {
+        "operationId": "Disks_Delete",
+        "tags": [
+          "Disks"
+        ],
+        "description": "Deletes a disk.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "diskName",
+            "in": "path",
+            "description": "The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource deleted successfully."
+          },
+          "204": {
+            "description": "Resource does not exist."
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}/beginGetAccess": {
+      "post": {
+        "operationId": "Disks_GrantAccess",
+        "tags": [
+          "Disks"
+        ],
+        "description": "Grants access to a disk.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "diskName",
+            "in": "path",
+            "description": "The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "grantAccessData",
+            "in": "body",
+            "description": "Access data object supplied in the body of the get disk access operation.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GrantAccessData"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/AccessUri"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}/endGetAccess": {
+      "post": {
+        "operationId": "Disks_RevokeAccess",
+        "tags": [
+          "Disks"
+        ],
+        "description": "Revokes access to a disk.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "diskName",
+            "in": "path",
+            "description": "The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request has succeeded."
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{vmRestorePointName}/diskRestorePoints": {
+      "get": {
+        "operationId": "DiskRestorePoint_ListByRestorePoint",
+        "tags": [
+          "DiskRestorePoints"
+        ],
+        "description": "Lists diskRestorePoints under a vmRestorePoint.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "restorePointCollectionName",
+            "in": "path",
+            "description": "The name of the restore point collection that the disk restore point belongs.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "vmRestorePointName",
+            "in": "path",
+            "description": "The name of the vm restore point that the disk disk restore point belongs.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/DiskRestorePointList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{vmRestorePointName}/diskRestorePoints/{diskRestorePointName}": {
+      "get": {
+        "operationId": "DiskRestorePoint_Get",
+        "tags": [
+          "DiskRestorePoints"
+        ],
+        "description": "Get disk restorePoint resource",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "restorePointCollectionName",
+            "in": "path",
+            "description": "The name of the restore point collection that the disk restore point belongs.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "vmRestorePointName",
+            "in": "path",
+            "description": "The name of the vm restore point that the disk disk restore point belongs.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "diskRestorePointName",
+            "in": "path",
+            "description": "The name of the DiskRestorePoint",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/DiskRestorePoint"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{vmRestorePointName}/diskRestorePoints/{diskRestorePointName}/beginGetAccess": {
+      "post": {
+        "operationId": "DiskRestorePoint_GrantAccess",
+        "tags": [
+          "DiskRestorePoints"
+        ],
+        "description": "Grants access to a diskRestorePoint.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "restorePointCollectionName",
+            "in": "path",
+            "description": "The name of the restore point collection that the disk restore point belongs.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "vmRestorePointName",
+            "in": "path",
+            "description": "The name of the vm restore point that the disk disk restore point belongs.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "diskRestorePointName",
+            "in": "path",
+            "description": "The name of the DiskRestorePoint",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "grantAccessData",
+            "in": "body",
+            "description": "Access data object supplied in the body of the get disk access operation.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GrantAccessData"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/AccessUri"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{vmRestorePointName}/diskRestorePoints/{diskRestorePointName}/endGetAccess": {
+      "post": {
+        "operationId": "DiskRestorePoint_RevokeAccess",
+        "tags": [
+          "DiskRestorePoints"
+        ],
+        "description": "Revokes access to a diskRestorePoint.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "restorePointCollectionName",
+            "in": "path",
+            "description": "The name of the restore point collection that the disk restore point belongs.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "vmRestorePointName",
+            "in": "path",
+            "description": "The name of the vm restore point that the disk disk restore point belongs.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "diskRestorePointName",
+            "in": "path",
+            "description": "The name of the DiskRestorePoint",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request has succeeded."
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots": {
+      "get": {
+        "operationId": "Snapshots_ListByResourceGroup",
+        "tags": [
+          "Snapshots"
+        ],
+        "description": "Lists snapshots under a resource group.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request has succeeded.",
+            "schema": {
+              "$ref": "#/definitions/SnapshotList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}": {
+      "get": {
+        "operationId": "Snapshots_Get",
+        "tags": [
+          "Snapshots"
+        ],
+        "description": "Gets information about a snapshot.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "snapshotName",
+            "in": "path",
+            "description": "The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/Snapshot"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "Snapshots_CreateOrUpdate",
+        "tags": [
+          "Snapshots"
+        ],
+        "description": "Creates or updates a snapshot.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "snapshotName",
+            "in": "path",
+            "description": "The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "snapshot",
+            "in": "body",
+            "description": "Snapshot object supplied in the body of the Put disk operation.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Snapshot"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource 'Snapshot' update operation succeeded",
+            "schema": {
+              "$ref": "#/definitions/Snapshot"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      },
+      "patch": {
+        "operationId": "Snapshots_Update",
+        "tags": [
+          "Snapshots"
+        ],
+        "description": "Updates (patches) a snapshot.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "snapshotName",
+            "in": "path",
+            "description": "The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "snapshot",
+            "in": "body",
+            "description": "Snapshot object supplied in the body of the Patch snapshot operation.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SnapshotUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource 'Snapshot' update operation succeeded",
+            "schema": {
+              "$ref": "#/definitions/Snapshot"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      },
+      "delete": {
+        "operationId": "Snapshots_Delete",
+        "tags": [
+          "Snapshots"
+        ],
+        "description": "Deletes a snapshot.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "snapshotName",
+            "in": "path",
+            "description": "The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource deleted successfully."
+          },
+          "204": {
+            "description": "Resource does not exist."
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}/beginGetAccess": {
+      "post": {
+        "operationId": "Snapshots_GrantAccess",
+        "tags": [
+          "Snapshots"
+        ],
+        "description": "Grants access to a snapshot.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "snapshotName",
+            "in": "path",
+            "description": "The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "grantAccessData",
+            "in": "body",
+            "description": "Access data object supplied in the body of the get snapshot access operation.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GrantAccessData"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/AccessUri"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}/endGetAccess": {
+      "post": {
+        "operationId": "Snapshots_RevokeAccess",
+        "tags": [
+          "Snapshots"
+        ],
+        "description": "Revokes access to a snapshot.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "snapshotName",
+            "in": "path",
+            "description": "The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request has succeeded."
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      }
+    }
+  },
+  "definitions": {
+    "AccessLevel": {
+      "type": "string",
+      "description": "The Access Level, accepted values include None, Read, Write.",
+      "enum": [
+        "None",
+        "Read",
+        "Write"
+      ],
+      "x-ms-enum": {
+        "name": "AccessLevel",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "None",
+            "value": "None"
+          },
+          {
+            "name": "Read",
+            "value": "Read"
+          },
+          {
+            "name": "Write",
+            "value": "Write"
+          }
+        ]
+      }
+    },
+    "AccessUri": {
+      "type": "object",
+      "description": "A disk access SAS uri.",
+      "properties": {
+        "accessSAS": {
+          "type": "string",
+          "description": "A SAS uri for accessing a disk.",
+          "readOnly": true
+        },
+        "securityDataAccessSAS": {
+          "type": "string",
+          "description": "A SAS uri for accessing a VM guest state.",
+          "readOnly": true
+        },
+        "securityMetadataAccessSAS": {
+          "type": "string",
+          "description": "A SAS uri for accessing a VM metadata.",
+          "readOnly": true
+        }
+      }
+    },
+    "Architecture": {
+      "type": "string",
+      "description": "CPU architecture supported by an OS disk.",
+      "enum": [
+        "x64",
+        "Arm64"
+      ],
+      "x-ms-enum": {
+        "name": "Architecture",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "x64",
+            "value": "x64"
+          },
+          {
+            "name": "Arm64",
+            "value": "Arm64"
+          }
+        ]
+      }
+    },
+    "AvailabilityPolicy": {
+      "type": "object",
+      "description": "In the case of an availability or connectivity issue with the data disk, specify the behavior of your VM",
+      "properties": {
+        "actionOnDiskDelay": {
+          "$ref": "#/definitions/AvailabilityPolicyDiskDelay",
+          "description": "Determines on how to handle disks with slow I/O."
+        }
+      }
+    },
+    "AvailabilityPolicyDiskDelay": {
+      "type": "string",
+      "description": "Determines on how to handle disks with slow I/O.",
+      "enum": [
+        "None",
+        "AutomaticReattach"
+      ],
+      "x-ms-enum": {
+        "name": "AvailabilityPolicyDiskDelay",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "None",
+            "value": "None",
+            "description": "Defaults to behavior without av policy specified, which is VM restart upon slow disk io."
+          },
+          {
+            "name": "AutomaticReattach",
+            "value": "AutomaticReattach",
+            "description": "Upon a disk io failure or slow response, try detaching then reattaching the disk."
+          }
+        ]
+      }
+    },
+    "CopyCompletionError": {
+      "type": "object",
+      "description": "Indicates the error details if the background copy of a resource created via the CopyStart operation fails.",
+      "properties": {
+        "errorCode": {
+          "$ref": "#/definitions/CopyCompletionErrorReason",
+          "description": "Indicates the error code if the background copy of a resource created via the CopyStart operation fails."
+        },
+        "errorMessage": {
+          "type": "string",
+          "description": "Indicates the error message if the background copy of a resource created via the CopyStart operation fails."
+        }
+      },
+      "required": [
+        "errorCode",
+        "errorMessage"
+      ]
+    },
+    "CopyCompletionErrorReason": {
+      "type": "string",
+      "description": "Indicates the error code if the background copy of a resource created via the CopyStart operation fails.",
+      "enum": [
+        "CopySourceNotFound"
+      ],
+      "x-ms-enum": {
+        "name": "CopyCompletionErrorReason",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "CopySourceNotFound",
+            "value": "CopySourceNotFound",
+            "description": "Indicates that the source snapshot was deleted while the background copy of the resource created via CopyStart operation was in progress."
+          }
+        ]
+      }
+    },
+    "CreationData": {
+      "type": "object",
+      "description": "Data used when creating a disk.",
+      "properties": {
+        "createOption": {
+          "$ref": "#/definitions/DiskCreateOption",
+          "description": "This enumerates the possible sources of a disk's creation."
+        },
+        "storageAccountId": {
+          "type": "string",
+          "description": "Required if createOption is Import. The Azure Resource Manager identifier of the storage account containing the blob to import as a disk."
+        },
+        "imageReference": {
+          "$ref": "#/definitions/ImageDiskReference",
+          "description": "Disk source information for PIR or user images."
+        },
+        "galleryImageReference": {
+          "$ref": "#/definitions/ImageDiskReference",
+          "description": "Required if creating from a Gallery Image. The id/sharedGalleryImageId/communityGalleryImageId of the ImageDiskReference will be the ARM id of the shared galley image version from which to create a disk."
+        },
+        "sourceUri": {
+          "type": "string",
+          "description": "If createOption is Import, this is the URI of a blob to be imported into a managed disk."
+        },
+        "sourceResourceId": {
+          "type": "string",
+          "description": "If createOption is Copy, this is the ARM id of the source snapshot or disk."
+        },
+        "sourceUniqueId": {
+          "type": "string",
+          "description": "If this field is set, this is the unique id identifying the source of this resource.",
+          "readOnly": true
+        },
+        "uploadSizeBytes": {
+          "type": "integer",
+          "format": "int64",
+          "description": "If createOption is Upload, this is the size of the contents of the upload including the VHD footer. This value should be between 20972032 (20 MiB + 512 bytes for the VHD footer) and 35183298347520 bytes (32 TiB + 512 bytes for the VHD footer)."
+        },
+        "logicalSectorSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Logical sector size in bytes for Ultra disks. Supported values are 512 ad 4096. 4096 is the default."
+        },
+        "securityDataUri": {
+          "type": "string",
+          "description": "If createOption is ImportSecure, this is the URI of a blob to be imported into VM guest state."
+        },
+        "securityMetadataUri": {
+          "type": "string",
+          "format": "uri",
+          "description": "If createOption is ImportSecure, this is the URI of a blob to be imported into VM metadata for Confidential VM."
+        },
+        "performancePlus": {
+          "type": "boolean",
+          "description": "Set this flag to true to get a boost on the performance target of the disk deployed, see here on the respective performance target. This flag can only be set on disk creation time and cannot be disabled after enabled."
+        },
+        "elasticSanResourceId": {
+          "type": "string",
+          "description": "Required if createOption is CopyFromSanSnapshot. This is the ARM id of the source elastic san volume snapshot."
+        },
+        "provisionedBandwidthCopySpeed": {
+          "$ref": "#/definitions/ProvisionedBandwidthCopyOption",
+          "description": "If this field is set on a snapshot and createOption is CopyStart, the snapshot will be copied at a quicker speed."
+        },
+        "instantAccessDurationMinutes": {
+          "type": "integer",
+          "format": "int64",
+          "description": "For snapshots created from Premium SSD v2 or Ultra disk, this property determines the time in minutes the snapshot is retained for instant access to enable faster restore.",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "createOption"
+      ]
+    },
+    "DataAccessAuthMode": {
+      "type": "string",
+      "description": "Additional authentication requirements when exporting or uploading to a disk or snapshot.",
+      "enum": [
+        "AzureActiveDirectory",
+        "None"
+      ],
+      "x-ms-enum": {
+        "name": "DataAccessAuthMode",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "AzureActiveDirectory",
+            "value": "AzureActiveDirectory",
+            "description": "When export/upload URL is used, the system checks if the user has an identity in Azure Active Directory and has necessary permissions to export/upload the data. Please refer to aka.ms/DisksAzureADAuth."
+          },
+          {
+            "name": "None",
+            "value": "None",
+            "description": "No additional authentication would be performed when accessing export/upload URL."
+          }
+        ]
+      }
+    },
+    "Disk": {
+      "type": "object",
+      "description": "Disk resource.",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/DiskProperties",
+          "description": "Disk resource properties.",
+          "x-ms-client-flatten": true
+        },
+        "managedBy": {
+          "type": "string",
+          "description": "A relative URI containing the ID of the VM that has the disk attached.",
+          "readOnly": true
+        },
+        "managedByExtended": {
+          "type": "array",
+          "description": "List of relative URIs containing the IDs of the VMs that have the disk attached. maxShares should be set to a value greater than one for disks to allow attaching them to multiple VMs.",
+          "items": {
+            "type": "string"
+          },
+          "readOnly": true
+        },
+        "sku": {
+          "$ref": "#/definitions/DiskSku",
+          "description": "The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or PremiumV2_LRS."
+        },
+        "zones": {
+          "type": "array",
+          "description": "The Logical zone list for Disk.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "extendedLocation": {
+          "$ref": "./common.json#/definitions/ExtendedLocation",
+          "description": "The extended location where the disk will be created. Extended location cannot be changed."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./types.json#/definitions/TrackedResource"
+        }
+      ]
+    },
+    "DiskAccess": {
+      "type": "object",
+      "description": "disk access resource.",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/DiskAccessProperties",
+          "x-ms-client-flatten": true
+        },
+        "extendedLocation": {
+          "$ref": "./common.json#/definitions/ExtendedLocation",
+          "description": "The extended location where the disk access will be created. Extended location cannot be changed."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./types.json#/definitions/TrackedResource"
+        }
+      ]
+    },
+    "DiskAccessList": {
+      "type": "object",
+      "description": "The List disk access operation response.",
+      "properties": {
+        "value": {
+          "type": "array",
+          "description": "The DiskAccess items on this page",
+          "items": {
+            "$ref": "#/definitions/DiskAccess"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "format": "uri",
+          "description": "The link to the next page of items"
+        }
+      },
+      "required": [
+        "value"
+      ]
+    },
+    "DiskAccessProperties": {
+      "type": "object",
+      "properties": {
+        "privateEndpointConnections": {
+          "type": "array",
+          "description": "A readonly collection of private endpoint connections created on the disk. Currently only one endpoint connection is supported.",
+          "items": {
+            "$ref": "#/definitions/PrivateEndpointConnection"
+          },
+          "readOnly": true
+        },
+        "provisioningState": {
+          "type": "string",
+          "description": "The disk access resource provisioning state.",
+          "readOnly": true
+        },
+        "timeCreated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time when the disk access was created.",
+          "readOnly": true
+        }
+      }
+    },
+    "DiskAccessUpdate": {
+      "type": "object",
+      "description": "Used for updating a disk access resource.",
+      "properties": {
+        "tags": {
+          "type": "object",
+          "description": "Resource tags",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "DiskCreateOption": {
+      "type": "string",
+      "description": "This enumerates the possible sources of a disk's creation.",
+      "enum": [
+        "Empty",
+        "Attach",
+        "FromImage",
+        "Import",
+        "Copy",
+        "Restore",
+        "Upload",
+        "CopyStart",
+        "ImportSecure",
+        "UploadPreparedSecure",
+        "CopyFromSanSnapshot"
+      ],
+      "x-ms-enum": {
+        "name": "DiskCreateOption",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "Empty",
+            "value": "Empty",
+            "description": "Create an empty data disk of a size given by diskSizeGB."
+          },
+          {
+            "name": "Attach",
+            "value": "Attach",
+            "description": "Disk will be attached to a VM."
+          },
+          {
+            "name": "FromImage",
+            "value": "FromImage",
+            "description": "Create a new disk from a platform image specified by the given imageReference or galleryImageReference."
+          },
+          {
+            "name": "Import",
+            "value": "Import",
+            "description": "Create a disk by importing from a blob specified by a sourceUri in a storage account specified by storageAccountId."
+          },
+          {
+            "name": "Copy",
+            "value": "Copy",
+            "description": "Create a new disk or snapshot by copying from a disk or snapshot specified by the given sourceResourceId."
+          },
+          {
+            "name": "Restore",
+            "value": "Restore",
+            "description": "Create a new disk by copying from a backup recovery point."
+          },
+          {
+            "name": "Upload",
+            "value": "Upload",
+            "description": "Create a new disk by obtaining a write token and using it to directly upload the contents of the disk."
+          },
+          {
+            "name": "CopyStart",
+            "value": "CopyStart",
+            "description": "Create a new disk by using a deep copy process, where the resource creation is considered complete only after all data has been copied from the source."
+          },
+          {
+            "name": "ImportSecure",
+            "value": "ImportSecure",
+            "description": "Similar to Import create option. Create a new Trusted Launch VM or Confidential VM supported disk by importing additional blobs for VM guest state specified by securityDataUri and VM metadata specified by securityMetadataUri in storage account specified by storageAccountId. The VM metadata is optional and only required for certain Confidential VM configurations and not required for Trusted Launch VM."
+          },
+          {
+            "name": "UploadPreparedSecure",
+            "value": "UploadPreparedSecure",
+            "description": "Similar to Upload create option. Create a new Trusted Launch VM or Confidential VM supported disk and upload using write token in disk, VM guest state and VM metadata. The VM metadata is optional and only required for certain Confidential VM configurations and not required for Trusted Launch VM."
+          },
+          {
+            "name": "CopyFromSanSnapshot",
+            "value": "CopyFromSanSnapshot",
+            "description": "Create a new disk by exporting from elastic san volume snapshot"
+          }
+        ]
+      }
+    },
+    "DiskEncryptionSet": {
+      "type": "object",
+      "description": "disk encryption set resource.",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/EncryptionSetProperties",
+          "x-ms-client-flatten": true
+        },
+        "identity": {
+          "$ref": "#/definitions/EncryptionSetIdentity",
+          "description": "The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./types.json#/definitions/TrackedResource"
+        }
+      ]
+    },
+    "DiskEncryptionSetIdentityType": {
+      "type": "string",
+      "description": "The type of Managed Identity used by the DiskEncryptionSet. Only SystemAssigned is supported for new creations. Disk Encryption Sets can be updated with Identity type None during migration of subscription to a new Azure Active Directory tenant; it will cause the encrypted resources to lose access to the keys.",
+      "enum": [
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned, UserAssigned",
+        "None"
+      ],
+      "x-ms-enum": {
+        "name": "DiskEncryptionSetIdentityType",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "SystemAssigned",
+            "value": "SystemAssigned"
+          },
+          {
+            "name": "UserAssigned",
+            "value": "UserAssigned"
+          },
+          {
+            "name": "SystemAssigned, UserAssigned",
+            "value": "SystemAssigned, UserAssigned"
+          },
+          {
+            "name": "None",
+            "value": "None"
+          }
+        ]
+      }
+    },
+    "DiskEncryptionSetList": {
+      "type": "object",
+      "description": "The List disk encryption set operation response.",
+      "properties": {
+        "value": {
+          "type": "array",
+          "description": "The DiskEncryptionSet items on this page",
+          "items": {
+            "$ref": "#/definitions/DiskEncryptionSet"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "format": "uri",
+          "description": "The link to the next page of items"
+        }
+      },
+      "required": [
+        "value"
+      ]
+    },
+    "DiskEncryptionSetType": {
+      "type": "string",
+      "description": "The type of key used to encrypt the data of the disk.",
+      "enum": [
+        "EncryptionAtRestWithCustomerKey",
+        "EncryptionAtRestWithPlatformAndCustomerKeys",
+        "ConfidentialVmEncryptedWithCustomerKey"
+      ],
+      "x-ms-enum": {
+        "name": "DiskEncryptionSetType",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "EncryptionAtRestWithCustomerKey",
+            "value": "EncryptionAtRestWithCustomerKey",
+            "description": "Resource using diskEncryptionSet would be encrypted at rest with Customer managed key that can be changed and revoked by a customer."
+          },
+          {
+            "name": "EncryptionAtRestWithPlatformAndCustomerKeys",
+            "value": "EncryptionAtRestWithPlatformAndCustomerKeys",
+            "description": "Resource using diskEncryptionSet would be encrypted at rest with two layers of encryption. One of the keys is Customer managed and the other key is Platform managed."
+          },
+          {
+            "name": "ConfidentialVmEncryptedWithCustomerKey",
+            "value": "ConfidentialVmEncryptedWithCustomerKey",
+            "description": "Confidential VM supported disk and VM guest state would be encrypted with customer managed key."
+          }
+        ]
+      }
+    },
+    "DiskEncryptionSetUpdate": {
+      "type": "object",
+      "description": "disk encryption set update resource.",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/DiskEncryptionSetUpdateProperties",
+          "description": "disk encryption set resource update properties.",
+          "x-ms-client-flatten": true
+        },
+        "tags": {
+          "type": "object",
+          "description": "Resource tags",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "identity": {
+          "$ref": "#/definitions/EncryptionSetIdentity",
+          "description": "The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks."
+        }
+      }
+    },
+    "DiskEncryptionSetUpdateProperties": {
+      "type": "object",
+      "description": "disk encryption set resource update properties.",
+      "properties": {
+        "encryptionType": {
+          "$ref": "#/definitions/DiskEncryptionSetType",
+          "description": "The type of key used to encrypt the data of the disk."
+        },
+        "activeKey": {
+          "$ref": "#/definitions/KeyForDiskEncryptionSet",
+          "description": "Key Vault Key Url to be used for server side encryption of Managed Disks and Snapshots"
+        },
+        "rotationToLatestKeyVersionEnabled": {
+          "type": "boolean",
+          "description": "Set this flag to true to enable auto-updating of this disk encryption set to the latest key version."
+        },
+        "federatedClientId": {
+          "type": "string",
+          "description": "Multi-tenant application client id to access key vault in a different tenant. Setting the value to 'None' will clear the property."
+        }
+      }
+    },
+    "DiskList": {
+      "type": "object",
+      "description": "The List Disks operation response.",
+      "properties": {
+        "value": {
+          "type": "array",
+          "description": "The Disk items on this page",
+          "items": {
+            "$ref": "#/definitions/Disk"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "format": "uri",
+          "description": "The link to the next page of items"
+        }
+      },
+      "required": [
+        "value"
+      ]
+    },
+    "DiskProperties": {
+      "type": "object",
+      "description": "Disk resource properties.",
+      "properties": {
+        "timeCreated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time when the disk was created.",
+          "readOnly": true
+        },
+        "osType": {
+          "$ref": "#/definitions/OperatingSystemTypes",
+          "description": "The Operating System type."
+        },
+        "hyperVGeneration": {
+          "$ref": "#/definitions/HyperVGeneration",
+          "description": "The hypervisor generation of the Virtual Machine. Applicable to OS disks only."
+        },
+        "purchasePlan": {
+          "$ref": "#/definitions/DiskPurchasePlan",
+          "description": "Purchase plan information for the the image from which the OS disk was created. E.g. - {name: 2019-Datacenter, publisher: MicrosoftWindowsServer, product: WindowsServer}"
+        },
+        "supportedCapabilities": {
+          "$ref": "#/definitions/SupportedCapabilities",
+          "description": "List of supported capabilities for the image from which the OS disk was created."
+        },
+        "creationData": {
+          "$ref": "#/definitions/CreationData",
+          "description": "Disk source information. CreationData information cannot be changed after the disk has been created."
+        },
+        "diskSizeGB": {
+          "type": "integer",
+          "format": "int32",
+          "description": "If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size."
+        },
+        "diskSizeBytes": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The size of the disk in bytes. This field is read only.",
+          "readOnly": true
+        },
+        "uniqueId": {
+          "type": "string",
+          "description": "Unique Guid identifying the resource.",
+          "readOnly": true
+        },
+        "encryptionSettingsCollection": {
+          "$ref": "#/definitions/EncryptionSettingsCollection",
+          "description": "Encryption settings collection used for Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot."
+        },
+        "provisioningState": {
+          "type": "string",
+          "description": "The disk provisioning state.",
+          "readOnly": true
+        },
+        "diskIOPSReadWrite": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The number of IOPS allowed for this disk; only settable for UltraSSD disks. One operation can transfer between 4k and 256k bytes."
+        },
+        "diskMBpsReadWrite": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The bandwidth allowed for this disk; only settable for UltraSSD disks. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10."
+        },
+        "diskIOPSReadOnly": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The total number of IOPS that will be allowed across all VMs mounting the shared disk as ReadOnly. One operation can transfer between 4k and 256k bytes."
+        },
+        "diskMBpsReadOnly": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The total throughput (MBps) that will be allowed across all VMs mounting the shared disk as ReadOnly. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10."
+        },
+        "diskState": {
+          "$ref": "#/definitions/DiskState",
+          "description": "The state of the disk.",
+          "readOnly": true
+        },
+        "encryption": {
+          "$ref": "#/definitions/Encryption",
+          "description": "Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys."
+        },
+        "maxShares": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The maximum number of VMs that can attach to the disk at the same time. Value greater than one indicates a disk that can be mounted on multiple VMs at the same time."
+        },
+        "shareInfo": {
+          "type": "array",
+          "description": "Details of the list of all VMs that have the disk attached. maxShares should be set to a value greater than one for disks to allow attaching them to multiple VMs.",
+          "items": {
+            "$ref": "#/definitions/ShareInfoElement"
+          },
+          "readOnly": true,
+          "x-ms-identifiers": [
+            "vmUri"
+          ]
+        },
+        "networkAccessPolicy": {
+          "$ref": "#/definitions/NetworkAccessPolicy",
+          "description": "Policy for accessing the disk via network."
+        },
+        "diskAccessId": {
+          "type": "string",
+          "description": "ARM id of the DiskAccess resource for using private endpoints on disks."
+        },
+        "burstingEnabledTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Latest time when bursting was last enabled on a disk.",
+          "readOnly": true
+        },
+        "tier": {
+          "type": "string",
+          "description": "Performance tier of the disk (e.g, P4, S10) as described here: https://azure.microsoft.com/en-us/pricing/details/managed-disks/. Does not apply to Ultra disks."
+        },
+        "burstingEnabled": {
+          "type": "boolean",
+          "description": "Set to true to enable bursting beyond the provisioned performance target of the disk. Bursting is disabled by default. Does not apply to Ultra disks."
+        },
+        "propertyUpdatesInProgress": {
+          "$ref": "#/definitions/PropertyUpdatesInProgress",
+          "description": "Properties of the disk for which update is pending.",
+          "readOnly": true
+        },
+        "supportsHibernation": {
+          "type": "boolean",
+          "description": "Indicates the OS on a disk supports hibernation."
+        },
+        "securityProfile": {
+          "$ref": "#/definitions/DiskSecurityProfile",
+          "description": "Contains the security related information for the resource."
+        },
+        "completionPercent": {
+          "type": "number",
+          "format": "float",
+          "description": "Percentage complete for the background copy when a resource is created via the CopyStart operation."
+        },
+        "publicNetworkAccess": {
+          "$ref": "#/definitions/PublicNetworkAccess",
+          "description": "Policy for controlling export on the disk."
+        },
+        "dataAccessAuthMode": {
+          "$ref": "#/definitions/DataAccessAuthMode",
+          "description": "Additional authentication requirements when exporting or uploading to a disk or snapshot."
+        },
+        "optimizedForFrequentAttach": {
+          "type": "boolean",
+          "description": "Setting this property to true improves reliability and performance of data disks that are frequently (more than 5 times a day) by detached from one virtual machine and attached to another. This property should not be set for disks that are not detached and attached frequently as it causes the disks to not align with the fault domain of the virtual machine."
+        },
+        "LastOwnershipUpdateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The UTC time when the ownership state of the disk was last changed i.e., the time the disk was last attached or detached from a VM or the time when the VM to which the disk was attached was deallocated or started.",
+          "readOnly": true,
+          "x-ms-client-name": "lastOwnershipUpdateTime"
+        },
+        "availabilityPolicy": {
+          "$ref": "#/definitions/AvailabilityPolicy",
+          "description": "Determines how platform treats disk failures"
+        }
+      },
+      "required": [
+        "creationData"
+      ]
+    },
+    "DiskPurchasePlan": {
+      "type": "object",
+      "description": "Used for establishing the purchase context of any 3rd Party artifact through MarketPlace.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The plan ID."
+        },
+        "publisher": {
+          "type": "string",
+          "description": "The publisher ID."
+        },
+        "product": {
+          "type": "string",
+          "description": "Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element."
+        },
+        "promotionCode": {
+          "type": "string",
+          "description": "The Offer Promotion Code."
+        }
+      },
+      "required": [
+        "name",
+        "publisher",
+        "product"
+      ]
+    },
+    "DiskRestorePoint": {
+      "type": "object",
+      "description": "Properties of disk restore point",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/DiskRestorePointProperties",
+          "description": "Properties of an incremental disk restore point",
+          "x-ms-client-flatten": true
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./types.json#/definitions/ProxyResource"
+        }
+      ]
+    },
+    "DiskRestorePointList": {
+      "type": "object",
+      "description": "The List Disk Restore Points operation response.",
+      "properties": {
+        "value": {
+          "type": "array",
+          "description": "The DiskRestorePoint items on this page",
+          "items": {
+            "$ref": "#/definitions/DiskRestorePoint"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "format": "uri",
+          "description": "The link to the next page of items"
+        }
+      },
+      "required": [
+        "value"
+      ]
+    },
+    "DiskRestorePointProperties": {
+      "type": "object",
+      "description": "Properties of an incremental disk restore point",
+      "properties": {
+        "timeCreated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp of restorePoint creation",
+          "readOnly": true
+        },
+        "sourceResourceId": {
+          "type": "string",
+          "description": "arm id of source disk or source disk restore point.",
+          "readOnly": true
+        },
+        "osType": {
+          "$ref": "#/definitions/OperatingSystemTypes",
+          "description": "The Operating System type.",
+          "readOnly": true
+        },
+        "hyperVGeneration": {
+          "$ref": "#/definitions/HyperVGeneration",
+          "description": "The hypervisor generation of the Virtual Machine. Applicable to OS disks only."
+        },
+        "purchasePlan": {
+          "$ref": "#/definitions/DiskPurchasePlan",
+          "description": "Purchase plan information for the the image from which the OS disk was created."
+        },
+        "supportedCapabilities": {
+          "$ref": "#/definitions/SupportedCapabilities",
+          "description": "List of supported capabilities for the image from which the OS disk was created."
+        },
+        "familyId": {
+          "type": "string",
+          "description": "id of the backing snapshot's MIS family",
+          "readOnly": true
+        },
+        "sourceUniqueId": {
+          "type": "string",
+          "description": "unique incarnation id of the source disk",
+          "readOnly": true
+        },
+        "encryption": {
+          "$ref": "#/definitions/Encryption",
+          "description": "Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys.",
+          "readOnly": true
+        },
+        "supportsHibernation": {
+          "type": "boolean",
+          "description": "Indicates the OS on a disk supports hibernation."
+        },
+        "networkAccessPolicy": {
+          "$ref": "#/definitions/NetworkAccessPolicy",
+          "description": "Policy for accessing the disk via network."
+        },
+        "publicNetworkAccess": {
+          "$ref": "#/definitions/PublicNetworkAccess",
+          "description": "Policy for controlling export on the disk."
+        },
+        "diskAccessId": {
+          "type": "string",
+          "description": "ARM id of the DiskAccess resource for using private endpoints on disks."
+        },
+        "completionPercent": {
+          "type": "number",
+          "format": "float",
+          "description": "Percentage complete for the background copy of disk restore point when source resource is from a different region."
+        },
+        "replicationState": {
+          "type": "string",
+          "description": "Replication state of disk restore point when source resource is from a different region.",
+          "readOnly": true
+        },
+        "sourceResourceLocation": {
+          "type": "string",
+          "description": "Location of source disk or source disk restore point when source resource is from a different region.",
+          "readOnly": true
+        },
+        "securityProfile": {
+          "$ref": "#/definitions/DiskSecurityProfile",
+          "description": "Contains the security related information for the resource."
+        },
+        "logicalSectorSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Logical sector size in bytes for disk restore points of UltraSSD_LRS and PremiumV2_LRS disks. Supported values are 512 and 4096. 4096 is the default.",
+          "readOnly": true
+        }
+      }
+    },
+    "DiskSecurityProfile": {
+      "type": "object",
+      "description": "Contains the security related information for the resource.",
+      "properties": {
+        "securityType": {
+          "$ref": "#/definitions/DiskSecurityTypes",
+          "description": "Specifies the SecurityType of the VM. Applicable for OS disks only."
+        },
+        "secureVMDiskEncryptionSetId": {
+          "type": "string",
+          "description": "ResourceId of the disk encryption set associated to Confidential VM supported disk encrypted with customer managed key"
+        }
+      }
+    },
+    "DiskSecurityTypes": {
+      "type": "string",
+      "description": "Specifies the SecurityType of the VM. Applicable for OS disks only.",
+      "enum": [
+        "TrustedLaunch",
+        "ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey",
+        "ConfidentialVM_DiskEncryptedWithPlatformKey",
+        "ConfidentialVM_DiskEncryptedWithCustomerKey",
+        "ConfidentialVM_NonPersistedTPM"
+      ],
+      "x-ms-enum": {
+        "name": "DiskSecurityTypes",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "TrustedLaunch",
+            "value": "TrustedLaunch",
+            "description": "Trusted Launch provides security features such as secure boot and virtual Trusted Platform Module (vTPM)"
+          },
+          {
+            "name": "ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey",
+            "value": "ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey",
+            "description": "Indicates Confidential VM disk with only VM guest state encrypted"
+          },
+          {
+            "name": "ConfidentialVM_DiskEncryptedWithPlatformKey",
+            "value": "ConfidentialVM_DiskEncryptedWithPlatformKey",
+            "description": "Indicates Confidential VM disk with both OS disk and VM guest state encrypted with a platform managed key"
+          },
+          {
+            "name": "ConfidentialVM_DiskEncryptedWithCustomerKey",
+            "value": "ConfidentialVM_DiskEncryptedWithCustomerKey",
+            "description": "Indicates Confidential VM disk with both OS disk and VM guest state encrypted with a customer managed key"
+          },
+          {
+            "name": "ConfidentialVM_NonPersistedTPM",
+            "value": "ConfidentialVM_NonPersistedTPM",
+            "description": "Indicates Confidential VM disk with a ephemeral vTPM. vTPM state is not persisted across VM reboots."
+          }
+        ]
+      }
+    },
+    "DiskSku": {
+      "type": "object",
+      "description": "The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or PremiumV2_LRS.",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/DiskStorageAccountTypes",
+          "description": "The sku name."
+        },
+        "tier": {
+          "type": "string",
+          "description": "The sku tier.",
+          "readOnly": true
+        }
+      }
+    },
+    "DiskState": {
+      "type": "string",
+      "description": "This enumerates the possible state of the disk.",
+      "enum": [
+        "Unattached",
+        "Attached",
+        "Reserved",
+        "Frozen",
+        "ActiveSAS",
+        "ActiveSASFrozen",
+        "ReadyToUpload",
+        "ActiveUpload"
+      ],
+      "x-ms-enum": {
+        "name": "DiskState",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "Unattached",
+            "value": "Unattached",
+            "description": "The disk is not being used and can be attached to a VM."
+          },
+          {
+            "name": "Attached",
+            "value": "Attached",
+            "description": "The disk is currently attached to a running VM."
+          },
+          {
+            "name": "Reserved",
+            "value": "Reserved",
+            "description": "The disk is attached to a stopped-deallocated VM."
+          },
+          {
+            "name": "Frozen",
+            "value": "Frozen",
+            "description": "The disk is attached to a VM which is in hibernated state."
+          },
+          {
+            "name": "ActiveSAS",
+            "value": "ActiveSAS",
+            "description": "The disk currently has an Active SAS Uri associated with it."
+          },
+          {
+            "name": "ActiveSASFrozen",
+            "value": "ActiveSASFrozen",
+            "description": "The disk is attached to a VM in hibernated state and has an active SAS URI associated with it."
+          },
+          {
+            "name": "ReadyToUpload",
+            "value": "ReadyToUpload",
+            "description": "A disk is ready to be created by upload by requesting a write token."
+          },
+          {
+            "name": "ActiveUpload",
+            "value": "ActiveUpload",
+            "description": "A disk is created for upload and a write token has been issued for uploading to it."
+          }
+        ]
+      }
+    },
+    "DiskStorageAccountTypes": {
+      "type": "string",
+      "description": "The sku name.",
+      "enum": [
+        "Standard_LRS",
+        "Premium_LRS",
+        "StandardSSD_LRS",
+        "UltraSSD_LRS",
+        "Premium_ZRS",
+        "StandardSSD_ZRS",
+        "PremiumV2_LRS"
+      ],
+      "x-ms-enum": {
+        "name": "DiskStorageAccountTypes",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "Standard_LRS",
+            "value": "Standard_LRS",
+            "description": "Standard HDD locally redundant storage. Best for backup, non-critical, and infrequent access."
+          },
+          {
+            "name": "Premium_LRS",
+            "value": "Premium_LRS",
+            "description": "Premium SSD locally redundant storage. Best for production and performance sensitive workloads."
+          },
+          {
+            "name": "StandardSSD_LRS",
+            "value": "StandardSSD_LRS",
+            "description": "Standard SSD locally redundant storage. Best for web servers, lightly used enterprise applications and dev/test."
+          },
+          {
+            "name": "UltraSSD_LRS",
+            "value": "UltraSSD_LRS",
+            "description": "Ultra SSD locally redundant storage. Best for IO-intensive workloads such as SAP HANA, top tier databases (for example, SQL, Oracle), and other transaction-heavy workloads."
+          },
+          {
+            "name": "Premium_ZRS",
+            "value": "Premium_ZRS",
+            "description": "Premium SSD zone redundant storage. Best for the production workloads that need storage resiliency against zone failures."
+          },
+          {
+            "name": "StandardSSD_ZRS",
+            "value": "StandardSSD_ZRS",
+            "description": "Standard SSD zone redundant storage. Best for web servers, lightly used enterprise applications and dev/test that need storage resiliency against zone failures."
+          },
+          {
+            "name": "PremiumV2_LRS",
+            "value": "PremiumV2_LRS",
+            "description": "Premium SSD v2 locally redundant storage. Best for production and performance-sensitive workloads that consistently require low latency and high IOPS and throughput."
+          }
+        ]
+      }
+    },
+    "DiskUpdate": {
+      "type": "object",
+      "description": "Disk update resource.",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/DiskUpdateProperties",
+          "description": "Disk resource update properties.",
+          "x-ms-client-flatten": true
+        },
+        "tags": {
+          "type": "object",
+          "description": "Resource tags",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "sku": {
+          "$ref": "#/definitions/DiskSku",
+          "description": "The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or PremiumV2_LRS."
+        }
+      }
+    },
+    "DiskUpdateProperties": {
+      "type": "object",
+      "description": "Disk resource update properties.",
+      "properties": {
+        "osType": {
+          "$ref": "#/definitions/OperatingSystemTypes",
+          "description": "the Operating System type."
+        },
+        "diskSizeGB": {
+          "type": "integer",
+          "format": "int32",
+          "description": "If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size."
+        },
+        "encryptionSettingsCollection": {
+          "$ref": "#/definitions/EncryptionSettingsCollection",
+          "description": "Encryption settings collection used be Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot."
+        },
+        "diskIOPSReadWrite": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The number of IOPS allowed for this disk; only settable for UltraSSD disks. One operation can transfer between 4k and 256k bytes."
+        },
+        "diskMBpsReadWrite": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The bandwidth allowed for this disk; only settable for UltraSSD disks. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10."
+        },
+        "diskIOPSReadOnly": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The total number of IOPS that will be allowed across all VMs mounting the shared disk as ReadOnly. One operation can transfer between 4k and 256k bytes."
+        },
+        "diskMBpsReadOnly": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The total throughput (MBps) that will be allowed across all VMs mounting the shared disk as ReadOnly. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10."
+        },
+        "maxShares": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The maximum number of VMs that can attach to the disk at the same time. Value greater than one indicates a disk that can be mounted on multiple VMs at the same time."
+        },
+        "encryption": {
+          "$ref": "#/definitions/Encryption",
+          "description": "Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys."
+        },
+        "networkAccessPolicy": {
+          "$ref": "#/definitions/NetworkAccessPolicy",
+          "description": "Policy for accessing the disk via network."
+        },
+        "diskAccessId": {
+          "type": "string",
+          "description": "ARM id of the DiskAccess resource for using private endpoints on disks."
+        },
+        "tier": {
+          "type": "string",
+          "description": "Performance tier of the disk (e.g, P4, S10) as described here: https://azure.microsoft.com/en-us/pricing/details/managed-disks/. Does not apply to Ultra disks."
+        },
+        "burstingEnabled": {
+          "type": "boolean",
+          "description": "Set to true to enable bursting beyond the provisioned performance target of the disk. Bursting is disabled by default. Does not apply to Ultra disks."
+        },
+        "purchasePlan": {
+          "$ref": "#/definitions/DiskPurchasePlan",
+          "description": "Purchase plan information to be added on the OS disk"
+        },
+        "supportedCapabilities": {
+          "$ref": "#/definitions/SupportedCapabilities",
+          "description": "List of supported capabilities to be added on the OS disk."
+        },
+        "propertyUpdatesInProgress": {
+          "$ref": "#/definitions/PropertyUpdatesInProgress",
+          "description": "Properties of the disk for which update is pending.",
+          "readOnly": true
+        },
+        "supportsHibernation": {
+          "type": "boolean",
+          "description": "Indicates the OS on a disk supports hibernation."
+        },
+        "publicNetworkAccess": {
+          "$ref": "#/definitions/PublicNetworkAccess",
+          "description": "Policy for controlling export on the disk."
+        },
+        "dataAccessAuthMode": {
+          "$ref": "#/definitions/DataAccessAuthMode",
+          "description": "Additional authentication requirements when exporting or uploading to a disk or snapshot."
+        },
+        "optimizedForFrequentAttach": {
+          "type": "boolean",
+          "description": "Setting this property to true improves reliability and performance of data disks that are frequently (more than 5 times a day) by detached from one virtual machine and attached to another. This property should not be set for disks that are not detached and attached frequently as it causes the disks to not align with the fault domain of the virtual machine."
+        },
+        "availabilityPolicy": {
+          "$ref": "#/definitions/AvailabilityPolicy",
+          "description": "Determines how platform treats disk failures"
+        }
+      }
+    },
+    "Encryption": {
+      "type": "object",
+      "description": "Encryption at rest settings for disk or snapshot",
+      "properties": {
+        "diskEncryptionSetId": {
+          "type": "string",
+          "description": "ResourceId of the disk encryption set to use for enabling encryption at rest."
+        },
+        "type": {
+          "$ref": "#/definitions/EncryptionType",
+          "description": "The type of key used to encrypt the data of the disk."
+        }
+      }
+    },
+    "EncryptionSetIdentity": {
+      "type": "object",
+      "description": "The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks.",
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/DiskEncryptionSetIdentityType",
+          "description": "The type of Managed Identity used by the DiskEncryptionSet. Only SystemAssigned is supported for new creations. Disk Encryption Sets can be updated with Identity type None during migration of subscription to a new Azure Active Directory tenant; it will cause the encrypted resources to lose access to the keys."
+        },
+        "principalId": {
+          "type": "string",
+          "description": "The object id of the Managed Identity Resource. This will be sent to the RP from ARM via the x-ms-identity-principal-id header in the PUT request if the resource has a systemAssigned(implicit) identity",
+          "readOnly": true
+        },
+        "tenantId": {
+          "type": "string",
+          "description": "The tenant id of the Managed Identity Resource. This will be sent to the RP from ARM via the x-ms-client-tenant-id header in the PUT request if the resource has a systemAssigned(implicit) identity",
+          "readOnly": true
+        },
+        "userAssignedIdentities": {
+          "type": "object",
+          "description": "The list of user identities associated with the disk encryption set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.",
+          "additionalProperties": {
+            "$ref": "#/definitions/UserAssignedIdentitiesValue"
+          }
+        }
+      }
+    },
+    "EncryptionSetProperties": {
+      "type": "object",
+      "properties": {
+        "encryptionType": {
+          "$ref": "#/definitions/DiskEncryptionSetType",
+          "description": "The type of key used to encrypt the data of the disk."
+        },
+        "activeKey": {
+          "$ref": "#/definitions/KeyForDiskEncryptionSet",
+          "description": "The key vault key which is currently used by this disk encryption set."
+        },
+        "previousKeys": {
+          "type": "array",
+          "description": "A readonly collection of key vault keys previously used by this disk encryption set while a key rotation is in progress. It will be empty if there is no ongoing key rotation.",
+          "items": {
+            "$ref": "#/definitions/KeyForDiskEncryptionSet"
+          },
+          "readOnly": true,
+          "x-ms-identifiers": [
+            "sourceVault/id"
+          ]
+        },
+        "provisioningState": {
+          "type": "string",
+          "description": "The disk encryption set provisioning state.",
+          "readOnly": true
+        },
+        "rotationToLatestKeyVersionEnabled": {
+          "type": "boolean",
+          "description": "Set this flag to true to enable auto-updating of this disk encryption set to the latest key version."
+        },
+        "lastKeyRotationTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time when the active key of this disk encryption set was updated.",
+          "readOnly": true
+        },
+        "autoKeyRotationError": {
+          "$ref": "./common.json#/definitions/ApiError",
+          "description": "The error that was encountered during auto-key rotation. If an error is present, then auto-key rotation will not be attempted until the error on this disk encryption set is fixed.",
+          "readOnly": true
+        },
+        "federatedClientId": {
+          "type": "string",
+          "description": "Multi-tenant application client id to access key vault in a different tenant. Setting the value to 'None' will clear the property."
+        }
+      }
+    },
+    "EncryptionSettingsCollection": {
+      "type": "object",
+      "description": "Encryption settings for disk or snapshot",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Set this flag to true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable encryption. Set this flag to false and remove DiskEncryptionKey and KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the request object, the existing settings remain unchanged."
+        },
+        "encryptionSettings": {
+          "type": "array",
+          "description": "A collection of encryption settings, one for each disk volume.",
+          "items": {
+            "$ref": "#/definitions/EncryptionSettingsElement"
+          },
+          "x-ms-identifiers": [
+            "diskEncryptionKey/sourceVault/id"
+          ]
+        },
+        "encryptionSettingsVersion": {
+          "type": "string",
+          "description": "Describes what type of encryption is used for the disks. Once this field is set, it cannot be overwritten. '1.0' corresponds to Azure Disk Encryption with AAD app.'1.1' corresponds to Azure Disk Encryption."
+        }
+      },
+      "required": [
+        "enabled"
+      ]
+    },
+    "EncryptionSettingsElement": {
+      "type": "object",
+      "description": "Encryption settings for one disk volume.",
+      "properties": {
+        "diskEncryptionKey": {
+          "$ref": "#/definitions/KeyVaultAndSecretReference",
+          "description": "Key Vault Secret Url and vault id of the disk encryption key"
+        },
+        "keyEncryptionKey": {
+          "$ref": "#/definitions/KeyVaultAndKeyReference",
+          "description": "Key Vault Key Url and vault id of the key encryption key. KeyEncryptionKey is optional and when provided is used to unwrap the disk encryption key."
+        }
+      }
+    },
+    "EncryptionType": {
+      "type": "string",
+      "description": "The type of key used to encrypt the data of the disk.",
+      "enum": [
+        "EncryptionAtRestWithPlatformKey",
+        "EncryptionAtRestWithCustomerKey",
+        "EncryptionAtRestWithPlatformAndCustomerKeys"
+      ],
+      "x-ms-enum": {
+        "name": "EncryptionType",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "EncryptionAtRestWithPlatformKey",
+            "value": "EncryptionAtRestWithPlatformKey",
+            "description": "Disk is encrypted at rest with Platform managed key. It is the default encryption type. This is not a valid encryption type for disk encryption sets."
+          },
+          {
+            "name": "EncryptionAtRestWithCustomerKey",
+            "value": "EncryptionAtRestWithCustomerKey",
+            "description": "Disk is encrypted at rest with Customer managed key that can be changed and revoked by a customer."
+          },
+          {
+            "name": "EncryptionAtRestWithPlatformAndCustomerKeys",
+            "value": "EncryptionAtRestWithPlatformAndCustomerKeys",
+            "description": "Disk is encrypted at rest with 2 layers of encryption. One of the keys is Customer managed and the other key is Platform managed."
+          }
+        ]
+      }
+    },
+    "FileFormat": {
+      "type": "string",
+      "description": "Used to specify the file format when making request for SAS on a VHDX file format snapshot",
+      "enum": [
+        "VHD",
+        "VHDX"
+      ],
+      "x-ms-enum": {
+        "name": "FileFormat",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "VHD",
+            "value": "VHD",
+            "description": "A VHD file is a disk image file in the Virtual Hard Disk file format."
+          },
+          {
+            "name": "VHDX",
+            "value": "VHDX",
+            "description": "A VHDX file is a disk image file in the Virtual Hard Disk v2 file format."
+          }
+        ]
+      }
+    },
+    "GrantAccessData": {
+      "type": "object",
+      "description": "Data used for requesting a SAS.",
+      "properties": {
+        "access": {
+          "$ref": "#/definitions/AccessLevel",
+          "description": "The Access Level, accepted values include None, Read, Write."
+        },
+        "durationInSeconds": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Time duration in seconds until the SAS access expires."
+        },
+        "getSecureVMGuestStateSAS": {
+          "type": "boolean",
+          "description": "Set this flag to true to get additional SAS for VM guest state"
+        },
+        "fileFormat": {
+          "$ref": "#/definitions/FileFormat",
+          "description": "Used to specify the file format when making request for SAS on a VHDX file format snapshot"
+        }
+      },
+      "required": [
+        "access",
+        "durationInSeconds"
+      ]
+    },
+    "HyperVGeneration": {
+      "type": "string",
+      "description": "The hypervisor generation of the Virtual Machine. Applicable to OS disks only.",
+      "enum": [
+        "V1",
+        "V2"
+      ],
+      "x-ms-enum": {
+        "name": "HyperVGeneration",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "V1",
+            "value": "V1"
+          },
+          {
+            "name": "V2",
+            "value": "V2"
+          }
+        ]
+      }
+    },
+    "ImageDiskReference": {
+      "type": "object",
+      "description": "The source image used for creating the disk.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "A relative uri containing either a Platform Image Repository, user image, or Azure Compute Gallery image reference."
+        },
+        "sharedGalleryImageId": {
+          "type": "string",
+          "description": "A relative uri containing a direct shared Azure Compute Gallery image reference."
+        },
+        "communityGalleryImageId": {
+          "type": "string",
+          "description": "A relative uri containing a community Azure Compute Gallery image reference."
+        },
+        "lun": {
+          "type": "integer",
+          "format": "int32",
+          "description": "If the disk is created from an image's data disk, this is an index that indicates which of the data disks in the image to use. For OS disks, this field is null."
+        }
+      }
+    },
+    "KeyForDiskEncryptionSet": {
+      "type": "object",
+      "description": "Key Vault Key Url to be used for server side encryption of Managed Disks and Snapshots",
+      "properties": {
+        "sourceVault": {
+          "$ref": "#/definitions/SourceVault",
+          "description": "Resource id of the KeyVault containing the key or secret. This property is optional and cannot be used if the KeyVault subscription is not the same as the Disk Encryption Set subscription."
+        },
+        "keyUrl": {
+          "type": "string",
+          "description": "Fully versioned Key Url pointing to a key in KeyVault. Version segment of the Url is required regardless of rotationToLatestKeyVersionEnabled value."
+        }
+      },
+      "required": [
+        "keyUrl"
+      ]
+    },
+    "KeyVaultAndKeyReference": {
+      "type": "object",
+      "description": "Key Vault Key Url and vault id of KeK, KeK is optional and when provided is used to unwrap the encryptionKey",
+      "properties": {
+        "sourceVault": {
+          "$ref": "#/definitions/SourceVault",
+          "description": "Resource id of the KeyVault containing the key or secret"
+        },
+        "keyUrl": {
+          "type": "string",
+          "description": "Url pointing to a key or secret in KeyVault"
+        }
+      },
+      "required": [
+        "sourceVault",
+        "keyUrl"
+      ]
+    },
+    "KeyVaultAndSecretReference": {
+      "type": "object",
+      "description": "Key Vault Secret Url and vault id of the encryption key",
+      "properties": {
+        "sourceVault": {
+          "$ref": "#/definitions/SourceVault",
+          "description": "Resource id of the KeyVault containing the key or secret"
+        },
+        "secretUrl": {
+          "type": "string",
+          "description": "Url pointing to a key or secret in KeyVault"
+        }
+      },
+      "required": [
+        "sourceVault",
+        "secretUrl"
+      ]
+    },
+    "NetworkAccessPolicy": {
+      "type": "string",
+      "description": "Policy for accessing the disk via network.",
+      "enum": [
+        "AllowAll",
+        "AllowPrivate",
+        "DenyAll"
+      ],
+      "x-ms-enum": {
+        "name": "NetworkAccessPolicy",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "AllowAll",
+            "value": "AllowAll",
+            "description": "The disk can be exported or uploaded to from any network."
+          },
+          {
+            "name": "AllowPrivate",
+            "value": "AllowPrivate",
+            "description": "The disk can be exported or uploaded to using a DiskAccess resource's private endpoints."
+          },
+          {
+            "name": "DenyAll",
+            "value": "DenyAll",
+            "description": "The disk cannot be exported."
+          }
+        ]
+      }
+    },
+    "OperatingSystemTypes": {
+      "type": "string",
+      "description": "The Operating System type.",
+      "enum": [
+        "Windows",
+        "Linux"
+      ],
+      "x-ms-enum": {
+        "name": "OperatingSystemTypes",
+        "modelAsString": false
+      }
+    },
+    "PrivateEndpoint": {
+      "type": "object",
+      "description": "The Private Endpoint resource.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The ARM identifier for Private Endpoint",
+          "readOnly": true
+        }
+      }
+    },
+    "PrivateEndpointConnection": {
+      "type": "object",
+      "description": "The Private Endpoint Connection resource.",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/PrivateEndpointConnectionProperties",
+          "description": "Resource properties.",
+          "x-ms-client-flatten": true
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./types.json#/definitions/ProxyResource"
+        }
+      ]
+    },
+    "PrivateEndpointConnectionListResult": {
+      "type": "object",
+      "description": "A list of private link resources",
+      "properties": {
+        "value": {
+          "type": "array",
+          "description": "The PrivateEndpointConnection items on this page",
+          "items": {
+            "$ref": "#/definitions/PrivateEndpointConnection"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "format": "uri",
+          "description": "The link to the next page of items"
+        }
+      },
+      "required": [
+        "value"
+      ]
+    },
+    "PrivateEndpointConnectionProperties": {
+      "type": "object",
+      "description": "Properties of the PrivateEndpointConnectProperties.",
+      "properties": {
+        "privateEndpoint": {
+          "$ref": "#/definitions/PrivateEndpoint",
+          "description": "The resource of private end point.",
+          "readOnly": true
+        },
+        "privateLinkServiceConnectionState": {
+          "$ref": "#/definitions/PrivateLinkServiceConnectionState",
+          "description": "A collection of information about the state of the connection between DiskAccess and Virtual Network."
+        },
+        "provisioningState": {
+          "$ref": "#/definitions/PrivateEndpointConnectionProvisioningState",
+          "description": "The provisioning state of the private endpoint connection resource.",
+          "readOnly": true
+        }
+      },
+      "required": [
+        "privateLinkServiceConnectionState"
+      ]
+    },
+    "PrivateEndpointConnectionProvisioningState": {
+      "type": "string",
+      "description": "The current provisioning state.",
+      "enum": [
+        "Succeeded",
+        "Creating",
+        "Deleting",
+        "Failed"
+      ],
+      "x-ms-enum": {
+        "name": "PrivateEndpointConnectionProvisioningState",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "Succeeded",
+            "value": "Succeeded"
+          },
+          {
+            "name": "Creating",
+            "value": "Creating"
+          },
+          {
+            "name": "Deleting",
+            "value": "Deleting"
+          },
+          {
+            "name": "Failed",
+            "value": "Failed"
+          }
+        ]
+      }
+    },
+    "PrivateEndpointServiceConnectionStatus": {
+      "type": "string",
+      "description": "The private endpoint connection status.",
+      "enum": [
+        "Pending",
+        "Approved",
+        "Rejected"
+      ],
+      "x-ms-enum": {
+        "name": "PrivateEndpointServiceConnectionStatus",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "Pending",
+            "value": "Pending"
+          },
+          {
+            "name": "Approved",
+            "value": "Approved"
+          },
+          {
+            "name": "Rejected",
+            "value": "Rejected"
+          }
+        ]
+      }
+    },
+    "PrivateLinkResource": {
+      "type": "object",
+      "description": "A private link resource",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/PrivateLinkResourceProperties",
+          "description": "Resource properties.",
+          "x-ms-client-flatten": true
+        },
+        "id": {
+          "type": "string",
+          "description": "private link resource Id",
+          "readOnly": true
+        },
+        "name": {
+          "type": "string",
+          "description": "private link resource name",
+          "readOnly": true
+        },
+        "type": {
+          "type": "string",
+          "description": "private link resource type",
+          "readOnly": true
+        }
+      }
+    },
+    "PrivateLinkResourceListResult": {
+      "type": "object",
+      "description": "A list of private link resources",
+      "properties": {
+        "value": {
+          "type": "array",
+          "description": "Array of private link resources",
+          "items": {
+            "$ref": "#/definitions/PrivateLinkResource"
+          }
+        }
+      }
+    },
+    "PrivateLinkResourceProperties": {
+      "type": "object",
+      "description": "Properties of a private link resource.",
+      "properties": {
+        "groupId": {
+          "type": "string",
+          "description": "The private link resource group id.",
+          "readOnly": true
+        },
+        "requiredMembers": {
+          "type": "array",
+          "description": "The private link resource required member names.",
+          "items": {
+            "type": "string"
+          },
+          "readOnly": true
+        },
+        "requiredZoneNames": {
+          "type": "array",
+          "description": "The private link resource DNS zone name.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "PrivateLinkServiceConnectionState": {
+      "type": "object",
+      "description": "A collection of information about the state of the connection between service consumer and provider.",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/PrivateEndpointServiceConnectionStatus",
+          "description": "Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service."
+        },
+        "description": {
+          "type": "string",
+          "description": "The reason for approval/rejection of the connection."
+        },
+        "actionsRequired": {
+          "type": "string",
+          "description": "A message indicating if changes on the service provider require any updates on the consumer."
+        }
+      }
+    },
+    "PropertyUpdatesInProgress": {
+      "type": "object",
+      "description": "Properties of the disk for which update is pending.",
+      "properties": {
+        "targetTier": {
+          "type": "string",
+          "description": "The target performance tier of the disk if a tier change operation is in progress."
+        }
+      }
+    },
+    "ProvisionedBandwidthCopyOption": {
+      "type": "string",
+      "description": "If this field is set on a snapshot and createOption is CopyStart, the snapshot will be copied at a quicker speed.",
+      "enum": [
+        "None",
+        "Enhanced"
+      ],
+      "x-ms-enum": {
+        "name": "ProvisionedBandwidthCopyOption",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "None",
+            "value": "None"
+          },
+          {
+            "name": "Enhanced",
+            "value": "Enhanced"
+          }
+        ]
+      }
+    },
+    "PublicNetworkAccess": {
+      "type": "string",
+      "description": "Policy for controlling export on the disk.",
+      "enum": [
+        "Enabled",
+        "Disabled"
+      ],
+      "x-ms-enum": {
+        "name": "PublicNetworkAccess",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "Enabled",
+            "value": "Enabled",
+            "description": "You can generate a SAS URI to access the underlying data of the disk publicly on the internet when NetworkAccessPolicy is set to AllowAll. You can access the data via the SAS URI only from your trusted Azure VNET when NetworkAccessPolicy is set to AllowPrivate."
+          },
+          {
+            "name": "Disabled",
+            "value": "Disabled",
+            "description": "You cannot access the underlying data of the disk publicly on the internet even when NetworkAccessPolicy is set to AllowAll. You can access the data via the SAS URI only from your trusted Azure VNET when NetworkAccessPolicy is set to AllowPrivate."
+          }
+        ]
+      }
+    },
+    "ResourceUriList": {
+      "type": "object",
+      "description": "The List resources which are encrypted with the disk encryption set.",
+      "properties": {
+        "value": {
+          "type": "array",
+          "description": "A list of IDs or Owner IDs of resources which are encrypted with the disk encryption set.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "format": "uri",
+          "description": "The uri to fetch the next page of encrypted resources. Call ListNext() with this to fetch the next page of encrypted resources."
+        }
+      },
+      "required": [
+        "value"
+      ]
+    },
+    "ShareInfoElement": {
+      "type": "object",
+      "properties": {
+        "vmUri": {
+          "type": "string",
+          "description": "A relative URI containing the ID of the VM that has the disk attached.",
+          "readOnly": true
+        }
+      }
+    },
+    "Snapshot": {
+      "type": "object",
+      "description": "Snapshot resource.",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/SnapshotProperties",
+          "description": "Snapshot resource properties.",
+          "x-ms-client-flatten": true
+        },
+        "managedBy": {
+          "type": "string",
+          "description": "Unused. Always Null.",
+          "readOnly": true
+        },
+        "sku": {
+          "$ref": "#/definitions/SnapshotSku",
+          "description": "The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot"
+        },
+        "extendedLocation": {
+          "$ref": "./common.json#/definitions/ExtendedLocation",
+          "description": "The extended location where the snapshot will be created. Extended location cannot be changed."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./types.json#/definitions/TrackedResource"
+        }
+      ]
+    },
+    "SnapshotAccessState": {
+      "type": "string",
+      "description": "The state of snapshot which determines the access availability of the snapshot.",
+      "enum": [
+        "Unknown",
+        "Pending",
+        "Available",
+        "InstantAccess",
+        "AvailableWithInstantAccess"
+      ],
+      "x-ms-enum": {
+        "name": "SnapshotAccessState",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "Unknown",
+            "value": "Unknown",
+            "description": "Default value."
+          },
+          {
+            "name": "Pending",
+            "value": "Pending",
+            "description": "The snapshot cannot be used for restore, copy or download to offline."
+          },
+          {
+            "name": "Available",
+            "value": "Available",
+            "description": "The snapshot can be used for restore, copy to different region, and download to offline."
+          },
+          {
+            "name": "InstantAccess",
+            "value": "InstantAccess",
+            "description": "The snapshot can be used for restoring disks with fast performance but cannot be copied or downloaded."
+          },
+          {
+            "name": "AvailableWithInstantAccess",
+            "value": "AvailableWithInstantAccess",
+            "description": "The snapshot can be used for restoring disks with fast performance, copied and downloaded."
+          }
+        ]
+      }
+    },
+    "SnapshotList": {
+      "type": "object",
+      "description": "The List Snapshots operation response.",
+      "properties": {
+        "value": {
+          "type": "array",
+          "description": "A list of snapshots.",
+          "items": {
+            "$ref": "#/definitions/Snapshot"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "format": "uri",
+          "description": "The link to the next page of items"
+        }
+      },
+      "required": [
+        "value"
+      ]
+    },
+    "SnapshotProperties": {
+      "type": "object",
+      "description": "Snapshot resource properties.",
+      "properties": {
+        "timeCreated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time when the snapshot was created.",
+          "readOnly": true
+        },
+        "osType": {
+          "$ref": "#/definitions/OperatingSystemTypes",
+          "description": "The Operating System type."
+        },
+        "hyperVGeneration": {
+          "$ref": "#/definitions/HyperVGeneration",
+          "description": "The hypervisor generation of the Virtual Machine. Applicable to OS disks only."
+        },
+        "purchasePlan": {
+          "$ref": "#/definitions/DiskPurchasePlan",
+          "description": "Purchase plan information for the image from which the source disk for the snapshot was originally created."
+        },
+        "supportedCapabilities": {
+          "$ref": "#/definitions/SupportedCapabilities",
+          "description": "List of supported capabilities for the image from which the source disk from the snapshot was originally created."
+        },
+        "creationData": {
+          "$ref": "#/definitions/CreationData",
+          "description": "Disk source information. CreationData information cannot be changed after the disk has been created."
+        },
+        "diskSizeGB": {
+          "type": "integer",
+          "format": "int32",
+          "description": "If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size."
+        },
+        "diskSizeBytes": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The size of the disk in bytes. This field is read only.",
+          "readOnly": true
+        },
+        "diskState": {
+          "$ref": "#/definitions/DiskState",
+          "description": "The state of the snapshot.",
+          "readOnly": true
+        },
+        "uniqueId": {
+          "type": "string",
+          "description": "Unique Guid identifying the resource.",
+          "readOnly": true
+        },
+        "encryptionSettingsCollection": {
+          "$ref": "#/definitions/EncryptionSettingsCollection",
+          "description": "Encryption settings collection used be Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot."
+        },
+        "provisioningState": {
+          "type": "string",
+          "description": "The disk provisioning state.",
+          "readOnly": true
+        },
+        "incremental": {
+          "type": "boolean",
+          "description": "Whether a snapshot is incremental. Incremental snapshots on the same disk occupy less space than full snapshots and can be diffed."
+        },
+        "incrementalSnapshotFamilyId": {
+          "type": "string",
+          "description": "Incremental snapshots for a disk share an incremental snapshot family id. The Get Page Range Diff API can only be called on incremental snapshots with the same family id.",
+          "readOnly": true
+        },
+        "encryption": {
+          "$ref": "#/definitions/Encryption",
+          "description": "Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys."
+        },
+        "networkAccessPolicy": {
+          "$ref": "#/definitions/NetworkAccessPolicy",
+          "description": "Policy for accessing the disk via network."
+        },
+        "diskAccessId": {
+          "type": "string",
+          "description": "ARM id of the DiskAccess resource for using private endpoints on disks."
+        },
+        "securityProfile": {
+          "$ref": "#/definitions/DiskSecurityProfile",
+          "description": "Contains the security related information for the resource."
+        },
+        "supportsHibernation": {
+          "type": "boolean",
+          "description": "Indicates the OS on a snapshot supports hibernation."
+        },
+        "publicNetworkAccess": {
+          "$ref": "#/definitions/PublicNetworkAccess",
+          "description": "Policy for controlling export on the disk."
+        },
+        "completionPercent": {
+          "type": "number",
+          "format": "float",
+          "description": "Percentage complete for the background copy when a resource is created via the CopyStart operation."
+        },
+        "copyCompletionError": {
+          "$ref": "#/definitions/CopyCompletionError",
+          "description": "Indicates the error details if the background copy of a resource created via the CopyStart operation fails."
+        },
+        "dataAccessAuthMode": {
+          "$ref": "#/definitions/DataAccessAuthMode",
+          "description": "Additional authentication requirements when exporting or uploading to a disk or snapshot."
+        },
+        "snapshotAccessState": {
+          "$ref": "#/definitions/SnapshotAccessState",
+          "description": "The state of snapshot which determines the access availability of the snapshot.",
+          "readOnly": true
+        }
+      },
+      "required": [
+        "creationData"
+      ]
+    },
+    "SnapshotSku": {
+      "type": "object",
+      "description": "The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/SnapshotStorageAccountTypes",
+          "description": "The sku name."
+        },
+        "tier": {
+          "type": "string",
+          "description": "The sku tier.",
+          "readOnly": true
+        }
+      }
+    },
+    "SnapshotStorageAccountTypes": {
+      "type": "string",
+      "description": "The sku name.",
+      "enum": [
+        "Standard_LRS",
+        "Premium_LRS",
+        "Standard_ZRS"
+      ],
+      "x-ms-enum": {
+        "name": "SnapshotStorageAccountTypes",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "Standard_LRS",
+            "value": "Standard_LRS",
+            "description": "Standard HDD locally redundant storage"
+          },
+          {
+            "name": "Premium_LRS",
+            "value": "Premium_LRS",
+            "description": "Premium SSD locally redundant storage"
+          },
+          {
+            "name": "Standard_ZRS",
+            "value": "Standard_ZRS",
+            "description": "Standard zone redundant storage"
+          }
+        ]
+      }
+    },
+    "SnapshotUpdate": {
+      "type": "object",
+      "description": "Snapshot update resource.",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/SnapshotUpdateProperties",
+          "description": "Snapshot resource update properties.",
+          "x-ms-client-flatten": true
+        },
+        "tags": {
+          "type": "object",
+          "description": "Resource tags",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "sku": {
+          "$ref": "#/definitions/SnapshotSku",
+          "description": "The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot"
+        }
+      }
+    },
+    "SnapshotUpdateProperties": {
+      "type": "object",
+      "description": "Snapshot resource update properties.",
+      "properties": {
+        "osType": {
+          "$ref": "#/definitions/OperatingSystemTypes",
+          "description": "the Operating System type."
+        },
+        "diskSizeGB": {
+          "type": "integer",
+          "format": "int32",
+          "description": "If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size."
+        },
+        "encryptionSettingsCollection": {
+          "$ref": "#/definitions/EncryptionSettingsCollection",
+          "description": "Encryption settings collection used be Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot."
+        },
+        "encryption": {
+          "$ref": "#/definitions/Encryption",
+          "description": "Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys."
+        },
+        "networkAccessPolicy": {
+          "$ref": "#/definitions/NetworkAccessPolicy",
+          "description": "Policy for accessing the disk via network."
+        },
+        "diskAccessId": {
+          "type": "string",
+          "description": "ARM id of the DiskAccess resource for using private endpoints on disks."
+        },
+        "supportsHibernation": {
+          "type": "boolean",
+          "description": "Indicates the OS on a snapshot supports hibernation."
+        },
+        "publicNetworkAccess": {
+          "$ref": "#/definitions/PublicNetworkAccess",
+          "description": "Policy for controlling export on the disk."
+        },
+        "dataAccessAuthMode": {
+          "$ref": "#/definitions/DataAccessAuthMode",
+          "description": "Additional authentication requirements when exporting or uploading to a disk or snapshot."
+        },
+        "supportedCapabilities": {
+          "$ref": "#/definitions/SupportedCapabilities",
+          "description": "List of supported capabilities for the image from which the OS disk was created."
+        },
+        "snapshotAccessState": {
+          "$ref": "#/definitions/SnapshotAccessState",
+          "description": "The state of snapshot which determines the access availability of the snapshot.",
+          "readOnly": true
+        }
+      }
+    },
+    "SourceVault": {
+      "type": "object",
+      "description": "The vault id is an Azure Resource Manager Resource id in the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Resource Id"
+        }
+      }
+    },
+    "SupportedCapabilities": {
+      "type": "object",
+      "description": "List of supported capabilities persisted on the disk resource for VM use.",
+      "properties": {
+        "diskControllerTypes": {
+          "type": "string",
+          "description": "The disk controllers that an OS disk supports. If set it can be SCSI or SCSI, NVME or NVME, SCSI."
+        },
+        "acceleratedNetwork": {
+          "type": "boolean",
+          "description": "True if the image from which the OS disk is created supports accelerated networking."
+        },
+        "architecture": {
+          "$ref": "#/definitions/Architecture",
+          "description": "CPU architecture supported by an OS disk."
+        },
+        "supportedSecurityOption": {
+          "$ref": "#/definitions/SupportedSecurityOption",
+          "description": "Refers to the security capability of the disk supported to create a Trusted launch or Confidential VM"
+        }
+      }
+    },
+    "SupportedSecurityOption": {
+      "type": "string",
+      "description": "Refers to the security capability of the disk supported to create a Trusted launch or Confidential VM",
+      "enum": [
+        "TrustedLaunchSupported",
+        "TrustedLaunchAndConfidentialVMSupported"
+      ],
+      "x-ms-enum": {
+        "name": "SupportedSecurityOption",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "TrustedLaunchSupported",
+            "value": "TrustedLaunchSupported",
+            "description": "The disk supports creating Trusted Launch VMs."
+          },
+          {
+            "name": "TrustedLaunchAndConfidentialVMSupported",
+            "value": "TrustedLaunchAndConfidentialVMSupported",
+            "description": "The disk supports creating both Trusted Launch and Confidential VMs."
+          }
+        ]
+      }
+    },
+    "TypeSpec.Http.OkResponse": {
+      "type": "object",
+      "description": "The request has succeeded."
+    },
+    "UserAssignedIdentitiesValue": {
+      "type": "object",
+      "properties": {
+        "principalId": {
+          "type": "string",
+          "description": "The principal id of user assigned identity.",
+          "readOnly": true
+        },
+        "clientId": {
+          "type": "string",
+          "description": "The client id of user assigned identity.",
+          "readOnly": true
+        }
+      }
+    }
+  },
+  "parameters": {}
+}

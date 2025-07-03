@@ -11,7 +11,6 @@
 namespace Microsoft.Azure.Management.Compute.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Management.Compute.Models
     /// network
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VirtualMachineScaleSetUpdateIPConfiguration : IResource
+    public partial class VirtualMachineScaleSetUpdateIPConfiguration
     {
         /// <summary>
         /// Initializes a new instance of the

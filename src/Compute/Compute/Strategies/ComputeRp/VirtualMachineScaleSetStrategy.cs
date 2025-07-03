@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     var vmss = new VirtualMachineScaleSet
                     {
                         Zones = zones,
-                        ExtendedLocation = edgeZone == null ? null : new CM.ExtendedLocation(edgeZone, CM.ExtendedLocationTypes.EdgeZone),
+                        ExtendedLocation = edgeZone == null ? null : new CM.ExtendedLocation(edgeZone, CM.ExtendedLocationType.EdgeZone),
                         UpgradePolicy = new UpgradePolicy
                         {
                             Mode = upgradeMode ?? UpgradeMode.Manual,
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             }
                         },
                         Zones = zones,
-                        ExtendedLocation = edgeZone == null ? null : new CM.ExtendedLocation(edgeZone, CM.ExtendedLocationTypes.EdgeZone),
+                        ExtendedLocation = edgeZone == null ? null : new CM.ExtendedLocation(edgeZone, CM.ExtendedLocationType.EdgeZone),
                         Sku = new Azure.Management.Compute.Models.Sku()
                         {
                             Capacity = instanceCount,

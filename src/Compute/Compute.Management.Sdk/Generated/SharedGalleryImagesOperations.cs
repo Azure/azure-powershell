@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Compute
         /// List shared gallery images by subscription id or tenant id.
         /// </summary>
         /// <param name='location'>
-        /// Resource location.
+        /// The name of Azure region.
         /// </param>
         /// <param name='galleryUniqueName'>
         /// The unique name of the Shared Gallery.
@@ -94,6 +94,13 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "location");
             }
+            if (location != null)
+            {
+                if (location.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "location", 1);
+                }
+            }
             if (galleryUniqueName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "galleryUniqueName");
@@ -106,8 +113,8 @@ namespace Microsoft.Azure.Management.Compute
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("location", location);
                 tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("location", location);
                 tracingParameters.Add("galleryUniqueName", galleryUniqueName);
                 tracingParameters.Add("sharedTo", sharedTo);
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -257,7 +264,7 @@ namespace Microsoft.Azure.Management.Compute
         /// Get a shared gallery image by subscription id or tenant id.
         /// </summary>
         /// <param name='location'>
-        /// Resource location.
+        /// The name of Azure region.
         /// </param>
         /// <param name='galleryUniqueName'>
         /// The unique name of the Shared Gallery.
@@ -297,6 +304,13 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "location");
             }
+            if (location != null)
+            {
+                if (location.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "location", 1);
+                }
+            }
             if (galleryUniqueName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "galleryUniqueName");
@@ -313,8 +327,8 @@ namespace Microsoft.Azure.Management.Compute
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("location", location);
                 tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("location", location);
                 tracingParameters.Add("galleryUniqueName", galleryUniqueName);
                 tracingParameters.Add("galleryImageName", galleryImageName);
                 tracingParameters.Add("cancellationToken", cancellationToken);

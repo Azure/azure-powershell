@@ -65,8 +65,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="encryption">Encryption property can be used to encrypt
         /// data at rest with customer managed keys or platform managed
         /// keys.</param>
-        /// <param name="networkAccessPolicy">Possible values include:
-        /// 'AllowAll', 'AllowPrivate', 'DenyAll'</param>
+        /// <param name="networkAccessPolicy">Policy for accessing the disk via
+        /// network. Possible values include: 'AllowAll', 'AllowPrivate',
+        /// 'DenyAll'</param>
         /// <param name="diskAccessId">ARM id of the DiskAccess resource for
         /// using private endpoints on disks.</param>
         /// <param name="tier">Performance tier of the disk (e.g, P4, S10) as
@@ -84,10 +85,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// which update is pending.</param>
         /// <param name="supportsHibernation">Indicates the OS on a disk
         /// supports hibernation.</param>
-        /// <param name="publicNetworkAccess">Possible values include:
-        /// 'Enabled', 'Disabled'</param>
-        /// <param name="dataAccessAuthMode">Possible values include:
-        /// 'AzureActiveDirectory', 'None'</param>
+        /// <param name="publicNetworkAccess">Policy for controlling export on
+        /// the disk. Possible values include: 'Enabled', 'Disabled'</param>
+        /// <param name="dataAccessAuthMode">Additional authentication
+        /// requirements when exporting or uploading to a disk or snapshot.
+        /// Possible values include: 'AzureActiveDirectory', 'None'</param>
         /// <param name="optimizedForFrequentAttach">Setting this property to
         /// true improves reliability and performance of data disks that are
         /// frequently (more than 5 times a day) by detached from one virtual
@@ -95,8 +97,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// for disks that are not detached and attached frequently as it
         /// causes the disks to not align with the fault domain of the virtual
         /// machine.</param>
+        /// <param name="availabilityPolicy">Determines how platform treats
+        /// disk failures</param>
         /// <param name="tags">Resource tags</param>
-        public DiskUpdate(OperatingSystemTypes? osType = default(OperatingSystemTypes?), int? diskSizeGB = default(int?), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), long? diskIOPSReadWrite = default(long?), long? diskMBpsReadWrite = default(long?), long? diskIOPSReadOnly = default(long?), long? diskMBpsReadOnly = default(long?), int? maxShares = default(int?), Encryption encryption = default(Encryption), string networkAccessPolicy = default(string), string diskAccessId = default(string), string tier = default(string), bool? burstingEnabled = default(bool?), PurchasePlan purchasePlan = default(PurchasePlan), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), PropertyUpdatesInProgress propertyUpdatesInProgress = default(PropertyUpdatesInProgress), bool? supportsHibernation = default(bool?), string publicNetworkAccess = default(string), string dataAccessAuthMode = default(string), bool? optimizedForFrequentAttach = default(bool?), IDictionary<string, string> tags = default(IDictionary<string, string>), DiskSku sku = default(DiskSku))
+        /// <param name="sku">The disks sku name. Can be Standard_LRS,
+        /// Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS,
+        /// StandardSSD_ZRS, or PremiumV2_LRS.</param>
+        public DiskUpdate(OperatingSystemTypes? osType = default(OperatingSystemTypes?), int? diskSizeGB = default(int?), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), long? diskIOPSReadWrite = default(long?), long? diskMBpsReadWrite = default(long?), long? diskIOPSReadOnly = default(long?), long? diskMBpsReadOnly = default(long?), int? maxShares = default(int?), Encryption encryption = default(Encryption), string networkAccessPolicy = default(string), string diskAccessId = default(string), string tier = default(string), bool? burstingEnabled = default(bool?), PurchasePlan purchasePlan = default(PurchasePlan), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), PropertyUpdatesInProgress propertyUpdatesInProgress = default(PropertyUpdatesInProgress), bool? supportsHibernation = default(bool?), string publicNetworkAccess = default(string), string dataAccessAuthMode = default(string), bool? optimizedForFrequentAttach = default(bool?), AvailabilityPolicy availabilityPolicy = default(AvailabilityPolicy), IDictionary<string, string> tags = default(IDictionary<string, string>), DiskSku sku = default(DiskSku))
         {
             OsType = osType;
             DiskSizeGB = diskSizeGB;
@@ -118,6 +125,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             PublicNetworkAccess = publicNetworkAccess;
             DataAccessAuthMode = dataAccessAuthMode;
             OptimizedForFrequentAttach = optimizedForFrequentAttach;
+            AvailabilityPolicy = availabilityPolicy;
             Tags = tags;
             Sku = sku;
             CustomInit();
@@ -202,8 +210,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         public Encryption Encryption { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'AllowAll', 'AllowPrivate',
-        /// 'DenyAll'
+        /// Gets or sets policy for accessing the disk via network. Possible
+        /// values include: 'AllowAll', 'AllowPrivate', 'DenyAll'
         /// </summary>
         [JsonProperty(PropertyName = "properties.networkAccessPolicy")]
         public string NetworkAccessPolicy { get; set; }
@@ -258,14 +266,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         public bool? SupportsHibernation { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'Enabled', 'Disabled'
+        /// Gets or sets policy for controlling export on the disk. Possible
+        /// values include: 'Enabled', 'Disabled'
         /// </summary>
         [JsonProperty(PropertyName = "properties.publicNetworkAccess")]
         public string PublicNetworkAccess { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'AzureActiveDirectory',
-        /// 'None'
+        /// Gets or sets additional authentication requirements when exporting
+        /// or uploading to a disk or snapshot. Possible values include:
+        /// 'AzureActiveDirectory', 'None'
         /// </summary>
         [JsonProperty(PropertyName = "properties.dataAccessAuthMode")]
         public string DataAccessAuthMode { get; set; }
@@ -282,12 +292,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         public bool? OptimizedForFrequentAttach { get; set; }
 
         /// <summary>
+        /// Gets or sets determines how platform treats disk failures
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.availabilityPolicy")]
+        public AvailabilityPolicy AvailabilityPolicy { get; set; }
+
+        /// <summary>
         /// Gets or sets resource tags
         /// </summary>
         [JsonProperty(PropertyName = "tags")]
         public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
+        /// Gets or sets the disks sku name. Can be Standard_LRS, Premium_LRS,
+        /// StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or
+        /// PremiumV2_LRS.
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
         public DiskSku Sku { get; set; }
