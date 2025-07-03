@@ -1,16 +1,21 @@
 parameters:
 - name: TestChangedModulesOnly
-  type: string
-  default: 'True'
+  type: boolean
+  default: true
+# Selected modules to generate, build, analyze and test
 - name: SelectedTargetModules
   type: string
   default: 'None'
 - name: NotificationReceiversOverride
   type: string
   default: 'None'
+# branch from when creating the generation branch
 - name: GenerationBaseBranch
   type: string
   default: 'main'
+- name: PrepareModulesOnGenerationBranch
+  type: boolean
+  default: false
 
 variables:
   IntermediateStepTimeoutInMinutes: 30
@@ -61,6 +66,7 @@ stages:
             Write-Host "Parameter SelectedTargetModules: ${{ parameters.SelectedTargetModules }}"
             Write-Host "Parameter NotificationReceiversOverride: ${{ parameters.NotificationReceiversOverride }}"
             Write-Host "Parameter GenerationBaseBranch: ${{ parameters.GenerationBaseBranch }}"
+            Write-Host "Parameter PrepareModulesOnGenerationBranch: ${{ parameters.PrepareModulesOnGenerationBranch }}"
 
       # TODO: (Bernard) Uncomment the no checkout step after automatically install repo into agents 
       # - checkout: none
@@ -105,9 +111,11 @@ stages:
           targetType: inline
           pwsh: true
           script: |
-            Write-Host "Checkout to GenerationBranch: $(checkout.GenerationBranch)"
-            git fetch origin "$(checkout.GenerationBranch)"
-            git checkout "$(checkout.GenerationBranch)"
+            if (${{ parameters.PrepareModulesOnGenerationBranch }} -eq 'true') {
+              Write-Host "Checkout to GenerationBranch: $(checkout.GenerationBranch)"
+              git fetch origin "$(checkout.GenerationBranch)"
+              git checkout "$(checkout.GenerationBranch)"
+            }
 
             $prepareModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'prepare.ps1'
             & $prepareModulesPath -RepoRoot "$(Build.SourcesDirectory)" -MaxParallelJobs "${{ variables.MaxParallelGenerateJobs }}"
