@@ -64,10 +64,13 @@ function Get-CsprojFromModule {
             }
         }
         else {
-            $moduleRootPath = Join-Path $SourceDirectory $testModule
-            $testCsproj = Get-ChildItem -Path $moduleRootPath -Filter "*.Test.csproj" -File -Recurse | Select-Object -ExpandProperty FullName
-            if (Test-Path $testCsproj) {
-                $result += $testCsproj
+            $testModulePath = Join-Path $SourceDirectory $testModule
+            $testFolders = Get-ChildItem -Path $testModulePath -Filter *.Test -Directory
+            if ($null -ne $testFolders) {
+                $testCsproj = $testFolders | Get-ChildItem -Filter *.Test.csproj -File | Select-Object -ExpandProperty FullName
+                if (Test-Path $testCsproj) {
+                    $result += $testCsproj
+                }
             }
         }
     }
