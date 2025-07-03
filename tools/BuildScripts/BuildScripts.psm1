@@ -6,7 +6,7 @@ function Get-CsprojFromModule {
         [string]$Configuration
     )
     $renamedModules = @{
-        'Storage' = @('Storage.Management');
+        'Storage'     = @('Storage.Management')
         'DataFactory' = @('DataFactoryV1', 'DataFactoryV2')
     }
 
@@ -62,10 +62,15 @@ function Get-CsprojFromModule {
                     $result += $testCsproj
                 }
             }
-        } else {
-            $testCsproj = Join-Path $SourceDirectory $testModule "$testModule.Test" "$testModule.Test.csproj"
-            if (Test-Path $testCsproj) {
-                $result += $testCsproj
+        }
+        else {
+            $testModulePath = Join-Path $SourceDirectory $testModule
+            $testFolders = Get-ChildItem -Path $testModulePath -Filter *.Test -Directory
+            if ($null -ne $testFolders) {
+                $testCsproj = $testFolders | Get-ChildItem -Filter *.Test.csproj -File | Select-Object -ExpandProperty FullName
+                if (Test-Path $testCsproj) {
+                    $result += $testCsproj
+                }
             }
         }
     }
@@ -89,17 +94,20 @@ function Invoke-SubModuleGeneration {
     $tspLocationPath = Join-Path $GenerateDirectory "tsp-location.yaml"
     if (Test-Path $tspLocationPath) {
         tsp-client update >> $GenerateLog
-    } else {
+    }
+    else {
         if ($IsInvokedByPipeline) {
             npx autorest --max-memory-size=8192 >> $GenerateLog
-        } else {
+        }
+        else {
             autorest --max-memory-size=8192 >> $GenerateLog
         }
     }
 
     if ($lastexitcode -ne 0) {
         return $false
-    } else {
+    }
+    else {
         ./build-module.ps1 -DisableAfterBuildTasks
         Write-Host "----------End code generation for $GenerateDirectory----------" -ForegroundColor DarkGreen
         return $true
@@ -145,7 +153,7 @@ function Update-GeneratedSubModule {
     }
 
     if (-not (Invoke-SubModuleGeneration -GenerateDirectory $SourceDirectory -GenerateLog $GenerateLog -IsInvokedByPipeline $IsInvokedByPipeline)) {
-        return $false;
+        return $false
     }
     # remove $sourceDirectory/generated/modules
     $localModulesPath = Join-Path $SourceDirectory 'generated' 'modules'
@@ -153,7 +161,7 @@ function Update-GeneratedSubModule {
         Remove-Item -Path $localModulesPath -Recurse -Force
     }
     $fileToUpdate = @('generated', 'resources', "Az.$subModuleNameTrimmed.psd1", "Az.$subModuleNameTrimmed.psm1", "Az.$subModuleNameTrimmed.format.ps1xml", 'exports', 'internal', 'test-module.ps1', 'check-dependencies.ps1')
-    # Copy from src/ to generated/ 
+    # Copy from src/ to generated/
     $fileToUpdate | Foreach-Object {
         $moveFrom = Join-Path $SourceDirectory $_
         $moveTo = Join-Path $GeneratedDirectory $_
@@ -162,7 +170,7 @@ function Update-GeneratedSubModule {
     }
     # regenerate csproj
     New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName "Az.$subModuleNameTrimmed.csproj" -GeneratedDirectory $GeneratedDirectory -ModuleRootName $ModuleRootName -SubModuleName $subModuleNameTrimmed -SubModuleNameFull $SubModuleName
-    
+
     # revert guid in psd1 so that no conflict in updating this file
     if ($guid) {
         $psd1Path = Join-Path $GeneratedDirectory "Az.$subModuleNameTrimmed.psd1"
@@ -205,7 +213,8 @@ function New-GeneratedFileFromTemplate {
     $templateFile = $templateFile -replace '{LowCaseModuleNamePlaceHolder}', $SubModuleName.ToLower()
     if ($SubModuleNameFull) {
         $templateFile = $templateFile -replace '{ModuleFolderPlaceHolder}', $SubModuleNameFull
-    } else {
+    }
+    else {
         $templateFile = $templateFile -replace '{ModuleFolderPlaceHolder}', "$SubModuleName.Autorest"
     }
     $templateFile = $templateFile -replace '{RootModuleNamePlaceHolder}', $ModuleRootName
@@ -228,7 +237,7 @@ function New-GenerateInfoJson {
         $generateInfoJson["generate_Id"] = $GenerateId
         $generateInfoJson | ConvertTo-Json | Set-Content -Path $generateInfoJsonPath -Force
     }
-    else{
+    else {
         Write-Host "Generating generate-info.json file: $generateInfoJsonPath"
         $generateInfoJson | Set-Content -Path $generateInfoJsonPath -Force
     }

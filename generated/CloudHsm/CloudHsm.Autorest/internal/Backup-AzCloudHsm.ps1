@@ -20,7 +20,7 @@ Backup a backup of the Cloud HSM Cluster in the specified subscription
 .Description
 Backup a backup of the Cloud HSM Cluster in the specified subscription
 .Example
-Backup-AzCloudHsm -ClusterName chsm1 -ResourceGroupName group -BlobContainerUri  "https://{accountName}.blob.core.windows.net/{containerName}"
+Backup-AzCloudHsm -ClusterName chsm1 -ResourceGroupName group -BlobContainerUri "https://{accountName}.blob.core.windows.net/{containerName}"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupResult

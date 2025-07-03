@@ -21,7 +21,7 @@ Begin a backup of the Cloud HSM.
 Backups a Cloud HSM to a storage account.
 Use `Restore-AzCloudHsm` to restore the backup.
 .Example
-Backup-AzCloudHsm -ClusterName chsm1 -ResourceGroupName group -BlobContainerUri  "https://{accountName}.blob.core.windows.net/{containerName}"
+Backup-AzCloudHsm -ClusterName chsm1 -ResourceGroupName group -BlobContainerUri "https://{accountName}.blob.core.windows.net/{containerName}"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupResult

@@ -52,7 +52,7 @@ This command gets all the Cloud HSMs in your current subscription
 
 ### Example 2:  Get a specific Cloud HSM 
 ```powershell
-Get-AzCloudHsm -Name chsm1
+Get-AzCloudHsm -Name chsm1 -ResourceGroupName 'group'
 ```
 
 ```output
@@ -90,9 +90,9 @@ Type                              : Microsoft.HardwareSecurityModules/cloudHsmCl
 
 This command gets the Cloud HSM  named chsm1 in your current subscription.
 
-### Example 2:  Get a Cloud HSM in a resource group 
+### Example 3:  Get a Cloud HSM in a resource group 
 ```powershell
-Get-AzCloudHsm  -ResourceGroupName 'group'
+Get-AzCloudHsm -ResourceGroupName 'group'
 ```
 
 ```output
