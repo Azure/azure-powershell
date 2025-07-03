@@ -23,12 +23,12 @@ Create a new layer 2 (L2) network or update the properties of the existing netwo
 New-AzNetworkCloudL2Network -Name l2Network -ResourceGroupName resourceGroupName -ExtendedLocationName "/subscriptions/subscriptionId/resourcegroups/resourceGroupName/providers/microsoft.extendedlocation/customlocations/customLocationsName" -ExtendedLocationType "CustomLocation" -L2IsolationDomainId  "/subscriptions/fabricsubs/resourceGroups/resourceGroupName/providers/Microsoft.NetworkFabric/L2IsolationDomains/L2IsolationDomainsName" -Location  eastus -HybridAksPluginType  "DPDK" -InterfaceName "eth0" -Tag @{tags = "tag1" } -SubscriptionId subscriptionId
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IL2Network
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL2Network
 .Link
 https://learn.microsoft.com/powershell/module/az.networkcloud/new-aznetworkcloudl2network
 #>
 function New-AzNetworkCloudL2Network {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IL2Network])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL2Network])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -52,6 +52,21 @@ param(
     # The ID of the target subscription.
     # The value must be an UUID.
     ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Header')]
+    [System.String]
+    # The ETag of the transformation.
+    # Omit this value to always overwrite the current resource.
+    # Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+    ${IfMatch},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Header')]
+    [System.String]
+    # Set to '*' to allow a new record set to be created, but to prevent updating an existing resource.
+    # Other values will result in error from server as they are not supported.
+    ${IfNoneMatch},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]

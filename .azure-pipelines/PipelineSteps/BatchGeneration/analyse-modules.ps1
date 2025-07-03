@@ -82,9 +82,10 @@ foreach ($moduleName in $moduleGroup) {
         $result.Status = "Failed"
         $result.Error = $_.Exception.Message
     } finally {
-        $endTine = Get-Date
-        $result.DurationSeconds = ($endTine - $startTime).TotalSeconds
+        $endTime = Get-Date
+        $result.DurationSeconds = ($endTime - $startTime).TotalSeconds
         $results += $result
+        $result | ConvertTo-Json -Depth 5 | Write-Output
     }
 }
 

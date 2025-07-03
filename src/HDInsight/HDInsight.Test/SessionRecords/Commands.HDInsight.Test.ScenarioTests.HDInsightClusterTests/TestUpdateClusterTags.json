@@ -1,21 +1,21 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.HDInsight/clusters/ps-test-cluster?api-version=2025-01-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwL3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5IREluc2lnaHQvY2x1c3RlcnMvcHMtdGVzdC1jbHVzdGVyP2FwaS12ZXJzaW9uPTIwMjUtMDEtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-devrp/providers/Microsoft.HDInsight/clusters/yuchen-hadoop-002?api-version=2024-08-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL3l1Y2hlbi1kZXZycC9wcm92aWRlcnMvTWljcm9zb2Z0LkhESW5zaWdodC9jbHVzdGVycy95dWNoZW4taGFkb29wLTAwMj9hcGktdmVyc2lvbj0yMDI0LTA4LTAxLXByZXZpZXc=",
       "RequestMethod": "PATCH",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3552e34e-3a14-42c2-907c-71ac0e34de90"
+        ],
         "Accept-Language": [
           "en-US"
         ],
-        "x-ms-client-request-id": [
-          "b1a5914d-571a-43ef-af42-3b31d1c1cfb5"
-        ],
         "User-Agent": [
-          "FxVersion/8.0.1625.21506",
+          "FxVersion/6.0.3524.45918",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.HDInsight.HDInsightManagementClient/6.3.1"
+          "Microsoft.Azure.Management.HDInsight.HDInsightManagementClient/6.2.1"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -33,16 +33,13 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "24718b85-8a69-409d-ab08-0b9cfd93fcff"
+          "a2e207ee-9469-4b20-9d7c-5e1ed3dc69cd"
         ],
         "x-ms-hdi-served-by": [
-          "eastasia"
+          "eastus"
         ],
         "x-ms-correlation-request-id": [
-          "d08f2c2b-bc88-41dc-a75d-c23fee493978"
-        ],
-        "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/698d04c7-9917-4606-8f44-a791e8bfe30a"
+          "86e60c3b-e617-44ab-a643-85eef16f37a7"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "799"
@@ -51,7 +48,7 @@
           "11999"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20250519T094149Z:d08f2c2b-bc88-41dc-a75d-c23fee493978"
+          "JAPANEAST:20241028T064256Z:86e60c3b-e617-44ab-a643-85eef16f37a7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -63,13 +60,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: F321E8FB5D5349BFA1442253226CD691 Ref B: TYO201100115027 Ref C: 2025-05-19T09:41:47Z"
+          "Ref A: 990D4F05216A41D386D6938EE0585728 Ref B: TYO201151006025 Ref C: 2024-10-28T06:42:51Z"
         ],
         "Date": [
-          "Mon, 19 May 2025 09:41:49 GMT"
+          "Mon, 28 Oct 2024 06:42:56 GMT"
         ],
         "Content-Length": [
-          "3039"
+          "3565"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -78,25 +75,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"clusterVersion\": \"5.1.3000.0\",\r\n    \"clusterHdpVersion\": \"5.1-0\",\r\n    \"osType\": \"Linux\",\r\n    \"clusterDefinition\": {\r\n      \"blueprint\": \"https://blueprints.azurehdinsight.net/hadoop-5.1.3000.0.2504170544.json\",\r\n      \"kind\": \"Hadoop\",\r\n      \"componentVersion\": {\r\n        \"Hadoop\": \"3.3\"\r\n      }\r\n    },\r\n    \"clusterId\": \"094025e3354142cc9a95c9f5d5eeb2a2\",\r\n    \"computeProfile\": {\r\n      \"roles\": [\r\n        {\r\n          \"name\": \"headnode\",\r\n          \"targetInstanceCount\": 2,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_e4_v3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        },\r\n        {\r\n          \"name\": \"workernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_e8_v3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        },\r\n        {\r\n          \"name\": \"zookeepernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_a2_v2\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clusterState\": \"Running\",\r\n    \"createdDate\": \"2025-05-16T08:53:52.063\",\r\n    \"quotaInfo\": {\r\n      \"coresUsed\": 32\r\n    },\r\n    \"connectivityEndpoints\": [],\r\n    \"tier\": \"standard\",\r\n    \"encryptionInTransitProperties\": {\r\n      \"isEncryptionInTransitEnabled\": false\r\n    },\r\n    \"storageProfile\": {\r\n      \"storageaccounts\": [\r\n        {\r\n          \"name\": \"storagepstest4475.blob.core.windows.net\",\r\n          \"resourceId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Storage/storageAccounts/storagepstest4475\",\r\n          \"msiResourceId\": null,\r\n          \"key\": null,\r\n          \"fileSystem\": null,\r\n          \"container\": \"ps-test-cluster\",\r\n          \"saskey\": null,\r\n          \"isDefault\": true,\r\n          \"enableSecureChannel\": null,\r\n          \"fileshare\": null\r\n        }\r\n      ]\r\n    },\r\n    \"minSupportedTlsVersion\": \"1.2\",\r\n    \"excludedServicesConfig\": {\r\n      \"excludedServicesConfigId\": \"default\",\r\n      \"excludedServicesList\": \"\"\r\n    },\r\n    \"computeIsolationProperties\": {\r\n      \"enableComputeIsolation\": false,\r\n      \"hostSku\": null\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.HDInsight/clusters/ps-test-cluster\",\r\n  \"name\": \"ps-test-cluster\",\r\n  \"type\": \"Microsoft.HDInsight/clusters\",\r\n  \"location\": \"East Asia\",\r\n  \"etag\": \"be990abd-2776-44db-acd2-b3f7e92c9aee\",\r\n  \"tags\": {\r\n    \"Tag3\": \"Value3\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"clusterVersion\": \"4.0.3000.1\",\r\n    \"clusterHdpVersion\": \"4.1.18.3\",\r\n    \"osType\": \"Linux\",\r\n    \"clusterDefinition\": {\r\n      \"blueprint\": \"https://blueprints.azurehdinsight.net/hadoop-4.0.3000.1.2407260448.json\",\r\n      \"kind\": \"Hadoop\",\r\n      \"componentVersion\": {\r\n        \"Hadoop\": \"3.1\"\r\n      }\r\n    },\r\n    \"clusterId\": \"5384984093964aafbb18fff43fc8bd2b\",\r\n    \"computeProfile\": {\r\n      \"roles\": [\r\n        {\r\n          \"name\": \"headnode\",\r\n          \"targetInstanceCount\": 2,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_e4_v3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"hdi\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0\",\r\n            \"subnet\": \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        },\r\n        {\r\n          \"name\": \"workernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"autoscale\": {\r\n            \"capacity\": {\r\n              \"minInstanceCount\": 3,\r\n              \"maxInstanceCount\": 5\r\n            }\r\n          },\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_e8_v3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"hdi\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0\",\r\n            \"subnet\": \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        },\r\n        {\r\n          \"name\": \"zookeepernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_a2_v2\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"hdi\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0\",\r\n            \"subnet\": \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clusterState\": \"Running\",\r\n    \"createdDate\": \"2024-10-22T08:26:10.413\",\r\n    \"quotaInfo\": {\r\n      \"coresUsed\": 32\r\n    },\r\n    \"errors\": [\r\n      {\r\n        \"code\": \"InvalidScriptLocation\",\r\n        \"message\": \"Failed to validate script action at URI http://testurl.com/install.ssh. Exception message: Script URI cannot be retrieved correctly. HTTP Status code: NotFound.\"\r\n      }\r\n    ],\r\n    \"connectivityEndpoints\": [\r\n      {\r\n        \"name\": \"SSH\",\r\n        \"protocol\": \"TCP\",\r\n        \"location\": \"yuchen-hadoop-002-ssh.azurehdinsight.net\",\r\n        \"port\": 22\r\n      },\r\n      {\r\n        \"name\": \"HTTPS\",\r\n        \"protocol\": \"TCP\",\r\n        \"location\": \"yuchen-hadoop-002.azurehdinsight.net\",\r\n        \"port\": 443\r\n      },\r\n      {\r\n        \"name\": \"HTTPS-INTERNAL\",\r\n        \"protocol\": \"TCP\",\r\n        \"location\": \"yuchen-hadoop-002-int.azurehdinsight.net\",\r\n        \"port\": 443,\r\n        \"privateIPAddress\": \"10.0.0.10\"\r\n      }\r\n    ],\r\n    \"tier\": \"standard\",\r\n    \"encryptionInTransitProperties\": {\r\n      \"isEncryptionInTransitEnabled\": false\r\n    },\r\n    \"storageProfile\": {\r\n      \"storageaccounts\": [\r\n        {\r\n          \"name\": \"hdiwasb.blob.core.windows.net\",\r\n          \"resourceId\": \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-devrp/providers/Microsoft.Storage/storageAccounts/hdiwasb\",\r\n          \"msiResourceId\": null,\r\n          \"key\": null,\r\n          \"fileSystem\": null,\r\n          \"container\": \"container002\",\r\n          \"saskey\": null,\r\n          \"isDefault\": true,\r\n          \"enableSecureChannel\": null,\r\n          \"fileshare\": null\r\n        }\r\n      ]\r\n    },\r\n    \"excludedServicesConfig\": {\r\n      \"excludedServicesConfigId\": \"default\",\r\n      \"excludedServicesList\": \"\"\r\n    },\r\n    \"computeIsolationProperties\": {\r\n      \"enableComputeIsolation\": false,\r\n      \"hostSku\": null\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-devrp/providers/Microsoft.HDInsight/clusters/yuchen-hadoop-002\",\r\n  \"name\": \"yuchen-hadoop-002\",\r\n  \"type\": \"Microsoft.HDInsight/clusters\",\r\n  \"location\": \"East US\",\r\n  \"etag\": \"86f7a0f0-c775-437e-9c04-f78ac25b0279\",\r\n  \"tags\": {\r\n    \"Tag3\": \"Value3\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.HDInsight/clusters/ps-test-cluster?api-version=2025-01-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwL3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5IREluc2lnaHQvY2x1c3RlcnMvcHMtdGVzdC1jbHVzdGVyP2FwaS12ZXJzaW9uPTIwMjUtMDEtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-devrp/providers/Microsoft.HDInsight/clusters/yuchen-hadoop-002?api-version=2024-08-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL3l1Y2hlbi1kZXZycC9wcm92aWRlcnMvTWljcm9zb2Z0LkhESW5zaWdodC9jbHVzdGVycy95dWNoZW4taGFkb29wLTAwMj9hcGktdmVyc2lvbj0yMDI0LTA4LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3552e34e-3a14-42c2-907c-71ac0e34de90"
+        ],
         "Accept-Language": [
           "en-US"
         ],
-        "x-ms-client-request-id": [
-          "b1a5914d-571a-43ef-af42-3b31d1c1cfb5"
-        ],
         "User-Agent": [
-          "FxVersion/8.0.1625.21506",
+          "FxVersion/6.0.3524.45918",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.HDInsight.HDInsightManagementClient/6.3.1"
+          "Microsoft.Azure.Management.HDInsight.HDInsightManagementClient/6.2.1"
         ]
       },
       "RequestBody": "",
@@ -108,13 +105,13 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "692f6a0b-2ba3-41f4-9736-f8bea68c7e08"
+          "801a5631-0166-4125-9271-c92640704ffc"
         ],
         "x-ms-hdi-served-by": [
-          "eastasia"
+          "eastus"
         ],
         "x-ms-correlation-request-id": [
-          "ecad2060-f1c2-4bcc-a1f3-e549fdc9f5f5"
+          "72ca7dbc-4469-4527-bf98-57605a4012ea"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -123,7 +120,7 @@
           "16499"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20250519T094150Z:ecad2060-f1c2-4bcc-a1f3-e549fdc9f5f5"
+          "JAPANEAST:20241028T064258Z:72ca7dbc-4469-4527-bf98-57605a4012ea"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -135,13 +132,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 0E55B15118114A5AB877E6665E408EDC Ref B: TYO201100115027 Ref C: 2025-05-19T09:41:49Z"
+          "Ref A: 32B3F2AA4C0D414496E2DA976AB1D5B9 Ref B: TYO201151006025 Ref C: 2024-10-28T06:42:56Z"
         ],
         "Date": [
-          "Mon, 19 May 2025 09:41:49 GMT"
+          "Mon, 28 Oct 2024 06:42:58 GMT"
         ],
         "Content-Length": [
-          "3039"
+          "3565"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -150,12 +147,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"clusterVersion\": \"5.1.3000.0\",\r\n    \"clusterHdpVersion\": \"5.1-0\",\r\n    \"osType\": \"Linux\",\r\n    \"clusterDefinition\": {\r\n      \"blueprint\": \"https://blueprints.azurehdinsight.net/hadoop-5.1.3000.0.2504170544.json\",\r\n      \"kind\": \"Hadoop\",\r\n      \"componentVersion\": {\r\n        \"Hadoop\": \"3.3\"\r\n      }\r\n    },\r\n    \"clusterId\": \"094025e3354142cc9a95c9f5d5eeb2a2\",\r\n    \"computeProfile\": {\r\n      \"roles\": [\r\n        {\r\n          \"name\": \"headnode\",\r\n          \"targetInstanceCount\": 2,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_e4_v3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        },\r\n        {\r\n          \"name\": \"workernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_e8_v3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        },\r\n        {\r\n          \"name\": \"zookeepernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_a2_v2\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clusterState\": \"Running\",\r\n    \"createdDate\": \"2025-05-16T08:53:52.063\",\r\n    \"quotaInfo\": {\r\n      \"coresUsed\": 32\r\n    },\r\n    \"connectivityEndpoints\": [],\r\n    \"tier\": \"standard\",\r\n    \"encryptionInTransitProperties\": {\r\n      \"isEncryptionInTransitEnabled\": false\r\n    },\r\n    \"storageProfile\": {\r\n      \"storageaccounts\": [\r\n        {\r\n          \"name\": \"storagepstest4475.blob.core.windows.net\",\r\n          \"resourceId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Storage/storageAccounts/storagepstest4475\",\r\n          \"msiResourceId\": null,\r\n          \"key\": null,\r\n          \"fileSystem\": null,\r\n          \"container\": \"ps-test-cluster\",\r\n          \"saskey\": null,\r\n          \"isDefault\": true,\r\n          \"enableSecureChannel\": null,\r\n          \"fileshare\": null\r\n        }\r\n      ]\r\n    },\r\n    \"minSupportedTlsVersion\": \"1.2\",\r\n    \"excludedServicesConfig\": {\r\n      \"excludedServicesConfigId\": \"default\",\r\n      \"excludedServicesList\": \"\"\r\n    },\r\n    \"computeIsolationProperties\": {\r\n      \"enableComputeIsolation\": false,\r\n      \"hostSku\": null\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.HDInsight/clusters/ps-test-cluster\",\r\n  \"name\": \"ps-test-cluster\",\r\n  \"type\": \"Microsoft.HDInsight/clusters\",\r\n  \"location\": \"East Asia\",\r\n  \"etag\": \"be990abd-2776-44db-acd2-b3f7e92c9aee\",\r\n  \"tags\": {\r\n    \"Tag3\": \"Value3\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"clusterVersion\": \"4.0.3000.1\",\r\n    \"clusterHdpVersion\": \"4.1.18.3\",\r\n    \"osType\": \"Linux\",\r\n    \"clusterDefinition\": {\r\n      \"blueprint\": \"https://blueprints.azurehdinsight.net/hadoop-4.0.3000.1.2407260448.json\",\r\n      \"kind\": \"Hadoop\",\r\n      \"componentVersion\": {\r\n        \"Hadoop\": \"3.1\"\r\n      }\r\n    },\r\n    \"clusterId\": \"5384984093964aafbb18fff43fc8bd2b\",\r\n    \"computeProfile\": {\r\n      \"roles\": [\r\n        {\r\n          \"name\": \"headnode\",\r\n          \"targetInstanceCount\": 2,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_e4_v3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"hdi\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0\",\r\n            \"subnet\": \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        },\r\n        {\r\n          \"name\": \"workernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"autoscale\": {\r\n            \"capacity\": {\r\n              \"minInstanceCount\": 3,\r\n              \"maxInstanceCount\": 5\r\n            }\r\n          },\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_e8_v3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"hdi\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0\",\r\n            \"subnet\": \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        },\r\n        {\r\n          \"name\": \"zookeepernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_a2_v2\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"hdi\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0\",\r\n            \"subnet\": \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clusterState\": \"Running\",\r\n    \"createdDate\": \"2024-10-22T08:26:10.413\",\r\n    \"quotaInfo\": {\r\n      \"coresUsed\": 32\r\n    },\r\n    \"errors\": [\r\n      {\r\n        \"code\": \"InvalidScriptLocation\",\r\n        \"message\": \"Failed to validate script action at URI http://testurl.com/install.ssh. Exception message: Script URI cannot be retrieved correctly. HTTP Status code: NotFound.\"\r\n      }\r\n    ],\r\n    \"connectivityEndpoints\": [\r\n      {\r\n        \"name\": \"SSH\",\r\n        \"protocol\": \"TCP\",\r\n        \"location\": \"yuchen-hadoop-002-ssh.azurehdinsight.net\",\r\n        \"port\": 22\r\n      },\r\n      {\r\n        \"name\": \"HTTPS\",\r\n        \"protocol\": \"TCP\",\r\n        \"location\": \"yuchen-hadoop-002.azurehdinsight.net\",\r\n        \"port\": 443\r\n      },\r\n      {\r\n        \"name\": \"HTTPS-INTERNAL\",\r\n        \"protocol\": \"TCP\",\r\n        \"location\": \"yuchen-hadoop-002-int.azurehdinsight.net\",\r\n        \"port\": 443,\r\n        \"privateIPAddress\": \"10.0.0.10\"\r\n      }\r\n    ],\r\n    \"tier\": \"standard\",\r\n    \"encryptionInTransitProperties\": {\r\n      \"isEncryptionInTransitEnabled\": false\r\n    },\r\n    \"storageProfile\": {\r\n      \"storageaccounts\": [\r\n        {\r\n          \"name\": \"hdiwasb.blob.core.windows.net\",\r\n          \"resourceId\": \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-devrp/providers/Microsoft.Storage/storageAccounts/hdiwasb\",\r\n          \"msiResourceId\": null,\r\n          \"key\": null,\r\n          \"fileSystem\": null,\r\n          \"container\": \"container002\",\r\n          \"saskey\": null,\r\n          \"isDefault\": true,\r\n          \"enableSecureChannel\": null,\r\n          \"fileshare\": null\r\n        }\r\n      ]\r\n    },\r\n    \"excludedServicesConfig\": {\r\n      \"excludedServicesConfigId\": \"default\",\r\n      \"excludedServicesList\": \"\"\r\n    },\r\n    \"computeIsolationProperties\": {\r\n      \"enableComputeIsolation\": false,\r\n      \"hostSku\": null\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-devrp/providers/Microsoft.HDInsight/clusters/yuchen-hadoop-002\",\r\n  \"name\": \"yuchen-hadoop-002\",\r\n  \"type\": \"Microsoft.HDInsight/clusters\",\r\n  \"location\": \"East US\",\r\n  \"etag\": \"86f7a0f0-c775-437e-9c04-f78ac25b0279\",\r\n  \"tags\": {\r\n    \"Tag3\": \"Value3\"\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "SubscriptionId": "964c10bb-8a6c-43bc-83d3-6b318c6c7305"
   }
 }

@@ -28,7 +28,7 @@ function Test-PrivateEndpoint {
         Assert-NotNull $connectionApprove
         Assert-AreEqual "Approved" $connectionApprove.PrivateLinkServiceConnectionState.Status
 
-        # Wait for connection provisioning successed, 20000 is not enough
+        # Wait for connection provisioning success, 20000 is not enough
         # Start-TestSleep -Seconds 20
 
         # Comments as we need too much to wait

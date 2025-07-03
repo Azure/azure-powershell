@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.StorageAction",
-  "ModuleVersion": "0.1.2",
+  "ModuleVersion": "1.0.0",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTask",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTask, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTask, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IUserAssignedIdentities",
               "Enabled": "System.Boolean",
@@ -74,7 +74,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Location": "System.String",
@@ -112,7 +112,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -122,7 +122,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -260,7 +260,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -276,7 +276,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -425,7 +425,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -441,7 +441,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -575,7 +575,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -591,7 +591,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -675,7 +675,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "Location": "System.String",
@@ -731,7 +731,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -747,7 +747,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -865,7 +865,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -881,7 +881,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -972,7 +972,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskAssignment, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskAssignment, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String"
             }
@@ -1015,8 +1015,8 @@
           "Name": "Maxpagesize",
           "Type": {
             "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            "Name": "System.Int32",
+            "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -1047,7 +1047,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1057,7 +1057,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1157,8 +1157,8 @@
                 "Name": "Maxpagesize",
                 "Type": {
                   "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1207,7 +1207,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1223,7 +1223,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1314,7 +1314,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstance, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskReportInstance, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "FinishTime": "System.String",
               "ObjectFailedCount": "System.String",
@@ -1379,8 +1379,8 @@
           "Name": "Maxpagesize",
           "Type": {
             "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            "Name": "System.Int32",
+            "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -1411,7 +1411,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1421,7 +1421,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1536,8 +1536,8 @@
                 "Name": "Maxpagesize",
                 "Type": {
                   "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1586,7 +1586,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1602,7 +1602,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1693,7 +1693,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewAction",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewAction, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewAction, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ActionElseBlockExist": "System.Boolean",
               "Blob": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties]",
@@ -1731,7 +1731,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Location": "System.String",
@@ -1756,7 +1756,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties"
           },
           "ValidateNotNullOrEmpty": false
@@ -1766,7 +1766,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties"
           },
           "ValidateNotNullOrEmpty": false
@@ -1834,7 +1834,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1844,7 +1844,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1978,7 +1978,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1994,7 +1994,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2157,7 +2157,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2173,7 +2173,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2302,7 +2302,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2318,7 +2318,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2398,7 +2398,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2414,7 +2414,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2498,7 +2498,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "Location": "System.String",
@@ -2535,7 +2535,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2551,7 +2551,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2631,7 +2631,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2647,7 +2647,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2765,7 +2765,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2781,7 +2781,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2872,7 +2872,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTask",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTask, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTask, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IUserAssignedIdentities",
               "Enabled": "System.Boolean",
@@ -2956,7 +2956,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation"
           },
           "ValidateNotNullOrEmpty": false
@@ -2975,7 +2975,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation"
           },
           "ValidateNotNullOrEmpty": false
@@ -3062,7 +3062,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3072,7 +3072,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3233,7 +3233,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3249,7 +3249,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3393,7 +3393,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3424,7 +3424,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3583,7 +3583,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3599,7 +3599,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3810,7 +3810,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3826,7 +3826,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4037,7 +4037,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4053,7 +4053,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4159,7 +4159,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.StorageTaskOperation",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.StorageTaskOperation, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.StorageTaskOperation, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Parameter": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperationParameters",
               "Name": "System.String",
@@ -4292,7 +4292,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperationParameters",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperationParameters, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperationParameters, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -4364,7 +4364,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperationParameters",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperationParameters, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperationParameters, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4409,7 +4409,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.StorageTaskPreviewBlobProperties",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.StorageTaskPreviewBlobProperties, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.StorageTaskPreviewBlobProperties, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Metadata": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties]",
               "Property": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties]",
@@ -4516,7 +4516,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties"
           },
           "ValidateNotNullOrEmpty": false
@@ -4535,7 +4535,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties"
           },
           "ValidateNotNullOrEmpty": false
@@ -4545,7 +4545,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties"
           },
           "ValidateNotNullOrEmpty": false
@@ -4573,7 +4573,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4604,7 +4604,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4620,7 +4620,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4666,7 +4666,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.StorageTaskPreviewKeyValueProperties",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.StorageTaskPreviewKeyValueProperties, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.StorageTaskPreviewKeyValueProperties, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Key": "System.String",
               "Value": "System.String"
@@ -4909,7 +4909,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Location": "System.String",
@@ -4956,7 +4956,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -4966,7 +4966,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -5136,7 +5136,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5152,7 +5152,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5266,7 +5266,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "Location": "System.String",
@@ -5337,7 +5337,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5353,7 +5353,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5516,7 +5516,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5532,7 +5532,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5653,7 +5653,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTask",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTask, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTask, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IUserAssignedIdentities",
               "Enabled": "System.Boolean",
@@ -5710,7 +5710,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Location": "System.String",
@@ -5735,7 +5735,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation"
           },
           "ValidateNotNullOrEmpty": false
@@ -5775,7 +5775,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation"
           },
           "ValidateNotNullOrEmpty": false
@@ -5835,7 +5835,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -5845,7 +5845,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -5972,7 +5972,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6036,7 +6036,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6132,7 +6132,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6148,7 +6148,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6247,7 +6247,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "Location": "System.String",
@@ -6284,7 +6284,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6348,7 +6348,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6444,7 +6444,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6460,7 +6460,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6574,7 +6574,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6638,7 +6638,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6734,7 +6734,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6750,7 +6750,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep[], Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6889,12 +6889,12 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IUserAssignedIdentities": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IUserAssignedIdentities",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IUserAssignedIdentities, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IUserAssignedIdentities, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
     "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation"
       ]
@@ -6902,7 +6902,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Parameter": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperationParameters",
         "Name": "System.String",
@@ -6913,7 +6913,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperationParameters": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperationParameters",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperationParameters, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperationParameters, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
     "System.Nullable`1[System.DateTime]": {
       "Namespace": "System",
@@ -6939,7 +6939,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.SendAsyncStep, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -7122,7 +7122,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties"
       ]
@@ -7130,7 +7130,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Metadata": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties]",
         "Property": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties]",
@@ -7142,7 +7142,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties"
       ]
@@ -7150,7 +7150,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Key": "System.String",
         "Value": "System.String"
@@ -7159,7 +7159,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.Json.JsonNode": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.Json",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.Json.JsonNode",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.Json.JsonNode, Az.StorageAction.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.Json.JsonNode, Az.StorageAction.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Item": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.Json.JsonNode"
       },

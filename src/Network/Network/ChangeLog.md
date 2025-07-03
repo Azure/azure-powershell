@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlet `New-AzFirewallPolicyApplicationRule` to use HTTPS as the default protocol when creating a new FQDN Tag application rule.
+
+## Version 7.18.0
 * Added a new command which creates an object for CaptureSetting, and added properties 'FileCount', 'FileSizeInBytes', and 'SessionTimeLimitInSeconds', which helps to configure the capture setting for packet capture as well as support for it for the following cmdlets:
 	- `New-AzPacketCaptureSettingsConfig`
 * Added properties 'ContinuousCapture', 'LocalPath', and 'CaptureSetting' reference in Packet capture V2 command, as well as support for it for the following cmdlets:

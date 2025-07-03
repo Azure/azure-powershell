@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Fixed bugs in `New-AzMigrateServerReplication` caused by deprecation of `Get-AzVmSize -location`
+  
 ## Version 2.8.0
 * Implemented the Get-AzMigrateServerMigrationStatus cmdlet to retrieve the replication status of servers in Azure Migrate.
 * Fixed bugs in `New-AzMigrateLocalServerReplication` that caused HyperVSite or VMwareSite not found.

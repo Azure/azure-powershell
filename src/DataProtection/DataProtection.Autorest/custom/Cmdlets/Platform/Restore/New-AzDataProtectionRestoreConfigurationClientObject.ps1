@@ -81,7 +81,7 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
             $restoreCriteria.StagingStorageAccountId = $StagingStorageAccountId        
         }
         elseif($hasStagingResourceGroupId -or $hasStagingStorageAccountId) {
-            throw "Both StagingResourceGroupId and StagingStorageAccountId are manadatory for vaulted tier restore for AzureKubernetesService. Please either provide or remove both of them."
+            throw "Both StagingResourceGroupId and StagingStorageAccountId are mandatory for vaulted tier restore for AzureKubernetesService. Please either provide or remove both of them."
         }
         else {
             $restoreCriteria =  [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.KubernetesClusterRestoreCriteria]::new()
