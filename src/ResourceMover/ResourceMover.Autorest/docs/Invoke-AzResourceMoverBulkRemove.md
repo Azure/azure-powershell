@@ -31,7 +31,7 @@ To aid the user to prerequisite the operation the client can call operation with
 
 ## EXAMPLES
 
-### Example 1: Validate the dependecies before remove of the Move Resources from Move Collection
+### Example 1: Validate the dependenciesss before remove of the Move Resources from Move Collection
 ```powershell
 Invoke-AzResourceMoverBulkRemove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('PSDemoVM') -MoveResourceInputType "MoveResourceId" -ValidateOnly
 ```
@@ -51,7 +51,7 @@ Status         : Succeeded
 
 ```
 
-Validate the dependecies before remove of the move resources from Move Collection.
+Validate the dependencies before remove of the move resources from Move Collection.
 
 ### Example 2: Remove the Move Resource from Move Collection using "MoveResource Name" as input
 ```powershell

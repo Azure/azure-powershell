@@ -3,5 +3,5 @@
 Remove-AzWvdApplication -ResourceGroupName ResourceGroupName -ApplicationGroupName ApplicationGroupName -Name ApplicationName
 ```
 
-This command deletes a Azure Virtual Desktop Application in an applicaton Group.
+This command deletes a Azure Virtual Desktop Application in an application Group.
 

@@ -9,7 +9,7 @@ Name                                 Type
 ApplicationGroupName/ApplicationName Microsoft.DesktopVirtualization/applicationgroups/applications
 ```
 
-This command gets a Azure Virtual Desktop Application in an applicaton Group.
+This command gets a Azure Virtual Desktop Application in an application Group.
 
 ### Example 2: List Azure Virtual Desktop Applications
 ```powershell
@@ -23,5 +23,5 @@ ApplicationGroupName/ApplicationName1 Microsoft.DesktopVirtualization/applicatio
 ApplicationGroupName/ApplicationName2 Microsoft.DesktopVirtualization/applicationgroups/applications
 ```
 
-This command Lists Azure Virtual Desktop Applications in an applicaton Group.
+This command Lists Azure Virtual Desktop Applications in an application Group.
 

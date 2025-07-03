@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <summary>  
         /// Method to Get Azure Recovery Services Vault Backup Properties  
         /// </summary>  
-        /// <param name="resouceGroupName">Name of the resouce group</param>  
+        /// <param name="resouceGroupName">Name of the resource group</param>  
         /// <param name="vaultName">Name of the vault</param>  
         /// <returns>Azure Resource Storage response object.</returns>  
         public BackupResourceConfigResource GetVaultStorageType(string resouceGroupName, string vaultName)
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <summary>  
         /// Method to Get Azure Recovery Services Vault Encryption Properties  
         /// </summary>  
-        /// <param name="resouceGroupName">Name of the resouce group</param>  
+        /// <param name="resouceGroupName">Name of the resource group</param>  
         /// <param name="vaultName">Name of the vault</param>  
         /// <returns>Azure Resource Encryption response object.</returns>  
         public BackupResourceEncryptionConfigExtendedResource GetVaultEncryptionConfig(string resouceGroupName, string vaultName)
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <summary>  
         /// Method to Update Azure Recovery Services Vault Encryption Properties  
         /// </summary>  
-        /// <param name="resouceGroupName">Name of the resouce group</param>  
+        /// <param name="resouceGroupName">Name of the resource group</param>  
         /// <param name="vaultName">Name of the vault</param>  
         /// <param name="encryptionConfigResource">update encryption config</param>  
         /// <returns>Azure Resource Encryption response object.</returns>  
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <summary>  
         /// Method to Update Azure Recovery Services Vault Encryption Properties  
         /// </summary>  
-        /// <param name="resouceGroupName">Name of the resouce group</param>  
+        /// <param name="resouceGroupName">Name of the resource group</param>  
         /// <param name="vaultName">Name of the vault</param>  
         /// <param name="encryptionConfigResource">update encryption config</param>  
         /// <returns>Azure Resource Encryption response object.</returns>  
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <summary>  
         /// Method to get Recovery Services Vault.
         /// </summary>  
-        /// <param name="resouceGroupName">Name of the resouce group</param>  
+        /// <param name="resouceGroupName">Name of the resource group</param>  
         /// <param name="vaultName">Name of the vault</param>  
         /// <returns>Azure Recovery Services Vault</returns> 
         public ARSVault GetVault(string resouceGroupName, string vaultName)
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <summary>  
         /// Method to create or update Recovery Services Vault.
         /// </summary>  
-        /// <param name="resourceGroupName">Name of the resouce group</param>  
+        /// <param name="resourceGroupName">Name of the resource group</param>  
         /// <param name="vaultName">Name of the vault</param>  
         /// <param name="patchVault">patch vault object to patch the recovery services Vault</param>
         /// <param name="auxiliaryAccessToken">Auxiliary access token for authorization</param>  

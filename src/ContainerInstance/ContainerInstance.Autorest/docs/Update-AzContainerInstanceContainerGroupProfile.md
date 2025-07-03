@@ -72,7 +72,7 @@ AdditionalProperties : {[k, v]}
 Count                : 1
 ```
 
-This command updates a container group profile using pipeing.
+This command updates a container group profile using piping.
 
 ## PARAMETERS
 

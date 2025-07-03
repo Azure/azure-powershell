@@ -473,7 +473,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
     public class SoaRecord : PSPrivateDnsRecordBase
     {
         /// <summary>
-        /// Gets or sets the domain name of the authoritative name server for this SOA record, without a temrinating dot.
+        /// Gets or sets the domain name of the authoritative name server for this SOA record, without a terminating dot.
         /// </summary>
         public string Host { get; set; }
 

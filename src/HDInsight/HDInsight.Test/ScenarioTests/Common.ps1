@@ -82,13 +82,12 @@ class ClusterCommonCreateParameter{
       [string] $minSupportedTlsVersion
       [string] $virtualNetworkId
       [string] $subnet
-      [string] $version
 
 	  ClusterCommonCreateParameter([string] $clusterName, [string] $location, [string] $resourceGroupName,
                                    [string] $storageAccountResourceId, [string] $clusterType, [int] $clusterSizeInNodes, 
                                    [string] $storageAccountKey, [System.Management.Automation.PSCredential] $httpCredential,
                                    [System.Management.Automation.PSCredential] $sshCredential, [string] $minSupportedTlsVersion,
-                                   [string] $virtualNetworkId,[string] $subnet,[string] $version){
+                                   [string] $virtualNetworkId,[string] $subnet){
                 $this.clusterName=$clusterName
                 $this.location=$location
                 $this.resourceGroupName=$resourceGroupName
@@ -101,7 +100,6 @@ class ClusterCommonCreateParameter{
                 $this.minSupportedTlsVersion=$minSupportedTlsVersion
                 $this.virtualNetworkId=$virtualNetworkId
                 $this.subnet=$subnet
-                $this.version=$version
       }
 }
 
@@ -112,13 +110,12 @@ class ClusterCommonCreateParameter{
 function Prepare-ClusterCreateParameter{
     param(
       [string] $clusterName="ps",
-      [string] $location="East Asia",
+      [string] $location="eastus",
       [string] $resourceGroupName="group-ps-test",
 	  [string] $storageAccountName="storagepstest",
-      [string] $clusterType="Hadoop",
-      [string] $virtualNetworkId="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0",
-      [string] $subnet="default",
-      [string] $version="5.1"
+      [string] $clusterType="Spark",
+      [string] $virtualNetworkId="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/yuchen-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0",
+      [string] $subnet="default"
     )
 
     $clusterName=Generate-Name($clusterName)
@@ -135,7 +132,7 @@ function Prepare-ClusterCreateParameter{
     $storageAccountKey=$storageAccountKey[0].Value
 
     $httpUser="admin"
-    $textPassword= "Password"
+    $textPassword= "YourPw!00953"
     $httpPassword=ConvertTo-SecureString $textPassword -AsPlainText -Force
     $sshUser="sshuser"
     $sshPassword=$httpPassword
@@ -146,7 +143,7 @@ function Prepare-ClusterCreateParameter{
     $minSupportedTlsVersion="1.2"
     return [ClusterCommonCreateParameter]::new($clusterName, $location,  $resourceGroupName, $storageAccountResourceId, 
                                                $clusterType, $clusterSizeInNodes, $storageAccountKey, $httpCredential,
-                                               $sshCredential, $minSupportedTlsVersion, $virtualNetworkId, $subnet,$version)
+                                               $sshCredential, $minSupportedTlsVersion, $virtualNetworkId, $subnet)
 }
 
 <#

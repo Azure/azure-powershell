@@ -1066,7 +1066,7 @@ function Test-SqlOperationsCmdletsUsingInputObject
       $UpdatedDatabase2 =  Update-AzCosmosDBSqlDatabase -InputObject $UpdatedDatabase
       Assert-AreEqual $UpdatedDatabase2.Name $DatabaseName
 
-      # update container using inpu object
+      # update container using input object
       $UpdatedContainer2 = Update-AzCosmosDBSqlContainer -InputObject $UpdatedContainer
       Assert-AreEqual $UpdatedContainer2.Name $ContainerName
       Assert-AreEqual $UpdatedContainer2.Resource.IndexingPolicy.Automatic $IndexingPolicy.Automatic
@@ -1447,21 +1447,21 @@ function Test-SqlRoleCmdlets
       Assert-AreEqual $UpdatedRoleAssignment.PrincipalId $PrincipalId
       Assert-AreEqual $UpdatedRoleAssignment.Id $FullyQualifiedRoleAssignmentId
 
-      # update role assignmnent by parent object
+      # update role assignment by parent object
       $UpdatedRoleAssignment = Update-AzCosmosDBSqlRoleAssignment -Id $RoleAssignmentId -ParentObject $UpdatedRoleDefinition
       Assert-AreEqual $UpdatedRoleAssignment.RoleDefinitionId $FullyQualifiedRoleDefinitionId
       Assert-AreEqual $UpdatedRoleAssignment.Scope $Scope2
       Assert-AreEqual $UpdatedRoleAssignment.PrincipalId $PrincipalId
       Assert-AreEqual $UpdatedRoleAssignment.Id $FullyQualifiedRoleAssignmentId
 
-      # update role assignmnent by role definition id
+      # update role assignment by role definition id
       $UpdatedRoleAssignment = Update-AzCosmosDBSqlRoleAssignment -RoleDefinitionId $RoleDefinitionId -Id $FullyQualifiedRoleAssignmentId2 -AccountName $AccountName -ResourceGroupName $rgName
       Assert-AreEqual $UpdatedRoleAssignment.RoleDefinitionId $FullyQualifiedRoleDefinitionId
       Assert-AreEqual $UpdatedRoleAssignment.Scope $Scope2
       Assert-AreEqual $UpdatedRoleAssignment.PrincipalId $PrincipalId2
       Assert-AreEqual $UpdatedRoleAssignment.Id $FullyQualifiedRoleAssignmentId2
 
-      # update role assignmnent by input object
+      # update role assignment by input object
       $UpdatedRoleAssignment.RoleDefinitionId = $FullyQualifiedRoleDefinitionId2
 
       $UpdatedRoleAssignment = Update-AzCosmosDBSqlRoleAssignment -InputObject $UpdatedRoleAssignment

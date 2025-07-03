@@ -116,7 +116,7 @@ function setupEnv() {
 
     # 2025/04/30 Joyer: Added it for Stop test case. Edit Start-AzImageBuilderTemplate case with adding another template.
     # 10. Start the image builder above
-    # ~Need to record start image builder separetely.~
+    # ~Need to record start image builder separately.~
     # ~Only below lines are not needed in recording stop test cases~
     # Write-Host -ForegroundColor Green "Starting the image builder template..."
     # Start-TestSleep -Seconds 25

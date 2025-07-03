@@ -27,7 +27,7 @@ Get-AzNetworkCloudBmcKeySet -ClusterName clusterName -ResourceGroupName resource
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBmcKeySet
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBmcKeySet
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -60,7 +60,7 @@ INPUTOBJECT <INetworkCloudIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.networkcloud/get-aznetworkcloudbmckeyset
 #>
 function Get-AzNetworkCloudBmcKeySet {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBmcKeySet])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBmcKeySet])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

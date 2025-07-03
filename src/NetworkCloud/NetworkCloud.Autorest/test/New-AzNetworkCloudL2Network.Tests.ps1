@@ -17,8 +17,8 @@ Describe 'New-AzNetworkCloudL2Network' {
     It 'Create' {
         { New-AzNetworkCloudL2Network -Name $global:config.AzNetworkCloudL2Network.l2NetworkName `
                 -ResourceGroupName $global:config.AzNetworkCloudL2Network.resourceGroup `
-                -ExtendedLocationName $global:config.common.extendedLocation `
-                -ExtendedLocationType $global:config.common.customLocationType `
+                -ExtendedLocationName $global:config.AzNetworkCloudL2Network.extendedLocation `
+                -ExtendedLocationType $global:config.AzNetworkCloudL2Network.customLocationType `
                 -L2IsolationDomainId  $global:config.AzNetworkCloudL2Network.l2IsolationDomainId `
                 -Location  $global:config.common.Location `
                 -InterfaceName $global:config.AzNetworkCloudL2Network.interfaceName `

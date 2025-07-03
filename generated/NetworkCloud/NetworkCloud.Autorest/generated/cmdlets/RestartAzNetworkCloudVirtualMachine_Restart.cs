@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Restart the provided virtual machine.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/restart", ApiVersion = "2024-07-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/restart", ApiVersion = "2025-02-01")]
     public partial class RestartAzNetworkCloudVirtualMachine_Restart : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener
     {

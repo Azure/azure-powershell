@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Run one or more data extractions on the provided bare metal machine. The URL to storage account with the command execution results and the command exit code can be retrieved from the operation status API once available.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/runDataExtracts", ApiVersion = "2024-07-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/runDataExtracts", ApiVersion = "2025-02-01")]
     public partial class InvokeAzNetworkCloudBareMetalMachineDataExtract_RunViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener
     {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         /// BareMetalMachineRunDataExtractsParameters represents the body of request containing list of curated data extraction commands
         /// to run on the bare metal machine.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineRunDataExtractsParameters _bareMetalMachineRunDataExtractsParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineRunDataExtractsParameters();
+        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachineRunDataExtractsParameters _bareMetalMachineRunDataExtractsParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.BareMetalMachineRunDataExtractsParameters();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
@@ -67,8 +67,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The list of curated data extraction commands to be executed directly against the target machine.",
         SerializedName = @"commands",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineCommandSpecification) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineCommandSpecification[] Command { get => _bareMetalMachineRunDataExtractsParametersBody.Command ?? null /* arrayOf */; set => _bareMetalMachineRunDataExtractsParametersBody.Command = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachineCommandSpecification) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachineCommandSpecification[] Command { get => _bareMetalMachineRunDataExtractsParametersBody.Command ?? null /* arrayOf */; set => _bareMetalMachineRunDataExtractsParametersBody.Command = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet

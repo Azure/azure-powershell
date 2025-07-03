@@ -887,7 +887,7 @@ function Get-ManagementUrl {
 }
 
 <#
-Executes a script while suppresing any progressbar coming from cmdlets in script
+Executes a script while suppressing any progressbar coming from cmdlets in script
 Useful while running long running cmdlets (202 pattern) since progressbar from these cmdlets 
 do not have useful information
 #>

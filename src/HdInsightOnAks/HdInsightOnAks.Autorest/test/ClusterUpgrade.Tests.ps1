@@ -33,7 +33,7 @@ Describe 'ClusterUpgrade' {
         [Console]::WriteLine("New-AzHdInsightOnAksClusterPool done")
     }
 
-    # If you have donnot have a cluster, you can use this test to create a cluster, and then run other tests.
+    # If you do not have a cluster, you can use this test to create a cluster, and then run other tests.
     It "New-AzHdInsightOnAksCluster_Trino" {
         { $script:ManagedIdentity = New-AzHdInsightOnAksManagedIdentityObject -ClientId $env.msiClientId -ObjectId $env.msiObjectId -ResourceId $env.identityProfileMsiResourceId -Type cluster } | Should -Not -Throw
         
