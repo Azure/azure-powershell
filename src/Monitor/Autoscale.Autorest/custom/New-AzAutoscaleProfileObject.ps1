@@ -27,6 +27,7 @@ https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzAutoscaleProfileO
 #>
 function New-AzAutoscaleProfileObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleProfile')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.CmdletBreakingChange("15.0.0", "7.0.0", "2025/11/03", ChangeDescription="The types of properties 'Rule', 'ScheduleHour', 'ScheduleMinute', 'ScheduleDay' and 'MetricTriggerDimension' of IAutoscaleProfile will be changed from array to List. The type of property 'MetricTriggerDimension' of type 'IScaleRule' has changed from single object to 'List'.")]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 

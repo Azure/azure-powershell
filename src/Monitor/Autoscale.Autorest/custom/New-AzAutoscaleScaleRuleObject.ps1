@@ -27,6 +27,7 @@ https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzAutoscaleScaleRul
 #>
 function New-AzAutoscaleScaleRuleObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRule')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.CmdletBreakingChange("15.0.0", "7.0.0", "2025/11/03", ChangeDescription="The type of property 'MetricTriggerDimension' of type 'IScaleRuleMetricDimension' will be changed from array to List.")]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
