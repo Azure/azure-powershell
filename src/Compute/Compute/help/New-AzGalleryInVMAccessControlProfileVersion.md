@@ -21,9 +21,9 @@ New-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName <String> -Galler
 
 ## DESCRIPTION
 The **New-AzGalleryInVMAccessControlProfileVersion** cmdlet creates a new version of a gallery inVMAccessControlProfile in Azure. <br>
-This cmdlet takes in PSGalleryInVMAccessControlProfileVersion object created from [New-AzGalleryInVMAccessControlProfileVersionConfig](https://learn.microsoft.com/en-us/powershell/module/az.compute/new-AzGalleryInVMAccessControlProfileVersionConfig) as input. <br>
+This cmdlet takes in PSGalleryInVMAccessControlProfileVersion object created from [New-AzGalleryInVMAccessControlProfileVersionConfig](https://learn.microsoft.com/powershell/module/az.compute/new-AzGalleryInVMAccessControlProfileVersionConfig) as input. <br>
 
-[Add-AzGalleryInVMAccessControlVersionRulesIdentity](https://learn.microsoft.com/en-us/powershell/module/az.compute/Add-AzGalleryInVMAccessControlVersionRulesIdentity), [Add-AzGalleryInVMAccessControlVersionRulesPrivilege](https://learn.microsoft.com/en-us/powershell/module/az.compute/add-AzGalleryInVMAccessControlVersionRulesPrivilege), [Add-AzGalleryInVMAccessControlVersionRulesRole](https://learn.microsoft.com/en-us/powershell/module/az.compute/Add-AzGalleryInVMAccessControlVersionRulesRole), and [Add-AzGalleryInVMAccessControlVersionRulesRoleAssignment](https://learn.microsoft.com/en-us/powershell/module/az.compute/Add-AzGalleryInVMAccessControlVersionRulesRoleAssignment) cmdlets can also be used to add rules to the PSGalleryInVmAccessControlProfileVersion object.
+[Add-AzGalleryInVMAccessControlVersionRulesIdentity](https://learn.microsoft.com/powershell/module/az.compute/Add-AzGalleryInVMAccessControlVersionRulesIdentity), [Add-AzGalleryInVMAccessControlVersionRulesPrivilege](https://learn.microsoft.com/powershell/module/az.compute/add-AzGalleryInVMAccessControlVersionRulesPrivilege), [Add-AzGalleryInVMAccessControlVersionRulesRole](https://learn.microsoft.com/powershell/module/az.compute/Add-AzGalleryInVMAccessControlVersionRulesRole), and [Add-AzGalleryInVMAccessControlVersionRulesRoleAssignment](https://learn.microsoft.com/powershell/module/az.compute/Add-AzGalleryInVMAccessControlVersionRulesRoleAssignment) cmdlets can also be used to add rules to the PSGalleryInVmAccessControlProfileVersion object.
 
 ## EXAMPLES
 
