@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Commands.Synapse.Common
             var responseContent = result.Content;
 
             //Fix when responseContent.length is 0 responseContent?.ToString() will throw exception ArgumentNullException 
-            if (result.ContentStream.Length == 0)
+            if (result.ContentStream == null || result.ContentStream.Length == 0)
             {
                 return result;
             }
