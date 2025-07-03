@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 TypeHandlerVersion = Version,
                 // Define the public and private property bags that will be passed to the extension.
                 Settings = publicSettings,
-                //PrivateConfuguration contains sensitive data in a plain text
+                //PrivateConfiguration contains sensitive data in a plain text
                 ProtectedSettings = privateSettings,
                 AutoUpgradeMinorVersion = AutoUpdate.IsPresent
             };

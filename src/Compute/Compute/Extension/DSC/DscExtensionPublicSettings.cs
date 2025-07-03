@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
     public class DscExtensionPublicSettings
     {
         /// <summary>
-        /// Version 1.0.0.0 of DscExtensionPublicSettings. We keep it for backward compatability.
+        /// Version 1.0.0.0 of DscExtensionPublicSettings. We keep it for backward compatibility.
         /// </summary>
         internal class Version1
         {

@@ -208,7 +208,8 @@ CmdletsToExport = 'Add-AzImageDataDisk', 'Add-AzVhd',
                'Add-AzGalleryInVMAccessControlProfileVersionRulesRole', 'Remove-AzGalleryInVmAccessControlProfileVersionRulesRole',
                'Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity', 'Remove-AzGalleryInVMAccessControlProfileVersionRulesIdentity',
                'Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment', 'Remove-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment',
-               'Update-AzGalleryInVMAccessControlProfileVersion', 'Update-AzGalleryInVMAccessControlProfile'
+               'Update-AzGalleryInVMAccessControlProfileVersion', 'Update-AzGalleryInVMAccessControlProfile',
+               'Set-AzVMProxyAgentSetting', 'Set-AzVmssProxyAgentSetting'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -21,12 +21,12 @@ Create an in-memory object for IpAddressPool.
 Create an in-memory object for IpAddressPool.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IpAddressPool
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IpAddressPool
 .Link
 https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudIpAddressPoolObject
 #>
 function New-AzNetworkCloudIpAddressPoolObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IpAddressPool')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IpAddressPool')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -47,7 +47,7 @@ function New-AzNetworkCloudIpAddressPoolObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IpAddressPool]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IpAddressPool]::New()
 
         if ($PSBoundParameters.ContainsKey('Address')) {
             $Object.Address = $Address

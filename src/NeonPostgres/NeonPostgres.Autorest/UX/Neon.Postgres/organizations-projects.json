@@ -1,0 +1,95 @@
+{
+  "resourceType": "organizations/projects",
+  "apiVersion": "2025-03-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.neonpostgres"
+  },
+  "commands": [
+    {
+      "name": "Get-AzNeonPostgresProject",
+      "description": "Get a Project",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Neon.Postgres/organizations/{organizationName}/projects/{projectName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.neonpostgres/get-azneonpostgresproject"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-OrganizationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Project",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.projectName]"
+            },
+            {
+              "name": "-OrganizationName",
+              "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzNeonPostgresProject",
+      "description": "Delete a Project",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Neon.Postgres/organizations/{organizationName}/projects/{projectName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.neonpostgres/remove-azneonpostgresproject"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-OrganizationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a Project",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.projectName]"
+            },
+            {
+              "name": "-OrganizationName",
+              "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

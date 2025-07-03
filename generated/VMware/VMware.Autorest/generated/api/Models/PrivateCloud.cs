@@ -154,7 +154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)__trackedResource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>The hosts</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
@@ -181,133 +181,151 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         public string ManagementNetwork { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementNetwork; }
 
         /// <summary>Internal Acessors for Availability</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAvailabilityProperties Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.Availability { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Availability; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Availability = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAvailabilityProperties Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.Availability { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Availability; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Availability = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Circuit</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuit Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.Circuit { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Circuit; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Circuit = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuit Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.Circuit { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Circuit; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Circuit = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for CircuitExpressRouteId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.CircuitExpressRouteId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).CircuitExpressRouteId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).CircuitExpressRouteId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.CircuitExpressRouteId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).CircuitExpressRouteId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).CircuitExpressRouteId = value ?? null; }
 
         /// <summary>Internal Acessors for CircuitExpressRoutePrivatePeeringId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.CircuitExpressRoutePrivatePeeringId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).CircuitExpressRoutePrivatePeeringId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).CircuitExpressRoutePrivatePeeringId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.CircuitExpressRoutePrivatePeeringId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).CircuitExpressRoutePrivatePeeringId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).CircuitExpressRoutePrivatePeeringId = value ?? null; }
 
         /// <summary>Internal Acessors for CircuitPrimarySubnet</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.CircuitPrimarySubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).CircuitPrimarySubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).CircuitPrimarySubnet = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.CircuitPrimarySubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).CircuitPrimarySubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).CircuitPrimarySubnet = value ?? null; }
 
         /// <summary>Internal Acessors for CircuitSecondarySubnet</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.CircuitSecondarySubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).CircuitSecondarySubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).CircuitSecondarySubnet = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.CircuitSecondarySubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).CircuitSecondarySubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).CircuitSecondarySubnet = value ?? null; }
 
         /// <summary>Internal Acessors for Encryption</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryption Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.Encryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Encryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Encryption = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryption Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.Encryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Encryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Encryption = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for EncryptionKeyVaultProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultProperties Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.EncryptionKeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EncryptionKeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EncryptionKeyVaultProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultProperties Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.EncryptionKeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EncryptionKeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EncryptionKeyVaultProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Endpoint</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpoints Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.Endpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Endpoint = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpoints Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.Endpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Endpoint = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for EndpointHcxCloudManager</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.EndpointHcxCloudManager { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointHcxCloudManager; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointHcxCloudManager = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.EndpointHcxCloudManager { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointHcxCloudManager; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointHcxCloudManager = value ?? null; }
 
         /// <summary>Internal Acessors for EndpointHcxCloudManagerIP</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.EndpointHcxCloudManagerIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointHcxCloudManagerIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointHcxCloudManagerIP = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.EndpointHcxCloudManagerIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointHcxCloudManagerIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointHcxCloudManagerIP = value ?? null; }
 
         /// <summary>Internal Acessors for EndpointNsxtManager</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.EndpointNsxtManager { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointNsxtManager; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointNsxtManager = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.EndpointNsxtManager { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointNsxtManager; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointNsxtManager = value ?? null; }
 
         /// <summary>Internal Acessors for EndpointNsxtManagerIP</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.EndpointNsxtManagerIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointNsxtManagerIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointNsxtManagerIP = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.EndpointNsxtManagerIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointNsxtManagerIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointNsxtManagerIP = value ?? null; }
 
         /// <summary>Internal Acessors for EndpointVcenterIP</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.EndpointVcenterIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointVcenterIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointVcenterIP = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.EndpointVcenterIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointVcenterIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointVcenterIP = value ?? null; }
 
         /// <summary>Internal Acessors for EndpointVcsa</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.EndpointVcsa { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointVcsa; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointVcsa = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.EndpointVcsa { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointVcsa; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointVcsa = value ?? null; }
 
         /// <summary>Internal Acessors for ExternalCloudLink</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.ExternalCloudLink { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ExternalCloudLink; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ExternalCloudLink = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.ExternalCloudLink { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ExternalCloudLink; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ExternalCloudLink = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.SystemAssignedServiceIdentity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for KeyVaultPropertyAutoDetectedKeyVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.KeyVaultPropertyAutoDetectedKeyVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyAutoDetectedKeyVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyAutoDetectedKeyVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.KeyVaultPropertyAutoDetectedKeyVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyAutoDetectedKeyVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyAutoDetectedKeyVersion = value ?? null; }
 
         /// <summary>Internal Acessors for KeyVaultPropertyKeyState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.KeyVaultPropertyKeyState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyKeyState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyKeyState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.KeyVaultPropertyKeyState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyKeyState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyKeyState = value ?? null; }
 
         /// <summary>Internal Acessors for KeyVaultPropertyVersionType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.KeyVaultPropertyVersionType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyVersionType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyVersionType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.KeyVaultPropertyVersionType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyVersionType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyVersionType = value ?? null; }
 
         /// <summary>Internal Acessors for ManagementCluster</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementCluster Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.ManagementCluster { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementCluster; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementCluster = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementCluster Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.ManagementCluster { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementCluster; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementCluster = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ManagementClusterId</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.ManagementClusterId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementClusterId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementClusterId = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.ManagementClusterId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementClusterId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementClusterId = value ?? default(int); }
 
         /// <summary>Internal Acessors for ManagementClusterProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.ManagementClusterProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementClusterProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementClusterProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.ManagementClusterProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementClusterProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementClusterProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for ManagementNetwork</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.ManagementNetwork { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementNetwork; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementNetwork = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.ManagementNetwork { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementNetwork; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementNetwork = value ?? null; }
 
         /// <summary>Internal Acessors for NsxPublicIPQuotaRaised</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.NsxPublicIPQuotaRaised { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).NsxPublicIPQuotaRaised; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).NsxPublicIPQuotaRaised = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.NsxPublicIPQuotaRaised { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).NsxPublicIPQuotaRaised; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).NsxPublicIPQuotaRaised = value ?? null; }
 
         /// <summary>Internal Acessors for NsxtCertificateThumbprint</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.NsxtCertificateThumbprint { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).NsxtCertificateThumbprint; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).NsxtCertificateThumbprint = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.NsxtCertificateThumbprint { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).NsxtCertificateThumbprint; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).NsxtCertificateThumbprint = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudProperties Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PrivateCloudProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningNetwork</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.ProvisioningNetwork { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ProvisioningNetwork; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ProvisioningNetwork = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.ProvisioningNetwork { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ProvisioningNetwork; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ProvisioningNetwork = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryCircuit</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuit Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.SecondaryCircuit { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).SecondaryCircuit; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).SecondaryCircuit = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuit Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.SecondaryCircuit { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).SecondaryCircuit; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).SecondaryCircuit = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SecondaryCircuitExpressRouteId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.SecondaryCircuitExpressRouteId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).SecondaryCircuitExpressRouteId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).SecondaryCircuitExpressRouteId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.SecondaryCircuitExpressRouteId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).SecondaryCircuitExpressRouteId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).SecondaryCircuitExpressRouteId = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryCircuitExpressRoutePrivatePeeringId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.SecondaryCircuitExpressRoutePrivatePeeringId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).SecondaryCircuitExpressRoutePrivatePeeringId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).SecondaryCircuitExpressRoutePrivatePeeringId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.SecondaryCircuitExpressRoutePrivatePeeringId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).SecondaryCircuitExpressRoutePrivatePeeringId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).SecondaryCircuitExpressRoutePrivatePeeringId = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryCircuitPrimarySubnet</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.SecondaryCircuitPrimarySubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).SecondaryCircuitPrimarySubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).SecondaryCircuitPrimarySubnet = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.SecondaryCircuitPrimarySubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).SecondaryCircuitPrimarySubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).SecondaryCircuitPrimarySubnet = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryCircuitSecondarySubnet</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.SecondaryCircuitSecondarySubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).SecondaryCircuitSecondarySubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).SecondaryCircuitSecondarySubnet = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.SecondaryCircuitSecondarySubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).SecondaryCircuitSecondarySubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).SecondaryCircuitSecondarySubnet = value ?? null; }
 
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Sku()); set { {_sku = value;} } }
 
         /// <summary>Internal Acessors for VcenterCertificateThumbprint</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.VcenterCertificateThumbprint { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VcenterCertificateThumbprint; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VcenterCertificateThumbprint = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.VcenterCertificateThumbprint { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VcenterCertificateThumbprint; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VcenterCertificateThumbprint = value ?? null; }
 
         /// <summary>Internal Acessors for VmotionNetwork</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.VmotionNetwork { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VmotionNetwork; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VmotionNetwork = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.VmotionNetwork { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VmotionNetwork; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VmotionNetwork = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
@@ -412,31 +430,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
@@ -463,6 +481,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Used for live migration of virtual machines</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public string VmotionNetwork { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VmotionNetwork; }
+
+        /// <summary>Backing field for <see cref="Zone" /> property.</summary>
+        private System.Collections.Generic.List<string> _zone;
+
+        /// <summary>The availability zones.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> Zone { get => this._zone; set => this._zone = value; }
 
         /// <summary>Creates an new <see cref="PrivateCloud" /> instance.</summary>
         public PrivateCloud()
@@ -1113,6 +1138,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"vmotionNetwork",
         PossibleTypes = new [] { typeof(string) })]
         string VmotionNetwork { get;  }
+        /// <summary>The availability zones.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The availability zones.",
+        SerializedName = @"zones",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> Zone { get; set; }
 
     }
     /// A private cloud resource
@@ -1285,6 +1321,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string VirtualNetworkId { get; set; }
         /// <summary>Used for live migration of virtual machines</summary>
         string VmotionNetwork { get; set; }
+        /// <summary>The availability zones.</summary>
+        System.Collections.Generic.List<string> Zone { get; set; }
 
     }
 }

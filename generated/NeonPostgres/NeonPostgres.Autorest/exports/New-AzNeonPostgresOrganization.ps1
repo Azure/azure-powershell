@@ -16,14 +16,56 @@
 
 <#
 .Synopsis
-create a OrganizationResource
+Create a OrganizationResource
 .Description
-create a OrganizationResource
+Create a OrganizationResource
 .Example
 New-AzNeonPostgresOrganization -Name "almasTestNeonPS6" -ResourceGroupName "NeonDemoRG" -Location "centraluseuap" -SubscriptionId "5d9a6cc3-4e60-4b41-be79-d28f0a01074e" -CompanyDetailBusinessPhone "+1234567890" -CompanyDetailCompanyName "DemoCompany" -CompanyDetailCountry "USA" -CompanyDetailDomain "demo.com" -CompanyDetailNumberOfEmployee 500 -CompanyDetailOfficeAddress "1234 Azure Ave" -MarketplaceDetailSubscriptionId "yxmkfivp" -MarketplaceDetailSubscriptionStatus "PendingFulfillmentStart" -OfferDetailOfferId "neon_test" -OfferDetailPlanId "neon_test_1" -OfferDetailPlanName "Neon Serverless Postgres - Free (Test_Liftr)" -OfferDetailPublisherId "neon1722366567200" -OfferDetailTermId "gmz7xq9ge3py" -OfferDetailTermUnit "P1M" -PartnerOrganizationPropertyOrganizationId "org12345" -PartnerOrganizationPropertyOrganizationName "PartnerOrg6" -SingleSignOnPropertyAadDomain @("partnerorg.com") -SingleSignOnPropertyEnterpriseAppId "app12345" -SingleSignOnPropertySingleSignOnState "Enable" -SingleSignOnPropertySingleSignOnUrl "https://sso.partnerorg.com" -UserDetailEmailAddress "khanalmas@microsoft.com" -UserDetailFirstName "Almas" -UserDetailLastName "Khan" -UserDetailPhoneNumber "+1234567890" -UserDetailUpn "khanalmas_microsoft.com#EXT#@qumulotesttenant2.onmicrosoft.com"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+PROJECTPROPERTY <IProjectProperties>: Neon Project Properties
+  [Attribute <List<IAttributes>>]: Additional attributes for the entity
+    Name <String>: Name of the attribute
+    Value <String>: Value of the attribute
+  [BranchAttribute <List<IAttributes>>]: Additional attributes for the entity
+  [BranchDatabase <List<INeonDatabaseProperties>>]: Neon Databases associated with the branch
+    [Attribute <List<IAttributes>>]: Additional attributes for the entity
+    [BranchId <String>]: The ID of the branch this database belongs to
+    [EntityName <String>]: Name of the resource
+    [OwnerName <String>]: The name of the role that owns the database
+  [BranchDatabaseName <String>]: Database name associated with the branch
+  [BranchEndpoint <List<IEndpointProperties>>]: Endpoints associated with the branch
+    [Attribute <List<IAttributes>>]: Additional attributes for the entity
+    [BranchId <String>]: The ID of the branch this endpoint belongs to
+    [EndpointType <String>]: The type of the endpoint
+    [EntityName <String>]: Name of the resource
+    [ProjectId <String>]: The ID of the project this endpoint belongs to
+  [BranchEntityName <String>]: Name of the resource
+  [BranchParentId <String>]: The ID of the parent branch
+  [BranchProjectId <String>]: The ID of the project this branch belongs to
+  [BranchRole <List<INeonRoleProperties>>]: Roles associated with the branch
+    [Attribute <List<IAttributes>>]: Additional attributes for the entity
+    [BranchId <String>]: The ID of the branch this role belongs to
+    [EntityName <String>]: Name of the resource
+    [IsSuperUser <Boolean?>]: Indicates whether the role has superuser privileges
+    [Permission <List<String>>]: Permissions assigned to the role
+  [BranchRoleName <String>]: Role name associated with the branch
+  [Database <List<INeonDatabaseProperties>>]: Neon Databases associated with the project
+  [DefaultEndpointSettingAutoscalingLimitMaxCu <Single?>]: Maximum compute units for autoscaling.
+  [DefaultEndpointSettingAutoscalingLimitMinCu <Single?>]: Minimum compute units for autoscaling.
+  [Endpoint <List<IEndpointProperties>>]: Endpoints associated with the project
+  [EntityName <String>]: Name of the resource
+  [HistoryRetention <Int32?>]: The retention period for project history in seconds.
+  [PgVersion <Int32?>]: Postgres version for the project
+  [RegionId <String>]: Region where the project is created
+  [Role <List<INeonRoleProperties>>]: Roles associated with the project
+  [Storage <Int64?>]: Data Storage bytes per hour for the project
 .Link
 https://learn.microsoft.com/powershell/module/az.neonpostgres/new-azneonpostgresorganization
 #>
@@ -155,6 +197,12 @@ param(
     [System.String]
     # Organization name in partner's system
     ${PartnerOrganizationPropertyOrganizationName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectProperties]
+    # Neon Project Properties
+    ${ProjectProperty},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
@@ -299,6 +347,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -323,8 +380,6 @@ begin {
             CreateViaJsonString = 'Az.NeonPostgres.private\New-AzNeonPostgresOrganization_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -338,6 +393,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
