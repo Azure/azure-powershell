@@ -12,6 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using Microsoft.Azure.Commands.TestFx;
+using Xunit.Abstractions;
+
 namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
 {
     public class RecoveryServicesTestRunner
