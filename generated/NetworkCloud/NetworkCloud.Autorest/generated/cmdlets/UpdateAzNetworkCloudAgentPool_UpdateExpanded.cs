@@ -16,10 +16,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools/{agentPoolName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzNetworkCloudAgentPool_UpdateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPool))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IAgentPool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Patch the properties of the provided Kubernetes cluster agent pool, or update the tags associated with the Kubernetes cluster agent pool. Properties and tag updates can be done independently.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools/{agentPoolName}", ApiVersion = "2024-07-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools/{agentPoolName}", ApiVersion = "2025-02-01")]
     public partial class UpdateAzNetworkCloudAgentPool_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener
     {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         /// <summary>
         /// AgentPoolPatchParameters represents the body of the request to patch the Kubernetes cluster agent pool.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPoolPatchParameters _agentPoolUpdateParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AgentPoolPatchParameters();
+        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IAgentPoolPatchParameters _agentPoolUpdateParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.AgentPoolPatchParameters();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
@@ -53,8 +53,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"SshPublicKey represents the public key used to authenticate with a resource through SSH.",
         SerializedName = @"sshPublicKeys",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[] AdministratorConfigurationSshPublicKey { get => _agentPoolUpdateParametersBody.AdministratorConfigurationSshPublicKey ?? null /* arrayOf */; set => _agentPoolUpdateParametersBody.AdministratorConfigurationSshPublicKey = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ISshPublicKey) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ISshPublicKey[] AdministratorConfigurationSshPublicKey { get => _agentPoolUpdateParametersBody.AdministratorConfigurationSshPublicKey ?? null /* arrayOf */; set => _agentPoolUpdateParametersBody.AdministratorConfigurationSshPublicKey = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -101,6 +101,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         [global::System.Management.Automation.ValidateNotNull]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
+
+        /// <summary>Backing field for <see cref="IfMatch" /> property.</summary>
+        private string _ifMatch;
+
+        /// <summary>
+        /// The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value
+        /// to prevent accidentally overwriting concurrent changes.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.",
+        SerializedName = @"If-Match",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Header)]
+        public string IfMatch { get => this._ifMatch; set => this._ifMatch = value; }
+
+        /// <summary>Backing field for <see cref="IfNoneMatch" /> property.</summary>
+        private string _ifNoneMatch;
+
+        /// <summary>
+        /// Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result
+        /// in error from server as they are not supported.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.",
+        SerializedName = @"If-None-Match",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Header)]
+        public string IfNoneMatch { get => this._ifNoneMatch; set => this._ifNoneMatch = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -212,8 +246,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The Azure resource tags that will replace the existing ones.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPoolPatchParametersTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPoolPatchParametersTags Tag { get => _agentPoolUpdateParametersBody.Tag ?? null /* object */; set => _agentPoolUpdateParametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IAgentPoolPatchParametersTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IAgentPoolPatchParametersTags Tag { get => _agentPoolUpdateParametersBody.Tag ?? null /* object */; set => _agentPoolUpdateParametersBody.Tag = value; }
 
         /// <summary>
         /// The maximum time in seconds that is allowed for a node drain to complete before proceeding with the upgrade of the agent
@@ -278,12 +312,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPool">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPool</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IAgentPool">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IAgentPool</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPool> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IAgentPool> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -325,6 +359,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.KubernetesClusterName = this.KubernetesClusterName;
             clone.Name = this.Name;
+            clone.IfMatch = this.IfMatch;
+            clone.IfNoneMatch = this.IfNoneMatch;
             return clone;
         }
 
@@ -495,12 +531,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.AgentPoolsUpdate(SubscriptionId, ResourceGroupName, KubernetesClusterName, Name, _agentPoolUpdateParametersBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.AgentPoolsUpdate(SubscriptionId, ResourceGroupName, KubernetesClusterName, Name, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _agentPoolUpdateParametersBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,KubernetesClusterName=KubernetesClusterName,Name=Name,body=_agentPoolUpdateParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,KubernetesClusterName=KubernetesClusterName,Name=Name,IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null,body=_agentPoolUpdateParametersBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -569,14 +605,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, KubernetesClusterName=KubernetesClusterName, Name=Name, body=_agentPoolUpdateParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, KubernetesClusterName=KubernetesClusterName, Name=Name, IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, body=_agentPoolUpdateParametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, KubernetesClusterName=KubernetesClusterName, Name=Name, body=_agentPoolUpdateParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, KubernetesClusterName=KubernetesClusterName, Name=Name, IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, body=_agentPoolUpdateParametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -586,12 +622,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPool">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPool</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IAgentPool">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IAgentPool</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPool> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IAgentPool> response)
         {
             using( NoSynchronizationContext )
             {
@@ -603,7 +639,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPool
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IAgentPool
                 WriteObject((await response));
             }
         }

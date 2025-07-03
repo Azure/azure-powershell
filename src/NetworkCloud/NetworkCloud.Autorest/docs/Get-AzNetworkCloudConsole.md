@@ -166,7 +166,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IConsole
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IConsole
 
 ## NOTES
 

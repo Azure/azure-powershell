@@ -64,7 +64,7 @@ In some cases, specification of public keys may be required to produce a working
 To construct, see NOTES section for ADMINISTRATORCONFIGURATIONSSHPUBLICKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ISshPublicKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +128,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ControlPlaneNodeConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ControlPlaneNodeConfiguration
 
 ## NOTES
 

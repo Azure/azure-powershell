@@ -14,57 +14,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
     {
 
         /// <summary>Backing field for <see cref="IsProtected" /> property.</summary>
-        private bool? _isProtected;
+        private bool _isProtected;
 
         /// <summary>
         /// A Boolean flag indicating whether or not parts of the resource are unable to be explicitly managed.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
-        public bool? IsProtected { get => this._isProtected; }
+        public bool IsProtected { get => this._isProtected; set => this._isProtected = value; }
 
         /// <summary>Backing field for <see cref="LifecycleState" /> property.</summary>
         private string _lifecycleState;
 
         /// <summary>Zones lifecycleState</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
-        public string LifecycleState { get => this._lifecycleState; }
-
-        /// <summary>Internal Acessors for IsProtected</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateZonePropertiesInternal.IsProtected { get => this._isProtected; set { {_isProtected = value;} } }
-
-        /// <summary>Internal Acessors for LifecycleState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateZonePropertiesInternal.LifecycleState { get => this._lifecycleState; set { {_lifecycleState = value;} } }
-
-        /// <summary>Internal Acessors for Ocid</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateZonePropertiesInternal.Ocid { get => this._ocid; set { {_ocid = value;} } }
+        public string LifecycleState { get => this._lifecycleState; set => this._lifecycleState = value; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateZonePropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
-
-        /// <summary>Internal Acessors for Self</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateZonePropertiesInternal.Self { get => this._self; set { {_self = value;} } }
-
-        /// <summary>Internal Acessors for Serial</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateZonePropertiesInternal.Serial { get => this._serial; set { {_serial = value;} } }
-
-        /// <summary>Internal Acessors for TimeCreated</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateZonePropertiesInternal.TimeCreated { get => this._timeCreated; set { {_timeCreated = value;} } }
-
-        /// <summary>Internal Acessors for Version</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateZonePropertiesInternal.Version { get => this._version; set { {_version = value;} } }
-
-        /// <summary>Internal Acessors for ViewId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateZonePropertiesInternal.ViewId { get => this._viewId; set { {_viewId = value;} } }
-
-        /// <summary>Internal Acessors for ZoneType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDnsPrivateZonePropertiesInternal.ZoneType { get => this._zoneType; set { {_zoneType = value;} } }
 
         /// <summary>Backing field for <see cref="Ocid" /> property.</summary>
         private string _ocid;
 
         /// <summary>The OCID of the Zone</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
-        public string Ocid { get => this._ocid; }
+        public string Ocid { get => this._ocid; set => this._ocid = value; }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
@@ -78,21 +51,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
 
         /// <summary>The canonical absolute URL of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
-        public string Self { get => this._self; }
+        public string Self { get => this._self; set => this._self = value; }
 
         /// <summary>Backing field for <see cref="Serial" /> property.</summary>
-        private int? _serial;
+        private int _serial;
 
         /// <summary>The current serial of the zone. As seen in the zone's SOA record.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
-        public int? Serial { get => this._serial; }
+        public int Serial { get => this._serial; set => this._serial = value; }
 
         /// <summary>Backing field for <see cref="TimeCreated" /> property.</summary>
-        private global::System.DateTime? _timeCreated;
+        private global::System.DateTime _timeCreated;
 
         /// <summary>Zones timeCreated</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
-        public global::System.DateTime? TimeCreated { get => this._timeCreated; }
+        public global::System.DateTime TimeCreated { get => this._timeCreated; set => this._timeCreated = value; }
 
         /// <summary>Backing field for <see cref="Version" /> property.</summary>
         private string _version;
@@ -102,7 +75,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// record is derived.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
-        public string Version { get => this._version; }
+        public string Version { get => this._version; set => this._version = value; }
 
         /// <summary>Backing field for <see cref="ViewId" /> property.</summary>
         private string _viewId;
@@ -112,7 +85,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// resolvable and not part of a private view.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
-        public string ViewId { get => this._viewId; }
+        public string ViewId { get => this._viewId; set => this._viewId = value; }
 
         /// <summary>Backing field for <see cref="ZoneType" /> property.</summary>
         private string _zoneType;
@@ -121,7 +94,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// The type of the zone. Must be either PRIMARY or SECONDARY. SECONDARY is only supported for GLOBAL zones.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
-        public string ZoneType { get => this._zoneType; }
+        public string ZoneType { get => this._zoneType; set => this._zoneType = value; }
 
         /// <summary>Creates an new <see cref="DnsPrivateZoneProperties" /> instance.</summary>
         public DnsPrivateZoneProperties()
@@ -137,38 +110,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// A Boolean flag indicating whether or not parts of the resource are unable to be explicitly managed.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"A Boolean flag indicating whether or not parts of the resource are unable to be explicitly managed.",
         SerializedName = @"isProtected",
         PossibleTypes = new [] { typeof(bool) })]
-        bool? IsProtected { get;  }
+        bool IsProtected { get; set; }
         /// <summary>Zones lifecycleState</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"Zones lifecycleState",
         SerializedName = @"lifecycleState",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Active", "Creating", "Deleted", "Deleting", "Updating")]
-        string LifecycleState { get;  }
+        string LifecycleState { get; set; }
         /// <summary>The OCID of the Zone</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The OCID of the Zone",
         SerializedName = @"ocid",
         PossibleTypes = new [] { typeof(string) })]
-        string Ocid { get;  }
+        string Ocid { get; set; }
         /// <summary>Azure resource provisioning state.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -183,79 +156,79 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         string ProvisioningState { get;  }
         /// <summary>The canonical absolute URL of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The canonical absolute URL of the resource.",
         SerializedName = @"self",
         PossibleTypes = new [] { typeof(string) })]
-        string Self { get;  }
+        string Self { get; set; }
         /// <summary>The current serial of the zone. As seen in the zone's SOA record.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The current serial of the zone. As seen in the zone's SOA record.",
         SerializedName = @"serial",
         PossibleTypes = new [] { typeof(int) })]
-        int? Serial { get;  }
+        int Serial { get; set; }
         /// <summary>Zones timeCreated</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"Zones timeCreated",
         SerializedName = @"timeCreated",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? TimeCreated { get;  }
+        global::System.DateTime TimeCreated { get; set; }
         /// <summary>
         /// Version is the never-repeating, totally-orderable, version of the zone, from which the serial field of the zone's SOA
         /// record is derived.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"Version is the never-repeating, totally-orderable, version of the zone, from which the serial field of the zone's SOA record is derived.",
         SerializedName = @"version",
         PossibleTypes = new [] { typeof(string) })]
-        string Version { get;  }
+        string Version { get; set; }
         /// <summary>
         /// The OCID of the private view containing the zone. This value will be null for zones in the global DNS, which are publicly
         /// resolvable and not part of a private view.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The OCID of the private view containing the zone. This value will be null for zones in the global DNS, which are publicly resolvable and not part of a private view.",
         SerializedName = @"viewId",
         PossibleTypes = new [] { typeof(string) })]
-        string ViewId { get;  }
+        string ViewId { get; set; }
         /// <summary>
         /// The type of the zone. Must be either PRIMARY or SECONDARY. SECONDARY is only supported for GLOBAL zones.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The type of the zone. Must be either PRIMARY or SECONDARY. SECONDARY is only supported for GLOBAL zones.",
         SerializedName = @"zoneType",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Primary", "Secondary")]
-        string ZoneType { get;  }
+        string ZoneType { get; set; }
 
     }
     /// Zones resource model
@@ -265,7 +238,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// <summary>
         /// A Boolean flag indicating whether or not parts of the resource are unable to be explicitly managed.
         /// </summary>
-        bool? IsProtected { get; set; }
+        bool IsProtected { get; set; }
         /// <summary>Zones lifecycleState</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Active", "Creating", "Deleted", "Deleting", "Updating")]
         string LifecycleState { get; set; }
@@ -277,9 +250,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// <summary>The canonical absolute URL of the resource.</summary>
         string Self { get; set; }
         /// <summary>The current serial of the zone. As seen in the zone's SOA record.</summary>
-        int? Serial { get; set; }
+        int Serial { get; set; }
         /// <summary>Zones timeCreated</summary>
-        global::System.DateTime? TimeCreated { get; set; }
+        global::System.DateTime TimeCreated { get; set; }
         /// <summary>
         /// Version is the never-repeating, totally-orderable, version of the zone, from which the serial field of the zone's SOA
         /// record is derived.
