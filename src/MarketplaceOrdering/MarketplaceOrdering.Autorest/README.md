@@ -64,7 +64,7 @@ directive:
       subject: MarketplaceTerms
     remove: true
 
-  # List response not mapp swagger define.
+  # List response not map swagger define.
   - where:
       verb: Get
       subject: MarketplaceTerms
