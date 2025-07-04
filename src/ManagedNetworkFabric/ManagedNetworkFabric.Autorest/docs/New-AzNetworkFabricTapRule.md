@@ -14,10 +14,11 @@ Create Network Tap Rule resource.
 
 ### CreateExpanded (Default)
 ```
-New-AzNetworkFabricTapRule -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-Annotation <String>] [-ConfigurationType <String>]
+New-AzNetworkFabricTapRule -Name <String> -ResourceGroupName <String> -ConfigurationType <String>
+ -Location <String> [-SubscriptionId <String>] [-Annotation <String>]
  [-DynamicMatchConfiguration <ICommonDynamicMatchConfiguration[]>]
- [-MatchConfiguration <INetworkTapRuleMatchConfiguration[]>] [-PollingIntervalInSecond <Int32>]
+ [-GlobalNetworkTapRuleActionEnableCount <String>] [-GlobalNetworkTapRuleActionTruncate <String>]
+ [-MatchConfiguration <INetworkTapRuleMatchConfiguration[]>] [-PollingIntervalInSecond <Single>]
  [-Tag <Hashtable>] [-TapRulesUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -121,7 +122,7 @@ Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -149,6 +150,37 @@ List of dynamic match configurations.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GlobalNetworkTapRuleActionEnableCount
+Configuration to enable network tap rule counter.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GlobalNetworkTapRuleActionTruncate
+Truncate.
+0 indicates do not truncate.
+
+```yaml
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -253,7 +285,7 @@ Accept wildcard characters: False
 Polling interval in seconds.
 
 ```yaml
-Type: System.Int32
+Type: System.Single
 Parameter Sets: CreateExpanded
 Aliases:
 
