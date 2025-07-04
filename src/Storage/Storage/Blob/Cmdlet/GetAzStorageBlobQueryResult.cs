@@ -36,7 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         private const string BlobPipelineParameterSet = "BlobPipeline";
 
         /// <summary>
-        /// container pipeline paremeter set name
+        /// container pipeline parameter set name
         /// </summary>
         private const string ContainerPipelineParameterSet = "ContainerPipeline";
 
@@ -180,7 +180,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 bytesScanned = finishedBytes;
             });
 
-            // preapre query Option
+            // prepare query Option
             // Not show the Progressbar now, since the ProgressHandler can't represent the read query progress 
             Track2Models.BlobQueryOptions queryOption = new Track2Models.BlobQueryOptions
             {
