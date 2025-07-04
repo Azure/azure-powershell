@@ -305,7 +305,7 @@ Describe 'New-AzFunctionApp' {
         }
     }
 
-    It "Create Windows Consumption app and validiate app properties: 1) Location 2) App settings 3) Connection string suffix" {
+    It "Create Windows Consumption app and validate app properties: 1) Location 2) App settings 3) Connection string suffix" {
 
         # Validate the following:
         #    - Location parameter supports passing a region with no spaces, e.g., `centralus` for Central US.
@@ -463,7 +463,7 @@ Describe 'New-AzFunctionApp' {
 
     It "Creating a function app with 'UserAssigned' managed identity should throw if IdentityID is not provided " {
 
-        # Make sure user identiy is available
+        # Make sure user identity is available
         $expetedErrorId = "IdentityIDIsRequiredForUserAssignedIdentity"
 
         $functionName = $env.functionNamePowerShell

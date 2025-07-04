@@ -265,7 +265,7 @@ function New-AzFunctionApp {
 
         RegisterFunctionsTabCompleters
 
-        # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets.
+        # Remove bound parameters from the dictionary that cannot be process by the internal cmdlets.
         $paramsToRemove = @(
             "StorageAccountName",
             "ApplicationInsightsName",
@@ -600,7 +600,7 @@ function New-AzFunctionApp {
 
             if ($IdentityType -eq "UserAssigned")
             {
-                # Set UserAssigned managed identiy
+                # Set UserAssigned managed identity
                 if (-not $IdentityID)
                 {
                     $errorMessage = "IdentityID is required for UserAssigned identity"

@@ -106,7 +106,7 @@ function Stop-AzFunctionApp {
         {
             if ($Force.IsPresent -or $PsCmdlet.ShouldContinue("Stop function app '$Name'?", "Stopping function app"))
             {
-                # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets.
+                # Remove bound parameters from the dictionary that cannot be process by the internal cmdlets.
                 if ($PSBoundParameters.ContainsKey("Force"))
                 {
                     $PSBoundParameters.Remove("Force")  | Out-Null

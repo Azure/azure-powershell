@@ -49,7 +49,7 @@ function Validate_Capacity_Exists_In_Array{
 
 function Validate_Capacity_Skus{
 	Param ([Object]$CapacitySkus)
-    foreach ($capacitySku in $CapacitiySkus) {
+    foreach ($capacitySku in $CapacitySkus) {
         $capacitySku.ResourceType | Should -Be "Microsoft.Fabric/capacities"
         $capacitySku.SkuTier | Should -Be $env.SkuTier
         @("F2", "F4", "F8", "F16", "F32", "F64", "F128", "F256", "F512", "F1024", "F2048") | Should -Contain $capacitySku.SkuName

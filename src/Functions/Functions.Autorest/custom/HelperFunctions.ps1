@@ -1637,9 +1637,9 @@ function GetAzWebAppConfig
 
     if ((-not $webAppConfig) -and $ErrorIfResultIsNull)
     {
-        $errorMessage = "Falied to get config for function app name '$Name' in resource group name '$ResourceGroupName'."
+        $errorMessage = "Failed to get config for function app name '$Name' in resource group name '$ResourceGroupName'."
         $exception = [System.InvalidOperationException]::New($errorMessage)
-        ThrowTerminatingError -ErrorId "FaliedToGetFunctionAppConfig" `
+        ThrowTerminatingError -ErrorId "FailedToGetFunctionAppConfig" `
                               -ErrorMessage $errorMessage `
                               -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
                               -Exception $exception
@@ -1942,12 +1942,12 @@ function ParseMinorVersion
     if ($RuntimeSettings.supportedFunctionsExtensionVersions -notcontains "~$DefaultFunctionsVersion")
     {
         $supportedFunctionsExtensionVersions = $RuntimeSettings.supportedFunctionsExtensionVersions -join ", "
-        Write-Debug "$DEBUG_PREFIX Minimium required Functions version '$DefaultFunctionsVersion' is not supported. Runtime supported Functions versions: $supportedFunctionsExtensionVersions. Skipping..."
+        Write-Debug "$DEBUG_PREFIX Minimum required Functions version '$DefaultFunctionsVersion' is not supported. Runtime supported Functions versions: $supportedFunctionsExtensionVersions. Skipping..."
         return
     }
     else
     {
-        Write-Debug "$DEBUG_PREFIX Minimium required Functions version '$DefaultFunctionsVersion' is supported."
+        Write-Debug "$DEBUG_PREFIX Minimum required Functions version '$DefaultFunctionsVersion' is supported."
     }
 
     $runtimeName = GetRuntimeName -AppSettingsDictionary $RuntimeSettings.AppSettingsDictionary

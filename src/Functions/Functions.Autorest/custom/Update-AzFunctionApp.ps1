@@ -132,7 +132,7 @@ function Update-AzFunctionApp {
 
         RegisterFunctionsTabCompleters
 
-        # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets.
+        # Remove bound parameters from the dictionary that cannot be process by the internal cmdlets.
         $paramsToRemove = @(
             "PlanName",
             "ApplicationInsightsName",
@@ -332,7 +332,7 @@ function Update-AzFunctionApp {
                 {
                     if ($Force.IsPresent -or $PsCmdlet.ShouldContinue("Update function app '$Name'?", "Updating function app"))
                     {
-                        # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets
+                        # Remove bound parameters from the dictionary that cannot be process by the internal cmdlets
                         if ($PSBoundParameters.ContainsKey("Force"))
                         {
                             $PSBoundParameters.Remove("Force")  | Out-Null

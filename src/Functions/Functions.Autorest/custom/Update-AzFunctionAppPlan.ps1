@@ -120,7 +120,7 @@ function Update-AzFunctionAppPlan {
 
         RegisterFunctionsTabCompleters
 
-        # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets.
+        # Remove bound parameters from the dictionary that cannot be process by the internal cmdlets.
         foreach ($paramName in @("Sku", "MaximumWorkerCount", "MinimumWorkerCount", "Tag"))
         {
             if ($PSBoundParameters.ContainsKey($paramName))
@@ -170,7 +170,7 @@ function Update-AzFunctionAppPlan {
         # Make sure the plan is a 'ElasticPremium'
         if ($existingPlan.SkuTier -ne "ElasticPremium")
         {
-            $errorMessage = "Only ElasticPremium sku is suported when updating a function app plan. Current plan sku is: $($existingPlan.SkuTier)."
+            $errorMessage = "Only ElasticPremium sku is supported when updating a function app plan. Current plan sku is: $($existingPlan.SkuTier)."
             $exception = [System.InvalidOperationException]::New($errorMessage)
             ThrowTerminatingError -ErrorId "InvalidPlanSku" `
                                     -ErrorMessage $errorMessage `
@@ -255,7 +255,7 @@ function Update-AzFunctionAppPlan {
                 {
                     if ($Force.IsPresent -or $PsCmdlet.ShouldContinue("Update function app plan '$Name'?", "Updating function app plan"))
                     {
-                        # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets
+                        # Remove bound parameters from the dictionary that cannot be process by the internal cmdlets
                         if ($PSBoundParameters.ContainsKey("Force"))
                         {
                             $PSBoundParameters.Remove("Force")  | Out-Null
