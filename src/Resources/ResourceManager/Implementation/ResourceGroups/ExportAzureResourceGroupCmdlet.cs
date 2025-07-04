@@ -97,6 +97,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public override string ApiVersion { get; set; }
 
         /// <summary>
+        /// Gets or sets the output format.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The output format of the template. Allowed values are 'Json', 'Bicep'.")]
+        [ValidateSet(ExportTemplateOutputFormat.Json, ExportTemplateOutputFormat.Bicep, IgnoreCase = true)]
+        public string OutputFormat { get; set; } = ExportTemplateOutputFormat.Json;
+
+        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
@@ -106,7 +113,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             if (ShouldProcess(ResourceGroupName, VerbsData.Export))
             {
-
                 var resourceGroupId = this.GetResourceGroupId();
 
                 if (! this.IsParameterBound(c => c.ApiVersion))
@@ -115,6 +121,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     {
                         Resources = this.GetResourcesFilter(resourceGroupId: resourceGroupId),
                         Options = this.GetExportOptions(),
+                        OutputFormat = this.OutputFormat
                     };
 
                     var exportedTemplate = NewResourceManagerSdkClient.ExportResourceGroup(ResourceGroupName, parameters);
@@ -139,6 +146,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     {
                         Resources = this.GetResourcesFilter(resourceGroupId: resourceGroupId),
                         Options = this.GetExportOptions(),
+                        OutputFormat = this.OutputFormat
                     };
                     var apiVersion = this.ApiVersion;
                     var operationResult = this.GetResourcesClient()
@@ -177,6 +185,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     }
                 }
 
+                // Determine the correct file extension based on OutputFormat
+                string extension = OutputFormat.Equals(ExportTemplateOutputFormat.Bicep, StringComparison.OrdinalIgnoreCase) ? ".bicep" : ".json";
+
                 string path = FileUtility.SaveTemplateFile(
                     templateName: this.ResourceGroupName,
                     contents: contents,
@@ -185,7 +196,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             ? System.IO.Path.Combine(CurrentPath(), this.ResourceGroupName)
                             : this.TryResolvePath(this.Path),
                     overwrite: Force.IsPresent,
-                    shouldContinue: ShouldContinue);
+                    shouldContinue: ShouldContinue,
+                    extension: extension // Pass the extension
+                    );
 
                 WriteObject(PowerShellUtilities.ConstructPSObject(null, "Path", path));
             }
