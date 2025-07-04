@@ -16,12 +16,9 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
-
-using Microsoft.Azure.Commands.Profile.Utilities;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -101,7 +98,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             var claimsChallengeBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(claimsChallenge ?? string.Empty));
             // todo: use resource string
             return $@"[This message needs review] Interactive authentication is required. Please run the following cmdlet and add additional parameters as needed:
-Connect-AzAccount -ClaimsChallenge ""{claimsChallengeBase64}""
+Connect-AzAccount -Tenant (Get-AzContext).Tenant.Id -ClaimsChallenge ""{claimsChallengeBase64}""
 
 Error details:
 {errorMessage}";
