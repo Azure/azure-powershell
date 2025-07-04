@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed the issue that context is not cleared when WAM is enabled.
 
 ## Version 5.1.1
 * Updated the date in the message about multi-factor authentication (MFA). For more details, see https://go.microsoft.com/fwlink/?linkid=2276971
