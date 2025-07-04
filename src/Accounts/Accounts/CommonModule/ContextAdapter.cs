@@ -200,14 +200,13 @@ namespace Microsoft.Azure.Commands.Common
             {
                 var response = await next(request, cancelToken, cancelAction, signal);
 
-                if (response.MatchClaimsChallengePattern())
+                if (response.MatchClaimsChallengePattern(out var claimsChallenge))
                 {
                     //get token again with claims challenge
                     if (accessToken is IClaimsChallengeProcessor processor)
                     {
                         try
                         {
-                            var claimsChallenge = ClaimsChallengeUtilities.GetClaimsChallenge(response);
                             if (!string.IsNullOrEmpty(claimsChallenge))
                             {
                                 await processor.OnClaimsChallenageAsync(newRequest, claimsChallenge, cancelToken).ConfigureAwait(false);
@@ -219,7 +218,7 @@ namespace Microsoft.Azure.Commands.Common
                         }
                         catch (AuthenticationFailedException e)
                         {
-                            throw e.WithAdditionalMessage(response?.GetWwwAuthenticateMessage());
+                            throw e.WithAdditionalMessage(ClaimsChallengeUtilities.FormatClaimsChallengeErrorMessage(claimsChallenge, await response?.Content?.ReadAsStringAsync()));
                         }
                     }
                 }
