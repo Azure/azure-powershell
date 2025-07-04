@@ -32,7 +32,7 @@ For an example of steps required for service principals, refer to the "Assigning
 section of the following article: 
 https://dscottraynsford.wordpress.com/2017/04/17/using-azure-key-vault-with-powershell-part-1/
 
-In the chosen region, create a VMSS scale selecting a sepcific image type (Windows or Linux), eg:
+In the chosen region, create a VMSS scale selecting a specific image type (Windows or Linux), eg:
     Canonical:UbuntuServer:16.04-DAILY-LTS:latest
     MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest
 

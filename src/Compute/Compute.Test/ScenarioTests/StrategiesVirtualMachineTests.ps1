@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Test Simple Paremeter Set for New Vm
+Test Simple Parameter Set for New Vm
 #>
 function Test-SimpleNewVm
 {
@@ -49,7 +49,7 @@ function Test-SimpleNewVm
 
 <#
 .SYNOPSIS
-Test Simple Paremeter Set for New Vm
+Test Simple Parameter Set for New Vm
 #>
 function Test-SimpleNewVmWithDeleteOptions
 {
@@ -84,7 +84,7 @@ function Test-SimpleNewVmWithDeleteOptions
 
 <#
 .SYNOPSIS
-Test Simple Paremeter Set for New Vm
+Test Simple Parameter Set for New Vm
 #>
 function Test-SimpleNewVmFromSIGImage
 {
@@ -124,7 +124,7 @@ function Test-SimpleNewVmFromSIGImage
 
 <#
 .SYNOPSIS
-Test Simple Paremeter Set for New Vm with ultraSSD
+Test Simple Parameter Set for New Vm with ultraSSD
 #>
 function Test-SimpleNewVmWithUltraSSD
 {
@@ -140,8 +140,8 @@ function Test-SimpleNewVmWithUltraSSD
         $stnd = "Standard";
 
         # Common
-        #As of now the ultrasd feature is only supported in east us 2 and in the size Standard_D2s_v3, on the features GA the restriction will be lifted
-        #Use the follwing command to figure out the one to use 
+        #As of now the ultrassd feature is only supported in east us 2 and in the size Standard_D2s_v3, on the features GA the restriction will be lifted
+        #Use the following command to figure out the one to use 
         #Get-AzComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }
         $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Location "eastus2" -EnableUltraSSD -Zone 2 -Size "Standard_D2s_v3" -SecurityType $stnd;
 
@@ -162,7 +162,7 @@ function Test-SimpleNewVmWithUltraSSD
 
 <#
 .SYNOPSIS
-Test Simple Paremeter Set for New Vm with Accelerated Net enabled
+Test Simple Parameter Set for New Vm with Accelerated Net enabled
 #>
 function Test-SimpleNewVmWithAccelNet
 {
@@ -196,7 +196,7 @@ function Test-SimpleNewVmWithAccelNet
 
 <#
 .SYNOPSIS
-Test Simple Paremeter Set for New Vm with system assigned identity
+Test Simple Parameter Set for New Vm with system assigned identity
 #>
 function Test-SimpleNewVmSystemAssignedIdentity
 {
@@ -229,7 +229,7 @@ function Test-SimpleNewVmSystemAssignedIdentity
 
 <#
 .SYNOPSIS
-Test Simple Paremeter Set for New Vm win Win10 and data disks
+Test Simple Parameter Set for New Vm win Win10 and data disks
 #>
 function Test-NewVmWin10
 {
@@ -262,7 +262,7 @@ function Test-NewVmWin10
 
 <#
 .SYNOPSIS
-Test Simple Paremeter Set for New Vm with system assigned identity and user assigned identity
+Test Simple Parameter Set for New Vm with system assigned identity and user assigned identity
 #>
 function Test-SimpleNewVmUserAssignedIdentitySystemAssignedIdentity
 {
@@ -312,7 +312,7 @@ function Test-SimpleNewVmUserAssignedIdentitySystemAssignedIdentity
 
 <#
 .SYNOPSIS
-Test Simple Paremeter Set for New Vm
+Test Simple Parameter Set for New Vm
 #>
 function Test-SimpleNewVmWithAvailabilitySet
 {
@@ -359,7 +359,7 @@ function Test-SimpleNewVmWithAvailabilitySet
 
 <#
 .SYNOPSIS
-Test Simple Paremeter Set for New Vm
+Test Simple Parameter Set for New Vm
 #>
 function Test-SimpleNewVmWithDefaultDomainName
 {
@@ -394,7 +394,7 @@ function Test-SimpleNewVmWithDefaultDomainName
 
 <#
 .SYNOPSIS
-Test Simple Paremeter Set for New Vm
+Test Simple Parameter Set for New Vm
 #>
 function Test-SimpleNewVmWithDefaultDomainName2
 {
@@ -436,7 +436,7 @@ function Test-SimpleNewVmWithDefaultDomainName2
 
 <#
 .SYNOPSIS
-Test Simple Paremeter Set for New Vm
+Test Simple Parameter Set for New Vm
 #>
 function Test-SimpleNewVmWithAvailabilitySet2
 {
@@ -487,7 +487,7 @@ function Test-SimpleNewVmWithAvailabilitySet2
 
 <#
 .SYNOPSIS
-Test Simple Paremeter Set for New Vm
+Test Simple Parameter Set for New Vm
 #>
 function Test-SimpleNewVmImageName
 {

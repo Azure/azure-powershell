@@ -246,7 +246,7 @@ function setup_image_and_disks
 {
     param ([string] $loc, [string] $rgname, [string] $stoname, $vmconfig)
 
-    $st = Write-Verbose "Setting up image and disks of VM config object jfor '${loc}', '${rgname}' and '${stoname}' - Start";
+    $st = Write-Verbose "Setting up image and disks of VM config object for '${loc}', '${rgname}' and '${stoname}' - Start";
 
     $osDiskName = 'osDisk';
     $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
@@ -261,7 +261,7 @@ function setup_image_and_disks
     # Do not add any data disks
     $vmconfig.StorageProfile.DataDisks = $null;
 
-    $st = Write-Verbose "Setting up image and disks of VM config object jfor '${loc}', '${rgname}' and '${stoname}' - End";
+    $st = Write-Verbose "Setting up image and disks of VM config object for '${loc}', '${rgname}' and '${stoname}' - End";
 
     return $vmconfig;
 }

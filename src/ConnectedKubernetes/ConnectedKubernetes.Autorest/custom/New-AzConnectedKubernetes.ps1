@@ -148,10 +148,10 @@ function New-AzConnectedKubernetes {
         # Path to the kube config file
         ${KubeConfig},
 
-        [Parameter(HelpMessage = "Kubconfig context from current machine")]
+        [Parameter(HelpMessage = "Kubeconfig context from current machine")]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [System.String]
-        # Kubconfig context from current machine
+        # Kubeconfig context from current machine
         ${KubeContext},
 
         [Parameter(Mandatory)]
@@ -647,7 +647,7 @@ function New-AzConnectedKubernetes {
         #
         # We do not trust the ConfigDP's security though so we do not pass
         # protected configuration values to the ConfigDP.  Instead we hold them
-        # in a local hashtable and pass the hash-tabe indexing to the ConfigDP
+        # in a local hashtable and pass the hash-table indexing to the ConfigDP
         # as the Arc configuration protected setting value.
         #
         # One return, the ConfigDP gives us the correct "helm" name for the

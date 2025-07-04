@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Test Virtual Machine Scalet Set
+Test Virtual Machine Scale Set
 
 PS C:\> Get-Command *VMSS* | ft Name,Version,ModuleName
 

@@ -56,7 +56,7 @@ title: Confluent
 subject-prefix: $(service-name)
 
 directive:
-  # New-AzConfluentMarketplaceAgreeemt has  be removed, because it cand be replace by Set-AzMarketplaceTerms (Az.MarketplaceOrdering).
+  # New-AzConfluentMarketplaceAgreement has be removed, because it cant be replace by Set-AzMarketplaceTerms (Az.MarketplaceOrdering).
   - where:
       verb: New
       subject: MarketplaceAgreement$
@@ -73,7 +73,7 @@ directive:
       variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
 
-  # Hide the Remove-AzConfluentOrganization for ask user confirmation before Remove-AzConfluentOrganization been invoken
+  # Hide the Remove-AzConfluentOrganization for ask user confirmation before Remove-AzConfluentOrganization been invoked
   - where:
       verb: Remove
       subject: Organization$
