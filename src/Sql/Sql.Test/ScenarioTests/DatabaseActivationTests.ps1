@@ -14,7 +14,7 @@
 
 <#
 	.SYNOPSIS
-	Test pasuing and resuming database.
+	Test pausing and resuming database.
 #>
 function Test-DatabasePauseResume
 {
@@ -62,7 +62,7 @@ function Test-DatabasePauseResume
 
 <#
 	.SYNOPSIS
-	Test pasuing and resuming database via piped cmdlets.
+	Test pausing and resuming database via piped cmdlets.
 #>
 function Test-DatabasePauseResumePiped
 {

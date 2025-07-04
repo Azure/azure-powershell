@@ -117,7 +117,7 @@ function Test-ServerConfigurationOption
         Assert-NotNull $configOpts
         Assert-AreEqual	$configOpts.Count 1
 
-        # Get non existant config opt #1 THROWS
+        # Get non existent config opt #1 THROWS
         $msgExcGet = "Cannot validate argument on parameter 'Name'."
         Assert-ThrowsContains { Get-AzSqlServerConfigurationOption -ResourceGroupName $rgName -InstanceName $miName -Name "randomConfigFlag" } $msgExc
         

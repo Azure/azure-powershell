@@ -105,7 +105,7 @@ SystemDataLastModifiedByType :
 Type                         : Microsoft.StandbyPool/standbyVirtualMachinePools/runtimeViews
 ```
 
-Above command is getting a runtime veiw of standby virtual machine pool.
+Above command is getting a runtime view of standby virtual machine pool.
 
 ## PARAMETERS
 

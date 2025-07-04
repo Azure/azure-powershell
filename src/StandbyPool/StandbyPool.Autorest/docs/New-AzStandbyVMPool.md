@@ -37,7 +37,7 @@ create a StandbyVirtualMachinePoolResource
 
 ## EXAMPLES
 
-### Example 1: Creat a new standby virtual machine pool
+### Example 1: Create a new standby virtual machine pool
 ```powershell
 New-AzStandbyVMPool `
 -Name testPool `
@@ -71,7 +71,7 @@ Type                              : microsoft.standbypool/standbyvirtualmachinep
 VirtualMachineState               : Running
 ```
 
-Above commnand is creating a new standby virtual machine pool
+Above command is creating a new standby virtual machine pool
 
 ## PARAMETERS
 

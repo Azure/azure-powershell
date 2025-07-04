@@ -295,7 +295,7 @@ function Test-DatabaseDataMaskingTextRuleLifecycle
 
 <#
 .SYNOPSIS
-Tests that ilegal values prevent creation of rules 
+Tests that illegal values prevent creation of rules 
 #>
 function Test-DatabaseDataMaskingRuleCreationFailures
 {

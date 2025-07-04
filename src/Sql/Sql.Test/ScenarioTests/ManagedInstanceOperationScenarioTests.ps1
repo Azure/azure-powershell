@@ -41,7 +41,7 @@ function Test-GetManagedInstanceOperation
 		Assert-StartsWith $firstOperation.State "Succeeded"
 		Assert-AreEqual $firstOperation.IsCancellable $false
 
-		# Initiate sync update of storage (this operation can not be canceled nor during its execution or after it has finsihed).
+		# Initiate sync update of storage (this operation can not be canceled nor during its execution or after it has finished).
 		$updatedManagedInstance = Update-ManagedInstanceStorageForTest $rg $managedInstance
 
 		# Get all operations on managed instance.
@@ -96,13 +96,13 @@ function Test-StopManagedInstanceOperation
 		# Get all operations on managed instance.
 		$all = Get-AzSqlInstanceOperation -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName
 
-		# Wait for second operation to be cancelable, then initate cancel.
+		# Wait for second operation to be cancelable, then initiate cancel.
 		while($all.Count -ne 2) { $all = Get-AzSqlInstanceOperation -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName }
 		$secondOperation = $all | Select-Object -index 1
 		while($secondOperation.IsCancellable -eq $false) { $secondOperation = Get-AzSqlInstanceOperation -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $secondOperation.Name }
 		Stop-AzSqlInstanceOperation -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $secondOperation.Name -Force
 
-		# Wait for second operaiton to be cancelled and verify fields.
+		# Wait for second operation to be cancelled and verify fields.
 		while($secondOperation.State -ne "Cancelled") { $secondOperation = Get-AzSqlInstanceOperation -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $secondOperation.Name }
 		Assert-AreEqual $secondOperation.OperationFriendlyName "UPDATE MANAGED SERVER"
 		Assert-AreEqual $secondOperation.PercentComplete 100

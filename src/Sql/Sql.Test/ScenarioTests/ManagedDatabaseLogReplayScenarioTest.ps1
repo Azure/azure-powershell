@@ -135,7 +135,7 @@ function Test-CompleteManagedDatabaseLogReplay
 			-InstanceName $managedInstance `
 			-Name $managedDatabaseName
 
-			# Wait until restore state is Complted - this means restore has completed
+			# Wait until restore state is Completed - this means restore has completed
             #
             $status = $statusResponse.Status
             if($status -eq $statusCompleted){

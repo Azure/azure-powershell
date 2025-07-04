@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         }
 
-        [Fact(Skip = "SQL team hould re-record this test.")]
+        [Fact(Skip = "SQL team should re-record this test.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerActiveDirectoryAdministratorCRUD()
         {

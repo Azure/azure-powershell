@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             TestRunner.RunTestScript("Test-CreateUpdateManagedInstanceWithMinimalTlsVersion");
         }
 
-        [Fact(Skip = "It is unknow for now how to fix this.")]
+        [Fact(Skip = "It is unknown for now how to fix this.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateManagedInstanceWithMaintenanceConfigurationId()
         {

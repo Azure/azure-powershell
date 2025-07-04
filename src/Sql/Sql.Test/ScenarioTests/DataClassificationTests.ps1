@@ -539,7 +539,7 @@ function Create-SqlDataClassificationTestEnvironment ($testSuffix, $location = "
 
 <#
 .SYNOPSIS
-Tests enable and disable recommdations on columns in a SQL database.
+Tests enable and disable recommendations on columns in a SQL database.
 #>
 function Test-EnableDisableRecommendationsOnSqlDatabase
 {
@@ -585,7 +585,7 @@ function Test-EnableDisableRecommendationsOnSqlDatabase
 		Assert-NotNullOrEmpty $secondInformationType
 		Assert-NotNullOrEmpty $secondSensitivityLabel
 
-		# Disable first two recommdations, second recommdation is disabled using pipeline.
+		# Disable first two recommendations, second recommendation is disabled using pipeline.
 		Disable-AzSqlDatabaseSensitivityRecommendation -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -SchemaName $firstSchemaName -TableName $firstTableName -ColumnName $firstColumnName 
 		Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Disable-AzSqlDatabaseSensitivityRecommendation -SchemaName $secondSchemaName -TableName $secondTableName -ColumnName $secondColumnName
 
@@ -596,13 +596,13 @@ function Test-EnableDisableRecommendationsOnSqlDatabase
 		Assert-AreEqual $params.databaseName $recommendations.DatabaseName
 		Assert-AreEqual 2 ($recommendations.SensitivityLabels).count
 
-		# Verify disabled recommdations are not part of the new recommdations.
+		# Verify disabled recommendations are not part of the new recommendations.
 		Assert-AreNotEqual $firstColumnName ($recommendations.SensitivityLabels)[0].ColumnName
 		Assert-AreNotEqual $firstColumnName ($recommendations.SensitivityLabels)[1].ColumnName
 		Assert-AreNotEqual $secondColumnName ($recommendations.SensitivityLabels)[0].ColumnName
 		Assert-AreNotEqual $secondColumnName ($recommendations.SensitivityLabels)[1].ColumnName
 
-		# Enable second disabled recommdation.
+		# Enable second disabled recommendation.
 		Enable-AzSqlDatabaseSensitivityRecommendation -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -SchemaName $secondSchemaName -TableName $secondTableName -ColumnName $secondColumnName
 
 		# Get, using pipeline, recommended sensitivity labels, and verify.
@@ -612,7 +612,7 @@ function Test-EnableDisableRecommendationsOnSqlDatabase
 		Assert-AreEqual $params.serverName $recommendations.ServerName
 		Assert-AreEqual $params.databaseName $recommendations.DatabaseName
 
-		# Verify disabled recommdation is not part of the new recommdations.
+		# Verify disabled recommendation is not part of the new recommendations.
 		Assert-AreNotEqual $firstColumnName ($recommendations.SensitivityLabels)[0].ColumnName
 		Assert-AreNotEqual $firstColumnName ($recommendations.SensitivityLabels)[1].ColumnName
 		Assert-AreNotEqual $firstColumnName ($recommendations.SensitivityLabels)[2].ColumnName
@@ -620,17 +620,17 @@ function Test-EnableDisableRecommendationsOnSqlDatabase
 		# Disable, using pipeline, all recommended columns.
 		Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityRecommendation | Disable-AzSqlDatabaseSensitivityRecommendation 
 
-		# Verify no recommdations are retrieved since all are disabled.
+		# Verify no recommendations are retrieved since all are disabled.
 		$recommendations = Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityRecommendation
 		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
 		Assert-AreEqual $params.serverName $recommendations.ServerName
 		Assert-AreEqual $params.databaseName $recommendations.DatabaseName
 		Assert-AreEqual 0 ($recommendations.SensitivityLabels).count
 
-		# Enable, using pipeline, second disabled recommdation and verify
+		# Enable, using pipeline, second disabled recommendation and verify
 		Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Enable-AzSqlDatabaseSensitivityRecommendation -SchemaName $secondSchemaName -TableName $secondTableName -ColumnName $secondColumnName
 
-		# Verify enabled recommdation is now part of the recommendations.
+		# Verify enabled recommendation is now part of the recommendations.
 		$recommendations = Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityRecommendation
 		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
 		Assert-AreEqual $params.serverName $recommendations.ServerName

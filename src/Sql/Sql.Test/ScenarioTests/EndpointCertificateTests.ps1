@@ -101,7 +101,7 @@ function Test-EndpointCertificate
         Assert-NotNull $listCerts
         Assert-AreEqual	$listCerts.Count 2
 
-        # Get non existant cert #1 THROWS (via DeleteByInputObjectParameterSet)
+        # Get non existent cert #1 THROWS (via DeleteByInputObjectParameterSet)
         $msgExcGet = "The requested resource of type '" + $endpointCertType + "' with name '" + "INVALID_TYPE" + "' was not found."
         Assert-Throws { Get-AzSqlInstanceEndpointCertificate -InstanceObject $instance -EndpointType "INVALID_TYPE" } $msgExc
         
