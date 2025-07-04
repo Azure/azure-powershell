@@ -254,7 +254,7 @@ function Test-ApplicationGatewayCRUD
 		Assert-NotNull $getgw.Probes[0].Match
 		Assert-Null $getgw.Probes[0].Match.StatusCodes
 
-		# Check that statuscode of probe[1] is still an emtpy list
+		# Check that statuscode of probe[1] is still an empty list
 		Assert-NotNull $getgw.Probes[1]
 		Assert-NotNull $getgw.Probes[1].Match
 		Assert-NotNull $getgw.Probes[1].Match.StatusCodes
@@ -358,7 +358,7 @@ function Test-ApplicationGatewayCRUD
 		$getgw = Set-AzApplicationGatewayHttpListener -ApplicationGateway $getgw -Name $listener03Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
 		$listener = Get-AzApplicationGatewayHttpListener -ApplicationGateway $getgw -Name $listener03Name
 
-		# Modify rule to remove URL rotuing
+		# Modify rule to remove URL routing
 		$pool = Get-AzApplicationGatewayBackendAddressPool -ApplicationGateway $getgw -Name $poolName
 		$getgw = Set-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $getgw -Name $rule03Name -RuleType basic -HttpListener $listener -BackendHttpSettings $poolSetting -BackendAddressPool $pool
 

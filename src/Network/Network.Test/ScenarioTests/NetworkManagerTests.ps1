@@ -19,7 +19,7 @@ Tests creating new simple public networkmanager
 function Test-NetworkManagerCRUD
 {
     # Setup
-    # Need to update subscriptionId before runing in live mode
+    # Need to update subscriptionId before running in live mode
     $rgName = Get-ResourceGroupName
     $networkManagerName = Get-ResourceName
     $rglocation = "centraluseuap"

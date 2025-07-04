@@ -61,7 +61,7 @@ function Test-PrivateEndpointCRUD
         $job | Wait-Job
         $ilbcreate = $job | Receive-Job
 
-        # Verfify if load balancer is created successfully
+        # Verify if load balancer is created successfully
         Assert-NotNull $ilbcreate;
         Assert-AreEqual $ilbName $ilbcreate.Name;
         Assert-AreEqual $location $ilbcreate.Location;
@@ -76,7 +76,7 @@ function Test-PrivateEndpointCRUD
         $plscreate = $job | Receive-Job
         $vPrivateLinkService = Get-AzPrivateLinkService -Name $PrivateLinkServiceName -ResourceGroupName $rgName
 
-        # Verfify if private link service is created successfully
+        # Verify if private link service is created successfully
         Assert-NotNull $vPrivateLinkService;
         Assert-AreEqual $PrivateLinkServiceName $vPrivateLinkService.Name;
         Assert-NotNull $vPrivateLinkService.IpConfigurations;
@@ -303,7 +303,7 @@ function Test-PrivateEndpointInEdgeZone
         $beaddresspool= New-AzLoadBalancerBackendAddressPoolConfig -Name $ilbBackendName
         $ilbcreate = New-AzLoadBalancer -ResourceGroupName $rgname -Name $ilbName -Location $location -FrontendIpConfiguration $frontendIP -BackendAddressPool $beaddresspool -Sku "Standard" -EdgeZone $edgeZone
 
-        # Verfify if load balancer is created successfully
+        # Verify if load balancer is created successfully
         Assert-NotNull $ilbcreate
         Assert-AreEqual $ilbName $ilbcreate.Name
         Assert-AreEqual $location $ilbcreate.Location
@@ -315,7 +315,7 @@ function Test-PrivateEndpointInEdgeZone
 
         $vPrivateLinkService = New-AzPrivateLinkService -ResourceGroupName $rgname -Name $PrivateLinkServiceName -Location $location -IpConfiguration $IpConfiguration -LoadBalancerFrontendIpConfiguration $LoadBalancerFrontendIpConfiguration -EdgeZone $edgeZone
 
-        # Verfify if private link service is created successfully
+        # Verify if private link service is created successfully
         Assert-NotNull $vPrivateLinkService
         Assert-AreEqual $PrivateLinkServiceName $vPrivateLinkService.Name
         Assert-NotNull $vPrivateLinkService.IpConfigurations;
@@ -384,7 +384,7 @@ function Test-PrivateEndpointApplicationSecurityGroup
         $job | Wait-Job
         $nlbcreate = $job | Receive-Job
 
-        # Verfify if load balancer is created successfully
+        # Verify if load balancer is created successfully
         Assert-NotNull $nlbcreate
         Assert-AreEqual $nlbName $nlbcreate.Name
         Assert-AreEqual $location $nlbcreate.Location
@@ -399,7 +399,7 @@ function Test-PrivateEndpointApplicationSecurityGroup
         $plscreate = $job | Receive-Job
         $pls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName
 
-        # Verfify if private link service is created successfully
+        # Verify if private link service is created successfully
         Assert-NotNull $pls
         Assert-AreEqual $plsName $pls.Name
         Assert-NotNull $pls.IpConfigurations

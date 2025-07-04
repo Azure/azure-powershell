@@ -24,7 +24,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
 
-        #Runtime paramters    
+        #Runtime parameters    
 
         [Parameter(HelpMessage = "Run the command as a job")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
@@ -133,7 +133,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
         ${ProfileName},
 
 
-        # Body paramters
+        # Body parameters
         
         [Parameter(HelpMessage = "Address Prefix")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
@@ -177,7 +177,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
         # Subscription ids
         ${Subscription}
 
-        # Add only those paramters which can be updated
+        # Add only those parameters which can be updated
 
     )
 

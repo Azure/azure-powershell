@@ -24,7 +24,7 @@ function Update-AzNetworkSecurityPerimeterLink {
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
 
-        #Runtime paramters    
+        #Runtime parameters    
 
         [Parameter(HelpMessage = "Run the command as a job")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
@@ -128,7 +128,7 @@ function Update-AzNetworkSecurityPerimeterLink {
         ${SecurityPerimeterName},
 
 
-        # Body paramters
+        # Body parameters
 
         [Parameter(HelpMessage = "Auto approved remote perimeter resource id")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
@@ -148,7 +148,7 @@ function Update-AzNetworkSecurityPerimeterLink {
         # remote inbound profiles
         ${RemoteInboundProfile}
 
-        # Add only those paramters which can be updated
+        # Add only those parameters which can be updated
     )
 
     process {

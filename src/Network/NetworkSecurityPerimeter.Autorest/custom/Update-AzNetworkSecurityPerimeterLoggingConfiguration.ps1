@@ -24,7 +24,7 @@ function Update-AzNetworkSecurityPerimeterLoggingConfiguration {
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
 
-        #Runtime paramters    
+        #Runtime parameters    
 
         [Parameter(HelpMessage = "Run the command as a job")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
@@ -128,7 +128,7 @@ function Update-AzNetworkSecurityPerimeterLoggingConfiguration {
         ${SecurityPerimeterName},
 
 
-        # Body paramters
+        # Body parameters
 
         [Parameter(HelpMessage = "Log categories to enable")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
@@ -136,7 +136,7 @@ function Update-AzNetworkSecurityPerimeterLoggingConfiguration {
         # Enabled log categories
         ${EnabledLogCategory}
 
-        # Add only those paramters which can be updated
+        # Add only those parameters which can be updated
     )
 
     process {

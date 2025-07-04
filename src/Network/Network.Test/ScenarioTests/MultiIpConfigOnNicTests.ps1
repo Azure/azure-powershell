@@ -59,7 +59,7 @@ function Test-LBWithMultiIpConfigNICCRUD
         Assert-AreEqual 0 @($lb.BackendAddressPools[0].BackendIpConfigurations).Count
 
 		
-        # Create 3 network interfaces each with 2 ipconfig and accociate to loadbalancer
+        # Create 3 network interfaces each with 2 ipconfig and associate to loadbalancer
         $nic1 = New-AzNetworkInterface -Name $nicname1 -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0]
 		$nic1 = Get-AzNetworkInterface -Name $nicName1 -ResourceGroupName $rgname | Add-AzNetworkInterfaceIpConfig -Name $ipconfig1Name -PrivateIpAddressVersion ipv4 -Subnet $vnet.Subnets[0] | Set-AzNetworkInterface
 
@@ -118,7 +118,7 @@ function Test-LBWithMultiIpConfigNICCRUD
 
 <#
 .SYNOPSIS
-Tests creating a NIC with Loadbalancer references with muultiple ip config
+Tests creating a NIC with Loadbalancer references with multiple ip config
 #>
 function Test-AddNICToLBWithMultiIpConfig
   {
@@ -171,7 +171,7 @@ function Test-AddNICToLBWithMultiIpConfig
         Assert-AreEqual "Succeeded" $lb.ProvisioningState
         Assert-AreEqual 1 @($lb.FrontendIPConfigurations).Count
 
-        # Create network interface with 1 ip and accociate to loadbalancer
+        # Create network interface with 1 ip and associate to loadbalancer
         $nic1 = New-AzNetworkInterface -Name $nicname1 -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -LoadBalancerBackendAddressPool $lb.BackendAddressPools[0] -LoadBalancerInboundNatRule $lb.InboundNatRules[0] 
         
         #verify nic configs

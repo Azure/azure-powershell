@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "List of items which need to be included into endpont scope.",
+            HelpMessage = "List of items which need to be included into endpoint scope.",
              ParameterSetName = "ExportPolicyObject")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesExportPolicyRule[] Rule { get; set; }

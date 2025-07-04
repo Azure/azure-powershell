@@ -24,7 +24,7 @@ function Update-AzNetworkSecurityPerimeterAssociation {
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
 
-        #Runtime paramters    
+        #Runtime parameters    
 
         [Parameter(HelpMessage = "Run the command as a job")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
@@ -128,7 +128,7 @@ function Update-AzNetworkSecurityPerimeterAssociation {
         ${SecurityPerimeterName},
 
 
-        # Body paramters
+        # Body parameters
 
         [Parameter(HelpMessage = "Access Mode")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
