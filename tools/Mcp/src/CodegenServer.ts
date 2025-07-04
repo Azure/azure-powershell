@@ -16,11 +16,11 @@ const responses = JSON.parse(readFileSync(path.join(srcPath, "specs/responses.js
 
 export class CodegenServer {
     private static _instance: CodegenServer;
-    private _mcp: McpServer;
+    private _server: McpServer;
     private _responses = new Map<string, string>();
 
     private constructor() {
-        this._mcp = new McpServer({
+        this._server = new McpServer({
             name: "codegen",
             version: "1.0.0",
             capabilities: {
@@ -32,11 +32,15 @@ export class CodegenServer {
     }
 
     init(): void {
-        this.initResponses();
+        this.readResponses();
         this.initTools();
         this.initPrompts();
     }
 
+    /**
+     * Singleton instance of CodegenServer
+     * @returns {CodegenServer} The singleton instance
+     */
     public static getInstance(): CodegenServer {
         if (!CodegenServer._instance) {
             CodegenServer._instance = new CodegenServer();
@@ -44,51 +48,26 @@ export class CodegenServer {
         return CodegenServer._instance;
     }
 
+    /**
+     * Connects the server to a transport layer
+     * @param {StdioServerTransport} transport - The transport layer to connect to
+     * @returns {Promise<void>} A promise that resolves when the connection is established
+     */
     public async connect(transport: StdioServerTransport): Promise<void> {
-        await this._mcp.connect(transport);
+        await this._server.connect(transport);
     }
 
-
-    initTools() {
-        const toolSchemas = specs.tools as toolSchema[];
-        for (const schema of toolSchemas) {
-            const parameter = this.createToolParameterfromSchema(schema.parameters);
-            const callBack = toolServices<{ [k: string]: z.ZodTypeAny }>(schema.callbackName, this._responses.get(schema.name));
-            this._mcp.tool(
-                schema.name,
-                schema.description,
-                parameter,
-                (parameter) => callBack(parameter)
-            );
-        }
-    }
-
-    initPrompts() {
-        this._mcp.prompt(
-            "create-greeting", 
-            "Generate a customized greeting message", 
-            { name: z.string().describe("Name of the person to greet"), style: z.string().describe("The style of greeting, such a formal, excited, or casual. If not specified casual will be used")}, 
-            ({ name, style = "casual" }: { name: string, style?: string }) => {
-            return {
-                messages: [
-                    {
-                        role: "user",
-                        content: {
-                            type: "text",
-                            text: `Please generate a greeting in ${style} style to ${name}.`,
-                        },
-                    },
-                ],
-            };
-        });
-    }
-
-    initResponses() {
+    readResponses() {
         (responses as responseSchema[])?.forEach((response: responseSchema) => {
             this._responses.set(response.name, response.text);
         });
     }
 
+    /**
+     * Creates tool parameters from the provided schema
+     * @param {toolParameterSchema[]} schemas - The schemas to create parameters from
+     * @returns {Object} An object containing the created parameters
+     */
     createToolParameterfromSchema(schemas: toolParameterSchema[]){
         const parameter: {[k: string]: z.ZodTypeAny} = {}; 
         for (const schema of schemas) {
@@ -115,4 +94,47 @@ export class CodegenServer {
         }
         return parameter;
     }
+
+    /**
+     * Initializes the prompts for the server
+     * This method registers a prompt for generating a customized greeting message.
+     */
+    initPrompts() {
+        this._server.prompt(
+            "create-greeting", 
+            "Generate a customized greeting message", 
+            { name: z.string().describe("Name of the person to greet"), style: z.string().describe("The style of greeting, such a formal, excited, or casual. If not specified casual will be used")}, 
+            ({ name, style = "casual" }: { name: string, style?: string }) => {
+            return {
+                messages: [
+                    {
+                        role: "user",
+                        content: {
+                            type: "text",
+                            text: `Please generate a greeting in ${style} style to ${name}.`,
+                        },
+                    },
+                ],
+            };
+        });
+    }
+
+    /**
+     * Initializes the tools for the server
+     * This method registers tools based on the provided specifications.
+     */
+    initTools() {
+        const toolSchemas = specs.tools as toolSchema[];
+        for (const schema of toolSchemas) {
+            const parameter = this.createToolParameterfromSchema(schema.parameters);
+            const callBack = toolServices<{ [k: string]: z.ZodTypeAny }>(schema.callbackName, this._responses.get(schema.name));
+            this._server.tool(
+                schema.name,
+                schema.description,
+                parameter,
+                (parameter) => callBack(parameter)
+            );
+        }
+    }
+
 }
