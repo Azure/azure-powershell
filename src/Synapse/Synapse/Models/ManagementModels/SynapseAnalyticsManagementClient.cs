@@ -2011,7 +2011,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 }
             }
 
-            // Don't support get status for legacy integraiton runtime.
+            // Don't support get status for legacy integration runtime.
             throw new PSInvalidOperationException("This type of integration runtime is not supported by this version powershell cmdlets.");
         }
 

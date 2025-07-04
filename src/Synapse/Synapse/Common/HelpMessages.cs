@@ -54,7 +54,7 @@ The supported actions are:
 Add
 Remove
 Set
-Add means to add user assigned managed identities for workspace, Remove means to remove user assigned managed identities from workspace, Set can be used when you want to add and remove user assigned managed identities at the same time, current identities will be coverd by specified ones.";
+Add means to add user assigned managed identities for workspace, Remove means to remove user assigned managed identities from workspace, Set can be used when you want to add and remove user assigned managed identities at the same time, current identities will be covered by specified ones.";
 
         public const string UserAssignedIdentityId = "User assigned managed identity Id for workspace.";
 
@@ -218,13 +218,13 @@ Add means to add user assigned managed identities for workspace, Remove means to
 
         public const string StorageRedundancy = "Storage redundancy of the database.";
 
-        public const string BackupResourceGroupName = "The resource group name of bakcup SQL pool object to create from.";
+        public const string BackupResourceGroupName = "The resource group name of backup SQL pool object to create from.";
 
-        public const string BackupWorkspaceName = "The Synapse workspace name of bakcup SQL pool object to create from.";
+        public const string BackupWorkspaceName = "The Synapse workspace name of backup SQL pool object to create from.";
 
-        public const string BackupSqlPoolName = "The name of bakcup SQL pool object to create from.";
+        public const string BackupSqlPoolName = "The name of backup SQL pool object to create from.";
 
-        public const string BackupSqlPoolId = "The resource identifier of bakcup SQL pool object to create from.";
+        public const string BackupSqlPoolId = "The resource identifier of backup SQL pool object to create from.";
 
         public const string BackupSqlPoolResourceId = "The resource identifier of backup SQL pool object to restore from.";
 
@@ -337,7 +337,7 @@ For more information, see https://learn.microsoft.com/en-us/sql/relational-datab
 
         public const string TransparentDataEncryptionState = "The Azure Synapse Analytics Sql Pool Transparent Data Encryption state.";
 
-        public const string FirewallRuleName = "The firerwall rule name for the workspace.";
+        public const string FirewallRuleName = "The firewall rule name for the workspace.";
 
         public const string StartIpAddress = "The start IP address of the firewall rule. Must be IPv4 format.";
 
@@ -503,7 +503,7 @@ For more information, see https://learn.microsoft.com/en-us/sql/relational-datab
 
         public const string PreventDataExfiltration = "Indicates whether to prevent data exfiltration.";
 
-        public const string LinkedAccessCheckOnTargetResource = "Indicates whther to check linked access on target resource.";
+        public const string LinkedAccessCheckOnTargetResource = "Indicates whether to check linked access on target resource.";
 
         public const string AllowedAadTenantIdsForLinking = "The allowed AAD tenant IDs for linking.";
 

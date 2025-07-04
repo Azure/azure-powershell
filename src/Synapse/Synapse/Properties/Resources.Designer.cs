@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Continuing execution will renegerate the authentication key &apos;{0}&apos; of integration runtime {1}. This operation will invalidate the existing authentication key.
+        ///   Looks up a localized string similar to Continuing execution will regenerate the authentication key &apos;{0}&apos; of integration runtime {1}. This operation will invalidate the existing authentication key.
         ///Are you sure you want to continue?.
         /// </summary>
         internal static string ContinueRegenerateAuthKey {
@@ -503,7 +503,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not find Spark statement: &apos;{0}&apos; in any resource group in the currently selected workspace: &apos;{1}&apos; Spark pool: &apos;{2}&apos;. Please specifiy the session identifier explicitly..
+        ///   Looks up a localized string similar to Could not find Spark statement: &apos;{0}&apos; in any resource group in the currently selected workspace: &apos;{1}&apos; Spark pool: &apos;{2}&apos;. Please specify the session identifier explicitly..
         /// </summary>
         internal static string FailedToDiscoverSparkStatement {
             get {
@@ -703,7 +703,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The value for pramater &apos;Type&apos; is different with existing integration runtime with name {0}..
+        ///   Looks up a localized string similar to The value for parameter &apos;Type&apos; is different with existing integration runtime with name {0}..
         /// </summary>
         internal static string IntegrationRuntimeWrongType {
             get {
@@ -874,7 +874,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pramater &apos;Type&apos; must be provided when creating new integration runtime..
+        ///   Looks up a localized string similar to Parameter &apos;Type&apos; must be provided when creating new integration runtime..
         /// </summary>
         internal static string NeedIntegrationRuntimeType {
             get {
@@ -928,7 +928,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Renegerate the authentication key &apos;{0}&apos; of integration runtime {1}..
+        ///   Looks up a localized string similar to Regenerate the authentication key &apos;{0}&apos; of integration runtime {1}..
         /// </summary>
         internal static string RegenerateAuthKey {
             get {
@@ -937,7 +937,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove filewall rule &apos;{0}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to remove firewall rule &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveFirewallRule {
             get {
@@ -1819,7 +1819,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Storage acount name is not provided..
+        ///   Looks up a localized string similar to Storage account name is not provided..
         /// </summary>
         internal static string StorageAccountNameParameterException {
             get {
@@ -1976,7 +1976,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Updating threat protection settings in SQL pool &apos;{0}&apos; under worksapce &apos;{1}&apos;..
+        ///   Looks up a localized string similar to Updating threat protection settings in SQL pool &apos;{0}&apos; under workspace &apos;{1}&apos;..
         /// </summary>
         internal static string UpdatingSqlPoolThreatProtectionSetting {
             get {
@@ -2174,7 +2174,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to More than one role assignment under workspace &apos;{0}&apos; was found: {1}. Please condiser using Remove-AzSynapseRoleAssignment -WorkspaceName &lt;string&gt; -RoleAssignmentId &lt;string&gt;.
+        ///   Looks up a localized string similar to More than one role assignment under workspace &apos;{0}&apos; was found: {1}. Please consider using Remove-AzSynapseRoleAssignment -WorkspaceName &lt;string&gt; -RoleAssignmentId &lt;string&gt;.
         /// </summary>
         internal static string WorkspaceRoleAssignmentMoreThanOneFound {
             get {

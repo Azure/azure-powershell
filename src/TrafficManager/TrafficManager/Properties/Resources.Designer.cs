@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is already an existing adress range starting with &apos;{0}&apos;..
+        ///   Looks up a localized string similar to There is already an existing address range starting with &apos;{0}&apos;..
         /// </summary>
         internal static string Error_AddExistingAddressRange {
             get {

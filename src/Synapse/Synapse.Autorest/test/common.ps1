@@ -55,7 +55,7 @@ function Validate_PrincipalAssignment {
 
 <#
 .SYNOPSIS
-Gets a kusto database soft delet perios in days parameter
+Gets a kusto database soft delete period in days parameter
 #>
 function Get-Soft-Delete-Period-In-Days
 {

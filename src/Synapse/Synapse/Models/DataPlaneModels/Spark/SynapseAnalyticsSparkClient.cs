@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 System.Threading.Thread.Sleep(pollingInMilliseconds);
                 timeWaitedInMilliSeconds += pollingInMilliseconds;
 
-                // TODO: handle retryable excetpion
+                // TODO: handle retryable exception
                 job = refresh(job);
             }
 

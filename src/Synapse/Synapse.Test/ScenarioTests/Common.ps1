@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Gets a passwrod
+Gets a password
 #>
 function Get-TestPassword
 {

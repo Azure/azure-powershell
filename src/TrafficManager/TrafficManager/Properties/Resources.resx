@@ -154,7 +154,7 @@
     <value>Are you sure you want to remove the expected status code range starting with '{0}' from profile '{1}' in resource group '{2}'?</value>
   </data>
   <data name="Error_AddExistingAddressRange" xml:space="preserve">
-    <value>There is already an existing adress range starting with '{0}'.</value>
+    <value>There is already an existing address range starting with '{0}'.</value>
   </data>
   <data name="Error_AddExistingEndpoint" xml:space="preserve">
     <value>There is already an existing endpoint with name '{0}'.</value>
