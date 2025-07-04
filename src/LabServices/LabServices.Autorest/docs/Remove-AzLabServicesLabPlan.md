@@ -19,6 +19,12 @@ Remove-AzLabServicesLabPlan -Name <String> -ResourceGroupName <String> [-Subscri
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentity
+```
+Remove-AzLabServicesLabPlan -InputObject <ILabServicesIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### LabPlan
 ```
 Remove-AzLabServicesLabPlan -LabPlan <LabPlan> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
@@ -71,11 +77,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LabPlan
-To construct, see NOTES section for LABPLAN properties and create a hash table.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LabPlan
+The object of lab service lab plan to remove.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
 Parameter Sets: LabPlan
 Aliases:
 
@@ -153,7 +174,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete, LabPlan
 Aliases:
 
 Required: False
@@ -199,7 +220,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
 
 ## OUTPUTS
 

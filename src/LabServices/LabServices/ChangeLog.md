@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Added breaking change message: Azure Lab Services will be retired on June 28, 2027, please see details on https://azure.microsoft.com/en-us/updates?id=azure-lab-services-is-being-retired.
+* Removed 'AdditionalUsageQuota' parameter of `Publish-AzLabServicesLab` cmdlet.
 
 ## Version 0.1.2
 * Upgraded nuget package to signed package.

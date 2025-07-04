@@ -15,9 +15,23 @@ Operation to update a lab schedule.
 ### ResourceId (Default)
 ```
 Update-AzLabServicesSchedule [-SubscriptionId <String>] [-Note <String>]
- [-RecurrencePatternExpirationDate <DateTime>] [-RecurrencePatternFrequency <RecurrenceFrequency>]
- [-RecurrencePatternInterval <Int32>] [-RecurrencePatternWeekDay <WeekDay[]>] [-StartAt <DateTime>]
+ [-RecurrencePatternExpirationDate <DateTime>] [-RecurrencePatternFrequency <String>]
+ [-RecurrencePatternInterval <Int32>] [-RecurrencePatternWeekDay <String[]>] [-StartAt <DateTime>]
  [-StopAt <DateTime>] [-TimeZoneId <String>] -ResourceId <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzLabServicesSchedule -LabName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzLabServicesSchedule -LabName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,16 +39,34 @@ Update-AzLabServicesSchedule [-SubscriptionId <String>] [-Note <String>]
 ```
 Update-AzLabServicesSchedule -LabName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Note <String>] [-RecurrencePatternExpirationDate <DateTime>]
- [-RecurrencePatternFrequency <RecurrenceFrequency>] [-RecurrencePatternInterval <Int32>]
- [-RecurrencePatternWeekDay <WeekDay[]>] [-StartAt <DateTime>] [-StopAt <DateTime>] [-TimeZoneId <String>]
+ [-RecurrencePatternFrequency <String>] [-RecurrencePatternInterval <Int32>]
+ [-RecurrencePatternWeekDay <String[]>] [-StartAt <DateTime>] [-StopAt <DateTime>] [-TimeZoneId <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Lab
 ```
 Update-AzLabServicesSchedule -Name <String> [-SubscriptionId <String>] -Lab <Lab> [-Note <String>]
- [-RecurrencePatternExpirationDate <DateTime>] [-RecurrencePatternFrequency <RecurrenceFrequency>]
- [-RecurrencePatternInterval <Int32>] [-RecurrencePatternWeekDay <WeekDay[]>] [-StartAt <DateTime>]
+ [-RecurrencePatternExpirationDate <DateTime>] [-RecurrencePatternFrequency <String>]
+ [-RecurrencePatternInterval <Int32>] [-RecurrencePatternWeekDay <String[]>] [-StartAt <DateTime>]
+ [-StopAt <DateTime>] [-TimeZoneId <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityLabExpanded
+```
+Update-AzLabServicesSchedule -Name <String> -LabInputObject <ILabServicesIdentity> [-Note <String>]
+ [-RecurrencePatternExpirationDate <DateTime>] [-RecurrencePatternFrequency <String>]
+ [-RecurrencePatternInterval <Int32>] [-RecurrencePatternWeekDay <String[]>] [-StartAt <DateTime>]
+ [-StopAt <DateTime>] [-TimeZoneId <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzLabServicesSchedule -InputObject <ILabServicesIdentity> [-Note <String>]
+ [-RecurrencePatternExpirationDate <DateTime>] [-RecurrencePatternFrequency <String>]
+ [-RecurrencePatternInterval <Int32>] [-RecurrencePatternWeekDay <String[]>] [-StartAt <DateTime>]
  [-StopAt <DateTime>] [-TimeZoneId <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -75,11 +107,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Lab
-To construct, see NOTES section for LAB properties and create a hash table.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Lab
+The object of lab service lab.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
 Parameter Sets: Lab
 Aliases:
 
@@ -90,13 +167,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LabInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: UpdateViaIdentityLabExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -LabName
 The name of the lab that uniquely identifies it within containing lab account.
 Used in resource URIs.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateViaJsonString, UpdateViaJsonFilePath, UpdateExpanded
 Aliases:
 
 Required: True
@@ -112,7 +204,7 @@ Used in resource URIs.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Lab
+Parameter Sets: UpdateViaJsonString, UpdateViaJsonFilePath, UpdateExpanded, Lab, UpdateViaIdentityLabExpanded
 Aliases: ScheduleName
 
 Required: True
@@ -127,7 +219,7 @@ Notes for this schedule.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResourceId, UpdateExpanded, Lab, UpdateViaIdentityLabExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -143,7 +235,7 @@ This date is inclusive.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: ResourceId, UpdateExpanded, Lab, UpdateViaIdentityLabExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -157,8 +249,8 @@ Accept wildcard characters: False
 The frequency of the recurrence.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.RecurrenceFrequency
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ResourceId, UpdateExpanded, Lab, UpdateViaIdentityLabExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -175,7 +267,7 @@ When no interval is supplied, an interval of 1 is used.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: ResourceId, UpdateExpanded, Lab, UpdateViaIdentityLabExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -190,8 +282,8 @@ The week days the schedule runs.
 Used for when the Frequency is set to Weekly.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.WeekDay[]
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: ResourceId, UpdateExpanded, Lab, UpdateViaIdentityLabExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -207,7 +299,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateViaJsonString, UpdateViaJsonFilePath, UpdateExpanded
 Aliases:
 
 Required: True
@@ -218,6 +310,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
+The resource ID of lab service schedule to update.
 
 ```yaml
 Type: System.String
@@ -237,7 +330,7 @@ Timestamp offsets will be ignored and timeZoneId is used instead.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: ResourceId, UpdateExpanded, Lab, UpdateViaIdentityLabExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -253,7 +346,7 @@ Timestamp offsets will be ignored and timeZoneId is used instead.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: ResourceId, UpdateExpanded, Lab, UpdateViaIdentityLabExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -268,7 +361,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResourceId, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateExpanded, Lab
 Aliases:
 
 Required: False
@@ -283,7 +376,7 @@ The IANA timezone id for the schedule.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResourceId, UpdateExpanded, Lab, UpdateViaIdentityLabExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -329,9 +422,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule
 
 ## NOTES
 

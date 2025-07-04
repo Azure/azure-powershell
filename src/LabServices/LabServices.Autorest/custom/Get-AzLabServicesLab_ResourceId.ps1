@@ -19,17 +19,18 @@ API to get labs.
 API to get labs.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/get-azlabserviceslab
 #>
 function Get-AzLabServicesLab_ResourceId {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
-    param(
+    param(  
         [Parameter(Mandatory)]
         [System.String]
-        ${ResourceId},       
+        # The resource Id of lab service lab.
+        ${ResourceId},
       
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
@@ -87,7 +88,8 @@ function Get-AzLabServicesLab_ResourceId {
     )
     
     process {
-        $resourceHash = & $PSScriptRoot\Utilities\HandleLabResourceId.ps1 -ResourceId $ResourceId
+        $HandleLabResourceId = Join-Path $PSScriptRoot '/Utilities/HandleLabResourceId.ps1'
+        $resourceHash = . $HandleLabResourceId -ResourceId $ResourceId
         $PSBoundParameters.Remove("SubscriptionId") > $null
         if ($resourceHash) {
             $resourceHash.Keys | ForEach-Object {

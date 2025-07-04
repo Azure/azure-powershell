@@ -1,6 +1,6 @@
 ---
 Module Name: Az.LabServices
-Module Guid: f4604f08-6749-40ce-bd25-81074c1119e7
+Module Guid: 08d6abb1-2d08-468b-8fe9-57be7661dad7
 Download Help Link: https://learn.microsoft.com/powershell/module/az.labservices
 Help Version: 1.0.0.0
 Locale: en-US
@@ -45,13 +45,13 @@ Returns the properties for a lab virtual machine.
 Operation to create a lab resource.
 
 ### [New-AzLabServicesLabPlan](New-AzLabServicesLabPlan.md)
-Operation to create or update a Lab Plan resource.
+Operation to create a Lab Plan resource.
 
 ### [New-AzLabServicesSchedule](New-AzLabServicesSchedule.md)
-Operation to create or update a lab schedule.
+Operation to create a lab schedule.
 
 ### [New-AzLabServicesUser](New-AzLabServicesUser.md)
-Operation to create or update a lab user.
+Operation to create a lab user.
 
 ### [Publish-AzLabServicesLab](Publish-AzLabServicesLab.md)
 Publish or re-publish a lab.
@@ -105,7 +105,7 @@ Operation to update a lab resource.
 Operation to update a Lab Plan resource.
 
 ### [Update-AzLabServicesPlanImage](Update-AzLabServicesPlanImage.md)
-Updates an image resource.
+Update an image resource.
 
 ### [Update-AzLabServicesQuota](Update-AzLabServicesQuota.md)
 API to update the lab quota.

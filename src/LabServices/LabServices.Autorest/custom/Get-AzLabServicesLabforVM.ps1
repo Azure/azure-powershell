@@ -19,17 +19,18 @@ API to return the lab for a specific VM.
 API to return the lab for a specific VM.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/get-azlabserviceslabforvm
 #>
 function Get-AzLabServicesLabForVM {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     param(
         [Parameter(Mandatory)]
         [System.String]
-        ${ResourceId},        
+        # The resource Id of lab service VM.
+        ${ResourceId},
       
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
@@ -87,8 +88,8 @@ function Get-AzLabServicesLabForVM {
     )
     
     process {
-        $resourceHash = & $PSScriptRoot\Utilities\HandleVMResourceId.ps1 -ResourceId $ResourceId
-
+        $HandleLabResourceId = Join-Path $PSScriptRoot '/Utilities/HandleLabResourceId.ps1'
+        $resourceHash = . $HandleLabResourceId -ResourceId $ResourceId
         if ($resourceHash) {
             $PSBoundParameters.Remove("SubscriptionId") > $null
             $PSBoundParameters.Remove("VirtualMachineName") > $null
