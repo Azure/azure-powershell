@@ -44,20 +44,18 @@ title: DataBox
 subject-prefix: $(service-name)
 inlining-threshold: 50
 
-# If there are post APIs for some kinds of actions in the RP, you may need to 
-# uncomment following line to support viaIdentity for these post APIs
-# identity-correction-for-post: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+disable-transform-identity-type-for-operation:
+  - Jobs_Update
 
 directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$|^GetViaIdentity$|^Validate.*$ |^Cancel$|^CancelViaIdentity.*$|^DeleteViaIdentity$
+      variant: ^(Create)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^GetViaIdentity$|^Validate.*$ |^Cancel$|^CancelViaIdentity.*$|^DeleteViaIdentity$
     remove: true
   # Remove the set-* cmdlet
   - where:
@@ -100,18 +98,6 @@ directive:
       subject: JobCredential
 
   - where:
-      verb: New
-      parameter-name: IdentityUserAssignedIdentity
-    set:
-      parameter-name: UserAssignedIdentity
-  
-  - where:
-      verb: Update
-      parameter-name: IdentityUserAssignedIdentity
-    set:
-      parameter-name: UserAssignedIdentity
-
-  - where:
       parameter-name: PreferenceStorageAccountAccessTierPreference
     set:
       parameter-name: StorageAccountAccessTierPreference
@@ -145,28 +131,37 @@ directive:
           - IdentityType
           - DeliveryType  
           - Detail
-          
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobSecrets', 'public Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobSecrets');  
-    
+
   - model-cmdlet:
-    - DataBoxDiskJobDetails
-    - DataBoxHeavyJobDetails
-    - DataBoxJobDetails
-    - StorageAccountDetails
-    - ManagedDiskDetails
-    - KeyEncryptionKey
-    - ShippingAddress
-    - ContactDetails
-    - TransferConfiguration
-```
-``` yaml
-directive:
-  no-inline:  # the name of the model schema in the swagger file
+      - model-name: DataBoxDiskJobDetails
+        cmdlet-name: New-AzDataBoxDiskJobDetailsObject
+      - model-name: DataBoxHeavyJobDetails
+        cmdlet-name: New-AzDataBoxHeavyJobDetailsObject
+      - model-name: DataBoxJobDetails
+        cmdlet-name: New-AzDataBoxJobDetailsObject
+      - model-name: StorageAccountDetails
+        cmdlet-name: New-AzDataBoxStorageAccountDetailsObject
+      - model-name: ManagedDiskDetails
+        cmdlet-name: New-AzDataBoxManagedDiskDetailsObject
+      - model-name: KeyEncryptionKey
+        cmdlet-name: New-AzDataBoxKeyEncryptionKeyObject
+      - model-name: ShippingAddress
+        cmdlet-name: New-AzDataBoxShippingAddressObject
+      - model-name: ContactDetails
+        cmdlet-name: New-AzDataBoxContactDetailsObject
+      - model-name: TransferConfiguration
+        cmdlet-name: New-AzDataBoxTransferConfigurationObject
+      - model-name: DataBoxCustomerDiskJobDetails
+        cmdlet-name: New-AzDataBoxCustomerDiskJobDetailsObject
+
+  - no-inline:  # the name of the model schema in the swagger file
     - KeyEncryptionKey
     - JobDetails
     - ShippingAddress
     - ContactDetails
     - TransferConfiguration
+
+  - where:
+      verb: Update
+    hide: true
 ```
