@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         public ServerRegistrationData UpdateServerRegistrationData(ServerRegistrationData pServerRegistrationData) => pServerRegistrationData;
 
         /// <summary>
-        /// Waits for access propogation.
+        /// Waits for access propagation.
         /// </summary>
         public void Wait()
         {
