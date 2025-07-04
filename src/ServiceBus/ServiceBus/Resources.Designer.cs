@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create a new Rule:{0} for Subscription:{1} of Namsespae:{2}.
+        ///   Looks up a localized string similar to Create a new Rule:{0} for Subscription:{1} of Namespace:{2}.
         /// </summary>
         internal static string CreateRule {
             get {
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create a new Subscription:{0} for Topic:{1} of Namsespae:{2}.
+        ///   Looks up a localized string similar to Create a new Subscription:{0} for Topic:{1} of Namespace:{2}.
         /// </summary>
         internal static string CreateSubscription {
             get {
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deleting Alias: {0} of Nnamespace{1}.
+        ///   Looks up a localized string similar to Deleting Alias: {0} of Namespace{1}.
         /// </summary>
         internal static string DRRemoveAlias {
             get {
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete Namespace:{0} ofthe ResourceGroup:{1}.
+        ///   Looks up a localized string similar to Delete Namespace:{0} of the ResourceGroup:{1}.
         /// </summary>
         internal static string RemoveNamespace {
             get {
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to delete  AtuhorizationRule:{0} of Namespace: {1}.
+        ///   Looks up a localized string similar to Are you sure you want to delete  AuthorizationRule:{0} of Namespace: {1}.
         /// </summary>
         internal static string RemoveNamespaceAuthorizationRule {
             get {
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removeing AtuhorizationRule:{0} from Queue::{1} of Namespace: {2}.
+        ///   Looks up a localized string similar to Removing AuthorizationRule:{0} from Queue::{1} of Namespace: {2}.
         /// </summary>
         internal static string RemoveQueueAuthorizationRule {
             get {
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removeing AtuhorizationRule:{0} from Topic: {1} of Namespace: {2}.
+        ///   Looks up a localized string similar to Removing AuthorizationRule:{0} from Topic: {1} of Namespace: {2}.
         /// </summary>
         internal static string RemoveTopicAuthorizationRule {
             get {
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing AtuhorizationRule:{0} of Namespace: {1}.
+        ///   Looks up a localized string similar to Removing AuthorizationRule:{0} of Namespace: {1}.
         /// </summary>
         internal static string RemovingNamespaceAuthorizationRule {
             get {
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove AtuhorizationRule:{0} from Queue:{1} of Namespace: {2}.
+        ///   Looks up a localized string similar to Are you sure you want to remove AuthorizationRule:{0} from Queue:{1} of Namespace: {2}.
         /// </summary>
         internal static string RemovingQueueAuthorizationRule {
             get {
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove AtuhorizationRule:{0} from Topic: {1} of Namespace: {2}.
+        ///   Looks up a localized string similar to Are you sure you want to remove AuthorizationRule:{0} from Topic: {1} of Namespace: {2}.
         /// </summary>
         internal static string RemovingTopicAuthorizationRule {
             get {
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Update Namespace:{0} of the ResorceGroup:{1}.
+        ///   Looks up a localized string similar to Update Namespace:{0} of the ResourceGroup:{1}.
         /// </summary>
         internal static string UpdateNamespace {
             get {

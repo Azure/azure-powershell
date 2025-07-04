@@ -172,7 +172,7 @@
     <value>Cannot update Sku while durability level is Bronze, please update durability level to Silver or above first.</value>
   </data>
   <data name="CertificateCommonNameMismatch" xml:space="preserve">
-    <value>Certificate common name mistmatch the name provided is: '{0}' and the common name found in the certificate is: '{1}'. Please make sure you're using the correct certificate and common name.</value>
+    <value>Certificate common name mismatch the name provided is: '{0}' and the common name found in the certificate is: '{1}'. Please make sure you're using the correct certificate and common name.</value>
   </data>
   <data name="CertificateMixTPAndCN" xml:space="preserve">
     <value>Unable to mix certificates by common name and thumbprint. There is already a certificate, if this was set up by thumbprint you cannot add a new one by common name and vice versa.</value>
@@ -334,7 +334,7 @@
     <value>Unable to retrieve the certificate object form keyvault {0}, with name {1} and version {2}. This might mean the certificate is not managed, please use -Thumbprint parameter to specify the thumbprint corresponding to the secret identifier.</value>
   </data>
   <data name="CertificateThumbprintMismatch" xml:space="preserve">
-    <value>The thumprint provided '{0}' is different from the thumbprint '{1}' for certificate {2} version {3} in keyvault {4}.</value>
+    <value>The thumbprint provided '{0}' is different from the thumbprint '{1}' for certificate {2} version {3} in keyvault {4}.</value>
   </data>
   <data name="NodeTypeUpdateIsNoOp" xml:space="preserve">
     <value>No change has been found for NodeType {0}. Operation is canceled.</value>

@@ -111,7 +111,7 @@ directive:
       verb: Set
     set:
       verb: Update
-  # fix subject name to encrichment
+  # fix subject name to enrichment
   - where:
       subject: DomainWhois
     set:
@@ -184,7 +184,7 @@ directive:
       subject: EntityTimeline
       variant: List
     remove: true
-  # Rename Id for user expierence
+  # Rename Id for user experience
   - where:
       subject: AlertRuleAction
       parameter-name: Id
@@ -337,7 +337,7 @@ directive:
   - where:
       variant: ^Append$|^AppendViaIdentity$|^Connect$|^ConnectViaIdentity$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Expand$|^ExpandViaIdentity$|^ExpandViaIdentityExpanded$|^GetViaIdentityExpanded$|^PostViaIdentity$|^Query$|^QueryViaIdentity$|^QueriesViaIdentity$|^Replace$|^ReplaceViaIdentity$
     remove: true
-  # fix Equals that conflicts with inhertied property
+  # fix Equals that conflicts with inherited property
   - where:
       enum-name: AutomationRulePropertyConditionSupportedOperator
       enum-value-name: Equals

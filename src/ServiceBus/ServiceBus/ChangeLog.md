@@ -101,7 +101,7 @@ for a better powershell experience and as a result would witness breaking change
 * Added new command 'Test-AzServiceBusNameAvailability' to check the name availability for queue and topic 
 
 ## Version 1.3.0
-* Added new cmmdlet added for generating SAS token : New-AzServiceBusAuthorizationRuleSASToken
+* Added new cmdlet added for generating SAS token : New-AzServiceBusAuthorizationRuleSASToken
 * Added verification and error message for authorizationrules rights if only 'Manage' is assigned
 
 ## Version 1.2.1

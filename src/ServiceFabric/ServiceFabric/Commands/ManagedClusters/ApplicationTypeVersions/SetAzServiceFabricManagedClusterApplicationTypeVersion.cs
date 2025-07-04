@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         private const string ByInputObject = "ByInputObject";
         private const string ByResourceId = "ByResourceId";
 
-        #region Paramters
+        #region Parameters
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByResourceGroup, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
         [ResourceGroupCompleter]

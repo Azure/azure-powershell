@@ -147,23 +147,23 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public SwitchParameter ConsiderWarningAsError { get; set; }
         
         [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
-            HelpMessage = "Specifies the maximum percent of unhelthy partitions per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
+            HelpMessage = "Specifies the maximum percent of unhealthy partitions per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
         [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
-            HelpMessage = "Specifies the maximum percent of unhelthy partitions per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
+            HelpMessage = "Specifies the maximum percent of unhealthy partitions per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
         [ValidateRange(0, 100)]
         public int DefaultServiceTypeMaxPercentUnhealthyPartitionsPerService { get; set; }
         
         [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
-            HelpMessage = "Specifies the maximum percent of unhelthy replicas per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
+            HelpMessage = "Specifies the maximum percent of unhealthy replicas per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
         [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
-            HelpMessage = "Specifies the maximum percent of unhelthy replicas per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
+            HelpMessage = "Specifies the maximum percent of unhealthy replicas per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
         [ValidateRange(0, 100)]
         public int DefaultServiceTypeMaxPercentUnhealthyReplicasPerPartition { get; set; }
         
         [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
-            HelpMessage = "Specifies the maximum percent of unhelthy services allowed by the health policy for the default service type to use for the monitored upgrade.")]
+            HelpMessage = "Specifies the maximum percent of unhealthy services allowed by the health policy for the default service type to use for the monitored upgrade.")]
         [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
-            HelpMessage = "Specifies the maximum percent of unhelthy services allowed by the health policy for the default service type to use for the monitored upgrade.")]
+            HelpMessage = "Specifies the maximum percent of unhealthy services allowed by the health policy for the default service type to use for the monitored upgrade.")]
         [ValidateRange(0, 100)]
         public int DefaultServiceTypeUnhealthyServicesMaxPercent { get; set; }
 
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                         if (currentApp.TypeVersion.Equals(this.ApplicationTypeVersion))
                         {
-                            throw new PSInvalidOperationException(string.Format("The application '{0}' is alrady running with type version '{1}'.", currentApp.Name, currentApp.TypeVersion));
+                            throw new PSInvalidOperationException(string.Format("The application '{0}' is already running with type version '{1}'.", currentApp.Name, currentApp.TypeVersion));
                         }
 
                         var appTypeVersion = SafeGetResource(() =>
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         if (appTypeVersion == null)
                         {
                             throw new PSArgumentException(
-                                string.Format("Application type version {0}:{1} not found. Create the type version before runnig this command.",
+                                string.Format("Application type version {0}:{1} not found. Create the type version before running this command.",
                                 currentApp.TypeName,
                                 this.ApplicationTypeVersion));
                         }

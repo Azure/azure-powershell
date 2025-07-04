@@ -157,7 +157,7 @@
     <value>Invoking Geo DR failover and reconfigure the alias - {0} to point to the secondary namespace - {1}</value>
   </data>
   <data name="DRRemoveAlias" xml:space="preserve">
-    <value>Deleting Alias: {0} of Nnamespace{1}</value>
+    <value>Deleting Alias: {0} of Namespace{1}</value>
   </data>
   <data name="FileDoesNotExist" xml:space="preserve">
     <value>File {0} does not exist</value>
@@ -187,10 +187,10 @@
     <value>Delete the Migration Configuration</value>
   </data>
   <data name="RemoveNamespace" xml:space="preserve">
-    <value>Delete Namespace:{0} ofthe ResourceGroup:{1}</value>
+    <value>Delete Namespace:{0} of the ResourceGroup:{1}</value>
   </data>
   <data name="RemoveNamespaceAuthorizationRule" xml:space="preserve">
-    <value>Are you sure you want to delete  AtuhorizationRule:{0} of Namespace: {1}</value>
+    <value>Are you sure you want to delete  AuthorizationRule:{0} of Namespace: {1}</value>
   </data>
   <data name="RemoveNamespacePrivateEndpoints" xml:space="preserve">
     <value>Remove PrivateEndpoint named: {0} for Namespace: {1} of ResourceGroup: {2}</value>
@@ -199,7 +199,7 @@
     <value>Deleting Queue:{0} of Namespace:{1}</value>
   </data>
   <data name="RemoveQueueAuthorizationRule" xml:space="preserve">
-    <value>Removing AtuhorizationRule:{0} from Queue::{1} of Namespace: {2}</value>
+    <value>Removing AuthorizationRule:{0} from Queue::{1} of Namespace: {2}</value>
   </data>
   <data name="RemoveRule" xml:space="preserve">
     <value>Deleting Rule:{0} for Subscription:{1} of Namespace:{2}</value>
@@ -211,16 +211,16 @@
     <value>Deleting Topic:{0} of Namespace:{1}</value>
   </data>
   <data name="RemoveTopicAuthorizationRule" xml:space="preserve">
-    <value>Removeing AuthorizationRule:{0} from Topic: {1} of Namespace: {2}</value>
+    <value>Removing AuthorizationRule:{0} from Topic: {1} of Namespace: {2}</value>
   </data>
   <data name="RemovingNamespaceAuthorizationRule" xml:space="preserve">
     <value>Removing AuthorizationRule:{0} of Namespace: {1}</value>
   </data>
   <data name="RemovingQueueAuthorizationRule" xml:space="preserve">
-    <value>Are you sure you want to remove AtuhorizationRule:{0} from Queue:{1} of Namespace: {2}</value>
+    <value>Are you sure you want to remove AuthorizationRule:{0} from Queue:{1} of Namespace: {2}</value>
   </data>
   <data name="RemovingTopicAuthorizationRule" xml:space="preserve">
-    <value>Are you sure you want to remove AtuhorizationRule:{0} from Topic: {1} of Namespace: {2}</value>
+    <value>Are you sure you want to remove AuthorizationRule:{0} from Topic: {1} of Namespace: {2}</value>
   </data>
   <data name="RevertMigrationConfiguration" xml:space="preserve">
     <value>Get the Migration configuration </value>
@@ -229,7 +229,7 @@
     <value>Start Standard to Premium Migration</value>
   </data>
   <data name="UpdateNamespace" xml:space="preserve">
-    <value>Update Namespace:{0} of the ResorceGroup:{1}</value>
+    <value>Update Namespace:{0} of the ResourceGroup:{1}</value>
   </data>
   <data name="UpdateNamespaceAuthorizationrule" xml:space="preserve">
     <value>Updating  AuthorizationRule named:{0} for Namespace: {1}</value>

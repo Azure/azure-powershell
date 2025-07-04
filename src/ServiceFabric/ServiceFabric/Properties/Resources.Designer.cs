@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Certificate common name mistmatch the name provided is: &apos;{0}&apos; and the common name found in the certificate is: &apos;{1}&apos;. Please make sure you&apos;re using the correct certificate and common name..
+        ///   Looks up a localized string similar to Certificate common name mismatch the name provided is: &apos;{0}&apos; and the common name found in the certificate is: &apos;{1}&apos;. Please make sure you&apos;re using the correct certificate and common name..
         /// </summary>
         internal static string CertificateCommonNameMismatch {
             get {
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The thumprint provided &apos;{0}&apos; is different from the thumbprint &apos;{1}&apos; for certificate {2} version {3} in keyvault {4}..
+        ///   Looks up a localized string similar to The thumbprint provided &apos;{0}&apos; is different from the thumbprint &apos;{1}&apos; for certificate {2} version {3} in keyvault {4}..
         /// </summary>
         internal static string CertificateThumbprintMismatch {
             get {

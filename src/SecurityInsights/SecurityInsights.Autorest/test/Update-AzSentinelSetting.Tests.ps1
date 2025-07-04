@@ -18,13 +18,13 @@ Describe 'Update-AzSentinelSetting' -Tag 'LiveOnly' {
     It 'UpdateExpanded' {
         Update-AzSentinelSetting -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -SettingsName Anomalies -Enabled $false 
         $settings = get-AzSentinelSetting -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
-        $sttings.Name | Should -Not -Contain "Anomalies"
+        $settings.Name | Should -Not -Contain "Anomalies"
     }
 
     It 'UpdateViaIdentityExpanded'  {
         $setting = Get-AzSentinelSetting -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -SettingsName EyesOn 
         Update-AzSentinelSetting -InputObject $setting -Enabled $false 
         $settings = get-AzSentinelSetting -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
-        $sttings.Name | Should -Not -Contain "EyesOn"
+        $settings.Name | Should -Not -Contain "EyesOn"
     }
 }

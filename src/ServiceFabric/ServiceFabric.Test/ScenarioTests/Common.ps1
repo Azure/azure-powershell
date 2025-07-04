@@ -23,7 +23,7 @@
 # $policy = New-AzKeyVaultCertificatePolicy -SecretContentType application/x-pkcs12 -SubjectName "CN=AzureRMSFTestCert2" -IssuerName Self
 # Add-AzKeyVaultCertificate -VaultName azurermsfkv -Name AzureRMSFTestCert2 -CertificatePolicy $policy
 # Get-AzKeyVaultCertificate -VaultName azurermsfkv -Name AzureRMSFTestCert2 | select Thumbprint, SecretId
-# # Add the above values to Get-SecretUrl and Get-Thumbrprint
+# # Add the above values to Get-SecretUrl and Get-Thumbprint
 #
 # # add certificate for application test to key vault (AzureRMSFTestCertApp)
 # $policyCertApp = New-AzKeyVaultCertificatePolicy -SecretContentType application/x-pkcs12 -SubjectName "CN=AzureRMSFTestCertApp" -IssuerName Self

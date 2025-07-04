@@ -496,7 +496,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
 
                 // resource group name can't be used for key vault name
-                // use random string instread
+                // use random string instead
                 if (sb.Length == 0)
                 {
                     targetCopy = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
@@ -592,7 +592,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
 
 
-            WriteVerboseWithTimestamp("Certificate fround for identifier {0} with thumbprint {1} and common name {2}.", secretIdentifier, thumbprint, commonName);
+            WriteVerboseWithTimestamp("Certificate found for identifier {0} with thumbprint {1} and common name {2}.", secretIdentifier, thumbprint, commonName);
 
             return new CertificateInformation()
             {

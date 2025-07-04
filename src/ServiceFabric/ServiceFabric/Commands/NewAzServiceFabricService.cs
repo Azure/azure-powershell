@@ -504,7 +504,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             if (deploymentTask.IsFaulted)
             {
                 PrintSdkExceptionDetail(deploymentTask.Exception);
-                WriteVerbose("Create Service 0peration failed.");
+                WriteVerbose("Create Service Operation failed.");
                 throw deploymentTask.Exception;
             }
 
