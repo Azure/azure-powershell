@@ -388,7 +388,7 @@ Accept wildcard characters: False
 ### -SkuCapacity
 Specifies the number of Throughput Units that defines the capacity for the namespace.
 The property default value is1 which signifies 1 Throughput Unit = 1MB/s ingress and 2MB/s egress per namespace.
-Min capacity is 1 andmax allowed capacity is 20.
+Min capacity is 1 and max allowed capacity is 20.
 
 ```yaml
 Type: System.Int32
