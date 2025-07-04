@@ -86,7 +86,7 @@ directive:
   - where:
       subject: ^MonitorAccountCredential$
     remove: true
-  # remove varinat
+  # remove variant
   - where:
       subject: ^MonitorSSODetail$
       variant: ^Get$|^GetViaIdentity$|^GetViaIdentityExpanded$

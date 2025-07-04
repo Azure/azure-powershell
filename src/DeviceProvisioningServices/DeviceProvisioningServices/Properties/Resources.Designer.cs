@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Propert
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create /upload an Azure IoT Hub Device Provisioing Service certificate.
+        ///   Looks up a localized string similar to Create /upload an Azure IoT Hub Device Provisioning Service certificate.
         /// </summary>
         internal static string AddCertificate {
             get {
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Propert
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create new an Azure IoT Hub Device Provisioing Service certificate verification code.
+        ///   Looks up a localized string similar to Create new an Azure IoT Hub Device Provisioning Service certificate verification code.
         /// </summary>
         internal static string NewCertificateVerificationCode {
             get {
