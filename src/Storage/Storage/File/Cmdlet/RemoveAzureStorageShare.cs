@@ -127,7 +127,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         bool retryDeleteSnapshot = false;
 
                         //Force means will delete the share anyway, so use 'IncludeSnapshots' to delete the share even has snapshot, or delete will fail when share has snapshot
-                        // To delete a Share shapshot, must use 'None' 
+                        // To delete a Share snapshot, must use 'None' 
                         if (IncludeAllSnapshot.IsPresent)
                         {
                             includeSnapshots = true;
