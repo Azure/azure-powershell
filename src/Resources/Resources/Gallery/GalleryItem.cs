@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Gallery
 
         /// <summary>
         /// Optional. Gets or sets Azure Portal Uder Interface Definition
-        /// artificat Uri.
+        /// artifact Uri.
         /// </summary>
         public string UiDefinitionUri
         {

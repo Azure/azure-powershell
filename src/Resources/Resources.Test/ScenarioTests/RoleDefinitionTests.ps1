@@ -119,7 +119,7 @@ function Test-RdNegativeScenarios
     $inputFilePath = Join-Path -Path $TestOutputRoot -ChildPath Resources\RoleDefinition.json
 	Assert-Throws { Set-AzRoleDefinition -InputFile $inputFilePath } $badIdException
 
-    # Role Defintion not provided.
+    # Role Definition not provided.
     $roleDefNotProvided = "Parameter set cannot be resolved using the specified named parameters."
     Assert-Throws { Set-AzRoleDefinition } $roleDefNotProvided
 

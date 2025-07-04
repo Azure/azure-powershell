@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
         public static PackagedTemplate PackBicep(string filePath, Action<string> writeVerbose, Action<string> writeWarning)
         {
-            // Complex packaging is unneccessary for Bicep because it doesn't support usage of 'relativePath'.
+            // Complex packaging is unnecessary for Bicep because it doesn't support usage of 'relativePath'.
             var templateJson = BicepUtility.Create().BuildBicepFile(filePath, msg => writeVerbose(msg), msg => writeWarning(msg));
             
             return new PackagedTemplate
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                     }
 
                     // Let's make sure we're not referencing a file outside of our root directory
-                    // heirarchy. We won't allow such references for security purposes:
+                    // hierarchy. We won't allow such references for security purposes:
 
                     if (!absoluteLocalPath.StartsWith(
                         context.RootTemplateDirectory + Path.DirectorySeparatorChar,
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 {
                     throw new InvalidOperationException(
                         $"Unable to unpack artifact '{artifact.Path}' because it would create a file " +
-                        $"outside of the target directory heirarchy of '{targetDirectory}'");
+                        $"outside of the target directory hierarchy of '{targetDirectory}'");
                 }
             }
 
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             rootDirectoryPath = rootDirectoryPath
                 .TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
 
-            // Ensure we have a trailing seperator
+            // Ensure we have a trailing separator
             rootDirectoryPath += Path.DirectorySeparatorChar;
 
             // Note: We use Path.GetFullPath to ensure the paths are normalized...

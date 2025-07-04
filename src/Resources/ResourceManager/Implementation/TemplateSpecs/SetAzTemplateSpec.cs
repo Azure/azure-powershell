@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             }
                             catch
                             {
-                                // Check if the user may have inadvertantly passed a file path using "-TemplateJson"
+                                // Check if the user may have inadvertently passed a file path using "-TemplateJson"
                                 // instead of using "-TemplateFile". If they did, display a warning message. Note we
                                 // do not currently automatically switch to using a file in this case because if the 
                                 // JSON string is coming from an external script/source not authored directly by the
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             tags: Tag
                         );
 
-                    // As the root template spec is a seperate resource type, it won't contain version 
+                    // As the root template spec is a separate resource type, it won't contain version 
                     // details. To provide more information to the user, let's get the template spec
                     // with all of its version details:
 

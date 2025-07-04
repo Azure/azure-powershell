@@ -108,7 +108,7 @@ Describe 'PolicyObjectPiping' {
         $updatedDescription | Should -Be $expected.Description
     }
 
-    It 'Update policy assignment from pipline and command line' {
+    It 'Update policy assignment from pipeline and command line' {
         # update the policy assignment
         $actual = Get-AzPolicyAssignment -Name $policyAssName -Scope $rgScope | Update-AzPolicyAssignment -Description $updatedDescription
         $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $rgScope

@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         public static readonly string DefaultApiVersion = "2015-01-01";
 
         /// <summary>
-        /// The default appliction API version.
+        /// The default application API version.
         /// </summary>
         public static readonly string ApplicationApiVersion = "2017-09-01";
 

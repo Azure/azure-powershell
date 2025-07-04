@@ -643,7 +643,7 @@ Verifies that creating an ra with an SP displays correct error message
 #>
 function Test-RaCreatedBySP
 {
-    # Prerequisite: Conect to azure with SP
+    # Prerequisite: Connect to azure with SP
     # Create role assignment
     # powershell-testmember's PrincipalId
     $testUser = "3d9979c5-7de9-4cc5-bc9c-d63d365c5b5c"
@@ -695,7 +695,7 @@ function Test-RaWithV2Conditions{
     -Description $Description -Condition $Condition -ConditionVersion $ConditionVersion
 
     #Then
-    Assert-NotNull $data "The role assignment was not created succesfully"
+    Assert-NotNull $data "The role assignment was not created successfully"
     Assert-AreEqual $RoleDefinitionId $data.RoleDefinitionId "Assertion failed because expected RoleDefinitionId '$RoleDefinitionId' does not match actual '$data.RoleDefinitionId'"
     Assert-AreEqual $PrincipalId $data.ObjectId "Assertion failed because expected PrincipalId '$PrincipalId' does not match actual '$data.ObjectId'"
     Assert-AreEqual $Scope $data.Scope "Assertion failed because expected Scope '$Scope' does not match actual '$data.Scope'"
@@ -726,7 +726,7 @@ function Test-RaWithV2ConditionsOnly{
     $assignment = New-AzRoleAssignmentWithId -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId -Description $Description -Condition $Condition -roleAssignmentId 734de5f5-c680-41c0-8beb-67b98c3539d2
 
     #Then
-    Assert-NotNull $assignment "The role assignment was not created succesfully"
+    Assert-NotNull $assignment "The role assignment was not created successfully"
     Assert-AreEqual $RoleDefinitionId $assignment.RoleDefinitionId "Assertion failed because expected RoleDefinitionId '$RoleDefinitionId' does not match actual '$data.RoleDefinitionId'"
     Assert-AreEqual $PrincipalId $assignment.ObjectId "Assertion failed because expected PrincipalId '$PrincipalId' does not match actual '$data.ObjectId'"
     Assert-AreEqual $Scope $assignment.Scope "Assertion failed because expected Scope '$Scope' does not match actual '$data.Scope'"

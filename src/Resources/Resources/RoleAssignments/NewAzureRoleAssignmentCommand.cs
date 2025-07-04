@@ -213,25 +213,25 @@ namespace Microsoft.Azure.Commands.Resources
         public string ConditionVersion { get; set; } = null;
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
-            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+            HelpMessage = "To be used with ObjectId. Specifies the type of the assigned object")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithObjectId,
-            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+            HelpMessage = "To be used with ObjectId. Specifies the type of the assigned object")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSignInName,
-            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+            HelpMessage = "To be used with ObjectId. Specifies the type of the assigned object")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSPN,
-            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+            HelpMessage = "To be used with ObjectId. Specifies the type of the assigned object")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithObjectId,
-            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+            HelpMessage = "To be used with ObjectId. Specifies the type of the assigned object")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSignInName,
-            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+            HelpMessage = "To be used with ObjectId. Specifies the type of the assigned object")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSPN,
-            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+            HelpMessage = "To be used with ObjectId. Specifies the type of the assigned object")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
-            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+            HelpMessage = "To be used with ObjectId. Specifies the type of the assigned object")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSignInName,
-            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+            HelpMessage = "To be used with ObjectId. Specifies the type of the assigned object")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSPN,
-            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+            HelpMessage = "To be used with ObjectId. Specifies the type of the assigned object")]
         [PSArgumentCompleter("User", "Group", "Service Principal")]
         [Alias("PrincipalType")]
         public string ObjectType { get; set; } = null;
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Commands.Resources
                 catch (JsonException)
                 {
                     WriteVerbose("Deserializing the input role assignment failed.");
-                    throw new Exception("Deserializing the input role assignment failed. Please confirm the file is properly formated");
+                    throw new Exception("Deserializing the input role assignment failed. Please confirm the file is properly formatted");
                 }
             }
             if (string.IsNullOrEmpty(Condition) ^ string.IsNullOrEmpty(ConditionVersion))

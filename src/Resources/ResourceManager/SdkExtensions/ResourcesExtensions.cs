@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             return resourcesTable.ToString();
         }
 
-        // TODO: This function and the above tags contruction function could be combined into one function.
+        // TODO: This function and the above tags construction function could be combined into one function.
         // Leaving for now to avoid introducing problems in existing code.
         public static string ConstructTagsTableFromIDictionary(IDictionary<string, string> tags)
         {

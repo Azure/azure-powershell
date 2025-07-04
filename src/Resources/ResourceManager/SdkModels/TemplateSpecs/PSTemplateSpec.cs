@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
     }
 
     /// <summary>
-    /// Exclusively used for wrapping PSTempateSpecs for use with special formatting
+    /// Exclusively used for wrapping PSTemplateSpecs for use with special formatting
     /// defined within our format.ps1xml file.
     /// </summary>
     public class PSTemplateSpecListItem : PSTemplateSpec

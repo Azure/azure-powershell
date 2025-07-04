@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
         }
 
         /// <summary>
-        /// Add parameters within TemplateObject to paramterObject hashtable, 
+        /// Add parameters within TemplateObject to parameterObject hashtable, 
         /// while accounting for special handling for KeyVault references.
         /// </summary>
         public static void AddTemplateObjectParametersToHashtable(Hashtable templateParameterObject, Hashtable parameterObject)

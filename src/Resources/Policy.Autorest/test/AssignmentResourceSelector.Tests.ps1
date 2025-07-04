@@ -86,7 +86,7 @@ Describe 'AssignmentResourceSelector' -Tag 'LiveOnly' {
             $remove = ($assignment | Remove-AzPolicyAssignment -PassThru) -and $remove
         }
 
-        # remove the policy defintion
+        # remove the policy definition
         $remove = (Remove-AzPolicyDefinition -Name $policyDefName -Force -PassThru) -and $remove
 
         # validate
