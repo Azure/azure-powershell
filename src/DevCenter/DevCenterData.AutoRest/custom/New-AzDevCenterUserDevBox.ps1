@@ -119,6 +119,7 @@ function New-AzDevCenterUserDevBox {
       [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.LocalAdminStatus])]
       [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
       [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.LocalAdminStatus]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ParameterBreakingChangeAttribute("LocalAdministrator", "15.0.0", "3.0.0", "2025/11/18")]
       # Indicates whether the owner of the Dev Box is a local administrator.
       ${LocalAdministrator},
   

@@ -62,6 +62,7 @@ https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradminp
 function New-AzDevCenterAdminPool {
   [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IPool])]
   [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+  [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.GenericBreakingChangeAttribute("MemberName and PlanName will be removed from InputObject", "15.0.0", "3.0.0", "2025/11/18")]
   param(
       [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
       [Alias('PoolName')]
