@@ -133,7 +133,7 @@ function Update-GeneratedSubModule {
     # save guid from psd1 if existed for later use
     $subModuleNameTrimmed = $SubModuleName.split('.')[-2]
     $psd1Name = Get-ChildItem $GeneratedDirectory | Where-Object { $_.Name -match "Az\.${subModuleNameTrimmed}\.psd1" } | Foreach-Object {$_.Name}
-    if (Test-Path (Join-Path $GeneratedDirectory $psd1Name)) {
+    if ($psd1Name -And (Test-Path (Join-Path $GeneratedDirectory $psd1Name))) {
         $guid = (Import-LocalizedData -BaseDirectory $GeneratedDirectory -FileName $psd1Name).GUID
     }
 
