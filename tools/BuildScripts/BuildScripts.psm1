@@ -132,8 +132,9 @@ function Update-GeneratedSubModule {
 
     # save guid from psd1 if existed for later use
     $subModuleNameTrimmed = $SubModuleName.split('.')[-2]
-    if (Test-Path (Join-Path $GeneratedDirectory "Az.$subModuleNameTrimmed.psd1")) {
-        $guid = (Import-LocalizedData -BaseDirectory $GeneratedDirectory -FileName "Az.$subModuleNameTrimmed.psd1").GUID
+    $psd1Name = Get-ChildItem $GeneratedDirectory | Where-Object { $_.Name -match "Az\.${subModuleNameTrimmed}\.psd1" } | Foreach-Object {$_.Name}
+    if (Test-Path (Join-Path $GeneratedDirectory $psd1Name)) {
+        $guid = (Import-LocalizedData -BaseDirectory $GeneratedDirectory -FileName $psd1Name).GUID
     }
 
     # clean generated directory before update
@@ -160,7 +161,12 @@ function Update-GeneratedSubModule {
     if (Test-Path $localModulesPath) {
         Remove-Item -Path $localModulesPath -Recurse -Force
     }
-    $fileToUpdate = @('generated', 'resources', "Az.$subModuleNameTrimmed.psd1", "Az.$subModuleNameTrimmed.psm1", "Az.$subModuleNameTrimmed.format.ps1xml", 'exports', 'internal', 'test-module.ps1', 'check-dependencies.ps1')
+
+    $psd1Name = Get-ChildItem $SourceDirectory | Where-Object { $_.Name -match "Az\.${subModuleNameTrimmed}\.psd1" } | Foreach-Object {$_.Name}
+    $psm1Name = Get-ChildItem $SourceDirectory | Where-Object { $_.Name -match "Az\.${subModuleNameTrimmed}\.psm1" } | Foreach-Object {$_.Name}
+    $formatName = Get-ChildItem $SourceDirectory | Where-Object { $_.Name -match "Az\.${subModuleNameTrimmed}\.format\.ps1xml" } | Foreach-Object {$_.Name}
+    $csprojName = Get-ChildItem $SourceDirectory | Where-Object { $_.Name -match "Az\.${subModuleNameTrimmed}\.csproj" } | Foreach-Object {$_.Name}
+    $fileToUpdate = @('generated', 'resources', $psd1Name, $psm1Name, $formatName, 'exports', 'internal', 'test-module.ps1', 'check-dependencies.ps1')
     # Copy from src/ to generated/
     $fileToUpdate | Foreach-Object {
         $moveFrom = Join-Path $SourceDirectory $_
@@ -169,13 +175,13 @@ function Update-GeneratedSubModule {
         Copy-Item -Path $moveFrom -Destination $moveTo -Recurse -Force
     }
     # regenerate csproj
-    New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName "Az.$subModuleNameTrimmed.csproj" -GeneratedDirectory $GeneratedDirectory -ModuleRootName $ModuleRootName -SubModuleName $subModuleNameTrimmed -SubModuleNameFull $SubModuleName
+    New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName $csprojName -GeneratedDirectory $GeneratedDirectory -ModuleRootName $ModuleRootName -SubModuleName $subModuleNameTrimmed -SubModuleNameFull $SubModuleName
 
     # revert guid in psd1 so that no conflict in updating this file
     if ($guid) {
-        $psd1Path = Join-Path $GeneratedDirectory "Az.$subModuleNameTrimmed.psd1"
+        $psd1Path = Join-Path $GeneratedDirectory $psd1Name
         $psd1Content = Get-Content $psd1Path
-        $newGuid = (Import-LocalizedData -BaseDirectory $GeneratedDirectory -FileName "Az.$subModuleNameTrimmed.psd1").GUID
+        $newGuid = (Import-LocalizedData -BaseDirectory $GeneratedDirectory -FileName $psd1Name).GUID
         $psd1Content -replace $newGuid, $guid | Set-Content $psd1Path -Force
     }
 
