@@ -16,7 +16,14 @@ create storage for a managedEnvironment.
 ```
 New-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>]
- [-AzureFileAccountName <String>] [-AzureFileShareName <String>] [-DefaultProfile <PSObject>]
+ [-AzureFileAccountKeySecure <SecureString>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,26 +34,20 @@ New-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -ResourceGr
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
-```
-New-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### CreateViaIdentityManagedEnvironmentExpanded
 ```
 New-AzContainerAppManagedEnvStorage -Name <String> -ManagedEnvironmentInputObject <IAppIdentity>
- [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>]
- [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>] [-AzureFileAccountKeySecure <SecureString>]
+ [-AzureFileAccountName <String>] [-AzureFileShareName <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzContainerAppManagedEnvStorage -InputObject <IAppIdentity> [-AzureFileAccessMode <String>]
- [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AzureFileAccountKey <String>] [-AzureFileAccountKeySecure <SecureString>] [-AzureFileAccountName <String>]
+ [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,6 +93,21 @@ Storage account key for azure file.
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureFileAccountKeySecure
+Storage account key for azure file.
+
+```yaml
+Type: System.Security.SecureString
 Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -153,7 +169,7 @@ Name of the Environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -228,7 +244,7 @@ Name of the storage.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString, CreateViaIdentityManagedEnvironmentExpanded
 Aliases: StorageName
 
 Required: True
@@ -244,7 +260,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -259,7 +275,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
