@@ -143,7 +143,7 @@ export async function getExamplesFromSpecs(workingDirectory: string): Promise<st
                     }
                     const exJson = await exResponse.json();
                     const exampleFileName = path.join(exampleSpecsPath, `${ex.name}`);
-                    await fs.promises.writeFile(exampleFileName, JSON.stringify(exJson, null, 2), 'utf8');
+                    fs.writeFileSync(exampleFileName, JSON.stringify(exJson, null, 2), 'utf8');
                     console.log(`Example saved to ${exampleFileName}`);
                     exampleSet.add(ex.download_url);
                 }
