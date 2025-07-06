@@ -148,7 +148,7 @@ namespace StorageSync.Test.Common
         }
 
         /// <summary>
-        /// Waits for access propogation.
+        /// Waits for access propagation.
         /// </summary>
         public void Wait()
         {

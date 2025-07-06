@@ -28,15 +28,15 @@ For information on how to develop for `Az.NetworkCloud`, see [how-to.md](how-to.
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name : https://github.com/Azure/azure-rest-api-specs/
-# the 2024-07-01 stable in a commit: f999652ecea2a4bddc2b08a113617e23e98f10d4
-commit: f999652ecea2a4bddc2b08a113617e23e98f10d4
+# the 2025-02-01 stable in a commit: 08973141b0d31a7e75d4dc43a5224a1814a0994f
+commit: 08973141b0d31a7e75d4dc43a5224a1814a0994f
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/networkcloud/resource-manager/readme.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/networkcloud/resource-manager/Microsoft.NetworkCloud/stable/2024-07-01/networkcloud.json
+  - $(repo)/specification/networkcloud/resource-manager/Microsoft.NetworkCloud/stable/2025-02-01/networkcloud.json
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
@@ -255,6 +255,27 @@ directive:
       parameter-name: BgpServiceLoadBalancerConfigurationIPAddressPool
     set:
       parameter-name: BgpIPAddressPool
+  - where:
+      parameter-name: CommandOutputSettingsAssociatedIdentityType
+    set:
+      parameter-name: AssociatedIdentityType
+      parameter-description: The type of associated identity for CommandOutputSettings.
+  - where:
+      parameter-name: CommandOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId
+    set:
+      parameter-name: AssociatedIdentityUserAssignedIdentityResourceId
+      parameter-description: The resource ID of the user assigned identity for CommandOutputSettings.
+  # property renames
+  - where:
+      model-name: Cluster
+      property-name: CommandOutputSettingsAssociatedIdentityType
+    set:
+      property-name: AssociatedIdentityType
+  - where:
+      model-name: Cluster
+      property-name: CommandOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId
+    set:
+      property-name: AssociatedIdentityUserAssignedIdentityResourceId
 
   # define password parameters as `password` type, which generates it as "SecureString"
   - from: swagger-document

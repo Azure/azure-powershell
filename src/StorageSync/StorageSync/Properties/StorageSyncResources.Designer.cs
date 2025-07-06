@@ -556,7 +556,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Succesfully retrieved secondary certificate with thumbprint: {0} from store with HResult: {1}.
+        ///   Looks up a localized string similar to Successfully retrieved secondary certificate with thumbprint: {0} from store with HResult: {1}.
         /// </summary>
         internal static string ResetCertificateMessageFormat3 {
             get {

@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
                 else
                 {
-                    // Set IPv4 config even if no PeerAddresType has been specified for backward compatibility
+                    // Set IPv4 config even if no PeerAddressType has been specified for backward compatibility
                     peering.MicrosoftPeeringConfig = new PSPeeringConfig();
                     peering.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MicrosoftConfigAdvertisedPublicPrefixes?.ToList();
                     peering.MicrosoftPeeringConfig.CustomerASN = this.MicrosoftConfigCustomerAsn;

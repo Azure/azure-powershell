@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.FluidRelay/fluidRelayServers", "2025-03-10-preview", true, true, true);
         }
         /// <summary>
-        /// Register priavte endopoint connection and private link resource configuration
+        /// Register private endpoint connection and private link resource configuration
         /// </summary>
         /// <param name="type">Resource type</param>
         /// <param name="apiVersion">Resource api version</param>
