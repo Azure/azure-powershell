@@ -105,14 +105,14 @@ export const createExamplesFromSpecs = async <Args extends ZodRawShape>(args: Ar
     const workingDirectory = z.string().parse(Object.values(args)[0]);
     const examplePath = path.join(workingDirectory, "examples");
     const exampleSpecsPath = await utils.getExamplesFromSpecs(workingDirectory);
-    return [exampleSpecsPath, examplePath];
+    return [examplePath, exampleSpecsPath];
 }
 
 export const createTestsFromSpecs = async <Args extends ZodRawShape>(args: Args): Promise<string[]> => {
     const workingDirectory = z.string().parse(Object.values(args)[0]);
     const testPath = path.join(workingDirectory, "test");
     const exampleSpecsPath = await utils.getExamplesFromSpecs(workingDirectory);
-    return [exampleSpecsPath, testPath];
+    return [testPath, exampleSpecsPath];
 }
 
 export const toolServices = <Args extends ZodRawShape>(name: string, responseTemplate: string|undefined) => {

@@ -54,21 +54,19 @@ This MCP server is designed to work with Azure PowerShell module development wor
 
 ### Add as mcp server in Github Copilot Agent mode
 
-- Ensure `pwsh` & `npm` is installed globally.
-- Simply add this mcp server to your workspace settings `.vscode/mcp.json` in VsCode to include:
+Simple add this mcp server to your user `settings.json` in VsCode to include:
 
 ```json
-{
-    "inputs": [],
-    "servers": {
-        "az-pwsh-mcp-server": {
+   "mcp": {
+      "servers": {
+         "az-pwsh-mcp-server": {
             "type": "stdio",
-            "command": "pwsh",
-            "args": ["-Command", "npm install --no-audit; npm run fresh"],
-            "cwd": "${workspaceFolder}/tools/Mcp",
-        }
-    }
-}
+            "command": "sh",
+            "args": ["-c", "npm install && npm run fresh"],
+            "cwd": "./azure-powershell/tools/Mcp",
+         },
+      }
+   }
 ```
 
 ### As an MCP Server

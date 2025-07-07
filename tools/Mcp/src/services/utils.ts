@@ -1,7 +1,7 @@
 import fs from 'fs';
 import yaml from "js-yaml";
 import { yamlContent } from '../types.js';
-import { execSync } from 'child_process';
+import { exec } from 'child_process';
 import path from 'path';
 
 const _pwshCD = (path: string): string => { return `pwsh -Command "$path = resolve-path ${path} | Set-Location"` }
@@ -21,13 +21,8 @@ function testYaml() {
 }
 
 export function generateAndBuild(workingDirectory: string): void {
-    const genBuildCommand = `${_pwshCD(workingDirectory)}; ${_autorest}; ${_pwshBuild};"`;
-    try {
-        const result = execSync(genBuildCommand, { stdio: 'inherit' });
-    } catch (error) {
-        console.error("Error executing command:", error);
-        throw error;
-    }
+    const command = [_pwshCD(workingDirectory), _autorest, _pwshBuild].join(";");
+    exec(command);
 }
 
 export function getYamlContentFromReadMe(readmePath: string): string {
@@ -96,13 +91,7 @@ export async function findAllPolyMorphism(workingDirectory: string): Promise<Map
 export async function getExamplesFromSpecs(workingDirectory: string): Promise<string> {
     const moduleReadmePath = path.join(workingDirectory, "README.md");
     const yamlContent: yamlContent = yaml.load(getYamlContentFromReadMe(moduleReadmePath)) as yamlContent;
-
-    if (!yamlContent['input-file']) {
-        throw new Error("'input-file' field is missing in the 'README.md' Autorest Config file.");
-    }
-
-    const inputFiles = Array.isArray(yamlContent['input-file']) ? yamlContent['input-file'] : [yamlContent['input-file']];
-    const swaggerUrls = getSwaggerUrl(yamlContent.commit, inputFiles);
+    const swaggerUrls = getSwaggerUrl(yamlContent.commit, yamlContent['input-file'] as string[]);
     const exampleSet: Set<string> = new Set<string>();
     
     const exampleSpecsPath = path.join(workingDirectory, "exampleSpecs");
@@ -142,7 +131,7 @@ export async function getExamplesFromSpecs(workingDirectory: string): Promise<st
                         continue;
                     }
                     const exJson = await exResponse.json();
-                    const exampleFileName = path.join(exampleSpecsPath, `${ex.name}`);
+                    const exampleFileName = path.join(exampleSpecsPath, `${ex.name}.json`);
                     fs.writeFileSync(exampleFileName, JSON.stringify(exJson, null, 2), 'utf8');
                     console.log(`Example saved to ${exampleFileName}`);
                     exampleSet.add(ex.download_url);
