@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a DynatraceSingleSignOnResource
+Update a DynatraceSingleSignOnResource
 .Description
-update a DynatraceSingleSignOnResource
+Update a DynatraceSingleSignOnResource
 .Example
 Update-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -AadDomain "mpliftrlogz20210811outlook.onmicrosoft.com"
 

@@ -73,7 +73,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models
         Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolProperties Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Sku()); set { {_sku = value;} } }
@@ -82,31 +82,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models
         Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadata Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.SystemMetadata()); set { {_systemData = value;} } }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).CreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).CreatedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).CreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).CreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).CreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).LastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).LastModifiedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).LastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).LastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISystemMetadataInternal)SystemData).LastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.PropertyOrigin.Inherited)]

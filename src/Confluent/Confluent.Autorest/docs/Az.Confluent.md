@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Confluent
-Module Guid: 7fd2f629-040c-406d-9cab-b59bc572d6f9
+Module Guid: 4e2e8471-7a6c-4d41-a2ab-0dd8b93b28c4
 Download Help Link: https://learn.microsoft.com/powershell/module/az.confluent
 Help Version: 1.0.0.0
 Locale: en-US
@@ -18,11 +18,11 @@ List Confluent marketplace agreements in the subscription.
 Get the properties of a specific Organization resource.
 
 ### [New-AzConfluentOrganization](New-AzConfluentOrganization.md)
-create Organization resource
+Create Organization resource
 
 ### [Remove-AzConfluentOrganization](Remove-AzConfluentOrganization.md)
 Delete Organization resource
 
 ### [Update-AzConfluentOrganization](Update-AzConfluentOrganization.md)
-update Organization resource
+Update Organization resource
 

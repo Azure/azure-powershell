@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create virtual network.</summary>
+    /// <summary>create virtual network.</summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks/{virtualNetworkName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzConnectedVMwareVNet_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetwork))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Description(@"Create virtual network.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Description(@"create virtual network.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks/{virtualNetworkName}", ApiVersion = "2023-10-01")]
     public partial class NewAzConnectedVMwareVNet_CreateExpanded : global::System.Management.Automation.PSCmdlet,

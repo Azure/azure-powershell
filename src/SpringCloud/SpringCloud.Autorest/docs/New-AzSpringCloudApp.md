@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSpringCloudApp
 
 ## SYNOPSIS
-create a new App or update an exiting App.
+Create a new App or update an exiting App.
 
 ## SYNTAX
 
@@ -23,7 +23,7 @@ New-AzSpringCloudApp -Name <String> -ResourceGroupName <String> -ServiceName <St
 ```
 
 ## DESCRIPTION
-create a new App or update an exiting App.
+Create a new App or update an exiting App.
 
 ## EXAMPLES
 

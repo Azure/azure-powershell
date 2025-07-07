@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-update the metadata of a Windows IoT Device Service.
+Update the metadata of a Windows IoT Device Service.
 The usual pattern to modify a property is to retrieve the Windows IoT Device Service metadata and security metadata, and then combine them with the modified values in a new body to update the Windows IoT Device Service.
 .Description
-update the metadata of a Windows IoT Device Service.
+Update the metadata of a Windows IoT Device Service.
 The usual pattern to modify a property is to retrieve the Windows IoT Device Service metadata and security metadata, and then combine them with the modified values in a new body to update the Windows IoT Device Service.
 .Example
 Update-AzWindowsIotServicesDevice -Name wsi-t03 -ResourceGroupName azure-rg-test -Quantity 10

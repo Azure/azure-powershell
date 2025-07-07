@@ -2365,6 +2365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// <param name="clusterPoolName">The name of the cluster pool.</param>
         /// <param name="clusterName">The name of the HDInsight cluster.</param>
         /// <param name="body">The library management operation.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2373,7 +2374,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClusterLibrariesManageLibraries(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryManagementOperation body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task ClusterLibrariesManageLibraries(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryManagementOperation body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
@@ -2407,13 +2408,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ClusterLibrariesManageLibraries_Call (request, onDefault,eventListener,sender);
+                await this.ClusterLibrariesManageLibraries_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Library management operations on HDInsight on AKS cluster.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The library management operation.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2422,7 +2424,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClusterLibrariesManageLibrariesViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryManagementOperation body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task ClusterLibrariesManageLibrariesViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryManagementOperation body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
@@ -2469,7 +2471,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ClusterLibrariesManageLibraries_Call (request, onDefault,eventListener,sender);
+                await this.ClusterLibrariesManageLibraries_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -2479,6 +2481,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// <param name="clusterPoolName">The name of the cluster pool.</param>
         /// <param name="clusterName">The name of the HDInsight cluster.</param>
         /// <param name="jsonString">Json string supplied to the ClusterLibrariesManageLibraries operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2486,7 +2489,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClusterLibrariesManageLibrariesViaJsonString(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClusterLibrariesManageLibrariesViaJsonString(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
@@ -2520,12 +2523,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ClusterLibrariesManageLibraries_Call (request, onDefault,eventListener,sender);
+                await this.ClusterLibrariesManageLibraries_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "ClusterLibrariesManageLibraries" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2533,7 +2537,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClusterLibrariesManageLibraries_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClusterLibrariesManageLibraries_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2642,6 +2646,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }

@@ -182,40 +182,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         public int? MaxPod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).MaxPod; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).MaxPod = value ?? default(int); }
 
         /// <summary>Internal Acessors for CreationData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICreationData Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolInternal.CreationData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).CreationData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).CreationData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICreationData Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolInternal.CreationData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).CreationData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).CreationData = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for CurrentOrchestratorVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolInternal.CurrentOrchestratorVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).CurrentOrchestratorVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).CurrentOrchestratorVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolInternal.CurrentOrchestratorVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).CurrentOrchestratorVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).CurrentOrchestratorVersion = value ?? null; }
 
         /// <summary>Internal Acessors for KubeletConfig</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IKubeletConfig Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolInternal.KubeletConfig { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).KubeletConfig; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).KubeletConfig = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IKubeletConfig Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolInternal.KubeletConfig { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).KubeletConfig; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).KubeletConfig = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for LinuxOSConfig</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ILinuxOSConfig Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolInternal.LinuxOSConfig { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).LinuxOSConfig; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).LinuxOSConfig = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ILinuxOSConfig Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolInternal.LinuxOSConfig { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).LinuxOSConfig; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).LinuxOSConfig = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for NodeImageVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolInternal.NodeImageVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).NodeImageVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).NodeImageVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolInternal.NodeImageVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).NodeImageVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).NodeImageVersion = value ?? null; }
 
         /// <summary>Internal Acessors for PowerState</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IPowerState Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolInternal.PowerState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).PowerState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).PowerState = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IPowerState Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolInternal.PowerState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).PowerState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).PowerState = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfileProperties Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterAgentPoolProfileProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for UpgradeSetting</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettings Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolInternal.UpgradeSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).UpgradeSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).UpgradeSetting = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettings Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolInternal.UpgradeSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).UpgradeSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)Property).UpgradeSetting = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Type = value ?? null; }
 
         /// <summary>The minimum number of nodes for auto-scaling</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]

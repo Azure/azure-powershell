@@ -24,6 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <param name="resourceName">The name of the managed cluster resource.</param>
         /// <param name="agentPoolName">The name of the agent pool.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -31,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AgentPoolsAbortLatestOperation(string subscriptionId, string resourceGroupName, string resourceName, string agentPoolName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AgentPoolsAbortLatestOperation(string subscriptionId, string resourceGroupName, string resourceName, string agentPoolName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-02-01";
             // Constant Parameters
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.AgentPoolsAbortLatestOperation_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.AgentPoolsAbortLatestOperation_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -72,6 +73,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -79,7 +81,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AgentPoolsAbortLatestOperationViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AgentPoolsAbortLatestOperationViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-02-01";
             // Constant Parameters
@@ -122,13 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.AgentPoolsAbortLatestOperation_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.AgentPoolsAbortLatestOperation_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "AgentPoolsAbortLatestOperation" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -136,7 +139,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AgentPoolsAbortLatestOperation_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AgentPoolsAbortLatestOperation_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -245,6 +248,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         case global::System.Net.HttpStatusCode.NoContent:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -4551,6 +4560,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="resourceName">The name of the managed cluster resource.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4558,7 +4568,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedClustersAbortLatestOperation(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedClustersAbortLatestOperation(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-02-01";
             // Constant Parameters
@@ -4586,7 +4596,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ManagedClustersAbortLatestOperation_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.ManagedClustersAbortLatestOperation_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -4597,6 +4607,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4604,7 +4615,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedClustersAbortLatestOperationViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedClustersAbortLatestOperationViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-02-01";
             // Constant Parameters
@@ -4644,7 +4655,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ManagedClustersAbortLatestOperation_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.ManagedClustersAbortLatestOperation_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -4653,6 +4664,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4660,7 +4672,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ManagedClustersAbortLatestOperation_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ManagedClustersAbortLatestOperation_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4769,6 +4781,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         case global::System.Net.HttpStatusCode.NoContent:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -10144,6 +10162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="resourceName">The name of the managed cluster resource.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10151,7 +10170,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedClustersRotateClusterCertificates(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedClustersRotateClusterCertificates(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-02-01";
             // Constant Parameters
@@ -10179,7 +10198,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ManagedClustersRotateClusterCertificates_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.ManagedClustersRotateClusterCertificates_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -10189,6 +10208,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10196,7 +10216,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedClustersRotateClusterCertificatesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedClustersRotateClusterCertificatesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-02-01";
             // Constant Parameters
@@ -10236,7 +10256,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ManagedClustersRotateClusterCertificates_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.ManagedClustersRotateClusterCertificates_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -10245,6 +10265,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10252,7 +10273,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ManagedClustersRotateClusterCertificates_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ManagedClustersRotateClusterCertificates_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -10361,6 +10382,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         case global::System.Net.HttpStatusCode.NoContent:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -10417,6 +10444,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="resourceName">The name of the managed cluster resource.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10424,7 +10452,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedClustersRotateServiceAccountSigningKeys(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedClustersRotateServiceAccountSigningKeys(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-02-01";
             // Constant Parameters
@@ -10452,13 +10480,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ManagedClustersRotateServiceAccountSigningKeys_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.ManagedClustersRotateServiceAccountSigningKeys_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Rotates the service account signing keys of a managed cluster.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10466,7 +10495,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedClustersRotateServiceAccountSigningKeysViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedClustersRotateServiceAccountSigningKeysViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-02-01";
             // Constant Parameters
@@ -10506,7 +10535,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ManagedClustersRotateServiceAccountSigningKeys_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.ManagedClustersRotateServiceAccountSigningKeys_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -10515,6 +10544,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10522,7 +10552,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ManagedClustersRotateServiceAccountSigningKeys_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ManagedClustersRotateServiceAccountSigningKeys_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -10631,6 +10661,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         case global::System.Net.HttpStatusCode.NoContent:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -11347,6 +11383,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="resourceName">The name of the managed cluster resource.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11354,7 +11391,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedClustersStart(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedClustersStart(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-02-01";
             // Constant Parameters
@@ -11382,7 +11419,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ManagedClustersStart_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.ManagedClustersStart_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -11391,6 +11428,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11398,7 +11436,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedClustersStartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedClustersStartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-02-01";
             // Constant Parameters
@@ -11438,13 +11476,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ManagedClustersStart_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.ManagedClustersStart_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "ManagedClustersStart" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11452,7 +11491,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ManagedClustersStart_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ManagedClustersStart_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -11561,6 +11600,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         case global::System.Net.HttpStatusCode.NoContent:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -11622,6 +11667,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="resourceName">The name of the managed cluster resource.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11629,7 +11675,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedClustersStop(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedClustersStop(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-02-01";
             // Constant Parameters
@@ -11657,7 +11703,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ManagedClustersStop_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.ManagedClustersStop_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -11669,6 +11715,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11676,7 +11723,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedClustersStopViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedClustersStopViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-02-01";
             // Constant Parameters
@@ -11716,13 +11763,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ManagedClustersStop_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.ManagedClustersStop_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "ManagedClustersStop" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11730,7 +11778,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ManagedClustersStop_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ManagedClustersStop_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -11839,6 +11887,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         case global::System.Net.HttpStatusCode.NoContent:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }

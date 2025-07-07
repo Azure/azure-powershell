@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-create a savings plan.
+Create a savings plan.
 Learn more about permissions needed at https://go.microsoft.com/fwlink/?linkid=2215851
 .Description
-create a savings plan.
+Create a savings plan.
 Learn more about permissions needed at https://go.microsoft.com/fwlink/?linkid=2215851
 .Example
 New-AzBillingBenefitsSavingsPlanOrderAlias -Name "PSTest1" -AppliedScopeType "Shared" -BillingPlan "P1M" `

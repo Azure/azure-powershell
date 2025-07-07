@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDeidService
 
 ## SYNOPSIS
-create a DeidService
+Create a DeidService
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ New-AzDeidService -Name <String> -ResourceGroupName <String> -JsonString <String
 ```
 
 ## DESCRIPTION
-create a DeidService
+Create a DeidService
 
 ## EXAMPLES
 

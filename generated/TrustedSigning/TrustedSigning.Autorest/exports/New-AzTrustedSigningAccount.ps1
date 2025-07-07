@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a trusted Signing Account.
+Create a trusted Signing Account.
 .Description
-create a trusted Signing Account.
+Create a trusted Signing Account.
 .Example
 New-AzTrustedSigningAccount -AccountName test -ResourceGroupName rg-test -Location eastus -SkuName Basic
 .Example

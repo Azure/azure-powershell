@@ -22,19 +22,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
 
         /// <summary>ClientId of the MSI.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
-        public string AkClusterProfileAkClusterAgentPoolIdentityProfileMsiClientId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAkClusterAgentPoolIdentityProfileMsiClientId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAkClusterAgentPoolIdentityProfileMsiClientId = value ?? null; }
+        public string AkClusterProfileAkClusterAgentPoolIdentityProfileMsiClientId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAkClusterAgentPoolIdentityProfileMsiClientId; }
 
         /// <summary>ObjectId of the MSI.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
-        public string AkClusterProfileAkClusterAgentPoolIdentityProfileMsiObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAkClusterAgentPoolIdentityProfileMsiObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAkClusterAgentPoolIdentityProfileMsiObjectId = value ?? null; }
+        public string AkClusterProfileAkClusterAgentPoolIdentityProfileMsiObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAkClusterAgentPoolIdentityProfileMsiObjectId; }
 
         /// <summary>ResourceId of the MSI.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
-        public string AkClusterProfileAkClusterAgentPoolIdentityProfileMsiResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAkClusterAgentPoolIdentityProfileMsiResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAkClusterAgentPoolIdentityProfileMsiResourceId = value ?? null; }
+        public string AkClusterProfileAkClusterAgentPoolIdentityProfileMsiResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAkClusterAgentPoolIdentityProfileMsiResourceId; }
 
         /// <summary>ARM Resource ID of the AKS cluster</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
-        public string AkClusterProfileAksClusterResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAksClusterResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAksClusterResourceId = value ?? null; }
+        public string AkClusterProfileAksClusterResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAksClusterResourceId; }
 
         /// <summary>AKS control plane and default node pool version of this ClusterPool</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrackedResourceInternal)__trackedResource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>True if log analytics is enabled for cluster pool, otherwise false.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
@@ -89,56 +89,92 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
         public string ManagedResourceGroupName { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).ManagedResourceGroupName; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).ManagedResourceGroupName = value ?? null; }
 
+        /// <summary>
+        /// Internal Acessors for AkClusterProfileAkClusterAgentPoolIdentityProfileMsiClientId
+        /// </summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.AkClusterProfileAkClusterAgentPoolIdentityProfileMsiClientId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAkClusterAgentPoolIdentityProfileMsiClientId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAkClusterAgentPoolIdentityProfileMsiClientId = value ?? null; }
+
+        /// <summary>
+        /// Internal Acessors for AkClusterProfileAkClusterAgentPoolIdentityProfileMsiObjectId
+        /// </summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.AkClusterProfileAkClusterAgentPoolIdentityProfileMsiObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAkClusterAgentPoolIdentityProfileMsiObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAkClusterAgentPoolIdentityProfileMsiObjectId = value ?? null; }
+
+        /// <summary>
+        /// Internal Acessors for AkClusterProfileAkClusterAgentPoolIdentityProfileMsiResourceId
+        /// </summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.AkClusterProfileAkClusterAgentPoolIdentityProfileMsiResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAkClusterAgentPoolIdentityProfileMsiResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAkClusterAgentPoolIdentityProfileMsiResourceId = value ?? null; }
+
         /// <summary>Internal Acessors for AkClusterProfileAksClusterAgentPoolIdentityProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAksClusterProfileAksClusterAgentPoolIdentityProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.AkClusterProfileAksClusterAgentPoolIdentityProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAksClusterAgentPoolIdentityProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAksClusterAgentPoolIdentityProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAksClusterProfileAksClusterAgentPoolIdentityProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.AkClusterProfileAksClusterAgentPoolIdentityProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAksClusterAgentPoolIdentityProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAksClusterAgentPoolIdentityProfile = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for AkClusterProfileAksClusterResourceId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.AkClusterProfileAksClusterResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAksClusterResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAksClusterResourceId = value ?? null; }
 
         /// <summary>Internal Acessors for AkClusterProfileAksVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.AkClusterProfileAksVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAksVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAksVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.AkClusterProfileAksVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAksVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AkClusterProfileAksVersion = value ?? null; }
 
         /// <summary>Internal Acessors for AksClusterProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesAksClusterProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.AksClusterProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AksClusterProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AksClusterProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesAksClusterProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.AksClusterProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AksClusterProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AksClusterProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for AksManagedResourceGroupName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.AksManagedResourceGroupName { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AksManagedResourceGroupName; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AksManagedResourceGroupName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.AksManagedResourceGroupName { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AksManagedResourceGroupName; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AksManagedResourceGroupName = value ?? null; }
 
         /// <summary>Internal Acessors for ComputeProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesComputeProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.ComputeProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).ComputeProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).ComputeProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesComputeProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.ComputeProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).ComputeProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).ComputeProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ComputeProfileCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.ComputeProfileCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).ComputeProfileCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).ComputeProfileCount = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.ComputeProfileCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).ComputeProfileCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).ComputeProfileCount = value ?? default(int); }
 
         /// <summary>Internal Acessors for DeploymentId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.DeploymentId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).DeploymentId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).DeploymentId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.DeploymentId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).DeploymentId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).DeploymentId = value ?? null; }
 
         /// <summary>Internal Acessors for LogAnalyticsProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesLogAnalyticsProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.LogAnalyticsProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).LogAnalyticsProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).LogAnalyticsProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesLogAnalyticsProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.LogAnalyticsProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).LogAnalyticsProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).LogAnalyticsProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for NetworkProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesNetworkProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.NetworkProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).NetworkProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).NetworkProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesNetworkProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.NetworkProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).NetworkProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).NetworkProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Profile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesClusterPoolProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.Profile { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).ClusterPoolProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).ClusterPoolProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesClusterPoolProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.Profile { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).ClusterPoolProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).ClusterPoolProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourceProperties Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolResourceProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Status</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).Status = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
@@ -197,31 +233,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]

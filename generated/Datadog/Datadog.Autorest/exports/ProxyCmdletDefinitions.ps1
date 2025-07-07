@@ -1808,9 +1808,9 @@ end {
 
 <#
 .Synopsis
-create Datadog marketplace agreement in the subscription.
+Create Datadog marketplace agreement in the subscription.
 .Description
-create Datadog marketplace agreement in the subscription.
+Create Datadog marketplace agreement in the subscription.
 .Example
 New-AzDatadogMarketplaceAgreement -Accepted
 
@@ -2041,9 +2041,9 @@ end {
 
 <#
 .Synopsis
-create a monitor resource.
+Create a monitor resource.
 .Description
-create a monitor resource.
+Create a monitor resource.
 .Example
 New-AzDatadogMonitor -ResourceGroupName azure-rg-test -Name Datadog-pwsh01 -SkuName 'drawdown_testing_20200904_Monthly' -Location 'eastus2euap' -UserInfoEmailAddress 'xxxx@microsoft.com' -UserInfoName 'user' -UserInfoPhoneNumber 'xxxxxxxxxxxx' -EnableSystemAssignedIdentity:$true
 
@@ -2657,9 +2657,9 @@ end {
 
 <#
 .Synopsis
-create a tag rule set for a given monitor resource.
+Create a tag rule set for a given monitor resource.
 .Description
-create a tag rule set for a given monitor resource.
+Create a tag rule set for a given monitor resource.
 .Example
 $ftobjArray = @()
 $ftobjArray += New-AzDatadogFilteringTagObject -Action "Include" -Value "Prod" -Name "Environment"
@@ -3630,9 +3630,9 @@ end {
 
 <#
 .Synopsis
-update a monitor resource.
+Update a monitor resource.
 .Description
-update a monitor resource.
+Update a monitor resource.
 .Example
 Update-AzDatadogMonitor -ResourceGroupName azure-rg-Datadog -Name Datadog -Tag @{'key1'='value1'; 'key2'='value2'}
 .Example
@@ -4145,9 +4145,9 @@ end {
 
 <#
 .Synopsis
-update a tag rule set for a given monitor resource.
+Update a tag rule set for a given monitor resource.
 .Description
-update a tag rule set for a given monitor resource.
+Update a tag rule set for a given monitor resource.
 .Example
 $ftobjArray = @()
 $ftobjArray += New-AzDatadogFilteringTagObject -Action "Include" -Value "Prod" -Name "Environment"

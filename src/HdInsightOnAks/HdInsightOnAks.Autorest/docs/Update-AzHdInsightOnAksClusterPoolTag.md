@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzHdInsightOnAksClusterPoolTag
 
 ## SYNOPSIS
-update an existing Cluster Pool Tags.
+Update an existing Cluster Pool Tags.
 
 ## SYNTAX
 
@@ -53,7 +53,7 @@ Update-AzHdInsightOnAksClusterPoolTag -ClusterPoolName <String> -ResourceGroupNa
 ```
 
 ## DESCRIPTION
-update an existing Cluster Pool Tags.
+Update an existing Cluster Pool Tags.
 
 ## EXAMPLES
 

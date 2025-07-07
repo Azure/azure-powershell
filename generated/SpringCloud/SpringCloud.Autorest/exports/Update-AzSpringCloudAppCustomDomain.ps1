@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update custom domain of one lifecycle application.
+Update custom domain of one lifecycle application.
 .Description
-update custom domain of one lifecycle application.
+Update custom domain of one lifecycle application.
 .Example
 Update-AzSpringCloudAppCustomDomain -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -AppName gateway -Name springcloud-service.azuremicroservices.io
 .Example

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         public string Id { get => this._id; }
 
         /// <summary>Internal Acessors for GroupId</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionDataModelInternal.GroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionPropertiesInternal)Property).GroupId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionPropertiesInternal)Property).GroupId = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionDataModelInternal.GroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionPropertiesInternal)Property).GroupId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionPropertiesInternal)Property).GroupId = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionDataModelInternal.Id { get => this._id; set { {_id = value;} } }
@@ -36,19 +36,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionDataModelInternal.Name { get => this._name; set { {_name = value;} } }
 
         /// <summary>Internal Acessors for PrivateEndpoint</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointProperty Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionDataModelInternal.PrivateEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateEndpoint = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointProperty Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionDataModelInternal.PrivateEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateEndpoint = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PrivateLinkServiceConnectionState</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateLinkServiceConnectionStateProperty Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionDataModelInternal.PrivateLinkServiceConnectionState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateLinkServiceConnectionState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateLinkServiceConnectionState = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateLinkServiceConnectionStateProperty Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionDataModelInternal.PrivateLinkServiceConnectionState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateLinkServiceConnectionState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateLinkServiceConnectionState = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PrivateLinkServiceConnectionStateActionsRequired</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionDataModelInternal.PrivateLinkServiceConnectionStateActionsRequired { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateLinkServiceConnectionStateActionsRequired; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateLinkServiceConnectionStateActionsRequired = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionDataModelInternal.PrivateLinkServiceConnectionStateActionsRequired { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateLinkServiceConnectionStateActionsRequired; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateLinkServiceConnectionStateActionsRequired = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionProperties Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionDataModelInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.PrivateEndpointConnectionProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionDataModelInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionDataModelInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionDataModelInternal.Type { get => this._type; set { {_type = value;} } }

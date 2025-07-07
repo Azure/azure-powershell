@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-update a workspace for Grafana resource.
+Update a workspace for Grafana resource.
 This API is idempotent, so user can either update a new grafana or update an existing grafana.
 .Description
-update a workspace for Grafana resource.
+Update a workspace for Grafana resource.
 This API is idempotent, so user can either update a new grafana or update an existing grafana.
 .Example
 Update-AzGrafana -GrafanaName azpstest-grafana -ResourceGroupName azpstest-gp -ApiKey Enabled -DeterministicOutboundIP 'Enabled' -EnableSystemAssignedIdentity $true -PublicNetworkAccess 'Enabled' -ZoneRedundancy 'Enabled' -Tag @{"Environment"="Dev"}

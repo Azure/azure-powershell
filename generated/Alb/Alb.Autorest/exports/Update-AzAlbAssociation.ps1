@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a Association
+Update a Association
 .Description
-update a Association
+Update a Association
 .Example
 Update-AzAlbAssociation -Name test-association -AlbName test-alb -ResourceGroupName test-rg -Tag @{TestTag="Test tag value"}
 

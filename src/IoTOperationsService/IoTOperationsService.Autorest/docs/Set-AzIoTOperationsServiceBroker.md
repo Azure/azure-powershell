@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzIoTOperationsServiceBroker
 
 ## SYNOPSIS
-update a BrokerResource
+Update a BrokerResource
 
 ## SYNTAX
 
@@ -44,7 +44,7 @@ Set-AzIoTOperationsServiceBroker -InstanceName <String> -Name <String> -Resource
 ```
 
 ## DESCRIPTION
-update a BrokerResource
+Update a BrokerResource
 
 ## EXAMPLES
 

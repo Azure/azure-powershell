@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Elastic
-Module Guid: b2e855f4-b219-475c-9008-e98c5b88a595
+Module Guid: a4c5be0e-bab9-48b2-90fc-6c66a4096521
 Download Help Link: https://learn.microsoft.com/powershell/module/az.elastic
 Help Version: 1.0.0.0
 Locale: en-US
@@ -63,25 +63,25 @@ List the vm resources currently being monitored by the Elastic monitor resource.
 Associate traffic filter for the given deployment.
 
 ### [New-AzElasticCreateAndAssociateIPFilter](New-AzElasticCreateAndAssociateIPFilter.md)
-create and Associate IP traffic filter for the given deployment.
+Create and Associate IP traffic filter for the given deployment.
 
 ### [New-AzElasticCreateAndAssociatePlFilter](New-AzElasticCreateAndAssociatePlFilter.md)
-create and Associate private link traffic filter for the given deployment.
+Create and Associate private link traffic filter for the given deployment.
 
 ### [New-AzElasticExternalUser](New-AzElasticExternalUser.md)
-create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+Create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
 
 ### [New-AzElasticFilteringTagObject](New-AzElasticFilteringTagObject.md)
 Create an in-memory object for FilteringTag.
 
 ### [New-AzElasticMonitor](New-AzElasticMonitor.md)
-create a monitor resource.
+Create a monitor resource.
 
 ### [New-AzElasticOpenAi](New-AzElasticOpenAi.md)
-create a OpenAI integration rule for a given monitor resource.
+Create a OpenAI integration rule for a given monitor resource.
 
 ### [New-AzElasticTagRule](New-AzElasticTagRule.md)
-create a tag rule set for a given monitor resource.
+Create a tag rule set for a given monitor resource.
 
 ### [Remove-AzElasticDetachAndDeleteTrafficFilter](Remove-AzElasticDetachAndDeleteTrafficFilter.md)
 Detach and Delete traffic filter from the given deployment.
@@ -99,17 +99,17 @@ Delete traffic filter from the account.
 Detach traffic filter for the given deployment.
 
 ### [Update-AzElasticExternalUser](Update-AzElasticExternalUser.md)
-update User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+Update User inside elastic deployment which are used by customers to perform operations on the elastic deployment
 
 ### [Update-AzElasticMonitor](Update-AzElasticMonitor.md)
-update a monitor resource.
+Update a monitor resource.
 
 ### [Update-AzElasticOpenAi](Update-AzElasticOpenAi.md)
-update a OpenAI integration rule for a given monitor resource.
+Update a OpenAI integration rule for a given monitor resource.
 
 ### [Update-AzElasticTagRule](Update-AzElasticTagRule.md)
-update a tag rule set for a given monitor resource.
+Update a tag rule set for a given monitor resource.
 
 ### [Update-AzElasticVMCollection](Update-AzElasticVMCollection.md)
-update the vm details that will be monitored by the Elastic monitor resource.
+Update the vm details that will be monitored by the Elastic monitor resource.
 

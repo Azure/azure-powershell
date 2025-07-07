@@ -78,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             // actually deserialize
             if (content.Contains("EnableInternalIngress"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAccessProfileInternal)this).EnableInternalIngress = (bool) content.GetValueForProperty("EnableInternalIngress",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAccessProfileInternal)this).EnableInternalIngress, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAccessProfileInternal)this).EnableInternalIngress = (bool?) content.GetValueForProperty("EnableInternalIngress",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAccessProfileInternal)this).EnableInternalIngress, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("PrivateLinkServiceId"))
             {
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             // actually deserialize
             if (content.Contains("EnableInternalIngress"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAccessProfileInternal)this).EnableInternalIngress = (bool) content.GetValueForProperty("EnableInternalIngress",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAccessProfileInternal)this).EnableInternalIngress, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAccessProfileInternal)this).EnableInternalIngress = (bool?) content.GetValueForProperty("EnableInternalIngress",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAccessProfileInternal)this).EnableInternalIngress, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("PrivateLinkServiceId"))
             {

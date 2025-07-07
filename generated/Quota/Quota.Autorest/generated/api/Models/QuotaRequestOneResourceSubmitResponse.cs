@@ -57,52 +57,52 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).Message; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).Code = value ?? null; }
 
         /// <summary>Internal Acessors for CurrentValue</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.CurrentValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).CurrentValue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).CurrentValue = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.CurrentValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).CurrentValue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).CurrentValue = value ?? default(int); }
 
         /// <summary>Internal Acessors for Error</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IServiceErrorDetail Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.Error { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).Error; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).Error = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IServiceErrorDetail Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.Error { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).Error; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).Error = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ErrorMessage</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.ErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).ErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).ErrorMessage = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.ErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).ErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).ErrorMessage = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.Id { get => this._id; set { {_id = value;} } }
 
         /// <summary>Internal Acessors for IsQuotaApplicable</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.IsQuotaApplicable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).IsQuotaApplicable; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).IsQuotaApplicable = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.IsQuotaApplicable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).IsQuotaApplicable; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).IsQuotaApplicable = value ?? default(bool); }
 
         /// <summary>Internal Acessors for Limit</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ILimitObject Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.Limit { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).Limit; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).Limit = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ILimitObject Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.Limit { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).Limit; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).Limit = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for LimitObjectType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.LimitObjectType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).LimitObjectType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).LimitObjectType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.LimitObjectType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).LimitObjectType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).LimitObjectType = value ?? null; }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).Message = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.Name { get => this._name; set { {_name = value;} } }
 
         /// <summary>Internal Acessors for NameLocalizedValue</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.NameLocalizedValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).NameLocalizedValue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).NameLocalizedValue = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.NameLocalizedValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).NameLocalizedValue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).NameLocalizedValue = value ?? null; }
 
         /// <summary>Internal Acessors for PropertiesName</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceName Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.PropertiesName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).Name = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceName Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.PropertiesName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).Name = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceProperties Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaRequestOneResourceProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for QuotaPeriod</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.QuotaPeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).QuotaPeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).QuotaPeriod = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.QuotaPeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).QuotaPeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).QuotaPeriod = value ?? null; }
 
         /// <summary>Internal Acessors for RequestSubmitTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.RequestSubmitTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).RequestSubmitTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).RequestSubmitTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.RequestSubmitTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).RequestSubmitTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourcePropertiesInternal)Property).RequestSubmitTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal.Type { get => this._type; set { {_type = value;} } }

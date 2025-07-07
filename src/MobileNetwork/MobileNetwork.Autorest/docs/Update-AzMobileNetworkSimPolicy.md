@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzMobileNetworkSimPolicy
 
 ## SYNOPSIS
-update a SIM policy.
+Update a SIM policy.
 Must be created in the same location as its parent mobile network.
 
 ## SYNTAX
@@ -40,7 +40,7 @@ Update-AzMobileNetworkSimPolicy -MobileNetworkInputObject <IMobileNetworkIdentit
 ```
 
 ## DESCRIPTION
-update a SIM policy.
+Update a SIM policy.
 Must be created in the same location as its parent mobile network.
 
 ## EXAMPLES

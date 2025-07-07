@@ -1,6 +1,6 @@
 ---
 Module Name: Az.EdgeOrder
-Module Guid: b62edb67-a8ef-4473-b452-8e344430234a
+Module Guid: 14491396-1818-4e98-9069-212b27797fff
 Download Help Link: https://learn.microsoft.com/powershell/module/az.edgeorder
 Help Version: 1.0.0.0
 Locale: en-US
@@ -36,7 +36,7 @@ Cancel order item.
 Return order item.
 
 ### [New-AzEdgeOrderAddress](New-AzEdgeOrderAddress.md)
-create a new address with the specified parameters.
+Create a new address with the specified parameters.
 Existing address can be updated with this API
 
 ### [New-AzEdgeOrderContactDetailsObject](New-AzEdgeOrderContactDetailsObject.md)
@@ -49,7 +49,7 @@ Create an in-memory object for FilterableProperty.
 Create an in-memory object for HierarchyInformation.
 
 ### [New-AzEdgeOrderItem](New-AzEdgeOrderItem.md)
-create an order item.
+Create an order item.
 Existing order item cannot be updated with this api and should instead be updated with the create order item API.
 
 ### [New-AzEdgeOrderOrderItemDetailsObject](New-AzEdgeOrderOrderItemDetailsObject.md)
@@ -68,8 +68,8 @@ Deletes an address.
 Deletes an order item.
 
 ### [Update-AzEdgeOrderAddress](Update-AzEdgeOrderAddress.md)
-update the properties of an existing address.
+Update the properties of an existing address.
 
 ### [Update-AzEdgeOrderItem](Update-AzEdgeOrderItem.md)
-update the properties of an existing order item.
+Update the properties of an existing order item.
 

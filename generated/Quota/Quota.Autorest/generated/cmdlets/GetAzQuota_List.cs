@@ -12,14 +12,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
 
     /// <summary>
     /// Get a list of current quota limits of all resources for the specified scope. The response from this GET operation can
-    /// be leveraged to submit requests to update a quota.
+    /// be leveraged to submit requests to list a quota.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] List=>GET:"/{scope}/providers/Microsoft.Quota/quotas"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzQuota_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentQuotaLimitBase))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Description(@"Get a list of current quota limits of all resources for the specified scope. The response from this GET operation can be leveraged to submit requests to update a quota.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Description(@"Get a list of current quota limits of all resources for the specified scope. The response from this GET operation can be leveraged to submit requests to list a quota.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.HttpPath(Path = "/{scope}/providers/Microsoft.Quota/quotas", ApiVersion = "2023-02-01")]
     public partial class GetAzQuota_List : global::System.Management.Automation.PSCmdlet,

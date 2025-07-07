@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update site tags.
+Update site tags.
 .Description
-update site tags.
+Update site tags.
 .Example
 Update-AzMobileNetworkSite -MobileNetworkName azps-mn -SiteName azps-mn-site -ResourceGroupName azps_test_group -Tag @{"site"="123"}
 

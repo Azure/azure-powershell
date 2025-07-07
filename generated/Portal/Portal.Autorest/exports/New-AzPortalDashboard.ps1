@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a Dashboard.
+Create a Dashboard.
 .Description
-create a Dashboard.
+Create a Dashboard.
 .Example
 New-AzPortalDashboard -DashboardPath .\resources\dash1.json -ResourceGroupName mydash-rg -DashboardName my-dashboard03
 

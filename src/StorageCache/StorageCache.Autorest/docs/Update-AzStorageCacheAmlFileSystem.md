@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzStorageCacheAmlFileSystem
 
 ## SYNOPSIS
-update an AML file system instance.
+Update an AML file system instance.
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ Update-AzStorageCacheAmlFileSystem -Name <String> -ResourceGroupName <String> -J
 ```
 
 ## DESCRIPTION
-update an AML file system instance.
+Update an AML file system instance.
 
 ## EXAMPLES
 

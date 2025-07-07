@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-update a SIM policy.
+Update a SIM policy.
 Must be created in the same location as its parent mobile network.
 .Description
-update a SIM policy.
+Update a SIM policy.
 Must be created in the same location as its parent mobile network.
 .Example
 Update-AzMobileNetworkSimPolicy -MobileNetworkName azps-mn -SimPolicyName azps-mn-simpolicy -ResourceGroupName azps_test_group -Tag @{"abc"="123"}

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)__offerDetail).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)__offerDetail).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Status</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)__offerDetail).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)__offerDetail).Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)__offerDetail).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)__offerDetail).Status = value ?? null; }
 
         /// <summary>Offer Plan Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Inherited)]

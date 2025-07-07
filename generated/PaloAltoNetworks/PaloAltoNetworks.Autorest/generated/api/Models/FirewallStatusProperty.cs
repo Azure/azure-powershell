@@ -47,10 +47,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatus Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal.PanoramaStatus { get => (this._panoramaStatus = this._panoramaStatus ?? new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PanoramaStatus()); set { {_panoramaStatus = value;} } }
 
         /// <summary>Internal Acessors for PanoramaStatusPanoramaServer2Status</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal.PanoramaStatusPanoramaServer2Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatusInternal)PanoramaStatus).PanoramaServer2Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatusInternal)PanoramaStatus).PanoramaServer2Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal.PanoramaStatusPanoramaServer2Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatusInternal)PanoramaStatus).PanoramaServer2Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatusInternal)PanoramaStatus).PanoramaServer2Status = value ?? null; }
 
         /// <summary>Internal Acessors for PanoramaStatusPanoramaServerStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal.PanoramaStatusPanoramaServerStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatusInternal)PanoramaStatus).PanoramaServerStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatusInternal)PanoramaStatus).PanoramaServerStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal.PanoramaStatusPanoramaServerStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatusInternal)PanoramaStatus).PanoramaServerStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatusInternal)PanoramaStatus).PanoramaServerStatus = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }

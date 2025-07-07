@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Cmdlets
     using System;
 
     /// <summary>
-    /// The operation to Create a virtual machine instance. Please note some properties can be set only during virtual machine
+    /// The operation to create a virtual machine instance. Please note some properties can be set only during virtual machine
     /// instance creation.
     /// </summary>
     /// <remarks>
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Cmdlets
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzConnectedVMwareVM_CreateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualMachineInstance))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Description(@"The operation to Create a virtual machine instance. Please note some properties can be set only during virtual machine instance creation.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Description(@"The operation to create a virtual machine instance. Please note some properties can be set only during virtual machine instance creation.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.HttpPath(Path = "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default", ApiVersion = "2023-10-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.NotSuggestDefaultParameterSet]

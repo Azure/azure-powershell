@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Cmdlets
     using System;
 
     /// <summary>
-    /// Update a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and
+    /// update a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and
     /// Custom Location name.
     /// </summary>
     /// <remarks>
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Cmdlets
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzCustomLocationResourceSyncRule_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceSyncRule))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Description(@"Update a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and Custom Location name.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Description(@"update a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and Custom Location name.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.HttpPath(Path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{resourceName}/resourceSyncRules/{childResourceName}", ApiVersion = "2021-08-31-preview")]
     public partial class UpdateAzCustomLocationResourceSyncRule_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,

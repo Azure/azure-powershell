@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a contact.
+Update a contact.
 .Description
-update a contact.
+Update a contact.
 .Example
 Update-AzOrbitalSpacecraftContact -Name azps-orbital-contact -ResourceGroupName azpstest-gp -SpacecraftName SwedenAQUASpacecraft -ContactProfileId "/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/Sweden-contactprofile"
 

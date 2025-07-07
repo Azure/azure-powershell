@@ -1,6 +1,6 @@
 ---
 Module Name: Az.FluidRelay
-Module Guid: 952b776b-10b6-4b4a-8200-9bf09045177d
+Module Guid: b7b0b31e-1601-4975-bb25-214fdac3eed7
 Download Help Link: https://learn.microsoft.com/powershell/module/az.fluidrelay
 Help Version: 1.0.0.0
 Locale: en-US
@@ -21,7 +21,7 @@ Get a Fluid Relay server.
 Get primary and secondary key for this server.
 
 ### [New-AzFluidRelayServer](New-AzFluidRelayServer.md)
-create a Fluid Relay server.
+Create a Fluid Relay server.
 
 ### [New-AzFluidRelayServerKey](New-AzFluidRelayServerKey.md)
 Regenerate the primary or secondary key for this server.
@@ -33,5 +33,5 @@ Delete a Fluid Relay container.
 Delete a Fluid Relay server.
 
 ### [Update-AzFluidRelayServer](Update-AzFluidRelayServer.md)
-update a Fluid Relay server.
+Update a Fluid Relay server.
 

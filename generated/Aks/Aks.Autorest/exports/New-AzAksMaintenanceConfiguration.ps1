@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a maintenance configuration in the specified managed cluster.
+Create a maintenance configuration in the specified managed cluster.
 .Description
-create a maintenance configuration in the specified managed cluster.
+Create a maintenance configuration in the specified managed cluster.
 .Example
 $TimeSpan = New-AzAksTimeSpanObject -Start (Get-Date -Year 2023 -Month 3 -Day 1) -End (Get-Date -Year 2023 -Month 3 -Day 2)
 $TimeInWeek = New-AzAksTimeInWeekObject -Day Sunday -HourSlot 1,2

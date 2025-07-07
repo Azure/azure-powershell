@@ -80,11 +80,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         /// <summary>Internal Acessors for RunningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IRevisionPropertiesInternal.RunningState { get => this._runningState; set { {_runningState = value;} } }
 
+        /// <summary>Internal Acessors for ScaleMaxReplica</summary>
+        int? Microsoft.Azure.PowerShell.Cmdlets.App.Models.IRevisionPropertiesInternal.ScaleMaxReplica { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).ScaleMaxReplica; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).ScaleMaxReplica = value ?? default(int); }
+
+        /// <summary>Internal Acessors for ScaleMinReplica</summary>
+        int? Microsoft.Azure.PowerShell.Cmdlets.App.Models.IRevisionPropertiesInternal.ScaleMinReplica { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).ScaleMinReplica; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).ScaleMinReplica = value ?? default(int); }
+
+        /// <summary>Internal Acessors for ScaleRule</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRule> Microsoft.Azure.PowerShell.Cmdlets.App.Models.IRevisionPropertiesInternal.ScaleRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).ScaleRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).ScaleRule = value ?? null /* arrayOf */; }
+
         /// <summary>Internal Acessors for Template</summary>
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplate Microsoft.Azure.PowerShell.Cmdlets.App.Models.IRevisionPropertiesInternal.Template { get => (this._template = this._template ?? new Microsoft.Azure.PowerShell.Cmdlets.App.Models.Template()); set { {_template = value;} } }
 
+        /// <summary>Internal Acessors for TemplateContainer</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainer> Microsoft.Azure.PowerShell.Cmdlets.App.Models.IRevisionPropertiesInternal.TemplateContainer { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).Container; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).Container = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for TemplateInitContainer</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IInitContainer> Microsoft.Azure.PowerShell.Cmdlets.App.Models.IRevisionPropertiesInternal.TemplateInitContainer { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).InitContainer; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).InitContainer = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for TemplateRevisionSuffix</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IRevisionPropertiesInternal.TemplateRevisionSuffix { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).RevisionSuffix; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).RevisionSuffix = value ?? null; }
+
         /// <summary>Internal Acessors for TemplateScale</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScale Microsoft.Azure.PowerShell.Cmdlets.App.Models.IRevisionPropertiesInternal.TemplateScale { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).Scale; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).Scale = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScale Microsoft.Azure.PowerShell.Cmdlets.App.Models.IRevisionPropertiesInternal.TemplateScale { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).Scale; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).Scale = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for TemplateServiceBind</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IServiceBind> Microsoft.Azure.PowerShell.Cmdlets.App.Models.IRevisionPropertiesInternal.TemplateServiceBind { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).ServiceBind; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).ServiceBind = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for TemplateTerminationGracePeriodSecond</summary>
+        long? Microsoft.Azure.PowerShell.Cmdlets.App.Models.IRevisionPropertiesInternal.TemplateTerminationGracePeriodSecond { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).TerminationGracePeriodSecond; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).TerminationGracePeriodSecond = value ?? default(long); }
+
+        /// <summary>Internal Acessors for TemplateVolume</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolume> Microsoft.Azure.PowerShell.Cmdlets.App.Models.IRevisionPropertiesInternal.TemplateVolume { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).Volume; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).Volume = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for TrafficWeight</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.App.Models.IRevisionPropertiesInternal.TrafficWeight { get => this._trafficWeight; set { {_trafficWeight = value;} } }
@@ -119,15 +146,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
 
         /// <summary>Optional. Maximum number of container replicas. Defaults to 10 if not set.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Inlined)]
-        public int? ScaleMaxReplica { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).ScaleMaxReplica; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).ScaleMaxReplica = value ?? default(int); }
+        public int? ScaleMaxReplica { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).ScaleMaxReplica; }
 
         /// <summary>Optional. Minimum number of container replicas.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Inlined)]
-        public int? ScaleMinReplica { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).ScaleMinReplica; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).ScaleMinReplica = value ?? default(int); }
+        public int? ScaleMinReplica { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).ScaleMinReplica; }
 
         /// <summary>Scaling rules.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRule> ScaleRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).ScaleRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).ScaleRule = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRule> ScaleRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).ScaleRule; }
 
         /// <summary>Backing field for <see cref="Template" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplate _template;
@@ -142,19 +169,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
 
         /// <summary>List of container definitions for the Container App.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainer> TemplateContainer { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).Container; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).Container = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainer> TemplateContainer { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).Container; }
 
         /// <summary>List of specialized containers that run before app containers.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IInitContainer> TemplateInitContainer { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).InitContainer; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).InitContainer = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IInitContainer> TemplateInitContainer { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).InitContainer; }
 
         /// <summary>User friendly suffix that is appended to the revision name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Inlined)]
-        public string TemplateRevisionSuffix { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).RevisionSuffix; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).RevisionSuffix = value ?? null; }
+        public string TemplateRevisionSuffix { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).RevisionSuffix; }
 
         /// <summary>List of container app services bound to the app</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IServiceBind> TemplateServiceBind { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).ServiceBind; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).ServiceBind = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IServiceBind> TemplateServiceBind { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).ServiceBind; }
 
         /// <summary>
         /// Optional duration in seconds the Container App Instance needs to terminate gracefully. Value must be non-negative integer.
@@ -163,11 +190,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         /// to 30 seconds.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Inlined)]
-        public long? TemplateTerminationGracePeriodSecond { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).TerminationGracePeriodSecond; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).TerminationGracePeriodSecond = value ?? default(long); }
+        public long? TemplateTerminationGracePeriodSecond { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).TerminationGracePeriodSecond; }
 
         /// <summary>List of volume definitions for the Container App.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolume> TemplateVolume { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).Volume; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).Volume = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolume> TemplateVolume { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).Volume; }
 
         /// <summary>Backing field for <see cref="TrafficWeight" /> property.</summary>
         private int? _trafficWeight;

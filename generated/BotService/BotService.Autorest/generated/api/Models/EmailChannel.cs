@@ -43,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         public string MagicCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IEmailChannelPropertiesInternal)Property).MagicCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IEmailChannelPropertiesInternal)Property).MagicCode = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IEmailChannelProperties Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IEmailChannelInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.EmailChannelProperties()); set { {_property = value;} } }

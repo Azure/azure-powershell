@@ -64,7 +64,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
-    # The path of the file need to be deploied.
+    # The path of the file need to be deployed.
     # The file supports Jar, NetcoreZip and Source.
     ${FilePath},
 

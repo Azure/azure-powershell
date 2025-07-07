@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a certificate profile.
+Create a certificate profile.
 .Description
-create a certificate profile.
+Create a certificate profile.
 .Example
 New-AzTrustedSigningCertificateProfile -AccountName test -ResourceGroupName rg-test -ProfileName test -IdentityValidationId 5ab4583e-d027-4998-9d65-a2e88981829f -ProfileType PublicTrustTest
 

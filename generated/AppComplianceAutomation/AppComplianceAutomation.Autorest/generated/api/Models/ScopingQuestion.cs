@@ -85,7 +85,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models
     {
         /// <summary>Input type of the question answer.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models
         string InputType { get;  }
         /// <summary>Option id list.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models
         System.Collections.Generic.List<string> OptionId { get;  }
         /// <summary>Question id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models
         string QuestionId { get;  }
         /// <summary>The rule of the question.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,

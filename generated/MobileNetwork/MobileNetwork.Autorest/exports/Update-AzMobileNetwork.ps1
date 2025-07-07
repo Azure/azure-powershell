@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update mobile network tags.
+Update mobile network tags.
 .Description
-update mobile network tags.
+Update mobile network tags.
 .Example
 Update-AzMobileNetwork -MobileNetworkName azps-mn -ResourceGroupName azps_test_group -Tag @{"123"="abc"}
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDynatraceMonitor
 
 ## SYNOPSIS
-create a MonitorResource
+Create a MonitorResource
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ New-AzDynatraceMonitor -Name <String> -ResourceGroupName <String> -JsonString <S
 ```
 
 ## DESCRIPTION
-create a MonitorResource
+Create a MonitorResource
 
 ## EXAMPLES
 

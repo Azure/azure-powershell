@@ -461,9 +461,9 @@ end {
 
 <#
 .Synopsis
-update the tags of a solution.
+Update the tags of a solution.
 .Description
-update the tags of a solution.
+Update the tags of a solution.
 .Example
 Update-AzMonitorLogAnalyticsSolution -ResourceGroupName lucas-manual-test -Name 'Containers(monitoringworkspace-2vob7n)' -Tag @{'Operation'='update';'Param'='Tag'}
 .Example

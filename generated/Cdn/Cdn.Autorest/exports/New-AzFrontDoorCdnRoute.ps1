@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+Create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 .Description
-create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+Create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 .Example
 $originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001
 $ruleSet = Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001

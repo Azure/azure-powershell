@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzStorageCacheAmlFileSystem
 
 ## SYNOPSIS
-create an AML file system.
+Create an AML file system.
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ New-AzStorageCacheAmlFileSystem -Name <String> -ResourceGroupName <String> -Json
 ```
 
 ## DESCRIPTION
-create an AML file system.
+Create an AML file system.
 
 ## EXAMPLES
 

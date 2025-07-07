@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update preview information of a vendor sku.
+Update preview information of a vendor sku.
 .Description
-update preview information of a vendor sku.
+Update preview information of a vendor sku.
 .Example
 Update-AzConnectedNetworkVendorSkuPreview -PreviewSubscription xxxxx-00000-xxxxx-00000 -SkuName mySku -VendorName myVendor -SubscriptionId xxxxx-22222-xxxxx-22222
 

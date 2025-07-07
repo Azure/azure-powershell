@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create Account.
+Create Account.
 .Description
-create Account.
+Create Account.
 .Example
 New-AzDeviceUpdateAccount -Name azpstest-account -ResourceGroupName azpstest_gp -Location eastus -EnableSystemAssignedIdentity:$true -PublicNetworkAccess 'Enabled' -Sku 'Standard'
 

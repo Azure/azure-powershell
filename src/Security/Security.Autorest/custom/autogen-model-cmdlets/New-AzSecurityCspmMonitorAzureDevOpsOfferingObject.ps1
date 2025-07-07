@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Security.Models.CspmMonitorAzureDevOpsOfferin
 https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritycspmmonitorazuredevopsofferingobject
 #>
 function New-AzSecurityCspmMonitorAzureDevOpsOfferingObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Security.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Security.Models.CspmMonitorAzureDevOpsOffering')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

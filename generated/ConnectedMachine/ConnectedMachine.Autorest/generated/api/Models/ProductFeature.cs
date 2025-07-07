@@ -67,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Message; }
 
         /// <summary>Internal Acessors for AdditionalInfo</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeatureInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).AdditionalInfo = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeatureInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).AdditionalInfo = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for BillingEndDate</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeatureInternal.BillingEndDate { get => this._billingEndDate; set { {_billingEndDate = value;} } }
@@ -76,10 +76,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeatureInternal.BillingStartDate { get => this._billingStartDate; set { {_billingStartDate = value;} } }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeatureInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeatureInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Detail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeatureInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Detail = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeatureInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for DisenrollmentDate</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeatureInternal.DisenrollmentDate { get => this._disenrollmentDate; set { {_disenrollmentDate = value;} } }
@@ -91,10 +91,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeatureInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorDetail()); set { {_error = value;} } }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeatureInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeatureInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Message = value ?? null; }
 
         /// <summary>Internal Acessors for Target</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeatureInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Target = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeatureInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Target = value ?? null; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

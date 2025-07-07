@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseDetails
 https://learn.microsoft.com/powershell/module/Az.ConnectedMachine/new-azconnectedlicensedetail
 #>
 function New-AzConnectedLicenseDetail {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseDetails')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

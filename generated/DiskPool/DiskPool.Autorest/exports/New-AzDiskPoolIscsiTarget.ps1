@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create an iSCSI Target.
+Create an iSCSI Target.
 .Description
-create an iSCSI Target.
+Create an iSCSI Target.
 .Example
 New-AzDiskPoolIscsiTarget -DiskPoolName 'disk-pool-1' -Name 'target1' -ResourceGroupName 'storagepool-rg-test' -AclMode 'Dynamic'
 

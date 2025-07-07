@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWvdAppAttachPackage
 
 ## SYNOPSIS
-update an App Attach Package
+Update an App Attach Package
 
 ## SYNTAX
 
@@ -61,7 +61,7 @@ Update-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> -JsonStr
 ```
 
 ## DESCRIPTION
-update an App Attach Package
+Update an App Attach Package
 
 ## EXAMPLES
 

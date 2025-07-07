@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere.Cmdlets
     using System;
 
     /// <summary>
-    /// Update a Device. Use '.unassigned' or '.default' for the device group and product names to move a device to the catalog
+    /// update a Device. Use '.unassigned' or '.default' for the device group and product names to move a device to the catalog
     /// level.
     /// </summary>
     /// <remarks>
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere.Cmdlets
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzSphereDevice_UpdateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IDevice))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Description(@"Update a Device. Use '.unassigned' or '.default' for the device group and product names to move a device to the catalog level.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Description(@"update a Device. Use '.unassigned' or '.default' for the device group and product names to move a device to the catalog level.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/devices/{deviceName}", ApiVersion = "2024-04-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.NotSuggestDefaultParameterSet]

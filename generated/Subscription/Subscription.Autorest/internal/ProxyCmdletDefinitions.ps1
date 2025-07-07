@@ -308,9 +308,9 @@ end {
 
 <#
 .Synopsis
-create Alias Subscription.
+Create Alias Subscription.
 .Description
-create Alias Subscription.
+Create Alias Subscription.
 .Example
 New-AzSubscriptionAlias -AliasName test-subscription -SubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 .Example
@@ -710,9 +710,9 @@ end {
 
 <#
 .Synopsis
-add Subscription tenant policy for user's tenant.
+Add Subscription tenant policy for user's tenant.
 .Description
-add Subscription tenant policy for user's tenant.
+Add Subscription tenant policy for user's tenant.
 .Example
 {{ Add code here }}
 .Example

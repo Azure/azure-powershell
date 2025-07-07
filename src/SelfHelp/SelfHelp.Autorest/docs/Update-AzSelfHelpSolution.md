@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSelfHelpSolution
 
 ## SYNOPSIS
-update the requiredInputs or additional information needed to execute the solution
+Update the requiredInputs or additional information needed to execute the solution
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Update-AzSelfHelpSolution -ResourceName <String> -Scope <String> -JsonString <St
 ```
 
 ## DESCRIPTION
-update the requiredInputs or additional information needed to execute the solution
+Update the requiredInputs or additional information needed to execute the solution
 
 ## EXAMPLES
 

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a vendor.
+Create a vendor.
 .Description
-create a vendor.
+Create a vendor.
 .Example
 New-AzConnectedNetworkVendor -Name myVendor
 .Example

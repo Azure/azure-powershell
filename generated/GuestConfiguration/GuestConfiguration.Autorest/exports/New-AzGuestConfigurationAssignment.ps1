@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create an association between a VM and guest configuration
+Create an association between a VM and guest configuration
 .Description
-create an association between a VM and guest configuration
+Create an association between a VM and guest configuration
 .Example
 New-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName test-assignment -ResourceGroupName test-rg -VMName test-vm -GuestConfigurationName test-config -GuestConfigurationVersion "1.0.0.3" -GuestConfigurationContentUri "https://thisisfake/package" -GuestConfigurationContentHash "123contenthash"
 .Example

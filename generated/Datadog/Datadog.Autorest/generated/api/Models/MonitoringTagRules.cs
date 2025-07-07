@@ -54,10 +54,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.Id { get => this._id; set { {_id = value;} } }
 
         /// <summary>Internal Acessors for LogRule</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ILogRules Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.LogRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).LogRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).LogRule = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ILogRules Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.LogRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).LogRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).LogRule = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for MetricRule</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMetricRules Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.MetricRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).MetricRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).MetricRule = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMetricRules Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.MetricRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).MetricRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).MetricRule = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.Name { get => this._name; set { {_name = value;} } }
@@ -66,28 +66,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesProperties Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.MonitoringTagRulesProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.SystemData()); set { {_systemData = value;} } }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.Type { get => this._type; set { {_type = value;} } }

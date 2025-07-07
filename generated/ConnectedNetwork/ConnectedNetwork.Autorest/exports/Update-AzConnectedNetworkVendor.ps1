@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a vendor.
+Update a vendor.
 .Description
-update a vendor.
+Update a vendor.
 .Example
 Update-AzConnectedNetworkVendor -Name myVendor
 .Example

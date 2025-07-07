@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ImageBuilder
-Module Guid: 39f42240-1342-4416-a544-0e2c46a1d6ac
+Module Guid: dbbbfd16-b1a5-4167-8290-2948a846b2f4
 Download Help Link: https://learn.microsoft.com/powershell/module/az.imagebuilder
 Help Version: 1.0.0.0
 Locale: en-US
@@ -21,7 +21,7 @@ Get the specified run output for the specified image template resource
 Get the specified trigger for the specified image template resource
 
 ### [New-AzImageBuilderTemplate](New-AzImageBuilderTemplate.md)
-create a virtual machine image template
+Create a virtual machine image template
 
 ### [New-AzImageBuilderTemplateCustomizerObject](New-AzImageBuilderTemplateCustomizerObject.md)
 Create an in-memory object for ImageTemplateCustomizer.
@@ -42,7 +42,7 @@ Create an in-memory object for ImageTemplateSource.
 Create an in-memory object for ImageTemplateValidator.
 
 ### [New-AzImageBuilderTrigger](New-AzImageBuilderTrigger.md)
-create a trigger for the specified virtual machine image template
+Create a trigger for the specified virtual machine image template
 
 ### [Remove-AzImageBuilderTemplate](Remove-AzImageBuilderTemplate.md)
 Delete a virtual machine image template
@@ -51,7 +51,7 @@ Delete a virtual machine image template
 Delete a trigger for the specified virtual machine image template
 
 ### [Start-AzImageBuilderTemplate](Start-AzImageBuilderTemplate.md)
-run artifacts from a existing image template
+Run artifacts from a existing image template
 
 ### [Stop-AzImageBuilderTemplate](Stop-AzImageBuilderTemplate.md)
 Cancel the long running image build based on the image template

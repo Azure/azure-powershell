@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDynatraceMonitor
 
 ## SYNOPSIS
-update a MonitorResource
+Update a MonitorResource
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzDynatraceMonitor -Name <String> -ResourceGroupName <String> -JsonString
 ```
 
 ## DESCRIPTION
-update a MonitorResource
+Update a MonitorResource
 
 ## EXAMPLES
 

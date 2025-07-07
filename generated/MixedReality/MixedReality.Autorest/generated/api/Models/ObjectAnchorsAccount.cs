@@ -93,19 +93,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>Internal Acessors for AccountDomain</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.AccountDomain { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IMixedRealityAccountPropertiesInternal)Property).AccountDomain; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IMixedRealityAccountPropertiesInternal)Property).AccountDomain = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.AccountDomain { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IMixedRealityAccountPropertiesInternal)Property).AccountDomain; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IMixedRealityAccountPropertiesInternal)Property).AccountDomain = value ?? null; }
 
         /// <summary>Internal Acessors for AccountId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.AccountId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IMixedRealityAccountPropertiesInternal)Property).AccountId; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IMixedRealityAccountPropertiesInternal)Property).AccountId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.AccountId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IMixedRealityAccountPropertiesInternal)Property).AccountId; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IMixedRealityAccountPropertiesInternal)Property).AccountId = value ?? null; }
 
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountIdentity Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ObjectAnchorsAccountIdentity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for Kind</summary>
         Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.Kind { get => (this._kind = this._kind ?? new Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Sku()); set { {_kind = value;} } }
@@ -114,10 +114,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models
         Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentity Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.Plan { get => (this._plan = this._plan ?? new Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Identity()); set { {_plan = value;} } }
 
         /// <summary>Internal Acessors for PlanPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.PlanPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)Plan).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)Plan).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.PlanPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)Plan).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)Plan).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for PlanTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.PlanTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)Plan).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)Plan).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.PlanTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)Plan).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IIdentityInternal)Plan).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IMixedRealityAccountProperties Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.MixedRealityAccountProperties()); set { {_property = value;} } }
@@ -129,31 +129,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models
         Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.SystemData()); set { {_systemData = value;} } }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).CreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).CreatedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).CreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).LastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).LastModifiedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).LastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccountInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Origin(Microsoft.Azure.PowerShell.Cmdlets.MixedReality.PropertyOrigin.Inherited)]

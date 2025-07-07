@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
+Create a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
 .Description
-create a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
+Create a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
 .Example
 $pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzSapMonitorProviderInstance -ResourceGroupName nancyc-hn1 -Name ps-sapmonitorins-t01 -SapMonitorName yemingmonitor -ProviderType SapHana -HanaHostname 'hdb1-0' -HanaDatabaseName 'SYSTEMDB' -HanaDatabaseSqlPort 30015 -HanaDatabaseUsername SYSTEM -HanaDatabasePassword $pwd

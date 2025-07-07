@@ -43,31 +43,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.Id { get => this._id; set { {_id = value;} } }
 
         /// <summary>Internal Acessors for IsQuotaApplicable</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.IsQuotaApplicable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).IsQuotaApplicable; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).IsQuotaApplicable = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.IsQuotaApplicable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).IsQuotaApplicable; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).IsQuotaApplicable = value ?? default(bool); }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.Name { get => this._name; set { {_name = value;} } }
 
         /// <summary>Internal Acessors for NameLocalizedValue</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.NameLocalizedValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).NameLocalizedValue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).NameLocalizedValue = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.NameLocalizedValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).NameLocalizedValue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).NameLocalizedValue = value ?? null; }
 
         /// <summary>Internal Acessors for PropertiesName</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceName Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.PropertiesName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Name = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceName Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.PropertiesName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Name = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesProperties Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.UsagesProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for QuotaPeriod</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.QuotaPeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).QuotaPeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).QuotaPeriod = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.QuotaPeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).QuotaPeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).QuotaPeriod = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.Type { get => this._type; set { {_type = value;} } }
 
         /// <summary>Internal Acessors for Unit</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.Unit { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Unit; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Unit = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.Unit { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Unit; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Unit = value ?? null; }
 
         /// <summary>Internal Acessors for Usage</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesObject Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.Usage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Usage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Usage = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesObject Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal.Usage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Usage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesPropertiesInternal)Property).Usage = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

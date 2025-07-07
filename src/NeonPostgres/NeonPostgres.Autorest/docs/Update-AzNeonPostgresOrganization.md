@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNeonPostgresOrganization
 
 ## SYNOPSIS
-update a OrganizationResource
+Update a OrganizationResource
 
 ## SYNTAX
 
@@ -61,7 +61,7 @@ Update-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> -Js
 ```
 
 ## DESCRIPTION
-update a OrganizationResource
+Update a OrganizationResource
 
 ## EXAMPLES
 

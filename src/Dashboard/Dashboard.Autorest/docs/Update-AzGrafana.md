@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzGrafana
 
 ## SYNOPSIS
-update a workspace for Grafana resource.
+Update a workspace for Grafana resource.
 This API is idempotent, so user can either update a new grafana or update an existing grafana.
 
 ## SYNTAX
@@ -34,7 +34,7 @@ Update-AzGrafana -InputObject <IDashboardIdentity> [-ApiKey <String>]
 ```
 
 ## DESCRIPTION
-update a workspace for Grafana resource.
+Update a workspace for Grafana resource.
 This API is idempotent, so user can either update a new grafana or update an existing grafana.
 
 ## EXAMPLES

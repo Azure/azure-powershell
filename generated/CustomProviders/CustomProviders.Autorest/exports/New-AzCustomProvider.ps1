@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create the custom resource provider.
+Create the custom resource provider.
 .Description
-create the custom resource provider.
+Create the custom resource provider.
 .Example
 New-AzCustomProvider -ResourceGroupName myRG -Name Namespace.Type -Location "West US 2" -ResourceType @{Name="CustomRoute1"; Endpoint="https://www.contoso.com/"}
 .Example

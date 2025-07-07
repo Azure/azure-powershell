@@ -53,19 +53,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).Location = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for IsValidated</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISlackChannelInternal.IsValidated { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISlackChannelPropertiesInternal)Property).IsValidated; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISlackChannelPropertiesInternal)Property).IsValidated = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISlackChannelInternal.IsValidated { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISlackChannelPropertiesInternal)Property).IsValidated; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISlackChannelPropertiesInternal)Property).IsValidated = value ?? default(bool); }
 
         /// <summary>Internal Acessors for LastSubmissionId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISlackChannelInternal.LastSubmissionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISlackChannelPropertiesInternal)Property).LastSubmissionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISlackChannelPropertiesInternal)Property).LastSubmissionId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISlackChannelInternal.LastSubmissionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISlackChannelPropertiesInternal)Property).LastSubmissionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISlackChannelPropertiesInternal)Property).LastSubmissionId = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISlackChannelProperties Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISlackChannelInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.SlackChannelProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for RedirectAction</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISlackChannelInternal.RedirectAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISlackChannelPropertiesInternal)Property).RedirectAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISlackChannelPropertiesInternal)Property).RedirectAction = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISlackChannelInternal.RedirectAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISlackChannelPropertiesInternal)Property).RedirectAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISlackChannelPropertiesInternal)Property).RedirectAction = value ?? null; }
 
         /// <summary>The channel name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Constant]

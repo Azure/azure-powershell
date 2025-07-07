@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a StorageClassResource</summary>
+    /// <summary>create a StorageClassResource</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/{resourceUri}/providers/Microsoft.KubernetesRuntime/storageClasses/{storageClassName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzKubernetesRuntimeStorageClass_CreateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IStorageClassResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Description(@"Create a StorageClassResource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Description(@"create a StorageClassResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.HttpPath(Path = "/{resourceUri}/providers/Microsoft.KubernetesRuntime/storageClasses/{storageClassName}", ApiVersion = "2024-03-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.NotSuggestDefaultParameterSet]

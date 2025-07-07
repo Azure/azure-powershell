@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMobileNetworkSlice
 
 ## SYNOPSIS
-create a network slice.
+Create a network slice.
 Must be created in the same location as its parent mobile network.
 
 ## SYNTAX
@@ -49,7 +49,7 @@ New-AzMobileNetworkSlice -MobileNetworkName <String> -ResourceGroupName <String>
 ```
 
 ## DESCRIPTION
-create a network slice.
+Create a network slice.
 Must be created in the same location as its parent mobile network.
 
 ## EXAMPLES

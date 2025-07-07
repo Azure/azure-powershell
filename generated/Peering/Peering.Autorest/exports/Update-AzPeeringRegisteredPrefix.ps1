@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a new registered prefix with the specified name under the given subscription, resource group and peering.
+Update a new registered prefix with the specified name under the given subscription, resource group and peering.
 .Description
-update a new registered prefix with the specified name under the given subscription, resource group and peering.
+Update a new registered prefix with the specified name under the given subscription, resource group and peering.
 .Example
 Update-AzPeeringRegisteredPrefix -Name accessibilityTesting6 -PeeringName DemoPeering -ResourceGroupName DemoRG -Prefix 240.0.5.0/24
 

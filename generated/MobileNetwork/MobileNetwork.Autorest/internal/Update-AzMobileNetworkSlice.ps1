@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-update a network slice.
+Update a network slice.
 Must be created in the same location as its parent mobile network.
 .Description
-update a network slice.
+Update a network slice.
 Must be created in the same location as its parent mobile network.
 .Example
 Update-AzMobileNetworkSlice -MobileNetworkName azps-mn -ResourceGroupName azps_test_group -SliceName azps-mn-slice -Tag @{"abc"="123"} -SnssaiSst 1

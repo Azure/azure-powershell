@@ -5427,9 +5427,9 @@ end {
 
 <#
 .Synopsis
-create a new Binding or create an exiting Binding.
+Create a new Binding or create an exiting Binding.
 .Description
-create a new Binding or create an exiting Binding.
+Create a new Binding or create an exiting Binding.
 .Example
 New-AzSpringCloudAppBinding -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -name redis -Key myKey -ResourceId myResourceId -AppName tools -BindingParameter @{ "useSsl"= "true" }
 
@@ -5748,9 +5748,9 @@ end {
 
 <#
 .Synopsis
-create custom domain of one lifecycle application.
+Create custom domain of one lifecycle application.
 .Description
-create custom domain of one lifecycle application.
+Create custom domain of one lifecycle application.
 .Example
 New-AzSpringCloudAppCustomDomain -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -AppName gateway -Name springcloud-service.azuremicroservices.io
 
@@ -6059,9 +6059,9 @@ end {
 
 <#
 .Synopsis
-create a new Deployment or create an exiting Deployment.
+Create a new Deployment or create an exiting Deployment.
 .Description
-create a new Deployment or create an exiting Deployment.
+Create a new Deployment or create an exiting Deployment.
 .Example
 New-AzSpringCloudAppDeployment -ResourceGroupName spring-cloud-rp -ServiceName spring-cloud-service -AppName gateway -Name default
 
@@ -6438,9 +6438,9 @@ end {
 
 <#
 .Synopsis
-create a buildpack binding.
+Create a buildpack binding.
 .Description
-create a buildpack binding.
+Create a buildpack binding.
 .Example
 New-AzSpringCloudBuildpackBinding -ResourceGroupName springcloudrg -ServiceName sspring-portal0 -BuilderName default -Name binging01 -BindingType 'AppDynamics'
 
@@ -6797,9 +6797,9 @@ end {
 
 <#
 .Synopsis
-update build service agent pool.
+Update build service agent pool.
 .Description
-update build service agent pool.
+Update build service agent pool.
 .Example
 New-AzSpringCloudBuildServiceAgentPool -ResourceGroupName springcloudrg -ServiceName espring-pwsh01 -PoolSizeName "S1"
 
@@ -7121,9 +7121,9 @@ end {
 
 <#
 .Synopsis
-create a KPack builder.
+Create a KPack builder.
 .Description
-create a KPack builder.
+Create a KPack builder.
 .Example
 New-AzSpringCloudBuildServiceBuilder -ResourceGroupName springcloudrg -ServiceName sspring-portal01 -Name builder01 -StackId 'io.buildpacks.stacks.bionic' -StackVersion 'base'
 
@@ -7440,9 +7440,9 @@ end {
 
 <#
 .Synopsis
-create certificate resource.
+Create certificate resource.
 .Description
-create certificate resource.
+Create certificate resource.
 .Example
 $cert = New-AzSpringCloudKeyVaultCertificateObject -Name "cert01" -VaultUri "https://xxxxxx.vault.azure.net" -Version "xxxxxxxxxxxxxxxxxxxxx" -ExcludePrivateKey $false
 New-AzSpringCloudCertificate -ResourceGroupName spring-rg-test -ServiceName springapp-pwsh01 -Name cert01 -Property $cert
@@ -7709,9 +7709,9 @@ end {
 
 <#
 .Synopsis
-create the default Application Configuration Service or create the existing Application Configuration Service.
+Create the default Application Configuration Service or create the existing Application Configuration Service.
 .Description
-create the default Application Configuration Service or create the existing Application Configuration Service.
+Create the default Application Configuration Service or create the existing Application Configuration Service.
 .Example
 New-AzSpringCloudConfigurationService -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01
 
@@ -7984,9 +7984,9 @@ end {
 
 <#
 .Synopsis
-create the default Service Registry or create the existing Service Registry.
+Create the default Service Registry or create the existing Service Registry.
 .Description
-create the default Service Registry or create the existing Service Registry.
+Create the default Service Registry or create the existing Service Registry.
 .Example
 New-AzSpringCloudRegistry -ResourceGroupName <String> -ServiceName <String>
 
@@ -14255,9 +14255,9 @@ end {
 
 <#
 .Synopsis
-update custom domain of one lifecycle application.
+Update custom domain of one lifecycle application.
 .Description
-update custom domain of one lifecycle application.
+Update custom domain of one lifecycle application.
 .Example
 Update-AzSpringCloudAppCustomDomain -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -AppName gateway -Name springcloud-service.azuremicroservices.io
 .Example
@@ -15429,9 +15429,9 @@ end {
 
 <#
 .Synopsis
-update a buildpack binding.
+Update a buildpack binding.
 .Description
-update a buildpack binding.
+Update a buildpack binding.
 .Example
 Update-AzSpringCloudBuildpackBinding -ResourceGroupName springcloudrg -ServiceName sspring-portal0 -BuilderName default -Name binging01 -BindingType 'AppDynamics'
 
@@ -15789,9 +15789,9 @@ end {
 
 <#
 .Synopsis
-update build service agent pool.
+Update build service agent pool.
 .Description
-update build service agent pool.
+Update build service agent pool.
 .Example
 Update-AzSpringCloudBuildServiceAgentPool -ResourceGroupName springcloudrg -ServiceName espring-pwsh01 -PoolSizeName "S1"
 
@@ -16090,9 +16090,9 @@ end {
 
 <#
 .Synopsis
-update a KPack builder.
+Update a KPack builder.
 .Description
-update a KPack builder.
+Update a KPack builder.
 .Example
 Update-AzSpringCloudBuildServiceBuilder -ResourceGroupName springcloudrg -ServiceName sspring-portal01 -Name builder01 -StackId 'io.buildpacks.stacks.bionic' -StackVersion 'base'
 
@@ -16414,9 +16414,9 @@ end {
 
 <#
 .Synopsis
-update certificate resource.
+Update certificate resource.
 .Description
-update certificate resource.
+Update certificate resource.
 .Example
 $cert = New-AzSpringCloudKeyVaultCertificateObject -Name "cert01" -VaultUri "https://xxxxxx.vault.azure.net" -Version "xxxxxxxxxxxxxxxxxxxxx" -ExcludePrivateKey $false
 Update-AzSpringCloudCertificate -ResourceGroupName spring-rg-test -ServiceName springapp-pwsh01 -Name cert01 -Property $cert
@@ -16692,9 +16692,9 @@ end {
 
 <#
 .Synopsis
-update the config server.
+Update the config server.
 .Description
-update the config server.
+Update the config server.
 .Example
 Update-AzSpringCloudConfigServer -ResourceGroupName SpringCloud-gp-junxi -Name springcloud-service
 .Example
@@ -17044,9 +17044,9 @@ end {
 
 <#
 .Synopsis
-update the default Application Configuration Service or update the existing Application Configuration Service.
+Update the default Application Configuration Service or update the existing Application Configuration Service.
 .Description
-update the default Application Configuration Service or update the existing Application Configuration Service.
+Update the default Application Configuration Service or update the existing Application Configuration Service.
 .Example
 Update-AzSpringCloudConfigurationService -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01 -GitRepository ***
 
@@ -17327,9 +17327,9 @@ end {
 
 <#
 .Synopsis
-update the Monitoring Setting.
+Update the Monitoring Setting.
 .Description
-update the Monitoring Setting.
+Update the Monitoring Setting.
 .Example
 Update-AzSpringCloudMonitoringSetting -ResourceGroupName SpringCloud-gp-junxi -Name springcloud-service -AppInsightsInstrumentationKey "InstrumentationKey=xxxxxxxxxxxxxxxxxxx;IngestionEndpoint=https://xxxxxx.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/" -TraceEnabled
 .Example
@@ -17954,7 +17954,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
-    # The path of the file need to be deploied.
+    # The path of the file need to be deployed.
     # The file supports Jar, NetcoreZip and Source.
     ${FilePath},
 
@@ -18138,9 +18138,9 @@ end {
 
 <#
 .Synopsis
-create a new Service or update an exiting Service.
+Create a new Service or update an exiting Service.
 .Description
-create a new Service or update an exiting Service.
+Create a new Service or update an exiting Service.
 .Example
 New-AzSpringCloud -ResourceGroupName springcloudrg -Name spring-pwsh01 -Location eastus
 .Example
@@ -18404,9 +18404,9 @@ end {
 
 <#
 .Synopsis
-create a new App or update an exiting App.
+Create a new App or update an exiting App.
 .Description
-create a new App or update an exiting App.
+Create a new App or update an exiting App.
 .Example
 New-AzSpringCloudApp -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -Name tools
 

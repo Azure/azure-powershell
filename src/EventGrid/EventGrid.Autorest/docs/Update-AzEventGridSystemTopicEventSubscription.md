@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridSystemTopicEventSubscription
 
 ## SYNOPSIS
-update an existing event subscription of a system topic.
+Update an existing event subscription of a system topic.
 
 ## SYNTAX
 
@@ -71,7 +71,7 @@ Update-AzEventGridSystemTopicEventSubscription -EventSubscriptionName <String> -
 ```
 
 ## DESCRIPTION
-update an existing event subscription of a system topic.
+Update an existing event subscription of a system topic.
 
 ## EXAMPLES
 

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update instance's tags.
+Update instance's tags.
 .Description
-update instance's tags.
+Update instance's tags.
 .Example
 Update-AzDeviceUpdateInstance -AccountName azpstest-account -ResourceGroupName azpstest_gp -Name azpstest-instance -Tag @{"abc"="123"}
 .Example

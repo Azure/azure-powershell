@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSpringCloudRegistry
 
 ## SYNOPSIS
-create the default Service Registry or create the existing Service Registry.
+Create the default Service Registry or create the existing Service Registry.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ New-AzSpringCloudRegistry -SpringInputObject <ISpringCloudIdentity> [-DefaultPro
 ```
 
 ## DESCRIPTION
-create the default Service Registry or create the existing Service Registry.
+Create the default Service Registry or create the existing Service Registry.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzComputeFleet
 
 ## SYNOPSIS
-update a Fleet
+Update a Fleet
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Update-AzComputeFleet -Name <String> -ResourceGroupName <String> -Resource <IFle
 ```
 
 ## DESCRIPTION
-update a Fleet
+Update a Fleet
 
 ## EXAMPLES
 

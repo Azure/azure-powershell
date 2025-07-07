@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the specified contact profile tags.
+Update the specified contact profile tags.
 .Description
-update the specified contact profile tags.
+Update the specified contact profile tags.
 .Example
 Update-AzOrbitalContactProfile -Name azps-orbital-contactprofile -ResourceGroupName azpstest-gp -Tag @{"123"="abc"}
 .Example

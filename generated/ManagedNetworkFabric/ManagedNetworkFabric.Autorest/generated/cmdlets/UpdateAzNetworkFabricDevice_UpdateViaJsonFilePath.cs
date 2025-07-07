@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update certain properties of the Network Device resource.</summary>
+    /// <summary>update certain properties of the Network Device resource.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzNetworkFabricDevice_UpdateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevice))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Description(@"Update certain properties of the Network Device resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Description(@"update certain properties of the Network Device resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}", ApiVersion = "2023-06-15")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.NotSuggestDefaultParameterSet]

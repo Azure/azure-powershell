@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-create a SIM policy.
+Create a SIM policy.
 Must be created in the same location as its parent mobile network.
 .Description
-create a SIM policy.
+Create a SIM policy.
 Must be created in the same location as its parent mobile network.
 .Example
 $ServiceResourceId = New-AzMobileNetworkServiceResourceIdObject -Id "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/services/azps-mn-service"

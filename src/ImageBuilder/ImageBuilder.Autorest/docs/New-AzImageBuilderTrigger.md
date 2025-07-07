@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzImageBuilderTrigger
 
 ## SYNOPSIS
-create a trigger for the specified virtual machine image template
+Create a trigger for the specified virtual machine image template
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ New-AzImageBuilderTrigger -ImageTemplateName <String> -Name <String> -ResourceGr
 ```
 
 ## DESCRIPTION
-create a trigger for the specified virtual machine image template
+Create a trigger for the specified virtual machine image template
 
 ## EXAMPLES
 

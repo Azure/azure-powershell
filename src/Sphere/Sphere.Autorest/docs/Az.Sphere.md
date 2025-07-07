@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Sphere
-Module Guid: 4855dcb5-d1a4-45e3-b4b2-49d37925ed0b
+Module Guid: e9b986f5-1a1e-42fa-8a12-4b044b2f3f05
 Download Help Link: https://learn.microsoft.com/powershell/module/az.sphere
 Help Version: 1.0.0.0
 Locale: en-US

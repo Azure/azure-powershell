@@ -83,16 +83,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         public string Key2 { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal)__site).Key2; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal)__site).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal)__site).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal)__site).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal)__site).Id = value ?? null; }
 
         /// <summary>Internal Acessors for IsTokenEnabled</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal.IsTokenEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal)__site).IsTokenEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal)__site).IsTokenEnabled = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal.IsTokenEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal)__site).IsTokenEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal)__site).IsTokenEnabled = value ?? default(bool); }
 
         /// <summary>Internal Acessors for Key</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal.Key { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal)__site).Key; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal)__site).Key = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal.Key { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal)__site).Key; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal)__site).Key = value ?? null; }
 
         /// <summary>Internal Acessors for Key2</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal.Key2 { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal)__site).Key2; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal)__site).Key2 = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal.Key2 { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal)__site).Key2; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISiteInternal)__site).Key2 = value ?? null; }
 
         /// <summary>Site name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inherited)]

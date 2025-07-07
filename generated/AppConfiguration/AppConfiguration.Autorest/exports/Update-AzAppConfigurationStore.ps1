@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a configuration store with the specified parameters.
+Update a configuration store with the specified parameters.
 .Description
-update a configuration store with the specified parameters.
+Update a configuration store with the specified parameters.
 .Example
 Update-AzAppConfigurationStore -Name azpstest-appstore -ResourceGroupName azpstest_gp -DisableLocalAuth -EnablePurgeProtection -PublicNetworkAccess 'Enabled'
 .Example

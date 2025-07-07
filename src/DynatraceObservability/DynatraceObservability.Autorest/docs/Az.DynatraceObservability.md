@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DynatraceObservability
-Module Guid: f889aadf-56ba-485c-8077-283219e39439
+Module Guid: 3b2a74bc-7a37-4b99-a544-865f0f9d67f8
 Download Help Link: https://learn.microsoft.com/powershell/module/az.dynatraceobservability
 Help Version: 1.0.0.0
 Locale: en-US
@@ -45,16 +45,16 @@ Get a TagRule
 Returns the payload that needs to be passed in the request body for installing Dynatrace agent on a VM.
 
 ### [New-AzDynatraceMonitor](New-AzDynatraceMonitor.md)
-create a MonitorResource
+Create a MonitorResource
 
 ### [New-AzDynatraceMonitorFilteringTagObject](New-AzDynatraceMonitorFilteringTagObject.md)
 Create an in-memory object for FilteringTag.
 
 ### [New-AzDynatraceMonitorSSOConfig](New-AzDynatraceMonitorSSOConfig.md)
-create a DynatraceSingleSignOnResource
+Create a DynatraceSingleSignOnResource
 
 ### [New-AzDynatraceMonitorTagRule](New-AzDynatraceMonitorTagRule.md)
-create a TagRule
+Create a TagRule
 
 ### [Remove-AzDynatraceMonitor](Remove-AzDynatraceMonitor.md)
 Delete a MonitorResource
@@ -63,11 +63,11 @@ Delete a MonitorResource
 Delete a TagRule
 
 ### [Update-AzDynatraceMonitor](Update-AzDynatraceMonitor.md)
-update a MonitorResource
+Update a MonitorResource
 
 ### [Update-AzDynatraceMonitorSSOConfig](Update-AzDynatraceMonitorSSOConfig.md)
-update a DynatraceSingleSignOnResource
+Update a DynatraceSingleSignOnResource
 
 ### [Update-AzDynatraceMonitorTagRule](Update-AzDynatraceMonitorTagRule.md)
-update a TagRule
+Update a TagRule
 

@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-create a Maps Account.
+Create a Maps Account.
 A Maps Account holds the keys which allow access to the Maps REST APIs.
 .Description
-create a Maps Account.
+Create a Maps Account.
 A Maps Account holds the keys which allow access to the Maps REST APIs.
 .Example
 New-AzMapsAccount -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount01 -SkuName S0 -Location eastus

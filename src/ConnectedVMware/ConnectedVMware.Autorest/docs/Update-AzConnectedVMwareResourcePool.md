@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedVMwareResourcePool
 
 ## SYNOPSIS
-API to Update certain properties of the resourcePool resource.
+API to update certain properties of the resourcePool resource.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzConnectedVMwareResourcePool -Name <String> -ResourceGroupName <String> 
 ```
 
 ## DESCRIPTION
-API to Update certain properties of the resourcePool resource.
+API to update certain properties of the resourcePool resource.
 
 ## EXAMPLES
 

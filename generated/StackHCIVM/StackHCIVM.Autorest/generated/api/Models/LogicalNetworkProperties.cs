@@ -33,11 +33,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
 
+        /// <summary>Internal Acessors for ProvisioningStatus</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkPropertiesInternal.ProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ProvisioningStatusStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ProvisioningStatusStatus = value ?? null; }
+
+        /// <summary>Internal Acessors for ProvisioningStatusOperationId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkPropertiesInternal.ProvisioningStatusOperationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ProvisioningStatusOperationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ProvisioningStatusOperationId = value ?? null; }
+
         /// <summary>Internal Acessors for Status</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkPropertiesInternal.Status { get => (this._status = this._status ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.LogicalNetworkStatus()); set { {_status = value;} } }
 
+        /// <summary>Internal Acessors for StatusErrorCode</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkPropertiesInternal.StatusErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ErrorCode = value ?? null; }
+
+        /// <summary>Internal Acessors for StatusErrorMessage</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkPropertiesInternal.StatusErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ErrorMessage = value ?? null; }
+
         /// <summary>Internal Acessors for StatusProvisioningStatus</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusProvisioningStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkPropertiesInternal.StatusProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ProvisioningStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ProvisioningStatus = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusProvisioningStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkPropertiesInternal.StatusProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ProvisioningStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ProvisioningStatus = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
@@ -50,11 +62,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         /// The status of the operation performed on the logical network [Succeeded, Failed, InProgress]
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string ProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ProvisioningStatusStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ProvisioningStatusStatus = value ?? null; }
+        public string ProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ProvisioningStatusStatus; }
 
         /// <summary>The ID of the operation performed on the logical network</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string ProvisioningStatusOperationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ProvisioningStatusOperationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ProvisioningStatusOperationId = value ?? null; }
+        public string ProvisioningStatusOperationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ProvisioningStatusOperationId; }
 
         /// <summary>Backing field for <see cref="Status" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatus _status;
@@ -65,11 +77,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
 
         /// <summary>LogicalNetwork provisioning error code</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string StatusErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ErrorCode = value ?? null; }
+        public string StatusErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ErrorCode; }
 
         /// <summary>Descriptive error message</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string StatusErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ErrorMessage = value ?? null; }
+        public string StatusErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworkStatusInternal)Status).ErrorMessage; }
 
         /// <summary>Backing field for <see cref="Subnet" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISubnet> _subnet;

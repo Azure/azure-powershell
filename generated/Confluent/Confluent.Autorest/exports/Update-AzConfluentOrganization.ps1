@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update Organization resource
+Update Organization resource
 .Description
-update Organization resource
+Update Organization resource
 .Example
 Update-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-02-pwsh -Tag @{"key01" = "value01"}
 .Example

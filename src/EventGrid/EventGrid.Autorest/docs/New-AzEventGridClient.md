@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridClient
 
 ## SYNOPSIS
-create a client with the specified parameters.
+Create a client with the specified parameters.
 
 ## SYNTAX
 
@@ -61,7 +61,7 @@ New-AzEventGridClient -Name <String> -NamespaceName <String> -ResourceGroupName 
 ```
 
 ## DESCRIPTION
-create a client with the specified parameters.
+Create a client with the specified parameters.
 
 ## EXAMPLES
 

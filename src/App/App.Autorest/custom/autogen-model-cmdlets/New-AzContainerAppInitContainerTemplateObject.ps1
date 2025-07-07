@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.App.Models.InitContainer
 https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappinitcontainertemplateobject
 #>
 function New-AzContainerAppInitContainerTemplateObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.App.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.InitContainer')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

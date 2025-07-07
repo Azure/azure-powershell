@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new peering or create an existing peering with the specified name under the given subscription and resource group.
+Create a new peering or create an existing peering with the specified name under the given subscription and resource group.
 .Description
-create a new peering or create an existing peering with the specified name under the given subscription and resource group.
+Create a new peering or create an existing peering with the specified name under the given subscription and resource group.
 .Example
 $peerAsnId = "/subscriptions/{subId}/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest"
 $directConnections = New-AzPeeringDirectConnectionObject -BandwidthInMbps 10000 -BgpSessionMaxPrefixesAdvertisedV4 20000

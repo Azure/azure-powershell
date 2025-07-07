@@ -11,8 +11,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
     using System;
 
     /// <summary>
-    /// The operation to create or update a virtual machine instance. Please note some properties can be set only during virtual
-    /// machine instance creation.
+    /// The operation to update a virtual machine instance. Please note some properties can be set only during virtual machine
+    /// instance creation.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default"
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzStackHCIVMVirtualMachineInstance_UpdateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Description(@"The operation to create or update a virtual machine instance. Please note some properties can be set only during virtual machine instance creation.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Description(@"The operation to update a virtual machine instance. Please note some properties can be set only during virtual machine instance creation.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.HttpPath(Path = "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default", ApiVersion = "2024-01-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.NotSuggestDefaultParameterSet]

@@ -132,9 +132,9 @@ end {
 
 <#
 .Synopsis
-create a virtual machine image template
+Create a virtual machine image template
 .Description
-create a virtual machine image template
+Create a virtual machine image template
 .Example
 $source = New-AzImageBuilderTemplateSourceObject -Publisher "Canonical" -Offer "UbuntuServer" -Sku "18.04-LTS" -Version "latest"
 $customizer = New-AzImageBuilderTemplateCustomizerObject -ShellCustomizer -Name "CheckSumCompareShellScript" -ScriptUri "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh" -Sha256Checksum "ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93"

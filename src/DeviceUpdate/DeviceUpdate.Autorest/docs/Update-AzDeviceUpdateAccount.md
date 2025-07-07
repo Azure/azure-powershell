@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDeviceUpdateAccount
 
 ## SYNOPSIS
-update Account.
+Update Account.
 
 ## SYNTAX
 
@@ -29,7 +29,7 @@ Update-AzDeviceUpdateAccount -InputObject <IDeviceUpdateIdentity> [-EnableSystem
 ```
 
 ## DESCRIPTION
-update Account.
+Update Account.
 
 ## EXAMPLES
 

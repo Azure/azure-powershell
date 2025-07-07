@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an Prometheus rule group definition.
+Update an Prometheus rule group definition.
 .Description
-update an Prometheus rule group definition.
+Update an Prometheus rule group definition.
 .Example
 Update-AzPrometheusRuleGroup -RuleGroupName MyRuleGroup -ResourceGroupName MyResourceGroup -Enabled:$false
 

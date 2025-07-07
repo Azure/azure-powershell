@@ -11,14 +11,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Cmdlets
     using System;
 
     /// <summary>
-    /// Create a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group
+    /// create a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group
     /// </summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{resourceName}/resourceSyncRules/{childResourceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzCustomLocationResourceSyncRule_CreateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceSyncRule))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Description(@"Create a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Description(@"create a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.HttpPath(Path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{resourceName}/resourceSyncRules/{childResourceName}", ApiVersion = "2021-08-31-preview")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.NotSuggestDefaultParameterSet]

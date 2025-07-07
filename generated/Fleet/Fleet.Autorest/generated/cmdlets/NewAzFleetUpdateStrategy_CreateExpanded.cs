@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a FleetUpdateStrategy</summary>
+    /// <summary>create a FleetUpdateStrategy</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies/{updateStrategyName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzFleetUpdateStrategy_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetUpdateStrategy))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"Create a FleetUpdateStrategy")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"create a FleetUpdateStrategy")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies/{updateStrategyName}", ApiVersion = "2023-10-15")]
     public partial class NewAzFleetUpdateStrategy_CreateExpanded : global::System.Management.Automation.PSCmdlet,

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+Create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
 .Description
-create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+Create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
 .Example
 New-AzElasticExternalUser -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 

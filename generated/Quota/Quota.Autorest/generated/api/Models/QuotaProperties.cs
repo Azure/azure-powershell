@@ -34,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceName Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaPropertiesInternal.Name { get => (this._name = this._name ?? new Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ResourceName()); set { {_name = value;} } }
 
         /// <summary>Internal Acessors for NameLocalizedValue</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaPropertiesInternal.NameLocalizedValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceNameInternal)Name).LocalizedValue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceNameInternal)Name).LocalizedValue = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaPropertiesInternal.NameLocalizedValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceNameInternal)Name).LocalizedValue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceNameInternal)Name).LocalizedValue = value ?? null; }
 
         /// <summary>Internal Acessors for QuotaPeriod</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaPropertiesInternal.QuotaPeriod { get => this._quotaPeriod; set { {_quotaPeriod = value;} } }

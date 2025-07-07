@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IRpSku Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IRpSkuDetailsForExistingResourceInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.RpSku()); set { {_sku = value;} } }
 
         /// <summary>Internal Acessors for SkuTier</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IRpSkuDetailsForExistingResourceInternal.SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IRpSkuInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IRpSkuInternal)Sku).Tier = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IRpSkuDetailsForExistingResourceInternal.SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IRpSkuInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IRpSkuInternal)Sku).Tier = value ; }
 
         /// <summary>Backing field for <see cref="ResourceType" /> property.</summary>
         private string _resourceType;

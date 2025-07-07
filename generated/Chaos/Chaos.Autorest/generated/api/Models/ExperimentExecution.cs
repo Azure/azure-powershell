@@ -30,13 +30,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionProperties Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ExperimentExecutionProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for StartedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionInternal.StartedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)Property).StartedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)Property).StartedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionInternal.StartedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)Property).StartedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)Property).StartedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Status</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)Property).Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)Property).Status = value ?? null; }
 
         /// <summary>Internal Acessors for StoppedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionInternal.StoppedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)Property).StoppedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)Property).StoppedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionInternal.StoppedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)Property).StoppedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)Property).StoppedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionInternal.Type { get => this._type; set { {_type = value;} } }

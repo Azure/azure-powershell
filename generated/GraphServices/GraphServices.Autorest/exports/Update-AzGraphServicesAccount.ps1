@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update account details.
+Update account details.
 .Description
-update account details.
+Update account details.
 .Example
 Update-AzGraphServicesAccount -ResourceGroupName myRG -Name myGraphAppBilling
 

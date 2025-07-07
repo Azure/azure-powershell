@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a connection monitor test with the specified name under the given subscription, resource group and peering service.
+Create a connection monitor test with the specified name under the given subscription, resource group and peering service.
 .Description
-create a connection monitor test with the specified name under the given subscription, resource group and peering service.
+Create a connection monitor test with the specified name under the given subscription, resource group and peering service.
 .Example
 New-AzPeeringConnectionMonitorTest -Name TestName -PeeringServiceName DRTest -ResourceGroupName DemoRG
 

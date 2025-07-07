@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a DataflowEndpointResource
+Update a DataflowEndpointResource
 .Description
-update a DataflowEndpointResource
+Update a DataflowEndpointResource
 .Example
 New-AzIoTOperationsServiceDataflowEndpoint  -InstanceName  "aio-instance-name"   -Name "local-storage-endpoint"  -ResourceGroupName "aio-validation-116116143"  -ExtendedLocationName "/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.ExtendedLocation/customLocations/location-116116143"  -EndpointType "LocalStorage"  -LocalStorageSettingPersistentVolumeClaimRef "myPersistentVolumeClaim" 
 

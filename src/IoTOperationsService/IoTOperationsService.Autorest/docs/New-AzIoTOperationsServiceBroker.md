@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzIoTOperationsServiceBroker
 
 ## SYNOPSIS
-create a BrokerResource
+Create a BrokerResource
 
 ## SYNTAX
 
@@ -44,7 +44,7 @@ New-AzIoTOperationsServiceBroker -InstanceName <String> -Name <String> -Resource
 ```
 
 ## DESCRIPTION
-create a BrokerResource
+Create a BrokerResource
 
 ## EXAMPLES
 

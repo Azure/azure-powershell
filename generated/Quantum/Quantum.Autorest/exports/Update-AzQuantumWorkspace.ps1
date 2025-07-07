@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an existing workspace's tags.
+Update an existing workspace's tags.
 .Description
-update an existing workspace's tags.
+Update an existing workspace's tags.
 .Example
 Update-AzQuantumWorkspace -ResourceGroupName azps_test_group_quantum -Name azps-qw -Tag @{"abc"="123"}
 .Example

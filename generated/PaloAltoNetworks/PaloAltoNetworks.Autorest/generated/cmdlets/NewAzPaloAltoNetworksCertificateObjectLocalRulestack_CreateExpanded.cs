@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a CertificateObjectLocalRulestackResource</summary>
+    /// <summary>create a CertificateObjectLocalRulestackResource</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/{localRulestackName}/certificates/{name}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzPaloAltoNetworksCertificateObjectLocalRulestack_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Description(@"Create a CertificateObjectLocalRulestackResource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Description(@"create a CertificateObjectLocalRulestackResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/{localRulestackName}/certificates/{name}", ApiVersion = "2023-09-01")]
     public partial class NewAzPaloAltoNetworksCertificateObjectLocalRulestack_CreateExpanded : global::System.Management.Automation.PSCmdlet,

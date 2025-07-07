@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-create a new address with the specified parameters.
+Create a new address with the specified parameters.
 Existing address can be updated with this API
 .Description
-create a new address with the specified parameters.
+Create a new address with the specified parameters.
 Existing address can be updated with this API
 .Example
 $contactDetail = New-AzEdgeOrderContactDetailsObject -ContactName ContactName -EmailList @("emailId") -Phone Phone

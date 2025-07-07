@@ -1,6 +1,6 @@
 ---
 Module Name: Az.BareMetal
-Module Guid: 806859af-c1e8-475c-979d-f13b38d60ec1
+Module Guid: 79295ed1-f2dc-4f30-8433-a9616e156d72
 Download Help Link: https://learn.microsoft.com/powershell/module/az.baremetal
 Help Version: 1.0.0.0
 Locale: en-US

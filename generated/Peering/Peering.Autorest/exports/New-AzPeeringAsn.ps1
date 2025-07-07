@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new peer ASN or create an existing peer ASN with the specified name under the given subscription.
+Create a new peer ASN or create an existing peer ASN with the specified name under the given subscription.
 .Description
-create a new peer ASN or create an existing peer ASN with the specified name under the given subscription.
+Create a new peer ASN or create an existing peer ASN with the specified name under the given subscription.
 .Example
 $contactDetail = New-AzPeeringContactDetailObject -Email "abc@xyz.com" -Phone 1234567890 -Role "Noc"
 $PeerContactList = ,$contactDetail

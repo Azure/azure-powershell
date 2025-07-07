@@ -1,6 +1,6 @@
 ---
 Module Name: Az.NetworkSecurityPerimeter
-Module Guid: 19cb1f22-64db-4916-ae5c-e611e0181a66
+Module Guid: 3909b19e-6107-42f0-b173-10a6da676f30
 Download Help Link: https://learn.microsoft.com/powershell/module/az.networksecurityperimeter
 Help Version: 1.0.0.0
 Locale: en-US
@@ -37,22 +37,22 @@ Gets the NSP logging configuration.
 Gets the specified NSP profile.
 
 ### [New-AzNetworkSecurityPerimeter](New-AzNetworkSecurityPerimeter.md)
-create a Network Security Perimeter.
+Create a Network Security Perimeter.
 
 ### [New-AzNetworkSecurityPerimeterAccessRule](New-AzNetworkSecurityPerimeterAccessRule.md)
-create a network access rule.
+Create a network access rule.
 
 ### [New-AzNetworkSecurityPerimeterAssociation](New-AzNetworkSecurityPerimeterAssociation.md)
-create a NSP resource association.
+Create a NSP resource association.
 
 ### [New-AzNetworkSecurityPerimeterLink](New-AzNetworkSecurityPerimeterLink.md)
-create NSP link resource.
+Create NSP link resource.
 
 ### [New-AzNetworkSecurityPerimeterLoggingConfiguration](New-AzNetworkSecurityPerimeterLoggingConfiguration.md)
-create NSP logging configuration.
+Create NSP logging configuration.
 
 ### [New-AzNetworkSecurityPerimeterProfile](New-AzNetworkSecurityPerimeterProfile.md)
-create a network profile.
+Create a network profile.
 
 ### [Remove-AzNetworkSecurityPerimeter](Remove-AzNetworkSecurityPerimeter.md)
 Deletes a network security perimeter.

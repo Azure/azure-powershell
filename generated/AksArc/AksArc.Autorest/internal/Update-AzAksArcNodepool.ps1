@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the agent pool in the provisioned cluster
+Update the agent pool in the provisioned cluster
 .Description
-update the agent pool in the provisioned cluster
+Update the agent pool in the provisioned cluster
 .Example
 Update-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Name azps_test_nodepool_example -Count 3
 .Example
@@ -245,12 +245,18 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
 
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
         $mapping = @{
             UpdateExpanded = 'Az.AksArc.private\Update-AzAksArcNodepool_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.AksArc.private\Update-AzAksArcNodepool_UpdateViaIdentityExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

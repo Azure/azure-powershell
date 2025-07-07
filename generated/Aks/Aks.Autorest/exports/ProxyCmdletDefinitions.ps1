@@ -2272,9 +2272,9 @@ end {
 
 <#
 .Synopsis
-create a maintenance configuration in the specified managed cluster.
+Create a maintenance configuration in the specified managed cluster.
 .Description
-create a maintenance configuration in the specified managed cluster.
+Create a maintenance configuration in the specified managed cluster.
 .Example
 $TimeSpan = New-AzAksTimeSpanObject -Start (Get-Date -Year 2023 -Month 3 -Day 1) -End (Get-Date -Year 2023 -Month 3 -Day 2)
 $TimeInWeek = New-AzAksTimeInWeekObject -Day Sunday -HourSlot 1,2
@@ -2503,9 +2503,9 @@ end {
 
 <#
 .Synopsis
-create a snapshot.
+Create a snapshot.
 .Description
-create a snapshot.
+Create a snapshot.
 .Example
 $pool = Get-AzAksNodePool -ResourceGroupName mygroup -ClusterName mycluster -Name default
 New-AzAksSnapshot -ResourceGroupName mygroup -ResourceName 'snapshot1' -Location eastus -SnapshotType 'NodePool' -CreationDataSourceResourceId $pool.Id
@@ -3920,9 +3920,9 @@ end {
 
 <#
 .Synopsis
-update a maintenance configuration in the specified managed cluster.
+Update a maintenance configuration in the specified managed cluster.
 .Description
-update a maintenance configuration in the specified managed cluster.
+Update a maintenance configuration in the specified managed cluster.
 .Example
 $TimeSpan = New-AzAksTimeSpanObject -Start (Get-Date -Year 2023 -Month 3 -Day 2) -End (Get-Date -Year 2023 -Month 3 -Day 3)
 $TimeInWeek = New-AzAksTimeInWeekObject -Day Sunday -HourSlot 2,3

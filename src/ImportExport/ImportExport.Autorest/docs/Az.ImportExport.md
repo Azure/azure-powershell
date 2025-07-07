@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ImportExport
-Module Guid: d08f17d5-5c73-43ef-b250-38bcfe0330c5
+Module Guid: 152f5c26-3fcc-407e-af87-2c4ff8b20e8b
 Download Help Link: https://learn.microsoft.com/powershell/module/az.importexport
 Help Version: 1.0.0.0
 Locale: en-US
@@ -22,7 +22,7 @@ Returns the details about a location to which you can ship the disks associated 
 A location is an Azure region.
 
 ### [New-AzImportExport](New-AzImportExport.md)
-create a new job or create an existing job in the specified subscription.
+Create a new job or create an existing job in the specified subscription.
 
 ### [New-AzImportExportDriveListObject](New-AzImportExportDriveListObject.md)
 Create a DriverList Object for ImportExport.
@@ -32,7 +32,7 @@ Deletes an existing job.
 Only jobs in the Creating or Completed states can be deleted.
 
 ### [Update-AzImportExport](Update-AzImportExport.md)
-update specific properties of a job.
+Update specific properties of a job.
 You can call this operation to notify the Import/Export service that the hard drives comprising the import or export job have been shipped to the Microsoft data center.
 It can also be used to cancel an existing job.
 

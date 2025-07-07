@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMobileNetworkService
 
 ## SYNOPSIS
-create a service.
+Create a service.
 Must be created in the same location as its parent mobile network.
 
 ## SYNTAX
@@ -58,7 +58,7 @@ New-AzMobileNetworkService -MobileNetworkName <String> -Name <String> -ResourceG
 ```
 
 ## DESCRIPTION
-create a service.
+Create a service.
 Must be created in the same location as its parent mobile network.
 
 ## EXAMPLES

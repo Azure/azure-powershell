@@ -231,10 +231,10 @@ end {
 
 <#
 .Synopsis
-create the metadata of a Windows IoT Device Service.
+Create the metadata of a Windows IoT Device Service.
 The usual pattern to modify a property is to retrieve the Windows IoT Device Service metadata and security metadata, and then combine them with the modified values in a new body to create the Windows IoT Device Service.
 .Description
-create the metadata of a Windows IoT Device Service.
+Create the metadata of a Windows IoT Device Service.
 The usual pattern to modify a property is to retrieve the Windows IoT Device Service metadata and security metadata, and then combine them with the modified values in a new body to create the Windows IoT Device Service.
 .Example
 New-AzWindowsIotServicesDevice -Name wsi-t03 -ResourceGroupName azure-rg-test -Location eastus -Quantity 10 -BillingDomainName 'microsoft.onmicrosoft.com' -AdminDomainName 'microsoft.onmicrosoft.com'
@@ -687,10 +687,10 @@ end {
 
 <#
 .Synopsis
-update the metadata of a Windows IoT Device Service.
+Update the metadata of a Windows IoT Device Service.
 The usual pattern to modify a property is to retrieve the Windows IoT Device Service metadata and security metadata, and then combine them with the modified values in a new body to update the Windows IoT Device Service.
 .Description
-update the metadata of a Windows IoT Device Service.
+Update the metadata of a Windows IoT Device Service.
 The usual pattern to modify a property is to retrieve the Windows IoT Device Service metadata and security metadata, and then combine them with the modified values in a new body to update the Windows IoT Device Service.
 .Example
 Update-AzWindowsIotServicesDevice -Name wsi-t03 -ResourceGroupName azure-rg-test -Quantity 10

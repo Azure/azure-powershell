@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a host pool.
+Create a host pool.
 .Description
-create a host pool.
+Create a host pool.
 .Example
 New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -Name HostPoolName `

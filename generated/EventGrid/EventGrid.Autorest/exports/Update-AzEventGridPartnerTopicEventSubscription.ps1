@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an existing event subscription of a partner topic.
+Update an existing event subscription of a partner topic.
 .Description
-update an existing event subscription of a partner topic.
+Update an existing event subscription of a partner topic.
 .Example
 $obj = New-AzEventGridWebHookEventSubscriptionDestinationObject -EndpointUrl "https://azpsweb.azurewebsites.net/api/updates"
 Update-AzEventGridPartnerTopicEventSubscription -EventSubscriptionName azps-eventsubname -ResourceGroupName azps_test_group_eventgrid -PartnerTopicName default -FilterIsSubjectCaseSensitive:$false -FilterSubjectBeginsWith "ExamplePrefix" -FilterSubjectEndsWith "ExampleSuffix" -EventDeliverySchema CloudEventSchemaV1_0 -Destination $obj

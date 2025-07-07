@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a host pool.
+Update a host pool.
 .Description
-update a host pool.
+Update a host pool.
 .Example
 Update-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -Name HostPoolName `

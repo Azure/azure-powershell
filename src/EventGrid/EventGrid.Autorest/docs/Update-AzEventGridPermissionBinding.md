@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridPermissionBinding
 
 ## SYNOPSIS
-update a permission binding with the specified parameters.
+Update a permission binding with the specified parameters.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Update-AzEventGridPermissionBinding -Name <String> -NamespaceInputObject <IEvent
 ```
 
 ## DESCRIPTION
-update a permission binding with the specified parameters.
+Update a permission binding with the specified parameters.
 
 ## EXAMPLES
 

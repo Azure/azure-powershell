@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a Frontend
+Update a Frontend
 .Description
-update a Frontend
+Update a Frontend
 .Example
 Update-AzAlbFrontend -Name test-frontend -AlbName test-alb -ResourceGroupName test-rg -Tag @{TestTag="Test tag value"}
 

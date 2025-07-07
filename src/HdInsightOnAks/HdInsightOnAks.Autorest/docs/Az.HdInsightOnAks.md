@@ -1,6 +1,6 @@
 ---
 Module Name: Az.HdInsightOnAks
-Module Guid: bf79ab40-9db4-4db8-881e-5568e19978ee
+Module Guid: 216f5aa1-20a7-48f2-babc-1fe49edfed58
 Download Help Link: https://learn.microsoft.com/powershell/module/az.hdinsightonaks
 Help Version: 1.0.0.0
 Locale: en-US
@@ -60,7 +60,7 @@ Upgrade a cluster.
 Library management operations on HDInsight on AKS cluster.
 
 ### [New-AzHdInsightOnAksCluster](New-AzHdInsightOnAksCluster.md)
-create a cluster.
+Create a cluster.
 
 ### [New-AzHdInsightOnAksClusterConfigFileObject](New-AzHdInsightOnAksClusterConfigFileObject.md)
 Create an in-memory object for ClusterConfigFile.
@@ -72,7 +72,7 @@ Create an in-memory object for ClusterHotfixUpgradeProperties.
 Create an in-memory object for MavenLibraryProperties.
 
 ### [New-AzHdInsightOnAksClusterPool](New-AzHdInsightOnAksClusterPool.md)
-create a cluster pool.
+Create a cluster pool.
 
 ### [New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject](New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject.md)
 Create an in-memory object for ClusterPoolAksPatchVersionUpgradeProperties.
@@ -111,7 +111,7 @@ Deletes a Cluster Pool.
 Resize an existing Cluster.
 
 ### [Set-AzHdInsightOnAksClusterPool](Set-AzHdInsightOnAksClusterPool.md)
-update a cluster pool.
+Update a cluster pool.
 
 ### [Start-AzHdInsightOnAksClusterJob](Start-AzHdInsightOnAksClusterJob.md)
 Operations on jobs of HDInsight on AKS cluster.
@@ -120,8 +120,8 @@ Operations on jobs of HDInsight on AKS cluster.
 Check the availability of the resource name.
 
 ### [Update-AzHdInsightOnAksCluster](Update-AzHdInsightOnAksCluster.md)
-update an existing Cluster.
+Update an existing Cluster.
 
 ### [Update-AzHdInsightOnAksClusterPoolTag](Update-AzHdInsightOnAksClusterPoolTag.md)
-update an existing Cluster Pool Tags.
+Update an existing Cluster Pool Tags.
 

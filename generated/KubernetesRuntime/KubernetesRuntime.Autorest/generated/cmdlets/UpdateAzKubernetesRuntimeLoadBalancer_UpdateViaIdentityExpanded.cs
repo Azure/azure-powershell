@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a LoadBalancer</summary>
+    /// <summary>update a LoadBalancer</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/{resourceUri}/providers/Microsoft.KubernetesRuntime/loadBalancers/{loadBalancerName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/{resourceUri}/providers/Microsoft.KubernetesRuntime/loadBalancers/{loadBalancerName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzKubernetesRuntimeLoadBalancer_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.ILoadBalancer))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Description(@"Update a LoadBalancer")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Description(@"update a LoadBalancer")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Generated]
     public partial class UpdateAzKubernetesRuntimeLoadBalancer_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.IEventListener,

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.StorageCache
-Module Guid: 0b2e19a6-cd01-425c-b286-675df84468d3
+Module Guid: 31ac4ce4-b65d-45ad-b05b-92d6a04e7948
 Download Help Link: https://learn.microsoft.com/powershell/module/az.storagecache
 Help Version: 1.0.0.0
 Locale: en-US
@@ -21,7 +21,7 @@ Get the number of available IP addresses needed for the AML file system informat
 Archive data from the AML file system.
 
 ### [New-AzStorageCacheAmlFileSystem](New-AzStorageCacheAmlFileSystem.md)
-create an AML file system.
+Create an AML file system.
 
 ### [Remove-AzStorageCacheAmlFileSystem](Remove-AzStorageCacheAmlFileSystem.md)
 Schedules an AML file system for deletion.
@@ -33,5 +33,5 @@ Cancel archiving data from the AML file system.
 Check that subnets will be valid for AML file system check calls.
 
 ### [Update-AzStorageCacheAmlFileSystem](Update-AzStorageCacheAmlFileSystem.md)
-update an AML file system instance.
+Update an AML file system instance.
 

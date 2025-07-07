@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a UpdateRun</summary>
+    /// <summary>update a UpdateRun</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzFleetUpdateRun_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRun))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"Update a UpdateRun")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"update a UpdateRun")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Generated]
     public partial class UpdateAzFleetUpdateRun_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.IEventListener,

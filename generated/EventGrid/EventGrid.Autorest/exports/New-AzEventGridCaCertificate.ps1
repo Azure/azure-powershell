@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a CA certificate with the specified parameters.
+Create a CA certificate with the specified parameters.
 .Description
-create a CA certificate with the specified parameters.
+Create a CA certificate with the specified parameters.
 .Example
 New-AzEventGridCaCertificate -Name azps-cacert -NamespaceName azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -EncodedCertificate "-----BEGIN CERTIFICATE-----
 >> ****************

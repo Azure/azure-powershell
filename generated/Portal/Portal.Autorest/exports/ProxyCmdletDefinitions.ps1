@@ -227,9 +227,9 @@ end {
 
 <#
 .Synopsis
-create a Dashboard.
+Create a Dashboard.
 .Description
-create a Dashboard.
+Create a Dashboard.
 .Example
 New-AzPortalDashboard -DashboardPath .\resources\dash1.json -ResourceGroupName mydash-rg -DashboardName my-dashboard03
 
@@ -712,9 +712,9 @@ end {
 
 <#
 .Synopsis
-update an existing Dashboard.
+Update an existing Dashboard.
 .Description
-update an existing Dashboard.
+Update an existing Dashboard.
 .Example
 Update-AzPortalDashboard -ResourceGroupName my-rg -Name dashbase03 -Tag @{'hidden-title'="My Dashboard Title"; NewTag="NewValue"}
 .Example

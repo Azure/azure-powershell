@@ -3279,6 +3279,12 @@ param(
     # Run the command asynchronously
     ${NoWait},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
     [System.Uri]
@@ -3399,9 +3405,9 @@ end {
 
 <#
 .Synopsis
-create and Associate IP traffic filter for the given deployment.
+Create and Associate IP traffic filter for the given deployment.
 .Description
-create and Associate IP traffic filter for the given deployment.
+Create and Associate IP traffic filter for the given deployment.
 .Example
 New-AzElasticCreateAndAssociateIPFilter -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 
@@ -3634,9 +3640,9 @@ end {
 
 <#
 .Synopsis
-create and Associate private link traffic filter for the given deployment.
+Create and Associate private link traffic filter for the given deployment.
 .Description
-create and Associate private link traffic filter for the given deployment.
+Create and Associate private link traffic filter for the given deployment.
 .Example
 New-AzElasticCreateAndAssociatePlFilter -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 
@@ -3875,9 +3881,9 @@ end {
 
 <#
 .Synopsis
-create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+Create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
 .Description
-create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+Create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
 .Example
 New-AzElasticExternalUser -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 
@@ -4136,9 +4142,9 @@ end {
 
 <#
 .Synopsis
-create a monitor resource.
+Create a monitor resource.
 .Description
-create a monitor resource.
+Create a monitor resource.
 .Example
 New-AzElasticMonitor -ResourceGroupName azps-elastic-test -Name elastic-pwsh02 -Location "westus2" -Sku "ess-consumption-2024_Monthly" -UserInfoEmailAddress 'xxx@microsoft.com'
 
@@ -4503,9 +4509,9 @@ end {
 
 <#
 .Synopsis
-create a OpenAI integration rule for a given monitor resource.
+Create a OpenAI integration rule for a given monitor resource.
 .Description
-create a OpenAI integration rule for a given monitor resource.
+Create a OpenAI integration rule for a given monitor resource.
 .Example
 New-AzElasticOpenAi -IntegrationName default -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 
@@ -4776,9 +4782,9 @@ end {
 
 <#
 .Synopsis
-create a tag rule set for a given monitor resource.
+Create a tag rule set for a given monitor resource.
 .Description
-create a tag rule set for a given monitor resource.
+Create a tag rule set for a given monitor resource.
 .Example
 New-AzElasticTagRule -ResourceGroupName azps-elastic-test -MonitorName elastic-pwsh02 -LogRuleSendActivityLog
 
@@ -6038,6 +6044,12 @@ param(
     # Run the command asynchronously
     ${NoWait},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
     [System.Uri]
@@ -6158,9 +6170,9 @@ end {
 
 <#
 .Synopsis
-update User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+Update User inside elastic deployment which are used by customers to perform operations on the elastic deployment
 .Description
-update User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+Update User inside elastic deployment which are used by customers to perform operations on the elastic deployment
 .Example
 Update-AzElasticExternalUser -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 
@@ -6419,9 +6431,9 @@ end {
 
 <#
 .Synopsis
-update a monitor resource.
+Update a monitor resource.
 .Description
-update a monitor resource.
+Update a monitor resource.
 .Example
 Update-AzElasticMonitor -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02 -Tag @{'key01' = '1'; 'key2' = '2'; 'key3' = '3'}
 .Example
@@ -6593,7 +6605,15 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command asynchronously
-    ${NoWait}
+    ${NoWait},
+
+    [Parameter(ParameterSetName='Upgrade')]
+    [Parameter(ParameterSetName='UpgradeExpanded')]
+    [Parameter(ParameterSetName='UpgradeViaIdentity')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru}
 )
 
 begin {
@@ -6701,9 +6721,9 @@ end {
 
 <#
 .Synopsis
-update a OpenAI integration rule for a given monitor resource.
+Update a OpenAI integration rule for a given monitor resource.
 .Description
-update a OpenAI integration rule for a given monitor resource.
+Update a OpenAI integration rule for a given monitor resource.
 .Example
 Update-AzElasticOpenAi -IntegrationName default -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 
@@ -6946,9 +6966,9 @@ end {
 
 <#
 .Synopsis
-update a tag rule set for a given monitor resource.
+Update a tag rule set for a given monitor resource.
 .Description
-update a tag rule set for a given monitor resource.
+Update a tag rule set for a given monitor resource.
 .Example
 Update-AzElasticTagRule -ResourceGroupName azps-elastic-test -MonitorName elastic-pwsh02 -LogRuleSendActivityLog
 
@@ -7207,9 +7227,9 @@ end {
 
 <#
 .Synopsis
-update the vm details that will be monitored by the Elastic monitor resource.
+Update the vm details that will be monitored by the Elastic monitor resource.
 .Description
-update the vm details that will be monitored by the Elastic monitor resource.
+Update the vm details that will be monitored by the Elastic monitor resource.
 .Example
 Update-AzElasticVMCollection -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02 -OperationName Add -VMResourceId '/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxx/resourceGroups/VIDHI-RG/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS'
 .Example

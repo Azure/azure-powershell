@@ -81,10 +81,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogOrganizationProperties Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal.DatadogOrganizationProperty { get => (this._datadogOrganizationProperty = this._datadogOrganizationProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.DatadogOrganizationProperties()); set { {_datadogOrganizationProperty = value;} } }
 
         /// <summary>Internal Acessors for DatadogOrganizationPropertyId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal.DatadogOrganizationPropertyId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogOrganizationPropertiesInternal)DatadogOrganizationProperty).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogOrganizationPropertiesInternal)DatadogOrganizationProperty).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal.DatadogOrganizationPropertyId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogOrganizationPropertiesInternal)DatadogOrganizationProperty).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogOrganizationPropertiesInternal)DatadogOrganizationProperty).Id = value ?? null; }
 
         /// <summary>Internal Acessors for DatadogOrganizationPropertyName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal.DatadogOrganizationPropertyName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogOrganizationPropertiesInternal)DatadogOrganizationProperty).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogOrganizationPropertiesInternal)DatadogOrganizationProperty).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal.DatadogOrganizationPropertyName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogOrganizationPropertiesInternal)DatadogOrganizationProperty).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogOrganizationPropertiesInternal)DatadogOrganizationProperty).Name = value ?? null; }
 
         /// <summary>Internal Acessors for LiftrResourceCategory</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal.LiftrResourceCategory { get => this._liftrResourceCategory; set { {_liftrResourceCategory = value;} } }

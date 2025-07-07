@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzElasticOpenAi
 
 ## SYNOPSIS
-create a OpenAI integration rule for a given monitor resource.
+Create a OpenAI integration rule for a given monitor resource.
 
 ## SYNTAX
 
@@ -47,7 +47,7 @@ New-AzElasticOpenAi -IntegrationName <String> -MonitorName <String> -ResourceGro
 ```
 
 ## DESCRIPTION
-create a OpenAI integration rule for a given monitor resource.
+Create a OpenAI integration rule for a given monitor resource.
 
 ## EXAMPLES
 

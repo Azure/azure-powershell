@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update private store collection</summary>
+    /// <summary>update private store collection</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzMarketplacePrivateStoreCollection_UpdateViaIdentityPrivateStore", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Description(@"Update private store collection")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Description(@"update private store collection")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Generated]
     public partial class UpdateAzMarketplacePrivateStoreCollection_UpdateViaIdentityPrivateStore : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener,

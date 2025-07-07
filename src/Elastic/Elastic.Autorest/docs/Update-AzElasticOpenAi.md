@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzElasticOpenAi
 
 ## SYNOPSIS
-update a OpenAI integration rule for a given monitor resource.
+Update a OpenAI integration rule for a given monitor resource.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ Update-AzElasticOpenAi -IntegrationName <String> -MonitorInputObject <IElasticId
 ```
 
 ## DESCRIPTION
-update a OpenAI integration rule for a given monitor resource.
+Update a OpenAI integration rule for a given monitor resource.
 
 ## EXAMPLES
 

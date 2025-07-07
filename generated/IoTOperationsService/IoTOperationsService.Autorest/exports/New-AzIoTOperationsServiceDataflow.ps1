@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a DataflowResource
+Create a DataflowResource
 .Description
-create a DataflowResource
+Create a DataflowResource
 .Example
 New-AzIoTOperationsServiceDataflow -InstanceName "aio-117832708" `
   -Name "dataflow-name" `

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewProperties __clusterInstanceViewProperties = new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterInstanceViewProperties();
 
         /// <summary>Internal Acessors for Status</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewPropertiesStatus Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewPropertiesInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewPropertiesInternal)__clusterInstanceViewProperties).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewPropertiesInternal)__clusterInstanceViewProperties).Status = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewPropertiesStatus Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewPropertiesInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewPropertiesInternal)__clusterInstanceViewProperties).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewPropertiesInternal)__clusterInstanceViewProperties).Status = value ?? null /* model class */; }
 
         /// <summary>
         /// List of statuses of relevant services that make up the HDInsight on AKS cluster to surface to the customer.
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
 
         /// <summary>Status of the instance view.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewPropertiesStatus Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewPropertiesInternal)__clusterInstanceViewProperties).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewPropertiesInternal)__clusterInstanceViewProperties).Status = value ; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewPropertiesStatus Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewPropertiesInternal)__clusterInstanceViewProperties).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewPropertiesInternal)__clusterInstanceViewProperties).Status = value ?? null /* model class */; }
 
         /// <summary>The additional message.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]

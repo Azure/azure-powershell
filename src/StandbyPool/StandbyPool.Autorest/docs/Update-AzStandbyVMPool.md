@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzStandbyVMPool
 
 ## SYNOPSIS
-update a StandbyVirtualMachinePoolResource
+Update a StandbyVirtualMachinePoolResource
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Update-AzStandbyVMPool -Name <String> -ResourceGroupName <String> -JsonString <S
 ```
 
 ## DESCRIPTION
-update a StandbyVirtualMachinePoolResource
+Update a StandbyVirtualMachinePoolResource
 
 ## EXAMPLES
 

@@ -11,14 +11,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere.Cmdlets
     using System;
 
     /// <summary>
-    /// Create a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
+    /// create a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzSphereProduct_CreateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IProduct))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Description(@"Create a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Description(@"create a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}", ApiVersion = "2024-04-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.NotSuggestDefaultParameterSet]

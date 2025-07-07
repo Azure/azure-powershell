@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a dryrun job to do necessary check before actual creation
+Create a dryrun job to do necessary check before actual creation
 .Description
-create a dryrun job to do necessary check before actual creation
+Create a dryrun job to do necessary check before actual creation
 .Example
 {{ Add code here }}
 .Example

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an association.
+Update an association.
 .Description
-update an association.
+Update an association.
 .Example
 $provider = Get-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type
 Update-AzCustomProviderAssociation -Scope $resourceId -Name MyAssoc -TargetResourceId $provider.Id

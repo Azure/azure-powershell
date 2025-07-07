@@ -225,9 +225,9 @@ end {
 
 <#
 .Synopsis
-create account resource.
+Create account resource.
 .Description
-create account resource.
+Create account resource.
 .Example
 New-AzGraphServicesAccount -ResourceGroupName myRG -Name myGraphAppBilling -AppId myAppGUID -SubscriptionId mySubscriptionGUID -Location Global
 
@@ -661,9 +661,9 @@ end {
 
 <#
 .Synopsis
-update account details.
+Update account details.
 .Description
-update account details.
+Update account details.
 .Example
 Update-AzGraphServicesAccount -ResourceGroupName myRG -Name myGraphAppBilling
 

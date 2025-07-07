@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-update an attached data network.
+Update an attached data network.
 Must be created in the same location as its parent packet core data plane.
 .Description
-update an attached data network.
+Update an attached data network.
 Must be created in the same location as its parent packet core data plane.
 .Example
 Update-AzMobileNetworkAttachedDataNetwork -AttachedDataNetworkName azps-mn-adn -PacketCoreControlPlaneName azps-mn-pccp -PacketCoreDataPlaneName azps_test_group -ResourceGroupName -Tag @{"abc"="123"}

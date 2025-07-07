@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new Binding or create an exiting Binding.
+Create a new Binding or create an exiting Binding.
 .Description
-create a new Binding or create an exiting Binding.
+Create a new Binding or create an exiting Binding.
 .Example
 New-AzSpringCloudAppBinding -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -name redis -Key myKey -ResourceId myResourceId -AppName tools -BindingParameter @{ "useSsl"= "true" }
 

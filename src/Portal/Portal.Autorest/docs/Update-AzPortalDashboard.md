@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzPortalDashboard
 
 ## SYNOPSIS
-update an existing Dashboard.
+Update an existing Dashboard.
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ Update-AzPortalDashboard -Name <String> -ResourceGroupName <String> -JsonString 
 ```
 
 ## DESCRIPTION
-update an existing Dashboard.
+Update an existing Dashboard.
 
 ## EXAMPLES
 

@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a FleetUpdateStrategy</summary>
+    /// <summary>update a FleetUpdateStrategy</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies/{updateStrategyName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies/{updateStrategyName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzFleetUpdateStrategy_UpdateViaIdentityFleetExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetUpdateStrategy))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"Update a FleetUpdateStrategy")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"update a FleetUpdateStrategy")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Generated]
     public partial class UpdateAzFleetUpdateStrategy_UpdateViaIdentityFleetExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.IEventListener,

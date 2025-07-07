@@ -3469,6 +3469,12 @@ param(
     # Run the command asynchronously
     ${NoWait},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
     [System.Uri]
@@ -3595,9 +3601,9 @@ end {
 
 <#
 .Synopsis
-create a cluster pool.
+Create a cluster pool.
 .Description
-create a cluster pool.
+Create a cluster pool.
 .Example
 # Cluster pool configuration info
 $location = "West US 3"
@@ -3642,7 +3648,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 CLUSTERPOOL <IClusterPool>: Cluster pool.
-  Location <String>: The geo-location where the resource lives
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [ComputeProfileAvailabilityZone <List<String>>]: The list of Availability zones to use for AKS VMSS nodes.
@@ -3988,9 +3994,9 @@ end {
 
 <#
 .Synopsis
-create a cluster.
+Create a cluster.
 .Description
-create a cluster.
+Create a cluster.
 .Example
 # Create Simple Trino Cluster
 $clusterPoolName="{your cluster pool name}";
@@ -4322,7 +4328,7 @@ COMPUTEPROFILENODE <INodeProfile[]>: The nodes definitions.
   VMSize <String>: The virtual machine SKU.
 
 HDINSIGHTONAKSCLUSTER <ICluster>: The cluster.
-  Location <String>: The geo-location where the resource lives
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [AccessProfileEnableInternalIngress <Boolean?>]: Whether to create cluster using private IP instead of public IP. This property must be set at create time.
@@ -6110,7 +6116,7 @@ CLUSTERPOOLINPUTOBJECT <IHdInsightOnAksIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 CLUSTERRESIZEREQUEST <IClusterResizeData>: The parameters for resizing a cluster.
-  Location <String>: The geo-location where the resource lives
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [TargetWorkerNodeCount <Int32?>]: Target node count of worker node.
@@ -6398,9 +6404,9 @@ end {
 
 <#
 .Synopsis
-update a cluster pool.
+Update a cluster pool.
 .Description
-update a cluster pool.
+Update a cluster pool.
 .Example
 # Cluster configuration info
 $location = "East US 2"
@@ -6429,7 +6435,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 CLUSTERPOOL <IClusterPool>: Cluster pool.
-  Location <String>: The geo-location where the resource lives
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [ComputeProfileAvailabilityZone <List<String>>]: The list of Availability zones to use for AKS VMSS nodes.
@@ -7274,9 +7280,9 @@ end {
 
 <#
 .Synopsis
-update an existing Cluster Pool Tags.
+Update an existing Cluster Pool Tags.
 .Description
-update an existing Cluster Pool Tags.
+Update an existing Cluster Pool Tags.
 .Example
 $clusterResourceGroupName = "Group"
 $clusterpoolName = "your-clusterpool"
@@ -7545,9 +7551,9 @@ end {
 
 <#
 .Synopsis
-update an existing Cluster.
+Update an existing Cluster.
 .Description
-update an existing Cluster.
+Update an existing Cluster.
 .Example
 $clusterResourceGroupName = "Group"
 $clusterpoolName = "ps-test-pool"

@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-update an existing custom resource provider.
+Update an existing custom resource provider.
 The only value that can be updated via PATCH currently is the tags.
 .Description
-update an existing custom resource provider.
+Update an existing custom resource provider.
 The only value that can be updated via PATCH currently is the tags.
 .Example
 Update-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type -Tag @{MyTag="MyValue"} | Format-List

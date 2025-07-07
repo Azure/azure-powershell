@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a TestLine
+Create a TestLine
 .Description
-create a TestLine
+Create a TestLine
 .Example
 New-AzVoiceServicesCommunicationsTestLine -ResourceGroupName vtest-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name testline-01 -Location westcentralus -Purpose 'Automated' -PhoneNumber "+1-555-1234"
 

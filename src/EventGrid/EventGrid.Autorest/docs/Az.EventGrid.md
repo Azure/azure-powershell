@@ -1,6 +1,6 @@
 ---
 Module Name: Az.EventGrid
-Module Guid: 71259a97-80f1-4768-8d19-86e39e156d96
+Module Guid: f2fdadcd-36ad-4c57-9f7f-8d219c2ecddb
 Download Help Link: https://learn.microsoft.com/powershell/module/az.eventgrid
 Help Version: 1.0.0.0
 Locale: en-US
@@ -180,16 +180,16 @@ Create an in-memory object for BoolEqualsAdvancedFilter.
 Create an in-memory object for BoolEqualsFilter.
 
 ### [New-AzEventGridCaCertificate](New-AzEventGridCaCertificate.md)
-create a CA certificate with the specified parameters.
+Create a CA certificate with the specified parameters.
 
 ### [New-AzEventGridChannel](New-AzEventGridChannel.md)
 Synchronously create a new channel with the specified parameters.
 
 ### [New-AzEventGridClient](New-AzEventGridClient.md)
-create a client with the specified parameters.
+Create a client with the specified parameters.
 
 ### [New-AzEventGridClientGroup](New-AzEventGridClientGroup.md)
-create a client group with the specified parameters.
+Create a client group with the specified parameters.
 
 ### [New-AzEventGridDomain](New-AzEventGridDomain.md)
 Asynchronously create a new domain with the specified parameters.
@@ -319,7 +319,7 @@ Regenerate a shared access key for a partner namespace.
 Create an in-memory object for Partner.
 
 ### [New-AzEventGridPartnerRegistration](New-AzEventGridPartnerRegistration.md)
-create a new partner registration with the specified parameters.
+Create a new partner registration with the specified parameters.
 
 ### [New-AzEventGridPartnerTopic](New-AzEventGridPartnerTopic.md)
 Asynchronously create a new partner topic with the specified parameters.
@@ -329,7 +329,7 @@ Asynchronously create an event subscription of a partner topic with the specifie
 Existing event subscriptions will be updated with this API.
 
 ### [New-AzEventGridPermissionBinding](New-AzEventGridPermissionBinding.md)
-create a permission binding with the specified parameters.
+Create a permission binding with the specified parameters.
 
 ### [New-AzEventGridPrivateEndpointConnectionObject](New-AzEventGridPrivateEndpointConnectionObject.md)
 Create an in-memory object for PrivateEndpointConnection.
@@ -420,7 +420,7 @@ Asynchronously create a new event subscription or create an existing event subsc
 Regenerate a shared access key for a topic.
 
 ### [New-AzEventGridTopicSpace](New-AzEventGridTopicSpace.md)
-create a topic space with the specified parameters.
+Create a topic space with the specified parameters.
 
 ### [New-AzEventGridWebHookEventSubscriptionDestinationObject](New-AzEventGridWebHookEventSubscriptionDestinationObject.md)
 Create an in-memory object for WebHookEventSubscriptionDestination.
@@ -504,19 +504,19 @@ Unauthorize a single partner either by partner registration immutable Id or by p
 Synchronously update a channel with the specified parameters.
 
 ### [Update-AzEventGridClient](Update-AzEventGridClient.md)
-update a client with the specified parameters.
+Update a client with the specified parameters.
 
 ### [Update-AzEventGridClientGroup](Update-AzEventGridClientGroup.md)
-update a client group with the specified parameters.
+Update a client group with the specified parameters.
 
 ### [Update-AzEventGridDomain](Update-AzEventGridDomain.md)
 Asynchronously update a new domain with the specified parameters.
 
 ### [Update-AzEventGridDomainEventSubscription](Update-AzEventGridDomainEventSubscription.md)
-update an existing event subscription for a topic.
+Update an existing event subscription for a topic.
 
 ### [Update-AzEventGridDomainTopicEventSubscription](Update-AzEventGridDomainTopicEventSubscription.md)
-update an existing event subscription for a domain topic.
+Update an existing event subscription for a domain topic.
 
 ### [Update-AzEventGridNamespace](Update-AzEventGridNamespace.md)
 Asynchronously update a new namespace with the specified parameters.
@@ -525,7 +525,7 @@ Asynchronously update a new namespace with the specified parameters.
 Asynchronously update a namespace topic with the specified parameters.
 
 ### [Update-AzEventGridNamespaceTopicEventSubscription](Update-AzEventGridNamespaceTopicEventSubscription.md)
-update an existing event subscription of a namespace topic.
+Update an existing event subscription of a namespace topic.
 
 ### [Update-AzEventGridPartnerConfiguration](Update-AzEventGridPartnerConfiguration.md)
 Synchronously update a partner configuration with the specified parameters.
@@ -540,10 +540,10 @@ Asynchronously update a partner namespace with the specified parameters.
 Asynchronously update a new partner topic with the specified parameters.
 
 ### [Update-AzEventGridPartnerTopicEventSubscription](Update-AzEventGridPartnerTopicEventSubscription.md)
-update an existing event subscription of a partner topic.
+Update an existing event subscription of a partner topic.
 
 ### [Update-AzEventGridPermissionBinding](Update-AzEventGridPermissionBinding.md)
-update a permission binding with the specified parameters.
+Update a permission binding with the specified parameters.
 
 ### [Update-AzEventGridSubscription](Update-AzEventGridSubscription.md)
 Asynchronously update an existing event subscription.
@@ -552,14 +552,14 @@ Asynchronously update an existing event subscription.
 Asynchronously update a new system topic with the specified parameters.
 
 ### [Update-AzEventGridSystemTopicEventSubscription](Update-AzEventGridSystemTopicEventSubscription.md)
-update an existing event subscription of a system topic.
+Update an existing event subscription of a system topic.
 
 ### [Update-AzEventGridTopic](Update-AzEventGridTopic.md)
 Asynchronously update a new topic with the specified parameters.
 
 ### [Update-AzEventGridTopicEventSubscription](Update-AzEventGridTopicEventSubscription.md)
-update an existing event subscription for a topic.
+Update an existing event subscription for a topic.
 
 ### [Update-AzEventGridTopicSpace](Update-AzEventGridTopicSpace.md)
-update a topic space with the specified parameters.
+Update a topic space with the specified parameters.
 

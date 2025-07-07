@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_enableInternalIngress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("enableInternalIngress"), out var __jsonEnableInternalIngress) ? (bool)__jsonEnableInternalIngress : _enableInternalIngress;}
+            {_enableInternalIngress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("enableInternalIngress"), out var __jsonEnableInternalIngress) ? (bool?)__jsonEnableInternalIngress : _enableInternalIngress;}
             {_privateLinkServiceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("privateLinkServiceId"), out var __jsonPrivateLinkServiceId) ? (string)__jsonPrivateLinkServiceId : (string)_privateLinkServiceId;}
             AfterFromJson(json);
         }
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate))
             {
-                AddIf( (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean(this._enableInternalIngress), "enableInternalIngress" ,container.Add );
+                AddIf( null != this._enableInternalIngress ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean((bool)this._enableInternalIngress) : null, "enableInternalIngress" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeRead))
             {

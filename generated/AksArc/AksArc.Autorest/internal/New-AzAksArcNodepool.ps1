@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create the agent pool in the provisioned cluster
+Create the agent pool in the provisioned cluster
 .Description
-create the agent pool in the provisioned cluster
+Create the agent pool in the provisioned cluster
 .Example
 New-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Name azps_test_nodepool_example
 .Example
@@ -238,6 +238,9 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
 
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
         $mapping = @{
             CreateExpanded = 'Az.AksArc.private\New-AzAksArcNodepool_CreateExpanded';
             CreateViaJsonFilePath = 'Az.AksArc.private\New-AzAksArcNodepool_CreateViaJsonFilePath';
@@ -245,6 +248,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

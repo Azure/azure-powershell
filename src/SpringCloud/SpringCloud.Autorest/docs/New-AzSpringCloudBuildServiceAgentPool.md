@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSpringCloudBuildServiceAgentPool
 
 ## SYNOPSIS
-update build service agent pool.
+Update build service agent pool.
 
 ## SYNTAX
 
@@ -53,7 +53,7 @@ New-AzSpringCloudBuildServiceAgentPool -ResourceGroupName <String> -ServiceName 
 ```
 
 ## DESCRIPTION
-update build service agent pool.
+Update build service agent pool.
 
 ## EXAMPLES
 

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create Linker resource.
+Create Linker resource.
 .Description
-create Linker resource.
+Create Linker resource.
 .Example
 {{ Add code here }}
 .Example

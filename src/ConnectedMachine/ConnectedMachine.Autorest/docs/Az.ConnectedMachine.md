@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ConnectedMachine
-Module Guid: 259a0542-8329-4b9e-8f72-dab0efc583e9
+Module Guid: 8ae1756a-65bb-45c9-9db4-b2ee35e210a9
 Download Help Link: https://learn.microsoft.com/powershell/module/az.connectedmachine
 Help Version: 1.0.0.0
 Locale: en-US
@@ -66,7 +66,7 @@ The operation to create the extension.
 The operation to create a run command.
 
 ### [New-AzConnectedPrivateLinkScope](New-AzConnectedPrivateLinkScope.md)
-create (or create  a Azure Arc PrivateLinkScope.
+Create (or create  a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
 ### [Remove-AzConnectedLicense](Remove-AzConnectedLicense.md)
@@ -94,7 +94,7 @@ The operation to update a license.
 The operation to update the extension.
 
 ### [Set-AzConnectedPrivateLinkScope](Set-AzConnectedPrivateLinkScope.md)
-update (or update  a Azure Arc PrivateLinkScope.
+Update (or update  a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
 ### [Update-AzConnectedExtension](Update-AzConnectedExtension.md)
@@ -116,6 +116,6 @@ The operation to update the extension.
 The operation to update a run command.
 
 ### [Update-AzConnectedPrivateLinkScopeTag](Update-AzConnectedPrivateLinkScopeTag.md)
-update an existing PrivateLinkScope's tags.
+Update an existing PrivateLinkScope's tags.
 To update other fields use the CreateOrupdate method.
 

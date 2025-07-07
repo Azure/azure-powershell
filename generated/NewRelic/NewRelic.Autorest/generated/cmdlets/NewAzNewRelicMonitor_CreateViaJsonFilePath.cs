@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a NewRelicMonitorResource</summary>
+    /// <summary>create a NewRelicMonitorResource</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzNewRelicMonitor_CreateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"Create a NewRelicMonitorResource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"create a NewRelicMonitorResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}", ApiVersion = "2024-01-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.NotSuggestDefaultParameterSet]

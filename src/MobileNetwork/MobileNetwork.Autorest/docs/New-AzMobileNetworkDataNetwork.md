@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMobileNetworkDataNetwork
 
 ## SYNOPSIS
-create a data network.
+Create a data network.
 Must be created in the same location as its parent mobile network.
 
 ## SYNTAX
@@ -49,7 +49,7 @@ New-AzMobileNetworkDataNetwork -MobileNetworkName <String> -Name <String> -Resou
 ```
 
 ## DESCRIPTION
-create a data network.
+Create a data network.
 Must be created in the same location as its parent mobile network.
 
 ## EXAMPLES

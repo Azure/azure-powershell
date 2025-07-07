@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a Azure Traffic Collector resource
+Create a Azure Traffic Collector resource
 .Description
-create a Azure Traffic Collector resource
+Create a Azure Traffic Collector resource
 .Example
 New-AzNetworkFunctionTrafficCollector -name atctestps -resourcegroupname test -location eastus | Format-List
 

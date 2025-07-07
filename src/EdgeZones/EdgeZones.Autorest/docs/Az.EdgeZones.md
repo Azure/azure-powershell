@@ -1,6 +1,6 @@
 ---
 Module Name: Az.EdgeZones
-Module Guid: 40bf94d1-ec66-4236-9396-2eac6bd6b1fe
+Module Guid: d98b5b82-d583-4ffe-896d-a8eaf92faae5
 Download Help Link: https://learn.microsoft.com/powershell/module/az.edgezones
 Help Version: 1.0.0.0
 Locale: en-US

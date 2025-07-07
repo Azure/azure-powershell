@@ -22,11 +22,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
 
         /// <summary>bootstrap server connectivity endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
-        public string ConnectivityEndpointBootstrapServerEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaConnectivityEndpointsInternal)ConnectivityEndpoint).BootstrapServerEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaConnectivityEndpointsInternal)ConnectivityEndpoint).BootstrapServerEndpoint = value ?? null; }
+        public string ConnectivityEndpointBootstrapServerEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaConnectivityEndpointsInternal)ConnectivityEndpoint).BootstrapServerEndpoint; }
 
         /// <summary>Kafka broker endpoint list.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> ConnectivityEndpointBrokerEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaConnectivityEndpointsInternal)ConnectivityEndpoint).BrokerEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaConnectivityEndpointsInternal)ConnectivityEndpoint).BrokerEndpoint = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> ConnectivityEndpointBrokerEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaConnectivityEndpointsInternal)ConnectivityEndpoint).BrokerEndpoint; }
 
         /// <summary>Backing field for <see cref="DiskStorage" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IDiskStorageProfile _diskStorage;
@@ -62,6 +62,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
 
         /// <summary>Internal Acessors for ConnectivityEndpoint</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaConnectivityEndpoints Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal.ConnectivityEndpoint { get => (this._connectivityEndpoint = this._connectivityEndpoint ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.KafkaConnectivityEndpoints()); set { {_connectivityEndpoint = value;} } }
+
+        /// <summary>Internal Acessors for ConnectivityEndpointBootstrapServerEndpoint</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal.ConnectivityEndpointBootstrapServerEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaConnectivityEndpointsInternal)ConnectivityEndpoint).BootstrapServerEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaConnectivityEndpointsInternal)ConnectivityEndpoint).BootstrapServerEndpoint = value ?? null; }
+
+        /// <summary>Internal Acessors for ConnectivityEndpointBrokerEndpoint</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal.ConnectivityEndpointBrokerEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaConnectivityEndpointsInternal)ConnectivityEndpoint).BrokerEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaConnectivityEndpointsInternal)ConnectivityEndpoint).BrokerEndpoint = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for DiskStorage</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IDiskStorageProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal.DiskStorage { get => (this._diskStorage = this._diskStorage ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.DiskStorageProfile()); set { {_diskStorage = value;} } }

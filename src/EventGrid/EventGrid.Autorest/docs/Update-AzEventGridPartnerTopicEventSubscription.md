@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridPartnerTopicEventSubscription
 
 ## SYNOPSIS
-update an existing event subscription of a partner topic.
+Update an existing event subscription of a partner topic.
 
 ## SYNTAX
 
@@ -71,7 +71,7 @@ Update-AzEventGridPartnerTopicEventSubscription -EventSubscriptionName <String> 
 ```
 
 ## DESCRIPTION
-update an existing event subscription of a partner topic.
+Update an existing event subscription of a partner topic.
 
 ## EXAMPLES
 

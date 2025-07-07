@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzIoTOperationsServiceBrokerAuthentication
 
 ## SYNOPSIS
-create a BrokerAuthenticationResource
+Create a BrokerAuthenticationResource
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzIoTOperationsServiceBrokerAuthentication -AuthenticationName <String> -Bro
 ```
 
 ## DESCRIPTION
-create a BrokerAuthenticationResource
+Create a BrokerAuthenticationResource
 
 ## EXAMPLES
 

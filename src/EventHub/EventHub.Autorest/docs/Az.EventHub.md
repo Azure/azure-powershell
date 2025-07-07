@@ -1,6 +1,6 @@
 ---
 Module Name: Az.EventHub
-Module Guid: 94ceb244-cf13-44e9-a891-409d8b37af84
+Module Guid: 8e14f2d7-69b6-4f78-9b3d-c4c9b01b86ab
 Download Help Link: https://learn.microsoft.com/powershell/module/az.eventhub
 Help Version: 1.0.0.0
 Locale: en-US
@@ -60,22 +60,22 @@ Gets lists of resources that supports Privatelinks.
 Gets the details of an EventHub schema group.
 
 ### [New-AzEventHub](New-AzEventHub.md)
-create a new Event Hub as a nested resource within a Namespace.
+Create a new Event Hub as a nested resource within a Namespace.
 
 ### [New-AzEventHubApplicationGroup](New-AzEventHubApplicationGroup.md)
-create an ApplicationGroup for a Namespace.
+Create an ApplicationGroup for a Namespace.
 
 ### [New-AzEventHubAuthorizationRule](New-AzEventHubAuthorizationRule.md)
 Creates an EventHub Authorization Rule
 
 ### [New-AzEventHubCluster](New-AzEventHubCluster.md)
-create an instance of an Event Hubs Cluster.
+Create an instance of an Event Hubs Cluster.
 
 ### [New-AzEventHubConsumerGroup](New-AzEventHubConsumerGroup.md)
-create an Event Hubs consumer group as a nested resource within a Namespace.
+Create an Event Hubs consumer group as a nested resource within a Namespace.
 
 ### [New-AzEventHubGeoDRConfiguration](New-AzEventHubGeoDRConfiguration.md)
-create a new Alias(Disaster Recovery configuration)
+Create a new Alias(Disaster Recovery configuration)
 
 ### [New-AzEventHubIPRuleConfig](New-AzEventHubIPRuleConfig.md)
 Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzEventHubNetworkRuleSet
@@ -93,7 +93,7 @@ Create an in-memory object for NamespaceReplicaLocation.
 Creates an EventHub Namespace
 
 ### [New-AzEventHubSchemaGroup](New-AzEventHubSchemaGroup.md)
-create an EventHub schema group.
+Create an EventHub schema group.
 
 ### [New-AzEventHubThrottlingPolicyConfig](New-AzEventHubThrottlingPolicyConfig.md)
 Constructs an IThrottlingPolicy object that can be fed as input to New-AzEventHubApplicationGroup or Set-AzEventHubApplicationGroup

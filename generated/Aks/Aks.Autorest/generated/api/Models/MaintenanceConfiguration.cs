@@ -32,31 +32,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.SystemData()); set { {_systemData = value;} } }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).CreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).CreatedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).CreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).LastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).LastModifiedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).LastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISubResourceInternal)__subResource).Type = value ?? null; }
 
         /// <summary>
         /// The name of the resource that is unique within a resource group. This name can be used to access the resource.

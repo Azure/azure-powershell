@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPeeringRegisteredAsn
 
 ## SYNOPSIS
-create a new registered ASN with the specified name under the given subscription, resource group and peering.
+Create a new registered ASN with the specified name under the given subscription, resource group and peering.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzPeeringRegisteredAsn -Name <String> -PeeringName <String> -ResourceGroupNa
 ```
 
 ## DESCRIPTION
-create a new registered ASN with the specified name under the given subscription, resource group and peering.
+Create a new registered ASN with the specified name under the given subscription, resource group and peering.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSpringCloudBuildpackBinding
 
 ## SYNOPSIS
-update a buildpack binding.
+Update a buildpack binding.
 
 ## SYNTAX
 
@@ -50,7 +50,7 @@ Update-AzSpringCloudBuildpackBinding -BuilderName <String> -Name <String>
 ```
 
 ## DESCRIPTION
-update a buildpack binding.
+Update a buildpack binding.
 
 ## EXAMPLES
 

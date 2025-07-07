@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a Experiment resource.</summary>
+    /// <summary>update a Experiment resource.</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzChaosExperiment_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperiment))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.Description(@"Update a Experiment resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.Description(@"update a Experiment resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.Generated]
     public partial class UpdateAzChaosExperiment_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.IEventListener,
@@ -78,8 +78,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
-        /// <summary>Decides if enable a system assigned identity for the resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Decides if enable a system assigned identity for the resource.")]
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
         public System.Boolean? EnableSystemAssignedIdentity { get; set; }
 
         /// <summary>Accessor for extensibleParameters.</summary>

@@ -37,10 +37,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfileLink> Link { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfilesPropertiesInternal)__contactProfilesProperties).Link; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfilesPropertiesInternal)__contactProfilesProperties).Link = value ; }
 
         /// <summary>Internal Acessors for NetworkConfiguration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfilesPropertiesNetworkConfiguration Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfilesPropertiesInternal.NetworkConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfilesPropertiesInternal)__contactProfilesProperties).NetworkConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfilesPropertiesInternal)__contactProfilesProperties).NetworkConfiguration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfilesPropertiesNetworkConfiguration Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfilesPropertiesInternal.NetworkConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfilesPropertiesInternal)__contactProfilesProperties).NetworkConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfilesPropertiesInternal)__contactProfilesProperties).NetworkConfiguration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfilesPropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfilesPropertiesInternal)__contactProfilesProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfilesPropertiesInternal)__contactProfilesProperties).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfilesPropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfilesPropertiesInternal)__contactProfilesProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfilesPropertiesInternal)__contactProfilesProperties).ProvisioningState = value ?? null; }
 
         /// <summary>
         /// Minimum viable elevation for the contact in decimal degrees. Used for listing the available contacts with a spacecraft
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
 
         /// <summary>Network configuration of customer virtual network.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfilesPropertiesNetworkConfiguration NetworkConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfilesPropertiesInternal)__contactProfilesProperties).NetworkConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfilesPropertiesInternal)__contactProfilesProperties).NetworkConfiguration = value ; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfilesPropertiesNetworkConfiguration NetworkConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfilesPropertiesInternal)__contactProfilesProperties).NetworkConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfilesPropertiesInternal)__contactProfilesProperties).NetworkConfiguration = value ?? null /* model class */; }
 
         /// <summary>
         /// ARM resource identifier of the subnet delegated to the Microsoft.Orbital/orbitalGateways. Needs to be at least a class

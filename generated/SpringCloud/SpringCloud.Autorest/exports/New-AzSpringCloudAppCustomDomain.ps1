@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create custom domain of one lifecycle application.
+Create custom domain of one lifecycle application.
 .Description
-create custom domain of one lifecycle application.
+Create custom domain of one lifecycle application.
 .Example
 New-AzSpringCloudAppCustomDomain -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -AppName gateway -Name springcloud-service.azuremicroservices.io
 

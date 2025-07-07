@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a new peer ASN or update an existing peer ASN with the specified name under the given subscription.
+Update a new peer ASN or update an existing peer ASN with the specified name under the given subscription.
 .Description
-update a new peer ASN or update an existing peer ASN with the specified name under the given subscription.
+Update a new peer ASN or update an existing peer ASN with the specified name under the given subscription.
 .Example
 $contactDetail = New-AzPeeringContactDetailObject -Email "abc@xyz.com" -Phone 1234567890 -Role "Noc"
 $PeerContactList = ,$contactDetail

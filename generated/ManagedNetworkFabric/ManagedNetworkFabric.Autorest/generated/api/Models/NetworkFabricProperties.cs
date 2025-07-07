@@ -300,7 +300,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationProperties ManagementNetworkConfiguration { get; set; }
         /// <summary>Azure resource ID for the NetworkFabricController the NetworkFabric belongs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// racks can be added to the Network Fabric. The SKU determines whether it is a single / multi rack Network Fabric.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,

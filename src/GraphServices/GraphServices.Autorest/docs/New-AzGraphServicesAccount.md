@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzGraphServicesAccount
 
 ## SYNOPSIS
-create account resource.
+Create account resource.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzGraphServicesAccount -Name <String> -ResourceGroupName <String> -JsonStrin
 ```
 
 ## DESCRIPTION
-create account resource.
+Create account resource.
 
 ## EXAMPLES
 

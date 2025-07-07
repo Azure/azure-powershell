@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDynatraceMonitorTagRule
 
 ## SYNOPSIS
-create a TagRule
+Create a TagRule
 
 ## SYNTAX
 
@@ -45,7 +45,7 @@ New-AzDynatraceMonitorTagRule -MonitorName <String> -ResourceGroupName <String> 
 ```
 
 ## DESCRIPTION
-create a TagRule
+Create a TagRule
 
 ## EXAMPLES
 

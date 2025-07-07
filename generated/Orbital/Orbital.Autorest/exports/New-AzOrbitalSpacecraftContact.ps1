@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a contact.
+Create a contact.
 .Description
-create a contact.
+Create a contact.
 .Example
 $dateS = Get-Date -Year 2023 -Month 5 -Day 10 -Hour 11 -Minute 06 -Second 07
 $dateE = Get-Date -Year 2023 -Month 5 -Day 10 -Hour 11 -Minute 16 -Second 21

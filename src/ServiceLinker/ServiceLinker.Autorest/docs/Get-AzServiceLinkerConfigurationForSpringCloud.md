@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzServiceLinkerConfigurationForSpringCloud
 
 ## SYNOPSIS
-list source configurations for a linker in spring cloud.
+List source configurations for a linker in spring cloud.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Get-AzServiceLinkerConfigurationForSpringCloud -LinkerName <String> -AppName <St
 ```
 
 ## DESCRIPTION
-list source configurations for a linker in spring cloud.
+List source configurations for a linker in spring cloud.
 
 ## EXAMPLES
 

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a StandbyVirtualMachinePoolResource
+Create a StandbyVirtualMachinePoolResource
 .Description
-create a StandbyVirtualMachinePoolResource
+Create a StandbyVirtualMachinePoolResource
 .Example
 New-AzStandbyVMPool `
 -Name testPool `

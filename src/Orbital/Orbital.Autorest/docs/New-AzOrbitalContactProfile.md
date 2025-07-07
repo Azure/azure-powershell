@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzOrbitalContactProfile
 
 ## SYNOPSIS
-create a contact profile.
+Create a contact profile.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ New-AzOrbitalContactProfile -Name <String> -ResourceGroupName <String> -JsonStri
 ```
 
 ## DESCRIPTION
-create a contact profile.
+Create a contact profile.
 
 ## EXAMPLES
 

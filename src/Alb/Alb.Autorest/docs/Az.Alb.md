@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Alb
-Module Guid: 9cd42152-6d04-457b-86ba-311fa3cf15a3
+Module Guid: d229c93a-209e-4073-992c-0483ac68bfba
 Download Help Link: https://learn.microsoft.com/powershell/module/az.alb
 Help Version: 1.0.0.0
 Locale: en-US
@@ -24,16 +24,16 @@ Get a Frontend
 Get a SecurityPolicy
 
 ### [New-AzAlb](New-AzAlb.md)
-create a TrafficController
+Create a TrafficController
 
 ### [New-AzAlbAssociation](New-AzAlbAssociation.md)
-create a Association
+Create a Association
 
 ### [New-AzAlbFrontend](New-AzAlbFrontend.md)
-create a Frontend
+Create a Frontend
 
 ### [New-AzAlbSecurityPolicyWaf](New-AzAlbSecurityPolicyWaf.md)
-create a SecurityPolicy
+Create a SecurityPolicy
 
 ### [Remove-AzAlb](Remove-AzAlb.md)
 Delete a TrafficController
@@ -48,14 +48,14 @@ Delete a Frontend
 Delete a SecurityPolicy
 
 ### [Update-AzAlb](Update-AzAlb.md)
-update a TrafficController
+Update a TrafficController
 
 ### [Update-AzAlbAssociation](Update-AzAlbAssociation.md)
-update a Association
+Update a Association
 
 ### [Update-AzAlbFrontend](Update-AzAlbFrontend.md)
-update a Frontend
+Update a Frontend
 
 ### [Update-AzAlbSecurityPolicyWaf](Update-AzAlbSecurityPolicyWaf.md)
-update a SecurityPolicy
+Update a SecurityPolicy
 

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a workspace.
+Create a workspace.
 .Description
-create a workspace.
+Create a workspace.
 .Example
 New-AzWvdWorkspace -ResourceGroupName ResourceGroupName `
                         -Name WorkspaceName `

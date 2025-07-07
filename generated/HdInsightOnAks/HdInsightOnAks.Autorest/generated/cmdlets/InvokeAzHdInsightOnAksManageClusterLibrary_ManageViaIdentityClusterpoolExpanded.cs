@@ -159,6 +159,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
 
         /// <summary>
+        /// When specified, forces the cmdlet return a 'bool' given that there isn't a return type by default.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Returns true when the command succeeds")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.SwitchParameter PassThru { get; set; }
+
+        /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         public Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.HttpPipeline Pipeline { get; set; }
@@ -190,6 +197,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
         /// return immediately (set to true to skip further processing )</param>
 
         partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+
+        /// <summary>
+        /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
+        /// on that response. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
+        /// immediately (set to true to skip further processing )</param>
+
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -458,7 +475,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
                     if (ClusterpoolInputObject?.Id != null)
                     {
                         this.ClusterpoolInputObject.Id += $"/clusters/{(global::System.Uri.EscapeDataString(this.ClusterName.ToString()))}";
-                        await this.Client.ClusterLibrariesManageLibrariesViaIdentity(ClusterpoolInputObject.Id, _operationBody, onDefault, this, Pipeline);
+                        await this.Client.ClusterLibrariesManageLibrariesViaIdentity(ClusterpoolInputObject.Id, _operationBody, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -475,7 +492,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("ClusterpoolInputObject has null value for ClusterpoolInputObject.ClusterPoolName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, ClusterpoolInputObject) );
                         }
-                        await this.Client.ClusterLibrariesManageLibraries(ClusterpoolInputObject.SubscriptionId ?? null, ClusterpoolInputObject.ResourceGroupName ?? null, ClusterpoolInputObject.ClusterPoolName ?? null, ClusterName, _operationBody, onDefault, this, Pipeline);
+                        await this.Client.ClusterLibrariesManageLibraries(ClusterpoolInputObject.SubscriptionId ?? null, ClusterpoolInputObject.ResourceGroupName ?? null, ClusterpoolInputObject.ClusterPoolName ?? null, ClusterName, _operationBody, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -553,6 +570,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
+                }
+            }
+        }
+
+        /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
+        /// </returns>
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage)
+        {
+            using( NoSynchronizationContext )
+            {
+                var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
+                overrideOnOk(responseMessage, ref _returnNow);
+                // if overrideOnOk has returned true, then return right away.
+                if ((null != _returnNow && await _returnNow))
+                {
+                    return ;
+                }
+                // onOk - response for 200 /
+                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                {
+                    WriteObject(true);
                 }
             }
         }

@@ -133,7 +133,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
             }
             if (content.Contains("HttpGetPort"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeInternal)this).HttpGetPort = (int) content.GetValueForProperty("HttpGetPort",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeInternal)this).HttpGetPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeInternal)this).HttpGetPort = (int?) content.GetValueForProperty("HttpGetPort",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeInternal)this).HttpGetPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("TcpSocketHost"))
             {
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
             }
             if (content.Contains("TcpSocketPort"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeInternal)this).TcpSocketPort = (int) content.GetValueForProperty("TcpSocketPort",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeInternal)this).TcpSocketPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeInternal)this).TcpSocketPort = (int?) content.GetValueForProperty("TcpSocketPort",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeInternal)this).TcpSocketPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
             }
             if (content.Contains("HttpGetPort"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeInternal)this).HttpGetPort = (int) content.GetValueForProperty("HttpGetPort",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeInternal)this).HttpGetPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeInternal)this).HttpGetPort = (int?) content.GetValueForProperty("HttpGetPort",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeInternal)this).HttpGetPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("TcpSocketHost"))
             {
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
             }
             if (content.Contains("TcpSocketPort"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeInternal)this).TcpSocketPort = (int) content.GetValueForProperty("TcpSocketPort",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeInternal)this).TcpSocketPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeInternal)this).TcpSocketPort = (int?) content.GetValueForProperty("TcpSocketPort",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeInternal)this).TcpSocketPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializePSObject(content);
         }

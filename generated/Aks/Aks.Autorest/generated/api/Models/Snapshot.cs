@@ -41,58 +41,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>Internal Acessors for CreationData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICreationData Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotInternal.CreationData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).CreationData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).CreationData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICreationData Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotInternal.CreationData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).CreationData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).CreationData = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for EnableFips</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotInternal.EnableFips { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).EnableFips; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).EnableFips = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotInternal.EnableFips { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).EnableFips; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).EnableFips = value ?? default(bool); }
 
         /// <summary>Internal Acessors for KubernetesVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotInternal.KubernetesVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).KubernetesVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).KubernetesVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotInternal.KubernetesVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).KubernetesVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).KubernetesVersion = value ?? null; }
 
         /// <summary>Internal Acessors for NodeImageVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotInternal.NodeImageVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).NodeImageVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).NodeImageVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotInternal.NodeImageVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).NodeImageVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).NodeImageVersion = value ?? null; }
 
         /// <summary>Internal Acessors for OSSku</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotInternal.OSSku { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).OSSku; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).OSSku = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotInternal.OSSku { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).OSSku; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).OSSku = value ?? null; }
 
         /// <summary>Internal Acessors for OSType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotInternal.OSType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).OSType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).OSType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotInternal.OSType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).OSType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).OSType = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotProperties Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.SnapshotProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for VMSize</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotInternal.VMSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).VMSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).VMSize = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotInternal.VMSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).VMSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshotPropertiesInternal)Property).VMSize = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]

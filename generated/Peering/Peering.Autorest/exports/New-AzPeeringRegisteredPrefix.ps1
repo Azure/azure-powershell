@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new registered prefix with the specified name under the given subscription, resource group and peering.
+Create a new registered prefix with the specified name under the given subscription, resource group and peering.
 .Description
-create a new registered prefix with the specified name under the given subscription, resource group and peering.
+Create a new registered prefix with the specified name under the given subscription, resource group and peering.
 .Example
 New-AzPeeringRegisteredPrefix -Name accessibilityTesting6 -PeeringName DemoPeering -ResourceGroupName DemoRG -Prefix 240.0.5.0/24
 

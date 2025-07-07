@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkSecurityPerimeter
 
 ## SYNOPSIS
-create a Network Security Perimeter.
+Create a Network Security Perimeter.
 
 ## SYNTAX
 
@@ -45,7 +45,7 @@ New-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> -JsonS
 ```
 
 ## DESCRIPTION
-create a Network Security Perimeter.
+Create a Network Security Perimeter.
 
 ## EXAMPLES
 

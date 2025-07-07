@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a StandbyContainerGroupPoolResource
+Update a StandbyContainerGroupPoolResource
 .Description
-update a StandbyContainerGroupPoolResource
+Update a StandbyContainerGroupPoolResource
 .Example
 Update-AzStandbyContainerGroupPool `
 -Name testPool `

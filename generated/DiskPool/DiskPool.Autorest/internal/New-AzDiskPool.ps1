@@ -16,11 +16,11 @@
 
 <#
 .Synopsis
-create Disk pool.
+Create Disk pool.
 This create operation can take 15 minutes to complete.
 This is expected service behavior.
 .Description
-create Disk pool.
+Create Disk pool.
 This create operation can take 15 minutes to complete.
 This is expected service behavior.
 .Example

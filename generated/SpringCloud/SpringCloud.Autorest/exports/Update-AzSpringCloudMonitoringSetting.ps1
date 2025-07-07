@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the Monitoring Setting.
+Update the Monitoring Setting.
 .Description
-update the Monitoring Setting.
+Update the Monitoring Setting.
 .Example
 Update-AzSpringCloudMonitoringSetting -ResourceGroupName SpringCloud-gp-junxi -Name springcloud-service -AppInsightsInstrumentationKey "InstrumentationKey=xxxxxxxxxxxxxxxxxxx;IngestionEndpoint=https://xxxxxx.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/" -TraceEnabled
 .Example

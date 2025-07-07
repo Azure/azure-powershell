@@ -932,9 +932,9 @@ end {
 
 <#
 .Synopsis
-create a Association
+Create a Association
 .Description
-create a Association
+Create a Association
 .Example
 New-AzAlbAssociation -Name test-association -AlbName test-alb -ResourceGroupName test-rg -Location NorthCentralUS -SubnetId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet01/subnets/alb-subnet
 
@@ -1152,9 +1152,9 @@ end {
 
 <#
 .Synopsis
-create a Frontend
+Create a Frontend
 .Description
-create a Frontend
+Create a Frontend
 .Example
 New-AzAlbFrontend -Name alb-frontend -AlbName test-alb -ResourceGroupName test-rg -Location NorthCentralUS
 
@@ -1366,9 +1366,9 @@ end {
 
 <#
 .Synopsis
-create a TrafficController
+Create a TrafficController
 .Description
-create a TrafficController
+Create a TrafficController
 .Example
 New-AzAlb -Name test-alb -ResourceGroupName test-rg -Location NorthCentralUS
 
@@ -2541,9 +2541,9 @@ end {
 
 <#
 .Synopsis
-update a Association
+Update a Association
 .Description
-update a Association
+Update a Association
 .Example
 Update-AzAlbAssociation -Name test-association -AlbName test-alb -ResourceGroupName test-rg -Tag @{TestTag="Test tag value"}
 
@@ -2789,9 +2789,9 @@ end {
 
 <#
 .Synopsis
-update a Frontend
+Update a Frontend
 .Description
-update a Frontend
+Update a Frontend
 .Example
 Update-AzAlbFrontend -Name test-frontend -AlbName test-alb -ResourceGroupName test-rg -Tag @{TestTag="Test tag value"}
 
@@ -3024,9 +3024,9 @@ end {
 
 <#
 .Synopsis
-update a TrafficController
+Update a TrafficController
 .Description
-update a TrafficController
+Update a TrafficController
 .Example
 Update-AzAlb -Name test-alb -ResourceGroupName test-rg -Tag @{TestTag="Test tag value"}
 
@@ -3243,16 +3243,16 @@ end {
 
 <#
 .Synopsis
-create a SecurityPolicy
+Create a SecurityPolicy
 .Description
-create a SecurityPolicy
+Create a SecurityPolicy
 .Example
 New-AzAlbSecurityPolicyWaf -Name test-securityPolicy -AlbName test-alb -ResourceGroupName test-rg -Location NorthCentralUS
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicy
 .Link
-https://learn.microsoft.com/powershell/module/az.alb/new-azalbsecuritypolicy
+https://learn.microsoft.com/powershell/module/az.alb/new-azalbsecuritypolicywaf
 #>
 function New-AzAlbSecurityPolicyWaf {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicy])]
@@ -3463,9 +3463,9 @@ end {
 
 <#
 .Synopsis
-update a SecurityPolicy
+Update a SecurityPolicy
 .Description
-update a SecurityPolicy
+Update a SecurityPolicy
 .Example
 Update-AzAlbSecurityPolicyWaf -Name test-securityPolicy -AlbName test-alb -ResourceGroupName test-rg -Tag @{TestTag="Test tag value"}
 
@@ -3496,7 +3496,7 @@ TRAFFICCONTROLLERINPUTOBJECT <IAlbIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TrafficControllerName <String>]: traffic controller name for path
 .Link
-https://learn.microsoft.com/powershell/module/az.alb/update-azalbsecuritypolicy
+https://learn.microsoft.com/powershell/module/az.alb/update-azalbsecuritypolicywaf
 #>
 function Update-AzAlbSecurityPolicyWaf {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicy])]

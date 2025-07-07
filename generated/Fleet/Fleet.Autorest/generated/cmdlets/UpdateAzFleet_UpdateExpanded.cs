@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a Fleet.</summary>
+    /// <summary>update a Fleet.</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzFleet_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleet))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"Update a Fleet.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"update a Fleet.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Generated]
     public partial class UpdateAzFleet_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.IEventListener,
@@ -78,8 +78,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
-        /// <summary>Decides if enable a system assigned identity for the resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Decides if enable a system assigned identity for the resource.")]
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
         public System.Boolean? EnableSystemAssignedIdentity { get; set; }
 
         /// <summary>Accessor for extensibleParameters.</summary>

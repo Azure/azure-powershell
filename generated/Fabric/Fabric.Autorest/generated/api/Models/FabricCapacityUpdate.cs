@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models
         public System.Collections.Generic.List<string> AdministrationMember { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IFabricCapacityUpdatePropertiesInternal)Property).AdministrationMember; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IFabricCapacityUpdatePropertiesInternal)Property).AdministrationMember = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Administration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.ICapacityAdministration Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IFabricCapacityUpdateInternal.Administration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IFabricCapacityUpdatePropertiesInternal)Property).Administration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IFabricCapacityUpdatePropertiesInternal)Property).Administration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.ICapacityAdministration Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IFabricCapacityUpdateInternal.Administration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IFabricCapacityUpdatePropertiesInternal)Property).Administration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IFabricCapacityUpdatePropertiesInternal)Property).Administration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IFabricCapacityUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IFabricCapacityUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.FabricCapacityUpdateProperties()); set { {_property = value;} } }
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IRpSku Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IFabricCapacityUpdateInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.RpSku()); set { {_sku = value;} } }
 
         /// <summary>Internal Acessors for SkuTier</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IFabricCapacityUpdateInternal.SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IRpSkuInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IRpSkuInternal)Sku).Tier = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IFabricCapacityUpdateInternal.SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IRpSkuInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IRpSkuInternal)Sku).Tier = value ?? null; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IFabricCapacityUpdateProperties _property;

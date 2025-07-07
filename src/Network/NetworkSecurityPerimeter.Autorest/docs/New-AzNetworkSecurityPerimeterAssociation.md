@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkSecurityPerimeterAssociation
 
 ## SYNOPSIS
-create a NSP resource association.
+Create a NSP resource association.
 
 ## SYNTAX
 
@@ -64,7 +64,7 @@ New-AzNetworkSecurityPerimeterAssociation -Name <String> -ResourceGroupName <Str
 ```
 
 ## DESCRIPTION
-create a NSP resource association.
+Create a NSP resource association.
 
 ## EXAMPLES
 

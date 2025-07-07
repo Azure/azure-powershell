@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a SIM group.
+Update a SIM group.
 .Description
-update a SIM group.
+Update a SIM group.
 .Example
 Update-AzMobileNetworkSimGroup -SimGroupName azps-mn-simgroup -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
 

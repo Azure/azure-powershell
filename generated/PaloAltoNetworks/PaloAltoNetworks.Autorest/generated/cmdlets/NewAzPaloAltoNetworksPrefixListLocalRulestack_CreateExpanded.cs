@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a PrefixListResource</summary>
+    /// <summary>create a PrefixListResource</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/{localRulestackName}/prefixlists/{name}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzPaloAltoNetworksPrefixListLocalRulestack_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Description(@"Create a PrefixListResource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Description(@"create a PrefixListResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/{localRulestackName}/prefixlists/{name}", ApiVersion = "2023-09-01")]
     public partial class NewAzPaloAltoNetworksPrefixListLocalRulestack_CreateExpanded : global::System.Management.Automation.PSCmdlet,

@@ -43,13 +43,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IForecastComparisonExpression Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IForecastFilterInternal.Dimension { get => (this._dimension = this._dimension ?? new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ForecastComparisonExpression()); set { {_dimension = value;} } }
 
         /// <summary>Internal Acessors for DimensionOperator</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IForecastFilterInternal.DimensionOperator { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IForecastComparisonExpressionInternal)Dimension).Operator; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IForecastComparisonExpressionInternal)Dimension).Operator = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IForecastFilterInternal.DimensionOperator { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IForecastComparisonExpressionInternal)Dimension).Operator; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IForecastComparisonExpressionInternal)Dimension).Operator = value ?? null; }
 
         /// <summary>Internal Acessors for Tag</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IForecastComparisonExpression Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IForecastFilterInternal.Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ForecastComparisonExpression()); set { {_tag = value;} } }
 
         /// <summary>Internal Acessors for TagOperator</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IForecastFilterInternal.TagOperator { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IForecastComparisonExpressionInternal)Tag).Operator; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IForecastComparisonExpressionInternal)Tag).Operator = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IForecastFilterInternal.TagOperator { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IForecastComparisonExpressionInternal)Tag).Operator; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IForecastComparisonExpressionInternal)Tag).Operator = value ?? null; }
 
         /// <summary>Backing field for <see cref="Or" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IForecastFilter> _or;

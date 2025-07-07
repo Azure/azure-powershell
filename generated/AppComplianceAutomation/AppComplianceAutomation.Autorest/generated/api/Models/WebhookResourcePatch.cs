@@ -30,22 +30,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models
         public System.Collections.Generic.List<string> Event { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookPropertiesInternal)Property).Event; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookPropertiesInternal)Property).Event = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for DeliveryStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResourcePatchInternal.DeliveryStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookPropertiesInternal)Property).DeliveryStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookPropertiesInternal)Property).DeliveryStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResourcePatchInternal.DeliveryStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookPropertiesInternal)Property).DeliveryStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookPropertiesInternal)Property).DeliveryStatus = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookProperties Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResourcePatchInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.WebhookProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResourcePatchInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResourcePatchInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for TenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResourcePatchInternal.TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookPropertiesInternal)Property).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookPropertiesInternal)Property).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResourcePatchInternal.TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookPropertiesInternal)Property).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookPropertiesInternal)Property).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for WebhookId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResourcePatchInternal.WebhookId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookPropertiesInternal)Property).WebhookId; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookPropertiesInternal)Property).WebhookId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResourcePatchInternal.WebhookId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookPropertiesInternal)Property).WebhookId; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookPropertiesInternal)Property).WebhookId = value ?? null; }
 
         /// <summary>Internal Acessors for WebhookKeyEnabled</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResourcePatchInternal.WebhookKeyEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookPropertiesInternal)Property).WebhookKeyEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookPropertiesInternal)Property).WebhookKeyEnabled = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResourcePatchInternal.WebhookKeyEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookPropertiesInternal)Property).WebhookKeyEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookPropertiesInternal)Property).WebhookKeyEnabled = value ?? null; }
 
         /// <summary>webhook payload url</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PropertyOrigin.Inlined)]

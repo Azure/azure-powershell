@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an association between a ARC machine and guest configuration
+Update an association between a ARC machine and guest configuration
 .Description
-update an association between a ARC machine and guest configuration
+Update an association between a ARC machine and guest configuration
 .Example
 Update-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName test-assignment -ResourceGroupName test-rg -MachineName test-machine -GuestConfigurationName test-config -GuestConfigurationVersion "1.0.0.3" -GuestConfigurationContentUri "https://thisisfake/package" -GuestConfigurationContentHash "123contenthash"
 

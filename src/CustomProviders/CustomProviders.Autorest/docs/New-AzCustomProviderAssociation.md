@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCustomProviderAssociation
 
 ## SYNOPSIS
-create an association.
+Create an association.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ New-AzCustomProviderAssociation -Name <String> -Scope <String> -JsonString <Stri
 ```
 
 ## DESCRIPTION
-create an association.
+Create an association.
 
 ## EXAMPLES
 

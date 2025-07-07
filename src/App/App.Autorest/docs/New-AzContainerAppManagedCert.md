@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzContainerAppManagedCert
 
 ## SYNOPSIS
-create a Managed Certificate.
+Create a Managed Certificate.
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ New-AzContainerAppManagedCert -EnvName <String> -Name <String> -ResourceGroupNam
 ```
 
 ## DESCRIPTION
-create a Managed Certificate.
+Create a Managed Certificate.
 
 ## EXAMPLES
 

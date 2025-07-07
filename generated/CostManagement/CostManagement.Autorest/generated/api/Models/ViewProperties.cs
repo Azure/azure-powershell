@@ -108,7 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IViewPropertiesInternal.Currency { get => this._currency; set { {_currency = value;} } }
 
         /// <summary>Internal Acessors for DataSetConfiguration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportConfigDatasetConfiguration Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IViewPropertiesInternal.DataSetConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportConfigDefinitionInternal)Query).DataSetConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportConfigDefinitionInternal)Query).DataSetConfiguration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportConfigDatasetConfiguration Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IViewPropertiesInternal.DataSetConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportConfigDefinitionInternal)Query).DataSetConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportConfigDefinitionInternal)Query).DataSetConfiguration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for DateRange</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IViewPropertiesInternal.DateRange { get => this._dateRange; set { {_dateRange = value;} } }
@@ -120,13 +120,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportConfigDefinition Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IViewPropertiesInternal.Query { get => (this._query = this._query ?? new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ReportConfigDefinition()); set { {_query = value;} } }
 
         /// <summary>Internal Acessors for QueryDataSet</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportConfigDataset Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IViewPropertiesInternal.QueryDataSet { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportConfigDefinitionInternal)Query).DataSet; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportConfigDefinitionInternal)Query).DataSet = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportConfigDataset Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IViewPropertiesInternal.QueryDataSet { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportConfigDefinitionInternal)Query).DataSet; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportConfigDefinitionInternal)Query).DataSet = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for QueryTimePeriod</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportConfigTimePeriod Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IViewPropertiesInternal.QueryTimePeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportConfigDefinitionInternal)Query).TimePeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportConfigDefinitionInternal)Query).TimePeriod = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportConfigTimePeriod Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IViewPropertiesInternal.QueryTimePeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportConfigDefinitionInternal)Query).TimePeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportConfigDefinitionInternal)Query).TimePeriod = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for QueryType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IViewPropertiesInternal.QueryType { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportConfigDefinitionInternal)Query).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportConfigDefinitionInternal)Query).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IViewPropertiesInternal.QueryType { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportConfigDefinitionInternal)Query).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportConfigDefinitionInternal)Query).Type = value ?? null; }
 
         /// <summary>Backing field for <see cref="ModifiedOn" /> property.</summary>
         private global::System.DateTime? _modifiedOn;

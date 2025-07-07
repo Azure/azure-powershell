@@ -227,9 +227,9 @@ end {
 
 <#
 .Synopsis
-create a OrganizationResource
+Create a OrganizationResource
 .Description
-create a OrganizationResource
+Create a OrganizationResource
 .Example
 New-AzArizeAIOrganization -Name "test-cli-instance-4" -Location "East US" -ResourceGroupName "QM_clitest_qumulo2_eastus" -SubscriptionId "fc35d936-3b89-41f8-8110-a24b56826c37" -MarketplaceSubscriptionId  "fc35d936-3b89-41f8-8110-a24b56826c37" -OfferDetailOfferId "arize-liftr-0" -OfferDetailPlanId "liftr-test-0" -OfferDetailPlanName "Liftr Test 0" -OfferDetailTermUnit "P1M" -OfferDetailPublisherId "arizeai1657829589668" -OfferDetailTermId "gmz7xq9ge3py" -Tag @{"TestName" = "TestValue"} -UserEmailAddress "aggarwalsw@microsoft.com" -UserFirstName "" -UserLastName "" -UserUpn "aggarwalsw@microsoft.com"
 
@@ -798,9 +798,9 @@ end {
 
 <#
 .Synopsis
-update a OrganizationResource
+Update a OrganizationResource
 .Description
-update a OrganizationResource
+Update a OrganizationResource
 .Example
 Update-AzArizeAIOrganization -Name "test-cli-instance-4" -ResourceGroupName "QM_clitest_qumulo2_eastus" -SubscriptionId "fc35d936-3b89-41f8-8110-a24b56826c37" -MarketplaceSubscriptionId  "fc35d936-3b89-41f8-8110-a24b56826c37" -OfferDetailOfferId "arize-liftr-0" -OfferDetailPlanId "liftr-test-0" -OfferDetailPlanName "Liftr Test 0" -OfferDetailTermUnit "P1M" -OfferDetailPublisherId "arizeai1657829589668" -OfferDetailTermId "gmz7xq9ge3py" -Tag @{"TestName1" = "TestValue1"} -UserEmailAddress "aggarwalsw@microsoft.com" -UserFirstName "" -UserLastName "" -UserUpn "aggarwalsw@microsoft.com"
 

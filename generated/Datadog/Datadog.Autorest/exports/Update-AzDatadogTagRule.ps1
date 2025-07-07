@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a tag rule set for a given monitor resource.
+Update a tag rule set for a given monitor resource.
 .Description
-update a tag rule set for a given monitor resource.
+Update a tag rule set for a given monitor resource.
 .Example
 $ftobjArray = @()
 $ftobjArray += New-AzDatadogFilteringTagObject -Action "Include" -Value "Prod" -Name "Environment"

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzAksSnapshot
 
 ## SYNOPSIS
-create a snapshot.
+Create a snapshot.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ New-AzAksSnapshot -ResourceGroupName <String> -ResourceName <String> -JsonString
 ```
 
 ## DESCRIPTION
-create a snapshot.
+Create a snapshot.
 
 ## EXAMPLES
 

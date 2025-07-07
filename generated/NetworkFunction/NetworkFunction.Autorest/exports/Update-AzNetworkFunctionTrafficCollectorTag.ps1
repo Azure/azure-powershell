@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the specified Azure Traffic Collector tags.
+Update the specified Azure Traffic Collector tags.
 .Description
-update the specified Azure Traffic Collector tags.
+Update the specified Azure Traffic Collector tags.
 .Example
 Update-AzNetworkFunctionTrafficCollectorTag -azuretrafficcollectorname atc -resourcegroupname rg1 | Format-List
 

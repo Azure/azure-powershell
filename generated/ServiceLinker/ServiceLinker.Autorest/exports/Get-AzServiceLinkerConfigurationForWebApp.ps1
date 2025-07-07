@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-list source configurations for a linker in webapp.
+List source configurations for a linker in webapp.
 .Description
-list source configurations for a linker in webapp.
+List source configurations for a linker in webapp.
 .Example
 Get-AzServiceLinkerConfigurationForWebApp -WebApp servicelinker-webapp -ResourceGroupName servicelinker-test-group -LinkerName postgresql_linker | Format-List
 

@@ -62,25 +62,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models
         public string ManagedResourceGroupName { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISapMonitorPropertiesInternal)Property).ManagedResourceGroupName; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>Internal Acessors for CollectorVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISapMonitorInternal.CollectorVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISapMonitorPropertiesInternal)Property).SapMonitorCollectorVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISapMonitorPropertiesInternal)Property).SapMonitorCollectorVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISapMonitorInternal.CollectorVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISapMonitorPropertiesInternal)Property).SapMonitorCollectorVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISapMonitorPropertiesInternal)Property).SapMonitorCollectorVersion = value ?? null; }
 
         /// <summary>Internal Acessors for ManagedResourceGroupName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISapMonitorInternal.ManagedResourceGroupName { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISapMonitorPropertiesInternal)Property).ManagedResourceGroupName; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISapMonitorPropertiesInternal)Property).ManagedResourceGroupName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISapMonitorInternal.ManagedResourceGroupName { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISapMonitorPropertiesInternal)Property).ManagedResourceGroupName; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISapMonitorPropertiesInternal)Property).ManagedResourceGroupName = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISapMonitorProperties Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISapMonitorInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.SapMonitorProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISapMonitorInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISapMonitorPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISapMonitorPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISapMonitorInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISapMonitorPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISapMonitorPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>The subnet which the SAP monitor will be deployed in</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Origin(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.PropertyOrigin.Inlined)]

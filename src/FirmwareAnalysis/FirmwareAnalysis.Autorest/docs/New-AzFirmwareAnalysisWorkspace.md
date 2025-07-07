@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFirmwareAnalysisWorkspace
 
 ## SYNOPSIS
-The operation to Create a firmware analysis workspace.
+The operation to create a firmware analysis workspace.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzFirmwareAnalysisWorkspace -Name <String> -ResourceGroupName <String> -Loca
 ```
 
 ## DESCRIPTION
-The operation to Create a firmware analysis workspace.
+The operation to create a firmware analysis workspace.
 
 ## EXAMPLES
 

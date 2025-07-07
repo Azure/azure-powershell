@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a BrokerAuthenticationResource
+Create a BrokerAuthenticationResource
 .Description
-create a BrokerAuthenticationResource
+Create a BrokerAuthenticationResource
 .Example
 New-AzIoTOperationsServiceBrokerAuthentication `
   -AuthenticationName "my-authn" `

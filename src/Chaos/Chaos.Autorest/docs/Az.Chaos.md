@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Chaos
-Module Guid: ca01a43f-b9c7-4e71-a41d-a185e2355c98
+Module Guid: dc38019b-40e4-43e4-960c-84d62cab5ba9
 Download Help Link: https://learn.microsoft.com/powershell/module/az.chaos
 Help Version: 1.0.0.0
 Locale: en-US

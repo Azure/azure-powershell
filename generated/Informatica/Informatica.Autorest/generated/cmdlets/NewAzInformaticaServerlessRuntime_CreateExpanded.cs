@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Informatica.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Informatica.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a InformaticaServerlessRuntimeResource</summary>
+    /// <summary>create a InformaticaServerlessRuntimeResource</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Informatica.DataManagement/organizations/{organizationName}/serverlessRuntimes/{serverlessRuntimeName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzInformaticaServerlessRuntime_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models.IInformaticaServerlessRuntimeResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Informatica.Description(@"Create a InformaticaServerlessRuntimeResource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Informatica.Description(@"create a InformaticaServerlessRuntimeResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Informatica.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Informatica.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Informatica.DataManagement/organizations/{organizationName}/serverlessRuntimes/{serverlessRuntimeName}", ApiVersion = "2024-05-08")]
     public partial class NewAzInformaticaServerlessRuntime_CreateExpanded : global::System.Management.Automation.PSCmdlet,

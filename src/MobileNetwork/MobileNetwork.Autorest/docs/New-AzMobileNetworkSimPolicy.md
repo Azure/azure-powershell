@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMobileNetworkSimPolicy
 
 ## SYNOPSIS
-create a SIM policy.
+Create a SIM policy.
 Must be created in the same location as its parent mobile network.
 
 ## SYNTAX
@@ -53,7 +53,7 @@ New-AzMobileNetworkSimPolicy -MobileNetworkName <String> -Name <String> -Resourc
 ```
 
 ## DESCRIPTION
-create a SIM policy.
+Create a SIM policy.
 Must be created in the same location as its parent mobile network.
 
 ## EXAMPLES

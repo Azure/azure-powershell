@@ -16,16 +16,16 @@
 
 <#
 .Synopsis
-create a SecurityPolicy
+Create a SecurityPolicy
 .Description
-create a SecurityPolicy
+Create a SecurityPolicy
 .Example
 New-AzAlbSecurityPolicyWaf -Name test-securityPolicy -AlbName test-alb -ResourceGroupName test-rg -Location NorthCentralUS
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicy
 .Link
-https://learn.microsoft.com/powershell/module/az.alb/new-azalbsecuritypolicy
+https://learn.microsoft.com/powershell/module/az.alb/new-azalbsecuritypolicywaf
 #>
 function New-AzAlbSecurityPolicyWaf {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicy])]

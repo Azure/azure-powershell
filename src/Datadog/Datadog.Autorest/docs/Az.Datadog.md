@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Datadog
-Module Guid: 7e474a6d-4d29-4af2-9fee-07f3bd7af5fe
+Module Guid: c1d25844-20c3-4c0e-8179-45efcee1b70e
 Download Help Link: https://learn.microsoft.com/powershell/module/az.datadog
 Help Version: 1.0.0.0
 Locale: en-US
@@ -42,16 +42,16 @@ Get a tag rule set for a given monitor resource.
 Create an in-memory object for FilteringTag.
 
 ### [New-AzDatadogMarketplaceAgreement](New-AzDatadogMarketplaceAgreement.md)
-create Datadog marketplace agreement in the subscription.
+Create Datadog marketplace agreement in the subscription.
 
 ### [New-AzDatadogMonitor](New-AzDatadogMonitor.md)
-create a monitor resource.
+Create a monitor resource.
 
 ### [New-AzDatadogSingleSignOnConfiguration](New-AzDatadogSingleSignOnConfiguration.md)
 Configures single-sign-on for this resource.
 
 ### [New-AzDatadogTagRule](New-AzDatadogTagRule.md)
-create a tag rule set for a given monitor resource.
+Create a tag rule set for a given monitor resource.
 
 ### [Remove-AzDatadogMonitor](Remove-AzDatadogMonitor.md)
 Delete a monitor resource.
@@ -60,7 +60,7 @@ Delete a monitor resource.
 Set the default api key.
 
 ### [Update-AzDatadogMonitor](Update-AzDatadogMonitor.md)
-update a monitor resource.
+Update a monitor resource.
 
 ### [Update-AzDatadogMonitorSetPasswordLink](Update-AzDatadogMonitorSetPasswordLink.md)
 Refresh the set password link and return a latest one.
@@ -69,5 +69,5 @@ Refresh the set password link and return a latest one.
 Configures single-sign-on for this resource.
 
 ### [Update-AzDatadogTagRule](Update-AzDatadogTagRule.md)
-update a tag rule set for a given monitor resource.
+Update a tag rule set for a given monitor resource.
 

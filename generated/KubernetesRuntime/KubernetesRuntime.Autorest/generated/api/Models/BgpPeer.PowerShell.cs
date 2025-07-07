@@ -128,11 +128,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models
             }
             if (content.Contains("MyAsn"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IBgpPeerInternal)this).MyAsn = (int) content.GetValueForProperty("MyAsn",((Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IBgpPeerInternal)this).MyAsn, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IBgpPeerInternal)this).MyAsn = (int?) content.GetValueForProperty("MyAsn",((Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IBgpPeerInternal)this).MyAsn, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("PeerAsn"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IBgpPeerInternal)this).PeerAsn = (int) content.GetValueForProperty("PeerAsn",((Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IBgpPeerInternal)this).PeerAsn, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IBgpPeerInternal)this).PeerAsn = (int?) content.GetValueForProperty("PeerAsn",((Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IBgpPeerInternal)this).PeerAsn, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("PeerAddress"))
             {
@@ -205,11 +205,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models
             }
             if (content.Contains("MyAsn"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IBgpPeerInternal)this).MyAsn = (int) content.GetValueForProperty("MyAsn",((Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IBgpPeerInternal)this).MyAsn, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IBgpPeerInternal)this).MyAsn = (int?) content.GetValueForProperty("MyAsn",((Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IBgpPeerInternal)this).MyAsn, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("PeerAsn"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IBgpPeerInternal)this).PeerAsn = (int) content.GetValueForProperty("PeerAsn",((Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IBgpPeerInternal)this).PeerAsn, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IBgpPeerInternal)this).PeerAsn = (int?) content.GetValueForProperty("PeerAsn",((Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IBgpPeerInternal)this).PeerAsn, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("PeerAddress"))
             {

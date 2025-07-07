@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create new navigation property to appRoleAssignments for servicePrincipals
+Create new navigation property to appRoleAssignments for servicePrincipals
 .Description
-create new navigation property to appRoleAssignments for servicePrincipals
+Create new navigation property to appRoleAssignments for servicePrincipals
 .Example
 New-AzADServicePrincipalAppRoleAssignment -ServicePrincipalId 71beb965-8347-495d-a589-c21cdde7a722 -ResourceId 351fa797-c81a-4998-9720-4c2ecb6c7abc -AppRoleId 649ae968-bdf9-4f22-bb2c-2aa1b4af0a83
 .Example
@@ -172,6 +172,9 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
 
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
         $mapping = @{
             Create = 'Az.MSGraph.private\New-AzADServicePrincipalAppRoleAssignment_Create';
             CreateExpanded = 'Az.MSGraph.private\New-AzADServicePrincipalAppRoleAssignment_CreateExpanded';
@@ -180,6 +183,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

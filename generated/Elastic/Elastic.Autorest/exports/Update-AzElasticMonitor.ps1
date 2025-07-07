@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a monitor resource.
+Update a monitor resource.
 .Description
-update a monitor resource.
+Update a monitor resource.
 .Example
 Update-AzElasticMonitor -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02 -Tag @{'key01' = '1'; 'key2' = '2'; 'key3' = '3'}
 .Example
@@ -190,7 +190,15 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command asynchronously
-    ${NoWait}
+    ${NoWait},
+
+    [Parameter(ParameterSetName='Upgrade')]
+    [Parameter(ParameterSetName='UpgradeExpanded')]
+    [Parameter(ParameterSetName='UpgradeViaIdentity')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru}
 )
 
 begin {

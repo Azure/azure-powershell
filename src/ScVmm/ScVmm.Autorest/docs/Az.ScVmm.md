@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ScVmm
-Module Guid: 6bbd0115-d0f5-41c8-b572-83ba7ff1dacc
+Module Guid: 71656494-1e62-40dd-8244-91229094e3a1
 Download Help Link: https://learn.microsoft.com/powershell/module/az.scvmm
 Help Version: 1.0.0.0
 Locale: en-US
@@ -79,7 +79,7 @@ The operation to create a virtual machine.
 Please note some properties can be set only during virtual machine creation.
 
 ### [New-AzScVmmVMCheckpoint](New-AzScVmmVMCheckpoint.md)
-create a checkpoint in virtual machine.
+Create a checkpoint in virtual machine.
 
 ### [New-AzScVmmVMExtension](New-AzScVmmVMExtension.md)
 The operation to create the extension on a virtual machine where Azure Arc agent is installed.
@@ -133,16 +133,16 @@ The operation to start a virtual machine.
 The operation to power off (stop) a virtual machine.
 
 ### [Update-AzScVmmAvailabilitySet](Update-AzScVmmAvailabilitySet.md)
-update the AvailabilitySets resource.
+Update the AvailabilitySets resource.
 
 ### [Update-AzScVmmCloud](Update-AzScVmmCloud.md)
-update the Clouds resource.
+Update the Clouds resource.
 
 ### [Update-AzScVmmServer](Update-AzScVmmServer.md)
-update the VmmServers resource.
+Update the VmmServers resource.
 
 ### [Update-AzScVmmVirtualNetwork](Update-AzScVmmVirtualNetwork.md)
-update the VirtualNetworks resource.
+Update the VirtualNetworks resource.
 
 ### [Update-AzScVmmVM](Update-AzScVmmVM.md)
 The operation to update a virtual machine (Use separate commands for NIC and Disk update on virtual Machine).
@@ -157,5 +157,5 @@ The operation to update the extension.
 The operation to Update a virtual machine network interface.
 
 ### [Update-AzScVmmVMTemplate](Update-AzScVmmVMTemplate.md)
-update the VirtualMachineTemplate resource.
+Update the VirtualMachineTemplate resource.
 

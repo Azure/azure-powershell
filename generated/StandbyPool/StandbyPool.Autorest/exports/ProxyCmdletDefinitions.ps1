@@ -910,9 +910,9 @@ end {
 
 <#
 .Synopsis
-create a StandbyContainerGroupPoolResource
+Create a StandbyContainerGroupPoolResource
 .Description
-create a StandbyContainerGroupPoolResource
+Create a StandbyContainerGroupPoolResource
 .Example
 New-AzStandbyContainerGroupPool `
 -Name testPool `
@@ -1190,9 +1190,9 @@ end {
 
 <#
 .Synopsis
-create a StandbyVirtualMachinePoolResource
+Create a StandbyVirtualMachinePoolResource
 .Description
-create a StandbyVirtualMachinePoolResource
+Create a StandbyVirtualMachinePoolResource
 .Example
 New-AzStandbyVMPool `
 -Name testPool `
@@ -1906,9 +1906,9 @@ end {
 
 <#
 .Synopsis
-update a StandbyContainerGroupPoolResource
+Update a StandbyContainerGroupPoolResource
 .Description
-update a StandbyContainerGroupPoolResource
+Update a StandbyContainerGroupPoolResource
 .Example
 Update-AzStandbyContainerGroupPool `
 -Name testPool `
@@ -2193,9 +2193,9 @@ end {
 
 <#
 .Synopsis
-update a StandbyVirtualMachinePoolResource
+Update a StandbyVirtualMachinePoolResource
 .Description
-update a StandbyVirtualMachinePoolResource
+Update a StandbyVirtualMachinePoolResource
 .Example
 Update-AzStandbyVMPool `
 -SubscriptionId f8da6e30-a9d8-48ab-b05c-3f7fe482e13b `

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSpringCloudCertificate
 
 ## SYNOPSIS
-update certificate resource.
+Update certificate resource.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ Update-AzSpringCloudCertificate -Name <String> -SpringInputObject <ISpringCloudI
 ```
 
 ## DESCRIPTION
-update certificate resource.
+Update certificate resource.
 
 ## EXAMPLES
 

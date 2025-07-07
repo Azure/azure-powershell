@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzAksMaintenanceConfiguration
 
 ## SYNOPSIS
-create a maintenance configuration in the specified managed cluster.
+Create a maintenance configuration in the specified managed cluster.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzAksMaintenanceConfiguration -ConfigName <String> -ResourceGroupName <Strin
 ```
 
 ## DESCRIPTION
-create a maintenance configuration in the specified managed cluster.
+Create a maintenance configuration in the specified managed cluster.
 
 ## EXAMPLES
 

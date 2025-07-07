@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DesktopVirtualization
-Module Guid: 4620ab8f-4164-48c8-a04f-53872bce762e
+Module Guid: 1fc4ebe5-4aaa-4bc0-afed-da3a512d4cbb
 Download Help Link: https://learn.microsoft.com/powershell/module/az.desktopvirtualization
 Help Version: 1.0.0.0
 Locale: en-US
@@ -72,34 +72,34 @@ Get a workspace.
 Gets information from a package given the path to the package.
 
 ### [New-AzWvdAppAttachPackage](New-AzWvdAppAttachPackage.md)
-create an App Attach package.
+Create an App Attach package.
 
 ### [New-AzWvdApplication](New-AzWvdApplication.md)
-create an application.
+Create an application.
 
 ### [New-AzWvdApplicationGroup](New-AzWvdApplicationGroup.md)
-create an applicationGroup.
+Create an applicationGroup.
 
 ### [New-AzWvdHostPool](New-AzWvdHostPool.md)
-create a host pool.
+Create a host pool.
 
 ### [New-AzWvdMsixPackage](New-AzWvdMsixPackage.md)
-create a MSIX package.
+Create a MSIX package.
 
 ### [New-AzWvdRegistrationInfo](New-AzWvdRegistrationInfo.md)
 Create Windows virtual desktop registration info.
 
 ### [New-AzWvdScalingPlan](New-AzWvdScalingPlan.md)
-create a scaling plan.
+Create a scaling plan.
 
 ### [New-AzWvdScalingPlanPersonalSchedule](New-AzWvdScalingPlanPersonalSchedule.md)
-create a ScalingPlanPersonalSchedule.
+Create a ScalingPlanPersonalSchedule.
 
 ### [New-AzWvdScalingPlanPooledSchedule](New-AzWvdScalingPlanPooledSchedule.md)
-create a ScalingPlanPooledSchedule.
+Create a ScalingPlanPooledSchedule.
 
 ### [New-AzWvdWorkspace](New-AzWvdWorkspace.md)
-create a workspace.
+Create a workspace.
 
 ### [Register-AzWvdApplicationGroup](Register-AzWvdApplicationGroup.md)
 Register a Windows virtual desktop application group.
@@ -150,35 +150,35 @@ Send a message to a user.
 Unregister the Windows virtual desktop application group.
 
 ### [Update-AzWvdAppAttachPackage](Update-AzWvdAppAttachPackage.md)
-update an App Attach Package
+Update an App Attach Package
 
 ### [Update-AzWvdApplication](Update-AzWvdApplication.md)
-update an application.
+Update an application.
 
 ### [Update-AzWvdApplicationGroup](Update-AzWvdApplicationGroup.md)
-update an applicationGroup.
+Update an applicationGroup.
 
 ### [Update-AzWvdDesktop](Update-AzWvdDesktop.md)
-update a desktop.
+Update a desktop.
 
 ### [Update-AzWvdHostPool](Update-AzWvdHostPool.md)
-update a host pool.
+Update a host pool.
 
 ### [Update-AzWvdMsixPackage](Update-AzWvdMsixPackage.md)
-update an  MSIX Package.
+Update an  MSIX Package.
 
 ### [Update-AzWvdScalingPlan](Update-AzWvdScalingPlan.md)
-update a scaling plan.
+Update a scaling plan.
 
 ### [Update-AzWvdScalingPlanPersonalSchedule](Update-AzWvdScalingPlanPersonalSchedule.md)
-update a ScalingPlanPersonalSchedule.
+Update a ScalingPlanPersonalSchedule.
 
 ### [Update-AzWvdScalingPlanPooledSchedule](Update-AzWvdScalingPlanPooledSchedule.md)
-update a ScalingPlanPooledSchedule.
+Update a ScalingPlanPooledSchedule.
 
 ### [Update-AzWvdSessionHost](Update-AzWvdSessionHost.md)
-update a session host.
+Update a session host.
 
 ### [Update-AzWvdWorkspace](Update-AzWvdWorkspace.md)
-update a workspace.
+Update a workspace.
 

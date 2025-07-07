@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.App.Models.EnvironmentVar
 https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappenvironmentvarobject
 #>
 function New-AzContainerAppEnvironmentVarObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.App.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.EnvironmentVar')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

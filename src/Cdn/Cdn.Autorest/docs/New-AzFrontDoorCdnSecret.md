@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFrontDoorCdnSecret
 
 ## SYNOPSIS
-create a new Secret within the specified profile.
+Create a new Secret within the specified profile.
 
 ## SYNTAX
 
@@ -46,7 +46,7 @@ New-AzFrontDoorCdnSecret -Name <String> -ProfileName <String> -ResourceGroupName
 ```
 
 ## DESCRIPTION
-create a new Secret within the specified profile.
+Create a new Secret within the specified profile.
 
 ## EXAMPLES
 

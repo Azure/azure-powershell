@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a workspace resource.
+Create a workspace resource.
 .Description
-create a workspace resource.
+Create a workspace resource.
 .Example
 $object = New-AzQuantumProviderObject -Id "ionq" -Sku "pay-as-you-go-cred"
 New-AzQuantumWorkspace -Name azps-qw -ResourceGroupName azps_test_group_quantum -Location eastus -EnableSystemAssignedIdentity -Provider $object -StorageAccount "/subscriptions/{subId}/resourceGroups/azps_test_group_quantum/providers/Microsoft.Storage/storageAccounts/azpssa"

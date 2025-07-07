@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a new CommunicationService or update an existing CommunicationService.
+Update a new CommunicationService or update an existing CommunicationService.
 .Description
-update a new CommunicationService or update an existing CommunicationService.
+Update a new CommunicationService or update an existing CommunicationService.
 .Example
 Update-AzCommunicationService -Name ContosoAcsResource2 -ResourceGroupName ContosoResourceProvider1 -Tag @{ExampleKey1="ExampleValue1"}
 .Example

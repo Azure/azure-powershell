@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the requiredInputs or additional information needed to execute the solution
+Update the requiredInputs or additional information needed to execute the solution
 .Description
-update the requiredInputs or additional information needed to execute the solution
+Update the requiredInputs or additional information needed to execute the solution
 .Example
 $parameters = [ordered]@{ 
         "SearchText" = "Can not Search" 

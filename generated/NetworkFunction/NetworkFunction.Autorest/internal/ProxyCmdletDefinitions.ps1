@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a Collector Policy resource
+Create a Collector Policy resource
 .Description
-create a Collector Policy resource
+Create a Collector Policy resource
 .Example
 New-AzNetworkFunctionCollectorPolicy -collectorpolicyname cp1 -azuretrafficcollectorname atc -resourcegroupname rg1 -location eastus | Format-List
 
@@ -318,9 +318,9 @@ end {
 
 <#
 .Synopsis
-create a Azure Traffic Collector resource
+Create a Azure Traffic Collector resource
 .Description
-create a Azure Traffic Collector resource
+Create a Azure Traffic Collector resource
 .Example
 New-AzNetworkFunctionTrafficCollector -name atctestps -resourcegroupname test -location eastus | Format-List
 

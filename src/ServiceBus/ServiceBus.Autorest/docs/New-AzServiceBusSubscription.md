@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzServiceBusSubscription
 
 ## SYNOPSIS
-create a topic subscription.
+Create a topic subscription.
 
 ## SYNTAX
 
@@ -58,7 +58,7 @@ New-AzServiceBusSubscription -Name <String> -TopicInputObject <IServiceBusIdenti
 ```
 
 ## DESCRIPTION
-create a topic subscription.
+Create a topic subscription.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzAksMaintenanceConfiguration
 
 ## SYNOPSIS
-update a maintenance configuration in the specified managed cluster.
+Update a maintenance configuration in the specified managed cluster.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Update-AzAksMaintenanceConfiguration -InputObject <IAksIdentity> [-NotAllowedTim
 ```
 
 ## DESCRIPTION
-update a maintenance configuration in the specified managed cluster.
+Update a maintenance configuration in the specified managed cluster.
 
 ## EXAMPLES
 

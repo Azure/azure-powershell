@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzArizeAIOrganization
 
 ## SYNOPSIS
-update a OrganizationResource
+Update a OrganizationResource
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Update-AzArizeAIOrganization -InputObject <IArizeAiIdentity> [-EnableSystemAssig
 ```
 
 ## DESCRIPTION
-update a OrganizationResource
+Update a OrganizationResource
 
 ## EXAMPLES
 

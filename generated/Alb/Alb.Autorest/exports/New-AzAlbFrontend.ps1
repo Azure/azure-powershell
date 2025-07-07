@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a Frontend
+Create a Frontend
 .Description
-create a Frontend
+Create a Frontend
 .Example
 New-AzAlbFrontend -Name alb-frontend -AlbName test-alb -ResourceGroupName test-rg -Location NorthCentralUS
 

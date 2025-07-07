@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere.Cmdlets
     using System;
 
     /// <summary>
-    /// Update a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
+    /// update a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
     /// name.
     /// </summary>
     /// <remarks>
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzSphereDeployment_UpdateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IDeployment))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Description(@"Update a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Description(@"update a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/deployments/{deploymentName}", ApiVersion = "2024-04-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.NotSuggestDefaultParameterSet]

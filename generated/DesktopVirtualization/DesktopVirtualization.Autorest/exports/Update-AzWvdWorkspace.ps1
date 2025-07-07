@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a workspace.
+Update a workspace.
 .Description
-update a workspace.
+Update a workspace.
 .Example
 Update-AzWvdWorkspace -ResourceGroupName ResourceGroupName `
                         -Name WorkspaceName `

@@ -16,11 +16,11 @@
 
 <#
 .Synopsis
-update a vendor network function.
+Update a vendor network function.
 This operation can take up to 6 hours to complete.
 This is expected service behavior.
 .Description
-update a vendor network function.
+Update a vendor network function.
 This operation can take up to 6 hours to complete.
 This is expected service behavior.
 .Example

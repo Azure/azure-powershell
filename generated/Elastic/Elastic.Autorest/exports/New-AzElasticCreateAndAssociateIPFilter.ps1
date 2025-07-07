@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create and Associate IP traffic filter for the given deployment.
+Create and Associate IP traffic filter for the given deployment.
 .Description
-create and Associate IP traffic filter for the given deployment.
+Create and Associate IP traffic filter for the given deployment.
 .Example
 New-AzElasticCreateAndAssociateIPFilter -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 

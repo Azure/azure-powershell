@@ -26,43 +26,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__proxyResource).Id; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorPropertiesFormat Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.VendorPropertiesFormat()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorPropertiesFormatInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorPropertiesFormatInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorPropertiesFormatInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorPropertiesFormatInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Sku</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISubResource> Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorPropertiesFormatInternal)Property).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorPropertiesFormatInternal)Property).Sku = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISubResource> Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorPropertiesFormatInternal)Property).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorPropertiesFormatInternal)Property).Sku = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.SystemData()); set { {_systemData = value;} } }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).CreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).CreatedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).CreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).LastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).LastModifiedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).LastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.PropertyOrigin.Inherited)]

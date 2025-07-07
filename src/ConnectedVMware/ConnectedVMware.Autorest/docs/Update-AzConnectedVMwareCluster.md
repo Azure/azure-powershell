@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedVMwareCluster
 
 ## SYNOPSIS
-API to Update certain properties of the cluster resource.
+API to update certain properties of the cluster resource.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzConnectedVMwareCluster -Name <String> -ResourceGroupName <String> -Json
 ```
 
 ## DESCRIPTION
-API to Update certain properties of the cluster resource.
+API to update certain properties of the cluster resource.
 
 ## EXAMPLES
 

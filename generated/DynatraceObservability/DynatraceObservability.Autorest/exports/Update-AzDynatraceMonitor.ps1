@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a MonitorResource
+Update a MonitorResource
 .Description
-update a MonitorResource
+Update a MonitorResource
 .Example
 Update-AzDynatraceMonitor -ResourceGroupName dyobrg -Name dyob-pwsh02 -Tag @{'key' = 'test'}
 .Example

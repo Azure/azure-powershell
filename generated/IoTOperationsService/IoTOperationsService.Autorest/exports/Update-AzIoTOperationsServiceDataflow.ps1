@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a DataflowResource
+Update a DataflowResource
 .Description
-update a DataflowResource
+Update a DataflowResource
 .Example
 Update-AzIoTOperationsServiceDataflow -InstanceName "aio-117832708" `
   -Name "dataflow-name" `

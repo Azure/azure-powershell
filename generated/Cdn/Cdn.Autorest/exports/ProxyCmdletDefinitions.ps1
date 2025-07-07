@@ -6911,9 +6911,9 @@ end {
 
 <#
 .Synopsis
-create a new custom domain within an endpoint.
+Create a new custom domain within an endpoint.
 .Description
-create a new custom domain within an endpoint.
+Create a new custom domain within an endpoint.
 .Example
 New-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name customdomain001 -HostName 'testcm.dev.cdn.azure.cn'
 
@@ -7217,9 +7217,9 @@ end {
 
 <#
 .Synopsis
-create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+Create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Description
-create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+Create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Example
 $origin = @{
     Name = "origin1"
@@ -7757,9 +7757,9 @@ end {
 
 <#
 .Synopsis
-create a new origin group within the specified endpoint.
+Create a new origin group within the specified endpoint.
 .Description
-create a new origin group within the specified endpoint.
+Create a new origin group within the specified endpoint.
 .Example
 $healthProbeParameters = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 120 -ProbePath "/check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
 $origin = Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1
@@ -8122,9 +8122,9 @@ end {
 
 <#
 .Synopsis
-create a new origin within the specified endpoint.
+Create a new origin within the specified endpoint.
 .Description
-create a new origin within the specified endpoint.
+Create a new origin within the specified endpoint.
 .Example
 New-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 -HostName "host1.hello.com" 
 
@@ -8530,9 +8530,9 @@ end {
 
 <#
 .Synopsis
-create a new domain within the specified profile.
+Create a new domain within the specified profile.
 .Description
-create a new domain within the specified profile.
+Create a new domain within the specified profile.
 .Example
 $secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
 $secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
@@ -8857,9 +8857,9 @@ end {
 
 <#
 .Synopsis
-create a new AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+Create a new AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Description
-create a new AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+Create a new AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Example
 New-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Location Global -EnabledState Enabled
 
@@ -9156,9 +9156,9 @@ end {
 
 <#
 .Synopsis
-create a new origin group within the specified profile.
+Create a new origin group within the specified profile.
 .Description
-create a new origin group within the specified profile.
+Create a new origin group within the specified profile.
 .Example
 $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" -ProbeProtocol "Https" -ProbeRequestType "GET"
 $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200  -SampleSize 5 -SuccessfulSamplesRequired 4
@@ -9473,9 +9473,9 @@ end {
 
 <#
 .Synopsis
-create a new origin within the specified origin group.
+Create a new origin within the specified origin group.
 .Description
-create a new origin within the specified origin group.
+Create a new origin within the specified origin group.
 .Example
  New-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 -OriginHostHeader en.wikipedia.org -HostName en.wikipedia.org -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
 
@@ -9908,9 +9908,9 @@ end {
 
 <#
 .Synopsis
-create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+Create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 .Description
-create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+Create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 .Example
 $originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001
 $ruleSet = Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
@@ -10366,9 +10366,9 @@ end {
 
 <#
 .Synopsis
-create a new rule set within the specified profile.
+Create a new rule set within the specified profile.
 .Description
-create a new rule set within the specified profile.
+Create a new rule set within the specified profile.
 .Example
 New-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 
@@ -10583,9 +10583,9 @@ end {
 
 <#
 .Synopsis
-create a new delivery rule within the specified rule set.
+Create a new delivery rule within the specified rule set.
 .Description
-create a new delivery rule within the specified rule set.
+Create a new delivery rule within the specified rule set.
 .Example
 $conditions = @(
     New-AzFrontDoorCdnRuleClientPortConditionObject -Name ClientPort -ParameterOperator Equal -ParameterMatchValue 80,81
@@ -10946,9 +10946,9 @@ end {
 
 <#
 .Synopsis
-create a new Secret within the specified profile.
+Create a new Secret within the specified profile.
 .Description
-create a new Secret within the specified profile.
+Create a new Secret within the specified profile.
 .Example
 $secretSourceId = "xxxxxxxx"      
 $certificateParameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate" -SecretSourceId $secretSourceId  
@@ -11222,9 +11222,9 @@ end {
 
 <#
 .Synopsis
-create a new security policy within the specified profile.
+Create a new security policy within the specified profile.
 .Description
-create a new security policy within the specified profile.
+Create a new security policy within the specified profile.
 .Example
 $wafPolicyId = "/subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01"
 $endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
@@ -17206,13 +17206,13 @@ end {
 
 <#
 .Synopsis
-update an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+Update an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 Only tags can be updated after creating an endpoint.
 To update origins, use the update Origin operation.
 To update origin groups, use the update Origin group operation.
 To update custom domains, use the update Custom Domain operation.
 .Description
-update an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+Update an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 Only tags can be updated after creating an endpoint.
 To update origins, use the update Origin operation.
 To update origin groups, use the update Origin group operation.
@@ -17719,9 +17719,9 @@ end {
 
 <#
 .Synopsis
-update an existing origin group within an endpoint.
+Update an existing origin group within an endpoint.
 .Description
-update an existing origin group within an endpoint.
+Update an existing origin group within an endpoint.
 .Example
 $updateHealthProbeParameters = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 60 -ProbePath "/new-check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
 Update-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001 -HealthProbeSetting $updateHealthProbeParameters
@@ -18117,9 +18117,9 @@ end {
 
 <#
 .Synopsis
-update an existing origin within an endpoint.
+Update an existing origin within an endpoint.
 .Description
-update an existing origin within an endpoint.
+Update an existing origin within an endpoint.
 .Example
 Update-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 -HttpPort 456 -HttpsPort 789
 .Example
@@ -18566,9 +18566,9 @@ end {
 
 <#
 .Synopsis
-refresh the domain validation token.
+Refresh the domain validation token.
 .Description
-refresh the domain validation token.
+Refresh the domain validation token.
 .Example
 Update-AzFrontDoorCdnCustomDomainValidationToken -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
 .Example
@@ -18825,9 +18825,9 @@ end {
 
 <#
 .Synopsis
-update an existing domain within a profile.
+Update an existing domain within a profile.
 .Description
-update an existing domain within a profile.
+Update an existing domain within a profile.
 .Example
 $secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
 $secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
@@ -19165,13 +19165,13 @@ end {
 
 <#
 .Synopsis
-update an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+Update an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 Only tags can be updated after creating an endpoint.
 To update origins, use the update Origin operation.
 To update origin groups, use the update Origin group operation.
 To update domains, use the update Custom Domain operation.
 .Description
-update an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+Update an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 Only tags can be updated after creating an endpoint.
 To update origins, use the update Origin operation.
 To update origin groups, use the update Origin group operation.
@@ -19483,9 +19483,9 @@ end {
 
 <#
 .Synopsis
-update an existing origin group within a profile.
+Update an existing origin group within a profile.
 .Description
-update an existing origin group within a profile.
+Update an existing origin group within a profile.
 .Example
 $updateLoadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 -SampleSize 5 -SuccessfulSamplesRequired 3
 Update-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -LoadBalancingSetting $updateLoadBalancingSetting
@@ -19831,9 +19831,9 @@ end {
 
 <#
 .Synopsis
-update an existing origin within an origin group.
+Update an existing origin within an origin group.
 .Description
-update an existing origin within an origin group.
+Update an existing origin within an origin group.
 .Example
 Update-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 -Weight 999
 .Example
@@ -20310,9 +20310,9 @@ end {
 
 <#
 .Synopsis
-update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+Update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 .Description
-update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+Update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 .Example
 Update-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -EnabledState "Enabled"
 .Example
@@ -20805,9 +20805,9 @@ end {
 
 <#
 .Synopsis
-update an existing delivery rule within a rule set.
+Update an existing delivery rule within a rule set.
 .Description
-update an existing delivery rule within a rule set.
+Update an existing delivery rule within a rule set.
 .Example
 Update-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1 -Order 99
 .Example
@@ -21188,9 +21188,9 @@ end {
 
 <#
 .Synopsis
-update a new Secret within the specified profile.
+Update a new Secret within the specified profile.
 .Description
-update a new Secret within the specified profile.
+Update a new Secret within the specified profile.
 .Example
 $secretSourceId = "xxxxxxxx"
 $certificateParameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate" -SecretSourceId $secretSourceId  
@@ -21469,9 +21469,9 @@ end {
 
 <#
 .Synopsis
-patch an existing security policy within a profile.
+Patch an existing security policy within a profile.
 .Description
-patch an existing security policy within a profile.
+Patch an existing security policy within a profile.
 .Example
 $endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
 $endpoint2 = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end002

@@ -134,7 +134,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("SshProfileCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).SshProfileCount = (int) content.GetValueForProperty("SshProfileCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).SshProfileCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).SshProfileCount = (int?) content.GetValueForProperty("SshProfileCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).SshProfileCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("SshProfilePodPrefix"))
             {
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("AutoscaleProfileEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).AutoscaleProfileEnabled = (bool) content.GetValueForProperty("AutoscaleProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).AutoscaleProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).AutoscaleProfileEnabled = (bool?) content.GetValueForProperty("AutoscaleProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).AutoscaleProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("AutoscaleProfileGracefulDecommissionTimeout"))
             {
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("ScheduleBasedConfigDefaultCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).ScheduleBasedConfigDefaultCount = (int) content.GetValueForProperty("ScheduleBasedConfigDefaultCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).ScheduleBasedConfigDefaultCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).ScheduleBasedConfigDefaultCount = (int?) content.GetValueForProperty("ScheduleBasedConfigDefaultCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).ScheduleBasedConfigDefaultCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ScheduleBasedConfigSchedule"))
             {
@@ -194,11 +194,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("LoadBasedConfigMinNode"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LoadBasedConfigMinNode = (int) content.GetValueForProperty("LoadBasedConfigMinNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LoadBasedConfigMinNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LoadBasedConfigMinNode = (int?) content.GetValueForProperty("LoadBasedConfigMinNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LoadBasedConfigMinNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("LoadBasedConfigMaxNode"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LoadBasedConfigMaxNode = (int) content.GetValueForProperty("LoadBasedConfigMaxNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LoadBasedConfigMaxNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LoadBasedConfigMaxNode = (int?) content.GetValueForProperty("LoadBasedConfigMaxNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LoadBasedConfigMaxNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("LoadBasedConfigPollInterval"))
             {
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("LogAnalyticProfileEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LogAnalyticProfileEnabled = (bool) content.GetValueForProperty("LogAnalyticProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LogAnalyticProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LogAnalyticProfileEnabled = (bool?) content.GetValueForProperty("LogAnalyticProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LogAnalyticProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("LogAnalyticProfileMetricsEnabled"))
             {
@@ -226,11 +226,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("PrometheuProfileEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).PrometheuProfileEnabled = (bool) content.GetValueForProperty("PrometheuProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).PrometheuProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).PrometheuProfileEnabled = (bool?) content.GetValueForProperty("PrometheuProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).PrometheuProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("RangerPluginProfileEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).RangerPluginProfileEnabled = (bool) content.GetValueForProperty("RangerPluginProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).RangerPluginProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).RangerPluginProfileEnabled = (bool?) content.GetValueForProperty("RangerPluginProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).RangerPluginProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("RangerProfileRangerAdmin"))
             {
@@ -459,7 +459,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("SshProfileCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).SshProfileCount = (int) content.GetValueForProperty("SshProfileCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).SshProfileCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).SshProfileCount = (int?) content.GetValueForProperty("SshProfileCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).SshProfileCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("SshProfilePodPrefix"))
             {
@@ -499,7 +499,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("AutoscaleProfileEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).AutoscaleProfileEnabled = (bool) content.GetValueForProperty("AutoscaleProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).AutoscaleProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).AutoscaleProfileEnabled = (bool?) content.GetValueForProperty("AutoscaleProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).AutoscaleProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("AutoscaleProfileGracefulDecommissionTimeout"))
             {
@@ -511,7 +511,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("ScheduleBasedConfigDefaultCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).ScheduleBasedConfigDefaultCount = (int) content.GetValueForProperty("ScheduleBasedConfigDefaultCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).ScheduleBasedConfigDefaultCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).ScheduleBasedConfigDefaultCount = (int?) content.GetValueForProperty("ScheduleBasedConfigDefaultCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).ScheduleBasedConfigDefaultCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ScheduleBasedConfigSchedule"))
             {
@@ -519,11 +519,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("LoadBasedConfigMinNode"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LoadBasedConfigMinNode = (int) content.GetValueForProperty("LoadBasedConfigMinNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LoadBasedConfigMinNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LoadBasedConfigMinNode = (int?) content.GetValueForProperty("LoadBasedConfigMinNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LoadBasedConfigMinNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("LoadBasedConfigMaxNode"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LoadBasedConfigMaxNode = (int) content.GetValueForProperty("LoadBasedConfigMaxNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LoadBasedConfigMaxNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LoadBasedConfigMaxNode = (int?) content.GetValueForProperty("LoadBasedConfigMaxNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LoadBasedConfigMaxNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("LoadBasedConfigPollInterval"))
             {
@@ -543,7 +543,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("LogAnalyticProfileEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LogAnalyticProfileEnabled = (bool) content.GetValueForProperty("LogAnalyticProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LogAnalyticProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LogAnalyticProfileEnabled = (bool?) content.GetValueForProperty("LogAnalyticProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).LogAnalyticProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("LogAnalyticProfileMetricsEnabled"))
             {
@@ -551,11 +551,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("PrometheuProfileEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).PrometheuProfileEnabled = (bool) content.GetValueForProperty("PrometheuProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).PrometheuProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).PrometheuProfileEnabled = (bool?) content.GetValueForProperty("PrometheuProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).PrometheuProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("RangerPluginProfileEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).RangerPluginProfileEnabled = (bool) content.GetValueForProperty("RangerPluginProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).RangerPluginProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).RangerPluginProfileEnabled = (bool?) content.GetValueForProperty("RangerPluginProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchInternal)this).RangerPluginProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("RangerProfileRangerAdmin"))
             {

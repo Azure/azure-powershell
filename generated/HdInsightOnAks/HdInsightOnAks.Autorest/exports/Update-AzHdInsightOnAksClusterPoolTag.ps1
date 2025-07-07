@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an existing Cluster Pool Tags.
+Update an existing Cluster Pool Tags.
 .Description
-update an existing Cluster Pool Tags.
+Update an existing Cluster Pool Tags.
 .Example
 $clusterResourceGroupName = "Group"
 $clusterpoolName = "your-clusterpool"

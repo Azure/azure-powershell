@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMobileNetworkSimGroup
 
 ## SYNOPSIS
-create a SIM group.
+Create a SIM group.
 
 ## SYNTAX
 
@@ -43,7 +43,7 @@ New-AzMobileNetworkSimGroup -Name <String> -ResourceGroupName <String> -JsonStri
 ```
 
 ## DESCRIPTION
-create a SIM group.
+Create a SIM group.
 
 ## EXAMPLES
 

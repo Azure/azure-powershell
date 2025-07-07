@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a BrokerListenerResource
+Update a BrokerListenerResource
 .Description
-update a BrokerListenerResource
+Update a BrokerListenerResource
 .Example
 Update-AzIoTOperationsServiceBrokerListener -BrokerName "my-broker" -InstanceName "aio-instance-name" -ListenerName "my-listener" -ResourceGroupName "aio-validation-116116143"  -Port @(@{ port = 1883 })
 

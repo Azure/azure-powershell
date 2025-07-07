@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a StandbyContainerGroupPoolResource
+Create a StandbyContainerGroupPoolResource
 .Description
-create a StandbyContainerGroupPoolResource
+Create a StandbyContainerGroupPoolResource
 .Example
 New-AzStandbyContainerGroupPool `
 -Name testPool `

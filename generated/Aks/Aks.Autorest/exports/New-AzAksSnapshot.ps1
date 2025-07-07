@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a snapshot.
+Create a snapshot.
 .Description
-create a snapshot.
+Create a snapshot.
 .Example
 $pool = Get-AzAksNodePool -ResourceGroupName mygroup -ClusterName mycluster -Name default
 New-AzAksSnapshot -ResourceGroupName mygroup -ResourceName 'snapshot1' -Location eastus -SnapshotType 'NodePool' -CreationDataSourceResourceId $pool.Id
