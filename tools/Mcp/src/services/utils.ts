@@ -21,9 +21,9 @@ function testYaml() {
 }
 
 export function generateAndBuild(workingDirectory: string): void {
-    const genBuildCommand = `${_pwshCD(workingDirectory)}; ${_autorest}; ${_pwshBuild};"`;
+    const genBuildCommand = `${_autorest}; ${_pwshBuild};`;
     try {
-        const result = execSync(genBuildCommand, { stdio: 'inherit' });
+        const result = execSync(genBuildCommand, { stdio: 'inherit', cwd: workingDirectory });
     } catch (error) {
         console.error("Error executing command:", error);
         throw error;
