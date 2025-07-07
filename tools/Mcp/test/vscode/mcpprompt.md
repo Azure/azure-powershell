@@ -31,21 +31,24 @@
 - Create a new file `README.md`.
 - Add the content labelled below as `Readme Content` in this file.
 - Use the "generate-autorest" mcp tool to generate the <serviceName> module.
+- Stage 2 Complete.
 
-## Stage 3: Generating and Updating Example Files
-- Use the "create-example" MCP tool to populate existing example files.
+## Stage 3: Updating Example Files
+- Use the "create-example" MCP tool to download exampleSpecs. Use the output of this tool as a prompt input/task for you.
 - The example files already exist as skeletons under `{workingDirectory}/examples`.
 - Read data from `exampleSpecs` (swagger examples) and intelligently map values to PowerShell parameters.
 - Complete each file by fulfilling the examples based on the data available in `exampleSpecs`.
 - Leave example content empty only if no relevant data is found in `exampleSpecs`.
+- Once all example files are updated, mark stage 3 as complete.
 
-## Stage 4: Generating and Updating Test Files
-- Use the "create-test" MCP tool to populate existing test stub files.
+## Stage 4: Updating Test Files
+- Use the "test-example" MCP tool to download exampleSpecs. Use the output of this tool as a prompt input/task for you.
 - Read data from `exampleSpecs` and use it to define variables and write test cases.
 - Define setup variables inside `setupEnv` in `utils.ps1`, inferred from `exampleSpecs`.
 - Use those variables in the actual test case content.
 - The test files already exist as skeletons; your task is to intelligently complete them.
 - Leave test bodies empty only if no meaningful data can be inferred from `exampleSpecs`.
+- Once all test files are updated, mark stage 4 as complete.
 
 ## Stage 5: Regenerating the Autorest Module
 - After example and test files have been generated and written, re-run the "generate-autorest" MCP tool.
