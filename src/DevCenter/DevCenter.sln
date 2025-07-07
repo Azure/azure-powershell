@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevCenter", "DevCenter\DevC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DevCenter", "..\..\generated\DevCenter\DevCenter.AutoRest\Az.DevCenter.csproj", "{231906C4-27A2-49F8-9F8D-D6CF401B8794}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DevCenterdata", "..\..\generated\DevCenter\DevCenterData.AutoRest\Az.DevCenterdata.csproj", "{7EFB45E3-7F5A-4F6F-8C77-D88E93392D5D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DevCenterdata", "..\..\generated\DevCenter\DevCenterData.AutoRest\Az.DevCenterdata.csproj", "{6DC670EC-719D-4C08-8E1E-8B8ABA3B0976}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,10 +64,10 @@ Global
 		{231906C4-27A2-49F8-9F8D-D6CF401B8794}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{231906C4-27A2-49F8-9F8D-D6CF401B8794}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{231906C4-27A2-49F8-9F8D-D6CF401B8794}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7EFB45E3-7F5A-4F6F-8C77-D88E93392D5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7EFB45E3-7F5A-4F6F-8C77-D88E93392D5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7EFB45E3-7F5A-4F6F-8C77-D88E93392D5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7EFB45E3-7F5A-4F6F-8C77-D88E93392D5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DC670EC-719D-4C08-8E1E-8B8ABA3B0976}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DC670EC-719D-4C08-8E1E-8B8ABA3B0976}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DC670EC-719D-4C08-8E1E-8B8ABA3B0976}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DC670EC-719D-4C08-8E1E-8B8ABA3B0976}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{47E4694E-AFFE-4BE1-8F20-2C604F612C22} = {139FAA20-2493-460E-BB57-1C7D892C9614}
