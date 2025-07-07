@@ -20,10 +20,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
         private Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadata __metadata = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.Metadata();
 
         /// <summary>Internal Acessors for ProvisionedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal.ProvisionedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)__metadata).ProvisionedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)__metadata).ProvisionedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal.ProvisionedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)__metadata).ProvisionedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)__metadata).ProvisionedBy = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisionedByResourceId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal.ProvisionedByResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)__metadata).ProvisionedByResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)__metadata).ProvisionedByResourceId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal.ProvisionedByResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)__metadata).ProvisionedByResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)__metadata).ProvisionedByResourceId = value ?? null; }
 
         /// <summary>Azure offering managing this resource on-behalf-of customer.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PropertyOrigin.Inherited)]
