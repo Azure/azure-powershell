@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Put a key-value.</summary>
+    /// <summary>put a key-value.</summary>
     /// <remarks>
     /// [OpenAPI] PutKeyValue=>PUT:"/kv/{key}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzAppConfigurationKeyValue_PutViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Description(@"Put a key-value.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Description(@"put a key-value.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.HttpPath(Path = "/kv/{key}", ApiVersion = "1.0")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.NotSuggestDefaultParameterSet]
