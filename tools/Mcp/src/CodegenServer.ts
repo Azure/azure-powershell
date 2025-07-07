@@ -16,11 +16,11 @@ const responses = JSON.parse(readFileSync(path.join(srcPath, "specs/responses.js
 
 export class CodegenServer {
     private static _instance: CodegenServer;
-    private _server: McpServer;
+    private _mcp: McpServer;
     private _responses = new Map<string, string>();
 
     private constructor() {
-        this._server = new McpServer({
+        this._mcp = new McpServer({
             name: "codegen",
             version: "1.0.0",
             capabilities: {
@@ -45,7 +45,7 @@ export class CodegenServer {
     }
 
     public async connect(transport: StdioServerTransport): Promise<void> {
-        await this._server.connect(transport);
+        await this._mcp.connect(transport);
     }
 
 
@@ -54,7 +54,7 @@ export class CodegenServer {
         for (const schema of toolSchemas) {
             const parameter = this.createToolParameterfromSchema(schema.parameters);
             const callBack = toolServices<{ [k: string]: z.ZodTypeAny }>(schema.callbackName, this._responses.get(schema.name));
-            this._server.tool(
+            this._mcp.tool(
                 schema.name,
                 schema.description,
                 parameter,
@@ -64,7 +64,7 @@ export class CodegenServer {
     }
 
     initPrompts() {
-        this._server.prompt(
+        this._mcp.prompt(
             "create-greeting", 
             "Generate a customized greeting message", 
             { name: z.string().describe("Name of the person to greet"), style: z.string().describe("The style of greeting, such a formal, excited, or casual. If not specified casual will be used")}, 
