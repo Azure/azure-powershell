@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.DevCenterdata
+Module Name: Az.DevCenter
 online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxcustomizationtasklog
 schema: 2.0.0
 ---
@@ -199,8 +199,7 @@ Accept wildcard characters: False
 
 ### -UserId
 The AAD object id of the user.
-If value is 'me', the identity is taken from the 
- authentication context.
+If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
