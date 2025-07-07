@@ -19,6 +19,7 @@ using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
@@ -56,10 +57,15 @@ namespace Microsoft.Azure.Commands.Resources.Test
         public void GetsResourcesGroups()
         {
             List<PSResourceGroup> result = new List<PSResourceGroup>();
+            var createdTime = DateTime.UtcNow.AddDays(-30);
+            var changedTime = DateTime.UtcNow;
+
             PSResourceGroup expected = new PSResourceGroup()
             {
                 Location = resourceGroupLocation,
-                ResourceGroupName = resourceGroupName
+                ResourceGroupName = resourceGroupName,
+                CreatedTime = createdTime,
+                ChangedTime = changedTime
             };
             result.Add(expected);
             resourcesClientMock.Setup(f => f.FilterResourceGroups(resourceGroupName, null, false, null, null)).Returns(result);
@@ -71,6 +77,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
             Assert.Single(result);
             Assert.Equal(resourceGroupName, result[0].ResourceGroupName);
             Assert.Equal(resourceGroupLocation, result[0].Location);
+            Assert.Equal(createdTime, result[0].CreatedTime);
+            Assert.Equal(changedTime, result[0].ChangedTime);
 
             commandRuntimeMock.Verify(f => f.WriteObject(result, true), Times.Once());
         }
@@ -80,10 +88,15 @@ namespace Microsoft.Azure.Commands.Resources.Test
         public void GetsResourcesGroupsById()
         {
             List<PSResourceGroup> result = new List<PSResourceGroup>();
+            var createdTime = DateTime.UtcNow.AddDays(-30);
+            var changedTime = DateTime.UtcNow;
+            
             PSResourceGroup expected = new PSResourceGroup()
             {
                 Location = resourceGroupLocation,
-                ResourceGroupName = resourceGroupName
+                ResourceGroupName = resourceGroupName,
+                CreatedTime = createdTime,
+                ChangedTime = changedTime
             };
             result.Add(expected);
             resourcesClientMock.Setup(f => f.FilterResourceGroups(null, null, true, null, null)).Returns(result);
@@ -95,6 +108,43 @@ namespace Microsoft.Azure.Commands.Resources.Test
             Assert.Single(result);
             Assert.Equal(resourceGroupName, result[0].ResourceGroupName);
             Assert.Equal(resourceGroupLocation, result[0].Location);
+            Assert.NotNull(result[0].CreatedTime);
+            Assert.NotNull(result[0].ChangedTime);
+            Assert.Equal(createdTime, result[0].CreatedTime);
+            Assert.Equal(changedTime, result[0].ChangedTime);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetsResourceGroupsWithTimestamps()
+        {
+            List<PSResourceGroup> result = new List<PSResourceGroup>();
+            var createdTime = DateTime.UtcNow.AddDays(-30);
+            var changedTime = DateTime.UtcNow;
+            
+            PSResourceGroup expected = new PSResourceGroup()
+            {
+                Location = resourceGroupLocation,
+                ResourceGroupName = resourceGroupName,
+                CreatedTime = createdTime,
+                ChangedTime = changedTime
+            };
+            result.Add(expected);
+            
+            resourcesClientMock.Setup(f => f.FilterResourceGroups(resourceGroupName, null, false, null, null)).Returns(result);
+
+            cmdlet.Name = resourceGroupName;
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Single(result);
+            Assert.Equal(resourceGroupName, result[0].ResourceGroupName);
+            Assert.Equal(resourceGroupLocation, result[0].Location);
+            Assert.NotNull(result[0].CreatedTime);
+            Assert.NotNull(result[0].ChangedTime);
+            Assert.Equal(createdTime, result[0].CreatedTime);
+            Assert.Equal(changedTime, result[0].ChangedTime);
+
+            commandRuntimeMock.Verify(f => f.WriteObject(result, true), Times.Once());
         }
     }
 }
