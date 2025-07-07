@@ -103,7 +103,7 @@ pac101,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac102,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.KubernetesConfiguration.0.8.0.zip;sourceType=sa]Az.KubernetesConfiguration,0.8.0
 pac103,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.KubernetesRuntime.0.2.0.zip;sourceType=sa]Az.KubernetesRuntime,0.2.0
 pac104,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Kusto.2.4.0.zip;sourceType=sa]Az.Kusto,2.4.0
-pac105,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.LabServices.0.1.2.zip;sourceType=sa]Az.LabServices,0.1.2
+pac105,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.LabServices.0.2.0.zip;sourceType=sa]Az.LabServices,0.2.0
 pac106,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.LambdaTest.0.1.0.zip;sourceType=sa]Az.LambdaTest,0.1.0
 pac107,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.LoadTesting.1.1.0.zip;sourceType=sa]Az.LoadTesting,1.1.0
 pac108,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.LogicApp.1.6.0.zip;sourceType=sa]Az.LogicApp,1.6.0
