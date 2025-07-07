@@ -83,15 +83,15 @@ function Test-StorageAccount
         New-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname -KeyName key1;
         
         $stokey2 = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
-        Assert-AreNotEqual $stokey1[0].Value $stokey2[0].Value;
-        Assert-AreEqual $stokey2[1].Value $stokey1[1].Value;
+        Assert-AreNotEqual ($stokey1[0].ValueSecure | ConvertFrom-SecureString -AsPlainText) ($stokey2[0].ValueSecure | ConvertFrom-SecureString -AsPlainText);
+        Assert-AreEqual ($stokey2[1].ValueSecure | ConvertFrom-SecureString -AsPlainText) ($stokey1[1].ValueSecure | ConvertFrom-SecureString -AsPlainText);
 
         New-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname -KeyName key2;
 
         $stokey3 = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
-        Assert-AreNotEqual $stokey1[0].Value $stokey2[0].Value;
-        Assert-AreEqual $stokey3[0].Value $stokey2[0].Value;
-        Assert-AreNotEqual $stokey2[1].Value $stokey3[1].Value;
+        Assert-AreNotEqual ($stokey1[0].ValueSecure | ConvertFrom-SecureString -AsPlainText) ($stokey2[0].ValueSecure | ConvertFrom-SecureString -AsPlainText);
+        Assert-AreEqual ($stokey3[0].ValueSecure | ConvertFrom-SecureString -AsPlainText) ($stokey2[0].ValueSecure | ConvertFrom-SecureString -AsPlainText);
+        Assert-AreNotEqual ($stokey2[1].ValueSecure | ConvertFrom-SecureString -AsPlainText) $stokey3[1].Value;
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
@@ -360,7 +360,7 @@ function Test-GetAzureStorageAccountKey
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
         
         Retry-IfException { $global:stokeys = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname; }
-        Assert-AreNotEqual $stokeys[1].Value $stokeys[0].Value;
+        Assert-AreNotEqual ($stokeys[1].ValueSecure | ConvertFrom-SecureString -AsPlainText) ($stokeys[0].ValueSecure | ConvertFrom-SecureString -AsPlainText);
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
@@ -397,15 +397,15 @@ function Test-NewAzureStorageAccountKey
         New-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname -KeyName key1;
 
         $stokey2 = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
-        Assert-AreNotEqual $stokey1[0].Value $stokey2[0].Value;
-        Assert-AreEqual $stokey1[1].Value $stokey2[1].Value;
+        Assert-AreNotEqual ($stokey1[0].ValueSecure | ConvertFrom-SecureString -AsPlainText) ($stokey2[0].ValueSecure | ConvertFrom-SecureString -AsPlainText);
+        Assert-AreEqual ($stokey1[1].ValueSecure | ConvertFrom-SecureString -AsPlainText) ($stokey2[1].ValueSecure | ConvertFrom-SecureString -AsPlainText);
 
         New-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname -KeyName key2;
 
         $stokey3 = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
-        Assert-AreNotEqual $stokey1[0].Value $stokey2[0].Value;
-        Assert-AreEqual $stokey2[0].Value $stokey3[0].Value;
-        Assert-AreNotEqual $stokey2[1].Value $stokey3[1].Value;
+        Assert-AreNotEqual ($stokey1[0].ValueSecure | ConvertFrom-SecureString -AsPlainText) ($stokey2[0].ValueSecure | ConvertFrom-SecureString -AsPlainText);
+        Assert-AreEqual ($stokey2[0].ValueSecure | ConvertFrom-SecureString -AsPlainText) ($stokey3[0].ValueSecure | ConvertFrom-SecureString -AsPlainText);
+        Assert-AreNotEqual ($stokey2[1].ValueSecure | ConvertFrom-SecureString -AsPlainText) $stokey3[1].Value;
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
@@ -438,7 +438,7 @@ function Test-PipingGetAccountToGetKey
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
 
         Retry-IfException { $global:stokeys = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname | Get-AzStorageAccountKey -ResourceGroupName $rgname; }
-        Assert-AreNotEqual $stokeys[0].Value $stokeys[1].Value;
+        Assert-AreNotEqual ($stokeys[0].ValueSecure | ConvertFrom-SecureString -AsPlainText) ($stokeys[1].ValueSecure | ConvertFrom-SecureString -AsPlainText);
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
