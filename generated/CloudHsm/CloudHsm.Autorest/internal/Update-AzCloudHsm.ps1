@@ -22,7 +22,7 @@ Update a Cloud HSM Cluster in the specified subscription.
 .Example
 Update-AzCloudHsm -Name myCloudHsm -ResourceGroupName group -Tag @{ CloudHsmRegion = "UkWest"; Department = "Engineering"; DepartmentNo = "1"}
 .Example
-Update-AzCloudHsm -Name myCloudHsm -ResourceGroupName group  -UserAssignedIdentity @()
+Update-AzCloudHsm -Name myCloudHsm -ResourceGroupName group -UserAssignedIdentity @()
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster

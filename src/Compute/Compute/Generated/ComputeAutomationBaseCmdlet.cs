@@ -333,6 +333,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 return ComputeClient.ComputeManagementClient.RestorePoints;
             }
         }
+        public IGalleryInVMAccessControlProfilesOperations GalleryInVMAccessControlProfileClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.GalleryInVMAccessControlProfiles;
+            }
+        }
+        public IGalleryInVMAccessControlProfileVersionsOperations GalleryInVMAccessControlProfileVersionClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.GalleryInVMAccessControlProfileVersions;
+            }
+        }
 
         public static string FormatObject(Object obj)
         {
@@ -484,6 +498,31 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Match m = r.Match(resourceId);
             return m.Success ? m.Groups["version"].Value : null;
         }
+
+        public static string GetGalleryNameFromInVMAccessControlProfileResourceId(string InVMAccessControlProfileResourceId)
+        {
+            if (string.IsNullOrEmpty(InVMAccessControlProfileResourceId)) { return null; }
+            Regex r = new Regex(@"(.*?)/galleries/(?<galleryName>[^/]+)", RegexOptions.IgnoreCase);
+            Match m = r.Match(InVMAccessControlProfileResourceId);
+            return m.Success ? m.Groups["galleryName"].Value : null;
+        }
+
+        public static string GetInVMAccessControlProfileNameFromInVMAccessControlProfileResourceId(string InVMAccessControlProfileResourceId)
+        {
+            if (string.IsNullOrEmpty(InVMAccessControlProfileResourceId)) { return null; }
+            Regex r = new Regex(@"(.*?)/galleries/(?<galleryName>[^/]+)/inVMAccessControlProfiles/(?<profileName>[^/]+)", RegexOptions.IgnoreCase);
+            Match m = r.Match(InVMAccessControlProfileResourceId);
+            return m.Success ? m.Groups["profileName"].Value : null;
+        }
+
+        public static string GetInVMAccessControlProfileVersionNameFromInVMAccessControlProfileVersionResourceId(string InVMAccessControlProfileVersionResourceId)
+        {
+            if (string.IsNullOrEmpty(InVMAccessControlProfileVersionResourceId)) { return null; }
+            Regex r = new Regex(@"(.*?)/galleries/(?<galleryName>[^/]+)/inVMAccessControlProfiles/(?<profileName>[^/]+)/versions/(?<versionName>[^/]+)", RegexOptions.IgnoreCase);
+            Match m = r.Match(InVMAccessControlProfileVersionResourceId);
+            return m.Success ? m.Groups["versionName"].Value : null;
+        }
+
     }
     public static class LocationStringExtensions
     {

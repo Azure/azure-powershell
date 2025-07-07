@@ -22,7 +22,7 @@ This cmdlet updates the state of an Azure Cloud HSM
 .Example
 Update-AzCloudHsm -Name myCloudHsm -ResourceGroupName group -Tag @{ CloudHsmRegion = "UkWest"; Department = "Engineering"; DepartmentNo = "1"}
 .Example
-Update-AzCloudHsm -Name myCloudHsm -ResourceGroupName group  -UserAssignedIdentity @()
+Update-AzCloudHsm -Name myCloudHsm -ResourceGroupName group -UserAssignedIdentity @()
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmIdentity

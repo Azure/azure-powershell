@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Description(@"Delete a CloudExadataInfrastructure")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/cloudExadataInfrastructures/{cloudexadatainfrastructurename}", ApiVersion = "2023-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/cloudExadataInfrastructures/{cloudexadatainfrastructurename}", ApiVersion = "2025-03-01")]
     public partial class RemoveAzOracleCloudExadataInfrastructure_Delete : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IContext
