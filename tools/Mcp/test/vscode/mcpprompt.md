@@ -19,7 +19,7 @@
 - serviceName example: HybridConnectivity, commitID: CommitID of the swagger, serviceSpecs example: hybridconnectivity/resource-manager, swaggerFileSpecs example: hybridconnectivity/resource-manager/Microsoft.HybridConnectivity/stable/2024-12-01/hybridconnectivity.json
 - Wait for the user to give the values.
 - You must remember these values to substitute into the readme content later.
-- ❗ Do not modify or replace anything in the actual `mcpprompt.md` file.
+- Do not modify or replace anything in the actual `mcpprompt.md` file.
 - These values will only be used for generating the Readme.md file and during autorest steps, not for replacing anything inside this prompt.
 - Once values are captured and remembered, stage 1 is complete.
 
@@ -67,6 +67,7 @@
 # Readme Content
 
 ### AutoRest Configuration 
+
 > see https://aka.ms/autorest 
 
 ```yaml 
