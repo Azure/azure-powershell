@@ -153,7 +153,7 @@ Accept wildcard characters: False
 ```
 
 ### -DiskEncryptionSetID
-Specifies the disk encyption set to be used.
+Specifies the disk encryption set to be used.
 
 ```yaml
 Type: System.String

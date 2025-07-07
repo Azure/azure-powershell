@@ -151,7 +151,7 @@ directive:
       subject: (.*)PrivateEndpoint(.*)
     remove: true
 
-  # swagger definiition incorrect.
+  # swagger definition incorrect.
   - where:
       subject: PreviewWorkflow
     remove: true
@@ -268,7 +268,7 @@ directive:
 
   - where:
       verb: Update
-      subjet: null
+      subject: null
       variant: ^Update$|^UpdateViaIdentity$
     remove: true
 
@@ -332,13 +332,13 @@ directive:
     set:
       parameter-name: ForkRepository$1
 
-  # Hide New/Updaete-AzStaticWebApp for remove no-require sku parameters.
+  # Hide New/Update-AzStaticWebApp for remove no-require sku parameters.
   - where:
       verb: New
       subject: ^$
     hide: true
   
-  # Customise for webapp swagger. Only keep continuouswebjobs path and delete others path.
+  # Customize for webapp swagger. Only keep continuouswebjobs path and delete others path.
 
   - from: swagger-document
     where: $.paths

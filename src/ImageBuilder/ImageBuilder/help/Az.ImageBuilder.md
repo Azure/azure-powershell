@@ -1,8 +1,8 @@
 ---
 Module Name: Az.ImageBuilder
 Module Guid: bdedc683-d9b6-41ea-b310-d068b8c72305
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Please enter version of help manually (X.X.X.X) format }}
+Download Help Link:
+Help Version:
 Locale: en-US
 ---
 

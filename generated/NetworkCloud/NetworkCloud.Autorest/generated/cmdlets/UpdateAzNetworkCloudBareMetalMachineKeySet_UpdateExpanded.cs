@@ -16,10 +16,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bareMetalMachineKeySets/{bareMetalMachineKeySetName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzNetworkCloudBareMetalMachineKeySet_UpdateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineKeySet))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachineKeySet))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Patch properties of bare metal machine key set for the provided cluster, or update the tags associated with it. Properties and tag updates can be done independently.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bareMetalMachineKeySets/{bareMetalMachineKeySetName}", ApiVersion = "2024-07-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bareMetalMachineKeySets/{bareMetalMachineKeySetName}", ApiVersion = "2025-02-01")]
     public partial class UpdateAzNetworkCloudBareMetalMachineKeySet_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener
     {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         /// <summary>
         /// BareMetalMachineKeySetPatchParameters represents the body of the request to patch the bare metal machine key set.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineKeySetPatchParameters _bareMetalMachineKeySetUpdateParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineKeySetPatchParameters();
+        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachineKeySetPatchParameters _bareMetalMachineKeySetUpdateParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.BareMetalMachineKeySetPatchParameters();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
@@ -103,6 +103,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         [global::System.Management.Automation.ValidateNotNull]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
+
+        /// <summary>Backing field for <see cref="IfMatch" /> property.</summary>
+        private string _ifMatch;
+
+        /// <summary>
+        /// The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value
+        /// to prevent accidentally overwriting concurrent changes.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.",
+        SerializedName = @"If-Match",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Header)]
+        public string IfMatch { get => this._ifMatch; set => this._ifMatch = value; }
+
+        /// <summary>Backing field for <see cref="IfNoneMatch" /> property.</summary>
+        private string _ifNoneMatch;
+
+        /// <summary>
+        /// Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result
+        /// in error from server as they are not supported.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.",
+        SerializedName = @"If-None-Match",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Header)]
+        public string IfNoneMatch { get => this._ifNoneMatch; set => this._ifNoneMatch = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -214,8 +248,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The Azure resource tags that will replace the existing ones.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineKeySetPatchParametersTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineKeySetPatchParametersTags Tag { get => _bareMetalMachineKeySetUpdateParametersBody.Tag ?? null /* object */; set => _bareMetalMachineKeySetUpdateParametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachineKeySetPatchParametersTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachineKeySetPatchParametersTags Tag { get => _bareMetalMachineKeySetUpdateParametersBody.Tag ?? null /* object */; set => _bareMetalMachineKeySetUpdateParametersBody.Tag = value; }
 
         /// <summary>The unique list of permitted users.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -226,8 +260,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The unique list of permitted users.",
         SerializedName = @"userList",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKeySetUser) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKeySetUser[] UserList { get => _bareMetalMachineKeySetUpdateParametersBody.UserList ?? null /* arrayOf */; set => _bareMetalMachineKeySetUpdateParametersBody.UserList = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKeySetUser) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKeySetUser[] UserList { get => _bareMetalMachineKeySetUpdateParametersBody.UserList ?? null /* arrayOf */; set => _bareMetalMachineKeySetUpdateParametersBody.UserList = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -246,12 +280,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineKeySet">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineKeySet</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachineKeySet">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachineKeySet</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineKeySet> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachineKeySet> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -295,6 +329,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.ClusterName = this.ClusterName;
             clone.Name = this.Name;
+            clone.IfMatch = this.IfMatch;
+            clone.IfNoneMatch = this.IfNoneMatch;
             return clone;
         }
 
@@ -465,12 +501,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.BareMetalMachineKeySetsUpdate(SubscriptionId, ResourceGroupName, ClusterName, Name, _bareMetalMachineKeySetUpdateParametersBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.BareMetalMachineKeySetsUpdate(SubscriptionId, ResourceGroupName, ClusterName, Name, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _bareMetalMachineKeySetUpdateParametersBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ClusterName=ClusterName,Name=Name,body=_bareMetalMachineKeySetUpdateParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ClusterName=ClusterName,Name=Name,IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null,body=_bareMetalMachineKeySetUpdateParametersBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -539,14 +575,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ClusterName=ClusterName, Name=Name, body=_bareMetalMachineKeySetUpdateParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ClusterName=ClusterName, Name=Name, IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, body=_bareMetalMachineKeySetUpdateParametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ClusterName=ClusterName, Name=Name, body=_bareMetalMachineKeySetUpdateParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ClusterName=ClusterName, Name=Name, IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, body=_bareMetalMachineKeySetUpdateParametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -556,12 +592,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineKeySet">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineKeySet</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachineKeySet">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachineKeySet</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineKeySet> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachineKeySet> response)
         {
             using( NoSynchronizationContext )
             {
@@ -573,7 +609,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineKeySet
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachineKeySet
                 WriteObject((await response));
             }
         }

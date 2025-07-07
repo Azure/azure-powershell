@@ -42,7 +42,7 @@ namespace Commands.StorageSync.Interop.Clients
         protected readonly IServerManagedIdentityProvider ServerManagedIdentityProvider;
 
         /// <summary>
-        /// Parameterzed constructor for Sync Server Registration Client
+        /// Parameterized constructor for Sync Server Registration Client
         /// </summary>
         /// <param name="ecsManagementInteropClient">The ecs management interop client.</param>
         /// <param name="serverManagedIdentityProvider">The server managed identity provider.</param>
@@ -277,7 +277,7 @@ namespace Commands.StorageSync.Interop.Clients
         }
 
         /// <summary>
-        /// Persisting the register server resource from clooud to the local service.
+        /// Persisting the register server resource from cloud to the local service.
         /// </summary>
         /// <param name="registeredServerResource">Registered Server Resource</param>
         /// <param name="subscriptionId">Subscription Id</param>

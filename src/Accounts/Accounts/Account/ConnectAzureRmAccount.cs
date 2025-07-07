@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Commands.Profile
 
             if (ParameterSetName.Equals(UserWithCredentialParameterSet))
             {
-                WriteWarning(IsSigningInToPublicCloud() ? Resources.RopcDeprecationPublicCloud : Resources.RopcDeprecationSovereignClouds);
+                WriteWarning(IsSigningInToPublicCloud() ? string.Format(Resources.RopcDeprecationPublicCloud, "September 1, 2025") : Resources.RopcDeprecationSovereignClouds);
             }
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Subscription)))
