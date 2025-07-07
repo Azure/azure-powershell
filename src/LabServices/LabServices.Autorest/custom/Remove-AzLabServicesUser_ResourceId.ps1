@@ -108,14 +108,15 @@ param(
 process {
     $HandleUserResourceId = Join-Path $PSScriptRoot '/Utilities/HandleUserResourceId.ps1'
     $resourceHash = . $HandleUserResourceId -ResourceId $ResourceId
+    $PSBoundParameters.Remove("SubscriptionId") > $null
     $PSBoundParameters.Remove("Name") > $null
-    $PSBoundParameters.Add("Name", $PSBoundParameters.UserName)
-    $PSBoundParameters.Remove("UserName") > $null
     if ($resourceHash) {
         $resourceHash.Keys | ForEach-Object {
             $PSBoundParameters.Add($_, $($resourceHash[$_]))
         }
-   
+        $PSBoundParameters.Add("Name", $PSBoundParameters.UserName)
+        $PSBoundParameters.Remove("UserName") > $null
+        
         $PSBoundParameters.Remove("ResourceId") > $null
 
         return Az.LabServices\Remove-AzLabServicesUser @PSBoundParameters

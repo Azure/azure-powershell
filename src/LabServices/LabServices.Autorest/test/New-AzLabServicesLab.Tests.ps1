@@ -21,12 +21,13 @@ Describe 'New-AzLabServicesLab' {
     It 'Create' {
 
         New-AzLabServicesLab `
-        -Name $ENV:NewLabName `
-        -ResourceGroupName $ENV:ResourceGroupName `
-        -Location $ENV:Location `
+        -Name $env.NewLabName `
+        -ResourceGroupName $env.ResourceGroupName `
+        -Location $env.Location `
+        -LabPlanId "subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.LabServices/labPlans/$($env.LabPlanName)" `
         -AdditionalCapabilityInstallGpuDriver Disabled `
         -AdminUserPassword $(ConvertTo-SecureString "Junk@1234stuff" -AsPlainText -Force) `
-        -AdminUserUsername $ENV:UserName `
+        -AdminUserUsername $env.UserName `
         -AutoShutdownProfileShutdownOnDisconnect Disabled `
         -AutoShutdownProfileShutdownOnIdle None `
         -AutoShutdownProfileShutdownWhenNotConnected Disabled `
@@ -35,16 +36,17 @@ Describe 'New-AzLabServicesLab' {
         -ConnectionProfileWebRdpAccess None `
         -ConnectionProfileWebSshAccess None `
         -Description "New lab description" `
-        -ImageReferenceOffer "Windows-10" `
+        -ImageReferenceOffer "Windows-11" `
         -ImageReferencePublisher "MicrosoftWindowsDesktop" `
-        -ImageReferenceSku "20h2-pro" `
+        -ImageReferenceSku "win11-23h2-pro" `
         -ImageReferenceVersion "latest" `
         -SecurityProfileOpenAccess Disabled `
         -SkuCapacity 3 `
-        -SkuName "Standard" `
-        -Title $ENV:NewLabName `
+        -SkuName "Classic_Fsv2_2_4GB_128_S_SSD" `
+        -Title $env.NewLabName `
         -VirtualMachineProfileCreateOption "TemplateVM" `
-        -VirtualMachineProfileUseSharedPassword Enabled | Select-Object -Property Name | Should -Be "@{Name=$($ENV:NewLabName)}"
+        -VirtualMachineProfileUseSharedPassword Enabled | Select-Object -Property Name | Should -Be "@{Name=$($env.NewLabName)}"
         
+        Remove-AzLabServicesLab -Name $env.NewLabName -ResourceGroupName $env.ResourceGroupName
     }
 }

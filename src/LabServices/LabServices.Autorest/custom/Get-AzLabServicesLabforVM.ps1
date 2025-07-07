@@ -88,19 +88,19 @@ function Get-AzLabServicesLabForVM {
     )
     
     process {
-        $HandleLabResourceId = Join-Path $PSScriptRoot '/Utilities/HandleLabResourceId.ps1'
-        $resourceHash = . $HandleLabResourceId -ResourceId $ResourceId
+        $HandleVMResourceId = Join-Path $PSScriptRoot '/Utilities/HandleVMResourceId.ps1'
+        $resourceHash = . $HandleVMResourceId -ResourceId $ResourceId
         if ($resourceHash) {
             $PSBoundParameters.Remove("SubscriptionId") > $null
-            $PSBoundParameters.Remove("VirtualMachineName") > $null
-            $PSBoundParameters.Add("Name", $PSBoundParameters.LabName)
-            $PSBoundParameters.Remove("LabName") > $null
             $resourceHash.Keys | ForEach-Object {
                 $PSBoundParameters.Add($_, $($resourceHash[$_]))
             }
-       
+            $PSBoundParameters.Remove("VirtualMachineName") > $null
+            $PSBoundParameters.Add("Name", $PSBoundParameters.LabName)
+            $PSBoundParameters.Remove("LabName") > $null
+
             $PSBoundParameters.Remove("ResourceId") > $null
-    
+
             return Az.LabServices.private\Get-AzLabServicesLab_Get @PSBoundParameters
         } else {
             Write-Error -Message "Error: Invalid Virtual Machine Resource Id." -ErrorAction Stop

@@ -98,7 +98,7 @@ function Get-AzLabServicesLab_ResourceId {
        
             $PSBoundParameters.Remove("ResourceId") > $null
     
-            return Az.LabServices.internal\Get-AzLabServicesLab @PSBoundParameters
+            return Az.LabServices.private\Get-AzLabServicesLab_Get @PSBoundParameters
         } else {
             Write-Error -Message "Error: Invalid Lab Resource Id." -ErrorAction Stop            
         }

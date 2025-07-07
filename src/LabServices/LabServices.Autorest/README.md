@@ -69,7 +69,7 @@ directive:
       verb: (.*)
     set:
       breaking-change:
-        deprecated-by-version: 0.2.0
+        deprecated-by-version: '-'
         deprecated-by-azversion: 18.2.0
         change-effective-date: 2027/06/28
         change-description: Azure Lab Services will be retired on June 28, 2027, please see details on https://azure.microsoft.com/en-us/updates?id=azure-lab-services-is-being-retired.

@@ -12,7 +12,7 @@ Returns the properties of a lab Schedule.
 
 ## SYNTAX
 
-### LabObject (Default)
+### ResourceId (Default)
 ```
 Get-AzLabServicesSchedule -ResourceId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
@@ -198,7 +198,7 @@ The resource Id of lab service schedule.
 
 ```yaml
 Type: System.String
-Parameter Sets: LabObject
+Parameter Sets: ResourceId
 Aliases:
 
 Required: True
@@ -213,7 +213,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, Lab, LabObject, List
+Parameter Sets: Get, Lab, List, ResourceId
 Aliases:
 
 Required: False

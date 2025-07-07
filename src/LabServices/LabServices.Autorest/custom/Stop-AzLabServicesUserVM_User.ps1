@@ -103,7 +103,7 @@ function Stop-AzLabServicesUserVM_User {
         #Get User VM
         $vm = Get-AzLabServicesUserVM -User $User
         if ($vm) {
-            return Az.LabServices\Stop-AzLabServicesVM -ResourceId $vm.Id 
+            return Az.LabServices\Stop-AzLabServicesVM -ResourceId $vm.Id
         } else {
             Write-Error "No VM assigned to User: $($User.Id)"
         }

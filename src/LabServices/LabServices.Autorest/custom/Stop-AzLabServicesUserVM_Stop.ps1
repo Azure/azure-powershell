@@ -114,7 +114,7 @@ function Stop-AzLabServicesUserVM_Stop {
     
     process {
 
-        $vm = Az.LabServices.private\Get-AzLabServicesUserVM_Get @PSBoundParameters
+        $vm = Get-AzLabServicesUserVM @PSBoundParameters
         if ($vm) {
             $PSBoundParameters.Add('VirtualMachineName', $vm.Name)
             $PSBoundParameters.Remove('Email') > $null

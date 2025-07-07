@@ -121,7 +121,7 @@ function Add-AzLabServicesUserQuota_Email {
         $PSBoundParameters.Remove('UsageQuotaToAddToExisting') > $null
         $PSBoundParameters.Add("Filter","Properties/Email eq '$currentEmail'")
         # Get user to get existing quota
-        $user = Get-AzLabServicesUser @PSBoundParameters
+        $user = Az.LabServices.private\Get-AzLabServicesUser_List @PSBoundParameters
         if ($user) {
 
             $PSBoundParameters.Remove('Filter') > $null
@@ -129,7 +129,7 @@ function Add-AzLabServicesUserQuota_Email {
             $user.AdditionalUsageQuota += $addQuota
             $PSBoundParameters.Add('AdditionalUsageQuota', $($user.AdditionalUsageQuota))
             $PSBoundParameters.Remove('User') > $null
-            return Az.LabServices\Update-AzLabServicesUser @PSBoundParameters
+            return Az.LabServices.private\Update-AzLabServicesUser_UpdateExpanded @PSBoundParameters
         } else {
             Write-Error "Unable to find user with email: $currentEmail"
         }
