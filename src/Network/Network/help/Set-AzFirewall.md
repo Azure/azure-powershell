@@ -250,6 +250,55 @@ If user wants to start the service again but with Availability Zones, the Zones 
 The new VNet and Public IP must be in the same resource group as the Firewall. Again, for changes to be reflected in cloud,
 Set-AzFirewall must be called.
 
+### Example 16:	Enable Dnstap Logging on Azure Firewall
+```powershell
+$azFw = Get-AzFirewall -Name "ps184" -ResourceGroupName "ps774"
+$azFw.EnableDnstapLogging = $true
+
+$azFw | Set-AzFirewall
+```
+
+```output
+AllowActiveFTP	                : null	
+		ApplicationRuleCollections	    : Count = 0	
+		ApplicationRuleCollectionsText	: "[]"	
+		DNSEnableProxy	                : null	
+		DNSServer	                    : null	
+		DNSServersText	                : "null"	
+		Etag	                        : "W/\"7533fa1b-8588-400d-857c-6bc372e14f1b\""
+		FirewallPolicy	                : null	
+		HubIPAddresses	                : null	
+		Id	                            : "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps774/providers/Microsoft.Network/azureFirewalls/ps184"	
+		EnableDnstapLogging	            : "true"	
+		IpConfigurations	            : Count = 0	
+		IpConfigurationsText	        : "[]"	
+		Location	                    : "eastus"	
+		ManagementIpConfiguration	    : null	
+		ManagementIpConfigurationText	: "null"	
+		Name	                        : "ps184"	
+		NatRuleCollections	            : Count = 0	
+		NatRuleCollectionsText	        : "[]"	
+		NetworkRuleCollections	        : Count = 0	
+		NetworkRuleCollectionsText	    : "[]"	
+		PrivateRange	                : null	
+		PrivateRangeText	            : "null"	
+		ProvisioningState	            : "Succeeded"	
+		ResourceGroupName	            : "ps774"	
+		ResourceGuid	                : null	
+		Sku	                            : {Microsoft.Azure.Commands.Network.Models.PSAzureFirewallSku}	
+		Tag	                            : null	
+		TagsTable	                    : null	
+		ThreatIntelMode	                : "Alert"	
+		ThreatIntelWhitelist	        : {Microsoft.Azure.Commands.Network.Models.PSAzureFirewallThreatIntelWhitelist}	
+		ThreatIntelWhitelistText	    : "{\r\n  \"FQDNs\": null,\r\n  \"IpAddresses\": null\r\n}"	
+		Type	                        : "Microsoft.Network/azureFirewalls"	
+		VirtualHub	                    : null	
+		Zones	                        : Count = 0	
+		privateRange	                : null
+```
+
+In this example, Enable Dnstap Logging is enabled on the Firewall.
+
 ## PARAMETERS
 
 ### -AsJob

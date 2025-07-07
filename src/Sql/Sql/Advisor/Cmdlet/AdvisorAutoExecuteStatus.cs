@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
         Enabled,
 
         /// <summary>
-        /// To explicity disable auto-execute on the current resource for this advisor
+        /// To explicitly disable auto-execute on the current resource for this advisor
         /// </summary>
         Disabled,
 

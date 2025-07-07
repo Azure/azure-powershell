@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
     public class NewAzureStorageBlobRangeToRestoreCommand : StorageAccountBaseCmdlet
     {
         [Parameter(Mandatory = false,
-            HelpMessage = "Specify the blob restore start range. Leave it as empty to restore from begining.")]
+            HelpMessage = "Specify the blob restore start range. Leave it as empty to restore from beginning.")]
         [ValidateNotNull]
         public string StartRange { get; set; }
 
