@@ -145,10 +145,6 @@ This compiles TypeScript files to the `build/` directory.
 - TypeScript 5.8+
 - AutoRest (for code generation functionality)
 
-## License
-
-ISC
-
 ## Contributing
 
 This tool is part of the Azure PowerShell project and follows the same contribution guidelines. Please ensure all changes maintain compatibility with the existing Azure PowerShell development workflow.
