@@ -298,22 +298,30 @@ ElseIf (-Not $PSBoundParameters.ContainsKey("TargetModule"))
 # Run the test-module.ps1 in current folder and set the test status in pipeline result
 If ($TestAutorest)
 {
+    Write-Host "--------------------------------- TestAutorest step 1 ---------------------------------"
     If (-not (Test-Path "$AutorestDirectory/test-module.ps1"))
     {
         Write-Warning "There is no test-module.ps1 found in the folder: $AutorestDirectory"
         Return
     }
+    Write-Host "--------------------------------- TestAutorest step 2 ---------------------------------"
     $ModuleName = Split-Path -Path $AutorestDirectory | Split-Path -Leaf
+    Write-Host "--------------------------------- TestAutorest step 3 ---------------------------------"
     $ModuleFolderName = $ModuleName.Split(".")[1]
+    Write-Host "--------------------------------- TestAutorest step 4 ---------------------------------"
     If (Test-Path $CIPlanPath)
     {
+        Write-Host "--------------------------------- TestAutorest step 5 ---------------------------------"
         $CIPlan = Get-Content $CIPlanPath | ConvertFrom-Json
+        Write-Host "--------------------------------- TestAutorest step 6 ---------------------------------"
         If (-not ($CIPlan.test.Contains($ModuleFolderName)))
         {
             Write-Debug "Skip test for $ModuleName because it is not in the test plan."
             Return
         }
+        Write-Host "--------------------------------- TestAutorest step 7 ---------------------------------"
         . $AutorestDirectory/test-module.ps1
+        Write-Host "--------------------------------- TestAutorest step 8 ---------------------------------"
         If ($LastExitCode -ne 0)
         {
             $Status = "Failed"
@@ -322,7 +330,9 @@ If ($TestAutorest)
         {
             $Status = "Succeeded"
         }
+        Write-Host "--------------------------------- TestAutorest step 9 ---------------------------------"
         Set-ModuleTestStatusInPipelineResult -ModuleName $ModuleName -Status $Status
+        Write-Host "--------------------------------- TestAutorest step 10 ---------------------------------"
     }
     Return
 }
