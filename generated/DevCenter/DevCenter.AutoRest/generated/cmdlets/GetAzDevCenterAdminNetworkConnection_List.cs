@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
     /// [OpenAPI] ListBySubscription=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.DevCenter/networkConnections"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDevCenterAdminNetworkConnection_List")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.CmdletBreakingChange("15.0.0", "3.0.0", "2025/11/18", ReplacementCmdletName="Get-AzDevCenterAdminNetworkConnection", ChangeDescription="PlanName and MemberName will be removed from the InputObject parameter.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.INetworkConnection))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Description(@"Lists network connections in a subscription")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Generated]

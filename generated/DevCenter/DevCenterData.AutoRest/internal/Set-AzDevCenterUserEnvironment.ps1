@@ -54,7 +54,7 @@ BODY <IEnvironment>: Properties of an environment.
     [(Any) <Object>]: This indicates any property can be added to this object.
   [Target <String>]: The target of the error.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/set-azdevcenteruserenvironment
+https://learn.microsoft.com/powershell/module/az.devcenter/set-azdevcenteruserenvironment
 #>
 function Set-AzDevCenterUserEnvironment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment])]
