@@ -269,7 +269,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                             }
                             
                             $moduleFolder = Split-Path $module.Path
-                            Copy-Item -Recurse -Path $moduleFolder -Destination ""$tempZipFolder\$($module.Name)""
+                            Copy-Item -Recurse -Path $moduleFolder -Destination ""$tempZipFolder\$($module.Name)\$($module.Version)""
                         }"
                             );
                     powershell.Invoke();
