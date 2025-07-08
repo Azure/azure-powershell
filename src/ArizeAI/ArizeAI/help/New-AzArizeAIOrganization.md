@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzArizeAIOrganization
 
 ## SYNOPSIS
-create a OrganizationResource
+Create a OrganizationResource
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ New-AzArizeAIOrganization -Name <String> -ResourceGroupName <String> [-Subscript
 ```
 
 ## DESCRIPTION
-create a OrganizationResource
+Create a OrganizationResource
 
 ## EXAMPLES
 
