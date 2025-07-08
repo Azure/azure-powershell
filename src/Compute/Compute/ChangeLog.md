@@ -21,6 +21,8 @@
 -->
 ## Upcoming Release
 * Compute DiskRP related cmdlets will now use 2025-01-02 version of the DiskRP API.
+
+## Version 10.1.0
 * Support for Metadata Security Protocol (MSP) support for Gallery
     - Added new cmdlets `New-AzGalleryInVmAccessControlProfile`, `Get-AzGalleryInVmAccessControlProfile`, `Update-AzGalleryInVmAccessControlProfile`, and `Remove-AzGalleryInVmAccessControlProfile` to manage In-VM Access Control Profiles in Azure Compute Gallery.
     - Added new cmdlets `New-AzGalleryInVmAccessControlProfileVersion`, `Get-AzGalleryInVmAccessControlProfileVersion`, `Update-AzGalleryInVmAccessControlProfileVersion`, and `Remove-AzGalleryInVmAccessControlProfileVersion` to manage In-VM Access Control Profile Versions in Azure Compute Gallery.
