@@ -15,73 +15,73 @@
 param([switch]$Isolated, [switch]$Live, [switch]$Record, [switch]$Playback, [switch]$RegenerateSupportModule, [switch]$UsePreviousConfigForRecord, [string[]]$TestName)
 $ErrorActionPreference = 'Stop'
 
-Write-Host "in generated test-module.ps1 ------------ step 1"
+Write-Host "in src test-module.ps1 ------------ step 1"
 if(-not $Isolated)
 {
-  Write-Host "in generated test-module.ps1 ------------ step 2"
+  Write-Host "in src test-module.ps1 ------------ step 2"
   Write-Host -ForegroundColor Green 'Creating isolated process...'
   if ($PSBoundParameters.ContainsKey("TestName")) {
     $PSBoundParameters["TestName"] = $PSBoundParameters["TestName"] -join ","
   }
   $pwsh = [System.Diagnostics.Process]::GetCurrentProcess().Path
   & "$pwsh" -NonInteractive -NoLogo -NoProfile -File $MyInvocation.MyCommand.Path @PSBoundParameters -Isolated
-  Write-Host "in generated test-module.ps1 ------------ step 3"
+  Write-Host "in src test-module.ps1 ------------ step 3"
   return
 }
 
-Write-Host "in generated test-module.ps1 ------------ step 4"
+Write-Host "in src test-module.ps1 ------------ step 4"
 # This is a workaround, since for string array parameter, pwsh -File will only take the first element
 if ($PSBoundParameters.ContainsKey("TestName") -and ($TestName.count -eq 1) -and ($TestName[0].Contains(','))) {
   $TestName = $TestName[0].Split(",")
 }
-Write-Host "in generated test-module.ps1 ------------ step 5"
+Write-Host "in src test-module.ps1 ------------ step 5"
 
 $ProgressPreference = 'SilentlyContinue'
 $baseName = $PSScriptRoot.BaseName
 $requireResourceModule = (($baseName -ne "Resources") -and ($Record.IsPresent -or $Live.IsPresent))
-Write-Host "in generated test-module.ps1 ------------ step 6"
+Write-Host "in src test-module.ps1 ------------ step 6"
 . (Join-Path $PSScriptRoot 'check-dependencies.ps1') -Isolated -Accounts:$false -Pester -Resources:$requireResourceModule -RegenerateSupportModule:$RegenerateSupportModule
-Write-Host "in generated test-module.ps1 ------------ step 7"
+Write-Host "in src test-module.ps1 ------------ step 7"
 . ("$PSScriptRoot\test\utils.ps1")
-Write-Host "in generated test-module.ps1 ------------ step 8"
+Write-Host "in src test-module.ps1 ------------ step 8"
 
 if ($requireResourceModule)
 {
-  Write-Host "in generated test-module.ps1 ------------ step 9"
+  Write-Host "in src test-module.ps1 ------------ step 9"
   # Load the latest Az.Accounts installed
   Import-Module -Name Az.Accounts -RequiredVersion (Get-Module -Name Az.Accounts -ListAvailable | Sort-Object -Property Version -Descending)[0].Version
-  Write-Host "in generated test-module.ps1 ------------ step 10"
+  Write-Host "in src test-module.ps1 ------------ step 10"
   $resourceModulePSD = Get-Item -Path (Join-Path $HOME '.PSSharedModules\Resources\Az.Resources.TestSupport.psd1')
-  Write-Host "in generated test-module.ps1 ------------ step 11"
+  Write-Host "in src test-module.ps1 ------------ step 11"
   Import-Module -Name $resourceModulePSD.FullName
-  Write-Host "in generated test-module.ps1 ------------ step 12"
+  Write-Host "in src test-module.ps1 ------------ step 12"
 }
 
-Write-Host "in generated test-module.ps1 ------------ step 13"
+Write-Host "in src test-module.ps1 ------------ step 13"
 $localModulesPath = Join-Path $PSScriptRoot 'generated\modules'
-Write-Host "in generated test-module.ps1 ------------ step 14"
+Write-Host "in src test-module.ps1 ------------ step 14"
 if(Test-Path -Path $localModulesPath)
 {
-  Write-Host "in generated test-module.ps1 ------------ step 15"
+  Write-Host "in src test-module.ps1 ------------ step 15"
   $env:PSModulePath = "$localModulesPath$([IO.Path]::PathSeparator)$env:PSModulePath"
-  Write-Host "in generated test-module.ps1 ------------ step 16"
+  Write-Host "in src test-module.ps1 ------------ step 16"
 }
 
-Write-Host "in generated test-module.ps1 ------------ step 17"
+Write-Host "in src test-module.ps1 ------------ step 17"
 $modulePsd1 = Get-Item -Path (Join-Path $PSScriptRoot './Az.Authorization.psd1')
-Write-Host "in generated test-module.ps1 ------------ step 18"
+Write-Host "in src test-module.ps1 ------------ step 18"
 $modulePath = $modulePsd1.FullName
-Write-Host "in generated test-module.ps1 ------------ step 19"
+Write-Host "in src test-module.ps1 ------------ step 19"
 $moduleName = $modulePsd1.BaseName
-Write-Host "in generated test-module.ps1 ------------ step 20"
+Write-Host "in src test-module.ps1 ------------ step 20"
 
-Write-Host "in generated test-module.ps1 ------------ step 21"
+Write-Host "in src test-module.ps1 ------------ step 21"
 Import-Module -Name Pester
-Get-Module | ForEach-Object {Write-Host "in generated test-module.ps1 ------------ step 21-1" $_.Name $_.Version $_.Path}
-Write-Host "in generated test-module.ps1 ------------ step 22"
+Get-Module | ForEach-Object {Write-Host "in src test-module.ps1 ------------ step 21-1" $_.Name $_.Version $_.Path}
+Write-Host "in src test-module.ps1 ------------ step 22"
 Import-Module -Name $modulePath
-Get-Module | ForEach-Object {Write-Host "in generated test-module.ps1 ------------ step 21-1" $_.Name $_.Version $_.Path}
-Write-Host "in generated test-module.ps1 ------------ step 23"
+Get-Module | ForEach-Object {Write-Host "in src test-module.ps1 ------------ step 21-1" $_.Name $_.Version $_.Path}
+Write-Host "in src test-module.ps1 ------------ step 23"
 
 $TestMode = 'playback'
 $ExcludeTag = @("LiveOnly")
@@ -107,9 +107,9 @@ try
   {
     Invoke-Pester -Script @{ Path = $testFolder } -TestName $TestName -ExcludeTag $ExcludeTag -EnableExit -OutputFile (Join-Path $testFolder "$moduleName-TestResults.xml")
   } else {
-    Write-Host "in generated test-module.ps1 ------------ step 24"
+    Write-Host "in src test-module.ps1 ------------ step 24"
     Invoke-Pester -Script @{ Path = $testFolder } -ExcludeTag $ExcludeTag -EnableExit -OutputFile (Join-Path $testFolder "$moduleName-TestResults.xml")
-    Write-Host "in generated test-module.ps1 ------------ step 25"
+    Write-Host "in src test-module.ps1 ------------ step 25"
   }
 } Finally
 {
