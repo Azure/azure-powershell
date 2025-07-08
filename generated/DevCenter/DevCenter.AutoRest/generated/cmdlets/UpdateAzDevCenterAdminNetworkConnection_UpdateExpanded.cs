@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzDevCenterAdminNetworkConnection_UpdateExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.CmdletBreakingChange("15.0.0", "3.0.0", "2025/11/18", ReplacementCmdletName="Update-AzDevCenterAdminNetworkConnection", ChangeDescription="PlanName and MemberName will be removed from the InputObject parameter.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.INetworkConnection))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Description(@"Partially updates a Network Connection")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Generated]

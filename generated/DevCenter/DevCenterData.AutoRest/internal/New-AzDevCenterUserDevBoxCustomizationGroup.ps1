@@ -75,7 +75,7 @@ TASK <ICustomizationTask[]>: Tasks to apply. Note by default tasks are excluded 
   [RunAs <CustomizationTaskExecutionAccount?>]: What account to run the task as.
   [TimeoutInSecond <Int32?>]: Timeout, in seconds. Overrides any timeout provided on the task definition.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/new-azdevcenteruserdevboxcustomizationgroup
+https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteruserdevboxcustomizationgroup
 #>
 function New-AzDevCenterUserDevBoxCustomizationGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationGroup])]
