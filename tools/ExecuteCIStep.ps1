@@ -304,15 +304,22 @@ If ($TestAutorest)
         Write-Warning "There is no test-module.ps1 found in the folder: $AutorestDirectory"
         Return
     }
+
+    Write-Host "AutorestDirectory/test-module.ps1 = " "$AutorestDirectory/test-module.ps1"
+    
     Write-Host "--------------------------------- TestAutorest step 2 ---------------------------------"
     $ModuleName = Split-Path -Path $AutorestDirectory | Split-Path -Leaf
+    Write-Host "ModuleName = " "$ModuleName"
     Write-Host "--------------------------------- TestAutorest step 3 ---------------------------------"
     $ModuleFolderName = $ModuleName.Split(".")[1]
+    Write-Host "ModuleFolderName = " "$ModuleFolderName"
     Write-Host "--------------------------------- TestAutorest step 4 ---------------------------------"
     If (Test-Path $CIPlanPath)
     {
         Write-Host "--------------------------------- TestAutorest step 5 ---------------------------------"
+        Write-Host "CIPlanPath = " "$CIPlanPath"
         $CIPlan = Get-Content $CIPlanPath | ConvertFrom-Json
+        Write-Host "CIPlan = " "$CIPlan"
         Write-Host "--------------------------------- TestAutorest step 6 ---------------------------------"
         If (-not ($CIPlan.test.Contains($ModuleFolderName)))
         {
