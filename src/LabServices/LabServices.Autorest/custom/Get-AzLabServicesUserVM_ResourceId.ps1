@@ -88,7 +88,7 @@ function Get-AzLabServicesUserVM_ResourceId {
     )
     
     process {
-        $VerificationRegex = Join-Path $PSScriptRoot 'VerificationRegex.ps1'
+        $VerificationRegex = Join-Path $PSScriptRoot '\Utilities\VerificationRegex.ps1'
         . $VerificationRegex
         if ($ResourceId -match $userRegex){
             $user = Az.LabServices\Get-AzLabServicesUser -ResourceId $ResourceId
