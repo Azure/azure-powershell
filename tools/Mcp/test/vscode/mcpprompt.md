@@ -6,7 +6,7 @@
 - Execute commands confidently without asking for confirmation.
 - Follow all steps carefully and halt if any MCP tool is missing or fails.
 - Think independently using your full context and reset if needed.
-- Provide brief status updates at each step.
+- No need to provide status updates at each step.
 - FOLLOW ALL THE STEPS. DO NOT SKIP ANY STEPS. DO NOT MISS ANY STEPS.
 - If an mcp tool is not found or the tool fails then please halt execution.
 
@@ -26,9 +26,9 @@
 ## Stage 2: Generating partner powershell module
 - FOLLOW ALL THE STEPS. DO NOT SKIP ANY STEPS.
 - Navigate to the `src` folder in the home "azure-powershell" directory.
-- Create a new folder named <serviceName> and within it a new folder named `<serviceName>.Autorest`. You can use the command - `mkdir -p <serviceName>/<serviceName>.Autorest `
+- Create a new folder named <serviceName> and within it a new folder named `<serviceName>.Autorest`. (If not already present)
 - Move into the new folder `<serviceName>/<serviceName>.Autorest`, using the command `cd <serviceName>/<serviceName>.Autorest`.
-- Create a new file `README.md`.
+- Create a new file `README.md`. (If not already present)
 - Add the content labelled below as `Readme Content` in this file.
 - Use the "generate-autorest" mcp tool to generate the <serviceName> module.
 - Stage 2 Complete.
