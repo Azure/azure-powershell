@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
         public string Endpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IConfigurationAccessEndpointSpecInternal)__configurationAccessEndpointSpec).Endpoint; }
 
         /// <summary>Internal Acessors for Endpoint</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IConfigurationAccessEndpointSpecInternal.Endpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IConfigurationAccessEndpointSpecInternal)__configurationAccessEndpointSpec).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IConfigurationAccessEndpointSpecInternal)__configurationAccessEndpointSpec).Endpoint = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IConfigurationAccessEndpointSpecInternal.Endpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IConfigurationAccessEndpointSpecInternal)__configurationAccessEndpointSpec).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IConfigurationAccessEndpointSpecInternal)__configurationAccessEndpointSpec).Endpoint = value ?? null; }
 
         /// <summary>
         /// Creates an new <see cref="DataCollectionEndpointConfigurationAccess" /> instance.
