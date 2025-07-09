@@ -5,7 +5,8 @@ import { execSync } from 'child_process';
 import path from 'path';
 
 const _pwshCD = (path: string): string => { return `pwsh -Command "$path = resolve-path ${path} | Set-Location"` }
-const _autorest = "autorest --reset; autorest"
+const _autorestReset = "autorest --reset"
+const _autorest = "autorest"
 const _pwshBuild = "pwsh -File build-module.ps1"
 
 function testYaml() {
@@ -21,12 +22,17 @@ function testYaml() {
 }
 
 export function generateAndBuild(workingDirectory: string): void {
-    const genBuildCommand = `${_autorest}; ${_pwshBuild};`;
-    try {
-        const result = execSync(genBuildCommand, { stdio: 'inherit', cwd: workingDirectory });
-    } catch (error) {
-        console.error("Error executing command:", error);
-        throw error;
+    const genBuildCommands = [_autorestReset, _autorest, _pwshBuild]
+    
+    for (const command of genBuildCommands) {
+        try {
+            console.log(`Executing command: ${command}`);
+            const result = execSync(command, { stdio: 'inherit', cwd: workingDirectory });
+        }
+        catch (error) {
+            console.error("Error executing command:", error);
+            throw error;
+        }
     }
 }
 
