@@ -20,7 +20,7 @@ Update-AzCosmosDBAccount [-EnableAutomaticFailover <Boolean>] [-EnableMultipleWr
  [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
  [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
  [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>]
- [-EnableBurstCapacity <Boolean>] [-EnablePriorityBasedExecution <Boolean>] [-DefaultPriorityLevel <String>]
+ [-EnableBurstCapacity <Boolean>] [-EnablePartitionMerge <Boolean>] [-EnablePriorityBasedExecution <Boolean>] [-DefaultPriorityLevel <String>]
  [-AsJob] [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
  [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>] [-BackupStorageRedundancy <String>]
  [-BackupPolicyType <String>] [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-EnablePartitionMerge <Boolean>]
@@ -36,7 +36,7 @@ Update-AzCosmosDBAccount -ResourceId <String> [-EnableAutomaticFailover <Boolean
  [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
  [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
  [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>]
- [-EnableBurstCapacity <Boolean>] [-EnablePriorityBasedExecution <Boolean>] [-DefaultPriorityLevel <String>]
+ [-EnablePartitionMerge <Boolean>] [-EnableBurstCapacity <Boolean>] [-EnablePriorityBasedExecution <Boolean>] [-DefaultPriorityLevel <String>]
  [-AsJob] [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
  [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>] [-BackupStorageRedundancy <String>]
  [-BackupPolicyType <String>] [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-EnablePartitionMerge <Boolean>]
@@ -52,7 +52,7 @@ Update-AzCosmosDBAccount -InputObject <PSDatabaseAccountGetResults> [-EnableAuto
  [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
  [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
  [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>]
- [-EnableBurstCapacity <Boolean>] [-EnablePriorityBasedExecution <Boolean>] [-DefaultPriorityLevel <String>]
+ [-EnablePartitionMerge <Boolean>] [-EnableBurstCapacity <Boolean>] [-EnablePriorityBasedExecution <Boolean>] [-DefaultPriorityLevel <String>]
  [-AsJob] [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
  [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>] [-BackupStorageRedundancy <String>]
  [-BackupPolicyType <String>] [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-EnablePartitionMerge <Boolean>]
@@ -195,6 +195,7 @@ The tier of continuous backups mode on the Cosmos DB account. Accepted values: C
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
 Required: False
 Position: Named
 Default value: None
@@ -295,39 +296,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnablePriorityBasedExecution
-Bool to indicate if Priority Based Execution is enabled on the account.
-
-```yaml
-Type: System.Nullable`1[System.Boolean]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultPriorityLevel
-Default priority level of requests for Cosmos DB database account.
-Accepted values: High, Low
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableMaterializedViews
-Bool to indicate if Materializedviews is enabled on the account.
+### -EnableMultipleWriteLocations
+Enable Multiple Write Locations.
+Accepted values: false, true
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -359,21 +330,6 @@ Accept wildcard characters: False
 
 ### -EnablePerRegionPerPartitionAutoscale
 Bool to indicate if Dynamic Scaling (Per Region Per Partition Autoscale) is enabled on the account.
-
-```yaml
-Type: System.Nullable`1[System.Boolean]
-Parameter Sets: (All)
-Aliases:
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableMultipleWriteLocations
-Enable Multiple Write Locations.
-Accepted values: false, true
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -485,6 +441,21 @@ Accepted range for this value is 1 - 2,147,483,647.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinimalTlsVersion
+Indicates the minimum allowed Tls version. The default value is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2. Possible values include: 'Tls', 'Tls11', 'Tls12'.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

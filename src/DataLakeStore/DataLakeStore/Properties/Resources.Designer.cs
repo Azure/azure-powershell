@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the Data Lake Store virtuan network rule: &apos;{0}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to remove the Data Lake Store virtual network rule: &apos;{0}&apos;?.
         /// </summary>
         internal static string RemovingDataLakeStoreVirtualNetworkRule
         {

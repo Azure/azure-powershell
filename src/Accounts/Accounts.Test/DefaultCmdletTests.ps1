@@ -32,7 +32,7 @@ function Test-DefaultResourceGroup
 		$storedValue = (Get-AzContext).ExtendedProperties["Default Resource Group"]
 		Assert-Null($storedValue)
 
-		# Test Resoure Group created when it doesn't exist
+		# Test Resource Group created when it doesn't exist
 		$output = Set-AzDefault -ResourceGroupName $rgname -Force
 		$resourcegroup = Get-AzResourceGroup -Name $rgname
 		Assert-AreEqual $output.Name $resourcegroup.ResourceGroupName

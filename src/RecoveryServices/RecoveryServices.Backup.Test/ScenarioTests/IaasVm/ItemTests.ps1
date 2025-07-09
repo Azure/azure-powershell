@@ -340,10 +340,11 @@ function Test-AzureVMMUA
 	$location = "centraluseuap"
 	$resourceGroupName = "hiagarg"
 	$vaultName = "mua-pstest-vault"
-	$vmName = "VM;iaasvmcontainerv2;hiagarg;hiaganewvm2"
-	$vmFriendlyName = "hiaganewvm2"
+	$vmName = "VM;iaasvmcontainerv2;hiagarg;hiaganevm4"
+	$vmFriendlyName = "hiaganevm4"
 	# $resGuardId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/iaasvm-pstest-rg/providers/Microsoft.DataProtection/resourceGuards/mua-pstest-rguard"
-	$resGuardId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/ResourceGuards/test1-rGuard" # HiagaPSTest1
+	# /subscriptions/063bf7bc-e4dc-4cde-8840-8416fbd7921e/resourcegroups/amchandnPERG/providers/Microsoft.DataProtection/resourceGuards/HiagaPSTest1
+	$resGuardId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/ResourceGuards/test1-rGuard" 	
 	$lowerRetentionPolicy = "mua-vm-lowerDailyRet"
 	
 	try
@@ -353,7 +354,21 @@ function Test-AzureVMMUA
 
 		# Enable protection on hiaganewVM2 with default policy 
 		$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name "DefaultPolicy"
-		Enable-AzRecoveryServicesBackupProtection -Policy $pol -ResourceGroupName $resourceGroupName -Name $vmFriendlyName -VaultId $vault.ID
+
+		$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM | Where-Object { $_.Name -match $vmFriendlyName }
+		if ($item -eq $null)
+		{
+			$item = Enable-AzRecoveryServicesBackupProtection -Policy $pol -ResourceGroupName $resourceGroupName -Name $vmFriendlyName -VaultId $vault.ID
+		}
+		else
+		{
+			Undo-AzRecoveryServicesBackupItemDeletion -Item $item -VaultId $vault.ID -Force
+			$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM | Where-Object { $_.Name -match $vmFriendlyName }
+			$enable = Enable-AzRecoveryServicesBackupProtection -Item $item -Policy $pol -VaultId $vault.ID
+			$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM | Where-Object { $_.Name -match $vmFriendlyName }
+			Assert-True { $item.ProtectionState -eq "Protected" -or $item.ProtectionState -eq "IRPending"}
+		}
+		
 
 		# create resource guard mapping 
 		$resGuardMapping = Set-AzRecoveryServicesResourceGuardMapping -ResourceGuardId $resGuardId -VaultId $vault.ID
@@ -373,20 +388,34 @@ function Test-AzureVMMUA
 
 		# modify protection 
 		$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $lowerRetentionPolicy
-		$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
+		$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM | Where-Object { $_.Name -match $vmFriendlyName }
 
 		# modify protection with lower retention policy 
 		Enable-AzRecoveryServicesBackupProtection -Item $item  -Policy $pol -VaultId $vault.ID 
 
 		# modify protection with regular policy 
 		$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name "DefaultPolicy"
-		$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
-		Enable-AzRecoveryServicesBackupProtection -Item $item -Policy $pol -VaultId $vault.ID 
+		$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM | Where-Object { $_.Name -match $vmFriendlyName }
+		Enable-AzRecoveryServicesBackupProtection -Item $item -Policy $pol -VaultId $vault.ID
 
+		# Start Suspend Backup scenario with MUA
+		$updateVault = Update-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vault.Name -ImmutabilityState Unlocked
+		Assert-True { $updateVault.Properties.ImmutabilitySettings.ImmutabilityState -eq "Unlocked" }
+
+		# Immutability needs to be enabled for suspend backup
+		$disableJob = Disable-AzRecoveryServicesBackupProtection -Item $item -VaultId $vault.ID -Force -RetainRecoveryPointsAsPerPolicy		
+		$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM | Where-Object { $_.Name -match $vmFriendlyName }
+		Assert-True { $disableJob.Status -eq "Completed" }
+		Assert-True { $item.ProtectionState -eq "BackupsSuspended" }
+
+		$enable = Enable-AzRecoveryServicesBackupProtection -Item $item -Policy $pol -VaultId $vault.ID
+
+		$updateVault = Update-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vault.Name -ImmutabilityState Disabled
+		Assert-True { $updateVault.Properties.ImmutabilitySettings.ImmutabilityState -eq "Disabled" }
 	}
 	finally
 	{		
-		# dsiable softDelete 
+		# disable softDelete 
 		Set-AzRecoveryServicesVaultProperty -SoftDeleteFeatureState Disable -VaultId $vault.ID
 
 		#disable protection with RemoveRecoveryPoints

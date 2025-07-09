@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.network/get-azf
 schema: 2.0.0
 ---
 
-# Get-AzFirewallPolicyRuleCollectionGroup
+# Get-AzFirewallPolicyRuleCollectionGroupDraft
 
 ## SYNOPSIS
 Gets an Azure Firewall Policy Rule Collection Group Draft.
@@ -15,7 +15,8 @@ Gets an Azure Firewall Policy Rule Collection Group Draft.
 ### GetByNameParameterSet (Default)
 ```
 Get-AzFirewallPolicyRuleCollectionGroup -Name <String> -ResourceGroupName <String>
- -AzureFirewallPolicyName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -AzureFirewallPolicyName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByInputObjectParameterSet

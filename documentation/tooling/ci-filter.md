@@ -2,7 +2,7 @@
 
 ### What is the CI Filter?
 
-The CI filter is a set of tooling that looks at the files changed in a pull request and makes decisions about what processes should occurr during the pull request's CI. These decisions include the following:
+The CI filter is a set of tooling that looks at the files changed in a pull request and makes decisions about what processes should occur during the pull request's CI. These decisions include the following:
 
 - Which projects to build
 - Which tests to run
@@ -45,7 +45,7 @@ The task uses the [`Octokit`](https://www.nuget.org/packages/Octokit/) package t
 
 #### `FilterTask`
 
-The [`FilterTask`](https://github.com/Azure/azure-powershell/blob/2d66db5b781f6b1bffe5ff6ff6825c69c8af5848/tools/BuildPackagesTask/Microsoft.Azure.Build.Tasks/FilterTask.cs) takes the files changed in a pull request and determines whichs items to return from the given `.json` file. The task requires that the user provides the following parameters:
+The [`FilterTask`](https://github.com/Azure/azure-powershell/blob/2d66db5b781f6b1bffe5ff6ff6825c69c8af5848/tools/BuildPackagesTask/Microsoft.Azure.Build.Tasks/FilterTask.cs) takes the files changed in a pull request and determines which items to return from the given `.json` file. The task requires that the user provides the following parameters:
 
 - `FilesChanged`
     - The list of files changed in the pull request, passed from the `FilesChangedTask`
@@ -65,12 +65,12 @@ The result of the `FilesChangedTask` is assigned to a property called `FilesChan
 
 ### Build and Test Filter
 
-Inside of the `Build` target, the `Azure.PowerShell.sln` file that we create for the build is populated with `.csproj` files that should be built and tested later on. When the `PullRequestNumber` property is providied as a part of the `msbuild` command, the `ProjectsToBuild` property from the previous `FilterTask` is used to [populate the solution with the filtered `.csproj` files](https://github.com/Azure/azure-powershell/blob/2d66db5b781f6b1bffe5ff6ff6825c69c8af5848/build.proj#L151). If `PullRequestNumber` wasn't provided as a part of the `msbuild` command, then [all of the `.csproj` files are included](https://github.com/Azure/azure-powershell/blob/2d66db5b781f6b1bffe5ff6ff6825c69c8af5848/build.proj#L141-L147).
+Inside of the `Build` target, the `Azure.PowerShell.sln` file that we create for the build is populated with `.csproj` files that should be built and tested later on. When the `PullRequestNumber` property is provided as a part of the `msbuild` command, the `ProjectsToBuild` property from the previous `FilterTask` is used to [populate the solution with the filtered `.csproj` files](https://github.com/Azure/azure-powershell/blob/2d66db5b781f6b1bffe5ff6ff6825c69c8af5848/build.proj#L151). If `PullRequestNumber` wasn't provided as a part of the `msbuild` command, then [all of the `.csproj` files are included](https://github.com/Azure/azure-powershell/blob/2d66db5b781f6b1bffe5ff6ff6825c69c8af5848/build.proj#L141-L147).
 
 When [`dotnet build`](https://github.com/Azure/azure-powershell/blob/2d66db5b781f6b1bffe5ff6ff6825c69c8af5848/build.proj#L160) is then run on this solution, only the projects specific to the files changed will be built and tested. For each service, `A` (_e.g._, `src/A/`), that's updated in the pull request, the following are checked:
 
 - If service `A` is referenced in the tests for service `B`, then we add service `B`'s cmdlet and test projects to the solution so that we can ensure that changes to service `A` don't break the tests of service `B`
-- If service `A` references service `C` in its tests, then we add service `C`'s cmdlet proejct to the solution so we can ensure that service `C` is available to use in service `A`'s tests
+- If service `A` references service `C` in its tests, then we add service `C`'s cmdlet project to the solution so we can ensure that service `C` is available to use in service `A`'s tests
 
 ### Static Analysis Filter
 

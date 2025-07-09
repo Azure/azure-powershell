@@ -89,6 +89,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.Storage.private\Get-AzStorageOperation_List';
@@ -177,6 +180,7 @@ INPUTOBJECT <IStorageIdentity>: Identity Parameter
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
   [ResourceGroupName <String>]: The name of the resource group within the user's subscription. The name is case insensitive.
   [ShareName <String>]: The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [StorageTaskAssignmentName <String>]: The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [SubscriptionId <String>]: The ID of the target subscription.
   [Username <String>]: The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
 
@@ -343,6 +347,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Start = 'Az.Storage.private\Start-AzStorageAccountMigration_Start';
@@ -353,8 +360,6 @@ begin {
             StartViaJsonString = 'Az.Storage.private\Start-AzStorageAccountMigration_StartViaJsonString';
         }
         if (('Start', 'StartExpanded', 'StartViaJsonFilePath', 'StartViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {

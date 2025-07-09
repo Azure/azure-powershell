@@ -22,7 +22,7 @@ Get the access keys of the CommunicationService resource.
 
 ## EXAMPLES
 
-### Example 1: Fetch the Key for the specified Communcation service
+### Example 1: Fetch the Key for the specified Communication service
 ```powershell
 Get-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 ```
@@ -33,7 +33,7 @@ PrimaryConnectionString              PrimaryKey            SecondaryConnectionSt
 endpoint=<example-primary-endpoint>  <example-primarykey>  endpoint=<example-secondary-endpoint>   <example-secondarykey>
 ```
 
-Displays the ConnectionString and Key for the specified Communcation service.
+Displays the ConnectionString and Key for the specified Communication service.
 
 ## PARAMETERS
 
@@ -138,7 +138,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceKeys
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceKeys
 
 ## NOTES
 

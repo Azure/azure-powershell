@@ -17,7 +17,8 @@ V2 Version of Packet Capture Cmdlet which creates a new packet capture resource 
 New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher <PSNetworkWatcher> -Name <String> -TargetId <String>
  [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
  [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>]
- [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>] [-AsJob]
+ [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>]
+ [-ContinuousCapture <Boolean>] [-LocalPath <String>] [-CaptureSetting <PSPacketCaptureSettings>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +27,8 @@ New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher <PSNetworkWatcher> -Name <St
 New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcherName <String> -ResourceGroupName <String> -Name <String>
  -TargetId <String> [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
  [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>]
- [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>] [-AsJob]
+ [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>]
+ [-ContinuousCapture <Boolean>] [-LocalPath <String>] [-CaptureSetting <PSPacketCaptureSettings>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -35,7 +37,8 @@ New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcherName <String> -ResourceGroupN
 New-AzNetworkWatcherPacketCaptureV2 -Location <String> -Name <String> -TargetId <String>
  [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
  [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>]
- [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>] [-AsJob]
+ [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>]
+ [-ContinuousCapture <Boolean>] [-LocalPath <String>] [-CaptureSetting <PSPacketCaptureSettings>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -207,6 +210,41 @@ Scope                   : {
 In this example we create a packet capture named "PacketCaptureTest" with multiple filters and a time limit. Once the session is complete, it will be saved to the specified storage account. 
 Note: The Azure Network Watcher extension must be installed on the target virtual machine scale set and on the respective instances in include scope adhering to the latest vmss model, to create packet captures.
 
+### Example 4: Create a Packet Capture on a VMSS with continuous capture and its settings
+```powershell
+$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
+$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
+
+$capSettings = New-AzPacketCaptureSettingsConfig -FileCount 2 -FileSizeInBytes 102400 -SessionTimeLimitInSeconds 60
+
+New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $networkWatcher -Name "PacketCaptureTest" -TargetId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contosoResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/SampleVMSS" -BytesToCapturePerPacket 1 -ContinuousCapture $false -CaptureSetting $capSettings -LocalPath "/var/captures/test1.cap"
+```
+
+```output
+Name                    : PacketCaptureTest
+Id                      : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_eastus/packetCaptures/PacketCaptureTest
+Etag                    : W/"00000000-0000-0000-0000-000000000000"
+ProvisioningState       : Succeeded
+Target                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contosoResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/SampleVMSS
+TargetType              : AzureVMSS
+BytesToCapturePerPacket : 1
+StorageLocation         : {
+                            "StoragePath": "",
+                            "LocalPath": "/var/captures/test1.cap"
+                          }
+ContinuousCapture       : true
+CaptureSettings         : {
+                            "fileCount":"2",
+                            "fileSizeInBytes":"102400",
+                            "sessionTimeLimitInSeconds":"60"
+                          }      
+Filters                 : []
+Scope                   : {}
+```
+
+In this example we create a packet capture named "PacketCaptureTest" with continuous capture as true along with capture settings. Once the session is complete, it will be saved to the specified storage account. 
+Note: The Azure Network Watcher extension must be installed on the target virtual machine scale set and all the respective instances adhering to the latest vmss model, to create packet captures.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -229,6 +267,36 @@ Bytes to capture per packet.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -CaptureSetting
+The capture setting holds the 'FileCount', 'FileSizeInBytes', 'SessionTimeLimitInSeconds' values. These settings are only applicable, if 'ContinuousCapture' is provided.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSPacketCaptureSettings
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContinuousCapture
+This continuous capture is a nullable boolean, which can hold 'null', 'true' or 'false' value. If we do not pass this parameter, it would be consider as 'null', default value is 'null'.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -271,6 +339,21 @@ Accept wildcard characters: False
 
 ### -LocalFilePath
 Local file path.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -LocalPath
+This path is valid if 'ContinuousCapture' is provided and required if no storage ID is provided, otherwise optional. Must include the name of the capture file (*.cap).
 
 ```yaml
 Type: System.String
@@ -548,8 +631,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Stop-AzNetworkWatcherConnectionMonitor](./Stop-AzNetworkWatcherConnectionMonitor.md)
 
-[Start-AzNetworkWatcherConnectionMonitor](./Start-AzNetworkWatcherConnectionMonitor.md)
-
 [Set-AzNetworkWatcherConnectionMonitor](./Set-AzNetworkWatcherConnectionMonitor.md)
 
 [Set-AzNetworkWatcherConfigFlowLog](./Set-AzNetworkWatcherConfigFlowLog.md)
@@ -565,7 +646,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzNetworkWatcherReachabilityProvidersList](./Get-AzNetworkWatcherReachabilityProvidersList.md)
 
 [Get-AzNetworkWatcherFlowLogStatus](./Get-AzNetworkWatcherFlowLogStatus.md)
-
-[Get-AzNetworkWatcherConnectionMonitorReport](./Get-AzNetworkWatcherConnectionMonitorReport.md)
 
 [Get-AzNetworkWatcherConnectionMonitor](./Get-AzNetworkWatcherConnectionMonitor.md)

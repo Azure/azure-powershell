@@ -27,38 +27,37 @@ $DataNetworkConfiguration = New-AzMobileNetworkDataNetworkConfigurationObject -A
 New-AzMobileNetworkSliceConfigurationObject -DataNetworkConfiguration $DataNetworkConfiguration -DefaultDataNetworkId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/dataNetworks/azps-mn-datanetwork" -SliceId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/slices/azps-mn-slice"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SliceConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SliceConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 DATANETWORKCONFIGURATION <IDataNetworkConfiguration[]>: The allowed data networks and the settings to use for them. The list must not contain duplicate items and must contain at least one item.
-  AllowedService <IServiceResourceId[]>: List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item. The services must be in the same location as the SIM policy.
+  AllowedService <List<IServiceResourceId>>: List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item. The services must be in the same location as the SIM policy.
     Id <String>: Service resource ID.
   DataNetworkId <String>: Data network resource ID.
   SessionAmbrDownlink <String>: Downlink bit rate.
   SessionAmbrUplink <String>: Uplink bit rate.
-  [AdditionalAllowedSessionType <PduSessionType[]>]: Allowed session types in addition to the default session type. Must not duplicate the default session type.
+  [AdditionalAllowedSessionType <List<String>>]: Allowed session types in addition to the default session type. Must not duplicate the default session type.
   [AllocationAndRetentionPriorityLevel <Int32?>]: Default QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
-  [DefaultSessionType <PduSessionType?>]: The default PDU session type, which is used if the UE does not request a specific session type.
+  [DefaultSessionType <String>]: The default PDU session type, which is used if the UE does not request a specific session type.
   [FiveQi <Int32?>]: Default 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
   [MaximumNumberOfBufferedPacket <Int32?>]: The maximum number of downlink packets to buffer at the user plane for High Latency Communication - Extended Buffering. See 3GPP TS29.272 v15.10.0 section 7.3.188 for a full description. This maximum is not guaranteed because there is a internal limit on buffered packets across all PDU sessions.
-  [PreemptionCapability <PreemptionCapability?>]: Default QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
-  [PreemptionVulnerability <PreemptionVulnerability?>]: Default QoS Flow preemption vulnerability. The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+  [PreemptionCapability <String>]: Default QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+  [PreemptionVulnerability <String>]: Default QoS Flow preemption vulnerability. The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 .Link
 https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkSliceConfigurationObject
 #>
 function New-AzMobileNetworkSliceConfigurationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SliceConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SliceConfiguration])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IDataNetworkConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IDataNetworkConfiguration[]]
     # The allowed data networks and the settings to use for them.
     # The list must not contain duplicate items and must contain at least one item.
-    # To construct, see NOTES section for DATANETWORKCONFIGURATION properties and create a hash table.
     ${DataNetworkConfiguration},
 
     [Parameter(Mandatory)]
@@ -81,6 +80,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -109,6 +111,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

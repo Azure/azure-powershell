@@ -15,7 +15,8 @@ Create ManagedRules for the firewall policy.
 ```
 New-AzApplicationGatewayFirewallPolicyManagedRule
  [-ManagedRuleSet <PSApplicationGatewayFirewallPolicyManagedRuleSet[]>]
- [-Exclusion <PSApplicationGatewayFirewallPolicyExclusion[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-Exclusion <PSApplicationGatewayFirewallPolicyExclusion[]>] 
+ [-Exception <PSApplicationGatewayFirewallPolicyException[]>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -40,6 +41,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Exception
+List of Exception Entry.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicyException[]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

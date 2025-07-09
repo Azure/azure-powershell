@@ -1,0 +1,57 @@
+{
+  "resourceType": "privateClouds/clusters/hosts",
+  "apiVersion": "2024-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.vmware"
+  },
+  "commands": [
+    {
+      "name": "Get-AzVMwareHost",
+      "description": "Get a Host",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/hosts/{hostId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwarehost"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-Id <String>",
+              "-PrivateCloudName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Host",
+          "parameters": [
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-Id",
+              "value": "[Path.hostId]"
+            },
+            {
+              "name": "-PrivateCloudName",
+              "value": "[Path.privateCloudName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -16,79 +16,162 @@
 
 <#
 .Synopsis
-Creates or updates a network slice.
+create a network slice.
 Must be created in the same location as its parent mobile network.
 .Description
-Creates or updates a network slice.
+create a network slice.
 Must be created in the same location as its parent mobile network.
 .Example
 New-AzMobileNetworkSlice -MobileNetworkName azps-mn -ResourceGroupName azps_test_group -SliceName azps-mn-slice -Location eastus -SnssaiSst 1 -SnssaiSd "1abcde"
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISlice
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISlice
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+MOBILENETWORKINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworkslice
 #>
 function New-AzMobileNetworkSlice {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISlice])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISlice])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the mobile network.
     ${MobileNetworkName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the network slice.
     ${SliceName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${MobileNetworkInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.Int32]
     # Slice/service type (SST).
     ${SnssaiSst},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # An optional description for this network slice.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # Slice differentiator (SD).
     ${SnssaiSd},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -158,6 +241,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -178,10 +270,12 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkSlice_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkSlice_CreateViaIdentityExpanded';
+            CreateViaIdentityMobileNetworkExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkSlice_CreateViaIdentityMobileNetworkExpanded';
+            CreateViaJsonFilePath = 'Az.MobileNetwork.private\New-AzMobileNetworkSlice_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MobileNetwork.private\New-AzMobileNetworkSlice_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -195,6 +289,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

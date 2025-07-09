@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-Creates or updates a SIM policy.
+create a SIM policy.
 Must be created in the same location as its parent mobile network.
 .Description
-Creates or updates a SIM policy.
+create a SIM policy.
 Must be created in the same location as its parent mobile network.
 .Example
 $ServiceResourceId = New-AzMobileNetworkServiceResourceIdObject -Id "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/services/azps-mn-service"
@@ -30,115 +30,199 @@ $SliceConfiguration = New-AzMobileNetworkSliceConfigurationObject -DataNetworkCo
 
 New-AzMobileNetworkSimPolicy -MobileNetworkName azps-mn -Name azps-mn-simpolicy -ResourceGroupName azps_test_group -Location eastus -DefaultSliceId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/slices/azps-mn-slice" -SliceConfiguration $SliceConfiguration -UeAmbrDownlink "1 Gbps" -UeAmbrUplink "500 Mbps" -RegistrationTimer 3240
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimPolicy
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+MOBILENETWORKINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
 SLICECONFIGURATION <ISliceConfiguration[]>: The allowed slices and the settings to use for them. The list must not contain duplicate items and must contain at least one item.
-  DataNetworkConfiguration <IDataNetworkConfiguration[]>: The allowed data networks and the settings to use for them. The list must not contain duplicate items and must contain at least one item.
-    AllowedService <IServiceResourceId[]>: List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item. The services must be in the same location as the SIM policy.
+  DataNetworkConfiguration <List<IDataNetworkConfiguration>>: The allowed data networks and the settings to use for them. The list must not contain duplicate items and must contain at least one item.
+    AllowedService <List<IServiceResourceId>>: List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item. The services must be in the same location as the SIM policy.
       Id <String>: Service resource ID.
     DataNetworkId <String>: Data network resource ID.
     SessionAmbrDownlink <String>: Downlink bit rate.
     SessionAmbrUplink <String>: Uplink bit rate.
-    [AdditionalAllowedSessionType <PduSessionType[]>]: Allowed session types in addition to the default session type. Must not duplicate the default session type.
+    [AdditionalAllowedSessionType <List<String>>]: Allowed session types in addition to the default session type. Must not duplicate the default session type.
     [AllocationAndRetentionPriorityLevel <Int32?>]: Default QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
-    [DefaultSessionType <PduSessionType?>]: The default PDU session type, which is used if the UE does not request a specific session type.
+    [DefaultSessionType <String>]: The default PDU session type, which is used if the UE does not request a specific session type.
     [FiveQi <Int32?>]: Default 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
     [MaximumNumberOfBufferedPacket <Int32?>]: The maximum number of downlink packets to buffer at the user plane for High Latency Communication - Extended Buffering. See 3GPP TS29.272 v15.10.0 section 7.3.188 for a full description. This maximum is not guaranteed because there is a internal limit on buffered packets across all PDU sessions.
-    [PreemptionCapability <PreemptionCapability?>]: Default QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
-    [PreemptionVulnerability <PreemptionVulnerability?>]: Default QoS Flow preemption vulnerability. The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+    [PreemptionCapability <String>]: Default QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+    [PreemptionVulnerability <String>]: Default QoS Flow preemption vulnerability. The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
   DefaultDataNetworkId <String>: Data network resource ID.
   SlouseId <String>: Slice resource ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworksimpolicy
 #>
 function New-AzMobileNetworkSimPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimPolicy])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimPolicy])]
+[CmdletBinding(DefaultParameterSetName='CreateViaIdentityExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the mobile network.
     ${MobileNetworkName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('SimPolicyName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the SIM policy.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${MobileNetworkInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # Slice resource ID.
     ${DefaultSliceId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISliceConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISliceConfiguration[]]
     # The allowed slices and the settings to use for them.
     # The list must not contain duplicate items and must contain at least one item.
-    # To construct, see NOTES section for SLICECONFIGURATION properties and create a hash table.
     ${SliceConfiguration},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # Downlink bit rate.
     ${UeAmbrDownlink},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # Uplink bit rate.
     ${UeAmbrUplink},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.Int32]
     # Interval for the UE periodic registration update procedure, in seconds.
     ${RegistrationTimer},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.Int32]
     # RAT/Frequency Selection Priority Index, defined in 3GPP TS 36.413.
     # This is an optional setting and by default is unspecified.
     ${RfspIndex},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -208,6 +292,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -228,10 +321,12 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkSimPolicy_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkSimPolicy_CreateViaIdentityExpanded';
+            CreateViaIdentityMobileNetworkExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkSimPolicy_CreateViaIdentityMobileNetworkExpanded';
+            CreateViaJsonFilePath = 'Az.MobileNetwork.private\New-AzMobileNetworkSimPolicy_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MobileNetwork.private\New-AzMobileNetworkSimPolicy_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -245,6 +340,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

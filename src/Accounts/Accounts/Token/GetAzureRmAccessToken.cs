@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Profile
                 //Throw exception when the caller doesn't have permission.
                 //Use SecureString only when AZUREPS_OUTPUT_PLAINTEXT_AZACCESSTOKEN is successfully set.
             }
-            if (usePlainText)
+            if (usePlainText && !AsSecureString)
             {
                 WriteObject(result);
             }

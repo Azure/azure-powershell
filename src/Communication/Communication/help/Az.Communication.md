@@ -36,7 +36,7 @@ Get a valid sender username for a domains resource.
 Initiate verification of DNS record.
 
 ### [New-AzCommunicationService](New-AzCommunicationService.md)
-Create a new CommunicationService or update an existing CommunicationService.
+create a new CommunicationService or create an existing CommunicationService.
 
 ### [New-AzCommunicationServiceKey](New-AzCommunicationServiceKey.md)
 Regenerate CommunicationService access key.
@@ -82,7 +82,7 @@ Cancel verification of DNS record.
 Checks that the CommunicationService name is valid and is not already in use.
 
 ### [Update-AzCommunicationService](Update-AzCommunicationService.md)
-Operation to update an existing CommunicationService.
+update a new CommunicationService or update an existing CommunicationService.
 
 ### [Update-AzCommunicationServiceSmtpUsername](Update-AzCommunicationServiceSmtpUsername.md)
 update an SmtpUsernameResource.

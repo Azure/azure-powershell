@@ -25,6 +25,20 @@ Remove-AzConnectedNetworkVendorSkuPreview -InputObject <IConnectedNetworkIdentit
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityVendor
+```
+Remove-AzConnectedNetworkVendorSkuPreview -PreviewSubscription <String> -SkuName <String>
+ -VendorInputObject <IConnectedNetworkIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentityVendorSku
+```
+Remove-AzConnectedNetworkVendorSkuPreview -PreviewSubscription <String>
+ -VendorSkuInputObject <IConnectedNetworkIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Deletes the preview information of a vendor sku.
 
@@ -81,7 +95,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
@@ -130,7 +143,7 @@ Preview subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityVendor, DeleteViaIdentityVendorSku
 Aliases:
 
 Required: True
@@ -145,7 +158,7 @@ The name of the vendor sku.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityVendor
 Aliases:
 
 Required: True
@@ -170,6 +183,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VendorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
+Parameter Sets: DeleteViaIdentityVendor
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -VendorName
 The name of the vendor.
 
@@ -182,6 +210,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VendorSkuInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
+Parameter Sets: DeleteViaIdentityVendorSku
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

@@ -18,7 +18,7 @@ New-AzCosmosDBGremlinDatabaseToRestore -DatabaseName <String> [-GraphName <Strin
 ```
 
 ## DESCRIPTION
-Creates a new CosmosDB GremlinDatabaseToRestore object(PSGremlinDatabaseToRestore). This returned object can be uses to speficy the subset of databases and graphs to restore.
+Creates a new CosmosDB GremlinDatabaseToRestore object(PSGremlinDatabaseToRestore). This returned object can be used to specify the subset of databases and graphs to restore.
 
 ## EXAMPLES
 

@@ -19,11 +19,19 @@ Describe 'New-AzDigitalTwinsEndpoint' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'EventGrid' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'ServiceBus' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'EventGrid' -skip {
+    It 'CreateViaJsonFilePath' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'CreateViaJsonString' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -414,7 +414,7 @@ Accept wildcard characters: False
 ```
 
 ### -VmUserAssignedIdentity
-The list of user assigend identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. Follow steps to create the identity and add the role assignment with Service Fabric Resource Provider beforehand here: https://learn.microsoft.com/en-us/azure/service-fabric/how-to-managed-identity-managed-cluster-virtual-machine-scale-sets
+The list of user assigned identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. Follow steps to create the identity and add the role assignment with Service Fabric Resource Provider beforehand here: https://learn.microsoft.com/en-us/azure/service-fabric/how-to-managed-identity-managed-cluster-virtual-machine-scale-sets
 
 ```yaml
 Type: System.String[]

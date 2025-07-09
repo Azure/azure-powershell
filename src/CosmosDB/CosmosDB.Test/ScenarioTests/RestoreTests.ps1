@@ -931,6 +931,6 @@ function Test-SqlRestoreAccountPublicNetworkAccessCmdlets {
   Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.DatabasesToRestore[0].DatabaseName $databaseName
   Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.DatabasesToRestore[0].CollectionNames[0] $collectionName1
 
-  # Assert public network acccess is disabled
+  # Assert public network access is disabled
   Assert-AreEqual $restoredCosmosDBAccount.PublicNetworkAccess $publicNetworkAccess
 }

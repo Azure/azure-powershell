@@ -86,7 +86,7 @@ testblob4            BlockBlob 2024            application/octet-stream       20
 ```
 
 This command lists all blobs in a storage account, which contains a tag with name "tag1" and value "value1"， and get the blob properties.
-Please note, to get blob properties with parameter -GetBlobProperty, each blob will need an addtional request, so the cmdlet runs show when there are many blobs.
+Please note, to get blob properties with parameter -GetBlobProperty, each blob will need an additional request, so the cmdlet runs show when there are many blobs.
 
 ## PARAMETERS
 
@@ -182,7 +182,7 @@ Accept wildcard characters: False
 ```
 
 ### -GetBlobProperty
-As the blobs get by tag don't contain blob proeprties, specify tis parameter to get blob properties with an additional request on each blob.
+As the blobs get by tag don't contain blob properties, specify tis parameter to get blob properties with an additional request on each blob.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -24,8 +24,8 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>]
  [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
  [-GatewayCustomBgpIpAddress <PSGatewayCustomBgpIpConfiguration[]>] [-AsJob] [-ExpressRouteGatewayBypass]
- [-EnablePrivateLinkFastPath] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EnablePrivateLinkFastPath] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -39,8 +39,8 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>]
  [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
  [-GatewayCustomBgpIpAddress <PSGatewayCustomBgpIpConfiguration[]>] [-AsJob] [-ExpressRouteGatewayBypass]
- [-EnablePrivateLinkFastPath] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EnablePrivateLinkFastPath] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +79,7 @@ New-AzVirtualNetworkGatewayConnection -ResourceGroupName "PS_testing" -name "Con
 ```
 
 The two command gets a local network gateway and virtual network gateway.
-The thrid command creates a AzGatewayCustomBgpIpConfigurationObject.
+The third command creates a AzGatewayCustomBgpIpConfigurationObject.
 The third command creates this new virtual Network gateway connection with GatewayCustomBgpIpAddress.
 
 ## PARAMETERS

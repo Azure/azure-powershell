@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.0.0
 * Upgraded Api version to 2025-04-15
 * Added support for cipher
 * Added support for migration from classic cdn to afdx

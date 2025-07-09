@@ -57,7 +57,7 @@ Global   ContosoAcsResource5 6/09/2024 4:41:40 AM contosouser5@microsoft.com  Us
 
 Returns a list of all ACS resources under that subscription.
 
-### Example 2: Get infomation on specified Azure Communication resource
+### Example 2: Get information on specified Azure Communication resource
 ```powershell
 Get-AzCommunicationService -Name ContosoAcsResource34 -ResourceGroupName ContosoResourceProvider1
 ```
@@ -90,7 +90,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
@@ -160,7 +159,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceResource
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceResource
 
 ## NOTES
 

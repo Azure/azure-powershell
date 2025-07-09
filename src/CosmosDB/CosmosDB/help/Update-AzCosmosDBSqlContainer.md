@@ -20,7 +20,7 @@ Update-AzCosmosDBSqlContainer -ResourceGroupName <String> -AccountName <String> 
  [-AutoscaleMaxThroughput <Int32>] [-TtlInSeconds <Int32>] [-UniqueKeyPolicy <PSSqlUniqueKeyPolicy>]
  [-ConflictResolutionPolicyMode <String>] [-ConflictResolutionPolicyPath <String>]
  [-ConflictResolutionPolicyProcedure <String>] [-ConflictResolutionPolicy <PSSqlConflictResolutionPolicy>]
- [-AnalyticalStorageTtl <Int32>] [-MaterializedViewDefinition <PSMaterializedViewDefinition>]
+ [-vectorEmbeddingPolicy <PSSqlVectorEmbeddingPolicy>] [-AnalyticalStorageTtl <Int32>] [-MaterializedViewDefinition <PSMaterializedViewDefinition>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,7 +31,8 @@ Update-AzCosmosDBSqlContainer [-Name <String>] [-IndexingPolicy <PSSqlIndexingPo
  [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>] [-TtlInSeconds <Int32>]
  [-UniqueKeyPolicy <PSSqlUniqueKeyPolicy>] [-ConflictResolutionPolicyMode <String>]
  [-ConflictResolutionPolicyPath <String>] [-ConflictResolutionPolicyProcedure <String>]
- [-ConflictResolutionPolicy <PSSqlConflictResolutionPolicy>] -ParentObject <PSSqlDatabaseGetResults>
+ [-ConflictResolutionPolicy <PSSqlConflictResolutionPolicy>]
+ [-vectorEmbeddingPolicy <PSSqlVectorEmbeddingPolicy>] -ParentObject <PSSqlDatabaseGetResults>
  [-AnalyticalStorageTtl <Int32>] [-MaterializedViewDefinition <PSMaterializedViewDefinition>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -43,7 +44,8 @@ Update-AzCosmosDBSqlContainer [-Name <String>] [-IndexingPolicy <PSSqlIndexingPo
  [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>] [-TtlInSeconds <Int32>]
  [-UniqueKeyPolicy <PSSqlUniqueKeyPolicy>] [-ConflictResolutionPolicyMode <String>]
  [-ConflictResolutionPolicyPath <String>] [-ConflictResolutionPolicyProcedure <String>]
- [-ConflictResolutionPolicy <PSSqlConflictResolutionPolicy>] [-AnalyticalStorageTtl <Int32>]
+ [-ConflictResolutionPolicy <PSSqlConflictResolutionPolicy>]
+ [-vectorEmbeddingPolicy <PSSqlVectorEmbeddingPolicy>] [-AnalyticalStorageTtl <Int32>]
  -InputObject <PSSqlContainerGetResults> [-MaterializedViewDefinition <PSMaterializedViewDefinition>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -221,21 +223,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -VectorEmbeddingPolicy
-VectorEmbedding Policy Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlVectorEmbeddingPolicy.
-
-```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorEmbeddingPolicy
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Sql Container object.
 
@@ -395,6 +382,21 @@ UniqueKeyPolicy Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlUniqueKeyP
 
 ```yaml
 Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlUniqueKeyPolicy
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -vectorEmbeddingPolicy
+VectorEmbedding Policy Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlVectorEmbeddingPolicy.
+
+```yaml
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorEmbeddingPolicy
 Parameter Sets: (All)
 Aliases:
 

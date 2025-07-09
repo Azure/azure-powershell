@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create an identity in the specified subscription and resource group.
+Create an identity in the specified subscription and resource group.
 .Description
-create an identity in the specified subscription and resource group.
+Create an identity in the specified subscription and resource group.
 .Example
 New-AzUserAssignedIdentity -ResourceGroupName azure-rg-test -Name uai-pwsh01 -Location eastus
 

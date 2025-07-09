@@ -50,7 +50,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserprojectability
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserprojectability
 #>
 function Get-AzDevCenterUserProjectAbility {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IProjectAbilities])]

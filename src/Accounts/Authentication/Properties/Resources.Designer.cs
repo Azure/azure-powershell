@@ -286,6 +286,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The scope of authenticating for SSH is not set. Please run &quot;Set-AzEnvironment -Name {0} -SshAuthScope ...&quot; to set it first..
+        /// </summary>
+        public static string ErrorSshAuthScopeNotSet {
+            get {
+                return ResourceManager.GetString("ErrorSshAuthScopeNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your Microsoft Azure credential in the Windows PowerShell session has expired. Please log in again. In PowerShell, execute Connect-AzAccount..
         /// </summary>
         public static string ExpiredRefreshToken {

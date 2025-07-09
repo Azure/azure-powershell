@@ -25,6 +25,12 @@ Remove-AzMobileNetworkSimPolicy -InputObject <IMobileNetworkIdentity> [-DefaultP
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityMobileNetwork
+```
+Remove-AzMobileNetworkSimPolicy -MobileNetworkInputObject <IMobileNetworkIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Deletes the specified SIM policy.
 
@@ -72,11 +78,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MobileNetworkInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: DeleteViaIdentityMobileNetwork
 Aliases:
 
 Required: True
@@ -106,7 +126,7 @@ The name of the SIM policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityMobileNetwork
 Aliases: SimPolicyName
 
 Required: True

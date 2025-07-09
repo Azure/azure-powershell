@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.IotCentral.Common
         public SwitchParameter AsJob { get; set; }
 
         /// <summary>
-        /// Uses the applicable parameter group to set the Name and ResouceName for the current execution.
+        /// Uses the applicable parameter group to set the Name and ResourceName for the current execution.
         /// </summary>
         protected void SetNameAndResourceGroup()
         {

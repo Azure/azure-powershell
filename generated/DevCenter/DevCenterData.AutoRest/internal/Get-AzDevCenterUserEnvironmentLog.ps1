@@ -50,7 +50,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserenvironmentlog
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmentlog
 #>
 function Get-AzDevCenterUserEnvironmentLog {
 [OutputType([System.String])]

@@ -83,7 +83,7 @@ namespace Common.Authentication.Test
         public void LoginWithServicePrincipal()
         {
             // REQUIRED:
-            // _tenantId --> Id of the tenant that the service princinpal is registered to
+            // _tenantId --> Id of the tenant that the service principal is registered to
             // _userName --> Application id of the service principal
             // _password --> Secret of the service principal
             _account = new AzureAccount() { Type = AzureAccount.AccountType.ServicePrincipal };

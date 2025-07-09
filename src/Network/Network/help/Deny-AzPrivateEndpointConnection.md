@@ -21,8 +21,8 @@ Deny-AzPrivateEndpointConnection [-Description <String>] -ResourceId <String>
 ### ByResource
 ```
 Deny-AzPrivateEndpointConnection -Name <String> [-Description <String>] -ResourceGroupName <String>
- -ServiceName <String> [-DefaultProfile <IAzureContextContainer>] -PrivateLinkResourceType <String>
- [<CommonParameters>]
+ -ServiceName <String> [-DefaultProfile <IAzureContextContainer>]
+ -PrivateLinkResourceType <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION

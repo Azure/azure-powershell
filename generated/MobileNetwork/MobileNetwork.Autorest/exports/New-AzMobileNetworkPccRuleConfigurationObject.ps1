@@ -25,23 +25,23 @@ $ServiceDataFlowTemplate = New-AzMobileNetworkServiceDataFlowTemplateObject -Dir
 New-AzMobileNetworkPccRuleConfigurationObject -RuleName azps-mn-service-rule -RulePrecedence 0 -ServiceDataFlowTemplate $ServiceDataFlowTemplate -TrafficControl 'Enabled' -RuleQoPolicyPreemptionVulnerability 'Preemptable' -RuleQoPolicyPreemptionCapability 'NotPreempt' -RuleQoPolicyAllocationAndRetentionPriorityLevel 9 -RuleQoPolicyMaximumBitRateDownlink "1 Gbps" -RuleQoPolicyMaximumBitRateUplink "500 Mbps"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PccRuleConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PccRuleConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 SERVICEDATAFLOWTEMPLATE <IServiceDataFlowTemplate[]>: The set of data flow templates to use for this data flow policy rule.
-  Direction <SdfDirection>: The direction of this flow.
-  Protocol <String[]>: A list of the allowed protocol(s) for this flow. If you want this flow to be able to use any protocol within the internet protocol suite, use the value `ip`. If you only want to allow a selection of protocols, you must use the corresponding IANA Assigned Internet Protocol Number for each protocol, as described in https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml. For example, for UDP, you must use 17. If you use the value `ip` then you must leave the field `port` unspecified.
-  RemoteIPList <String[]>: The remote IP address(es) to which UEs will connect for this flow. If you want to allow connections on any IP address, use the value 'any'. Otherwise, you must provide each of the remote IP addresses to which the packet core instance will connect for this flow. You must provide each IP address in CIDR notation, including the netmask (for example, 192.0.2.54/24).
+  Direction <String>: The direction of this flow.
+  Protocol <List<String>>: A list of the allowed protocol(s) for this flow. If you want this flow to be able to use any protocol within the internet protocol suite, use the value `ip`. If you only want to allow a selection of protocols, you must use the corresponding IANA Assigned Internet Protocol Number for each protocol, as described in https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml. For example, for UDP, you must use 17. If you use the value `ip` then you must leave the field `port` unspecified.
+  RemoteIPList <List<String>>: The remote IP address(es) to which UEs will connect for this flow. If you want to allow connections on any IP address, use the value 'any'. Otherwise, you must provide each of the remote IP addresses to which the packet core instance will connect for this flow. You must provide each IP address in CIDR notation, including the netmask (for example, 192.0.2.54/24).
   TemplateName <String>: The name of the data flow template. This must be unique within the parent data flow policy rule. You must not use any of the following reserved strings - 'default', 'requested' or 'service'.
-  [Port <String[]>]: The port(s) to which UEs will connect for this flow. You can specify zero or more ports or port ranges. If you specify one or more ports or port ranges then you must specify a value other than `ip` in the `protocol` field. This is an optional setting. If you do not specify it then connections will be allowed on all ports. Port ranges must be specified as <FirstPort>-<LastPort>. For example: [`8080`, `8082-8085`].
+  [Port <List<String>>]: The port(s) to which UEs will connect for this flow. You can specify zero or more ports or port ranges. If you specify one or more ports or port ranges then you must specify a value other than `ip` in the `protocol` field. This is an optional setting. If you do not specify it then connections will be allowed on all ports. Port ranges must be specified as <FirstPort>-<LastPort>. For example: [`8080`, `8082-8085`].
 .Link
-https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkPccRuleConfigurationObject
+https://learn.microsoft.com/powershell/module/Az.MobileNetwork/new-azmobilenetworkpccruleconfigurationobject
 #>
 function New-AzMobileNetworkPccRuleConfigurationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PccRuleConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PccRuleConfiguration])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -62,9 +62,8 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IServiceDataFlowTemplate[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IServiceDataFlowTemplate[]]
     # The set of data flow templates to use for this data flow policy rule.
-    # To construct, see NOTES section for SERVICEDATAFLOWTEMPLATE properties and create a hash table.
     ${ServiceDataFlowTemplate},
 
     [Parameter()]
@@ -92,11 +91,9 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.Int32]
-    # QoS Flow 5G QoS Indicator value.
+    # 5G QoS Flow Indicator value.
     # The 5QI identifies a specific QoS forwarding treatment to be provided to a flow.
-    # This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow.
-    # The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85.
-    # See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+    # See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
     ${RuleQoPolicyFiveQi},
 
     [Parameter()]
@@ -112,27 +109,27 @@ param(
     ${RuleQoPolicyMaximumBitRateUplink},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionCapability])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("NotPreempt", "MayPreempt")]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionCapability]
+    [System.String]
     # QoS Flow preemption capability.
     # The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level.
     # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
     ${RuleQoPolicyPreemptionCapability},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("NotPreemptable", "Preemptable")]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability]
+    [System.String]
     # QoS Flow preemption vulnerability.
     # The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level.
     # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
     ${RuleQoPolicyPreemptionVulnerability},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.TrafficControlPermission])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("Enabled", "Blocked")]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.TrafficControlPermission]
+    [System.String]
     # Determines whether flows that match this data flow policy rule are permitted.
     ${TrafficControl}
 )
@@ -144,6 +141,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -172,6 +172,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

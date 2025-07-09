@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubObject,
-            HelpMessage = "Name of therouting intent resource.")]
+            HelpMessage = "Name of the routing intent resource.")]
         public string Name { get; set; }
 
         [Alias("VirtualHub", "ParentVirtualHub")]
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            // this will thorw if hub does not exist.
+            // this will throw if hub does not exist.
             IsParentVirtualHubPresent(this.ResourceGroupName, this.ParentResourceName);
 
             ConfirmAction(

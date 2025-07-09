@@ -87,11 +87,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         protected virtual void CollectTelemetry(TokenCredential credential, TokenCredentialOptions options = null)
         {
             telemetry.TokenCredentialName = credential?.GetType()?.Name;
-            if (options != null)
-            {
-                telemetry.SetProperty(AuthTelemetryRecord.TokenCacheEnabled, CheckTokenCachePersistanceEnabled().ToString());
-                telemetry.SetProperty(nameof(TokenCredentialOptions), options.GetType()?.Name);
-            }
+            telemetry.SetProperty(AuthTelemetryRecord.TokenCacheEnabled, CheckTokenCachePersistanceEnabled().ToString());
+            telemetry.SetProperty(nameof(TokenCredentialOptions), options?.GetType()?.Name);
         }
 
         protected Func<bool> CheckTokenCachePersistanceEnabled = () => { return false; };

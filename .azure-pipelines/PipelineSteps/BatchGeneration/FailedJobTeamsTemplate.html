@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <h1 style="color: #FF0000; font-size: 24px; font-weight: bold;">Pipeline Failure Alert 🚨</h1>
+    <p style="font-size: 18px;">The pipeline **{{ pipelineName }}** has failed.</p>
+    <p style="font-size: 16px;">You can review the details at the following links:</p>
+    <ul style="list-style-type: none; padding-left: 0;">
+        <li style="font-size: 16px; margin: 10px 0;">
+            <a href="{{ pipelineUrl }}" style="color: #0078D4; text-decoration: none;">📝 Pipeline Overview</a>
+        </li>
+        <li style="font-size: 16px; margin: 10px 0;">
+            <a href="{{ runUrl }}" style="color: #0078D4; text-decoration: none;">❌ Failed Run Details</a>
+        </li>
+    </ul>
+    <hr style="border: none; height: 1px; background-color: #0078D4; margin: 20px 0;">
+    <p style="font-size: 16px;">Please check and address the issue as soon as possible.</p>
+    <p style="font-size: 16px; margin-top: 20px; font-style: italic;">Sincerely,</p>
+    <p style="font-size: 16px; font-weight: bold;">Your Azure CLI Tools Team</p>
+</body>
+
+</html>

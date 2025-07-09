@@ -76,21 +76,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_packetCoreControlPlaneName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("packetCoreControlPlaneName"), out var __jsonPacketCoreControlPlaneName) ? (string)__jsonPacketCoreControlPlaneName : (string)PacketCoreControlPlaneName;}
-            {_packetCoreDataPlaneName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("packetCoreDataPlaneName"), out var __jsonPacketCoreDataPlaneName) ? (string)__jsonPacketCoreDataPlaneName : (string)PacketCoreDataPlaneName;}
-            {_attachedDataNetworkName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("attachedDataNetworkName"), out var __jsonAttachedDataNetworkName) ? (string)__jsonAttachedDataNetworkName : (string)AttachedDataNetworkName;}
-            {_mobileNetworkName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("mobileNetworkName"), out var __jsonMobileNetworkName) ? (string)__jsonMobileNetworkName : (string)MobileNetworkName;}
-            {_dataNetworkName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("dataNetworkName"), out var __jsonDataNetworkName) ? (string)__jsonDataNetworkName : (string)DataNetworkName;}
-            {_versionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("versionName"), out var __jsonVersionName) ? (string)__jsonVersionName : (string)VersionName;}
-            {_serviceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("serviceName"), out var __jsonServiceName) ? (string)__jsonServiceName : (string)ServiceName;}
-            {_simGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("simGroupName"), out var __jsonSimGroupName) ? (string)__jsonSimGroupName : (string)SimGroupName;}
-            {_simName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("simName"), out var __jsonSimName) ? (string)__jsonSimName : (string)SimName;}
-            {_simPolicyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("simPolicyName"), out var __jsonSimPolicyName) ? (string)__jsonSimPolicyName : (string)SimPolicyName;}
-            {_siteName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("siteName"), out var __jsonSiteName) ? (string)__jsonSiteName : (string)SiteName;}
-            {_sliceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("sliceName"), out var __jsonSliceName) ? (string)__jsonSliceName : (string)SliceName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_packetCoreControlPlaneName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("packetCoreControlPlaneName"), out var __jsonPacketCoreControlPlaneName) ? (string)__jsonPacketCoreControlPlaneName : (string)_packetCoreControlPlaneName;}
+            {_packetCoreDataPlaneName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("packetCoreDataPlaneName"), out var __jsonPacketCoreDataPlaneName) ? (string)__jsonPacketCoreDataPlaneName : (string)_packetCoreDataPlaneName;}
+            {_attachedDataNetworkName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("attachedDataNetworkName"), out var __jsonAttachedDataNetworkName) ? (string)__jsonAttachedDataNetworkName : (string)_attachedDataNetworkName;}
+            {_mobileNetworkName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("mobileNetworkName"), out var __jsonMobileNetworkName) ? (string)__jsonMobileNetworkName : (string)_mobileNetworkName;}
+            {_dataNetworkName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("dataNetworkName"), out var __jsonDataNetworkName) ? (string)__jsonDataNetworkName : (string)_dataNetworkName;}
+            {_versionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("versionName"), out var __jsonVersionName) ? (string)__jsonVersionName : (string)_versionName;}
+            {_serviceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("serviceName"), out var __jsonServiceName) ? (string)__jsonServiceName : (string)_serviceName;}
+            {_simGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("simGroupName"), out var __jsonSimGroupName) ? (string)__jsonSimGroupName : (string)_simGroupName;}
+            {_simName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("simName"), out var __jsonSimName) ? (string)__jsonSimName : (string)_simName;}
+            {_simPolicyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("simPolicyName"), out var __jsonSimPolicyName) ? (string)__jsonSimPolicyName : (string)_simPolicyName;}
+            {_siteName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("siteName"), out var __jsonSiteName) ? (string)__jsonSiteName : (string)_siteName;}
+            {_sliceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("sliceName"), out var __jsonSliceName) ? (string)__jsonSliceName : (string)_sliceName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

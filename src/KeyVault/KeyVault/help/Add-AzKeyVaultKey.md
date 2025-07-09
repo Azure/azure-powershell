@@ -135,7 +135,7 @@ in the Key Vault REST API documentation.
 Note: To import a key from your own hardware security module, you must first generate a BYOK
 package (a file with a .byok file name extension) by using the Azure Key Vault BYOK toolset. For
 more information, see
-[How to Generate and Transfer HSM-Protected Keys for Azure Key Vault](http://go.microsoft.com/fwlink/?LinkId=522252).
+[How to Generate and Transfer HSM-Protected Keys for Azure Key Vault](/azure/key-vault/keys/hsm-protected-keys).
 As a best practice, back up your key after it is created or updated, by using the
 Backup-AzKeyVaultKey cmdlet. There is no undelete functionality, so if you accidentally delete
 your key or delete it and then change your mind, the key is not recoverable unless you have a
@@ -274,7 +274,7 @@ This command imports the key named ITByok from the location that the *KeyFilePat
 specifies. The imported key is an HSM-protected key.
 To import a key from your own hardware security module, you must first generate a BYOK package (a file with a .byok file name extension) by using the Azure Key Vault BYOK toolset.
 For more information, see
-[How to Generate and Transfer HSM-Protected Keys for Azure Key Vault](http://go.microsoft.com/fwlink/?LinkId=522252).
+[How to Generate and Transfer HSM-Protected Keys for Azure Key Vault](/azure/key-vault/keys/hsm-protected-keys).
 
 ### Example 6: Import a software-protected key
 ```powershell
@@ -512,7 +512,7 @@ Accept wildcard characters: False
 ```
 
 ### -Expires
-Specifies the expiration time of the key in UTC, as a **DateTime** object, for the key that this cmdlet adds. If not specified, key will not expire. To obtain a **DateTime** object, use the **Get-Date** cmdlet. For more information, type `Get-Help Get-Date`. Please notice that expirys is ignored for Key Exchange Key used in BYOK process.
+Specifies the expiration time of the key in UTC, as a **DateTime** object, for the key that this cmdlet adds. If not specified, key will not expire. To obtain a **DateTime** object, use the **Get-Date** cmdlet. For more information, type `Get-Help Get-Date`. Please notice that expires is ignored for Key Exchange Key used in BYOK process.
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]

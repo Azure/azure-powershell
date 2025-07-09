@@ -76,16 +76,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_providerNamespace = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Json.JsonString>("providerNamespace"), out var __jsonProviderNamespace) ? (string)__jsonProviderNamespace : (string)ProviderNamespace;}
-            {_rolloutName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Json.JsonString>("rolloutName"), out var __jsonRolloutName) ? (string)__jsonRolloutName : (string)RolloutName;}
-            {_notificationRegistrationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Json.JsonString>("notificationRegistrationName"), out var __jsonNotificationRegistrationName) ? (string)__jsonNotificationRegistrationName : (string)NotificationRegistrationName;}
-            {_resourceType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Json.JsonString>("resourceType"), out var __jsonResourceType) ? (string)__jsonResourceType : (string)ResourceType;}
-            {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Json.JsonString>("sku"), out var __jsonSku) ? (string)__jsonSku : (string)Sku;}
-            {_nestedResourceTypeFirst = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Json.JsonString>("nestedResourceTypeFirst"), out var __jsonNestedResourceTypeFirst) ? (string)__jsonNestedResourceTypeFirst : (string)NestedResourceTypeFirst;}
-            {_nestedResourceTypeSecond = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Json.JsonString>("nestedResourceTypeSecond"), out var __jsonNestedResourceTypeSecond) ? (string)__jsonNestedResourceTypeSecond : (string)NestedResourceTypeSecond;}
-            {_nestedResourceTypeThird = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Json.JsonString>("nestedResourceTypeThird"), out var __jsonNestedResourceTypeThird) ? (string)__jsonNestedResourceTypeThird : (string)NestedResourceTypeThird;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_providerNamespace = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Json.JsonString>("providerNamespace"), out var __jsonProviderNamespace) ? (string)__jsonProviderNamespace : (string)_providerNamespace;}
+            {_rolloutName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Json.JsonString>("rolloutName"), out var __jsonRolloutName) ? (string)__jsonRolloutName : (string)_rolloutName;}
+            {_notificationRegistrationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Json.JsonString>("notificationRegistrationName"), out var __jsonNotificationRegistrationName) ? (string)__jsonNotificationRegistrationName : (string)_notificationRegistrationName;}
+            {_resourceType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Json.JsonString>("resourceType"), out var __jsonResourceType) ? (string)__jsonResourceType : (string)_resourceType;}
+            {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Json.JsonString>("sku"), out var __jsonSku) ? (string)__jsonSku : (string)_sku;}
+            {_nestedResourceTypeFirst = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Json.JsonString>("nestedResourceTypeFirst"), out var __jsonNestedResourceTypeFirst) ? (string)__jsonNestedResourceTypeFirst : (string)_nestedResourceTypeFirst;}
+            {_nestedResourceTypeSecond = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Json.JsonString>("nestedResourceTypeSecond"), out var __jsonNestedResourceTypeSecond) ? (string)__jsonNestedResourceTypeSecond : (string)_nestedResourceTypeSecond;}
+            {_nestedResourceTypeThird = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Json.JsonString>("nestedResourceTypeThird"), out var __jsonNestedResourceTypeThird) ? (string)__jsonNestedResourceTypeThird : (string)_nestedResourceTypeThird;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

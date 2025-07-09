@@ -76,14 +76,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)Location;}
-            {_operationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("operationId"), out var __jsonOperationId) ? (string)__jsonOperationId : (string)OperationId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_cacheName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("cacheName"), out var __jsonCacheName) ? (string)__jsonCacheName : (string)CacheName;}
-            {_storageTargetName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("storageTargetName"), out var __jsonStorageTargetName) ? (string)__jsonStorageTargetName : (string)StorageTargetName;}
-            {_amlFilesystemName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("amlFilesystemName"), out var __jsonAmlFilesystemName) ? (string)__jsonAmlFilesystemName : (string)AmlFilesystemName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_amlFilesystemName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("amlFilesystemName"), out var __jsonAmlFilesystemName) ? (string)__jsonAmlFilesystemName : (string)_amlFilesystemName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 
@@ -107,11 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
                 return container;
             }
             AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
-            AddIf( null != (((object)this._location)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString(this._location.ToString()) : null, "location" ,container.Add );
-            AddIf( null != (((object)this._operationId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString(this._operationId.ToString()) : null, "operationId" ,container.Add );
             AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
-            AddIf( null != (((object)this._cacheName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString(this._cacheName.ToString()) : null, "cacheName" ,container.Add );
-            AddIf( null != (((object)this._storageTargetName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString(this._storageTargetName.ToString()) : null, "storageTargetName" ,container.Add );
             AddIf( null != (((object)this._amlFilesystemName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString(this._amlFilesystemName.ToString()) : null, "amlFilesystemName" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);

@@ -971,5 +971,21 @@
   {
     "alias": "Carbon",
     "module": "Carbon"
+  },
+  {
+    "alias": "MongoDB",
+    "module": "MongoDB"
+  },
+  {
+    "module": "DependencyMap",
+    "alias": "DependencyMap"
+  },
+  {
+    "alias": "DataTransfer",
+    "module": "DataTransfer"
+  },
+  {
+    "alias": "CloudHsm",
+    "module": "CloudHsm"
   }
 ]

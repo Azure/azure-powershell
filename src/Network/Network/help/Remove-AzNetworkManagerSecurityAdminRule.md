@@ -15,8 +15,8 @@ Removes a security admin rule.
 ```
 Remove-AzNetworkManagerSecurityAdminRule -Name <String> -RuleCollectionName <String>
  -SecurityAdminConfigurationName <String> -NetworkManagerName <String> -ResourceGroupName <String>
- [-ForceDelete] [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ForceDelete] [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

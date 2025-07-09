@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MobileNetwork
-online version: https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkServiceDataFlowTemplateObject
+online version: https://learn.microsoft.com/powershell/module/Az.MobileNetwork/new-azmobilenetworkservicedataflowtemplateobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Create an in-memory object for ServiceDataFlowTemplate.
 ## SYNTAX
 
 ```
-New-AzMobileNetworkServiceDataFlowTemplateObject -Direction <SdfDirection> -Protocol <String[]>
+New-AzMobileNetworkServiceDataFlowTemplateObject -Direction <String> -Protocol <String[]>
  -RemoteIPList <String[]> -TemplateName <String> [-Port <String[]>] [<CommonParameters>]
 ```
 
@@ -41,7 +41,7 @@ Create an in-memory object for ServiceDataFlowTemplate.
 The direction of this flow.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.SdfDirection
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -134,7 +134,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ServiceDataFlowTemplate
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ServiceDataFlowTemplate
 
 ## NOTES
 
