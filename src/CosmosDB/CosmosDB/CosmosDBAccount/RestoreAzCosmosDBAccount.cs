@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                             sourceAccountToRestore.Location,
                             sourceAccountToRestore.Name,
                             sourceLocation,
-                            utcRestoreDateTime.ToString()).GetAwaiter().GetResult().Body;
+                            utcRestoreDateTime.ToString("u")).GetAwaiter().GetResult().Body;
 
                         restorableResourcesNotFound = restorableResources == null || !restorableResources.Any();
                     }
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                         sourceAccountToRestore.Location,
                         sourceAccountToRestore.Name,
                         sourceLocation,
-                        utcRestoreDateTime.ToString()).GetAwaiter().GetResult().Body;
+                        utcRestoreDateTime.ToString("u")).GetAwaiter().GetResult().Body;
 
                         restorableResourcesNotFound = restorableResources == null || !restorableResources.Any();
                     }
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                         sourceAccountToRestore.Location,
                         sourceAccountToRestore.Name,
                         sourceLocation,
-                        utcRestoreDateTime.ToString()).GetAwaiter().GetResult().Body;
+                        utcRestoreDateTime.ToString("u")).GetAwaiter().GetResult().Body;
 
                         restorableResourcesNotFound = restorableResources == null || !restorableResources.Any();
                     }
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                         sourceAccountToRestore.Location,
                         sourceAccountToRestore.Name,
                         sourceLocation,
-                        utcRestoreDateTime.ToString()).GetAwaiter().GetResult().Body;
+                        utcRestoreDateTime.ToString("u")).GetAwaiter().GetResult().Body;
 
                         restorableResourcesNotFound = restorableResources == null || !restorableResources.Any();
                     }
