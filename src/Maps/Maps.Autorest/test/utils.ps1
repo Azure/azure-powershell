@@ -31,19 +31,33 @@ function Start-TestSleep {
 }
 
 $env = @{}
-if ($UsePreviousConfigForRecord) {
-    $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
-    $previousEnv.psobject.properties | Foreach-Object { $env[$_.Name] = $_.Value }
-}
-# Add script method called AddWithCache to $env, when useCache is set true, it will try to get the value from the $env first.
-# example: $val = $env.AddWithCache('key', $val, $true)
-$env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } } -Name 'AddWithCache'
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
+    $env.location = 'westcentralus'
+    $env.creatorLocation = 'eastus2'
     # For any resources you created for test, you should add it to $env here.
+    $env.resourceGroup = 'maps-rg-' + (RandomString -allChars $false -len 6)
+
+    $env.mapsName01 = 'maps'+(RandomString -allChars $false -len 6)
+    $env.mapsName02 = 'maps'+(RandomString -allChars $false -len 6)
+    $env.mapsName03 = 'maps'+(RandomString -allChars $false -len 6)
+
+    $env.creatorName01 = 'creator'+(RandomString -allChars $false -len 6)
+    $env.creatorName02 = 'creator'+(RandomString -allChars $false -len 6)
+    $env.creatorName03 = 'creator'+(RandomString -allChars $false -len 6)
+
+    # Create resource group for test.
+    Write-Host -ForegroundColor Green "Create resource group for test."
+    New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
+
+    # Create resources for test.
+    Write-Host -ForegroundColor Green "Create maps account for test"
+    New-AzMapsAccount -ResourceGroupName $env.resourceGroup -Name $env.mapsName01 -SkuName G2 -Location $env.location
+    New-AzMapsAccount -ResourceGroupName $env.resourceGroup -Name $env.mapsName02 -SkuName G2 -Location $env.location
+    
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -52,5 +66,5 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }
-
