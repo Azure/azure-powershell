@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwareGlobalReachConnection
 
 ## SYNOPSIS
-create a GlobalReachConnection
+Create a GlobalReachConnection
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ New-AzVMwareGlobalReachConnection -InputObject <IVMwareIdentity> [-Authorization
 ```
 
 ## DESCRIPTION
-create a GlobalReachConnection
+Create a GlobalReachConnection
 
 ## EXAMPLES
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpressRouteId
-The ID of the Private Cloud's ExpressRoute Circuit that is participating in theglobal reach connection
+The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection
 
 ```yaml
 Type: System.String

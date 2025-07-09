@@ -14,7 +14,8 @@ Get Azure Cosmos DB location properties for a specific location.
 ## SYNTAX
 
 ```
-Get-AzCosmosDBLocation [-Location <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzCosmosDBLocation [-Location <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

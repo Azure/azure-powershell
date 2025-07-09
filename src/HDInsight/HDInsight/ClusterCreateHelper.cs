@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             {
                 if (!clusterTypeAndVmSizeDict.TryGetValue(clusterType, out vmSize))
                 {
-                    // backend will use the string "*" to stand for it is applicable for all clsuter type.
+                    // backend will use the string "*" to stand for it is applicable for all cluster type.
                     clusterTypeAndVmSizeDict.TryGetValue(Constants.ClusterType.AllClusterType, out vmSize);
                 }
             }

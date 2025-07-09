@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the applied scopes of the `Reservation`.
+Update the applied scopes of the `Reservation`.
 .Description
-update the applied scopes of the `Reservation`.
+Update the applied scopes of the `Reservation`.
 .Example
 Update-AzReservation -ReservationOrderId "30000000-aaaa-bbbb-cccc-200000000013" -ReservationId "10000000-aaaa-bbbb-cccc-200000000007" -Name "testName"
 .Example

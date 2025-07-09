@@ -46,7 +46,7 @@ Update-AzCosmosDBSqlContainerThroughput -AccountName "myAccountName" -ResourceGr
 
 ```output
 Name                : mxGp
-Id                  : /subscriptions/{mySubscriptionId}/resourceGroups/{myResourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{myAccountName}/sqlDatabases/{myDatabaseName}/conatiners/{myContainerName}/throughputSettings/default
+Id                  : /subscriptions/{mySubscriptionId}/resourceGroups/{myResourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{myAccountName}/sqlDatabases/{myDatabaseName}/containers/{myContainerName}/throughputSettings/default
 Throughput          : {updatedThroughputValue}
 MinimumThroughput   : 400
 OfferReplacePending :

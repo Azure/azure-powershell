@@ -93,7 +93,7 @@ Restarts a server.
 Restarts a server.
 
 ### [Restore-AzPostgreSqlFlexibleServer](Restore-AzPostgreSqlFlexibleServer.md)
-Restore a server from an existing backup
+Restore a PostgreSQL flexible server using Geo-restore
 
 ### [Restore-AzPostgreSqlServer](Restore-AzPostgreSqlServer.md)
 Restore a server from an existing backup

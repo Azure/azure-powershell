@@ -14,7 +14,8 @@ Create a route map rule criterion.
 
 ```
 New-AzRouteMapRuleCriterion -MatchCondition <String> [-RoutePrefix <String[]>] [-Community <String[]>]
- [-AsPath <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsPath <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

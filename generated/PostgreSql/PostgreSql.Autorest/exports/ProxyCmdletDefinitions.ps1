@@ -6742,9 +6742,9 @@ end {
 
 <#
 .Synopsis
-Restore a server from an existing backup
+Restore a PostgreSQL flexible server using Geo-restore
 .Description
-Restore a server from an existing backup
+Restore a PostgreSQL flexible server using Geo-restore
 .Example
 $restorePointInTime = (Get-Date).AddMinutes(-10)
 Restore-AzPostgreSqlFlexibleServer -Name pg-restore -ResourceGroupName PowershellPostgreSqlTest -SourceServerName postgresql-test -RestorePointInTime $restorePointInTime 
@@ -6768,19 +6768,19 @@ param(
     [Alias('ServerName')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
-    # The name of the server.
+    # The name of the server to restore.
     ${Name},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
-    # The name of the resource group that contains the resource, You can obtain this value from the Azure Resource Manager API or the portal.
+    # The name of the resource group that contains the resource.
     ${ResourceGroupName},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
-    # The name of the source server.
+    # The name of the source server to restore from.
     ${SourceServerName},
 
     [Parameter()]
@@ -6796,13 +6796,32 @@ param(
     # The point in time to restore from (ISO8601 format), e.g., 2017-04-26T02:10:00+08:00.
     ${RestorePointInTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='GeoRestore', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Use Geo mode to restore
+    ${UseGeoRestore},
+
+    [Parameter(ParameterSetName='GeoRestore')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+    [System.String]
+    # The name of the sku, typically, tier + family + cores, e.g., B_Gen4_1, GP_Gen5_8.
+    ${Sku},
+
+    [Parameter(ParameterSetName='GeoRestore')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerForCreateTags]))]
+    [System.Collections.Hashtable]
+    # Application-specific metadata in the form of key-value pairs.
+    ${Tag},
+
+    [Parameter(ParameterSetName='PointInTimeRestore')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [System.String]
     # Availability zone into which to provision the resource.
     ${Zone},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='PointInTimeRestore')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [System.String]
     # The id of an existing Subnet the private access server will created to.
@@ -6810,7 +6829,7 @@ param(
     # After delegation, this subnet cannot be used for any other type of Azure resources.
     ${Subnet},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='PointInTimeRestore')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [System.String]
     # The id of an existing private dns zone.
@@ -6901,9 +6920,10 @@ begin {
         }
 
         $mapping = @{
+            GeoRestore = 'Az.PostgreSql.custom\Restore-AzPostgreSqlFlexibleServer_GeoRestore';
             PointInTimeRestore = 'Az.PostgreSql.custom\Restore-AzPostgreSqlFlexibleServer_PointInTimeRestore';
         }
-        if (('PointInTimeRestore') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('GeoRestore', 'PointInTimeRestore') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -7302,6 +7322,13 @@ param(
     # Minimum 8 characters and maximum 128 characters.
     # Password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers, and non-alphanumeric characters.
     ${AdministratorLoginPassword},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+    [System.Int32]
+    # The timeout in seconds for query execution.
+    # Valid range is 1-31536000 seconds.
+    ${Timeout},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]

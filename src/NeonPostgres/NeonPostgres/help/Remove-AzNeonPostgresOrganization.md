@@ -35,7 +35,7 @@ Delete a OrganizationResource
 Remove-AzNeonPostgresOrganization -Name almasTestNeonPS6 -ResourceGroupName NeonDemoRG
 ```
 
-This command will delete a Neon Resource
+This command will delete a Neon Postgres organization resource
 
 ## PARAMETERS
 

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Add-AzWebAppAccessRestrictionRule
 
 ## SYNOPSIS
-Adds an Access Restiction rule to an Azure Web App.
+Adds an Access Restriction rule to an Azure Web App.
 
 ## SYNTAX
 

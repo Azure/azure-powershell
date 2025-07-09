@@ -52,6 +52,54 @@ $newPolicyName = "NewAFSBackupPolicy"
 #		-RetentionPolicy $retentionPolicy `
 #		-SchedulePolicy $schedulePolicy
 
+function Test-AzureFSStopAndResumeProtection
+{
+    $resourceGroupName = "afs-pstest-rg"
+    $vaultName = "afs-pstest-vault"
+    $policyName = "afspolicy1"
+    $storageAccountName = "afspstestsa"
+    $fileShareFriendlyName = "donotuse-powershell-fileshare"
+
+    try
+    {
+        # Get the Recovery Services vault
+        $vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+        Assert-NotNull $vault
+
+        # Get the backup protection policy
+        $policy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $policyName
+        Assert-NotNull $policy
+
+        # Get the backup container
+        $container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureStorage -FriendlyName $storageAccountName -VaultId $vault.ID
+        Assert-NotNull $container
+
+        # Get the backup item
+        $backupItem = Get-AzRecoveryServicesBackupItem -Container $container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName $fileShareFriendlyName
+        Assert-NotNull $backupItem
+		Assert-True { $backupItem.ProtectionState -eq "ProtectionStopped" }
+
+        # Enable protection
+        Enable-AzRecoveryServicesBackupProtection -Item $backupItem -Policy $policy -VaultId $vault.ID
+
+        # Refresh backup item to get updated state
+        $backupItem = Get-AzRecoveryServicesBackupItem -Container $container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName $fileShareFriendlyName
+
+        Assert-True { $backupItem.ProtectionState -eq "IRPending" -or $backupItem.ProtectionState -eq "Protected" }
+    }
+    finally
+    {
+        # Disable protection and assert state
+        Disable-AzRecoveryServicesBackupProtection -Item $backupItem -VaultId $vault.ID -Force
+
+        # Refresh backup item to get updated state
+        $backupItem = Get-AzRecoveryServicesBackupItem -Container $container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName $fileShareFriendlyName
+
+        Assert-True { $backupItem.ProtectionState -eq "ProtectionStopped" }
+    }
+}
+
+
 function Test-AzureFSRestoreToAnotherRegion
 {
 	# testing AFS restore to different region and resource group than the source
@@ -373,7 +421,7 @@ function Test-AzureFSFullRestore
 
 		Assert-True { $restoreJob.Status -eq "Completed" }
     
-		# Test without storage account dependancy
+		# Test without storage account dependency
 		# Item level restore at alternate location
 		$restoreJob1 = Restore-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
@@ -390,7 +438,7 @@ function Test-AzureFSFullRestore
 		
 		Assert-True { $restoreJob1.Status -eq "Completed" }
     
-		# Test without storage account dependancy
+		# Test without storage account dependency
 		# Full share restore at alternate location
 		$restoreJob2 = Restore-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
@@ -404,7 +452,7 @@ function Test-AzureFSFullRestore
 		$restoreJob2 = $restoreJob2 | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 		Assert-True { $restoreJob2.Status -eq "Completed" }
 
-		# Test without storage account dependancy
+		# Test without storage account dependency
 		# Item level restore at original location
 		$restoreJob3 = Restore-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
@@ -418,7 +466,7 @@ function Test-AzureFSFullRestore
 
 		Assert-True { $restoreJob3.Status -eq "Completed" }
 
-		# Test without storage account dependancy
+		# Test without storage account dependency
 		# Full share restore at original location
 		$restoreJob4 = Restore-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `

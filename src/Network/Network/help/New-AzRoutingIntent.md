@@ -15,20 +15,22 @@ Creates a routing intent resource associated with a VirtualHub.
 ### ByVirtualHubName (Default)
 ```
 New-AzRoutingIntent -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
- -RoutingPolicy <PSRoutingPolicy[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -RoutingPolicy <PSRoutingPolicy[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
 New-AzRoutingIntent -ParentObject <PSVirtualHub> -Name <String> -RoutingPolicy <PSRoutingPolicy[]> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
 ```
 New-AzRoutingIntent -ParentResourceId <String> -Name <String> -RoutingPolicy <PSRoutingPolicy[]> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -195,7 +197,7 @@ Accept wildcard characters: False
 ```
 
 ### -RoutingPolicy
-The list of routing policies for this rouoting intent resource.
+The list of routing policies for this routing intent resource.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSRoutingPolicy[]

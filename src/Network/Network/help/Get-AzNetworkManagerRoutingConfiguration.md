@@ -21,7 +21,8 @@ Get-AzNetworkManagerRoutingConfiguration -NetworkManagerName <String> -ResourceG
 ### ByName
 ```
 Get-AzNetworkManagerRoutingConfiguration -Name <String> -NetworkManagerName <String>
- -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByResourceId

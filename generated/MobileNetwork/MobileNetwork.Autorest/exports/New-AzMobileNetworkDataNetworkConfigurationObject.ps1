@@ -25,7 +25,7 @@ $ServiceResourceId = New-AzMobileNetworkServiceResourceIdObject -Id "/subscripti
 New-AzMobileNetworkDataNetworkConfigurationObject -AllowedService $ServiceResourceId -DataNetworkId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/dataNetworks/azps-mn-datanetwork" -SessionAmbrDownlink "1 Gbps" -SessionAmbrUplink "500 Mbps" -FiveQi 9 -AllocationAndRetentionPriorityLevel 9 -DefaultSessionType 'IPv4' -MaximumNumberOfBufferedPacket 200 -PreemptionCapability 'NotPreempt' -PreemptionVulnerability 'Preemptable'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.DataNetworkConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.DataNetworkConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -34,19 +34,18 @@ To create the parameters described below, construct a hash table containing the 
 ALLOWEDSERVICE <IServiceResourceId[]>: List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item. The services must be in the same location as the SIM policy.
   Id <String>: Service resource ID.
 .Link
-https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkDataNetworkConfigurationObject
+https://learn.microsoft.com/powershell/module/Az.MobileNetwork/new-azmobilenetworkdatanetworkconfigurationobject
 #>
 function New-AzMobileNetworkDataNetworkConfigurationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.DataNetworkConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.DataNetworkConfiguration])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IServiceResourceId[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IServiceResourceId[]]
     # List of services that can be used as part of this SIM policy.
     # The list must not contain duplicate items and must contain at least one item.
     # The services must be in the same location as the SIM policy.
-    # To construct, see NOTES section for ALLOWEDSERVICE properties and create a hash table.
     ${AllowedService},
 
     [Parameter(Mandatory)]
@@ -68,9 +67,9 @@ param(
     ${SessionAmbrUplink},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PduSessionType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("IPv4", "IPv6")]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PduSessionType[]]
+    [System.String[]]
     # Allowed session types in addition to the default session type.
     # Must not duplicate the default session type.
     ${AdditionalAllowedSessionType},
@@ -86,20 +85,18 @@ param(
     ${AllocationAndRetentionPriorityLevel},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PduSessionType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("IPv4", "IPv6")]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PduSessionType]
+    [System.String]
     # The default PDU session type, which is used if the UE does not request a specific session type.
     ${DefaultSessionType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.Int32]
-    # Default QoS Flow 5G QoS Indicator value.
+    # Default 5G QoS Flow Indicator value.
     # The 5QI identifies a specific QoS forwarding treatment to be provided to a flow.
-    # This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow.
-    # The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85.
-    # See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+    # See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
     ${FiveQi},
 
     [Parameter()]
@@ -111,18 +108,18 @@ param(
     ${MaximumNumberOfBufferedPacket},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionCapability])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("NotPreempt", "MayPreempt")]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionCapability]
+    [System.String]
     # Default QoS Flow preemption capability.
     # The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level.
     # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
     ${PreemptionCapability},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("NotPreemptable", "Preemptable")]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability]
+    [System.String]
     # Default QoS Flow preemption vulnerability.
     # The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level.
     # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
@@ -136,6 +133,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -164,6 +164,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

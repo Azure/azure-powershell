@@ -25,7 +25,8 @@ New-AzApplicationGatewayListener -Name <String>
 ```
 New-AzApplicationGatewayListener -Name <String> [-FrontendIPConfigurationId <String>]
  [-FrontendPortId <String>] [-SslCertificateId <String>] [-SslProfileId <String>] -Protocol <String>
- [-HostNames <String[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-HostNames <String[]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

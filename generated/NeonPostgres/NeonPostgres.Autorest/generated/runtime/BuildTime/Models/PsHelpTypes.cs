@@ -36,14 +36,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.PowerShell
         public object Role { get; }
         public string NonTerminatingErrors { get; }
 
+        public static string CapitalizeFirstLetter(string text)
+        {
+            if (string.IsNullOrEmpty(text))
+                return text;
+
+            return char.ToUpper(text[0]) + text.Substring(1);
+        }
+
         public PsHelpInfo(PSObject helpObject = null)
         {
             helpObject = helpObject ?? new PSObject();
             CmdletName = helpObject.GetProperty<string>("Name").NullIfEmpty() ?? helpObject.GetNestedProperty<string>("details", "name");
             ModuleName = helpObject.GetProperty<string>("ModuleName");
-            Synopsis = helpObject.GetProperty<string>("Synopsis");
+            Synopsis = CapitalizeFirstLetter(helpObject.GetProperty<string>("Synopsis"));
             Description = helpObject.GetProperty<PSObject[]>("description").EmptyIfNull().ToDescriptionText().NullIfEmpty() ??
                           helpObject.GetNestedProperty<PSObject[]>("details", "description").EmptyIfNull().ToDescriptionText();
+            Description = CapitalizeFirstLetter(Description);
             AlertText = helpObject.GetNestedProperty<PSObject[]>("alertSet", "alert").EmptyIfNull().ToDescriptionText();
             Category = helpObject.GetProperty<string>("Category");
             HasCommonParameters = helpObject.GetProperty<string>("CommonParameters").ToNullableBool();

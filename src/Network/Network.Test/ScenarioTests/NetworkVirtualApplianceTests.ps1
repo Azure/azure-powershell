@@ -82,6 +82,32 @@ function Test-NetworkVirtualApplianceCRUD
 
 <#
 .SYNOPSIS
+Test Get Saas NetworkVirtualAppliance
+#>
+function Test-SaasNetworkVirtualApplianceGet
+{
+    $rgname = Get-ResourceGroupName
+
+    # The commands are not supported in all regions yet.
+    $rgName = "rsapt-test"
+    $location = "australiaeast"
+    $nvaname = "test-nva5"
+    $wanname = "wan-test"
+    $hubname = "hubtest"
+    $resourceTypeParent = "Microsoft.Network/networkVirtualAppliance"
+    try{
+        $hub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $hubname
+        $getnva = Get-AzNetworkVirtualAppliance -ResourceGroupName  $rgName -Name $nvaname
+        Assert-NotNull $getnva
+        Assert-NotNull($getnva.PartnerManagedResource) 
+   	}   
+    finally{
+        # Clean up
+	}
+}
+
+<#
+.SYNOPSIS
 Test creating new VirtualApplianceSite
 #>
 function Test-VirtualApplianceSiteCRUD

@@ -61,6 +61,7 @@ https://learn.microsoft.com/powershell/module/az.devcenter/remove-azdevcenteruse
 function Remove-AzDevCenterUserEnvironment {
   [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus])]
   [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+  [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.OutputBreakingChangeAttribute("OperationStatus", "15.0.0", "3.0.0", "2025/11/18", ReplacementCmdletOutputType = "OperationStatus", DeprecatedOutputProperties = ("Property"), NewOutputProperties = ("Property"))]
   param(
       [Parameter(ParameterSetName = 'Delete', Mandatory)]
       [Parameter(ParameterSetName = 'DeleteViaIdentity', Mandatory)]

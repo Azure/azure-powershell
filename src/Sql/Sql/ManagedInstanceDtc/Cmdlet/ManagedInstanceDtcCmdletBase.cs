@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     public abstract class ManagedInstanceDtcCmdletBase : AzureSqlCmdletBase<AzureSqlManagedInstanceDtcModel, AzureSqlManagedInstanceDtcAdapter>
     {
         /// <summary>
-        /// Intializes the model adapter
+        /// Initializes the model adapter
         /// </summary>
         /// <returns>The server adapter</returns>
         protected override AzureSqlManagedInstanceDtcAdapter InitModelAdapter()

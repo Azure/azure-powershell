@@ -62,6 +62,7 @@ https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradminp
 function New-AzDevCenterAdminPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenterPlan])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.GenericBreakingChangeAttribute("The Plan resource will be deprecated", "15.0.0", "3.0.0", "2025/11/18")]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Alias('PlanName')]

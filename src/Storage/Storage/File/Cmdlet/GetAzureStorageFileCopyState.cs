@@ -58,7 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         public SwitchParameter WaitForComplete { get; set; }
 
         /// <summary>
-        /// CloudFile objects which need to mointor until copy complete
+        /// CloudFile objects which need to monitor until copy complete
         /// </summary>
         private ConcurrentQueue<Tuple<long, ShareFileClient>> jobList = new ConcurrentQueue<Tuple<long, ShareFileClient>>();
         private ConcurrentDictionary<long, bool> TaskStatus = new ConcurrentDictionary<long, bool>();

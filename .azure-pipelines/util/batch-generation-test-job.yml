@@ -1,0 +1,60 @@
+parameters:
+  jobName: 'test_windows'
+  OSName: 'Windows'
+  timeoutInMinutes: 60
+  agentPoolName: 'pool-windows-2019'
+  agentPoolVMImage: ''
+  maxParallel: 3
+
+jobs:
+- job: ${{ parameters.jobName }}
+  displayName: "Test ${{ parameters.OSName }}:"
+  dependsOn: 
+    - collect
+  condition: and(
+    ne(stageDependencies.Build.filter.outputs['mtrx.test${{ parameters.OSName }}Targets'], ''),
+    ne(stageDependencies.Build.filter.outputs['mtrx.test${{ parameters.OSName }}Targets'], '{}')
+    )
+  timeoutInMinutes: ${{ parameters.timeoutInMinutes }}
+  pool:
+    name: ${{ parameters.agentPoolName }}
+    ${{ if ne(parameters.agentPoolVMImage, '') }}:
+      vmImage: ${{ parameters.agentPoolVMImage }}
+  strategy:
+    matrix: $[ stageDependencies.Build.filter.outputs['mtrx.test${{ parameters.OSName }}Targets'] ]
+    maxParallel: ${{ parameters.maxParallel }}
+
+  steps:
+  - checkout: self
+    fetchDepth: 1
+    fetchTags: false
+
+  - task: DownloadPipelineArtifact@2
+    inputs:
+      artifact: collect
+      path: $(Build.SourcesDirectory)/artifacts
+    displayName: 'Download collected artifact to artifacts folder'
+
+  - task: UseDotNet@2
+    displayName: 'Use .NET SDK for Test'
+    inputs:
+      packageType: sdk
+      version: 8.x
+      
+  - task: PowerShell@2
+    name: test
+    displayName: 'Test ${{ parameters.OSName }}'
+    inputs:
+      targetType: inline
+      pwsh: true
+      script: |
+        $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-modules.ps1'
+        & $testModulesPath -MatrixKey "$(MatrixKey)" -TestEnvName ${{ parameters.OSName }} -RepoRoot "$(Build.SourcesDirectory)"
+
+  - task: PublishPipelineArtifact@1
+    displayName: 'Save Test ${{ parameters.OSName }} Report'
+    inputs:
+      targetPath: artifacts
+      artifact: 'test${{ parameters.OSName }}-$(MatrixKey)'
+    condition: always()
+    

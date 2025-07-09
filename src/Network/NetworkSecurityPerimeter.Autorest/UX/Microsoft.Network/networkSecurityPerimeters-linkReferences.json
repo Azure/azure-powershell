@@ -1,0 +1,95 @@
+{
+  "resourceType": "networkSecurityPerimeters/linkReferences",
+  "apiVersion": "2024-07-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.network"
+  },
+  "commands": [
+    {
+      "name": "Get-AzNetworkSecurityPerimeterLinkReference",
+      "description": "Gets the specified NSP linkReference resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/linkReferences/{linkReferenceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityperimeterlinkreference"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-SecurityPerimeterName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the specified NSP linkReference resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.linkReferenceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SecurityPerimeterName",
+              "value": "[Path.networkSecurityPerimeterName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzNetworkSecurityPerimeterLinkReference",
+      "description": "Deletes an NSP LinkReference resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/linkReferences/{linkReferenceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.network/remove-aznetworksecurityperimeterlinkreference"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-SecurityPerimeterName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes an NSP LinkReference resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.linkReferenceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SecurityPerimeterName",
+              "value": "[Path.networkSecurityPerimeterName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

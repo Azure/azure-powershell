@@ -102,5 +102,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzApplicationGateway](./Set-AzApplicationGateway.md)
 
 [Start-AzApplicationGateway](./Start-AzApplicationGateway.md)
-
-

@@ -18,7 +18,7 @@ New-AzCosmosDBTableToRestore [-TableName <String[]>] [-DefaultProfile <IAzureCon
 ```
 
 ## DESCRIPTION
-Creates a new CosmosDB TableToRestore object(PSTableToRestore). This returned object can be uses to speficy the subset of tables to restore.
+Creates a new CosmosDB TableToRestore object(PSTableToRestore). This returned object can be used to specify the subset of tables to restore.
 
 ## EXAMPLES
 

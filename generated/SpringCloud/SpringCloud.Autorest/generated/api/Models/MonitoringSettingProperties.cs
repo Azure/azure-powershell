@@ -58,7 +58,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IErrorInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IErrorInternal)Error).Message = value ?? null; }
 
         /// <summary>Internal Acessors for AppInsightAgentVersionJava</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IMonitoringSettingPropertiesInternal.AppInsightAgentVersionJava { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IApplicationInsightsAgentVersionsInternal)AppInsightsAgentVersion).Java; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IApplicationInsightsAgentVersionsInternal)AppInsightsAgentVersion).Java = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IMonitoringSettingPropertiesInternal.AppInsightAgentVersionJava { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IApplicationInsightsAgentVersionsInternal)AppInsightsAgentVersion).Java; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IApplicationInsightsAgentVersionsInternal)AppInsightsAgentVersion).Java = value ?? null; }
 
         /// <summary>Internal Acessors for AppInsightsAgentVersion</summary>
         Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IApplicationInsightsAgentVersions Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IMonitoringSettingPropertiesInternal.AppInsightsAgentVersion { get => (this._appInsightsAgentVersion = this._appInsightsAgentVersion ?? new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ApplicationInsightsAgentVersions()); set { {_appInsightsAgentVersion = value;} } }

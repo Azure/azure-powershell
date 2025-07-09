@@ -456,19 +456,19 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             }
             else if (vm.StorageProfile == null)
             {
-                errorString = "retreived virtual machine does not have storage profile";
+                errorString = "retrieved virtual machine does not have storage profile";
             }
             else if (vm.StorageProfile.OsDisk == null)
             {
-                errorString = "retreived virtual machine does not have an OS disk in the storage profile";
+                errorString = "retrieved virtual machine does not have an OS disk in the storage profile";
             }
             else if (vm.StorageProfile.OsDisk.OsType == null)
             {
-                errorString = "retreived virtual machine does not have an OS type in the storage profile's OS Disk";
+                errorString = "retrieved virtual machine does not have an OS type in the storage profile's OS Disk";
             }
             else if (vm.InstanceView == null)
             {
-                errorString = "could not retreive VM Instance View";
+                errorString = "could not retrieve VM Instance View";
             }
 
             if (errorString != "")

@@ -18,8 +18,4 @@ Describe 'Remove-AzPurviewKeyVaultConnection' {
     It 'Delete' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
-
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

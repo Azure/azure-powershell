@@ -25,7 +25,7 @@ The ACL entries in original ACL, which has same AccessControlType, DefaultScope 
 
 ## EXAMPLES
 
-### Example 1: Remove ACL recursively on a root directiry of filesystem
+### Example 1: Remove ACL recursively on a root directory of filesystem
 <!-- Skip: Output cannot be splitted from code -->
 
 
@@ -112,7 +112,7 @@ echo "ContinuationToken: `t`t`t`t`t$($token)"
 echo "FailedEntries:"$($FailedEntries | ft)
 ```
 
-This script will remove ACL rescursively on directory chunk by chunk, with chunk size as BatchSize * MaxBatchCount. Chunk size is 50000 in this script.
+This script will remove ACL recursively on directory chunk by chunk, with chunk size as BatchSize * MaxBatchCount. Chunk size is 50000 in this script.
 
 ### Example 4: Remove ACL recursively on a directory and ContinueOnFailure, then resume from failures one by one
 <!-- Skip: Output cannot be splitted from code -->
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 ```
 
 ### -ContinueOnFailure
-Set this parameter to ignore failures and continue proceeing with the operation on other sub-entities of the directory. Default the operation will terminate quickly on encountering failures.
+Set this parameter to ignore failures and continue processing with the operation on other sub-entities of the directory. Default the operation will terminate quickly on encountering failures.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

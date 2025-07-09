@@ -20,7 +20,7 @@ New-AzCosmosDBAccount [-EnableAutomaticFailover] [-EnableMultipleWriteLocations]
  [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
  [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
  [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>]
- [-EnableBurstCapacity <Boolean>] [-EnablePriorityBasedExecution <Boolean>] [-DefaultPriorityLevel <String>]
+ [-EnablePartitionMerge <Boolean>] [-EnableBurstCapacity <Boolean>] [-EnablePriorityBasedExecution <Boolean>] [-DefaultPriorityLevel <String>]
  [-AsJob] [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
  [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>] [-BackupStorageRedundancy <String>]
  [-BackupPolicyType <String>] [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-EnablePartitionMerge <Boolean>]
@@ -195,6 +195,7 @@ The tier of continuous backups mode on the Cosmos DB account. Accepted values: C
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
 Required: False
 Position: Named
 Default value: None
@@ -278,11 +279,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnablePartitionMerge
-Bool to indicate if PartitionMerge is enabled on the account.
-Accepted Values: false, true
+### -EnableAutomaticFailover
+Enables automatic failover of the write region in the rare event that the region is unavailable due to an outage.
+Automatic failover will result in a new write region for the account and is chosen based on the failover priorities configured for the account.
+Accepted values: false, true
+
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -293,13 +296,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableAutomaticFailover
-Enables automatic failover of the write region in the rare event that the region is unavailable due to an outage.
-Automatic failover will result in a new write region for the account and is chosen based on the failover priorities configured for the account.
-Accepted values: false, true
+### -EnableBurstCapacity
+Bool to indicate if Burst Capacity is enabled on the account.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -392,6 +393,38 @@ Accepted values: false, true
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnablePartitionMerge
+Bool to indicate if PartitionMerge is enabled on the account.
+Accepted Values: false, true
+
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnablePerRegionPerPartitionAutoscale
+Bool to indicate if Dynamic Scaling (Per Region Per Partition Autoscale) is enabled on the account.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -516,6 +549,21 @@ Accepted range for this value is 1 - 2,147,483,647.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinimalTlsVersion
+Indicates the minimum allowed Tls version. The default value is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2. Possible values include: 'Tls', 'Tls11', 'Tls12'.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

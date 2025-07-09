@@ -20,7 +20,8 @@ Get-AzFirewallPolicyDraft -AzureFirewallPolicyName <String> -ResourceGroupName <
 
 ### GetByResourceIdParameterSet
 ```
-Get-AzFirewallPolicyDraft -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzFirewallPolicyDraft -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByParentInputObjectParameterSet

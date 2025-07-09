@@ -25,12 +25,12 @@ Get-AzConnectedNetworkDeviceRegistrationKey -DeviceName myMecDevice -ResourceGro
 Get-AzConnectedNetworkDeviceRegistrationKey -DeviceName myMecDevice -ResourceGroupName myResources -SubscriptionId xxxxx-00000-xxxxx-00000
 
 .Outputs
-System.String
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IDeviceRegistrationKey
 .Link
 https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkdeviceregistrationkey
 #>
 function Get-AzConnectedNetworkDeviceRegistrationKey {
-[OutputType([System.String])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IDeviceRegistrationKey])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -109,6 +109,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -130,9 +139,7 @@ begin {
         $mapping = @{
             List = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkDeviceRegistrationKey_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -146,6 +153,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -203,7 +213,7 @@ Get-AzConnectedNetworkDevice -InputObject $mecDevice
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IDevice
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IDevice
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -226,7 +236,7 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkdevice
 #>
 function Get-AzConnectedNetworkDevice {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IDevice])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IDevice])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -257,7 +267,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -316,6 +325,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -340,9 +358,7 @@ begin {
             List = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkDevice_List';
             List1 = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkDevice_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -356,6 +372,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -410,12 +429,12 @@ Get-AzConnectedNetworkFunctionVendor
 Get-AzConnectedNetworkFunctionVendor -SubscriptionId "xxxxx-00000-xxxxx-00000"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunctionVendor
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunctionVendor
 .Link
 https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkfunctionvendor
 #>
 function Get-AzConnectedNetworkFunctionVendor {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunctionVendor])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunctionVendor])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -481,6 +500,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -502,9 +530,7 @@ begin {
         $mapping = @{
             List = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkFunctionVendor_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -518,6 +544,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -575,7 +604,7 @@ Get-AzConnectedNetworkFunction -InputObject $vnf
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunction
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunction
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -598,7 +627,7 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkfunction
 #>
 function Get-AzConnectedNetworkFunction {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunction])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -629,7 +658,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -688,6 +716,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -712,9 +749,7 @@ begin {
             List = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkFunction_List';
             List1 = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkFunction_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -728,6 +763,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -785,7 +823,7 @@ Get-AzConnectedNetworkVendorFunctionRoleInstance -InputObject $role
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IRoleInstance
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IRoleInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -804,11 +842,53 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
+
+LOCATIONINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+
+NETWORKFUNCTIONINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+
+VENDORINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
 .Link
 https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkvendorfunctionroleinstance
 #>
 function Get-AzConnectedNetworkVendorFunctionRoleInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IRoleInstance])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IRoleInstance])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -819,6 +899,9 @@ param(
     ${LocationName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityLocation', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityNetworkFunction', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityVendor', Mandatory)]
     [Alias('RoleInstanceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
@@ -826,6 +909,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityLocation', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityVendor', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
@@ -841,6 +926,7 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityLocation', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
@@ -851,8 +937,25 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityLocation', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${LocationInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityNetworkFunction', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${NetworkFunctionInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityVendor', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${VendorInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -910,6 +1013,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -931,11 +1043,12 @@ begin {
         $mapping = @{
             Get = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkVendorFunctionRoleInstance_Get';
             GetViaIdentity = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkVendorFunctionRoleInstance_GetViaIdentity';
+            GetViaIdentityLocation = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkVendorFunctionRoleInstance_GetViaIdentityLocation';
+            GetViaIdentityNetworkFunction = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkVendorFunctionRoleInstance_GetViaIdentityNetworkFunction';
+            GetViaIdentityVendor = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkVendorFunctionRoleInstance_GetViaIdentityVendor';
             List = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkVendorFunctionRoleInstance_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -949,6 +1062,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1006,7 +1122,7 @@ Get-AzConnectedNetworkVendorFunction -InputObject $vendorNF
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendorNetworkFunction
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorNetworkFunction
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1025,11 +1141,39 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
+
+LOCATIONINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+
+VENDORINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
 .Link
 https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkvendorfunction
 #>
 function Get-AzConnectedNetworkVendorFunction {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendorNetworkFunction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorNetworkFunction])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1040,6 +1184,8 @@ param(
     ${LocationName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityLocation', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityVendor', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
     # The GUID for the vendor network function.
@@ -1054,6 +1200,7 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityLocation', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
@@ -1064,8 +1211,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityLocation', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${LocationInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityVendor', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${VendorInputObject},
 
     [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Query')]
@@ -1130,6 +1288,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1151,11 +1318,11 @@ begin {
         $mapping = @{
             Get = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkVendorFunction_Get';
             GetViaIdentity = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkVendorFunction_GetViaIdentity';
+            GetViaIdentityLocation = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkVendorFunction_GetViaIdentityLocation';
+            GetViaIdentityVendor = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkVendorFunction_GetViaIdentityVendor';
             List = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkVendorFunction_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1169,6 +1336,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1226,7 +1396,7 @@ Get-AzConnectedNetworkVendorSkuPreview -InputObject $skuPreview
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IPreviewSubscription
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IPreviewSubscription
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1245,20 +1415,51 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
+
+VENDORINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+
+VENDORSKUINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
 .Link
 https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkvendorskupreview
 #>
 function Get-AzConnectedNetworkVendorSkuPreview {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IPreviewSubscription])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IPreviewSubscription])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityVendor', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityVendorSku', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
     # Preview subscription ID.
     ${PreviewSubscription},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityVendor', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
@@ -1284,8 +1485,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityVendor', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${VendorInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityVendorSku', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${VendorSkuInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1343,6 +1555,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1364,11 +1585,11 @@ begin {
         $mapping = @{
             Get = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkVendorSkuPreview_Get';
             GetViaIdentity = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkVendorSkuPreview_GetViaIdentity';
+            GetViaIdentityVendor = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkVendorSkuPreview_GetViaIdentityVendor';
+            GetViaIdentityVendorSku = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkVendorSkuPreview_GetViaIdentityVendorSku';
             List = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkVendorSkuPreview_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1382,6 +1603,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1436,7 +1660,7 @@ Get-AzConnectedNetworkVendorSku -VendorName myVendor -SubscriptionId xxxxx-22222
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendorSku
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorSku
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1455,14 +1679,29 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
+
+VENDORINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
 .Link
 https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkvendorsku
 #>
 function Get-AzConnectedNetworkVendorSku {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendorSku])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorSku])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityVendor', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
     # The name of the sku.
@@ -1487,8 +1726,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityVendor', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${VendorInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1546,6 +1790,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1567,11 +1820,10 @@ begin {
         $mapping = @{
             Get = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkVendorSku_Get';
             GetViaIdentity = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkVendorSku_GetViaIdentity';
+            GetViaIdentityVendor = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkVendorSku_GetViaIdentityVendor';
             List = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkVendorSku_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1585,6 +1837,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1642,7 +1897,7 @@ Get-AzConnectedNetworkVendor -InputObject $vendor
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendor
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendor
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1665,7 +1920,7 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkvendor
 #>
 function Get-AzConnectedNetworkVendor {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendor])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendor])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1687,7 +1942,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1746,6 +2000,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1769,9 +2032,7 @@ begin {
             GetViaIdentity = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkVendor_GetViaIdentity';
             List = 'Az.ConnectedNetwork.private\Get-AzConnectedNetworkVendor_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1785,6 +2046,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1830,9 +2094,9 @@ end {
 
 <#
 .Synopsis
-Creates or updates a device.
+create a device.
 .Description
-Creates or updates a device.
+create a device.
 .Example
 $ase = New-AzConnectedNetworkAzureStackEdgeObject -AzureStackEdgeId "/subscriptions/xxxxx-00000-xxxxx-00000/resourcegroups/myResources/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/myAse"
 New-AzConnectedNetworkDevice -Name "myMecDevice" -ResourceGroupName "myResources" -Location "eastus" -Property $ase
@@ -1841,19 +2105,19 @@ $ase = New-AzConnectedNetworkAzureStackEdgeObject -AzureStackEdgeId "/subscripti
 New-AzConnectedNetworkDevice -Name "myMecDevice1" -ResourceGroupName "myResources" -Location "eastus2euap" -Property $ase -SubscriptionId xxxxx-00000-xxxxx-00000
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IDevice
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IDevice
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PROPERTY <IDevicePropertiesFormat>: Device properties.
-  DeviceType <DeviceType>: The type of the device.
+  DeviceType <String>: The type of the device.
 .Link
 https://learn.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkdevice
 #>
 function New-AzConnectedNetworkDevice {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IDevice])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IDevice])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1877,25 +2141,36 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IDevicePropertiesFormat]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IDevicePropertiesFormat]
     # Device properties.
-    # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1965,6 +2240,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1985,10 +2269,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkDevice_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkDevice_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkDevice_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2002,6 +2286,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2047,11 +2334,11 @@ end {
 
 <#
 .Synopsis
-Creates or updates a network function resource.
+create a network function resource.
 This operation can take up to 6 hours to complete.
 This is expected service behavior.
 .Description
-Creates or updates a network function resource.
+create a network function resource.
 This operation can take up to 6 hours to complete.
 This is expected service behavior.
 .Example
@@ -2072,24 +2359,24 @@ $vnf1 = New-AzConnectedNetworkFunction -Name vnftest11 -DeviceId /subscriptions/
 $v2.ServiceKey
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunction
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunction
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 USERCONFIGURATION <INetworkFunctionUserConfiguration[]>: The network function configurations from the user.
-  [NetworkInterface <INetworkInterface[]>]: The network interface configuration.
-    [IPConfiguration <INetworkInterfaceIPConfiguration[]>]: A list of IP configurations of the network interface.
-      [DnsServer <String[]>]: The list of DNS servers IP addresses.
+  [NetworkInterface <List<INetworkInterface>>]: The network interface configuration.
+    [IPConfiguration <List<INetworkInterfaceIPConfiguration>>]: A list of IP configurations of the network interface.
+      [DnsServer <List<String>>]: The list of DNS servers IP addresses.
       [Gateway <String>]: The value of the gateway.
       [IPAddress <String>]: The value of the IP address.
-      [IPAllocationMethod <IPAllocationMethod?>]: IP address allocation method.
-      [IPVersion <IPVersion?>]: IP address version.
+      [IPAllocationMethod <String>]: IP address allocation method.
+      [IPVersion <String>]: IP address version.
       [Subnet <String>]: The value of the subnet.
     [MacAddress <String>]: The MAC address of the network interface.
     [Name <String>]: The name of the network interface.
-    [VMSwitchType <VMSwitchType?>]: The type of the VM switch.
+    [VMSwitchType <String>]: The type of the VM switch.
   [OSProfileCustomData <String>]: Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the virtual machine. The maximum length of the binary array is 65535 bytes.    **Note: Do not pass any secrets or passwords in customData property**    This property cannot be updated after the VM is created.    customData is passed to the VM to be saved as a file. For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/)    For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
   [RoleName <String>]: The name of the network function role.
   [UserDataParameter <IAny>]: The user data parameters from the customer.
@@ -2097,7 +2384,7 @@ USERCONFIGURATION <INetworkFunctionUserConfiguration[]>: The network function co
 https://learn.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkfunction
 #>
 function New-AzConnectedNetworkFunction {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunction])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2121,66 +2408,77 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunctionPropertiesFormatNetworkFunctionContainerConfigurations]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunctionPropertiesFormatNetworkFunctionContainerConfigurations]))]
     [System.Collections.Hashtable]
     # The network function container configurations from the user.
     ${ContainerConfiguration},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
     [System.String]
     # Resource ID.
     ${DeviceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
     [System.String]
     # A unique read-only string that changes whenever the resource is updated.
     ${Etag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunctionPropertiesFormatManagedApplicationParameters]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunctionPropertiesFormatManagedApplicationParameters]))]
     [System.Collections.Hashtable]
     # The parameters for the managed application.
     ${ManagedApplicationParameter},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
     [System.String]
     # The sku name for the network function.
     # Once set, it cannot be updated.
     ${SkuName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunctionUserConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunctionUserConfiguration[]]
     # The network function configurations from the user.
-    # To construct, see NOTES section for USERCONFIGURATION properties and create a hash table.
     ${UserConfiguration},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
     [System.String]
     # The vendor name for the network function.
     # Once set, it cannot be updated.
     ${VendorName},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2250,6 +2548,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2270,10 +2577,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkFunction_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkFunction_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkFunction_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2287,6 +2594,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2332,11 +2642,11 @@ end {
 
 <#
 .Synopsis
-Creates or updates a vendor network function.
+create a vendor network function.
 This operation can take up to 6 hours to complete.
 This is expected service behavior.
 .Description
-Creates or updates a vendor network function.
+create a vendor network function.
 This operation can take up to 6 hours to complete.
 This is expected service behavior.
 .Example
@@ -2350,85 +2660,151 @@ $key += $keyData
 $vendorconf = New-AzConnectedNetworkFunctionVendorConfigurationObject -NetworkInterface $ip1,$ip2 -RoleName hpehss -OSProfileAdminUsername MecUser -OSProfileCustomData $customData -OSProfileCustomDataRequired $True -SshPublicKey $key
 $vendorvnf1 = New-AzConnectedNetworkVendorFunction -LocationName eastus2euap -ServiceKey b78d39-xxxx-xxxx-00946c5 -SubscriptionId xxxx-4444-xxxx-4444 -VendorName myVendor -VendorConfiguration $vendorconf -SkuType EvolvedPacketCore -VendorProvisioningState Provisioning
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendorNetworkFunction
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorNetworkFunction
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+LOCATIONINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+
 VENDORCONFIGURATION <INetworkFunctionVendorConfiguration[]>: An array of network function vendor configurations.
-  [NetworkInterface <INetworkInterface[]>]: The network interface configurations.
-    [IPConfiguration <INetworkInterfaceIPConfiguration[]>]: A list of IP configurations of the network interface.
-      [DnsServer <String[]>]: The list of DNS servers IP addresses.
+  [NetworkInterface <List<INetworkInterface>>]: The network interface configurations.
+    [IPConfiguration <List<INetworkInterfaceIPConfiguration>>]: A list of IP configurations of the network interface.
+      [DnsServer <List<String>>]: The list of DNS servers IP addresses.
       [Gateway <String>]: The value of the gateway.
       [IPAddress <String>]: The value of the IP address.
-      [IPAllocationMethod <IPAllocationMethod?>]: IP address allocation method.
-      [IPVersion <IPVersion?>]: IP address version.
+      [IPAllocationMethod <String>]: IP address allocation method.
+      [IPVersion <String>]: IP address version.
       [Subnet <String>]: The value of the subnet.
     [MacAddress <String>]: The MAC address of the network interface.
     [Name <String>]: The name of the network interface.
-    [VMSwitchType <VMSwitchType?>]: The type of the VM switch.
+    [VMSwitchType <String>]: The type of the VM switch.
   [OSProfileAdminUsername <String>]: Specifies the name of the administrator account.    **Windows-only restriction:** Cannot end in "."    **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5".    **Minimum-length (Linux):** 1  character    **Max-length (Linux):** 64 characters    **Max-length (Windows):** 20 characters    <li> For root access to the Linux VM, see [Using root privileges on Linux virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) <li> For a list of built-in system users on Linux that should not be used in this field, see [Selecting User Names for Linux on Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
   [OSProfileCustomData <String>]: Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the virtual machine. The maximum length of the binary array is 65535 bytes.    **Note: Do not pass any secrets or passwords in customData property**    This property cannot be updated after the VM is created.    customData is passed to the VM to be saved as a file. For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/)    For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
   [OSProfileCustomDataRequired <Boolean?>]: Indicates if custom data is required to deploy this role.
   [RoleName <String>]: The name of the vendor network function role.
-  [SshPublicKey <ISshPublicKey[]>]: The list of SSH public keys used to authenticate with linux based VMs.
+  [SshPublicKey <List<ISshPublicKey>>]: The list of SSH public keys used to authenticate with linux based VMs.
     [KeyData <String>]: SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format.    For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
     [Path <String>]: Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
+
+VENDORINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
 .Link
 https://learn.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkvendorfunction
 #>
 function New-AzConnectedNetworkVendorFunction {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendorNetworkFunction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorNetworkFunction])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
-    [System.String]
-    # The Azure region where the network function resource was created by the customer.
-    ${LocationName},
-
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
     # The GUID for the vendor network function.
     ${ServiceKey},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
-    # The name of the vendor.
-    ${VendorName},
+    # The Azure region where the network function resource was created by the customer.
+    ${LocationName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.SkuType])]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityLocationExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [System.String]
+    # The name of the vendor.
+    ${VendorName},
+
+    [Parameter(ParameterSetName='CreateViaIdentityLocationExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${LocationInputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityVendorExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${VendorInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityLocationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityVendorExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.PSArgumentCompleterAttribute("Unknown", "EvolvedPacketCore", "SDWAN", "Firewall")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.SkuType]
+    [System.String]
     # The sku type.
     ${SkuType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityLocationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityVendorExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunctionVendorConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunctionVendorConfiguration[]]
     # An array of network function vendor configurations.
-    # To construct, see NOTES section for VENDORCONFIGURATION properties and create a hash table.
     ${VendorConfiguration},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.VendorProvisioningState])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityLocationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityVendorExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.PSArgumentCompleterAttribute("Unknown", "NotProvisioned", "Provisioning", "Provisioned", "Deprovisioned", "UserDataValidationFailed")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.VendorProvisioningState]
+    [System.String]
     # The vendor controlled provisioning state of the vendor network function.
     ${VendorProvisioningState},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2498,6 +2874,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2518,10 +2903,12 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkVendorFunction_CreateExpanded';
+            CreateViaIdentityLocationExpanded = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkVendorFunction_CreateViaIdentityLocationExpanded';
+            CreateViaIdentityVendorExpanded = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkVendorFunction_CreateViaIdentityVendorExpanded';
+            CreateViaJsonFilePath = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkVendorFunction_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkVendorFunction_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2535,6 +2922,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2580,19 +2970,53 @@ end {
 
 <#
 .Synopsis
-Creates or updates preview information of a vendor sku.
+create preview information of a vendor sku.
 .Description
-Creates or updates preview information of a vendor sku.
+create preview information of a vendor sku.
 .Example
 New-AzConnectedNetworkVendorSkuPreview -PreviewSubscription xxxxx-00000-xxxxx-00000 -SkuName mySku -VendorName myVendor -SubscriptionId xxxxx-22222-xxxxx-22222
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IPreviewSubscription
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IPreviewSubscription
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+VENDORINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+
+VENDORSKUINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
 .Link
 https://learn.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkvendorskupreview
 #>
 function New-AzConnectedNetworkVendorSkuPreview {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IPreviewSubscription])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IPreviewSubscription])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2601,24 +3025,55 @@ param(
     # Preview subscription ID.
     ${PreviewSubscription},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityVendorExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
     # The name of the vendor sku.
     ${SkuName},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
-    [System.String]
-    # The name of the vendor.
-    ${VendorName},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [System.String]
+    # The name of the vendor.
+    ${VendorName},
+
+    [Parameter(ParameterSetName='CreateViaIdentityVendorExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${VendorInputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityVendorSkuExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${VendorSkuInputObject},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2688,6 +3143,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2708,10 +3172,12 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkVendorSkuPreview_CreateExpanded';
+            CreateViaIdentityVendorExpanded = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkVendorSkuPreview_CreateViaIdentityVendorExpanded';
+            CreateViaIdentityVendorSkuExpanded = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkVendorSkuPreview_CreateViaIdentityVendorSkuExpanded';
+            CreateViaJsonFilePath = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkVendorSkuPreview_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkVendorSkuPreview_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2725,6 +3191,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2770,19 +3239,21 @@ end {
 
 <#
 .Synopsis
-Creates or updates a sku.
+create a sku.
 This operation can take up to 2 hours to complete.
 This is expected service behavior.
 .Description
-Creates or updates a sku.
+create a sku.
 This operation can take up to 2 hours to complete.
 This is expected service behavior.
 .Example
 $role = New-AzConnectedNetworkFunctionRoleConfigurationObject -NetworkInterface $ip1,$ip2 -OSDiskName NetFoundry -OSDiskOstype Linux -OSDiskSizeGb 40 -OSProfileCustomDataRequired $False -OSProfileAdminUsername MecUser -RoleName hpehss -RoleType VirtualMachine -VirtualMachineSize "Standard_D3_v2" -SshPublicKey $key -StorageProfileDataDisk $storage -VhdUri "https://mecvdrvhd.blob.core.windows/myvhd.vhd"
 New-AzConnectedNetworkVendorSku -SkuName sku1 -VendorName myVendor -SubscriptionId xxxxx-22222-xxxxx-22222 -SkuType VirtualMachine -DeploymentMode PrivateEdgeZone -NetworkFunctionRoleConfigurationType @($role)
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendorSku
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorSku
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2795,41 +3266,55 @@ NETWORKFUNCTIONROLECONFIGURATIONTYPE <INetworkFunctionRoleConfiguration[]>: An a
   [ImageReferencePublisher <String>]: The image publisher.
   [ImageReferenceSku <String>]: The image SKU.
   [ImageReferenceVersion <String>]: Specifies the version of the image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available.
-  [NetworkInterface <INetworkInterface[]>]: The network interface configurations.
-    [IPConfiguration <INetworkInterfaceIPConfiguration[]>]: A list of IP configurations of the network interface.
-      [DnsServer <String[]>]: The list of DNS servers IP addresses.
+  [NetworkInterface <List<INetworkInterface>>]: The network interface configurations.
+    [IPConfiguration <List<INetworkInterfaceIPConfiguration>>]: A list of IP configurations of the network interface.
+      [DnsServer <List<String>>]: The list of DNS servers IP addresses.
       [Gateway <String>]: The value of the gateway.
       [IPAddress <String>]: The value of the IP address.
-      [IPAllocationMethod <IPAllocationMethod?>]: IP address allocation method.
-      [IPVersion <IPVersion?>]: IP address version.
+      [IPAllocationMethod <String>]: IP address allocation method.
+      [IPVersion <String>]: IP address version.
       [Subnet <String>]: The value of the subnet.
     [MacAddress <String>]: The MAC address of the network interface.
     [Name <String>]: The name of the network interface.
-    [VMSwitchType <VMSwitchType?>]: The type of the VM switch.
+    [VMSwitchType <String>]: The type of the VM switch.
   [OSDiskName <String>]: The VHD name.
-  [OSDiskOstype <OperatingSystemTypes?>]: The OS type.
+  [OSDiskOstype <String>]: The OS type.
   [OSDiskSizeGb <Int32?>]: Specifies the size of os disk in gigabytes. This is the fully expanded disk size needed of the VHD image on the ASE. This disk size should be greater than the size of the VHD provided in vhdUri.
   [OSProfileAdminUsername <String>]: Specifies the name of the administrator account.    **Windows-only restriction:** Cannot end in "."    **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5".    **Minimum-length (Linux):** 1  character    **Max-length (Linux):** 64 characters    **Max-length (Windows):** 20 characters    <li> For root access to the Linux VM, see [Using root privileges on Linux virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) <li> For a list of built-in system users on Linux that should not be used in this field, see [Selecting User Names for Linux on Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
   [OSProfileCustomData <String>]: Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the virtual machine. The maximum length of the binary array is 65535 bytes.    **Note: Do not pass any secrets or passwords in customData property**    This property cannot be updated after the VM is created.    customData is passed to the VM to be saved as a file. For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/)    For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
   [OSProfileCustomDataRequired <Boolean?>]: Indicates if custom data is required to deploy this role.
   [RoleName <String>]: The name of the network function role.
-  [RoleType <NetworkFunctionRoleConfigurationType?>]: Role type.
-  [SshPublicKey <ISshPublicKey[]>]: The list of SSH public keys used to authenticate with linux based VMs.
+  [RoleType <String>]: Role type.
+  [SshPublicKey <List<ISshPublicKey>>]: The list of SSH public keys used to authenticate with linux based VMs.
     [KeyData <String>]: SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format.    For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
     [Path <String>]: Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
-  [StorageProfileDataDisk <IDataDisk[]>]: Specifies the parameters that are used to add a data disk to a virtual machine.
-    [CreateOption <DiskCreateOptionTypes?>]: Specifies how the virtual machine should be created.
+  [StorageProfileDataDisk <List<IDataDisk>>]: Specifies the parameters that are used to add a data disk to a virtual machine.
+    [CreateOption <String>]: Specifies how the virtual machine should be created.
     [DiskSizeGb <Int32?>]: Specifies the size of an empty disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image.
     [Name <String>]: The name of data disk.
   [UserDataParameter <IAny>]: The user parameters for customers. The format of user data parameters has to be matched with the provided user data template.
   [UserDataTemplate <IAny>]: The user data template for customers. This is a json schema template describing the format and data type of user data parameters.
   [VhdUri <String>]: Specifies the virtual hard disk's uri.
-  [VirtualMachineSize <VirtualMachineSizeTypes?>]: The size of the virtual machine.
+  [VirtualMachineSize <String>]: The size of the virtual machine.
+
+VENDORINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
 .Link
 https://learn.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkvendorsku
 #>
 function New-AzConnectedNetworkVendorSku {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendorSku])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorSku])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2838,67 +3323,95 @@ param(
     # The name of the sku.
     ${SkuName},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
-    [System.String]
-    # The name of the vendor.
-    ${VendorName},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.SkuDeploymentMode])]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [System.String]
+    # The name of the vendor.
+    ${VendorName},
+
+    [Parameter(ParameterSetName='CreateViaIdentityVendorExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${VendorInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityVendorExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.PSArgumentCompleterAttribute("Unknown", "Azure", "PrivateEdgeZone")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.SkuDeploymentMode]
+    [System.String]
     # The sku deployment mode.
     ${DeploymentMode},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityVendorExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendorSkuPropertiesFormatManagedApplicationParameters]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorSkuPropertiesFormatManagedApplicationParameters]))]
     [System.Collections.Hashtable]
     # The parameters for the managed application to be supplied by the vendor.
     ${ManagedApplicationParameter},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityVendorExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendorSkuPropertiesFormatManagedApplicationTemplate]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorSkuPropertiesFormatManagedApplicationTemplate]))]
     [System.Collections.Hashtable]
     # The template for the managed application deployment.
     ${ManagedApplicationTemplate},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityVendorExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunctionRoleConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunctionRoleConfiguration[]]
     # An array of network function role definitions.
-    # To construct, see NOTES section for NETWORKFUNCTIONROLECONFIGURATIONTYPE properties and create a hash table.
     ${NetworkFunctionRoleConfigurationType},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.NetworkFunctionType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityVendorExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.PSArgumentCompleterAttribute("Unknown", "VirtualNetworkFunction", "ContainerizedNetworkFunction")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.NetworkFunctionType]
+    [System.String]
     # The network function type.
     ${NetworkFunctionType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityVendorExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Indicates if the vendor sku is in preview mode.
     ${Preview},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.SkuType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityVendorExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.PSArgumentCompleterAttribute("Unknown", "EvolvedPacketCore", "SDWAN", "Firewall")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.SkuType]
+    [System.String]
     # The sku type.
     ${SkuType},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2968,6 +3481,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2988,10 +3510,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkVendorSku_CreateExpanded';
+            CreateViaIdentityVendorExpanded = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkVendorSku_CreateViaIdentityVendorExpanded';
+            CreateViaJsonFilePath = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkVendorSku_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkVendorSku_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3005,6 +3528,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3050,21 +3576,21 @@ end {
 
 <#
 .Synopsis
-Creates or updates a vendor.
+create a vendor.
 .Description
-Creates or updates a vendor.
+create a vendor.
 .Example
 New-AzConnectedNetworkVendor -Name myVendor
 .Example
 New-AzConnectedNetworkVendor -Name myVendor2 -SubscriptionId xxxxx-22222-xxxxx-22222
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendor
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendor
 .Link
 https://learn.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkvendor
 #>
 function New-AzConnectedNetworkVendor {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendor])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendor])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3080,6 +3606,18 @@ param(
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3149,6 +3687,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3169,10 +3716,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkVendor_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkVendor_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkVendor_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3186,6 +3733,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3294,7 +3844,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -3371,6 +3920,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3393,9 +3951,7 @@ begin {
             Delete = 'Az.ConnectedNetwork.private\Remove-AzConnectedNetworkDevice_Delete';
             DeleteViaIdentity = 'Az.ConnectedNetwork.private\Remove-AzConnectedNetworkDevice_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3409,6 +3965,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3521,7 +4080,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -3598,6 +4156,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3620,9 +4187,7 @@ begin {
             Delete = 'Az.ConnectedNetwork.private\Remove-AzConnectedNetworkFunction_Delete';
             DeleteViaIdentity = 'Az.ConnectedNetwork.private\Remove-AzConnectedNetworkFunction_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3636,6 +4201,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3712,6 +4280,34 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
+
+VENDORINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+
+VENDORSKUINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
 .Link
 https://learn.microsoft.com/powershell/module/az.connectednetwork/remove-azconnectednetworkvendorskupreview
 #>
@@ -3720,12 +4316,15 @@ function Remove-AzConnectedNetworkVendorSkuPreview {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityVendor', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityVendorSku', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
     # Preview subscription ID.
     ${PreviewSubscription},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityVendor', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
     # The name of the vendor sku.
@@ -3748,8 +4347,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityVendor', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${VendorInputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityVendorSku', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${VendorSkuInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3825,6 +4435,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3846,10 +4465,10 @@ begin {
         $mapping = @{
             Delete = 'Az.ConnectedNetwork.private\Remove-AzConnectedNetworkVendorSkuPreview_Delete';
             DeleteViaIdentity = 'Az.ConnectedNetwork.private\Remove-AzConnectedNetworkVendorSkuPreview_DeleteViaIdentity';
+            DeleteViaIdentityVendor = 'Az.ConnectedNetwork.private\Remove-AzConnectedNetworkVendorSkuPreview_DeleteViaIdentityVendor';
+            DeleteViaIdentityVendorSku = 'Az.ConnectedNetwork.private\Remove-AzConnectedNetworkVendorSkuPreview_DeleteViaIdentityVendorSku';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3863,6 +4482,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3943,6 +4565,20 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
+
+VENDORINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
 .Link
 https://learn.microsoft.com/powershell/module/az.connectednetwork/remove-azconnectednetworkvendorsku
 #>
@@ -3951,6 +4587,7 @@ function Remove-AzConnectedNetworkVendorSku {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityVendor', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
     # The name of the sku.
@@ -3973,8 +4610,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityVendor', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${VendorInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4050,6 +4692,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4071,10 +4722,9 @@ begin {
         $mapping = @{
             Delete = 'Az.ConnectedNetwork.private\Remove-AzConnectedNetworkVendorSku_Delete';
             DeleteViaIdentity = 'Az.ConnectedNetwork.private\Remove-AzConnectedNetworkVendorSku_DeleteViaIdentity';
+            DeleteViaIdentityVendor = 'Az.ConnectedNetwork.private\Remove-AzConnectedNetworkVendorSku_DeleteViaIdentityVendor';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4088,6 +4738,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4189,7 +4842,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -4266,6 +4918,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4288,9 +4949,7 @@ begin {
             Delete = 'Az.ConnectedNetwork.private\Remove-AzConnectedNetworkVendor_Delete';
             DeleteViaIdentity = 'Az.ConnectedNetwork.private\Remove-AzConnectedNetworkVendor_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4304,6 +4963,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4380,6 +5042,48 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
+
+LOCATIONINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+
+NETWORKFUNCTIONINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+
+VENDORINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
 .Link
 https://learn.microsoft.com/powershell/module/az.connectednetwork/restart-azconnectednetworkvendorfunctionroleinstance
 #>
@@ -4394,6 +5098,9 @@ param(
     ${LocationName},
 
     [Parameter(ParameterSetName='Restart', Mandatory)]
+    [Parameter(ParameterSetName='RestartViaIdentityLocation', Mandatory)]
+    [Parameter(ParameterSetName='RestartViaIdentityNetworkFunction', Mandatory)]
+    [Parameter(ParameterSetName='RestartViaIdentityVendor', Mandatory)]
     [Alias('RoleInstanceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
@@ -4401,6 +5108,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Restart', Mandatory)]
+    [Parameter(ParameterSetName='RestartViaIdentityLocation', Mandatory)]
+    [Parameter(ParameterSetName='RestartViaIdentityVendor', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
     # The GUID for the vendor network function.
@@ -4414,6 +5123,7 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Restart', Mandatory)]
+    [Parameter(ParameterSetName='RestartViaIdentityLocation', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
     # The name of the vendor.
@@ -4423,8 +5133,25 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='RestartViaIdentityLocation', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${LocationInputObject},
+
+    [Parameter(ParameterSetName='RestartViaIdentityNetworkFunction', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${NetworkFunctionInputObject},
+
+    [Parameter(ParameterSetName='RestartViaIdentityVendor', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${VendorInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4500,6 +5227,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4521,10 +5257,11 @@ begin {
         $mapping = @{
             Restart = 'Az.ConnectedNetwork.private\Restart-AzConnectedNetworkVendorFunctionRoleInstance_Restart';
             RestartViaIdentity = 'Az.ConnectedNetwork.private\Restart-AzConnectedNetworkVendorFunctionRoleInstance_RestartViaIdentity';
+            RestartViaIdentityLocation = 'Az.ConnectedNetwork.private\Restart-AzConnectedNetworkVendorFunctionRoleInstance_RestartViaIdentityLocation';
+            RestartViaIdentityNetworkFunction = 'Az.ConnectedNetwork.private\Restart-AzConnectedNetworkVendorFunctionRoleInstance_RestartViaIdentityNetworkFunction';
+            RestartViaIdentityVendor = 'Az.ConnectedNetwork.private\Restart-AzConnectedNetworkVendorFunctionRoleInstance_RestartViaIdentityVendor';
         }
-        if (('Restart') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Restart') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4538,6 +5275,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4614,6 +5354,48 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
+
+LOCATIONINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+
+NETWORKFUNCTIONINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+
+VENDORINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
 .Link
 https://learn.microsoft.com/powershell/module/az.connectednetwork/start-azconnectednetworkvendorfunctionroleinstance
 #>
@@ -4628,6 +5410,9 @@ param(
     ${LocationName},
 
     [Parameter(ParameterSetName='Start', Mandatory)]
+    [Parameter(ParameterSetName='StartViaIdentityLocation', Mandatory)]
+    [Parameter(ParameterSetName='StartViaIdentityNetworkFunction', Mandatory)]
+    [Parameter(ParameterSetName='StartViaIdentityVendor', Mandatory)]
     [Alias('RoleInstanceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
@@ -4635,6 +5420,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Start', Mandatory)]
+    [Parameter(ParameterSetName='StartViaIdentityLocation', Mandatory)]
+    [Parameter(ParameterSetName='StartViaIdentityVendor', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
     # The GUID for the vendor network function.
@@ -4648,6 +5435,7 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Start', Mandatory)]
+    [Parameter(ParameterSetName='StartViaIdentityLocation', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
     # The name of the vendor.
@@ -4657,8 +5445,25 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='StartViaIdentityLocation', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${LocationInputObject},
+
+    [Parameter(ParameterSetName='StartViaIdentityNetworkFunction', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${NetworkFunctionInputObject},
+
+    [Parameter(ParameterSetName='StartViaIdentityVendor', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${VendorInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4734,6 +5539,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4755,10 +5569,11 @@ begin {
         $mapping = @{
             Start = 'Az.ConnectedNetwork.private\Start-AzConnectedNetworkVendorFunctionRoleInstance_Start';
             StartViaIdentity = 'Az.ConnectedNetwork.private\Start-AzConnectedNetworkVendorFunctionRoleInstance_StartViaIdentity';
+            StartViaIdentityLocation = 'Az.ConnectedNetwork.private\Start-AzConnectedNetworkVendorFunctionRoleInstance_StartViaIdentityLocation';
+            StartViaIdentityNetworkFunction = 'Az.ConnectedNetwork.private\Start-AzConnectedNetworkVendorFunctionRoleInstance_StartViaIdentityNetworkFunction';
+            StartViaIdentityVendor = 'Az.ConnectedNetwork.private\Start-AzConnectedNetworkVendorFunctionRoleInstance_StartViaIdentityVendor';
         }
-        if (('Start') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Start') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4772,6 +5587,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4848,6 +5666,48 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
+
+LOCATIONINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+
+NETWORKFUNCTIONINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+
+VENDORINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
 .Link
 https://learn.microsoft.com/powershell/module/az.connectednetwork/stop-azconnectednetworkvendorfunctionroleinstance
 #>
@@ -4862,6 +5722,9 @@ param(
     ${LocationName},
 
     [Parameter(ParameterSetName='Stop', Mandatory)]
+    [Parameter(ParameterSetName='StopViaIdentityLocation', Mandatory)]
+    [Parameter(ParameterSetName='StopViaIdentityNetworkFunction', Mandatory)]
+    [Parameter(ParameterSetName='StopViaIdentityVendor', Mandatory)]
     [Alias('RoleInstanceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
@@ -4869,6 +5732,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Stop', Mandatory)]
+    [Parameter(ParameterSetName='StopViaIdentityLocation', Mandatory)]
+    [Parameter(ParameterSetName='StopViaIdentityVendor', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
     # The GUID for the vendor network function.
@@ -4882,6 +5747,7 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Stop', Mandatory)]
+    [Parameter(ParameterSetName='StopViaIdentityLocation', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
     # The name of the vendor.
@@ -4891,8 +5757,25 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='StopViaIdentityLocation', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${LocationInputObject},
+
+    [Parameter(ParameterSetName='StopViaIdentityNetworkFunction', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${NetworkFunctionInputObject},
+
+    [Parameter(ParameterSetName='StopViaIdentityVendor', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${VendorInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4968,6 +5851,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4989,10 +5881,11 @@ begin {
         $mapping = @{
             Stop = 'Az.ConnectedNetwork.private\Stop-AzConnectedNetworkVendorFunctionRoleInstance_Stop';
             StopViaIdentity = 'Az.ConnectedNetwork.private\Stop-AzConnectedNetworkVendorFunctionRoleInstance_StopViaIdentity';
+            StopViaIdentityLocation = 'Az.ConnectedNetwork.private\Stop-AzConnectedNetworkVendorFunctionRoleInstance_StopViaIdentityLocation';
+            StopViaIdentityNetworkFunction = 'Az.ConnectedNetwork.private\Stop-AzConnectedNetworkVendorFunctionRoleInstance_StopViaIdentityNetworkFunction';
+            StopViaIdentityVendor = 'Az.ConnectedNetwork.private\Stop-AzConnectedNetworkVendorFunctionRoleInstance_StopViaIdentityVendor';
         }
-        if (('Stop') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Stop') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5006,6 +5899,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5051,9 +5947,9 @@ end {
 
 <#
 .Synopsis
-Updates device tags.
+update device tags.
 .Description
-Updates device tags.
+update device tags.
 .Example
 $tags = @{ NewTag = "NewTagValue"}
 Update-AzConnectedNetworkDeviceTag -DeviceName "myMecDevice" -ResourceGroupName "myResources" -Tag $tags
@@ -5065,7 +5961,7 @@ Update-AzConnectedNetworkDeviceTag -InputObject $mecDevice -Tag $tags
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IDevice
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IDevice
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -5088,16 +5984,20 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.connectednetwork/update-azconnectednetworkdevicetag
 #>
 function Update-AzConnectedNetworkDeviceTag {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IDevice])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IDevice])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
     # The name of the device resource.
     ${DeviceName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -5105,6 +6005,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -5115,15 +6017,27 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.ITagsObjectTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ITagsObjectTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -5181,6 +6095,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5202,10 +6125,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.ConnectedNetwork.private\Update-AzConnectedNetworkDeviceTag_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.ConnectedNetwork.private\Update-AzConnectedNetworkDeviceTag_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.ConnectedNetwork.private\Update-AzConnectedNetworkDeviceTag_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ConnectedNetwork.private\Update-AzConnectedNetworkDeviceTag_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5219,6 +6142,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5264,9 +6190,9 @@ end {
 
 <#
 .Synopsis
-Updates the tags for the network function resource.
+update the tags for the network function resource.
 .Description
-Updates the tags for the network function resource.
+update the tags for the network function resource.
 .Example
 $tags = @{ NewTag = "NewTagValue"}
 Update-AzConnectedNetworkFunctionTag -NetworkFunctionName myNewVnf1 -ResourceGroupName myResources -Tag $tags
@@ -5278,7 +6204,7 @@ Update-AzConnectedNetworkFunctionTag -InputObject $vnf -Tag $tags
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunction
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunction
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -5301,16 +6227,20 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.connectednetwork/update-azconnectednetworkfunctiontag
 #>
 function Update-AzConnectedNetworkFunctionTag {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunction])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
     # Resource name for the network function resource.
     ${NetworkFunctionName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -5318,6 +6248,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -5328,15 +6260,27 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.ITagsObjectTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ITagsObjectTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -5394,6 +6338,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5415,10 +6368,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.ConnectedNetwork.private\Update-AzConnectedNetworkFunctionTag_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.ConnectedNetwork.private\Update-AzConnectedNetworkFunctionTag_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.ConnectedNetwork.private\Update-AzConnectedNetworkFunctionTag_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ConnectedNetwork.private\Update-AzConnectedNetworkFunctionTag_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5432,6 +6385,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5477,19 +6433,1168 @@ end {
 
 <#
 .Synopsis
-Create a in-memory object for AzureStackEdgeFormat
+update a vendor network function.
+This operation can take up to 6 hours to complete.
+This is expected service behavior.
 .Description
-Create a in-memory object for AzureStackEdgeFormat
+update a vendor network function.
+This operation can take up to 6 hours to complete.
+This is expected service behavior.
+.Example
+$ipconf1 = New-AzConnectedNetworkInterfaceIPConfigurationObject -IPAllocationMethod "Dynamic" -IPVersion "IPv4"
+$ipconf2 = New-AzConnectedNetworkInterfaceIPConfigurationObject -IPAllocationMethod "Dynamic" -IPVersion "IPv4"
+$ip1 = New-AzConnectedNetworkInterfaceObject -IPConfiguration $ipconf1 -Name "mrmmanagementnic1" -VMSwitchType "Management"
+$ip2 = New-AzConnectedNetworkInterfaceObject -IPConfiguration $ipconf2 -Name "mrmlannic1" -VMSwitchType "Lan"
+$keyData = @{keyData = "ssh-rsa\AAAAB3NzaC1yc2EAAAADAQABAAABAQCyMpVbBgu0kftv1k+z1c3NtcB5CVDoo/X9X1LE2JUjlLlo0luEkFGJk61i53BhiTSTeRmQXN8hAZ7sn4MDUmZK7fWcHouZ2fsJo+ehses3wQPLubWBFw2L/hoSTyXifXMbEBu9SxHgqf1CEKQcvdNiWf4U7npXwjweXW9DtsF5E7h4kxhKJKFI4sNFTIX0IwUB15QEVHoBs92kDwH3fBH3kZZCMBJE/u6kT+XB22crRKkIGlp3a9gcogtOCvP+3xmsP7hjw5+nHxMUwkc/6kYyfTeLwvfI4xrTWpnB5xufts5LW5/U5GOXVg97ix9EXgiV0czThowG5K2xQ649UlJb redmond\user@n1-azuredev1"; path = $Null}
+$keys = @{ }
+$key += $keyData
+$vendorconf = New-AzConnectedNetworkFunctionVendorConfigurationObject -NetworkInterface $ip1,$ip2 -RoleName hpehss -OSProfileAdminUsername MecUser -OSProfileCustomData $customData -OSProfileCustomDataRequired $True -SshPublicKey $key
+$vendorvnf1 = Update-AzConnectedNetworkVendorFunction -LocationName eastus2euap -ServiceKey b78d39-xxxx-xxxx-00946c5 -SubscriptionId xxxx-4444-xxxx-4444 -VendorName myVendor -VendorConfiguration $vendorconf -SkuType EvolvedPacketCore -VendorProvisioningState Provisioning
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorNetworkFunction
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+
+LOCATIONINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+
+VENDORCONFIGURATION <INetworkFunctionVendorConfiguration[]>: An array of network function vendor configurations.
+  [NetworkInterface <List<INetworkInterface>>]: The network interface configurations.
+    [IPConfiguration <List<INetworkInterfaceIPConfiguration>>]: A list of IP configurations of the network interface.
+      [DnsServer <List<String>>]: The list of DNS servers IP addresses.
+      [Gateway <String>]: The value of the gateway.
+      [IPAddress <String>]: The value of the IP address.
+      [IPAllocationMethod <String>]: IP address allocation method.
+      [IPVersion <String>]: IP address version.
+      [Subnet <String>]: The value of the subnet.
+    [MacAddress <String>]: The MAC address of the network interface.
+    [Name <String>]: The name of the network interface.
+    [VMSwitchType <String>]: The type of the VM switch.
+  [OSProfileAdminUsername <String>]: Specifies the name of the administrator account.    **Windows-only restriction:** Cannot end in "."    **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5".    **Minimum-length (Linux):** 1  character    **Max-length (Linux):** 64 characters    **Max-length (Windows):** 20 characters    <li> For root access to the Linux VM, see [Using root privileges on Linux virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) <li> For a list of built-in system users on Linux that should not be used in this field, see [Selecting User Names for Linux on Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+  [OSProfileCustomData <String>]: Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the virtual machine. The maximum length of the binary array is 65535 bytes.    **Note: Do not pass any secrets or passwords in customData property**    This property cannot be updated after the VM is created.    customData is passed to the VM to be saved as a file. For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/)    For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+  [OSProfileCustomDataRequired <Boolean?>]: Indicates if custom data is required to deploy this role.
+  [RoleName <String>]: The name of the vendor network function role.
+  [SshPublicKey <List<ISshPublicKey>>]: The list of SSH public keys used to authenticate with linux based VMs.
+    [KeyData <String>]: SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format.    For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+    [Path <String>]: Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
+
+VENDORINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+.Link
+https://learn.microsoft.com/powershell/module/az.connectednetwork/update-azconnectednetworkvendorfunction
+#>
+function Update-AzConnectedNetworkVendorFunction {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorNetworkFunction])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [System.String]
+    # The Azure region where the network function resource was created by the customer.
+    ${LocationName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityLocationExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityVendorExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [System.String]
+    # The GUID for the vendor network function.
+    ${ServiceKey},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityLocationExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [System.String]
+    # The name of the vendor.
+    ${VendorName},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityLocationExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${LocationInputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityVendorExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${VendorInputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.PSArgumentCompleterAttribute("Unknown", "EvolvedPacketCore", "SDWAN", "Firewall")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.String]
+    # The sku type.
+    ${SkuType},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunctionVendorConfiguration[]]
+    # An array of network function vendor configurations.
+    ${VendorConfiguration},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.PSArgumentCompleterAttribute("Unknown", "NotProvisioned", "Provisioning", "Provisioned", "Deprovisioned", "UserDataValidationFailed")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.String]
+    # The vendor controlled provisioning state of the vendor network function.
+    ${VendorProvisioningState},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.ConnectedNetwork.private\Update-AzConnectedNetworkVendorFunction_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.ConnectedNetwork.private\Update-AzConnectedNetworkVendorFunction_UpdateViaIdentityExpanded';
+            UpdateViaIdentityLocationExpanded = 'Az.ConnectedNetwork.private\Update-AzConnectedNetworkVendorFunction_UpdateViaIdentityLocationExpanded';
+            UpdateViaIdentityVendorExpanded = 'Az.ConnectedNetwork.private\Update-AzConnectedNetworkVendorFunction_UpdateViaIdentityVendorExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+update preview information of a vendor sku.
+.Description
+update preview information of a vendor sku.
+.Example
+Update-AzConnectedNetworkVendorSkuPreview -PreviewSubscription xxxxx-00000-xxxxx-00000 -SkuName mySku -VendorName myVendor -SubscriptionId xxxxx-22222-xxxxx-22222
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IPreviewSubscription
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+
+VENDORINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+
+VENDORSKUINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+.Link
+https://learn.microsoft.com/powershell/module/az.connectednetwork/update-azconnectednetworkvendorskupreview
+#>
+function Update-AzConnectedNetworkVendorSkuPreview {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IPreviewSubscription])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityVendorExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityVendorSkuExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [System.String]
+    # Preview subscription ID.
+    ${PreviewSubscription},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityVendorExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [System.String]
+    # The name of the vendor sku.
+    ${SkuName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [System.String]
+    # The name of the vendor.
+    ${VendorName},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityVendorExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${VendorInputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityVendorSkuExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${VendorSkuInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.ConnectedNetwork.private\Update-AzConnectedNetworkVendorSkuPreview_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.ConnectedNetwork.private\Update-AzConnectedNetworkVendorSkuPreview_UpdateViaIdentityExpanded';
+            UpdateViaIdentityVendorExpanded = 'Az.ConnectedNetwork.private\Update-AzConnectedNetworkVendorSkuPreview_UpdateViaIdentityVendorExpanded';
+            UpdateViaIdentityVendorSkuExpanded = 'Az.ConnectedNetwork.private\Update-AzConnectedNetworkVendorSkuPreview_UpdateViaIdentityVendorSkuExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+update a sku.
+This operation can take up to 2 hours to complete.
+This is expected service behavior.
+.Description
+update a sku.
+This operation can take up to 2 hours to complete.
+This is expected service behavior.
+.Example
+$role = New-AzConnectedNetworkFunctionRoleConfigurationObject -NetworkInterface $ip1,$ip2 -OSDiskName NetFoundry -OSDiskOstype Linux -OSDiskSizeGb 40 -OSProfileCustomDataRequired $False -OSProfileAdminUsername MecUser -RoleName hpehss -RoleType VirtualMachine -VirtualMachineSize "Standard_D3_v2" -SshPublicKey $key -StorageProfileDataDisk $storage -VhdUri "https://mecvdrvhd.blob.core.windows/myvhd.vhd"
+Update-AzConnectedNetworkVendorSku -SkuName sku1 -VendorName myVendor -SubscriptionId xxxxx-22222-xxxxx-22222 -SkuType VirtualMachine -DeploymentMode PrivateEdgeZone -NetworkFunctionRoleConfigurationType @($role)
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorSku
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+
+NETWORKFUNCTIONROLECONFIGURATIONTYPE <INetworkFunctionRoleConfiguration[]>: An array of network function role definitions.
+  [CustomProfileMetadataConfigurationPath <String>]: Path for metadata configuration.
+  [ImageReferenceExactVersion <String>]: Specifies in decimal numbers, the exact version of image used to create the virtual machine.
+  [ImageReferenceOffer <String>]: Specifies the offer of the image used to create the virtual machine.
+  [ImageReferencePublisher <String>]: The image publisher.
+  [ImageReferenceSku <String>]: The image SKU.
+  [ImageReferenceVersion <String>]: Specifies the version of the image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available.
+  [NetworkInterface <List<INetworkInterface>>]: The network interface configurations.
+    [IPConfiguration <List<INetworkInterfaceIPConfiguration>>]: A list of IP configurations of the network interface.
+      [DnsServer <List<String>>]: The list of DNS servers IP addresses.
+      [Gateway <String>]: The value of the gateway.
+      [IPAddress <String>]: The value of the IP address.
+      [IPAllocationMethod <String>]: IP address allocation method.
+      [IPVersion <String>]: IP address version.
+      [Subnet <String>]: The value of the subnet.
+    [MacAddress <String>]: The MAC address of the network interface.
+    [Name <String>]: The name of the network interface.
+    [VMSwitchType <String>]: The type of the VM switch.
+  [OSDiskName <String>]: The VHD name.
+  [OSDiskOstype <String>]: The OS type.
+  [OSDiskSizeGb <Int32?>]: Specifies the size of os disk in gigabytes. This is the fully expanded disk size needed of the VHD image on the ASE. This disk size should be greater than the size of the VHD provided in vhdUri.
+  [OSProfileAdminUsername <String>]: Specifies the name of the administrator account.    **Windows-only restriction:** Cannot end in "."    **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5".    **Minimum-length (Linux):** 1  character    **Max-length (Linux):** 64 characters    **Max-length (Windows):** 20 characters    <li> For root access to the Linux VM, see [Using root privileges on Linux virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) <li> For a list of built-in system users on Linux that should not be used in this field, see [Selecting User Names for Linux on Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+  [OSProfileCustomData <String>]: Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the virtual machine. The maximum length of the binary array is 65535 bytes.    **Note: Do not pass any secrets or passwords in customData property**    This property cannot be updated after the VM is created.    customData is passed to the VM to be saved as a file. For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/)    For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+  [OSProfileCustomDataRequired <Boolean?>]: Indicates if custom data is required to deploy this role.
+  [RoleName <String>]: The name of the network function role.
+  [RoleType <String>]: Role type.
+  [SshPublicKey <List<ISshPublicKey>>]: The list of SSH public keys used to authenticate with linux based VMs.
+    [KeyData <String>]: SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format.    For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+    [Path <String>]: Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
+  [StorageProfileDataDisk <List<IDataDisk>>]: Specifies the parameters that are used to add a data disk to a virtual machine.
+    [CreateOption <String>]: Specifies how the virtual machine should be created.
+    [DiskSizeGb <Int32?>]: Specifies the size of an empty disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image.
+    [Name <String>]: The name of data disk.
+  [UserDataParameter <IAny>]: The user parameters for customers. The format of user data parameters has to be matched with the provided user data template.
+  [UserDataTemplate <IAny>]: The user data template for customers. This is a json schema template describing the format and data type of user data parameters.
+  [VhdUri <String>]: Specifies the virtual hard disk's uri.
+  [VirtualMachineSize <String>]: The size of the virtual machine.
+
+VENDORINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+.Link
+https://learn.microsoft.com/powershell/module/az.connectednetwork/update-azconnectednetworkvendorsku
+#>
+function Update-AzConnectedNetworkVendorSku {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorSku])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityVendorExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [System.String]
+    # The name of the sku.
+    ${SkuName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [System.String]
+    # The name of the vendor.
+    ${VendorName},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityVendorExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${VendorInputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.PSArgumentCompleterAttribute("Unknown", "Azure", "PrivateEdgeZone")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.String]
+    # The sku deployment mode.
+    ${DeploymentMode},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorSkuPropertiesFormatManagedApplicationParameters]))]
+    [System.Collections.Hashtable]
+    # The parameters for the managed application to be supplied by the vendor.
+    ${ManagedApplicationParameter},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorSkuPropertiesFormatManagedApplicationTemplate]))]
+    [System.Collections.Hashtable]
+    # The template for the managed application deployment.
+    ${ManagedApplicationTemplate},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunctionRoleConfiguration[]]
+    # An array of network function role definitions.
+    ${NetworkFunctionRoleConfigurationType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.PSArgumentCompleterAttribute("Unknown", "VirtualNetworkFunction", "ContainerizedNetworkFunction")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.String]
+    # The network function type.
+    ${NetworkFunctionType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Indicates if the vendor sku is in preview mode.
+    ${Preview},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.PSArgumentCompleterAttribute("Unknown", "EvolvedPacketCore", "SDWAN", "Firewall")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.String]
+    # The sku type.
+    ${SkuType},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.ConnectedNetwork.private\Update-AzConnectedNetworkVendorSku_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.ConnectedNetwork.private\Update-AzConnectedNetworkVendorSku_UpdateViaIdentityExpanded';
+            UpdateViaIdentityVendorExpanded = 'Az.ConnectedNetwork.private\Update-AzConnectedNetworkVendorSku_UpdateViaIdentityVendorExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+update a vendor.
+.Description
+update a vendor.
+.Example
+Update-AzConnectedNetworkVendor -Name myVendor
+.Example
+Update-AzConnectedNetworkVendor -Name myVendor2 -SubscriptionId xxxxx-22222-xxxxx-22222
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendor
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+.Link
+https://learn.microsoft.com/powershell/module/az.connectednetwork/update-azconnectednetworkvendor
+#>
+function Update-AzConnectedNetworkVendor {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendor])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Alias('VendorName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [System.String]
+    # The name of the vendor.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.ConnectedNetwork.private\Update-AzConnectedNetworkVendor_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.ConnectedNetwork.private\Update-AzConnectedNetworkVendor_UpdateViaIdentityExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an in-memory object for AzureStackEdgeFormat.
+.Description
+Create an in-memory object for AzureStackEdgeFormat.
 .Example
 New-AzConnectedNetworkAzureStackEdgeObject -AzureStackEdgeId "/subscriptions/xxxxx-00000-xxxxx-00000/resourcegroups/myResources/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/myAse1"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.AzureStackEdgeFormat
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.AzureStackEdgeFormat
 .Link
-https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkAzureStackEdgeObject
+https://learn.microsoft.com/powershell/module/Az.ConnectedNetwork/new-azconnectednetworkazurestackedgeobject
 #>
 function New-AzConnectedNetworkAzureStackEdgeObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.AzureStackEdgeFormat])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.AzureStackEdgeFormat])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -5506,6 +7611,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5534,6 +7642,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5579,9 +7690,9 @@ end {
 
 <#
 .Synopsis
-Create a in-memory object for NetworkFunctionRoleConfiguration
+Create an in-memory object for NetworkFunctionRoleConfiguration.
 .Description
-Create a in-memory object for NetworkFunctionRoleConfiguration
+Create an in-memory object for NetworkFunctionRoleConfiguration.
 .Example
 $ipconf1 = New-AzConnectedNetworkInterfaceIPConfigurationObject -IPAllocationMethod "Dynamic" -IPVersion "IPv4"
 $ipconf2 = New-AzConnectedNetworkInterfaceIPConfigurationObject -IPAllocationMethod "Dynamic" -IPVersion "IPv4"
@@ -5592,37 +7703,37 @@ $key = @( $keyData)
 $role = New-AzConnectedNetworkFunctionRoleConfigurationObject -NetworkInterface $ip1,$ip2 -OSDiskName Disk1 -OSDiskOstype Linux -OSDiskSizeGb 40 -OSProfileCustomDataRequired $False -OSProfileAdminUsername MecUser -RoleName hpehss -RoleType VirtualMachine -VirtualMachineSize "Standard_D3_v2" -SshPublicKey $key -StorageProfileDataDisk $storage -VhdUri "https://mecvdrvhd.blob.core.windows/myvhd.vhd"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionRoleConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionRoleConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 NETWORKINTERFACE <INetworkInterface[]>: The network interface configurations.
-  [IPConfiguration <INetworkInterfaceIPConfiguration[]>]: A list of IP configurations of the network interface.
-    [DnsServer <String[]>]: The list of DNS servers IP addresses.
+  [IPConfiguration <List<INetworkInterfaceIPConfiguration>>]: A list of IP configurations of the network interface.
+    [DnsServer <List<String>>]: The list of DNS servers IP addresses.
     [Gateway <String>]: The value of the gateway.
     [IPAddress <String>]: The value of the IP address.
-    [IPAllocationMethod <IPAllocationMethod?>]: IP address allocation method.
-    [IPVersion <IPVersion?>]: IP address version.
+    [IPAllocationMethod <String>]: IP address allocation method.
+    [IPVersion <String>]: IP address version.
     [Subnet <String>]: The value of the subnet.
   [MacAddress <String>]: The MAC address of the network interface.
   [Name <String>]: The name of the network interface.
-  [VMSwitchType <VMSwitchType?>]: The type of the VM switch.
+  [VMSwitchType <String>]: The type of the VM switch.
 
 SSHPUBLICKEY <ISshPublicKey[]>: The list of SSH public keys used to authenticate with linux based VMs.
   [KeyData <String>]: SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format.    For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
   [Path <String>]: Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
 
 STORAGEPROFILEDATADISK <IDataDisk[]>: Specifies the parameters that are used to add a data disk to a virtual machine.
-  [CreateOption <DiskCreateOptionTypes?>]: Specifies how the virtual machine should be created.
+  [CreateOption <String>]: Specifies how the virtual machine should be created.
   [DiskSizeGb <Int32?>]: Specifies the size of an empty disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image.
   [Name <String>]: The name of data disk.
 .Link
-https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkFunctionRoleConfigurationObject
+https://learn.microsoft.com/powershell/module/Az.ConnectedNetwork/new-azconnectednetworkfunctionroleconfigurationobject
 #>
 function New-AzConnectedNetworkFunctionRoleConfigurationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionRoleConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionRoleConfiguration])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -5667,9 +7778,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkInterface[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkInterface[]]
     # The network interface configurations.
-    # To construct, see NOTES section for NETWORKINTERFACE properties and create a hash table.
     ${NetworkInterface},
 
     [Parameter()]
@@ -5679,8 +7789,9 @@ param(
     ${OSDiskName},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.PSArgumentCompleterAttribute("Unknown", "Windows", "Linux")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.OperatingSystemTypes]
+    [System.String]
     # The OS type.
     ${OSDiskOstype},
 
@@ -5709,8 +7820,8 @@ param(
     # 
     #  **Max-length (Windows):** 20 characters  
     # 
-    # <li> For root access to the Linux VM, see [Using root privileges on Linux virtual machines in Azure](https://learn.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-    # <li> For a list of built-in system users on Linux that should not be used in this field, see [Selecting User Names for Linux on Azure](https://learn.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+    # <li> For root access to the Linux VM, see [Using root privileges on Linux virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+    # <li> For a list of built-in system users on Linux that should not be used in this field, see [Selecting User Names for Linux on Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
     ${OSProfileAdminUsername},
 
     [Parameter()]
@@ -5729,7 +7840,7 @@ param(
     #  customData is passed to the VM to be saved as a file.
     # For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) 
     # 
-    #  For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://learn.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+    #  For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
     ${OSProfileCustomData},
 
     [Parameter()]
@@ -5745,23 +7856,22 @@ param(
     ${RoleName},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.PSArgumentCompleterAttribute("Unknown", "VirtualMachine")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.NetworkFunctionRoleConfigurationType]
+    [System.String]
     # Role type.
     ${RoleType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.ISshPublicKey[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISshPublicKey[]]
     # The list of SSH public keys used to authenticate with linux based VMs.
-    # To construct, see NOTES section for SSHPUBLICKEY properties and create a hash table.
     ${SshPublicKey},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IDataDisk[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IDataDisk[]]
     # Specifies the parameters that are used to add a data disk to a virtual machine.
-    # To construct, see NOTES section for STORAGEPROFILEDATADISK properties and create a hash table.
     ${StorageProfileDataDisk},
 
     [Parameter()]
@@ -5785,8 +7895,9 @@ param(
     ${VhdUri},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.PSArgumentCompleterAttribute("Unknown", "Standard_D1_v2", "Standard_D2_v2", "Standard_D3_v2", "Standard_D4_v2", "Standard_D5_v2", "Standard_D11_v2", "Standard_D12_v2", "Standard_D13_v2", "Standard_DS1_v2", "Standard_DS2_v2", "Standard_DS3_v2", "Standard_DS4_v2", "Standard_DS5_v2", "Standard_DS11_v2", "Standard_DS12_v2", "Standard_DS13_v2", "Standard_F1", "Standard_F2", "Standard_F4", "Standard_F8", "Standard_F16", "Standard_F1s", "Standard_F2s", "Standard_F4s", "Standard_F8s", "Standard_F16s")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.VirtualMachineSizeTypes]
+    [System.String]
     # The size of the virtual machine.
     ${VirtualMachineSize}
 )
@@ -5798,6 +7909,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5826,6 +7940,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5871,9 +7988,9 @@ end {
 
 <#
 .Synopsis
-Create a in-memory object for NetworkFunctionUserConfiguration
+Create an in-memory object for NetworkFunctionUserConfiguration.
 .Description
-Create a in-memory object for NetworkFunctionUserConfiguration
+Create an in-memory object for NetworkFunctionUserConfiguration.
 .Example
 $ipconf1 = New-AzConnectedNetworkInterfaceIPConfigurationObject -IPAllocationMethod "Dynamic" -IPVersion "IPv4"
 $ip1 = New-AzConnectedNetworkInterfaceObject -IPConfiguration $ipconf1 -Name "mrmmanagementnic1" -VMSwitchType "Management"
@@ -5883,35 +8000,34 @@ $customData = "I2Nsb3VkLWNvbmZpZwp3cml0ZV9maWxlczoKLSBwYXRoOiAvdmFyL2xpYi9jbG91Z
 $userconf = New-AzConnectedNetworkFunctionUserConfigurationObject -NetworkInterface $ip1,$ip2 -OSProfileCustomData $customData -RoleName "hpehss"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionUserConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionUserConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 NETWORKINTERFACE <INetworkInterface[]>: The network interface configuration.
-  [IPConfiguration <INetworkInterfaceIPConfiguration[]>]: A list of IP configurations of the network interface.
-    [DnsServer <String[]>]: The list of DNS servers IP addresses.
+  [IPConfiguration <List<INetworkInterfaceIPConfiguration>>]: A list of IP configurations of the network interface.
+    [DnsServer <List<String>>]: The list of DNS servers IP addresses.
     [Gateway <String>]: The value of the gateway.
     [IPAddress <String>]: The value of the IP address.
-    [IPAllocationMethod <IPAllocationMethod?>]: IP address allocation method.
-    [IPVersion <IPVersion?>]: IP address version.
+    [IPAllocationMethod <String>]: IP address allocation method.
+    [IPVersion <String>]: IP address version.
     [Subnet <String>]: The value of the subnet.
   [MacAddress <String>]: The MAC address of the network interface.
   [Name <String>]: The name of the network interface.
-  [VMSwitchType <VMSwitchType?>]: The type of the VM switch.
+  [VMSwitchType <String>]: The type of the VM switch.
 .Link
-https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkFunctionUserConfigurationObject
+https://learn.microsoft.com/powershell/module/Az.ConnectedNetwork/new-azconnectednetworkfunctionuserconfigurationobject
 #>
 function New-AzConnectedNetworkFunctionUserConfigurationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionUserConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionUserConfiguration])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkInterface[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkInterface[]]
     # The network interface configuration.
-    # To construct, see NOTES section for NETWORKINTERFACE properties and create a hash table.
     ${NetworkInterface},
 
     [Parameter()]
@@ -5930,7 +8046,7 @@ param(
     #  customData is passed to the VM to be saved as a file.
     # For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) 
     # 
-    #  For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://learn.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+    #  For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
     ${OSProfileCustomData},
 
     [Parameter()]
@@ -5953,6 +8069,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5981,6 +8100,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6026,9 +8148,9 @@ end {
 
 <#
 .Synopsis
-Create a in-memory object for NetworkFunctionVendorConfiguration
+Create an in-memory object for NetworkFunctionVendorConfiguration.
 .Description
-Create a in-memory object for NetworkFunctionVendorConfiguration
+Create an in-memory object for NetworkFunctionVendorConfiguration.
 .Example
 $ipconf1 = New-AzConnectedNetworkInterfaceIPConfigurationObject -IPAllocationMethod "Dynamic" -IPVersion "IPv4"
 $ipconf2 = New-AzConnectedNetworkInterfaceIPConfigurationObject -IPAllocationMethod "Dynamic" -IPVersion "IPv4"
@@ -6040,39 +8162,38 @@ $key += $keyData
 $vendorconf = New-AzConnectedNetworkFunctionVendorConfigurationObject -NetworkInterface $ip1,$ip2 -RoleName hpehss -OSProfileAdminUsername MecUser -OSProfileCustomData $customData -OSProfileCustomDataRequired $True -SshPublicKey $key
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionVendorConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionVendorConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 NETWORKINTERFACE <INetworkInterface[]>: The network interface configurations.
-  [IPConfiguration <INetworkInterfaceIPConfiguration[]>]: A list of IP configurations of the network interface.
-    [DnsServer <String[]>]: The list of DNS servers IP addresses.
+  [IPConfiguration <List<INetworkInterfaceIPConfiguration>>]: A list of IP configurations of the network interface.
+    [DnsServer <List<String>>]: The list of DNS servers IP addresses.
     [Gateway <String>]: The value of the gateway.
     [IPAddress <String>]: The value of the IP address.
-    [IPAllocationMethod <IPAllocationMethod?>]: IP address allocation method.
-    [IPVersion <IPVersion?>]: IP address version.
+    [IPAllocationMethod <String>]: IP address allocation method.
+    [IPVersion <String>]: IP address version.
     [Subnet <String>]: The value of the subnet.
   [MacAddress <String>]: The MAC address of the network interface.
   [Name <String>]: The name of the network interface.
-  [VMSwitchType <VMSwitchType?>]: The type of the VM switch.
+  [VMSwitchType <String>]: The type of the VM switch.
 
 SSHPUBLICKEY <ISshPublicKey[]>: The list of SSH public keys used to authenticate with linux based VMs.
   [KeyData <String>]: SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format.    For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
   [Path <String>]: Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
 .Link
-https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkFunctionVendorConfigurationObject
+https://learn.microsoft.com/powershell/module/Az.ConnectedNetwork/new-azconnectednetworkfunctionvendorconfigurationobject
 #>
 function New-AzConnectedNetworkFunctionVendorConfigurationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionVendorConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionVendorConfiguration])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkInterface[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkInterface[]]
     # The network interface configurations.
-    # To construct, see NOTES section for NETWORKINTERFACE properties and create a hash table.
     ${NetworkInterface},
 
     [Parameter()]
@@ -6092,8 +8213,8 @@ param(
     # 
     #  **Max-length (Windows):** 20 characters  
     # 
-    # <li> For root access to the Linux VM, see [Using root privileges on Linux virtual machines in Azure](https://learn.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-    # <li> For a list of built-in system users on Linux that should not be used in this field, see [Selecting User Names for Linux on Azure](https://learn.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+    # <li> For root access to the Linux VM, see [Using root privileges on Linux virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+    # <li> For a list of built-in system users on Linux that should not be used in this field, see [Selecting User Names for Linux on Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
     ${OSProfileAdminUsername},
 
     [Parameter()]
@@ -6112,7 +8233,7 @@ param(
     #  customData is passed to the VM to be saved as a file.
     # For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) 
     # 
-    #  For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://learn.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+    #  For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
     ${OSProfileCustomData},
 
     [Parameter()]
@@ -6129,9 +8250,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.ISshPublicKey[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISshPublicKey[]]
     # The list of SSH public keys used to authenticate with linux based VMs.
-    # To construct, see NOTES section for SSHPUBLICKEY properties and create a hash table.
     ${SshPublicKey}
 )
 
@@ -6142,6 +8262,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6170,6 +8293,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6215,19 +8341,19 @@ end {
 
 <#
 .Synopsis
-Create a in-memory object for NetworkInterfaceIPConfiguration
+Create an in-memory object for NetworkInterfaceIPConfiguration.
 .Description
-Create a in-memory object for NetworkInterfaceIPConfiguration
+Create an in-memory object for NetworkInterfaceIPConfiguration.
 .Example
 New-AzConnectedNetworkInterfaceIPConfigurationObject -IPAllocationMethod "Dynamic" -IPVersion "IPv4"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterfaceIPConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterfaceIPConfiguration
 .Link
-https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceIPConfigurationObject
+https://learn.microsoft.com/powershell/module/Az.ConnectedNetwork/new-azconnectednetworkinterfaceipconfigurationobject
 #>
 function New-AzConnectedNetworkInterfaceIPConfigurationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterfaceIPConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterfaceIPConfiguration])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -6249,14 +8375,16 @@ param(
     ${IPAddress},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.PSArgumentCompleterAttribute("Unknown", "Static", "Dynamic")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.IPAllocationMethod]
+    [System.String]
     # IP address allocation method.
     ${IPAllocationMethod},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.PSArgumentCompleterAttribute("Unknown", "IPv4")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.IPVersion]
+    [System.String]
     # IP address version.
     ${IPVersion},
 
@@ -6274,6 +8402,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6302,6 +8433,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6347,38 +8481,37 @@ end {
 
 <#
 .Synopsis
-Create a in-memory object for NetworkInterface
+Create an in-memory object for NetworkInterface.
 .Description
-Create a in-memory object for NetworkInterface
+Create an in-memory object for NetworkInterface.
 .Example
 New-AzConnectedNetworkInterfaceObject -IPConfiguration $ipconf1 -Name "mrmmanagementnic1" -VMSwitchType "Management"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterface
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterface
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 IPCONFIGURATION <INetworkInterfaceIPConfiguration[]>: A list of IP configurations of the network interface.
-  [DnsServer <String[]>]: The list of DNS servers IP addresses.
+  [DnsServer <List<String>>]: The list of DNS servers IP addresses.
   [Gateway <String>]: The value of the gateway.
   [IPAddress <String>]: The value of the IP address.
-  [IPAllocationMethod <IPAllocationMethod?>]: IP address allocation method.
-  [IPVersion <IPVersion?>]: IP address version.
+  [IPAllocationMethod <String>]: IP address allocation method.
+  [IPVersion <String>]: IP address version.
   [Subnet <String>]: The value of the subnet.
 .Link
-https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceObject
+https://learn.microsoft.com/powershell/module/Az.ConnectedNetwork/new-azconnectednetworkinterfaceobject
 #>
 function New-AzConnectedNetworkInterfaceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterface])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterface])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkInterfaceIPConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkInterfaceIPConfiguration[]]
     # A list of IP configurations of the network interface.
-    # To construct, see NOTES section for IPCONFIGURATION properties and create a hash table.
     ${IPConfiguration},
 
     [Parameter()]
@@ -6394,8 +8527,9 @@ param(
     ${Name},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.PSArgumentCompleterAttribute("Unknown", "Management", "Wan", "Lan")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.VMSwitchType]
+    [System.String]
     # The type of the VM switch.
     ${VMSwitchType}
 )
@@ -6407,6 +8541,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6435,6 +8572,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

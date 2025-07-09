@@ -35,12 +35,12 @@ Export-AzLogAnalyticThrottledRequest -Location 'West Central US' -FromTime '2018
 
 This command stores the total throttled Microsoft.Compute API calls between 2018-02-20T17:54:14 and 2018-02-22T17:54:17 in the given SAS URI, aggregated by operation name.
 
-### Example 2: Export records aggregated by applicaiton id
+### Example 2: Export records aggregated by application id
 ```powershell
 Export-AzLogAnalyticThrottledRequest -Location 'West Central US' -FromTime '2018-02-20T17:54:14.8806951-08:00' -ToTime '2018-02-22T17:54:17.5832413-08:00' -BlobContainerSasUri 'https://wkuotest1.blob.core.windows.net/mylogs?someSasUri' -GroupByApplicationId
 ```
 
-This command stores the total throttled Microsoft.Compute API calls between 2018-02-20T17:54:14 and 2018-02-22T17:54:17 in the given SAS URI, aggregated by appliction id.
+This command stores the total throttled Microsoft.Compute API calls between 2018-02-20T17:54:14 and 2018-02-22T17:54:17 in the given SAS URI, aggregated by application id.
 
 ### Example 3: Export records aggregated by user agent
 ```powershell

@@ -28,11 +28,9 @@ $CHECKNAMEAVAILABILITYREQUEST = [ordered]@{
  Invoke-AzSelfHelpCheckNameAvailability -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba" -CheckNameAvailabilityRequest $CHECKNAMEAVAILABILITYREQUEST 
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ICheckNameAvailabilityRequest
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ICheckNameAvailabilityRequest
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ICheckNameAvailabilityResponse
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ICheckNameAvailabilityResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -41,59 +39,48 @@ To create the parameters described below, construct a hash table containing the 
 CHECKNAMEAVAILABILITYREQUEST <ICheckNameAvailabilityRequest>: The check availability request body.
   [Name <String>]: The name of the resource for which availability needs to be checked.
   [Type <String>]: The resource type.
-
-INPUTOBJECT <ISelfHelpIdentity>: Identity Parameter
-  [DiagnosticsResourceName <String>]: Unique resource name for insight resources
-  [Id <String>]: Resource identity path
-  [Scope <String>]: scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read 
-  [SimplifiedSolutionsResourceName <String>]: Simplified Solutions Resource Name.
-  [SolutionId <String>]: SolutionId is a unique id to identify a solution. You can retrieve the solution id using the Discovery api - https://learn.microsoft.com/en-us/rest/api/help/discovery-solution/list?view=rest-help-2023-09-01-preview&tabs=HTTP
-  [SolutionResourceName <String>]: Solution resource Name.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [TroubleshooterName <String>]: Troubleshooter resource Name.
 .Link
 https://learn.microsoft.com/powershell/module/az.selfhelp/invoke-azselfhelpchecknameavailability
 #>
 function Invoke-AzSelfHelpCheckNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ICheckNameAvailabilityResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ICheckNameAvailabilityResponse])]
 [CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Post', Mandatory)]
-    [Parameter(ParameterSetName='PostExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [System.String]
     # scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
     ${Scope},
 
-    [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='PostViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
     [Parameter(ParameterSetName='Post', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ICheckNameAvailabilityRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ICheckNameAvailabilityRequest]
     # The check availability request body.
-    # To construct, see NOTES section for CHECKNAMEAVAILABILITYREQUEST properties and create a hash table.
     ${CheckNameAvailabilityRequest},
 
     [Parameter(ParameterSetName='PostExpanded')]
-    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
     [System.String]
     # The name of the resource for which availability needs to be checked.
     ${Name},
 
     [Parameter(ParameterSetName='PostExpanded')]
-    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
     [System.String]
     # The resource type.
     ${Type},
+
+    [Parameter(ParameterSetName='PostViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Post operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='PostViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [System.String]
+    # Json string supplied to the Post operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -151,6 +138,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -172,8 +168,8 @@ begin {
         $mapping = @{
             Post = 'Az.SelfHelp.private\Invoke-AzSelfHelpCheckNameAvailability_Post';
             PostExpanded = 'Az.SelfHelp.private\Invoke-AzSelfHelpCheckNameAvailability_PostExpanded';
-            PostViaIdentity = 'Az.SelfHelp.private\Invoke-AzSelfHelpCheckNameAvailability_PostViaIdentity';
-            PostViaIdentityExpanded = 'Az.SelfHelp.private\Invoke-AzSelfHelpCheckNameAvailability_PostViaIdentityExpanded';
+            PostViaJsonFilePath = 'Az.SelfHelp.private\Invoke-AzSelfHelpCheckNameAvailability_PostViaJsonFilePath';
+            PostViaJsonString = 'Az.SelfHelp.private\Invoke-AzSelfHelpCheckNameAvailability_PostViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -182,6 +178,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

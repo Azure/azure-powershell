@@ -16,7 +16,8 @@ Creates a Public IP Prefix
 New-AzPublicIpPrefix -Name <String> -ResourceGroupName <String> -Location <String> [-Sku <String>]
  [-Tier <String>] -PrefixLength <UInt16> [-IpAddressVersion <String>] [-IpTag <PSPublicIpPrefixTag[]>]
  [-Zone <String[]>] [-CustomIpPrefix <PSCustomIpPrefix>] [-EdgeZone <String>] [-Tag <Hashtable>] [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -224,7 +225,7 @@ The public IP Prefix Sku name.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Standard
+Accepted values: Standard, StandardV2
 
 Required: False
 Position: Named

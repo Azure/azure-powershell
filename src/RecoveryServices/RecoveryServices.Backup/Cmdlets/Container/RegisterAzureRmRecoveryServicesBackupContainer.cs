@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public string ResourceId { get; set; }
 
         /// <summary>
-        /// When this option is specified, The contiane will be registered
+        /// When this option is specified, The container will be registered
         /// </summary>
         [Parameter(Mandatory = true, Position = 0, HelpMessage = ParamHelpMsgs.Item.Container,
             ParameterSetName = ReRegisterParamSet, ValueFromPipelineByPropertyName = true)]
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         {
             ExecutionBlock(() =>
             {
-                string containerName = Container != null ? Container.Name : ResourceId.Split('/')[8];                
+                string containerName = Container != null ? Container.Name : ResourceId.Split('/')[8];
 
                 ConfirmAction(
                     Force.IsPresent,
@@ -98,9 +98,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {
                         base.ExecuteCmdlet();
 
+                        string vmResourceGroupParsed = null;
                         ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
                         string vaultName = resourceIdentifier.ResourceName;
                         string vaultResourceGroupName = resourceIdentifier.ResourceGroupName;
+
+                        if (Container != null)
+                        {
+                            if (Container is AzureVmWorkloadContainer)
+                            {
+                                AzureVmWorkloadContainer azureVmWorkloadContainer = (AzureVmWorkloadContainer)Container;
+                                Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(azureVmWorkloadContainer.SourceResourceId);
+                                vmResourceGroupParsed = HelperUtils.GetResourceGroupNameFromId(keyValueDict, azureVmWorkloadContainer.SourceResourceId);
+                            }
+                            else
+                            {
+                                vmResourceGroupParsed = vaultResourceGroupName;
+                            }
+                        }
+                        else
+                        {
+                            Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(ResourceId);
+                            vmResourceGroupParsed = HelperUtils.GetResourceGroupNameFromId(keyValueDict, ResourceId);
+                        }
 
                         PsBackupProviderManager providerManager =
                             new PsBackupProviderManager(new Dictionary<Enum, object>()
@@ -110,7 +130,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 { ContainerParams.Name, containerName },
                                 { ContainerParams.ContainerType, ServiceClientHelpers.GetServiceClientWorkloadType(WorkloadType).ToString() },
                                 { ContainerParams.BackupManagementType, BackupManagementType.ToString() },
-                                { ContainerParams.Container, Container}
+                                { ContainerParams.Container, Container},
+                                { ContainerParams.ResourceGroupName, vmResourceGroupParsed },
                             }, ServiceClientAdapter);
 
                         IPsBackupProvider psBackupProvider =

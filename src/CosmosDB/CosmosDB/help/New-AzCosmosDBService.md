@@ -15,15 +15,15 @@ Creates a new CosmosDB Service.
 ### ByNameParameterSet (Default)
 ```
 New-AzCosmosDBService -ResourceGroupName <String> -AccountName <String> -ServiceName <String>
- -InstanceSize <String> -InstanceCount <Int32> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -InstanceSize <String> -InstanceCount <Int32> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 New-AzCosmosDBService -ServiceName <String> -InstanceSize <String> -InstanceCount <Int32>
- -ParentObject <PSDatabaseAccountGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ParentObject <PSDatabaseAccountGetResults> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

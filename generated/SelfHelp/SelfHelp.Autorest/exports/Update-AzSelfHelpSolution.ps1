@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update the requiredInputs or additional information needed to execute the solution
+update the requiredInputs or additional information needed to execute the solution
 .Description
-Update the requiredInputs or additional information needed to execute the solution
+update the requiredInputs or additional information needed to execute the solution
 .Example
 $parameters = [ordered]@{ 
         "SearchText" = "Can not Search" 
@@ -32,7 +32,7 @@ Update-AzSelfHelpSolution -ResourceName test-resource234 -Scope  /subscriptions/
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISolutionResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -49,16 +49,18 @@ INPUTOBJECT <ISelfHelpIdentity>: Identity Parameter
   [TroubleshooterName <String>]: Troubleshooter resource Name.
 
 TRIGGERCRITERION <ITriggerCriterion[]>: Solution request trigger criteria
-  [Name <Name?>]: Trigger criterion name.
+  [Name <String>]: Trigger criterion name.
   [Value <String>]: Trigger criterion value.
 .Link
 https://learn.microsoft.com/powershell/module/az.selfhelp/update-azselfhelpsolution
 #>
 function Update-AzSelfHelpSolution {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISolutionResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('SolutionResourceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [System.String]
@@ -66,6 +68,8 @@ param(
     ${ResourceName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [System.String]
     # scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
@@ -75,23 +79,35 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResourcePropertiesParameters]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISolutionResourcePropertiesParameters]))]
     [System.Collections.Hashtable]
     # Client input parameters to run Solution
     ${Parameter},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITriggerCriterion[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ITriggerCriterion[]]
     # Solution request trigger criteria
-    # To construct, see NOTES section for TRIGGERCRITERION properties and create a hash table.
     ${TriggerCriterion},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -161,6 +177,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -182,6 +207,8 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.SelfHelp.private\Update-AzSelfHelpSolution_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.SelfHelp.private\Update-AzSelfHelpSolution_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.SelfHelp.private\Update-AzSelfHelpSolution_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.SelfHelp.private\Update-AzSelfHelpSolution_UpdateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -190,6 +217,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed bugs in `New-AzMigrateServerReplication` caused by deprecation of `Get-AzVmSize -location`
+* Removed `-TargetStoragePathId` parameter from command `New-AzMigrateLocalDiskMappingObject` until the feature to associate each disk to their own storage container path is supported.
+* Added `-SourceApplianceName` and `-TargetApplianceName` as required parameters to command `New-AzMigrateLocalServerReplication` to allow users to specify appliance pairs of their choosing.
+* Enhanced resource validations in `Initialize-AzMigrateLocalReplicationInfrastructure` and `New-AzMigrateLocalServerReplication`.
+
+## Version 2.8.0
+* Implemented the Get-AzMigrateServerMigrationStatus cmdlet to retrieve the replication status of servers in Azure Migrate.
+* Fixed bugs in `New-AzMigrateLocalServerReplication` that caused HyperVSite or VMwareSite not found.
+
+## Version 2.7.1
 
 * Added validation for Data.Replication
   - Added validation to protect virtual machines in `New-AzMigrateLocalServerReplication`

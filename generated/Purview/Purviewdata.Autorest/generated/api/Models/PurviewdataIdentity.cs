@@ -31,10 +31,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models
         public string DataSourceName { get => this._dataSourceName; set => this._dataSourceName = value; }
 
         /// <summary>Backing field for <see cref="DataSourceType" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType? _dataSourceType;
+        private string _dataSourceType;
 
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType? DataSourceType { get => this._dataSourceType; set => this._dataSourceType = value; }
+        public string DataSourceType { get => this._dataSourceType; set => this._dataSourceType = value; }
 
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
@@ -85,6 +85,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"",
         SerializedName = @"classificationRuleName",
         PossibleTypes = new [] { typeof(string) })]
@@ -93,6 +96,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"",
         SerializedName = @"classificationRuleVersion",
         PossibleTypes = new [] { typeof(int) })]
@@ -101,6 +107,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"",
         SerializedName = @"dataSourceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -109,14 +118,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"",
         SerializedName = @"dataSourceType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType? DataSourceType { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("None", "AzureSubscription", "AzureResourceGroup", "AzureSynapseWorkspace", "AzureSynapse", "AdlsGen1", "AdlsGen2", "AmazonAccount", "AmazonS3", "AmazonSql", "AzureCosmosDb", "AzureDataExplorer", "AzureFileService", "AzureSqlDatabase", "AmazonPostgreSql", "AzurePostgreSql", "SqlServerDatabase", "AzureSqlDatabaseManagedInstance", "AzureSqlDataWarehouse", "AzureMySql", "AzureStorage", "Teradata", "Oracle", "SapS4Hana", "SapEcc", "PowerBI")]
+        string DataSourceType { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -125,6 +141,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"",
         SerializedName = @"keyVaultName",
         PossibleTypes = new [] { typeof(string) })]
@@ -133,6 +152,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"",
         SerializedName = @"runId",
         PossibleTypes = new [] { typeof(string) })]
@@ -141,6 +163,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"",
         SerializedName = @"scanName",
         PossibleTypes = new [] { typeof(string) })]
@@ -149,6 +174,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"",
         SerializedName = @"scanRulesetName",
         PossibleTypes = new [] { typeof(string) })]
@@ -157,6 +185,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"",
         SerializedName = @"version",
         PossibleTypes = new [] { typeof(int) })]
@@ -172,7 +203,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models
 
         string DataSourceName { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType? DataSourceType { get; set; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("None", "AzureSubscription", "AzureResourceGroup", "AzureSynapseWorkspace", "AzureSynapse", "AdlsGen1", "AdlsGen2", "AmazonAccount", "AmazonS3", "AmazonSql", "AzureCosmosDb", "AzureDataExplorer", "AzureFileService", "AzureSqlDatabase", "AmazonPostgreSql", "AzurePostgreSql", "SqlServerDatabase", "AzureSqlDatabaseManagedInstance", "AzureSqlDataWarehouse", "AzureMySql", "AzureStorage", "Teradata", "Oracle", "SapS4Hana", "SapEcc", "PowerBI")]
+        string DataSourceType { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
 

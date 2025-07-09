@@ -52,7 +52,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IPersistentDisk Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResourcePropertiesInternal.PersistentDisk { get => (this._persistentDisk = this._persistentDisk ?? new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.PersistentDisk()); set { {_persistentDisk = value;} } }
 
         /// <summary>Internal Acessors for PersistentDiskUsedInGb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResourcePropertiesInternal.PersistentDiskUsedInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IPersistentDiskInternal)PersistentDisk).UsedInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IPersistentDiskInternal)PersistentDisk).UsedInGb = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResourcePropertiesInternal.PersistentDiskUsedInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IPersistentDiskInternal)PersistentDisk).UsedInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IPersistentDiskInternal)PersistentDisk).UsedInGb = value ?? default(int); }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResourcePropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }

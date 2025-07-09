@@ -877,6 +877,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>RelativePath</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Version</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -886,6 +889,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>RelativePath</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Version</PropertyName>
               </TableColumnItem>
@@ -4278,34 +4284,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.UploadedUserSourceInfo</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.UploadedUserSourceInfo#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Version</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RelativePath</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Version</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RelativePath</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.UserSourceInfo</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.UserSourceInfo#Multiple</TypeName>
@@ -4313,12 +4291,18 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>RelativePath</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Version</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>RelativePath</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Version</PropertyName>
               </TableColumnItem>

@@ -15,20 +15,22 @@ Create a route map to a VirtualHub.
 ### ByVirtualHubName (Default)
 ```
 New-AzRouteMap [-ResourceGroupName <String>] [-VirtualHubName <String>] [-Name <String>]
- [-RouteMapRule <PSRouteMapRule[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RouteMapRule <PSRouteMapRule[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
 New-AzRouteMap [-VirtualHubObject <PSVirtualHub>] [-Name <String>] [-RouteMapRule <PSRouteMapRule[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
 ```
 New-AzRouteMap [-VirtualHubResourceId <String>] [-Name <String>] [-RouteMapRule <PSRouteMapRule[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

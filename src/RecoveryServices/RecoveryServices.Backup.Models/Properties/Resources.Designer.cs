@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to All retention schedules are empty in RetentionPolicy. Alteast one is expected..
+        ///   Looks up a localized string similar to All retention schedules are empty in RetentionPolicy. At least one is expected..
         /// </summary>
         public static string AllRetentionSchedulesEmptyException
         {
@@ -1722,7 +1722,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Both RestoreAsUnmanagedDisks and TargetResourceGroupName can't be spceified. Please give Only one parameter and retry.
+        ///   Looks up a localized string similar to Both RestoreAsUnmanagedDisks and TargetResourceGroupName can't be specified. Please give Only one parameter and retry.
         /// </summary>
         public static string TargetRGUnmanagedRestoreDuplicateParamsException
         {
@@ -1854,7 +1854,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to please provide a vaild target storage account.
+        ///   Looks up a localized string similar to please provide a valid target storage account.
         /// </summary>
         public static string InvalidTargetStorageAccount
         {
