@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<GenericResourceExpanded>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilter>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<GenericResourceExpanded>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilterWithExpand> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilterWithExpand>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -128,10 +128,10 @@ namespace Microsoft.Azure.Management.Resources
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (odataQuery != null)
             {
-                var _genericResourceFilter = odataQuery.ToString();
-                if (!string.IsNullOrEmpty(_genericResourceFilter))
+                var _genericResourceFilterWithExpand = odataQuery.ToString();
+                if (!string.IsNullOrEmpty(_genericResourceFilterWithExpand))
                 {
-                    _queryParameters.Add(_genericResourceFilter);
+                    _queryParameters.Add(_genericResourceFilterWithExpand);
                 }
             }
             if (this.Client.ApiVersion != null)
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<GenericResourceExpanded>>> ListWithHttpMessagesAsync(Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilter>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<GenericResourceExpanded>>> ListWithHttpMessagesAsync(Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilterWithExpand> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilterWithExpand>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -390,10 +390,10 @@ namespace Microsoft.Azure.Management.Resources
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (odataQuery != null)
             {
-                var _genericResourceFilter = odataQuery.ToString();
-                if (!string.IsNullOrEmpty(_genericResourceFilter))
+                var _genericResourceFilterWithExpand = odataQuery.ToString();
+                if (!string.IsNullOrEmpty(_genericResourceFilterWithExpand))
                 {
-                    _queryParameters.Add(_genericResourceFilter);
+                    _queryParameters.Add(_genericResourceFilterWithExpand);
                 }
             }
             if (this.Client.ApiVersion != null)
