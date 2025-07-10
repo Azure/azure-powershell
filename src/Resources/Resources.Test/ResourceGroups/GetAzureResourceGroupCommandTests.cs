@@ -113,38 +113,5 @@ namespace Microsoft.Azure.Commands.Resources.Test
             Assert.Equal(createdTime, result[0].CreatedTime);
             Assert.Equal(changedTime, result[0].ChangedTime);
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetsResourceGroupsWithTimestamps()
-        {
-            List<PSResourceGroup> result = new List<PSResourceGroup>();
-            var createdTime = DateTime.UtcNow.AddDays(-30);
-            var changedTime = DateTime.UtcNow;
-            
-            PSResourceGroup expected = new PSResourceGroup()
-            {
-                Location = resourceGroupLocation,
-                ResourceGroupName = resourceGroupName,
-                CreatedTime = createdTime,
-                ChangedTime = changedTime
-            };
-            result.Add(expected);
-            
-            resourcesClientMock.Setup(f => f.FilterResourceGroups(resourceGroupName, null, false, null, null)).Returns(result);
-
-            cmdlet.Name = resourceGroupName;
-            cmdlet.ExecuteCmdlet();
-
-            Assert.Single(result);
-            Assert.Equal(resourceGroupName, result[0].ResourceGroupName);
-            Assert.Equal(resourceGroupLocation, result[0].Location);
-            Assert.NotNull(result[0].CreatedTime);
-            Assert.NotNull(result[0].ChangedTime);
-            Assert.Equal(createdTime, result[0].CreatedTime);
-            Assert.Equal(changedTime, result[0].ChangedTime);
-
-            commandRuntimeMock.Verify(f => f.WriteObject(result, true), Times.Once());
-        }
     }
 }
