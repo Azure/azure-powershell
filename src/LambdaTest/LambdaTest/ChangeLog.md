@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* General availability for module Az.LambdaTest
 * Upgraded the API version to 2024-02-01
 
 ## Version 0.1.0
