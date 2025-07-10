@@ -56,7 +56,7 @@ This creates the parameters used for stopping a packet capture on the azure fire
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
