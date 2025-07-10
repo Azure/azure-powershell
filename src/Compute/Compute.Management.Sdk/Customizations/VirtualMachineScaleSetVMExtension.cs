@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         {
             Name = name;
             Type = type;
-            Location = Location;
+            Location = location;
             ForceUpdateTag = forceUpdateTag;
             Publisher = publisher;
             VirtualMachineExtensionPropertiesType = virtualMachineExtensionPropertiesType;
