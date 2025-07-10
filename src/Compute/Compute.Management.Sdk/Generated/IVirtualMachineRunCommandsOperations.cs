@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Compute
         /// Lists all available run commands for a subscription in a location.
         /// </summary>
         /// <param name='location'>
-        /// The location upon which run commands is queried.
+        /// The name of Azure region.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets specific run command for a subscription in a location.
         /// </summary>
         /// <param name='location'>
-        /// The location upon which run commands is queried.
+        /// The name of Azure region.
         /// </param>
         /// <param name='commandId'>
         /// The command id.
@@ -71,136 +71,13 @@ namespace Microsoft.Azure.Management.Compute
         /// </exception>
         Task<AzureOperationResponse<RunCommandDocument>> GetWithHttpMessagesAsync(string location, string commandId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// The operation to create or update the run command.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='vmName'>
-        /// The name of the virtual machine where the run command should be
-        /// created or updated.
-        /// </param>
-        /// <param name='runCommandName'>
-        /// The name of the virtual machine run command.
-        /// </param>
-        /// <param name='runCommand'>
-        /// Parameters supplied to the Create Virtual Machine RunCommand
-        /// operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<VirtualMachineRunCommand>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vmName, string runCommandName, VirtualMachineRunCommand runCommand, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// The operation to update the run command.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='vmName'>
-        /// The name of the virtual machine where the run command should be
-        /// updated.
-        /// </param>
-        /// <param name='runCommandName'>
-        /// The name of the virtual machine run command.
-        /// </param>
-        /// <param name='runCommand'>
-        /// Parameters supplied to the Update Virtual Machine RunCommand
-        /// operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<VirtualMachineRunCommand>> UpdateWithHttpMessagesAsync(string resourceGroupName, string vmName, string runCommandName, VirtualMachineRunCommandUpdate runCommand, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// The operation to delete the run command.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='vmName'>
-        /// The name of the virtual machine where the run command should be
-        /// deleted.
-        /// </param>
-        /// <param name='runCommandName'>
-        /// The name of the virtual machine run command.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string vmName, string runCommandName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// The operation to get the run command.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='vmName'>
-        /// The name of the virtual machine containing the run command.
-        /// </param>
-        /// <param name='runCommandName'>
-        /// The name of the virtual machine run command.
-        /// </param>
-        /// <param name='expand'>
-        /// The expand expression to apply on the operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<VirtualMachineRunCommand>> GetByVirtualMachineWithHttpMessagesAsync(string resourceGroupName, string vmName, string runCommandName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// The operation to get all run commands of a Virtual Machine.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vmName'>
-        /// The name of the virtual machine containing the run command.
+        /// The name of the VirtualMachine
         /// </param>
         /// <param name='expand'>
         /// The expand expression to apply on the operation.
@@ -222,17 +99,47 @@ namespace Microsoft.Azure.Management.Compute
         /// </exception>
         Task<AzureOperationResponse<IPage<VirtualMachineRunCommand>>> ListByVirtualMachineWithHttpMessagesAsync(string resourceGroupName, string vmName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// The operation to get the run command.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vmName'>
+        /// The name of the VirtualMachine
+        /// </param>
+        /// <param name='runCommandName'>
+        /// The name of the VirtualMachineRunCommand
+        /// </param>
+        /// <param name='expand'>
+        /// The expand expression to apply on the operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<VirtualMachineRunCommand>> GetByVirtualMachineWithHttpMessagesAsync(string resourceGroupName, string vmName, string runCommandName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// The operation to create or update the run command.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vmName'>
-        /// The name of the virtual machine where the run command should be
-        /// created or updated.
+        /// The name of the VirtualMachine
         /// </param>
         /// <param name='runCommandName'>
-        /// The name of the virtual machine run command.
+        /// The name of the VirtualMachineRunCommand
         /// </param>
         /// <param name='runCommand'>
         /// Parameters supplied to the Create Virtual Machine RunCommand
@@ -253,19 +160,18 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualMachineRunCommand>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vmName, string runCommandName, VirtualMachineRunCommand runCommand, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualMachineRunCommand,VirtualMachineRunCommandsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vmName, string runCommandName, VirtualMachineRunCommand runCommand, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// The operation to update the run command.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vmName'>
-        /// The name of the virtual machine where the run command should be
-        /// updated.
+        /// The name of the VirtualMachine
         /// </param>
         /// <param name='runCommandName'>
-        /// The name of the virtual machine run command.
+        /// The name of the VirtualMachineRunCommand
         /// </param>
         /// <param name='runCommand'>
         /// Parameters supplied to the Update Virtual Machine RunCommand
@@ -286,19 +192,107 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualMachineRunCommand>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string vmName, string runCommandName, VirtualMachineRunCommandUpdate runCommand, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualMachineRunCommand,VirtualMachineRunCommandsUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string vmName, string runCommandName, VirtualMachineRunCommandUpdate runCommand, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// The operation to delete the run command.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vmName'>
-        /// The name of the virtual machine where the run command should be
-        /// deleted.
+        /// The name of the VirtualMachine
         /// </param>
         /// <param name='runCommandName'>
-        /// The name of the virtual machine run command.
+        /// The name of the VirtualMachineRunCommand
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string vmName, string runCommandName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// The operation to create or update the run command.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vmName'>
+        /// The name of the VirtualMachine
+        /// </param>
+        /// <param name='runCommandName'>
+        /// The name of the VirtualMachineRunCommand
+        /// </param>
+        /// <param name='runCommand'>
+        /// Parameters supplied to the Create Virtual Machine RunCommand
+        /// operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<VirtualMachineRunCommand,VirtualMachineRunCommandsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vmName, string runCommandName, VirtualMachineRunCommand runCommand, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// The operation to update the run command.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vmName'>
+        /// The name of the VirtualMachine
+        /// </param>
+        /// <param name='runCommandName'>
+        /// The name of the VirtualMachineRunCommand
+        /// </param>
+        /// <param name='runCommand'>
+        /// Parameters supplied to the Update Virtual Machine RunCommand
+        /// operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<VirtualMachineRunCommand,VirtualMachineRunCommandsUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string vmName, string runCommandName, VirtualMachineRunCommandUpdate runCommand, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// The operation to delete the run command.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vmName'>
+        /// The name of the VirtualMachine
+        /// </param>
+        /// <param name='runCommandName'>
+        /// The name of the VirtualMachineRunCommand
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
