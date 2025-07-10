@@ -19,7 +19,6 @@
 -->
 
 ## Upcoming Release
-* Fixed empty warning output issue for cmdlet `Test-AzResourceGroupDeployment` [#27888]
 * Added functionality for cmdlet `GetAzureResource` and `GetAzureResourceGroup`[#5814][#27865]
 
 ## Version 8.0.1
