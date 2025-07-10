@@ -871,7 +871,7 @@ This is an RM representation of customer branches that are uploaded to Azure for
 Get IKE Security Associations of VPN Site Link Connections
 
 ### [Invoke-AzFirewallPacketCapture](Invoke-AzFirewallPacketCapture.md)
-Invoke Packet Capture on Azure Firewall
+Invoke Packet Capture Operation on Azure Firewall
 
 ### [Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic](Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic.md)
 Invoke network configuration diagnostic session for specified network profiles on target resource.
