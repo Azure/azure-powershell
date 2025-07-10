@@ -20,7 +20,8 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 Describe 'Reset-AzLabServicesVMPassword' {
     It 'Reset' {
         Start-AzLabServicesVM -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -Name 0
-        {Reset-AzLabServicesVMPassword -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -VirtualMachineName 0 -UserName $env.UserName -Password $(ConvertTo-SecureString "Junk@1234stuff" -AsPlainText -Force)} | Should -Not -Throw
+        $string = ConvertTo-SecureString "REDACTED" -AsPlainText -Force
+        {Reset-AzLabServicesVMPassword -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -VirtualMachineName 0 -UserName $env.UserName -Password $string } | Should -Not -Throw
         Stop-AzLabServicesVM -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -Name 0
     }
 }

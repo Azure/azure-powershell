@@ -68,27 +68,6 @@ function setupEnv() {
     # New-AzGallery -GalleryName 'sigunitpowershell' -ResourceGroupName 'powershell-sdk-testing' -Location 'westcentralus' -Description 'Shared Image Gallery for my unit tests'
     # New-AzRoleAssignment -ObjectId 594510ee-5396-4a71-902c-43e31b4c8d5a -RoleDefinitionName Contributor -Scope "/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/powershell-sdk-testing/providers/Microsoft.Compute/galleries/sigunitpowershell"
 
-    # Create the resource Group
-    # $rgUri = "https://management.azure.com/subscriptions/$($env.SubscriptionId)/resourcegroups/$($env.ResourceGroupName)?api-version=2021-04-01"
-
-    # if (!(CheckExists($rgUri)))
-    # {
-    #     Write-Host "Creating resource group $env.ResourceGroupName."
-    #     $null = New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location
-    # } else {
-    #     Write-Host "$env.ResourceGroupName already exists."
-    # }
-
-    # Create the SIG
-    # $sigUri = "https://management.azure.com/subscriptions/$($env.SubscriptionId)/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Compute/galleries/$($env.SIGName)"
-    # if (!(CheckExists($sigUri)))
-    # {
-    #     $gallery = New-AzGallery -GalleryName $env.SIGName -ResourceGroupName $env.ResourceGroupName -Location $env.Location -Description 'Shared Image Gallery for my unit tests'
-    #     Write-Host "Created Shared Gallery $($env.SIGName)"
-    #     $env.SharedGalleryId = $gallery.Id
-    # } else {
-    #     Write-Host "$env.SIGName already exists."
-    # }
     $env.SharedGalleryId = "/subscriptions/$($env.SubscriptionId)/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Compute/galleries/$($env.SIGName)"
 
     # Create the Lab Plan
@@ -180,7 +159,7 @@ function setupEnv() {
                 useSharedPassword = "Disabled"
                 adminUser = @{ 
                     username = $env.UserName
-                    password = 'Junk@1234stuff'
+                    password = 'REDACTED'
                 }
             }
             title = "LAB $($env.LabName)"

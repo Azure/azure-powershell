@@ -19,14 +19,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzLabServicesLab'))
 
 Describe 'New-AzLabServicesLab' {
     It 'Create' {
-
+        $string = ConvertTo-SecureString "REDACTED" -AsPlainText -Force
         New-AzLabServicesLab `
         -Name $env.NewLabName `
         -ResourceGroupName $env.ResourceGroupName `
         -Location $env.Location `
         -LabPlanId "subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.LabServices/labPlans/$($env.LabPlanName)" `
         -AdditionalCapabilityInstallGpuDriver Disabled `
-        -AdminUserPassword $(ConvertTo-SecureString "Junk@1234stuff" -AsPlainText -Force) `
+        -AdminUserPassword $string `
         -AdminUserUsername $env.UserName `
         -AutoShutdownProfileShutdownOnDisconnect Disabled `
         -AutoShutdownProfileShutdownOnIdle None `
