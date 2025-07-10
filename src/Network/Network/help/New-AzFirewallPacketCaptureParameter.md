@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://learn.microsoft.com/powershell/module/az.network/update-aznetworksecurityperimeterloggingconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azfirewallpacketcaptureparameter
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Create a Packet Capture Parameter for Azure Firewall. The operation parameter is
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Configuring Azure Firewall Packet Capture with Advanced Rules and Parameters for start operation
 ```powershell
 $filter1 = New-AzFirewallPacketCaptureRule -Source "10.0.0.2","192.123.12.1" -Destination "172.32.1.2" -DestinationPort "80","443"
 $filter2 = New-AzFirewallPacketCaptureRule -Source "10.0.0.5" -Destination "172.20.10.2" -DestinationPort "80","443"
@@ -34,7 +34,7 @@ $Params = New-AzFirewallPacketCaptureParameter  -DurationInSeconds 300 -NumberOf
 
 This creates the parameters used for starting a packet capture on the azure firewall
 
-### Example 2
+### Example 2: Configuring Azure Firewall Packet Capture for status operation
 ```powershell
 # Create the firewall packet capture parameters to check Status operation
 $Params = New-AzFirewallPacketCaptureParameter -Operation "Status" 
@@ -42,7 +42,7 @@ $Params = New-AzFirewallPacketCaptureParameter -Operation "Status"
 
 This creates the parameters used for getting the status of a packet capture on the azure firewall
 
-### Example 3
+### Example 3: Configuring Azure Firewall Packet Capture for stop operation
 ```powershell
 # Create the firewall packet capture parameters to check Status operation
 $Params = New-AzFirewallPacketCaptureParameter -Operation "Stop" 
