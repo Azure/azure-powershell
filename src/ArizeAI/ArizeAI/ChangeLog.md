@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+* Upgraded the API version to 2024-10-01
+
 ## Version 0.1.0
 * First preview release for module Az.ArizeAI
 
