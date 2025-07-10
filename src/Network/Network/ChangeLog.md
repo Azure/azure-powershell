@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlet response object to 'PSAzureFirewallPacketCaptureResponse' to provide expected responses for Azure Firewall Packet Capture Operations. Updated corresponding cmdlets.
+    - `Invoke-AzFirewallPacketCapture`
+* Updated cmdlet to add the mandatory property of 'Operation' and made all other properties not mandatory for Azure Firewall Packet Capture Parameters. Updated corresponding cmdlets.
+    - `New-AzFirewallPacketCaptureParameter`
 * Onboarded Application Gateway WAF Exceptions cmdlet.
     - `New-AzApplicationGatewayFirewallPolicyException`  
 * Added properties 'DedicatedBackendConnection', 'ValidateCertChainAndExpiry', 'ValidateSNI', and 'SniName' to Application Gateway Backend HTTP Settings, as well as support for them in the following cmdlets:
