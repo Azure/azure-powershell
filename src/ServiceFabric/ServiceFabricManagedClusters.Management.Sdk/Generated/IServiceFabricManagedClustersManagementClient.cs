@@ -10,9 +10,9 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
     using Models;
 
     /// <summary>
-    /// Azure Service Fabric Resource Provider API Client
+    /// Service Fabric Managed Clusters Management Client
     /// </summary>
-    public partial interface IServiceFabricManagementClient :  System.IDisposable
+    public partial interface IServiceFabricManagedClustersManagementClient :  System.IDisposable
     {
         /// <summary>
         /// The base URI of the service.
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
 
         /// <summary>
-        /// The customer subscription identifier.
+        /// The ID of the target subscription.
         /// </summary>
         string SubscriptionId { get; set;}
 
@@ -55,48 +55,18 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         int? LongRunningOperationRetryTimeout { get; set;}
 
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         bool? GenerateClientRequestId { get; set;}
 
-
-        /// <summary>
-        /// Gets the IManagedClustersOperations
-        /// </summary>
-        IManagedClustersOperations ManagedClusters { get; }
-
-        /// <summary>
-        /// Gets the IManagedAzResiliencyStatusOperations
-        /// </summary>
-        IManagedAzResiliencyStatusOperations ManagedAzResiliencyStatus { get; }
-
-        /// <summary>
-        /// Gets the IManagedClusterVersionOperations
-        /// </summary>
-        IManagedClusterVersionOperations ManagedClusterVersion { get; }
-
-        /// <summary>
-        /// Gets the IManagedUnsupportedVMSizesOperations
-        /// </summary>
-        IManagedUnsupportedVMSizesOperations ManagedUnsupportedVMSizes { get; }
-
-        /// <summary>
-        /// Gets the IOperationStatusOperations
-        /// </summary>
-        IOperationStatusOperations OperationStatus { get; }
-
-        /// <summary>
-        /// Gets the IOperationResultsOperations
-        /// </summary>
-        IOperationResultsOperations OperationResults { get; }
 
         /// <summary>
         /// Gets the IOperations
@@ -104,14 +74,29 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         IOperations Operations { get; }
 
         /// <summary>
-        /// Gets the INodeTypesOperations
+        /// Gets the IManagedClusterVersionOperations
         /// </summary>
-        INodeTypesOperations NodeTypes { get; }
+        IManagedClusterVersionOperations ManagedClusterVersion { get; }
 
         /// <summary>
-        /// Gets the INodeTypeSkusOperations
+        /// Gets the IOperationResultsOperations
         /// </summary>
-        INodeTypeSkusOperations NodeTypeSkus { get; }
+        IOperationResultsOperations OperationResults { get; }
+
+        /// <summary>
+        /// Gets the IOperationStatusOperations
+        /// </summary>
+        IOperationStatusOperations OperationStatus { get; }
+
+        /// <summary>
+        /// Gets the IManagedUnsupportedVMSizesOperations
+        /// </summary>
+        IManagedUnsupportedVMSizesOperations ManagedUnsupportedVMSizes { get; }
+
+        /// <summary>
+        /// Gets the IManagedClustersOperations
+        /// </summary>
+        IManagedClustersOperations ManagedClusters { get; }
 
         /// <summary>
         /// Gets the IApplicationTypesOperations
@@ -132,6 +117,31 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// Gets the IServicesOperations
         /// </summary>
         IServicesOperations Services { get; }
+
+        /// <summary>
+        /// Gets the IManagedApplyMaintenanceWindowOperations
+        /// </summary>
+        IManagedApplyMaintenanceWindowOperations ManagedApplyMaintenanceWindow { get; }
+
+        /// <summary>
+        /// Gets the IManagedMaintenanceWindowStatusOperations
+        /// </summary>
+        IManagedMaintenanceWindowStatusOperations ManagedMaintenanceWindowStatus { get; }
+
+        /// <summary>
+        /// Gets the IManagedAzResiliencyStatusOperations
+        /// </summary>
+        IManagedAzResiliencyStatusOperations ManagedAzResiliencyStatus { get; }
+
+        /// <summary>
+        /// Gets the INodeTypesOperations
+        /// </summary>
+        INodeTypesOperations NodeTypes { get; }
+
+        /// <summary>
+        /// Gets the INodeTypeSkusOperations
+        /// </summary>
+        INodeTypeSkusOperations NodeTypeSkus { get; }
 
     }
 }
