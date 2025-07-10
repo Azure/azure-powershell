@@ -11,12 +11,15 @@ Locale: en-US
 Microsoft Azure PowerShell: MongoDB cmdlets
 
 ## Az.MongoDB Cmdlets
-### [Get-AzMongoDBOrganization](Get-AzMongoDBOrganization.md)
+### [Get-AzMongoDbOrganization](Get-AzMongoDbOrganization.md)
 Get a OrganizationResource
 
-### [New-AzMongoDBOrganization](New-AzMongoDBOrganization.md)
-create a OrganizationResource
+### [New-AzMongoDbOrganization](New-AzMongoDbOrganization.md)
+Create a OrganizationResource
 
-### [Remove-AzMongoDBOrganization](Remove-AzMongoDBOrganization.md)
+### [Remove-AzMongoDbOrganization](Remove-AzMongoDbOrganization.md)
 Delete a OrganizationResource
+
+### [Update-AzMongoDbOrganization](Update-AzMongoDbOrganization.md)
+Update a OrganizationResource
 

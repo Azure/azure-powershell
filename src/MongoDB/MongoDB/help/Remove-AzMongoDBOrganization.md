@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.mongodb/remove-
 schema: 2.0.0
 ---
 
-# Remove-AzMongoDBOrganization
+# Remove-AzMongoDbOrganization
 
 ## SYNOPSIS
 Delete a OrganizationResource
@@ -14,13 +14,14 @@ Delete a OrganizationResource
 
 ### Delete (Default)
 ```
-Remove-AzMongoDBOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzMongoDbOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzMongoDBOrganization -InputObject <IMongoDbIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Remove-AzMongoDbOrganization -InputObject <IMongoDbIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,12 +30,24 @@ Delete a OrganizationResource
 
 ## EXAMPLES
 
-### Example 1: Remove an Organization
+### Example 1: Remove a MongoDB organization
 ```powershell
-Remove-AzMongoDBOrganization -ResourceGroupName yashika-rg -Name testorg7
+Remove-AzMongoDbOrganization -Name "MongoDBCLITestDelete" -ResourceGroupName "cli-test-rg"
 ```
 
-This command deletes the MongoDB resource.
+Removes the specified MongoDB organization from Azure.
+
+### Example 2: Remove MongoDB organization using identity
+```powershell
+$org = Get-AzMongoDbOrganization -Name "MongoDBCLITestDelete" -ResourceGroupName "cli-test-rg"
+Remove-AzMongoDbOrganization -InputObject $org
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

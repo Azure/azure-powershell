@@ -1,59 +1,53 @@
 ---
-external help file: Az.MongoDB-help.xml
+external help file:
 Module Name: Az.MongoDB
-online version: https://learn.microsoft.com/powershell/module/az.mongodb/new-azmongodborganization
+online version: https://learn.microsoft.com/powershell/module/az.mongodb/update-azmongodborganization
 schema: 2.0.0
 ---
 
-# New-AzMongoDbOrganization
+# Update-AzMongoDbOrganization
 
 ## SYNOPSIS
-Create a OrganizationResource
+Update a OrganizationResource
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzMongoDbOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> [-EnableSystemAssignedIdentity] [-MarketplaceSubscriptionId <String>]
- [-OfferDetailOfferId <String>] [-OfferDetailPlanId <String>] [-OfferDetailPlanName <String>]
- [-OfferDetailPublisherId <String>] [-OfferDetailTermId <String>] [-OfferDetailTermUnit <String>]
+Update-AzMongoDbOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-PartnerPropertyOrganizationId <String>]
+ [-PartnerPropertyOrganizationName <String>] [-PartnerPropertyRedirectUrl <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-UserCompanyName <String>] [-UserEmailAddress <String>]
+ [-UserFirstName <String>] [-UserLastName <String>] [-UserPhoneNumber <String>] [-UserUpn <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzMongoDbOrganization -InputObject <IMongoDbIdentity> [-EnableSystemAssignedIdentity <Boolean?>]
  [-PartnerPropertyOrganizationId <String>] [-PartnerPropertyOrganizationName <String>]
  [-PartnerPropertyRedirectUrl <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-UserCompanyName <String>] [-UserEmailAddress <String>] [-UserFirstName <String>] [-UserLastName <String>]
- [-UserPhoneNumber <String>] [-UserUpn <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzMongoDbOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzMongoDbOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UserPhoneNumber <String>] [-UserUpn <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a OrganizationResource
+Update a OrganizationResource
 
 ## EXAMPLES
 
-### Example 1: Create a new MongoDB organization
+### Example 1: Update a MongoDB organization
 ```powershell
-New-AzMongoDbOrganization -Name "MongoDBCLI11July2025" -ResourceGroupName "cli-test-rg" -Location "East US 2" -MarketplaceSubscriptionId "911e07bd-f921-4b16-a206-6af36bfb7fbc" -OfferDetailOfferId "mongodb_atlas_azure_native_prod" -OfferDetailPlanId "private_plan" -OfferDetailPlanName "Pay as You Go (Free) (Private)" -OfferDetailPublisherId "mongodb" -OfferDetailTermId "gmz7xq9ge3py" -OfferDetailTermUnit "P1M" -UserEmailAddress "ajaykumar@microsoft.com" -UserFirstName "Ajay" -UserLastName "Kumar" -UserUpn "ajaykumar@microsoft.com"
+Update-AzMongoDbOrganization -Name "MongoDBCLITestOrg4" -ResourceGroupName "cli-test-rg" -UserEmailAddress "ajaykumar@microsoft.com"
 ```
 
-Creates a new MongoDB organization with the specified configuration and user details.
+Updates the email address for an existing MongoDB organization.
 
-### Example 2: Create MongoDB organization using JSON file
+### Example 2: Update MongoDB organization using identity
 ```powershell
-New-AzMongoDbOrganization -Name "MongoDBOrg2" -ResourceGroupName "cli-test-rg" -JsonFilePath "C:\path\to\config.json"
+$org = Get-AzMongoDbOrganization -Name "MongoDBCLITestOrg4" -ResourceGroupName "cli-test-rg"
+Update-AzMongoDbOrganization -InputObject $org -UserFirstName "UpdatedName"
 ```
 
 ```output
@@ -99,8 +93,8 @@ Accept wildcard characters: False
 Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -110,63 +104,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Type: Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IMongoDbIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-The geo-location where the resource lives
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MarketplaceSubscriptionId
-Azure subscription id for the the marketplace offer is purchased from
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -175,7 +124,7 @@ Name of the Organization resource
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases: OrganizationName
 
 Required: True
@@ -200,102 +149,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OfferDetailOfferId
-Offer Id for the marketplace offer
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OfferDetailPlanId
-Plan Id for the marketplace offer
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OfferDetailPlanName
-Plan Name for the marketplace offer
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OfferDetailPublisherId
-Publisher Id for the marketplace offer
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OfferDetailTermId
-Plan Display Name for the marketplace offer
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OfferDetailTermUnit
-Plan Display Name for the marketplace offer
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PartnerPropertyOrganizationId
 Organization Id in MongoDB system
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -310,7 +169,7 @@ Organization name in MongoDB system
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -325,7 +184,7 @@ Redirect URL for the MongoDB
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -341,7 +200,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -357,7 +216,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -372,7 +231,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -388,7 +247,7 @@ The elements in array will be ARM resource ids in the form: '/subscriptions/{sub
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -403,7 +262,7 @@ Company Name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -418,7 +277,7 @@ Email address of the user
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -433,7 +292,7 @@ First name of the user
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -448,7 +307,7 @@ Last name of the user
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -463,7 +322,7 @@ User's phone number
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -478,7 +337,7 @@ User's principal name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -524,6 +383,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IMongoDbIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResource
@@ -531,3 +392,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

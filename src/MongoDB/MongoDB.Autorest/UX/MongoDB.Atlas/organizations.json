@@ -1,12 +1,12 @@
 {
   "resourceType": "organizations",
-  "apiVersion": "2024-11-18-preview",
+  "apiVersion": "2025-06-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.mongodb"
   },
   "commands": [
     {
-      "name": "Get-AzMongoDBOrganization",
+      "name": "Get-AzMongoDbOrganization",
       "description": "Get a OrganizationResource",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/MongoDB.Atlas/organizations/{organizationName}",
       "help": {
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "name": "Remove-AzMongoDBOrganization",
+      "name": "Remove-AzMongoDbOrganization",
       "description": "Delete a OrganizationResource",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/MongoDB.Atlas/organizations/{organizationName}",
       "help": {

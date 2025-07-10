@@ -44,25 +44,23 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
-    $env.ResourceGroupName = 'yashika-rg'
-    $env.ResourceName = 'testorg5'
-    $env.NewResourceName = 'test-mongodb-3'
-    $env.PartnerPropertyOrganizationName = 'test-mongodb-3'
-    $env.PartnerPropertyOrganizationId = '6825d3e6bh11af604c2baaef'
+    $env.ResourceGroupName = 'cli-test-rg'
+    $env.ResourceName = 'MongoDBCLITestOrg4'
+    $env.NewResourceName = 'MongoDBCLI11July2025'
     $env.Location = "East US 2"
-    $env.SubscriptionId = "61641157-140c-4b97-b365-30ff76d9f82e"
-    $env.MarketplaceSubscriptionId = "61641157-140c-4b97-b365-30ff76d9f82e"
+    $env.MarketplaceSubscriptionId = "911e07bd-f921-4b16-a206-6af36bfb7fbc"
     $env.OfferDetailOfferId = "mongodb_atlas_azure_native_prod"
     $env.OfferDetailPlanId = "private_plan"
     $env.OfferDetailPlanName = "Pay as You Go (Free) (Private)"
     $env.OfferDetailPublisherId = "mongodb"
     $env.OfferDetailTermId = "gmz7xq9ge3py"
     $env.OfferDetailTermUnit = "P1M"
-    $env.UserEmailAddress = "yashikajain@microsoft.com"
-    $env.UserFirstName = "" 
-    $env.UserLastName = ""
-    $env.UserUpn = "yashikajain@microsoft.com"
-    $env.DeleteResourceName = "test-mongodb-2"
+    $env.UserEmailAddress = "ajaykumar@microsoft.com"
+    $env.UserFirstName = "Ajay"
+    $env.UserLastName = "Kumar"
+    $env.UserUpn = "ajaykumar@microsoft.com"
+    $env.DeleteResourceName = "MongoDBCLITestDelete"
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

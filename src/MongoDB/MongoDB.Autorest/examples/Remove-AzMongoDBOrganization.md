@@ -1,6 +1,7 @@
-### Example 1: Remove an Organization
+### Example 1: Remove a MongoDB organization
 ```powershell
-Remove-AzMongoDBOrganization -ResourceGroupName yashika-rg -Name testorg7
+Remove-AzMongoDbOrganization -Name "MongoDBCLITestDelete" -ResourceGroupName "cli-test-rg"
 ```
 
-This command deletes the MongoDB resource.
+Removes the specified MongoDB organization from Azure.
+
