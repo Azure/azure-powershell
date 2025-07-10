@@ -1,21 +1,20 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/e3a1f070-4fbe-428f-90cb-50dadce68bfb/resourceGroups/PrivateLinkTestRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTNhMWYwNzAtNGZiZS00MjhmLTkwY2ItNTBkYWRjZTY4YmZiL3Jlc291cmNlR3JvdXBzL1ByaXZhdGVMaW5rVGVzdFJHL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9yZXNvdXJjZU1hbmFnZW1lbnRQcml2YXRlTGlua3MvTmV3UEw/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
+      "RequestUri": "/subscriptions//resourceGroups/PrivateLinkTestRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvL3Jlc291cmNlR3JvdXBzL1ByaXZhdGVMaW5rVGVzdFJHL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9yZXNvdXJjZU1hbmFnZW1lbnRQcml2YXRlTGlua3MvTmV3UEw/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"centralus\"\r\n}",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "7426a73b-bb72-4360-a3b0-4e8c46246439"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "x-ms-client-request-id": [
+          "f3a47a48-2b06-4985-9fd8-9862283cd494"
+        ],
         "User-Agent": [
-          "FxVersion/4.700.22.11601",
+          "FxVersion/8.0.1825.31117",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19044",
+          "OSVersion/Microsoft.Windows.10.0.22631",
           "Microsoft.Azure.Management.ResourceManager.ResourcePrivateLinkClient/3.17.3.0"
         ],
         "Content-Type": [
@@ -25,6 +24,7 @@
           "31"
         ]
       },
+      "RequestBody": "{\r\n  \"location\": \"centralus\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -32,17 +32,17 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "centralus:c42740af-78c3-493b-8146-d66fd5ffa63e"
+        "x-ms-failure-cause": [
+          "gateway"
         ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+        "x-ms-request-id": [
+          "0bccd9fc-5a70-466b-b89e-22b997a48b8f"
         ],
         "x-ms-correlation-request-id": [
-          "711db383-53f7-4041-91ff-002da2b8c6b8"
+          "0bccd9fc-5a70-466b-b89e-22b997a48b8f"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20220321T222850Z:711db383-53f7-4041-91ff-002da2b8c6b8"
+          "MALAYSIASOUTH:20250710T065615Z:0bccd9fc-5a70-466b-b89e-22b997a48b8f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -50,11 +50,17 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 8997720015374BFC9444F467C32B5CAF Ref B: MAA201060515023 Ref C: 2025-07-10T06:56:15Z"
+        ],
         "Date": [
-          "Mon, 21 Mar 2022 22:28:49 GMT"
+          "Thu, 10 Jul 2025 06:56:15 GMT"
         ],
         "Content-Length": [
-          "313"
+          "133"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -66,12 +72,12 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"privateEndpointConnections\": []\r\n  },\r\n  \"id\": \"/subscriptions/e3a1f070-4fbe-428f-90cb-50dadce68bfb/resourceGroups/PrivateLinkTestRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL\",\r\n  \"name\": \"NewPL\",\r\n  \"type\": \"Microsoft.Authorization/resourceManagementPrivateLinks\",\r\n  \"location\": \"centralus\"\r\n}",
-      "StatusCode": 201
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidSubscriptionId\",\r\n    \"message\": \"The provided subscription identifier 'resourceGroups' is malformed or invalid.\"\r\n  }\r\n}",
+      "StatusCode": 400
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "e3a1f070-4fbe-428f-90cb-50dadce68bfb"
+    "SubscriptionId": ""
   }
 }

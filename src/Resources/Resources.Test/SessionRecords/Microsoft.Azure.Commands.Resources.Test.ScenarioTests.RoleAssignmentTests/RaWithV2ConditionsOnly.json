@@ -6,49 +6,41 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "dce9a6f4-bc5d-4075-8fa4-a48e9a6ba05c"
+          "61af67d0-50ea-4d92-9338-a2e64451e708"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2523.51912",
+          "FxVersion/8.0.1825.31117",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.23606",
-          "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.86"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.109"
         ]
       },
       "RequestBody": "",
       "ResponseHeaders": {
-        "Date": [
-          "Tue, 19 Dec 2023 08:03:39 GMT"
-        ],
         "Transfer-Encoding": [
           "chunked"
-        ],
-        "Connection": [
-          "keep-alive"
-        ],
-        "Cache-Control": [
-          "no-cache"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000"
         ],
         "request-id": [
-          "b8131d1c-0521-41ef-80a8-b7b5a1ce2a7e"
+          "7ee1bdcd-463e-4e5e-a536-feef368b8f74"
         ],
         "client-request-id": [
-          "b8131d1c-0521-41ef-80a8-b7b5a1ce2a7e"
+          "7ee1bdcd-463e-4e5e-a536-feef368b8f74"
         ],
         "x-ms-ags-diagnostic": [
-          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"005\",\"RoleInstance\":\"MWH0EPF0009ACB5\"}}"
+          "{\"ServerInfo\":{\"DataCenter\":\"Australia Southeast\",\"Slice\":\"E\",\"Ring\":\"3\",\"ScaleUnit\":\"002\",\"RoleInstance\":\"ML1PEPF0001A8FE\"}}"
         ],
-        "x-ms-resource-unit": [
-          "1"
+        "WWW-Authenticate": [
+          "Bearer realm=\"\", authorization_uri=\"https://login.microsoftonline.com/common/oauth2/authorize\", client_id=\"00000003-0000-0000-c000-000000000000\"",
+          "PoP realm=\"\", authorization_uri=\"https://login.microsoftonline.com/common/oauth2/authorize\", client_id=\"00000003-0000-0000-c000-000000000000\", nonce=\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ijg2ODc1RDgwQzAyRkExRkNEQUNGMjFFQzE0QUY5MzhFNDI3RTlFREMifQ.eyJ0cyI6MTc1MjEzMDY4MH0.vRFaYOClwKhdJbmDNy7KjTculn29ZyH9x9d6Qhc_enR20a0VM5OSeBgSuUJ8Nu4DOFSWx0xuAOEAAmFBtcXE8AK_07SGbNHfgFnzYf1crGXk_zw_ADmT3H0BoHn778x-OL3rYDZREAWbbG4RvZDCjrXrbUky9EpccRmNTFFnGDUXUBsFhZLiskEeI_hapI8V-8Kwm9XCIyQd143_tBROzt7jmVIriJfy-dziD09cYnwh4YK9aFK79NXF2RNs45L3Cd7IwrDTQmnaUmJo_1BPHZ8gwwO3JJp5kVB5i9kZ-4ojjs_HzAFWLPVD9vOrBHlOMSXMrVxIGtHdJoF7N9i8RQ\""
         ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
+        "Date": [
+          "Thu, 10 Jul 2025 06:58:34 GMT"
         ],
         "Content-Type": [
           "application/json"
@@ -57,8 +49,8 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource 'f9e08843-d2b7-4dbc-a584-5e88a7e229a6' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2023-12-19T08:03:39\",\r\n      \"request-id\": \"b8131d1c-0521-41ef-80a8-b7b5a1ce2a7e\",\r\n      \"client-request-id\": \"b8131d1c-0521-41ef-80a8-b7b5a1ce2a7e\"\r\n    }\r\n  }\r\n}",
-      "StatusCode": 404
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidAuthenticationToken\",\r\n    \"message\": \"IDX14100: JWT is not well formed, there are no dots (.).\\nThe token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.\",\r\n    \"innerError\": {\r\n      \"date\": \"2025-07-10T06:58:35\",\r\n      \"request-id\": \"7ee1bdcd-463e-4e5e-a536-feef368b8f74\",\r\n      \"client-request-id\": \"7ee1bdcd-463e-4e5e-a536-feef368b8f74\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 401
     },
     {
       "RequestUri": "/v1.0/servicePrincipals/f9e08843-d2b7-4dbc-a584-5e88a7e229a6",
@@ -66,49 +58,41 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "049d049b-60da-4ead-8954-c4beaa63a004"
+          "b3f69e04-07a2-4445-8348-2cbe27df7b95"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2523.51912",
+          "FxVersion/8.0.1825.31117",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.23606",
-          "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.86"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.109"
         ]
       },
       "RequestBody": "",
       "ResponseHeaders": {
-        "Date": [
-          "Tue, 19 Dec 2023 08:03:39 GMT"
-        ],
         "Transfer-Encoding": [
           "chunked"
-        ],
-        "Connection": [
-          "keep-alive"
-        ],
-        "Cache-Control": [
-          "no-cache"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000"
         ],
         "request-id": [
-          "4f169238-75f2-4eeb-8912-2a5801a7ff52"
+          "e1b509ad-3cff-48db-84cc-43bd3223ff27"
         ],
         "client-request-id": [
-          "4f169238-75f2-4eeb-8912-2a5801a7ff52"
+          "e1b509ad-3cff-48db-84cc-43bd3223ff27"
         ],
         "x-ms-ags-diagnostic": [
-          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"005\",\"RoleInstance\":\"MWH0EPF0009ACB5\"}}"
+          "{\"ServerInfo\":{\"DataCenter\":\"Australia Southeast\",\"Slice\":\"E\",\"Ring\":\"3\",\"ScaleUnit\":\"002\",\"RoleInstance\":\"ML1PEPF0001A8FE\"}}"
         ],
-        "x-ms-resource-unit": [
-          "1"
+        "WWW-Authenticate": [
+          "Bearer realm=\"\", authorization_uri=\"https://login.microsoftonline.com/common/oauth2/authorize\", client_id=\"00000003-0000-0000-c000-000000000000\"",
+          "PoP realm=\"\", authorization_uri=\"https://login.microsoftonline.com/common/oauth2/authorize\", client_id=\"00000003-0000-0000-c000-000000000000\", nonce=\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ijg2ODc1RDgwQzAyRkExRkNEQUNGMjFFQzE0QUY5MzhFNDI3RTlFREMifQ.eyJ0cyI6MTc1MjEzMDY4MH0.vRFaYOClwKhdJbmDNy7KjTculn29ZyH9x9d6Qhc_enR20a0VM5OSeBgSuUJ8Nu4DOFSWx0xuAOEAAmFBtcXE8AK_07SGbNHfgFnzYf1crGXk_zw_ADmT3H0BoHn778x-OL3rYDZREAWbbG4RvZDCjrXrbUky9EpccRmNTFFnGDUXUBsFhZLiskEeI_hapI8V-8Kwm9XCIyQd143_tBROzt7jmVIriJfy-dziD09cYnwh4YK9aFK79NXF2RNs45L3Cd7IwrDTQmnaUmJo_1BPHZ8gwwO3JJp5kVB5i9kZ-4ojjs_HzAFWLPVD9vOrBHlOMSXMrVxIGtHdJoF7N9i8RQ\""
         ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
+        "Date": [
+          "Thu, 10 Jul 2025 06:58:35 GMT"
         ],
         "Content-Type": [
           "application/json"
@@ -117,8 +101,8 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource 'f9e08843-d2b7-4dbc-a584-5e88a7e229a6' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2023-12-19T08:03:39\",\r\n      \"request-id\": \"4f169238-75f2-4eeb-8912-2a5801a7ff52\",\r\n      \"client-request-id\": \"4f169238-75f2-4eeb-8912-2a5801a7ff52\"\r\n    }\r\n  }\r\n}",
-      "StatusCode": 404
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidAuthenticationToken\",\r\n    \"message\": \"IDX14100: JWT is not well formed, there are no dots (.).\\nThe token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.\",\r\n    \"innerError\": {\r\n      \"date\": \"2025-07-10T06:58:36\",\r\n      \"request-id\": \"e1b509ad-3cff-48db-84cc-43bd3223ff27\",\r\n      \"client-request-id\": \"e1b509ad-3cff-48db-84cc-43bd3223ff27\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 401
     },
     {
       "RequestUri": "/v1.0/directoryObjects/f9e08843-d2b7-4dbc-a584-5e88a7e229a6",
@@ -126,188 +110,51 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7227e97c-ac66-436a-84e9-6ae13257e28d"
+          "51f1b0c6-d570-4cf7-a39b-78fa3b0dfd85"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2523.51912",
+          "FxVersion/8.0.1825.31117",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.23606",
-          "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.86"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.109"
         ]
       },
       "RequestBody": "",
       "ResponseHeaders": {
-        "Date": [
-          "Tue, 19 Dec 2023 08:03:39 GMT"
-        ],
         "Transfer-Encoding": [
           "chunked"
-        ],
-        "Connection": [
-          "keep-alive"
-        ],
-        "Cache-Control": [
-          "no-cache"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000"
         ],
         "request-id": [
-          "38a2e043-66c6-47a6-9731-b5c3c93012d9"
+          "f6e09484-ac20-407d-8ea6-820e64d2c7e7"
         ],
         "client-request-id": [
-          "38a2e043-66c6-47a6-9731-b5c3c93012d9"
+          "f6e09484-ac20-407d-8ea6-820e64d2c7e7"
         ],
         "x-ms-ags-diagnostic": [
-          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"005\",\"RoleInstance\":\"MWH0EPF0009ACB5\"}}"
+          "{\"ServerInfo\":{\"DataCenter\":\"Australia Southeast\",\"Slice\":\"E\",\"Ring\":\"3\",\"ScaleUnit\":\"002\",\"RoleInstance\":\"ML1PEPF0001A8FE\"}}"
         ],
-        "x-ms-resource-unit": [
-          "1"
+        "WWW-Authenticate": [
+          "Bearer realm=\"\", authorization_uri=\"https://login.microsoftonline.com/common/oauth2/authorize\", client_id=\"00000003-0000-0000-c000-000000000000\"",
+          "PoP realm=\"\", authorization_uri=\"https://login.microsoftonline.com/common/oauth2/authorize\", client_id=\"00000003-0000-0000-c000-000000000000\", nonce=\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ijg2ODc1RDgwQzAyRkExRkNEQUNGMjFFQzE0QUY5MzhFNDI3RTlFREMifQ.eyJ0cyI6MTc1MjEzMDY4MH0.vRFaYOClwKhdJbmDNy7KjTculn29ZyH9x9d6Qhc_enR20a0VM5OSeBgSuUJ8Nu4DOFSWx0xuAOEAAmFBtcXE8AK_07SGbNHfgFnzYf1crGXk_zw_ADmT3H0BoHn778x-OL3rYDZREAWbbG4RvZDCjrXrbUky9EpccRmNTFFnGDUXUBsFhZLiskEeI_hapI8V-8Kwm9XCIyQd143_tBROzt7jmVIriJfy-dziD09cYnwh4YK9aFK79NXF2RNs45L3Cd7IwrDTQmnaUmJo_1BPHZ8gwwO3JJp5kVB5i9kZ-4ojjs_HzAFWLPVD9vOrBHlOMSXMrVxIGtHdJoF7N9i8RQ\""
         ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true; IEEE754Compatible=false; charset=utf-8"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"@odata.context\": \"https://graph.microsoft.com/v1.0/$metadata#directoryObjects/$entity\",\r\n  \"@odata.type\": \"#microsoft.graph.group\",\r\n  \"id\": \"f9e08843-d2b7-4dbc-a584-5e88a7e229a6\",\r\n  \"deletedDateTime\": null,\r\n  \"classification\": null,\r\n  \"createdDateTime\": \"2018-07-03T00:23:35Z\",\r\n  \"creationOptions\": [],\r\n  \"description\": null,\r\n  \"displayName\": \"powershellgroup\",\r\n  \"expirationDateTime\": null,\r\n  \"groupTypes\": [],\r\n  \"isAssignableToRole\": null,\r\n  \"mail\": null,\r\n  \"mailEnabled\": false,\r\n  \"mailNickname\": \"e6968bb6-df90-47ee-8d72-93eff56e1051\",\r\n  \"membershipRule\": null,\r\n  \"membershipRuleProcessingState\": null,\r\n  \"onPremisesDomainName\": null,\r\n  \"onPremisesLastSyncDateTime\": null,\r\n  \"onPremisesNetBiosName\": null,\r\n  \"onPremisesSamAccountName\": null,\r\n  \"onPremisesSecurityIdentifier\": null,\r\n  \"onPremisesSyncEnabled\": null,\r\n  \"preferredDataLocation\": null,\r\n  \"preferredLanguage\": null,\r\n  \"proxyAddresses\": [],\r\n  \"renewedDateTime\": \"2018-07-03T00:23:35Z\",\r\n  \"resourceBehaviorOptions\": [],\r\n  \"resourceProvisioningOptions\": [],\r\n  \"securityEnabled\": true,\r\n  \"securityIdentifier\": \"S-1-12-1-4192241731-1304220343-2287895717-2787762855\",\r\n  \"theme\": null,\r\n  \"visibility\": null,\r\n  \"onPremisesProvisioningErrors\": [],\r\n  \"serviceProvisioningErrors\": []\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/v1.0/directoryObjects/f9e08843-d2b7-4dbc-a584-5e88a7e229a6",
-      "EncodedRequestUri": "L3YxLjAvZGlyZWN0b3J5T2JqZWN0cy9mOWUwODg0My1kMmI3LTRkYmMtYTU4NC01ZTg4YTdlMjI5YTY=",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "b9ddfd42-0280-40df-af6d-ce34fc488ade"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/6.0.2523.51912",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.23606",
-          "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.86"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
         "Date": [
-          "Tue, 19 Dec 2023 08:03:44 GMT"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Connection": [
-          "keep-alive"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000"
-        ],
-        "request-id": [
-          "0eb58cf9-15b8-4f77-869b-25a5c5443498"
-        ],
-        "client-request-id": [
-          "0eb58cf9-15b8-4f77-869b-25a5c5443498"
-        ],
-        "x-ms-ags-diagnostic": [
-          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"005\",\"RoleInstance\":\"MWH0EPF0009ACB5\"}}"
-        ],
-        "x-ms-resource-unit": [
-          "1"
-        ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
+          "Thu, 10 Jul 2025 06:58:35 GMT"
         ],
         "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true; IEEE754Compatible=false; charset=utf-8"
+          "application/json"
         ],
         "Retry-After": [
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"@odata.context\": \"https://graph.microsoft.com/v1.0/$metadata#directoryObjects/$entity\",\r\n  \"@odata.type\": \"#microsoft.graph.group\",\r\n  \"id\": \"f9e08843-d2b7-4dbc-a584-5e88a7e229a6\",\r\n  \"deletedDateTime\": null,\r\n  \"classification\": null,\r\n  \"createdDateTime\": \"2018-07-03T00:23:35Z\",\r\n  \"creationOptions\": [],\r\n  \"description\": null,\r\n  \"displayName\": \"powershellgroup\",\r\n  \"expirationDateTime\": null,\r\n  \"groupTypes\": [],\r\n  \"isAssignableToRole\": null,\r\n  \"mail\": null,\r\n  \"mailEnabled\": false,\r\n  \"mailNickname\": \"e6968bb6-df90-47ee-8d72-93eff56e1051\",\r\n  \"membershipRule\": null,\r\n  \"membershipRuleProcessingState\": null,\r\n  \"onPremisesDomainName\": null,\r\n  \"onPremisesLastSyncDateTime\": null,\r\n  \"onPremisesNetBiosName\": null,\r\n  \"onPremisesSamAccountName\": null,\r\n  \"onPremisesSecurityIdentifier\": null,\r\n  \"onPremisesSyncEnabled\": null,\r\n  \"preferredDataLocation\": null,\r\n  \"preferredLanguage\": null,\r\n  \"proxyAddresses\": [],\r\n  \"renewedDateTime\": \"2018-07-03T00:23:35Z\",\r\n  \"resourceBehaviorOptions\": [],\r\n  \"resourceProvisioningOptions\": [],\r\n  \"securityEnabled\": true,\r\n  \"securityIdentifier\": \"S-1-12-1-4192241731-1304220343-2287895717-2787762855\",\r\n  \"theme\": null,\r\n  \"visibility\": null,\r\n  \"onPremisesProvisioningErrors\": [],\r\n  \"serviceProvisioningErrors\": []\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/v1.0/directoryObjects/f9e08843-d2b7-4dbc-a584-5e88a7e229a6",
-      "EncodedRequestUri": "L3YxLjAvZGlyZWN0b3J5T2JqZWN0cy9mOWUwODg0My1kMmI3LTRkYmMtYTU4NC01ZTg4YTdlMjI5YTY=",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "ed2325c6-b90b-4621-ac0b-849d234c96dc"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/6.0.2523.51912",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.23606",
-          "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.86"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Date": [
-          "Tue, 19 Dec 2023 08:03:44 GMT"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Connection": [
-          "keep-alive"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000"
-        ],
-        "request-id": [
-          "4910299c-5a35-4b51-9ef9-120d375840ec"
-        ],
-        "client-request-id": [
-          "4910299c-5a35-4b51-9ef9-120d375840ec"
-        ],
-        "x-ms-ags-diagnostic": [
-          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"005\",\"RoleInstance\":\"MWH0EPF0009ACB5\"}}"
-        ],
-        "x-ms-resource-unit": [
-          "1"
-        ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true; IEEE754Compatible=false; charset=utf-8"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"@odata.context\": \"https://graph.microsoft.com/v1.0/$metadata#directoryObjects/$entity\",\r\n  \"@odata.type\": \"#microsoft.graph.group\",\r\n  \"id\": \"f9e08843-d2b7-4dbc-a584-5e88a7e229a6\",\r\n  \"deletedDateTime\": null,\r\n  \"classification\": null,\r\n  \"createdDateTime\": \"2018-07-03T00:23:35Z\",\r\n  \"creationOptions\": [],\r\n  \"description\": null,\r\n  \"displayName\": \"powershellgroup\",\r\n  \"expirationDateTime\": null,\r\n  \"groupTypes\": [],\r\n  \"isAssignableToRole\": null,\r\n  \"mail\": null,\r\n  \"mailEnabled\": false,\r\n  \"mailNickname\": \"e6968bb6-df90-47ee-8d72-93eff56e1051\",\r\n  \"membershipRule\": null,\r\n  \"membershipRuleProcessingState\": null,\r\n  \"onPremisesDomainName\": null,\r\n  \"onPremisesLastSyncDateTime\": null,\r\n  \"onPremisesNetBiosName\": null,\r\n  \"onPremisesSamAccountName\": null,\r\n  \"onPremisesSecurityIdentifier\": null,\r\n  \"onPremisesSyncEnabled\": null,\r\n  \"preferredDataLocation\": null,\r\n  \"preferredLanguage\": null,\r\n  \"proxyAddresses\": [],\r\n  \"renewedDateTime\": \"2018-07-03T00:23:35Z\",\r\n  \"resourceBehaviorOptions\": [],\r\n  \"resourceProvisioningOptions\": [],\r\n  \"securityEnabled\": true,\r\n  \"securityIdentifier\": \"S-1-12-1-4192241731-1304220343-2287895717-2787762855\",\r\n  \"theme\": null,\r\n  \"visibility\": null,\r\n  \"onPremisesProvisioningErrors\": [],\r\n  \"serviceProvisioningErrors\": []\r\n}",
-      "StatusCode": 200
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidAuthenticationToken\",\r\n    \"message\": \"IDX14100: JWT is not well formed, there are no dots (.).\\nThe token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.\",\r\n    \"innerError\": {\r\n      \"date\": \"2025-07-10T06:58:36\",\r\n      \"request-id\": \"f6e09484-ac20-407d-8ea6-820e64d2c7e7\",\r\n      \"client-request-id\": \"f6e09484-ac20-407d-8ea6-820e64d2c7e7\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 401
     },
     {
       "RequestUri": "//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleAssignments/734de5f5-c680-41c0-8beb-67b98c3539d2?api-version=2020-08-01-preview",
@@ -315,25 +162,25 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ad999887-da8a-4f58-94ae-7884953d5786"
+          "847816ce-5fac-4874-9d4a-4cd37c7145e9"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2523.51912",
+          "FxVersion/8.0.1825.31117",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.23606",
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/6.12.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/8.0.1"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "474"
+          "443"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"principalType\": \"Group\",\r\n    \"roleDefinitionId\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/2a2b9908-6ea1-4ae2-8e65-a410df84e7d1\",\r\n    \"principalId\": \"f9e08843-d2b7-4dbc-a584-5e88a7e229a6\",\r\n    \"description\": \"This test should not fail\",\r\n    \"condition\": \"@Resource[Microsoft.Storage/storageAccounts:name] StringEquals 'storagecontainer4test'\",\r\n    \"conditionVersion\": \"2.0\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/2a2b9908-6ea1-4ae2-8e65-a410df84e7d1\",\r\n    \"principalId\": \"f9e08843-d2b7-4dbc-a584-5e88a7e229a6\",\r\n    \"description\": \"This test should not fail\",\r\n    \"condition\": \"@Resource[Microsoft.Storage/storageAccounts:name] StringEquals 'storagecontainer4test'\",\r\n    \"conditionVersion\": \"2.0\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -341,32 +188,38 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "26d646dd-edfc-4e4a-94a4-b4394f38f27d"
+        "WWW-Authenticate": [
+          "Bearer authorization_uri=\"https://login.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36\", error=\"invalid_token\", error_description=\"The primary access token is invalid.\""
         ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "0b37e130-6d1e-4e88-9cae-a3a9a3521b9b"
+        ],
+        "x-ms-correlation-request-id": [
+          "0b37e130-6d1e-4e88-9cae-a3a9a3521b9b"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20250710T065837Z:0b37e130-6d1e-4e88-9cae-a3a9a3521b9b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Set-Cookie": [
-          "x-ms-gateway-slice=Production; path=/; secure; samesite=none; httponly"
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+        "X-Cache": [
+          "CONFIG_NOCACHE"
         ],
-        "x-ms-correlation-request-id": [
-          "f5e59719-1575-449c-a2a4-29cfe72bff3a"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20231219T080344Z:f5e59719-1575-449c-a2a4-29cfe72bff3a"
+        "X-MSEdge-Ref": [
+          "Ref A: 713C76DABF584462A84CC63BCE9841CC Ref B: MAA201060514009 Ref C: 2025-07-10T06:58:37Z"
         ],
         "Date": [
-          "Tue, 19 Dec 2023 08:03:43 GMT"
+          "Thu, 10 Jul 2025 06:58:36 GMT"
         ],
         "Content-Length": [
-          "940"
+          "118"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -378,267 +231,12 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/2a2b9908-6ea1-4ae2-8e65-a410df84e7d1\",\r\n    \"principalId\": \"f9e08843-d2b7-4dbc-a584-5e88a7e229a6\",\r\n    \"principalType\": \"Group\",\r\n    \"scope\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\",\r\n    \"condition\": \"@Resource[Microsoft.Storage/storageAccounts:name] StringEquals 'storagecontainer4test'\",\r\n    \"conditionVersion\": \"2.0\",\r\n    \"createdOn\": \"2023-12-19T08:03:39.8829753Z\",\r\n    \"updatedOn\": \"2023-12-19T08:03:41.0249093Z\",\r\n    \"createdBy\": null,\r\n    \"updatedBy\": \"f2dc21ac-702a-4bde-a4ce-146edf751d81\",\r\n    \"canDelegate\": false,\r\n    \"delegatedManagedIdentityResourceId\": null,\r\n    \"description\": \"This test should not fail\"\r\n  },\r\n  \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleAssignments/734de5f5-c680-41c0-8beb-67b98c3539d2\",\r\n  \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n  \"name\": \"734de5f5-c680-41c0-8beb-67b98c3539d2\"\r\n}",
-      "StatusCode": 201
-    },
-    {
-      "RequestUri": "//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/2a2b9908-6ea1-4ae2-8e65-a410df84e7d1?api-version=2022-05-01-preview",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzQwMDRhOWZkLWQ1OGUtNDhkYy1hZWIyLTRhNGFlYzU4NjA2Zi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZURlZmluaXRpb25zLzJhMmI5OTA4LTZlYTEtNGFlMi04ZTY1LWE0MTBkZjg0ZTdkMT9hcGktdmVyc2lvbj0yMDIyLTA1LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "6da0f91f-1a72-46ef-9678-ba6d9f45a83d"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/6.0.2523.51912",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.23606",
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/6.12.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "1fe83c88-5221-4b3b-b215-bc34068f9231"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
-        ],
-        "x-ms-correlation-request-id": [
-          "f2d69425-0a3f-4603-86f9-d70dbaf18d4c"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20231219T080344Z:f2d69425-0a3f-4603-86f9-d70dbaf18d4c"
-        ],
-        "Date": [
-          "Tue, 19 Dec 2023 08:03:43 GMT"
-        ],
-        "Content-Length": [
-          "842"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleName\": \"Storage Blob Data Reader\",\r\n    \"type\": \"BuiltInRole\",\r\n    \"description\": \"Allows for read access to Azure Storage blob containers and data\",\r\n    \"assignableScopes\": [\r\n      \"/\"\r\n    ],\r\n    \"permissions\": [\r\n      {\r\n        \"actions\": [\r\n          \"Microsoft.Storage/storageAccounts/blobServices/containers/read\",\r\n          \"Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action\"\r\n        ],\r\n        \"notActions\": [],\r\n        \"dataActions\": [\r\n          \"Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read\"\r\n        ],\r\n        \"notDataActions\": []\r\n      }\r\n    ],\r\n    \"createdOn\": \"2017-12-21T00:01:24.7972312Z\",\r\n    \"updatedOn\": \"2021-11-11T20:13:55.2975076Z\",\r\n    \"createdBy\": null,\r\n    \"updatedBy\": null\r\n  },\r\n  \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/2a2b9908-6ea1-4ae2-8e65-a410df84e7d1\",\r\n  \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n  \"name\": \"2a2b9908-6ea1-4ae2-8e65-a410df84e7d1\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/2a2b9908-6ea1-4ae2-8e65-a410df84e7d1?api-version=2022-05-01-preview",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzQwMDRhOWZkLWQ1OGUtNDhkYy1hZWIyLTRhNGFlYzU4NjA2Zi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZURlZmluaXRpb25zLzJhMmI5OTA4LTZlYTEtNGFlMi04ZTY1LWE0MTBkZjg0ZTdkMT9hcGktdmVyc2lvbj0yMDIyLTA1LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "ed2325c6-b90b-4621-ac0b-849d234c96dc"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/6.0.2523.51912",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.23606",
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/6.12.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "9a60de7f-c3ca-4996-8e11-2a19fe3d90bb"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
-        ],
-        "x-ms-correlation-request-id": [
-          "e99b01c1-63e6-44d7-9052-93ab027c7496"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20231219T080344Z:e99b01c1-63e6-44d7-9052-93ab027c7496"
-        ],
-        "Date": [
-          "Tue, 19 Dec 2023 08:03:43 GMT"
-        ],
-        "Content-Length": [
-          "842"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleName\": \"Storage Blob Data Reader\",\r\n    \"type\": \"BuiltInRole\",\r\n    \"description\": \"Allows for read access to Azure Storage blob containers and data\",\r\n    \"assignableScopes\": [\r\n      \"/\"\r\n    ],\r\n    \"permissions\": [\r\n      {\r\n        \"actions\": [\r\n          \"Microsoft.Storage/storageAccounts/blobServices/containers/read\",\r\n          \"Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action\"\r\n        ],\r\n        \"notActions\": [],\r\n        \"dataActions\": [\r\n          \"Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read\"\r\n        ],\r\n        \"notDataActions\": []\r\n      }\r\n    ],\r\n    \"createdOn\": \"2017-12-21T00:01:24.7972312Z\",\r\n    \"updatedOn\": \"2021-11-11T20:13:55.2975076Z\",\r\n    \"createdBy\": null,\r\n    \"updatedBy\": null\r\n  },\r\n  \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/2a2b9908-6ea1-4ae2-8e65-a410df84e7d1\",\r\n  \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n  \"name\": \"2a2b9908-6ea1-4ae2-8e65-a410df84e7d1\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleAssignments?$filter=principalId%20eq%20'f9e08843-d2b7-4dbc-a584-5e88a7e229a6'&api-version=2020-08-01-preview",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzQwMDRhOWZkLWQ1OGUtNDhkYy1hZWIyLTRhNGFlYzU4NjA2Zi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZUFzc2lnbm1lbnRzPyRmaWx0ZXI9cHJpbmNpcGFsSWQlMjBlcSUyMCdmOWUwODg0My1kMmI3LTRkYmMtYTU4NC01ZTg4YTdlMjI5YTYnJmFwaS12ZXJzaW9uPTIwMjAtMDgtMDEtcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "ed2325c6-b90b-4621-ac0b-849d234c96dc"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/6.0.2523.51912",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.23606",
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/6.12.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "5d7a0523-01d8-4cf0-aced-a23b1c6a1a94"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Set-Cookie": [
-          "x-ms-gateway-slice=Production; path=/; secure; samesite=none; httponly"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
-        ],
-        "x-ms-correlation-request-id": [
-          "5e2e2339-1706-4315-9fe3-471a34559491"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20231219T080344Z:5e2e2339-1706-4315-9fe3-471a34559491"
-        ],
-        "Date": [
-          "Tue, 19 Dec 2023 08:03:43 GMT"
-        ],
-        "Content-Length": [
-          "986"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"roleDefinitionId\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/2a2b9908-6ea1-4ae2-8e65-a410df84e7d1\",\r\n        \"principalId\": \"f9e08843-d2b7-4dbc-a584-5e88a7e229a6\",\r\n        \"principalType\": \"Group\",\r\n        \"scope\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\",\r\n        \"condition\": \"@Resource[Microsoft.Storage/storageAccounts:name] StringEquals 'storagecontainer4test'\",\r\n        \"conditionVersion\": \"2.0\",\r\n        \"createdOn\": \"2023-12-19T08:03:41.2329109Z\",\r\n        \"updatedOn\": \"2023-12-19T08:03:41.2329109Z\",\r\n        \"createdBy\": \"f2dc21ac-702a-4bde-a4ce-146edf751d81\",\r\n        \"updatedBy\": \"f2dc21ac-702a-4bde-a4ce-146edf751d81\",\r\n        \"canDelegate\": false,\r\n        \"delegatedManagedIdentityResourceId\": null,\r\n        \"description\": \"This test should not fail\"\r\n      },\r\n      \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleAssignments/734de5f5-c680-41c0-8beb-67b98c3539d2\",\r\n      \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n      \"name\": \"734de5f5-c680-41c0-8beb-67b98c3539d2\"\r\n    }\r\n  ]\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleAssignments/734de5f5-c680-41c0-8beb-67b98c3539d2?api-version=2020-08-01-preview",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzQwMDRhOWZkLWQ1OGUtNDhkYy1hZWIyLTRhNGFlYzU4NjA2Zi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZUFzc2lnbm1lbnRzLzczNGRlNWY1LWM2ODAtNDFjMC04YmViLTY3Yjk4YzM1MzlkMj9hcGktdmVyc2lvbj0yMDIwLTA4LTAxLXByZXZpZXc=",
-      "RequestMethod": "DELETE",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "ed2325c6-b90b-4621-ac0b-849d234c96dc"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/6.0.2523.51912",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.23606",
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/6.12.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "92da35ee-eb1e-47e5-a226-ae29f3217bff"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
-        ],
-        "x-ms-correlation-request-id": [
-          "f8739420-1ace-4970-bbd4-d0e849024357"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20231219T080350Z:f8739420-1ace-4970-bbd4-d0e849024357"
-        ],
-        "Date": [
-          "Tue, 19 Dec 2023 08:03:50 GMT"
-        ],
-        "Content-Length": [
-          "974"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/2a2b9908-6ea1-4ae2-8e65-a410df84e7d1\",\r\n    \"principalId\": \"f9e08843-d2b7-4dbc-a584-5e88a7e229a6\",\r\n    \"principalType\": \"Group\",\r\n    \"scope\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\",\r\n    \"condition\": \"@Resource[Microsoft.Storage/storageAccounts:name] StringEquals 'storagecontainer4test'\",\r\n    \"conditionVersion\": \"2.0\",\r\n    \"createdOn\": \"2023-12-19T08:03:41.2329109Z\",\r\n    \"updatedOn\": \"2023-12-19T08:03:45.1021637Z\",\r\n    \"createdBy\": \"f2dc21ac-702a-4bde-a4ce-146edf751d81\",\r\n    \"updatedBy\": \"f2dc21ac-702a-4bde-a4ce-146edf751d81\",\r\n    \"canDelegate\": false,\r\n    \"delegatedManagedIdentityResourceId\": null,\r\n    \"description\": \"This test should not fail\"\r\n  },\r\n  \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleAssignments/734de5f5-c680-41c0-8beb-67b98c3539d2\",\r\n  \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n  \"name\": \"734de5f5-c680-41c0-8beb-67b98c3539d2\"\r\n}",
-      "StatusCode": 200
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidAuthenticationToken\",\r\n    \"message\": \"The 'EvolvedSecurityTokenService' access token is invalid.\"\r\n  }\r\n}",
+      "StatusCode": 401
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
+    "SubscriptionId": ""
   }
 }
