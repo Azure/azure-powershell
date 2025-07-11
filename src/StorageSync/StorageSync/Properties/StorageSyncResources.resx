@@ -294,9 +294,6 @@
   <data name="AgentMI_InvalidSecretFileError" xml:space="preserve">
     <value>Secret file is invalid. It is either empty, not in the expected directory, or not of file type .key.</value>
   </data>
-  <data name="AgentMI_MissingSecretFilePathOnServerError" xml:space="preserve">
-    <value>Secret file path does not exist on the server.</value>
-  </data>
   <data name="AgentMI_MissingSystemAssignedIdentityError" xml:space="preserve">
     <value>No system-assigned Managed Identity was found for this resource.</value>
   </data>
