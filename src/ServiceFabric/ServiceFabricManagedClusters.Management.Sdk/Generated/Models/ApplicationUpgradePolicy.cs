@@ -45,14 +45,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="upgradeMode">The mode used to monitor health during a rolling upgrade. The values are
         /// Monitored, and UnmonitoredAuto.
-        /// Possible values include: 'Monitored', 'UnmonitoredAuto'</param>
+        /// Possible values include: &#39;Monitored&#39;, &#39;UnmonitoredAuto&#39;</param>
 
         /// <param name="upgradeReplicaSetCheckTimeout">The maximum amount of time to block processing of an upgrade domain and
         /// prevent loss of availability when there are unexpected issues. When this
         /// timeout expires, processing of the upgrade domain will proceed regardless
         /// of availability loss issues. The timeout is reset at the start of each
         /// upgrade domain. Valid values are between 0 and 42949672925 inclusive.
-        /// (unsigned 32-bit integer).
+        /// (unsigned 32-bit integer). Unit is in seconds.
         /// </param>
 
         /// <param name="recreateApplication">Determines whether the application should be recreated on update. If
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// When this timeout expires, processing of the upgrade domain will proceed
         /// regardless of availability loss issues. The timeout is reset at the start
         /// of each upgrade domain. Valid values are between 0 and 42949672925
-        /// inclusive. (unsigned 32-bit integer).
+        /// inclusive. (unsigned 32-bit integer). Unit is in seconds.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "upgradeReplicaSetCheckTimeout")]
         public long? UpgradeReplicaSetCheckTimeout {get; set; }

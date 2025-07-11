@@ -25,25 +25,32 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// Initializes a new instance of the ApplicationResource class.
         /// </summary>
 
-        /// <param name="id">Azure resource identifier.
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </param>
 
-        /// <param name="name">Azure resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Azure resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource location depends on the parent resource.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
-        /// <param name="tags">Azure resource tags.
-        /// </param>
-
-        /// <param name="systemData">Metadata pertaining to creation and last modification of the resource.
+        /// <param name="tags">Resource tags.
         /// </param>
 
         /// <param name="identity">Describes the managed identities for an Azure resource.
+        /// </param>
+
+        /// <param name="location">The geo-location where the resource lives
+        /// </param>
+
+        /// <param name="managedIdentities">List of user assigned identities for the application, each mapped to a
+        /// friendly name.
         /// </param>
 
         /// <param name="provisioningState">The current deployment or provisioning state, which only appears in the
@@ -61,20 +68,18 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="upgradePolicy">Describes the policy for a monitored application upgrade.
         /// </param>
+        public ApplicationResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedIdentity identity = default(ManagedIdentity), string location = default(string), System.Collections.Generic.IList<ApplicationUserAssignedIdentity> managedIdentities = default(System.Collections.Generic.IList<ApplicationUserAssignedIdentity>), string provisioningState = default(string), string version = default(string), System.Collections.Generic.IDictionary<string, string> parameters = default(System.Collections.Generic.IDictionary<string, string>), ApplicationUpgradePolicy upgradePolicy = default(ApplicationUpgradePolicy))
 
-        /// <param name="managedIdentities">List of user assigned identities for the application, each mapped to a
-        /// friendly name.
-        /// </param>
-        public ApplicationResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SystemData systemData = default(SystemData), ManagedIdentity identity = default(ManagedIdentity), string provisioningState = default(string), string version = default(string), System.Collections.Generic.IDictionary<string, string> parameters = default(System.Collections.Generic.IDictionary<string, string>), ApplicationUpgradePolicy upgradePolicy = default(ApplicationUpgradePolicy), System.Collections.Generic.IList<ApplicationUserAssignedIdentity> managedIdentities = default(System.Collections.Generic.IList<ApplicationUserAssignedIdentity>))
-
-        : base(id, name, type, location, tags, systemData)
+        : base(id, name, type, systemData)
         {
+            this.Tags = tags;
             this.Identity = identity;
+            this.Location = location;
+            this.ManagedIdentities = managedIdentities;
             this.ProvisioningState = provisioningState;
             this.Version = version;
             this.Parameters = parameters;
             this.UpgradePolicy = upgradePolicy;
-            this.ManagedIdentities = managedIdentities;
             CustomInit();
         }
 
@@ -85,10 +90,29 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
 
         /// <summary>
+        /// Gets or sets resource tags.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
+        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
+
+        /// <summary>
         /// Gets or sets describes the managed identities for an Azure resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
         public ManagedIdentity Identity {get; set; }
+
+        /// <summary>
+        /// Gets or sets the geo-location where the resource lives
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
+        public string Location {get; set; }
+
+        /// <summary>
+        /// Gets or sets list of user assigned identities for the application, each
+        /// mapped to a friendly name.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.managedIdentities")]
+        public System.Collections.Generic.IList<ApplicationUserAssignedIdentity> ManagedIdentities {get; set; }
 
         /// <summary>
         /// Gets the current deployment or provisioning state, which only appears in
@@ -118,13 +142,6 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.upgradePolicy")]
         public ApplicationUpgradePolicy UpgradePolicy {get; set; }
-
-        /// <summary>
-        /// Gets or sets list of user assigned identities for the application, each
-        /// mapped to a friendly name.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.managedIdentities")]
-        public System.Collections.Generic.IList<ApplicationUserAssignedIdentity> ManagedIdentities {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -136,11 +153,6 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
 
 
-
-            if (this.UpgradePolicy != null)
-            {
-                this.UpgradePolicy.Validate();
-            }
             if (this.ManagedIdentities != null)
             {
                 foreach (var element in this.ManagedIdentities)
@@ -150,6 +162,13 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
                         element.Validate();
                     }
                 }
+            }
+
+
+
+            if (this.UpgradePolicy != null)
+            {
+                this.UpgradePolicy.Validate();
             }
         }
     }

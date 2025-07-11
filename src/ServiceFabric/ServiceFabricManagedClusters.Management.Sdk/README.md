@@ -21,11 +21,9 @@ payload-flattening-threshold: 2
 use-extension:
   "@autorest/powershell": "4.x"
 
-commit: ce96a721d6bffa72dada8a998dee55f4c32ad0ef
+commit: 517eaf1cca58813605768f4ddc9a59ca75173493
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/servicefabricmanagedclusters/resource-manager/Microsoft.ServiceFabric/preview/2023-03-01-preview/managedcluster.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/servicefabricmanagedclusters/resource-manager/Microsoft.ServiceFabric/preview/2023-03-01-preview/nodetype.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/servicefabricmanagedclusters/resource-manager/Microsoft.ServiceFabric/preview/2023-03-01-preview/managedapplication.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/517eaf1cca58813605768f4ddc9a59ca75173493/specification/servicefabricmanagedclusters/resource-manager/Microsoft.ServiceFabric/preview/2025-03-01-preview/servicefabricmanagedclusters.json
 
 output-folder: Generated
 

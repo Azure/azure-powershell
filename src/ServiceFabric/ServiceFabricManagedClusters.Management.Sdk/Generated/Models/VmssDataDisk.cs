@@ -35,7 +35,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="diskType">Managed data disk type. Specifies the storage account type for the managed
         /// disk
-        /// Possible values include: 'Standard_LRS', 'StandardSSD_LRS', 'Premium_LRS'</param>
+        /// Possible values include: &#39;Standard_LRS&#39;, &#39;StandardSSD_LRS&#39;, &#39;Premium_LRS&#39;,
+        /// &#39;PremiumV2_LRS&#39;, &#39;StandardSSD_ZRS&#39;, &#39;Premium_ZRS&#39;</param>
 
         /// <param name="diskLetter">Managed data disk letter. It can not use the reserved letter C or D and it
         /// can not change after created.
@@ -73,7 +74,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <summary>
         /// Gets or sets managed data disk type. Specifies the storage account type for
-        /// the managed disk Possible values include: &#39;Standard_LRS&#39;, &#39;StandardSSD_LRS&#39;, &#39;Premium_LRS&#39;
+        /// the managed disk Possible values include: &#39;Standard_LRS&#39;, &#39;StandardSSD_LRS&#39;, &#39;Premium_LRS&#39;, &#39;PremiumV2_LRS&#39;, &#39;StandardSSD_ZRS&#39;, &#39;Premium_ZRS&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskType")]
         public string DiskType {get; set; }

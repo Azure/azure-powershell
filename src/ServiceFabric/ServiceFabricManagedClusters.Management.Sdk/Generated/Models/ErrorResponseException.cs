@@ -7,9 +7,9 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 {
 
     /// <summary>
-    /// Exception thrown for an invalid response with ErrorModel information.
+    /// Exception thrown for an invalid response with ErrorResponse information.
     /// </summary>
-    public partial class ErrorModelException : Microsoft.Rest.RestException
+    public partial class ErrorResponseException : Microsoft.Rest.RestException
     {
         /// <summary>
         /// Gets information about the associated HTTP request.
@@ -24,30 +24,30 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// <summary>
         /// Gets or sets the body object.
         /// </summary>
-        public ErrorModel Body { get; set; }
+        public ErrorResponse Body { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorModelException class.
+        /// Initializes a new instance of the ErrorResponseException class.
         /// </summary>
-        public ErrorModelException()
+        public ErrorResponseException()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorModel class.
+        /// Initializes a new instance of the ErrorResponse class.
         /// </summary>
         /// <param name="message">The exception message.</param>
-        public ErrorModelException(string message)
+        public ErrorResponseException(string message)
             : this(message, null)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorModel class.
+        /// Initializes a new instance of the ErrorResponse class.
         /// </summary>
         /// <param name="message">The exception message.</param>
         /// <param name="innerException">Inner exception.</param>
-        public ErrorModelException(string message, System.Exception innerException)
+        public ErrorResponseException(string message, System.Exception innerException)
             : base(message, innerException)
         {
         }

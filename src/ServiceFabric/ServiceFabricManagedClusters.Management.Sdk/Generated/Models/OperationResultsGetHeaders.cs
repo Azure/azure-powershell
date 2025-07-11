@@ -7,29 +7,26 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 {
     using System.Linq;
 
-    /// <summary>
-    /// The structure of the error.
-    /// </summary>
-    public partial class ErrorModel
+    public partial class OperationResultsGetHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorModel class.
+        /// Initializes a new instance of the OperationResultsGetHeaders class.
         /// </summary>
-        public ErrorModel()
+        public OperationResultsGetHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorModel class.
+        /// Initializes a new instance of the OperationResultsGetHeaders class.
         /// </summary>
 
-        /// <param name="error">The error details.
+        /// <param name="location">
         /// </param>
-        public ErrorModel(ErrorModelError error = default(ErrorModelError))
+        public OperationResultsGetHeaders(string location = default(string))
 
         {
-            this.Error = error;
+            this.Location = location;
             CustomInit();
         }
 
@@ -40,9 +37,9 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
 
         /// <summary>
-        /// Gets or sets the error details.
+        /// Gets or sets
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "error")]
-        public ErrorModelError Error {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
+        public string Location {get; set; }
     }
 }

@@ -18,7 +18,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </summary>
         public const string Standard = "Standard";
         /// <summary>
-        /// The cluster will use a maximum of 3 upgrade domains per zone instead of 5 for Cross Az Node types for faster deployments.
+        /// The cluster will use a maximum of 3 upgrade domains per zone instead of 5
+        /// for Cross Az Node types for faster deployments.
         /// </summary>
         public const string Fast = "Fast";
     }

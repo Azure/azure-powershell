@@ -24,18 +24,16 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// Initializes a new instance of the NodeTypeSku class.
         /// </summary>
 
-        /// <param name="name">The sku name. &lt;br /&gt;&lt;br /&gt;Name is internally generated and is used in
-        /// auto-scale scenarios.&lt;br /&gt; Property does not allow to be changed to other
-        /// values than generated.&lt;br /&gt; To avoid deployment errors please omit the
-        /// property.
+        /// <param name="name">The sku name. Name is internally generated and is used in auto-scale
+        /// scenarios. Property does not allow to be changed to other values than
+        /// generated. To avoid deployment errors please omit the property.
         /// </param>
 
-        /// <param name="tier">Specifies the tier of the node type. &lt;br /&gt;&lt;br /&gt; Possible Values:&lt;br /&gt;
-        /// **Standard**
+        /// <param name="tier">Specifies the tier of the node type. Possible Values: **Standard**
         /// </param>
 
-        /// <param name="capacity">The number of nodes in the node type.&lt;br /&gt;&lt;br /&gt;If present in request it
-        /// will override properties.vmInstanceCount.
+        /// <param name="capacity">The number of nodes in the node type. If present in request it will
+        /// override properties.vmInstanceCount.
         /// </param>
         public NodeTypeSku(int capacity, string name = default(string), string tier = default(string))
 
@@ -53,24 +51,23 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
 
         /// <summary>
-        /// Gets or sets the sku name. &lt;br /&gt;&lt;br /&gt;Name is internally generated and is
-        /// used in auto-scale scenarios.&lt;br /&gt; Property does not allow to be changed
-        /// to other values than generated.&lt;br /&gt; To avoid deployment errors please
-        /// omit the property.
+        /// Gets or sets the sku name. Name is internally generated and is used in
+        /// auto-scale scenarios. Property does not allow to be changed to other values
+        /// than generated. To avoid deployment errors please omit the property.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
         public string Name {get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the tier of the node type. &lt;br /&gt;&lt;br /&gt; Possible
-        /// Values:&lt;br /&gt; **Standard**
+        /// Gets or sets specifies the tier of the node type. Possible Values:
+        /// **Standard**
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tier")]
         public string Tier {get; set; }
 
         /// <summary>
-        /// Gets or sets the number of nodes in the node type.&lt;br /&gt;&lt;br /&gt;If present in
-        /// request it will override properties.vmInstanceCount.
+        /// Gets or sets the number of nodes in the node type. If present in request it
+        /// will override properties.vmInstanceCount.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "capacity")]
         public int Capacity {get; set; }

@@ -11,9 +11,9 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
     using Models;
 
     /// <summary>
-    /// Azure Service Fabric Resource Provider API Client
+    /// Service Fabric Managed Clusters Management Client
     /// </summary>
-    public partial class ServiceFabricManagementClient : Microsoft.Rest.ServiceClient<ServiceFabricManagementClient>, IServiceFabricManagementClient, IAzureClient
+    public partial class ServiceFabricManagedClustersManagementClient : Microsoft.Rest.ServiceClient<ServiceFabricManagedClustersManagementClient>, IServiceFabricManagedClustersManagementClient, IAzureClient
     {
         /// <summary>
         /// The base URI of the service.
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// The customer subscription identifier.
+        /// The ID of the target subscription.
         /// </summary>
         public string SubscriptionId { get; set;}
 
@@ -49,53 +49,41 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set;}
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set;}
 
-        /// <summary>
-        /// Gets the IManagedClustersOperations
-        /// </summary>
-        public virtual IManagedClustersOperations ManagedClusters { get; private set; }
-        /// <summary>
-        /// Gets the IManagedAzResiliencyStatusOperations
-        /// </summary>
-        public virtual IManagedAzResiliencyStatusOperations ManagedAzResiliencyStatus { get; private set; }
-        /// <summary>
-        /// Gets the IManagedClusterVersionOperations
-        /// </summary>
-        public virtual IManagedClusterVersionOperations ManagedClusterVersion { get; private set; }
-        /// <summary>
-        /// Gets the IManagedUnsupportedVMSizesOperations
-        /// </summary>
-        public virtual IManagedUnsupportedVMSizesOperations ManagedUnsupportedVMSizes { get; private set; }
-        /// <summary>
-        /// Gets the IOperationStatusOperations
-        /// </summary>
-        public virtual IOperationStatusOperations OperationStatus { get; private set; }
-        /// <summary>
-        /// Gets the IOperationResultsOperations
-        /// </summary>
-        public virtual IOperationResultsOperations OperationResults { get; private set; }
         /// <summary>
         /// Gets the IOperations
         /// </summary>
         public virtual IOperations Operations { get; private set; }
         /// <summary>
-        /// Gets the INodeTypesOperations
+        /// Gets the IManagedClusterVersionOperations
         /// </summary>
-        public virtual INodeTypesOperations NodeTypes { get; private set; }
+        public virtual IManagedClusterVersionOperations ManagedClusterVersion { get; private set; }
         /// <summary>
-        /// Gets the INodeTypeSkusOperations
+        /// Gets the IOperationResultsOperations
         /// </summary>
-        public virtual INodeTypeSkusOperations NodeTypeSkus { get; private set; }
+        public virtual IOperationResultsOperations OperationResults { get; private set; }
+        /// <summary>
+        /// Gets the IOperationStatusOperations
+        /// </summary>
+        public virtual IOperationStatusOperations OperationStatus { get; private set; }
+        /// <summary>
+        /// Gets the IManagedUnsupportedVMSizesOperations
+        /// </summary>
+        public virtual IManagedUnsupportedVMSizesOperations ManagedUnsupportedVMSizes { get; private set; }
+        /// <summary>
+        /// Gets the IManagedClustersOperations
+        /// </summary>
+        public virtual IManagedClustersOperations ManagedClusters { get; private set; }
         /// <summary>
         /// Gets the IApplicationTypesOperations
         /// </summary>
@@ -113,29 +101,49 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// </summary>
         public virtual IServicesOperations Services { get; private set; }
         /// <summary>
-        /// Initializes a new instance of the ServiceFabricManagementClient class.
+        /// Gets the IManagedApplyMaintenanceWindowOperations
+        /// </summary>
+        public virtual IManagedApplyMaintenanceWindowOperations ManagedApplyMaintenanceWindow { get; private set; }
+        /// <summary>
+        /// Gets the IManagedMaintenanceWindowStatusOperations
+        /// </summary>
+        public virtual IManagedMaintenanceWindowStatusOperations ManagedMaintenanceWindowStatus { get; private set; }
+        /// <summary>
+        /// Gets the IManagedAzResiliencyStatusOperations
+        /// </summary>
+        public virtual IManagedAzResiliencyStatusOperations ManagedAzResiliencyStatus { get; private set; }
+        /// <summary>
+        /// Gets the INodeTypesOperations
+        /// </summary>
+        public virtual INodeTypesOperations NodeTypes { get; private set; }
+        /// <summary>
+        /// Gets the INodeTypeSkusOperations
+        /// </summary>
+        public virtual INodeTypeSkusOperations NodeTypeSkus { get; private set; }
+        /// <summary>
+        /// Initializes a new instance of the ServiceFabricManagedClustersManagementClient class.
         /// </summary>
         /// <param name='httpClient'>
         /// HttpClient to be used
         /// </param>
         /// <param name='disposeHttpClient'>
-        /// True: will dispose the provided httpClient on calling ServiceFabricManagementClient.Dispose(). False: will not dispose provided httpClient</param>
-        protected ServiceFabricManagementClient(System.Net.Http.HttpClient httpClient, bool disposeHttpClient) : base(httpClient, disposeHttpClient)
+        /// True: will dispose the provided httpClient on calling ServiceFabricManagedClustersManagementClient.Dispose(). False: will not dispose provided httpClient</param>
+        protected ServiceFabricManagedClustersManagementClient(System.Net.Http.HttpClient httpClient, bool disposeHttpClient) : base(httpClient, disposeHttpClient)
         {
             this.Initialize();
         }
         /// <summary>
-        /// Initializes a new instance of the ServiceFabricManagementClient class.
+        /// Initializes a new instance of the ServiceFabricManagedClustersManagementClient class.
         /// </summary>
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        protected ServiceFabricManagementClient(params System.Net.Http.DelegatingHandler[] handlers) : base(handlers)
+        protected ServiceFabricManagedClustersManagementClient(params System.Net.Http.DelegatingHandler[] handlers) : base(handlers)
         {
             this.Initialize();
         }
         /// <summary>
-        /// Initializes a new instance of the ServiceFabricManagementClient  class.
+        /// Initializes a new instance of the ServiceFabricManagedClustersManagementClient  class.
         /// </summary>
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
@@ -143,12 +151,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        protected ServiceFabricManagementClient(System.Net.Http.HttpClientHandler rootHandler, params System.Net.Http.DelegatingHandler[] handlers) : base(rootHandler, handlers)
+        protected ServiceFabricManagedClustersManagementClient(System.Net.Http.HttpClientHandler rootHandler, params System.Net.Http.DelegatingHandler[] handlers) : base(rootHandler, handlers)
         {
             this.Initialize();
         }
         /// <summary>
-        /// Initializes a new instance of the ServiceFabricManagementClient class.
+        /// Initializes a new instance of the ServiceFabricManagedClustersManagementClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -159,7 +167,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        protected ServiceFabricManagementClient(System.Uri baseUri, params System.Net.Http.DelegatingHandler[] handlers) : this(handlers)
+        protected ServiceFabricManagedClustersManagementClient(System.Uri baseUri, params System.Net.Http.DelegatingHandler[] handlers) : this(handlers)
         {
             if (baseUri == null)
             {
@@ -168,7 +176,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             this.BaseUri = baseUri;
         }
         /// <summary>
-        /// Initializes a new instance of the ServiceFabricManagementClient class.
+        /// Initializes a new instance of the ServiceFabricManagedClustersManagementClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -182,7 +190,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        protected ServiceFabricManagementClient(System.Uri baseUri, System.Net.Http.HttpClientHandler rootHandler, params System.Net.Http.DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        protected ServiceFabricManagedClustersManagementClient(System.Uri baseUri, System.Net.Http.HttpClientHandler rootHandler, params System.Net.Http.DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (baseUri == null)
             {
@@ -192,7 +200,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             this.BaseUri = baseUri;
         }
         /// <summary>
-        /// Initializes a new instance of the ServiceFabricManagementClient class.
+        /// Initializes a new instance of the ServiceFabricManagedClustersManagementClient class.
         /// </summary>
         /// <param name='credentials'>
         /// Required. Credentials needed for the client to connect to Azure.
@@ -203,7 +211,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public ServiceFabricManagementClient(Microsoft.Rest.ServiceClientCredentials credentials, params System.Net.Http.DelegatingHandler[] handlers) : this(handlers)
+        public ServiceFabricManagedClustersManagementClient(Microsoft.Rest.ServiceClientCredentials credentials, params System.Net.Http.DelegatingHandler[] handlers) : this(handlers)
         {
             if (credentials == null)
             {
@@ -217,7 +225,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             
         }
         /// <summary>
-        /// Initializes a new instance of the ServiceFabricManagementClient class.
+        /// Initializes a new instance of the ServiceFabricManagedClustersManagementClient class.
         /// </summary>
         /// <param name="credentials">
         /// Required. Credentials needed for the client to connect to Azure.
@@ -226,11 +234,11 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// HttpClient to be used
         /// </param>
         /// <param name='disposeHttpClient'>
-        /// True: will dispose the provided httpClient on calling ServiceFabricManagementClient.Dispose(). False: will not dispose provided httpClient</param>
+        /// True: will dispose the provided httpClient on calling ServiceFabricManagedClustersManagementClient.Dispose(). False: will not dispose provided httpClient</param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public ServiceFabricManagementClient(Microsoft.Rest.ServiceClientCredentials credentials, System.Net.Http.HttpClient httpClient, bool disposeHttpClient) : this(httpClient, disposeHttpClient)
+        public ServiceFabricManagedClustersManagementClient(Microsoft.Rest.ServiceClientCredentials credentials, System.Net.Http.HttpClient httpClient, bool disposeHttpClient) : this(httpClient, disposeHttpClient)
         {
             if (credentials == null)
             {
@@ -244,7 +252,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             
         }
         /// <summary>
-        /// Initializes a new instance of the ServiceFabricManagementClient class.
+        /// Initializes a new instance of the ServiceFabricManagedClustersManagementClient class.
         /// </summary>
         /// <param name="credentials">
         /// Required. Credentials needed for the client to connect to Azure.
@@ -258,7 +266,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public ServiceFabricManagementClient(Microsoft.Rest.ServiceClientCredentials credentials, System.Net.Http.HttpClientHandler rootHandler, params System.Net.Http.DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        public ServiceFabricManagedClustersManagementClient(Microsoft.Rest.ServiceClientCredentials credentials, System.Net.Http.HttpClientHandler rootHandler, params System.Net.Http.DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (credentials == null)
             {
@@ -272,7 +280,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             
         }
         /// <summary>
-        /// Initializes a new instance of the ServiceFabricManagementClient class.
+        /// Initializes a new instance of the ServiceFabricManagedClustersManagementClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -286,7 +294,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public ServiceFabricManagementClient(System.Uri baseUri, Microsoft.Rest.ServiceClientCredentials credentials, params System.Net.Http.DelegatingHandler[] handlers) : this(handlers) 
+        public ServiceFabricManagedClustersManagementClient(System.Uri baseUri, Microsoft.Rest.ServiceClientCredentials credentials, params System.Net.Http.DelegatingHandler[] handlers) : this(handlers) 
         {
             if (baseUri == null)
             {
@@ -305,7 +313,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             
         }
         /// <summary>
-        /// Initializes a new instance of the ServiceFabricManagementClient class.
+        /// Initializes a new instance of the ServiceFabricManagedClustersManagementClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -316,10 +324,13 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public ServiceFabricManagementClient(System.Uri baseUri, Microsoft.Rest.ServiceClientCredentials credentials, System.Net.Http.HttpClientHandler rootHandler, params System.Net.Http.DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        public ServiceFabricManagedClustersManagementClient(System.Uri baseUri, Microsoft.Rest.ServiceClientCredentials credentials, System.Net.Http.HttpClientHandler rootHandler, params System.Net.Http.DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (baseUri == null)
             {
@@ -347,21 +358,23 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// </summary>
         private void Initialize()
         {
-            this.ManagedClusters = new ManagedClustersOperations(this);
-            this.ManagedAzResiliencyStatus = new ManagedAzResiliencyStatusOperations(this);
-            this.ManagedClusterVersion = new ManagedClusterVersionOperations(this);
-            this.ManagedUnsupportedVMSizes = new ManagedUnsupportedVMSizesOperations(this);
-            this.OperationStatus = new OperationStatusOperations(this);
-            this.OperationResults = new OperationResultsOperations(this);
             this.Operations = new Operations(this);
-            this.NodeTypes = new NodeTypesOperations(this);
-            this.NodeTypeSkus = new NodeTypeSkusOperations(this);
+            this.ManagedClusterVersion = new ManagedClusterVersionOperations(this);
+            this.OperationResults = new OperationResultsOperations(this);
+            this.OperationStatus = new OperationStatusOperations(this);
+            this.ManagedUnsupportedVMSizes = new ManagedUnsupportedVMSizesOperations(this);
+            this.ManagedClusters = new ManagedClustersOperations(this);
             this.ApplicationTypes = new ApplicationTypesOperations(this);
             this.ApplicationTypeVersions = new ApplicationTypeVersionsOperations(this);
             this.Applications = new ApplicationsOperations(this);
             this.Services = new ServicesOperations(this);
+            this.ManagedApplyMaintenanceWindow = new ManagedApplyMaintenanceWindowOperations(this);
+            this.ManagedMaintenanceWindowStatus = new ManagedMaintenanceWindowStatusOperations(this);
+            this.ManagedAzResiliencyStatus = new ManagedAzResiliencyStatusOperations(this);
+            this.NodeTypes = new NodeTypesOperations(this);
+            this.NodeTypeSkus = new NodeTypeSkusOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2023-03-01-preview";
+            this.ApiVersion = "2025-03-01-preview";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
@@ -401,6 +414,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ScalingMechanism>("kind"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ScalingTrigger>("kind"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ScalingTrigger>("kind"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<FaultSimulationContent>("faultKind"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<FaultSimulationContent>("faultKind"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Azure.CloudErrorJsonConverter());

@@ -14,13 +14,46 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
     public partial interface IServicesOperations
     {
         /// <summary>
-        /// Get a Service Fabric service resource created or in the process of being created in the Service Fabric managed application resource.
+        /// Gets all service resources created or in the process of being created in
+        /// the Service Fabric managed application resource.
         /// </summary>
         /// <remarks>
-        /// Get a Service Fabric service resource created or in the process of being created in the Service Fabric managed application resource.
+        /// Gets all service resources created or in the process of being created in
+        /// the Service Fabric managed application resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ServiceResource>>> ListByApplicationsWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get a Service Fabric service resource created or in the process of being
+        /// created in the Service Fabric managed application resource.
+        /// </summary>
+        /// <remarks>
+        /// Get a Service Fabric service resource created or in the process of being
+        /// created in the Service Fabric managed application resource.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -29,7 +62,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -46,13 +80,15 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ServiceResource>> GetWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, string serviceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create or update a Service Fabric managed service resource with the specified name.
+        /// Create or update a Service Fabric managed service resource with the
+        /// specified name.
         /// </summary>
         /// <remarks>
-        /// Create or update a Service Fabric managed service resource with the specified name.
+        /// Create or update a Service Fabric managed service resource with the
+        /// specified name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -61,7 +97,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='parameters'>
         /// The service resource.
@@ -78,7 +115,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ServiceResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, string serviceName, ServiceResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ServiceResource,ServicesCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, string serviceName, ServiceResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Updates the tags of a service resource of a given managed cluster.
@@ -87,7 +124,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// Updates the tags of a service resource of a given managed cluster.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -96,7 +133,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='tags'>
         /// Service update parameters
@@ -122,7 +160,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// Delete a Service Fabric managed service resource with the specified name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -131,7 +169,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -142,45 +181,18 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, string serviceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ServicesDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, string serviceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets all service resources created or in the process of being created in the Service Fabric managed application resource.
+        /// Create or update a Service Fabric managed service resource with the
+        /// specified name.
         /// </summary>
         /// <remarks>
-        /// Gets all service resources created or in the process of being created in the Service Fabric managed application resource.
+        /// Create or update a Service Fabric managed service resource with the
+        /// specified name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        /// <param name='applicationName'>
-        /// The name of the application resource.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ServiceResource>>> ListByApplicationsWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Create or update a Service Fabric managed service resource with the specified name.
-        /// </summary>
-        /// <remarks>
-        /// Create or update a Service Fabric managed service resource with the specified name.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -189,7 +201,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='parameters'>
         /// The service resource.
@@ -206,7 +219,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ServiceResource>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, string serviceName, ServiceResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ServiceResource,ServicesCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, string serviceName, ServiceResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete a Service Fabric managed service resource with the specified name.
@@ -215,7 +228,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// Delete a Service Fabric managed service resource with the specified name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -224,7 +237,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -235,13 +249,15 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, string serviceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ServicesDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, string serviceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets all service resources created or in the process of being created in the Service Fabric managed application resource.
+        /// Gets all service resources created or in the process of being created in
+        /// the Service Fabric managed application resource.
         /// </summary>
         /// <remarks>
-        /// Gets all service resources created or in the process of being created in the Service Fabric managed application resource.
+        /// Gets all service resources created or in the process of being created in
+        /// the Service Fabric managed application resource.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

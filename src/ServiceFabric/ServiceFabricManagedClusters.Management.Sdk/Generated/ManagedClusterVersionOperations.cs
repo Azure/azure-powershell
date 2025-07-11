@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
     /// <summary>
     /// ManagedClusterVersionOperations operations.
     /// </summary>
-    internal partial class ManagedClusterVersionOperations : Microsoft.Rest.IServiceOperations<ServiceFabricManagementClient>, IManagedClusterVersionOperations
+    internal partial class ManagedClusterVersionOperations : Microsoft.Rest.IServiceOperations<ServiceFabricManagedClustersManagementClient>, IManagedClusterVersionOperations
     {
         /// <summary>
         /// Initializes a new instance of the ManagedClusterVersionOperations class.
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal ManagedClusterVersionOperations (ServiceFabricManagementClient client)
+        internal ManagedClusterVersionOperations (ServiceFabricManagedClustersManagementClient client)
         {
             if (client == null) 
             {
@@ -34,18 +34,17 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Gets a reference to the ServiceFabricManagementClient
+        /// Gets a reference to the ServiceFabricManagedClustersManagementClient
         /// </summary>
-        public ServiceFabricManagementClient Client { get; private set; }
+        public ServiceFabricManagedClustersManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Gets information about an available Service Fabric managed cluster code version.
+        /// Gets all available code versions for Service Fabric cluster resources by
+        /// environment.
         /// </summary>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
-        /// </param>
-        /// <param name='clusterVersion'>
-        /// The cluster code version.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -68,17 +67,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedClusterCodeVersionResult>> GetWithHttpMessagesAsync(string location, string clusterVersion, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<ManagedClusterCodeVersionResult>>> ListByEnvironmentWithHttpMessagesAsync(string location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
-
+            string environment = "Windows";
  
-            if (location == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
-            }
-
             if (this.Client.ApiVersion == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -88,11 +82,18 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-
-            if (clusterVersion == null)
+            if (this.Client.SubscriptionId != null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "clusterVersion");
+                if (this.Client.SubscriptionId.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
+            if (location == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
+            }
+
 
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
@@ -102,19 +103,19 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
                 tracingParameters.Add("location", location);
-                tracingParameters.Add("clusterVersion", clusterVersion);
+                tracingParameters.Add("environment", environment);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ListByEnvironment", tracingParameters);
             }
             // Construct URL
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/managedClusterVersions/{clusterVersion}").ToString();
-            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/environments/{environment}/managedClusterVersions").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
-            _url = _url.Replace("{clusterVersion}", System.Uri.EscapeDataString(clusterVersion));
+            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
+            _url = _url.Replace("{environment}", System.Uri.EscapeDataString(environment));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (this.Client.ApiVersion != null)
@@ -181,11 +182,11 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
             if ((int)_statusCode != 200)
             {
-                var ex = new ErrorModelException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorModel _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorModel>(_responseContent, this.Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -209,7 +210,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ManagedClusterCodeVersionResult>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<ManagedClusterCodeVersionResult>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -223,7 +224,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ManagedClusterCodeVersionResult>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<System.Collections.Generic.IList<ManagedClusterCodeVersionResult>>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -247,10 +248,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
         }
         /// <summary>
-        /// Gets information about an available Service Fabric cluster code version by environment.
+        /// Gets information about an available Service Fabric cluster code version by
+        /// environment.
         /// </summary>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         /// <param name='clusterVersion'>
         /// The cluster code version.
@@ -282,12 +285,6 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
             string environment = "Windows";
  
-            if (location == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
-            }
-
-
             if (this.Client.ApiVersion == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -297,6 +294,18 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
+            if (this.Client.SubscriptionId != null)
+            {
+                if (this.Client.SubscriptionId.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
+            if (location == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
+            }
+
 
             if (clusterVersion == null)
             {
@@ -322,9 +331,9 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/environments/{environment}/managedClusterVersions/{clusterVersion}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             _url = _url.Replace("{environment}", System.Uri.EscapeDataString(environment));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{clusterVersion}", System.Uri.EscapeDataString(clusterVersion));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
@@ -392,11 +401,11 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
             if ((int)_statusCode != 200)
             {
-                var ex = new ErrorModelException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorModel _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorModel>(_responseContent, this.Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -458,10 +467,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
         }
         /// <summary>
-        /// Gets all available code versions for Service Fabric cluster resources by location.
+        /// Gets all available code versions for Service Fabric cluster resources by
+        /// location.
         /// </summary>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -490,11 +501,6 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
 
  
-            if (location == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
-            }
-
             if (this.Client.ApiVersion == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -503,6 +509,17 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             if (this.Client.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (this.Client.SubscriptionId != null)
+            {
+                if (this.Client.SubscriptionId.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
+            if (location == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
             }
 
             // Tracing
@@ -522,8 +539,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/managedClusterVersions").ToString();
-            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (this.Client.ApiVersion != null)
@@ -590,11 +607,11 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
             if ((int)_statusCode != 200)
             {
-                var ex = new ErrorModelException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorModel _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorModel>(_responseContent, this.Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -656,10 +673,15 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
         }
         /// <summary>
-        /// Gets all available code versions for Service Fabric cluster resources by environment.
+        /// Gets information about an available Service Fabric managed cluster code
+        /// version.
         /// </summary>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
+        /// </param>
+        /// <param name='clusterVersion'>
+        /// The cluster code version.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -682,18 +704,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<ManagedClusterCodeVersionResult>>> ListByEnvironmentWithHttpMessagesAsync(string location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedClusterCodeVersionResult>> GetWithHttpMessagesAsync(string location, string clusterVersion, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
-            string environment = "Windows";
+
  
-            if (location == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
-            }
-
-
             if (this.Client.ApiVersion == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -702,6 +718,22 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             if (this.Client.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (this.Client.SubscriptionId != null)
+            {
+                if (this.Client.SubscriptionId.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
+            if (location == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
+            }
+
+            if (clusterVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "clusterVersion");
             }
 
             // Tracing
@@ -712,19 +744,19 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
                 tracingParameters.Add("location", location);
-                tracingParameters.Add("environment", environment);
+                tracingParameters.Add("clusterVersion", clusterVersion);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ListByEnvironment", tracingParameters);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/environments/{environment}/managedClusterVersions").ToString();
-            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
-            _url = _url.Replace("{environment}", System.Uri.EscapeDataString(environment));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/managedClusterVersions/{clusterVersion}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
+            _url = _url.Replace("{clusterVersion}", System.Uri.EscapeDataString(clusterVersion));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (this.Client.ApiVersion != null)
@@ -791,11 +823,11 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
             if ((int)_statusCode != 200)
             {
-                var ex = new ErrorModelException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorModel _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorModel>(_responseContent, this.Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -819,7 +851,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<ManagedClusterCodeVersionResult>>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ManagedClusterCodeVersionResult>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -833,7 +865,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<System.Collections.Generic.IList<ManagedClusterCodeVersionResult>>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ManagedClusterCodeVersionResult>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {

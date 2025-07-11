@@ -30,9 +30,9 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// created.
         /// </param>
 
-        /// <param name="vmInstanceCount">The number of nodes in the node type. &lt;br /&gt;&lt;br /&gt;**Values:** &lt;br /&gt;-1 -
-        /// Use when auto scale rules are configured or sku.capacity is defined &lt;br /&gt;
-        /// 0 - Not supported &lt;br /&gt; &gt;0 - Use for manual scale.
+        /// <param name="vmInstanceCount">The number of nodes in the node type. **Values:** -1 - Use when auto scale
+        /// rules are configured or sku.capacity is defined 0 - Not supported &gt;0 - Use
+        /// for manual scale.
         /// </param>
 
         /// <param name="dataDiskSizeGb">Disk size for the managed disk attached to the vms on the node type in GBs.
@@ -40,7 +40,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="dataDiskType">Managed data disk type. Specifies the storage account type for the managed
         /// disk
-        /// Possible values include: 'Standard_LRS', 'StandardSSD_LRS', 'Premium_LRS'</param>
+        /// Possible values include: &#39;Standard_LRS&#39;, &#39;StandardSSD_LRS&#39;, &#39;Premium_LRS&#39;,
+        /// &#39;PremiumV2_LRS&#39;, &#39;StandardSSD_ZRS&#39;, &#39;Premium_ZRS&#39;</param>
 
         /// <param name="dataDiskLetter">Managed data disk letter. It can not use the reserved letter C or D and it
         /// can not change after created.
@@ -120,8 +121,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the node type resource.
-        /// Possible values include: 'None', 'Creating', 'Created', 'Updating',
-        /// 'Succeeded', 'Failed', 'Canceled', 'Deleting', 'Deleted', 'Other'</param>
+        /// Possible values include: &#39;None&#39;, &#39;Creating&#39;, &#39;Created&#39;, &#39;Updating&#39;,
+        /// &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Deleting&#39;, &#39;Deleted&#39;, &#39;Other&#39;</param>
 
         /// <param name="enableAcceleratedNetworking">Specifies whether the network interface is accelerated networking-enabled.
         /// </param>
@@ -169,7 +170,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="evictionPolicy">Specifies the eviction policy for virtual machines in a SPOT node type.
         /// Default is Delete.
-        /// Possible values include: 'Delete', 'Deallocate'</param>
+        /// Possible values include: &#39;Delete&#39;, &#39;Deallocate&#39;</param>
 
         /// <param name="vmImageResourceId">Indicates the resource id of the vm image. This parameter is used for
         /// custom vm image.
@@ -182,16 +183,26 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// service fabric runtime.
         /// </param>
 
-        /// <param name="securityType">Specifies the security type of the nodeType. Only TrustedLaunch is
-        /// currently supported
-        /// Possible values include: 'TrustedLaunch'</param>
+        /// <param name="securityType">Specifies the security type of the nodeType. Supported values include
+        /// Standard, TrustedLaunch and ConfidentialVM.
+        /// Possible values include: &#39;TrustedLaunch&#39;, &#39;Standard&#39;, &#39;ConfidentialVM&#39;</param>
+
+        /// <param name="securityEncryptionType">Specifies the EncryptionType of the managed disk. It is set to
+        /// DiskWithVMGuestState for encryption of the managed disk along with
+        /// VMGuestState blob and VMGuestStateOnly for encryption of just the
+        /// VMGuestState blob. Note: It can be set for only Confidential VMs.
+        /// Possible values include: &#39;DiskWithVMGuestState&#39;, &#39;VMGuestStateOnly&#39;</param>
 
         /// <param name="secureBootEnabled">Specifies whether secure boot should be enabled on the nodeType. Can only
-        /// be used with TrustedLaunch SecurityType
+        /// be used with TrustedLaunch and ConfidentialVM SecurityType.
         /// </param>
 
-        /// <param name="enableNodePublicIP">Specifies whether each node is allocated its own public IP address. This is
-        /// only supported on secondary node types with custom Load Balancers.
+        /// <param name="enableNodePublicIP">Specifies whether each node is allocated its own public IPv4 address. This
+        /// is only supported on secondary node types with custom Load Balancers.
+        /// </param>
+
+        /// <param name="enableNodePublicIPv6">Specifies whether each node is allocated its own public IPv6 address. This
+        /// is only supported on secondary node types with custom Load Balancers.
         /// </param>
 
         /// <param name="vmSharedGalleryImageId">Indicates the resource id of the vm shared galleries image. This parameter
@@ -202,6 +213,11 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// node type. Node type must use custom load balancer.
         /// </param>
 
+        /// <param name="natConfigurations">Specifies the NAT configuration on default public Load Balancer for the
+        /// node type. This is only supported for node types use the default public
+        /// Load Balancer.
+        /// </param>
+
         /// <param name="vmImagePlan">Specifies information about the marketplace image used to create the
         /// virtual machine. This element is only used for marketplace images. Before
         /// you can use a marketplace image from an API, you must enable the image for
@@ -209,7 +225,32 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// want to use and then click Want to deploy programmatically, Get Started -&gt;.
         /// Enter any required information and then click Save.
         /// </param>
-        public NodeTypeProperties(bool isPrimary, int vmInstanceCount, int? dataDiskSizeGb = default(int?), string dataDiskType = default(string), string dataDiskLetter = default(string), System.Collections.Generic.IDictionary<string, string> placementProperties = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> capacities = default(System.Collections.Generic.IDictionary<string, string>), EndpointRangeDescription applicationPorts = default(EndpointRangeDescription), EndpointRangeDescription ephemeralPorts = default(EndpointRangeDescription), string vmSize = default(string), string vmImagePublisher = default(string), string vmImageOffer = default(string), string vmImageSku = default(string), string vmImageVersion = default(string), System.Collections.Generic.IList<VaultSecretGroup> vmSecrets = default(System.Collections.Generic.IList<VaultSecretGroup>), System.Collections.Generic.IList<VmssExtension> vmExtensions = default(System.Collections.Generic.IList<VmssExtension>), VmManagedIdentity vmManagedIdentity = default(VmManagedIdentity), bool? isStateless = default(bool?), bool? multiplePlacementGroups = default(bool?), System.Collections.Generic.IList<FrontendConfiguration> frontendConfigurations = default(System.Collections.Generic.IList<FrontendConfiguration>), System.Collections.Generic.IList<NetworkSecurityRule> networkSecurityRules = default(System.Collections.Generic.IList<NetworkSecurityRule>), System.Collections.Generic.IList<VmssDataDisk> additionalDataDisks = default(System.Collections.Generic.IList<VmssDataDisk>), bool? enableEncryptionAtHost = default(bool?), string provisioningState = default(string), bool? enableAcceleratedNetworking = default(bool?), bool? useDefaultPublicLoadBalancer = default(bool?), bool? useTempDataDisk = default(bool?), bool? enableOverProvisioning = default(bool?), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), bool? isSpotVM = default(bool?), string hostGroupId = default(string), bool? useEphemeralOSDisk = default(bool?), string spotRestoreTimeout = default(string), string evictionPolicy = default(string), string vmImageResourceId = default(string), string subnetId = default(string), System.Collections.Generic.IList<string> vmSetupActions = default(System.Collections.Generic.IList<string>), string securityType = default(string), bool? secureBootEnabled = default(bool?), bool? enableNodePublicIP = default(bool?), string vmSharedGalleryImageId = default(string), string natGatewayId = default(string), VmImagePlan vmImagePlan = default(VmImagePlan))
+
+        /// <param name="serviceArtifactReferenceId">Specifies the service artifact reference id used to set same image version
+        /// for all virtual machines in the scale set when using &#39;latest&#39; image
+        /// version.
+        /// </param>
+
+        /// <param name="dscpConfigurationId">Specifies the resource id of the DSCP configuration to apply to the node
+        /// type network interface.
+        /// </param>
+
+        /// <param name="additionalNetworkInterfaceConfigurations">Specifies the settings for any additional secondary network interfaces to
+        /// attach to the node type.
+        /// </param>
+
+        /// <param name="computerNamePrefix">Specifies the computer name prefix. Limited to 9 characters. If specified,
+        /// allows for a longer name to be specified for the node type name.
+        /// </param>
+
+        /// <param name="vmApplications">Specifies the gallery applications that should be made available to the
+        /// underlying VMSS.
+        /// </param>
+
+        /// <param name="zoneBalance">Setting this to true allows stateless node types to scale out without equal
+        /// distribution across zones.
+        /// </param>
+        public NodeTypeProperties(bool isPrimary, int vmInstanceCount, int? dataDiskSizeGb = default(int?), string dataDiskType = default(string), string dataDiskLetter = default(string), System.Collections.Generic.IDictionary<string, string> placementProperties = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> capacities = default(System.Collections.Generic.IDictionary<string, string>), EndpointRangeDescription applicationPorts = default(EndpointRangeDescription), EndpointRangeDescription ephemeralPorts = default(EndpointRangeDescription), string vmSize = default(string), string vmImagePublisher = default(string), string vmImageOffer = default(string), string vmImageSku = default(string), string vmImageVersion = default(string), System.Collections.Generic.IList<VaultSecretGroup> vmSecrets = default(System.Collections.Generic.IList<VaultSecretGroup>), System.Collections.Generic.IList<VmssExtension> vmExtensions = default(System.Collections.Generic.IList<VmssExtension>), VmManagedIdentity vmManagedIdentity = default(VmManagedIdentity), bool? isStateless = default(bool?), bool? multiplePlacementGroups = default(bool?), System.Collections.Generic.IList<FrontendConfiguration> frontendConfigurations = default(System.Collections.Generic.IList<FrontendConfiguration>), System.Collections.Generic.IList<NetworkSecurityRule> networkSecurityRules = default(System.Collections.Generic.IList<NetworkSecurityRule>), System.Collections.Generic.IList<VmssDataDisk> additionalDataDisks = default(System.Collections.Generic.IList<VmssDataDisk>), bool? enableEncryptionAtHost = default(bool?), string provisioningState = default(string), bool? enableAcceleratedNetworking = default(bool?), bool? useDefaultPublicLoadBalancer = default(bool?), bool? useTempDataDisk = default(bool?), bool? enableOverProvisioning = default(bool?), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), bool? isSpotVM = default(bool?), string hostGroupId = default(string), bool? useEphemeralOSDisk = default(bool?), string spotRestoreTimeout = default(string), string evictionPolicy = default(string), string vmImageResourceId = default(string), string subnetId = default(string), System.Collections.Generic.IList<string> vmSetupActions = default(System.Collections.Generic.IList<string>), string securityType = default(string), string securityEncryptionType = default(string), bool? secureBootEnabled = default(bool?), bool? enableNodePublicIP = default(bool?), bool? enableNodePublicIPv6 = default(bool?), string vmSharedGalleryImageId = default(string), string natGatewayId = default(string), System.Collections.Generic.IList<NodeTypeNatConfig> natConfigurations = default(System.Collections.Generic.IList<NodeTypeNatConfig>), VmImagePlan vmImagePlan = default(VmImagePlan), string serviceArtifactReferenceId = default(string), string dscpConfigurationId = default(string), System.Collections.Generic.IList<AdditionalNetworkInterfaceConfiguration> additionalNetworkInterfaceConfigurations = default(System.Collections.Generic.IList<AdditionalNetworkInterfaceConfiguration>), string computerNamePrefix = default(string), System.Collections.Generic.IList<VmApplication> vmApplications = default(System.Collections.Generic.IList<VmApplication>), bool? zoneBalance = default(bool?))
 
         {
             this.IsPrimary = isPrimary;
@@ -250,11 +291,20 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
             this.SubnetId = subnetId;
             this.VMSetupActions = vmSetupActions;
             this.SecurityType = securityType;
+            this.SecurityEncryptionType = securityEncryptionType;
             this.SecureBootEnabled = secureBootEnabled;
             this.EnableNodePublicIP = enableNodePublicIP;
+            this.EnableNodePublicIPv6 = enableNodePublicIPv6;
             this.VMSharedGalleryImageId = vmSharedGalleryImageId;
             this.NatGatewayId = natGatewayId;
+            this.NatConfigurations = natConfigurations;
             this.VMImagePlan = vmImagePlan;
+            this.ServiceArtifactReferenceId = serviceArtifactReferenceId;
+            this.DscpConfigurationId = dscpConfigurationId;
+            this.AdditionalNetworkInterfaceConfigurations = additionalNetworkInterfaceConfigurations;
+            this.ComputerNamePrefix = computerNamePrefix;
+            this.VMApplications = vmApplications;
+            this.ZoneBalance = zoneBalance;
             CustomInit();
         }
 
@@ -273,9 +323,9 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         public bool IsPrimary {get; set; }
 
         /// <summary>
-        /// Gets or sets the number of nodes in the node type. &lt;br /&gt;&lt;br /&gt;**Values:**
-        /// &lt;br /&gt;-1 - Use when auto scale rules are configured or sku.capacity is
-        /// defined &lt;br /&gt; 0 - Not supported &lt;br /&gt; &gt;0 - Use for manual scale.
+        /// Gets or sets the number of nodes in the node type. **Values:** -1 - Use
+        /// when auto scale rules are configured or sku.capacity is defined 0 - Not
+        /// supported &gt;0 - Use for manual scale.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmInstanceCount")]
         public int VMInstanceCount {get; set; }
@@ -289,7 +339,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <summary>
         /// Gets or sets managed data disk type. Specifies the storage account type for
-        /// the managed disk Possible values include: &#39;Standard_LRS&#39;, &#39;StandardSSD_LRS&#39;, &#39;Premium_LRS&#39;
+        /// the managed disk Possible values include: &#39;Standard_LRS&#39;, &#39;StandardSSD_LRS&#39;, &#39;Premium_LRS&#39;, &#39;PremiumV2_LRS&#39;, &#39;StandardSSD_ZRS&#39;, &#39;Premium_ZRS&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "dataDiskType")]
         public string DataDiskType {get; set; }
@@ -538,26 +588,44 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         public System.Collections.Generic.IList<string> VMSetupActions {get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the security type of the nodeType. Only
-        /// TrustedLaunch is currently supported Possible values include: &#39;TrustedLaunch&#39;
+        /// Gets or sets specifies the security type of the nodeType. Supported values
+        /// include Standard, TrustedLaunch and ConfidentialVM. Possible values include: &#39;TrustedLaunch&#39;, &#39;Standard&#39;, &#39;ConfidentialVM&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "securityType")]
         public string SecurityType {get; set; }
 
         /// <summary>
+        /// Gets or sets specifies the EncryptionType of the managed disk. It is set to
+        /// DiskWithVMGuestState for encryption of the managed disk along with
+        /// VMGuestState blob and VMGuestStateOnly for encryption of just the
+        /// VMGuestState blob. Note: It can be set for only Confidential VMs. Possible values include: &#39;DiskWithVMGuestState&#39;, &#39;VMGuestStateOnly&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "securityEncryptionType")]
+        public string SecurityEncryptionType {get; set; }
+
+        /// <summary>
         /// Gets or sets specifies whether secure boot should be enabled on the
-        /// nodeType. Can only be used with TrustedLaunch SecurityType
+        /// nodeType. Can only be used with TrustedLaunch and ConfidentialVM
+        /// SecurityType.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "secureBootEnabled")]
         public bool? SecureBootEnabled {get; set; }
 
         /// <summary>
-        /// Gets or sets specifies whether each node is allocated its own public IP
+        /// Gets or sets specifies whether each node is allocated its own public IPv4
         /// address. This is only supported on secondary node types with custom Load
         /// Balancers.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enableNodePublicIP")]
         public bool? EnableNodePublicIP {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies whether each node is allocated its own public IPv6
+        /// address. This is only supported on secondary node types with custom Load
+        /// Balancers.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enableNodePublicIPv6")]
+        public bool? EnableNodePublicIPv6 {get; set; }
 
         /// <summary>
         /// Gets or sets indicates the resource id of the vm shared galleries image.
@@ -574,6 +642,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         public string NatGatewayId {get; set; }
 
         /// <summary>
+        /// Gets or sets specifies the NAT configuration on default public Load
+        /// Balancer for the node type. This is only supported for node types use the
+        /// default public Load Balancer.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "natConfigurations")]
+        public System.Collections.Generic.IList<NodeTypeNatConfig> NatConfigurations {get; set; }
+
+        /// <summary>
         /// Gets or sets specifies information about the marketplace image used to
         /// create the virtual machine. This element is only used for marketplace
         /// images. Before you can use a marketplace image from an API, you must enable
@@ -583,6 +659,50 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmImagePlan")]
         public VmImagePlan VMImagePlan {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the service artifact reference id used to set same
+        /// image version for all virtual machines in the scale set when using &#39;latest&#39;
+        /// image version.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "serviceArtifactReferenceId")]
+        public string ServiceArtifactReferenceId {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the resource id of the DSCP configuration to apply
+        /// to the node type network interface.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "dscpConfigurationId")]
+        public string DscpConfigurationId {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the settings for any additional secondary network
+        /// interfaces to attach to the node type.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "additionalNetworkInterfaceConfigurations")]
+        public System.Collections.Generic.IList<AdditionalNetworkInterfaceConfiguration> AdditionalNetworkInterfaceConfigurations {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the computer name prefix. Limited to 9 characters.
+        /// If specified, allows for a longer name to be specified for the node type
+        /// name.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "computerNamePrefix")]
+        public string ComputerNamePrefix {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the gallery applications that should be made
+        /// available to the underlying VMSS.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "vmApplications")]
+        public System.Collections.Generic.IList<VmApplication> VMApplications {get; set; }
+
+        /// <summary>
+        /// Gets or sets setting this to true allows stateless node types to scale out
+        /// without equal distribution across zones.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "zoneBalance")]
+        public bool? ZoneBalance {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -676,6 +796,40 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
 
 
+            if (this.NatConfigurations != null)
+            {
+                foreach (var element in this.NatConfigurations)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+
+
+
+            if (this.AdditionalNetworkInterfaceConfigurations != null)
+            {
+                foreach (var element in this.AdditionalNetworkInterfaceConfigurations)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+
+            if (this.VMApplications != null)
+            {
+                foreach (var element in this.VMApplications)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
         }
     }
 }
