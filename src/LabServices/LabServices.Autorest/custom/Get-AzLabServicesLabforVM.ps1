@@ -88,7 +88,7 @@ function Get-AzLabServicesLabForVM {
     )
     
     process {
-        $HandleVMResourceId = Join-Path $PSScriptRoot '/Utilities/HandleVMResourceId.ps1'
+        $HandleVMResourceId = Join-Path $PSScriptRoot 'Utilities' 'HandleVMResourceId.ps1'
         $resourceHash = . $HandleVMResourceId -ResourceId $ResourceId
         if ($resourceHash) {
             $PSBoundParameters.Remove("SubscriptionId") > $null

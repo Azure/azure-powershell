@@ -89,7 +89,7 @@ param(
 )
 
 process {
-    $CheckForWildcards = Join-Path $PSScriptRoot '/Utilities/CheckForWildcards.ps1'
+    $CheckForWildcards = Join-Path $PSScriptRoot 'Utilities' 'CheckForWildcards.ps1'
     $currentLabPlan = $PSBoundParameters.Name
     $PSBoundParameters.Remove('Name') > $null
     if ($(. $CheckForWildcards -ResourceId $currentLabPlan))

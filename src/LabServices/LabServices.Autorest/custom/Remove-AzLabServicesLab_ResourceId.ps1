@@ -105,7 +105,7 @@ function Remove-AzLabServicesLab_ResourceId {
     )
     
     process {
-        $HandleLabResourceId = Join-Path $PSScriptRoot '/Utilities/HandleLabResourceId.ps1'
+        $HandleLabResourceId = Join-Path $PSScriptRoot 'Utilities' 'HandleLabResourceId.ps1'
         $resourceHash = . $HandleLabResourceId -ResourceId $ResourceId
         $PSBoundParameters.Remove("SubscriptionId") > $null
         if ($resourceHash) {

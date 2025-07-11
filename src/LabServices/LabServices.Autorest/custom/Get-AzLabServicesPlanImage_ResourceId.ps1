@@ -88,7 +88,7 @@ function Get-AzLabServicesPlanImage_ResourceId {
     )
     
     process {
-        $HandleLabPlanResourceId = Join-Path $PSScriptRoot '/Utilities/HandleLabPlanResourceId.ps1'
+        $HandleLabPlanResourceId = Join-Path $PSScriptRoot 'Utilities' 'HandleLabPlanResourceId.ps1'
         $resourceHash = . $HandleLabPlanResourceId -ResourceId $ResourceId
         $PSBoundParameters.Remove("SubscriptionId") > $nul
         if ($resourceHash) {

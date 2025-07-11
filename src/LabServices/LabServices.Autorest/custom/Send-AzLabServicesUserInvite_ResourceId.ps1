@@ -105,7 +105,7 @@ function Send-AzLabServicesUserInvite_ResourceId {
     )
     
     process {
-        $HandleUserResourceId = Join-Path $PSScriptRoot '/Utilities/HandleUserResourceId.ps1'
+        $HandleUserResourceId = Join-Path $PSScriptRoot 'Utilities' 'HandleUserResourceId.ps1'
         $resourceHash = . $HandleUserResourceId -ResourceId $ResourceId
         $PSBoundParameters.Remove("SubscriptionId")
         if ($resourceHash) {

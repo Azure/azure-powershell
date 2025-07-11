@@ -105,7 +105,7 @@ param(
 )
 
 process {
-    $HandleImageResourceId = Join-Path $PSScriptRoot '/Utilities/HandleImageResourceId.ps1'
+    $HandleImageResourceId = Join-Path $PSScriptRoot 'Utilities' 'HandleImageResourceId.ps1'
     $resourceHash = . $HandleImageResourceId -ResourceId $ResourceId
     $PSBoundParameters.Remove("SubscriptionId")
     if ($resourceHash) {

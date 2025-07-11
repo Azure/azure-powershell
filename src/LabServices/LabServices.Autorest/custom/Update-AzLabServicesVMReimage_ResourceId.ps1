@@ -100,7 +100,7 @@ param(
 )
 
 process {
-    $HandleVMResourceId = Join-Path $PSScriptRoot '/Utilities/HandleVMResourceId.ps1'
+    $HandleVMResourceId = Join-Path $PSScriptRoot 'Utilities' 'HandleVMResourceId.ps1'
     $resourceHash = . $HandleVMResourceId -ResourceId $ResourceId
     $PSBoundParameters.Remove("SubscriptionId") > $null
     if ($resourceHash) {

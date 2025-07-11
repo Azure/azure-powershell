@@ -102,7 +102,7 @@ function Get-AzLabServicesLab_LabPlan {
         $PSBoundParameters.Remove("LabPlan") > $null
         $PSBoundParameters.Remove("LabPlanName") > $null
         
-        $CheckForWildcards = Join-Path $PSScriptRoot '/Utilities/CheckForWildcards.ps1'
+        $CheckForWildcards = Join-Path $PSScriptRoot 'Utilities' 'CheckForWildcards.ps1'
         if ($PSBoundParameters.ContainsKey('Name')) {            
             # If there is a lab name do a get for the specific lab or check for wildcard.
             if ($(. $CheckForWildcards -ResourceId $PSBoundParameters.Name))
