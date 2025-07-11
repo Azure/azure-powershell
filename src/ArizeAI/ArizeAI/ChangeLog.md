@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* General availability for module Az.ArizeAI
 * Upgraded the API version to 2024-10-01
 
 ## Version 0.1.0
