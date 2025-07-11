@@ -31,8 +31,8 @@ PS C:\> {{ Add code here }}
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImage
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImage
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,9 +40,9 @@ COMPLEX PARAMETER PROPERTIES
 https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmimage
 #>
 function New-AzStackHCIVMImage{
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages],ParameterSetName='Marketplace' )]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages],ParameterSetName='MarketplaceURN' )]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages],ParameterSetName='GalleryImage' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImage],ParameterSetName='Marketplace' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImage],ParameterSetName='MarketplaceURN' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImage],ParameterSetName='GalleryImage' )]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
 
@@ -103,6 +103,7 @@ function New-AzStackHCIVMImage{
     [Parameter(ParameterSetName='GalleryImage', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.String]
+
     # Local path of image that the image should be created from. 
     # This parameter is required for non marketplace images. 
     ${ImagePath},
@@ -118,7 +119,7 @@ function New-AzStackHCIVMImage{
     [Parameter(ParameterSetName='Marketplace', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.String]
-    # The name of the marketplace gallery image definition offer.
+    # The name of the marketplae gallery image definition offer.
     ${Offer},
 
     [Parameter(ParameterSetName='Marketplace', Mandatory)]
@@ -238,6 +239,8 @@ function New-AzStackHCIVMImage{
     ${ProxyUseDefaultCredentials}
 
     )
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if (-Not ($name -match $imageNameRegex )) {
             Write-Error "Invalid Name for image provided: $name" -ErrorAction Stop
@@ -307,7 +310,9 @@ function New-AzStackHCIVMImage{
             $PSBoundParameters['ErrorAction'] = 'Stop'
             try {
                 Az.StackHCIVM.internal\New-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
-                Start-Sleep -Seconds 60
+                if (-not $testPlayback) {
+                    Start-Sleep -Seconds 60
+                }
                 $PercentCompleted = 0 
                 Write-Progress -Activity "Download Percentage: " -Status "$PercentCompleted % Complete:" -PercentComplete $PercentCompleted
                 $null = $PSBoundParameters.Remove("Version")
@@ -330,7 +335,9 @@ function New-AzStackHCIVMImage{
                         $PercentCompleted = 0
                     } 
                     Write-Progress -Activity "Download Percentage: " -Status "$PercentCompleted % Complete" -PercentComplete $PercentCompleted
-                    Start-Sleep -Seconds 5    
+                    if (-not $testPlayback) {
+                        Start-Sleep -Seconds 5    
+                    }
                     if ($image.ProvisioningStatus -eq "Failed") {
                         Break
                     }           
@@ -338,7 +345,6 @@ function New-AzStackHCIVMImage{
                 if ($image.ProvisioningStatus -eq "Failed"){
                     Write-Error $image.StatusErrorMessage -ErrorAction Stop
                 }
-               
             } catch {
                 $e = $_
                 if ($e.FullyQualifiedErrorId -match "MissingAzureKubernetesMapping" ){
@@ -416,6 +422,9 @@ function New-AzStackHCIVMImage{
         if ($PSCmdlet.ParameterSetName -eq "GalleryImage")
         {
             try{
+                $null = $PSBoundParameters.Remove("ImagePath")
+                $SecureImagePath = ConvertTo-SecureString -String $ImagePath -AsPlainText -Force
+                $PSBoundParameters.Add('ImagePath', $SecureImagePath)
                 Az.StackHCIVM.internal\New-AzStackHCIVMGalleryImage -ErrorAction Stop @PSBoundParameters 
             } catch {
                 $e = $_
