@@ -33,7 +33,7 @@ Describe 'AzStackHCIVMVirtualMachine' {
             Stop-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
             $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
             $config.StatusPowerState| Should -BeExactly "Stopped"
-        } 
+        } | Should -Not -Throw
     }
 
     It 'Start'  {
@@ -41,7 +41,7 @@ Describe 'AzStackHCIVMVirtualMachine' {
             Start-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
             $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
             $config.StatusPowerState| Should -BeExactly "Running"
-        } 
+        } | Should -Not -Throw
     }
 
     It 'Restart'  {
@@ -49,7 +49,29 @@ Describe 'AzStackHCIVMVirtualMachine' {
             Restart-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
             $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
             $config.StatusPowerState| Should -BeExactly "Running"
-        } 
+        } | Should -Not -Throw
+    }
+
+    It 'Save'  {
+        {
+            Save-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
+            $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
+            $config.StatusPowerState| Should -BeExactly "Saved"
+            Start-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
+            $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
+            $config.StatusPowerState| Should -BeExactly "Running"
+        } | Should -Not -Throw
+    }
+
+    It 'Pause'  {
+        {
+            Suspend-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
+            $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
+            $config.StatusPowerState| Should -BeExactly "Paused"
+            Start-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
+            $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
+            $config.StatusPowerState| Should -BeExactly "Running"
+        } | Should -Not -Throw
     }
 
     It 'Create Network Interface  ' {
@@ -83,7 +105,7 @@ Describe 'AzStackHCIVMVirtualMachine' {
             Add-AzStackHciVMVirtualMachineDataDisk -Name $env.vmName2 -ResourceGroupName $env.resourceGroupName -DataDiskName $env.vhdName2
             $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName2 -ResourceGroupName $env.resourceGroupName 
             $config.StatusPowerState| Should -BeExactly "Running"
-        }
+        } | Should -Not -Throw
     }        
                    
     It 'Delete' {
