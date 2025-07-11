@@ -12,7 +12,7 @@ Gets Management Group scoped Deployment Stacks.
 
 ## SYNTAX
 
-### ListByManagementGroupId (Default)
+### ListByManagmentGroupId (Default)
 ```
 Get-AzManagementGroupDeploymentStack -ManagementGroupId <String> [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -64,7 +64,7 @@ The id of the ManagementGroup where the DeploymentStack is deployed
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByManagementGroupId, GetByManagementGroupIdAndName
+Parameter Sets: ListByManagmentGroupId, GetByManagementGroupIdAndName
 Aliases:
 
 Required: True
