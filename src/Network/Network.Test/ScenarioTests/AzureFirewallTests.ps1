@@ -2169,17 +2169,7 @@ function Test-InvokeAzureFirewallPacketCapture {
         # Get AzureFirewall
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
 
-         # Create Storage Account and Container
-        $storetype = 'Standard_GRS'
-        $containerName = "testcontainer"
-        $storeName = 'sto' + $rgname;
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $storeName -Location $location -Type $storetype
-        $key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storeName
-        $context = New-AzStorageContext -StorageAccountName $storeName -StorageAccountKey $key[0].Value
-        New-AzStorageContainer -Name $containerName -Context $context
-        $container = Get-AzStorageContainer -Name $containerName -Context $context
-        $now=get-date
-        $sasurl = New-AzureStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
+        $sasurl = "https://powershellpacketcapture.blob.core.windows.net/testcapture?sp=wDummyURL"
 
         # Create a filter rules
         $filter1 = New-AzFirewallPacketCaptureRule -Source "10.0.0.2","192.123.12.1" -Destination "172.32.1.2" -DestinationPort "80","443"
