@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Extensions;
 
-    public partial class AzureResourceManagerCommonTypesTrackedResourceUpdateTags :
+    public partial class OrganizationResourceUpdateTags :
         Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IAssociativeArray<string>
     {
         protected global::System.Collections.Generic.Dictionary<global::System.String,string> __additionalProperties = new global::System.Collections.Generic.Dictionary<global::System.String,string>();
@@ -70,6 +70,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
 
         /// <param name="source"></param>
 
-        public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.AzureResourceManagerCommonTypesTrackedResourceUpdateTags source) => source.__additionalProperties;
+        public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.OrganizationResourceUpdateTags source) => source.__additionalProperties;
     }
 }

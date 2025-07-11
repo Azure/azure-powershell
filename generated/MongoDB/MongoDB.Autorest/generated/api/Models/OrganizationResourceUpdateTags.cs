@@ -8,28 +8,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Extensions;
 
     /// <summary>Resource tags.</summary>
-    public partial class AzureResourceManagerCommonTypesTrackedResourceUpdateTags :
-        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags,
-        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTagsInternal
+    public partial class OrganizationResourceUpdateTags :
+        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateTags,
+        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateTagsInternal
     {
 
-        /// <summary>
-        /// Creates an new <see cref="AzureResourceManagerCommonTypesTrackedResourceUpdateTags" /> instance.
-        /// </summary>
-        public AzureResourceManagerCommonTypesTrackedResourceUpdateTags()
+        /// <summary>Creates an new <see cref="OrganizationResourceUpdateTags" /> instance.</summary>
+        public OrganizationResourceUpdateTags()
         {
 
         }
     }
     /// Resource tags.
-    public partial interface IAzureResourceManagerCommonTypesTrackedResourceUpdateTags :
+    public partial interface IOrganizationResourceUpdateTags :
         Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IAssociativeArray<string>
     {
 
     }
     /// Resource tags.
-    internal partial interface IAzureResourceManagerCommonTypesTrackedResourceUpdateTagsInternal
+    internal partial interface IOrganizationResourceUpdateTagsInternal
 
     {
 

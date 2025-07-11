@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Extensions;
 
     /// <summary>Resource tags.</summary>
-    public partial class AzureResourceManagerCommonTypesTrackedResourceUpdateTags
+    public partial class OrganizationResourceUpdateTags
     {
 
         /// <summary>
@@ -54,12 +54,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonObject into a new instance of <see cref="AzureResourceManagerCommonTypesTrackedResourceUpdateTags"
-        /// />.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateTags.
+        /// </summary>
+        /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonNode" /> to deserialize from.</param>
+        /// <returns>
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateTags.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateTags FromJson(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonNode node)
+        {
+            return node is Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonObject json ? new OrganizationResourceUpdateTags(json) : null;
+        }
+
+        /// <summary>
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonObject into a new instance of <see cref="OrganizationResourceUpdateTags" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonObject instance to deserialize from.</param>
         /// <param name="exclusions"></param>
-        internal AzureResourceManagerCommonTypesTrackedResourceUpdateTags(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonObject json, global::System.Collections.Generic.HashSet<string> exclusions = null)
+        internal OrganizationResourceUpdateTags(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonObject json, global::System.Collections.Generic.HashSet<string> exclusions = null)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -72,27 +83,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
         }
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags.
-        /// </summary>
-        /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonNode" /> to deserialize from.</param>
-        /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags FromJson(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonNode node)
-        {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonObject json ? new AzureResourceManagerCommonTypesTrackedResourceUpdateTags(json) : null;
-        }
-
-        /// <summary>
-        /// Serializes this instance of <see cref="AzureResourceManagerCommonTypesTrackedResourceUpdateTags" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonNode"
-        /// />.
+        /// Serializes this instance of <see cref="OrganizationResourceUpdateTags" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonNode" />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="AzureResourceManagerCommonTypesTrackedResourceUpdateTags" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonNode"
-        /// />.
+        /// a serialized instance of <see cref="OrganizationResourceUpdateTags" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonNode" />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode serializationMode)
         {
