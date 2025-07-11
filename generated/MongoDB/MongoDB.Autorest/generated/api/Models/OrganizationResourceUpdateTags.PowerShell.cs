@@ -8,8 +8,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
     using Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.PowerShell;
 
     /// <summary>Resource tags.</summary>
-    [System.ComponentModel.TypeConverter(typeof(AzureResourceManagerCommonTypesTrackedResourceUpdateTagsTypeConverter))]
-    public partial class AzureResourceManagerCommonTypesTrackedResourceUpdateTags
+    [System.ComponentModel.TypeConverter(typeof(OrganizationResourceUpdateTagsTypeConverter))]
+    public partial class OrganizationResourceUpdateTags
     {
 
         /// <summary>
@@ -63,11 +63,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.AzureResourceManagerCommonTypesTrackedResourceUpdateTags"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.OrganizationResourceUpdateTags"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal AzureResourceManagerCommonTypesTrackedResourceUpdateTags(global::System.Collections.IDictionary content)
+        /// <returns>
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateTags" />.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateTags DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        {
+            return new OrganizationResourceUpdateTags(content);
+        }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.OrganizationResourceUpdateTags"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
+        /// <returns>
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateTags" />.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateTags DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        {
+            return new OrganizationResourceUpdateTags(content);
+        }
+
+        /// <summary>
+        /// Creates a new instance of <see cref="OrganizationResourceUpdateTags" />, deserializing the content from a json string.
+        /// </summary>
+        /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
+        /// <returns>an instance of the <see cref="OrganizationResourceUpdateTags" /> model class.</returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateTags FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonNode.Parse(jsonText));
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.OrganizationResourceUpdateTags"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        internal OrganizationResourceUpdateTags(global::System.Collections.IDictionary content)
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -82,11 +115,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.AzureResourceManagerCommonTypesTrackedResourceUpdateTags"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.OrganizationResourceUpdateTags"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal AzureResourceManagerCommonTypesTrackedResourceUpdateTags(global::System.Management.Automation.PSObject content)
+        internal OrganizationResourceUpdateTags(global::System.Management.Automation.PSObject content)
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -99,44 +132,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
             CopyFrom(content);
             AfterDeserializePSObject(content);
         }
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.AzureResourceManagerCommonTypesTrackedResourceUpdateTags"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags"
-        /// />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags DeserializeFromDictionary(global::System.Collections.IDictionary content)
-        {
-            return new AzureResourceManagerCommonTypesTrackedResourceUpdateTags(content);
-        }
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.AzureResourceManagerCommonTypesTrackedResourceUpdateTags"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags"
-        /// />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
-        {
-            return new AzureResourceManagerCommonTypesTrackedResourceUpdateTags(content);
-        }
-
-        /// <summary>
-        /// Creates a new instance of <see cref="AzureResourceManagerCommonTypesTrackedResourceUpdateTags" />, deserializing the content
-        /// from a json string.
-        /// </summary>
-        /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>
-        /// an instance of the <see cref="AzureResourceManagerCommonTypesTrackedResourceUpdateTags" /> model class.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
 
@@ -156,8 +151,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
         }
     }
     /// Resource tags.
-    [System.ComponentModel.TypeConverter(typeof(AzureResourceManagerCommonTypesTrackedResourceUpdateTagsTypeConverter))]
-    public partial interface IAzureResourceManagerCommonTypesTrackedResourceUpdateTags
+    [System.ComponentModel.TypeConverter(typeof(OrganizationResourceUpdateTagsTypeConverter))]
+    public partial interface IOrganizationResourceUpdateTags
 
     {
 

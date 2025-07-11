@@ -7,17 +7,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Extensions;
 
-    /// <summary>Properties specific to Organization</summary>
-    public partial class OrganizationPropertiesUpdate :
-        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdate,
-        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal
+    /// <summary>The updatable properties of the OrganizationResource.</summary>
+    public partial class OrganizationResourceUpdateProperties :
+        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateProperties,
+        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal
     {
 
         /// <summary>Internal Acessors for PartnerProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IPartnerPropertiesUpdate Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal.PartnerProperty { get => (this._partnerProperty = this._partnerProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.PartnerPropertiesUpdate()); set { {_partnerProperty = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IPartnerPropertiesUpdate Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal.PartnerProperty { get => (this._partnerProperty = this._partnerProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.PartnerPropertiesUpdate()); set { {_partnerProperty = value;} } }
 
         /// <summary>Internal Acessors for User</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IUserDetailsUpdate Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal.User { get => (this._user = this._user ?? new Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.UserDetailsUpdate()); set { {_user = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IUserDetailsUpdate Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal.User { get => (this._user = this._user ?? new Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.UserDetailsUpdate()); set { {_user = value;} } }
 
         /// <summary>Backing field for <see cref="PartnerProperty" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IPartnerPropertiesUpdate _partnerProperty;
@@ -69,14 +69,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Inlined)]
         public string UserUpn { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IUserDetailsUpdateInternal)User).Upn; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IUserDetailsUpdateInternal)User).Upn = value ?? null; }
 
-        /// <summary>Creates an new <see cref="OrganizationPropertiesUpdate" /> instance.</summary>
-        public OrganizationPropertiesUpdate()
+        /// <summary>Creates an new <see cref="OrganizationResourceUpdateProperties" /> instance.</summary>
+        public OrganizationResourceUpdateProperties()
         {
 
         }
     }
-    /// Properties specific to Organization
-    public partial interface IOrganizationPropertiesUpdate :
+    /// The updatable properties of the OrganizationResource.
+    public partial interface IOrganizationResourceUpdateProperties :
         Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IJsonSerializable
     {
         /// <summary>Organization Id in MongoDB system</summary>
@@ -180,8 +180,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
         string UserUpn { get; set; }
 
     }
-    /// Properties specific to Organization
-    internal partial interface IOrganizationPropertiesUpdateInternal
+    /// The updatable properties of the OrganizationResource.
+    internal partial interface IOrganizationResourceUpdatePropertiesInternal
 
     {
         /// <summary>MongoDB properties</summary>
