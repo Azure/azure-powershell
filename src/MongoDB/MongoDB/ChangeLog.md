@@ -18,9 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 1.0.0
-* First stable release for module Az.MongoDB
-
 ## Version 0.1.0
+* First stable release for module Az.MongoDB
 * First preview release for module Az.MongoDB
