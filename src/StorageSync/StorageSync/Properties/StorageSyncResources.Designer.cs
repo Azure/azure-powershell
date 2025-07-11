@@ -106,15 +106,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Secret file path does not exist on the server..
-        /// </summary>
-        internal static string AgentMI_MissingSecretFilePathOnServerError {
-            get {
-                return ResourceManager.GetString("AgentMI_MissingSecretFilePathOnServerError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to No system-assigned Managed Identity was found for this resource..
         /// </summary>
         internal static string AgentMI_MissingSystemAssignedIdentityError {
