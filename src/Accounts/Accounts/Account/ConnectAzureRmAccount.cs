@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string FederatedToken { get; set; }
 
-        [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Specifies the claims challenge.")]
+        [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Specifies the claims challenge with base 64 encoded.")]
         [ValidateNotNullOrEmpty]
         public string ClaimsChallenge { get; set; }
 
