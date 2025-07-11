@@ -49,6 +49,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
         private readonly string resourceType;
         private readonly string resourceId; 
         private readonly IDictionary<string, string> tags;
+        private readonly DateTime createdTime;
+        private readonly DateTime changedTime;
 
         public GetAzureResourceCommandTests(ITestOutputHelper output)
         {
@@ -57,6 +59,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
             resourceType = $"{provider}/{resourceTypeName}";
             resourceId = $"{resourceGroupId}/providers/{resourceType}/{resourceName}";
             tags = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase) { { "Environment", "Test" }, { "Application", "PowerShell" } };
+            createdTime = DateTime.UtcNow.AddDays(-30);
+            changedTime = DateTime.UtcNow.AddDays(-5);
             resourcesClientMock = new Mock<ResourceManagerSdkClient>();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -72,8 +76,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         public void GetsResourcesById()
         {
             var pipeline = new List<PSResource>();
-
-            var gr = new GenericResource(resourceId, resourceName, resourceType, location, tags, null, null, kind, null, null, null);
+            var gr = new GenericResourceExpanded(resourceId, resourceName, resourceType, location, tags, null, null, kind, null, createdTime: createdTime, changedTime: changedTime);
             var expected = new PSResource(gr);
             resourcesClientMock.Setup(f => f.GetById(resourceId, Constants.ResourcesApiVersion)).Returns(expected);
             commandRuntimeMock.Setup(r => r.WriteObject(It.IsAny<PSResource>())).Callback<object>(resource => pipeline.Add((PSResource)resource));
@@ -91,6 +94,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
             Assert.Equal(location, actual.Location);
             Assert.Equal(kind, actual.Kind);
             Assert.Equal(tags, actual.Tags);
+            Assert.Equal(createdTime, actual.CreatedTime);
+            Assert.Equal(changedTime, actual.ChangedTime);
         }
     }
 }

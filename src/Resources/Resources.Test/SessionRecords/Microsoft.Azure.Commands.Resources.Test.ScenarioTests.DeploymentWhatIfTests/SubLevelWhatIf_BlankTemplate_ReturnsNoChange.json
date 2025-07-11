@@ -1,22 +1,21 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/a93e8c5c-63cb-4635-933f-6d166ac25187/providers/Microsoft.Resources/deployments/ps9434/whatIf?api-version=2020-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTkzZThjNWMtNjNjYi00NjM1LTkzM2YtNmQxNjZhYzI1MTg3L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VzL2RlcGxveW1lbnRzL3BzOTQzNC93aGF0SWY/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
+      "RequestUri": "/subscriptions//providers/Microsoft.Resources/deployments/ps2117/whatIf?api-version=2024-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VzL2RlcGxveW1lbnRzL3BzMjExNy93aGF0SWY/YXBpLXZlcnNpb249MjAyNC0xMS0wMQ==",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"whatIfSettings\": {\r\n      \"resultFormat\": \"FullResourcePayloads\"\r\n    },\r\n    \"template\": {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",\r\n      \"contentVersion\": \"1.0.0.0\",\r\n      \"parameters\": {},\r\n      \"variables\": {},\r\n      \"resources\": [],\r\n      \"outputs\": {}\r\n    },\r\n    \"parameters\": {},\r\n    \"mode\": \"Incremental\"\r\n  }\r\n}",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "71645783-11b8-4663-ae79-7eadf9e68301"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "x-ms-client-request-id": [
+          "ec87197f-4da9-46c3-b33c-9d6b1a9fd247"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29017.01",
+          "FxVersion/8.0.1825.31117",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19041.",
-          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.9.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/8.0.1"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -25,6 +24,7 @@
           "439"
         ]
       },
+      "RequestBody": "{\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"whatIfSettings\": {\r\n      \"resultFormat\": \"FullResourcePayloads\"\r\n    },\r\n    \"template\": {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",\r\n      \"contentVersion\": \"1.0.0.0\",\r\n      \"parameters\": {},\r\n      \"variables\": {},\r\n      \"resources\": [],\r\n      \"outputs\": {}\r\n    },\r\n    \"parameters\": {},\r\n    \"mode\": \"Incremental\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -32,23 +32,17 @@
         "Pragma": [
           "no-cache"
         ],
-        "Location": [
-          "https://management.azure.com/subscriptions/a93e8c5c-63cb-4635-933f-6d166ac25187/operationresults/eyJqb2JJZCI6IkRlcGxveW1lbnRXaGF0SWZKb2ItLVBTOTQzNC1CNkEzQ0UxMjoyRDdDNEE6MkQ0OTM0OjJEOTUzNzoyREEyMzk4M0Q2NkJBOSIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2020-06-01"
-        ],
-        "Retry-After": [
-          "0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+        "x-ms-failure-cause": [
+          "gateway"
         ],
         "x-ms-request-id": [
-          "b6a3ce12-7c4a-4934-9537-a23983d66ba9"
+          "62cd3b2e-d616-4315-a22b-a92d6a98cb8a"
         ],
         "x-ms-correlation-request-id": [
-          "b6a3ce12-7c4a-4934-9537-a23983d66ba9"
+          "62cd3b2e-d616-4315-a22b-a92d6a98cb8a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20200724T005416Z:b6a3ce12-7c4a-4934-9537-a23983d66ba9"
+          "SOUTHEASTASIA:20250710T065423Z:62cd3b2e-d616-4315-a22b-a92d6a98cb8a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -56,59 +50,17 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Date": [
-          "Fri, 24 Jul 2020 00:54:15 GMT"
+        "X-Cache": [
+          "CONFIG_NOCACHE"
         ],
-        "Expires": [
-          "-1"
+        "X-MSEdge-Ref": [
+          "Ref A: FB5A5D47C314409283A032745DA2EEA9 Ref B: MAA201060513025 Ref C: 2025-07-10T06:54:23Z"
+        ],
+        "Date": [
+          "Thu, 10 Jul 2025 06:54:23 GMT"
         ],
         "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/a93e8c5c-63cb-4635-933f-6d166ac25187/operationresults/eyJqb2JJZCI6IkRlcGxveW1lbnRXaGF0SWZKb2ItLVBTOTQzNC1CNkEzQ0UxMjoyRDdDNEE6MkQ0OTM0OjJEOTUzNzoyREEyMzk4M0Q2NkJBOSIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2020-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTkzZThjNWMtNjNjYi00NjM1LTkzM2YtNmQxNjZhYzI1MTg3L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWtSbGNHeHZlVzFsYm5SWGFHRjBTV1pLYjJJdExWQlRPVFF6TkMxQ05rRXpRMFV4TWpveVJEZERORUU2TWtRME9UTTBPakpFT1RVek56b3lSRUV5TXprNE0wUTJOa0pCT1NJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRIVnpJbjA/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.29017.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19041.",
-          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.9.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
-        ],
-        "x-ms-request-id": [
-          "4f88c3d8-deb8-43a2-b67c-80dabc4fe65b"
-        ],
-        "x-ms-correlation-request-id": [
-          "4f88c3d8-deb8-43a2-b67c-80dabc4fe65b"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20200724T005431Z:4f88c3d8-deb8-43a2-b67c-80dabc4fe65b"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 24 Jul 2020 00:54:30 GMT"
+          "128"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -116,80 +68,20 @@
         "Expires": [
           "-1"
         ],
-        "Content-Length": [
-          "50"
-        ],
         "Retry-After": [
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"status\": \"Succeeded\",\r\n  \"properties\": {\r\n    \"changes\": []\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/a93e8c5c-63cb-4635-933f-6d166ac25187/operationresults/eyJqb2JJZCI6IkRlcGxveW1lbnRXaGF0SWZKb2ItLVBTOTQzNC1CNkEzQ0UxMjoyRDdDNEE6MkQ0OTM0OjJEOTUzNzoyREEyMzk4M0Q2NkJBOSIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2020-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTkzZThjNWMtNjNjYi00NjM1LTkzM2YtNmQxNjZhYzI1MTg3L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWtSbGNHeHZlVzFsYm5SWGFHRjBTV1pLYjJJdExWQlRPVFF6TkMxQ05rRXpRMFV4TWpveVJEZERORUU2TWtRME9UTTBPakpFT1RVek56b3lSRUV5TXprNE0wUTJOa0pCT1NJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRIVnpJbjA/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.29017.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19041.",
-          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.9.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
-        ],
-        "x-ms-request-id": [
-          "05c4cc76-ce2f-49ba-8e31-90116c265868"
-        ],
-        "x-ms-correlation-request-id": [
-          "05c4cc76-ce2f-49ba-8e31-90116c265868"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20200724T005431Z:05c4cc76-ce2f-49ba-8e31-90116c265868"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 24 Jul 2020 00:54:31 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "50"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"status\": \"Succeeded\",\r\n  \"properties\": {\r\n    \"changes\": []\r\n  }\r\n}",
-      "StatusCode": 200
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidSubscriptionId\",\r\n    \"message\": \"The provided subscription identifier 'providers' is malformed or invalid.\"\r\n  }\r\n}",
+      "StatusCode": 400
     }
   ],
   "Names": {
     "Test-WhatIfWithBlankTemplateAtSubscriptionScope": [
-      "ps9434"
+      "ps2117"
     ]
   },
   "Variables": {
-    "SubscriptionId": "a93e8c5c-63cb-4635-933f-6d166ac25187"
+    "SubscriptionId": ""
   }
 }

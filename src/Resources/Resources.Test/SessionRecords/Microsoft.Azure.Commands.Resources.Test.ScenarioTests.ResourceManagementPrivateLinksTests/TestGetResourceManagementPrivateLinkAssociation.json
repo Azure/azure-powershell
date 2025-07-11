@@ -4,21 +4,21 @@
       "RequestUri": "/providers/Microsoft.Management/managementGroups/24f15700-370c-45bc-86a7-aee1b0c4eb8a/providers/Microsoft.Authorization/privateLinkAssociations/1d7942d1-288b-48de-8d0f-2d2aa8e03ad4?api-version=2020-05-01",
       "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzLzI0ZjE1NzAwLTM3MGMtNDViYy04NmE3LWFlZTFiMGM0ZWI4YS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcHJpdmF0ZUxpbmtBc3NvY2lhdGlvbnMvMWQ3OTQyZDEtMjg4Yi00OGRlLThkMGYtMmQyYWE4ZTAzYWQ0P2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "937eeee2-ef8a-4d84-8748-2bbbefcf9d20"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "x-ms-client-request-id": [
+          "da0f3bb9-420d-4d00-acfb-e64d0875c61d"
+        ],
         "User-Agent": [
-          "FxVersion/4.700.22.11601",
+          "FxVersion/8.0.1825.31117",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19044",
+          "OSVersion/Microsoft.Windows.10.0.22631",
           "Microsoft.Azure.Management.ResourceManager.ResourcePrivateLinkClient/3.17.3.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -26,20 +26,20 @@
         "Pragma": [
           "no-cache"
         ],
-        "Vary": [
-          "Accept-Encoding"
+        "WWW-Authenticate": [
+          "Bearer authorization_uri=\"https://login.windows.net/\", error=\"invalid_token\", error_description=\"The primary access token is invalid.\""
         ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "11999"
+        "x-ms-failure-cause": [
+          "gateway"
         ],
         "x-ms-request-id": [
-          "westus:77568577-e778-4202-969b-a236d18208f1"
+          "8cc9c6e5-883b-4d31-bb19-3080ac1dc0ea"
         ],
         "x-ms-correlation-request-id": [
-          "e5899d54-f54b-4673-9cc1-7ee1c43415ad"
+          "8cc9c6e5-883b-4d31-bb19-3080ac1dc0ea"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220321T234902Z:e5899d54-f54b-4673-9cc1-7ee1c43415ad"
+          "SOUTHEASTASIA:20250710T065606Z:8cc9c6e5-883b-4d31-bb19-3080ac1dc0ea"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -47,11 +47,17 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: C1F05DF5E2E745EBA6FDFE1CC32F7971 Ref B: MAA201060514029 Ref C: 2025-07-10T06:56:06Z"
+        ],
         "Date": [
-          "Mon, 21 Mar 2022 23:49:01 GMT"
+          "Thu, 10 Jul 2025 06:56:06 GMT"
         ],
         "Content-Length": [
-          "680"
+          "118"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -63,12 +69,12 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"privateLink\": \"/subscriptions/6dbb5850-64b4-49c0-ba85-d38f089c6fa4/resourceGroups/ARMPrivateLinkRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/DeepDiveRMPL\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"tenantId\": \"24f15700-370c-45bc-86a7-aee1b0c4eb8a\",\r\n    \"scope\": \"/providers/Microsoft.Management/managementGroups/24f15700-370c-45bc-86a7-aee1b0c4eb8a\"\r\n  },\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/24f15700-370c-45bc-86a7-aee1b0c4eb8a/providers/Microsoft.Authorization/privateLinkAssociations/1d7942d1-288b-48de-8d0f-2d2aa8e03ad4\",\r\n  \"type\": \"Microsoft.Authorization/privateLinkAssociations\",\r\n  \"name\": \"1d7942d1-288b-48de-8d0f-2d2aa8e03ad4\"\r\n}",
-      "StatusCode": 200
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidAuthenticationToken\",\r\n    \"message\": \"The 'EvolvedSecurityTokenService' access token is invalid.\"\r\n  }\r\n}",
+      "StatusCode": 401
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "6dbb5850-64b4-49c0-ba85-d38f089c6fa4"
+    "SubscriptionId": ""
   }
 }

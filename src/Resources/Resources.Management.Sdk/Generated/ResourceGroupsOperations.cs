@@ -521,6 +521,10 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='resourceGroupName'>
         /// The name of the resource group to get. The name is case insensitive.
         /// </param>
+        /// <param name='expand'>
+        /// Comma-separated list of additional properties to be included in the
+        /// response. Valid values include createdTime, changedTime.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -542,7 +546,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ResourceGroup>> GetWithHttpMessagesAsync(string resourceGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ResourceGroup>> GetWithHttpMessagesAsync(string resourceGroupName, string expand = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -577,6 +581,7 @@ namespace Microsoft.Azure.Management.Resources
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
+
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -585,6 +590,7 @@ namespace Microsoft.Azure.Management.Resources
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("expand", expand);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -601,6 +607,10 @@ namespace Microsoft.Azure.Management.Resources
             if (this.Client.ApiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+            }
+            if (expand != null)
+            {
+                _queryParameters.Add(string.Format("$expand={0}", System.Uri.EscapeDataString(expand)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -1014,7 +1024,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ResourceGroup>>> ListWithHttpMessagesAsync(Microsoft.Rest.Azure.OData.ODataQuery<ResourceGroupFilter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ResourceGroupFilter>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ResourceGroup>>> ListWithHttpMessagesAsync(Microsoft.Rest.Azure.OData.ODataQuery<ResourceGroupFilterWithExpand> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ResourceGroupFilterWithExpand>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -1053,10 +1063,10 @@ namespace Microsoft.Azure.Management.Resources
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (odataQuery != null)
             {
-                var _resourceGroupFilter = odataQuery.ToString();
-                if (!string.IsNullOrEmpty(_resourceGroupFilter))
+                var _resourceGroupFilterWithExpand = odataQuery.ToString();
+                if (!string.IsNullOrEmpty(_resourceGroupFilterWithExpand))
                 {
-                    _queryParameters.Add(_resourceGroupFilter);
+                    _queryParameters.Add(_resourceGroupFilterWithExpand);
                 }
             }
             if (this.Client.ApiVersion != null)

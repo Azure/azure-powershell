@@ -73,10 +73,8 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// </param>
         public GenericResourceExpanded(string id = default(string), string name = default(string), string type = default(string), string location = default(string), ExtendedLocation extendedLocation = default(ExtendedLocation), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Plan plan = default(Plan), object properties = default(object), string kind = default(string), string managedBy = default(string), Sku sku = default(Sku), Identity identity = default(Identity), System.DateTime? createdTime = default(System.DateTime?), System.DateTime? changedTime = default(System.DateTime?), string provisioningState = default(string))
 
-        : base(id, name, type, location, extendedLocation, tags, plan, properties, kind, managedBy, sku, identity)
+        : base(id, name, type, location, extendedLocation, tags, plan, properties, kind, managedBy, sku, identity, createdTime, changedTime)
         {
-            this.CreatedTime = createdTime;
-            this.ChangedTime = changedTime;
             this.ProvisioningState = provisioningState;
             CustomInit();
         }
@@ -86,20 +84,6 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets the created time of the resource. This is only present if requested
-        /// via the $expand query parameter.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "createdTime")]
-        public System.DateTime? CreatedTime {get; private set; }
-
-        /// <summary>
-        /// Gets the changed time of the resource. This is only present if requested
-        /// via the $expand query parameter.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "changedTime")]
-        public System.DateTime? ChangedTime {get; private set; }
 
         /// <summary>
         /// Gets the provisioning state of the resource. This is only present if
