@@ -6,21 +6,14 @@ using System.Text.RegularExpressions;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 using System.Net.Http;
+using Azure.Core;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     public class AdlsClientFactory
     {
         private static readonly Dictionary<string, AdlsClient> ClientFactory=new Dictionary<string, AdlsClient>();
-        /// <summary>
-        /// For unit testing this is set as true
-        /// </summary>
-        internal static bool IsTest = false;
-        public static DelegatingHandler[] CustomDelegatingHAndler;
-        /// <summary>
-        /// Mock client credentials used for testing, this is set for record
-        /// </summary>
-        internal static ServiceClientCredentials MockCredentials = null;
+
         private static string HandleAccntName(string accnt,IAzureContext context)
         {
             if (Regex.IsMatch(accnt, @"^[a-zA-Z0-9\-]+$"))
@@ -45,15 +38,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     return ClientFactory[accntNm];
                 }
                 AdlsClient client = null;
-                if (IsTest)
-                {
-                    client = AdlsClient.CreateClient(accntNm, MockCredentials, DataLakeStoreFileSystemClient.ImportExportMaxThreads, CustomDelegatingHAndler);
-                }
-                else
-                {
-                    client = AdlsClient.CreateClient(accntNm, AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context,
-                        AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix), DataLakeStoreFileSystemClient.ImportExportMaxThreads);
-                }
+                var tokenCredential = new DataLakeStoreTokenCredential(context);
+                client = AdlsClient.CreateClient(accntNm, tokenCredential, new string[] { });
+
                 client.AddUserAgentSuffix(AzurePowerShell.UserAgentValue.ToString());
                 ClientFactory.Add(accntNm,client);
                 return client;
