@@ -19,12 +19,12 @@ API to add additional user quota.
 API to add additional user quota.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/add-azlabservicesuserquota
 #>
 function Add-AzLabServicesUserQuota_Email {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser])]    
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     param(
         [Parameter()]
@@ -37,18 +37,20 @@ function Add-AzLabServicesUserQuota_Email {
         [Parameter(Mandatory)]
         [System.String]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+        # The name of the resource group.
+        # The name is case insensitive.
         ${ResourceGroupName},
 
         [Parameter(Mandatory)]
         [System.String]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+        # The name of the lab service lab.
         ${LabName},
    
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
         [System.String]
-        # The name of the user that uniquely identifies it within containing lab.
-        # Used in resource URIs.
+        # Email address of the user.
         ${Email},
    
         [Parameter(Mandatory)]
@@ -119,7 +121,7 @@ function Add-AzLabServicesUserQuota_Email {
         $PSBoundParameters.Remove('UsageQuotaToAddToExisting') > $null
         $PSBoundParameters.Add("Filter","Properties/Email eq '$currentEmail'")
         # Get user to get existing quota
-        $user = Get-AzLabServicesUser @PSBoundParameters
+        $user = Az.LabServices.private\Get-AzLabServicesUser_List @PSBoundParameters
         if ($user) {
 
             $PSBoundParameters.Remove('Filter') > $null
@@ -127,7 +129,7 @@ function Add-AzLabServicesUserQuota_Email {
             $user.AdditionalUsageQuota += $addQuota
             $PSBoundParameters.Add('AdditionalUsageQuota', $($user.AdditionalUsageQuota))
             $PSBoundParameters.Remove('User') > $null
-            return Az.LabServices\Update-AzLabServicesUser @PSBoundParameters
+            return Az.LabServices.private\Update-AzLabServicesUser_UpdateExpanded @PSBoundParameters
         } else {
             Write-Error "Unable to find user with email: $currentEmail"
         }
