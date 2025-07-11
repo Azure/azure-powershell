@@ -59,21 +59,25 @@ use-extension:
 
 directive:
   - where:
-      verb: Get
+      verb: Get|Update
       subject: RoleManagementPolicy
     set:
       breaking-change:
-        change-description: "The types of the properties EffectiveRule and Rule will be changed from single object to 'List'."
+        deprecated-output-properties:
+          - EffectiveRule[]
+          - Rule[]
+        new-output-properties:
+          - List[EffectiveRule]
+          - List[Rule]
         deprecated-by-version: 9.0.0
         deprecated-by-azversion: 15.0.0
         change-effective-date: 2025/11/03
-        
   - where:
-      verb: Update
-      subject: RoleManagementPolicy
+      parameter-name: Rule
     set:
       breaking-change:
-        change-description: "The types of the properties EffectiveRule and Rule will be changed from single object to 'List'. The types of the properties TargetEnforcedSetting, TargetInheritableSetting, TargetObject and TargetOperation will be changed from Fixed Array to 'List'."
+        old-parameter-type: Array
+        new-parameter-type: List
         deprecated-by-version: 9.0.0
         deprecated-by-azversion: 15.0.0
         change-effective-date: 2025/11/03
