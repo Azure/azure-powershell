@@ -190,7 +190,7 @@ create an association.
 Create an in-memory object for DataFlow.
 
 ### [New-AzDiagnosticSetting](New-AzDiagnosticSetting.md)
-Creates or updates diagnostic settings for the specified resource.
+Create diagnostic settings for the specified resource.
 
 ### [New-AzDiagnosticSettingLogSettingsObject](New-AzDiagnosticSettingLogSettingsObject.md)
 Create an in-memory object for LogSettings.
@@ -268,7 +268,7 @@ Create an in-memory object for StorageBlobDestination.
 Create an in-memory object for StorageTableDestination.
 
 ### [New-AzSubscriptionDiagnosticSetting](New-AzSubscriptionDiagnosticSetting.md)
-Creates or updates subscription diagnostic settings for the specified resource.
+Create subscription diagnostic settings for the specified resource.
 
 ### [New-AzSyslogDataSourceObject](New-AzSyslogDataSourceObject.md)
 Create an in-memory object for SyslogDataSource.
@@ -351,6 +351,9 @@ Update a data collection rule.
 ### [Update-AzDataCollectionRuleAssociation](Update-AzDataCollectionRuleAssociation.md)
 update an association.
 
+### [Update-AzDiagnosticSetting](Update-AzDiagnosticSetting.md)
+Update diagnostic settings for the specified resource.
+
 ### [Update-AzInsightsPrivateLinkScope](Update-AzInsightsPrivateLinkScope.md)
 Update for private link scope
 
@@ -362,4 +365,7 @@ update a pipeline group instance
 
 ### [Update-AzScheduledQueryRule](Update-AzScheduledQueryRule.md)
 Update a scheduled query rule.
+
+### [Update-AzSubscriptionDiagnosticSetting](Update-AzSubscriptionDiagnosticSetting.md)
+Update subscription diagnostic settings for the specified resource.
 
