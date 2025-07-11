@@ -14,25 +14,25 @@ namespace Microsoft.Azure.Commands.Network.AzureFirewall.PacketCapture
     public class NewAzureFirewallPacketCaptureParametersCommand : NetworkBaseCmdlet
     {
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The intended durations of packet capture in seconds")]
-        [ValidateRange(30,1800)]
-        public uint DurationInSeconds { get; set; }
+        [ValidateRange(30, 1800)]
+        public uint? DurationInSeconds { get; set; } = 60;
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The intended number of packets to capture")]
-        [ValidateRange(100,90000)]
-        public uint NumberOfPacketsToCapture { get; set; }
+        [ValidateRange(100, 90000)]
+        public uint? NumberOfPacketsToCapture { get; set; } = 1000;
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Upload capture storage container SASURL with write and delete permissions")]
         [ValidateNotNullOrEmpty]
         public virtual string SasUrl { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Name of packet capture file")]
         [ValidateNotNullOrEmpty]
         public virtual string FileName { get; set; }
@@ -54,10 +54,20 @@ namespace Microsoft.Azure.Commands.Network.AzureFirewall.PacketCapture
         public string[] Flag { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The list of filters to capture")]
         [ValidateNotNullOrEmpty]
         public PSAzureFirewallPacketCaptureRule[] Filter { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The packet capture operation to run")]
+        [ValidateSet(
+            MNM.AzureFirewallPacketCaptureOperationType.Start,
+            MNM.AzureFirewallPacketCaptureOperationType.Status,
+            MNM.AzureFirewallPacketCaptureOperationType.Stop,
+            IgnoreCase = false)]
+        public string Operation { get; set; }
 
         public override void Execute()
         {
@@ -71,20 +81,20 @@ namespace Microsoft.Azure.Commands.Network.AzureFirewall.PacketCapture
                 {
                     PSFlags.Add(PSAzureFirewallPacketCaptureFlags.MapUserInputToPacketCaptureFlag(flag));
                 }
-            }          
+            }
+            PSAzureFirewallPacketCaptureParameters packetCaptureParameters;
 
-            var packetCaptureParameters = new PSAzureFirewallPacketCaptureParameters
+            packetCaptureParameters = new PSAzureFirewallPacketCaptureParameters
             {
-                DurationInSeconds = this.DurationInSeconds,
-                NumberOfPacketsToCapture = this.NumberOfPacketsToCapture,
+                DurationInSeconds = (uint)this.DurationInSeconds,
+                NumberOfPacketsToCapture = (uint)this.NumberOfPacketsToCapture,
                 SasUrl = this.SasUrl,
                 FileName = this.FileName,
                 Protocol = this.Protocol,
                 Flags = PSFlags,
                 Filters = this.Filter?.ToList(),
-
+                Operation = this.Operation,
             };
-
             WriteObject(packetCaptureParameters);
         }
     }

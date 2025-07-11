@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSAzureFirewallPacketCaptureRule> Filters { get; set; }
 
+        public string Operation {  get; set; }
+
         [JsonIgnore]
         public string FlagsText
         {
