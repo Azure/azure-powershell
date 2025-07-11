@@ -11,7 +11,6 @@
 namespace Microsoft.Azure.Management.Compute.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Linq;
@@ -20,7 +19,7 @@ namespace Microsoft.Azure.Management.Compute.Models
     /// The Private Endpoint Connection resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class PrivateEndpointConnection : IResource
+    public partial class PrivateEndpointConnection : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the PrivateEndpointConnection class.
@@ -36,22 +35,20 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="privateLinkServiceConnectionState">A collection of
         /// information about the state of the connection between DiskAccess
         /// and Virtual Network.</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource name</param>
+        /// <param name="type">Resource type</param>
         /// <param name="privateEndpoint">The resource of private end
         /// point.</param>
         /// <param name="provisioningState">The provisioning state of the
         /// private endpoint connection resource. Possible values include:
         /// 'Succeeded', 'Creating', 'Deleting', 'Failed'</param>
-        /// <param name="id">private endpoint connection Id</param>
-        /// <param name="name">private endpoint connection name</param>
-        /// <param name="type">private endpoint connection type</param>
-        public PrivateEndpointConnection(PrivateLinkServiceConnectionState privateLinkServiceConnectionState, PrivateEndpoint privateEndpoint = default(PrivateEndpoint), string provisioningState = default(string), string id = default(string), string name = default(string), string type = default(string))
+        public PrivateEndpointConnection(PrivateLinkServiceConnectionState privateLinkServiceConnectionState, string id = default(string), string name = default(string), string type = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), string provisioningState = default(string))
+            : base(id, name, type)
         {
             PrivateEndpoint = privateEndpoint;
             PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
             ProvisioningState = provisioningState;
-            Id = id;
-            Name = name;
-            Type = type;
             CustomInit();
         }
 
@@ -74,30 +71,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         public PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState { get; set; }
 
         /// <summary>
-        /// Gets or sets the provisioning state of the private endpoint
-        /// connection resource. Possible values include: 'Succeeded',
-        /// 'Creating', 'Deleting', 'Failed'
+        /// Gets the provisioning state of the private endpoint connection
+        /// resource. Possible values include: 'Succeeded', 'Creating',
+        /// 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; set; }
-
-        /// <summary>
-        /// Gets private endpoint connection Id
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; private set; }
-
-        /// <summary>
-        /// Gets private endpoint connection name
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
-
-        /// <summary>
-        /// Gets private endpoint connection type
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
+        public string ProvisioningState { get; private set; }
 
         /// <summary>
         /// Validate the object.

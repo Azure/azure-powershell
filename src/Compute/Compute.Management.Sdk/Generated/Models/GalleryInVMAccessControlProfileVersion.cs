@@ -58,9 +58,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// this Profile version.</param>
         /// <param name="publishedDate">The timestamp for when the Resource
         /// Profile Version is published.</param>
-        /// <param name="provisioningState">Possible values include:
-        /// 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
-        /// 'Migrating'</param>
+        /// <param name="provisioningState">The provisioning state, which only
+        /// appears in the response. Possible values include: 'Creating',
+        /// 'Updating', 'Failed', 'Succeeded', 'Deleting', 'Migrating'</param>
+        /// <param name="replicationStatus">This is the replication status of
+        /// the gallery image version.</param>
+        /// <param name="rules">This is the Access Control Rules specification
+        /// for an inVMAccessControlProfile version.</param>
         public GalleryInVMAccessControlProfileVersion(string location, string mode, string defaultAccess, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<TargetRegion> targetLocations = default(IList<TargetRegion>), bool? excludeFromLatest = default(bool?), System.DateTime? publishedDate = default(System.DateTime?), string provisioningState = default(string), ReplicationStatus replicationStatus = default(ReplicationStatus), AccessControlRules rules = default(AccessControlRules))
             : base(location, id, name, type, tags)
         {
@@ -103,13 +107,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         public System.DateTime? PublishedDate { get; private set; }
 
         /// <summary>
-        /// Gets possible values include: 'Creating', 'Updating', 'Failed',
+        /// Gets the provisioning state, which only appears in the response.
+        /// Possible values include: 'Creating', 'Updating', 'Failed',
         /// 'Succeeded', 'Deleting', 'Migrating'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
 
         /// <summary>
+        /// Gets this is the replication status of the gallery image version.
         /// </summary>
         [JsonProperty(PropertyName = "properties.replicationStatus")]
         public ReplicationStatus ReplicationStatus { get; private set; }
@@ -132,6 +138,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string DefaultAccess { get; set; }
 
         /// <summary>
+        /// Gets or sets this is the Access Control Rules specification for an
+        /// inVMAccessControlProfile version.
         /// </summary>
         [JsonProperty(PropertyName = "properties.rules")]
         public AccessControlRules Rules { get; set; }

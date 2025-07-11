@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         /// <summary>
         /// This function gets the VM model, fills in the OSDisk properties with encryptionSettings and does an UpdateVM
         /// </summary>
-        private AzureOperationResponse<VirtualMachine> UpdateVmEncryptionSettings(DiskEncryptionSettings encryptionSettingsBackup)
+        private AzureOperationResponse<VirtualMachine, VirtualMachinesCreateOrUpdateHeaders> UpdateVmEncryptionSettings(DiskEncryptionSettings encryptionSettingsBackup)
         {
             string statusMessage = GetExtensionStatusMessage();
 
@@ -422,7 +422,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 Tags = vmParameters.Tags
             };
 
-            AzureOperationResponse<VirtualMachine> updateResult = null;
+            AzureOperationResponse<VirtualMachine, VirtualMachinesCreateOrUpdateHeaders> updateResult = null;
 
             // The 2nd pass. TODO: If something goes wrong here, try to revert to encryptionSettingsBackup.
             if (encryptionSettingsBackup.Enabled != true)
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             return updateResult;
         }
 
-        private AzureOperationResponse<VirtualMachine> UpdateVmEncryptionSettingsForMigration()
+        private AzureOperationResponse<VirtualMachine, VirtualMachinesCreateOrUpdateHeaders> UpdateVmEncryptionSettingsForMigration()
         {
             var vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(
                 this.ResourceGroupName, this.VMName));
@@ -502,7 +502,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             vmParameters.StorageProfile.OsDisk.EncryptionSettings = resetEncryptionSettings;
 
             // update VM
-            AzureOperationResponse<VirtualMachine> setEncryptionEnabledFalse = null;
+            AzureOperationResponse<VirtualMachine, VirtualMachinesCreateOrUpdateHeaders> setEncryptionEnabledFalse = null;
             setEncryptionEnabledFalse = this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName,
                     vmParameters.Name,
@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             var vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(
                 this.ResourceGroupName, this.VMName));
 
-            if (vmParameters.Identity == null || vmParameters.Identity.UserAssignedIdentities == null || 
+            if (vmParameters.Identity == null || vmParameters.Identity.UserAssignedIdentities == null ||
                 !vmParameters.Identity.UserAssignedIdentities.ContainsKey(this.EncryptionIdentity))
                 ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture,
                     "Encryption Identity should be an ARM Resource ID of one of the user assigned identities associated to the resource")),
@@ -543,7 +543,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             if (updateVm)
             {
                 // update VM
-                AzureOperationResponse<VirtualMachine> updateEncryptionIdentity = null;
+                AzureOperationResponse<VirtualMachine, VirtualMachinesCreateOrUpdateHeaders> updateEncryptionIdentity = null;
                 updateEncryptionIdentity = this.ComputeClient.ComputeManagementClient.
                     VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
                         this.ResourceGroupName,
@@ -566,14 +566,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             return true;
         }
 
-        private AzureOperationResponse<VirtualMachine> ClearVmEncryptionSettingsForMigration()
+        private AzureOperationResponse<VirtualMachine, VirtualMachinesCreateOrUpdateHeaders> ClearVmEncryptionSettingsForMigration()
         {
             var vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(
                 this.ResourceGroupName, this.VMName));
             vmParameters.StorageProfile.OsDisk.EncryptionSettings = null;
 
             // update VM
-            AzureOperationResponse<VirtualMachine> clearEncryptionSettings = null;
+            AzureOperationResponse<VirtualMachine, VirtualMachinesCreateOrUpdateHeaders> clearEncryptionSettings = null;
             clearEncryptionSettings = this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName,
                     vmParameters.Name,
@@ -824,7 +824,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 AutoUpgradeMinorVersion = adeExtensionInstanceView.AutoUpgradeMinorVersion,
             };
 
-            AzureOperationResponse<VirtualMachineExtension> configureVMforMigrate = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+            AzureOperationResponse<VirtualMachineExtension, VirtualMachineExtensionsCreateOrUpdateHeaders> configureVMforMigrate = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
             this.ResourceGroupName,
             this.VMName,
             adeExtensionInstanceView.Name,
@@ -877,7 +877,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 AutoUpgradeMinorVersion = adeExtensionInstanceView.AutoUpgradeMinorVersion,
             };
 
-            AzureOperationResponse<VirtualMachineExtension> UpdateToSinglePass = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+            AzureOperationResponse<VirtualMachineExtension, VirtualMachineExtensionsCreateOrUpdateHeaders> UpdateToSinglePass = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName,
                     this.VMName,
                     adeExtensionInstanceView.Name,
@@ -1006,7 +1006,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                         //          updates VM
 
                         // First Pass
-                        AzureOperationResponse<VirtualMachineExtension> firstPass = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                        AzureOperationResponse<VirtualMachineExtension, VirtualMachineExtensionsCreateOrUpdateHeaders> firstPass = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                             this.ResourceGroupName,
                             this.VMName,
                             this.Name,

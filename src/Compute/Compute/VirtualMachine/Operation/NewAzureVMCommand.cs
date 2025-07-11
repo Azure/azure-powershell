@@ -700,7 +700,7 @@ namespace Microsoft.Azure.Commands.Compute
                 CM.ExtendedLocation extLoc = null;
                 if (_cmdlet.EdgeZone != null)
                 {
-                    extLoc = new CM.ExtendedLocation { Name = _cmdlet.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
+                    extLoc = new CM.ExtendedLocation { Name = _cmdlet.EdgeZone, Type = CM.ExtendedLocationType.EdgeZone };
                 }
 
                 if (_cmdlet.DiskFile == null)
@@ -948,7 +948,7 @@ namespace Microsoft.Azure.Commands.Compute
             CM.ExtendedLocation ExtendedLocation = null;
             if (this.EdgeZone != null)
             {
-                ExtendedLocation = new CM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
+                ExtendedLocation = new CM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationType.EdgeZone };
             }
 
             // SIMPLIFIED: This replaces ALL the complex security configuration logic
@@ -1012,7 +1012,7 @@ namespace Microsoft.Azure.Commands.Compute
                         }
                     }
 
-                    Rest.Azure.AzureOperationResponse<VirtualMachine> result;
+                    Rest.Azure.AzureOperationResponse<VirtualMachine, VirtualMachinesCreateOrUpdateHeaders> result;
 
                     if (this.IsParameterBound(c => c.SshKeyName))
                     {
@@ -1382,7 +1382,7 @@ namespace Microsoft.Azure.Commands.Compute
             SM.ExtendedLocation extendedLocation = null;
             if (this.EdgeZone != null)
             {
-                extendedLocation = new SM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
+                extendedLocation = new SM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationType.EdgeZone };
             }
 
             var storaeAccountParameter = new StorageAccountCreateParameters

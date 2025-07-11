@@ -3,7 +3,7 @@
     /// <summary>
     /// Properties of disk restore point
     /// </summary>
-    public partial class DiskRestorePoint : ProxyOnlyResource
+    public partial class DiskRestorePoint : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the DiskRestorePoint class.

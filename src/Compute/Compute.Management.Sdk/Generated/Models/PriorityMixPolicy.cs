@@ -75,22 +75,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (BaseRegularPriorityCount != null)
-            {
-                if (BaseRegularPriorityCount < 0)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "BaseRegularPriorityCount", 0);
-                }
-            }
             if (RegularPriorityPercentageAboveBase != null)
             {
                 if (RegularPriorityPercentageAboveBase > 100)
                 {
                     throw new ValidationException(ValidationRules.InclusiveMaximum, "RegularPriorityPercentageAboveBase", 100);
-                }
-                if (RegularPriorityPercentageAboveBase < 0)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "RegularPriorityPercentageAboveBase", 0);
                 }
             }
         }

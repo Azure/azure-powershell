@@ -54,11 +54,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Export logs that show Api requests made by this subscription in the given
         /// time window to show throttling activities.
         /// </summary>
+        /// <param name='location'>
+        /// The name of Azure region.
+        /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to the LogAnalytics getRequestRateByInterval Api.
-        /// </param>
-        /// <param name='location'>
-        /// The location upon which virtual-machine-sizes is queried.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -66,10 +66,10 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<LogAnalyticsOperationResult>> ExportRequestRateByIntervalWithHttpMessagesAsync(RequestRateByIntervalInput parameters, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<LogAnalyticsOperationResult>> ExportRequestRateByIntervalWithHttpMessagesAsync(string location, RequestRateByIntervalInput parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse<LogAnalyticsOperationResult> _response = await BeginExportRequestRateByIntervalWithHttpMessagesAsync(parameters, location, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<LogAnalyticsOperationResult> _response = await BeginExportRequestRateByIntervalWithHttpMessagesAsync(location, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -77,11 +77,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Export logs that show total throttled Api requests for this subscription in
         /// the given time window.
         /// </summary>
-        /// <param name='parameters'>
-        /// Parameters supplied to the LogAnalytics getThrottledRequests Api.
-        /// </param>
         /// <param name='location'>
-        /// The location upon which virtual-machine-sizes is queried.
+        /// The name of Azure region.
+        /// </param>
+        /// <param name='parameters'>
+        /// The request body
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -89,10 +89,10 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<LogAnalyticsOperationResult>> ExportThrottledRequestsWithHttpMessagesAsync(ThrottledRequestsInput parameters, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<LogAnalyticsOperationResult>> ExportThrottledRequestsWithHttpMessagesAsync(string location, ThrottledRequestsInput parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse<LogAnalyticsOperationResult> _response = await BeginExportThrottledRequestsWithHttpMessagesAsync(parameters, location, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<LogAnalyticsOperationResult> _response = await BeginExportThrottledRequestsWithHttpMessagesAsync(location, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -100,11 +100,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Export logs that show Api requests made by this subscription in the given
         /// time window to show throttling activities.
         /// </summary>
+        /// <param name='location'>
+        /// The name of Azure region.
+        /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to the LogAnalytics getRequestRateByInterval Api.
-        /// </param>
-        /// <param name='location'>
-        /// The location upon which virtual-machine-sizes is queried.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -127,15 +127,11 @@ namespace Microsoft.Azure.Management.Compute
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<LogAnalyticsOperationResult>> BeginExportRequestRateByIntervalWithHttpMessagesAsync(RequestRateByIntervalInput parameters, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<LogAnalyticsOperationResult>> BeginExportRequestRateByIntervalWithHttpMessagesAsync(string location, RequestRateByIntervalInput parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (parameters == null)
+            if (Client.SubscriptionId == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
-            }
-            if (parameters != null)
-            {
-                parameters.Validate();
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             if (location == null)
             {
@@ -143,14 +139,18 @@ namespace Microsoft.Azure.Management.Compute
             }
             if (location != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(location, "^[-\\w\\._]+$"))
+                if (location.Length < 1)
                 {
-                    throw new ValidationException(ValidationRules.Pattern, "location", "^[-\\w\\._]+$");
+                    throw new ValidationException(ValidationRules.MinLength, "location", 1);
                 }
             }
-            if (Client.SubscriptionId == null)
+            if (parameters == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
+            if (parameters != null)
+            {
+                parameters.Validate();
             }
             string apiVersion = "2024-11-01";
             // Tracing
@@ -160,17 +160,17 @@ namespace Microsoft.Azure.Management.Compute
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("parameters", parameters);
-                tracingParameters.Add("location", location);
                 tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("location", location);
+                tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginExportRequestRateByInterval", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/logAnalytics/apiAccess/getRequestRateByInterval").ToString();
-            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             List<string> _queryParameters = new List<string>();
             if (apiVersion != null)
             {
@@ -311,11 +311,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Export logs that show total throttled Api requests for this subscription in
         /// the given time window.
         /// </summary>
-        /// <param name='parameters'>
-        /// Parameters supplied to the LogAnalytics getThrottledRequests Api.
-        /// </param>
         /// <param name='location'>
-        /// The location upon which virtual-machine-sizes is queried.
+        /// The name of Azure region.
+        /// </param>
+        /// <param name='parameters'>
+        /// The request body
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -338,15 +338,11 @@ namespace Microsoft.Azure.Management.Compute
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<LogAnalyticsOperationResult>> BeginExportThrottledRequestsWithHttpMessagesAsync(ThrottledRequestsInput parameters, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<LogAnalyticsOperationResult>> BeginExportThrottledRequestsWithHttpMessagesAsync(string location, ThrottledRequestsInput parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (parameters == null)
+            if (Client.SubscriptionId == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
-            }
-            if (parameters != null)
-            {
-                parameters.Validate();
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             if (location == null)
             {
@@ -354,14 +350,18 @@ namespace Microsoft.Azure.Management.Compute
             }
             if (location != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(location, "^[-\\w\\._]+$"))
+                if (location.Length < 1)
                 {
-                    throw new ValidationException(ValidationRules.Pattern, "location", "^[-\\w\\._]+$");
+                    throw new ValidationException(ValidationRules.MinLength, "location", 1);
                 }
             }
-            if (Client.SubscriptionId == null)
+            if (parameters == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
+            if (parameters != null)
+            {
+                parameters.Validate();
             }
             string apiVersion = "2024-11-01";
             // Tracing
@@ -371,17 +371,17 @@ namespace Microsoft.Azure.Management.Compute
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("parameters", parameters);
-                tracingParameters.Add("location", location);
                 tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("location", location);
+                tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginExportThrottledRequests", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/logAnalytics/apiAccess/getThrottledRequests").ToString();
-            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             List<string> _queryParameters = new List<string>();
             if (apiVersion != null)
             {

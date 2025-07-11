@@ -67,13 +67,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="timeCreated">Specifies the time at which the Capacity
         /// Reservation resource was created. Minimum api-version:
         /// 2021-11-01.</param>
-        /// <param name="zones">Availability Zone to use for this capacity
-        /// reservation. The zone has to be single value and also should be
-        /// part for the list of zones specified during the capacity
-        /// reservation group creation. The zone can be assigned only during
-        /// creation. If not provided, the reservation supports only non-zonal
-        /// deployments. If provided, enforces VM/VMSS using this capacity
-        /// reservation to be in same zone.</param>
+        /// <param name="zones">The availability zones.</param>
         public CapacityReservation(string location, Sku sku, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string reservationId = default(string), int? platformFaultDomainCount = default(int?), IList<SubResourceReadOnly> virtualMachinesAssociated = default(IList<SubResourceReadOnly>), System.DateTime? provisioningTime = default(System.DateTime?), string provisioningState = default(string), CapacityReservationInstanceView instanceView = default(CapacityReservationInstanceView), System.DateTime? timeCreated = default(System.DateTime?), IList<string> zones = default(IList<string>))
             : base(location, id, name, type, tags)
         {
@@ -157,13 +151,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public Sku Sku { get; set; }
 
         /// <summary>
-        /// Gets or sets availability Zone to use for this capacity
-        /// reservation. The zone has to be single value and also should be
-        /// part for the list of zones specified during the capacity
-        /// reservation group creation. The zone can be assigned only during
-        /// creation. If not provided, the reservation supports only non-zonal
-        /// deployments. If provided, enforces VM/VMSS using this capacity
-        /// reservation to be in same zone.
+        /// Gets or sets the availability zones.
         /// </summary>
         [JsonProperty(PropertyName = "zones")]
         public IList<string> Zones { get; set; }
