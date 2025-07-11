@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VMProfile = "The virtual machine profile.";
         public const string VmssVMProfile = "The virtual machine scale set VM profile.";
         public const string VMSize = "The virtual machine size.";
-        public const string VMComputerName = "The virtual machine's omputer name.";
+        public const string VMComputerName = "The virtual machine's computer name.";
         public const string VMCredential = "The virtual machine's credential.";
         public const string VMSourceImageName = "The virtual machine's source image name.";
         public const string VMImageReference = "The virtual machine's image reference.";
@@ -103,6 +103,12 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string TrustedLaunchDefaultSku = "2022-datacenter-azure-edition";
         public const string TrustedLaunchDefaultVersion = "latest";
         public const string TrustedLaunchDefaultHyperVGen = "v2";
+    }
+
+    public static class HyperVGenerations
+    {
+        public const string V1 = "V1";
+        public const string V2 = "V2";
     }
 
     public static class ProfileNouns

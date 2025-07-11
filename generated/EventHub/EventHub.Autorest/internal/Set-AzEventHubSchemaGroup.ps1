@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an EventHub schema group.
+Update an EventHub schema group.
 .Description
-update an EventHub schema group.
+Update an EventHub schema group.
 .Example
 {{ Add code here }}
 .Example

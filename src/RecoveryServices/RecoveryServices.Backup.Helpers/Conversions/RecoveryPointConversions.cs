@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         /// <summary>
-        /// filter move readness based on target tier
+        /// filter move readiness based on target tier
         /// </summary>
         /// <param name="recoveryPointList"></param>
         /// <param name="targetTier"></param>

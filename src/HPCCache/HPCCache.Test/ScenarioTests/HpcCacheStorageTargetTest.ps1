@@ -31,7 +31,7 @@ function Test-New-Get-Remove-StorageTarget
 				Assert-AreEqual "Succeeded" $storageTargetGet.ProvisioningState
 				break
 			}
-			Assert-False {$i -eq 20} "StorageTarget is not done completeling after 10 minutes."
+			Assert-False {$i -eq 20} "StorageTarget is not done completing after 10 minutes."
 		}
 	}
 
@@ -65,7 +65,7 @@ function Test-SetStorageTarget
                 Assert-AreEqual "/abcdefgh" $storageTargetGet.Junctions.nameSpacePath
 				break
 			}
-			Assert-False {$i -eq 20} "StorageTarget is not done completeling after 10 minutes."
+			Assert-False {$i -eq 20} "StorageTarget is not done completing after 10 minutes."
 		}
 	}
 }

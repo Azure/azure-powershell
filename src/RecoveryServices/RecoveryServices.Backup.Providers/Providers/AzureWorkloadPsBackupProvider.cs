@@ -652,7 +652,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     
                     if (triggerRestoreRequest.Properties.GetType().Equals("AzureWorkloadSQLPointInTimeRestoreRequest"))
                     {
-                        Logger.Instance.WriteWarning("Rehyrate restore isn't supported for AzureWorkloadSQLPointInTimeRestore ");                        
+                        Logger.Instance.WriteWarning("Rehydrate restore isn't supported for AzureWorkloadSQLPointInTimeRestore ");                        
                     }
                     else
                     {

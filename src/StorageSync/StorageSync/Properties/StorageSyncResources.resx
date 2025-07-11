@@ -193,7 +193,7 @@
     <value>Primary Certificate Thumbprint: {0} Secondary Certificate Thumbprint: {1}</value>
   </data>
   <data name="ResetCertificateMessageFormat3" xml:space="preserve">
-    <value>Succesfully retrieved secondary certificate with thumbprint: {0} from store with HResult: {1}</value>
+    <value>Successfully retrieved secondary certificate with thumbprint: {0} from store with HResult: {1}</value>
   </data>
   <data name="ResetCertificateMessageFormat4" xml:space="preserve">
     <value>Failed to retrieve the secondary certificate from store with HResult: {0}</value>

@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            // this will thorw if hub does not exist.
+            // this will throw if hub does not exist.
             IsParentVirtualHubPresent(this.ResourceGroupName, this.ParentResourceName);
 
             if (this.Route != null)
