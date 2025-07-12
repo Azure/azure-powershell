@@ -428,7 +428,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClaimsChallenge
-Specifies the claims challenge with base 64 encoded.
+Specifies the claims challenge with base64 encoding.
 
 ```yaml
 Type: System.String

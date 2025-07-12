@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string FederatedToken { get; set; }
 
-        [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Specifies the claims challenge with base 64 encoded.")]
+        [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Specifies the claims challenge with base64 encoding.")]
         [ValidateNotNullOrEmpty]
         public string ClaimsChallenge { get; set; }
 
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 if (!TryParseClaimsChallenge(ClaimsChallenge, out claimsChallenge))
                 {
-                    throw new PSArgumentException("Invalid claims challenge format. It should be a valid base64 encoded string.", nameof(ClaimsChallenge));
+                    throw new PSArgumentException(Resources.InvalidClaimsChallenge, nameof(ClaimsChallenge));
                 }
             }
 
@@ -611,10 +611,8 @@ namespace Microsoft.Azure.Commands.Profile
         public static bool TryParseClaimsChallenge(string base64Input, out string claimsChallenge)
         {
             claimsChallenge = null;
-            base64Input = base64Input.Trim();
 
-            // Base64 string is null or empty or only contains white spaces
-            if (string.IsNullOrEmpty(base64Input))
+            if (string.IsNullOrWhiteSpace(base64Input))
                 return false;
 
             try
