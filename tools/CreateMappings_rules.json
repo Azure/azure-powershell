@@ -987,5 +987,9 @@
   {
     "alias": "CloudHsm",
     "module": "CloudHsm"
+  },
+  {
+    "alias": "PureStorageBlock",
+    "module": "PureStorageBlock"
   }
 ]
