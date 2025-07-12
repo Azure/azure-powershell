@@ -1,0 +1,105 @@
+{
+  "resourceType": "storagePools/avsVms/avsVmVolumes",
+  "apiVersion": "2024-11-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.purestorageblock"
+  },
+  "commands": [
+    {
+      "name": "Get-AzPureStorageBlockAvsVMVolume",
+      "description": "Get a volume in an AVS VM",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PureStorage.Block/storagePools/{storagePoolName}/avsVms/{avsVmId}/avsVmVolumes/{volumeId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.purestorageblock/get-azpurestorageblockavsvmvolume"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AvsVMId <String>",
+              "-ResourceGroupName <String>",
+              "-StoragePoolName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-VolumeId <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a volume in an AVS VM",
+          "parameters": [
+            {
+              "name": "-AvsVMId",
+              "value": "[Path.avsVmId]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-StoragePoolName",
+              "value": "[Path.storagePoolName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VolumeId",
+              "value": "[Path.volumeId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzPureStorageBlockAvsVMVolume",
+      "description": "Delete a volume in an AVS VM",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PureStorage.Block/storagePools/{storagePoolName}/avsVms/{avsVmId}/avsVmVolumes/{volumeId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.purestorageblock/remove-azpurestorageblockavsvmvolume"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AvsVMId <String>",
+              "-ResourceGroupName <String>",
+              "-StoragePoolName <String>",
+              "[-SubscriptionId <String>]",
+              "-VolumeId <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a volume in an AVS VM",
+          "parameters": [
+            {
+              "name": "-AvsVMId",
+              "value": "[Path.avsVmId]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-StoragePoolName",
+              "value": "[Path.storagePoolName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VolumeId",
+              "value": "[Path.volumeId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

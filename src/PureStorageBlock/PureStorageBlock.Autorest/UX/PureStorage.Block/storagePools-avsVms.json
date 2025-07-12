@@ -1,0 +1,95 @@
+{
+  "resourceType": "storagePools/avsVms",
+  "apiVersion": "2024-11-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.purestorageblock"
+  },
+  "commands": [
+    {
+      "name": "Get-AzPureStorageBlockAvsVM",
+      "description": "Get an AVS VM",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PureStorage.Block/storagePools/{storagePoolName}/avsVms/{avsVmId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.purestorageblock/get-azpurestorageblockavsvm"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Id <String>",
+              "-ResourceGroupName <String>",
+              "-StoragePoolName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get an AVS VM",
+          "parameters": [
+            {
+              "name": "-Id",
+              "value": "[Path.avsVmId]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-StoragePoolName",
+              "value": "[Path.storagePoolName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzPureStorageBlockAvsVM",
+      "description": "Delete an AVS VM",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PureStorage.Block/storagePools/{storagePoolName}/avsVms/{avsVmId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.purestorageblock/remove-azpurestorageblockavsvm"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Id <String>",
+              "-ResourceGroupName <String>",
+              "-StoragePoolName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete an AVS VM",
+          "parameters": [
+            {
+              "name": "-Id",
+              "value": "[Path.avsVmId]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-StoragePoolName",
+              "value": "[Path.storagePoolName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
