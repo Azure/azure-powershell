@@ -34,13 +34,6 @@ require:
 input-file:
   - $(repo)/specification/automanage/resource-manager/Microsoft.Automanage/stable/2022-05-04/automanage.json
 
-# title: Databricks
-# subject-prefix: $(service-name)
-
-inlining-threshold: 100
-resourcegroup-append: true
-nested-object-to-string: true
-
 directive:
   - from: swagger-document
     where: $.definitions.ConfigurationDictionary
