@@ -1,62 +1,64 @@
 ---
 external help file: Az.Automanage-help.xml
 Module Name: Az.Automanage
-online version: https://learn.microsoft.com/powershell/module/az.automanage/new-azautomanageconfigprofilehciassignment
+online version: https://learn.microsoft.com/powershell/module/az.automanage/update-azautomanageconfigprofilehciassignment
 schema: 2.0.0
 ---
 
-# New-AzAutomanageConfigProfileHciAssignment
+# Update-AzAutomanageConfigProfileHciAssignment
 
 ## SYNOPSIS
-Create an association between a AzureStackHCI cluster and Automanage configuration profile
+Update an association between a AzureStackHCI cluster and Automanage configuration profile
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzAutomanageConfigProfileHciAssignment -ClusterName <String> -ResourceGroupName <String>
+Update-AzAutomanageConfigProfileHciAssignment -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-ConfigurationProfile <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaJsonString
+### UpdateViaIdentityClusterExpanded
 ```
-New-AzAutomanageConfigProfileHciAssignment -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzAutomanageConfigProfileHciAssignment -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzAutomanageConfigProfileHciAssignment -ClusterInputObject <IAutomanageIdentity>
+ [-ConfigurationProfile <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaIdentityClusterExpanded
+### UpdateViaIdentityExpanded
 ```
-New-AzAutomanageConfigProfileHciAssignment -ClusterInputObject <IAutomanageIdentity>
+Update-AzAutomanageConfigProfileHciAssignment -InputObject <IAutomanageIdentity>
  [-ConfigurationProfile <String>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an association between a AzureStackHCI cluster and Automanage configuration profile
+Update an association between a AzureStackHCI cluster and Automanage configuration profile
 
 ## EXAMPLES
 
-### Example 1: Creates an association between a AzureStackHCI cluster and Automanage configuration profile
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzAutomanageConfigProfileHciAssignment -ResourceGroupName automangerg -ClusterName aglinuxcluster -ConfigurationProfile "/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction"
+{{ Add code here }}
 ```
 
 ```output
-Name    ResourceGroupName ManagedBy Status  TargetId
-----    ----------------- --------- ------  --------
-default automangerg                 Unknown /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.AzureStackHci/clusters/aglinuxcluster
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command creates an association between a AzureStackHCI cluster and Automanage configuration profile.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -65,7 +67,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
-Parameter Sets: CreateViaIdentityClusterExpanded
+Parameter Sets: UpdateViaIdentityClusterExpanded
 Aliases:
 
 Required: True
@@ -80,7 +82,7 @@ The name of the Arc machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -95,7 +97,7 @@ The Automanage configurationProfile ARM Resource URI.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -121,33 +123,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -157,7 +144,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -172,7 +159,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
