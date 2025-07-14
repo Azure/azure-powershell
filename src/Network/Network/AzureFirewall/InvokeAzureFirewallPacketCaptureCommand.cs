@@ -25,7 +25,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPacketCapture", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPacketCaptureParameters))]
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPacketCapture", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPacketCaptureResponse))]
     public class InvokeAzureFirewallPacketCaptureCommand : AzureFirewallBaseCmdlet
     {
         [Parameter(
@@ -58,9 +58,15 @@ namespace Microsoft.Azure.Commands.Network
             
 
             // Execute the PUT AzureFirewall call
-            var headers = this.AzureFirewallClient.PacketCapture(this.AzureFirewall.ResourceGroupName, this.AzureFirewall.Name, secureGwParamsModel);
+            var azureFirewallPacketCaptureResponse = this.AzureFirewallClient.PacketCaptureOperation(this.AzureFirewall.ResourceGroupName, this.AzureFirewall.Name, secureGwParamsModel);
 
-            WriteObject(headers);
+            var resp = new PSAzureFirewallPacketCaptureResponse();
+            if (azureFirewallPacketCaptureResponse != null)
+            {
+                resp = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewallPacketCaptureResponse>(azureFirewallPacketCaptureResponse);
+            }
+
+            WriteObject(resp);
         }
     }
 }

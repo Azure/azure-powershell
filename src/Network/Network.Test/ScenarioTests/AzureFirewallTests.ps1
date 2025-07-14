@@ -2159,8 +2159,9 @@ function Test-InvokeAzureFirewallPacketCapture {
         $mgmtSubnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $mgmtSubnetName
 
         # Create public ips
-        $publicip1 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIp1Name -location $location -AllocationMethod Static -Sku Standard
-        $mgmtPublicIp = New-AzPublicIpAddress -ResourceGroupName $rgname -name $mgmtPublicIpName -location $location -AllocationMethod Static -Sku Standard
+        $tag = New-AzPublicIpTag -IpTagType "FirstPartyUsage" -Tag "/NonProd"
+        $publicip1 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIp1Name -location $location -AllocationMethod Static -Sku Standard -IpTag $tag
+        $mgmtPublicIp = New-AzPublicIpAddress -ResourceGroupName $rgname -name $mgmtPublicIpName -location $location -AllocationMethod Static -Sku Standard -IpTag $tag
 
         # Create AzureFirewall with a management IP
         $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip1 -ManagementPublicIpAddress $mgmtPublicIp
@@ -2175,12 +2176,27 @@ function Test-InvokeAzureFirewallPacketCapture {
         $filter2 = New-AzFirewallPacketCaptureRule -Source "10.0.0.5" -Destination "172.20.10.2" -DestinationPort "80","443"
     
         # Create the firewall packet capture parameters
-        $Params =  New-AzFirewallPacketCaptureParameter  -DurationInSeconds 30 -NumberOfPackets 500 -SASUrl $sasurl -Filename "AzFwPowershellPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2
+        $Params =  New-AzFirewallPacketCaptureParameter  -DurationInSeconds 1200 -NumberOfPackets 20000 -SASUrl $sasurl -Filename "AzFwPowershellPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2 -Operation "Start"
+        Start-Sleep -Seconds 120
 
         # Invoke a firewall packet capture
+        $response = Invoke-AzFirewallPacketCapture -AzureFirewall $azureFirewall -Parameter $Params 
+        Assert-NotNull $response
+        Assert-AreEqual "AzureFirewallPacketCaptureStartSucceeded" $response.StatusCode
+        Assert-AreEqual "Packet Capture Started" $response.Message
+
+        $Params = New-AzFirewallPacketCaptureParameter -Operation "Status" 
         $response = Invoke-AzFirewallPacketCapture -AzureFirewall $azureFirewall -Parameter $Params
         Assert-NotNull $response
-        Assert-AreEqual "Microsoft.Azure.Management.Network.Models.AzureFirewallsPacketCaptureHeaders" $response.GetType().fullname
+        Assert-AreEqual "AzureFirewallPacketCaptureInProgress" $response.StatusCode
+        Assert-AreEqual "Packet capture in progress. Please wait till it is finished or stop the current capture before starting another." $response.Message
+
+        $Params = New-AzFirewallPacketCaptureParameter -Operation "Stop"
+        $response = Invoke-AzFirewallPacketCapture -AzureFirewall $azureFirewall -Parameter $Params  
+        Assert-NotNull $response
+        Assert-AreEqual "AzureFirewallPacketCaptureStopSucceeded" $response.StatusCode 
+        Assert-AreEqual "Packet capture stopped successfully. Ready to start a new packet capture." $response.Message
+
     }
     finally {
         # Cleanup

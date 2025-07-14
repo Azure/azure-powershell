@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzFirewallPacketCapture
 
 ## SYNOPSIS
-Invoke Packet Capture on Azure Firewall
+Invoke Packet Capture Operations on Azure Firewall
 
 ## SYNTAX
 
@@ -19,11 +19,11 @@ Invoke-AzFirewallPacketCapture -AzureFirewall <PSAzureFirewall>
 ```
 
 ## DESCRIPTION
-Invokes a packet capture request on Azure Firewall
+Invokes a Start/Status/Stop packet capture request on Azure Firewall
 
 ## EXAMPLES
 
-### Example 1: Invokes a packet capture request on Azure Firewall
+### Example 1:  Invokes a start packet capture operation on Azure Firewall
 ```
 $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location
 
@@ -32,15 +32,46 @@ $azFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
 # Create a filter rules
 $filter1 = New-AzFirewallPacketCaptureRule -Source "10.0.0.2","192.123.12.1" -Destination "172.32.1.2" -DestinationPort "80","443"
 $filter2 = New-AzFirewallPacketCaptureRule -Source "10.0.0.5" -Destination "172.20.10.2" -DestinationPort "80","443"
-
+    
 # Create the firewall packet capture parameters
-$Params =  New-AzFirewallPacketCaptureParameter  -DurationInSeconds 300 -NumberOfPacketsToCapture 5000 -SASUrl "ValidSasUrl" -Filename "AzFwPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2
+$Params =  New-AzFirewallPacketCaptureParameter  -DurationInSeconds 1200 -NumberOfPackets 20000 -SASUrl $sasurl -Filename "AzFwPowershellPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2 -Operation "Start"
 
 # Invoke a firewall packet capture
 Invoke-AzFirewallPacketCapture -AzureFirewall $azureFirewall -Parameter $Params
 ```
 
-This example invokes packet capture request on azure firewall with the parameters mentioned.
+This example invokes a start packet capture request on azure firewall with the parameters mentioned.
+
+### Example 2: Invokes a check status packet capture operation on Azure Firewall
+```
+$azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location
+
+$azFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+
+# Create the firewall packet capture parameters
+$Params =  New-AzFirewallPacketCaptureParameter  -Operation "Status"
+
+# Invoke a firewall packet capture
+Invoke-AzFirewallPacketCapture -AzureFirewall $azureFirewall -Parameter $Params
+```
+
+This example invokes a check status packet capture request on azure firewall with the parameters mentioned.
+
+### Example 3: Invokes a stop packet capture operation on Azure Firewall
+```
+$azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location
+
+$azFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+
+# Create the firewall packet capture parameters
+$Params =  New-AzFirewallPacketCaptureParameter -Operation "Stop"
+
+# Invoke a firewall packet capture
+Invoke-AzFirewallPacketCapture -AzureFirewall $azureFirewall -Parameter $Params
+```
+
+This example invokes a stop packet capture request on azure firewall with the parameters mentioned.
+
 
 ## PARAMETERS
 
@@ -74,6 +105,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -104,21 +150,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
@@ -146,7 +177,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPacketCaptureParameters
+### Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPacketCaptureResponse
 
 ## NOTES
 
