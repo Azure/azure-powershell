@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
                     }
 
                     // Value in the header is: "Basic realm=<secret file path>"
-                    var secretFilePath = wwwHeader.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries).LastOrDefault();
+                    var secretFilePath = wwwHeader.Split('=', StringSplitOptions.RemoveEmptyEntries).LastOrDefault();
 
                     if (IsSecretFilePathValid(secretFilePath))
                     {
