@@ -1,20 +1,20 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions//resourceGroups/ps592/resources?api-version=2021-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvL3Jlc291cmNlR3JvdXBzL3BzNTkyL3Jlc291cmNlcz9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
+      "RequestUri": "/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/ps9129/resources?api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjhkMTk0ZTAtZmE5Mi00MGVlLWIzZTctMmU3NmRmNjJmMTZiL3Jlc291cmNlR3JvdXBzL3BzOTEyOS9yZXNvdXJjZXM/YXBpLXZlcnNpb249MjAyMS0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "3e8a3709-ffb9-45f9-8f08-c2517c923789"
+          "44929662-3258-4301-8398-dc24f2c7da0d"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1825.31117",
+          "FxVersion/8.0.1525.16413",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.17.3.0"
         ]
       },
@@ -29,14 +29,20 @@
         "x-ms-failure-cause": [
           "gateway"
         ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "249"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "3749"
+        ],
         "x-ms-request-id": [
-          "0eb54319-52b6-41a6-9065-8f43794945df"
+          "3c4188ac-36f6-4ffc-b184-4d1d2ac32f2f"
         ],
         "x-ms-correlation-request-id": [
-          "0eb54319-52b6-41a6-9065-8f43794945df"
+          "3c4188ac-36f6-4ffc-b184-4d1d2ac32f2f"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20250710T064251Z:0eb54319-52b6-41a6-9065-8f43794945df"
+          "SOUTHEASTASIA:20250426T072224Z:3c4188ac-36f6-4ffc-b184-4d1d2ac32f2f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -48,13 +54,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 73992FFA09864E5CACD0C52974F72A64 Ref B: MAA201060514049 Ref C: 2025-07-10T06:42:51Z"
+          "Ref A: F53B2DE73893471D819390BD6D241A32 Ref B: MAA201060515045 Ref C: 2025-04-26T07:22:24Z"
         ],
         "Date": [
-          "Thu, 10 Jul 2025 06:42:50 GMT"
+          "Sat, 26 Apr 2025 07:22:24 GMT"
         ],
         "Content-Length": [
-          "133"
+          "98"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -66,16 +72,16 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidSubscriptionId\",\r\n    \"message\": \"The provided subscription identifier 'resourceGroups' is malformed or invalid.\"\r\n  }\r\n}",
-      "StatusCode": 400
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'ps9129' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
     }
   ],
   "Names": {
     "Test-GetAzResourceFromNonExisingResourceGroup": [
-      "ps592"
+      "ps9129"
     ]
   },
   "Variables": {
-    "SubscriptionId": ""
+    "SubscriptionId": "28d194e0-fa92-40ee-b3e7-2e76df62f16b"
   }
 }

@@ -5,16 +5,16 @@
       "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9jaGVja05hbWVBdmFpbGFiaWxpdHk/YXBpLXZlcnNpb249MjAyMS0wNC0wMQ==",
       "RequestMethod": "POST",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7bb9f190-a9ef-4bbd-baa3-65af8d27b530"
+        ],
         "Accept-Language": [
           "en-US"
         ],
-        "x-ms-client-request-id": [
-          "a50700aa-87f6-41f6-bbaa-ae6e2380d0a5"
-        ],
         "User-Agent": [
-          "FxVersion/8.0.1825.31117",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
+          "OSVersion/Microsoft.Windows.10.0.19045",
           "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
         ],
         "Content-Type": [
@@ -32,20 +32,29 @@
         "Pragma": [
           "no-cache"
         ],
-        "WWW-Authenticate": [
-          "Bearer authorization_uri=\"https://login.windows.net/\", error=\"invalid_token\", error_description=\"The primary access token is invalid.\""
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
         "x-ms-request-id": [
-          "917bbb5a-6442-412f-9b14-e6871085cba8"
+          "centralus:39bdc6bf-22bd-4012-94f2-87e96a943437"
+        ],
+        "x-ba-restapi": [
+          "0.0.0.0"
+        ],
+        "client-request-id": [
+          "39bdc6bf-22bd-4012-94f2-87e96a943437"
+        ],
+        "request-id": [
+          "39bdc6bf-22bd-4012-94f2-87e96a943437"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1198"
         ],
         "x-ms-correlation-request-id": [
-          "917bbb5a-6442-412f-9b14-e6871085cba8"
+          "39bdc6bf-22bd-4012-94f2-87e96a943437"
         ],
         "x-ms-routing-request-id": [
-          "INDONESIACENTRAL:20250710T064736Z:917bbb5a-6442-412f-9b14-e6871085cba8"
+          "WESTCENTRALUS:20230223T000512Z:39bdc6bf-22bd-4012-94f2-87e96a943437"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -53,17 +62,11 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: 8324FC1DFE9841D28B8D47CA43FB9A7D Ref B: MAA201060513037 Ref C: 2025-07-10T06:47:36Z"
-        ],
         "Date": [
-          "Thu, 10 Jul 2025 06:47:36 GMT"
+          "Thu, 23 Feb 2023 00:05:11 GMT"
         ],
         "Content-Length": [
-          "118"
+          "22"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -75,12 +78,12 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidAuthenticationToken\",\r\n    \"message\": \"The 'EvolvedSecurityTokenService' access token is invalid.\"\r\n  }\r\n}",
-      "StatusCode": 401
+      "ResponseBody": "{\r\n  \"nameAvailable\": true\r\n}",
+      "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": ""
+    "SubscriptionId": "5602fbd9-fb0d-4fbb-98b3-10c8ea20b6de"
   }
 }

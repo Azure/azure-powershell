@@ -5,16 +5,16 @@
       "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9jaGVja05hbWVBdmFpbGFiaWxpdHk/YXBpLXZlcnNpb249MjAyMS0wNC0wMQ==",
       "RequestMethod": "POST",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "680b0f7a-8cbb-4c93-9bee-f52eb832fc61"
+        ],
         "Accept-Language": [
           "en-US"
         ],
-        "x-ms-client-request-id": [
-          "f6887410-eda0-4df0-a2f1-f2c004681c98"
-        ],
         "User-Agent": [
-          "FxVersion/8.0.1825.31117",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
+          "OSVersion/Microsoft.Windows.10.0.19045",
           "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
         ],
         "Content-Type": [
@@ -32,20 +32,29 @@
         "Pragma": [
           "no-cache"
         ],
-        "WWW-Authenticate": [
-          "Bearer authorization_uri=\"https://login.windows.net/\", error=\"invalid_token\", error_description=\"The primary access token is invalid.\""
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
         "x-ms-request-id": [
-          "bf50deeb-b840-456f-8a71-fb47f1e6d99d"
+          "centralus:00508d9e-d77a-4a91-acf4-8461a5336da1"
+        ],
+        "x-ba-restapi": [
+          "0.0.0.0"
+        ],
+        "client-request-id": [
+          "00508d9e-d77a-4a91-acf4-8461a5336da1"
+        ],
+        "request-id": [
+          "00508d9e-d77a-4a91-acf4-8461a5336da1"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "bf50deeb-b840-456f-8a71-fb47f1e6d99d"
+          "00508d9e-d77a-4a91-acf4-8461a5336da1"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20250710T064706Z:bf50deeb-b840-456f-8a71-fb47f1e6d99d"
+          "WESTCENTRALUS:20230223T000441Z:00508d9e-d77a-4a91-acf4-8461a5336da1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -53,17 +62,11 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: F3DDE50CE1CC40E08531ABECBECABFA9 Ref B: MAA201060513017 Ref C: 2025-07-10T06:47:06Z"
-        ],
         "Date": [
-          "Thu, 10 Jul 2025 06:47:06 GMT"
+          "Thu, 23 Feb 2023 00:04:41 GMT"
         ],
         "Content-Length": [
-          "118"
+          "194"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -75,12 +78,12 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidAuthenticationToken\",\r\n    \"message\": \"The 'EvolvedSecurityTokenService' access token is invalid.\"\r\n  }\r\n}",
-      "StatusCode": 401
+      "ResponseBody": "{\r\n  \"nameAvailable\": false,\r\n  \"reason\": \"Invalid\",\r\n  \"message\": \"The provided management group name 'testMG3!' has these invalid characters: '!'. The name can only be an ASCII letter, digit, -, _, (, ), .\"\r\n}",
+      "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": ""
+    "SubscriptionId": "5602fbd9-fb0d-4fbb-98b3-10c8ea20b6de"
   }
 }

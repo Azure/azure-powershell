@@ -1,24 +1,24 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions//resourceGroups/PrivateLinkTestRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvL3Jlc291cmNlR3JvdXBzL1ByaXZhdGVMaW5rVGVzdFJHL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9yZXNvdXJjZU1hbmFnZW1lbnRQcml2YXRlTGlua3MvTmV3UEw/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
+      "RequestUri": "/subscriptions/e3a1f070-4fbe-428f-90cb-50dadce68bfb/resourceGroups/PrivateLinkTestRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTNhMWYwNzAtNGZiZS00MjhmLTkwY2ItNTBkYWRjZTY4YmZiL3Jlc291cmNlR3JvdXBzL1ByaXZhdGVMaW5rVGVzdFJHL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9yZXNvdXJjZU1hbmFnZW1lbnRQcml2YXRlTGlua3MvTmV3UEw/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
       "RequestMethod": "GET",
+      "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "dd90fd27-ff95-4342-b66f-d50334da7179"
+        ],
         "Accept-Language": [
           "en-US"
         ],
-        "x-ms-client-request-id": [
-          "032356ff-5e70-4a64-9958-da5915407e43"
-        ],
         "User-Agent": [
-          "FxVersion/8.0.1825.31117",
+          "FxVersion/4.6.27817.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.ResourceManager.ResourcePrivateLinkClient/3.17.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ResourceManager.ResourcePrivateLinkClient/3.17.2.0"
         ]
       },
-      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -26,17 +26,20 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-failure-cause": [
-          "gateway"
+        "Vary": [
+          "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "08ef2aa0-540a-41b1-913e-fbf40213c33a"
+          "centralus:a2599708-5704-4d52-b47b-f20b8bd0792d"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "08ef2aa0-540a-41b1-913e-fbf40213c33a"
+          "771a3f97-68a9-4c3f-bc5d-ede6b3ffbb76"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20250710T065623Z:08ef2aa0-540a-41b1-913e-fbf40213c33a"
+          "WESTCENTRALUS:20220224T232306Z:771a3f97-68a9-4c3f-bc5d-ede6b3ffbb76"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -44,17 +47,11 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: 3F81D65C90164963AB9DA5214088676E Ref B: MAA201060516023 Ref C: 2025-07-10T06:56:23Z"
-        ],
         "Date": [
-          "Thu, 10 Jul 2025 06:56:23 GMT"
+          "Thu, 24 Feb 2022 23:23:06 GMT"
         ],
         "Content-Length": [
-          "133"
+          "313"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -66,12 +63,12 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidSubscriptionId\",\r\n    \"message\": \"The provided subscription identifier 'resourceGroups' is malformed or invalid.\"\r\n  }\r\n}",
-      "StatusCode": 400
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"privateEndpointConnections\": []\r\n  },\r\n  \"id\": \"/subscriptions/e3a1f070-4fbe-428f-90cb-50dadce68bfb/resourceGroups/PrivateLinkTestRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL\",\r\n  \"name\": \"NewPL\",\r\n  \"type\": \"Microsoft.Authorization/resourceManagementPrivateLinks\",\r\n  \"location\": \"centralus\"\r\n}",
+      "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": ""
+    "SubscriptionId": "e3a1f070-4fbe-428f-90cb-50dadce68bfb"
   }
 }

@@ -1,60 +1,28 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions//resourcegroups/ps7421?api-version=2021-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvL3Jlc291cmNlZ3JvdXBzL3BzNzQyMT9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
+      "RequestUri": "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourcegroups/ps8302?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzljYmQ5MjAtYzAwYy00MjdjLTg1MmItOGFhZjM4YmFkYWViL3Jlc291cmNlZ3JvdXBzL3BzODMwMj9hcGktdmVyc2lvbj0yMDE3LTA1LTEw",
       "RequestMethod": "GET",
+      "RequestBody": "",
       "RequestHeaders": {
-        "Accept-Language": [
+        "x-ms-client-request-id": [
+          "a38e8c48-8eba-47d7-826c-446289e13de4"
+        ],
+        "accept-language": [
           "en-US"
         ],
-        "x-ms-client-request-id": [
-          "f2573cdc-9f4d-4454-a494-1e44828563b3"
-        ],
         "User-Agent": [
-          "FxVersion/8.0.1825.31117",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.17.3.0"
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0.0"
         ]
       },
-      "RequestBody": "",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'ps8302' could not be found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "bb5e61c9-8929-40b4-b278-9e97f3468e45"
-        ],
-        "x-ms-correlation-request-id": [
-          "bb5e61c9-8929-40b4-b278-9e97f3468e45"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20250710T064424Z:bb5e61c9-8929-40b4-b278-9e97f3468e45"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: 82B6A7F6C7704E4C92BE6A22AD877DBF Ref B: MAA201060513009 Ref C: 2025-07-10T06:44:24Z"
-        ],
-        "Date": [
-          "Thu, 10 Jul 2025 06:44:23 GMT"
-        ],
         "Content-Length": [
-          "133"
+          "98"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -62,20 +30,45 @@
         "Expires": [
           "-1"
         ],
-        "Retry-After": [
-          "0"
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14994"
+        ],
+        "x-ms-request-id": [
+          "bde80ec4-d13d-4815-a8f9-16847224c8c5"
+        ],
+        "x-ms-correlation-request-id": [
+          "bde80ec4-d13d-4815-a8f9-16847224c8c5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180201T193636Z:bde80ec4-d13d-4815-a8f9-16847224c8c5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 01 Feb 2018 19:36:36 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidSubscriptionId\",\r\n    \"message\": \"The provided subscription identifier 'resourcegroups' is malformed or invalid.\"\r\n  }\r\n}",
-      "StatusCode": 400
+      "StatusCode": 404
     }
   ],
   "Names": {
     "Test-GetNonExistingResourceGroup": [
-      "ps7421"
+      "ps8302"
     ]
   },
   "Variables": {
-    "SubscriptionId": ""
+    "SubscriptionId": "c9cbd920-c00c-427c-852b-8aaf38badaeb",
+    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    "Domain": ""
   }
 }
