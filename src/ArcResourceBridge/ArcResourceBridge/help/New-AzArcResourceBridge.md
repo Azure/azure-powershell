@@ -8,20 +8,34 @@ schema: 2.0.0
 # New-AzArcResourceBridge
 
 ## SYNOPSIS
-Creates or updates an Appliance in the specified Subscription and Resource Group.
+Create an Appliance in the specified Subscription and Resource Group.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzArcResourceBridge -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> [-Distro <Distro>] [-IdentityType <ResourceIdentityType>]
- [-InfrastructureConfigProvider <Provider>] [-PublicKey <String>] [-Tag <Hashtable>] [-Version <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -Location <String> [-Distro <String>] [-EnableSystemAssignedIdentity] [-InfrastructureConfigProvider <String>]
+ [-PublicKey <String>] [-Tag <Hashtable>] [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzArcResourceBridge -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzArcResourceBridge -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates an Appliance in the specified Subscription and Resource Group.
+Create an Appliance in the specified Subscription and Resource Group.
 
 ## EXAMPLES
 
@@ -76,8 +90,8 @@ Represents a supported Fabric/Infra.
 (AKSEdge etc...).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Distro
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -87,12 +101,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-The identity type.
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.ResourceIdentityType
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -106,11 +120,41 @@ Accept wildcard characters: False
 Information about the connected appliance.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Provider
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -122,7 +166,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -168,7 +212,7 @@ Can only be set once.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -214,7 +258,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -229,7 +273,7 @@ Version of the Appliance
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -277,7 +321,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IAppliance
+### Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IAppliance
 
 ## NOTES
 
