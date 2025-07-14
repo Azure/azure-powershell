@@ -1,17 +1,17 @@
 {
-  "Get-AzLabServicesUserVM+[NoContext]+Get Email+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell/users?api-version=2021-10-01-preview\u0026$filter=Properties%2FEmail eq %27test%40contosouniversity.com%27+1": {
+  "Get-AzLabServicesUserVM+[NoContext]+Get Email+$GET+https://management.azure.com/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-record-powershell/users?api-version=2021-10-01-preview\u0026$filter=Properties%2FEmail eq %27test%40contosouniversity.com%27+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell/users?api-version=2021-10-01-preview\u0026$filter=Properties%2FEmail%20eq%20%27test%40contosouniversity.com%27",
+      "RequestUri": "https://management.azure.com/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-record-powershell/users?api-version=2021-10-01-preview\u0026$filter=Properties%2FEmail%20eq%20%27test%40contosouniversity.com%27",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "6379f569-add2-416b-9e01-75aafedd733c" ],
+        "x-ms-unique-id": [ "70" ],
+        "x-ms-client-request-id": [ "dc62367a-2cc5-4e08-b778-0a56a6bf8203" ],
         "CommandName": [ "Az.LabServices.private\\Get-AzLabServicesUser_List" ],
         "FullCommandName": [ "Get-AzLabServicesUser_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.1", "Az.LabServices/0.1.2" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,39 +22,43 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCNTDL2N7SL:00000001" ],
-        "x-ms-correlation-request-id": [ "db2f6b54-443a-49a5-b168-f47438ee64c9" ],
-        "traceparent": [ "00-fb2cdfdda6f86e49b3bf044ea7a7dd2f-17ac704a04ef0a8f-01" ],
-        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6205f759-1234-453c-9712-34d7671bceff/southindia/896fda7e-4e4f-43d6-8434-bf04c5f95319" ],
+        "Request-Context": [ "appId=cid-v1:3c29314f-2b9f-4fd1-b8fc-13cc225f1416" ],
+        "x-ms-request-id": [ "0HNDPHPL2AC9K:00000005" ],
+        "x-ms-correlation-request-id": [ "cf2a9f87-4fdc-4988-8ef5-c1357413a537" ],
+        "traceparent": [ "00-2503020b2161fe255bced5c623fe8c0f-2e712806c72b6a4d-00" ],
+        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview, 2021-11-15-preview, 2022-05-01-preview, 2022-08-01, 2023-06-07" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211025T192121Z:db2f6b54-443a-49a5-b168-f47438ee64c9" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250707T021818Z:cf2a9f87-4fdc-4988-8ef5-c1357413a537" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 25 Oct 2021 19:21:20 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 43E9315A243C4EFD9F49127C48FD9B99 Ref B: MAA201060514017 Ref C: 2025-07-07T02:18:17Z" ],
+        "Date": [ "Mon, 07 Jul 2025 02:18:18 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "672" ],
+        "Content-Length": [ "723" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-23T00:39:15.1377703Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-25T19:19:32.3269096Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"email\":\"test@contosouniversity.com\",\"registrationState\":\"NotRegistered\",\"invitationState\":\"NotSent\",\"totalUsage\":\"PT0S\",\"additionalUsageQuota\":\"P1DT1H\"},\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell/users/testuser\",\"name\":\"testuser\",\"type\":\"Microsoft.LabServices/labs/users\"}]}",
+      "Content": "{\"value\":[{\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-04T10:32:54.0514067Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-07T02:16:24.1081818Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"email\":\"test@contosouniversity.com\",\"registrationState\":\"NotRegistered\",\"invitationState\":\"Sent\",\"invitationSent\":\"2025-07-07T02:11:50.0045441Z\",\"totalUsage\":\"PT0S\",\"additionalUsageQuota\":\"P1DT1H\"},\"id\":\"/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-record-powershell/users/testuser\",\"name\":\"testuser\",\"type\":\"Microsoft.LabServices/labs/users\"}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzLabServicesUserVM+[NoContext]+Get Email+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell/virtualMachines?api-version=2021-10-01-preview\u0026$filter=Properties%2FClaimedByUserId eq %27%2Fsubscriptions%2F63d7e191-c910-43ba-908f-252519936998%2FresourceGroups%2Fpowershell-sdk-testing%2Fproviders%2FMicrosoft.LabServices%2Flabs%2Flab-unit-powershell%2Fusers%2Ftestuser%27+2": {
+  "Get-AzLabServicesUserVM+[NoContext]+Get Email+$GET+https://management.azure.com/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-record-powershell/virtualMachines?api-version=2021-10-01-preview\u0026$filter=Properties%2FClaimedByUserId eq %27%2Fsubscriptions%2F2d5eedc9-8509-41fe-aac8-f16d54583ac6%2FresourceGroups%2Fpowershell-sdk-testing%2Fproviders%2FMicrosoft.LabServices%2Flabs%2Flab-record-powershell%2Fusers%2Ftestuser%27+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell/virtualMachines?api-version=2021-10-01-preview\u0026$filter=Properties%2FClaimedByUserId%20eq%20%27%2Fsubscriptions%2F63d7e191-c910-43ba-908f-252519936998%2FresourceGroups%2Fpowershell-sdk-testing%2Fproviders%2FMicrosoft.LabServices%2Flabs%2Flab-unit-powershell%2Fusers%2Ftestuser%27",
+      "RequestUri": "https://management.azure.com/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-record-powershell/virtualMachines?api-version=2021-10-01-preview\u0026$filter=Properties%2FClaimedByUserId%20eq%20%27%2Fsubscriptions%2F2d5eedc9-8509-41fe-aac8-f16d54583ac6%2FresourceGroups%2Fpowershell-sdk-testing%2Fproviders%2FMicrosoft.LabServices%2Flabs%2Flab-record-powershell%2Fusers%2Ftestuser%27",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "8f3e2547-f2a3-4d3f-9273-521fe744f9e7" ],
+        "x-ms-unique-id": [ "71" ],
+        "x-ms-client-request-id": [ "b723ad45-0f10-4dfb-ae11-47174c2d1b85" ],
         "CommandName": [ "Az.LabServices.private\\Get-AzLabServicesVM_List" ],
         "FullCommandName": [ "Get-AzLabServicesVM_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.1", "Az.LabServices/0.1.2" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -65,16 +69,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOLO4:00000002" ],
-        "x-ms-correlation-request-id": [ "02ccbafa-f724-4a92-a58d-b838a15dffa4" ],
-        "traceparent": [ "00-2743d051caf13242a470e025987bdf85-857912b285255c8b-01" ],
-        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6205f759-1234-453c-9712-34d7671bceff/southindia/746e4f74-3123-454a-ba63-8faf9645847a" ],
+        "Request-Context": [ "appId=cid-v1:3c29314f-2b9f-4fd1-b8fc-13cc225f1416" ],
+        "x-ms-request-id": [ "0HNDPHPL2AC9P:00000004" ],
+        "x-ms-correlation-request-id": [ "e10c7c89-4c1c-406d-affb-a2fde7113ce0" ],
+        "traceparent": [ "00-d70d82924214afdad2e8a16be11d143f-15a2d8c55ff53593-00" ],
+        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview, 2021-11-15-preview, 2022-05-01-preview, 2022-08-01, 2023-06-07" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211025T192121Z:02ccbafa-f724-4a92-a58d-b838a15dffa4" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250707T021819Z:e10c7c89-4c1c-406d-affb-a2fde7113ce0" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 25 Oct 2021 19:21:20 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DC850F9CCE924DDC9D032EDA069A6824 Ref B: MAA201060514017 Ref C: 2025-07-07T02:18:18Z" ],
+        "Date": [ "Mon, 07 Jul 2025 02:18:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "12" ],
