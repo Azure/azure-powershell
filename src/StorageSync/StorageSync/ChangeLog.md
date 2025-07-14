@@ -19,7 +19,6 @@
 -->
 ## Upcoming Release
 
-## Version 2.6.0
 * Fixes security bug in token acquisition for MI server registration
 
 ## Version 2.5.0
