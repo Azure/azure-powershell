@@ -16,9 +16,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10;
+using Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10
+namespace Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models
 {
     public class JsonWebKeyHelper
     {
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10
             foreach (var certificate in certificateCollection)
             {
                 var jwk = new JsonWebKey() { Kty = "RSA" };
-                jwk.X5C = new List<string>() { System.Convert.ToBase64String(certificate.Export(X509ContentType.Cert)) }.ToArray();
+                jwk.X5C = new List<string> { System.Convert.ToBase64String(certificate.Export(X509ContentType.Cert)) };
                 jsonWebKeys.Add(jwk);
             }
             return jsonWebKeys.ToArray();
