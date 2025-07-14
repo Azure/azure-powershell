@@ -41,7 +41,7 @@ Create an Appliance in the specified Subscription and Resource Group.
 
 ### Example 1: Creates or updates an Appliance in the specified Subscription and Resource Group.
 ```powershell
-New-AzArcResourceBridge -Name azps-resource-bridge -ResourceGroupName azps_test_group -Location eastus -IdentityType 'SystemAssigned' -Distro 'AKSEdge' -InfrastructureConfigProvider 'VMware' -Tag @{"123"="abc"}
+New-AzArcResourceBridge -Name azps-resource-bridge -ResourceGroupName azps_test_group -Location eastus -EnableSystemAssignedIdentity -Distro 'AKSEdge' -InfrastructureConfigProvider 'VMware' -Tag @{"123"="abc"}
 ```
 
 ```output
