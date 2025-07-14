@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update the outputs of breaking change announcements.
 
 ## Version 3.1.1
 * Added breaking change announcement for below commands from array or single object to list.
