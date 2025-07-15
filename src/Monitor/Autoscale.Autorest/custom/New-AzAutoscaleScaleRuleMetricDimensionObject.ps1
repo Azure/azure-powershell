@@ -27,7 +27,6 @@ https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzAutoscaleScaleRul
 #>
 function New-AzAutoscaleScaleRuleMetricDimensionObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRuleMetricDimension')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.CmdletBreakingChange("15.0.0", "7.0.0", "2025/11/03", ChangeDescription="The type of property 'Value' will be changed from array to List.")]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -38,6 +37,7 @@ function New-AzAutoscaleScaleRuleMetricDimensionObject {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.ScaleRuleMetricDimensionOperationType])]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.ScaleRuleMetricDimensionOperationType]
         $Operator,
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.ParameterBreakingChange("Value", "15.0.0", "7.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Parameter(Mandatory, HelpMessage="list of dimension values. For example: [`"App1`",`"App2`"].")]
         [string[]]
         $Value

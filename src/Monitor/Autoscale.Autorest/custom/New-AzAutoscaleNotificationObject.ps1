@@ -26,11 +26,10 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.Autoscal
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzAutoscaleNotificationObject
 #>
 function New-AzAutoscaleNotificationObject {
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.CmdletBreakingChange("15.0.0", "7.0.0", "2025/11/03", ChangeDescription="The type of property 'Webhook' and 'EmailCustomEmail' will be changed from array to List.")]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleNotification')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
-
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.ParameterBreakingChange("EmailCustomEmail", "15.0.0", "7.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Parameter(HelpMessage="the custom e-mails list. This value can be null or empty, in which case this attribute will be ignored.")]
         [string[]]
         $EmailCustomEmail,
@@ -40,6 +39,7 @@ function New-AzAutoscaleNotificationObject {
         [Parameter(HelpMessage="a value indicating whether to send email to subscription co-administrators.")]
         [bool]
         $EmailSendToSubscriptionCoAdministrator,
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.ParameterBreakingChange("Webhook", "15.0.0", "7.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Parameter(HelpMessage="the collection of webhook notifications.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IWebhookNotification[]]
         $Webhook

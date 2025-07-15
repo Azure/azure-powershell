@@ -27,7 +27,6 @@ https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzAutoscaleProfileO
 #>
 function New-AzAutoscaleProfileObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleProfile')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.CmdletBreakingChange("15.0.0", "7.0.0", "2025/11/03", ChangeDescription="The types of properties 'Rule', 'ScheduleHour', 'ScheduleMinute', 'ScheduleDay' and 'MetricTriggerDimension' of IAutoscaleProfile will be changed from array to List. The type of property 'MetricTriggerDimension' of type 'IScaleRule' has changed from single object to 'List'.")]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -56,15 +55,19 @@ function New-AzAutoscaleProfileObject {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.RecurrenceFrequency])]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.RecurrenceFrequency]
         $RecurrenceFrequency,
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.ParameterBreakingChange("Rule", "15.0.0", "7.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Parameter(Mandatory, HelpMessage="the collection of rules that provide the triggers and parameters for the scaling action. A maximum of 10 rules can be specified.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IScaleRule[]]
         $Rule,
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.ParameterBreakingChange("ScheduleDay", "15.0.0", "7.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Parameter(HelpMessage="the collection of days that the profile takes effect on. Possible values are Sunday through Saturday.")]
         [string[]]
         $ScheduleDay,
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.ParameterBreakingChange("ScheduleHour", "15.0.0", "7.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Parameter(HelpMessage="A collection of hours that the profile takes effect on. Values supported are 0 to 23 on the 24-hour clock (AM/PM times are not supported).")]
         [int[]]
         $ScheduleHour,
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.ParameterBreakingChange("ScheduleMinute", "15.0.0", "7.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Parameter(HelpMessage="A collection of minutes at which the profile takes effect at.")]
         [int[]]
         $ScheduleMinute,
