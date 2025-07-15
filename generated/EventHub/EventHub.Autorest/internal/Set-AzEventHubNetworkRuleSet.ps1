@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update NetworkRuleSet for a Namespace.
+Update NetworkRuleSet for a Namespace.
 .Description
-update NetworkRuleSet for a Namespace.
+Update NetworkRuleSet for a Namespace.
 .Example
 $ipRule1 = New-AzEventHubIPRuleConfig -IPMask 2.2.2.2 -Action Allow
 $ipRule2 = New-AzEventHubIPRuleConfig -IPMask 3.3.3.3 -Action Allow

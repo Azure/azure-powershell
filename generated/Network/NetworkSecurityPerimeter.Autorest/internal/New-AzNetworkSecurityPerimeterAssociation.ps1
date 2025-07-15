@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a NSP resource association.
+Create a NSP resource association.
 .Description
-create a NSP resource association.
+Create a NSP resource association.
 .Example
 $profileId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers/Microsoft.Network/networkSecurityPerimeters/nsp-test-1/profiles/profile-test-1'
 $privateLinkResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-2/providers/Microsoft.Sql/servers/sql-server-test-1'

@@ -104,7 +104,7 @@ directive:
           "description": "The function type."
         }
       }
-  # Fix the issue that remove operation finally result is that StatusCode is 404 and staus is deleteing.
+  # Fix the issue that remove operation finally result is that StatusCode is 404 and status is deleting.
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}"].delete.responses
     transform: >-

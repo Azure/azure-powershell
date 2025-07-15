@@ -18,7 +18,7 @@ Describe 'Update-AzArizeAIOrganization' {
     It 'UpdateExpanded' 
         {
             try {
-                Update-AzArizeAIOrganization -Name $env.ResourceName -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId -MarketplaceSubscriptionId $env.MarketplaceSubscriptionId -OfferDetailOfferId $env.OfferDetailOfferId -OfferDetailPlanId $env.OfferDetailPlanId -OfferDetailPlanName $env.OfferDetailPlanName -OfferDetailPublisherId $env.OfferDetailPublisherId -OfferDetailTermId $env.OfferDetailTermId -OfferDetailTermUnit $env.OfferDetailTermUnit -UserEmailAddress $env.UserEmailAddress -UserFirstName $env.NewUserFirstName -UserLastName $env.UserLastName -UserUpn $env.UserUpn
+                Update-AzArizeAIOrganization -Name $env.ResourceName -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId -MarketplaceSubscriptionId $env.MarketplaceSubscriptionId -OfferDetailOfferId $env.OfferDetailOfferId -OfferDetailPlanId $env.OfferDetailPlanId -OfferDetailPlanName $env.OfferDetailPlanName -OfferDetailPublisherId $env.OfferDetailPublisherId -OfferDetailTermId $env.OfferDetailTermId -OfferDetailTermUnit $env.OfferDetailTermUnit -PartnerPropertyDescription $env.PartnerPropertyDescription -UserEmailAddress $env.UserEmailAddress -UserFirstName $env.NewUserFirstName -UserLastName $env.UserLastName -UserUpn $env.UserUpn -Tag @{"TestName1" = "TestValue1"}
             }
             catch {
                 # Handle "Status: OK" and "NotFound (404)" as valid responses

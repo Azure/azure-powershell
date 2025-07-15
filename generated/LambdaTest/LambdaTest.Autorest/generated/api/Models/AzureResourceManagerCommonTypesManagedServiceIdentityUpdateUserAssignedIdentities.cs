@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models
     /// The identities assigned to this resource by the user.
     public partial interface IAzureResourceManagerCommonTypesManagedServiceIdentityUpdateUserAssignedIdentities :
         Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IComponents19Kgb1NSchemasAzureResourcemanagerCommontypesManagedserviceidentityupdatePropertiesUserassignedidentitiesAdditionalproperties>
+        Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IUserAssignedIdentity>
     {
 
     }

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Model
         public string Status { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of supported datababase Editions and their capabilities
+        /// Gets or sets the list of supported database Editions and their capabilities
         /// </summary>
         public IList<EditionCapabilityModel> SupportedEditions { get; set; }
     }
