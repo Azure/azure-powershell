@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added new parameter `-ClaimsChallenge` to `Connect-AzAccount` to support claims challenge authentication for MFA.
 * Refined the error message when a cmdlet fails because of policy violations about Multi-Factor Authentication (MFA) to provide more actionable guidance.
 
 ## Version 5.1.1
