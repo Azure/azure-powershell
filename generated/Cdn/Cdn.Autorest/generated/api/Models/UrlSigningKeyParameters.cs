@@ -104,7 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         string SecretSourceId { get; set; }
         /// <summary>Version of the secret to be used</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,

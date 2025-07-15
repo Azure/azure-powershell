@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
@@ -40,18 +39,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 {
     public class AccessTokenCmdletTests
     {
-        private GetAzureRmAccessTokenCommand cmdlet;
         private Mock<IAuthenticationFactory> factoryMock = new Mock<IAuthenticationFactory>();
         private MockCommandRuntime mockedCommandRuntime;
         private IAuthenticationFactory previousFactory = null;
 
         private string tenantId = Guid.NewGuid().ToString();
 
-        public AccessTokenCmdletTests(ITestOutputHelper output)
+        private GetAzureRmAccessTokenCommand CreateCommand()
         {
-            TestExecutionHelpers.SetUpSessionAndProfile();
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-            AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(AuthenticationTelemetry.Name, () => new AuthenticationTelemetry());
             var defaultContext = new AzureContext(
                 new AzureSubscription()
                 {
@@ -70,12 +65,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 });
 
             mockedCommandRuntime = new MockCommandRuntime();
-            cmdlet = new GetAzureRmAccessTokenCommand()
+            var cmdlet = new GetAzureRmAccessTokenCommand()
             {
                 CommandRuntime = mockedCommandRuntime,
                 DefaultProfile = new AzureRmProfile()
             };
             cmdlet.DefaultProfile.DefaultContext = defaultContext;
+            return cmdlet;
+        }
+
+        public AccessTokenCmdletTests(ITestOutputHelper output)
+        {
+            TestExecutionHelpers.SetUpSessionAndProfile();
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(AuthenticationTelemetry.Name, () => new AuthenticationTelemetry());
+
         }
 
         [Fact]
@@ -83,15 +87,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         public void TestGetAccessTokenAsPlainText()
         {
             // Setup
+            var cmdlet = CreateCommand();
             cmdlet.TenantId = tenantId;
             var fakeToken = "eyfaketoken.eyfaketoken";
+            Environment.SetEnvironmentVariable(Constants.AzPsOutputPlainTextAccessToken, bool.TrueString);
 
-            var expected = new PSAccessToken { 
+            var expected = new PSAccessToken
+            {
                 UserId = "faker@contoso.com",
                 TenantId = cmdlet.TenantId,
                 Token = fakeToken
             };
- 
+
             factoryMock.Setup(t => t.Authenticate(
                 It.IsAny<IAzureAccount>(),
                 It.IsAny<IAzureEnvironment>(),
@@ -122,6 +129,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal("Bearer", ((PSAccessToken)outputPipeline.First()).Type);
             Assert.Equal(expected.Token, ((PSAccessToken)outputPipeline.First()).Token);
 
+            Environment.SetEnvironmentVariable(Constants.AzPsOutputPlainTextAccessToken, null);
             AzureSession.Instance.AuthenticationFactory = previousFactory;
         }
 
@@ -130,6 +138,110 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         public void TestGetAccessTokenAsSecureString()
         {
             // Setup
+            var cmdlet = CreateCommand();
+            cmdlet.TenantId = tenantId;
+            var fakeToken = "eyfaketoken.eyfaketoken";
+
+            var expected = new PSSecureAccessToken();
+            expected.UserId = "faker@contoso.com";
+            expected.TenantId = cmdlet.TenantId;
+            expected.Token = fakeToken.ConvertToSecureString();
+
+
+            factoryMock.Setup(t => t.Authenticate(
+                It.IsAny<IAzureAccount>(),
+                It.IsAny<IAzureEnvironment>(),
+                It.IsAny<string>(),
+                It.IsAny<SecureString>(),
+                It.IsAny<string>(),
+                It.IsAny<Action<string>>(),
+                It.IsAny<IDictionary<string, object>>())).Returns(new MockAccessToken
+                {
+                    UserId = expected.UserId,
+                    LoginType = LoginType.OrgId,
+                    AccessToken = fakeToken,
+                    TenantId = expected.TenantId
+                });
+            previousFactory = AzureSession.Instance.AuthenticationFactory;
+            AzureSession.Instance.AuthenticationFactory = factoryMock.Object;
+
+            // Act
+            cmdlet.InvokeBeginProcessing();
+            cmdlet.ExecuteCmdlet();
+            cmdlet.InvokeEndProcessing();
+
+            //Verify
+            Assert.Single(mockedCommandRuntime.OutputPipeline);
+            var outputPipeline = mockedCommandRuntime.OutputPipeline;
+            Assert.Equal(expected.TenantId, ((PSSecureAccessToken)outputPipeline.First()).TenantId);
+            Assert.Equal(expected.UserId, ((PSSecureAccessToken)outputPipeline.First()).UserId);
+            Assert.Equal("Bearer", ((PSSecureAccessToken)outputPipeline.First()).Type);
+            var expectedToken = expected.Token.ConvertToString();
+            var actualToken = ((PSSecureAccessToken)outputPipeline.First()).Token.ConvertToString();
+            Assert.Equal(expectedToken, actualToken);
+
+            AzureSession.Instance.AuthenticationFactory = previousFactory;
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAccessTokenAsSecureStringWhenHasEnvVarAndAsSecureString()
+        {
+            // Setup
+            var cmdlet = CreateCommand();
+            cmdlet.TenantId = tenantId;
+            cmdlet.AsSecureString = true;
+            var fakeToken = "eyfaketoken.eyfaketoken";
+            Environment.SetEnvironmentVariable(Constants.AzPsOutputPlainTextAccessToken, bool.TrueString);
+
+            var expected = new PSSecureAccessToken();
+            expected.UserId = "faker@contoso.com";
+            expected.TenantId = cmdlet.TenantId;
+            expected.Token = fakeToken.ConvertToSecureString();
+
+
+            factoryMock.Setup(t => t.Authenticate(
+                It.IsAny<IAzureAccount>(),
+                It.IsAny<IAzureEnvironment>(),
+                It.IsAny<string>(),
+                It.IsAny<SecureString>(),
+                It.IsAny<string>(),
+                It.IsAny<Action<string>>(),
+                It.IsAny<IDictionary<string, object>>())).Returns(new MockAccessToken
+                {
+                    UserId = expected.UserId,
+                    LoginType = LoginType.OrgId,
+                    AccessToken = fakeToken,
+                    TenantId = expected.TenantId
+                });
+            previousFactory = AzureSession.Instance.AuthenticationFactory;
+            AzureSession.Instance.AuthenticationFactory = factoryMock.Object;
+
+            // Act
+            cmdlet.InvokeBeginProcessing();
+            cmdlet.ExecuteCmdlet();
+            cmdlet.InvokeEndProcessing();
+
+            //Verify
+            Assert.Single(mockedCommandRuntime.OutputPipeline);
+            var outputPipeline = mockedCommandRuntime.OutputPipeline;
+            Assert.Equal(expected.TenantId, ((PSSecureAccessToken)outputPipeline.First()).TenantId);
+            Assert.Equal(expected.UserId, ((PSSecureAccessToken)outputPipeline.First()).UserId);
+            Assert.Equal("Bearer", ((PSSecureAccessToken)outputPipeline.First()).Type);
+            var expectedToken = expected.Token.ConvertToString();
+            var actualToken = ((PSSecureAccessToken)outputPipeline.First()).Token.ConvertToString();
+            Assert.Equal(expectedToken, actualToken);
+
+            Environment.SetEnvironmentVariable(Constants.AzPsOutputPlainTextAccessToken, null);
+            AzureSession.Instance.AuthenticationFactory = previousFactory;
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAccessTokenAsSecureStringWhenHasSecureString()
+        {
+            // Setup
+            var cmdlet = CreateCommand();
             cmdlet.TenantId = tenantId;
             cmdlet.AsSecureString = true;
             var fakeToken = "eyfaketoken.eyfaketoken";

@@ -328,5 +328,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-LoadBalancerInEdgeZone");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestLoadBalancerCRUDEnableConnectionTracking()
+        {
+            TestRunner.RunTestScript("Test-LoadBalancerCRUD-EnableConnectionTracking");
+        }
     }
 }

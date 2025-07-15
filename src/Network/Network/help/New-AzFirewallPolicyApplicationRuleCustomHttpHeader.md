@@ -8,13 +8,14 @@ schema: 2.0.0
 # New-AzFirewallPolicyApplicationRuleCustomHttpHeader
 
 ## SYNOPSIS
-Create a new Azure Firewall Policy Application Rule Custon HTTP Header
+Create a new Azure Firewall Policy Application Rule Custom HTTP Header
 
 ## SYNTAX
 
 ```
 New-AzFirewallPolicyApplicationRuleCustomHttpHeader -HeaderName <String> -HeaderValue <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

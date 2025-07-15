@@ -161,7 +161,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             {
                 return new InvalidCloudFile(shareFileClient.Uri, credentials);
             }
-            if (credentials.IsSAS) // the Uri already contains credentail.
+            if (credentials.IsSAS) // the Uri already contains credential.
             {
                 credentials = null;
             }

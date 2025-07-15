@@ -66,7 +66,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 return;
             }
             {_certificateType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("certificateType"), out var __jsonCertificateType) ? (string)__jsonCertificateType : (string)_certificateType;}
+            {_cipherSuiteSetType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("cipherSuiteSetType"), out var __jsonCipherSuiteSetType) ? (string)__jsonCipherSuiteSetType : (string)_cipherSuiteSetType;}
             {_minimumTlsVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("minimumTlsVersion"), out var __jsonMinimumTlsVersion) ? (string)__jsonMinimumTlsVersion : (string)_minimumTlsVersion;}
+            {_customizedCipherSuiteSet = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("customizedCipherSuiteSet"), out var __jsonCustomizedCipherSuiteSet) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainHttpsCustomizedCipherSuiteSet.FromJson(__jsonCustomizedCipherSuiteSet) : _customizedCipherSuiteSet;}
             {_secret = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("secret"), out var __jsonSecret) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference.FromJson(__jsonSecret) : _secret;}
             AfterFromJson(json);
         }
@@ -103,7 +105,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 return container;
             }
             AddIf( null != (((object)this._certificateType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._certificateType.ToString()) : null, "certificateType" ,container.Add );
+            AddIf( null != (((object)this._cipherSuiteSetType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._cipherSuiteSetType.ToString()) : null, "cipherSuiteSetType" ,container.Add );
             AddIf( null != (((object)this._minimumTlsVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._minimumTlsVersion.ToString()) : null, "minimumTlsVersion" ,container.Add );
+            AddIf( null != this._customizedCipherSuiteSet ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._customizedCipherSuiteSet.ToJson(null,serializationMode) : null, "customizedCipherSuiteSet" ,container.Add );
             AddIf( null != this._secret ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._secret.ToJson(null,serializationMode) : null, "secret" ,container.Add );
             AfterToJson(ref container);
             return container;

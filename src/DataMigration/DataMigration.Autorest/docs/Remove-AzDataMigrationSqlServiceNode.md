@@ -30,7 +30,7 @@ Delete the integration runtime node.
 
 ## EXAMPLES
 
-### Example 1: Remove the specified Intergration Runtime Node for a Sql Migration Service
+### Example 1: Remove the specified Integration Runtime Node for a Sql Migration Service
 ```powershell
 Remove-AzDataMigrationSqlServiceNode -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService" -NodeName "WIN-AKLAB" | Select-Object *
 ```
@@ -41,7 +41,7 @@ Name       Node
 default-ir {}
 ```
 
-This command removes the specified Intergration Runtime Node for the given Sql Migration Service.
+This command removes the specified Integration Runtime Node for the given Sql Migration Service.
 
 ## PARAMETERS
 
@@ -208,7 +208,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDeleteNode
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDeleteNode
 
 ## NOTES
 

@@ -32,8 +32,8 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2024-09-01/afdx.json
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2024-09-01/cdn.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2025-04-15/afdx.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2025-04-15/cdn.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
@@ -42,7 +42,7 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: Cdn
 subject-prefix: $(service-name)
-commit: cf9f241708ed82f2dad218fed3c09ca5fd191311
+commit: 0cdef1ef00cf9020967dc099a67366d5a2c51d29
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -69,7 +69,7 @@ directive:
     - ResponseBasedOriginErrorDetectionParameters
     # Both CDN and AFDX
     - HealthProbeParameters
-  # Generate memory object as parameter of the cmelet.
+  # Generate memory object as parameter of the cmdlet.
   - model-cmdlet:
     - model-name: ResourceReference
       cmdlet-name: New-AzCdnResourceReferenceObject
@@ -224,7 +224,7 @@ directive:
       cmdlet-name: New-AzCdnLoadParametersObject
     - model-name: MigrationEndpointMapping
       cmdlet-name: New-AzCdnMigrationEndpointMappingObject
-    # AFDX profile LogScrubbing, need to rename the memory ojects, not sure how to rename a memory object currently.
+    # AFDX profile LogScrubbing, need to rename the memory objects, not sure how to rename a memory object currently.
     - model-name: ProfileLogScrubbing
       cmdlet-name: New-AzFrontDoorCdnProfileLogScrubbingObject
     - model-name: ProfileScrubbingRules
@@ -278,7 +278,7 @@ directive:
   - where:
       verb: Set
     remove: true
-  # Remove some cmdlets' ViaIdentity which are inconvinient to call
+  # Remove some cmdlets' ViaIdentity which are inconvenient to call
   - where:
       variant: ^CheckViaIdentity$|^CheckViaIdentityExpanded$
       subject: ^NameAvailability$|^EndpointNameAvailability$

@@ -35,8 +35,15 @@ function New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject {
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("CustomerCertificate", "ManagedCertificate", "AzureFirstPartyManagedCertificate")]
         [string]
         $CertificateType,
-        [Parameter(HelpMessage="TLS protocol version that will be used for Https.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("TLS10", "TLS12")]
+        [Parameter(HelpMessage="cipher suite set type that will be used for Https.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Customized", "TLS10_2019", "TLS12_2022", "TLS12_2023")]
+        [string]
+        $CipherSuiteSetType,
+        [Parameter(HelpMessage="Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsCustomizedCipherSuiteSet]
+        $CustomizedCipherSuiteSet,
+        [Parameter(HelpMessage="TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("TLS10", "TLS12", "TLS13")]
         [string]
         $MinimumTlsVersion,
         [Parameter(HelpMessage="Resource reference to the secret. ie. subs/rg/profile/secret.")]
@@ -49,6 +56,12 @@ function New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject {
 
         if ($PSBoundParameters.ContainsKey('CertificateType')) {
             $Object.CertificateType = $CertificateType
+        }
+        if ($PSBoundParameters.ContainsKey('CipherSuiteSetType')) {
+            $Object.CipherSuiteSetType = $CipherSuiteSetType
+        }
+        if ($PSBoundParameters.ContainsKey('CustomizedCipherSuiteSet')) {
+            $Object.CustomizedCipherSuiteSet = $CustomizedCipherSuiteSet
         }
         if ($PSBoundParameters.ContainsKey('MinimumTlsVersion')) {
             $Object.MinimumTlsVersion = $MinimumTlsVersion

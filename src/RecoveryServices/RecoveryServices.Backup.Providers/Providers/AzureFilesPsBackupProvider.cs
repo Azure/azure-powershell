@@ -134,6 +134,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
 
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
+            bool isMUAProtected = true;
+
             // do validations
             ValidateAzureFileShareDisableProtectionRequest(itemBase);
 
@@ -156,7 +159,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 protectedItemUri,
                 serviceClientRequest,
                 vaultName: vaultName,
-                resourceGroupName: resourceGroupName);            
+                resourceGroupName: resourceGroupName,
+                auxiliaryAccessToken,
+                isMUAProtected,
+                true);
         }
 
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
@@ -636,7 +642,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Logger.Instance.WriteDebug("Storage account was already registered");
             }
 
-            //get unregistered storage account, trigger dicovery if not found.
+            //get unregistered storage account, trigger discovery if not found.
             bool isBreak = false;
             bool isRefreshed = false; // have we triggered discovery yet
             while (!isRegistered && !isBreak )
@@ -1065,7 +1071,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ProtectionPolicyResource oldPolicy = null;
             ProtectionPolicyResource newPolicy = null;
             
-            if (parameterSetName != null && parameterSetName.Contains("Modify") && policy != null && policy.Id != null)
+            if (parameterSetName != null && parameterSetName.Contains("Modify") && policy != null && policy.Id != null && item.PolicyId != null)
             {
                 Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.PolicyId);
                 string oldPolicyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, item.PolicyId);

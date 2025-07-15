@@ -17,15 +17,13 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 {
-    public class PSVerifierWorkspaceBaseResource : PSResourceId
+    public class PSVerifierWorkspaceBaseResource : PSChildResource
     {
-        [Ps1Xml(Label = "Name", Target = ViewControl.Table, Position = 2)]
-        public string Name { get; set; }
-
+        
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 0)]
         public string ResourceGroupName { get; set; }
 
-        [Ps1Xml(Label = "NetworkManagerName", Target = ViewControl.Table, Position = 1)]
+        [Ps1Xml(Label = "NetworkManagerName", Target = ViewControl.Table, Position = 3)]
         public string NetworkManagerName { get; set; }
 
         public string Type { get; set; }

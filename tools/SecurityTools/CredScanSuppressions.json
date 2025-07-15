@@ -790,6 +790,10 @@
       "_justification": "Legitimate session record, Key will be revoked after test"
     },
     {
+      "file": "src\\DataMigration\\DataMigration.Autorest\\test\\Remove-AzDataMigrationToSqlDb.Recording.json",
+      "_justification": "Legitimate session record, Resources will be deleted after test"
+    },
+    {
       "file": "src\\RedisCache\\RedisCache\\help\\Export-AzRedisCache.md",
       "_justification": "Example data export"
     },
@@ -1364,6 +1368,22 @@
     {
       "file": "src\\DataBox\\DataBox.Autorest\\test\\New-AzDataBoxJob.Recording.json",
       "_justification": "Recording of the test New-AzDataBoxJob.Tests.ps1, which is also a part of the cred scan supression."
+    },
+    {
+      "file": "src\\EventHub\\EventHub.Autorest\\test\\New-AzEventHubKey.Recording.json",
+      "_justification": "False positive, there are no cred in this file."
+    },
+    {
+      "file": "src\\EventHub\\EventHub.Autorest\\test\\env.json",
+      "_justification": "False positive, there are no cred in this file."
+    },
+    {
+      "file": "src\\EventHub\\EventHub.Autorest\\test\\Get-AzEventHubKey.Recording.json",
+      "_justification": "False positive, there are no cred in this file."
+    },
+    {
+      "file": "src\\EventHub\\EventHub.Autorest\\test\\New-AzEventHubGeoDRConfiguration.Recording.json",
+      "_justification": "False positive, there are no cred in this file."
     }
   ]
 }

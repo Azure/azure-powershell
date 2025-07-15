@@ -15,13 +15,15 @@ Restarts a virtual machine instance in the Network Virtual Appliance or all the 
 ### ResourceNameParameterSet (Default)
 ```
 Restart-AzNetworkVirtualAppliance -ResourceGroupName <String> -Name <String> [-InstanceId <String[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Restart-AzNetworkVirtualAppliance [-InstanceId <String[]>] -ResourceId <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

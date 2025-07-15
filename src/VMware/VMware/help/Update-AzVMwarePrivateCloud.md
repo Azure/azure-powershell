@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwarePrivateCloud
 
 ## SYNOPSIS
-update a PrivateCloud
+Update a PrivateCloud
 
 ## SYNTAX
 
@@ -21,8 +21,8 @@ Update-AzVMwarePrivateCloud -Name <String> -ResourceGroupName <String> [-Subscri
  [-KeyVaultPropertyKeyVersion <String>] [-ManagementClusterHost <String[]>] [-ManagementClusterSize <Int32>]
  [-ManagementClusterVsanDatastoreName <String>] [-NetworkBlock <String>] [-NsxtPassword <SecureString>]
  [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
- [-Tag <Hashtable>] [-VcenterPassword <SecureString>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-VcenterPassword <SecureString>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -34,12 +34,12 @@ Update-AzVMwarePrivateCloud -InputObject <IVMwareIdentity> [-DnsZoneType <String
  [-ManagementClusterHost <String[]>] [-ManagementClusterSize <Int32>]
  [-ManagementClusterVsanDatastoreName <String>] [-NetworkBlock <String>] [-NsxtPassword <SecureString>]
  [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
- [-Tag <Hashtable>] [-VcenterPassword <SecureString>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-VcenterPassword <SecureString>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update a PrivateCloud
+Update a PrivateCloud
 
 ## EXAMPLES
 
@@ -149,7 +149,7 @@ Accept wildcard characters: False
 
 ### -ExtendedNetworkBlock
 Array of additional networks noncontiguous with networkBlock.
-Networks must beunique and non-overlapping across VNet in your subscription, on-premise, andthis privateCloud networkBlock attribute.
+Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute.
 Make sure the CIDR format conforms to(A.B.C.D/X).
 
 ```yaml
@@ -315,7 +315,7 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkBlock
-The block of addresses should be unique across VNet in your subscription aswell as on-premise.
+The block of addresses should be unique across VNet in your subscription as well as on-premise.
 Make sure the CIDR format is conformed to (A.B.C.D/X) whereA,B,C,D are between 0 and 255, and X is between 0 and 22
 
 ```yaml
@@ -492,6 +492,21 @@ Optionally, set the vCenter admin password when the private cloud is created
 
 ```yaml
 Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+The availability zones.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

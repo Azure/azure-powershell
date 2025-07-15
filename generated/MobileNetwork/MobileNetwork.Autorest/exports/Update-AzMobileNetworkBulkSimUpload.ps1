@@ -28,7 +28,7 @@ Update-AzMobileNetworkBulkSimUpload -ResourceGroupName azps_test_group -SimGroup
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAsyncOperationStatus
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAsyncOperationStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -52,14 +52,14 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
   [VersionName <String>]: The name of the packet core control plane version.
 
 SIM <ISimNameAndProperties[]>: A list of SIMs to upload.
-  InternationalMobileSubscriberIdentity <String>: The international mobile subscriber identity (IMSI) for the SIM.
   Name <String>: The name of the SIM.
   [AuthenticationKey <String>]: The Ki value for the SIM.
   [DeviceType <String>]: An optional free-form text field that can be used to record the device type this SIM is associated with, for example 'Video camera'. The Azure portal allows SIMs to be grouped and filtered based on this value.
   [IntegratedCircuitCardIdentifier <String>]: The integrated circuit card ID (ICCID) for the SIM.
+  [InternationalMobileSubscriberIdentity <String>]: The international mobile subscriber identity (IMSI) for the SIM.
   [OperatorKeyCode <String>]: The Opc value for the SIM.
   [SimPolicyId <String>]: SIM policy resource ID.
-  [StaticIPConfiguration <ISimStaticIPProperties[]>]: A list of static IP addresses assigned to this SIM. Each address is assigned at a defined network scope, made up of {attached data network, slice}.
+  [StaticIPConfiguration <List<ISimStaticIPProperties>>]: A list of static IP addresses assigned to this SIM. Each address is assigned at a defined network scope, made up of {attached data network, slice}.
     [AttachedDataNetworkId <String>]: Attached data network resource ID.
     [SlouseId <String>]: Slice resource ID.
     [StaticIPIpv4Address <String>]: The IPv4 address assigned to the SIM at this network scope. This address must be in the userEquipmentStaticAddressPoolPrefix defined in the attached data network.
@@ -67,10 +67,12 @@ SIM <ISimNameAndProperties[]>: A list of SIMs to upload.
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworkbulksimupload
 #>
 function Update-AzMobileNetworkBulkSimUpload {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAsyncOperationStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAsyncOperationStatus])]
 [CmdletBinding(DefaultParameterSetName='BulkViaIdentityExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='BulkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -78,12 +80,16 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='BulkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the SIM Group.
     ${SimGroupName},
 
     [Parameter(ParameterSetName='BulkExpanded')]
+    [Parameter(ParameterSetName='BulkViaJsonFilePath')]
+    [Parameter(ParameterSetName='BulkViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -94,16 +100,27 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='BulkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaIdentityExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimNameAndProperties[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimNameAndProperties[]]
     # A list of SIMs to upload.
-    # To construct, see NOTES section for SIM properties and create a hash table.
     ${Sim},
+
+    [Parameter(ParameterSetName='BulkViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Bulk operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='BulkViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Bulk operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -173,6 +190,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -194,10 +220,10 @@ begin {
         $mapping = @{
             BulkExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkBulkSimUpload_BulkExpanded';
             BulkViaIdentityExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkBulkSimUpload_BulkViaIdentityExpanded';
+            BulkViaJsonFilePath = 'Az.MobileNetwork.private\Update-AzMobileNetworkBulkSimUpload_BulkViaJsonFilePath';
+            BulkViaJsonString = 'Az.MobileNetwork.private\Update-AzMobileNetworkBulkSimUpload_BulkViaJsonString';
         }
-        if (('BulkExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('BulkExpanded', 'BulkViaJsonFilePath', 'BulkViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -211,6 +237,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

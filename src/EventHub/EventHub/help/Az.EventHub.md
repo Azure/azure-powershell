@@ -69,7 +69,7 @@ Create an ApplicationGroup for a Namespace.
 Creates an EventHub Authorization Rule
 
 ### [New-AzEventHubAuthorizationRuleSASToken](New-AzEventHubAuthorizationRuleSASToken.md)
-Generates a SAS token for Azure eventhub authorization rule of namespace/eventhub. 
+Generates a SAS token for Azure eventhub authorization rule of namespace/eventhub.
 
 ### [New-AzEventHubCluster](New-AzEventHubCluster.md)
 Create an instance of an Event Hubs Cluster.
@@ -88,6 +88,9 @@ Regenerates an EventHub SAS key
 
 ### [New-AzEventHubKeyVaultPropertiesObject](New-AzEventHubKeyVaultPropertiesObject.md)
 Create an in-memory object for KeyVaultProperties.
+
+### [New-AzEventHubLocationsNameObject](New-AzEventHubLocationsNameObject.md)
+Create an in-memory object for NamespaceReplicaLocation.
 
 ### [New-AzEventHubNamespace](New-AzEventHubNamespace.md)
 Creates an EventHub Namespace
@@ -111,8 +114,7 @@ Deletes an ApplicationGroup for a Namespace.
 Removes an EventHub Authorization Rule
 
 ### [Remove-AzEventHubCluster](Remove-AzEventHubCluster.md)
-Deletes an existing Event Hubs Cluster.
-This operation is idempotent.
+Deletes an existing Event Hubs Cluster. This operation is idempotent.
 
 ### [Remove-AzEventHubConsumerGroup](Remove-AzEventHubConsumerGroup.md)
 Deletes a consumer group from the specified Event Hub and resource group.
@@ -121,12 +123,10 @@ Deletes a consumer group from the specified Event Hub and resource group.
 Deletes an Alias(Disaster Recovery configuration)
 
 ### [Remove-AzEventHubNamespace](Remove-AzEventHubNamespace.md)
-Deletes an existing namespace.
-This operation also removes all associated resources under the namespace.
+Deletes an existing namespace. This operation also removes all associated resources under the namespace.
 
 ### [Remove-AzEventHubPrivateEndpointConnection](Remove-AzEventHubPrivateEndpointConnection.md)
-Deletes an existing namespace.
-This operation also removes all associated resources under the namespace.
+Deletes an existing namespace. This operation also removes all associated resources under the namespace.
 
 ### [Remove-AzEventHubSchemaGroup](Remove-AzEventHubSchemaGroup.md)
 Deletes an EventHub schema group.
@@ -157,6 +157,9 @@ Updates an EventHub Namespace
 
 ### [Set-AzEventHubNetworkRuleSet](Set-AzEventHubNetworkRuleSet.md)
 Sets an EventHub Namespace Network Rule Set
+
+### [Start-AzEventHubNamespaceFailOver](Start-AzEventHubNamespaceFailOver.md)
+Triggers EventHub Namespace Failover
 
 ### [Test-AzEventHubName](Test-AzEventHubName.md)
 Checks availability of a namespace name or disaster recovery alias.

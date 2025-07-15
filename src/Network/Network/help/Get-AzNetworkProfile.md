@@ -32,7 +32,8 @@ Get-AzNetworkProfile -ResourceId <String> -ExpandResource <String> [-DefaultProf
 
 ### GetByResourceIdNoExpandParameterSet
 ```
-Get-AzNetworkProfile -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetworkProfile -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

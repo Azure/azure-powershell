@@ -76,11 +76,11 @@ The final command shows the local user properties.
 ```powershell
 Set-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1 -HomeDirectory "/" -HasSharedKey $true -HasSshKey $true -HasSshPassword $true `
             -SshAuthorizedKey (@{
-                Description="sshpulickey name1";
+                Description="sshpublickey name1";
                 Key="ssh-rsa base64encodedkey=";                
             },
             @{
-                Description="sshpulickey name2";
+                Description="sshpublickey name2";
                 Key="ssh-rsa otherbase64encodedkey="; 
             }) `
             -PermissionScope (@{

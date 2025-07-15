@@ -80,9 +80,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).CertificateType = (string) content.GetValueForProperty("CertificateType",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).CertificateType, global::System.Convert.ToString);
             }
+            if (content.Contains("CipherSuiteSetType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).CipherSuiteSetType = (string) content.GetValueForProperty("CipherSuiteSetType",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).CipherSuiteSetType, global::System.Convert.ToString);
+            }
             if (content.Contains("MinimumTlsVersion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).MinimumTlsVersion = (string) content.GetValueForProperty("MinimumTlsVersion",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).MinimumTlsVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomizedCipherSuiteSet"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).CustomizedCipherSuiteSet = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsCustomizedCipherSuiteSet) content.GetValueForProperty("CustomizedCipherSuiteSet",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).CustomizedCipherSuiteSet, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainHttpsCustomizedCipherSuiteSetTypeConverter.ConvertFrom);
             }
             if (content.Contains("Secret"))
             {
@@ -109,9 +117,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).CertificateType = (string) content.GetValueForProperty("CertificateType",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).CertificateType, global::System.Convert.ToString);
             }
+            if (content.Contains("CipherSuiteSetType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).CipherSuiteSetType = (string) content.GetValueForProperty("CipherSuiteSetType",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).CipherSuiteSetType, global::System.Convert.ToString);
+            }
             if (content.Contains("MinimumTlsVersion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).MinimumTlsVersion = (string) content.GetValueForProperty("MinimumTlsVersion",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).MinimumTlsVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomizedCipherSuiteSet"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).CustomizedCipherSuiteSet = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsCustomizedCipherSuiteSet) content.GetValueForProperty("CustomizedCipherSuiteSet",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).CustomizedCipherSuiteSet, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainHttpsCustomizedCipherSuiteSetTypeConverter.ConvertFrom);
             }
             if (content.Contains("Secret"))
             {

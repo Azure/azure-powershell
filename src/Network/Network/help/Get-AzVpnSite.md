@@ -16,7 +16,8 @@ This is an RM representation of customer branches that are uploaded to Azure for
 
 ### ListBySubscriptionId (Default)
 ```
-Get-AzVpnSite [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVpnSite [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ListByResourceGroupName

@@ -5942,6 +5942,10 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>EnableConnectionTracking</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -5986,12 +5990,42 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+                <PropertyName>EnableConnectionTracking</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
+    </View>
+	<View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSLoadBalancerHealthPerRule</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSLoadBalancerHealthPerRule</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>   
+			  <ListItem>
+                <Label>Up</Label>
+                <PropertyName>Up</PropertyName>
+              </ListItem>  
+			  <ListItem>
+                <Label>Down</Label>
+                <PropertyName>Down</PropertyName>
+              </ListItem> 
+			  <ListItem>
+                <Label>LoadBalancerBackendAddresses</Label>
+                <PropertyName>LoadBalancerBackendAddressesText</PropertyName>
+              </ListItem>  
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
     </View>
     <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSLoadBalancerBackendAddress</Name>
@@ -6260,9 +6294,13 @@
             <Alignment>Left</Alignment>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
+		  <TableColumnHeader>
             <Alignment>Left</Alignment>
             <Label>Sku Name</Label>
+          </TableColumnHeader>
+		  <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>SourceVirtualNetwork</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -6288,9 +6326,13 @@
                 <Alignment>Left</Alignment>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
+			  <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>$_.Sku.Name</ScriptBlock>
+				  <ScriptBlock>$_.Sku.Name</ScriptBlock>
+              </TableColumnItem>
+			  <TableColumnItem>
+                <Alignment>Left</Alignment>
+				  <PropertyName>SourceVirtualNetworkText</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -7161,6 +7203,112 @@
         </TableRowEntries>
       </TableControl>
     </View>
+	  <View>
+		  <Name>Microsoft.Azure.Commands.Network.Models.PSNetworkVirtualAppliance</Name>
+		  <ViewSelectedBy>
+			  <TypeName>Microsoft.Azure.Commands.Network.Models.PSNetworkVirtualAppliance</TypeName>
+		  </ViewSelectedBy>
+		  <ListControl>
+			  <ListEntries>
+				  <ListEntry>
+					  <ListItems>
+						  <ListItem>
+							  <Label>BootStrapConfigurationBlobs</Label>
+							  <PropertyName>BootStrapConfigurationBlobs</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>VirtualHub</Label>
+							  <PropertyName>VirtualHubText</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>CloudInitConfigurationBlobs</Label>
+							  <PropertyName>CloudInitConfigurationBlobs</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>CloudInitConfiguration</Label>
+							  <PropertyName>CloudInitConfiguration</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>VirtualApplianceAsn</Label>
+							  <PropertyName>VirtualApplianceAsn</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>VirtualApplianceNics</Label>
+							  <PropertyName>VirtualApplianceNics</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>VirtualApplianceConnections</Label>
+							  <PropertyName>VirtualApplianceConnections</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>VirtualApplianceSites</Label>
+							  <PropertyName>VirtualApplianceSites</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>ProvisioningState</Label>
+							  <PropertyName>ProvisioningState</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>Identity</Label>
+							  <PropertyName>Identity</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>NvaSku</Label>
+							  <PropertyName>NvaSku</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>AdditionalNics</Label>
+							  <PropertyName>AdditionalNics</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>Delegation</Label>
+							  <PropertyName>DelegationText</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>PartnerManagedResource</Label>
+							  <PropertyName>PartnerManagedResourceText</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>InternetIngressPublicIps</Label>
+							  <PropertyName>InternetIngressPublicIps</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>NetworkProfile</Label>
+							  <PropertyName>NetworkProfile</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>ResourceGroupName</Label>
+							  <PropertyName>ResourceGroupName</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>Location</Label>
+							  <PropertyName>Location</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>ResourceGuid</Label>
+							  <PropertyName>ResourceGuid</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>Name</Label>
+							  <PropertyName>Name</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>Id</Label>
+							  <PropertyName>Id</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>Type</Label>
+							  <PropertyName>Type</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>Tag</Label>
+							  <PropertyName>Tag</PropertyName>
+						  </ListItem>
+					  </ListItems>
+				  </ListEntry>
+			  </ListEntries>
+		  </ListControl>
+	  </View>
 
 	  <View>
 		  <Name>Microsoft.Azure.Commands.Network.Models.PSNetworkVirtualApplianceConnection</Name>
@@ -8695,6 +8843,10 @@
             <Alignment>Left</Alignment>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Sku</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -8730,6 +8882,10 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>SkuText</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -8779,6 +8935,14 @@
             <Alignment>Left</Alignment>
             <Label>Location</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IpPrefix</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Sku</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -8794,6 +8958,14 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+			  <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>IPPrefix</PropertyName>
+              </TableColumnItem>
+			  <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>SkuText</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -10187,6 +10359,10 @@
             <Alignment>Left</Alignment>
             <Label>EnableDdosProtection</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>DefaultPublicNatGateway</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -10210,6 +10386,10 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>EnableDdosProtection</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>DefaultPublicNatGatewayText</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -10357,7 +10537,7 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>$_.NatGateway.Name</ScriptBlock>
+                <PropertyName>NatGatewayText</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>

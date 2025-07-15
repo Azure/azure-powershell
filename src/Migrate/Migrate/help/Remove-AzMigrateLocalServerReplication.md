@@ -173,7 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetObjectID
-Specifies the replcating server for which the replication needs to be disabled.
+Specifies the replicating server for which the replication needs to be disabled.
 The ID should be retrieved using the Get-AzMigrateLocalServerReplication cmdlet.
 
 ```yaml

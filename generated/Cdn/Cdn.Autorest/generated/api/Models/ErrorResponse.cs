@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Backing field for <see cref="Error" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetail _error;
 
-        /// <summary>The error object.</summary>
+        /// <summary>The error detail.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetail Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ErrorDetail()); set => this._error = value; }
 
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         string Code { get; set; }
         /// <summary>The error details.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetail> Detail { get; set; }
-        /// <summary>The error object.</summary>
+        /// <summary>The error detail.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetail Error { get; set; }
         /// <summary>The error message.</summary>
         string Message { get; set; }

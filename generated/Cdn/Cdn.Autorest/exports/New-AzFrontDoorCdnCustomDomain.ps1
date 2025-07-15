@@ -45,7 +45,11 @@ CUSTOMDOMAIN <IAfdDomain>: Friendly domain name mapping to the endpoint hostname
   [PropertiesPreValidatedCustomDomainResourceIdId <String>]: Resource ID.
   [TlsSetting <IAfdDomainHttpsParameters>]: The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
     CertificateType <String>: Defines the source of the SSL certificate.
-    [MinimumTlsVersion <String>]: TLS protocol version that will be used for Https
+    [CipherSuiteSetType <String>]: cipher suite set type that will be used for Https
+    [CustomizedCipherSuiteSet <IAfdDomainHttpsCustomizedCipherSuiteSet>]: Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.
+      [CipherSuiteSetForTls12 <List<String>>]: Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2.
+      [CipherSuiteSetForTls13 <List<String>>]: Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3.
+    [MinimumTlsVersion <String>]: TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
     [Secret <IResourceReference>]: Resource reference to the secret. ie. subs/rg/profile/secret
       [Id <String>]: Resource ID.
 
@@ -66,7 +70,11 @@ PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
 
 TLSSETTING <IAfdDomainHttpsParameters>: The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
   CertificateType <String>: Defines the source of the SSL certificate.
-  [MinimumTlsVersion <String>]: TLS protocol version that will be used for Https
+  [CipherSuiteSetType <String>]: cipher suite set type that will be used for Https
+  [CustomizedCipherSuiteSet <IAfdDomainHttpsCustomizedCipherSuiteSet>]: Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.
+    [CipherSuiteSetForTls12 <List<String>>]: Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2.
+    [CipherSuiteSetForTls13 <List<String>>]: Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3.
+  [MinimumTlsVersion <String>]: TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
   [Secret <IResourceReference>]: Resource reference to the secret. ie. subs/rg/profile/secret
     [Id <String>]: Resource ID.
 .Link
@@ -87,7 +95,7 @@ param(
     [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+    # Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
     ${ProfileName},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]

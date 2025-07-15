@@ -36,7 +36,10 @@ Get-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva
 
 ```output
 BootStrapConfigurationBlobs : {}
-VirtualHub                  : Microsoft.Azure.Commands.Network.Models.PSResourceId
+VirtualHub                  : {
+                                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/pr
+                              oviders/Microsoft.Network/virtualHubs/hubtest"
+                              }
 CloudInitConfigurationBlobs : {}
 CloudInitConfiguration      : echo hi
 VirtualApplianceAsn         : 1270
@@ -47,6 +50,8 @@ Identity                    :
 NvaSku                      : Microsoft.Azure.Commands.Network.Models.PSVirtualApplianceSkuProperties
 ResourceGroupName           : testrg
 Location                    : eastus2
+Delegation                  : {}
+PartnerManagedResource      : {}
 ResourceGuid                :
 Type                        : Microsoft.Network/NetworkVirtualAppliances
 Tag                         :

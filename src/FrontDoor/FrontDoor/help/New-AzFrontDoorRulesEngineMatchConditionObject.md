@@ -37,7 +37,7 @@ NegateCondition          : False
 Transform                : {Lowercase, Uppercase}
 ```
 
-Greate a new PSRulesEngineMatchCondition object.
+Create a new PSRulesEngineMatchCondition object.
 
 ## PARAMETERS
 

@@ -17,21 +17,24 @@ Creates a new VpnServerConfigurationPolicyGroup that can be attached to P2SVpnGa
 New-AzVpnServerConfigurationPolicyGroup -ResourceGroupName <String> -ServerConfigurationName <String>
  -Name <String> -Priority <Int32> [-DefaultPolicyGroup]
  [-PolicyMember <PSVpnServerConfigurationPolicyGroupMember[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVpnServerConfigurationObject
 ```
 New-AzVpnServerConfigurationPolicyGroup -ServerConfigurationObject <PSVpnServerConfiguration> -Priority <Int32>
  [-DefaultPolicyGroup] [-PolicyMember <PSVpnServerConfigurationPolicyGroupMember[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVpnServerConfigurationResourceId
 ```
 New-AzVpnServerConfigurationPolicyGroup -ServerConfigurationResourceId <String> -Priority <Int32>
  [-DefaultPolicyGroup] [-PolicyMember <PSVpnServerConfigurationPolicyGroupMember[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +44,6 @@ The **New-AzVpnServerConfigurationPolicyGroup** cmdlet enables you to create a n
 
 ### Example 1
 ```powershell
-
 # Create a PolicyMember1 Object
 $policyGroupMember1 = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVpnServerConfigurationPolicyGroupMember
 $policyGroupMember1.Name = "policyGroupMember1"
@@ -99,7 +101,7 @@ Creates a new VpnServerConfiguration PolicyGroup.
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -114,7 +116,7 @@ Accept wildcard characters: False
 Flag to set this as Default Policy Group on this VpnServerConfiguration.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -129,7 +131,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -144,7 +146,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVpnServerConfigurationName
 Aliases: ResourceName, VpnServerConfigurationPolicyGroupName
 
@@ -159,7 +161,7 @@ Accept wildcard characters: False
 The list of Policy members.
 
 ```yaml
-Type: PSVpnServerConfigurationPolicyGroupMember[]
+Type: Microsoft.Azure.Commands.Network.Models.PSVpnServerConfigurationPolicyGroupMember[]
 Parameter Sets: (All)
 Aliases:
 
@@ -175,7 +177,7 @@ The Priority of the policy group.
 Priority should be in consecutive orders.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -190,7 +192,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVpnServerConfigurationName
 Aliases:
 
@@ -205,7 +207,7 @@ Accept wildcard characters: False
 The VpnServerConfiguration name this PolicyGroup is linked to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVpnServerConfigurationName
 Aliases: ParentVpnServerConfigurationName, VpnServerConfigurationName
 
@@ -220,7 +222,7 @@ Accept wildcard characters: False
 The VpnServerConfiguration object this PolicyGroup is linked to.
 
 ```yaml
-Type: PSVpnServerConfiguration
+Type: Microsoft.Azure.Commands.Network.Models.PSVpnServerConfiguration
 Parameter Sets: ByVpnServerConfigurationObject
 Aliases: ParentVpnServerConfiguration, VpnServerConfiguration
 
@@ -235,7 +237,7 @@ Accept wildcard characters: False
 The id of VpnServerConfiguration object this PolicyGroup is linked to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVpnServerConfigurationResourceId
 Aliases: ParentVpnServerConfigurationId, VpnServerConfigurationId
 
@@ -250,7 +252,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -266,7 +268,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -297,3 +299,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzRoutingConfiguration](New-AzRoutingConfiguration.md)

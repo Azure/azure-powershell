@@ -16,14 +16,16 @@ Updates the backend pool on a loadbalancer
 ```
 Set-AzLoadBalancerBackendAddressPool -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
  -LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]> [-TunnelInterface <PSTunnelInterface[]>] [-Force]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByParentObjectParameterSet
 ```
 Set-AzLoadBalancerBackendAddressPool -Name <String> -LoadBalancer <PSLoadBalancer>
  -LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]> [-TunnelInterface <PSTunnelInterface[]>] [-Force]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
@@ -37,7 +39,8 @@ Set-AzLoadBalancerBackendAddressPool -InputObject <PSBackendAddressPool>
 ```
 Set-AzLoadBalancerBackendAddressPool -LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>
  -ResourceId <String> [-TunnelInterface <PSTunnelInterface[]>] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

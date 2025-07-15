@@ -15,21 +15,22 @@ Test out the connection to the database server
 ### Test (Default)
 ```
 Test-AzPostgreSqlFlexibleServerConnect -Name <String> -ResourceGroupName <String> [-DatabaseName <String>]
- -AdministratorLoginPassword <SecureString> [-AdministratorUserName <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ -AdministratorLoginPassword <SecureString> [-Timeout <Int32>] [-AdministratorUserName <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### TestAndQuery
 ```
 Test-AzPostgreSqlFlexibleServerConnect -Name <String> -ResourceGroupName <String> [-DatabaseName <String>]
- -QueryText <String> -AdministratorLoginPassword <SecureString> [-AdministratorUserName <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -QueryText <String> -AdministratorLoginPassword <SecureString> [-Timeout <Int32>]
+ [-AdministratorUserName <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### TestViaIdentityAndQuery
 ```
 Test-AzPostgreSqlFlexibleServerConnect [-DatabaseName <String>] -QueryText <String>
- -AdministratorLoginPassword <SecureString> [-AdministratorUserName <String>]
+ -AdministratorLoginPassword <SecureString> [-Timeout <Int32>] [-AdministratorUserName <String>]
  -InputObject <IPostgreSqlIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -37,8 +38,8 @@ Test-AzPostgreSqlFlexibleServerConnect [-DatabaseName <String>] -QueryText <Stri
 ### TestViaIdentity
 ```
 Test-AzPostgreSqlFlexibleServerConnect [-DatabaseName <String>] -AdministratorLoginPassword <SecureString>
- [-AdministratorUserName <String>] -InputObject <IPostgreSqlIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-Timeout <Int32>] [-AdministratorUserName <String>] -InputObject <IPostgreSqlIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,7 +49,7 @@ Test out the connection to the database server
 
 ### Example 1: Test connection by name
 ```powershell
-$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$password = ConvertTo-SecureString <YourPassword> -AsPlainText
 Test-AzPostgreSqlFlexibleServerConnect -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -AdministratorLoginPassword $password
 ```
 
@@ -60,7 +61,7 @@ Test connection by the resource group and the server name
 
 ### Example 2: Test connection by identity
 ```powershell
-$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$password = ConvertTo-SecureString <YourPassword> -AsPlainText
 Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test | Test-AzPostgreSqlFlexibleServerConnect -AdministratorLoginPassword $password
 ```
 
@@ -72,7 +73,7 @@ Test connection by the identity
 
 ### Example 3: Test query by name
 ```powershell
-$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$password = ConvertTo-SecureString <YourPassword> -AsPlainText
 Test-AzPostgreSqlFlexibleServerConnect -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -AdministratorLoginPassword $password -QueryText "SELECT * FROM test"
 ```
 
@@ -221,6 +222,22 @@ Parameter Sets: Test, TestAndQuery
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Timeout
+The timeout in seconds for query execution.
+Valid range is 1-31536000 seconds.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

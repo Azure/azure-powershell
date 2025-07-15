@@ -27,12 +27,12 @@ New-AzServiceLinkerSecretAuthInfoObject -Name user -SecretKeyVaultUri "https://s
 New-AzServiceLinkerSecretAuthInfoObject -Name user -SecretNameInKeyVault test-secret
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.SecretAuthInfo
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.SecretAuthInfo
 .Link
 https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkersecretauthinfoobject
 #>
 function New-AzServiceLinkerSecretAuthInfoObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.SecretAuthInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.SecretAuthInfo])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -43,9 +43,8 @@ param(
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ISecretInfoBase]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ISecretInfoBase]
     # Password or key vault secret for secret auth.
-    # To construct, see NOTES section for SECRETINFO properties and create a hash table.
     ${SecretInfo},
 
     [Parameter()]
@@ -64,15 +63,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
     [System.String]
     # The name of secret in keyvault refenced by -SecretStoreKeyVaultId.
-    ${SecretNameInKeyVault},
-
-    [Parameter(DontShow)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.DefaultInfo(Script='"secret"')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType]
-    # The authentication type.
-    ${AuthType}
+    ${SecretNameInKeyVault}
 )
 
 begin {
@@ -82,6 +73,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -103,9 +97,6 @@ begin {
         $mapping = @{
             __AllParameterSets = 'Az.ServiceLinker.custom\New-AzServiceLinkerSecretAuthInfoObject';
         }
-        if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('AuthType')) {
-            $PSBoundParameters['AuthType'] = "secret"
-        }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
@@ -113,6 +104,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

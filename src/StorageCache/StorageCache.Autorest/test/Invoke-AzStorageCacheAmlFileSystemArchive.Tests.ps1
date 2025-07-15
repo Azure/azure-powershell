@@ -19,6 +19,14 @@ Describe 'Invoke-AzStorageCacheAmlFileSystemArchive' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'ArchiveViaJsonString' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'ArchiveViaJsonFilePath' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'ArchiveViaIdentityExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

@@ -87,5 +87,17 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// for all volumes under the subscription, null equals false
         /// </summary>
         public bool? DisableShowmount {get; set;}
+
+        /// <summary>
+        /// Gets or sets NfsV4IdDomain 
+        /// Shows the status of NfsV4IdDomain
+        /// </summary>
+        public string NfsV4IdDomain  { get; set; }
+
+        /// <summary>
+        /// Gets or sets MultiAdStatus 
+        /// Shows the status of MultiAdStatus
+        /// </summary>
+        public string MultiAdStatus { get; set; }
     }
 }

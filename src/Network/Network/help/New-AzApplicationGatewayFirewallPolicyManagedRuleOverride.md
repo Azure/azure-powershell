@@ -14,7 +14,8 @@ Creates a managedRuleOverride entry for RuleGroupOverrideGroup entry.
 
 ```
 New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId <String> [-State <String>] [-Action <String>]
- [-Sensitivity <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Sensitivity <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

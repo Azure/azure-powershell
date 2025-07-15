@@ -15,7 +15,8 @@ Creates a network manager management group connection.
 ```
 New-AzNetworkManagerManagementGroupConnection -ManagementGroupId <String> -Name <String>
  -NetworkManagerId <String> [-Description <String>] [-AsJob] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

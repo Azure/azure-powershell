@@ -22,7 +22,8 @@ New-AzPrivateLinkServiceConnection -Name <String> -PrivateLinkService <PSPrivate
 ### SetByResourceId
 ```
 New-AzPrivateLinkServiceConnection -Name <String> -PrivateLinkServiceId <String> [-GroupId <String[]>]
- [-RequestMessage <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-RequestMessage <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

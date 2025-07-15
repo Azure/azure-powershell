@@ -20,10 +20,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string CertificateType { get => this._certificateType; set => this._certificateType = value; }
 
+        /// <summary>Backing field for <see cref="CipherSuiteSetType" /> property.</summary>
+        private string _cipherSuiteSetType;
+
+        /// <summary>cipher suite set type that will be used for Https</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string CipherSuiteSetType { get => this._cipherSuiteSetType; set => this._cipherSuiteSetType = value; }
+
+        /// <summary>Backing field for <see cref="CustomizedCipherSuiteSet" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsCustomizedCipherSuiteSet _customizedCipherSuiteSet;
+
+        /// <summary>
+        /// Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsCustomizedCipherSuiteSet CustomizedCipherSuiteSet { get => (this._customizedCipherSuiteSet = this._customizedCipherSuiteSet ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainHttpsCustomizedCipherSuiteSet()); set => this._customizedCipherSuiteSet = value; }
+
         /// <summary>Backing field for <see cref="MinimumTlsVersion" /> property.</summary>
         private string _minimumTlsVersion;
 
-        /// <summary>TLS protocol version that will be used for Https</summary>
+        /// <summary>
+        /// TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string MinimumTlsVersion { get => this._minimumTlsVersion; set => this._minimumTlsVersion = value; }
 
@@ -56,17 +74,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("CustomerCertificate", "ManagedCertificate", "AzureFirstPartyManagedCertificate")]
         string CertificateType { get; set; }
-        /// <summary>TLS protocol version that will be used for Https</summary>
+        /// <summary>cipher suite set type that will be used for Https</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"TLS protocol version that will be used for Https",
+        Description = @"cipher suite set type that will be used for Https",
+        SerializedName = @"cipherSuiteSetType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Customized", "TLS10_2019", "TLS12_2022", "TLS12_2023")]
+        string CipherSuiteSetType { get; set; }
+        /// <summary>
+        /// Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.",
+        SerializedName = @"customizedCipherSuiteSet",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsCustomizedCipherSuiteSet) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsCustomizedCipherSuiteSet CustomizedCipherSuiteSet { get; set; }
+        /// <summary>
+        /// TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.",
         SerializedName = @"minimumTlsVersion",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("TLS10", "TLS12")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("TLS10", "TLS12", "TLS13")]
         string MinimumTlsVersion { get; set; }
         /// <summary>Resource reference to the secret. ie. subs/rg/profile/secret</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
@@ -88,8 +133,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Defines the source of the SSL certificate.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("CustomerCertificate", "ManagedCertificate", "AzureFirstPartyManagedCertificate")]
         string CertificateType { get; set; }
-        /// <summary>TLS protocol version that will be used for Https</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("TLS10", "TLS12")]
+        /// <summary>cipher suite set type that will be used for Https</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Customized", "TLS10_2019", "TLS12_2022", "TLS12_2023")]
+        string CipherSuiteSetType { get; set; }
+        /// <summary>
+        /// Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsCustomizedCipherSuiteSet CustomizedCipherSuiteSet { get; set; }
+        /// <summary>
+        /// TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("TLS10", "TLS12", "TLS13")]
         string MinimumTlsVersion { get; set; }
         /// <summary>Resource reference to the secret. ie. subs/rg/profile/secret</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Secret { get; set; }

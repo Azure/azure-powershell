@@ -2,401 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SelfHelpIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.AutomatedCheckResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SelfHelpIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>DiagnosticsResourceName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Scope</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SimplifiedSolutionsResourceName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SolutionId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SolutionResourceName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SubscriptionId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TroubleshooterName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>DiagnosticsResourceName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Scope</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SimplifiedSolutionsResourceName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SolutionId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SolutionResourceName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SubscriptionId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TroubleshooterName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.TroubleshootersContinueNoContentResponseHeaders</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.TroubleshootersContinueNoContentResponseHeaders</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.TroubleshootersEndNoContentResponseHeaders</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.TroubleshootersEndNoContentResponseHeaders</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.CheckNameAvailabilityRequest</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.CheckNameAvailabilityRequest</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ErrorDetail</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ErrorDetail</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Target</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Target</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.Operation</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.Operation</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ActionType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IsDataAction</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Origin</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ActionType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IsDataAction</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Origin</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.OperationDisplay</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.OperationDisplay</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Description</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Operation</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Provider</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Resource</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Description</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Operation</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Provider</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Resource</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.OperationListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.OperationListResult</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ProxyResource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ProxyResource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.Resource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.Resource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.SystemData</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.SystemData</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.AutomatedCheckResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.AutomatedCheckResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.AutomatedCheckResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -428,9 +36,31 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.CheckNameAvailabilityResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.CheckNameAvailabilityRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.CheckNameAvailabilityResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.CheckNameAvailabilityRequest#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.CheckNameAvailabilityResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.CheckNameAvailabilityResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -462,17 +92,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ClassificationService</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ClassificationService</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ClassificationService</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ClassificationService#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>DisplayName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ServiceId</Label>
@@ -485,9 +112,6 @@
                 <PropertyName>DisplayName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>ResourceType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>ServiceId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -496,9 +120,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ContinueRequestBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ContinueRequestBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ContinueRequestBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ContinueRequestBody#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -518,9 +142,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.Diagnostic</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Diagnostic</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.Diagnostic</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Diagnostic#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -546,9 +170,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.DiagnosticInvocation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.DiagnosticInvocation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.DiagnosticInvocation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.DiagnosticInvocation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -568,9 +192,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.DiagnosticInvocationAdditionalParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.DiagnosticInvocationAdditionalParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.DiagnosticInvocationAdditionalParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.DiagnosticInvocationAdditionalParameters#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -590,9 +214,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.DiagnosticResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.DiagnosticResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.DiagnosticResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.DiagnosticResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -654,9 +278,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.DiagnosticResourceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.DiagnosticResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.DiagnosticResourceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.DiagnosticResourceProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -682,9 +306,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.DiagnosticResourcePropertiesGlobalParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.DiagnosticResourcePropertiesGlobalParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.DiagnosticResourcePropertiesGlobalParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.DiagnosticResourcePropertiesGlobalParameters#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -704,9 +328,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.DiscoveryNlpRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.DiscoveryNlpRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.DiscoveryNlpRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.DiscoveryNlpRequest#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -744,9 +368,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.DiscoveryResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.DiscoveryResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.DiscoveryResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.DiscoveryResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -766,9 +390,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.Error</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Error</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.Error</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Error#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -794,9 +418,43 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.Filter</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ErrorDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.Filter</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ErrorDetail#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Filter</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Filter#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -828,9 +486,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.Insight</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Insight</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.Insight</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Insight#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -862,9 +520,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.MetricsBasedChart</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.MetricsBasedChart</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.MetricsBasedChart</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.MetricsBasedChart#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -908,9 +566,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.NlpSolutions</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.NlpSolutions</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.NlpSolutions</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.NlpSolutions#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -948,9 +606,191 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ResponseOption</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Operation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ResponseOption</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Operation#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ActionType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsDataAction</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Origin</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ActionType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsDataAction</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Origin</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.OperationDisplay</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.OperationDisplay#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Operation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Provider</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Resource</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Operation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Provider</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Resource</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.OperationListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.OperationListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ProxyResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ProxyResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Resource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Resource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ResponseOption</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ResponseOption#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -976,9 +816,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ResponseValidationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ResponseValidationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ResponseValidationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ResponseValidationProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1022,9 +862,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.RestartTroubleshooterResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.RestartTroubleshooterResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.RestartTroubleshooterResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.RestartTroubleshooterResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1050,9 +890,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SearchResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SearchResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SearchResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SearchResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1114,9 +954,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.Section</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Section</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.Section</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Section#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1142,9 +982,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SectionSelfHelp</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SectionSelfHelp</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SectionSelfHelp</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SectionSelfHelp#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1170,9 +1010,67 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SimplifiedSolutionsResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SelfHelpIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SimplifiedSolutionsResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SelfHelpIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DiagnosticsResourceName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Scope</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SimplifiedSolutionsResourceName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SolutionId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SolutionResourceName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubscriptionId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TroubleshooterName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DiagnosticsResourceName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Scope</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SimplifiedSolutionsResourceName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SolutionId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SolutionResourceName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubscriptionId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TroubleshooterName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SimplifiedSolutionsResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SimplifiedSolutionsResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1234,9 +1132,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SimplifiedSolutionsResourceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SimplifiedSolutionsResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SimplifiedSolutionsResourceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SimplifiedSolutionsResourceProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1274,9 +1172,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SimplifiedSolutionsResourcePropertiesAppendix</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SimplifiedSolutionsResourcePropertiesAppendix</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SimplifiedSolutionsResourcePropertiesAppendix</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SimplifiedSolutionsResourcePropertiesAppendix#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1296,9 +1194,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SimplifiedSolutionsResourcePropertiesParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SimplifiedSolutionsResourcePropertiesParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SimplifiedSolutionsResourcePropertiesParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SimplifiedSolutionsResourcePropertiesParameters#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1318,17 +1216,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SolutionMetadataProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SolutionMetadataProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SolutionMetadataProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SolutionMetadataProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Description</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RequiredInput</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SolutionId</Label>
@@ -1344,9 +1239,6 @@
                 <PropertyName>Description</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>RequiredInput</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>SolutionId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1358,9 +1250,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SolutionMetadataResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SolutionMetadataResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SolutionMetadataResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SolutionMetadataResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1416,9 +1308,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SolutionNlpMetadataResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SolutionNlpMetadataResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SolutionNlpMetadataResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SolutionNlpMetadataResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1474,9 +1366,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SolutionResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SolutionResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SolutionResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SolutionResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1544,9 +1436,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SolutionResourceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SolutionResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SolutionResourceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SolutionResourceProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1584,9 +1476,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SolutionResourcePropertiesParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SolutionResourcePropertiesParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SolutionResourcePropertiesParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SolutionResourcePropertiesParameters#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1606,9 +1498,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SolutionResourceSelfHelp</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SolutionResourceSelfHelp</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SolutionResourceSelfHelp</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SolutionResourceSelfHelp#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1670,9 +1562,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SolutionsDiagnostic</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SolutionsDiagnostic</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SolutionsDiagnostic</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SolutionsDiagnostic#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1681,9 +1573,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ReplacementKey</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RequiredParameter</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SolutionId</Label>
@@ -1705,9 +1594,6 @@
                 <PropertyName>ReplacementKey</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>RequiredParameter</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>SolutionId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1722,9 +1608,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SolutionsResourcePropertiesSelfHelp</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SolutionsResourcePropertiesSelfHelp</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SolutionsResourcePropertiesSelfHelp</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SolutionsResourcePropertiesSelfHelp#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1756,9 +1642,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SolutionsTroubleshooters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SolutionsTroubleshooters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SolutionsTroubleshooters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SolutionsTroubleshooters#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1790,9 +1676,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SolutionWarmUpRequestBodyParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SolutionWarmUpRequestBodyParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SolutionWarmUpRequestBodyParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SolutionWarmUpRequestBodyParameters#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1812,9 +1698,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.Step</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Step</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.Step</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Step#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1864,9 +1750,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.StepInput</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.StepInput</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.StepInput</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.StepInput#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1928,9 +1814,61 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.TriggerCriterion</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.TriggerCriterion</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.SystemData#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.TriggerCriterion</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.TriggerCriterion#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1956,9 +1894,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.TroubleshooterInstanceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.TroubleshooterInstanceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.TroubleshooterInstanceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.TroubleshooterInstanceProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1984,9 +1922,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.TroubleshooterInstancePropertiesParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.TroubleshooterInstancePropertiesParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.TroubleshooterInstancePropertiesParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.TroubleshooterInstancePropertiesParameters#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2006,9 +1944,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.TroubleshooterResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.TroubleshooterResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.TroubleshooterResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.TroubleshooterResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2070,9 +2008,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.TroubleshooterResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.TroubleshooterResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.TroubleshooterResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.TroubleshooterResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2104,9 +2042,53 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.Video</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.TroubleshootersContinueNoContentResponseHeaders</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.Video</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.TroubleshootersContinueNoContentResponseHeaders#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.TroubleshootersEndNoContentResponseHeaders</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.TroubleshootersEndNoContentResponseHeaders#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Video</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Video#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2138,9 +2120,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.VideoGroup</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.VideoGroup</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.VideoGroup</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.VideoGroup#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2160,9 +2142,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.VideoGroupVideo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.VideoGroupVideo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.VideoGroupVideo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.VideoGroupVideo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2188,9 +2170,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.WebResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.WebResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.WebResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.WebResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

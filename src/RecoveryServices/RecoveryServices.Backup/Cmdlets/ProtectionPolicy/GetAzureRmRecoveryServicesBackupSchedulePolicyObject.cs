@@ -64,12 +64,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateSet("Daily", "Hourly", "Weekly")]
         public ScheduleRunType ScheduleRunFrequency = ScheduleRunType.Daily;
 
+        private PSPolicyType? _policySubType;
         /// <summary>
         /// Schedule policy subtype. 
         /// </summary>
         [Parameter(Mandatory = false, Position = 3,
             HelpMessage = ParamHelpMsgs.Policy.SchedulePolicySubType)]
-        public PSPolicyType PolicySubType = PSPolicyType.Standard;
+        public PSPolicyType PolicySubType
+        {
+            get
+            {
+                if(_policySubType == null)
+                {
+                    if(WorkloadType == WorkloadType.AzureVM)
+                    {
+                        return PSPolicyType.Enhanced;
+                    }
+                    else
+                    {
+                        return PSPolicyType.Standard;
+                    }
+                }
+                return (PSPolicyType)_policySubType;
+            }
+            set
+            {
+                _policySubType = value;
+            }
+        }
 
         public override void ExecuteCmdlet()
         {

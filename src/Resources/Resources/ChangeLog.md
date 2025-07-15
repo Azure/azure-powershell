@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+
+## Version 8.0.1
+* Fixed empty warning output issue for cmdlet `Test-AzResourceGroupDeployment` [#27888]
+
+## Version 8.0.0
 * [Breaking Change] Updated API version of resource types from latest to DefaultApiVersion for cmdlets `*-AzResource` and `Invoke-AzResourceAction`.
 
 ## Version 7.11.0

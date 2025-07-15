@@ -41,7 +41,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Identity = netAppAccount.Identity?.ConvertToPs(),
                 DisableShowmount = netAppAccount.DisableShowmount,
                 Encryption = netAppAccount.Encryption?.ConvertToPs(),
-                SystemData = netAppAccount.SystemData?.ToPsSystemData()
+                SystemData = netAppAccount.SystemData?.ToPsSystemData(),
+                MultiAdStatus = netAppAccount.MultiAdStatus
             };
         }
 

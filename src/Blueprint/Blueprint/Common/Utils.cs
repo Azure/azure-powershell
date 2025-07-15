@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
     public class Utils
     {
         /// <summary>
-        /// Get definition location. Either a subcscription or a management group.
+        /// Get definition location. Either a subscription or a management group.
         /// </summary>
         /// <param name="scope"></param>
         /// <returns></returns>

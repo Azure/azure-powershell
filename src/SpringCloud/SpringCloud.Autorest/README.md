@@ -68,6 +68,57 @@ directive:
         change-effective-date: 2028/03/31
         change-description: Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement.
 
+  - from: swagger-document
+    where: $.definitions.JarUploadedUserSourceInfo.allOf.[0]
+    transform: >-
+      return {
+        "$ref": "#/definitions/UserSourceInfo"
+      }
+
+  - from: swagger-document
+    where: $.definitions.SourceUploadedUserSourceInfo.allOf.[0]
+    transform: >-
+      return {
+        "$ref": "#/definitions/UserSourceInfo"
+      }
+
+  - from: swagger-document
+    where: $.definitions.NetCoreZipUploadedUserSourceInfo.allOf.[0]
+    transform: >-
+      return {
+        "$ref": "#/definitions/UserSourceInfo"
+      }
+
+  - from: swagger-document
+    where: $.definitions.UserSourceInfo
+    transform: >-
+      return {
+        "description": "Source with uploaded location",
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "description": "Type of the source uploaded",
+            "type": "string"
+          },
+          "version": {
+            "description": "Version of the source",
+            "type": "string"
+          },
+          "relativePath": {
+            "description": "Relative path of the storage which stores the source",
+            "type": "string"
+          }
+        },
+        "discriminator": "type"
+      }
+
+  - from: swagger-document
+    where: $.definitions
+    transform: delete $.UploadedUserSourceInfo
+
   - where:
       verb: Set
       subject: BuildServiceAgentPoolPut

@@ -58,31 +58,31 @@ Gets information about the specified mobile network site.
 Gets information about the specified network slice.
 
 ### [New-AzMobileNetwork](New-AzMobileNetwork.md)
-Creates or updates a mobile network.
+create a mobile network.
 
 ### [New-AzMobileNetworkAttachedDataNetwork](New-AzMobileNetworkAttachedDataNetwork.md)
-Creates or updates an attached data network.
+create an attached data network.
 Must be created in the same location as its parent packet core data plane.
 
 ### [New-AzMobileNetworkDataNetwork](New-AzMobileNetworkDataNetwork.md)
-Creates or updates a data network.
+create a data network.
 Must be created in the same location as its parent mobile network.
 
 ### [New-AzMobileNetworkDataNetworkConfigurationObject](New-AzMobileNetworkDataNetworkConfigurationObject.md)
 Create an in-memory object for DataNetworkConfiguration.
 
 ### [New-AzMobileNetworkPacketCoreControlPlane](New-AzMobileNetworkPacketCoreControlPlane.md)
-Creates or updates a packet core control plane.
+create a packet core control plane.
 
 ### [New-AzMobileNetworkPacketCoreDataPlane](New-AzMobileNetworkPacketCoreDataPlane.md)
-Creates or updates a packet core data plane.
+create a packet core data plane.
 Must be created in the same location as its parent packet core control plane.
 
 ### [New-AzMobileNetworkPccRuleConfigurationObject](New-AzMobileNetworkPccRuleConfigurationObject.md)
 Create an in-memory object for PccRuleConfiguration.
 
 ### [New-AzMobileNetworkService](New-AzMobileNetworkService.md)
-Creates or updates a service.
+create a service.
 Must be created in the same location as its parent mobile network.
 
 ### [New-AzMobileNetworkServiceDataFlowTemplateObject](New-AzMobileNetworkServiceDataFlowTemplateObject.md)
@@ -92,13 +92,13 @@ Create an in-memory object for ServiceDataFlowTemplate.
 Create an in-memory object for ServiceResourceId.
 
 ### [New-AzMobileNetworkSim](New-AzMobileNetworkSim.md)
-Creates or updates a SIM.
+create a SIM.
 
 ### [New-AzMobileNetworkSimGroup](New-AzMobileNetworkSimGroup.md)
-Creates or updates a SIM group.
+create a SIM group.
 
 ### [New-AzMobileNetworkSimPolicy](New-AzMobileNetworkSimPolicy.md)
-Creates or updates a SIM policy.
+create a SIM policy.
 Must be created in the same location as its parent mobile network.
 
 ### [New-AzMobileNetworkSimStaticIPPropertiesObject](New-AzMobileNetworkSimStaticIPPropertiesObject.md)
@@ -112,7 +112,7 @@ Must be created in the same location as its parent mobile network.
 Create an in-memory object for SiteResourceId.
 
 ### [New-AzMobileNetworkSlice](New-AzMobileNetworkSlice.md)
-Creates or updates a network slice.
+create a network slice.
 Must be created in the same location as its parent mobile network.
 
 ### [New-AzMobileNetworkSliceConfigurationObject](New-AzMobileNetworkSliceConfigurationObject.md)
@@ -160,10 +160,11 @@ Collect a diagnostics package for the specified packet core control plane.
 This action will upload the diagnostics to a storage account.
 
 ### [Update-AzMobileNetwork](Update-AzMobileNetwork.md)
-Updates mobile network tags.
+update mobile network tags.
 
 ### [Update-AzMobileNetworkAttachedDataNetwork](Update-AzMobileNetworkAttachedDataNetwork.md)
-Updates an attached data network.
+update an attached data network.
+Must be created in the same location as its parent packet core data plane.
 
 ### [Update-AzMobileNetworkBulkSimUpload](Update-AzMobileNetworkBulkSimUpload.md)
 Bulk upload SIMs to a SIM group.
@@ -173,25 +174,31 @@ Bulk upload SIMs in encrypted form to a SIM group.
 The SIM credentials must be encrypted.
 
 ### [Update-AzMobileNetworkDataNetwork](Update-AzMobileNetworkDataNetwork.md)
-Updates data network.
+update a data network.
+Must be created in the same location as its parent mobile network.
 
 ### [Update-AzMobileNetworkPacketCoreControlPlane](Update-AzMobileNetworkPacketCoreControlPlane.md)
-Updates packet core control planes.
+update a packet core control plane.
 
 ### [Update-AzMobileNetworkPacketCoreDataPlane](Update-AzMobileNetworkPacketCoreDataPlane.md)
-Updates packet core data planes.
+update a packet core data plane.
+Must be created in the same location as its parent packet core control plane.
 
 ### [Update-AzMobileNetworkService](Update-AzMobileNetworkService.md)
 Updates service.
 
+### [Update-AzMobileNetworkSim](Update-AzMobileNetworkSim.md)
+update a SIM.
+
 ### [Update-AzMobileNetworkSimGroup](Update-AzMobileNetworkSimGroup.md)
-Updates SIM group.
+update a SIM group.
 
 ### [Update-AzMobileNetworkSimPolicy](Update-AzMobileNetworkSimPolicy.md)
-Updates SIM policy.
+update a SIM policy.
+Must be created in the same location as its parent mobile network.
 
 ### [Update-AzMobileNetworkSite](Update-AzMobileNetworkSite.md)
-Updates site tags.
+update site tags.
 
 ### [Update-AzMobileNetworkSlice](Update-AzMobileNetworkSlice.md)
 Updates slice.

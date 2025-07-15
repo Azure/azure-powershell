@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PowerShell;
 
-    /// <summary>Source information for a deployment</summary>
+    /// <summary>Source with uploaded location</summary>
     [System.ComponentModel.TypeConverter(typeof(UserSourceInfoTypeConverter))]
     public partial class UserSourceInfo
     {
@@ -134,6 +134,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)this).Version, global::System.Convert.ToString);
             }
+            if (content.Contains("RelativePath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)this).RelativePath = (string) content.GetValueForProperty("RelativePath",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)this).RelativePath, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -159,10 +163,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)this).Version, global::System.Convert.ToString);
             }
+            if (content.Contains("RelativePath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)this).RelativePath = (string) content.GetValueForProperty("RelativePath",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)this).RelativePath, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
     }
-    /// Source information for a deployment
+    /// Source with uploaded location
     [System.ComponentModel.TypeConverter(typeof(UserSourceInfoTypeConverter))]
     public partial interface IUserSourceInfo
 

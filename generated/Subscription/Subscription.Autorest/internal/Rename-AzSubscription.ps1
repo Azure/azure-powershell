@@ -25,7 +25,7 @@ Rename-AzSubscription -Id XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX -SubscriptionName
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity
 .Outputs
-System.String
+Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.IRenamedSubscriptionId
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -41,10 +41,12 @@ INPUTOBJECT <ISubscriptionIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.subscription/rename-azsubscription
 #>
 function Rename-AzSubscription {
-[OutputType([System.String])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.IRenamedSubscriptionId])]
 [CmdletBinding(DefaultParameterSetName='RenameExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='RenameExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RenameViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RenameViaJsonString', Mandatory)]
     [Alias('SubscriptionId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Path')]
     [System.String]
@@ -55,14 +57,26 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='RenameExpanded')]
+    [Parameter(ParameterSetName='RenameViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
     [System.String]
     # New subscription name
     ${SubscriptionName},
+
+    [Parameter(ParameterSetName='RenameViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Rename operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RenameViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [System.String]
+    # Json string supplied to the Rename operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -120,13 +134,21 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             RenameExpanded = 'Az.Subscription.private\Rename-AzSubscription_RenameExpanded';
             RenameViaIdentityExpanded = 'Az.Subscription.private\Rename-AzSubscription_RenameViaIdentityExpanded';
+            RenameViaJsonFilePath = 'Az.Subscription.private\Rename-AzSubscription_RenameViaJsonFilePath';
+            RenameViaJsonString = 'Az.Subscription.private\Rename-AzSubscription_RenameViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

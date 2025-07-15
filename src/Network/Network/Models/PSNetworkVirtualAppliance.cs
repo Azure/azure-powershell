@@ -49,8 +49,28 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSNetworkVirtualApplianceDelegationProperties Delegation { get; set; }
 
+        public PSNetworkVirtualAppliancePartnerManagedResourceProperties PartnerManagedResource { get; set; }
+
         public IList<PSVirtualApplianceInternetIngressIpsProperties> InternetIngressPublicIps { get; set; }
 
         public PSVirtualApplianceNetworkProfile NetworkProfile { get; set; }
+
+        [JsonIgnore]
+        public string VirtualHubText
+        {
+            get { return JsonConvert.SerializeObject(VirtualHub, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string DelegationText
+        {
+            get { return JsonConvert.SerializeObject(Delegation, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string PartnerManagedResourceText
+        {
+            get { return JsonConvert.SerializeObject(PartnerManagedResource, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 }

@@ -12,10 +12,23 @@ Sets the default account for the scope.
 
 ## SYNTAX
 
+### SetExpanded (Default)
 ```
 Set-AzPurviewDefaultAccount -AccountName <String> -ResourceGroupName <String> -ScopeTenantId <String>
- [-Scope <String>] [-ScopeType <ScopeType>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-Scope <String>] [-ScopeType <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### SetViaJsonFilePath
+```
+Set-AzPurviewDefaultAccount -JsonFilePath <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### SetViaJsonString
+```
+Set-AzPurviewDefaultAccount -JsonString <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +56,7 @@ The name of the account that is set as the default.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -54,7 +67,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -68,12 +82,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Set operation
+
+```yaml
+Type: System.String
+Parameter Sets: SetViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Set operation
+
+```yaml
+Type: System.String
+Parameter Sets: SetViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name of the account that is set as the default.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -89,7 +133,7 @@ For example, sub ID or tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -104,7 +148,7 @@ The scope tenant in which the default account is set.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -118,8 +162,8 @@ Accept wildcard characters: False
 The scope where the default account is set.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScopeType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -134,7 +178,7 @@ The subscription ID of the account that is set as the default.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -182,7 +226,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload
+### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IDefaultAccountPayload
 
 ## NOTES
 

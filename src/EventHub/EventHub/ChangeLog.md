@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 5.3.0
+* Added parameters 'MaxReplicationLagDurationInSeconds' and 'Replicalocation' in cmdlets 'New-AzEventHubNamespace' & 'Set-AzEventHubNamespace'
+* Added new cmdlets for doing namespace failover - 'Start-AzEventHubNamespaceFailOver'
+* Added new cmdlets for generating replication object for Replication parameter - 'New-AzEventHubLocationsNameObject'
+
 ## Version 5.2.0
 *  Added parameter `MinCompactionLagInMin`, `TimestampType` and `UserMetadata` to cmdlets `New-AzEventHub` and `Set-AzEventHub`
 *  Supported `DelectorCompact` policy in parameter `Cleanup-policy` of cmdlet `new-AzEventhub`
@@ -156,7 +161,7 @@ for a better powershell experience and as a result would witness breaking change
 * Fix for issue #9786 : cannot create a rule with Listen only rights
 
 ## Version 1.3.0
-* Added new cmmdlet added for generating SAS token : New-AzEventHubAuthorizationRuleSASToken
+* Added new cmdlet added for generating SAS token : New-AzEventHubAuthorizationRuleSASToken
 * added verification and error message for authorizationrules rights if only 'Manage' is assigned
 
 ## Version 1.2.0

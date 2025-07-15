@@ -222,4 +222,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Stop-AzDataFactoryV2IntegrationRuntime]()
+[Stop-AzDataFactoryV2IntegrationRuntime](Stop-AzDataFactoryV2IntegrationRuntime.md)

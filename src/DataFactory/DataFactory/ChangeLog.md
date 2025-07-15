@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 1.19.4
+* Added support for Databricks Job Activity.
+* Added more support for QuickBooks connection properties.
+
+## Version 1.19.3
+* Added more support for SparkV2 and HiveV2 connection properties.
+
 ## Version 1.19.2
 * Added more support for M365 connection properties.
 * Added more support for SnowfalkeV2 connection properties.

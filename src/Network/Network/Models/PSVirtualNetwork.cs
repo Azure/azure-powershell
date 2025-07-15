@@ -52,6 +52,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string PrivateEndpointVNetPolicies { get; set; }
 
+        public PSResourceId DefaultPublicNatGateway { get; set; }
+
         [JsonIgnore]
         public string AddressSpaceText
         {
@@ -116,6 +118,20 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ExtendedLocationText
         {
             get { return JsonConvert.SerializeObject(ExtendedLocation, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string DefaultPublicNatGatewayText
+        {
+            get
+            {
+                if (DefaultPublicNatGateway?.Id != null)
+                {
+                    string resourceName = DefaultPublicNatGateway.Id.Substring(DefaultPublicNatGateway.Id.LastIndexOf('/') + 1);
+                    return resourceName;
+                }
+                return null;
+            }
         }
     }
 }

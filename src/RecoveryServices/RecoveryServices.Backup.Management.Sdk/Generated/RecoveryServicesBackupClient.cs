@@ -469,6 +469,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -553,7 +556,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             this.GetTieringCostOperationResult = new GetTieringCostOperationResultOperations(this);
             this.TieringCostOperationStatus = new TieringCostOperationStatusOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2024-10-01";
+            this.ApiVersion = "2025-02-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
@@ -640,6 +643,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<AzureWorkloadSAPHanaPointInTimeRestoreRequest>("objectType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<AzureWorkloadSAPHanaRestoreRequest>("objectType"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<AzureWorkloadSAPHanaRestoreRequest>("objectType"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<AzureWorkloadSAPAseRestoreRequest>("objectType"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<AzureWorkloadSAPAseRestoreRequest>("objectType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<AzureWorkloadSQLRecoveryPoint>("objectType"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<AzureWorkloadSQLRecoveryPoint>("objectType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<AzureWorkloadSQLPointInTimeRestoreRequest>("objectType"));
