@@ -282,16 +282,12 @@ function ValidateReplication {
         throw $VmReplicationValidationMessages.VmPoweredOff
     }
 
-    # Hyper-V/VMware VMs should have some OS type
-    if ([string]::IsNullOrEmpty($Machine.OperatingSystemDetailOSType))
-    {
-        throw $VmReplicationValidationMessages.OsTypeNotFound
-    }
-
+    # Hyper-V scenario checks
     if ($MigrationType -eq $AzLocalInstanceTypes.HyperVToAzLocal) {
         # Hyper-V VMs with 'otherguestfamily' OS type and missing OS name could also mean Hyper-V Integration Services are not running
-        if ($Machine.OperatingSystemDetailOSType -eq $OsType.OtherGuestFamily -and [string]::IsNullOrEmpty($Machine.GuestOSDetailOsname)) {
-            throw $VmReplicationValidationMessages.OsTypeNotFound
+        if ($Machine.OperatingSystemDetailOSType -eq $OsType.OtherGuestFamily -and
+            [string]::IsNullOrEmpty($Machine.GuestOSDetailOsname)) {
+            throw $VmReplicationValidationMessages.HyperVIntegrationServicesNotRunning
         }
 
         # Hyper-V VMs should be highly available
@@ -300,18 +296,23 @@ function ValidateReplication {
         }
     }
 
+    # VMware scenario checks
     if ($MigrationType -eq $AzLocalInstanceTypes.VMwareToAzLocal) {
-        # VMware VMs with 'otherguestfamily' OS type is not supported
-        if ($Machine.OperatingSystemDetailOSType -eq $OsType.OtherGuestFamily) {
-            throw $VmReplicationValidationMessages.OsTypeNotSupported
-        }
-
         # VMware tools should be running to support static ip migration
-        if ($Machine.VMwareToolsStatus -eq $VMwareToolsStatus.NotInstalled) {
+        if ($Machine.VMwareToolsStatus -eq $VMwareToolsStatus.NotInstalled)
+        {
             throw $VmReplicationValidationMessages.VmWareToolsNotInstalled
         }
-        elseif ($Machine.VMwareToolsStatus -eq $VMwareToolsStatus.NotRunning) {
+        elseif ($Machine.VMwareToolsStatus -eq $VMwareToolsStatus.NotRunning)
+        {
             throw $VmReplicationValidationMessages.VmWareToolsNotRunning
         }
+    }
+
+    # Only OS type of windowsguest and linuxguest are supported
+    if ($Machine.OperatingSystemDetailOSType -ne $OsType.WindowsGuest -and
+        $Machine.OperatingSystemDetailOSType -ne $OsType.LinuxGuest)
+    {
+        throw $VmReplicationValidationMessages.OsTypeNotSupported
     }
 }

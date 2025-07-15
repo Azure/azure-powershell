@@ -114,7 +114,7 @@ $VmReplicationValidationMessages = @{
     VmWareToolsNotInstalled = "VMware tools not installed on VM. $VmReplicationValidationMessage";
     VmWareToolsNotRunning   = "VMware tools not running on VM. $VmReplicationValidationMessage";
     VmNotHighlyAvailable    = "VM not highly available. $VmReplicationValidationMessage";
-    OsTypeNotFound          = "Hyper-V Integration Services not running on VM. $VmReplicationValidationMessage";
+    HyperVIntegrationServicesNotRunning = "Hyper-V Integration Services not running on VM. $VmReplicationValidationMessage";
     OsTypeNotSupported      = "The OS type of the VM is not supported for replication. $VmReplicationValidationMessage";
 }
 
