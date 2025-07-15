@@ -262,7 +262,7 @@ yyyy-yyyy-yyyy-yyyy    Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ### Example 9: Connect using certificate file
 
 This example connects to an Azure account using certificate-based service principal authentication.
-The certificate file, which is specified by `CertficatePath`, should contains both certificate and private key as the input.
+The certificate file, which is specified by `CertificatePath`, should contains both certificate and private key as the input.
 
 ```powershell
 $SecurePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
@@ -391,7 +391,7 @@ Accept wildcard characters: False
 ```
 
 ### -CertificatePath
-The path of certficate file in pkcs#12 format.
+The path of certificate file in pkcs#12 format.
 
 ```yaml
 Type: System.String

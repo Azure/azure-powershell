@@ -30,7 +30,7 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-SharedGalleryImageId <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
  [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>] [-SshKeyType <String>]
  [-ZonePlacementPolicy <String>] [-IncludeZone <String[]>] [-ExcludeZone <String[]>]
- [-AlignRegionalDisksToVMZone] [-DefaultProfile <IAzureContextContainer>] 
+ [-AlignRegionalDisksToVMZone] [-EnableProxyAgent] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -57,7 +57,7 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-UserData <String>]
  [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
- [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <IAzureContextContainer>] 
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -317,7 +317,7 @@ $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
 
 This example Creates a new VM with the TrustedLaunch Security Type and sets flags EnableSecureBoot and EnableVtpm as True by default. A Trusted Launch VM requires a Gen2 image. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
 
-### Example 9: Create a VM with Trusted Launch turned on by defualt using New-AzVMConfig.
+### Example 9: Create a VM with Trusted Launch turned on by default using New-AzVMConfig.
 ```powershell
 $rgname = "<Resource Group Name>";
 $loc = "<Azure Region>";
@@ -609,6 +609,21 @@ Sets the edge zone name. If set, the query will be routed to the specified edgez
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableProxyAgent
+Specifies whether Metadata Security Protocol(ProxyAgent) feature should be enabled or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SimpleParameterSet
 Aliases:
 
 Required: False

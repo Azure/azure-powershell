@@ -18,11 +18,13 @@ Describe 'New/Get/Update/Remove-AzStorageTaskAssignment, List task assignment re
     It 'New/Get/Update/Remove-AzStorageTaskAssignment, List task assignment reports' {
         $assignmentname1 = "testassignment01"
         $reportprefix = "testc1"
-        $assignment1 = New-AzStorageTaskAssignment -AccountName $env.TaskAssignmentAccount -Name $assignmentname1 -ResourceGroupName $env.TaskAssignmentResourceGroup -TaskId $env.TaskID -ReportPrefix $reportprefix -TriggerType RunOnce -Description "task assignment1" -Enabled:$false
+        $startOn = Get-Date -Year 2201 -Month 11 -Day 10 -Hour 2 -Minute 35 -Second 29 -Millisecond 0
+        $assignment1 = New-AzStorageTaskAssignment -AccountName $env.TaskAssignmentAccount -Name $assignmentname1 -ResourceGroupName $env.TaskAssignmentResourceGroup -TaskId $env.TaskID -ReportPrefix $reportprefix -TriggerType RunOnce -StartOn $startOn -Description "task assignment1" -Enabled:$false
         $assignment1.Name | Should -Be $assignmentname1
         $assignment1.ReportPrefix | Should -Be $reportprefix
         $assignment1.TriggerType | Should -Be "RunOnce"
         $assignment1.Enabled | Should -Be $false
+        $assignment1.StartOn.Year| Should -Be $startOn.ToUniversalTime().Year
 
         $assignmentname2 = "testassignment02"
         $start = Get-Date -Year 2225 -Month 1 -Day 10 -Hour 1 -Minute 30
@@ -61,7 +63,7 @@ Describe 'New/Get/Update/Remove-AzStorageTaskAssignment, List task assignment re
         $assignment1.Enabled | Should -Be $false
         $assignment1.StartOn.Year | Should -Be $end.ToUniversalTime().Year
 
-        $assignment2 = Update-AzStorageTaskAssignment -AccountName $env.TaskAssignmentAccount -ResourceGroupName $env.TaskAssignmentResourceGroup -Name $assignmentname2 -Interval 20 -IntervalUnit Days -Description "update atask assignment" -Enabled:$false -TargetExcludePrefix "ttt"
+        $assignment2 = Update-AzStorageTaskAssignment -AccountName $env.TaskAssignmentAccount -ResourceGroupName $env.TaskAssignmentResourceGroup -Name $assignmentname2 -Interval 20 -IntervalUnit Days -Description "update a task assignment" -Enabled:$false -TargetExcludePrefix "ttt"
         $assignment2.Name | Should -Be $assignmentname2
         $assignment2.ReportPrefix | Should -Be $reportprefix
         $assignment2.TriggerType | Should -Be "OnSchedule"

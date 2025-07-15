@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Cmdlets;
     using System;
 
-    /// <summary>List AutonomousDbVersion resources by Location</summary>
+    /// <summary>List AutonomousDbVersion resources by SubscriptionLocationResource</summary>
     /// <remarks>
     /// [OpenAPI] ListByLocation=>GET:"/subscriptions/{subscriptionId}/providers/Oracle.Database/locations/{location}/autonomousDbVersions"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzOracleAutonomousDatabaseVersion_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDbVersion))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Description(@"List AutonomousDbVersion resources by Location")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Description(@"List AutonomousDbVersion resources by SubscriptionLocationResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Oracle.Database/locations/{location}/autonomousDbVersions", ApiVersion = "2023-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Oracle.Database/locations/{location}/autonomousDbVersions", ApiVersion = "2025-03-01")]
     public partial class GetAzOracleAutonomousDatabaseVersion_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IContext

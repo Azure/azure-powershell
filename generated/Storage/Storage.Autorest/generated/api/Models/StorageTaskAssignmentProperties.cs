@@ -155,28 +155,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         /// <summary>
         /// End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison
-        /// operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+        /// operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string RunStatusFinishTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)RunStatus).FinishTime; }
 
         /// <summary>
         /// Total number of objects where task operation failed when was attempted. Filter options such as objectFailedCount eq 0
-        /// and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+        /// and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string RunStatusObjectFailedCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)RunStatus).ObjectFailedCount; }
 
         /// <summary>
         /// Total number of objects that meet the storage tasks condition and were operated upon. Filter options such as objectsOperatedOnCount
-        /// ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+        /// ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string RunStatusObjectsOperatedOnCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)RunStatus).ObjectsOperatedOnCount; }
 
         /// <summary>
         /// Total number of objects where task operation succeeded when was attempted.Filter options such as objectsSucceededCount
-        /// gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+        /// gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string RunStatusObjectsSucceededCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)RunStatus).ObjectsSucceededCount; }
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>
         /// Total number of objects that meet the condition as defined in the storage task assignment execution context. Filter options
         /// such as objectsTargetedCount gt 50 and other comparison operators can be used as described for Numerical properties in
-        /// https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+        /// https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string RunStatusObjectsTargetedCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)RunStatus).ObjectsTargetedCount; }
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         /// <summary>
         /// Start time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison
-        /// operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+        /// operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string RunStatusStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)RunStatus).StartTime; }
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         public global::System.DateTime? StartFrom { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentExecutionContextInternal)ExecutionContext).StartFrom; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentExecutionContextInternal)ExecutionContext).StartFrom = value ?? default(global::System.DateTime); }
 
         /// <summary>
-        /// When to start task execution. This is an optional field when ExecutionTrigger.properties.type is 'RunOnce'; this property
+        /// When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'RunOnce'; this property
         /// should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"Represents the provisioning state of the storage task assignment.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Creating", "ResolvingDNS", "Succeeded", "ValidateSubscriptionQuotaBegin", "ValidateSubscriptionQuotaEnd", "Deleting", "Canceled", "Failed")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Creating", "ResolvingDNS", "Succeeded", "ValidateSubscriptionQuotaBegin", "ValidateSubscriptionQuotaEnd", "Accepted", "Deleting", "Canceled", "Failed")]
         string ProvisioningState { get;  }
         /// <summary>The container prefix for the location of storage task assignment report</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         string RunStatusError { get;  }
         /// <summary>
         /// End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison
-        /// operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+        /// operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -396,13 +396,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators",
+        Description = @"End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators",
         SerializedName = @"finishTime",
         PossibleTypes = new [] { typeof(string) })]
         string RunStatusFinishTime { get;  }
         /// <summary>
         /// Total number of objects where task operation failed when was attempted. Filter options such as objectFailedCount eq 0
-        /// and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+        /// and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -410,13 +410,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Total number of objects where task operation failed when was attempted. Filter options such as objectFailedCount eq 0 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators",
+        Description = @"Total number of objects where task operation failed when was attempted. Filter options such as objectFailedCount eq 0 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators",
         SerializedName = @"objectFailedCount",
         PossibleTypes = new [] { typeof(string) })]
         string RunStatusObjectFailedCount { get;  }
         /// <summary>
         /// Total number of objects that meet the storage tasks condition and were operated upon. Filter options such as objectsOperatedOnCount
-        /// ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+        /// ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -424,13 +424,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Total number of objects that meet the storage tasks condition and were operated upon. Filter options such as objectsOperatedOnCount ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators",
+        Description = @"Total number of objects that meet the storage tasks condition and were operated upon. Filter options such as objectsOperatedOnCount ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators",
         SerializedName = @"objectsOperatedOnCount",
         PossibleTypes = new [] { typeof(string) })]
         string RunStatusObjectsOperatedOnCount { get;  }
         /// <summary>
         /// Total number of objects where task operation succeeded when was attempted.Filter options such as objectsSucceededCount
-        /// gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+        /// gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -438,14 +438,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Total number of objects where task operation succeeded when was attempted.Filter options such as objectsSucceededCount gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators",
+        Description = @"Total number of objects where task operation succeeded when was attempted.Filter options such as objectsSucceededCount gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators",
         SerializedName = @"objectsSucceededCount",
         PossibleTypes = new [] { typeof(string) })]
         string RunStatusObjectsSucceededCount { get;  }
         /// <summary>
         /// Total number of objects that meet the condition as defined in the storage task assignment execution context. Filter options
         /// such as objectsTargetedCount gt 50 and other comparison operators can be used as described for Numerical properties in
-        /// https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+        /// https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -453,7 +453,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Total number of objects that meet the condition as defined in the storage task assignment execution context. Filter options such as objectsTargetedCount gt 50 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators",
+        Description = @"Total number of objects that meet the condition as defined in the storage task assignment execution context. Filter options such as objectsTargetedCount gt 50 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators",
         SerializedName = @"objectsTargetedCount",
         PossibleTypes = new [] { typeof(string) })]
         string RunStatusObjectsTargetedCount { get;  }
@@ -471,7 +471,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         string RunStatusRunResult { get;  }
         /// <summary>
         /// Start time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison
-        /// operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+        /// operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -479,7 +479,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Start time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators",
+        Description = @"Start time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators",
         SerializedName = @"startTime",
         PossibleTypes = new [] { typeof(string) })]
         string RunStatusStartTime { get;  }
@@ -560,7 +560,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? StartFrom { get; set; }
         /// <summary>
-        /// When to start task execution. This is an optional field when ExecutionTrigger.properties.type is 'RunOnce'; this property
+        /// When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'RunOnce'; this property
         /// should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
@@ -569,7 +569,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"When to start task execution. This is an optional field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'",
+        Description = @"When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'",
         SerializedName = @"startOn",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? StartOn { get; set; }
@@ -654,7 +654,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Days")]
         string IntervalUnit { get; set; }
         /// <summary>Represents the provisioning state of the storage task assignment.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Creating", "ResolvingDNS", "Succeeded", "ValidateSubscriptionQuotaBegin", "ValidateSubscriptionQuotaEnd", "Deleting", "Canceled", "Failed")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Creating", "ResolvingDNS", "Succeeded", "ValidateSubscriptionQuotaBegin", "ValidateSubscriptionQuotaEnd", "Accepted", "Deleting", "Canceled", "Failed")]
         string ProvisioningState { get; set; }
         /// <summary>The storage task assignment report</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentReport Report { get; set; }
@@ -671,28 +671,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         string RunStatusError { get; set; }
         /// <summary>
         /// End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison
-        /// operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+        /// operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
         /// </summary>
         string RunStatusFinishTime { get; set; }
         /// <summary>
         /// Total number of objects where task operation failed when was attempted. Filter options such as objectFailedCount eq 0
-        /// and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+        /// and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
         /// </summary>
         string RunStatusObjectFailedCount { get; set; }
         /// <summary>
         /// Total number of objects that meet the storage tasks condition and were operated upon. Filter options such as objectsOperatedOnCount
-        /// ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+        /// ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
         /// </summary>
         string RunStatusObjectsOperatedOnCount { get; set; }
         /// <summary>
         /// Total number of objects where task operation succeeded when was attempted.Filter options such as objectsSucceededCount
-        /// gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+        /// gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
         /// </summary>
         string RunStatusObjectsSucceededCount { get; set; }
         /// <summary>
         /// Total number of objects that meet the condition as defined in the storage task assignment execution context. Filter options
         /// such as objectsTargetedCount gt 50 and other comparison operators can be used as described for Numerical properties in
-        /// https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+        /// https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
         /// </summary>
         string RunStatusObjectsTargetedCount { get; set; }
         /// <summary>Represents the overall result of the execution for the run instance</summary>
@@ -700,7 +700,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         string RunStatusRunResult { get; set; }
         /// <summary>
         /// Start time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison
-        /// operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+        /// operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
         /// </summary>
         string RunStatusStartTime { get; set; }
         /// <summary>
@@ -726,7 +726,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         global::System.DateTime? StartFrom { get; set; }
         /// <summary>
-        /// When to start task execution. This is an optional field when ExecutionTrigger.properties.type is 'RunOnce'; this property
+        /// When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'RunOnce'; this property
         /// should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
         /// </summary>
         global::System.DateTime? StartOn { get; set; }

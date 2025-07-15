@@ -92,7 +92,7 @@ This cmdlet creates a new Hybrid Connection using an existing Hybrid Connection 
 ### Example 3: Update an existing Hybrid Connection
 ```powershell
 $connection = Get-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-02
-$connection.UserMetadata = "TestHybirdConnection2"
+$connection.UserMetadata = "TestHybridConnection2"
 New-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-02 -InputObject $connection | Format-List
 ```
 
@@ -113,7 +113,7 @@ SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType : 
 Type                         : Microsoft.Relay/namespaces/hybridconnections
 UpdatedAt                    : 1/1/0001 12:00:00 AM
-UserMetadata                 : TestHybirdConnection2
+UserMetadata                 : TestHybridConnection2
 ```
 
 This cmdlet updates an existing Hybrid Connection.

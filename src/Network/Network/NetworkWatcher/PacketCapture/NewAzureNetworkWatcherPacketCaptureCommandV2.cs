@@ -12,20 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
+using Newtonsoft.Json;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherPacketCaptureV2", SupportsShouldProcess = true, DefaultParameterSetName = "SetByResource"),OutputType(typeof(PSPacketCaptureResult))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherPacketCaptureV2", SupportsShouldProcess = true, DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSPacketCaptureResult))]
     public class NewAzureNetworkWatcherPacketCaptureCommandV2 : PacketCaptureBaseCmdlet
     {
         [Parameter(
@@ -140,8 +138,29 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNull]
         public PSPacketCaptureFilter[] Filter { get; set; }
 
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "This continuous capture is a nullable boolean, which can hold 'null', 'true' or 'false' value. If we do not pass this parameter, it would be considered as 'null', default value is 'null'.")]
+        public bool? ContinuousCapture { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "This path is valid if 'ContinuousCapture' is provided and required if no storage ID is provided, otherwise optional. Must include the name of the capture file (*.cap).")]
+        [ValidateNotNullOrEmpty]
+        public string LocalPath { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             HelpMessage = "The capture setting holds the 'FileCount', 'FileSizeInBytes', 'SessionTimeLimitInSeconds' values. These settings are only applicable, if 'ContinuousCapture' is provided.")]
+        [ValidateNotNull]
+        public PSPacketCaptureSettings CaptureSetting { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        private readonly bool ForcePrompt = false;
 
         public override void Execute()
         {
@@ -172,6 +191,53 @@ namespace Microsoft.Azure.Commands.Network
                 name = this.NetworkWatcherName;
             }
 
+            #region Capture Settings Validations
+            if (this.ContinuousCapture == null)
+            {
+                if (string.IsNullOrEmpty(this.LocalFilePath) && string.IsNullOrEmpty(this.StorageAccountId))
+                {
+                    throw new ArgumentException("PacketCaptureIsMissingStorageIdAndLocalFilePath: Command must have either storage id or local file path specified.");
+                }
+            }
+            else
+            {
+                if (this.ContinuousCapture == true && this.CaptureSetting != null &&
+                    this.CaptureSetting.FileCount == 1 && this.CaptureSetting.FileSizeInBytes == 1073741824
+                    && this.CaptureSetting.SessionTimeLimitInSeconds == 18000)
+                {
+                    ConfirmAction(ForcePrompt,
+                   $"Do you want to change the capture settings? As you have opted 'ContinuousCapture' as 'True' and Capture settings are : {JsonConvert.SerializeObject(this.CaptureSetting, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore })} ", string.Empty,
+                   this.Name,
+                   () =>
+                    {
+                        throw new Exception("Please modified the CaptureSetting values by using 'New-AzPacketCaptureSettingsConfig' command with specific values.");
+                    }
+                   );
+                }
+
+                if (this.TotalBytesPerSession != null)
+                {
+                    throw new ArgumentException("InvalidRequestPropertiesInPacketCaptureRequest: TotalBytesPerSession is not supported in packet capture request.");
+                }
+
+                if (this.TimeLimitInSecond != null)
+                {
+                    throw new ArgumentException("InvalidRequestPropertiesInPacketCaptureRequest: TimeLimitInSecond is not supported in packet capture request.");
+                }
+
+                if (this.LocalFilePath != null)
+                {
+                    throw new ArgumentException("PacketCaptureIsMissingStorageIdAndLocalPath: Command must have either storage id or local path specified.");
+                }
+
+                if (string.IsNullOrEmpty(this.LocalPath) && string.IsNullOrEmpty(this.StorageAccountId))
+                {
+                    throw new ArgumentException("PacketCaptureIsMissingStorageIdAndLocalFilePath: Command must have either storage id or local file path specified.");
+                }
+            }
+
+            #endregion
+
             var present = this.IsPacketCapturePresent(resourceGroupName, name, this.Name);
 
             if (!present)
@@ -185,13 +251,17 @@ namespace Microsoft.Azure.Commands.Network
                         WriteObject(packetCapture);
                     });
             }
+            else
+            {
+                throw new ArgumentException($"PacketCaptureExistingAlready: Existing Packet capture can not be updated.");
+            }
         }
 
         private PSPacketCaptureResult CreatePacketCapture(string resourceGroupName, string networkWatcherName)
         {
             MNM.PacketCapture packetCaptureProperties = new MNM.PacketCapture();
 
-            if(this.BytesToCapturePerPacket != null)
+            if (this.BytesToCapturePerPacket != null)
             {
                 packetCaptureProperties.BytesToCapturePerPacket = this.BytesToCapturePerPacket;
             }
@@ -207,12 +277,29 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             packetCaptureProperties.Target = this.TargetId;
-
             packetCaptureProperties.StorageLocation = new MNM.PacketCaptureStorageLocation();
-            packetCaptureProperties.StorageLocation.FilePath = this.LocalFilePath;
+
+            if (this.ContinuousCapture != null)
+            {
+                packetCaptureProperties.ContinuousCapture = this.ContinuousCapture;
+                packetCaptureProperties.StorageLocation.LocalPath = this.LocalPath;
+                if (this.CaptureSetting != null)
+                {
+                    packetCaptureProperties.CaptureSettings = new MNM.PacketCaptureSettings()
+                    {
+                        FileCount = this.CaptureSetting.FileCount,
+                        FileSizeInBytes = this.CaptureSetting.FileSizeInBytes,
+                        SessionTimeLimitInSeconds = this.CaptureSetting.SessionTimeLimitInSeconds
+                    };
+                }
+            }
+            else
+            {
+                packetCaptureProperties.StorageLocation.FilePath = this.LocalFilePath;
+            }
+
             packetCaptureProperties.StorageLocation.StorageId = this.StorageAccountId;
             packetCaptureProperties.StorageLocation.StoragePath = this.StoragePath;
-
             packetCaptureProperties.TargetType = MNM.PacketCaptureTargetType.AzureVM;
 
             if (!string.IsNullOrEmpty(this.TargetType))

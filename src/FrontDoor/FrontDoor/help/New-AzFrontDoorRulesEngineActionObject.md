@@ -98,7 +98,7 @@ DynamicCompression           : Disabled
 EnableCaching                : True
 ```
 
-Create a rules engine action that forwards the requests to a speicific backend pool and show how to view the properties of the rules engine action created.
+Create a rules engine action that forwards the requests to a specific backend pool and show how to view the properties of the rules engine action created.
 
 ### Example 3
 <!-- Skip: Output cannot be splitted from code -->

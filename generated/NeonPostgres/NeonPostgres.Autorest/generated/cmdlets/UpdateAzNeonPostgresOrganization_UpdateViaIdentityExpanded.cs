@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Description(@"update a OrganizationResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Neon.Postgres/organizations/{organizationName}", ApiVersion = "2024-08-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Neon.Postgres/organizations/{organizationName}", ApiVersion = "2025-03-01")]
     public partial class UpdateAzNeonPostgresOrganization_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.IContext
@@ -170,6 +170,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
+        /// <summary>SaaS subscription id for the the marketplace offer</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "SaaS subscription id for the the marketplace offer")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"SaaS subscription id for the the marketplace offer",
+        SerializedName = @"subscriptionId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string MarketplaceDetailSubscriptionId { get => _propertiesBody.MarketplaceDetailSubscriptionId ?? null; set => _propertiesBody.MarketplaceDetailSubscriptionId = value; }
+
+        /// <summary>Marketplace subscription status</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Marketplace subscription status")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Marketplace subscription status",
+        SerializedName = @"subscriptionStatus",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PSArgumentCompleterAttribute("PendingFulfillmentStart", "Subscribed", "Suspended", "Unsubscribed")]
+        public string MarketplaceDetailSubscriptionStatus { get => _propertiesBody.MarketplaceDetailSubscriptionStatus ?? null; set => _propertiesBody.MarketplaceDetailSubscriptionStatus = value; }
+
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
@@ -185,6 +208,72 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command asynchronously")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
+
+        /// <summary>Offer Id for the marketplace offer</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Offer Id for the marketplace offer")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Offer Id for the marketplace offer",
+        SerializedName = @"offerId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string OfferDetailOfferId { get => _propertiesBody.OfferDetailOfferId ?? null; set => _propertiesBody.OfferDetailOfferId = value; }
+
+        /// <summary>Plan Id for the marketplace offer</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Plan Id for the marketplace offer")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Plan Id for the marketplace offer",
+        SerializedName = @"planId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string OfferDetailPlanId { get => _propertiesBody.OfferDetailPlanId ?? null; set => _propertiesBody.OfferDetailPlanId = value; }
+
+        /// <summary>Plan Name for the marketplace offer</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Plan Name for the marketplace offer")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Plan Name for the marketplace offer",
+        SerializedName = @"planName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string OfferDetailPlanName { get => _propertiesBody.OfferDetailPlanName ?? null; set => _propertiesBody.OfferDetailPlanName = value; }
+
+        /// <summary>Publisher Id for the marketplace offer</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Publisher Id for the marketplace offer")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Publisher Id for the marketplace offer",
+        SerializedName = @"publisherId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string OfferDetailPublisherId { get => _propertiesBody.OfferDetailPublisherId ?? null; set => _propertiesBody.OfferDetailPublisherId = value; }
+
+        /// <summary>Term Id for the marketplace offer</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Term Id for the marketplace offer")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Term Id for the marketplace offer",
+        SerializedName = @"termId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string OfferDetailTermId { get => _propertiesBody.OfferDetailTermId ?? null; set => _propertiesBody.OfferDetailTermId = value; }
+
+        /// <summary>Term Name for the marketplace offer</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Term Name for the marketplace offer")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Term Name for the marketplace offer",
+        SerializedName = @"termUnit",
+        PossibleTypes = new [] { typeof(string) })]
+        public string OfferDetailTermUnit { get => _propertiesBody.OfferDetailTermUnit ?? null; set => _propertiesBody.OfferDetailTermUnit = value; }
 
         /// <summary>Organization Id in partner's system</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Organization Id in partner's system")]
@@ -212,6 +301,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Cmdlets
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         public Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.HttpPipeline Pipeline { get; set; }
+
+        /// <summary>Neon Project Properties</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Neon Project Properties")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Neon Project Properties",
+        SerializedName = @"projectProperties",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectPropertiesUpdate) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectPropertiesUpdate ProjectProperty { get => _propertiesBody.ProjectProperty ?? null /* object */; set => _propertiesBody.ProjectProperty = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]

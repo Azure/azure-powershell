@@ -69,7 +69,7 @@ directive:
     - ResponseBasedOriginErrorDetectionParameters
     # Both CDN and AFDX
     - HealthProbeParameters
-  # Generate memory object as parameter of the cmelet.
+  # Generate memory object as parameter of the cmdlet.
   - model-cmdlet:
     - model-name: ResourceReference
       cmdlet-name: New-AzCdnResourceReferenceObject
@@ -224,7 +224,7 @@ directive:
       cmdlet-name: New-AzCdnLoadParametersObject
     - model-name: MigrationEndpointMapping
       cmdlet-name: New-AzCdnMigrationEndpointMappingObject
-    # AFDX profile LogScrubbing, need to rename the memory ojects, not sure how to rename a memory object currently.
+    # AFDX profile LogScrubbing, need to rename the memory objects, not sure how to rename a memory object currently.
     - model-name: ProfileLogScrubbing
       cmdlet-name: New-AzFrontDoorCdnProfileLogScrubbingObject
     - model-name: ProfileScrubbingRules
@@ -278,7 +278,7 @@ directive:
   - where:
       verb: Set
     remove: true
-  # Remove some cmdlets' ViaIdentity which are inconvinient to call
+  # Remove some cmdlets' ViaIdentity which are inconvenient to call
   - where:
       variant: ^CheckViaIdentity$|^CheckViaIdentityExpanded$
       subject: ^NameAvailability$|^EndpointNameAvailability$

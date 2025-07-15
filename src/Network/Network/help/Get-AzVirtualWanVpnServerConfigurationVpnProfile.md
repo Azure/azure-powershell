@@ -180,7 +180,7 @@ Accept wildcard characters: False
 ```
 
 ### -VpnServerConfigurationId
-The id of Vpn server configuraiton object this Virtual wan will be associated with.
+The id of Vpn server configuration object this Virtual wan will be associated with.
 
 ```yaml
 Type: System.String

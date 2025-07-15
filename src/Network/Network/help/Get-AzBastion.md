@@ -37,7 +37,7 @@ Get-AzBastion -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
 ```
 
 ## DESCRIPTION
-The **Get-Bastion** cmdlet gets one or more bastions in a resource group or subscritption.
+The **Get-Bastion** cmdlet gets one or more bastions in a resource group or subscription.
 
 ## EXAMPLES
 

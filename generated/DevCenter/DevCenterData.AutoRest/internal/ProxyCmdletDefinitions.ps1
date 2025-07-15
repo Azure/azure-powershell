@@ -60,7 +60,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenterusercatalog
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenterusercatalog
 #>
 function Get-AzDevCenterUserCatalog {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICatalog])]
@@ -231,7 +231,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserdevboxaction
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxaction
 #>
 function Get-AzDevCenterUserDevBoxAction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBoxAction])]
@@ -422,7 +422,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserdevboxcustomizationgroup
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxcustomizationgroup
 #>
 function Get-AzDevCenterUserDevBoxCustomizationGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationGroup])]
@@ -619,7 +619,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserdevboxcustomizationtaskdefinition
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxcustomizationtaskdefinition
 #>
 function Get-AzDevCenterUserDevBoxCustomizationTaskDefinition {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationTaskDefinition])]
@@ -792,7 +792,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserdevboxcustomizationtasklog
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxcustomizationtasklog
 #>
 function Get-AzDevCenterUserDevBoxCustomizationTaskLog {
 [OutputType([System.String])]
@@ -985,7 +985,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserdevboxoperation
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxoperation
 #>
 function Get-AzDevCenterUserDevBoxOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBoxOperation])]
@@ -1171,7 +1171,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserdevboxremoteconnection
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxremoteconnection
 #>
 function Get-AzDevCenterUserDevBoxRemoteConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IRemoteConnection])]
@@ -1359,7 +1359,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserdevbox
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevbox
 #>
 function Get-AzDevCenterUserDevBox {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBox])]
@@ -1542,7 +1542,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserenvironmentaction
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmentaction
 #>
 function Get-AzDevCenterUserEnvironmentAction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentAction])]
@@ -1737,7 +1737,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserenvironmentdefinition
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmentdefinition
 #>
 function Get-AzDevCenterUserEnvironmentDefinition {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentDefinition])]
@@ -1907,7 +1907,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserenvironmentlog
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmentlog
 #>
 function Get-AzDevCenterUserEnvironmentLog {
 [OutputType([System.String])]
@@ -2093,7 +2093,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserenvironmentoperation
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmentoperation
 #>
 function Get-AzDevCenterUserEnvironmentOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentOperation])]
@@ -2279,7 +2279,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserenvironmentoutput
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmentoutput
 #>
 function Get-AzDevCenterUserEnvironmentOutput {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentOutputs])]
@@ -2449,7 +2449,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserenvironmenttypeability
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmenttypeability
 #>
 function Get-AzDevCenterUserEnvironmentTypeAbility {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentTypeAbilities])]
@@ -2620,7 +2620,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserenvironmenttype
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmenttype
 #>
 function Get-AzDevCenterUserEnvironmentType {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentType])]
@@ -2796,7 +2796,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserenvironment
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironment
 #>
 function Get-AzDevCenterUserEnvironment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment])]
@@ -2968,7 +2968,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruseroperationstatuses
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruseroperationstatuses
 #>
 function Get-AzDevCenterUserOperationStatuses {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus])]
@@ -3137,7 +3137,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserpool
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserpool
 #>
 function Get-AzDevCenterUserPool {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IPool])]
@@ -3298,7 +3298,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserprojectability
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserprojectability
 #>
 function Get-AzDevCenterUserProjectAbility {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IProjectAbilities])]
@@ -3473,7 +3473,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserproject
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserproject
 #>
 function Get-AzDevCenterUserProject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IProject])]
@@ -3642,7 +3642,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserschedule
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserschedule
 #>
 function Get-AzDevCenterUserSchedule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ISchedule])]
@@ -3818,7 +3818,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/invoke-azdevcenteruserdelaydevboxaction
+https://learn.microsoft.com/powershell/module/az.devcenter/invoke-azdevcenteruserdelaydevboxaction
 #>
 function Invoke-AzDevCenterUserDelayDevBoxAction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBoxAction], [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBoxActionDelayResult])]
@@ -4007,7 +4007,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/invoke-azdevcenteruserdelayenvironmentaction
+https://learn.microsoft.com/powershell/module/az.devcenter/invoke-azdevcenteruserdelayenvironmentaction
 #>
 function Invoke-AzDevCenterUserDelayEnvironmentAction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentAction])]
@@ -4215,7 +4215,7 @@ TASK <ICustomizationTask[]>: Tasks to apply. Note by default tasks are excluded 
   [RunAs <CustomizationTaskExecutionAccount?>]: What account to run the task as.
   [TimeoutInSecond <Int32?>]: Timeout, in seconds. Overrides any timeout provided on the task definition.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/new-azdevcenteruserdevboxcustomizationgroup
+https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteruserdevboxcustomizationgroup
 #>
 function New-AzDevCenterUserDevBoxCustomizationGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationGroup])]
@@ -4408,7 +4408,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/new-azdevcenteruserdevbox
+https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteruserdevbox
 #>
 function New-AzDevCenterUserDevBox {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBox])]
@@ -4624,7 +4624,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/new-azdevcenteruserenvironment
+https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteruserenvironment
 #>
 function New-AzDevCenterUserEnvironment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment])]
@@ -4844,7 +4844,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/remove-azdevcenteruserdevbox
+https://learn.microsoft.com/powershell/module/az.devcenter/remove-azdevcenteruserdevbox
 #>
 function Remove-AzDevCenterUserDevBox {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus])]
@@ -5039,7 +5039,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/remove-azdevcenteruserenvironment
+https://learn.microsoft.com/powershell/module/az.devcenter/remove-azdevcenteruserenvironment
 #>
 function Remove-AzDevCenterUserEnvironment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus])]
@@ -5236,7 +5236,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/repair-azdevcenteruserdevbox
+https://learn.microsoft.com/powershell/module/az.devcenter/repair-azdevcenteruserdevbox
 #>
 function Repair-AzDevCenterUserDevBox {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus])]
@@ -5425,7 +5425,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/restart-azdevcenteruserdevbox
+https://learn.microsoft.com/powershell/module/az.devcenter/restart-azdevcenteruserdevbox
 #>
 function Restart-AzDevCenterUserDevBox {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus])]
@@ -5612,7 +5612,7 @@ BODY <IEnvironment>: Properties of an environment.
     [(Any) <Object>]: This indicates any property can be added to this object.
   [Target <String>]: The target of the error.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/set-azdevcenteruserenvironment
+https://learn.microsoft.com/powershell/module/az.devcenter/set-azdevcenteruserenvironment
 #>
 function Set-AzDevCenterUserEnvironment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment])]
@@ -5832,7 +5832,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/skip-azdevcenteruserdevboxaction
+https://learn.microsoft.com/powershell/module/az.devcenter/skip-azdevcenteruserdevboxaction
 #>
 function Skip-AzDevCenterUserDevBoxAction {
 [OutputType([System.Boolean])]
@@ -6021,7 +6021,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/skip-azdevcenteruserenvironmentaction
+https://learn.microsoft.com/powershell/module/az.devcenter/skip-azdevcenteruserenvironmentaction
 #>
 function Skip-AzDevCenterUserEnvironmentAction {
 [OutputType([System.Boolean])]
@@ -6210,7 +6210,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/start-azdevcenteruserdevbox
+https://learn.microsoft.com/powershell/module/az.devcenter/start-azdevcenteruserdevbox
 #>
 function Start-AzDevCenterUserDevBox {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus])]
@@ -6399,7 +6399,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/stop-azdevcenteruserdevbox
+https://learn.microsoft.com/powershell/module/az.devcenter/stop-azdevcenteruserdevbox
 #>
 function Stop-AzDevCenterUserDevBox {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus])]
@@ -6646,7 +6646,7 @@ TASK <ICustomizationTask[]>: Tasks to apply.
   [RunAs <CustomizationTaskExecutionAccount?>]: What account to run the task as.
   [TimeoutInSecond <Int32?>]: Timeout, in seconds. Overrides any timeout provided on the task definition.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/test-azdevcenteruserdevboxcustomizationtaskaction
+https://learn.microsoft.com/powershell/module/az.devcenter/test-azdevcenteruserdevboxcustomizationtaskaction
 #>
 function Test-AzDevCenterUserDevBoxCustomizationTaskAction {
 [OutputType([System.Boolean])]
@@ -6846,7 +6846,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/update-azdevcenteruserenvironment
+https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteruserenvironment
 #>
 function Update-AzDevCenterUserEnvironment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment])]

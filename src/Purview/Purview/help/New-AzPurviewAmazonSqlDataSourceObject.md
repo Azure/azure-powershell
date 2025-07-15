@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAmazonSqlDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewamazonsqldatasourceobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for AmazonSqlDataSource.
 ## SYNTAX
 
 ```
-New-AzPurviewAmazonSqlDataSourceObject -Kind <DataSourceType> [-CollectionReferenceName <String>]
- [-CollectionType <String>] [-Port <Int32>] [-ServerEndpoint <String>] [-VpcEndpointServiceName <String>]
+New-AzPurviewAmazonSqlDataSourceObject [-CollectionReferenceName <String>] [-CollectionType <String>]
+ [-Port <Int32>] [-ServerEndpoint <String>] [-VpcEndpointServiceName <String>]
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Create an in-memory object for AmazonSqlDataSource.
 
 ### Example 1: Create Amazon SQL data source object
 ```powershell
-New-AzPurviewAmazonSqlDataSourceObject -Kind 'AmazonSql' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Port 1433 -ServerEndpoint DummyEdnpoint -VpcEndpointServiceName com.amazonaws.ypce.wus.123456789
+New-AzPurviewAmazonSqlDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Port 1433 -ServerEndpoint DummyEdnpoint -VpcEndpointServiceName com.amazonaws.ypce.wus.123456789
 ```
 
 ```output
@@ -69,20 +69,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Kind
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -138,7 +124,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlDataSource
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonSqlDataSource
 
 ## NOTES
 

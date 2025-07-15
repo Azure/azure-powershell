@@ -16438,7 +16438,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// the primary and secondary clusters are swapped after failover and the account remains geo-replicated. Failover should
         /// continue to be used in the event of availability issues as Planned failover is only available while the primary and secondary
         /// endpoints are available. The primary use case of a Planned Failover is disaster recovery testing drills. This type of
-        /// failover is invoked by setting FailoverType parameter to 'Planned'. Learn more about the failover options here- https://learn.microsoft.com/en-us/azure/storage/common/storage-disaster-recovery-guidance
+        /// failover is invoked by setting FailoverType parameter to 'Planned'. Learn more about the failover options here- https://learn.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
@@ -16492,7 +16492,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// the primary and secondary clusters are swapped after failover and the account remains geo-replicated. Failover should
         /// continue to be used in the event of availability issues as Planned failover is only available while the primary and secondary
         /// endpoints are available. The primary use case of a Planned Failover is disaster recovery testing drills. This type of
-        /// failover is invoked by setting FailoverType parameter to 'Planned'. Learn more about the failover options here- https://learn.microsoft.com/en-us/azure/storage/common/storage-disaster-recovery-guidance
+        /// failover is invoked by setting FailoverType parameter to 'Planned'. Learn more about the failover options here- https://learn.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="failoverType">The parameter is set to 'Planned' to indicate whether a Planned failover is requested.</param>
@@ -20737,7 +20737,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// <param name="Maxpagesize">Optional, specifies the maximum number of storage task assignment instances to be included in
         /// the list response.</param>
         /// <param name="Filter">Optional. When specified, it can be used to query using reporting properties. See [Constructing Filter
-        /// Strings](https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings)
+        /// Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings)
         /// for details.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -20790,7 +20790,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// <param name="Maxpagesize">Optional, specifies the maximum number of storage task assignment instances to be included in
         /// the list response.</param>
         /// <param name="Filter">Optional. When specified, it can be used to query using reporting properties. See [Constructing Filter
-        /// Strings](https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings)
+        /// Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings)
         /// for details.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -20856,7 +20856,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// <param name="Maxpagesize">Optional, specifies the maximum number of storage task assignment instances to be included in
         /// the list response.</param>
         /// <param name="Filter">Optional. When specified, it can be used to query using reporting properties. See [Constructing Filter
-        /// Strings](https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings)
+        /// Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings)
         /// for details.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -20925,7 +20925,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// <param name="Maxpagesize">Optional, specifies the maximum number of storage task assignment instances to be included in
         /// the list response.</param>
         /// <param name="Filter">Optional. When specified, it can be used to query using reporting properties. See [Constructing Filter
-        /// Strings](https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings)
+        /// Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings)
         /// for details.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -21098,7 +21098,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// <param name="Maxpagesize">Optional, specifies the maximum number of storage task assignment instances to be included in
         /// the list response.</param>
         /// <param name="Filter">Optional. When specified, it can be used to query using reporting properties. See [Constructing Filter
-        /// Strings](https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings)
+        /// Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings)
         /// for details.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -21135,7 +21135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// <param name="Maxpagesize">Optional, specifies the maximum number of storage task assignment instances to be included in
         /// the list response.</param>
         /// <param name="Filter">Optional. When specified, it can be used to query using reporting properties. See [Constructing Filter
-        /// Strings](https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings)
+        /// Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings)
         /// for details.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -21188,7 +21188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// <param name="Maxpagesize">Optional, specifies the maximum number of storage task assignment instances to be included in
         /// the list response.</param>
         /// <param name="Filter">Optional. When specified, it can be used to query using reporting properties. See [Constructing Filter
-        /// Strings](https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings)
+        /// Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings)
         /// for details.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -21253,7 +21253,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// <param name="Maxpagesize">Optional, specifies the maximum number of storage task assignment instances to be included in
         /// the list response.</param>
         /// <param name="Filter">Optional. When specified, it can be used to query using reporting properties. See [Constructing Filter
-        /// Strings](https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings)
+        /// Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings)
         /// for details.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -21319,7 +21319,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// <param name="Maxpagesize">Optional, specifies the maximum number of storage task assignment instances to be included in
         /// the list response.</param>
         /// <param name="Filter">Optional. When specified, it can be used to query using reporting properties. See [Constructing Filter
-        /// Strings](https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings)
+        /// Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings)
         /// for details.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -21488,7 +21488,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// <param name="Maxpagesize">Optional, specifies the maximum number of storage task assignment instances to be included in
         /// the list response.</param>
         /// <param name="Filter">Optional. When specified, it can be used to query using reporting properties. See [Constructing Filter
-        /// Strings](https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings)
+        /// Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings)
         /// for details.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -21897,8 +21897,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // declared final-state-via: location
-                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     var operationLocation = _response.GetFirstHeader(@"Operation-Location");
@@ -21977,7 +21976,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                         }
                         // we are done polling, do a request on final target?
                         // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get);
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get);
 
                         // drop the old response
                         _response?.Dispose();
@@ -22052,8 +22051,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // declared final-state-via: location
-                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     var operationLocation = _response.GetFirstHeader(@"Operation-Location");
@@ -22132,7 +22130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                         }
                         // we are done polling, do a request on final target?
                         // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get);
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get);
 
                         // drop the old response
                         _response?.Dispose();
@@ -22339,8 +22337,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // declared final-state-via: location
-                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    // declared final-state-via: azure-async-operation
+                    var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     var operationLocation = _response.GetFirstHeader(@"Operation-Location");
@@ -23556,8 +23554,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // declared final-state-via: location
-                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     var operationLocation = _response.GetFirstHeader(@"Operation-Location");
@@ -23636,7 +23633,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                         }
                         // we are done polling, do a request on final target?
                         // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get);
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get);
 
                         // drop the old response
                         _response?.Dispose();
@@ -23711,8 +23708,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // declared final-state-via: location
-                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     var operationLocation = _response.GetFirstHeader(@"Operation-Location");
@@ -23791,7 +23787,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                         }
                         // we are done polling, do a request on final target?
                         // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get);
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get);
 
                         // drop the old response
                         _response?.Dispose();

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Updates an account
+Update an account
 .Description
-Updates an account
+Update an account
 .Example
 Update-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg -Tag @{"k"="v"} | Format-List 
 .Example
@@ -28,7 +28,7 @@ Update-AzPurviewAccount -InputObject $get -Tag @{"k"="v"}
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IPurviewIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccount
+Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IAccount
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -45,10 +45,12 @@ INPUTOBJECT <IPurviewIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.purview/update-azpurviewaccount
 #>
 function Update-AzPurviewAccount {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccount])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IAccount])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('AccountName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
     [System.String]
@@ -56,12 +58,16 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
     [System.String]
     # The resource group name.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -72,28 +78,35 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IPurviewIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.PSArgumentCompleterAttribute("NotSpecified", "Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
     [System.String]
-    # Gets or sets the managed resource group name
-    ${ManagedResourceGroupName},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.PublicNetworkAccess])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.PublicNetworkAccess]
     # Gets or sets the public network access.
     ${PublicNetworkAccess},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccountUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IAccountUpdateParametersTags]))]
     [System.Collections.Hashtable]
     # Tags on the azure resource.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -163,6 +176,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -184,10 +206,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.Purview.private\Update-AzPurviewAccount_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Purview.private\Update-AzPurviewAccount_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.Purview.private\Update-AzPurviewAccount_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Purview.private\Update-AzPurviewAccount_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -201,6 +223,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

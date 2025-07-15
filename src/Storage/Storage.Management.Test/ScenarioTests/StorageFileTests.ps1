@@ -196,7 +196,7 @@ function Test-ShareSoftDelete
 		# restore share and check
 		if ($env:AZURE_TEST_MODE -eq "Record")
 		{
-			# sleep 1 miniute if record. Don't need sleep in replay
+			# sleep 1 minute if record. Don't need sleep in replay
 			sleep 60
 		}
 		Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1 -DeletedShareVersion $deletedShareVersion	

@@ -278,15 +278,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets
         public global::System.DateTime StartFrom { get => _parametersBody.StartFrom ?? default(global::System.DateTime); set => _parametersBody.StartFrom = value; }
 
         /// <summary>
-        /// When to start task execution. This is an optional field when ExecutionTrigger.properties.type is 'RunOnce'; this property
+        /// When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'RunOnce'; this property
         /// should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "When to start task execution. This is an optional field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Storage.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"When to start task execution. This is an optional field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'",
+        Description = @"When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'",
         SerializedName = @"startOn",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         public global::System.DateTime StartOn { get => _parametersBody.StartOn ?? default(global::System.DateTime); set => _parametersBody.StartOn = value; }

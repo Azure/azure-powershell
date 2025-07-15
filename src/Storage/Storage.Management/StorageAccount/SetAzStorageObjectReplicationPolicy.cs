@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Object Replication Policy DestinationAccount, if SourceAccount is account name it should be account name, else should be account resource id. Default value will be the input StorageAccountName, or the resouceID of the account.",
+            HelpMessage = "Object Replication Policy DestinationAccount, if SourceAccount is account name it should be account name, else should be account resource id. Default value will be the input StorageAccountName, or the resourceID of the account.",
             ParameterSetName = AccountNameParameterSet)]
         [Parameter(
             Mandatory = false,
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     // If not specify the destination account, will set destination account to the account which the policy will be set to
                     if (string.IsNullOrWhiteSpace(this.DestinationAccount))
                     {
-                        // If source account is resource ID, destonation account also need be resource ID
+                        // If source account is resource ID, destination account also need be resource ID
                         if (this.SourceAccount.Contains("/"))
                         {
                             var account = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.StorageAccountName);

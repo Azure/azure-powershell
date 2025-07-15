@@ -71,6 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {_listenerPort = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("listenerPort"), out var __jsonListenerPort) ? (long?)__jsonListenerPort : _listenerPort;}
             {_nodeCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("nodeCount"), out var __jsonNodeCount) ? (int?)__jsonNodeCount : _nodeCount;}
             {_storageSizeInGb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("storageSizeInGbs"), out var __jsonStorageSizeInGbs) ? (int?)__jsonStorageSizeInGbs : _storageSizeInGb;}
+            {_fileSystemConfigurationDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("fileSystemConfigurationDetails"), out var __jsonFileSystemConfigurationDetails) ? If( __jsonFileSystemConfigurationDetails as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails) (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.FileSystemConfigurationDetails.FromJson(__u) )) ))() : null : _fileSystemConfigurationDetail;}
             {_dataStorageSizeInTb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("dataStorageSizeInTbs"), out var __jsonDataStorageSizeInTbs) ? (double?)__jsonDataStorageSizeInTbs : _dataStorageSizeInTb;}
             {_dbNodeStorageSizeInGb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("dbNodeStorageSizeInGbs"), out var __jsonDbNodeStorageSizeInGbs) ? (int?)__jsonDbNodeStorageSizeInGbs : _dbNodeStorageSizeInGb;}
             {_memorySizeInGb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("memorySizeInGbs"), out var __jsonMemorySizeInGbs) ? (int?)__jsonMemorySizeInGbs : _memorySizeInGb;}
@@ -88,11 +89,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {_cloudExadataInfrastructureId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("cloudExadataInfrastructureId"), out var __jsonCloudExadataInfrastructureId) ? (string)__jsonCloudExadataInfrastructureId : (string)_cloudExadataInfrastructureId;}
             {_isSparseDiskgroupEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonBoolean>("isSparseDiskgroupEnabled"), out var __jsonIsSparseDiskgroupEnabled) ? (bool?)__jsonIsSparseDiskgroupEnabled : _isSparseDiskgroupEnabled;}
             {_systemVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("systemVersion"), out var __jsonSystemVersion) ? (string)__jsonSystemVersion : (string)_systemVersion;}
-            {_sshPublicKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("sshPublicKeys"), out var __jsonSshPublicKeys) ? If( __jsonSshPublicKeys as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _sshPublicKey;}
+            {_sshPublicKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("sshPublicKeys"), out var __jsonSshPublicKeys) ? If( __jsonSshPublicKeys as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(string) (__p is Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString __o ? (string)(__o.ToString()) : null)) ))() : null : _sshPublicKey;}
             {_licenseModel = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("licenseModel"), out var __jsonLicenseModel) ? (string)__jsonLicenseModel : (string)_licenseModel;}
             {_diskRedundancy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("diskRedundancy"), out var __jsonDiskRedundancy) ? (string)__jsonDiskRedundancy : (string)_diskRedundancy;}
-            {_scanIPId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("scanIpIds"), out var __jsonScanIPIds) ? If( __jsonScanIPIds as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(string) (__p is Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString __o ? (string)(__o.ToString()) : null)) ))() : null : _scanIPId;}
-            {_vipId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("vipIds"), out var __jsonVipIds) ? If( __jsonVipIds as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(string) (__k is Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString __j ? (string)(__j.ToString()) : null)) ))() : null : _vipId;}
+            {_scanIPId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("scanIpIds"), out var __jsonScanIPIds) ? If( __jsonScanIPIds as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(string) (__k is Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString __j ? (string)(__j.ToString()) : null)) ))() : null : _scanIPId;}
+            {_vipId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("vipIds"), out var __jsonVipIds) ? If( __jsonVipIds as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(string) (__f is Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString __e ? (string)(__e.ToString()) : null)) ))() : null : _vipId;}
             {_scanDnsName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("scanDnsName"), out var __jsonScanDnsName) ? (string)__jsonScanDnsName : (string)_scanDnsName;}
             {_scanListenerPortTcp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("scanListenerPortTcp"), out var __jsonScanListenerPortTcp) ? (int?)__jsonScanListenerPortTcp : _scanListenerPortTcp;}
             {_scanListenerPortTcpSsl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("scanListenerPortTcpSsl"), out var __jsonScanListenerPortTcpSsl) ? (int?)__jsonScanListenerPortTcpSsl : _scanListenerPortTcpSsl;}
@@ -106,12 +107,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {_nsgUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("nsgUrl"), out var __jsonNsgUrl) ? (string)__jsonNsgUrl : (string)_nsgUrl;}
             {_subnetId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("subnetId"), out var __jsonSubnetId) ? (string)__jsonSubnetId : (string)_subnetId;}
             {_backupSubnetCidr = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("backupSubnetCidr"), out var __jsonBackupSubnetCidr) ? (string)__jsonBackupSubnetCidr : (string)_backupSubnetCidr;}
-            {_nsgCidr = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("nsgCidrs"), out var __jsonNsgCidrs) ? If( __jsonNsgCidrs as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.INsgCidr>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.INsgCidr) (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.NsgCidr.FromJson(__f) )) ))() : null : _nsgCidr;}
+            {_nsgCidr = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("nsgCidrs"), out var __jsonNsgCidrs) ? If( __jsonNsgCidrs as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __b) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.INsgCidr>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__b, (__a)=>(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.INsgCidr) (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.NsgCidr.FromJson(__a) )) ))() : null : _nsgCidr;}
             {_displayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("displayName"), out var __jsonDisplayName) ? (string)__jsonDisplayName : (string)_displayName;}
             {_lastUpdateHistoryEntryId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("lastUpdateHistoryEntryId"), out var __jsonLastUpdateHistoryEntryId) ? (string)__jsonLastUpdateHistoryEntryId : (string)_lastUpdateHistoryEntryId;}
-            {_dbServer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("dbServers"), out var __jsonDbServers) ? If( __jsonDbServers as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var ___z) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(___z, (___y)=>(string) (___y is Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString ___x ? (string)(___x.ToString()) : null)) ))() : null : _dbServer;}
+            {_dbServer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("dbServers"), out var __jsonDbServers) ? If( __jsonDbServers as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var ___u) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(___u, (___t)=>(string) (___t is Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString ___s ? (string)(___s.ToString()) : null)) ))() : null : _dbServer;}
             {_compartmentId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("compartmentId"), out var __jsonCompartmentId) ? (string)__jsonCompartmentId : (string)_compartmentId;}
             {_subnetOcid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("subnetOcid"), out var __jsonSubnetOcid) ? (string)__jsonSubnetOcid : (string)_subnetOcid;}
+            {_computeModel = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("computeModel"), out var __jsonComputeModel) ? (string)__jsonComputeModel : (string)_computeModel;}
             AfterFromJson(json);
         }
 
@@ -166,6 +168,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeUpdate))
             {
                 AddIf( null != this._storageSizeInGb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._storageSizeInGb) : null, "storageSizeInGbs" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeUpdate))
+            {
+                if (null != this._fileSystemConfigurationDetail)
+                {
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._fileSystemConfigurationDetail )
+                    {
+                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                    }
+                    container.Add("fileSystemConfigurationDetails",__w);
+                }
             }
             AddIf( null != this._dataStorageSizeInTb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((double)this._dataStorageSizeInTb) : null, "dataStorageSizeInTbs" ,container.Add );
             AddIf( null != this._dbNodeStorageSizeInGb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._dbNodeStorageSizeInGb) : null, "dbNodeStorageSizeInGbs" ,container.Add );
@@ -222,12 +236,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             }
             if (null != this._sshPublicKey)
             {
-                var __w = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
-                foreach( var __x in this._sshPublicKey )
+                var __r = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
+                foreach( var __s in this._sshPublicKey )
                 {
-                    AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                    AddIf(null != (((object)__s)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(__s.ToString()) : null ,__r.Add);
                 }
-                container.Add("sshPublicKeys",__w);
+                container.Add("sshPublicKeys",__r);
             }
             AddIf( null != (((object)this._licenseModel)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._licenseModel.ToString()) : null, "licenseModel" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
@@ -238,24 +252,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 if (null != this._scanIPId)
                 {
-                    var __r = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
-                    foreach( var __s in this._scanIPId )
+                    var __m = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
+                    foreach( var __n in this._scanIPId )
                     {
-                        AddIf(null != (((object)__s)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(__s.ToString()) : null ,__r.Add);
+                        AddIf(null != (((object)__n)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(__n.ToString()) : null ,__m.Add);
                     }
-                    container.Add("scanIpIds",__r);
+                    container.Add("scanIpIds",__m);
                 }
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
             {
                 if (null != this._vipId)
                 {
-                    var __m = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
-                    foreach( var __n in this._vipId )
+                    var __h = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
+                    foreach( var __i in this._vipId )
                     {
-                        AddIf(null != (((object)__n)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(__n.ToString()) : null ,__m.Add);
+                        AddIf(null != (((object)__i)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(__i.ToString()) : null ,__h.Add);
                     }
-                    container.Add("vipIds",__m);
+                    container.Add("vipIds",__h);
                 }
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
@@ -314,12 +328,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 if (null != this._nsgCidr)
                 {
-                    var __h = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
-                    foreach( var __i in this._nsgCidr )
+                    var __c = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
+                    foreach( var __d in this._nsgCidr )
                     {
-                        AddIf(__i?.ToJson(null, serializationMode) ,__h.Add);
+                        AddIf(__d?.ToJson(null, serializationMode) ,__c.Add);
                     }
-                    container.Add("nsgCidrs",__h);
+                    container.Add("nsgCidrs",__c);
                 }
             }
             AddIf( null != (((object)this._displayName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._displayName.ToString()) : null, "displayName" ,container.Add );
@@ -327,12 +341,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 if (null != this._computeNode)
                 {
-                    var __c = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
-                    foreach( var __d in this._computeNode )
+                    var ___x = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
+                    foreach( var ___y in this._computeNode )
                     {
-                        AddIf(null != (((object)__d)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(__d.ToString()) : null ,__c.Add);
+                        AddIf(null != (((object)___y)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(___y.ToString()) : null ,___x.Add);
                     }
-                    container.Add("computeNodes",__c);
+                    container.Add("computeNodes",___x);
                 }
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
@@ -343,12 +357,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 if (null != this._dbServer)
                 {
-                    var __a = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
-                    foreach( var __b in this._dbServer )
+                    var ___v = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
+                    foreach( var ___w in this._dbServer )
                     {
-                        AddIf(null != (((object)__b)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(__b.ToString()) : null ,__a.Add);
+                        AddIf(null != (((object)___w)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(___w.ToString()) : null ,___v.Add);
                     }
-                    container.Add("dbServers",__a);
+                    container.Add("dbServers",___v);
                 }
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
@@ -358,6 +372,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._subnetOcid)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._subnetOcid.ToString()) : null, "subnetOcid" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._computeModel)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._computeModel.ToString()) : null, "computeModel" ,container.Add );
             }
             AfterToJson(ref container);
             return container;
