@@ -277,12 +277,14 @@ function ValidateReplication {
         throw $VmReplicationValidationMessages.AlreadyInReplication
     }
 
+    # Check the VM power status
     if ($Machine.PowerStatus -eq $PowerStatus.OffVMware -or $Machine.PowerStatus -eq $PowerStatus.OffHyperV) {
         throw $VmReplicationValidationMessages.VmPoweredOff
     }
 
     if ($MigrationType -eq $AzLocalInstanceTypes.HyperVToAzLocal) {
-        if (-not $Machine.OperatingSystemDetailOSType -or $Machine.OperatingSystemDetailOSType -eq "") {
+        if ([string]::IsNullOrEmpty($Machine.OperatingSystemDetailOSType) -or
+            ($Machine.OperatingSystemDetailOSType -eq $OsType.OtherGuestFamily -and [string]::IsNullOrEmpty($Machine.GuestOSDetailOsname))) {
             throw $VmReplicationValidationMessages.OsTypeNotFound
         }
 
@@ -292,6 +294,7 @@ function ValidateReplication {
     }
 
     if ($MigrationType -eq $AzLocalInstanceTypes.VMwareToAzLocal) {
+        # Once VMware tools are installed, OS type should be available.
         if ($Machine.VMwareToolsStatus -eq $VMwareToolsStatus.NotRunning) {
             throw $VmReplicationValidationMessages.VmWareToolsNotRunning
         }

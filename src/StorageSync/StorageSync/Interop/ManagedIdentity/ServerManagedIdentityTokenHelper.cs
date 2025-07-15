@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
         /// Try to get the AadToken from an encoded JWT token string.
         /// </summary>
         /// <param name="accessToken">JWT token in string format</param>
-        /// <returns>String of resource ID for the managed identity asociated with the token</returns>
+        /// <returns>String of resource ID for the managed identity associated with the token</returns>
         private static AadToken TryGetAadTokenFromAccessTokenString(string accessToken)
         {
             var payload = accessToken.Split('.')[1].Replace('-', '+').Replace('_', '/');
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
         /// Try to get the Managed Identity ResourceID from the "xms_mirid" claim in a token.
         /// </summary>
         /// <param name="accessToken">JWT token in string format</param>
-        /// <returns>String of resource ID for the managed identity asociated with the token</returns>
+        /// <returns>String of resource ID for the managed identity associated with the token</returns>
         private static string TryParseMIResourceIDFromToken(string accessToken) => TryGetAadTokenFromAccessTokenString(accessToken)?.MIResourceId;
     }
 

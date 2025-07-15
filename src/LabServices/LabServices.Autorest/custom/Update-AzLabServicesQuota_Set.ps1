@@ -19,12 +19,12 @@ API to update the lab quota.
 API to update the lab quota.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesquota
 #>
 function Update-AzLabServicesQuota_Set {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     param(
         [Parameter()]
@@ -44,10 +44,12 @@ function Update-AzLabServicesQuota_Set {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
         [System.String]
+        # The name of lab service lab.
         ${LabName},
 
         [Parameter(Mandatory)]
         [System.TimeSpan]
+        # The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
         ${LabQuota},
     
         [Parameter()]

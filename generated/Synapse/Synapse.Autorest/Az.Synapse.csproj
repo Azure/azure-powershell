@@ -2,9 +2,9 @@
   <PropertyGroup>
     <PsModuleName>Synapse</PsModuleName>
     <PsRootModuleName>Synapse</PsRootModuleName>
+    <PsModuleFolder>Synapse.Autorest</PsModuleFolder>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
-
 </Project>

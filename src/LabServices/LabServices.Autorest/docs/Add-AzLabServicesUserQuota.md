@@ -90,8 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -Email
-The name of the user that uniquely identifies it within containing lab.
-Used in resource URIs.
+Email address of the user.
 
 ```yaml
 Type: System.String
@@ -106,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -LabName
-
+The name of the lab service lab.
 
 ```yaml
 Type: System.String
@@ -121,7 +120,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -166,10 +166,10 @@ Accept wildcard characters: False
 ```
 
 ### -User
-To construct, see NOTES section for USER properties and create a hash table.
+The object of lab service user.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User
 Parameter Sets: User
 Aliases:
 
@@ -216,11 +216,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser
 
 ## NOTES
 

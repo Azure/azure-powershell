@@ -148,6 +148,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).SubnetId = (string) content.GetValueForProperty("SubnetId",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).SubnetId, global::System.Convert.ToString);
             }
+            if (content.Contains("ComputeModel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).ComputeModel = (string) content.GetValueForProperty("ComputeModel",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).ComputeModel, global::System.Convert.ToString);
+            }
             if (content.Contains("DataCollectionOption"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).DataCollectionOption = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDataCollectionOptions) content.GetValueForProperty("DataCollectionOption",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).DataCollectionOption, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DataCollectionOptionsTypeConverter.ConvertFrom);
@@ -167,6 +171,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("StorageSizeInGb"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).StorageSizeInGb = (int?) content.GetValueForProperty("StorageSizeInGb",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).StorageSizeInGb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("FileSystemConfigurationDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).FileSystemConfigurationDetail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails>) content.GetValueForProperty("FileSystemConfigurationDetail",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).FileSystemConfigurationDetail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.FileSystemConfigurationDetailsTypeConverter.ConvertFrom));
             }
             if (content.Contains("DataStorageSizeInTb"))
             {
@@ -206,7 +214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             }
             if (content.Contains("CpuCoreCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).CpuCoreCount = (int) content.GetValueForProperty("CpuCoreCount",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).CpuCoreCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).CpuCoreCount = (int?) content.GetValueForProperty("CpuCoreCount",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).CpuCoreCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("OcpuCount"))
             {
@@ -437,6 +445,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).SubnetId = (string) content.GetValueForProperty("SubnetId",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).SubnetId, global::System.Convert.ToString);
             }
+            if (content.Contains("ComputeModel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).ComputeModel = (string) content.GetValueForProperty("ComputeModel",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).ComputeModel, global::System.Convert.ToString);
+            }
             if (content.Contains("DataCollectionOption"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).DataCollectionOption = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDataCollectionOptions) content.GetValueForProperty("DataCollectionOption",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).DataCollectionOption, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DataCollectionOptionsTypeConverter.ConvertFrom);
@@ -456,6 +468,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("StorageSizeInGb"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).StorageSizeInGb = (int?) content.GetValueForProperty("StorageSizeInGb",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).StorageSizeInGb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("FileSystemConfigurationDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).FileSystemConfigurationDetail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails>) content.GetValueForProperty("FileSystemConfigurationDetail",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).FileSystemConfigurationDetail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.FileSystemConfigurationDetailsTypeConverter.ConvertFrom));
             }
             if (content.Contains("DataStorageSizeInTb"))
             {
@@ -495,7 +511,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             }
             if (content.Contains("CpuCoreCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).CpuCoreCount = (int) content.GetValueForProperty("CpuCoreCount",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).CpuCoreCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).CpuCoreCount = (int?) content.GetValueForProperty("CpuCoreCount",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).CpuCoreCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("OcpuCount"))
             {

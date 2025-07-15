@@ -935,6 +935,9 @@ Creates a match variable for firewall condition.
 ### [New-AzApplicationGatewayFirewallPolicy](New-AzApplicationGatewayFirewallPolicy.md)
 Creates a application gateway firewall policy.
 
+### [New-AzApplicationGatewayFirewallPolicyException](New-AzApplicationGatewayFirewallPolicyException.md)
+Creates an exception on the Firewall Policy
+
 ### [New-AzApplicationGatewayFirewallPolicyExclusion](New-AzApplicationGatewayFirewallPolicyExclusion.md)
 Creates an exclusion on the Firewall Policy
 
@@ -1438,6 +1441,9 @@ Creates a new packet capture filter object.
 
 ### [New-AzPacketCaptureScopeConfig](New-AzPacketCaptureScopeConfig.md)
 Creates a new packet capture scope object.
+
+### [New-AzPacketCaptureSettingsConfig](New-AzPacketCaptureSettingsConfig.md)
+Creates a new capture setting object.
 
 ### [New-AzPrivateDnsZoneConfig](New-AzPrivateDnsZoneConfig.md)
 Creates DNS zone configuration of the private dns zone group.
