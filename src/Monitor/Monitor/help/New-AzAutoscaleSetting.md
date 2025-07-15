@@ -12,20 +12,13 @@ Create an autoscale setting.
 
 ## SYNTAX
 
-### CreateViaIdentityExpanded (Default)
+### CreateExpanded (Default)
 ```
-New-AzAutoscaleSetting -InputObject <IAutoscaleIdentity> -Location <String> -Profile <IAutoscaleProfile[]>
- [-Enabled] [-Notification <IAutoscaleNotification[]>]
+New-AzAutoscaleSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
+ -Profile <IAutoscaleProfile[]> [-Enabled] [-Notification <IAutoscaleNotification[]>]
  [-PredictiveAutoscalePolicyScaleLookAheadTime <TimeSpan>] [-PredictiveAutoscalePolicyScaleMode <String>]
  [-PropertiesName <String>] [-Tag <Hashtable>] [-TargetResourceLocation <String>] [-TargetResourceUri <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzAutoscaleSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -35,13 +28,11 @@ New-AzAutoscaleSetting -Name <String> -ResourceGroupName <String> [-Subscription
  [<CommonParameters>]
 ```
 
-### CreateExpanded
+### CreateViaJsonString
 ```
-New-AzAutoscaleSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- -Profile <IAutoscaleProfile[]> [-Enabled] [-Notification <IAutoscaleNotification[]>]
- [-PredictiveAutoscalePolicyScaleLookAheadTime <TimeSpan>] [-PredictiveAutoscalePolicyScaleMode <String>]
- [-PropertiesName <String>] [-Tag <Hashtable>] [-TargetResourceLocation <String>] [-TargetResourceUri <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzAutoscaleSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,28 +77,13 @@ The default value is 'false'.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleIdentity
-Parameter Sets: CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -146,7 +122,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -161,7 +137,7 @@ The autoscale setting name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString, CreateViaJsonFilePath, CreateExpanded
+Parameter Sets: (All)
 Aliases: AutoscaleSettingName
 
 Required: True
@@ -176,7 +152,7 @@ the collection of notifications.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleNotification[]
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -192,7 +168,7 @@ It must be between 1 minute and 60 minutes in ISO 8601 format.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -207,7 +183,7 @@ the predictive autoscale mode
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -223,7 +199,7 @@ A maximum of 20 profiles can be specified.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleProfile[]
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -238,7 +214,7 @@ the name of the autoscale setting.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -254,7 +230,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString, CreateViaJsonFilePath, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -269,7 +245,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString, CreateViaJsonFilePath, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -287,7 +263,7 @@ Each tag must have a key no greater in length than 128 characters and a value no
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -302,7 +278,7 @@ the location of the resource that the autoscale setting should be added to.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -317,7 +293,7 @@ the resource identifier of the resource that the autoscale setting should be add
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -362,8 +338,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleIdentity
 
 ## OUTPUTS
 
