@@ -37,7 +37,7 @@ function CheckStorageModuleDependency {
     }
 }
 
-function GetHCIClusterARGQuery {
+function GetARGQueryForArcResourceBridge {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory)]
@@ -282,25 +282,36 @@ function ValidateReplication {
         throw $VmReplicationValidationMessages.VmPoweredOff
     }
 
+    # Hyper-V/VMware VMs should have some OS type
+    if ([string]::IsNullOrEmpty($Machine.OperatingSystemDetailOSType))
+    {
+        throw $VmReplicationValidationMessages.OsTypeNotFound
+    }
+
     if ($MigrationType -eq $AzLocalInstanceTypes.HyperVToAzLocal) {
-        if ([string]::IsNullOrEmpty($Machine.OperatingSystemDetailOSType) -or
-            ($Machine.OperatingSystemDetailOSType -eq $OsType.OtherGuestFamily -and [string]::IsNullOrEmpty($Machine.GuestOSDetailOsname))) {
+        # Hyper-V VMs with 'otherguestfamily' OS type and missing OS name could also mean Hyper-V Integration Services are not running
+        if ($Machine.OperatingSystemDetailOSType -eq $OsType.OtherGuestFamily -and [string]::IsNullOrEmpty($Machine.GuestOSDetailOsname)) {
             throw $VmReplicationValidationMessages.OsTypeNotFound
         }
 
+        # Hyper-V VMs should be highly available
         if ($Machine.ClusterId -and $Machine.HighAvailability -eq $HighAvailability.NO) {
             throw $VmReplicationValidationMessages.VmNotHighlyAvailable
         }
     }
 
     if ($MigrationType -eq $AzLocalInstanceTypes.VMwareToAzLocal) {
-        # Once VMware tools are installed, OS type should be available.
-        if ($Machine.VMwareToolsStatus -eq $VMwareToolsStatus.NotRunning) {
-            throw $VmReplicationValidationMessages.VmWareToolsNotRunning
+        # VMware VMs with 'otherguestfamily' OS type is not supported
+        if ($Machine.OperatingSystemDetailOSType -eq $OsType.OtherGuestFamily) {
+            throw $VmReplicationValidationMessages.OsTypeNotSupported
         }
 
+        # VMware tools should be running to support static ip migration
         if ($Machine.VMwareToolsStatus -eq $VMwareToolsStatus.NotInstalled) {
             throw $VmReplicationValidationMessages.VmWareToolsNotInstalled
+        }
+        elseif ($Machine.VMwareToolsStatus -eq $VMwareToolsStatus.NotRunning) {
+            throw $VmReplicationValidationMessages.VmWareToolsNotRunning
         }
     }
 }
