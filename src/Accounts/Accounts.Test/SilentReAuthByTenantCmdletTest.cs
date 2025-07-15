@@ -36,6 +36,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
+using Microsoft.Azure.Commands.Common.Exceptions;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 {
@@ -192,8 +193,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
                 // Act
                 cmdlet.InvokeBeginProcessing();
-                AuthenticationFailedException e = Assert.Throws<AuthenticationFailedException>(() => cmdlet.ExecuteCmdlet());
-                Assert.Contains(identityExceptionMessage, e.Message);
+                AzPSAuthenticationFailedException e = Assert.Throws<AzPSAuthenticationFailedException>(() => cmdlet.ExecuteCmdlet());
+                Assert.DoesNotContain(identityExceptionMessage, e.Message); // cause it's misleading
                 Assert.Contains(bodyErrorMessage401, e.Message);
                 Assert.Contains("Connect-AzAccount", e.Message);
                 Assert.Contains(claimsChallengeBase64, e.Message);

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Azure.Identity;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using System;
 using System.Net.Http;
 using System.Threading;
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 catch (AuthenticationFailedException e)
                 {
                     string additionalErrorMessage = ClaimsChallengeUtilities.FormatClaimsChallengeErrorMessage(claimsChallenge, await response?.Content?.ReadAsStringAsync());
-                    throw e.WithAdditionalMessage(additionalErrorMessage);
+                    throw new AzPSAuthenticationFailedException(additionalErrorMessage, null, e);
                 }
             }
             return response;
