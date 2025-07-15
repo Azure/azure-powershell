@@ -29,7 +29,7 @@ function New-AzManagedServicesAuthorizationObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.Authorization')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
-
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.ParameterBreakingChangeAttribute("DelegatedRoleDefinitionId", "15.0.0", "9.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Parameter(HelpMessage="The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other principals.")]
         [string[]]
         $DelegatedRoleDefinitionId,
