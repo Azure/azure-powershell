@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -117,6 +116,35 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
                 // If parsing fails, return the original content
                 return content;
+            }
+        }
+
+        /// <summary>
+        /// Attempts to decode a base64 encoded claims challenge string.
+        /// </summary>
+        /// <param name="base64Input">The base64 encoded claims challenge string.</param>
+        /// <param name="claimsChallenge">When this method returns, contains the decoded JSON claims challenge string if decoding succeeded; otherwise, <c>null</c>.</param>
+        /// <returns>
+        /// <c>true</c> if the base64 string was successfully decoded into a valid claims challenge; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool TryParseClaimsChallenge(string base64Input, out string claimsChallenge)
+        {
+            claimsChallenge = null;
+
+            if (string.IsNullOrWhiteSpace(base64Input))
+                return false;
+
+            try
+            {
+                byte[] data = Convert.FromBase64String(base64Input);
+                claimsChallenge = Encoding.UTF8.GetString(data);
+
+                return true;
+            }
+            catch
+            {
+                claimsChallenge = null;
+                return false;
             }
         }
     }

@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Commands.Profile
             string claimsChallenge = null;
             if (this.IsParameterBound(c => c.ClaimsChallenge))
             {
-                if (!TryParseClaimsChallenge(ClaimsChallenge, out claimsChallenge))
+                if (!ClaimsChallengeUtilities.TryParseClaimsChallenge(ClaimsChallenge, out claimsChallenge))
                 {
                     throw new PSArgumentException(Resources.InvalidClaimsChallenge, nameof(ClaimsChallenge));
                 }
@@ -605,27 +605,6 @@ namespace Microsoft.Azure.Commands.Profile
                 });
 
                 WriteAnnouncementsPeriodically();
-            }
-        }
-
-        private static bool TryParseClaimsChallenge(string base64Input, out string claimsChallenge)
-        {
-            claimsChallenge = null;
-
-            if (string.IsNullOrWhiteSpace(base64Input))
-                return false;
-
-            try
-            {
-                byte[] data = Convert.FromBase64String(base64Input);
-                claimsChallenge = Encoding.UTF8.GetString(data);
-
-                return true;
-            }
-            catch
-            {
-                claimsChallenge = null;
-                return false;
             }
         }
 

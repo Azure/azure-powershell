@@ -298,6 +298,21 @@ Account                     SubscriptionName TenantId                        Env
 xxxxxxxx-xxxx-xxxx-xxxxxxxx Subscription1    yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy AzureCloud
 ```
 
+### Example 11: Connect with claims challenge
+
+This example demonstrates how to connect using a claims challenge token.
+This is useful when you receive a claims challenge during authentication, typically when additional authentication factors are required due to conditional access policies.
+
+```powershell
+Connect-AzAccount -Tenant yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy -Subscription zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzz -ClaimsChallenge eyJhY2Nlc3NfdG9rZW4iOnsiYWNycyI6eyJlc3NlbnRpYWwiOnRydWUsInZhbHVlcyI6WyJwMSJdfX19
+```
+
+```Output
+Account                     SubscriptionName TenantId                        Environment
+-------                     ---------------- --------                        -----------
+xxxxxxxx-xxxx-xxxx-xxxxxxxx Subscription1    yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy AzureCloud
+```
+
 ## PARAMETERS
 
 ### -AccessToken
