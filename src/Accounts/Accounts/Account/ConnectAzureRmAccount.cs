@@ -608,7 +608,7 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
-        public static bool TryParseClaimsChallenge(string base64Input, out string claimsChallenge)
+        private static bool TryParseClaimsChallenge(string base64Input, out string claimsChallenge)
         {
             claimsChallenge = null;
 
