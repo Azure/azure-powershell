@@ -115,4 +115,10 @@ $VmReplicationValidationMessages = @{
     VmWareToolsNotRunning   = "VMware tools not running on VM. $VmReplicationValidationMessage";
     VmNotHighlyAvailable    = "VM not highly available. $VmReplicationValidationMessage";
     OsTypeNotFound          = "Hyper-V Integration Services not running on VM. $VmReplicationValidationMessage";
+    OsTypeNotSupported      = "The OS type of the VM is not supported for replication. $VmReplicationValidationMessage";
+}
+
+$ArcResourceBridgeValidationMessages = @{
+    NotRunning = "Arc Resource Bridge is offline. To continue, bring the Arc Resource Bridge online. Wait a few minutes for the status to update and retry.";
+    NoClusters = "There are no Azure Local resources in the selected resource group."
 }

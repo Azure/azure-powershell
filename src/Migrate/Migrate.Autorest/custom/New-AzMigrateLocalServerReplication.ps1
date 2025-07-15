@@ -266,6 +266,9 @@ function New-AzMigrateLocalServerReplication {
                 "Name" = $replicationVaultName
             } `
             -ErrorMessage "No Replication Vault '$replicationVaultName' found in Resource Group '$ResourceGroupName'. Please verify your Azure Migrate project setup."
+        if ($replicationVault.Property.ProvisioningState -ne [ProvisioningState]::Succeeded) {
+            throw "The Replication Vault '$replicationVaultName' is not in a valid state. The provisioning state is '$($replicationVault.Property.ProvisioningState)'. Please verify your Azure Migrate project setup."
+        }
 
         # Access Discovery Service
         $discoverySolutionName = "Servers-Discovery-ServerDiscovery"
@@ -420,14 +423,17 @@ function New-AzMigrateLocalServerReplication {
             throw "The replication extension '$replicationExtensionName' is not in a valid state. The provisioning state is '$($replicationExtension.Property.ProvisioningState)'. Re-run the Initialize-AzMigrateLocalReplicationInfrastructure command."
         }
         
-        # Get Target cluster
+        # Get ARC Resource Bridge info
         $targetClusterId = $targetFabric.Property.CustomProperty.Cluster.ResourceName
         $targetClusterIdArray = $targetClusterId.Split("/")
         $targetSubscription = $targetClusterIdArray[2]
-        $hciClusterArgQuery = GetHCIClusterARGQuery -HCIClusterID $targetClusterId
-        $targetCluster = Az.ResourceGraph\Search-AzGraph -Query $hciClusterArgQuery -Subscription $targetSubscription
-        if ($null -eq $targetCluster) {
-            throw "Validate target cluster with id '$targetClusterId' exists. Check ARC resource bridge is running on this cluster."
+        $arbArgQuery = GetARGQueryForArcResourceBridge -HCIClusterID $targetClusterId
+        $arbArgResult = Az.ResourceGraph\Search-AzGraph -Query $arbArgQuery -Subscription $targetSubscription
+        if ($null -eq $arbArgResult) {
+            throw "$($ArcResourceBridgeValidationMessages.NoClusters). Validate target cluster with id '$targetClusterId' exists."
+        }
+        elseif ($arbArgResult.statusOfTheBridge -ne "Running") {
+            throw "$($ArcResourceBridgeValidationMessages.NotRunning). Make sure the Arc Resource Bridge is online before retrying."
         }
             
         # Get source appliance RunAsAccount
@@ -480,12 +486,12 @@ function New-AzMigrateLocalServerReplication {
         }
 
         $customProperties.InstanceType = $instanceType
-        $customProperties.CustomLocationRegion = $targetCluster.CustomLocationRegion
+        $customProperties.CustomLocationRegion = $arbArgResult.CustomLocationRegion
         $customProperties.FabricDiscoveryMachineId = $machine.Id
         $customProperties.RunAsAccountId = $runAsAccount.Id
         $customProperties.SourceFabricAgentName = $sourceDra.Name
         $customProperties.StorageContainerId = $TargetStoragePathId
-        $customProperties.TargetArcClusterCustomLocationId = $targetCluster.CustomLocation
+        $customProperties.TargetArcClusterCustomLocationId = $arbArgResult.CustomLocation
         $customProperties.TargetFabricAgentName = $targetDra.Name
         $customProperties.TargetHciClusterId = $targetClusterId
         $customProperties.TargetResourceGroupId = $TargetResourceGroupId
