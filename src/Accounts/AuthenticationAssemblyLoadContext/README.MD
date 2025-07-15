@@ -1,10 +1,10 @@
 # How to define AssemblyLoadContext for module
 
-We'll use Compute module as example to explain how to define its own AssemlbyLoadContext.
+We'll use Compute module as example to explain how to define its own AssemblyLoadContext.
 
 ## Create ALC Wrapper Project
 
-Create one ALC wrapper project named Compute.AlcWrapper.csproj which wraps the usaged of Azure.Storage.Blobs
+Create one ALC wrapper project named Compute.AlcWrapper.csproj which wraps the usage of Azure.Storage.Blobs
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -46,7 +46,7 @@ As Compute.csproj project must not reference to storage SDK, the types of parame
 
         public PSBlobDownloadInfo DownloadBlob()
         {
-            //TODO: Please repalce with your real account
+            //TODO: Please replace with your real account
             BlobClient client = new BlobClient("", "", "");
             BlobDownloadInfo info = client.Download().Value;
             return new PSBlobDownloadInfo(info);

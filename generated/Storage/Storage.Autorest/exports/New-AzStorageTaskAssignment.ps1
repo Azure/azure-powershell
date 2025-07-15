@@ -25,7 +25,7 @@ If a storage task assignment is already created and a subsequent create request 
 If a storage task assignment is already created and a subsequent create request is issued with the exact same set of properties, the request will succeed.
 .Example
 $taskid = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageActions/storageTasks/mytask"
-New-AzStorageTaskAssignment -ResourceGroupName myresourcegroup -AccountName myaccount -name mytaskassignment -TaskId $taskid -ReportPrefix "test" -TriggerType RunOnce -Description "task assignment" -Enabled:$false
+New-AzStorageTaskAssignment -ResourceGroupName myresourcegroup -AccountName myaccount -name mytaskassignment -TaskId $taskid -ReportPrefix "test" -TriggerType RunOnce -StartOn (Get-Date).ToUniversalTime() -Description "task assignment" -Enabled:$false
 .Example
 $start = Get-Date -Year 2024 -Month 8 -Day 7 -Hour 1 -Minute 30
 $end = Get-Date -Year 2024 -Month 12 -Day 25 -Hour 2 -Minute 45
@@ -134,7 +134,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
     [System.DateTime]
     # When to start task execution.
-    # This is an optional field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
+    # This is a required field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
     ${StartOn},
 
     [Parameter()]

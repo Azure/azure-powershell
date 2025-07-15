@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Generate and assign a new Storage Account Identity for this storage account for use with key management services like Azure KeyVault. If specify this paramter without \"-IdentityType\", will use system assigned identity.")]
+            HelpMessage = "Generate and assign a new Storage Account Identity for this storage account for use with key management services like Azure KeyVault. If specify this parameter without \"-IdentityType\", will use system assigned identity.")]
         public SwitchParameter AssignIdentity { get; set; }
 
         [Parameter(
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Set the new Storage Account Identity type, the idenetity is for use with key management services like Azure KeyVault.")]
+            HelpMessage = "Set the new Storage Account Identity type, the identity is for use with key management services like Azure KeyVault.")]
         [ValidateSet(AccountIdentityType.systemAssigned,
             AccountIdentityType.userAssigned,
             AccountIdentityType.systemAssignedUserAssigned,
@@ -483,6 +483,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private TimeSpan? sasExpirationPeriod = null;
 
+        [Parameter(Mandatory = false, HelpMessage = "The action to be performed when SasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period. The default value is 'Log'.")]
+        [PSArgumentCompleter("Log", "Block")]
+        [PSDefaultValue(Help = "Log", Value = StorageModels.ExpirationAction.Log)]
+        [ValidateNotNullOrEmpty]
+        public string SasExpirationAction { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "The Key expiration period of this account, it is accurate to days.")]
         public int KeyExpirationPeriodInDay
         {
@@ -642,7 +648,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(
             Mandatory = false,
             HelpMessage = "The mode of the policy. Possible values include: 'Unlocked', 'Disabled. " +
-            "Disabled state disablesthe policy. " +
+            "Disabled state disables the policy. " +
             "Unlocked state allows increase and decrease of immutability retention time and also allows toggling allowProtectedAppendWrites property. " +
             "A policy can only be created in a Disabled or Unlocked state and can be toggled between the two states." +
             "This property can only be specified with '-EnableAccountLevelImmutability'.")]
@@ -899,10 +905,31 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     Name = this.EdgeZone
                 };
             }
-            if (sasExpirationPeriod != null)
+            if (sasExpirationPeriod != null || SasExpirationAction != null)
             {
-                createParameters.SasPolicy = new SasPolicy(sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"), "Log");
+                if (sasExpirationPeriod == null && SasExpirationAction != null)
+                {
+                    throw new ArgumentException("-SasExpirationAction can only be specified together with -SasExpirationPeriod.", "SasExpirationAction");
+                }
+                // Set the default action to Log to be aligned as before PSH release.
+                if (SasExpirationAction == null)
+                {
+                    SasExpirationAction = "Log";
+                }
+                else
+                {
+                    if (String.Equals(SasExpirationAction, ExpirationAction.Log, StringComparison.OrdinalIgnoreCase))
+                    {
+                        SasExpirationAction = ExpirationAction.Log;
+                    }
+                    else if (String.Equals(SasExpirationAction, ExpirationAction.Block, StringComparison.OrdinalIgnoreCase)) 
+                    {
+                        SasExpirationAction = ExpirationAction.Block;
+                    }
+                }
+                createParameters.SasPolicy = new SasPolicy(sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"), SasExpirationAction);
             }
+
             if (keyExpirationPeriodInDay != null)
             {
                 createParameters.KeyPolicy = new KeyPolicy(keyExpirationPeriodInDay.Value);

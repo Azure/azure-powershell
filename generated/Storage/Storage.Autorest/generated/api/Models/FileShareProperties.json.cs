@@ -144,15 +144,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
             {
-                AddIf( null != this._nextAllowedQuotaDowngradeTime ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._nextAllowedQuotaDowngradeTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "nextAllowedQuotaDowngradeTime" ,container.Add );
+                AddIf( null != this._nextAllowedQuotaDowngradeTime ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._nextAllowedQuotaDowngradeTime?.ToString(@"R",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "nextAllowedQuotaDowngradeTime" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
             {
-                AddIf( null != this._nextAllowedProvisionedIopsDowngradeTime ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._nextAllowedProvisionedIopsDowngradeTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "nextAllowedProvisionedIopsDowngradeTime" ,container.Add );
+                AddIf( null != this._nextAllowedProvisionedIopsDowngradeTime ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._nextAllowedProvisionedIopsDowngradeTime?.ToString(@"R",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "nextAllowedProvisionedIopsDowngradeTime" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
             {
-                AddIf( null != this._nextAllowedProvisionedBandwidthDowngradeTime ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._nextAllowedProvisionedBandwidthDowngradeTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "nextAllowedProvisionedBandwidthDowngradeTime" ,container.Add );
+                AddIf( null != this._nextAllowedProvisionedBandwidthDowngradeTime ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._nextAllowedProvisionedBandwidthDowngradeTime?.ToString(@"R",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "nextAllowedProvisionedBandwidthDowngradeTime" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate))
             {

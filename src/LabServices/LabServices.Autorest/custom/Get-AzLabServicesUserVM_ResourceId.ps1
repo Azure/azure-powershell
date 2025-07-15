@@ -19,16 +19,17 @@ API to get the assigned vm for the user.
 API to get the assigned vm for the user.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesuservm
 #>
 function Get-AzLabServicesUserVM_ResourceId {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter(Mandatory)]
         [System.String]
+        # The resource Id of lab service user.
         ${ResourceId},
   
         [Parameter()]
@@ -87,9 +88,10 @@ function Get-AzLabServicesUserVM_ResourceId {
     )
     
     process {
-        & $PSScriptRoot\Utilities\VerificationRegex.ps1
+        $VerificationRegex = Join-Path $PSScriptRoot 'Utilities' 'VerificationRegex.ps1'
+        . $VerificationRegex
         if ($ResourceId -match $userRegex){
-            $user = Get-AzLabServicesUser -ResourceId $ResourceId
+            $user = Az.LabServices\Get-AzLabServicesUser -ResourceId $ResourceId
 
             if ($user) {
                 $PSBoundParameters.Remove("ResourceId") > $null

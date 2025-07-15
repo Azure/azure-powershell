@@ -24,15 +24,45 @@ For troubleshooting connectivity.
 .Example
 Start-AzLabServicesVMRedeployment -LabName "Lab Name" -ResourceGroupName "Group Name" -VirtualMachineName 1
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
 .Outputs
 System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LABINPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/start-azlabservicesvmredeployment
 #>
 function Start-AzLabServicesVMRedeployment {
-[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
 [CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Redeploy', Mandatory)]
@@ -49,7 +79,8 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Redeploy')]
+    [Parameter(ParameterSetName='ResourceId')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -57,15 +88,29 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Redeploy', Mandatory)]
+    [Parameter(ParameterSetName='RedeployViaIdentityLab', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
     # The ID of the virtual machine that uniquely identifies it within the containing lab.
     # Used in resource URIs.
     ${VirtualMachineName},
 
+    [Parameter(ParameterSetName='RedeployViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='RedeployViaIdentityLab', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${LabInputObject},
+
     [Parameter(ParameterSetName='ResourceId', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
+    # The resource Id of lab service virtual machine.
     ${ResourceId},
 
     [Parameter()]
@@ -142,6 +187,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -162,11 +216,11 @@ begin {
 
         $mapping = @{
             Redeploy = 'Az.LabServices.private\Start-AzLabServicesVMRedeployment_Redeploy';
+            RedeployViaIdentity = 'Az.LabServices.private\Start-AzLabServicesVMRedeployment_RedeployViaIdentity';
+            RedeployViaIdentityLab = 'Az.LabServices.private\Start-AzLabServicesVMRedeployment_RedeployViaIdentityLab';
             ResourceId = 'Az.LabServices.custom\Start-AzLabServicesVMRedeployment_ResourceId';
         }
-        if (('Redeploy', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Redeploy', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -180,6 +234,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

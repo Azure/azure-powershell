@@ -2,73 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.AzureDataExplorerConnectionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>EndpointName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PrivateEndpointConnectionName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SubscriptionId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TimeSeriesDatabaseConnectionName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>EndpointName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PrivateEndpointConnectionName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SubscriptionId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TimeSeriesDatabaseConnectionName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.AzureDataExplorerConnectionProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.AzureDataExplorerConnectionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.AzureDataExplorerConnectionProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -142,9 +78,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.CheckNameRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.CheckNameRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.CheckNameRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.CheckNameRequest#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -164,9 +100,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.CheckNameResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.CheckNameResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.CheckNameResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.CheckNameResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -198,15 +134,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ConnectionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ConnectionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ConnectionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ConnectionProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>GroupId</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
@@ -214,9 +147,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>GroupId</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
@@ -226,9 +156,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ConnectionPropertiesPrivateLinkServiceConnectionState</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ConnectionPropertiesPrivateLinkServiceConnectionState</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ConnectionPropertiesPrivateLinkServiceConnectionState</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ConnectionPropertiesPrivateLinkServiceConnectionState#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -260,9 +190,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ConnectionState</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ConnectionState</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ConnectionState</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ConnectionState#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -294,9 +224,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsDescription</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsDescription</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsDescription</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsDescription#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -328,9 +258,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsDescriptionListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsDescriptionListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsDescriptionListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsDescriptionListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -350,9 +280,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsEndpointResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsEndpointResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsEndpointResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsEndpointResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -390,9 +320,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsEndpointResourceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsEndpointResourceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsEndpointResourceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsEndpointResourceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -412,9 +342,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsEndpointResourceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsEndpointResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsEndpointResourceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsEndpointResourceProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -464,9 +394,73 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EndpointName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PrivateEndpointConnectionName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubscriptionId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TimeSeriesDatabaseConnectionName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EndpointName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrivateEndpointConnectionName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubscriptionId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TimeSeriesDatabaseConnectionName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsIdentity1</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsIdentity1#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -492,9 +486,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsPatchDescriptionTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsPatchDescriptionTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsPatchDescriptionTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsPatchDescriptionTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -514,9 +508,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsPatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsPatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsPatchProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -536,9 +530,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -582,9 +576,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -610,9 +604,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsResourceTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -632,9 +626,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ErrorDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ErrorDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -660,9 +654,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.EventGrid</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.EventGrid</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.EventGrid</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.EventGrid#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -730,9 +724,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.EventHub</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.EventHub</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.EventHub</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.EventHub#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -806,9 +800,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ExternalResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ExternalResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ExternalResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ExternalResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -828,15 +822,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.GroupIdInformation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.GroupIdInformation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.GroupIdInformation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.GroupIdInformation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>GroupId</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
@@ -847,9 +838,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>GroupId</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
@@ -862,20 +850,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.GroupIdInformationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.GroupIdInformationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.GroupIdInformationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.GroupIdInformationProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>GroupId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RequiredMember</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RequiredZoneName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -884,21 +866,15 @@
               <TableColumnItem>
                 <PropertyName>GroupId</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RequiredMember</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RequiredZoneName</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.Operation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Operation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.Operation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Operation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -930,9 +906,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.OperationDisplay#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -970,9 +946,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.OperationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.OperationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.OperationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.OperationListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -992,20 +968,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.PrivateEndpointConnection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.PrivateEndpointConnection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.PrivateEndpointConnection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.PrivateEndpointConnection#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>GroupId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PrivateLinkServiceConnectionStateStatus</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -1018,12 +988,6 @@
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>GroupId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PrivateLinkServiceConnectionStateStatus</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -1032,9 +996,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ServiceBus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ServiceBus</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ServiceBus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ServiceBus#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1108,9 +1072,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.SystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.SystemData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.SystemData#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1160,9 +1124,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.TimeSeriesDatabaseConnection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.TimeSeriesDatabaseConnection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.TimeSeriesDatabaseConnection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.TimeSeriesDatabaseConnection#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1200,9 +1164,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.TimeSeriesDatabaseConnectionListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.TimeSeriesDatabaseConnectionListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.TimeSeriesDatabaseConnectionListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.TimeSeriesDatabaseConnectionListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1222,9 +1186,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.TimeSeriesDatabaseConnectionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.TimeSeriesDatabaseConnectionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.TimeSeriesDatabaseConnectionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.TimeSeriesDatabaseConnectionProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

@@ -87,6 +87,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string EnableFatFlowLogging { get; set; }
 
+        public string EnableDnstapLogging { get; set; }
+
         public string EnableUDPLogOptimization { get; set; }
 
         public string RouteServerId { get; set; }

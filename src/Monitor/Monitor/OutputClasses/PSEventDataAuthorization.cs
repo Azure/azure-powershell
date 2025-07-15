@@ -17,7 +17,7 @@ using System.Text;
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wrapps around the EventDataAuthorization to provide a better output format for the PS command lets.
+    /// Wraps around the EventDataAuthorization to provide a better output format for the PS command lets.
     /// </summary>
     public class PSEventDataAuthorization
     {

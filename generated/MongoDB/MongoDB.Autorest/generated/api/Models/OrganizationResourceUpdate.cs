@@ -7,23 +7,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Extensions;
 
-    /// <summary>The resource model definition for an Azure Organization</summary>
+    /// <summary>The type used for update operations of the OrganizationResource.</summary>
     public partial class OrganizationResourceUpdate :
         Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdate,
-        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal
     {
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdate"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdate __azureResourceManagerCommonTypesTrackedResourceUpdate = new Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.AzureResourceManagerCommonTypesTrackedResourceUpdate();
-
-        /// <summary>
-        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Inherited)]
-        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Id; }
 
         /// <summary>Backing field for <see cref="Identity" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesManagedServiceIdentityUpdate _identity;
@@ -44,153 +32,73 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
         Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesManagedServiceIdentityUpdate Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.AzureResourceManagerCommonTypesManagedServiceIdentityUpdate()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for PartnerProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IPartnerPropertiesUpdate Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal.PartnerProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal)Property).PartnerProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal)Property).PartnerProperty = value ?? null /* model class */; }
+        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IPartnerPropertiesUpdate Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal.PartnerProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal)Property).PartnerProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal)Property).PartnerProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdate Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.OrganizationPropertiesUpdate()); set { {_property = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.OrganizationResourceUpdateProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for User</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IUserDetailsUpdate Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal.User { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal)Property).User; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal)Property).User = value ?? null /* model class */; }
-
-        /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Id = value ?? null; }
-
-        /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Name = value ?? null; }
-
-        /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemData = value ?? null /* model class */; }
-
-        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
-
-        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedBy = value ?? null; }
-
-        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedByType = value ?? null; }
-
-        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
-
-        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedBy = value ?? null; }
-
-        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedByType = value ?? null; }
-
-        /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Type = value ?? null; }
-
-        /// <summary>The name of the resource</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Name; }
+        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IUserDetailsUpdate Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal.User { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal)Property).User; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal)Property).User = value ?? null /* model class */; }
 
         /// <summary>Organization Id in MongoDB system</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Inlined)]
-        public string PartnerPropertyOrganizationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal)Property).PartnerPropertyOrganizationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal)Property).PartnerPropertyOrganizationId = value ?? null; }
+        public string PartnerPropertyOrganizationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal)Property).PartnerPropertyOrganizationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal)Property).PartnerPropertyOrganizationId = value ?? null; }
 
         /// <summary>Organization name in MongoDB system</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Inlined)]
-        public string PartnerPropertyOrganizationName { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal)Property).PartnerPropertyOrganizationName; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal)Property).PartnerPropertyOrganizationName = value ?? null; }
+        public string PartnerPropertyOrganizationName { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal)Property).PartnerPropertyOrganizationName; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal)Property).PartnerPropertyOrganizationName = value ?? null; }
 
         /// <summary>Redirect URL for the MongoDB</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Inlined)]
-        public string PartnerPropertyRedirectUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal)Property).PartnerPropertyRedirectUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal)Property).PartnerPropertyRedirectUrl = value ?? null; }
+        public string PartnerPropertyRedirectUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal)Property).PartnerPropertyRedirectUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal)Property).PartnerPropertyRedirectUrl = value ?? null; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdate _property;
+        private Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateProperties _property;
 
         /// <summary>The resource-specific properties for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdate Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.OrganizationPropertiesUpdate()); set => this._property = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.OrganizationResourceUpdateProperties()); set => this._property = value; }
 
-        /// <summary>
-        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemData = value ?? null /* model class */; }
-
-        /// <summary>The timestamp of resource creation (UTC).</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedAt; }
-
-        /// <summary>The identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedBy; }
-
-        /// <summary>The type of identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedByType; }
-
-        /// <summary>The timestamp of resource last modification (UTC)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedAt; }
-
-        /// <summary>The identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedBy; }
-
-        /// <summary>The type of identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedByType; }
+        /// <summary>Backing field for <see cref="Tag" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateTags _tag;
 
         /// <summary>Resource tags.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Tag = value ?? null /* model class */; }
-
-        /// <summary>
-        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Inherited)]
-        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Type; }
+        [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateTags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.OrganizationResourceUpdateTags()); set => this._tag = value; }
 
         /// <summary>Company Name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Inlined)]
-        public string UserCompanyName { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal)Property).UserCompanyName; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal)Property).UserCompanyName = value ?? null; }
+        public string UserCompanyName { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal)Property).UserCompanyName; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal)Property).UserCompanyName = value ?? null; }
 
         /// <summary>Email address of the user</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Inlined)]
-        public string UserEmailAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal)Property).UserEmailAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal)Property).UserEmailAddress = value ?? null; }
+        public string UserEmailAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal)Property).UserEmailAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal)Property).UserEmailAddress = value ?? null; }
 
         /// <summary>First name of the user</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Inlined)]
-        public string UserFirstName { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal)Property).UserFirstName; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal)Property).UserFirstName = value ?? null; }
+        public string UserFirstName { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal)Property).UserFirstName; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal)Property).UserFirstName = value ?? null; }
 
         /// <summary>Last name of the user</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Inlined)]
-        public string UserLastName { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal)Property).UserLastName; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal)Property).UserLastName = value ?? null; }
+        public string UserLastName { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal)Property).UserLastName; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal)Property).UserLastName = value ?? null; }
 
         /// <summary>User's phone number</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Inlined)]
-        public string UserPhoneNumber { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal)Property).UserPhoneNumber; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal)Property).UserPhoneNumber = value ?? null; }
+        public string UserPhoneNumber { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal)Property).UserPhoneNumber; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal)Property).UserPhoneNumber = value ?? null; }
 
         /// <summary>User's principal name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Inlined)]
-        public string UserUpn { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal)Property).UserUpn; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdateInternal)Property).UserUpn = value ?? null; }
+        public string UserUpn { get => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal)Property).UserUpn; set => ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdatePropertiesInternal)Property).UserUpn = value ?? null; }
 
         /// <summary>Creates an new <see cref="OrganizationResourceUpdate" /> instance.</summary>
         public OrganizationResourceUpdate()
         {
 
         }
-
-        /// <summary>Validates that this object meets the validation criteria.</summary>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener" /> instance that will receive validation
-        /// events.</param>
-        /// <returns>
-        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener)
-        {
-            await eventListener.AssertNotNull(nameof(__azureResourceManagerCommonTypesTrackedResourceUpdate), __azureResourceManagerCommonTypesTrackedResourceUpdate);
-            await eventListener.AssertObjectIsValid(nameof(__azureResourceManagerCommonTypesTrackedResourceUpdate), __azureResourceManagerCommonTypesTrackedResourceUpdate);
-        }
     }
-    /// The resource model definition for an Azure Organization
+    /// The type used for update operations of the OrganizationResource.
     public partial interface IOrganizationResourceUpdate :
-        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdate
+        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IJsonSerializable
     {
         /// <summary>The type of managed identity assigned to this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Info(
@@ -248,6 +156,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
         SerializedName = @"redirectUrl",
         PossibleTypes = new [] { typeof(string) })]
         string PartnerPropertyRedirectUrl { get; set; }
+        /// <summary>Resource tags.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Resource tags.",
+        SerializedName = @"tags",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateTags) })]
+        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateTags Tag { get; set; }
         /// <summary>Company Name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Info(
         Required = false,
@@ -316,9 +235,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
         string UserUpn { get; set; }
 
     }
-    /// The resource model definition for an Azure Organization
-    internal partial interface IOrganizationResourceUpdateInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateInternal
+    /// The type used for update operations of the OrganizationResource.
+    internal partial interface IOrganizationResourceUpdateInternal
+
     {
         /// <summary>The managed service identities assigned to this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesManagedServiceIdentityUpdate Identity { get; set; }
@@ -336,7 +255,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
         /// <summary>Redirect URL for the MongoDB</summary>
         string PartnerPropertyRedirectUrl { get; set; }
         /// <summary>The resource-specific properties for this resource.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdate Property { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateProperties Property { get; set; }
+        /// <summary>Resource tags.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateTags Tag { get; set; }
         /// <summary>Details of the user.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IUserDetailsUpdate User { get; set; }
         /// <summary>Company Name</summary>

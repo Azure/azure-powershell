@@ -155,7 +155,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSSeriviceProperties
+### Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSServiceProperties
 
 ## NOTES
 

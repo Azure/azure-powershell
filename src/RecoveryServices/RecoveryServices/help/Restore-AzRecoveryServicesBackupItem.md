@@ -555,7 +555,7 @@ Accept wildcard characters: False
 ```
 
 ### -RestoreToEdgeZone
-Switch parameter to indicate edge zone VM restore. This parameter can't be used in cross region and corss subscription restore scenario
+Switch parameter to indicate edge zone VM restore. This parameter can't be used in cross region and cross subscription restore scenario
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

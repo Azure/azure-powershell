@@ -733,7 +733,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                     {
                         if (CloudBlob is InvalidCloudBlob)
                         {
-                            throw new InvalidOperationException("This cmdlet is not supportted on a blob version.");
+                            throw new InvalidOperationException("This cmdlet is not supported on a blob version.");
                         }
                         SetAzureBlobContent(ResolvedFileName, CloudBlob.Name);
                         containerName = CloudBlob.Container.Name;

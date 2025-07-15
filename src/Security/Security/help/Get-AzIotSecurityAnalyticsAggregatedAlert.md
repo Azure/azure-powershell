@@ -26,7 +26,7 @@ Get-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName <String> -SolutionN
 
 ## DESCRIPTION
 The Get-AzIotSecurityAnalyticsAggregatedAlert cmdlet returns one or more aggregated alerts on devices of iot hub.
-The name of the aggregated alerts is a combination of the alert type and the alert aggragted date, separated by '/'.
+The name of the aggregated alerts is a combination of the alert type and the alert aggregated date, separated by '/'.
 
 ## EXAMPLES
 

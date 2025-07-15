@@ -20,23 +20,17 @@ Create an in-memory object for AzurePostgreSqlCredentialScan.
 .Description
 Create an in-memory object for AzurePostgreSqlCredentialScan.
 .Example
-New-AzPurviewAzurePostgreSqlCredentialScanObject -Kind 'AzurePostgreSqlCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth' -DatabaseName 'db' -Port 5432 -SslMode 1 -ScanRulesetName 'AzurePostgreSql' -ScanRulesetType 'System' -ServerEndpoint 'anstzn.postgres.database.azure.com'
+New-AzPurviewAzurePostgreSqlCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth' -DatabaseName 'db' -Port 5432 -SslMode 1 -ScanRulesetName 'AzurePostgreSql' -ScanRulesetType 'System' -ServerEndpoint 'anstzn.postgres.database.azure.com'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzurePostgreSqlCredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzurePostgreSqlCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzurePostgreSqlCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurepostgresqlcredentialscanobject
 #>
 function New-AzPurviewAzurePostgreSqlCredentialScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzurePostgreSqlCredentialScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzurePostgreSqlCredentialScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -58,9 +52,9 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
@@ -79,9 +73,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -107,6 +101,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -135,6 +132,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

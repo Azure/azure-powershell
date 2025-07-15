@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
         /// </summary>
         /// <param name="resourceGroup">Resource group name</param>
         /// <param name="serverName">Server name</param>
-        /// <param name="databaseName">Databse name</param>
+        /// <param name="databaseName">Database name</param>
         /// <param name="syncGroupName">The name of the sync group</param>
         /// <param name="syncMember">sync member object</param>
         public AzureSqlSyncMemberModel(string resourceGroup, string serverName, string databaseName, string syncGroupName, SyncMember syncMember)

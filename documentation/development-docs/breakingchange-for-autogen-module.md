@@ -116,9 +116,9 @@ Breaking changes and preview messages for auto gen cmdlets are added through dir
 
 To add breaking changes or preview messages for a customized cmdlets, you will need to add related attributes in code directly. And following are some common cases.
 
-You must provide expected breaking change az version and moudle verision otherwise it won't compile. The first version is expected az version while the second one is expected moudle verision.
+You must provide expected breaking change az version and module version otherwise it won't compile. The first version is expected az version while the second one is expected module version.
 
-**Note: these examples are based on the Az.Databricks module. Please double check the namesapce. You will most likely need to replace "Databricks" with your module's name.**
+**Note: these examples are based on the Az.Databricks module. Please double check the namespace. You will most likely need to replace "Databricks" with your module's name.**
 
 ## Case 1 — Generic Breaking change for a cmdlet
 

@@ -126,7 +126,7 @@ param(
     [System.String]
     # Optional.
     # When specified, it can be used to query using reporting properties.
-    # See [Constructing Filter Strings](https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings) for details.
+    # See [Constructing Filter Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings) for details.
     ${Filter},
 
     [Parameter()]

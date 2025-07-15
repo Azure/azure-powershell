@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
     /// [OpenAPI] ListByResourceGroup=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDevCenterAdminDevCenter_List1")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.CmdletBreakingChange("15.0.0", "3.0.0", "2025/11/18", ReplacementCmdletName="Get-AzDevCenterAdminDevCenter", ChangeDescription="PlanId will be removed from the DevCenter output.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenter))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Description(@"Lists all devcenters in a resource group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Generated]

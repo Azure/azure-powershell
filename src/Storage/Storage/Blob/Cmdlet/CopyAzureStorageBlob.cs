@@ -205,7 +205,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             //If destChannel exits, reuse it.
             //If desContext exits, use it.
-            //If Channl object exists, use it.
+            //If Channel object exists, use it.
             //Otherwise, create a new channel.
             IStorageBlobManagement destChannel = default(IStorageBlobManagement);
 

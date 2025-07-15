@@ -25,7 +25,7 @@ Get-AzDataShareSubscriptionSynchronization -ResourceId <String> [-DefaultProfile
 ```
 
 ## DESCRIPTION
-The **Get-AzDataShareSubscriptionSynchronization** cmdlet provides informaiton about all synchronization runs in a share subscription under a data share account on the consumer.
+The **Get-AzDataShareSubscriptionSynchronization** cmdlet provides information about all synchronization runs in a share subscription under a data share account on the consumer.
 
 ## EXAMPLES
 

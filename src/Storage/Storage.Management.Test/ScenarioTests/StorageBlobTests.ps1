@@ -678,7 +678,7 @@ function Test-StorageBlobRestore
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
 		
-        # Enable Blob Delete Retension Policy, Enable Changefeed, then enabled blob restore policy, then get blob service proeprties and check the setting
+        # Enable Blob Delete Retention Policy, Enable Changefeed, then enabled blob restore policy, then get blob service properties and check the setting
         Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgname -StorageAccountName $stoname -RetentionDays 5
         Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableChangeFeed $true -IsVersioningEnabled $true
         # If record, need sleep before enable the blob restore policy, or will get server error

@@ -1,7 +1,7 @@
 ### Example 1: Create a task assignment that runs once 
 ```powershell
 $taskid = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageActions/storageTasks/mytask"
-New-AzStorageTaskAssignment -ResourceGroupName myresourcegroup -AccountName myaccount -name mytaskassignment -TaskId $taskid -ReportPrefix "test" -TriggerType RunOnce -Description "task assignment" -Enabled:$false
+New-AzStorageTaskAssignment -ResourceGroupName myresourcegroup -AccountName myaccount -name mytaskassignment -TaskId $taskid -ReportPrefix "test" -TriggerType RunOnce -StartOn (Get-Date).ToUniversalTime() -Description "task assignment" -Enabled:$false
 ```
 
 ```output

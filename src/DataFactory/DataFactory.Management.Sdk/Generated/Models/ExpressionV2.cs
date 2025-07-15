@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="type">Type of expressions supported by the system. Type: string.
         /// Possible values include: &#39;Constant&#39;, &#39;Field&#39;, &#39;Unary&#39;, &#39;Binary&#39;, &#39;NAry&#39;</param>
 
-        /// <param name="value">Value for Constant/Field Type: string.
+        /// <param name="value">Value for Constant/Field Type: object.
         /// </param>
 
         /// <param name="operators">Expression operator value Type: list of strings.
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="operands">List of nested expressions.
         /// </param>
-        public ExpressionV2(string type = default(string), string value = default(string), System.Collections.Generic.IList<string> operators = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<ExpressionV2> operands = default(System.Collections.Generic.IList<ExpressionV2>))
+        public ExpressionV2(string type = default(string), object value = default(object), System.Collections.Generic.IList<string> operators = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<ExpressionV2> operands = default(System.Collections.Generic.IList<ExpressionV2>))
 
         {
             this.Type = type;
@@ -58,10 +58,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public string Type {get; set; }
 
         /// <summary>
-        /// Gets or sets value for Constant/Field Type: string.
+        /// Gets or sets value for Constant/Field Type: object.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "value")]
-        public string Value {get; set; }
+        public object Value {get; set; }
 
         /// <summary>
         /// Gets or sets expression operator value Type: list of strings.
