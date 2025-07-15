@@ -48,20 +48,16 @@ use-extension:
 
 directive:
   - where:
-      verb: Get
+      verb: New|Get
       subject: RegistrationAssignment
     set:
       breaking-change:
-        change-description: "The types of the properties 'Authorization' and 'EligibleAuthorization' will be changed to 'List'."
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
-
-  - where:
-      subject: RegistrationDefinition
-    set:
-      breaking-change:
-        change-description: "The types of the properties 'Authorization' and 'EligibleAuthorization' will be changed to 'List'."
+        deprecated-output-properties:
+          - Authorization[]
+          - EligibleAuthorization[]
+        new-output-properties:
+          - List[Authorization]
+          - List[EligibleAuthorization]
         deprecated-by-version: 9.0.0
         deprecated-by-azversion: 15.0.0
         change-effective-date: 2025/11/03
@@ -70,16 +66,62 @@ directive:
       subject: RegistrationDefinition
     set:
       breaking-change:
-        change-description: "The types of the properties 'DelegatedRoleDefinitionId' and 'JustInTimeAccessPolicyManagedByTenantApprover' will be changed to 'List'."
+        deprecated-output-properties:
+          - Authorization
+          - EligibleAuthorization
+          - DelegatedRoleDefinitionId[]
+          - JustInTimeAccessPolicyManagedByTenantApprover[]
+        new-output-properties:
+          - List[Authorization]
+          - List[EligibleAuthorization]
+          - List[DelegatedRoleDefinitionId]
+          - List[JustInTimeAccessPolicyManagedByTenantApprover]
         deprecated-by-version: 9.0.0
         deprecated-by-azversion: 15.0.0
         change-effective-date: 2025/11/03
-
   - where:
+      verb: Get
+      subject: RegistrationDefinition
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - Authorization[]
+          - EligibleAuthorization[]
+        new-output-properties:
+          - List[Authorization]
+          - List[EligibleAuthorization]
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      verb: New|Get
       subject: MarketplaceRegistrationDefinition
     set:
       breaking-change:
-        change-description: "The types of the properties 'Authorization' and 'EligibleAuthorization' will be changed to 'List'."
+        deprecated-output-properties:
+          - Authorization[]
+          - EligibleAuthorization[]
+        new-output-properties:
+          - List[Authorization]
+          - List[EligibleAuthorization]
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      parameter-name: Authorization
+    set:
+      breaking-change:
+        old-parameter-type: Array
+        new-parameter-type: List
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      parameter-name: EligibleAuthorization
+    set:
+      breaking-change:
+        old-parameter-type: Array
+        new-parameter-type: List
         deprecated-by-version: 9.0.0
         deprecated-by-azversion: 15.0.0
         change-effective-date: 2025/11/03
@@ -128,7 +170,7 @@ directive:
 
   # Generate memory object as parameter of the cmelet.
   - model-cmdlet:
-    - Authorization
+    # - Authorization
     - EligibleApprover
     # Need custom that add ArgumentCompleterAttribute for JustInTimeAccessPolicyMultiFactorAuthProvider parameter.
     # - EligibleAuthorization
