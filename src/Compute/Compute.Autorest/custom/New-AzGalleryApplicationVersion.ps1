@@ -13,16 +13,20 @@ Create or update a gallery Application Version.
 Create or update a gallery Application Version.
 #>
 function New-AzGalleryApplicationVersion {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion])]
-    [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplicationVersion])]
+    [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
         [System.String]
         # The name of the gallery Application Definition in which the Application Version is to be created.
         ${GalleryApplicationName},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
         [System.String]
         # The name of the Shared Application Gallery in which the Application Definition resides.
@@ -38,34 +42,38 @@ function New-AzGalleryApplicationVersion {
         # Format: <MajorVersion>.<MinorVersion>.<Patch>
         ${Name},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
         [System.String]
         # The name of the resource group.
         ${ResourceGroupName},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+        [Parameter(ParameterSetName='CreateViaJsonString')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # Subscription credentials which uniquely identify Microsoft Azure subscription.
         # The subscription ID forms part of the URI for every service call.
         ${SubscriptionId},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
         [System.String]
         # Resource location
         ${Location},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
         [System.String]
         # Optional.
         # The defaultConfigurationLink of the artifact, must be a readable storage page blob.
         ${DefaultConfigFileLink},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
         [System.String]
         # Required.
@@ -73,14 +81,14 @@ function New-AzGalleryApplicationVersion {
         # This is limited to 4096 characters.
         ${Install},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
         [System.String]
         # Required.
         # The mediaLink of the artifact, must be a readable storage page blob.
         ${PackageFileLink},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
         [System.DateTime]
         # The end of life date of the gallery image version.
@@ -88,13 +96,13 @@ function New-AzGalleryApplicationVersion {
         # This property is updatable.
         ${PublishingProfileEndOfLifeDate},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # If set to true, Virtual Machines deployed from the latest version of the Image Definition won't use this Image Version.
         ${PublishingProfileExcludeFromLatest},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
         [System.String]
         # Required.
@@ -102,7 +110,7 @@ function New-AzGalleryApplicationVersion {
         # This is limited to 4096 characters.
         ${Remove},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
         [System.Int32]
         # The number of replicas of the Image Version to be created per region.
@@ -110,23 +118,22 @@ function New-AzGalleryApplicationVersion {
         # This property is updatable.
         ${ReplicaCount},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags
         ${Tag},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ITargetRegion[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ITargetRegion[]]
         # The target regions where the Image Version is going to be replicated to.
         # This property is updatable.
-        # To construct, see NOTES section for TARGETREGION properties and create a hash table.
         ${TargetRegion},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
         [System.String]
         # Optional.
@@ -135,12 +142,25 @@ function New-AzGalleryApplicationVersion {
         # This is limited to 4096 characters.
         ${Update},
 
+        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+        [System.String]
+        # Path of Json file supplied to the Create operation
+        ${JsonFilePath},
+
+        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+        [System.String]
+        # Json string supplied to the Create operation
+        ${JsonString},
+
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
 
         [Parameter()]
@@ -194,7 +214,7 @@ function New-AzGalleryApplicationVersion {
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
         [System.String]
         # Optional.
@@ -203,7 +223,7 @@ function New-AzGalleryApplicationVersion {
         # If not specified, the package file will be named the same as the Gallery Application name.
         ${PackageFileName},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
         [System.String]
         # Optional.
