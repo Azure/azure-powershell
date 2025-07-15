@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzRelayNamespaceNetworkRuleSet_CreateViaIdentity", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.CmdletBreakingChange("15.0.0", "9.0.0", "2025/11/03", ChangeDescription="The type of property 'IPRule' will be changed to 'List'.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.INetworkRuleSet", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"IPRule"}, NewOutputProperties=new string[] {"List[IPRule]"})]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.INetworkRuleSet))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Description(@"Create or update NetworkRuleSet for a Namespace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Generated]
