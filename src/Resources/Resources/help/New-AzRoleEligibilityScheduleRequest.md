@@ -27,7 +27,7 @@ Creates a role eligibility schedule request.
 
 ## EXAMPLES
 
-### Example 1: Create a new role eligible schedule request as Admin
+### Example 1: Create a new role eligibile schedule request as Admin
 ```powershell
 $guid = "12f8978c-5d8d-4fbf-b4b6-2f43eeb43eca"
 $startTime = Get-Date -Format o 
@@ -43,7 +43,7 @@ Name                                 Type                                       
 
 Creates a request to provision an eligible assignment of `roleDefinition` on the `scope` for the specified `principal`
 
-### Example 2: Remove a role eligible schedule request as Admin
+### Example 2: Remove a role eligibile schedule request as Admin
 ```powershell
 $guid = "13f8978c-5d8d-4fbf-b4b6-2f43eeb43eca"
 $startTime = Get-Date -Format o 
