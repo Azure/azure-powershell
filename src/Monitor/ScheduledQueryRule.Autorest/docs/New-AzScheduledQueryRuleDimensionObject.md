@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Monitor
-online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzScheduledQueryRuleDimensionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-azscheduledqueryruledimensionobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Create an in-memory object for Dimension.
 ## SYNTAX
 
 ```
-New-AzScheduledQueryRuleDimensionObject -Name <String> -Operator <DimensionOperator> -Value <String[]>
+New-AzScheduledQueryRuleDimensionObject -Name <String> -Operator <String> -Value <String[]>
  [<CommonParameters>]
 ```
 
@@ -22,12 +22,27 @@ Create an in-memory object for Dimension.
 
 ## EXAMPLES
 
-### Example 1: Create dimension object
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzScheduledQueryRuleDimensionObject -Name Computer -Operator Include -Value *
+{{ Add code here }}
 ```
 
-Create dimension object
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -50,7 +65,7 @@ Accept wildcard characters: False
 Operator for dimension values.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.DimensionOperator
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +98,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.Dimension
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Dimension
 
 ## NOTES
 

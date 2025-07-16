@@ -1,6 +1,22 @@
-### Example 1: Create dimension object
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzScheduledQueryRuleDimensionObject -Name Computer -Operator Include -Value *
+{{ Add code here }}
 ```
 
-Create dimension object
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

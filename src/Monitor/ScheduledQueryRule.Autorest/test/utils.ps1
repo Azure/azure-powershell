@@ -45,18 +45,31 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
 
-    $resourceGroupName = 'scheduled-query-rule-group' + (RandomString -allChars $false -len 6)
-    write-host "start to create test group $resourceGroupName"
-    New-AzResourceGroup -Name $resourceGroupName -Location eastus
+    # $resourceGroupName = 'scheduled-query-rule-group' + (RandomString -allChars $false -len 6)
+    $resourceGroupName = 'scheduled-query-rule-group0716'
+    $location = 'eastus2'
+    try {
+        Get-AzResourceGroup -Name $resourceGroupName -ErrorAction Stop
+        Write-Host 'Get created group'
+    } catch {
+        write-host "start to create test group $resourceGroupName"
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+    }
     $null = $env.Add("resourceGroupName", $resourceGroupName)
+    $null = $env.Add("location", $location)
 
-    $vmName = 'test-vm' + (RandomString -allChars $false -len 6)
-    $vmPassword = ConvertTo-SecureString "Testpassword001!" -AsPlainText -Force
-    $vmCred = New-Object System.Management.Automation.PSCredential('USERNAME', $vmPassword)
-    write-host "start to create vm $vmName"
-    New-AzVM -Credential $vmCred -Name $vmName -ResourceGroup $resourceGroupName
+    # $vmName = 'testvm' + (RandomString -allChars $false -len 6)
+    # $vmPassword = ConvertTo-SecureString "Test001!" -AsPlainText -Force
+    # $vmCred = New-Object System.Management.Automation.PSCredential('USERNAME', $vmPassword)
+    # write-host "start to create vm $vmName"
+    # New-AzVM -Credential $vmCred -Name $vmName -ResourceGroup $resourceGroupName
+    $vmName = 'testvm250716'
     $null = $env.Add("vmName", $vmName)
     $vmId = (Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName).Id
+    if($null = $vmId)
+    {
+        Write-Host "Failed to get the required virtual machine."
+    }
     $null = $env.Add("vmId", $vmId)
 
     $scheduledQueryRuleName = 'test-rule' + (RandomString -allChars $false -len 6)
