@@ -4107,7 +4107,7 @@
           "462"
         ]
       },
-      "RequestBody": "{\r\n  \"location\": \"southcentralus\",\r\n  \"properties\": {\r\n    \"appPackageUrl\": \"https://sftestappstorage.blob.core.windows.net/managed-application-deployment/Voting.sfpkg?sp=r&st=2025-07-10T16:39:03Z&se=2025-07-11T00:54:03Z&skoid=d078218f-29d9-4be8-9eb5-7325194a81e9&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2025-07-10T16:39:03Z&ske=2025-07-11T00:54:03Z&sks=b&skv=2024-11-04&sv=2024-11-04&sr=b&sig=ZQ7Ui8%2FcnmETUid8Nl%2Bl8ySAiO%2B1y8SFF6D0OXC8onc%3D\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"location\": \"southcentralus\",\r\n  \"properties\": {\r\n    \"appPackageUrl\": \"https://sftestappstorage.blob.core.windows.net/managed-application-deployment/Voting.sfpkg?sp=r&st=2025-07-10T16:39:03Z&se=2025-07-11T00:54:03Z&skoid=d078218f-29d9-4be8-9eb5-7325194a81e9&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2025-07-10T16:39:03Z&ske=2025-07-11T00:54:03Z&sks=b&skv=2024-11-04&sv=2024-11-04&sr=b&sig=******\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -4191,7 +4191,7 @@
           "500"
         ]
       },
-      "RequestBody": "{\r\n  \"tags\": {\r\n    \"test\": \"tag\"\r\n  },\r\n  \"location\": \"southcentralus\",\r\n  \"properties\": {\r\n    \"appPackageUrl\": \"https://sftestappstorage.blob.core.windows.net/managed-application-deployment/Voting.sfpkg?sp=r&st=2025-07-10T16:39:03Z&se=2025-07-11T00:54:03Z&skoid=d078218f-29d9-4be8-9eb5-7325194a81e9&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2025-07-10T16:39:03Z&ske=2025-07-11T00:54:03Z&sks=b&skv=2024-11-04&sv=2024-11-04&sr=b&sig=ZQ7Ui8%2FcnmETUid8Nl%2Bl8ySAiO%2B1y8SFF6D0OXC8onc%3D\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"tags\": {\r\n    \"test\": \"tag\"\r\n  },\r\n  \"location\": \"southcentralus\",\r\n  \"properties\": {\r\n    \"appPackageUrl\": \"https://sftestappstorage.blob.core.windows.net/managed-application-deployment/Voting.sfpkg?sp=r&st=2025-07-10T16:39:03Z&se=2025-07-11T00:54:03Z&skoid=d078218f-29d9-4be8-9eb5-7325194a81e9&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2025-07-10T16:39:03Z&ske=2025-07-11T00:54:03Z&sks=b&skv=2024-11-04&sv=2024-11-04&sr=b&sig=******\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -4269,7 +4269,7 @@
           "500"
         ]
       },
-      "RequestBody": "{\r\n  \"tags\": {\r\n    \"test\": \"tag\"\r\n  },\r\n  \"location\": \"southcentralus\",\r\n  \"properties\": {\r\n    \"appPackageUrl\": \"https://sftestappstorage.blob.core.windows.net/managed-application-deployment/Voting.sfpkg?sp=r&st=2025-07-10T16:39:03Z&se=2025-07-11T00:54:03Z&skoid=d078218f-29d9-4be8-9eb5-7325194a81e9&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2025-07-10T16:39:03Z&ske=2025-07-11T00:54:03Z&sks=b&skv=2024-11-04&sv=2024-11-04&sr=b&sig=ZQ7Ui8%2FcnmETUid8Nl%2Bl8ySAiO%2B1y8SFF6D0OXC8onc%3D\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"tags\": {\r\n    \"test\": \"tag\"\r\n  },\r\n  \"location\": \"southcentralus\",\r\n  \"properties\": {\r\n    \"appPackageUrl\": \"https://sftestappstorage.blob.core.windows.net/managed-application-deployment/Voting.sfpkg?sp=r&st=2025-07-10T16:39:03Z&se=2025-07-11T00:54:03Z&skoid=d078218f-29d9-4be8-9eb5-7325194a81e9&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2025-07-10T16:39:03Z&ske=2025-07-11T00:54:03Z&sks=b&skv=2024-11-04&sv=2024-11-04&sr=b&sig=******\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
