@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var exportedTemplate = NewResourceManagerSdkClient.ExportResourceGroup(ResourceGroupName, parameters);
 
                     var template = exportedTemplate.Template;
-                    contents = template.ToString();
+                    contents = template?.ToString() ?? string.Empty;
 
                     var error = exportedTemplate.Error;
 
@@ -169,12 +169,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         isResourceCreateOrUpdate: false)
                         .WaitOnOperation(operationResult: operationResult);
 
-                    var template = JToken.FromObject(JObject.Parse(resultString)["template"]);
-                    contents = template.ToString();
+                    var resultObject = JObject.Parse(resultString);
+                    var template = resultObject["template"];
+                    contents = template?.ToString() ?? string.Empty;
 
-                    if (JObject.Parse(resultString)["error"] != null)
+                    if (resultObject["error"] != null)
                     {
-                        if (JObject.Parse(resultString)["error"].TryConvertTo(out ExtendedErrorInfo error))
+                        if (resultObject["error"].TryConvertTo(out ExtendedErrorInfo error))
                         {
                             WriteWarning(string.Format("{0} : {1}", error.Code, error.Message));
                             foreach (var detail in error.Details)
