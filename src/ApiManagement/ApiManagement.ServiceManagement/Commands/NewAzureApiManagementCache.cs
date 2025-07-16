@@ -18,6 +18,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using Microsoft.WindowsAzure.Commands.Common;
 
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementCache", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementCache))]
@@ -40,8 +42,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Redis Connection String. This parameter is required.")]
-        [ValidateNotNullOrEmpty]
-        public String ConnectionString { get; set; }
+        [ValidateNotNull]
+        public System.Security.SecureString ConnectionStringSecure { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -67,13 +69,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public override void ExecuteApiManagementCmdlet()
         {
             string cacheId = CacheId ?? "default";
+            string internalConnectionString = ConnectionStringSecure.ConvertToString();
 
             if (ShouldProcess(CacheId, Resources.CreateCache))
             {
                 var cache = Client.CacheCreate(
                     Context,
                     cacheId,
-                    ConnectionString,
+                    internalConnectionString,
                     Description,
                     AzureRedisResourceId,
                     UseFromLocation ?? "default");
