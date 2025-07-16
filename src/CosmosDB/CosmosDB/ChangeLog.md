@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.0.7
 * Added support for throughput buckets.
 
 ## Version 1.18.1
