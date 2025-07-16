@@ -180,7 +180,7 @@ function Update-GeneratedSubModule {
     }
     
     # Get namespace from csproj file
-    $csprojPath = Join-Path $SourceDirectory "Az.${subModuleNameTrimmed}.csproj"
+    $csprojPath = Join-Path $SourceDirectory $csprojName
     Write-Host "Reading namespace from csproj: $csprojPath" -ForegroundColor DarkGreen
     $namespace = $null
     if (Test-Path $csprojPath) {
