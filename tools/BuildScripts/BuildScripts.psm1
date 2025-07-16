@@ -178,8 +178,33 @@ function Update-GeneratedSubModule {
     if ($csprojName -match "^Az\.(?<cSubModuleName>\w+)\.csproj$") {
         $cSubModuleNameTrimmed = $Matches["cSubModuleName"]
     }
+    
+    # Get namespace from csproj file
+    $csprojPath = Join-Path $SourceDirectory $csprojName
+    Write-Host "Reading namespace from csproj: $csprojPath" -ForegroundColor DarkGreen
+    $namespace = $null
+    if (Test-Path $csprojPath) {
+        try {
+            [xml]$csprojContent = Get-Content $csprojPath
+            $rootNamespaceNode = $csprojContent.Project.PropertyGroup.RootNamespace
+            if ($rootNamespaceNode) {
+                $namespace = "$rootNamespaceNode".Trim()
+                Write-Host "Loading namespace from csproj: $namespace retrieved" -ForegroundColor Green
+            }
+            else {
+                Write-Warning "RootNamespace not found in csproj file"
+            }
+        }
+        catch {
+            Write-Warning "Failed to read namespace from csproj: $($_.Exception.Message)"
+        }
+    }
+    else {
+        Write-Warning "Csproj file not found at path: $csprojPath"
+    }
+    
     # regenerate csproj
-    New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName $csprojName -GeneratedDirectory $GeneratedDirectory -ModuleRootName $ModuleRootName -SubModuleName $cSubModuleNameTrimmed -SubModuleNameFull $SubModuleName
+    New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName $csprojName -GeneratedDirectory $GeneratedDirectory -ModuleRootName $ModuleRootName -SubModuleName $cSubModuleNameTrimmed -SubModuleNameFull $SubModuleName -Namespace $namespace
 
     # revert guid in psd1 so that no conflict in updating this file
     if ($guid) {
@@ -209,7 +234,9 @@ function New-GeneratedFileFromTemplate {
         [string]
         $SubModuleName,
         [string]
-        $SubModuleNameFull
+        $SubModuleNameFull,
+        [string]
+        $Namespace
     )
     $TemplatePath = Join-Path $PSScriptRoot "Templates"
     $templateFile = Join-Path $TemplatePath $TemplateName
@@ -228,6 +255,9 @@ function New-GeneratedFileFromTemplate {
         $templateFile = $templateFile -replace '{ModuleFolderPlaceHolder}', "$SubModuleName.Autorest"
     }
     $templateFile = $templateFile -replace '{RootModuleNamePlaceHolder}', $ModuleRootName
+    if ($Namespace) {
+        $templateFile = $templateFile -replace '{NamespacePlaceHolder}', $Namespace
+    }
     Write-Host "Copying template: $TemplateName." -ForegroundColor Yellow
     $templateFile | Set-Content $GeneratedFile -force
 }
