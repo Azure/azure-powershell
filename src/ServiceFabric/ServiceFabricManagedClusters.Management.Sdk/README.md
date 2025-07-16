@@ -31,7 +31,7 @@ payload-flattening-threshold: 2
 commit: 517eaf1cca58813605768f4ddc9a59ca75173493
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/517eaf1cca58813605768f4ddc9a59ca75173493/specification/servicefabricmanagedclusters/resource-manager/Microsoft.ServiceFabric/preview/2025-03-01-preview/servicefabricmanagedclusters.json
-  - 
+
 output-folder: Generated
 
 namespace: Microsoft.Azure.Management.ServiceFabricManagedClusters
