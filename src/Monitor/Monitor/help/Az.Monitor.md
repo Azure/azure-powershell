@@ -238,7 +238,7 @@ Creates a metric dimension filter that can be used to query metrics.
 Create an in-memory object for MonitoringAccountDestination.
 
 ### [New-AzMonitorWorkspace](New-AzMonitorWorkspace.md)
-Create or update a workspace
+Create a workspace
 
 ### [New-AzPerfCounterDataSourceObject](New-AzPerfCounterDataSourceObject.md)
 Create an in-memory object for PerfCounterDataSource.
@@ -355,7 +355,7 @@ update an association.
 Update for private link scope
 
 ### [Update-AzMonitorWorkspace](Update-AzMonitorWorkspace.md)
-Updates part of a workspace
+Update part of a workspace
 
 ### [Update-AzPipelineGroup](Update-AzPipelineGroup.md)
 update a pipeline group instance
