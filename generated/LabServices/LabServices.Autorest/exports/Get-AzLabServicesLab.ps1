@@ -30,27 +30,26 @@ $plan | Get-AzLabServicesLab -Name 'lab name'
 Get-AzLabServicesLab -ResourceGroupName 'group name' -Name '*lab name'
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-LABPLAN <LabPlan>: 
-  Location <String>: The geo-location where the resource lives
-  [AllowedRegion <String[]>]: The allowed regions for the lab creator to use when creating labs using this lab plan.
+LABPLAN <LabPlan>: The object of lab service lab plan.
+  [AllowedRegion <List<String>>]: The allowed regions for the lab creator to use when creating labs using this lab plan.
   [DefaultAutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
   [DefaultAutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
   [DefaultAutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  [DefaultAutoShutdownProfileShutdownOnDisconnect <EnableState?>]: Whether shutdown on disconnect is enabled
-  [DefaultAutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]: Whether a VM will get shutdown when it has idled for a period of time.
-  [DefaultAutoShutdownProfileShutdownWhenNotConnected <EnableState?>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  [DefaultConnectionProfileClientRdpAccess <ConnectionType?>]: The enabled access level for Client Access over RDP.
-  [DefaultConnectionProfileClientSshAccess <ConnectionType?>]: The enabled access level for Client Access over SSH.
-  [DefaultConnectionProfileWebRdpAccess <ConnectionType?>]: The enabled access level for Web Access over RDP.
-  [DefaultConnectionProfileWebSshAccess <ConnectionType?>]: The enabled access level for Web Access over SSH.
+  [DefaultAutoShutdownProfileShutdownOnDisconnect <String>]: Whether shutdown on disconnect is enabled
+  [DefaultAutoShutdownProfileShutdownOnIdle <String>]: Whether a VM will get shutdown when it has idled for a period of time.
+  [DefaultAutoShutdownProfileShutdownWhenNotConnected <String>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+  [DefaultConnectionProfileClientRdpAccess <String>]: The enabled access level for Client Access over RDP.
+  [DefaultConnectionProfileClientSshAccess <String>]: The enabled access level for Client Access over SSH.
+  [DefaultConnectionProfileWebRdpAccess <String>]: The enabled access level for Web Access over RDP.
+  [DefaultConnectionProfileWebSshAccess <String>]: The enabled access level for Web Access over SSH.
   [DefaultNetworkProfileSubnetId <String>]: The external subnet resource id
   [LinkedLmsInstance <String>]: Base Url of the lms instance this lab plan can link lab rosters against.
   [SharedGalleryId <String>]: Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
@@ -58,25 +57,22 @@ LABPLAN <LabPlan>:
   [SupportInfoInstruction <String>]: Support instructions.
   [SupportInfoPhone <String>]: Support contact phone number.
   [SupportInfoUrl <String>]: Support web address.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/get-azlabserviceslab
 #>
 function Get-AzLabServicesLab {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab])]
 [CmdletBinding(DefaultParameterSetName='ListBySubscription', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='LabPlan')]
     [Parameter(ParameterSetName='ListByLabName', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
+    # The name of the user that uniquely identifies it within containing lab.
+    # Used in resource URIs.
     ${Name},
 
     [Parameter()]
@@ -88,19 +84,22 @@ param(
 
     [Parameter(ParameterSetName='LabPlan', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan]
-    # To construct, see NOTES section for LABPLAN properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan]
+    # The object of lab service lab plan.
     ${LabPlan},
 
     [Parameter(ParameterSetName='ListByLabName')]
     [Parameter(ParameterSetName='ListByResourceGroup', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='ResourceId', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
+    # The resource Id of lab service lab.
     ${ResourceId},
 
     [Parameter()]
@@ -158,6 +157,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -183,9 +191,7 @@ begin {
             ListBySubscription = 'Az.LabServices.custom\Get-AzLabServicesLab_ListBySubscription';
             ResourceId = 'Az.LabServices.custom\Get-AzLabServicesLab_ResourceId';
         }
-        if (('LabPlan', 'ListByLabName', 'ListByResourceGroup', 'ListBySubscription', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('LabPlan', 'ListByLabName', 'ListByResourceGroup', 'ListBySubscription', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -199,6 +205,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

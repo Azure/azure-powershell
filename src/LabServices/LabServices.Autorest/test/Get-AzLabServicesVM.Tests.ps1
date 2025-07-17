@@ -19,15 +19,15 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 
 Describe 'Get-AzLabServicesVM' {
     It 'List' {
-        Get-AzLabServicesVM -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName | Should -Not -BeNullOrEmpty
+        Get-AzLabServicesVM -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName | Should -Not -BeNullOrEmpty
     }
 
     It 'Get' {
-        Get-AzLabServicesVM -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name 0 | Should -Not -BeNullOrEmpty
+        Get-AzLabServicesVM -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -Name 0 | Should -Not -BeNullOrEmpty
     }
 
     It 'Pipeline' {
-        $lab = Get-AzLabServicesLab -Name $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName
+        $lab = Get-AzLabServicesLab -Name $env.LabName -ResourceGroupName $env.ResourceGroupName
         Get-AzLabServicesVM -Lab $lab -Name 0 | Select -ExpandProperty State |  Should -BeExactly "Stopped"
     }
 }
