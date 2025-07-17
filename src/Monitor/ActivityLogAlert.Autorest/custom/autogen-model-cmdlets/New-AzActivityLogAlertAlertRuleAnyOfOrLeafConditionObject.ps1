@@ -21,17 +21,18 @@ Create an in-memory object for AlertRuleAnyOfOrLeafCondition.
 Create an in-memory object for AlertRuleAnyOfOrLeafCondition.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleAnyOfOrLeafCondition
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRuleAnyOfOrLeafCondition
 .Link
-https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-azactivitylogalertalertruleanyoforleafconditionobject
 #>
 function New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleAnyOfOrLeafCondition')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRuleAnyOfOrLeafCondition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="An Activity Log Alert rule condition that is met when at least one of its member leaf conditions are met.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IAlertRuleLeafCondition[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IAlertRuleLeafCondition[]]
         $AnyOf,
         [Parameter(HelpMessage="The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.")]
         [string[]]
@@ -46,7 +47,7 @@ function New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleAnyOfOrLeafCondition]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRuleAnyOfOrLeafCondition]::New()
 
         if ($PSBoundParameters.ContainsKey('AnyOf')) {
             $Object.AnyOf = $AnyOf
