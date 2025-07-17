@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated SFMC to latest api preview version `2025-03-01-preview`
 
 ## Version 3.5.0
 * Upgraded nuget package to signed package.

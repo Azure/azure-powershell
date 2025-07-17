@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <param name="request">The origin request that responds with a claim challenge</param>
         /// <param name="claimsChallenge">Claims challenge string</param>
         /// <param name="cancellationToken">Cancellation token</param>
-        /// <returns>Successful or not</returns>
+        /// <returns>A boolean indicated whether the request should be retried</returns>
         ValueTask<bool> OnClaimsChallenageAsync(HttpRequestMessage request, string claimsChallenge, CancellationToken cancellationToken);
     }
 }

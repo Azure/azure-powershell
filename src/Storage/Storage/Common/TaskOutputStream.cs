@@ -24,17 +24,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
     /// <summary>
     /// Task output stream in multithread environment
-    /// It's the multithread version of WriteOuput/WriterVerbose/WriteError and etc.
+    /// It's the multithread version of WriteOutput/WriterVerbose/WriteError and etc.
     /// </summary>
     internal class TaskOutputStream
     {
         /// <summary>
-        /// Ouput Stream which store all the output from sub-thread.
+        /// Output Stream which store all the output from sub-thread.
         /// Both the object and exception are the valid output.
         /// Key: Output id
         /// Value: OutputUnit object which store the output data
         /// It's thread safe to access the value even it's a Queue.
-        /// Don't use ConcurrentQueue for value since it'll cause a huge perfomance downgrade.
+        /// Don't use ConcurrentQueue for value since it'll cause a huge performance downgrade.
         /// </summary>
         private ConcurrentDictionary<long, Queue<OutputUnit>> OutputStream;
 

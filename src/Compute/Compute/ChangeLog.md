@@ -21,6 +21,19 @@
 -->
 ## Upcoming Release
 
+## Version 10.1.0
+* Support for Metadata Security Protocol (MSP) support for Gallery
+    - Added new cmdlets `New-AzGalleryInVmAccessControlProfile`, `Get-AzGalleryInVmAccessControlProfile`, `Update-AzGalleryInVmAccessControlProfile`, and `Remove-AzGalleryInVmAccessControlProfile` to manage In-VM Access Control Profiles in Azure Compute Gallery.
+    - Added new cmdlets `New-AzGalleryInVmAccessControlProfileVersion`, `Get-AzGalleryInVmAccessControlProfileVersion`, `Update-AzGalleryInVmAccessControlProfileVersion`, and `Remove-AzGalleryInVmAccessControlProfileVersion` to manage In-VM Access Control Profile Versions in Azure Compute Gallery.
+    - Added new cmdlet `New0AzGalleryInVmAccessControlProfileVersionConfig` to create a local configuration object for In-VM Access Control Profile Version.
+    - Added new cmdlets `Add-AzGalleryInVmAccessControlProfileVersionRulesPrivilege` and `Remove-AzGalleryInVmAccessControlProfileVersionRulesPrivilege` to manage privileges in In-VM Access Control Profile Version.
+    - Added new cmdlets `Add-AzGalleryInVmAccessControlProfileVersionRulesRole` and `Remove-AzGalleryInVmAccessControlProfileVersionRulesRole` to manage roles in In-VM Access Control Profile Version.
+    - Added new cmdlets `Add-AzGalleryInVmAccessControlProfileVersionRulesIdentity` and `Remove-AzGalleryInVmAccessControlProfileVersionRulesIdentity` to manage identities in In-VM Access Control Profile Version.
+    - Added new cmdlets `Add-AzGalleryInVmAccessControlProfileVersionRulesRoleAssignment` and `Remove-AzGalleryInVmAccessControlProfileVersionRulesRoleAssignment` to manage role assignments in In-VM Access Control Profile Version.
+* Added `-EnableProxyAgent` parameter to `New-AzVM` and `New-AzVmss` simple parameter sets.
+* Added `-ProxyAgentKeyIncarnationId`parameter to `Update-AzVmssVM` cmdlet.
+* Added new cmdlets `Set-AzVmssProxyAgent` and `Set-AzVMProxyAgent` to set the proxy agent settings for VM and VMSS.`
+
 ## Version 10.0.1
 * Added breaking change message for `New-AzVM` and `New-AzVmss` cmdlets.
 

@@ -505,7 +505,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
         }
 
         /// <summary>
-        /// Async Get container presssions
+        /// Async Get container permissions
         /// </summary>
         /// <param name="container">A cloudblobcontainer object</param>
         /// <param name="accessCondition">Access condition</param>
