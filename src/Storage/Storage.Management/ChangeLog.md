@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fix incorrect description verb in reference documentation for `Remove-AzRmStorageShare`
 
 ## Version 9.1.0
 * Supported set SasExpirationAction as Log or Block, together with SasExpirationPeriod
