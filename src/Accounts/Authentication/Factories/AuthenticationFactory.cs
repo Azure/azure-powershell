@@ -662,7 +662,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
                         if (account.IsPropertySet("UseDeviceAuth"))
                         {
-                            return new DeviceCodeParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId);
+                            return new DeviceCodeParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId, claimsChallenge);
                         }
                         else if (account.IsPropertySet(AzureAccount.Property.UsePasswordAuth))
                         {
