@@ -51,7 +51,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ```yaml
-commit: 812f964651d5f1f7148b54ed2cc35cb97be12523
+commit: abc9cee615e7859ab5cb684a3780066a200324c0
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 
@@ -64,7 +64,7 @@ input-file:
   - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2024-01-01/virtualHardDisks.json
   - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2024-01-01/virtualMachineInstances.json
   - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2024-01-01/logicalNetworks.json
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2023-03-15-preview/HybridCompute.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2025-01-13/HybridCompute.json
 
 module-version: 0.1.0
 title: StackHCIVM
