@@ -21,8 +21,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     {
         public Action<string> PromptAction { get; set; }
 
-        public string ClaimsChallenge { get; set; }
-
         public InteractiveParameters(
             PowerShellTokenCacheProvider tokenCacheProvider,
             IAzureEnvironment environment,
@@ -32,10 +30,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             string userId,
             string homeAccountId,
             Action<string> promptAction,
-            string claimsChallenge) : base(tokenCacheProvider, environment, tokenCache, tenantId, resourceId, userId, homeAccountId)
+            string claimsChallenge) : base(tokenCacheProvider, environment, tokenCache, tenantId, resourceId, userId, homeAccountId, claimsChallenge)
         {
             PromptAction = promptAction;
-            ClaimsChallenge = claimsChallenge;
         }
     }
 }
