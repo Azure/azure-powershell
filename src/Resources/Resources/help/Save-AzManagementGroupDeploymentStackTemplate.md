@@ -12,7 +12,7 @@ Saves a Management Group scoped Deployment Stack Template.
 
 ## SYNTAX
 
-### SaveByNameAndManagementGroupId (Default)
+### SaveByNameAndManagmentGroupId (Default)
 ```
 Save-AzManagementGroupDeploymentStackTemplate [-StackName] <String> [-ManagementGroupId] <String> [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -79,7 +79,7 @@ The id of the ManagementGroup where the DeploymentStack is deployed
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveByNameAndManagementGroupId
+Parameter Sets: SaveByNameAndManagmentGroupId
 Aliases:
 
 Required: True
@@ -124,7 +124,7 @@ The name of the DeploymentStack to get
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveByNameAndManagementGroupId
+Parameter Sets: SaveByNameAndManagmentGroupId
 Aliases:
 
 Required: True
