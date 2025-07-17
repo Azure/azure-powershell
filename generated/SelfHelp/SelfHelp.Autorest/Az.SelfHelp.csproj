@@ -3,6 +3,7 @@
     <PsModuleName>SelfHelp</PsModuleName>
     <PsRootModuleName>SelfHelp</PsRootModuleName>
     <PsModuleFolder>SelfHelp.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.SelfHelp</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />
