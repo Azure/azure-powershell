@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated InvokeCiPolicySigning to support signing files with the .cip extension
 
 ## Version 0.1.1
 * Modified InvokeCiPolicySigning to include ShouldProcess command confirmation
