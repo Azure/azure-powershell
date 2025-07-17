@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Added breaking change announcement for below cmdlets from array to list.
+  - `Get-AzRoleManagementPolicy`
+  - `Update-AzRoleManagementPolicy`
 * Added support for exporting resource group templates as Bicep files
     - Added `OutputFormat` parameter to `Export-AzResourceGroup` cmdlet
     - Supported values: `Json` (default), `Bicep`
