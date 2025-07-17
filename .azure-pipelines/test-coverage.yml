@@ -108,7 +108,7 @@ jobs:
 
   - task: PowerShell@2
     displayName: Update Test Coverage Baseline
-    condition: and(succeeded(), ${{ ne(parameters.updateBaseline, 'true') }})
+    condition: and(succeeded(), ${{ parameters.updateBaseline }})
     inputs:
       pwsh: true
       targetType: inline
