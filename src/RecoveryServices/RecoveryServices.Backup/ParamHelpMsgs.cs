@@ -240,6 +240,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 " used to encrypt newly created disks.";
             public const string UseSystemAssignedIdentity = "Boolean flag to indicate if SystemAssigned Identity will be used for CMK encryption";
             public const string UserAssignedIdentity = "ARM Id of UserAssigned Identity to be used for CMK encryption. Provide this parameter if UseSystemAssignedIdentity is $false";
+            public const string SecuredVMOsDiskEncryptionSetId = "Disk Encryption Set Id to be used for OS disk encryption of secured VMs. This is applicable only for secured VMs with managed disks.";
         }
 
         internal static class ResourceGuard

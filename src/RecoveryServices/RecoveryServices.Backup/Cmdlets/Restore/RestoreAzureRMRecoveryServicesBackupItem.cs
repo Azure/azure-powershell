@@ -348,6 +348,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidatePattern(@"^/subscriptions/[^/]+/resourceGroups/[^/]+/providers/Microsoft.Compute/diskAccesses/[^/]+$")]
         public string TargetDiskAccessId { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = AzureManagedVMReplaceExistingParameterSet,
+            HelpMessage = ParamHelpMsgs.Encryption.DES)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureManagedVMCreateNewParameterSet,
+            HelpMessage = ParamHelpMsgs.Encryption.SecuredVMOsDiskEncryptionSetId)]
+        public string SecuredVMOsDiskEncryptionSetId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -567,6 +573,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 if (MultipleSourceFilePath != null)
                 {
                     providerParameters.Add(RestoreFSBackupItemParams.MultipleSourceFilePath, MultipleSourceFilePath);
+                }
+
+                if (SecuredVMOsDiskEncryptionSetId != null)
+                {
+                    providerParameters.Add(RestoreVMBackupItemParams.SecuredVMOsDiskEncryptionSetId, SecuredVMOsDiskEncryptionSetId);
                 }
 
                 PsBackupProviderManager providerManager =

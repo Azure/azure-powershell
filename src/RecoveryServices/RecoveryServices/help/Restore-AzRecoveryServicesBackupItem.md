@@ -22,9 +22,9 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] 
  [-RestoreDiskList <String[]>] [-DiskEncryptionSetId <String>] [-RestoreToSecondaryRegion]
  [-TargetZoneNumber <Int32>] [-RehydratePriority <String>] [-UseSystemAssignedIdentity]
  [-UserAssignedIdentityId <String>] [-DiskAccessOption <TargetDiskNetworkAccessOption>]
- [-TargetDiskAccessId <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-RehydrateDuration <String>] [-Token <String>] [-SecureToken <SecureString>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TargetDiskAccessId <String>] [-SecuredVMOsDiskEncryptionSetId <String>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-RehydrateDuration <String>] [-Token <String>]
+ [-SecureToken <SecureString>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureFileShareParameterSet
@@ -56,8 +56,9 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] 
  [-UserAssignedIdentityId <String>] [-TargetVMName <String>] [-TargetVNetName <String>]
  [-TargetVNetResourceGroup <String>] [-TargetSubnetName <String>] [-TargetSubscriptionId <String>]
  [-RestoreToEdgeZone] [-DiskAccessOption <TargetDiskNetworkAccessOption>] [-TargetDiskAccessId <String>]
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-RehydrateDuration <String>] [-Token <String>]
- [-SecureToken <SecureString>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SecuredVMOsDiskEncryptionSetId <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-RehydrateDuration <String>] [-Token <String>] [-SecureToken <SecureString>]
+[-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureVMUnManagedDiskParameterSet
@@ -581,6 +582,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecuredVMOsDiskEncryptionSetId
+The disk encryption set is used to encrypt disks at rest when they are created from vault-based recovery points. Please ensure that the disk encryption set also has access to the relevant key vault. For instant restores, where data is restored from snapshot recovery points, the currently active disk encryption set is automatically used to encrypt newly created disks.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureManagedVMReplaceExistingParameterSet, AzureManagedVMCreateNewParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

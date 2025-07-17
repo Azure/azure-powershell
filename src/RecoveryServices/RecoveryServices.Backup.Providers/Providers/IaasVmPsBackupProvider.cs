@@ -518,6 +518,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
+            string securedVMOsDiskEncryptionSetId = ProviderData.ContainsKey(RestoreVMBackupItemParams.SecuredVMOsDiskEncryptionSetId) ?
+                ProviderData[RestoreVMBackupItemParams.SecuredVMOsDiskEncryptionSetId].ToString() : null;
 
             if (targetSubscriptionId == null || targetSubscriptionId == "") targetSubscriptionId = ServiceClientAdapter.SubscriptionId;
 
@@ -645,6 +647,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 {
                     restoreRequest.TargetDiskNetworkAccessSettings.TargetDiskAccessId = targetDiskAccessId;
                 }                
+            }
+
+            if (!string.IsNullOrWhiteSpace(securedVMOsDiskEncryptionSetId))
+            {
+                restoreRequest.SecuredVMDetails = new SecuredVMDetails(securedVMOsDiskEncryptionSetId);
             }
 
             if (restoreType == "OriginalLocation") // replace existing
