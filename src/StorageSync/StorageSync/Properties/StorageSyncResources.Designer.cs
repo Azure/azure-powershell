@@ -151,6 +151,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GetEnvironmentVariable failed to find &apos;ProgramData&apos;.
+        /// </summary>
+        internal static string AgentMI_ProgramDataNotFoundError {
+            get {
+                return ResourceManager.GetString("AgentMI_ProgramDataNotFoundError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unexpected return value: TokenResponse from GetServerManagedIdentityTokenResponseInternal is null.
         /// </summary>
         internal static string AgentMI_TokenResponseNullError {

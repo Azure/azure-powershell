@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
                     }
 
                     // Value in the header is: "Basic realm=<secret file path>"
-                    var secretFilePath = wwwHeader.Split('=', StringSplitOptions.RemoveEmptyEntries).LastOrDefault();
+                    var secretFilePath = wwwHeader.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries).LastOrDefault();
 
                     if (IsSecretFilePathValid(secretFilePath))
                     {
@@ -355,8 +355,26 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
             string allowedFolder;
 
             // Expected form: %ProgramData%\AzureConnectedMachineAgent\Tokens\<guid>.key
-            string systemDrive = Environment.GetEnvironmentVariable("SystemDrive") ?? "C:";
-            string programData = Environment.GetEnvironmentVariable("ProgramData") ?? Path.Combine(systemDrive + "\\", "ProgramData");
+            var programData = Environment.GetEnvironmentVariable("ProgramData");
+            
+            if (string.IsNullOrEmpty(programData))
+            {
+                // If ProgramData is not found, try to manually construct it using SystemDrive
+                var systemDrive = Environment.GetEnvironmentVariable("SystemDrive");
+
+                if (string.IsNullOrEmpty(systemDrive))
+                {
+                    throw new ServerManagedIdentityTokenException(
+                        ManagedIdentityErrorCodes.ServerManagedIdentityTokenChallengeFailed,
+                        StorageSyncResources.AgentMI_ProgramDataNotFoundError,
+                        null);
+                }
+                else
+                {
+                    programData = Path.Combine(systemDrive, "ProgramData");
+                }
+            }
+
             allowedFolder = Path.GetFullPath(Path.Combine(programData, "AzureConnectedMachineAgent", "Tokens"));
 
             // Ensure the secret file is within the allowed tokens folder, exists, and ends with .key
