@@ -3028,8 +3028,8 @@ function Test-ApplicationGatewayTopLevelFirewallPolicy
 		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
 
 		# Check if Application Gateway resource can be seen in WAF Policy
-        Assert-AreEqual $policy.ApplicationGateways.Count 1
-        Assert-AreEqual $policy.ApplicationGateways[0].Id $appgw.Id
+		Assert-AreEqual $policy.ApplicationGateways.Count 1
+		Assert-AreEqual $policy.ApplicationGateways[0].Id $appgw.Id
 
 		# Second check firewall policy
 		Assert-AreEqual $policy.Id $appgw.FirewallPolicy.Id
