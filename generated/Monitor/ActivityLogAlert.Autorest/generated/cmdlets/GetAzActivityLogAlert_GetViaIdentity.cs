@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/activityLogAlerts/{activityLogAlertName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzActivityLogAlert_GetViaIdentity")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource", "15.0.0", "7.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"ActionGroup","ConditionAllOf","Scope"}, NewOutputProperties=new string[] {"ActionGroup","ConditionAllOf","Scope"}, ChangeDescription="The types of the properties ActionGroup, ConditionAllOf and Scope will be changed from single object or fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Description(@"Get an Activity Log Alert rule.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Generated]
