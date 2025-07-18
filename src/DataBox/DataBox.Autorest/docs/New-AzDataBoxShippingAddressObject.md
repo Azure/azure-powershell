@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataBox
-online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxShippingAddressObject
+online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxshippingaddressobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Create an in-memory object for ShippingAddress.
 ## SYNTAX
 
 ```
-New-AzDataBoxShippingAddressObject -Country <String> -StreetAddress1 <String> [-AddressType <AddressType>]
+New-AzDataBoxShippingAddressObject -Country <String> -StreetAddress1 <String> [-AddressType <String>]
  [-City <String>] [-CompanyName <String>] [-PostalCode <String>] [-SkipAddressValidation <Boolean>]
  [-StateOrProvince <String>] [-StreetAddress2 <String>] [-StreetAddress3 <String>]
  [-TaxIdentificationNumber <String>] [-ZipExtendedCode <String>] [<CommonParameters>]
@@ -30,9 +30,18 @@ New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNSEND ST" -StateOrPro
 ```
 
 ```output
-AddressType City          CompanyName Country PostalCode StateOrProvince StreetAddress1  StreetAddress2 StreetAddress3 ZipExtendedCode
------------ ----          ----------- ------- ---------- --------------- --------------  -------------- -------------- ---------------
-Commercial  San Francisco             US      94107      CA              101 TOWNSEND ST
+AddressType             : Commercial
+City                    : San Francisco
+CompanyName             :
+Country                 : US
+PostalCode              : 94107
+SkipAddressValidation   :
+StateOrProvince         : CA
+StreetAddress1          : 101 TOWNSEND ST
+StreetAddress2          :
+StreetAddress3          :
+TaxIdentificationNumber :
+ZipExtendedCode         :
 ```
 
 Creates a in-memory shipping address object
@@ -43,7 +52,7 @@ Creates a in-memory shipping address object
 Type of address.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AddressType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -226,7 +235,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ShippingAddress
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ShippingAddress
 
 ## NOTES
 
