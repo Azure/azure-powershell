@@ -29,7 +29,8 @@ function InitializeRequiredPackages {
     if (-not (Get-PackageProvider -Name NuGet -ErrorAction SilentlyContinue)) {
         Install-PackageProvider -Name NuGet -Force
     }
-
+    $packages = Find-Package YamlDotNet -AllVersions
+    Write-Host "Found YamlDotNet package version: $($packages.Version)"
     Install-Package -Name YamlDotNet -RequiredVersion ${env:YamlDotNetVersion} -ProviderName NuGet -Force
     $pkgYaml = Get-Package -Name YamlDotNet | Select-Object -ExpandProperty Source | Split-Path
     $dllYaml = Join-Path -Path $pkgYaml -ChildPath "lib" | Join-Path -ChildPath "netstandard2.0" | Join-Path -ChildPath "YamlDotNet.dll"
