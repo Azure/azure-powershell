@@ -101,7 +101,7 @@ $VMwareToolsStatus = @{
     NotInstalled = "NotInstalled";
 }
 
-$OsType = @{
+$OsTypes = @{
     LinuxGuest = "linuxguest";
     WindowsGuest = "windowsguest";
     OtherGuestFamily = "otherguestfamily";
@@ -111,14 +111,14 @@ $VmReplicationValidationMessage = "Replication could not be initiated. Please en
 $VmReplicationValidationMessages = @{
     VmPoweredOff            = "The VM is currently powered off. $VmReplicationValidationMessage";
     AlreadyInReplication    = "The VM is already in replication. $VmReplicationValidationMessage";
-    VmWareToolsNotInstalled = "VMware tools not installed on VM. $VmReplicationValidationMessage";
-    VmWareToolsNotRunning   = "VMware tools not running on VM. $VmReplicationValidationMessage";
     VmNotHighlyAvailable    = "VM not highly available. $VmReplicationValidationMessage";
     HyperVIntegrationServicesNotRunning = "Hyper-V Integration Services not running on VM. $VmReplicationValidationMessage";
-    OsTypeNotSupported      = "The OS type of the VM is not supported for replication. $VmReplicationValidationMessage";
+    VmWareToolsNotInstalled = "VMware tools not installed on VM. If you plan on migrating static IP of the VMware VM, please ensure VMware Tools are installed on the VM, and allow up to 30 minutes before migrating.";
+    VmWareToolsNotRunning   = "VMware tools not running on VM. If you plan on migrating static IP of the VMware VM, please ensure VMware Tools are running on the VM, and allow up to 30 minutes before migrating.";
+    OsTypeNotSupported      = "The OS type of the VM is not known at time of replication. If it is a custom OS build of either Windows or Linux, please run `Set-AzMigrateLocalServerReplication -TargetObjectID <ProtectedItemId> -OsType <OsType>` to specify the OS type before migrating.";
 }
 
 $ArcResourceBridgeValidationMessages = @{
     NotRunning = "Arc Resource Bridge is offline. To continue, bring the Arc Resource Bridge online. Wait a few minutes for the status to update and retry.";
-    NoClusters = "There are no Azure Local resources in the selected resource group."
+    NoClusters = "There are no Azure Local clusters found in the selected resource group."
 }

@@ -65,6 +65,14 @@ function Set-AzMigrateLocalServerReplication {
         ${NicToInclude},
 
         [Parameter()]
+        [ValidateSet("WindowsGuest" , "LinuxGuest")]
+        [ArgumentCompleter( { "WindowsGuest" , "LinuxGuest" })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the OS type of the VM, either WindowsGuest or LinuxGuest.
+        ${OsType},
+
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -133,6 +141,7 @@ function Set-AzMigrateLocalServerReplication {
         if ($HasIsDynamicMemoryEnabled) {
             $isDynamicRamEnabled = [System.Convert]::ToBoolean($IsDynamicMemoryEnabled)
         }
+        $HasOsType = $PSBoundParameters.ContainsKey('OsType')
 
         $null = $PSBoundParameters.Remove('TargetVMCPUCore')
         $null = $PSBoundParameters.Remove('IsDynamicMemoryEnabled')
@@ -140,6 +149,7 @@ function Set-AzMigrateLocalServerReplication {
         $null = $PSBoundParameters.Remove('TargetVMRam')
         $null = $PSBoundParameters.Remove('NicToInclude')
         $null = $PSBoundParameters.Remove('TargetObjectID')
+        $null = $PSBoundParameters.Remove('OsType')
         $null = $PSBoundParameters.Remove('WhatIf')
         $null = $PSBoundParameters.Remove('Confirm')
         
@@ -299,6 +309,11 @@ function Set-AzMigrateLocalServerReplication {
             elseif ($SiteType -eq $SiteTypes.VMwareSites) {     
                 $customPropertiesUpdate.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHCINicInput[]]$nics
             }
+        }
+
+        # Update OS type
+        if ($HasOsType) {
+            $customPropertiesUpdate.OsType = $OsType
         }
 
         $protectedItemPropertiesUpdate = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemModelPropertiesUpdate]::new()
