@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public override void ExecuteCmdlet()
         {
             bool isHttpCredentialBound = this.HttpCredential != null;
-            bool isRestAuthEntraUsersBound = (EntraUserIdentity != null && EntraUserIdentity.Length > 0) || (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0) ;
+            bool isRestAuthEntraUsersBound = (EntraUserIdentity != null && EntraUserIdentity.Length > 0) || (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0);
             if (isHttpCredentialBound && isRestAuthEntraUsersBound)
             {
                 throw new ArgumentException("Only one of HttpCredential, EntraUserIdentity, or EntraUserFullInfo can be provided.");
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 updateGatewaySettingsParameters.IsCredentialEnabled = true;
                 updateGatewaySettingsParameters.UserName = HttpCredential.UserName;
                 updateGatewaySettingsParameters.Password = HttpCredential.Password.ConvertToString();
-            }else if (isRestAuthEntraUsersBound)
+            } else if (isRestAuthEntraUsersBound)
             {
                 updateGatewaySettingsParameters.IsCredentialEnabled = false;
                 updateGatewaySettingsParameters.RestAuthEntraUsers = RestAuthEntraUsers;

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             if (isHttpCredentialBound && isRestAuthEntraUsersBound)
             {
                 throw new ArgumentException("Only one of HttpCredential, EntraUserIdentity, or EntraUserFullInfo can be provided.");
-            }else if (!isHttpCredentialBound && !isRestAuthEntraUsersBound)
+            } else if (!isHttpCredentialBound && !isRestAuthEntraUsersBound)
             {
                 throw new ArgumentException("One of HttpCredential, EntraUserIdentity, or EntraUserFullInfo must be provided.");
             }

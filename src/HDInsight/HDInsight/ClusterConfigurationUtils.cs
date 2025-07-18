@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public static List<EntraUserInfo> GetHDInsightGatewayEntraUser(string[] EntraUserIdentity, Hashtable[] EntraUserFullInfo, IMicrosoftGraphClient graphClient)
         {
             List<EntraUserInfo> restAuthEntraUsers = new List<EntraUserInfo>();
-            if (EntraUserIdentity!=null)
+            if (EntraUserIdentity != null)
             {
                 if (graphClient == null)
                 {
