@@ -105,6 +105,8 @@ jobs:
       arguments: '-CalcBaseline:$${{ parameters.updateBaseline }}'
 
   - template: util/get-github-pat-steps.yml
+    parameters:
+      execCondition: and(succeeded(), ${{ parameters.updateBaseline }})
 
   - task: PowerShell@2
     displayName: Update Test Coverage Baseline
