@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                         var user = graphClient.Users.GetUser(data);
                         if(user == null)
                         {
-                            throw new InvalidOperationException($"The Entra user retrieved for input \"{data}\" is null. Please confirm that the user exists in Microsoft Entra ID. ");
+                            throw new InvalidOperationException($"The Entra user retrieved for input \"{data}\" is null. Please confirm that the user exists in Microsoft Entra ID.");
                         }
                         restAuthEntraUsers.Add(new EntraUserInfo
                         {
