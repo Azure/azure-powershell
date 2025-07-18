@@ -57,12 +57,12 @@ function Test-NodeTypeOperations
 	$location = "southcentralus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
 	$pass = (ConvertTo-SecureString -AsPlainText -Force (-join ((33..126) | Get-Random -Count 16 | % {[char]$_})))
-	$tags = @{"SFRP.EnableDiagnosticMI"="true"; "SFRP.DisableDefaultOutboundAccess"="true"; "SFRP.WaitTimeBetweenUD"="00:00:10"; "testName"="Test-NodeTypeOperations"}
+	$clusterTags = @{"SFRP.EnableDiagnosticMI"="true"; "SFRP.DisableDefaultOutboundAccess"="true"; "SFRP.UseUnmonitoredAutoClusterUpgradePolicy"="True"; "testName"="Test-NodeTypeOperations"}
 
 	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
 
 	$cluster = New-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -UpgradeMode Automatic -UpgradeCadence Wave1 -Location $location `
-		-AdminPassword $pass -Sku Standard -ClientCertThumbprint $testClientTp -Tag $tags -Verbose
+		-AdminPassword $pass -Sku Standard -ClientCertThumbprint $testClientTp -Tag $clusterTags -Verbose
 	Assert-AreEqual "Succeeded" $cluster.ProvisioningState
 	Assert-AreEqual "WaitingForNodes" $cluster.ClusterState
 	Assert-AreEqual "Automatic" $cluster.ClusterUpgradeMode
@@ -106,7 +106,7 @@ function Test-NodeTypeVmSizeChange
 	$location = "southcentralus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
 	$pass = (ConvertTo-SecureString -AsPlainText -Force (-join ((33..126) | Get-Random -Count 16 | % {[char]$_})))
-	$tags = @{"SFRP.EnableDiagnosticMI"="true"; "SFRP.DisableDefaultOutboundAccess"="true"; "SFRP.WaitTimeBetweenUD"="00:00:10"; "testName"="Test-NodeTypeVmSizeChange"}
+	$tags = @{"SFRP.EnableDiagnosticMI"="true"; "SFRP.DisableDefaultOutboundAccess"="true"; "SFRP.UseUnmonitoredAutoClusterUpgradePolicy"="True"; "testName"="Test-NodeTypeVmSizeChange"}
 
 	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
 
@@ -140,7 +140,7 @@ function Test-CertAndExtension
 	$location = "southcentralus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
 	$pass = (ConvertTo-SecureString -AsPlainText -Force (-join ((33..126) | Get-Random -Count 16 | % {[char]$_})))
-	$tags = @{"SFRP.EnableDiagnosticMI"="true"; "SFRP.DisableDefaultOutboundAccess"="true"; "SFRP.WaitTimeBetweenUD"="00:00:10"; "testName"="Test-CertAndExtension"}
+	$tags = @{"SFRP.EnableDiagnosticMI"="true"; "SFRP.DisableDefaultOutboundAccess"="true"; "SFRP.UseUnmonitoredAutoClusterUpgradePolicy"="True"; "testName"="Test-CertAndExtension"}
 
 	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
 
@@ -191,7 +191,7 @@ function Test-AddNetworkSecurityRule
 	$pass = (ConvertTo-SecureString -AsPlainText -Force (-join ((33..126) | Get-Random -Count 16 | % {[char]$_})))
 	$location = "southcentralus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
-	$tags = @{"SFRP.EnableDiagnosticMI"="true"; "SFRP.DisableDefaultOutboundAccess"="true"; "SFRP.WaitTimeBetweenUD"="00:00:10"; "testName"="Test-AddNetworkSecurityRule"}
+	$tags = @{"SFRP.EnableDiagnosticMI"="true"; "SFRP.DisableDefaultOutboundAccess"="true"; "SFRP.UseUnmonitoredAutoClusterUpgradePolicy"="True"; "testName"="Test-AddNetworkSecurityRule"}
 
 	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
 
