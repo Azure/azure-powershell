@@ -29,7 +29,7 @@ function New-AzAutoscaleScaleRuleObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRule')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
-
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.ParameterBreakingChange("MetricTriggerDimension", "15.0.0", "7.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Parameter(HelpMessage="List of dimension conditions. For example: [{`"DimensionName`":`"AppName`",`"Operator`":`"Equals`",`"Values`":[`"App1`"]},{`"DimensionName`":`"Deployment`",`"Operator`":`"Equals`",`"Values`":[`"default`"]}].")]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IScaleRuleMetricDimension[]]
         $MetricTriggerDimension,

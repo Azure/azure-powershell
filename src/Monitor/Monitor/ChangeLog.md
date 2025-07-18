@@ -25,6 +25,14 @@
   - `Update-AzActivityLogAlert`
   - `New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject`
   - `New-AzActivityLogAlertAlertRuleLeafConditionObject`
+  - `Get-AzAutoscalePredictiveMetric`
+  - `Get-AzAutoscaleSetting`
+  - `New-AzAutoscaleNotificationObject`
+  - `New-AzAutoscaleProfileObject`
+  - `New-AzAutoscaleScaleRuleMetricDimensionObject`
+  - `New-AzAutoscaleScaleRuleObject`
+  - `New-AzAutoscaleSetting`
+  - `Update-AzAutoscaleSetting`
 
 ## Version 6.0.2
 * Pipeline Group upgraded API version to 2024-10-01-preview
