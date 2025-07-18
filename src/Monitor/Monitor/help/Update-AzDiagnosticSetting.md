@@ -1,51 +1,48 @@
 ---
-external help file:
+external help file: Az.DiagnosticSetting.psm1-help.xml
 Module Name: Az.Monitor
-online version: https://learn.microsoft.com/powershell/module/az.monitor/new-azsubscriptiondiagnosticsetting
+online version: https://learn.microsoft.com/powershell/module/az.monitor/update-azdiagnosticsetting
 schema: 2.0.0
 ---
 
-# New-AzSubscriptionDiagnosticSetting
+# Update-AzDiagnosticSetting
 
 ## SYNOPSIS
-Create subscription diagnostic settings for the specified resource.
+Update diagnostic settings for the specified resource.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzSubscriptionDiagnosticSetting -Name <String> [-SubscriptionId <String>]
- [-EventHubAuthorizationRuleId <String>] [-EventHubName <String>] [-Log <ISubscriptionLogSettings[]>]
- [-MarketplacePartnerId <String>] [-ServiceBusRuleId <String>] [-StorageAccountId <String>]
- [-WorkspaceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzSubscriptionDiagnosticSetting -Name <String> -JsonFilePath <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDiagnosticSetting -Name <String> -ResourceId <String> [-EventHubAuthorizationRuleId <String>]
+ [-EventHubName <String>] [-Log <ILogSettings[]>] [-LogAnalyticsDestinationType <String>]
+ [-MarketplacePartnerId <String>] [-Metric <IMetricSettings[]>] [-ServiceBusRuleId <String>]
+ [-StorageAccountId <String>] [-WorkspaceId <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaJsonString
+### UpdateViaIdentityExpanded
 ```
-New-AzSubscriptionDiagnosticSetting -Name <String> -JsonString <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDiagnosticSetting -InputObject <IDiagnosticSettingIdentity> [-EventHubAuthorizationRuleId <String>]
+ [-EventHubName <String>] [-Log <ILogSettings[]>] [-LogAnalyticsDestinationType <String>]
+ [-MarketplacePartnerId <String>] [-Metric <IMetricSettings[]>] [-ServiceBusRuleId <String>]
+ [-StorageAccountId <String>] [-WorkspaceId <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create subscription diagnostic settings for the specified resource.
+Update diagnostic settings for the specified resource.
 
 ## EXAMPLES
 
-### Example 1: Create diagnostic setting for current subscription
+### Example 1: Update diagnostic setting
 ```powershell
-$subscriptionId = (Get-AzContext).Subscription.Id
-$log = @()
-$log += New-AzDiagnosticSettingSubscriptionLogSettingsObject -Category Recommendation -Enabled $true
-New-AzSubscriptionDiagnosticSetting -Name test-setting -WorkspaceId /subscriptions/$subscriptionId/resourcegroups/test-rg-name/providers/microsoft.operationalinsights/workspaces/test-workspace -Log $log
+$newlog = New-AzDiagnosticSettingLogSettingsObject -Enabled $false -Category 'VMProtectionAlerts'
+$newmetric = New-AzDiagnosticSettingMetricSettingsObject -Enabled $false -Category 'AllMetrics'
+Update-AzDiagnosticSetting -Name diagnosticSettingName -ResourceId 'vnetId' -Log $newlog -Metric $newmetric
 ```
 
-Create diagnostic setting for current subscription
+These commands update diagnostic setting for resource with log analytics workspace as destination.
 
 ## PARAMETERS
 
@@ -70,7 +67,7 @@ The resource Id for the event hub authorization rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -86,7 +83,7 @@ If none is specified, the default event hub will be selected.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -96,33 +93,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -130,8 +112,25 @@ Accept wildcard characters: False
 The list of logs settings.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionLogSettings[]
-Parameter Sets: CreateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ILogSettings[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogAnalyticsDestinationType
+A string indicating whether the export to Log Analytics should use the default destination type, i.e.
+AzureDiagnostics, or use a destination type constructed as follows: \<normalized service identity\>_\<normalized category name\>.
+Possible values are: Dedicated and null (null is default.)
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -146,7 +145,22 @@ The full ARM resource ID of the Marketplace resource to which you would like to 
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Metric
+The list of metric settings.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IMetricSettings[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -161,7 +175,22 @@ The name of the diagnostic setting.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The identifier of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -177,7 +206,7 @@ This is here to maintain backwards compatibility.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -192,27 +221,12 @@ The resource ID of the storage account to which you would like to send Diagnosti
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-The ID of the target subscription.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -223,7 +237,7 @@ Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insi
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -269,11 +283,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource
 
 ## NOTES
 
 ## RELATED LINKS
-

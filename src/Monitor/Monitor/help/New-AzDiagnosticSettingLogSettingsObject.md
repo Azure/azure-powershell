@@ -1,7 +1,7 @@
 ---
 external help file: Az.DiagnosticSetting.psm1-help.xml
 Module Name: Az.Monitor
-online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzDiagnosticSettingLogSettingsObject
+online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-azdiagnosticsettinglogsettingsobject
 schema: 2.0.0
 ---
 
@@ -117,7 +117,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.LogSettings
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.LogSettings
 
 ## NOTES
 
