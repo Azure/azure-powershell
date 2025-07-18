@@ -99,6 +99,40 @@ function Test-NodeTypeOperations
 	Assert-True { $removeResponse }
 }
 
+function Test-NodeTypeVmSizeChange
+{
+	$resourceGroupName = "sfmcps-rg-" + (getAssetname)
+	$clusterName = "sfmcps-" + (getAssetname)
+	$location = "southcentralus"
+	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
+	$pass = (ConvertTo-SecureString -AsPlainText -Force (-join ((33..126) | Get-Random -Count 16 | % {[char]$_})))
+	$tags = @{"SFRP.EnableDiagnosticMI"="true"; "SFRP.DisableDefaultOutboundAccess"="true"; "SFRP.WaitTimeBetweenUD"="00:00:10"; "testName"="Test-NodeTypeVmSizeChange"}
+
+	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
+
+	$cluster = New-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -UpgradeMode Automatic -UpgradeCadence Wave1 -Location $location `
+		-AdminPassword $pass -Sku Standard -ClientCertThumbprint $testClientTp -Tag $tags -Verbose
+	Assert-AreEqual "Succeeded" $cluster.ProvisioningState
+	Assert-AreEqual "WaitingForNodes" $cluster.ClusterState
+	Assert-AreEqual "Automatic" $cluster.ClusterUpgradeMode
+	Assert-AreEqual "Wave1" $cluster.ClusterUpgradeCadence
+
+	New-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt -InstanceCount 5 -Primary -DiskType Premium_LRS -VmSize Standard_DS2
+
+	$pnt = Get-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt
+	Assert-AreEqual "Premium_LRS" $pnt.DataDiskType
+	Assert-AreEqual "Standard_DS2" $pnt.VmSize
+
+	$swapSize = Set-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt -VmSize Standard_DS3_v2
+	Assert-True { $swapSize }
+
+	$pnt = Get-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt
+	Assert-AreEqual "Premium_LRS" $pnt.DataDiskType
+	Assert-AreEqual "Standard_DS3_v2" $pnt.VmSize
+
+	$removeResponse = Remove-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName
+}
+
 function Test-CertAndExtension
 {
 	$resourceGroupName = "sfmcps-rg-" + (getAssetname)
