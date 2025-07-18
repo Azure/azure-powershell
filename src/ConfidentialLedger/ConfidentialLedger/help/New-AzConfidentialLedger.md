@@ -8,20 +8,35 @@ schema: 2.0.0
 # New-AzConfidentialLedger
 
 ## SYNOPSIS
-Creates a  Confidential Ledger with the specified ledger parameters.
+Create a  Confidential Ledger with the specified ledger parameters.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzConfidentialLedger -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AadBasedSecurityPrincipal <IAadBasedSecurityPrincipal[]>]
- [-CertBasedSecurityPrincipal <ICertBasedSecurityPrincipal[]>] [-LedgerType <LedgerType>] [-Location <String>]
+ [-CertBasedSecurityPrincipal <ICertBasedSecurityPrincipal[]>] [-LedgerType <String>] [-Location <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzConfidentialLedger -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzConfidentialLedger -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates a  Confidential Ledger with the specified ledger parameters.
+Create a  Confidential Ledger with the specified ledger parameters.
 
 ## EXAMPLES
 
@@ -34,8 +49,8 @@ New-AzConfidentialLedger `
   -AadBasedSecurityPrincipal `
       @{
           LedgerRoleName="Administrator"; 
-          PrincipalId="00001111-aaaa-2222-bbbb-3333cccc4444"; 
-          TenantId="00001111-aaaa-2222-bbbb-3333cccc4444"
+          PrincipalId="34621747-6fc8-4771-a2eb-72f31c461f2e"; 
+          TenantId="bce123b9-2b7b-4975-8360-5ca0b9b1cd08"
       } `
   -CertBasedSecurityPrincipal `
       @{
@@ -58,8 +73,8 @@ Creates a new Confidential Ledger.
 ```powershell
 $aadSecurityPrincipal = New-AzConfidentialLedgerAADBasedSecurityPrincipalObject `
   -LedgerRoleName "Administrator" `
-  -PrincipalId "00001111-aaaa-2222-bbbb-3333cccc4444" `
-  -TenantId "00001111-aaaa-2222-bbbb-3333cccc4444"
+  -PrincipalId "34621747-6fc8-4771-a2eb-72f31c461f2e" `
+  -TenantId "bce123b9-2b7b-4975-8360-5ca0b9b1cd08"
 
 $certSecurityPrincipal = New-AzConfidentialLedgerCertBasedSecurityPrincipalObject `
   -Cert "-----BEGIN CERTIFICATE-----********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************-----END CERTIFICATE-----" `
@@ -87,11 +102,10 @@ Creates a new Confidential Ledger using objects for `AadBasedSecurityPrincipal` 
 
 ### -AadBasedSecurityPrincipal
 Array of all AAD based Security Principals.
-To construct, see NOTES section for AADBASEDSECURITYPRINCIPAL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IAadBasedSecurityPrincipal[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IAadBasedSecurityPrincipal[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -118,11 +132,10 @@ Accept wildcard characters: False
 
 ### -CertBasedSecurityPrincipal
 Array of all cert based Security Principals.
-To construct, see NOTES section for CERTBASEDSECURITYPRINCIPAL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.ICertBasedSecurityPrincipal[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.ICertBasedSecurityPrincipal[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -148,12 +161,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LedgerType
 Type of Confidential Ledger
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Support.LedgerType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -168,7 +211,7 @@ The Azure location where the Confidential Ledger is running.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -245,7 +288,7 @@ Additional tags for Confidential Ledger
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -293,7 +336,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger
+### Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IConfidentialLedger
 
 ## NOTES
 
