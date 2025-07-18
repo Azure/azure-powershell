@@ -59,11 +59,12 @@ directive:
         deprecated-output-properties:
           - ActionGroup
           - ConditionAllOf
-          - Scope[]
+          - Scope
         new-output-properties:
-          - List[ActionGroup]
-          - List[ConditionAllOf]
-          - List[Scope]
+          - ActionGroup
+          - ConditionAllOf
+          - Scope
+        change-description: The types of the properties ActionGroup, ConditionAllOf and Scope will be changed from single object or fixed array to 'List'.
         deprecated-by-version: 7.0.0
         deprecated-by-azversion: 15.0.0
         change-effective-date: 2025/11/03
@@ -74,14 +75,15 @@ directive:
       breaking-change:
         deprecated-output-properties:
           - ActionGroup
-          - ConditionAllOf[]
-          - Scope[]
-          - AnyOf[]
+          - ConditionAllOf
+          - Scope
+          - AnyOf
         new-output-properties:
-          - List[ActionGroup]
-          - List[ConditionAllOf]
-          - List[Scope]
-          - List[AnyOf]
+          - ActionGroup
+          - ConditionAllOf
+          - Scope
+          - AnyOf
+        change-description: The types of the properties ActionGroup, ConditionAllOf, Scope and AnyOf will be changed from single object or fixed array to 'List'.
         deprecated-by-version: 7.0.0
         deprecated-by-azversion: 15.0.0
         change-effective-date: 2025/11/03
