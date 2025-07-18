@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Fixed DSC configuration archive required module paths in `Publish-AzVMDscConfiguration` cmdlet to include module version.
 
 ## Version 10.1.0
 * Support for Metadata Security Protocol (MSP) support for Gallery
