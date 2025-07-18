@@ -436,7 +436,8 @@ namespace Microsoft.Azure.Commands.HDInsight
             if ((EntraUserIdentity != null && EntraUserIdentity.Length > 0) && (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0))
             {
                 throw new ArgumentException("Cannot provide both EntraUserIdentity and EntraUserFullInfo parameters.");
-            } else if ((EntraUserIdentity != null && EntraUserIdentity.Length > 0) || (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0))
+            }
+            else if ((EntraUserIdentity != null && EntraUserIdentity.Length > 0) || (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0))
             {
                 RestAuthEntraUsers = ClusterConfigurationUtils.GetHDInsightGatewayEntraUser(EntraUserIdentity, EntraUserFullInfo, GraphClient);
             }

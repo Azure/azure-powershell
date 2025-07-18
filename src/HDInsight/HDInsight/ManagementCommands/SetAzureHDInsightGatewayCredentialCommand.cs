@@ -137,7 +137,8 @@ namespace Microsoft.Azure.Commands.HDInsight
                 updateGatewaySettingsParameters.IsCredentialEnabled = true;
                 updateGatewaySettingsParameters.UserName = HttpCredential.UserName;
                 updateGatewaySettingsParameters.Password = HttpCredential.Password.ConvertToString();
-            } else if (isRestAuthEntraUsersBound)
+            }
+            else if (isRestAuthEntraUsersBound)
             {
                 updateGatewaySettingsParameters.IsCredentialEnabled = false;
                 updateGatewaySettingsParameters.RestAuthEntraUsers = RestAuthEntraUsers;
