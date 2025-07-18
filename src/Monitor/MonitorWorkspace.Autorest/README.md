@@ -69,4 +69,18 @@ directive:
           - ProvisioningState
           - PublicNetworkAccess
           - ResourceGroupName
+  - where:
+      verb: Get|New|Update
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - PrivateEndpointConnection
+          - ProvisioningState
+        new-output-properties:
+          - PrivateEndpointConnection
+          - ProvisioningState
+        change-description: The types of the properties PrivateEndpointConnection and ProvisioningState will be changed from single object or fixed array to 'List'.
+        deprecated-by-version: 7.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
 ```
