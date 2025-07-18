@@ -1,5 +1,5 @@
 @{
-  GUID = '5520044e-6378-4984-b5f0-231004f1e12f'
+  GUID = '0b7e8529-58ce-4721-ac94-e0e474e9def5'
   RootModule = './Az.ComputeSchedule.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'

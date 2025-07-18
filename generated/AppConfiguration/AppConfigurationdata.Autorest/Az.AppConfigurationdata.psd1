@@ -1,5 +1,5 @@
 @{
-  GUID = '35b5598b-3f94-4285-9496-74783c6cbe02'
+  GUID = '3b9833a8-dc77-4172-afe7-da97ed36393d'
   RootModule = './Az.AppConfigurationdata.psm1'
   ModuleVersion = '1.0.0'
   CompatiblePSEditions = 'Core', 'Desktop'
