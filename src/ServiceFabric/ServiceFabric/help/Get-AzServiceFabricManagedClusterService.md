@@ -15,19 +15,21 @@ Get Service Fabric managed service details under the specified application and c
 ### ByResourceGroupAndCluster (Default)
 ```
 Get-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-ClusterName] <String>
- [-ApplicationName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ApplicationName] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Get-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-ClusterName] <String>
- [-ApplicationName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ApplicationName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Get-AzServiceFabricManagedClusterService -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -123,6 +125,21 @@ Required: True
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

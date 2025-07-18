@@ -18,7 +18,8 @@ Add-AzServiceFabricManagedClusterNetworkSecurityRule [-InputObject] <PSManagedCl
  -Access <NetworkSecurityAccess> [-Description <String>] -DestinationAddressPrefix <String[]>
  -DestinationPortRange <String[]> -Direction <NetworkSecurityDirection> -Name <String> -Priority <Int32>
  -Protocol <NetworkSecurityProtocol> -SourceAddressPrefix <String[]> -SourcePortRange <String[]> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByName
@@ -27,7 +28,8 @@ Add-AzServiceFabricManagedClusterNetworkSecurityRule [-ResourceGroupName] <Strin
  -Access <NetworkSecurityAccess> [-Description <String>] -DestinationAddressPrefix <String[]>
  -DestinationPortRange <String[]> -Direction <NetworkSecurityDirection> -Name <String> -Priority <Int32>
  -Protocol <NetworkSecurityProtocol> -SourceAddressPrefix <String[]> -SourcePortRange <String[]> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -247,6 +249,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
