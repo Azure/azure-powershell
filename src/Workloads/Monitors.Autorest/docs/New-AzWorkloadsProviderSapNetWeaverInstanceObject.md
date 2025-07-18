@@ -16,7 +16,7 @@ Create an in-memory object for SapNetWeaverProviderInstanceProperties.
 New-AzWorkloadsProviderSapNetWeaverInstanceObject [-SapClientId <String>] [-SapHostFileEntry <String[]>]
  [-SapHostname <String>] [-SapInstanceNr <String>] [-SapPassword <String>] [-SapPasswordUri <String>]
  [-SapPortNumber <String>] [-SapSid <String>] [-SapUsername <String>] [-SslCertificateUri <String>]
- [-SslPreference <SslPreference>] [<CommonParameters>]
+ [-SslPreference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -193,7 +193,7 @@ Accept wildcard characters: False
 Gets or sets certificate preference if secure communication is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -211,7 +211,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.SapNetWeaverProviderInstanceProperties
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.SapNetWeaverProviderInstanceProperties
 
 ## NOTES
 

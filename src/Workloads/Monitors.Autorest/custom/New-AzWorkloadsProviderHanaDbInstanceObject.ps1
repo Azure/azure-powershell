@@ -21,12 +21,12 @@ Create an in-memory object for HanaDbProviderInstanceProperties.
 Create an in-memory object for HanaDbProviderInstanceProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.HanaDbProviderInstanceProperties
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.HanaDbProviderInstanceProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderhanadbinstanceobject
 #>
 function New-AzWorkloadsProviderHanaDbInstanceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.HanaDbProviderInstanceProperties')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.HanaDbProviderInstanceProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -61,13 +61,13 @@ function New-AzWorkloadsProviderHanaDbInstanceObject {
         [string]
         $SslHostNameInCertificate,
         [Parameter(HelpMessage="Gets or sets certificate preference if secure communication is enabled.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference]
+        [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.PSArgumentCompleterAttribute("Disabled", "RootCertificate", "ServerCertificate")]
+        [string]
         $SslPreference
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.HanaDbProviderInstanceProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.HanaDbProviderInstanceProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.DbName = $Name
