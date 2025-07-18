@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
 
         /// <param name="storageKeyType">Storage key type.
-        /// Possible values include: &#39;SharedAccessKey&#39;, &#39;StorageAccessKey&#39;</param>
+        /// Possible values include: &#39;SharedAccessKey&#39;, &#39;StorageAccessKey&#39;,
+        /// &#39;ManagedIdentity&#39;</param>
 
         /// <param name="storageKey">Storage key.
         /// </param>
@@ -65,7 +66,7 @@ namespace Microsoft.Azure.Management.Sql.Models
 
 
         /// <summary>
-        /// Gets or sets storage key type. Possible values include: &#39;SharedAccessKey&#39;, &#39;StorageAccessKey&#39;
+        /// Gets or sets storage key type. Possible values include: &#39;SharedAccessKey&#39;, &#39;StorageAccessKey&#39;, &#39;ManagedIdentity&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "storageKeyType")]
         public string StorageKeyType {get; set; }
