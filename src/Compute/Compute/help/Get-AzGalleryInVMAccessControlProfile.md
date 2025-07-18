@@ -16,13 +16,13 @@ Gets the specified gallery inVMAccessControlProfile or a list of gallery inVMAcc
 ```
 Get-AzGalleryInVMAccessControlProfile -ResourceGroupName <String> -GalleryName <String>
  [-GalleryInVMAccessControlProfileName <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
 Get-AzGalleryInVMAccessControlProfile [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +39,7 @@ Gets the specified gallery inVMAccessControlProfile named "myProfile" from the g
 
 ### Example 2
 ```powershell
-Get-AzGalleryInVMAccessControlProfile -ResourceGroupName "myResourceGroup" -GalleryName "myGallery" 
+Get-AzGalleryInVMAccessControlProfile -ResourceGroupName "myResourceGroup" -GalleryName "myGallery"
 ```
 
 Gets the list of all gallery inVMAccessControlProfiles from the gallery "myGallery" in the resource group "myResourceGroup".
@@ -50,7 +50,7 @@ Gets the list of all gallery inVMAccessControlProfiles from the gallery "myGalle
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The name of the Gallery In VM Access Control Profile.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameter
 Aliases: Name
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 The name of the gallery.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameter
 Aliases:
 
@@ -91,26 +91,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameter
 Aliases:
 
@@ -125,7 +110,7 @@ Accept wildcard characters: False
 {{ Fill ResourceId Description }}
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameter
 Aliases:
 

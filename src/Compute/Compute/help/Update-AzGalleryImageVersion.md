@@ -18,8 +18,8 @@ Update-AzGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <Strin
  [-GalleryImageDefinitionName] <String> [-Name] <String> [-AsJob] [-PublishingProfileEndOfLifeDate <DateTime>]
  [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>] [-Tag <Hashtable>] [-TargetRegion <Hashtable[]>]
  [-TargetExtendedLocation <Hashtable[]>] [-AllowDeletionOfReplicatedLocation <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-BlockDeletionBeforeEndOfLife <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
@@ -27,8 +27,8 @@ Update-AzGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <Strin
 Update-AzGalleryImageVersion [-ResourceId] <String> [-AsJob] [-PublishingProfileEndOfLifeDate <DateTime>]
  [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>] [-Tag <Hashtable>] [-TargetRegion <Hashtable[]>]
  [-TargetExtendedLocation <Hashtable[]>] [-AllowDeletionOfReplicatedLocation <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-BlockDeletionBeforeEndOfLife <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectParameter
@@ -36,8 +36,9 @@ Update-AzGalleryImageVersion [-ResourceId] <String> [-AsJob] [-PublishingProfile
 Update-AzGalleryImageVersion [-InputObject] <PSGalleryImageVersion> [-AsJob]
  [-PublishingProfileEndOfLifeDate <DateTime>] [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>]
  [-Tag <Hashtable>] [-TargetRegion <Hashtable[]>] [-TargetExtendedLocation <Hashtable[]>]
- [-AllowDeletionOfReplicatedLocation <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AllowDeletionOfReplicatedLocation <Boolean>] [-BlockDeletionBeforeEndOfLife <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -128,6 +129,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BlockDeletionBeforeEndOfLife
+This boolean will be passed by the customers to enable their GalleryImageVersion resources from accidental deletions. If this boolean is set to true, the image deletions will be blocked before its EndOfLife date.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

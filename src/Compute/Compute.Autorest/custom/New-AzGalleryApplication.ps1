@@ -14,10 +14,12 @@ Create or update a gallery Application Definition.
 #>
 
 function New-AzGalleryApplication {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication])]
-    [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplication])]
+    [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
         [System.String]
         # The name of the Shared Application Gallery in which the Application Definition is to be created.
@@ -32,60 +34,77 @@ function New-AzGalleryApplication {
         # The maximum length is 80 characters.
         ${Name},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
         [System.String]
         # The name of the resource group.
         ${ResourceGroupName},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+        [Parameter(ParameterSetName='CreateViaJsonString')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # Subscription credentials which uniquely identify Microsoft Azure subscription.
         # The subscription ID forms part of the URI for every service call.
         ${SubscriptionId},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
         [System.String]
         # Resource location
         ${Location},
 
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemTypes])]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.PSArgumentCompleterAttribute("Windows", "Linux")]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemTypes]
+        [System.String]
         # This property allows you to specify the supported type of the OS that application is built for.
-        #
-        #
-        #  Possible values are:
-        #
-        #  **Windows**
-        #
+        # 
+        # 
+        #  Possible values are: 
+        # 
+        #  **Windows** 
+        # 
         #  **Linux**
         ${SupportedOSType},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
         [System.String]
         # The description of this gallery Application Definition resource.
         # This property is updatable.
         ${Description},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags
         ${Tag},
+
+        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+        [System.String]
+        # Path of Json file supplied to the Create operation
+        ${JsonFilePath},
+
+        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+        [System.String]
+        # Json string supplied to the Create operation
+        ${JsonString},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
 
         [Parameter()]

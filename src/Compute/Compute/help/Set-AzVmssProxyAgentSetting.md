@@ -15,7 +15,7 @@ Sets the Proxy Agent settings properties for a PSVirtualMachineScaleSet object.
 ```
 Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet <PSVirtualMachineScaleSet> [-EnableProxyAgent <Boolean>]
  [-WireServerMode <String>] [-WireServerProfile <String>] [-ImdsMode <String>] [-ImdsProfile <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
