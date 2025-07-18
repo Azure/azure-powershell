@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="privateEndpointConnections">List of private endpoint connections on a server
         /// </param>
 
-        /// <param name="minimalTlsVersion">Minimal TLS version. Allowed values: &#39;None&#39;, &#39;1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;
-        /// </param>
+        /// <param name="minimalTlsVersion">Minimal TLS version. Allowed values: &#39;None&#39;, 1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;, &#39;1.3&#39;
+        /// Possible values include: &#39;None&#39;, &#39;1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;, &#39;1.3&#39;</param>
 
         /// <param name="publicNetworkAccess">Whether or not public endpoint access is allowed for this server.  Value is
         /// optional but if passed in, must be &#39;Enabled&#39; or &#39;Disabled&#39; or
@@ -63,10 +63,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="keyId">A CMK URI of the key to use for encryption.
         /// </param>
 
-        /// <param name="administrators">The Azure Active Directory administrator of the server. This can only be
-        /// used at server create time. If used for server update, it will be ignored
-        /// or it will result in an error. For updates individual APIs will need to be
-        /// used.
+        /// <param name="administrators">The Azure Active Directory administrator can be utilized during server
+        /// creation and for server updates, except for the azureADOnlyAuthentication
+        /// property. To update the azureADOnlyAuthentication property, individual API
+        /// must be used.
         /// </param>
 
         /// <param name="restrictOutboundNetworkAccess">Whether or not to restrict outbound network access for this server.  Value
@@ -79,7 +79,14 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="externalGovernanceStatus">Status of external governance.
         /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
-        public ServerProperties(string administratorLogin = default(string), string administratorLoginPassword = default(string), string version = default(string), string state = default(string), string fullyQualifiedDomainName = default(string), System.Collections.Generic.IList<ServerPrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<ServerPrivateEndpointConnection>), string minimalTlsVersion = default(string), string publicNetworkAccess = default(string), string workspaceFeature = default(string), string primaryUserAssignedIdentityId = default(string), System.Guid? federatedClientId = default(System.Guid?), string keyId = default(string), ServerExternalAdministrator administrators = default(ServerExternalAdministrator), string restrictOutboundNetworkAccess = default(string), string isIPv6Enabled = default(string), string externalGovernanceStatus = default(string))
+
+        /// <param name="retentionDays">Number of days this server will stay soft-deleted.
+        /// </param>
+
+        /// <param name="createMode">Create mode for server, only valid values for this are Normal and Restore.
+        /// Possible values include: &#39;Normal&#39;, &#39;ServerMigrationV1&#39;,
+        /// &#39;DatabaseMigrationV1&#39;, &#39;ServerMigration&#39;, &#39;Standby&#39;, &#39;Restore&#39;</param>
+        public ServerProperties(string administratorLogin = default(string), string administratorLoginPassword = default(string), string version = default(string), string state = default(string), string fullyQualifiedDomainName = default(string), System.Collections.Generic.IList<ServerPrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<ServerPrivateEndpointConnection>), string minimalTlsVersion = default(string), string publicNetworkAccess = default(string), string workspaceFeature = default(string), string primaryUserAssignedIdentityId = default(string), System.Guid? federatedClientId = default(System.Guid?), string keyId = default(string), ServerExternalAdministrator administrators = default(ServerExternalAdministrator), string restrictOutboundNetworkAccess = default(string), string isIPv6Enabled = default(string), string externalGovernanceStatus = default(string), int? retentionDays = default(int?), string createMode = default(string))
 
         {
             this.AdministratorLogin = administratorLogin;
@@ -98,6 +105,8 @@ namespace Microsoft.Azure.Management.Sql.Models
             this.RestrictOutboundNetworkAccess = restrictOutboundNetworkAccess;
             this.IsIPv6Enabled = isIPv6Enabled;
             this.ExternalGovernanceStatus = externalGovernanceStatus;
+            this.RetentionDays = retentionDays;
+            this.CreateMode = createMode;
             CustomInit();
         }
 
@@ -146,8 +155,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         public System.Collections.Generic.IList<ServerPrivateEndpointConnection> PrivateEndpointConnections {get; private set; }
 
         /// <summary>
-        /// Gets or sets minimal TLS version. Allowed values: &#39;None&#39;, &#39;1.0&#39;, &#39;1.1&#39;,
-        /// &#39;1.2&#39;
+        /// Gets or sets minimal TLS version. Allowed values: &#39;None&#39;, 1.0&#39;, &#39;1.1&#39;,
+        /// &#39;1.2&#39;, &#39;1.3&#39; Possible values include: &#39;None&#39;, &#39;1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;, &#39;1.3&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "minimalTlsVersion")]
         public string MinimalTlsVersion {get; set; }
@@ -187,10 +196,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         public string KeyId {get; set; }
 
         /// <summary>
-        /// Gets or sets the Azure Active Directory administrator of the server. This
-        /// can only be used at server create time. If used for server update, it will
-        /// be ignored or it will result in an error. For updates individual APIs will
-        /// need to be used.
+        /// Gets or sets the Azure Active Directory administrator can be utilized
+        /// during server creation and for server updates, except for the
+        /// azureADOnlyAuthentication property. To update the azureADOnlyAuthentication
+        /// property, individual API must be used.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "administrators")]
         public ServerExternalAdministrator Administrators {get; set; }
@@ -215,5 +224,18 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "externalGovernanceStatus")]
         public string ExternalGovernanceStatus {get; private set; }
+
+        /// <summary>
+        /// Gets or sets number of days this server will stay soft-deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "retentionDays")]
+        public int? RetentionDays {get; set; }
+
+        /// <summary>
+        /// Gets or sets create mode for server, only valid values for this are Normal
+        /// and Restore. Possible values include: &#39;Normal&#39;, &#39;ServerMigrationV1&#39;, &#39;DatabaseMigrationV1&#39;, &#39;ServerMigration&#39;, &#39;Standby&#39;, &#39;Restore&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "createMode")]
+        public string CreateMode {get; set; }
     }
 }
