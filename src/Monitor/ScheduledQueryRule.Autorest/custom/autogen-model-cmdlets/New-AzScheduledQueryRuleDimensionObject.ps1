@@ -21,12 +21,13 @@ Create an in-memory object for Dimension.
 Create an in-memory object for Dimension.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.Dimension
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Dimension
 .Link
-https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzScheduledQueryRuleDimensionObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-azscheduledqueryruledimensionobject
 #>
 function New-AzScheduledQueryRuleDimensionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.Dimension')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Dimension')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -34,8 +35,8 @@ function New-AzScheduledQueryRuleDimensionObject {
         [string]
         $Name,
         [Parameter(Mandatory, HelpMessage="Operator for dimension values.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.DimensionOperator])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.DimensionOperator]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.PSArgumentCompleterAttribute("Include", "Exclude")]
+        [string]
         $Operator,
         [Parameter(Mandatory, HelpMessage="List of dimension values.")]
         [string[]]
@@ -43,7 +44,7 @@ function New-AzScheduledQueryRuleDimensionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.Dimension]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Dimension]::New()
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name
