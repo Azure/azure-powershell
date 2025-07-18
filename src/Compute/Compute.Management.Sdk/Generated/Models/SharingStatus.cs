@@ -49,11 +49,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets aggregated sharing state of current gallery. Possible
-        /// values include: 'Succeeded', 'InProgress', 'Failed', 'Unknown'
+        /// Gets aggregated sharing state of current gallery. Possible values
+        /// include: 'Succeeded', 'InProgress', 'Failed', 'Unknown'
         /// </summary>
         [JsonProperty(PropertyName = "aggregatedState")]
-        public string AggregatedState { get; set; }
+        public string AggregatedState { get; private set; }
 
         /// <summary>
         /// Gets or sets summary of all regional sharing status.

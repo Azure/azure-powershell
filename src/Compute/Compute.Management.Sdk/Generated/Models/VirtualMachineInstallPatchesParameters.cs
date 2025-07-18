@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Windows VM, as directly received by the API</param>
         /// <param name="linuxParameters">Input for InstallPatches on a Linux
         /// VM, as directly received by the API</param>
-        public VirtualMachineInstallPatchesParameters(string rebootSetting, string maximumDuration = default(string), WindowsParameters windowsParameters = default(WindowsParameters), LinuxParameters linuxParameters = default(LinuxParameters))
+        public VirtualMachineInstallPatchesParameters(string rebootSetting, System.TimeSpan? maximumDuration = default(System.TimeSpan?), WindowsParameters windowsParameters = default(WindowsParameters), LinuxParameters linuxParameters = default(LinuxParameters))
         {
             MaximumDuration = maximumDuration;
             RebootSetting = rebootSetting;
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// string such as PT4H (4 hours)
         /// </summary>
         [JsonProperty(PropertyName = "maximumDuration")]
-        public string MaximumDuration { get; set; }
+        public System.TimeSpan? MaximumDuration { get; set; }
 
         /// <summary>
         /// Gets or sets defines when it is acceptable to reboot a VM during a

@@ -36,6 +36,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="imageReference">The image reference.</param>
         /// <param name="osDisk">The OS disk.</param>
         /// <param name="dataDisks">The data disks.</param>
+        /// <param name="diskControllerType">Specifies the disk controller type
+        /// configured for the virtual machines in the scale set. **Note:** You
+        /// need to deallocate the virtual machines in the scale set before
+        /// updating its disk controller type based on the upgrade mode
+        /// configured for the scale set. Minimum api-version: 2022-08-01.
+        /// Possible values include: 'SCSI', 'NVMe'</param>
         public VirtualMachineScaleSetUpdateStorageProfile(ImageReference imageReference = default(ImageReference), VirtualMachineScaleSetUpdateOSDisk osDisk = default(VirtualMachineScaleSetUpdateOSDisk), IList<VirtualMachineScaleSetDataDisk> dataDisks = default(IList<VirtualMachineScaleSetDataDisk>), string diskControllerType = default(string))
         {
             ImageReference = imageReference;
@@ -69,6 +75,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         public IList<VirtualMachineScaleSetDataDisk> DataDisks { get; set; }
 
         /// <summary>
+        /// Gets or sets specifies the disk controller type configured for the
+        /// virtual machines in the scale set. **Note:** You need to deallocate
+        /// the virtual machines in the scale set before updating its disk
+        /// controller type based on the upgrade mode configured for the scale
+        /// set. Minimum api-version: 2022-08-01. Possible values include:
+        /// 'SCSI', 'NVMe'
         /// </summary>
         [JsonProperty(PropertyName = "diskControllerType")]
         public string DiskControllerType { get; set; }

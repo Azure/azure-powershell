@@ -33,11 +33,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the DefaultVirtualMachineScaleSetInfo
         /// class.
         /// </summary>
-        /// <param name="constrainedMaximumCapacity"> Indicates if the the
+        /// <param name="constrainedMaximumCapacity">Indicates if the the
         /// maximum capacity of the default migrated Virtual Machine Scale Set
         /// after its migration will be constrained to a limited number of
         /// VMs.</param>
-        /// <param name="defaultVirtualMachineScaleSet"> The default Virtual
+        /// <param name="defaultVirtualMachineScaleSet">The default Virtual
         /// Machine ScaleSet Uri that the Availability Set will be moved to
         /// upon triggering a seamless migration via the
         /// ConvertToVirtualMachineScaleSet API.</param>
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets  Indicates if the the maximum capacity of the default migrated
+        /// Gets indicates if the the maximum capacity of the default migrated
         /// Virtual Machine Scale Set after its migration will be constrained
         /// to a limited number of VMs.
         /// </summary>
@@ -62,9 +62,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         public bool? ConstrainedMaximumCapacity { get; private set; }
 
         /// <summary>
-        /// Gets  The default Virtual Machine ScaleSet Uri that the
-        /// Availability Set will be moved to upon triggering a seamless
-        /// migration via the ConvertToVirtualMachineScaleSet API.
+        /// Gets the default Virtual Machine ScaleSet Uri that the Availability
+        /// Set will be moved to upon triggering a seamless migration via the
+        /// ConvertToVirtualMachineScaleSet API.
         /// </summary>
         [JsonProperty(PropertyName = "defaultVirtualMachineScaleSet")]
         public SubResource DefaultVirtualMachineScaleSet { get; private set; }

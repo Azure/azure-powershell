@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Compute DiskRP related cmdlets will now use 2025-01-02 version of the DiskRP API.
 
 ## Version 10.1.0
 * Support for Metadata Security Protocol (MSP) support for Gallery
