@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
             TestRunner.RunTestScript("Test-MongoRestoreAccountCmdlets");
         }
 
-        [Fact(Skip = "Output of DateTime.ToString() is different in MacOs.")]
+        [Fact(Skip = "Unrecognized time format for linux/mac.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreFailuresAccountCmdlets()
         {
