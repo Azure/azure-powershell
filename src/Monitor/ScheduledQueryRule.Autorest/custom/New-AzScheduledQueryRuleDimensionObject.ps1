@@ -37,6 +37,7 @@ function New-AzScheduledQueryRuleDimensionObject {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.DimensionOperator])]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.DimensionOperator]
         $Operator,
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.ParameterBreakingChange("Value", "15.0.0", "7.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Parameter(Mandatory, HelpMessage="List of dimension values.")]
         [string[]]
         $Value
