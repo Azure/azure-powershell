@@ -58,7 +58,8 @@ directive:
         deprecated-output-properties:
           - Data
         new-output-properties:
-          - List[Data]
+          - Data
+        change-description: The type of the property 'Data' of type 'IPredictiveResponse' will be changed from single object to 'List'.
         deprecated-by-version: 7.0.0
         deprecated-by-azversion: 15.0.0
         change-effective-date: 2025/11/03
@@ -71,8 +72,9 @@ directive:
           - Notification
           - Profile
         new-output-properties:
-          - List[Notification]
-          - List[Profile]
+          - Notification
+          - Profile
+        change-description: The types of the properties 'Notification' and 'Profile' of type 'IAutoscaleSettingResource' will be changed from single object to 'List'.
         deprecated-by-version: 7.0.0
         deprecated-by-azversion: 15.0.0
         change-effective-date: 2025/11/03
@@ -88,16 +90,16 @@ directive:
           - ScheduleMinute
           - ScheduleDay
           - Webhook
-          - EmailCustomEmail[]
+          - EmailCustomEmail
         new-output-properties:
-          - List[Profile]
-          - List[Rule]
-          - List[ScheduleHour]
-          - List[ScheduleMinute]
-          - List[ScheduleDay]
-          - List[Webhook]
-          - List[EmailCustomEmail]
-        change-description: The types of the properties 'Webhook' and 'EmailCustomEmail' of type 'IAutoscaleNotification' will be changed from single object or fixed array to 'List'.
+          - Profile
+          - Rule
+          - ScheduleHour
+          - ScheduleMinute
+          - ScheduleDay
+          - Webhook
+          - EmailCustomEmail
+        change-description: The types of the properties 'Notification' and 'Profile' of type 'IAutoscaleSettingResource' will be changed from single object to 'List'. The types of the properties 'Rule', 'ScheduleHour', 'ScheduleMinute' and 'ScheduleDay' of type 'IAutoscaleProfile' will be changed from single object or fixed array to 'List'. The types of the properties 'Webhook' and 'EmailCustomEmail' of type 'IAutoscaleNotification' will be changed from single object or fixed array to 'List'.
         deprecated-by-version: 7.0.0
         deprecated-by-azversion: 15.0.0
         change-effective-date: 2025/11/03
