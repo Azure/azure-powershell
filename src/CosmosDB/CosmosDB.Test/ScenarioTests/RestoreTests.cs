@@ -23,14 +23,14 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         {
         }
 
-        [Fact]
+        [Fact(Skip = "Output of DateTime.ToString() is different in MacOs.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlRestoreAccountCmdlets()
         {
             TestRunner.RunTestScript("Test-SqlRestoreAccountCmdlets");
         }
 
-        [Fact]
+        [Fact(Skip = "Output of DateTime.ToString() is different in MacOs.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlRestoreAccountPublicNetworkAccessCmdlets()
         {
@@ -58,28 +58,28 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
             TestRunner.RunTestScript("Test-MongoRestoreAccountCmdlets");
         }
 
-        [Fact]
+        [Fact(Skip = "Output of DateTime.ToString() is different in MacOs.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreFailuresAccountCmdlets()
         {
             TestRunner.RunTestScript("Test-RestoreFailuresAccountCmdlets");
         }
 
-        [Fact]
+        [Fact(Skip = "Output of DateTime.ToString() is different in MacOs.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGremlinRestoreAccountCmdlets()
         {
             TestRunner.RunTestScript("Test-GremlinRestoreAccountCmdlets");
         }
 
-        [Fact]
+        [Fact(Skip = "Output of DateTime.ToString() is different in MacOs.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGremlinRestoreFromNewAccountCmdlets()
         {
             TestRunner.RunTestScript("Test-GremlinRestoreFromNewAccountCmdlets");
         }
 
-        [Fact]
+        [Fact(Skip = "Output of DateTime.ToString() is different in MacOs.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTableRestoreAccountCmdlets()
         {
