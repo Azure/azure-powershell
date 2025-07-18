@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.PowerShell;
 
-    /// <summary>The resource model definition for an Azure Organization</summary>
+    /// <summary>The type used for update operations of the OrganizationResource.</summary>
     [System.ComponentModel.TypeConverter(typeof(OrganizationResourceUpdateTypeConverter))]
     public partial class OrganizationResourceUpdate
     {
@@ -109,65 +109,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Property"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdate) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.OrganizationPropertiesUpdateTypeConverter.ConvertFrom);
-            }
             if (content.Contains("Identity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesManagedServiceIdentityUpdate) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.AzureResourceManagerCommonTypesManagedServiceIdentityUpdateTypeConverter.ConvertFrom);
             }
-            if (content.Contains("SystemDataCreatedBy"))
+            if (content.Contains("Property"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataCreatedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("SystemDataCreatedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("SystemData"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.SystemDataTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Id"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).Id, global::System.Convert.ToString);
-            }
-            if (content.Contains("Name"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).Name, global::System.Convert.ToString);
-            }
-            if (content.Contains("Type"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.OrganizationResourceUpdatePropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("Tag"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.AzureResourceManagerCommonTypesTrackedResourceUpdateTagsTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("User"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).User = (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IUserDetailsUpdate) content.GetValueForProperty("User",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).User, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.UserDetailsUpdateTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("PartnerProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).PartnerProperty = (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IPartnerPropertiesUpdate) content.GetValueForProperty("PartnerProperty",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).PartnerProperty, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.PartnerPropertiesUpdateTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.OrganizationResourceUpdateTagsTypeConverter.ConvertFrom);
             }
             if (content.Contains("IdentityType"))
             {
@@ -176,6 +128,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
             if (content.Contains("IdentityUserAssignedIdentity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesManagedServiceIdentityUpdateUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.AzureResourceManagerCommonTypesManagedServiceIdentityUpdateUserAssignedIdentitiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("User"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).User = (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IUserDetailsUpdate) content.GetValueForProperty("User",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).User, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.UserDetailsUpdateTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PartnerProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).PartnerProperty = (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IPartnerPropertiesUpdate) content.GetValueForProperty("PartnerProperty",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).PartnerProperty, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.PartnerPropertiesUpdateTypeConverter.ConvertFrom);
             }
             if (content.Contains("UserFirstName"))
             {
@@ -230,65 +190,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Property"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationPropertiesUpdate) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.OrganizationPropertiesUpdateTypeConverter.ConvertFrom);
-            }
             if (content.Contains("Identity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesManagedServiceIdentityUpdate) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.AzureResourceManagerCommonTypesManagedServiceIdentityUpdateTypeConverter.ConvertFrom);
             }
-            if (content.Contains("SystemDataCreatedBy"))
+            if (content.Contains("Property"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataCreatedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("SystemDataCreatedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("SystemData"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.SystemDataTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Id"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).Id, global::System.Convert.ToString);
-            }
-            if (content.Contains("Name"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).Name, global::System.Convert.ToString);
-            }
-            if (content.Contains("Type"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.OrganizationResourceUpdatePropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("Tag"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.AzureResourceManagerCommonTypesTrackedResourceUpdateTagsTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("User"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).User = (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IUserDetailsUpdate) content.GetValueForProperty("User",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).User, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.UserDetailsUpdateTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("PartnerProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).PartnerProperty = (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IPartnerPropertiesUpdate) content.GetValueForProperty("PartnerProperty",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).PartnerProperty, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.PartnerPropertiesUpdateTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.OrganizationResourceUpdateTagsTypeConverter.ConvertFrom);
             }
             if (content.Contains("IdentityType"))
             {
@@ -297,6 +209,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
             if (content.Contains("IdentityUserAssignedIdentity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IAzureResourceManagerCommonTypesManagedServiceIdentityUpdateUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.AzureResourceManagerCommonTypesManagedServiceIdentityUpdateUserAssignedIdentitiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("User"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).User = (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IUserDetailsUpdate) content.GetValueForProperty("User",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).User, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.UserDetailsUpdateTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PartnerProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).PartnerProperty = (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IPartnerPropertiesUpdate) content.GetValueForProperty("PartnerProperty",((Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdateInternal)this).PartnerProperty, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.PartnerPropertiesUpdateTypeConverter.ConvertFrom);
             }
             if (content.Contains("UserFirstName"))
             {
@@ -354,7 +274,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
             return ToJsonString();
         }
     }
-    /// The resource model definition for an Azure Organization
+    /// The type used for update operations of the OrganizationResource.
     [System.ComponentModel.TypeConverter(typeof(OrganizationResourceUpdateTypeConverter))]
     public partial interface IOrganizationResourceUpdate
 

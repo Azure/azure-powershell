@@ -44,13 +44,13 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
-    $env.ResourceGroupName = 'abdul-test'
-    $env.ResourceName = 'test-cli-instance-1'
-    $env.NewResourceName = 'test-arize-instance-test-1'
+    $env.ResourceGroupName = 'yashika-rg-lambdatest'
+    $env.ResourceName = 'test1'
+    $env.NewResourceName = 'test3'
     $env.PartnerPropertyLicensesSubscribed = 1
-    $env.Location = "Central US EUAP"
-    $env.SubscriptionId = "fc35d936-3b89-41f8-8110-a24b56826c37"
-    $env.MarketplaceSubscriptionId = "fc35d936-3b89-41f8-8110-a24b56826c37"
+    $env.Location = "East US"
+    $env.SubscriptionId = "61641157-140c-4b97-b365-30ff76d9f82e"
+    $env.MarketplaceSubscriptionId = "61641157-140c-4b97-b365-30ff76d9f82e"
     $env.OfferDetailOfferId = "lambdatest_liftr_testing"
     $env.OfferDetailPlanId = "testing"
     $env.OfferDetailPlanName = "testing_liftr"
@@ -61,7 +61,7 @@ function setupEnv() {
     $env.UserFirstName = "" 
     $env.UserLastName = ""
     $env.UserUpn = "aggarwalsw@microsoft.com"
-    $env.DeleteResourceName = "test-cli-instance-test-1"
+    $env.DeleteResourceName = "test2"
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

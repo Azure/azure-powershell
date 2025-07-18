@@ -67,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models
             {
                 return;
             }
-            Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IComponents19Kgb1NSchemasAzureResourcemanagerCommontypesManagedserviceidentityupdatePropertiesUserassignedidentitiesAdditionalproperties>)this).AdditionalProperties, (j) => Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.Components19Kgb1NSchemasAzureResourcemanagerCommontypesManagedserviceidentityupdatePropertiesUserassignedidentitiesAdditionalproperties.FromJson(j) ,exclusions );
+            Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IUserAssignedIdentity>)this).AdditionalProperties, (j) => Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.UserAssignedIdentity.FromJson(j) ,exclusions );
             AfterFromJson(json);
         }
 
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models
             {
                 return container;
             }
-            Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Runtime.JsonSerializable.ToJson( ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IComponents19Kgb1NSchemasAzureResourcemanagerCommontypesManagedserviceidentityupdatePropertiesUserassignedidentitiesAdditionalproperties>)this).AdditionalProperties, container);
+            Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Runtime.JsonSerializable.ToJson( ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IUserAssignedIdentity>)this).AdditionalProperties, container);
             AfterToJson(ref container);
             return container;
         }

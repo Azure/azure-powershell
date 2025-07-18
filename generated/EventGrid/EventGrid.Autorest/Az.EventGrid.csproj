@@ -3,6 +3,7 @@
     <PsModuleName>EventGrid</PsModuleName>
     <PsRootModuleName>EventGrid</PsRootModuleName>
     <PsModuleFolder>EventGrid.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.EventGrid</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

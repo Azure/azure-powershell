@@ -252,7 +252,7 @@ namespace Commands.StorageSync.Interop.Clients
         }
 
         /// <summary>
-        /// Persisting the register server resource from clooud to the local service.
+        /// Persisting the register server resource from cloud to the local service.
         /// </summary>
         /// <param name="registeredServerResource">Registered Server Resource</param>
         /// <param name="subscriptionId">Subscription Id</param>
@@ -340,7 +340,7 @@ namespace Commands.StorageSync.Interop.Clients
                 registrationInfo.ApplicationId = applicationGuid;
             }
 
-            // We try to register monitoring agent but do not gurantee it to succeed.
+            // We try to register monitoring agent but do not guarantee it to succeed.
             hr = EcsManagementInteropClient.RegisterMonitoringAgent(JsonConvert.SerializeObject(registrationInfo), monitoringDataPath);
 
             success = hr == 0;

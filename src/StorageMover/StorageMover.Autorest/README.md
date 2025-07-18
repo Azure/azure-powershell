@@ -101,13 +101,13 @@ directive:
       verb: Remove
       subject: Agent
     hide: true
-  # Remove paramater sets Create and CreateViaIdentity
+  # Remove parameter sets Create and CreateViaIdentity
   - where: 
       verb: New 
       subject: Endpoint 
       variant: ^Create$|^CreateViaIdentity$
     remove: true
-  # Remove paramater set Update and UpdateViaIdentity
+  # Remove parameter set Update and UpdateViaIdentity
   - where:
       verb: Update
       subject: Endpoint 

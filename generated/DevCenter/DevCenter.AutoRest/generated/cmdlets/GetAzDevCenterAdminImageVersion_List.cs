@@ -13,6 +13,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
     /// [OpenAPI] ListByImage=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}/images/{imageName}/versions"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDevCenterAdminImageVersion_List")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.CmdletBreakingChange("15.0.0", "3.0.0", "2025/11/18", ReplacementCmdletName="Get-AzDevCenterAdminImageVersion", ChangeDescription="PlanName and MemberName will be removed from the InputObject parameter.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.ParameterSetBreakingChange(new string[] {"List"}, "15.0.0", "3.0.0", "2025/11/18", ChangeDescription="The default parameter set will change from list dev center image versions to list project image versions.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IImageVersion))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Description(@"Lists versions for an image.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Generated]

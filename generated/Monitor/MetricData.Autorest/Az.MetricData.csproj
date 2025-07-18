@@ -2,7 +2,8 @@
   <PropertyGroup>
     <PsModuleName>Metricdata</PsModuleName>
     <PsRootModuleName>Monitor</PsRootModuleName>
-    <PsModuleFolder>MetricData.Autorest</PsModuleFolder>
+    <PsModuleFolder>Metricdata.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Metric</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />
