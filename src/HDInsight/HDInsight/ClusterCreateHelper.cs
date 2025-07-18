@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 {
     public static class ClusterCreateHelper
     {
-        public static void AddClusterCredentialToGatewayConfig(PSCredential httpCredential, IDictionary<string, Dictionary<string, string>> configurations, IList<EntraUserInfo> restAuthEntraUsers )
+        public static void AddClusterCredentialToGatewayConfig(PSCredential httpCredential, IDictionary<string, Dictionary<string, string>> configurations, IList<EntraUserInfo> restAuthEntraUsers)
         {
             Dictionary<string, string> gatewayConfig = GetExistingConfigurationsForType(configurations, Constants.ConfigurationKey.Gateway);
             bool isHttpCredentialBound = !string.IsNullOrEmpty(httpCredential?.UserName);
