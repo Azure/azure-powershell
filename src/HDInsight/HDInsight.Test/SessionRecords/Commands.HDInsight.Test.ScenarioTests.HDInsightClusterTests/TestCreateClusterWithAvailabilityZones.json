@@ -1,7 +1,7 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourcegroups/group-ps-test8620?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/group-ps-test8620?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlZ3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"South Central US\"\r\n}",
@@ -63,11 +63,11 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620\",\r\n  \"name\": \"group-ps-test8620\",\r\n  \"location\": \"southcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620\",\r\n  \"name\": \"group-ps-test8620\",\r\n  \"location\": \"southcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.Storage/storageAccounts/storagepstest7573?api-version=2017-10-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.Storage/storageAccounts/storagepstest7573?api-version=2017-10-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9zdG9yYWdlQWNjb3VudHMvc3RvcmFnZXBzdGVzdDc1NzM/YXBpLXZlcnNpb249MjAxNy0xMC0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_RAGRS\"\r\n  },\r\n  \"kind\": \"StorageV2\",\r\n  \"location\": \"South Central US\"\r\n}",
@@ -99,7 +99,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/providers/Microsoft.Storage/locations/southcentralus/asyncoperations/cf083089-61b2-4676-95aa-f9f271cf0a78?monitor=true&api-version=2017-10-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Storage/locations/southcentralus/asyncoperations/cf083089-61b2-4676-95aa-f9f271cf0a78?monitor=true&api-version=2017-10-01"
         ],
         "Retry-After": [
           "17"
@@ -142,7 +142,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/providers/Microsoft.Storage/locations/southcentralus/asyncoperations/cf083089-61b2-4676-95aa-f9f271cf0a78?monitor=true&api-version=2017-10-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Storage/locations/southcentralus/asyncoperations/cf083089-61b2-4676-95aa-f9f271cf0a78?monitor=true&api-version=2017-10-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvYXN5bmNvcGVyYXRpb25zL2NmMDgzMDg5LTYxYjItNDY3Ni05NWFhLWY5ZjI3MWNmMGE3OD9tb25pdG9yPXRydWUmYXBpLXZlcnNpb249MjAxNy0xMC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -195,11 +195,11 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_RAGRS\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"kind\": \"StorageV2\",\r\n  \"id\": \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.Storage/storageAccounts/storagepstest7573\",\r\n  \"name\": \"storagepstest7573\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts\",\r\n  \"location\": \"southcentralus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"networkAcls\": {\r\n      \"bypass\": \"AzureServices\",\r\n      \"virtualNetworkRules\": [],\r\n      \"ipRules\": [],\r\n      \"defaultAction\": \"Allow\"\r\n    },\r\n    \"supportsHttpsTrafficOnly\": false,\r\n    \"encryption\": {\r\n      \"services\": {\r\n        \"file\": {\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2021-10-12T05:07:17.1975736Z\"\r\n        },\r\n        \"blob\": {\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2021-10-12T05:07:17.1975736Z\"\r\n        }\r\n      },\r\n      \"keySource\": \"Microsoft.Storage\"\r\n    },\r\n    \"accessTier\": \"Hot\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"creationTime\": \"2021-10-12T05:07:17.1038143Z\",\r\n    \"primaryEndpoints\": {\r\n      \"blob\": \"https://storagepstest7573.blob.core.windows.net/\",\r\n      \"queue\": \"https://storagepstest7573.queue.core.windows.net/\",\r\n      \"table\": \"https://storagepstest7573.table.core.windows.net/\",\r\n      \"file\": \"https://storagepstest7573.file.core.windows.net/\"\r\n    },\r\n    \"primaryLocation\": \"southcentralus\",\r\n    \"statusOfPrimary\": \"available\",\r\n    \"secondaryLocation\": \"northcentralus\",\r\n    \"statusOfSecondary\": \"available\",\r\n    \"secondaryEndpoints\": {\r\n      \"blob\": \"https://storagepstest7573-secondary.blob.core.windows.net/\",\r\n      \"queue\": \"https://storagepstest7573-secondary.queue.core.windows.net/\",\r\n      \"table\": \"https://storagepstest7573-secondary.table.core.windows.net/\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_RAGRS\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"kind\": \"StorageV2\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.Storage/storageAccounts/storagepstest7573\",\r\n  \"name\": \"storagepstest7573\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts\",\r\n  \"location\": \"southcentralus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"networkAcls\": {\r\n      \"bypass\": \"AzureServices\",\r\n      \"virtualNetworkRules\": [],\r\n      \"ipRules\": [],\r\n      \"defaultAction\": \"Allow\"\r\n    },\r\n    \"supportsHttpsTrafficOnly\": false,\r\n    \"encryption\": {\r\n      \"services\": {\r\n        \"file\": {\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2021-10-12T05:07:17.1975736Z\"\r\n        },\r\n        \"blob\": {\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2021-10-12T05:07:17.1975736Z\"\r\n        }\r\n      },\r\n      \"keySource\": \"Microsoft.Storage\"\r\n    },\r\n    \"accessTier\": \"Hot\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"creationTime\": \"2021-10-12T05:07:17.1038143Z\",\r\n    \"primaryEndpoints\": {\r\n      \"blob\": \"https://storagepstest7573.blob.core.windows.net/\",\r\n      \"queue\": \"https://storagepstest7573.queue.core.windows.net/\",\r\n      \"table\": \"https://storagepstest7573.table.core.windows.net/\",\r\n      \"file\": \"https://storagepstest7573.file.core.windows.net/\"\r\n    },\r\n    \"primaryLocation\": \"southcentralus\",\r\n    \"statusOfPrimary\": \"available\",\r\n    \"secondaryLocation\": \"northcentralus\",\r\n    \"statusOfSecondary\": \"available\",\r\n    \"secondaryEndpoints\": {\r\n      \"blob\": \"https://storagepstest7573-secondary.blob.core.windows.net/\",\r\n      \"queue\": \"https://storagepstest7573-secondary.queue.core.windows.net/\",\r\n      \"table\": \"https://storagepstest7573-secondary.table.core.windows.net/\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.Storage/storageAccounts/storagepstest7573/listKeys?api-version=2017-10-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.Storage/storageAccounts/storagepstest7573/listKeys?api-version=2017-10-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9zdG9yYWdlQWNjb3VudHMvc3RvcmFnZXBzdGVzdDc1NzMvbGlzdEtleXM/YXBpLXZlcnNpb249MjAxNy0xMC0wMQ==",
       "RequestMethod": "POST",
       "RequestBody": "",
@@ -262,7 +262,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/providers/Microsoft.HDInsight/locations/South%20Central%20US/billingSpecs?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.HDInsight/locations/South%20Central%20US/billingSpecs?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2xvY2F0aW9ucy9Tb3V0aCUyMENlbnRyYWwlMjBVUy9iaWxsaW5nU3BlY3M/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -328,10 +328,10 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"South Central US\",\r\n  \"zones\": [\r\n    \"1\"\r\n  ],\r\n  \"properties\": {\r\n    \"clusterVersion\": \"default\",\r\n    \"osType\": \"Linux\",\r\n    \"tier\": \"Standard\",\r\n    \"clusterDefinition\": {\r\n      \"kind\": \"Spark\",\r\n      \"componentVersion\": {},\r\n      \"configurations\": {\r\n        \"gateway\": {\r\n          \"restAuthCredential.isEnabled\": \"true\",\r\n          \"restAuthCredential.username\": \"admin\",\r\n          \"restAuthCredential.password\": \"YourPw!00953\"\r\n        },\r\n        \"core-site\": {},\r\n        \"oozie-site\": {\r\n          \"oozie.service.JPAService.jdbc.url\": \"jdbc:sqlserver://yoursqlserver.database.windows.net;database=ooziedb;encrypt=true;trustServerCertificate=true;create=false;loginTimeout=300;sendStringParametersAsUnicode=true;prepareSQL=0\",\r\n          \"oozie.service.JPAService.jdbc.username\": \"yourusername\",\r\n          \"oozie.service.JPAService.jdbc.password\": \"******\",\r\n          \"oozie.service.JPAService.jdbc.driver\": \"com.microsoft.sqlserver.jdbc.SQLServerDriver\",\r\n          \"oozie.db.schema.name\": \"oozie\"\r\n        },\r\n        \"oozie-env\": {\r\n          \"oozie_database\": \"Existing MSSQL Server database with SQL authentication\",\r\n          \"oozie_database_name\": \"ooziedb\",\r\n          \"oozie_database_type\": \"mssql\",\r\n          \"oozie_existing_mssql_server_database\": \"ooziedb\",\r\n          \"oozie_existing_mssql_server_host\": \"yoursqlserver.database.windows.net\",\r\n          \"oozie_hostname\": \"yoursqlserver.database.windows.net\"\r\n        },\r\n        \"hive-site\": {\r\n          \"javax.jdo.option.ConnectionURL\": \"jdbc:sqlserver://yoursqlserver.database.windows.net;database=hivedb;encrypt=true;trustServerCertificate=true;create=false;loginTimeout=300;sendStringParametersAsUnicode=true;prepareSQL=0\",\r\n          \"javax.jdo.option.ConnectionUserName\": \"yourusername\",\r\n          \"javax.jdo.option.ConnectionPassword\": \"******\",\r\n          \"javax.jdo.option.ConnectionDriverName\": \"com.microsoft.sqlserver.jdbc.SQLServerDriver\"\r\n        },\r\n        \"hive-env\": {\r\n          \"hive_database\": \"Existing MSSQL Server database with SQL authentication\",\r\n          \"hive_database_name\": \"hivedb\",\r\n          \"hive_database_type\": \"mssql\",\r\n          \"hive_existing_mssql_server_database\": \"hivedb\",\r\n          \"hive_existing_mssql_server_host\": \"yoursqlserver.database.windows.net\",\r\n          \"hive_hostname\": \"yoursqlserver.database.windows.net\"\r\n        },\r\n        \"ambari-conf\": {\r\n          \"database-server\": \"yoursqlserver.database.windows.net\",\r\n          \"database-name\": \"ambaridb\",\r\n          \"database-user-name\": \"yourusername\",\r\n          \"database-user-password\": \"******\"\r\n        }\r\n      }\r\n    },\r\n    \"computeProfile\": {\r\n      \"roles\": [\r\n        {\r\n          \"name\": \"headnode\",\r\n          \"targetInstanceCount\": 2,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"STANDARD_E8_V3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\",\r\n              \"password\": \"YourPw!00953\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet/subnets/default\"\r\n          }\r\n        },\r\n        {\r\n          \"name\": \"workernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"STANDARD_E8_V3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\",\r\n              \"password\": \"YourPw!00953\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet/subnets/default\"\r\n          }\r\n        },\r\n        {\r\n          \"name\": \"zookeepernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"STANDARD_A2_V2\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\",\r\n              \"password\": \"YourPw!00953\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet/subnets/default\"\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"storageProfile\": {\r\n      \"storageaccounts\": [\r\n        {\r\n          \"name\": \"storagepstest7573.blob.core.windows.net\",\r\n          \"isDefault\": true,\r\n          \"container\": \"hdi-ps-test2685\",\r\n          \"key\": \"zpUseCH9yp6rqGBVzob7F7wETrTuKZpOLr5TRwb9WXrUBbp4bXNBp1umPVPLY4gPYeFLBnOOG/0u1p15Ao9VBw==\",\r\n          \"resourceId\": \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.Storage/storageAccounts/storagepstest7573\"\r\n        }\r\n      ]\r\n    },\r\n    \"minSupportedTlsVersion\": \"1.2\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"location\": \"South Central US\",\r\n  \"zones\": [\r\n    \"1\"\r\n  ],\r\n  \"properties\": {\r\n    \"clusterVersion\": \"default\",\r\n    \"osType\": \"Linux\",\r\n    \"tier\": \"Standard\",\r\n    \"clusterDefinition\": {\r\n      \"kind\": \"Spark\",\r\n      \"componentVersion\": {},\r\n      \"configurations\": {\r\n        \"gateway\": {\r\n          \"restAuthCredential.isEnabled\": \"true\",\r\n          \"restAuthCredential.username\": \"admin\",\r\n          \"restAuthCredential.password\": \"Sanitized\"\r\n        },\r\n        \"core-site\": {},\r\n        \"oozie-site\": {\r\n          \"oozie.service.JPAService.jdbc.url\": \"jdbc:sqlserver://yoursqlserver.database.windows.net;database=ooziedb;encrypt=true;trustServerCertificate=true;create=false;loginTimeout=300;sendStringParametersAsUnicode=true;prepareSQL=0\",\r\n          \"oozie.service.JPAService.jdbc.username\": \"yourusername\",\r\n          \"oozie.service.JPAService.jdbc.password\": \"******\",\r\n          \"oozie.service.JPAService.jdbc.driver\": \"com.microsoft.sqlserver.jdbc.SQLServerDriver\",\r\n          \"oozie.db.schema.name\": \"oozie\"\r\n        },\r\n        \"oozie-env\": {\r\n          \"oozie_database\": \"Existing MSSQL Server database with SQL authentication\",\r\n          \"oozie_database_name\": \"ooziedb\",\r\n          \"oozie_database_type\": \"mssql\",\r\n          \"oozie_existing_mssql_server_database\": \"ooziedb\",\r\n          \"oozie_existing_mssql_server_host\": \"yoursqlserver.database.windows.net\",\r\n          \"oozie_hostname\": \"yoursqlserver.database.windows.net\"\r\n        },\r\n        \"hive-site\": {\r\n          \"javax.jdo.option.ConnectionURL\": \"jdbc:sqlserver://yoursqlserver.database.windows.net;database=hivedb;encrypt=true;trustServerCertificate=true;create=false;loginTimeout=300;sendStringParametersAsUnicode=true;prepareSQL=0\",\r\n          \"javax.jdo.option.ConnectionUserName\": \"yourusername\",\r\n          \"javax.jdo.option.ConnectionPassword\": \"******\",\r\n          \"javax.jdo.option.ConnectionDriverName\": \"com.microsoft.sqlserver.jdbc.SQLServerDriver\"\r\n        },\r\n        \"hive-env\": {\r\n          \"hive_database\": \"Existing MSSQL Server database with SQL authentication\",\r\n          \"hive_database_name\": \"hivedb\",\r\n          \"hive_database_type\": \"mssql\",\r\n          \"hive_existing_mssql_server_database\": \"hivedb\",\r\n          \"hive_existing_mssql_server_host\": \"yoursqlserver.database.windows.net\",\r\n          \"hive_hostname\": \"yoursqlserver.database.windows.net\"\r\n        },\r\n        \"ambari-conf\": {\r\n          \"database-server\": \"yoursqlserver.database.windows.net\",\r\n          \"database-name\": \"ambaridb\",\r\n          \"database-user-name\": \"yourusername\",\r\n          \"database-user-password\": \"******\"\r\n        }\r\n      }\r\n    },\r\n    \"computeProfile\": {\r\n      \"roles\": [\r\n        {\r\n          \"name\": \"headnode\",\r\n          \"targetInstanceCount\": 2,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"STANDARD_E8_V3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\",\r\n              \"password\": \"Sanitized\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet/subnets/default\"\r\n          }\r\n        },\r\n        {\r\n          \"name\": \"workernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"STANDARD_E8_V3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\",\r\n              \"password\": \"Sanitized\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet/subnets/default\"\r\n          }\r\n        },\r\n        {\r\n          \"name\": \"zookeepernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"STANDARD_A2_V2\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\",\r\n              \"password\": \"Sanitized\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet/subnets/default\"\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"storageProfile\": {\r\n      \"storageaccounts\": [\r\n        {\r\n          \"name\": \"storagepstest7573.blob.core.windows.net\",\r\n          \"isDefault\": true,\r\n          \"container\": \"hdi-ps-test2685\",\r\n          \"key\": \"zpUseCH9yp6rqGBVzob7F7wETrTuKZpOLr5TRwb9WXrUBbp4bXNBp1umPVPLY4gPYeFLBnOOG/0u1p15Ao9VBw==\",\r\n          \"resourceId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.Storage/storageAccounts/storagepstest7573\"\r\n        }\r\n      ]\r\n    },\r\n    \"minSupportedTlsVersion\": \"1.2\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "34dae413-00a9-4dc9-a1a7-73acf938794a"
@@ -363,10 +363,10 @@
           "\"86f20d07-a7e0-4311-ad6a-76bd2ea6add5\""
         ],
         "x-ms-hdi-clusteruri": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685?api-version=2021-06-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685?api-version=2021-06-01"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com:443/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01"
+          "https://management.azure.com:443/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01"
         ],
         "x-ms-request-id": [
           "5dc4b3cd-4fd8-49eb-bd8f-cca0bf7f82fd"
@@ -405,11 +405,11 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685\",\r\n  \"name\": \"hdi-ps-test2685\",\r\n  \"type\": \"Microsoft.HDInsight/clusters\",\r\n  \"location\": \"South Central US\",\r\n  \"zones\": [\r\n    \"1\"\r\n  ],\r\n  \"etag\": \"86f20d07-a7e0-4311-ad6a-76bd2ea6add5\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"clusterVersion\": \"4.0.2000.1\",\r\n    \"clusterHdpVersion\": \"\",\r\n    \"osType\": \"Linux\",\r\n    \"clusterDefinition\": {\r\n      \"blueprint\": \"https://blueprints.azurehdinsight.net/spark-4.0.2000.1.2101301510.json\",\r\n      \"kind\": \"Spark\",\r\n      \"componentVersion\": {\r\n        \"Spark\": \"2.4\"\r\n      }\r\n    },\r\n    \"clusterId\": \"7476dbdb09e149b0aa589a7b92be0265\",\r\n    \"computeProfile\": {\r\n      \"roles\": [\r\n        {\r\n          \"name\": \"headnode\",\r\n          \"targetInstanceCount\": 2,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_e8_v3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        },\r\n        {\r\n          \"name\": \"workernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_e8_v3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        },\r\n        {\r\n          \"name\": \"zookeepernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_a2_v2\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"InProgress\",\r\n    \"clusterState\": \"Accepted\",\r\n    \"createdDate\": \"2021-10-12T05:07:57.943\",\r\n    \"quotaInfo\": {\r\n      \"coresUsed\": 40\r\n    },\r\n    \"tier\": \"standard\",\r\n    \"encryptionInTransitProperties\": {\r\n      \"isEncryptionInTransitEnabled\": false\r\n    },\r\n    \"storageProfile\": {\r\n      \"storageaccounts\": [\r\n        {\r\n          \"name\": \"storagepstest7573.blob.core.windows.net\",\r\n          \"resourceId\": \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.Storage/storageAccounts/storagepstest7573\",\r\n          \"msiResourceId\": null,\r\n          \"key\": null,\r\n          \"fileSystem\": null,\r\n          \"container\": \"hdi-ps-test2685\",\r\n          \"saskey\": null,\r\n          \"isDefault\": true,\r\n          \"fileshare\": null\r\n        }\r\n      ]\r\n    },\r\n    \"minSupportedTlsVersion\": \"1.2\",\r\n    \"excludedServicesConfig\": {\r\n      \"excludedServicesConfigId\": \"default\",\r\n      \"excludedServicesList\": \"\"\r\n    },\r\n    \"computeIsolationProperties\": {\r\n      \"enableComputeIsolation\": false,\r\n      \"hostSku\": null\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685\",\r\n  \"name\": \"hdi-ps-test2685\",\r\n  \"type\": \"Microsoft.HDInsight/clusters\",\r\n  \"location\": \"South Central US\",\r\n  \"zones\": [\r\n    \"1\"\r\n  ],\r\n  \"etag\": \"86f20d07-a7e0-4311-ad6a-76bd2ea6add5\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"clusterVersion\": \"4.0.2000.1\",\r\n    \"clusterHdpVersion\": \"\",\r\n    \"osType\": \"Linux\",\r\n    \"clusterDefinition\": {\r\n      \"blueprint\": \"https://blueprints.azurehdinsight.net/spark-4.0.2000.1.2101301510.json\",\r\n      \"kind\": \"Spark\",\r\n      \"componentVersion\": {\r\n        \"Spark\": \"2.4\"\r\n      }\r\n    },\r\n    \"clusterId\": \"7476dbdb09e149b0aa589a7b92be0265\",\r\n    \"computeProfile\": {\r\n      \"roles\": [\r\n        {\r\n          \"name\": \"headnode\",\r\n          \"targetInstanceCount\": 2,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_e8_v3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        },\r\n        {\r\n          \"name\": \"workernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_e8_v3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        },\r\n        {\r\n          \"name\": \"zookeepernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_a2_v2\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"InProgress\",\r\n    \"clusterState\": \"Accepted\",\r\n    \"createdDate\": \"2021-10-12T05:07:57.943\",\r\n    \"quotaInfo\": {\r\n      \"coresUsed\": 40\r\n    },\r\n    \"tier\": \"standard\",\r\n    \"encryptionInTransitProperties\": {\r\n      \"isEncryptionInTransitEnabled\": false\r\n    },\r\n    \"storageProfile\": {\r\n      \"storageaccounts\": [\r\n        {\r\n          \"name\": \"storagepstest7573.blob.core.windows.net\",\r\n          \"resourceId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.Storage/storageAccounts/storagepstest7573\",\r\n          \"msiResourceId\": null,\r\n          \"key\": null,\r\n          \"fileSystem\": null,\r\n          \"container\": \"hdi-ps-test2685\",\r\n          \"saskey\": null,\r\n          \"isDefault\": true,\r\n          \"fileshare\": null\r\n        }\r\n      ]\r\n    },\r\n    \"minSupportedTlsVersion\": \"1.2\",\r\n    \"excludedServicesConfig\": {\r\n      \"excludedServicesConfigId\": \"default\",\r\n      \"excludedServicesList\": \"\"\r\n    },\r\n    \"computeIsolationProperties\": {\r\n      \"enableComputeIsolation\": false,\r\n      \"hostSku\": null\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -472,7 +472,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -535,7 +535,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -598,7 +598,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -661,7 +661,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -724,7 +724,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -787,7 +787,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -850,7 +850,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -913,7 +913,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -976,7 +976,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1039,7 +1039,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1102,7 +1102,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1165,7 +1165,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1228,7 +1228,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1291,7 +1291,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1354,7 +1354,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1417,7 +1417,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1480,7 +1480,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1543,7 +1543,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1606,7 +1606,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1669,7 +1669,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1732,7 +1732,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1795,7 +1795,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1858,7 +1858,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1921,7 +1921,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1984,7 +1984,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685/azureasyncoperations/create?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NS9henVyZWFzeW5jb3BlcmF0aW9ucy9jcmVhdGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2047,7 +2047,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685?api-version=2021-06-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685?api-version=2021-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2hkaS1wcy10ZXN0MjY4NT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2106,11 +2106,11 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685\",\r\n  \"name\": \"hdi-ps-test2685\",\r\n  \"type\": \"Microsoft.HDInsight/clusters\",\r\n  \"location\": \"South Central US\",\r\n  \"zones\": [\r\n    \"1\"\r\n  ],\r\n  \"etag\": \"86f20d07-a7e0-4311-ad6a-76bd2ea6add5\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"clusterVersion\": \"4.0.2000.1\",\r\n    \"clusterHdpVersion\": \"4.1.3.6\",\r\n    \"osType\": \"Linux\",\r\n    \"clusterDefinition\": {\r\n      \"blueprint\": \"https://blueprints.azurehdinsight.net/spark-4.0.2000.1.2101301510.json\",\r\n      \"kind\": \"Spark\",\r\n      \"componentVersion\": {\r\n        \"Spark\": \"2.4\"\r\n      }\r\n    },\r\n    \"clusterId\": \"7476dbdb09e149b0aa589a7b92be0265\",\r\n    \"computeProfile\": {\r\n      \"roles\": [\r\n        {\r\n          \"name\": \"headnode\",\r\n          \"targetInstanceCount\": 2,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_e8_v3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        },\r\n        {\r\n          \"name\": \"workernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_e8_v3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        },\r\n        {\r\n          \"name\": \"zookeepernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_a2_v2\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clusterState\": \"Running\",\r\n    \"createdDate\": \"2021-10-12T05:07:57.943\",\r\n    \"quotaInfo\": {\r\n      \"coresUsed\": 40\r\n    },\r\n    \"connectivityEndpoints\": [\r\n      {\r\n        \"name\": \"SSH\",\r\n        \"protocol\": \"TCP\",\r\n        \"location\": \"hdi-ps-test2685-ssh.azurehdinsight.net\",\r\n        \"port\": 22\r\n      },\r\n      {\r\n        \"name\": \"HTTPS\",\r\n        \"protocol\": \"TCP\",\r\n        \"location\": \"hdi-ps-test2685.azurehdinsight.net\",\r\n        \"port\": 443\r\n      },\r\n      {\r\n        \"name\": \"HTTPS-INTERNAL\",\r\n        \"protocol\": \"TCP\",\r\n        \"location\": \"hdi-ps-test2685-int.azurehdinsight.net\",\r\n        \"port\": 443,\r\n        \"privateIPAddress\": \"10.0.0.4\"\r\n      }\r\n    ],\r\n    \"tier\": \"standard\",\r\n    \"encryptionInTransitProperties\": {\r\n      \"isEncryptionInTransitEnabled\": false\r\n    },\r\n    \"storageProfile\": {\r\n      \"storageaccounts\": [\r\n        {\r\n          \"name\": \"storagepstest7573.blob.core.windows.net\",\r\n          \"resourceId\": \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test8620/providers/Microsoft.Storage/storageAccounts/storagepstest7573\",\r\n          \"msiResourceId\": null,\r\n          \"key\": null,\r\n          \"fileSystem\": null,\r\n          \"container\": \"hdi-ps-test2685\",\r\n          \"saskey\": null,\r\n          \"isDefault\": true,\r\n          \"fileshare\": null\r\n        }\r\n      ]\r\n    },\r\n    \"minSupportedTlsVersion\": \"1.2\",\r\n    \"excludedServicesConfig\": {\r\n      \"excludedServicesConfigId\": \"default\",\r\n      \"excludedServicesList\": \"\"\r\n    },\r\n    \"computeIsolationProperties\": {\r\n      \"enableComputeIsolation\": false,\r\n      \"hostSku\": null\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.HDInsight/clusters/hdi-ps-test2685\",\r\n  \"name\": \"hdi-ps-test2685\",\r\n  \"type\": \"Microsoft.HDInsight/clusters\",\r\n  \"location\": \"South Central US\",\r\n  \"zones\": [\r\n    \"1\"\r\n  ],\r\n  \"etag\": \"86f20d07-a7e0-4311-ad6a-76bd2ea6add5\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"clusterVersion\": \"4.0.2000.1\",\r\n    \"clusterHdpVersion\": \"4.1.3.6\",\r\n    \"osType\": \"Linux\",\r\n    \"clusterDefinition\": {\r\n      \"blueprint\": \"https://blueprints.azurehdinsight.net/spark-4.0.2000.1.2101301510.json\",\r\n      \"kind\": \"Spark\",\r\n      \"componentVersion\": {\r\n        \"Spark\": \"2.4\"\r\n      }\r\n    },\r\n    \"clusterId\": \"7476dbdb09e149b0aa589a7b92be0265\",\r\n    \"computeProfile\": {\r\n      \"roles\": [\r\n        {\r\n          \"name\": \"headnode\",\r\n          \"targetInstanceCount\": 2,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_e8_v3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        },\r\n        {\r\n          \"name\": \"workernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_e8_v3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        },\r\n        {\r\n          \"name\": \"zookeepernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"standard_a2_v2\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet/subnets/default\"\r\n          },\r\n          \"encryptDataDisks\": false\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clusterState\": \"Running\",\r\n    \"createdDate\": \"2021-10-12T05:07:57.943\",\r\n    \"quotaInfo\": {\r\n      \"coresUsed\": 40\r\n    },\r\n    \"connectivityEndpoints\": [\r\n      {\r\n        \"name\": \"SSH\",\r\n        \"protocol\": \"TCP\",\r\n        \"location\": \"hdi-ps-test2685-ssh.azurehdinsight.net\",\r\n        \"port\": 22\r\n      },\r\n      {\r\n        \"name\": \"HTTPS\",\r\n        \"protocol\": \"TCP\",\r\n        \"location\": \"hdi-ps-test2685.azurehdinsight.net\",\r\n        \"port\": 443\r\n      },\r\n      {\r\n        \"name\": \"HTTPS-INTERNAL\",\r\n        \"protocol\": \"TCP\",\r\n        \"location\": \"hdi-ps-test2685-int.azurehdinsight.net\",\r\n        \"port\": 443,\r\n        \"privateIPAddress\": \"10.0.0.4\"\r\n      }\r\n    ],\r\n    \"tier\": \"standard\",\r\n    \"encryptionInTransitProperties\": {\r\n      \"isEncryptionInTransitEnabled\": false\r\n    },\r\n    \"storageProfile\": {\r\n      \"storageaccounts\": [\r\n        {\r\n          \"name\": \"storagepstest7573.blob.core.windows.net\",\r\n          \"resourceId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test8620/providers/Microsoft.Storage/storageAccounts/storagepstest7573\",\r\n          \"msiResourceId\": null,\r\n          \"key\": null,\r\n          \"fileSystem\": null,\r\n          \"container\": \"hdi-ps-test2685\",\r\n          \"saskey\": null,\r\n          \"isDefault\": true,\r\n          \"fileshare\": null\r\n        }\r\n      ]\r\n    },\r\n    \"minSupportedTlsVersion\": \"1.2\",\r\n    \"excludedServicesConfig\": {\r\n      \"excludedServicesConfigId\": \"default\",\r\n      \"excludedServicesList\": \"\"\r\n    },\r\n    \"computeIsolationProperties\": {\r\n      \"enableComputeIsolation\": false,\r\n      \"hostSku\": null\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourcegroups/group-ps-test8620?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/group-ps-test8620?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlZ3JvdXBzL2dyb3VwLXBzLXRlc3Q4NjIwP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -2136,7 +2136,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -2173,7 +2173,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2193,7 +2193,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -2230,7 +2230,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2250,7 +2250,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -2287,7 +2287,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2307,7 +2307,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -2344,7 +2344,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2364,7 +2364,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -2401,7 +2401,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2421,7 +2421,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -2458,7 +2458,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2478,7 +2478,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -2515,7 +2515,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2535,7 +2535,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -2572,7 +2572,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2592,7 +2592,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -2629,7 +2629,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2649,7 +2649,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -2686,7 +2686,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2706,7 +2706,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -2743,7 +2743,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2763,7 +2763,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -2800,7 +2800,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2820,7 +2820,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -2857,7 +2857,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2877,7 +2877,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -2914,7 +2914,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2934,7 +2934,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -2971,7 +2971,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2991,7 +2991,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -3028,7 +3028,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3048,7 +3048,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -3085,7 +3085,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3105,7 +3105,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -3142,7 +3142,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3162,7 +3162,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -3199,7 +3199,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3219,7 +3219,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -3256,7 +3256,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3276,7 +3276,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -3313,7 +3313,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3333,7 +3333,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -3370,7 +3370,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3390,7 +3390,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -3427,7 +3427,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3447,7 +3447,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -3484,7 +3484,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3504,7 +3504,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -3541,7 +3541,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3561,7 +3561,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -3598,7 +3598,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3618,7 +3618,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -3655,7 +3655,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3675,7 +3675,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -3712,7 +3712,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3763,7 +3763,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HUk9VUDoyRFBTOjJEVEVTVDg2MjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIVWs5VlVEb3lSRkJUT2pKRVZFVlRWRGcyTWpBdFUwOVZWRWhEUlU1VVVrRk1WVk1pTENKcWIySk1iMk5oZEdsdmJpSTZJbk52ZFhSb1kyVnVkSEpoYkhWekluMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3822,6 +3822,6 @@
     ]
   },
   "Variables": {
-    "SubscriptionId": "964c10bb-8a6c-43bc-83d3-6b318c6c7305"
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   }
 }

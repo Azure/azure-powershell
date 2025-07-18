@@ -11,10 +11,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Users;
+using Microsoft.Azure.Commands.HDInsight.Commands;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Management.HDInsight.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Management.Automation;
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
     internal class ClusterConfigurationUtils
@@ -121,6 +134,76 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                     where key.StartsWith(Constants.ClusterConfiguration.StorageAccountKeyPrefix, StringComparison.OrdinalIgnoreCase) &&
                     !key.EndsWith(defaultAccount, StringComparison.OrdinalIgnoreCase)
                     select key.Remove(0, Constants.ClusterConfiguration.StorageAccountKeyPrefix.Length)).ToList();
+        }
+
+        public static List<EntraUserInfo> GetHDInsightGatewayEntraUser(string[] EntraUserIdentity, Hashtable[] EntraUserFullInfo, IMicrosoftGraphClient graphClient)
+        {
+            List<EntraUserInfo> restAuthEntraUsers = new List<EntraUserInfo>();
+            if (EntraUserIdentity != null)
+            {
+                if (graphClient == null)
+                {
+                    throw new AzPSArgumentException(
+                     "Your Azure credentials have not been set up or have expired, please run Connect-AzAccount to set up your Azure credentials.\n" +
+                     "Authentication failed against resource MicrosoftGraphEndpointResourceId. User interaction is required. This may be due to the conditional access policy settings such as multi-factor authentication (MFA). Please rerun 'Connect-AzAccount' with additional parameter '-AuthScope MicrosoftGraphEndpointResourceId'.\n" +
+                     "Alternatively, you can use the 'EntraUserFullInfo' parameter to manually specify the user details.", ErrorKind.UserError
+                     );
+                }
+                List<string> userdata = EntraUserIdentity
+                     .Select(s => s.Trim())
+                     .Where(s => !string.IsNullOrEmpty(s))
+                     .ToList();
+                foreach (var data in userdata)
+                {
+                    try
+                    {
+                        var user = graphClient.Users.GetUser(data);
+                        if(user == null)
+                        {
+                            throw new InvalidOperationException($"The Entra user retrieved for input \"{data}\" is null. Please confirm that the user exists in Microsoft Entra ID. ");
+                        }
+                        restAuthEntraUsers.Add(new EntraUserInfo
+                        {
+                            ObjectId = user.Id,
+                            DisplayName = user.DisplayName,
+                            Upn = user.UserPrincipalName
+                        });
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        throw;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new AzPSException($"Failed to retrieve Entra user info from input: \"{data}\". Please check the EntraUserIdentity parameter, or consider using the EntraUserFullInfo approach to specify user details.", ErrorKind.UserError, ex);
+                    }
+                }
+            }
+            else if (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0)
+            {
+                var userDicts = EntraUserFullInfo.Select(user =>
+                {
+                    var dict = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+                    foreach (DictionaryEntry entry in user)
+                    {
+                        dict[entry.Key.ToString()] = entry.Value.ToString();
+                    }
+                    return (IDictionary<string, string>)dict;
+                });
+                foreach (var userDict in userDicts)
+                {
+                    string objectId = userDict.TryGetValue("ObjectId", out var oid) ? oid : null;
+                    string upn = userDict.TryGetValue("Upn", out var u) ? u : null;
+                    string displayName = userDict.TryGetValue("DisplayName", out var dn) ? dn : null;
+                    restAuthEntraUsers.Add(new EntraUserInfo
+                    {
+                        ObjectId = objectId,
+                        DisplayName = displayName,
+                        Upn = upn
+                    });
+                }
+            }
+            return restAuthEntraUsers;
         }
     }
 }

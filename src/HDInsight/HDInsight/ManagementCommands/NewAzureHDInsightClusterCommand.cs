@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(
             Position = 4,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Gets or sets the login for the cluster's user.")]
         public PSCredential HttpCredential { get; set; }
 
@@ -101,6 +101,14 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(
             HelpMessage = "Enable secure channel or not, it's an optional field.")]
         public bool? EnableSecureChannel { get; set; }
+
+        [Parameter(
+            HelpMessage = "Gets or sets the Entra user data. Accepts one or more ObjectId/Upn values.")]
+        public string[] EntraUserIdentity { get; set; }
+
+        [Parameter(
+            HelpMessage = "Gets or sets a list of Entra users as an array of hashtables. Each hashtable should contain keys such as ObjectId, Upn, and DisplayName.")]
+        public Hashtable[] EntraUserFullInfo { get; set; }
 
         [Parameter(ValueFromPipeline = true,
             HelpMessage = "The HDInsight cluster configuration to use when creating the new cluster.")]
@@ -423,8 +431,16 @@ namespace Microsoft.Azure.Commands.HDInsight
                 clusterConfigurations.Add(config.Key, config.Value);
             }
 
-            // Add cluster username/password to gateway config.
-            ClusterCreateHelper.AddClusterCredentialToGatewayConfig(HttpCredential, clusterConfigurations);
+            // Add cluster username/password or EntraUserInfo to gateway config.
+            List<EntraUserInfo> RestAuthEntraUsers = null;
+            if ((EntraUserIdentity != null && EntraUserIdentity.Length > 0) && (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0))
+            {
+                throw new ArgumentException("Cannot provide both EntraUserIdentity and EntraUserFullInfo parameters.");
+            } else if ((EntraUserIdentity != null && EntraUserIdentity.Length > 0) || (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0))
+            {
+                RestAuthEntraUsers = ClusterConfigurationUtils.GetHDInsightGatewayEntraUser(EntraUserIdentity, EntraUserFullInfo, GraphClient);
+            }
+            ClusterCreateHelper.AddClusterCredentialToGatewayConfig(HttpCredential, clusterConfigurations, RestAuthEntraUsers);
 
             // Construct OS Profile
             OsProfile osProfile = ClusterCreateHelper.CreateOsProfile(SshCredential, SshPublicKey);
@@ -437,7 +453,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
             if (StorageAccountType == null || StorageAccountType == StorageType.AzureStorage)
             {
-                var azureStorageAccount = ClusterCreateHelper.CreateAzureStorageAccount(ClusterName, StorageAccountResourceId, StorageAccountKey, StorageContainer, EnableSecureChannel, this.DefaultContext.Environment.StorageEndpointSuffix);
+                var azureStorageAccount = ClusterCreateHelper.CreateAzureStorageAccount(ClusterName, StorageAccountResourceId, StorageAccountKey, StorageContainer, EnableSecureChannel, StorageAccountManagedIdentity, this.DefaultContext.Environment.StorageEndpointSuffix);
                 storageProfile.Storageaccounts.Add(azureStorageAccount);
             }
             else if (StorageAccountType == StorageType.AzureDataLakeStore)
