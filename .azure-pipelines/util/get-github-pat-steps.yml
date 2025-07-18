@@ -5,7 +5,7 @@ parameters:
 
 steps:
 - task: AzurePowerShell@5
-  displayName: Get Github PAT from Key Vault
+  displayName: Get GitHub PAT from Key Vault
   condition: ${{ parameters.execCondition }}
   inputs:
     pwsh: true
