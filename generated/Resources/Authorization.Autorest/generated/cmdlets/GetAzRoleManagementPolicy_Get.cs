@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
     /// [OpenAPI] Get=>GET:"/{scope}/providers/Microsoft.Authorization/roleManagementPolicies/{roleManagementPolicyName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzRoleManagementPolicy_Get")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicy", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"EffectiveRule[]","Rule[]"}, NewOutputProperties=new string[] {"List[EffectiveRule]","List[Rule]"})]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicy))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Description(@"Get the specified role management policy for a resource scope")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Generated]
