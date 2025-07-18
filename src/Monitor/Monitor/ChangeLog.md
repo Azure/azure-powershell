@@ -25,6 +25,11 @@
   - `Update-AzActivityLogAlert`
   - `New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject`
   - `New-AzActivityLogAlertAlertRuleLeafConditionObject`
+  - `Get-AzScheduledQueryRule`
+  - `New-AzScheduledQueryRule`
+  - `New-AzScheduledQueryRuleConditionObject`
+  - `New-AzScheduledQueryRuleDimensionObject`
+  - `Update-AzScheduledQueryRule`
 
 ## Version 6.0.2
 * Pipeline Group upgraded API version to 2024-10-01-preview
