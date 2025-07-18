@@ -1333,21 +1333,21 @@ function Test-AzureVMDiskExclusion
 	}
 }
 
-function Test-AzureRestoreWithSecuredVMOsDiskEncryptionSetId()
+function Test-AzureRestoreWithCVMOsDiskEncryptionSetId()
 {
 	$location = "eastus2euap"
-	$resourceGroupName = "asmaskarrg"
-	$vaultName = "testcvmcmkvault"
-	$vmName = "testcvmcmk13061"
-	$saName = "pssceanriotestsa"
-	$targetVMName = "PSCVMRestoreTestingVM"
+	$resourceGroupName = "sgholap-rg"
+	$vaultName = "PSTestingVault"
+	$vmName = "PSCVMRestoreTestingVM"
+	$saName = "sgholapecysa3"
+	$targetVMName = "PSRestoreVM"
 	$targetVNetName = "testadeecy-vnet"
-	$targetVNetRG = "asmaskarrg"
+	$targetRG = "asmaskarrg"
 	$targetSubnetName = "default"
 	$owner = "sgholap"
 	$subscriptionId = "5288acd1-ba79-4377-9205-9f220331a44a"
-	$recoveryPointId = "804039146902688"
-	$securedVMOSDiskEncryptionSetId = "/subscriptions/5288acd1-ba79-4377-9205-9f220331a44a/resourceGroups/ASMASKARRG/providers/Microsoft.Compute/diskEncryptionSets/testdesecy"
+	$recoveryPointId = "807152782396876"
+	$cVMOSDiskEncryptionSetId = "/subscriptions/5288acd1-ba79-4377-9205-9f220331a44a/resourceGroups/sgholap-rg/providers/Microsoft.Compute/diskEncryptionSets/CVMPSRestoreDES"
 	try
 	{	
 		# Setup		
@@ -1356,31 +1356,31 @@ function Test-AzureRestoreWithSecuredVMOsDiskEncryptionSetId()
 		$backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $vault.ID
 		$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $backupitem -VaultId $vault.ID -RecoveryPointId $recoveryPointId
 
-		# Test command by passing securedVMOSDiskEncryptionSetId as non-empty string
+		# Test command by passing CVMOSDiskEncryptionSetId as non-empty string
 		$restoreJob = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `
-			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetVNetRG -TargetSubnetName $targetSubnetName -SecuredVMOSDiskEncryptionSetId $securedVMOSDiskEncryptionSetId
+			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $targetRG -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetRG -TargetSubnetName $targetSubnetName -CVMOSDiskEncryptionSetId $cVMOSDiskEncryptionSetId
 		
 		$restoreJob = $restoreJob | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 		Assert-True { $restoreJob.Status -eq "Completed" }
 
-		Delete-VM $resourceGroupName $targetVMName
+		Delete-VM $targetRG $targetVMName
 
-		# Test command by passing securedVMOSDiskEncryptionSetId as empty string
-		$securedVMOSDiskEncryptionSetId = ""
+		# Test command by passing CVMOSDiskEncryptionSetId as empty string
+		$cVMOSDiskEncryptionSetId = ""
 
 		$restoreJob = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `
-			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetVNetRG -TargetSubnetName $targetSubnetName -SecuredVMOSDiskEncryptionSetId $securedVMOSDiskEncryptionSetId
+			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $targetRG -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetRG -TargetSubnetName $targetSubnetName -CVMOSDiskEncryptionSetId $cVMOSDiskEncryptionSetId
 		
 		$restoreJob = $restoreJob | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 		Assert-True { $restoreJob.Status -eq "Completed" }
 
-		Delete-VM $resourceGroupName $targetVMName
+		Delete-VM $targetRG $targetVMName
 
-		# Test command without passing securedVMOSDiskEncryptionSetId
+		# Test command without passing CVMOSDiskEncryptionSetId
 		$restoreJob = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `
-			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetVNetRG -TargetSubnetName $targetSubnetName
+			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $targetRG -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetRG -TargetSubnetName $targetSubnetName
 		
 		$restoreJob = $restoreJob | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
@@ -1388,6 +1388,6 @@ function Test-AzureRestoreWithSecuredVMOsDiskEncryptionSetId()
 	}
 	finally
 	{
-		Delete-VM $resourceGroupName $targetVMName
+		Delete-VM $targetRG $targetVMName
 	}
 }

@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         RestoreToEdgeZone,
         DiskAccessOption,
         TargetDiskAccessId,
-        SecuredVMOsDiskEncryptionSetId
+        CVMOsDiskEncryptionSetId
     }
 
     public enum RestoreFSBackupItemParams

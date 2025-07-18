@@ -343,12 +343,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestAzureRestoreWithSecuredVMOsDiskEncryptionSetId()
+        public void TestAzureRestoreWithCVMOsDiskEncryptionSetId()
         {
             TestRunner.RunTestScript(
                 $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
                 $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
-                "Test-AzureRestoreWithSecuredVMOsDiskEncryptionSetId"
+                "Test-AzureRestoreWithCVMOsDiskEncryptionSetId"
             );
         }
     }

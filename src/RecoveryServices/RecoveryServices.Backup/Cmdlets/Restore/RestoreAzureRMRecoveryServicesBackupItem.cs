@@ -351,8 +351,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = false, ParameterSetName = AzureManagedVMReplaceExistingParameterSet,
             HelpMessage = ParamHelpMsgs.Encryption.DES)]
         [Parameter(Mandatory = false, ParameterSetName = AzureManagedVMCreateNewParameterSet,
-            HelpMessage = ParamHelpMsgs.Encryption.SecuredVMOsDiskEncryptionSetId)]
-        public string SecuredVMOsDiskEncryptionSetId { get; set; }
+            HelpMessage = ParamHelpMsgs.Encryption.CVMOsDiskEncryptionSetId)]
+        public string CVMOsDiskEncryptionSetId { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -575,9 +575,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     providerParameters.Add(RestoreFSBackupItemParams.MultipleSourceFilePath, MultipleSourceFilePath);
                 }
 
-                if (SecuredVMOsDiskEncryptionSetId != null)
+                if (CVMOsDiskEncryptionSetId != null)
                 {
-                    providerParameters.Add(RestoreVMBackupItemParams.SecuredVMOsDiskEncryptionSetId, SecuredVMOsDiskEncryptionSetId);
+                    providerParameters.Add(RestoreVMBackupItemParams.CVMOsDiskEncryptionSetId, CVMOsDiskEncryptionSetId);
                 }
 
                 PsBackupProviderManager providerManager =
