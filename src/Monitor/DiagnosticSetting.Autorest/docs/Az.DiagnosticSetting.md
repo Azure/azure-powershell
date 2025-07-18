@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DiagnosticSetting
-Module Guid: 58f9f986-1839-4efb-baf4-5ba95f2726bd
+Module Guid: 6210decd-f3c4-4cdf-87d4-f4bca61bf471
 Download Help Link: https://learn.microsoft.com/powershell/module/az.diagnosticsetting
 Help Version: 1.0.0.0
 Locale: en-US
