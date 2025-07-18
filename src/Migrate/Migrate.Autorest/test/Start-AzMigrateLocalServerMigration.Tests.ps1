@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzMigrateLocalServerMig
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Start-AzMigrateLocalServerMigration' {
+Describe 'Start-AzMigrateLocalServerMigration' -Tag 'LiveOnly' {
     It 'ByID' {
         { Start-AzMigrateLocalServerMigration -TargetObjectID $env.hciProtectedItem1 -SubscriptionId $env.hciSubscriptionId } | Should -Not -Throw
     }

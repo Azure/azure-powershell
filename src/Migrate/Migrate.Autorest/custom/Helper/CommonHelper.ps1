@@ -37,7 +37,7 @@ function CheckStorageModuleDependency {
     }
 }
 
-function GetHCIClusterARGQuery {
+function GetARGQueryForArcResourceBridge {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory)]
@@ -282,25 +282,37 @@ function ValidateReplication {
         throw $VmReplicationValidationMessages.VmPoweredOff
     }
 
+    # Hyper-V scenario checks
     if ($MigrationType -eq $AzLocalInstanceTypes.HyperVToAzLocal) {
+        # Hyper-V VMs with 'otherguestfamily' OS type and missing OS name could also mean Hyper-V Integration Services are not running
         if ([string]::IsNullOrEmpty($Machine.OperatingSystemDetailOSType) -or
-            ($Machine.OperatingSystemDetailOSType -eq $OsType.OtherGuestFamily -and [string]::IsNullOrEmpty($Machine.GuestOSDetailOsname))) {
-            throw $VmReplicationValidationMessages.OsTypeNotFound
+            ($Machine.OperatingSystemDetailOSType -eq $OsTypes.OtherGuestFamily -and [string]::IsNullOrEmpty($Machine.GuestOSDetailOsname)))
+        {
+            throw $VmReplicationValidationMessages.HyperVIntegrationServicesNotRunning
         }
 
-        if ($Machine.ClusterId -and $Machine.HighAvailability -eq $HighAvailability.NO) {
+        # Hyper-V VMs should be highly available
+        if (![string]::IsNullOrEmpty($Machine.ClusterId) -and $Machine.HighAvailability -eq $HighAvailability.NO) {
             throw $VmReplicationValidationMessages.VmNotHighlyAvailable
         }
     }
 
+    # VMware scenario checks
     if ($MigrationType -eq $AzLocalInstanceTypes.VMwareToAzLocal) {
-        # Once VMware tools are installed, OS type should be available.
+        # VMware tools should be running to support static ip migration
         if ($Machine.VMwareToolsStatus -eq $VMwareToolsStatus.NotRunning) {
-            throw $VmReplicationValidationMessages.VmWareToolsNotRunning
+            Write-Warning $VmReplicationValidationMessages.VmWareToolsNotRunning
         }
 
         if ($Machine.VMwareToolsStatus -eq $VMwareToolsStatus.NotInstalled) {
-            throw $VmReplicationValidationMessages.VmWareToolsNotInstalled
+            Write-Warning $VmReplicationValidationMessages.VmWareToolsNotInstalled
         }
+    }
+
+    # Only OS type of windowsguest and linuxguest are supported for Hyper-V and VMware scenarios
+    if ($Machine.OperatingSystemDetailOSType -ne $OsTypes.WindowsGuest -and
+        $Machine.OperatingSystemDetailOSType -ne $OsTypes.LinuxGuest)
+    {
+        Write-Warning $VmReplicationValidationMessages.OsTypeNotSupported
     }
 }
