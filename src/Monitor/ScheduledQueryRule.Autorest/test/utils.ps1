@@ -59,7 +59,7 @@ function setupEnv() {
     $null = $env.Add("location", $location)
 
     # $vmName = 'testvm' + (RandomString -allChars $false -len 6)
-    # $vmPassword = ConvertTo-SecureString "Test001!" -AsPlainText -Force
+    # $vmPassword = 'REDACTED'
     # $vmCred = New-Object System.Management.Automation.PSCredential('USERNAME', $vmPassword)
     # write-host "start to create vm $vmName"
     # New-AzVM -Credential $vmCred -Name $vmName -ResourceGroup $resourceGroupName
