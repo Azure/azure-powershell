@@ -323,7 +323,7 @@ directive:
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
     where:
       verb: Get
-      subject: ^HyperV(Cluster|Host|Job|OperationsStatus)$
+      subject: ^HyperV(Job|OperationsStatus)$
     remove: true
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
     where:
@@ -476,6 +476,11 @@ directive:
     where:
       verb: Get$
       subject: ^VCenter$
+    hide: true
+  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    where:
+      verb: Get$
+      subject: ^HyperV(Cluster|Host)$
     hide: true
   - where:
       verb: New$|Update$
