@@ -877,14 +877,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 		/// <param name="location">The resource group location.</param>
 		/// <param name="expand">The expand parameter for optional response properties.</param>
 		/// <returns>The filtered resource groups</returns>
-		public virtual List<PSResourceGroup> FilterResourceGroups(string name, Hashtable tag, bool detailed, string location = null, bool expand = false)
+	public virtual List<PSResourceGroup> FilterResourceGroups(string name, Hashtable tag, bool detailed, string location = null, bool expand = false)
         {
             List<PSResourceGroup> result = new List<PSResourceGroup>();
             var resourceGroupFilter = new ODataQuery<ResourceGroupFilterWithExpand>();
-            
-            if (expand) {
-                resourceGroupFilter.Expand = "createdTime,changedTime";
-            }
 
             if (tag?.Count >= 1)
             {
@@ -895,10 +891,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 resourceGroupFilter = string.IsNullOrEmpty(tagValuePair.Value)
                     ? new ODataQuery<ResourceGroupFilterWithExpand>(rgFilter => rgFilter.TagName == tagValuePair.Name)
                     : new ODataQuery<ResourceGroupFilterWithExpand>(rgFilter => rgFilter.TagName == tagValuePair.Name && rgFilter.TagValue == tagValuePair.Value);
-                
-                if (expand) {
-                    resourceGroupFilter.Expand = "createdTime,changedTime";
-                }
+            }
+
+            if (expand) {
+                resourceGroupFilter.Expand = "createdTime,changedTime";
             }
 
             if (string.IsNullOrEmpty(name) || WildcardPattern.ContainsWildcardCharacters(name))
@@ -930,7 +926,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             {
                 try
                 {
-                    // Only expand if the parameter is true
                     PSResourceGroup resourceGroup = expand 
                         ? ResourceManagementClient.ResourceGroups.Get(name, expand: "createdTime,changedTime").ToPSResourceGroup()
                         : ResourceManagementClient.ResourceGroups.Get(name).ToPSResourceGroup();
