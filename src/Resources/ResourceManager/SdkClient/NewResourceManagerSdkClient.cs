@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -868,16 +868,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return resourceGroup.ToPSResourceGroup();
         }
 
-		/// <summary>
-		/// Filters the subscription's resource groups.
-		/// </summary>
-		/// <param name="name">The resource group name.</param>
-		/// <param name="tag">The resource group tag.</param>
-		/// <param name="detailed">Whether the  return is detailed or not.</param>
-		/// <param name="location">The resource group location.</param>
+        /// <summary>
+        /// Filters the subscription's resource groups.
+        /// </summary>
+        /// <param name="name">The resource group name.</param>
+        /// <param name="tag">The resource group tag.</param>
+        /// <param name="detailed">Whether the  return is detailed or not.</param>
+        /// <param name="location">The resource group location.</param>
 		/// <param name="expand">The expand parameter for optional response properties.</param>
-		/// <returns>The filtered resource groups</returns>
-	public virtual List<PSResourceGroup> FilterResourceGroups(string name, Hashtable tag, bool detailed, string location = null, bool expand = false)
+        /// <returns>The filtered resource groups</returns>
+        public virtual List<PSResourceGroup> FilterResourceGroups(string name, Hashtable tag, bool detailed, string location = null, bool expand = false)
         {
             List<PSResourceGroup> result = new List<PSResourceGroup>();
             var resourceGroupFilter = new ODataQuery<ResourceGroupFilterWithExpand>();
