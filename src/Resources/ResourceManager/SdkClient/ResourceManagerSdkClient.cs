@@ -1155,25 +1155,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        public virtual IEnumerable<PSResource> ListResources(Rest.Azure.OData.ODataQuery<Azure.Management.Resources.Models.GenericResourceFilterWithExpand> filter = null, ulong first = ulong.MaxValue, ulong skip = ulong.MinValue)
+        public virtual IEnumerable<PSResource> ListResources(Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter = null, ulong first = ulong.MaxValue, ulong skip = ulong.MinValue)
         {
             return new GenericPageEnumerable<GenericResourceExpanded>(
                 delegate ()
                 {
-                    return ResourceManagementClient.Resources.List(filter?.Filter);
+                    return ResourceManagementClient.Resources.List(filter);
                 }, ResourceManagementClient.Resources.ListNext, first, skip).Select(r => new PSResource(r));
         }
 
         public virtual IEnumerable<PSResource> ListByResourceGroup(
             string resourceGroupName,
-            Rest.Azure.OData.ODataQuery<Azure.Management.Resources.Models.GenericResourceFilterWithExpand> filter,
+            Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter,
             ulong first = ulong.MaxValue,
             ulong skip = ulong.MinValue)
         {
             return new GenericPageEnumerable<GenericResourceExpanded>(
                 delegate ()
                 {
-                    return ResourceManagementClient.Resources.ListByResourceGroup(resourceGroupName, filter?.Filter);
+                    return ResourceManagementClient.Resources.ListByResourceGroup(resourceGroupName, filter);
                 }, ResourceManagementClient.Resources.ListByResourceGroupNext, first, skip).Select(r => new PSResource(r));
         }
 

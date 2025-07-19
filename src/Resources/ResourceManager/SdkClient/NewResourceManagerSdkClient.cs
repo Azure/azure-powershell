@@ -868,37 +868,38 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return resourceGroup.ToPSResourceGroup();
         }
 
-        /// <summary>
-        /// Filters the subscription's resource groups.
-        /// </summary>
-        /// <param name="name">The resource group name.</param>
-        /// <param name="tag">The resource group tag.</param>
-        /// <param name="detailed">Whether the  return is detailed or not.</param>
-        /// <param name="location">The resource group location.</param>
-        /// <returns>The filtered resource groups</returns>
-        public virtual List<PSResourceGroup> FilterResourceGroups(string name, Hashtable tag, bool detailed, string location = null)
+		/// <summary>
+		/// Filters the subscription's resource groups.
+		/// </summary>
+		/// <param name="name">The resource group name.</param>
+		/// <param name="tag">The resource group tag.</param>
+		/// <param name="detailed">Whether the  return is detailed or not.</param>
+		/// <param name="location">The resource group location.</param>
+		/// <param name="expand">The expand parameter for optional response properties.</param>
+		/// <returns>The filtered resource groups</returns>
+		public virtual List<PSResourceGroup> FilterResourceGroups(string name, Hashtable tag, bool detailed, string location = null, bool expand = false)
         {
             List<PSResourceGroup> result = new List<PSResourceGroup>();
-            ODataQuery<ResourceGroupFilterWithExpand> resourceGroupFilter = null;
+            var resourceGroupFilter = new ODataQuery<ResourceGroupFilterWithExpand>();
+            
+            if (expand) {
+                resourceGroupFilter.Expand = "createdTime,changedTime";
+            }
 
-            if (tag != null && tag.Count >= 1)
+            if (tag?.Count >= 1)
             {
-                PSTagValuePair tagValuePair = TagsConversionHelper.Create(tag);
-                if (tagValuePair == null || tag.Count > 1)
-                {
+                var tagValuePair = TagsConversionHelper.Create(tag);
+                if (tagValuePair == null || tag.Count > 1) {
                     throw new ArgumentException(ProjectResources.InvalidTagFormat);
                 }
-
                 resourceGroupFilter = string.IsNullOrEmpty(tagValuePair.Value)
                     ? new ODataQuery<ResourceGroupFilterWithExpand>(rgFilter => rgFilter.TagName == tagValuePair.Name)
                     : new ODataQuery<ResourceGroupFilterWithExpand>(rgFilter => rgFilter.TagName == tagValuePair.Name && rgFilter.TagValue == tagValuePair.Value);
+                
+                if (expand) {
+                    resourceGroupFilter.Expand = "createdTime,changedTime";
+                }
             }
-            else
-            {
-                resourceGroupFilter = new ODataQuery<ResourceGroupFilterWithExpand>();
-            }
-
-            resourceGroupFilter.Expand = "createdTime,changedTime";
 
             if (string.IsNullOrEmpty(name) || WildcardPattern.ContainsWildcardCharacters(name))
             {
@@ -929,7 +930,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             {
                 try
                 {
-                    PSResourceGroup resourceGroup = ResourceManagementClient.ResourceGroups.Get(name, expand: "createdTime,changedTime").ToPSResourceGroup();
+                    // Only expand if the parameter is true
+                    PSResourceGroup resourceGroup = expand 
+                        ? ResourceManagementClient.ResourceGroups.Get(name, expand: "createdTime,changedTime").ToPSResourceGroup()
+                        : ResourceManagementClient.ResourceGroups.Get(name).ToPSResourceGroup();
+                    
                     if (string.IsNullOrEmpty(location) || resourceGroup.Location.EqualsAsLocation(location))
                     {
                         result.Add(resourceGroup);

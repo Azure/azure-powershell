@@ -171,8 +171,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 tagValue: null,
                 filter: this.ODataQuery);
 
-            var odataQuery = new Rest.Azure.OData.ODataQuery<Azure.Management.Resources.Models.GenericResourceFilterWithExpand>(expression);
-            odataQuery.Expand = "createdTime,changedTime";
+            var odataQuery = new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(expression);
             var result = Enumerable.Empty<PSResource>();
             if (!ShouldListBySubscription(ResourceGroupName, Name))
             {

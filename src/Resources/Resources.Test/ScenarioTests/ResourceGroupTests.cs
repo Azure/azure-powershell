@@ -102,6 +102,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ResourceGroupWithPositionalParams");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetResourceGroupWithCreatedTimeAndChangedTime()
+        {
+            TestRunner.RunTestScript("Test-GetResourceGroupWithCreatedTimeAndChangedTime");
+        }
+
         [Fact(Skip = "TODO: Fix the broken test.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureTagsEndToEnd()

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='resourceGroupName'>
         /// The resource group with the resources to get.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<GenericResourceExpanded> ListByResourceGroup(this IResourcesOperations operations, string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilterWithExpand> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilterWithExpand>))
+        public static Microsoft.Rest.Azure.IPage<GenericResourceExpanded> ListByResourceGroup(this IResourcesOperations operations, string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilter>))
         {
                 return ((IResourcesOperations)operations).ListByResourceGroupAsync(resourceGroupName, odataQuery).GetAwaiter().GetResult();
         }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<GenericResourceExpanded>> ListByResourceGroupAsync(this IResourcesOperations operations, string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilterWithExpand> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilterWithExpand>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<GenericResourceExpanded>> ListByResourceGroupAsync(this IResourcesOperations operations, string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilter>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, odataQuery, null, cancellationToken).ConfigureAwait(false))
             {
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='odataQuery'>
         /// 
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<GenericResourceExpanded> List(this IResourcesOperations operations, Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilterWithExpand> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilterWithExpand>))
+        public static Microsoft.Rest.Azure.IPage<GenericResourceExpanded> List(this IResourcesOperations operations, Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilter>))
         {
                 return ((IResourcesOperations)operations).ListAsync(odataQuery).GetAwaiter().GetResult();
         }
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<GenericResourceExpanded>> ListAsync(this IResourcesOperations operations, Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilterWithExpand> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilterWithExpand>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<GenericResourceExpanded>> ListAsync(this IResourcesOperations operations, Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<GenericResourceFilter>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(odataQuery, null, cancellationToken).ConfigureAwait(false))
             {

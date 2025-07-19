@@ -59,15 +59,7 @@ namespace Microsoft.Azure.Management.Resources.Models
 
         /// <param name="identity">The identity of the resource.
         /// </param>
-
-        /// <param name="createdTime">The created time of the resource. This is only present if requested via the
-        /// $expand query parameter.
-        /// </param>
-
-        /// <param name="changedTime">The changed time of the resource. This is only present if requested via the
-        /// $expand query parameter.
-        /// </param>
-        public GenericResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), ExtendedLocation extendedLocation = default(ExtendedLocation), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Plan plan = default(Plan), object properties = default(object), string kind = default(string), string managedBy = default(string), Sku sku = default(Sku), Identity identity = default(Identity), System.DateTime? createdTime = default(System.DateTime?), System.DateTime? changedTime = default(System.DateTime?))
+        public GenericResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), ExtendedLocation extendedLocation = default(ExtendedLocation), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Plan plan = default(Plan), object properties = default(object), string kind = default(string), string managedBy = default(string), Sku sku = default(Sku), Identity identity = default(Identity))
 
         : base(id, name, type, location, extendedLocation, tags)
         {
@@ -77,8 +69,6 @@ namespace Microsoft.Azure.Management.Resources.Models
             this.ManagedBy = managedBy;
             this.Sku = sku;
             this.Identity = identity;
-            this.CreatedTime = createdTime;
-            this.ChangedTime = changedTime;
             CustomInit();
         }
 
@@ -123,20 +113,6 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
         public Identity Identity {get; set; }
-
-        /// <summary>
-        /// Gets the created time of the resource. This is only present if requested
-        /// via the $expand query parameter.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "createdTime")]
-        public System.DateTime? CreatedTime {get; private set; }
-
-        /// <summary>
-        /// Gets the changed time of the resource. This is only present if requested
-        /// via the $expand query parameter.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "changedTime")]
-        public System.DateTime? ChangedTime {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
