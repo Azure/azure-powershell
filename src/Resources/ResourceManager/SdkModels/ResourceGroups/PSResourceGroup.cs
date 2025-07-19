@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -36,5 +37,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         public string ResourceId { get; set; }
 
         public string ManagedBy { get; set; }
+
+        public DateTime? CreatedTime { get; set; }
+
+        public DateTime? ChangedTime { get; set; }
     }
 }
