@@ -394,6 +394,37 @@ function Test-ExportResourceGroup
 
 <#
 .SYNOPSIS
+Tests export resource group template file as bicep.
+#>
+function Test-ExportResourceGroupBicep
+{
+	# Setup
+        $rgname = Get-ResourceGroupName
+        $rname = Get-ResourceName
+        $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+        $apiversion = "2014-04-01"
+        $resourceType = "Providers.Test/statefulResources"
+
+        try {
+            # Test
+            New-AzResourceGroup -Name $rgname -Location $rglocation
+            
+            $r = New-AzResource -Name $rname -Location "centralus" -Tags @{ testtag = "testval" } -ResourceGroupName $rgname -ResourceType $resourceType -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+            Assert-AreEqual $r.ResourceGroupName $rgname
+
+            $exportOutput = Export-AzResourceGroup -ResourceGroupName $rgname -OutputFormat Bicep -Force
+            Assert-NotNull $exportOutput
+            Assert-True { $exportOutput.Path.Contains($rgname + ".bicep") }
+        }
+        finally {
+            # Cleanup
+            Clean-ResourceGroup $rgname
+        }
+    }
+
+
+<#
+.SYNOPSIS
 Tests async export to export resource group template file.
 #>
 function Test-ExportResourceGroup-AsyncRoute
