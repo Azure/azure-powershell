@@ -550,7 +550,7 @@ function Test-GetResourceGroupWithCreatedTimeAndChangedTime
         # Wait for the resources to be ready
         Start-Sleep -Seconds 10
         
-        $resourceGroup = Get-AzResourceGroup -Name $rgname
+        $resourceGroup = Get-AzResourceGroup -Name $rgname -ExpandProperties
 
         # Assert
         Assert-NotNull $resourceGroup
