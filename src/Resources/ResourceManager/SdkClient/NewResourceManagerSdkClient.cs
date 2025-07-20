@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -875,7 +875,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <param name="tag">The resource group tag.</param>
         /// <param name="detailed">Whether the  return is detailed or not.</param>
         /// <param name="location">The resource group location.</param>
-		/// <param name="expand">The expand parameter for optional response properties.</param>
+        /// <param name="expand">The expand parameter for optional response properties.</param>
         /// <returns>The filtered resource groups</returns>
         public virtual List<PSResourceGroup> FilterResourceGroups(string name, Hashtable tag, bool detailed, string location = null, bool expand = false)
         {
@@ -884,10 +884,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
             if (tag?.Count >= 1)
             {
-                var tagValuePair = TagsConversionHelper.Create(tag);
-                if (tagValuePair == null || tag.Count > 1) {
+                PSTagValuePair tagValuePair = TagsConversionHelper.Create(tag);
+                if (tagValuePair == null || tag.Count > 1) 
+                {
                     throw new ArgumentException(ProjectResources.InvalidTagFormat);
                 }
+
                 resourceGroupFilter = string.IsNullOrEmpty(tagValuePair.Value)
                     ? new ODataQuery<ResourceGroupFilterWithExpand>(rgFilter => rgFilter.TagName == tagValuePair.Name)
                     : new ODataQuery<ResourceGroupFilterWithExpand>(rgFilter => rgFilter.TagName == tagValuePair.Name && rgFilter.TagValue == tagValuePair.Value);

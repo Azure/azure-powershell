@@ -816,7 +816,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         Body = new ResourceGroup(location: resourceGroupParameters.Location, name: resourceGroupParameters.ResourceGroupName)
                     }));
 
-            resourceGroupMock.Setup(f => f.GetWithHttpMessagesAsync(resourceGroupName,  "createdTime,changedTime", null, It.IsAny<CancellationToken>()))
+            resourceGroupMock.Setup(f => f.GetWithHttpMessagesAsync(resourceGroupName,  "createdTime,changedTime", null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() =>
                 new AzureOperationResponse<ResourceGroup>()
                 {
@@ -832,7 +832,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 }))
                 .Callback((string name, string dName, Deployment bDeploy, Dictionary<string, List<string>> customHeaders, CancellationToken token) =>
                 { deploymentFromGet = bDeploy; });
-            deploymentsMock.Setup(f => f.GetWithHttpMessagesAsync(resourceGroupName, deploymentName, null, It.IsAny<CancellationToken>()))
+            deploymentsMock.Setup(f => f.GetWithHttpMessagesAsync(resourceGroupName, deploymentName, null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<DeploymentExtended>()
                 {
                     Body = new DeploymentExtended(
@@ -919,7 +919,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                     .Returns(Task.Factory.StartNew(() =>
                         CreateAzureOperationResponse(new ResourceGroup(location: resourceGroupparameters.Location, name: resourceGroupparameters.ResourceGroupName))
                     ));
-            
             resourceGroupMock.Setup(f => f.GetWithHttpMessagesAsync(resourceGroupName, "createdTime,changedTime", null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(new ResourceGroup() { Location = resourceGroupLocation })
                 ));
@@ -1125,7 +1124,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 location: resourceGroupLocation,
                 name: name,
                 properties: new ResourceGroupProperties("Succeeded"));
-            resourceGroupMock.Setup(f => f.GetWithHttpMessagesAsync(name, "createdTime,changedTime", null, It.IsAny<CancellationToken>()))
+            resourceGroupMock.Setup(f => f.GetWithHttpMessagesAsync(name, "createdTime,changedTime", null, new CancellationToken()))
                              .Returns(Task.Factory.StartNew(() =>
                                 new AzureOperationResponse<ResourceGroup>()
                                 {
