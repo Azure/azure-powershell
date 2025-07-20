@@ -885,7 +885,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             if (tag?.Count >= 1)
             {
                 PSTagValuePair tagValuePair = TagsConversionHelper.Create(tag);
-                if (tagValuePair == null || tag.Count > 1) 
+                if (tagValuePair == null || tag.Count > 1)
                 {
                     throw new ArgumentException(ProjectResources.InvalidTagFormat);
                 }
