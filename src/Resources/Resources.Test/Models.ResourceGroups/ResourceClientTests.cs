@@ -816,7 +816,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         Body = new ResourceGroup(location: resourceGroupParameters.Location, name: resourceGroupParameters.ResourceGroupName)
                     }));
 
-            resourceGroupMock.Setup(f => f.GetWithHttpMessagesAsync(resourceGroupName,  "createdTime,changedTime", null, new CancellationToken()))
+            resourceGroupMock.Setup(f => f.GetWithHttpMessagesAsync(resourceGroupName,  "createdTime,changedTime", null, It.IsAny<CancellationToken>()))
                 .Returns(Task.Factory.StartNew(() =>
                 new AzureOperationResponse<ResourceGroup>()
                 {
@@ -832,7 +832,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 }))
                 .Callback((string name, string dName, Deployment bDeploy, Dictionary<string, List<string>> customHeaders, CancellationToken token) =>
                 { deploymentFromGet = bDeploy; });
-            deploymentsMock.Setup(f => f.GetWithHttpMessagesAsync(resourceGroupName, deploymentName, null, new CancellationToken()))
+            deploymentsMock.Setup(f => f.GetWithHttpMessagesAsync(resourceGroupName, deploymentName, null, It.IsAny<CancellationToken>()))
                 .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<DeploymentExtended>()
                 {
                     Body = new DeploymentExtended(
@@ -1125,7 +1125,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 location: resourceGroupLocation,
                 name: name,
                 properties: new ResourceGroupProperties("Succeeded"));
-            resourceGroupMock.Setup(f => f.GetWithHttpMessagesAsync(name, "createdTime,changedTime", null, new CancellationToken()))
+            resourceGroupMock.Setup(f => f.GetWithHttpMessagesAsync(name, "createdTime,changedTime", null, It.IsAny<CancellationToken>()))
                              .Returns(Task.Factory.StartNew(() =>
                                 new AzureOperationResponse<ResourceGroup>()
                                 {
@@ -1133,7 +1133,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                                 }));
             SetupListForResourceGroupAsync(name, new List<GenericResourceExpanded>() { resource1, resource2 });
 
-            List<PSResourceGroup> actual = resourcesClient.FilterResourceGroups(name, null, true);
+            List<PSResourceGroup> actual = resourcesClient.FilterResourceGroups(name, null, true, null, true);
 
             Assert.Single(actual);
             Assert.Equal(name, actual[0].ResourceGroupName);
