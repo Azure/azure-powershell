@@ -12,944 +12,1061 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-<#
-.SYNOPSIS
-Tests creating new resource group and a simple resource.
-.DESCRIPTION
-Smoke[Broken]Test
-#>
-function Test-CreatesNewSimpleResource
+function Test-NewAzResourceSimpleByResourceName
 {
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $rname = Get-ResourceName
-    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-    $location = Get-Location "Microsoft.Sql" "servers" "West US"
-    $apiversion = "2014-04-01"
+    $rgName = Get-ResourceGroupName
+    $rName = Get-ResourceName
+    $resourceType = "Microsoft.Storage/storageAccounts"
+    $location = "eastus"
+
+    try
+    {
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
+
+        # Act
+        $resource = New-AzResource -ResourceGroupName $rgName -Name $rName -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Properties @{ minimumTlsVersion = "TLS1_2" } -Tag @{ testtag = "testval" } -Force
+
+        # Wait for the resources to be ready
+        Start-TestSleep -Seconds 30
+
+        # Assert
+        Assert-NotNull $resource
+        Assert-AreEqual $rgName $resource.ResourceGroupName
+        Assert-AreEqual $rName $resource.Name
+        Assert-AreEqual $resourceType $resource.ResourceType
+        Assert-AreEqual "Standard_LRS" $resource.Sku.name
+        Assert-AreEqual "TLS1_2" $resource.Properties.minimumTlsVersion
+        Assert-AreEqual "testval" $resource.Tags["testtag"]
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgName
+    }
+}
+
+function Test-NewAzResourceSimpleByResourceId
+{
+    $subscriptionId = (Get-AzContext).Subscription.Id
+    $rgName = Get-ResourceGroupName
+    $rName = Get-ResourceName
+    $resourceType = "Microsoft.Storage/storageAccounts"
+    $resourceId = "/subscriptions/$($subscriptionId)/resourceGroups/$rgName/providers/$resourceType/$rName"
+    $location = "eastus"
+
+    try
+    {
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
+
+        # Act
+        $resource = New-AzResource -ResourceId $resourceId -Location $location -Sku @{ Name = "Standard_LRS" } -Properties @{ minimumTlsVersion = "TLS1_2" } -Tag @{ testtag = "testval" } -Force
+
+        # Wait for the resources to be ready
+        Start-TestSleep -Seconds 30
+
+        # Assert
+        Assert-NotNull $resource
+        Assert-AreEqual $rgName $resource.ResourceGroupName
+        Assert-AreEqual $rName $resource.Name
+        Assert-AreEqual $resourceType $resource.ResourceType
+        Assert-AreEqual "Standard_LRS" $resource.Sku.name
+        Assert-AreEqual "TLS1_2" $resource.Properties.minimumTlsVersion
+        Assert-AreEqual "testval" $resource.Tags["testtag"]
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgName
+    }
+}
+
+function Test-NewAzResourceWithApiVersion
+{
+    $rgName = Get-ResourceGroupName
+    $rName = Get-ResourceName
+    $rNamePre = Get-ResourceName
     $resourceType = "Microsoft.Sql/servers"
+    $location = "eastus"
+    $apiVersion = "2023-08-01"
 
-    # Test
-    New-AzResourceGroup -Name $rgname -Location $rglocation
-        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-        $actual = New-AzResource -Name $rname -Location $location -Tags @{ testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion
-    $expected = Get-AzResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType -ApiVersion $apiversion
+    try
+    {
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
 
-    $list = Get-AzResource -ResourceGroupName $rgname
+        # Act
+        $resource = New-AzResource -ResourceGroupName $rgName -Name $rName -Location $location -ResourceType $resourceType -Properties @{ administratorLogin = "adminuser"; administratorLoginPassword = "Password"; minimalTlsVersion = "1.2" } -Tag @{ testtag = "testval" } -ApiVersion $apiVersion -Force
+        $preResource = New-AzResource -ResourceGroupName $rgName -Name $rNamePre -Location $location -ResourceType $resourceType -Properties @{ administratorLogin = "preadminuser"; administratorLoginPassword = "Password"; minimalTlsVersion = "1.2" } -Tag @{ pretesttag = "pretestval" } -Pre -Force
 
-    # Assert
-    Assert-AreEqual $expected.Name $actual.Name
-    Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
-    Assert-AreEqual $expected.ResourceType $actual.ResourceType
-    Assert-AreEqual 1 @($list).Count
-    Assert-AreEqual $expected.Name $list[0].Name
-    Assert-AreEqual $expected.Sku $actual.Sku
+        # Wait for the resources to be ready
+        Start-TestSleep -Seconds 30
+
+        # Assert
+        Assert-NotNull $resource
+        Assert-AreEqual $rgName $resource.ResourceGroupName
+        Assert-AreEqual $rName $resource.Name
+        Assert-AreEqual $resourceType $resource.ResourceType
+        Assert-AreEqual "adminuser" $resource.Properties.administratorLogin
+        Assert-AreEqual "1.2" $resource.Properties.minimalTlsVersion
+        Assert-AreEqual "testval" $resource.Tags["testtag"]
+
+        Assert-NotNull $preResource
+        Assert-AreEqual $rgName $preResource.ResourceGroupName
+		Assert-AreEqual $rNamePre $preResource.Name
+		Assert-AreEqual $resourceType $preResource.ResourceType
+		Assert-AreEqual "preadminuser" $preResource.Properties.administratorLogin
+		Assert-AreEqual "1.2" $preResource.Properties.minimalTlsVersion
+		Assert-AreEqual "pretestval" $preResource.Tags["pretesttag"]
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgName
+    }
 }
 
-<#
-.SYNOPSIS
-Tests creating new resource group and parent and child resources.
-.DESCRIPTION
-Smoke[Broken]Test
-#>
-function Test-CreatesNewComplexResource
+function Test-NewAzResourceComplexByResourceName
 {
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $rnameParent = Get-ResourceName
-    $rnameChild = Get-ResourceName
+    $rgName = Get-ResourceGroupName
+    $rNameParent = Get-ResourceName
+    $rNameChild = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Sql/servers"
     $resourceTypeChild = "Microsoft.Sql/servers/databases"
-    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-    $location = Get-Location "Microsoft.Sql" "servers" "West US"
-    $apiversion = "2014-04-01"
+    $location = "eastus"
 
-    # Test
-    New-AzResourceGroup -Name $rgname -Location $rglocation
-        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-    $actualParent = New-AzResource -Name $rnameParent -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeParent -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion
-    $expectedParent = Get-AzResource -Name $rnameParent -ResourceGroupName $rgname -ResourceType $resourceTypeParent -ApiVersion $apiversion
+    try
+    {
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
 
-    $actualChild = New-AzResource -Name $rnameChild -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeChild -ParentResource servers/$rnameParent -PropertyObject @{"edition" = "Web"; "collation" = "SQL_Latin1_General_CP1_CI_AS"; "maxSizeBytes" = "1073741824"} -ApiVersion $apiversion
-    $expectedChild = Get-AzResource -Name $rnameChild -ResourceGroupName $rgname -ResourceType $resourceTypeChild -ParentResource servers/$rnameParent -ApiVersion $apiversion
+        # Act
+        $parentResource = New-AzResource -ResourceGroupName $rgName -Name $rNameParent -Location $location -ResourceType $resourceTypeParent -Properties @{ administratorLogin = "adminuser"; administratorLoginPassword = "Password"; minimalTlsVersion = "1.2" } -Tag @{ parenttesttag = "parenttestval" } -Force
+        $childResource = New-AzResource -ResourceGroupName $rgName -Name "$rNameParent/$rNameChild" -Location $location -ResourceType $resourceTypeChild -Properties @{ collation = "Latin1_General_CI_AS" } -Tag @{ childtesttag = "childtestval" } -Force
 
-    $list = Get-AzResource -ResourceGroupName $rgname
+        # Wait for the resources to be ready
+        Start-TestSleep -Seconds 30
 
-    $parentFromList = $list | where {$_.ResourceType -eq $resourceTypeParent} | Select-Object -First 1
-    $childFromList = $list | where {$_.ResourceType -eq $resourceTypeChild} | Select-Object -First 1
+        # Assert
+        Assert-NotNull $parentResource
+        Assert-AreEqual $rgName $parentResource.ResourceGroupName
+        Assert-AreEqual $rNameParent $parentResource.ResourceName
+        Assert-AreEqual $rNameParent $parentResource.Name
+        Assert-AreEqual $resourceTypeParent $parentResource.ResourceType
+        Assert-AreEqual "adminuser" $parentResource.Properties.administratorLogin
+        Assert-AreEqual "1.2" $parentResource.Properties.minimalTlsVersion
+        Assert-AreEqual "parenttestval" $parentResource.Tags["parenttesttag"]
 
-    $listOfServers = Get-AzResource -ResourceType $resourceTypeParent -ResourceGroupName $rgname
-    $listOfDatabases = Get-AzResource -ResourceType $resourceTypeChild -ResourceGroupName $rgname
-
-    # Assert
-    Assert-AreEqual $expectedParent.Name $actualParent.Name
-    Assert-AreEqual $expectedChild.Name $actualChild.Name
-    Assert-AreEqual $expectedParent.ResourceType $actualParent.ResourceType
-    Assert-AreEqual $expectedChild.ResourceType $actualChild.ResourceType
-
-    Assert-AreEqual 2 @($list).Count
-    Assert-AreEqual $expectedParent.Name $parentFromList.Name
-    Assert-AreEqual $expectedChild.Name $childFromList.Name
-    Assert-AreEqual $expectedParent.ResourceType $parentFromList.ResourceType
-    Assert-AreEqual $expectedChild.ResourceType $childFromList.ResourceType
-
-    Assert-AreEqual 1 @($listOfServers).Count
-    Assert-AreEqual 1 @($listOfDatabases).Count
+        Assert-NotNull $childResource
+        Assert-AreEqual $rgName $childResource.ResourceGroupName
+        Assert-AreEqual "$rNameParent/$rNameChild" $childResource.ResourceName
+        Assert-AreEqual $rNameChild $childResource.Name
+        Assert-AreEqual $resourceTypeChild $childResource.ResourceType
+        Assert-AreEqual "Latin1_General_CI_AS" $childResource.Properties.collation
+        Assert-AreEqual "childtestval" $childResource.Tags["childtesttag"]
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgName
+    }
 }
 
-<#
-.SYNOPSIS
-Tests get resources via piping from resource group
-.DESCRIPTION
-Smoke[Broken]Test
-#>
-function Test-GetResourcesViaPiping
+function Test-NewAzResourceComplexByResourceId
 {
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $rnameParent = Get-ResourceName
-    $rnameChild = Get-ResourceName
+    $subscriptionId = (Get-AzContext).Subscription.Id
+    $rgName = Get-ResourceGroupName
+    $rNameParent = Get-ResourceName
+    $rNameChild = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Sql/servers"
     $resourceTypeChild = "Microsoft.Sql/servers/databases"
-    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-    $location = Get-Location "Microsoft.Sql" "servers" "West US"
-    $apiversion = "2014-04-01"
+    $resourceIdParent = "/subscriptions/$($subscriptionId)/resourceGroups/$rgName/providers/$resourceTypeParent/$rNameParent"
+    $resourceIdChild = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/$resourceTypeParent/$rNameParent/databases/$rNameChild"
+    $location = "eastus"
 
-    # Test
-    New-AzResourceGroup -Name $rgname -Location $rglocation
-        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-    New-AzResource -Name $rnameParent -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeParent -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion
-    New-AzResource -Name $rnameChild -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeChild -ParentResource servers/$rnameParent -PropertyObject @{"edition" = "Web"; "collation" = "SQL_Latin1_General_CP1_CI_AS"; "maxSizeBytes" = "1073741824"} -ApiVersion $apiversion
+    try
+    {
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
 
-    $list = Get-AzResourceGroup -Name $rgname | Get-AzResource
-    $serverFromList = $list | where {$_.ResourceType -eq $resourceTypeParent} | Select-Object -First 1
-    $databaseFromList = $list | where {$_.ResourceType -eq $resourceTypeChild} | Select-Object -First 1
+        # Act
+        $parentResource = New-AzResource -ResourceId $resourceIdParent -Location $location -Properties @{ administratorLogin = "adminuser"; administratorLoginPassword = "Password"; minimalTlsVersion = "1.2" } -Tag @{ parenttesttag = "parenttestval" } -Force
+        $childResource = New-AzResource -ResourceId $resourceIdChild -Location $location -Properties @{ collation = "Latin1_General_CI_AS" } -Tag @{ childtesttag = "childtestval" } -Force
+
+        # Wait for the resources to be ready
+        Start-TestSleep -Seconds 30
+
+        # Assert
+        Assert-NotNull $parentResource
+        Assert-AreEqual $rgName $parentResource.ResourceGroupName
+        Assert-AreEqual $rNameParent $parentResource.ResourceName
+        Assert-AreEqual $rNameParent $parentResource.Name
+        Assert-AreEqual $resourceTypeParent $parentResource.ResourceType
+        Assert-AreEqual "adminuser" $parentResource.Properties.administratorLogin
+        Assert-AreEqual "1.2" $parentResource.Properties.minimalTlsVersion
+        Assert-AreEqual "parenttestval" $parentResource.Tags["parenttesttag"]
+
+        Assert-NotNull $childResource
+        Assert-AreEqual $rgName $childResource.ResourceGroupName
+        Assert-AreEqual "$rNameParent/$rNameChild" $childResource.ResourceName
+        Assert-AreEqual $rNameChild $childResource.Name
+        Assert-AreEqual $resourceTypeChild $childResource.ResourceType
+        Assert-AreEqual "Latin1_General_CI_AS" $childResource.Properties.collation
+        Assert-AreEqual "childtestval" $childResource.Tags["childtesttag"]
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgName
+    }
+}
+
+function Test-GetAzResourceByResourceName
+{
+    $rgName = Get-ResourceGroupName
+    $rNameParent = Get-ResourceName
+    $rNameChild = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Sql/servers"
+    $resourceTypeChild = "Microsoft.Sql/servers/databases"
+    $location = "eastus"
+
+    try
+    {
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
+
+        New-AzResource -ResourceGroupName $rgName -Name $rNameParent -Location $location -ResourceType $resourceTypeParent -Properties @{ administratorLogin = "adminuser"; administratorLoginPassword = "Password"; minimalTlsVersion = "1.2" } -Tag @{ parenttesttag = "parenttestval" } -Force
+        New-AzResource -ResourceGroupName $rgName -Name "$rNameParent/$rNameChild" -Location $location -ResourceType $resourceTypeChild -Properties @{ collation = "Latin1_General_CI_AS" } -Tag @{ childtesttag = "childtestval" } -Force
+
+        # Wait for the resources to be ready
+        Start-TestSleep -Seconds 30
+
+        # Act
+        $parentResource = Get-AzResource -ResourceGroupName $rgName -Name $rNameParent -ExpandProperties
+        $childResource = Get-AzResource -ResourceGroupName $rgName -Name "$rNameParent/$rNameChild" -ExpandProperties
+
+        # Assert
+        Assert-NotNull $parentResource
+        Assert-AreEqual $rgName $parentResource.ResourceGroupName
+        Assert-AreEqual $rNameParent $parentResource.Name
+        Assert-AreEqual $resourceTypeParent $parentResource.ResourceType
+        Assert-AreEqual "adminuser" $parentResource.Properties.administratorLogin
+        Assert-AreEqual "1.2" $parentResource.Properties.minimalTlsVersion
+        Assert-AreEqual "parenttestval" $parentResource.Tags["parenttesttag"]
+
+        Assert-NotNull $childResource
+        Assert-AreEqual $rgName $childResource.ResourceGroupName
+        Assert-AreEqual $rNameChild $childResource.Name
+        Assert-AreEqual $resourceTypeChild $childResource.ResourceType
+        Assert-AreEqual "Latin1_General_CI_AS" $childResource.Properties.collation
+        Assert-AreEqual "childtestval" $childResource.Tags["childtesttag"]
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgName
+    }
+}
+
+function Test-GetAzResourceByResourceId
+{
+    $subscriptionId = (Get-AzContext).Subscription.Id
+    $rgName = Get-ResourceGroupName
+    $rNameParent = Get-ResourceName
+    $rNameChild = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Sql/servers"
+    $resourceTypeChild = "Microsoft.Sql/servers/databases"
+    $resourceIdParent = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/$resourceTypeParent/$rNameParent"
+    $resourceIdChild = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/$resourceTypeParent/$rNameParent/databases/$rNameChild"
+    $location = "eastus"
+
+    try
+    {
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
+
+        New-AzResource -ResourceId $resourceIdParent -Location $location -Properties @{ administratorLogin = "adminuser"; administratorLoginPassword = "Password"; minimalTlsVersion = "1.2" } -Tag @{ parenttesttag = "parenttestval" } -Force
+        New-AzResource -ResourceId $resourceIdChild -Location $location -Properties @{ collation = "Latin1_General_CI_AS" } -Tag @{ childtesttag = "childtestval" } -Force
+
+        # Wait for the resources to be ready
+        Start-TestSleep -Seconds 30
+
+        # Act
+        $parentResource = Get-AzResource -ResourceId $resourceIdParent -ExpandProperties
+        $childResource = Get-AzResource -ResourceId $resourceIdChild -ExpandProperties
+
+        # Assert
+        Assert-NotNull $parentResource
+        Assert-AreEqual $rgName $parentResource.ResourceGroupName
+        Assert-AreEqual $rNameParent $parentResource.Name
+        Assert-AreEqual $resourceTypeParent $parentResource.ResourceType
+        Assert-AreEqual "adminuser" $parentResource.Properties.administratorLogin
+        Assert-AreEqual "1.2" $parentResource.Properties.minimalTlsVersion
+        Assert-AreEqual "parenttestval" $parentResource.Tags["parenttesttag"]
+
+        Assert-NotNull $childResource
+        Assert-AreEqual $rgName $childResource.ResourceGroupName
+        Assert-AreEqual $rNameChild $childResource.Name
+        Assert-AreEqual $resourceTypeChild $childResource.ResourceType
+        Assert-AreEqual "Latin1_General_CI_AS" $childResource.Properties.collation
+        Assert-AreEqual "childtestval" $childResource.Tags["childtesttag"]
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgName
+    }
+}
+
+function Test-GetAzResourceByTag
+{
+    $rgName = Get-ResourceGroupName
+    $rName1 = Get-ResourceName
+    $rName2 = Get-ResourceName
+	$rName3 = Get-ResourceName
+    $resourceType = "Microsoft.Storage/storageAccounts"
+    $location = "eastus"
+
+    try
+    {
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
+
+        New-AzResource -ResourceGroupName $rgName -Name $rName1 -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Tag @{ ScenarioTestTag = "ScenarioTestVal" } -Force
+        New-AzResource -ResourceGroupName $rgName -Name $rName2 -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Tag @{ ScenarioTestTag = $null } -Force
+        New-AzResource -ResourceGroupName $rgName -Name $rName3 -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Tag @{ ScenarioTestTag = "RandomTestVal"; RandomTestVal = "ScenarioTestVal" } -Force
+        
+        # Wait for the resources to be ready
+		Start-TestSleep -Seconds 30
+
+        # Act
+        $resource = Get-AzResource -Tag @{ ScenarioTestTag = "ScenarioTestVal" }
+
+        # Assert
+        Assert-NotNull $resource
+        Assert-AreEqual @($resource).Length 1
+        Assert-AreEqual $rgName $resource.ResourceGroupName
+        Assert-AreEqual $rName1 $resource.Name
+        Assert-AreEqual $resourceType $resource.ResourceType
+
+        # Act
+        $resource = Get-AzResource -TagName "ScenarioTestTag" -TagValue "ScenarioTestVal"
+
+        # Assert
+        Assert-NotNull $resource
+        Assert-AreEqual @($resource).Length 1
+        Assert-AreEqual $rgName $resource.ResourceGroupName
+        Assert-AreEqual $rName1 $resource.Name
+        Assert-AreEqual $resourceType $resource.ResourceType
+
+        # Act
+        $resources = Get-AzResource -Tag @{ ScenarioTestTag = $null }
+
+        # Assert
+        Assert-NotNull $resources
+        Assert-AreEqual @($resources).Length 3
+
+        # Act
+        $resources = Get-AzResource -TagName "ScenarioTestTag"
+
+        # Assert
+        Assert-NotNull $resources
+        Assert-AreEqual @($resources).Length 3
+
+        # Act
+        $resources = Get-AzResource -TagValue "ScenarioTestVal"
+        $resourceNames = $resources | Select-Object -ExpandProperty Name
+
+        # Assert
+        Assert-NotNull $resources
+        Assert-AreEqual @($resources).Length 2
+        Assert-True { $resourceNames -contains $rName1 }
+        Assert-True { $resourceNames -contains $rName3 }
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgName
+    }
+}
+
+function Test-GetAzResourceViaPiping
+{
+    $rgName = Get-ResourceGroupName
+    $rNameParent = Get-ResourceName
+    $rNameChild = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Sql/servers"
+    $resourceTypeChild = "Microsoft.Sql/servers/databases"
+    $location = "eastus"
+
+    try
+    {
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
+
+        New-AzResource -ResourceGroupName $rgName -Name $rNameParent -Location $location -ResourceType $resourceTypeParent -Properties @{ administratorLogin = "adminuser"; administratorLoginPassword = "Password"; minimalTlsVersion = "1.2" } -Tag @{ parenttesttag = "parenttestval" } -Force
+        New-AzResource -ResourceGroupName $rgName -Name "$rNameParent/$rNameChild" -Location $location -ResourceType $resourceTypeChild -Properties @{ collation = "Latin1_General_CI_AS" } -Tag @{ childtesttag = "childtestval" } -Force
+
+        # Wait for the resources to be ready
+        Start-TestSleep -Seconds 30
+
+        # Act
+        $resources = Get-AzResource -ResourceGroupName $rgName | Get-AzResource -ExpandProperties
+
+        $parentResource = $resources | Where-Object { $_.Name -eq $rNameParent -and $_.ResourceType -eq $resourceTypeParent }
+        $childResource = $resources | Where-Object { $_.Name -eq $rNameChild -and $_.ResourceType -eq $resourceTypeChild }
+
+        # Assert
+        Assert-NotNull $resources
+        Assert-AreEqual 3 @($resources).Length
+
+        Assert-NotNull $parentResource
+        Assert-AreEqual $rgName $parentResource.ResourceGroupName
+        Assert-AreEqual $rNameParent $parentResource.Name
+        Assert-AreEqual $resourceTypeParent $parentResource.ResourceType
+        Assert-AreEqual "adminuser" $parentResource.Properties.administratorLogin
+        Assert-AreEqual "1.2" $parentResource.Properties.minimalTlsVersion
+        Assert-AreEqual "parenttestval" $parentResource.Tags["parenttesttag"]
+
+        Assert-NotNull $childResource
+        Assert-AreEqual $rgName $childResource.ResourceGroupName
+        Assert-AreEqual $rNameChild $childResource.Name
+        Assert-AreEqual $resourceTypeChild $childResource.ResourceType
+        Assert-AreEqual "Latin1_General_CI_AS" $childResource.Properties.collation
+        Assert-AreEqual "childtestval" $childResource.Tags["childtesttag"]
+    }
+    finally
+	{
+		Clean-ResourceGroup $rgName
+	}
+}
+
+function Test-GetAzResourceWithExpandProperties
+{
+    $rgName = Get-ResourceGroupName
+    $rNameParent = Get-ResourceName
+    $rNameChild = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Sql/servers"
+    $resourceTypeChild = "Microsoft.Sql/servers/databases"
+    $location = "eastus"
+
+    try
+    {
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
+
+        New-AzResource -ResourceGroupName $rgName -Name $rNameParent -Location $location -ResourceType $resourceTypeParent -Properties @{ administratorLogin = "adminuser"; administratorLoginPassword = "Password"; minimalTlsVersion = "1.2" } -Tag @{ parenttesttag = "parenttestval" } -Force
+        New-AzResource -ResourceGroupName $rgName -Name "$rNameParent/$rNameChild" -Location $location -ResourceType $resourceTypeChild -Properties @{ collation = "Latin1_General_CI_AS" } -Tag @{ childtesttag = "childtestval" } -Force
+
+        # Wait for the resources to be ready
+        Start-TestSleep -Seconds 30
+
+        # Act
+        $parentResource = Get-AzResource -ResourceGroupName $rgName -Name $rNameParent
+        $childResource = Get-AzResource -ResourceGroupName $rgName -Name $rNameChild
+
+        # Assert
+        Assert-NotNull $parentResource
+        Assert-AreEqual $rgName $parentResource.ResourceGroupName
+        Assert-AreEqual $rNameParent $parentResource.Name
+        Assert-AreEqual $resourceTypeParent $parentResource.ResourceType
+        Assert-Null $parentResource.Properties
+        Assert-AreEqual "parenttestval" $parentResource.Tags["parenttesttag"]
+
+        Assert-NotNull $childResource
+        Assert-AreEqual $rgName $childResource.ResourceGroupName
+        Assert-AreEqual "$rNameParent/$rNameChild" $childResource.Name
+        Assert-AreEqual $resourceTypeChild $childResource.ResourceType
+        Assert-Null $childResource.Properties
+        Assert-AreEqual "childtestval" $childResource.Tags["childtesttag"]
+
+        # Act
+        $parentResource = Get-AzResource -ResourceGroupName $rgName -Name $rNameParent -ExpandProperties
+        $childResource = Get-AzResource -ResourceGroupName $rgName -Name "$rNameParent/$rNameChild" -ExpandProperties
+
+        # Assert
+        Assert-NotNull $parentResource
+        Assert-AreEqual $rgName $parentResource.ResourceGroupName
+        Assert-AreEqual $rNameParent $parentResource.Name
+        Assert-AreEqual $resourceTypeParent $parentResource.ResourceType
+        Assert-AreEqual "adminuser" $parentResource.Properties.administratorLogin
+        Assert-AreEqual "1.2" $parentResource.Properties.minimalTlsVersion
+        Assert-AreEqual "parenttestval" $parentResource.Tags["parenttesttag"]
+
+        Assert-NotNull $childResource
+        Assert-AreEqual $rgName $childResource.ResourceGroupName
+        Assert-AreEqual $rNameChild $childResource.Name
+        Assert-AreEqual $resourceTypeChild $childResource.ResourceType
+        Assert-AreEqual "Latin1_General_CI_AS" $childResource.Properties.collation
+        Assert-AreEqual "childtestval" $childResource.Tags["childtesttag"]
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgName
+    }
+}
+
+function Test-GetAzAResourceWithWildcard
+{
+    $rgName1 = (Get-ResourceGroupName) + "resourcegroup1"
+    $rgName2 = (Get-ResourceGroupName) + "resourcegroup2"
+    $rgName3 = (Get-ResourceGroupName) + "rsrgrp3"
+    $rName11 = (Get-ResourceName) + "resource11"
+    $rName12 = (Get-ResourceName) + "resource12"
+    $rName21 = (Get-ResourceName) + "resource2"
+    $rName22 = (Get-ResourceName) + "rsr2"
+    $rName31 = (Get-ResourceName) + "rsr3"
+    $rName32 = (Get-ResourceName) + "resource3"
+    $resourceType = "Microsoft.Storage/storageAccounts"
+    $location = "eastus"
+
+    try
+    {
+        # Arrange
+        New-AzResourceGroup -Name $rgName1 -Location $location
+        New-AzResourceGroup -Name $rgName2 -Location $location
+        New-AzResourceGroup -Name $rgName3 -Location $location
+
+        New-AzResource -ResourceGroupName $rgName1 -Name $rName11 -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Force
+        New-AzResource -ResourceGroupName $rgName1 -Name $rName12 -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Force
+        New-AzResource -ResourceGroupName $rgName2 -Name $rName21 -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Force
+        New-AzResource -ResourceGroupName $rgName2 -Name $rName22 -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Force
+        New-AzResource -ResourceGroupName $rgName3 -Name $rName31 -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Force
+        New-AzResource -ResourceGroupName $rgName3 -Name $rName32 -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Force
+
+        # Wait for the resources to be ready
+		Start-TestSleep -Seconds 30
+
+        # Act
+		$resources = Get-AzResource -ResourceGroupName "*resourcegroup*"
+
+        # Assert
+        Assert-NotNull $resources
+        Assert-AreEqual 4 @($resources).Length
+
+        # Act
+        $resources = Get-AzResource -Name "*rsr*"
+
+        # Assert
+        Assert-NotNull $resources
+        Assert-AreEqual 2 @($resources).Length
+
+        # Act
+        $resources = Get-AzResource -ResourceGroupName "*resourcegroup*" -Name "*resource*"
+
+		# Assert
+		Assert-NotNull $resources
+		Assert-AreEqual 3 @($resources).Length
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgName1
+        Clean-ResourceGroup $rgName2
+        Clean-ResourceGroup $rgName3
+    }
+}
+
+function Test-GetAzResourceFromEmptyResourceGroup
+{
+    $rgName = Get-ResourceGroupName
+    $location = "eastus"
+
+    try
+    {
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
+
+        # Act
+        $resources = Get-AzResource -ResourceGroupName $rgName
+
+        # Assert
+        Assert-Null $resources
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgName
+    }
+}
+
+function Test-GetAzResourceFromNonExisingResourceGroup
+{
+    # Arrange
+    $rgName = Get-ResourceGroupName
 
     # Assert
-    Assert-AreEqual 2 @($list).Count
-    Assert-AreEqual $rnameParent $serverFromList.Name
-    Assert-AreEqual $rnameChild $databaseFromList.Name
-    Assert-AreEqual $resourceTypeParent $serverFromList.ResourceType
-    Assert-AreEqual $resourceTypeChild $databaseFromList.ResourceType
+    Assert-ThrowsContains { Get-AzResource -ResourceGroupName $rgName } "Resource group '$rgName' could not be found."
 }
 
-<#
-.SYNOPSIS
-Nagative test. Get resources from an empty group.
-#>
-function Test-GetResourcesFromEmptyGroup
+function Test-GetAzResourceForNonExisingResource
 {
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-
-    # Test
-    New-AzResourceGroup -Name $rgname -Location $location
-    $listViaPiping = Get-AzResourceGroup -Name $rgname | Get-AzResource
-    $listViaDirect = Get-AzResource -ResourceGroupName $rgname
-
-    # Assert
-    Assert-AreEqual 0 @($listViaPiping).Count
-    Assert-AreEqual 0 @($listViaDirect).Count
-}
-
-<#
-.SYNOPSIS
-Nagative test. Get resources from an non-existing empty group.
-#>
-function Test-GetResourcesFromNonExisingGroup
-{
-    # Setup
-    $rgname = Get-ResourceGroupName
-
-    # Test
-    Assert-Throws { Get-AzResource -ResourceGroupName $rgname } "Provided resource group does not exist."
-}
-
-<#
-.SYNOPSIS
-Nagative test. Get resources from non-existing type.
-#>
-function Test-GetResourcesForNonExisingType
-{
-    # Test
-    $list = Get-AzResource -ResourceType 'Non-Existing'
-
-    # Assert
-    Assert-AreEqual 0 @($list).Count
-}
-
-<#
-.SYNOPSIS
-Nagative test. Get non-existing resource.
-#>
-function Test-GetResourceForNonExisingResource
-{
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $rname = Get-ResourceGroupName
-    $location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-    $resourceTypeWeb = "Microsoft.Web/sites"
+    $rgName = Get-ResourceGroupName
+    $rName = Get-ResourceName
     $resourceTypeSql = "Microsoft.Sql/servers"
-    $apiversion = "2014-04-01"
+    $resourceTypeWeb = "Microsoft.Web/sites"
+    $location = "eastus"
 
-    # Test
-    New-AzResourceGroup -Name $rgname -Location $location
-    Assert-Throws { Get-AzResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceTypeWeb -ApiVersion $apiversion } "Provided resource does not exist."
-    Assert-Throws { Get-AzResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceTypeSql -ApiVersion $apiversion } "Provided resource does not exist."
-    Assert-Throws { Get-AzResource -Name $rname -ResourceGroupName $rgname -ResourceType 'Microsoft.Fake/nonexisting' -ApiVersion $apiversion } "Provided resource does not exist."
+    try
+    {
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
+
+        # Act + Assert
+        Assert-ThrowsContains { Get-AzResource -ResourceGroupName $rgName -Name $rName -ResourceType $resourceTypeSql } "The Resource '$resourceTypeSql/$rName' under resource group '$rgName' was not found."
+        Assert-ThrowsContains { Get-AzResource -ResourceGroupName $rgName -Name $rName -ResourceType $resourceTypeWeb } "The Resource '$resourceTypeWeb/$rName' under resource group '$rgName' was not found."
+        Assert-ThrowsContains { Get-AzResource -ResourceGroupName $rgName -Name $rName -ResourceType 'Microsoft.FakeProvider/fakeType' } "The resource namespace 'Microsoft.FakeProvider' is invalid."
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgName
+    }
 }
 
-<#
-.SYNOPSIS
-Tests get resources via piping from resource group
-.DESCRIPTION
-Smoke[Broken]Test
-#>
-function Test-GetResourcesViaPipingFromAnotherResource
+function Test-GetAzResourceForNonExisingResourceType
 {
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $rnameParent = Get-ResourceName
-    $rnameChild = Get-ResourceName
+    # Arrange
+    $resources = Get-AzResource -ResourceType 'Microsoft.FakeProvider/fakeType'
+
+    # Assert
+    Assert-Null $resources
+}
+
+function Test-MoveAzResourceByResourceId
+{
+    $rgNameSrc = Get-ResourceGroupName
+    $rgNameDst = Get-ResourceGroupName
+    $rNameParent = Get-ResourceName
+    $rNameChild = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Sql/servers"
     $resourceTypeChild = "Microsoft.Sql/servers/databases"
-    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-    $location = Get-Location "Microsoft.Sql" "servers" "West US"
-    $apiversion = "2014-04-01"
-
-    # Test
-    New-AzResourceGroup -Name $rgname -Location $rglocation
-        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-    New-AzResource -Name $rnameParent -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeParent -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion
-    New-AzResource -Name $rnameChild -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeChild -ParentResource servers/$rnameParent -PropertyObject @{"edition" = "Web"; "collation" = "SQL_Latin1_General_CP1_CI_AS"; "maxSizeBytes" = "1073741824"} -ApiVersion $apiversion
-
-    $list = Get-AzResource -ResourceGroupName $rgname | Get-AzResource -ApiVersion $apiversion
-
-    # Assert
-    Assert-AreEqual 2 @($list).Count
-}
-
-<#
-.SYNOPSIS
-Tests moving a resource.
-.DESCRIPTION
-SmokeTest
-#>
-function Test-MoveAResource
-{
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $rgname2 = Get-ResourceGroupName + "test3"
-    $rname = Get-ResourceName
-    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-    $apiversion = "2014-04-01"
-    $resourceType = "Providers.Test/statefulResources"
+    $location = "eastus"
 
     try
     {
-        # Test
-        New-AzResourceGroup -Name $rgname -Location $rglocation
-        New-AzResourceGroup -Name $rgname2 -Location $rglocation
-        $resource = New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -ApiVersion $apiversion -Force
-        Move-AzResource -ResourceId $resource.ResourceId -DestinationResourceGroupName $rgname2 -Force
+        # Arrange
+        New-AzResourceGroup -Name $rgNameSrc -Location $location
 
-        $movedResource = Get-AzResource -ResourceGroupName $rgname2 -ResourceName $rname -ResourceType $resourceType
+        New-AzResource -ResourceGroupName $rgNameSrc -Name $rNameParent -Location $location -ResourceType $resourceTypeParent -Properties @{ administratorLogin = "adminuser"; administratorLoginPassword = "Password"; minimalTlsVersion = "1.2" } -Tag @{ parenttesttag = "parenttestval" } -Force
+        New-AzResource -ResourceGroupName $rgNameSrc -Name "$rNameParent/$rNameChild" -Location $location -ResourceType $resourceTypeChild -Properties @{ collation = "Latin1_General_CI_AS" } -Tag @{ childtesttag = "childtestval" } -Force
+
+        # Wait for the resources to be ready
+        Start-TestSleep -Seconds 30
+
+        New-AzResourceGroup -Name $rgNameDst -Location $location
+
+        $srcResources = Get-AzResource -ResourceGroupName $rgNameSrc
+        $dstResources = Get-AzResource -ResourceGroupName $rgNameDst
+
+        $srcParentResource = Get-AzResource -ResourceGroupName $rgNameSrc -Name $rNameParent
+        $srcChildResource = Get-AzResource -ResourceGroupName $rgNameSrc -Name $rNameChild
+
+        # Assert before move
+        Assert-NotNull $srcResources
+        Assert-AreEqual 3 @($srcResources).Length
+
+        Assert-NotNull $srcParentResource
+        Assert-NotNull $srcChildResource
+
+        Assert-Null $dstResources
+
+        # Act
+        Move-AzResource -ResourceId $srcParentResource.ResourceId -DestinationResourceGroupName $rgNameDst -Force
+
+        $srcResources = Get-AzResource -ResourceGroupName $rgNameSrc
+        $dstResources = Get-AzResource -ResourceGroupName $rgNameDst
+
+        $dstParentResource = Get-AzResource -ResourceGroupName $rgNameDst -Name $rNameParent -ResourceType $resourceTypeParent -ExpandProperties
+        $dstChildResource = Get-AzResource -ResourceGroupName $rgNameDst -Name "$rNameParent/$rNameChild" -ResourceType $resourceTypeChild -ExpandProperties
+
+        # Assert after move
+        Assert-Null $srcResources
+
+        Assert-NotNull $dstResources
+        Assert-AreEqual 3 @($dstResources).Length
+
+        Assert-NotNull $dstParentResource
+        Assert-AreEqual $rgNameDst $dstParentResource.ResourceGroupName
+        Assert-AreEqual $rNameParent $dstParentResource.Name
+        Assert-AreEqual $resourceTypeParent $dstParentResource.ResourceType
+        Assert-AreEqual "adminuser" $dstParentResource.Properties.administratorLogin
+        Assert-AreEqual "1.2" $dstParentResource.Properties.minimalTlsVersion
+        Assert-AreEqual "parenttestval" $dstParentResource.Tags["parenttesttag"]
+
+        Assert-NotNull $dstChildResource
+        Assert-AreEqual $rgNameDst $dstChildResource.ResourceGroupName
+        Assert-AreEqual $rNameChild $dstChildResource.Name
+        Assert-AreEqual $resourceTypeChild $dstChildResource.ResourceType
+        Assert-AreEqual "Latin1_General_CI_AS" $dstChildResource.Properties.collation
+        Assert-AreEqual "childtestval" $dstChildResource.Tags["childtesttag"]
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgNameSrc
+        Clean-ResourceGroup $rgNameDst
+    }
+}
+
+function Test-MoveAzResourceInDifferentResourceGroups
+{
+    $rgNameSrc1 = Get-ResourceGroupName
+    $rgNameSrc2 = Get-ResourceGroupName
+    $rgNameDst = Get-ResourceGroupName
+    $rName1 = Get-ResourceName
+    $rName2 = Get-ResourceName
+    $resourceType = "Microsoft.Storage/storageAccounts"
+    $location = "eastus"
+
+    try
+    {
+        # Arrange
+        New-AzResourceGroup $rgNameSrc1 -Location $location
+        New-AzResourceGroup $rgNameSrc2 -Location $location
+        New-AzResourceGroup $rgNameDst -Location $location
+
+        $resource1 = New-AzResource -ResourceGroupName $rgNameSrc1 -Name $rName1 -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Force
+        $resource2 = New-AzResource -ResourceGroupName $rgNameSrc2 -Name $rName2 -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Force
+
+        # Act + Assert
+        Assert-ThrowsContains { Move-AzResource -ResourceId $resource1.ResourceId, $resource2.ResourceId -DestinationResourceGroupName $rgNameDst -Force } "The resources being moved must all reside in the same resource group."
+    }
+    catch
+    {
+		Clean-ResourceGroup $rgNameSrc1
+        Clean-ResourceGroup $rgNameSrc2
+		Clean-ResourceGroup $rgNameDst
+    }
+}
+
+function Test-MoveAzResourceToNonExistingResourceGroup
+{
+    $rgNameSrc = Get-ResourceGroupName
+    $rgNameDst = Get-ResourceGroupName
+    $rName = Get-ResourceName
+    $resourceType = "Microsoft.Storage/storageAccounts"
+    $location = "eastus"
+
+    try
+    {
+        # Arrange
+        New-AzResourceGroup $rgNameSrc -Location $location
+
+        $resource = New-AzResource -ResourceGroupName $rgNameSrc -Name $rName -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Force
+
+        # Act + Assert
+        Assert-ThrowsContains { Move-AzResource -ResourceId $resource.ResourceId -DestinationResourceGroupName $rgNameDst -Force } "ResourceGroupNotFound : Resource group '$rNameDst' could not be found."
+    }
+    catch
+    {
+		Clean-ResourceGroup $rgNameSrc
+    }
+}
+
+function Test-MoveAzResourceNonExisting
+{
+    # Act + Assert
+    Assert-Throws { Get-AzResource | Where-Object Name -eq "NonExistingResource" | Move-AzResource -DestinationResourceGroupName "AnyResourceGroup" } "At least one valid resource Id must be provided."
+}
+
+function Test-SetAzResourceByResourceName
+{
+    $rgName = Get-ResourceGroupName
+    $rNameParent = Get-ResourceName
+    $rNameChild = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Sql/servers"
+    $resourceTypeChild = "Microsoft.Sql/servers/databases"
+    $location = "eastus"
+
+    try
+    {
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
+
+        New-AzResource -ResourceGroupName $rgName -Name $rNameParent -Location $location -ResourceType $resourceTypeParent -Properties @{ administratorLogin = "adminuser"; administratorLoginPassword = "Password"; minimalTlsVersion = "1.1" } -Tag @{ parenttesttag = "parenttestval" } -Force
+        New-AzResource -ResourceGroupName $rgName -Name "$rNameParent/$rNameChild" -Location $location -ResourceType $resourceTypeChild -Sku @{ Name = "GP_Gen5"; Capacity = "6" } -Properties @{ collation = "Latin1_General_CI_AS"; maxSizeBytes = "1073741824" } -Tag @{ childtesttag = "childtestval" } -Force
+
+        # Wait for the resources to be ready
+        Start-TestSleep -Seconds 30
+
+        # Act
+        $parentResource = Set-AzResource -ResourceGroupName $rgName -Name $rNameParent -ResourceType $resourceTypeParent -Properties @{ minimalTlsVersion = "1.2" } -Tag @{ parenttesttagnew = "parenttestvalnew" } -Force
+        $childResource = Set-AzResource -ResourceGroupName $rgName -Name "$rNameParent/$rNameChild" -ResourceType $resourceTypeChild -Sku @{ Name = "GP_S_Gen5"; Capacity = "8" } -Properties @{ maxSizeBytes = "2147483648" } -Tag @{ childtesttagnew = "childtestvalnew" } -Force
 
         # Assert
-        Assert-AreEqual $movedResource.Name $resource.Name
-        Assert-AreEqual $movedResource.ResourceGroupName $rgname2
-        Assert-AreEqual $movedResource.ResourceType $resource.ResourceType
+        Assert-NotNull $parentResource
+        Assert-AreEqual $rgName $parentResource.ResourceGroupName
+        Assert-AreEqual $rNameParent $parentResource.ResourceName
+        Assert-AreEqual $rNameParent $parentResource.Name
+        Assert-AreEqual $resourceTypeParent $parentResource.ResourceType
+        Assert-AreEqual "adminuser" $parentResource.Properties.administratorLogin
+        Assert-AreEqual "1.2" $parentResource.Properties.minimalTlsVersion
+        Assert-Null $parentResource.Tags["parenttesttag"]
+        Assert-AreEqual "parenttestvalnew" $parentResource.Tags["parenttesttagnew"]
+
+        Assert-NotNull $childResource
+        Assert-AreEqual $rgName $childResource.ResourceGroupName
+        Assert-AreEqual "$rNameParent/$rNameChild" $childResource.ResourceName
+        Assert-AreEqual $rNameChild $childResource.Name
+        Assert-AreEqual $resourceTypeChild $childResource.ResourceType
+        Assert-AreEqual "GP_S_Gen5" $childResource.Sku.Name
+        Assert-AreEqual "8" $childResource.Sku.Capacity
+        Assert-AreEqual "2147483648" $childResource.Properties.maxSizeBytes
+        Assert-Null $childResource.Tags["childtesttag"]
+        Assert-AreEqual "childtestvalnew" $childResource.Tags["childtesttagnew"]
     }
     finally
     {
-        Clean-ResourceGroup $rgname
-        Clean-ResourceGroup $rgname2
+        Clean-ResourceGroup $rgName
     }
 }
 
-<#
-.SYNOPSIS
-Tests moving a resource but failed.
-#>
-function Test-MoveResourceFailed
+function Test-SetAzResourceByResourceId
 {
-    #Move a resource through pipeline while no resource is sent
-    $exceptionMessage = "At least one valid resource Id must be provided.";
-    Assert-Throws { Get-AzResource | Where-Object { $PSItem.Name -eq "NonExistingResource" } | Move-AzResource -DestinationResourceGroupName "AnyResourceGroup" } $exceptionMessage
-
-    #Move two resources from two resource groups
-    $resourceId1 = "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/tianorg1/providers/Microsoft.Storage/storageAccounts/temp1"
-    $resourceId2 = "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/tianorg2/providers/Microsoft.Storage/storageAccounts/temp1"
-    $exceptionMessage = "The resources being moved must all reside in the same resource group. The resources: *"
-    Assert-ThrowsLike { Move-AzResource -DestinationResourceGroupName "AnyGroup" -ResourceId @($resourceId1, $resourceId2) } $exceptionMessage
-}
-
-<#
-.SYNOPSIS
-Tests setting a resource.
-.DESCRIPTION
-SmokeTest
-#>
-function Test-SetAResource
-{
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $rname = Get-ResourceName
-    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-    $apiversion = "2014-04-01"
-    $resourceType = "Providers.Test/statefulResources"
+    $subscriptionId = (Get-AzContext).Subscription.Id
+    $rgName = Get-ResourceGroupName
+    $rNameParent = Get-ResourceName
+    $rNameChild = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Sql/servers"
+    $resourceTypeChild = "Microsoft.Sql/servers/databases"
+    $resourceIdParent = "/subscriptions/$($subscriptionId)/resourceGroups/$rgName/providers/$resourceTypeParent/$rNameParent"
+    $resourceIdChild = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/$resourceTypeParent/$rNameParent/databases/$rNameChild"
+    $location = "eastus"
 
     try
     {
-        # Test
-        New-AzResourceGroup -Name $rgname -Location $rglocation
-        $resource = New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
 
-        # Verify original value
-        $oldSku = $resource.Sku.psobject
-        $oldSkuNameProperty = $oldSku.Properties
-        Assert-AreEqual $oldSkuNameProperty.Name "name"
-        Assert-AreEqual $resource.SKu.Name "A0"
+        $parentResource = New-AzResource -ResourceId $resourceIdParent -Location $location -Properties @{ administratorLogin = "adminuser"; administratorLoginPassword = "Password"; minimalTlsVersion = "1.1" } -Tag @{ parenttesttag = "parenttestval" } -Force
+        $childResource = New-AzResource -ResourceId $resourceIdChild -Location $location -Sku @{ Name = "GP_Gen5"; Capacity = "6" } -Properties @{ collation = "Latin1_General_CI_AS"; maxSizeBytes = "1073741824" } -Tag @{ childtesttag = "childtestval" } -Force
 
-        # Set resource
-        Set-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
-        $job = Set-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -SkuObject @{ Name = "A1" }  -Force -AsJob
-        $job | Wait-Job
+        # Wait for the resources to be ready
+        Start-TestSleep -Seconds 30
 
-        $modifiedResource = Get-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
+        # Act
+        $parentResource = Set-AzResource -ResourceId $resourceIdParent -Properties @{ minimalTlsVersion = "1.2" } -Tag @{ parenttesttagnew = "parenttestvalnew" } -Force
+        $childResource = Set-AzResource -ResourceId $resourceIdChild -Sku @{ Name = "GP_S_Gen5"; Capacity = "8" } -Properties @{ maxSizeBytes = "2147483648" } -Tag @{ childtesttagnew = "childtestvalnew" } -Force
 
         # Assert
-        Assert-AreEqual $modifiedResource.Properties.key2 "value2"
-        Assert-AreEqual $modifiedResource.Sku.Name "A1"
+        Assert-NotNull $parentResource
+        Assert-AreEqual $rgName $parentResource.ResourceGroupName
+        Assert-AreEqual $rNameParent $parentResource.ResourceName
+        Assert-AreEqual $rNameParent $parentResource.Name
+        Assert-AreEqual $resourceTypeParent $parentResource.ResourceType
+        Assert-AreEqual "adminuser" $parentResource.Properties.administratorLogin
+        Assert-AreEqual "1.2" $parentResource.Properties.minimalTlsVersion
+        Assert-Null $parentResource.Tags["parenttesttag"]
+        Assert-AreEqual "parenttestvalnew" $parentResource.Tags["parenttesttagnew"]
+
+        Assert-NotNull $childResource
+        Assert-AreEqual $rgName $childResource.ResourceGroupName
+        Assert-AreEqual "$rNameParent/$rNameChild" $childResource.ResourceName
+        Assert-AreEqual $rNameChild $childResource.Name
+        Assert-AreEqual $resourceTypeChild $childResource.ResourceType
+        Assert-AreEqual "GP_S_Gen5" $childResource.Sku.Name
+        Assert-AreEqual "8" $childResource.Sku.Capacity
+        Assert-AreEqual "2147483648" $childResource.Properties.maxSizeBytes
+        Assert-Null $childResource.Tags["childtesttag"]
+        Assert-AreEqual "childtestvalnew" $childResource.Tags["childtesttagnew"]
     }
     finally
     {
-        Clean-ResourceGroup $rgname
+        Clean-ResourceGroup $rgName
     }
 }
 
-<#
-Tests setting a resource using piping.
-#>
-function Test-SetAResourceUsingPiping
+function Test-SetAzResourceByResourceObject
 {
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $rname = Get-ResourceName
-    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-    $apiversion = "2014-04-01"
-    $resourceType = "Providers.Test/statefulResources"
+    $rgName = Get-ResourceGroupName
+    $rNameParent = Get-ResourceName
+    $rNameChild = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Sql/servers"
+    $resourceTypeChild = "Microsoft.Sql/servers/databases"
+    $location = "eastus"
 
     try
     {
-        # Test
-        New-AzResourceGroup -Name $rgname -Location $rglocation
-        New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
-        $resource = Get-AzResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
 
-        # Verify original value
-        Assert-AreEqual $resource.Name $rname
-        Assert-AreEqual $resource.ResourceGroupName $rgname
-        Assert-AreEqual $resource.ResourceType $resourceType
-        Assert-AreEqual $resource.Sku.Name "A0"
-        Assert-AreEqual $resource.Tags["testtag"] "testval"
-        Assert-AreEqual $resource.Properties.key "value"
+        New-AzResource -ResourceGroupName $rgName -Name $rNameParent -Location $location -ResourceType $resourceTypeParent -Properties @{ administratorLogin = "adminuser"; administratorLoginPassword = "Password"; minimalTlsVersion = "1.1" } -Tag @{ parenttesttag = "parenttestval" } -Force
+        New-AzResource -ResourceGroupName $rgName -Name "$rNameParent/$rNameChild" -Location $location -ResourceType $resourceTypeChild -Sku @{ Name = "GP_Gen5"; Capacity = "6" } -Properties @{ collation = "Latin1_General_CI_AS"; maxSizeBytes = "1073741824" } -Tag @{ childtesttag = "childtestval" } -Force
 
-        # Set resource
-        # Verify all properties are the same when resource object hasn't been modified and is piped
-        $setResource = $resource | Set-AzResource -Force
-        Assert-NotNull $setResource
-        Assert-AreEqual $setResource.Name $rname
-        Assert-AreEqual $setResource.ResourceGroupName $rgname
-        Assert-AreEqual $setResource.ResourceType $resourceType
-        Assert-AreEqual $setResource.Sku.Name "A0"
-        Assert-AreEqual $setResource.Tags["testtag"] "testval"
-        Assert-AreEqual $setResource.Properties.key "value"
+        # Wait for the resources to be ready
+        Start-TestSleep -Seconds 30
 
-        # Verify all properties are updated when resource object has been modified and is piped
-        $resource.Tags.Add("testtag1", "testval1")
-        $resource.Sku.Name = "A1"
-        $setResource = $resource | Set-AzResource -Force
-        Assert-NotNull $setResource
-        Assert-AreEqual $setResource.Name $rname
-        Assert-AreEqual $setResource.ResourceGroupName $rgname
-        Assert-AreEqual $setResource.ResourceType $resourceType
-        Assert-AreEqual $setResource.Sku.Name "A1"
-        Assert-AreEqual $setResource.Tags["testtag"] "testval"
-        Assert-AreEqual $setResource.Tags["testtag1"] "testval1"
-        Assert-AreEqual $setResource.Properties.key "value"
+        $parentResource = Get-AzResource -ResourceGroupName $rgName -Name $rNameParent -ExpandProperties
+        $childResource = Get-AzResource -ResourceGroupName $rgName -Name "$rNameParent/$rNameChild" -ExpandProperties
 
-        $modifiedResource = Get-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
+        # Act
+        $parentResource = Set-AzResource -InputObject $parentResource -Properties @{ minimalTlsVersion = "1.2" } -Tag @{ parenttesttagnew = "parenttestvalnew" } -Force
+        $childResource = Set-AzResource -InputObject $childResource -Sku @{ Name = "GP_S_Gen5"; Capacity = "8" } -Properties @{ maxSizeBytes = "2147483648" } -Tag @{ childtesttagnew = "childtestvalnew" } -Force
+        
+        # Assert
+        Assert-NotNull $parentResource
+        Assert-AreEqual $rgName $parentResource.ResourceGroupName
+        Assert-AreEqual $rNameParent $parentResource.ResourceName
+        Assert-AreEqual $rNameParent $parentResource.Name
+        Assert-AreEqual $resourceTypeParent $parentResource.ResourceType
+        Assert-AreEqual "adminuser" $parentResource.Properties.administratorLogin
+        Assert-AreEqual "1.2" $parentResource.Properties.minimalTlsVersion
+        Assert-Null $parentResource.Tags["parenttesttag"]
+        Assert-AreEqual "parenttestvalnew" $parentResource.Tags["parenttesttagnew"]
+
+        Assert-NotNull $childResource
+        Assert-AreEqual $rgName $childResource.ResourceGroupName
+        Assert-AreEqual "$rNameParent/$rNameChild" $childResource.ResourceName
+        Assert-AreEqual $rNameChild $childResource.Name
+        Assert-AreEqual $resourceTypeChild $childResource.ResourceType
+        Assert-AreEqual "GP_S_Gen5" $childResource.Sku.Name
+        Assert-AreEqual "8" $childResource.Sku.Capacity
+        Assert-AreEqual "2147483648" $childResource.Properties.maxSizeBytes
+        Assert-Null $childResource.Tags["childtesttag"]
+        Assert-AreEqual "childtestvalnew" $childResource.Tags["childtesttagnew"]
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgName
+    }
+}
+
+function Test-SetAzResourceViaPiping
+{
+    $rgName = Get-ResourceGroupName
+    $rNameParent = Get-ResourceName
+    $rNameChild = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Sql/servers"
+    $resourceTypeChild = "Microsoft.Sql/servers/databases"
+    $location = "eastus"
+
+    try
+    {
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
+
+        New-AzResource -ResourceGroupName $rgName -Name $rNameParent -Location $location -ResourceType $resourceTypeParent -Properties @{ administratorLogin = "adminuser"; administratorLoginPassword = "Password"; minimalTlsVersion = "1.1" } -Tag @{ parenttesttag = "parenttestval" } -Force
+        New-AzResource -ResourceGroupName $rgName -Name "$rNameParent/$rNameChild" -Location $location -ResourceType $resourceTypeChild -Sku @{ Name = "GP_Gen5"; Capacity = "6" } -Properties @{ collation = "Latin1_General_CI_AS"; maxSizeBytes = "1073741824" } -Tag @{ childtesttag = "childtestval" } -Force
+
+        # Wait for the resources to be ready
+        Start-TestSleep -Seconds 30
+
+        $parentResource = Get-AzResource -ResourceGroupName $rgName -Name $rNameParent -ExpandProperties
+        $childResource = Get-AzResource -ResourceGroupName $rgName -Name "$rNameParent/$rNameChild" -ExpandProperties
+
+        # Act
+        $parentResource | Set-AzResource -Properties @{ minimalTlsVersion = "1.2" } -Tag @{ parenttesttagnew = "parenttestvalnew" } -Force
+        $childResource | Set-AzResource -Sku @{ Name = "GP_S_Gen5"; Capacity = "8" } -Properties @{ maxSizeBytes = "2147483648" } -Tag @{ childtesttagnew = "childtestvalnew" } -Force
+        
+        $parentResource = Get-AzResource -ResourceGroupName $rgName -Name $rNameParent -ExpandProperties
+        $childResource = Get-AzResource -ResourceGroupName $rgName -Name "$rNameParent/$rNameChild" -ExpandProperties
 
         # Assert
-        Assert-NotNull $modifiedResource
-        Assert-AreEqual $modifiedResource.Name $rname
-        Assert-AreEqual $modifiedResource.ResourceGroupName $rgname
-        Assert-AreEqual $modifiedResource.ResourceType $resourceType
-        Assert-AreEqual $modifiedResource.Sku.Name "A1"
-        Assert-AreEqual $modifiedResource.Tags["testtag"] "testval"
-        Assert-AreEqual $modifiedResource.Tags["testtag1"] "testval1"
-        Assert-AreEqual $modifiedResource.Properties.key "value"
+        Assert-NotNull $parentResource
+        Assert-AreEqual $rgName $parentResource.ResourceGroupName
+        Assert-AreEqual $rNameParent $parentResource.Name
+        Assert-AreEqual $resourceTypeParent $parentResource.ResourceType
+        Assert-AreEqual "adminuser" $parentResource.Properties.administratorLogin
+        Assert-AreEqual "1.2" $parentResource.Properties.minimalTlsVersion
+        Assert-Null $parentResource.Tags["parenttesttag"]
+        Assert-AreEqual "parenttestvalnew" $parentResource.Tags["parenttesttagnew"]
+
+        Assert-NotNull $childResource
+        Assert-AreEqual $rgName $childResource.ResourceGroupName
+        Assert-AreEqual $rNameChild $childResource.Name
+        Assert-AreEqual $resourceTypeChild $childResource.ResourceType
+        Assert-AreEqual "GP_S_Gen5" $childResource.Sku.Name
+        Assert-AreEqual "8" $childResource.Sku.Capacity
+        Assert-AreEqual "2147483648" $childResource.Properties.maxSizeBytes
+        Assert-Null $childResource.Tags["childtesttag"]
+        Assert-AreEqual "childtestvalnew" $childResource.Tags["childtesttagnew"]
     }
     finally
     {
-        Clean-ResourceGroup $rgname
+        Clean-ResourceGroup $rgName
     }
 }
 
-<#
-.SYNOPSIS
-Tests setting a resource using patch.
-#>
-function Test-SetAResourceWithPatch
+function Test-SetAzResourceWithPatch
 {
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $rname = Get-ResourceName
-    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-    $apiversion = "2014-04-01"
-    $resourceType = "Providers.Test/statefulResources"
-
-    # Test
-    New-AzResourceGroup -Name $rgname -Location $rglocation
-    $resource = New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
-    Set-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
-    Set-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -SkuObject @{ Name = "A1" } -UsePatchSemantics -Force
-
-    $modifiedResource = Get-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
-
-    # Assert patch didn't overwrite existing properties
-    Assert-AreEqual $modifiedResource.Properties.key2 "value2"
-    Assert-AreEqual $modifiedResource.Sku.Name "A1"
-}
-
-<#
-.SYNOPSIS
-Tests finding a resource.
-.DESCRIPTION
-SmokeTest
-#>
-function Test-FindAResource
-{
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $rname = "testname"
-    $rname2 = "test2name"
-    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-    $apiversion = "2014-04-01"
-    $resourceType = "Providers.Test/statefulResources"
+    $rgName = Get-ResourceGroupName
+    $rName = Get-ResourceName
+    $resourceType = "Microsoft.Storage/storageAccounts"
+    $location = "eastus"
 
     try
     {
-        # Test
-        New-AzResourceGroup -Name $rgname -Location $rglocation
-        $actual = New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
-        $expected = Get-AzResource -ResourceName "*test*" -ResourceGroupName "*$rgname*"
-        Assert-NotNull $expected
-        Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
 
-        $expected = Get-AzResource -ResourceType $resourceType -ResourceGroupName "*$rgName*"
-        Assert-NotNull $expected
-        Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
+        New-AzResource -ResourceGroupName $rgName -Name $rName -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Properties @{ minimumTlsVersion = "TLS1_1" } -Tag @{ testtag = "testval" } -Force
 
-        New-AzResource -Name $rname2 -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
-        $expected = Get-AzResource -ResourceName "*test*" -ResourceGroupName "*$rgname*"
-        Assert-AreEqual 2 @($expected).Count
+        # Wait for the resources to be ready
+        Start-TestSleep -Seconds 30
 
-        $expected = Get-AzResource -ResourceGroupName $rgname -ResourceName $rname
-        Assert-NotNull $expected
-        Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
-    }
-    finally
-    {
-        Clean-ResourceGroup $rgname
-    }
-}
-
-<#
-.SYNOPSIS
-Tests finding a resource by tag.
-.DESCRIPTION
-Smoke[Broken]Test
-#>
-function Test-FindAResource-ByTag
-{
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $rname = "testname"
-    $rname2 = "test2name"
-    $rname3 = "test3name"
-    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-    $apiversion = "2014-04-01"
-    $resourceType = "Providers.Test/statefulResources"
-
-    try
-    {
-        # Test
-        New-AzResourceGroup -Name $rgname -Location $rglocation
-        $actual1 = New-AzResource -Name $rname -Location $rglocation -Tags @{ScenarioTestTag = "ScenarioTestVal"} -ResourceGroupName $rgname -ResourceType $resourceType -ApiVersion $apiversion -Force
-        $actual2 = New-AzResource -Name $rname2 -Location $rglocation -Tags @{ScenarioTestTag = $null} -ResourceGroupName $rgname -ResourceType $resourceType -ApiVersion $apiversion -Force
-        $actual3 = New-AzResource -Name $rname3 -Location $rglocation -Tags @{ScenarioTestTag = "RandomTestVal"; RandomTestVal = "ScenarioTestVal"} -ResourceGroupName $rgname -ResourceType $resourceType -ApiVersion $apiversion -Force
-
-        # Test both Name and Value
-        $expected = Get-AzResource -Tag @{ScenarioTestTag = "ScenarioTestVal"}
-        Assert-NotNull $expected
-        Assert-AreEqual $expected.Count 1
-        Assert-AreEqual $actual1.ResourceId $expected[0].ResourceId
-
-        $expected = Get-AzResource -TagName "ScenarioTestTag" -TagValue "ScenarioTestVal"
-        Assert-NotNull $expected
-        Assert-AreEqual $expected.Count 1
-        Assert-AreEqual $actual1.ResourceId $expected[0].ResourceId
-
-        # Test just Name
-        $expected = Get-AzResource -Tag @{ScenarioTestTag = $null}
-        Assert-NotNull $expected
-        Assert-AreEqual $expected.Count 3
-        Assert-NotNull { $expected | where { $_.ResourceId -eq $actual1.ResourceId } }
-        Assert-NotNull { $expected | where { $_.ResourceId -eq $actual2.ResourceId } }
-        Assert-NotNull { $expected | where { $_.ResourceId -eq $actual3.ResourceId } }
-
-        $expected = Get-AzResource -TagName "ScenarioTestTag"
-        Assert-NotNull $expected
-        Assert-AreEqual $expected.Count 3
-        Assert-NotNull { $expected | where { $_.ResourceId -eq $actual1.ResourceId } }
-        Assert-NotNull { $expected | where { $_.ResourceId -eq $actual2.ResourceId } }
-        Assert-NotNull { $expected | where { $_.ResourceId -eq $actual3.ResourceId } }
-
-        # Test just Value
-        $expected = Get-AzResource -TagValue "ScenarioTestVal"
-        Assert-NotNull $expected
-        Assert-AreEqual $expected.Count 2
-        Assert-NotNull { $expected | where { $_.ResourceId -eq $actual1.ResourceId } }
-        Assert-NotNull { $expected | where { $_.ResourceId -eq $actual3.ResourceId } }
-    }
-    finally
-    {
-        Clean-ResourceGroup $rgname
-    }
-}
-
-<#
-.SYNOPSIS
-Tests getting a resource with properties expanded
-.DESCRIPTION
-SmokeTest
-#>
-function Test-GetResourceExpandProperties
-{
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $rname = Get-ResourceName
-    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-    $apiversion = "2014-04-01"
-    $resourceType = "Providers.Test/statefulResources"
-
-    try
-    {
-        # Test
-        New-AzResourceGroup -Name $rgname -Location $rglocation
-        $resource = New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
-        $resourceGet = Get-AzResource -ResourceName $rname -ResourceGroupName $rgname -ExpandProperties
+        # Act
+        $resource = Set-AzResource -ResourceGroupName $rgName -Name $rName -ResourceType $resourceType -Properties @{ minimumTlsVersion = "TLS1_2" } -Tag @{ testtagnew = "testvalnew" } -UsePatchSemantics -Force
 
         # Assert
-        $properties = $resourceGet.Properties.psobject
-        $keyProperty = $properties.Properties
-        Assert-AreEqual $keyProperty.Name "key"
-        Assert-AreEqual $resourceGet.Properties.key "value"
+        Assert-AreEqual $rgName $resource.ResourceGroupName
+        Assert-AreEqual $rName $resource.Name
+        Assert-AreEqual $resourceType $resource.ResourceType
+        Assert-AreEqual "Standard_LRS" $resource.Sku.Name
+        Assert-AreEqual "TLS1_2" $resource.Properties.minimumTlsVersion
+        Assert-Null $resource.Tags["testtag"]
+        Assert-AreEqual "testvalnew" $resource.Tags["testtagnew"]
     }
     finally
     {
-        Clean-ResourceGroup $rgname
+        # Cleanup
+        Clean-ResourceGroup $rgName
     }
 }
 
-<#
-.SYNOPSIS
-Tests getting a resource with properties expanded
-.DESCRIPTION
-SmokeTest
-#>
-function Test-GetResourceExpandPropertiesRGLevel
+function Test-SetAzResourceTags
 {
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $rname = Get-ResourceName
-    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-    $apiversion = "2014-04-01"
-    $resourceType = "Microsoft.Web/sites"
+    $rgName = Get-ResourceGroupName
+    $rName = Get-ResourceName
+    $resourceType = "Microsoft.Storage/storageAccounts"
+    $location = "eastus"
 
     try
     {
-        # Test
-        New-AzResourceGroup -Name $rgname -Location $rglocation
-        $resource = New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
-        $resourceGet = Get-AzResource -ResourceGroupName $rgname -ExpandProperties
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
 
-        # Assert
-        Assert-NotNull $resourceGet
-    }
-    finally
-    {
-        Clean-ResourceGroup $rgname
-    }
-}
+        $resource = New-AzResource -ResourceGroupName $rgName -Name $rName -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Tag @{ testtag = "testval" } -Force
 
-<#
-.SYNOPSIS
-Tests getting a resource by id, name, type, and its properties ensuring default resource api version is *not* used.
-#>
-function Test-GetResourceByNameAndType
-{
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $rname = Get-ResourceName
-    $location = "West US"
-    $resourceType = "Microsoft.Resources/deployments"
-    $apiVersionWithType = "2019-10-01"
-    $templateFile = "sampleTemplate.json"
-    $templateParameterFile = "sampleTemplateParams.json"
-    
-    try
-    {
-        # Test
-        New-AzResourceGroup -Name $rgname -Location $location
-        $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile $templateFile -TemplateParameterFile $templateParameterFile
-    
-        Assert-AreEqual Succeeded $deployment.ProvisioningState
-    
-        $specifiedVersion = get-azresource -ResourceGroupName $rgname -Name $rname -ResourceType $resourceType -ExpandProperties -apiversion $apiVersionWithType
-        Assert-NotNull $specifiedVersion.type
+        # Wait for the resources to be ready
+        Start-TestSleep -Seconds 30
 
-        $unspecifiedVersion = get-azresource -ResourceGroupName $rgname -Name $rname -ResourceType $resourceType -ExpandProperties
-        Assert-NotNull $unspecifiedVersion.type
-        Assert-AreEqual $specifiedVersion.Type $unspecifiedVersion.Type
-    }
-    finally
-    {
-        Clean-ResourceGroup $rgname
-    }
-}
-
-<#
-.SYNOPSIS
-Tests getting a resource by id and its properties
-#>
-function Test-GetResourceByIdAndProperties
-{
-	# Setup
-    $rgname = Get-ResourceGroupName
-    $rname = Get-ResourceName
-    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-    $apiversion = "2014-04-01"
-    $resourceType = "Providers.Test/statefulResources"
-
-	try
-	{
-		# Test
-        New-AzResourceGroup -Name $rgname -Location $rglocation
-        $resource = New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
-        $resourceGet = Get-AzResource -ResourceId $resource.ResourceId
-
-		# Assert
-		Assert-NotNull $resourceGet
-		Assert-AreEqual $resourceGet.Name $rname
-		Assert-AreEqual $resourceGet.ResourceGroupName $rgname
-		Assert-AreEqual $resourceGet.ResourceType $resourceType
-		$properties = $resourceGet.Properties
-		Assert-NotNull $properties
-		Assert-NotNull $properties.key
-		Assert-AreEqual $properties.key "value"
-	}
-	finally
-	{
-		Clean-ResourceGroup $rgname
-	}
-}
-
-<#
-.SYNOPSIS
-Tests listing child resources by resource id (e.g., /subscriptions/{{sub}}/resourceGroups/{{rg}}/Microsoft.Web/sites/{{site}}/slots)
-#>
-function Test-GetChildResourcesById
-{
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $rname = Get-ResourceName
-    $location = "West US 2"
-    $siteType = "Microsoft.Web/sites"
-    $slotType = "Microsoft.Web/sites/slots"
-
-    try
-    {
-        # Test
-        New-AzResourceGroup -Name $rgname -Location $location
-        $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile webapp-with-slots-azuredeploy.json -TemplateParameterFile webapp-with-slots-azuredeploy.parameters.json
-
-	    Assert-AreEqual Succeeded $deployment.ProvisioningState
-
-        $sites = Get-AzResource -ResourceGroupName $rgname -ResourceType $siteType
-        $slots = Get-AzResource -ResourceGroupName $rgname -ResourceType $slotType
-
-        Assert-NotNull $sites
-        Assert-NotNull $slots
-        Assert-AreEqual $sites.Count 1
-        Assert-AreEqual $slots.Count 4
-
-        $resourceId = $sites.ResourceId + "/slots"
-        $slots = Get-AzResource -ResourceId $resourceId
-        Assert-NotNull $slots
-        Assert-AreEqual $slots.Count 4
-    }
-    finally
-    {
-        Clean-ResourceGroup $rgname
-    }
-}
-
-<#
-.SYNOPSIS
-Tests updating a nested resource by piping the result from Get-AzResource into Set-AzResource
-#>
-function Test-SetNestedResourceByPiping
-{
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $rname = Get-ResourceName
-    $location = "West US 2"
-    $siteType = "Microsoft.Web/sites"
-    $configType = "Microsoft.Web/sites/config"
-    $apiVersion = "2018-02-01"
-
-    try
-    {
-        # Test
-        New-AzResourceGroup -Name $rgname -Location $location
-        $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile webapp-with-slots-azuredeploy.json -TemplateParameterFile webapp-with-slots-azuredeploy.parameters.json
-	    Assert-AreEqual Succeeded $deployment.ProvisioningState
-
-        $sites = Get-AzResource -ResourceGroupName $rgname -ResourceType $siteType
-        Assert-NotNull $sites
-
-        $siteName = $sites.Name
-        $config = Get-AzResource -ResourceGroupName $rgname -ResourceType $configType -Name $siteName -ApiVersion $apiVersion
-        Assert-NotNull $config
-
-        $result = $config | Set-AzResource -ApiVersion $apiVersion -Force
-        Assert-NotNull $result
-    }
-    finally
-    {
-        Clean-ResourceGroup $rgname
-    }
-}
-
-<#
-.SYNOPSIS
-Tests getting a resource by its components and its properties
-#>
-function Test-GetResourceByComponentsAndProperties
-{
-	# Setup
-    $rgname = Get-ResourceGroupName
-    $rname = Get-ResourceName
-    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-    $apiversion = "2014-04-01"
-    $resourceType = "Providers.Test/statefulResources"
-
-	try
-	{
-		# Test
-        New-AzResourceGroup -Name $rgname -Location $rglocation
-        $resource = New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
-        $resourceGet = Get-AzResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType
-
-		# Assert
-		Assert-NotNull $resourceGet
-		Assert-AreEqual $resourceGet.Name $rname
-		Assert-AreEqual $resourceGet.ResourceGroupName $rgname
-		Assert-AreEqual $resourceGet.ResourceType $resourceType
-		$properties = $resourceGet.Properties
-		Assert-NotNull $properties
-		Assert-NotNull $properties.key
-		Assert-AreEqual $properties.key "value"
-	}
-	finally
-	{
-		Clean-ResourceGroup $rgname
-	}
-}
-
-<#
-.SYNOPSIS
-Tests managing resource with zones.
-#>
-function Test-ManageResourceWithZones
-{
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $rname = Get-ResourceName
-    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-    $location = "Central US"
-    $apiversion = "2014-04-01"
-    $resourceType = "Providers.Test/statefulResources"
-
-    # Test
-    New-AzResourceGroup -Name $rgname -Location $rglocation
-    $created = New-AzResource -Name $rname -Location $location -Tags @{ testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -Zones @("2") -Force
-
-    # Assert
-    Assert-NotNull $created
-    Assert-AreEqual $created.Zones.Length 1
-    Assert-AreEqual $created.Zones[0] "2"
-
-    $resourceGet = Get-AzResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType
-
-    # Assert
-    Assert-NotNull $resourceGet
-    Assert-AreEqual $resourceGet.Zones.Length 1
-    Assert-AreEqual $resourceGet.Zones[0] "2"
-
-    $resourceSet = set-AzResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType -Zones @("3") -Force
-
-    # Assert
-    Assert-NotNull $resourceSet
-    Assert-AreEqual $resourceSet.Zones.Length 1
-    Assert-AreEqual $resourceSet.Zones[0] "3"
-
-    $resourceGet = Get-AzResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType
-
-    # Assert
-    Assert-NotNull $resourceGet
-    Assert-AreEqual $resourceGet.Zones.Length 1
-    Assert-AreEqual $resourceGet.Zones[0] "3"
-}
-
-<#
-.SYNOPSIS
-Tests removing a resource.
-.DESCRIPTION
-SmokeTest
-#>
-function Test-RemoveAResource
-{
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $rname = "testname"
-    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-    $apiversion = "2014-04-01"
-    $resourceType = "Providers.Test/statefulResources"
-
-    # Test
-    New-AzResourceGroup -Name $rgname -Location $rglocation
-    $job = New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force -AsJob
-    $job | Wait-Job
-    $actual = $job | Receive-Job
-    # Intermittently, Find-AzResource does not immediately get the resource
-    Wait-Seconds 2
-    $expected = Get-AzResource -ResourceName $rname -ResourceGroupName $rgname
-    Assert-NotNull $expected
-    Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
-
-    $job = Remove-AzResource -ResourceId $expected[0].ResourceId -Force -AsJob
-    $job | Wait-Job
-
-    $expected = Get-AzResource -ResourceName $rname -ResourceGroupName $rgname
-    Assert-Null $expected
-}
-
-<#
-.SYNOPSIS
-Tests removing a set of resources.
-#>
-function Test-RemoveASetOfResources
-{
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $rname = "testname"
-    $rname2 = "test2name"
-    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-    $apiversion = "2014-04-01"
-    $resourceType = "Providers.Test/statefulResources"
-
-    # Test
-    New-AzResourceGroup -Name $rgname -Location $rglocation
-    $actual = New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
-    $expected = Get-AzResource -ResourceName "*test*" -ResourceGroupName "*$rgname*"
-    Assert-NotNull $expected
-    Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
-
-    $expected = Get-AzResource -ResourceType $resourceType -ResourceGroupName "*$rgName*"
-    Assert-NotNull $expected
-    Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
-
-    New-AzResource -Name $rname2 -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
-    $expected = Get-AzResource -ResourceName "*test*" -ResourceGroupName "*$rgname*"
-    Assert-AreEqual 2 @($expected).Count
-
-    Get-AzResource -ResourceName "*test*" -ResourceGroupName "*$rgname*" | Remove-AzResource -Force
-    $expected = Get-AzResource -ResourceName "*test*" -ResourceGroupName "*$rgname*"
-    Assert-Null $expected
-}
-
-<#
-.SYNOPSIS
-Tests setting resource tags.
-.DESCRIPTION
-SmokeTest
-#>
-function Test-SetAResourceTagCase
-{
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $rname = Get-ResourceName
-    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-    $apiversion = "2014-04-01"
-    $resourceType = "Providers.Test/statefulResources"
- 
-    try
-    {
-        # Test
-        New-AzResourceGroup -Name $rgname -Location $rglocation
-        $resource = New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
- 
-        # Verify tags and their casing
-        # resource.Tags key is exactly "testtag" with case sensitive match
+        # Assert before set
         Assert-True { $resource.Tags.ContainsKey("testtag") }
         Assert-True { !$resource.Tags.ContainsKey("TESTtag") }
 
         Assert-True { $resource.Tags.testtag -ceq "testval" }
         Assert-True { $resource.Tags.testtag -cne "testVAL" }
  
-        # Set resource (add a new tag with key testTag2 = "TestVal2")
-        Set-AzResource -Tags @{testtag = "testval"; testTag2 = "TestVal2"} -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
-        Start-TestSleep -Seconds 30
-        $resource = Get-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
+        # Act
+        Set-AzResource -ResourceGroupName $rgName -Name $rName -ResourceType $resourceType -Tag @{ testtag = "testval"; testTag2 = "TestVal2" } -Force
+
+        $resource = Get-AzResource -ResourceGroupName $rgName -Name $rName -ResourceType $resourceType
         
-        # Verify tag keys
+        # Assert
         Assert-True { $resource.Tags.ContainsKey("testtag") }
         Assert-True { !$resource.Tags.ContainsKey("TESTtag") }
 
         Assert-True { $resource.Tags.ContainsKey("testTag2") }
         Assert-True { !$resource.Tags.ContainsKey("TestTag2") }
         
-        # Verify tag values
         Assert-True { $resource.Tags.testtag -ceq "testval" }
         Assert-True { $resource.Tags.testtag -cne "testVAL" }
         
         Assert-True { $resource.Tags.testTag2 -ceq "TestVal2" }
         Assert-True { $resource.Tags.testTag2 -cne "testval2" }
  
-        # Set resource (replace tags with keys of different cases)
-        Set-AzResource -Tags @{testTag = "testVAL"; testtag2 = "Testval2"} -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
-        Start-TestSleep -Seconds 30
-        $resource = Get-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
+        # Act
+        $resource | Set-AzResource -Tag @{ testTag = "testVAL"; testtag2 = "Testval2" } -Force
+
+        $resource = Get-AzResource -ResourceGroupName $rgName -Name $rName -ResourceType $resourceType
        
-        # Verify tag keys
+        # Assert
         Assert-True { $resource.Tags.ContainsKey("testTag") }
         Assert-True { !$resource.Tags.ContainsKey("testtag") }
 
         Assert-True { $resource.Tags.ContainsKey("testtag2") }
         Assert-True { !$resource.Tags.ContainsKey("testTag2") }
 
-        # Verify tag values
         Assert-True { $resource.Tags.testTag -ceq "testVAL" }
         Assert-True { $resource.Tags.testTag -cne "testval" }
         
@@ -958,82 +1075,312 @@ function Test-SetAResourceTagCase
     }
     finally
     {
-        Clean-ResourceGroup $rgname
+        Clean-ResourceGroup $rgName
     }
 }
 
-<#
-.SYNOPSIS
-Tests getting parent and child resources with different filter.
-.DESCRIPTION
-#>
-function Test-GetComplexResourceByDifferentFilters
+function Test-SetAzResourceForNonExistingResourceGroup
 {
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $rnameParent = Get-ResourceName
-    $rnameChild = Get-ResourceName
-    $resourceTypeParent = "Microsoft.Sql/servers"
-    $resourceTypeChild = "Microsoft.Sql/servers/databases"
-    $rglocation = "eastus"
+    $rgName = Get-ResourceGroupName
+    $rName = Get-ResourceName
+    $resourceType = "Microsoft.Storage/storageAccounts"
     $location = "eastus"
 
-    # Test
-    Write-Debug "New-AzResourceGroup -Name $rgname -Location $rglocation"
-    $group = New-AzResourceGroup -Name $rgname -Location $rglocation
+    # Act + Assert
+    Assert-ThrowsContains { Set-AzResource -ResourceGroupName $rgName -Name $rName -ResourceType $resourceType -Properties @{ propname = "propval" } -Force } "ResourceGroupNotFound : Resource group '$rgName' could not be found."
+}
 
-    $password = getAssetName 'P@1Long'
+function Test-SetAzResourceForNonExistingResource
+{
+    $rgName = Get-ResourceGroupName
+    $rName = Get-ResourceName
+    $resourceType = "Microsoft.Storage/storageAccounts"
+    $location = "eastus"
 
-    $apiversion = "2014-04-01"
-    Write-Debug "New-AzResource -Name $rnameParent -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeParent -PropertyObject @{`"administratorLogin`" = `"adminuser`"; `"administratorLoginPassword`" = $password} -ApiVersion $apiVersion -Force"
-    $actualParent = New-AzResource -Name $rnameParent -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeParent -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = $password} -ApiVersion $apiVersion -Force
-    #$expectedParent = Get-AzResource -ResourceId $actualParent.ResourceId
-    $expectedParent = Get-AzResource -Name $rnameParent -ResourceGroupName $rgname
-    Assert-NotNull $expectedParent
-    Write-Debug $expectedParent.ResourceId
+    try
+    {
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
 
-    Write-Debug "New-AzResource -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeChild -ResourceName $rnameParent/$rnameChild -PropertyObject @{`"collation`" = `"SQL_Latin1_General_CP1_CI_AS`"; `"maxSizeBytes`" = `"1073741824`"} -ApiVersion $apiVersion -Force"
-    $actualChild = New-AzResource -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeChild -ResourceName $rnameParent/$rnameChild -PropertyObject @{"collation" = "SQL_Latin1_General_CP1_CI_AS"; "maxSizeBytes" = "1073741824"} -ApiVersion $apiVersion -Force
-    #$expectedChild = Get-AzResource -ResourceId $actualChild.ResourceId
-    $expectedChild = Get-AzResource -Name $rnameChild -ResourceGroupName $rgname
-    Assert-NotNull $expectedChild
-    Write-Debug $expectedChild.ResourceId
-    Write-Debug $expectedChild.Name
-    Write-Debug $expectedChild.ResourceName
-<#
-    $expectedWithParentFilter = Get-AzResource -ResourceGroupName $rgname -Name $rnameParent
-    Assert-NotNull $expectedWithParentFilter
-    Assert-AreEqual $rnameParent $expectedWithParentFilter.Name
+        # Act + Assert
+        Assert-ThrowsContains { Set-AzResource -ResourceGroupName $rgName -Name $rName -ResourceType $resourceType -Properties @{ propname = "propval" } -Force } "ResourceNotFound : The Resource '$resourceType/$rName' under resource group '$rgName' was not found."
+    }
+    catch
+    {
+        Clean-ResourceGroup $rgName
+    }
+}
 
-    $expectedWithChildFilter = Get-AzResource -ResourceGroupName $rgname -Name $rnameChild
-    Assert-NotNull $expectedWithChildFilter
-    Assert-AreEqual $rnameParent/$rnameChild $expectedWithChildFilter.Name
-#>
-    $expectedChildWithParentChildFilter = Get-AzResource -ResourceGroupName $rgname -Name $rnameParent/$rnameChild
-    Assert-NotNull $expectedChildWithParentChildFilter
-    Assert-AreEqual $rnameParent/$rnameChild $expectedChildWithParentChildFilter.Name
+function Test-SetAzResourceForNonExistingResourceType
+{
+    $rgName = Get-ResourceGroupName
+    $rName = Get-ResourceName
+    $resourceType = "Microsoft.Storage/storageAccounts"
+    $location = "eastus"
 
-    $list = Get-AzResource -ResourceGroupName $rgname
+    try
+    {
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
 
-    $parentFromList = $list | where {$_.ResourceType -eq $resourceTypeParent} | Select-Object -First 1
-    $childFromList = $list | where {$_.ResourceType -eq $resourceTypeChild} | Select-Object -Last 1
+        New-AzResource -ResourceGroupName $rgName -Name $rName -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Force
 
-    $listOfServers = Get-AzResource -ResourceType $resourceTypeParent -ResourceGroupName $rgname
-    $listOfDatabases = Get-AzResource -ResourceType $resourceTypeChild -ResourceGroupName $rgname
+        # Act + Assert
+        Assert-ThrowsContains { Set-AzResource -ResourceGroupName $rgName -Name $rName -ResourceType "Microsoft.FakeProvider/fakeType" -Properties @{ propname = "propval" } -Force } "InvalidResourceNamespace : The resource namespace 'Microsoft.FakeProvider' is invalid."
+    }
+    catch
+    {
+        Clean-ResourceGroup $rgName
+    }
+}
 
-    # Assert
-    Assert-AreEqual $expectedParent.Name $actualParent.ResourceName
-    Assert-AreEqual $expectedChild.Name $actualChild.ResourceName
-    Assert-AreEqual $expectedParent.ResourceType $actualParent.ResourceType
-    Assert-AreEqual $expectedChild.ResourceType $actualChild.ResourceType
+function Test-RemoveAzResourceByResourceName
+{
+    $rgName = Get-ResourceGroupName
+    $rName = Get-ResourceName
+    $resourceType = "Microsoft.Storage/storageAccounts"
+    $location = "eastus"
 
-    #ToDo: Get-AzResource return object not equal to New-AzResource
-    Assert-AreEqual 3 $list.Count
-    Assert-AreEqual $expectedParent.Name $parentFromList.Name
-    Assert-AreEqual $expectedChild.Name $childFromList.Name
-    Assert-AreEqual $expectedParent.ResourceType $parentFromList.ResourceType
-    Assert-AreEqual $expectedChild.ResourceType $childFromList.ResourceType
+    try
+    {
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
 
-    Assert-AreEqual 1 $listOfServers.Count
-    Assert-AreEqual 2 $listOfDatabases.Count
- }
+        New-AzResource -ResourceGroupName $rgName -Name $rName -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Force
+
+        # Wait for the resources to be ready
+        Start-TestSleep -Seconds 30
+
+        # Act
+        Remove-AzResource -ResourceGroupName -$rgName -Name $rName -ResourceType $resourceType -Force
+
+        $resource = Get-AzResource -ResourceGroupName $rgName -Name $rName
+
+        # Assert
+        Assert-Null $resource
+    }
+    catch
+    {
+        Clean-ResourceGroup $rgName
+    }
+}
+
+function Test-RemoveAzResourceByResourceId
+{
+    $subscriptionId = (Get-AzContext).Subscription.Id
+    $rgName = Get-ResourceGroupName
+    $rName = Get-ResourceName
+    $resourceType = "Microsoft.Storage/storageAccounts"
+    $resourceId = "/subscriptions/$($subscriptionId)/resourceGroups/$rgName/providers/$resourceType/$rName"
+    $location = "eastus"
+
+    try
+    {
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
+
+        New-AzResource -ResourceId $resourceId -Location $location -Sku @{ Name = "Standard_LRS" } -Force
+
+        # Wait for the resources to be ready
+        Start-TestSleep -Seconds 30
+
+        # Act
+        Remove-AzResource -ResourceId $resourceId -Force
+
+        $resource = Get-AzResource -ResourceGroupName $rgName -Name $rName
+
+        # Assert
+        Assert-Null $resource
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgName
+    }
+}
+
+function Test-RemoveAzResourceViaPiping
+{
+    $rgName = Get-ResourceGroupName
+    $rName = Get-ResourceName
+    $resourceType = "Microsoft.Storage/storageAccounts"
+    $location = "eastus"
+
+    try
+    {
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
+
+        New-AzResource -ResourceGroupName $rgName -Name $rName -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Force
+
+        # Wait for the resources to be ready
+        Start-TestSleep -Seconds 30
+
+        # Act
+        Get-AzResource -ResourceGroupName $rgName -Name $rName | Remove-AzResource -Force
+
+        $resource = Get-AzResource -ResourceGroupName $rgName -Name $rName
+
+        # Assert
+        Assert-Null $resource
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgName
+    }
+}
+
+function Test-RemoveAzResourceParentResourceType
+{
+    $rgName = Get-ResourceGroupName
+    $rNameParent = Get-ResourceName
+    $rNameChild = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Sql/servers"
+    $resourceTypeChild = "Microsoft.Sql/servers/databases"
+    $location = "eastus"
+
+    try
+    {
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
+
+        New-AzResource -ResourceGroupName $rgName -Name $rNameParent -Location $location -ResourceType $resourceTypeParent -Properties @{ administratorLogin = "adminuser"; administratorLoginPassword = "Password" } -Force
+        New-AzResource -ResourceGroupName $rgName -Name "$rNameParent/$rNameChild" -Location $location -ResourceType $resourceTypeChild -Force
+
+        # Wait for the resources to be ready
+        Start-TestSleep -Seconds 30
+
+        $parentResource = Get-AzResource -ResourceGroupName $rgName -Name $rNameParent
+
+        # Assert before remove
+		Assert-NotNull $parentResource
+
+        # Act
+        $parentResource | Remove-AzResource -Force
+
+		$resources = Get-AzResource -ResourceGroupName $rgName
+
+        # Assert
+        Assert-Null $resources
+    }
+    catch
+    {
+        Clean-ResourceGroup $rgName
+    }
+}
+
+function Test-RemoveAzResourceChildResourceType
+{
+    $rgName = Get-ResourceGroupName
+    $rNameParent = Get-ResourceName
+    $rNameChild1 = Get-ResourceName
+    $rNameChild2 = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Sql/servers"
+    $resourceTypeChild = "Microsoft.Sql/servers/databases"
+    $location = "eastus"
+
+    try
+    {
+        # Arrange
+        New-AzResourceGroup -Name $rgName -Location $location
+
+        New-AzResource -ResourceGroupName $rgName -Name $rNameParent -Location $location -ResourceType $resourceTypeParent -Properties @{ administratorLogin = "adminuser"; administratorLoginPassword = "Password" } -Force
+        New-AzResource -ResourceGroupName $rgName -Name "$rNameParent/$rNameChild1" -Location $location -ResourceType $resourceTypeChild -Force
+        New-AzResource -ResourceGroupName $rgName -Name "$rNameParent/$rNameChild2" -Location $location -ResourceType $resourceTypeChild -Force
+
+        # Wait for the resources to be ready
+        Start-TestSleep -Seconds 30
+
+        $childResource1 = Get-AzResource -ResourceGroupName $rgName -Name $rNameChild1
+        $childResource2 = Get-AzResource -ResourceGroupName $rgName -Name $rNameChild2
+
+        # Assert before remove
+		Assert-NotNull $childResource1
+        Assert-NotNull $childResource2
+		
+        # Act
+        Remove-AzResource -ResourceGroupName $rgName -Name "$rNameParent/$rNameChild1" -ResourceType $resourceTypeChild -Force
+        $childResource2 | Remove-AzResource -Force
+
+        $childResource1 = Get-AzResource -ResourceGroupName $rgName -Name $rNameChild1
+	    $childResource2 = Get-AzResource -ResourceGroupName $rgName -Name $rNameChild2
+
+        # Assert
+        Assert-Null $childResource1
+	    Assert-Null $childResource2
+    }
+    catch
+    {
+        Clean-ResourceGroup $rgName
+    }
+}
+
+function Test-RemoveAzResourceWithWildcard
+{
+    $rgName1 = (Get-ResourceGroupName) + "resourcegroup1"
+    $rgName2 = (Get-ResourceGroupName) + "resourcegroup2"
+    $rgName3 = (Get-ResourceGroupName) + "rsrgrp3"
+    $rName11 = (Get-ResourceName) + "resource11"
+    $rName12 = (Get-ResourceName) + "resource12"
+    $rName21 = (Get-ResourceName) + "resource2"
+    $rName22 = (Get-ResourceName) + "rsr2"
+    $rName31 = (Get-ResourceName) + "rsr3"
+    $rName32 = (Get-ResourceName) + "resource3"
+    $resourceType = "Microsoft.Storage/storageAccounts"
+    $location = "eastus"
+
+    try
+    {
+        # Arrange
+        New-AzResourceGroup -Name $rgName1 -Location $location
+        New-AzResourceGroup -Name $rgName2 -Location $location
+        New-AzResourceGroup -Name $rgName3 -Location $location
+
+        New-AzResource -ResourceGroupName $rgName1 -Name $rName11 -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Force
+        New-AzResource -ResourceGroupName $rgName1 -Name $rName12 -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Force
+        New-AzResource -ResourceGroupName $rgName2 -Name $rName21 -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Force
+        New-AzResource -ResourceGroupName $rgName2 -Name $rName22 -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Force
+        New-AzResource -ResourceGroupName $rgName3 -Name $rName31 -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Force
+        New-AzResource -ResourceGroupName $rgName3 -Name $rName32 -Location $location -ResourceType $resourceType -Sku @{ Name = "Standard_LRS" } -Force
+
+        # Wait for the resources to be ready
+		Start-TestSleep -Seconds 30
+
+        # Act
+        Get-AzResource -Name "*rsr*" | Remove-AzResource -Force
+
+        $resources1 = Get-AzResource -ResourceGroupName $rgName1
+        $resources2 = Get-AzResource -ResourceGroupName $rgName2
+        $resources3 = Get-AzResource -ResourceGroupName $rgName3
+        
+        # Assert
+        Assert-NotNull $resources1
+        Assert-AreEqual 2 @($resources1).Length
+
+        Assert-NotNull $resources2
+		Assert-AreEqual 1 @($resources2).Length
+
+        Assert-NotNull $resources3
+		Assert-AreEqual 1 @($resources3).Length
+
+        # Act
+		Get-AzResource -ResourceGroupName "*resourcegroup*" -Name "*resource*" | Remove-AzResource -Force
+
+        $resources1 = Get-AzResource -ResourceGroupName $rgName1
+        $resources2 = Get-AzResource -ResourceGroupName $rgName2
+        $resources3 = Get-AzResource -ResourceGroupName $rgName3
+        
+        # Assert
+        Assert-Null $resources1
+
+        Assert-Null $resources2
+
+        Assert-NotNull $resources3
+		Assert-AreEqual 1 @($resources3).Length
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgName1
+        Clean-ResourceGroup $rgName2
+        Clean-ResourceGroup $rgName3
+    }
+}

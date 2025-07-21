@@ -16,7 +16,8 @@ Creates an Azure Storage context.
 ### OAuthAccount (Default)
 ```
 New-AzStorageContext [-StorageAccountName] <String> [-UseConnectedAccount] [-Protocol <String>]
- [-Endpoint <String>] [-EnableFileBackupRequestIntent] [<CommonParameters>]
+ [-Endpoint <String>] [-EnableFileBackupRequestIntent]
+ [<CommonParameters>]
 ```
 
 ### AccountNameAndKey
@@ -58,13 +59,15 @@ New-AzStorageContext [-StorageAccountName] <String> -SasToken <String> -Environm
 ### OAuthAccountEnvironment
 ```
 New-AzStorageContext [-StorageAccountName] <String> [-UseConnectedAccount] [-Protocol <String>]
- -Environment <String> [-EnableFileBackupRequestIntent] [<CommonParameters>]
+ -Environment <String> [-EnableFileBackupRequestIntent]
+ [<CommonParameters>]
 ```
 
 ### AccountNameAndKeyServiceEndpoint
 ```
 New-AzStorageContext [-StorageAccountName] <String> [-StorageAccountKey] <String> -BlobEndpoint <String>
- [-FileEndpoint <String>] [-QueueEndpoint <String>] [-TableEndpoint <String>] [<CommonParameters>]
+ [-FileEndpoint <String>] [-QueueEndpoint <String>] [-TableEndpoint <String>]
+ [<CommonParameters>]
 ```
 
 ### OAuthAccountServiceEndpoint
@@ -200,7 +203,7 @@ This command creates a context for the account named myaccountname with a key fo
 New-AzStorageContext -Anonymous -BlobEndpoint "https://myaccountname.blob.core.windows.net/"
 ```
 
-This command creates a context for anonymous use for the account named myaccountname, with specified blob enpoint. 
+This command creates a context for anonymous use for the account named myaccountname, with specified blob endpoint. 
 
 ### Example 13: Create a context by using an SAS token with specified endpoints
 ```powershell

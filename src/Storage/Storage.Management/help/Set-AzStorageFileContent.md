@@ -18,8 +18,8 @@ Uploads the contents of a file.
 Set-AzStorageFileContent [-ShareName] <String> [-Source] <String> [[-Path] <String>] [-FileMode <String>]
  [-Owner <String>] [-Group <String>] [-PassThru] [-Force] [-AsJob] [-DisAllowTrailingDot]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [-PreserveSMBAttribute] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ### Share
@@ -27,8 +27,8 @@ Set-AzStorageFileContent [-ShareName] <String> [-Source] <String> [[-Path] <Stri
 Set-AzStorageFileContent [-ShareClient] <ShareClient> [-Source] <String> [[-Path] <String>]
  [-FileMode <String>] [-Owner <String>] [-Group <String>] [-PassThru] [-Force] [-AsJob]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [-PreserveSMBAttribute] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ### Directory
@@ -36,8 +36,8 @@ Set-AzStorageFileContent [-ShareClient] <ShareClient> [-Source] <String> [[-Path
 Set-AzStorageFileContent [-ShareDirectoryClient] <ShareDirectoryClient> [-Source] <String> [[-Path] <String>]
  [-FileMode <String>] [-Owner <String>] [-Group <String>] [-PassThru] [-Force] [-AsJob]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [-PreserveSMBAttribute] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,12 +71,12 @@ That cmdlet runs a script block for each file that creates the appropriate path 
 The result has the same name and same relative position with regard to the other files that this example uploads.
 For more information about script blocks, type `Get-Help about_Script_Blocks`.
 
-### Example 3: Upload a local file to an Azure file, and perserve the local File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in the Azure file.
+### Example 3: Upload a local file to an Azure file, and preserve the local File SMB properties (File Attributes, File Creation Time, File Last Write Time) in the Azure file.
 ```powershell
 Set-AzStorageFileContent -Source $localFilePath -ShareName sample -Path "dir1/file1" -PreserveSMBAttribute
 ```
 
-This example uploads a local file to an Azure file, and perserves the local File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in the Azure file.
+This example uploads a local file to an Azure file, and preserves the local File SMB properties (File Attributes, File Creation Time, File Last Write Time) in the Azure file.
 
 ### Example 4:  Upload a file with FileMode, Owner and Group to a NFS file share
 ```powershell
@@ -282,7 +282,7 @@ Accept wildcard characters: False
 ```
 
 ### -PreserveSMBAttribute
-Keep the source File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in destination File. This parameter is only available on Windows.
+Keep the source File SMB properties (File Attributes, File Creation Time, File Last Write Time) in destination File. This parameter is only available on Windows.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

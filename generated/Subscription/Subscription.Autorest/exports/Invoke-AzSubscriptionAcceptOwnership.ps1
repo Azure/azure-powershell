@@ -45,6 +45,8 @@ function Invoke-AzSubscriptionAcceptOwnership {
 [CmdletBinding(DefaultParameterSetName='AcceptExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='AcceptExpanded', Mandatory)]
+    [Parameter(ParameterSetName='AcceptViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='AcceptViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Path')]
     [System.String]
     # Subscription Id.
@@ -54,28 +56,42 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='AcceptExpanded')]
+    [Parameter(ParameterSetName='AcceptViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
     [System.String]
     # Management group Id for the subscription.
     ${ManagementGroupId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='AcceptExpanded')]
+    [Parameter(ParameterSetName='AcceptViaIdentityExpanded')]
     [Alias('DisplayName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
     [System.String]
     # The friendly name of the subscription.
     ${SubscriptionName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='AcceptExpanded')]
+    [Parameter(ParameterSetName='AcceptViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IAcceptOwnershipRequestPropertiesTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.IAcceptOwnershipRequestPropertiesTags]))]
     [System.Collections.Hashtable]
     # Tags for the subscription
     ${Tag},
+
+    [Parameter(ParameterSetName='AcceptViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Accept operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='AcceptViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [System.String]
+    # Json string supplied to the Accept operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -151,6 +167,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -172,6 +197,8 @@ begin {
         $mapping = @{
             AcceptExpanded = 'Az.Subscription.private\Invoke-AzSubscriptionAcceptOwnership_AcceptExpanded';
             AcceptViaIdentityExpanded = 'Az.Subscription.private\Invoke-AzSubscriptionAcceptOwnership_AcceptViaIdentityExpanded';
+            AcceptViaJsonFilePath = 'Az.Subscription.private\Invoke-AzSubscriptionAcceptOwnership_AcceptViaJsonFilePath';
+            AcceptViaJsonString = 'Az.Subscription.private\Invoke-AzSubscriptionAcceptOwnership_AcceptViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -180,6 +207,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

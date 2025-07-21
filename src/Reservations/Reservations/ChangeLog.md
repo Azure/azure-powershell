@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.14.1
+* Fixed purchase request missing update x-ms-mutability for location property.
+
+## Version 0.14.0
 * Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
 * Removed unexpanded variant for some cmdlets
     * Get-AzReservationAvailableScope

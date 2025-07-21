@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.WebApps
                         Name = webAppName;
 
                         // We have to choose between the slot name embedded in the name parameter or the slot parameter. 
-                        // The choice for now is to prefer the embeeded slot name over the slot parameter. 
+                        // The choice for now is to prefer the embedded slot name over the slot parameter. 
                         Slot = slotName;
                     }
                     break;

@@ -120,5 +120,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVpnClientRootCertificate](./Get-AzVpnClientRootCertificate.md)
 
 [Remove-AzVpnClientRootCertificate](./Remove-AzVpnClientRootCertificate.md)
-
-

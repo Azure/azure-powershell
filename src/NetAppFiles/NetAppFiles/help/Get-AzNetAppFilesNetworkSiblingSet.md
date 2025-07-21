@@ -14,7 +14,7 @@ Get details of a network sibling set
 
 ```
 Get-AzNetAppFilesNetworkSiblingSet -Location <String> -SubnetId <String> -NetworkSiblingSetId <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +28,7 @@ $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountNam
 Get-AzNetAppFilesNetworkSiblingSet -Location "westus" -NetworkSiblingSetId "$retrievedVolume.NetworkSiblingSetId" -SubnetId "mysubnet"
 ```
 
-This example gets a volume then uses that volumes NetworkSiblingSetId property to get deatils about that network sibling get.
+This example gets a volume then uses that volumes NetworkSiblingSetId property to get details about that network sibling get.
 
 ## PARAMETERS
 
@@ -71,21 +71,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

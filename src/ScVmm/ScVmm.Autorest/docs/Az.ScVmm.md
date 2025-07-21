@@ -42,7 +42,7 @@ The operation to Get a virtual machine virtual disk.
 The operation to get the extension on a virtual machine.
 
 ### [Get-AzScVmmVMGuestAgent](Get-AzScVmmVMGuestAgent.md)
-Implements GuestAgent GET method.
+Implements Azure Arc agent GET method.
 
 ### [Get-AzScVmmVMNic](Get-AzScVmmVMNic.md)
 The operation to Get a virtual machine network interface.
@@ -82,10 +82,10 @@ Please note some properties can be set only during virtual machine creation.
 create a checkpoint in virtual machine.
 
 ### [New-AzScVmmVMExtension](New-AzScVmmVMExtension.md)
-The operation to create the extension on a virtual machine where Guest Management is enabled.
+The operation to create the extension on a virtual machine where Azure Arc agent is installed.
 
 ### [New-AzScVmmVMGuestAgent](New-AzScVmmVMGuestAgent.md)
-Enables Guest Management on the Virtual Machine.
+Installs Azure Arc agent on the Virtual Machine.
 
 ### [New-AzScVmmVMTemplate](New-AzScVmmVMTemplate.md)
 Onboards the ScVmm VM Template as an Azure VM Template resource.

@@ -60,6 +60,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Azure Traffic Collector name",
         SerializedName = @"azureTrafficCollectorName",
         PossibleTypes = new [] { typeof(string) })]
@@ -68,6 +71,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Collector Policy Name",
         SerializedName = @"collectorPolicyName",
         PossibleTypes = new [] { typeof(string) })]
@@ -76,6 +82,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -84,6 +93,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -92,6 +104,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Azure Subscription ID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

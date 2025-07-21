@@ -51,7 +51,7 @@ directive:
 
 ### 
 ``` yaml
-commit: 8e064cb38f22bc60d94ce8ec2c987aa04dbc618e
+commit: e2bdeadfb399be0691fb9d0425bd2b32d252538c
 input-file: 
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/common-types/v1/common.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-11-01/computeRPCommon.json

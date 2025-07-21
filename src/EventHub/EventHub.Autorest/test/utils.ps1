@@ -69,6 +69,7 @@ function setupEnv(
     $namespaceV7 = "namespaceV7" + (RandomString -allChars $false -len 6)
     $namespaceV8 = "namespaceV8" + (RandomString -allChars $false -len 6)
     $namespaceV9 = "namespaceV9" + (RandomString -allChars $false -len 6)
+    $namespaceV12 = "namespaceV12" + (RandomString -allChars $false -len 6)
     $resourceGroupArmId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/" + $resourceGroup
     $namespaceResourceId = "$resourceGroupArmId/providers/Microsoft.EventHub/namespaces/$namespaceName"
     $primaryNamespaceName = "namespaceName" + (RandomString -allChars $false -len 6)
@@ -112,6 +113,7 @@ function setupEnv(
     $msi2Name = "$dependentResourcesPrefix-msi2"
     $msi1ResourceId = "$resourceGroupArmId/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$msi1Name"
     $msi2ResourceId = "$resourceGroupArmId/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$msi2Name"
+    $clusterName = "test-clusterName" + (RandomString -allChars $false -len 6)
 
     $namespacePrimaryKey = GenerateSASKey
     $namespaceSecondaryKey = GenerateSASKey
@@ -132,6 +134,8 @@ function setupEnv(
     $env.Add("namespaceV7", $namespaceV7)
     $env.Add("namespaceV8", $namespaceV8)
     $env.Add("namespaceV9", $namespaceV9)
+    $env.add("namespaceV12", $namespaceV12)
+    $env.add("clusterName" , $clusterName)
     $env.Add("systemAssignedNamespaceName", $systemAssignedNamespaceName)
     $env.Add("keyVaultUri", $keyVaultUri)
     $env.Add("primaryNamespace", $primaryNamespaceName)

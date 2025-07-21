@@ -14,13 +14,11 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using System.Management.Automation;
 
     /// <summary>
     /// A cmdlet that removes an azure resource.
     /// </summary>
-    [GenericBreakingChangeWithVersion("The API version for the resource type will be updated to use the default version instead of the latest.", "14.0.0", "8.0.0")]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Resource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(bool))]
     public class RemoveAzureResourceCmdlet : ResourceManipulationCmdletBase
     {
@@ -43,7 +41,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 resourceId,
                 () =>
                 {
-                    var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
+                    var apiVersion = DetermineApiVersion(resourceId);
 
                     var operationResult = this.GetResourcesClient()
                         .DeleteResource(

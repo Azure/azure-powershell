@@ -92,9 +92,9 @@ function setupEnv() {
     # 6. Create a gallery definition
     Write-Host -ForegroundColor Green "Create a gallery definition..."
     $imageDefName = $env.AddWithCache("imageDefName", "azpsvmimage1", $UsePreviousConfigForRecord)
-    $image = New-AzGalleryImageDefinition -GalleryName $testGalleryName -ResourceGroupName $rg -Location $location -Name $imageDefName -OsState generalized -OsType Linux -Publisher bez -Offer UbuntuServer -Sku '18.04-LTS' -HyperVGeneration V1
+    $image = New-AzGalleryImageDefinition -GalleryName $testGalleryName -ResourceGroupName $rg -Location $location -Name $imageDefName -OsState generalized -OsType Linux -Publisher bez -Offer UbuntuServer -Sku '22.04-LTS' -HyperVGeneration V1
     $env.AddWithCache("image", $image, $UsePreviousConfigForRecord)
-
+    
     # 7. Create a template with shared image
     Write-Host -ForegroundColor Green "Creating a image builder template..."
     $templateName = $env.AddWithCache("templateName", 'azps-tmp-' + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
@@ -110,13 +110,13 @@ function setupEnv() {
     $Content | Out-File -FilePath $JsonTemplatePath -Force
     New-AzImageBuilderTemplate -Name $templateName -ResourceGroupName $rg -JsonFilePath $JsonTemplatePath
 
-    # 9. Add user id to access the template
+    # 8. Add user id to access the template
     Write-Host "Add user id to access the template"
     New-AzRoleAssignment -ObjectId $identity.PrincipalId -RoleDefinitionName Contributor -ResourceGroupName $rg
 
-    # 2025/04/25 Joyer: Added it for Stop test case. Edit Start-AzImageBuilderTemplate case with adding another template.
+    # 2025/04/30 Joyer: Added it for Stop test case. Edit Start-AzImageBuilderTemplate case with adding another template.
     # 10. Start the image builder above
-    # ~Need to record start image builder separetely.~
+    # ~Need to record start image builder separately.~
     # ~Only below lines are not needed in recording stop test cases~
     # Write-Host -ForegroundColor Green "Starting the image builder template..."
     # Start-TestSleep -Seconds 25
@@ -153,6 +153,7 @@ function cleanupEnv() {
     Get-AzRoleDefinition -Name $env.roleName | Remove-AzRoleDefinition -Force
     
     # 3. remove resource group
-    Get-AzResourceGroup -Name $env.rg | Remove-AzResourceGroup
+    # Clean failed by canceling the image builder template
+    Remove-AzResourceGroup -Name $env.rg
 }
 

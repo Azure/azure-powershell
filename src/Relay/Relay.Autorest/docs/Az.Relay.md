@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Relay
-Module Guid: 4bf8fb16-5644-49f6-85ac-c4c6573a2ecd
+Module Guid: fc75e4f5-af4d-4046-b098-0c3dc2f5ed69
 Download Help Link: https://learn.microsoft.com/powershell/module/az.relay
 Help Version: 1.0.0.0
 Locale: en-US

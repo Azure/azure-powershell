@@ -32,8 +32,8 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2024-02-01/afdx.json
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2024-02-01/cdn.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2025-04-15/afdx.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2025-04-15/cdn.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
@@ -42,7 +42,7 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: Cdn
 subject-prefix: $(service-name)
-commit: 186970d644b0d6249772290fedfb4a288f433cc3
+commit: 0cdef1ef00cf9020967dc099a67366d5a2c51d29
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -51,9 +51,8 @@ identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+disable-transform-identity-type: true
+flatten-userassignedidentity: false
 
 directive:
   - from: swagger-document
@@ -70,53 +69,186 @@ directive:
     - ResponseBasedOriginErrorDetectionParameters
     # Both CDN and AFDX
     - HealthProbeParameters
-  # Generate memory object as parameter of the cmelet.
+  # Generate memory object as parameter of the cmdlet.
   - model-cmdlet:
-    - ResourceReference
+    - model-name: ResourceReference
+      cmdlet-name: New-AzCdnResourceReferenceObject
+    - model-name: ResourceReference
+      cmdlet-name: New-AzFrontDoorCdnResourceReferenceObject
     # origin group parameters
-    - HealthProbeParameters
-    - ResponseBasedOriginErrorDetectionParameters
+    - model-name: HealthProbeParameters
+      cmdlet-name: New-AzCdnHealthProbeParametersObject
+    - model-name: ResponseBasedOriginErrorDetectionParameters
+      cmdlet-name: New-AzCdnResponseBasedOriginErrorDetectionParametersObject
     # https
-    # - UserManagedHttpsParameters
-    # - CdnManagedHttpsParameters
-    - DeliveryRule
+    # - model-name: UserManagedHttpsParameters
+    #   cmdlet-name: New-AzCdnUserManagedHttpsParametersObject
+    # - model-name: CdnManagedHttpsParameters
+    #   cmdlet-name: New-AzCdnManagedHttpsParametersObject
+    - model-name: DeliveryRule
+      cmdlet-name: New-AzCdnDeliveryRuleObject
     # CDN condition
-    - DeliveryRuleRemoteAddressCondition
-    - DeliveryRuleRequestMethodCondition
-    - DeliveryRuleQueryStringCondition
-    - DeliveryRulePostArgsCondition
-    - DeliveryRuleRequestUriCondition
-    - DeliveryRuleRequestHeaderCondition
-    - DeliveryRuleRequestBodyCondition
-    - DeliveryRuleRequestSchemeCondition
-    - DeliveryRuleUrlPathCondition
-    - DeliveryRuleUrlFileExtensionCondition
-    - DeliveryRuleUrlFileNameCondition
-    - DeliveryRuleHttpVersionCondition
-    - DeliveryRuleCookiesCondition
-    - DeliveryRuleIsDeviceCondition
-    # CDN action
-    - DeliveryRuleCacheExpirationAction
-    - DeliveryRuleCacheKeyQueryStringAction
-    - OriginGroupOverrideAction
-    - UrlRedirectAction
-    - UrlSigningAction
-    - UrlRewriteAction
-    - DeliveryRuleRequestHeaderAction
-    - DeliveryRuleResponseHeaderAction
-    # CDN content
-    - PurgeParameters
-    - LoadParameters
+    # - model-name: DeliveryRuleRemoteAddressCondition
+    #   cmdlet-name: New-AzCdnDeliveryRuleRemoteAddressConditionObject
+    # - model-name: DeliveryRuleRequestMethodCondition
+    #   cmdlet-name: New-AzCdnDeliveryRuleRequestMethodConditionObject
+    # - model-name: DeliveryRuleQueryStringCondition
+    #   cmdlet-name: New-AzCdnDeliveryRuleQueryStringConditionObject
+    # - model-name: DeliveryRulePostArgsCondition
+    #   cmdlet-name: New-AzCdnDeliveryRulePostArgsConditionObject
+    # - model-name: DeliveryRuleRequestUriCondition
+    #   cmdlet-name: New-AzCdnDeliveryRuleRequestUriConditionObject
+    # - model-name: DeliveryRuleRequestHeaderCondition
+    #   cmdlet-name: New-AzCdnDeliveryRuleRequestHeaderConditionObject
+    # - model-name: DeliveryRuleRequestBodyCondition
+    #   cmdlet-name: New-AzCdnDeliveryRuleRequestBodyConditionObject
+    # - model-name: DeliveryRuleRequestSchemeCondition
+    # #   cmdlet-name: New-AzCdnDeliveryRuleRequestSchemeConditionObject
+    # - model-name: DeliveryRuleUrlPathCondition 
+    #   cmdlet-name: New-AzCdnDeliveryRuleUrlPathConditionObject
+    # - model-name: DeliveryRuleUrlFileExtensionCondition 
+    #   cmdlet-name: New-AzCdnDeliveryRuleUrlFileExtensionConditionObject
+    # - model-name:  DeliveryRuleUrlFileNameCondition
+    #   cmdlet-name: New-AzCdnDeliveryRuleUrlFileNameConditionObject
+    # - model-name:  DeliveryRuleHttpVersionCondition
+    #   cmdlet-name: New-AzCdnDeliveryRuleHttpVersionConditionObject
+    # - model-name:  DeliveryRuleCookiesCondition
+    #   cmdlet-name: New-AzCdnDeliveryRuleCookiesConditionObject
+    # - model-name:  DeliveryRuleIsDeviceCondition
+    #   cmdlet-name: New-AzCdnDeliveryRuleIsDeviceConditionObject
+
+    # - model-name: DeliveryRuleRequestBodyCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleRequestBodyConditionObject
+    # - model-name:  DeliveryRuleCookiesCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleCookiesConditionObject
+    # - model-name:  DeliveryRuleHttpVersionCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleHttpVersionConditionObject
+    # - model-name:  DeliveryRuleIsDeviceCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleIsDeviceConditionObject
+    # - model-name: DeliveryRulePostArgsCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRulePostArgsConditionObject
+    # - model-name: DeliveryRuleQueryStringCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleQueryStringConditionObject
+    # - model-name: DeliveryRuleRemoteAddressCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleRemoteAddressConditionObject
+    # - model-name: DeliveryRuleRequestHeaderCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleRequestHeaderConditionObject
+    # - model-name: DeliveryRuleRequestMethodCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleRequestMethodConditionObject
+    # - model-name: DeliveryRuleRequestSchemeCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleRequestSchemeConditionObject
+    # - model-name: DeliveryRuleRequestUriCondition
+    #    cmdlet-name: New-AzFrontDoorCdnRuleRequestUriConditionObject
+    # - model-name: DeliveryRuleUrlFileExtensionCondition 
+    #    cmdlet-name: New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject
+    # - model-name:  DeliveryRuleUrlFileNameCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleUrlFileNameConditionObject
+    # - model-name: DeliveryRuleUrlPathCondition 
+    #   cmdlet-name: New-AzFrontDoorCdnRuleUrlPathConditionObject
+    # - model-name:  DeliveryRuleServerPortCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleServerPortConditionObject
+    # - model-name:  DeliveryRuleClientPortCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleClientPortConditionObject
+    # - model-name: DeliveryRuleHostNameCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleHostNameConditionObject
+    # - model-name: DeliveryRuleSocketAddrCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleSocketAddrConditionObject
+    # - model-name: DeliveryRuleSslProtocolCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleSslProtocolConditionObject
+
+    - model-name: AfdDomainHttpsParameters
+      cmdlet-name: New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject
+
+    - model-name: AfdPurgeParameters
+      cmdlet-name: New-AzFrontDoorCdnPurgeParametersObject
     
-    # AFDX profile LogScrubbing, need to rename the memory ojects, not sure how to rename a memory object currently.
-    # - ProfileLogScrubbing
-    # - ProfileScrubbingRules
+    # - model-name: CustomerCertificateParameters
+    #   cmdlet-name: New-AzFrontDoorCdnSecretCustomerCertificateParametersObject
+
+    # - model-name: AzureFirstPartyManagedCertificateParameters
+    #   cmdlet-name: New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject
+    # - model-name: ManagedCertificateParameters
+    #   cmdlet-name: New-AzFrontDoorCdnSecretManagedCertificateParametersObject
+    # - model-name: UrlSigningKeyParameters
+    #   cmdlet-name: New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject
+
+    - model-name: SecurityPolicyWebApplicationFirewallAssociation
+      cmdlet-name: New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject
+    - model-name: SecurityPolicyWebApplicationFirewallParameters
+      cmdlet-name: New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject
+
+    # OriginGroup Parameters
+    - model-name: HealthProbeParameters
+      cmdlet-name: New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject
+    - model-name: LoadBalancingSettingsParameters
+      cmdlet-name: New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject
+
+    # CDN action
+
+    # - model-name:  DeliveryRuleCacheExpirationAction
+    #   cmdlet-name: New-AzCdnDeliveryRuleCacheExpirationActionObject
+    # - model-name:  DeliveryRuleCacheKeyQueryStringAction
+    #   cmdlet-name: New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject
+    # - model-name:  OriginGroupOverrideAction
+    #   cmdlet-name: New-AzCdnOriginGroupOverrideActionObject
+    # - model-name:  UrlRedirectAction
+    #   cmdlet-name: New-AzFrontDoorCdnRuleUrlRedirectActionObject
+    # - model-name:  UrlRewriteAction
+    #   cmdlet-name: New-AzFrontDoorCdnRuleUrlRewriteActionObject
+    # - model-name:  UrlAction
+    #   cmdlet-name: New-AzFrontDoorCdnRuleUrlActionObject
+    # - model-name: UrlSigningAction
+    #   cmdlet-name: New-AzFrontDoorCdnRuleUrlSigningActionObject
+    # - model-name:  DeliveryRuleRequestHeaderAction
+    #   cmdlet-name: New-AzCdnDeliveryRuleRequestHeaderActionObject
+    # - model-name:  DeliveryRuleResponseHeaderAction
+    #   cmdlet-name: New-AzCdnDeliveryRuleResponseHeaderActionObject  
+
+    # - model-name:  UrlRedirectAction
+    #   cmdlet-name: New-AzCdnUrlRedirectActionObject
+    # - model-name:  UrlRewriteAction
+    #   cmdlet-name: New-AzCdnUrlRewriteActionObject
+    # - model-name: UrlSigningAction
+    #   cmdlet-name: New-AzCdnUrlSigningActionObject
+    # - model-name:  DeliveryRuleRequestHeaderAction
+    #   cmdlet-name: New-AzFrontDoorCdnRuleRequestHeaderActionObject
+    # - model-name:  DeliveryRuleResponseHeaderAction
+    #   cmdlet-name: New-AzFrontDoorCdnRuleResponseHeaderActionObject
+    # - model-name: DeliveryRuleRouteConfigurationOverrideAction
+    #   cmdlet-name: New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject
+
+    # CDN content
+    - model-name: PurgeParameters
+      cmdlet-name: New-AzCdnPurgeParametersObject
+    - model-name: LoadParameters
+      cmdlet-name: New-AzCdnLoadParametersObject
+    - model-name: MigrationEndpointMapping
+      cmdlet-name: New-AzCdnMigrationEndpointMappingObject
+    # AFDX profile LogScrubbing, need to rename the memory objects, not sure how to rename a memory object currently.
+    - model-name: ProfileLogScrubbing
+      cmdlet-name: New-AzFrontDoorCdnProfileLogScrubbingObject
+    - model-name: ProfileScrubbingRules
+      cmdlet-name: New-AzFrontDoorCdnProfileScrubbingRulesObject
     # Migration to AFDx
-    # - MigrationParameters
-    # - MigrationWebApplicationFirewallMapping
+    - model-name: MigrationParameters
+      cmdlet-name: New-AzFrontDoorCdnMigrationParametersObject
+    - model-name: MigrationWebApplicationFirewallMapping
+      cmdlet-name: New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject
     # Upgrade sku
-    # - ProfileUpgradeParameters
-    # - ProfileChangeSkuWafMapping
+    - model-name: ProfileUpgradeParameters
+      cmdlet-name: New-AzFrontDoorCdnProfileUpgradeParametersObject
+    - model-name: ProfileChangeSkuWafMapping
+      cmdlet-name: New-AzFrontDoorCdnProfileChangeSkuWafMappingObject
+
+    - model-name: OriginGroupHealthProbeSetting
+      cmdlet-name: New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject
+
+  # 
+
+  # rename CdnProfiles_CdnMigrateToAfd to avoid conflict with Profiles_Migrate
+  - from: swagger-document
+    where: $.paths..operationId
+    transform: return $.replace(/^Profiles_CdnMigrateToAfd$/g, "CdnProfilesToAfd_CdnMigrateToAfd")
 
   - where:
       model-name: .*
@@ -146,7 +278,7 @@ directive:
   - where:
       verb: Set
     remove: true
-  # Remove some cmdlets' ViaIdentity which are inconvinient to call
+  # Remove some cmdlets' ViaIdentity which are inconvenient to call
   - where:
       variant: ^CheckViaIdentity$|^CheckViaIdentityExpanded$
       subject: ^NameAvailability$|^EndpointNameAvailability$
@@ -160,8 +292,12 @@ directive:
       subject: ^CustomDomainCustomHttps$
     remove: true
   - where:
-      variant: ^UpgradeExpanded$
-      subject: AFDProfileSku
+      subject: NameAvailability
+      variant: ^CheckViaJsonFilePath1$
+    remove: true
+  - where:
+      subject: NameAvailability
+      variant: ^CheckViaJsonString1$
     remove: true
 
   # Hide Cdn profile
@@ -179,6 +315,7 @@ directive:
     hide: true
   # Hide classicAfd migrate command and customize
   - where:
+      verb: Invoke
       subject: CanProfileMigrate
     hide: true
   - where:
@@ -199,6 +336,14 @@ directive:
   - where:
       subject: (.*)ProfileEndpointNameAvailability
       verb: Test
+    hide: true
+
+  # Hide key group api for 2024-05-01-preview
+  - where:
+      subject: KeyGroup
+    hide: true
+  - where:
+      subject: KeyGroupUpdate
     hide: true
 
   # Rename
@@ -244,18 +389,28 @@ directive:
       subject: ResourceUsage
     set:
       subject: SubscriptionResourceUsage
+  - where:
+      subject: CdnProfileTo
+    set:
+      subject: CdnProfileToAFD
+  # Hide classicCdn migrate command and customize, must be put after rename
+  - where:
+      subject-prefix: FrontDoorCdn
+      subject: CdnProfilesTo
+      verb: Move
+    hide: true
 
-  # https://github.com/Azure/autorest.powershell/issues/906
   - where:
-      model-name: AfdDomainUpdatePropertiesParameters
-      property-name: PreValidatedCustomDomainResourceId
+      subject: AbortProfileMigration
     set:
-      property-name: AfdDomainUpdatePropertiesParametersPreValidatedCustomDomainResourceId
+      subject: AbortProfileToAFDMigration
   - where:
-      model-name: AfdDomainUpdatePropertiesParameters
-      property-name: PreValidatedCustomDomainResourceIdId
+      verb: Invoke
+      subjectPrefix: Cdn
+      subject: CanProfile
     set:
-      property-name: PreValidatedCustomDomainResourceId
+      verb: Test
+      subject: ProfileMigrationCompatibility
 
   # Customize the output table formatting
   - where:
@@ -282,6 +437,34 @@ directive:
       format-table:
         properties:
           - Id
+  # Abort 
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/migrationAbort"].post.responses
+    transform: >-
+      return {
+          "200": {
+            "description": "Accepted and the operation will complete asynchronously.",
+            "headers": {
+              "location": {
+                "type": "string"
+              }
+            }
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously.",
+            "headers": {
+              "location": {
+                "type": "string"
+              }
+            }
+          },
+          "default": {
+            "description": "CDN error response describing why the operation failed.",
+            "schema": {
+              "$ref": "../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+      }
 
   # Delete 404
   - from: swagger-document
@@ -304,938 +487,4 @@ directive:
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}"].delete
     transform: >-
       $["x-ms-long-running-operation-options"] = {"final-state-via": "azure-async-operation"}
-
-  # announce upcoming MI-related breaking changes
-  - where:
-      parameter-name: IdentityType
-    set:
-      breaking-change:
-        change-description: IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      parameter-name: IdentityUserAssignedIdentity
-    set:
-      breaking-change:
-        old-parameter-type: Hashtable
-        new-parameter-type: string[]
-        change-description: IdentityUserAssignedIdentity will be renamed to UserAssignedIdentity. And its type will be simplified as string array.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: EndpointContent
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: 	The type of property 'ContentPath' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IPurgeParameters' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: EndpointContent
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: 	The type of property 'ContentPath, Domain' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IPurgeParameters' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: EdgeNode
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IIPAddressGroup
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IIPAddressGroup]
-        change-description: The type of property 'IPAddressGroup' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEdgeNode' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IIPAddressGroup' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IIPAddressGroup]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: Endpoint
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedCustomDomain
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedCustomDomain]
-        change-description: The type of property 'CustomDomain' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedCustomDomain' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedCustomDomain]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: Endpoint
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedOrigin
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedOrigin]
-        change-description: The type of property 'Origin' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedOrigin' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedOrigin]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: Endpoint
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedOriginGroup
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedOriginGroup]
-        change-description: The type of property 'OriginGroup' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedOriginGroup' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedOriginGroup]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: Endpoint
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: MMicrosoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRule
-        replacement-cmdlet-output-type:  System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRule]
-        change-description: The type of property 'DeliveryPolicyRule' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRule' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRule]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: Endpoint
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: MMicrosoft.Azure.PowerShell.Cmdlets.Cdn.Models.IGeoFilter
-        replacement-cmdlet-output-type:  System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IGeoFilter]
-        change-description: The type of property 'GeoFilter' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IGeoFilter' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IGeoFilter]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: Endpoint
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: MMicrosoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningKey
-        replacement-cmdlet-output-type:  System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningKey]
-        change-description: The type of property 'UrlSigningKey' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningKey' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningKey]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: Endpoint
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ContentTypesToCompress, CountryCode' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  # New-AzCdnEndpoint
-  - where:
-      subjectPrefix: Cdn
-      subject: Endpoint
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction1
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction]
-        change-description: The type of property 'Action' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRule' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction1' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: Endpoint
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition]
-        change-description: The type of property 'Condition' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRule' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: Endpoint
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]
-        change-description: The type of property 'Origin' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOriginGroup' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: OriginGroup
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]
-        change-description: The type of property 'Origin' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroup' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: OriginGroup
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters]
-        change-description: 	The type of property 'HttpErrorRange' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResponseBasedOriginErrorDetectionParameters' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: Profile
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules]
-        change-description: The type of property 'LogScrubbingRule' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: Profile
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules]
-        change-description: The type of property 'LogScrubbingRule' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-# Update-AzFrontDoorCdnProfileSku
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: ProfileSku
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules]
-        change-description: The type of property 'LogScrubbingRule' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: ProfileSku
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileChangeSkuWafMapping
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileChangeSkuWafMapping]
-        change-description: The type of property 'WafMappingList' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileUpgradeParameters' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileChangeSkuWafMapping' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileChangeSkuWafMapping]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: Route
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference]
-        change-description: The type of property 'CustomDomain' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: Route
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]
-        change-description: The type of property 'RuleSet' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: Route
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'PatternsToMatch, CompressionSettingContentTypesToCompress' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: Rule
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction1
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction]
-        change-description: breaking change caused by autorest upgrade
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: Rule
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRuleAction1
-        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction
-        change-description: The type of property 'Action' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction1' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: Rule
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition]
-        change-description: The type of property 'Condition' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-# Test-AzFrontDoorCdnProfileMigration
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: ProfileMigration
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationErrorType
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationErrorType]
-        change-description: The type of property 'Error' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICanMigrateResult' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationErrorType' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationErrorType]'.	
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      parameter-name: Action
-    set:
-      breaking-change:
-        old-parameter-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRuleAction1
-        new-parameter-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction
-        change-description: The element type for parameter 'Action' has been changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRuleAction1' to 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      parameter-name: Action
-    set:
-      breaking-change:
-        old-parameter-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRuleAction1
-        new-parameter-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction
-        change-description: The element type for parameter 'Action' has been changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRuleAction1' to 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-# Object
-  - where:
-      subjectPrefix: Cdn
-      subject: DeliveryRuleCookiesCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleCookiesCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: DeliveryRuleHttpVersionCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleCookiesCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: DeliveryRuleIsDeviceCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleCookiesCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: DeliveryRule
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction1
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction]
-        change-description: The type of property 'Action' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRule' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction1' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: DeliveryRule
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition]
-        change-description: The type of property 'Condition' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRule' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: DeliveryRule
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition]
-        change-description: The type of property 'Condition' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRule' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      parameter-name: Action
-    set:
-      breaking-change:
-        old-parameter-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRuleAction1
-        new-parameter-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction
-        change-description: The element type for parameter 'Action' has been changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRuleAction1' to 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: DeliveryRulePostArgsCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRulePostArgsCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: DeliveryRuleQueryStringCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: 	The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleQueryStringCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: DeliveryRuleRemoteAddressCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRemoteAddressCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: DeliveryRuleRequestBodyCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestBodyCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: DeliveryRuleRequestHeaderCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestHeaderCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: DeliveryRuleRequestMethodCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestMethodCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: DeliveryRuleRequestSchemeCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestSchemeCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: DeliveryRuleRequestUriCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestUriCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: DeliveryRuleUrlFileExtensionCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleUrlFileExtensionCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: DeliveryRuleUrlFileNameCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleUrlFileNameCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: DeliveryRuleUrlPathCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleUrlPathCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: LoadParameters
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ContentPath, ContentPath' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.LoadParameters' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: ResponseBasedOriginErrorDetectionParameters
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters]
-        change-description: The type of property 'HttpErrorRange' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResponseBasedOriginErrorDetectionParameters' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: UrlSigningAction
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningParamIdentifier
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningParamIdentifier]
-        change-description: The type of property 'ParameterNameOverride' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlSigningAction' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningParamIdentifier' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningParamIdentifier]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: Cdn
-      subject: UrlSigningAction
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningParamIdentifier
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningParamIdentifier]
-        change-description: The type of property 'ParameterNameOverride' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlSigningAction' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningParamIdentifier' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningParamIdentifier]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: MigrationParameters
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationWebApplicationFirewallMapping
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationWebApplicationFirewallMapping]
-        change-description: The type of property 'MigrationWebApplicationFirewallMapping' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MigrationParameters' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationWebApplicationFirewallMapping' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationWebApplicationFirewallMapping]'.	
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: ProfileLogScrubbing
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules]IMigrationWebApplicationFirewallMapping]
-        change-description: The type of property 'ScrubbingRule' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileLogScrubbing' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: ProfileUpgradeParameters
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileChangeSkuWafMapping
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileChangeSkuWafMapping]
-        change-description: The type of property 'WafMappingList' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileUpgradeParameters' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileChangeSkuWafMapping' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileChangeSkuWafMapping]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: PurgeParameters
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ContentPath, Domain' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdPurgeParameters' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: PurgeParameters
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ContentPath, Domain' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdPurgeParameters' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: RuleClientPortCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleClientPortCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: RuleCookiesCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: 	The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleCookiesCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: RuleHostNameCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleHostNameCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: RuleHttpVersionCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleHttpVersionCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: RuleIsDeviceCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleIsDeviceCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: RulePostArgsCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRulePostArgsCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: RuleQueryStringCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleQueryStringCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: RuleRemoteAddressCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRemoteAddressCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: RuleRequestBodyCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestBodyCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: RuleRequestHeaderCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestHeaderCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: RuleRequestMethodCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestMethodCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: RuleRequestSchemeCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestSchemeCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: RuleRequestUriCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestUriCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: RuleServerPortCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleServerPortCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: RuleSocketAddrCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleSocketAddrCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: RuleUrlFileNameCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleUrlFileNameCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: RuleUrlPathCondition
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'ParameterMatchValue' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleUrlPathCondition' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: RuleUrlSigningAction
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningParamIdentifier
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningParamIdentifier]
-        change-description: The type of property 'ParameterNameOverride' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlSigningAction' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningParamIdentifier' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningParamIdentifier]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: SecretCustomerCertificateParameters
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'SubjectAlternativeName' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomerCertificateParameters' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: SecretFirstPartyManagedCertificateParameters
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'SubjectAlternativeName' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AzureFirstPartyManagedCertificateParameters' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: SecurityPolicyWebApplicationFirewallAssociation
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference]
-        change-description: The type of property 'Domain' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicyWebApplicationFirewallAssociation' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: SecurityPolicyWebApplicationFirewallAssociation
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'PatternsToMatch' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicyWebApplicationFirewallAssociation' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: SecurityPolicyWebApplicationFirewallAssociation
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyWebApplicationFirewallAssociation
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyWebApplicationFirewallAssociation]
-        change-description: The type of property 'Association' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicyWebApplicationFirewallParameters' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyWebApplicationFirewallAssociation' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyWebApplicationFirewallAssociation]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: SecurityPolicyWebApplicationFirewallAssociation
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference]
-        change-description: The type of property 'Domain' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicyWebApplicationFirewallAssociation' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: SecurityPolicyWebApplicationFirewallAssociation
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'PatternsToMatch' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicyWebApplicationFirewallAssociation' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  - where:
-      subjectPrefix: FrontDoorCdn
-      subject: SecurityPolicyWebApplicationFirewallAssociation
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: System.String[]
-        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.String]
-        change-description: The type of property 'PatternsToMatch' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicyWebApplicationFirewallAssociation' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/5/19
-  # # New-AzCdnManagedHttpsParametersObject
-  # - where:
-  #     verb: New
-  #     subject: ManagedHttpsParameters
-  #     variant: Create
-  #   set:
-  #     breaking-change:
-  #       change-description: Add a new mandatory parameter CertificateSourceParameterTypeName
-  #       deprecated-by-version: 5.0.0
-  #       deprecated-by-azversion: 14.0.0
-  #       change-effective-date: 2025/5/19
-  # # New-AzCdnUserManagedHttpsParametersObject
-  # - where:
-  #     verb: New
-  #     subject: UserManagedHttpsParameters
-  #     variant: Create
-  #   set:
-  #     breaking-change:
-  #       change-description: Add a new mandatory parameter CertificateSourceParameterTypeName
-  #       deprecated-by-version: 5.0.0
-  #       deprecated-by-azversion: 14.0.0
-  #       change-effective-date: 2025/5/19
 ```

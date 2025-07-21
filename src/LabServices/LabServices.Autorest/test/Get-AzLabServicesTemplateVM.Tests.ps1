@@ -19,11 +19,11 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 
 Describe 'Get-AzLabServicesTemplateVM' {
     It 'Get Template' {
-        Get-AzLabServicesTemplateVM -ResourceGroupName $ENV:ResourceGroupName -LabName $ENV:LabName | Should -Not -BeNullOrEmpty
+        Get-AzLabServicesTemplateVM -ResourceGroupName $env.ResourceGroupName -LabName $env.LabName | Should -Not -BeNullOrEmpty
     }
 
     It 'Get Template from Lab' {
-        $lab = Get-AzLabServicesLab -Name $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName
+        $lab = Get-AzLabServicesLab -Name $env.LabName -ResourceGroupName $env.ResourceGroupName
         Get-AzLabServicesTemplateVM -Lab $lab | Should -Not -BeNullOrEmpty
     }
 }

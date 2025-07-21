@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.PowerShell
     public bool UseExpandedFormat { get; set; }
 
     private const string ModelNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models";
-    private const string SupportNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support";
+    private const string SupportNamespace = @"${$project.supportNamespace.fullName}";
 
     protected override void ProcessRecord()
     {

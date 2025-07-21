@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the automaiton account name.
+        /// Gets or sets the automation account name.
         /// </summary>
         public string AutomationAccountName { get; set; }
 

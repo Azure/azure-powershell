@@ -362,10 +362,6 @@
     "alias": "Billing"
   },
   {
-    "regex": "Media",
-    "alias": "Media Services"
-  },
-  {
     "regex": "UsageAggregates",
     "alias": "Usage Aggregates"
   },
@@ -971,5 +967,25 @@
   {
     "alias": "LambdaTest",
     "module": "LambdaTest"
+  },
+  {
+    "alias": "Carbon",
+    "module": "Carbon"
+  },
+  {
+    "alias": "MongoDB",
+    "module": "MongoDB"
+  },
+  {
+    "module": "DependencyMap",
+    "alias": "DependencyMap"
+  },
+  {
+    "alias": "DataTransfer",
+    "module": "DataTransfer"
+  },
+  {
+    "alias": "CloudHsm",
+    "module": "CloudHsm"
   }
 ]

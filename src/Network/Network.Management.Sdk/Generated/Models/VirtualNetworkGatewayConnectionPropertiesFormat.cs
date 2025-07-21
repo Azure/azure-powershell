@@ -57,6 +57,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="connectionMode">The connection mode for this connection.
         /// Possible values include: &#39;Default&#39;, &#39;ResponderOnly&#39;, &#39;InitiatorOnly&#39;</param>
 
+        /// <param name="tunnelProperties">Tunnel properties for virtual network gateway connection
+        /// </param>
+
         /// <param name="sharedKey">The IPSec shared key.
         /// </param>
 
@@ -109,7 +112,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="enablePrivateLinkFastPath">Bypass the ExpressRoute gateway when accessing private-links. ExpressRoute
         /// FastPath (expressRouteGatewayBypass) must be enabled.
         /// </param>
-        public VirtualNetworkGatewayConnectionPropertiesFormat(VirtualNetworkGateway virtualNetworkGateway1, string connectionType, string authorizationKey = default(string), VirtualNetworkGateway virtualNetworkGateway2 = default(VirtualNetworkGateway), LocalNetworkGateway localNetworkGateway2 = default(LocalNetworkGateway), System.Collections.Generic.IList<SubResource> ingressNatRules = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> egressNatRules = default(System.Collections.Generic.IList<SubResource>), string connectionProtocol = default(string), int? routingWeight = default(int?), int? dpdTimeoutSeconds = default(int?), string connectionMode = default(string), string sharedKey = default(string), string connectionStatus = default(string), System.Collections.Generic.IList<TunnelConnectionHealth> tunnelConnectionStatus = default(System.Collections.Generic.IList<TunnelConnectionHealth>), long? egressBytesTransferred = default(long?), long? ingressBytesTransferred = default(long?), SubResource peer = default(SubResource), bool? enableBgp = default(bool?), System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration> gatewayCustomBgpIPAddresses = default(System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration>), bool? useLocalAzureIPAddress = default(bool?), bool? usePolicyBasedTrafficSelectors = default(bool?), System.Collections.Generic.IList<IpsecPolicy> ipsecPolicies = default(System.Collections.Generic.IList<IpsecPolicy>), System.Collections.Generic.IList<TrafficSelectorPolicy> trafficSelectorPolicies = default(System.Collections.Generic.IList<TrafficSelectorPolicy>), string resourceGuid = default(string), string provisioningState = default(string), bool? expressRouteGatewayBypass = default(bool?), bool? enablePrivateLinkFastPath = default(bool?))
+        public VirtualNetworkGatewayConnectionPropertiesFormat(VirtualNetworkGateway virtualNetworkGateway1, string connectionType, string authorizationKey = default(string), VirtualNetworkGateway virtualNetworkGateway2 = default(VirtualNetworkGateway), LocalNetworkGateway localNetworkGateway2 = default(LocalNetworkGateway), System.Collections.Generic.IList<SubResource> ingressNatRules = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> egressNatRules = default(System.Collections.Generic.IList<SubResource>), string connectionProtocol = default(string), int? routingWeight = default(int?), int? dpdTimeoutSeconds = default(int?), string connectionMode = default(string), System.Collections.Generic.IList<VirtualNetworkGatewayConnectionTunnelProperties> tunnelProperties = default(System.Collections.Generic.IList<VirtualNetworkGatewayConnectionTunnelProperties>), string sharedKey = default(string), string connectionStatus = default(string), System.Collections.Generic.IList<TunnelConnectionHealth> tunnelConnectionStatus = default(System.Collections.Generic.IList<TunnelConnectionHealth>), long? egressBytesTransferred = default(long?), long? ingressBytesTransferred = default(long?), SubResource peer = default(SubResource), bool? enableBgp = default(bool?), System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration> gatewayCustomBgpIPAddresses = default(System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration>), bool? useLocalAzureIPAddress = default(bool?), bool? usePolicyBasedTrafficSelectors = default(bool?), System.Collections.Generic.IList<IpsecPolicy> ipsecPolicies = default(System.Collections.Generic.IList<IpsecPolicy>), System.Collections.Generic.IList<TrafficSelectorPolicy> trafficSelectorPolicies = default(System.Collections.Generic.IList<TrafficSelectorPolicy>), string resourceGuid = default(string), string provisioningState = default(string), bool? expressRouteGatewayBypass = default(bool?), bool? enablePrivateLinkFastPath = default(bool?))
 
         {
             this.AuthorizationKey = authorizationKey;
@@ -123,6 +126,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.RoutingWeight = routingWeight;
             this.DpdTimeoutSeconds = dpdTimeoutSeconds;
             this.ConnectionMode = connectionMode;
+            this.TunnelProperties = tunnelProperties;
             this.SharedKey = sharedKey;
             this.ConnectionStatus = connectionStatus;
             this.TunnelConnectionStatus = tunnelConnectionStatus;
@@ -213,6 +217,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "connectionMode")]
         public string ConnectionMode {get; set; }
+
+        /// <summary>
+        /// Gets or sets tunnel properties for virtual network gateway connection
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tunnelProperties")]
+        public System.Collections.Generic.IList<VirtualNetworkGatewayConnectionTunnelProperties> TunnelProperties {get; set; }
 
         /// <summary>
         /// Gets or sets the IPSec shared key.
@@ -343,6 +353,7 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 this.LocalNetworkGateway2.Validate();
             }
+
 
 
 

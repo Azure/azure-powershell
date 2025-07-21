@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.3.0
 * Updated existing Cmdlets
   - Get-AzStandbyVMPoolStatus added StandbyPool Health and StandbyPool Prediction information in the response.
   - Get-AzStandbyContainerGroupPoolStatus added StandbyPool Health and StandbyPool Prediction information in the response.

@@ -253,7 +253,6 @@ function Invoke-AzCostManagementUsageQueryInternal {
 
     $ColumnList = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryColumn]
     foreach ($Column in $ResponseContent.Properties.Columns) {
-      Write-Host $Column.ToString()
       $QueryColumn = [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryColumn]::New()
       $QueryColumn.Name = $Column.Name
       $QueryColumn.Type = $Column.Type

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.1
 * Modified InvokeCiPolicySigning to include ShouldProcess command confirmation
 
 ## Version 0.1.0

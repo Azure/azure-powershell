@@ -15,13 +15,15 @@ Download letter of authorization document for an express route port.
 ### ResourceNameParameterSet (Default)
 ```
 New-AzExpressRoutePortLOA -PortName <String> -ResourceGroupName <String> -CustomerName <String>
- [-Destination <String>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Destination <String>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceObjectParameterSet
 ```
 New-AzExpressRoutePortLOA -ExpressRoutePort <PSExpressRoutePort> -CustomerName <String> [-Destination <String>]
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet

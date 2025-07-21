@@ -19,20 +19,19 @@ using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.PowerShell.Authenticators;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Security.Cryptography;
 using System.Text.Json;
 
 namespace Microsoft.Azure.Commands.Profile
 {
-    [SecureStringBreakingChange("The Token property of the output type will be changed from String to SecureString. Add the [-AsSecureString] switch to avoid the impact of this upcoming breaking change.", "14.0.0", "5.0.0")]
     [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "AccessToken", DefaultParameterSetName = KnownResourceNameParameterSet)]
-    [OutputType(typeof(PSAccessToken), typeof(PSSecureAccessToken))]
+    [OutputType(typeof(PSSecureAccessToken))]
     public class GetAzureRmAccessTokenCommand : AzureRMCmdlet
     {
         private const string ResourceUrlParameterSet = "ResourceUrl";
@@ -73,7 +72,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Mandatory = false, HelpMessage = "Optional Tenant Id. Use tenant id of default context if not specified.")]
         public string TenantId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Specify to convert output token as a secure string.")]
+        [Parameter(Mandatory = false, HelpMessage = "The parameter is no long used but kept for backward compatibility.")]
         public SwitchParameter AsSecureString { get; set; }
 
         public override void ExecuteCmdlet()
@@ -146,13 +145,24 @@ namespace Microsoft.Azure.Commands.Profile
                 }
             }
 
-            if (AsSecureString.IsPresent)
+            bool usePlainText = false;
+            try
             {
-                WriteObject(new PSSecureAccessToken(result));
+                usePlainText = string.Equals(Environment.GetEnvironmentVariable(Constants.AzPsOutputPlainTextAccessToken), bool.TrueString, StringComparison.OrdinalIgnoreCase);
+            }
+            catch (Exception e)
+            {
+                WriteDebug("Exception occurred while checking environment variable AZUREPS_OUTPUT_PLAINTEXT_AZACCESSTOKEN: " + e.ToString());
+                //Throw exception when the caller doesn't have permission.
+                //Use SecureString only when AZUREPS_OUTPUT_PLAINTEXT_AZACCESSTOKEN is successfully set.
+            }
+            if (usePlainText && !AsSecureString)
+            {
+                WriteObject(result);
             }
             else
             {
-                WriteObject(result);
+                WriteObject(new PSSecureAccessToken(result));
             }
         }
     }

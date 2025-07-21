@@ -14,7 +14,8 @@ Removes a network manager management group connection.
 
 ```
 Remove-AzNetworkManagerManagementGroupConnection -ManagementGroupId <String> -Name <String> [-Force]
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

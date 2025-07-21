@@ -172,7 +172,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Start-AzDataFactoryV2Trigger]()
+[Start-AzDataFactoryV2Trigger](Start-AzDataFactoryV2Trigger.md)
 
-[Stop-AzDataFactoryV2Trigger]()
+[Stop-AzDataFactoryV2Trigger](Stop-AzDataFactoryV2Trigger.md)
 

@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             public string Description { get; set; }
 
             /// <summary>
-            /// Includeses the specified code point.
+            /// Includes the specified code point.
             /// </summary>
             /// <param name="codePoint">The code point.</param>
             /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 		}
 
         /// <summary>
-        /// Executings the assembly path.
+        /// Executing the assembly path.
         /// </summary>
         /// <returns>System.String.</returns>
         private string ExecutingAssemblyPath()

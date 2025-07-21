@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ManagedServiceIdentity
-Module Guid: 07ea637c-d665-40b4-9ced-fc0bdd913dde
+Module Guid: ac255d9f-3244-436f-8ee5-2eb25b96fce9
 Download Help Link: https://learn.microsoft.com/powershell/module/az.managedserviceidentity
 Help Version: 1.0.0.0
 Locale: en-US
@@ -24,10 +24,10 @@ Gets the identity.
 Lists the associated resources for this identity.
 
 ### [New-AzFederatedIdentityCredential](New-AzFederatedIdentityCredential.md)
-Create or update a federated identity credential under the specified user assigned identity.
+create a federated identity credential under the specified user assigned identity.
 
 ### [New-AzUserAssignedIdentity](New-AzUserAssignedIdentity.md)
-Create or update an identity in the specified subscription and resource group.
+create an identity in the specified subscription and resource group.
 
 ### [Remove-AzFederatedIdentityCredential](Remove-AzFederatedIdentityCredential.md)
 Deletes the federated identity credential.
@@ -36,8 +36,8 @@ Deletes the federated identity credential.
 Deletes the identity.
 
 ### [Update-AzFederatedIdentityCredential](Update-AzFederatedIdentityCredential.md)
-Create or update a federated identity credential under the specified user assigned identity.
+update a federated identity credential under the specified user assigned identity.
 
 ### [Update-AzUserAssignedIdentity](Update-AzUserAssignedIdentity.md)
-Update an identity in the specified subscription and resource group.
+update an identity in the specified subscription and resource group.
 

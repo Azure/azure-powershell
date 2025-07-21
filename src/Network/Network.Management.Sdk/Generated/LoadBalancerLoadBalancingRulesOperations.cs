@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2024-05-01";
+            string apiVersion = "2024-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2024-05-01";
+            string apiVersion = "2024-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -538,9 +538,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (groupName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(groupName, "^[a-z][a-z0-9]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(groupName, "^[a-zA-Z0-9_.-]*$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "groupName", "^[a-z][a-z0-9]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "groupName", "^[a-zA-Z0-9_.-]*$");
                 }
             }
             if (loadBalancerName == null)
@@ -549,9 +549,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (loadBalancerName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(loadBalancerName, "^[a-z][a-z0-9]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(loadBalancerName, "^[a-zA-Z0-9_.-]*$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "loadBalancerName", "^[a-z][a-z0-9]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "loadBalancerName", "^[a-zA-Z0-9_.-]*$");
                 }
             }
             if (loadBalancingRuleName == null)
@@ -560,9 +560,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (loadBalancingRuleName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(loadBalancingRuleName, "^[a-z][a-z0-9]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(loadBalancingRuleName, "^[a-zA-Z0-9_.-]*$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "loadBalancingRuleName", "^[a-z][a-z0-9]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "loadBalancingRuleName", "^[a-zA-Z0-9_.-]*$");
                 }
             }
             if (this.Client.SubscriptionId == null)
@@ -570,7 +570,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2024-05-01";
+            string apiVersion = "2024-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

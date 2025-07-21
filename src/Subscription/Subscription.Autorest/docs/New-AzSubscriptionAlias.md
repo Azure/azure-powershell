@@ -21,7 +21,7 @@ New-AzSubscriptionAlias -AliasName <String> -SubscriptionId <String> [-Tag <Hash
 ### WorkloadCreateExpanded
 ```
 New-AzSubscriptionAlias -AliasName <String> -BillingScope <String> -SubscriptionName <String>
- -Workload <Workload> [-ManagementGroupId <String>] [-ResellerId <String>] [-SubscriptionOwnerId <String>]
+ -Workload <String> [-ManagementGroupId <String>] [-ResellerId <String>] [-SubscriptionOwnerId <String>]
  [-SubscriptionTenantId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -246,7 +246,7 @@ The workload type of the subscription.
 It can be either Production or DevTest.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Subscription.Support.Workload
+Type: System.String
 Parameter Sets: WorkloadCreateExpanded
 Aliases:
 
@@ -295,7 +295,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionAliasResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponse
 
 ## NOTES
 

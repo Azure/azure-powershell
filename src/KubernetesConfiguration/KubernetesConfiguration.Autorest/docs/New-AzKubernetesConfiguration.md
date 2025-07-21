@@ -17,9 +17,8 @@ New-AzKubernetesConfiguration -ClusterName <String> -ClusterType <String> -Name 
  -ResourceGroupName <String> [-SubscriptionId <String>] [-ClusterScoped]
  [-ConfigurationProtectedSetting <Hashtable>] [-EnableHelmOperator] [-HelmOperatorChartValue <String>]
  [-HelmOperatorChartVersion <String>] [-OperatorInstanceName <String>] [-OperatorNamespace <String>]
- [-OperatorParam <String>] [-OperatorScope <OperatorScopeType>] [-OperatorType <OperatorType>]
- [-RepositoryUrl <String>] [-SshKnownHost <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-OperatorParam <String>] [-OperatorScope <String>] [-OperatorType <String>] [-RepositoryUrl <String>]
+ [-SshKnownHost <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +40,7 @@ azpstestk8s http://github.com/xxxx azps_test_group
 
 This command creates a configuration for Kubernetes Cluster.
 
-### Example 2: Create a configuration for Kubernetes Cluster with specify paramter OperatorNamespace
+### Example 2: Create a configuration for Kubernetes Cluster with specify parameter OperatorNamespace
 ```powershell
 New-AzConnectedKubernetes -ClusterName azpstest_cluster_arc -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01
 New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azpstest_cluster_arc -Name azpstestk8s-operator -RepositoryUrl http://github.com/xxxx -OperatorScope 'cluster' -ClusterType ConnectedClusters
@@ -245,7 +244,7 @@ Accept wildcard characters: False
 Scope at which the operator will be installed.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScopeType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -260,7 +259,7 @@ Accept wildcard characters: False
 Type of the operator
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -370,7 +369,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ISourceControlConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ISourceControlConfiguration
 
 ## NOTES
 

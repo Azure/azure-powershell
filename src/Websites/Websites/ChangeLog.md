@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.4.1
 * Added AppServicePlan management support for Pv4 and Pmv4 tiers.
 
 ## Version 3.4.0
@@ -27,7 +29,7 @@
 * Migrated Websites.Helper generation from autorest csharp to autorest powershell.
 
 ## Version 3.3.0
-* Fixd the source app retrival from Microsoft.Web RP instead of ARM cache for `RestoreAzureWebAppSnapshot`
+* Fixed the source app retrieval from Microsoft.Web RP instead of ARM cache for `RestoreAzureWebAppSnapshot`
 * Upgraded nuget package to signed package.
 
 ## Version 3.2.2

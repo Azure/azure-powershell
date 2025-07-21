@@ -22,7 +22,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Management.ResourceManager.Models;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
     using System;
@@ -36,7 +35,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Cmdlet to get existing resources.
     /// </summary>
-    [GenericBreakingChangeWithVersion("The API version for the resource type will be updated to use the default version instead of the latest.", "14.0.0", "8.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Resource", DefaultParameterSetName = ByTagNameValueParameterSet), OutputType(typeof(PSResource))]
     public sealed class GetAzureResourceCmdlet : ResourceManagerCmdletBaseWithApiVersion
     {
@@ -229,7 +227,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                                             ResourceType,
                                             Name);
 
-                this.DefaultApiVersion = DetermineApiVersion(resourceId).Result;
+                DefaultApiVersion = DetermineApiVersion(resourceId);
 
                 return true;
             }
@@ -328,9 +326,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
 #pragma warning restore 618
 
-            var apiVersion = await this
-                .DetermineApiVersion(resourceId: resourceId)
-                .ConfigureAwait(continueOnCapturedContext: false);
+            var apiVersion = DetermineApiVersion(resourceId);
 
             var odataQuery = QueryFilterBuilder.CreateFilter(
                 subscriptionId: null,
@@ -487,10 +483,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             try
             {
-                var apiVersion = await this.DetermineApiVersion(
-                    resourceId: resource.Id,
-                    pre: this.Pre)
-                    .ConfigureAwait(continueOnCapturedContext: false);
+                var apiVersion = DetermineApiVersion(resource.Id);
 
                 return await this
                     .GetResourcesClient()

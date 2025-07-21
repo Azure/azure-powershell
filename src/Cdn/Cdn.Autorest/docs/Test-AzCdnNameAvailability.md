@@ -15,14 +15,26 @@ This is needed for resources where name is globally unique, such as a CDN endpoi
 
 ### CheckExpanded (Default)
 ```
-Test-AzCdnNameAvailability -Name <String> -Type <ResourceType> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Test-AzCdnNameAvailability -Name <String> -Type <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CheckExpanded1
 ```
-Test-AzCdnNameAvailability -Name <String> -Type <ResourceType> [-SubscriptionId <String>]
+Test-AzCdnNameAvailability -Name <String> -Type <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CheckViaJsonFilePath
+```
+Test-AzCdnNameAvailability -JsonFilePath <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CheckViaJsonString
+```
+Test-AzCdnNameAvailability -JsonString <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +43,7 @@ This is needed for resources where name is globally unique, such as a CDN endpoi
 
 ## EXAMPLES
 
-### Example 1: Check AzureCDN endpint name availability
+### Example 1: Check AzureCDN endpoint name availability
 ```powershell
 Test-AzCdnNameAvailability -Name endptest001 -Type Microsoft.Cdn/Profiles/Endpoints
 ```
@@ -42,7 +54,7 @@ Message            NameAvailable Reason
 Name not available False         Name is already in use
 ```
 
-Check AzureCDN endpint name availability
+Check AzureCDN endpoint name availability
 
 ## PARAMETERS
 
@@ -62,12 +74,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The resource name to validate.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CheckExpanded, CheckExpanded1
 Aliases:
 
 Required: True
@@ -96,8 +138,8 @@ Accept wildcard characters: False
 The type of the resource whose name is to be validated.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResourceType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CheckExpanded, CheckExpanded1
 Aliases:
 
 Required: True
@@ -145,7 +187,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckNameAvailabilityOutput
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityOutput
 
 ## NOTES
 

@@ -429,7 +429,7 @@ function Clear-LiveTestResources {
     param (
         [Parameter(Mandatory, Position = 0)]
         [ValidateNotNullOrEmpty()]
-        [Alias("ResourceGroupname")]
+        [Alias("ResourceGroupName")]
         [string] $Name
     )
 

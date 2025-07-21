@@ -5581,7 +5581,7 @@ function Test-VirtualMachineScaleSetSkuProfilePrioritized
     Update the Resiliency policies of VMSS using Update-Azvmss
     Test ResilientVMCreationPolicy and ResilientVMDeletionPolicy
 #>
-function Test-ResiliencyPolicyVMSS
+function Test-ResilientVMCreateDelete
 {
     # Setup
     $rgname = Get-ComputeTestResourceName
@@ -5617,8 +5617,107 @@ function Test-ResiliencyPolicyVMSS
         Assert-False { $updatedVmss.ResiliencyPolicy.ResilientVMCreationPolicy.Enabled };
         # check ResilientVMDeletionPolicy
         Assert-False { $updatedVmss.ResiliencyPolicy.ResilientVMDeletionPolicy.Enabled };
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
 
+<#
+.SYNOPSIS
+    Create a VMSS using New-Azvmssconfig
+    Update the Resiliency policies of VMSS using Update-Azvmss
+    Test AutomaticZoneRebalancingPolicy
+#>
+function Test-AutomaticZoneRebalancingPolicy
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
 
+    try
+    {
+        $loc = "eastus2euap"
+        $vmssName = "rebalancingVMSS"
+        $vnetName = "rebalancingVnet"
+        $subnetName = "rebalancingSubnet"
+        $rebalanceStrategy = "Recreate"
+        $rebalanceBehavior = "CreateBeforeDelete"
+        $zones = @("1", "2", "3")
+
+        # Create resource group
+        New-AzResourceGroup -Name $rgname -Location $loc -Force
+
+        # Create VNet and Subnet
+        $subnetConfig = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24" -DefaultOutboundAccess $false
+        $vnet = New-AzVirtualNetwork -Name $vnetName `
+            -ResourceGroupName $rgname `
+            -Location $loc `
+            -AddressPrefix "10.0.0.0/16" `
+            -Subnet $subnetConfig
+
+        # Get subnet object
+        $subnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnetName
+
+        # Build VMSS config
+        $vmssConfig = New-AzVmssConfig `
+            -Location $loc `
+            -SkuCapacity 0 `
+            -SkuName "Standard_D2s_v3" `
+            -UpgradePolicyMode "Automatic" `
+            -Zone $zones `
+            -EnableAutomaticZoneRebalance `
+            -AutomaticZoneRebalanceStrategy $rebalanceStrategy `
+            -AutomaticZoneRebalanceBehavior $rebalanceBehavior `
+            -SharedGalleryImageId "/SharedGalleries/WindowsServer.1P.Canary/images/2022-DATACENTER-AZURE-EDITION/versions/latest" `
+            -SecurityType "TrustedLaunch" 
+
+        # Configure IP and NIC
+        $ipCfg = New-AzVmssIpConfig -Name "ipconfig1" -SubnetId $subnet.Id
+        $vmssConfig = Add-AzVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmssConfig `
+            -Name "nicconfig1" -Primary $true -IPConfiguration $ipCfg
+
+        # Configure OS
+        $adminUsername = Get-ComputeTestResourceName;
+        $adminPassword = $PLACEHOLDER;
+        $vmssConfig = Set-AzVmssOSProfile -VirtualMachineScaleSet $vmssConfig `
+            -ComputerNamePrefix "test" `
+            -AdminUsername $adminUsername `
+            -AdminPassword $adminPassword
+
+        # Configure the HealthExtension required for enabling the AutomaticZoneRebalancingPolicy
+        $publicConfig = @{
+            "protocol" = "http";
+            "port" = 80;
+            "requestPath" = "/health";
+        }
+        $vmssConfig = Add-AzVmssExtension -VirtualMachineScaleSet $vmssConfig `
+            -Name "ApplicationHealthExtension" `
+            -Publisher "Microsoft.ManagedServices" `
+            -Type "ApplicationHealthLinux" `
+            -TypeHandlerVersion "1.0" `
+            -Setting $publicConfig `
+            -AutoUpgradeMinorVersion $true
+
+        # Assert the AutomaticZoneRebalancingPolicy from the vmssConfig
+        Assert-True { $vmssConfig.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.Enabled };
+        Assert-AreEqual $vmssConfig.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.RebalanceStrategy $rebalanceStrategy
+        Assert-AreEqual $vmssConfig.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.RebalanceBehavior $rebalanceBehavior
+
+        # Create the vmss using the config
+        $vmssResult = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmssConfig;
+
+        # Assert the AutomaticZoneRebalancingPolicy from the vmssResult
+        Assert-True { $vmssResult.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.Enabled };
+        Assert-AreEqual $vmssResult.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.RebalanceStrategy $rebalanceStrategy
+        Assert-AreEqual $vmssResult.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.RebalanceBehavior $rebalanceBehavior
+
+        # Update vmss
+        $vmssUpdate = Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -EnableAutomaticZoneRebalance $false
+
+        # Assert the AutomaticZoneRebalancingPolicy is now disabled
+        Assert-False { $vmssUpdate.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.Enabled };
     }
     finally
     {
@@ -5787,5 +5886,83 @@ function Test-EncryptionIdentityNotPartOfAzureVmssConfig{
     }
     finally {
         clean-ResourceGroup $rgName;
+    }
+}
+
+<#
+.SYNOPSIS
+Test Proxy Agent Setting 
+#>
+function Test-ProxyAgentSetting
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "westus2";
+
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssName = 'vmss' + $rgname;
+        $domainNameLabel1 = "d1" + $rgname;
+        
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+
+        # Case 1: Create using simple parameter set 
+        
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Location $loc -Credential $cred -VMScaleSetName $vmssName -DomainNameLabel $domainNameLabel1 -EnableProxyAgent
+
+        # verify
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Enabled $true
+       
+        # Case 2: Create using default parameter set 
+        $vmssName = $vmssName + "DefaultParam";
+        $vmssSize = 'Standard_D4s_v3'
+
+        # SRP
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
+
+        $publisher = "MicrosoftWindowsServer";
+        $offer = "WindowsServer";
+        $imgSku = "2022-DataCenter";
+        $version = "latest";
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        Assert-NotNull $vnet.Subnets
+        $subnetId = $vnet.Subnets[0].Id;
+        
+
+        $ipName = Get-ComputeTestResourceName
+        $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId -PublicIPAddressConfigurationName $ipName -PublicIPAddressConfigurationIdleTimeoutInMinutes 10 -DnsSetting "testvmssdnscom" -PublicIPAddressVersion "IPv4";
+
+        $vmss = New-AzVmssConfig -Location $loc  -SkuName $vmssSize
+        Add-AzVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmss -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+                -ImageReferenceOffer $offer -ImageReferenceSku $imgSku -ImageReferenceVersion $version `
+                -ImageReferencePublisher $publisher `
+            | Set-AzVmssProxyAgentSetting -EnableProxyAgent $true -ImdsMode Audit 
+
+        $vmssResult = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss
+
+        # verify 
+        Assert-AreEqual $vmssResult.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Enabled $true
+        Assert-AreEqual $vmssResult.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Imds.Mode "Audit";
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
     }
 }

@@ -1356,7 +1356,7 @@ INPUTOBJECT <IScVmmIdentity>: Identity Parameter
 
 LICENSEPROFILE <ILicenseProfileMachineInstanceView>: Specifies the License related properties for a machine.
   [EsuProfileAssignedLicense <ILicense>]: The assigned license resource.
-    Location <String>: The geo-location where the resource lives
+    [Location <String>]: The geo-location where the resource lives
     [Tag <ITrackedResourceTags>]: Resource tags.
       [(Any) <String>]: This indicates any property can be added to this object.
     [DetailEdition <String>]: Describes the edition of the license. The values are either Standard or Datacenter.

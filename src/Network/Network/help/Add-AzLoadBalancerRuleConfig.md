@@ -17,18 +17,20 @@ Adds a rule configuration to a load balancer.
 ```
 Add-AzLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Protocol <String>]
  [-LoadDistribution <String>] [-FrontendPort <Int32>] [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>]
- [-EnableFloatingIP] [-EnableTcpReset] [-DisableOutboundSNAT]
+ [-EnableFloatingIP] [-EnableTcpReset] [-DisableOutboundSNAT] [-EnableConnectionTracking]
  [-FrontendIpConfiguration <PSFrontendIPConfiguration>] [-BackendAddressPool <PSBackendAddressPool[]>]
- [-Probe <PSProbe>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Probe <PSProbe>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 Add-AzLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Protocol <String>]
  [-LoadDistribution <String>] [-FrontendPort <Int32>] [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>]
- [-EnableFloatingIP] [-EnableTcpReset] [-DisableOutboundSNAT] [-FrontendIpConfigurationId <String>]
- [-BackendAddressPoolId <String[]>] [-ProbeId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EnableFloatingIP] [-EnableTcpReset] [-DisableOutboundSNAT] [-EnableConnectionTracking]
+ [-FrontendIpConfigurationId <String>] [-BackendAddressPoolId <String[]>] [-ProbeId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +60,7 @@ $slb | Set-AzLoadBalancer
 
 This enables Gateway Load Balancer to have multiple backend pools
 The first command will get the load balancer named MyLoadBalancer, and then stores it in the variable $slb.
-The second and thrid command will get the backend address pools to be added the rule
+The second and third command will get the backend address pools to be added the rule
 The forth command will add a new rule with configured backend pools
 the fifth command will update the load balancer in azure with the new Load Balancer Rule Config.
 
@@ -125,6 +127,21 @@ Accept wildcard characters: False
 ```
 
 ### -DisableOutboundSNAT
+Configures SNAT for the VMs in the backend pool to use the publicIP address specified in the frontend of the load balancing rule.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableConnectionTracking
 Configures SNAT for the VMs in the backend pool to use the publicIP address specified in the frontend of the load balancing rule.
 
 ```yaml
@@ -385,5 +402,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzLoadBalancerRuleConfig](./Remove-AzLoadBalancerRuleConfig.md)
 
 [Set-AzLoadBalancerRuleConfig](./Set-AzLoadBalancerRuleConfig.md)
-
-

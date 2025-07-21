@@ -440,9 +440,16 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestResiliencyPolicyVMSS()
+        public void TestResilientVMCreateDelete()
         {
-            TestRunner.RunTestScript("Test-ResiliencyPolicyVMSS");
+            TestRunner.RunTestScript("Test-ResilientVMCreateDelete");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRebalancingPolicyVMSS()
+        {
+            TestRunner.RunTestScript("Test-AutomaticZoneRebalancingPolicy");
         }
 
         [Fact]
@@ -464,6 +471,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestEncryptionIdentityNotPartOfAzureVmssConfig()
         {
             TestRunner.RunTestScript("Test-EncryptionIdentityNotPartOfAzureVmssConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProxyAgentSetting()
+        {
+            TestRunner.RunTestScript("Test-ProxyAgentSetting");
         }
     }
 }

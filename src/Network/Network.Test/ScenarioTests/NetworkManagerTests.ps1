@@ -205,10 +205,10 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
     $networkGroupName = Get-ResourceName
     $staticMemberName = Get-ResourceName
     $connectivityConfigurationName = Get-ResourceName
-    $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
-    $vnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
-    $hubId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet-Hub" 
+    $rglocation = "eastus2euap"
+    $subscriptionId = "/subscriptions/f70df20d-7c49-465b-a4a1-e2a682ca1ffd"
+    $vnetId = "/subscriptions/f70df20d-7c49-465b-a4a1-e2a682ca1ffd/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
+    $hubId = "/subscriptions/f70df20d-7c49-465b-a4a1-e2a682ca1ffd/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet-Hub" 
     $vnetName = "SwaggerStackVnet"
     $vnetRGName = "SwaggerStackRG"
     
@@ -242,8 +242,14 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
 
         $hub = New-AzNetworkManagerHub -ResourceId $hubId -ResourceType "Microsoft.Network/virtualNetworks" 
         $hubList = @($hub) 
+        
+        $caps = [PSCustomObject]@{
+            ConnectedGroupPrivateEndpointsScale = "Standard"
+            ConnectedGroupAddressOverlap = "Disallowed"
+            PeeringEnforcement = "Unenforced"
+        }
 
-        New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -Name $connectivityConfigurationName -NetworkManagerName $networkManagerName -ConnectivityTopology "HubAndSpoke" -Hub $hublist -AppliesToGroup $connectivityGroup -DeleteExistingPeering 
+        New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -Name $connectivityConfigurationName -NetworkManagerName $networkManagerName -ConnectivityTopology "HubAndSpoke" -Hub $hublist -AppliesToGroup $connectivityGroup -DeleteExistingPeering -ConnectivityCapability $caps
 
         $connConfig = Get-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $connectivityConfigurationName 
         Assert-NotNull $connConfig;
@@ -257,12 +263,24 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         Assert-AreEqual "Microsoft.Network/virtualNetworks" $connConfig.Hubs[0].ResourceType;
         Assert-AreEqual "False"  $connConfig.IsGlobal;
         Assert-AreEqual "True"  $connConfig.DeleteExistingPeering;
+        Assert-AreEqual "Standard" $connConfig.ConnectivityCapability.ConnectedGroupPrivateEndpointsScale;
+        Assert-AreEqual "Disallowed" $connConfig.ConnectivityCapability.ConnectedGroupAddressOverlap;
+        Assert-AreEqual "Unenforced" $connConfig.ConnectivityCapability.PeeringEnforcement;
 
-        $connConfig.Description = "A different description.";
+        $connConfig.Description = "A different description.";       
+        $connConfig.ConnectivityCapability = [PSCustomObject]@{
+            ConnectedGroupPrivateEndpointsScale = "Standard"
+            ConnectedGroupAddressOverlap = "Allowed"
+            PeeringEnforcement = "Unenforced"
+        }
+
         $newConnConfig = Set-AzNetworkManagerConnectivityConfiguration -InputObject $connConfig
         Assert-NotNull $newConnConfig;
         Assert-AreEqual "A different description." $newConnConfig.Description;
         Assert-AreEqual $connectivityConfigurationName $newConnConfig.Name;
+        Assert-AreEqual "Standard" $connConfig.ConnectivityCapability.ConnectedGroupPrivateEndpointsScale;
+        Assert-AreEqual "Allowed" $connConfig.ConnectivityCapability.ConnectedGroupAddressOverlap;
+        Assert-AreEqual "Unenforced" $connConfig.ConnectivityCapability.PeeringEnforcement;    
 
 
         $configids  = @($newConnConfig.Id)
@@ -270,7 +288,7 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -ConfigurationId $configids -CommitType "Connectivity" 
 
         # Uncomment during Record to allow time for commit
-        # Start-TestSleep -Seconds 60
+        Start-TestSleep -Seconds 60
 
         $deploymentStatus = Get-AzNetworkManagerDeploymentStatus -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Region $regions -DeploymentType "Connectivity"
         Assert-NotNull $deploymentStatus;
@@ -1460,12 +1478,25 @@ function Test-NetworkManagerIpamPoolCRUD
         Assert-AreEqual $rglocation $ipamPool.Location;
         Assert-AreEqual $ipamPool.Properties.AddressPrefixes[0] $addressPrefixes[0];
         Assert-AreEqual $ipamPool.Tags.Count 1;
+        Assert-NotNull $ipamPool.Etag;
+
+        # List pools
+        $listPools = Get-AzNetworkManagerIpamPool -ResourceGroupName $rgname -NetworkManagerName $networkManagerName
+        Assert-AreEqual 1 @($listPools).Count
+        Assert-AreEqual $listPools[0].ResourceGroupName $ipamPool.ResourceGroupName    
+        Assert-AreEqual $listPools[0].Name $ipamPool.Name    
+        Assert-AreEqual $listPools[0].Location $ipamPool.Location
+        Assert-AreEqual $listPools[0].ProvisioningState $ipamPool.ProvisioningState
+        Assert-AreEqual $listPools[0].Etag $ipamPool.Etag
 
         # Update access
         $ipamPool.Properties.AddressPrefixes.Add("11.0.0.0/8");
         $newIpamPool = Set-AzNetworkManagerIpamPool -InputObject $ipamPool
         Assert-AreEqual  $newIpamPool.Properties.AddressPrefixes[0] "10.0.0.0/8";
         Assert-AreEqual  $newIpamPool.Properties.AddressPrefixes[1] "11.0.0.0/8";
+        
+        # Etag should change after update
+        Assert-True {$newIpamPool.Etag -ne $ipamPool.Etag};
 
         # Get Pool Usage
         $poolUsage = Get-AzNetworkManagerIpamPoolUsage -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -IpamPoolName $ipamPoolName
@@ -1582,6 +1613,8 @@ function Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD
         Assert-AreEqual $verifierWorkspaceName $verifierWorkspace.Name;
         Assert-AreEqual $rglocation $verifierWorkspace.Location;
         Assert-AreEqual $verifierWorkspace.Tags.Count 1;
+        Assert-NotNull $verifierWorkspace.Etag;
+        $oldEtag = $verifierWorkspace.Etag;
 
         # Get verifier workspace list
         $verifierWorkspaceList = Get-AzNetworkManagerVerifierWorkspace -ResourceGroupName $rgName -NetworkManagerName $networkManagerName 
@@ -1593,6 +1626,14 @@ function Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD
         $verifierWorkspace = Get-AzNetworkManagerVerifierWorkspace -ResourceId $resourceId
         Assert-NotNull $verifierWorkspace
         Assert-AreEqual $resourceId $verifierWorkspace.Id
+
+        # Set by InputObject
+        $verifierWorkspace.Properties.Description = "A different description."
+        $verifierWorkspace = Set-AzNetworkManagerVerifierWorkspace -InputObject $verifierWorkspace
+        Assert-AreEqual "A different description." $verifierWorkspace.Properties.Description
+
+        #Etag should change after update
+        Assert-True {$verifierWorkspace.Etag -ne $oldEtag}
 
         # Create analysis intent
         $sourcePortList = @("100")

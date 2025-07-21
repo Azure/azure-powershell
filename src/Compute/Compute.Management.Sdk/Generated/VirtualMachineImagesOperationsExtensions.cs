@@ -332,13 +332,16 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='skus'>
             /// A valid image SKU.
             /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply on the operation.
+            /// </param>
             /// <param name='top'>
             /// </param>
             /// <param name='orderby'>
             /// </param>
-            public static IPage<VirtualMachineImage> ListWithProperties(this IVirtualMachineImagesOperations operations, string location, string publisherName, string offer, string skus, int? top = default(int?), string orderby = default(string))
+            public static IList<VirtualMachineImage> ListWithProperties(this IVirtualMachineImagesOperations operations, string location, string publisherName, string offer, string skus, string expand, int? top = default(int?), string orderby = default(string))
             {
-                return operations.ListWithPropertiesAsync(location, publisherName, offer, skus, top, orderby).GetAwaiter().GetResult();
+                return operations.ListWithPropertiesAsync(location, publisherName, offer, skus, expand, top, orderby).GetAwaiter().GetResult();
             }
 
             /// <param name='operations'>
@@ -356,6 +359,9 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='skus'>
             /// A valid image SKU.
             /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply on the operation.
+            /// </param>
             /// <param name='top'>
             /// </param>
             /// <param name='orderby'>
@@ -363,9 +369,9 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<VirtualMachineImage>> ListWithPropertiesAsync(this IVirtualMachineImagesOperations operations, string location, string publisherName, string offer, string skus, int? top = default(int?), string orderby = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IList<VirtualMachineImage>> ListWithPropertiesAsync(this IVirtualMachineImagesOperations operations, string location, string publisherName, string offer, string skus, string expand, int? top = default(int?), string orderby = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithPropertiesWithHttpMessagesAsync(location, publisherName, offer, skus, top, orderby, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithPropertiesWithHttpMessagesAsync(location, publisherName, offer, skus, expand, top, orderby, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -377,7 +383,7 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<VirtualMachineImage> ListWithPropertiesNext(this IVirtualMachineImagesOperations operations, string nextPageLink)
+            public static IList<VirtualMachineImage> ListWithPropertiesNext(this IVirtualMachineImagesOperations operations, string nextPageLink)
             {
                 return operations.ListWithPropertiesNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
@@ -391,7 +397,7 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<VirtualMachineImage>> ListWithPropertiesNextAsync(this IVirtualMachineImagesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IList<VirtualMachineImage>> ListWithPropertiesNextAsync(this IVirtualMachineImagesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithPropertiesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {

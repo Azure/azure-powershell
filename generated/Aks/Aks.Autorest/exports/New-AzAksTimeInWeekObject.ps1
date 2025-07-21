@@ -23,18 +23,18 @@ Create an in-memory object for TimeInWeek.
 New-AzAksTimeInWeekObject -Day 'Sunday' -HourSlot 1,2
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.TimeInWeek
+Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TimeInWeek
 .Link
-https://learn.microsoft.com/powershell/module/Az.Aks/new-AzAksTimeInWeekObject
+https://learn.microsoft.com/powershell/module/Az.Aks/new-azakstimeinweekobject
 #>
 function New-AzAksTimeInWeekObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.TimeInWeek])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TimeInWeek])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.WeekDay])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.WeekDay]
+    [System.String]
     # The day of the week.
     ${Day},
 
@@ -54,6 +54,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -82,6 +85,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

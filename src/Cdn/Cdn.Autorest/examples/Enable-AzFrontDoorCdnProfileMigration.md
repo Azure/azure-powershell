@@ -5,9 +5,9 @@ Enable-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupN
 
 Commit the migrated Azure Front Door(Standard/Premium) profile.
 
-### Example 2: Commit the migrated Azure Front Door(Standard/Premium) profile., when the subscription of the profile is different from the local subscrition
+### Example 2: Commit the migrated Azure Front Door(Standard/Premium) profile., when the subscription of the profile is different from the local subscription
 ```powershell
 Enable-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName -SubscriptionId testSubId01
 ```
 
-Commit the migrated Azure Front Door(Standard/Premium) profile., when the subscription of the profile is different from the local subscrition
+Commit the migrated Azure Front Door(Standard/Premium) profile, when the subscription of the profile is different from the local subscription

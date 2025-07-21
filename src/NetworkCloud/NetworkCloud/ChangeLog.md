@@ -24,6 +24,7 @@
   * Cmdlet `Update-AzNetworkCloudCluster`
   * Cmdlet `Update-AzNetworkCloudClusterManager`
 * Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Upgraded API version to 2025-02-01
 
 ## Version 1.1.0
 * Upgraded nuget package to signed package.

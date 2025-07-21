@@ -88,6 +88,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)this).Version, global::System.Convert.ToString);
             }
+            if (content.Contains("RelativePath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)this).RelativePath = (string) content.GetValueForProperty("RelativePath",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)this).RelativePath, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -116,6 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
             if (content.Contains("Version"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)this).Version, global::System.Convert.ToString);
+            }
+            if (content.Contains("RelativePath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)this).RelativePath = (string) content.GetValueForProperty("RelativePath",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)this).RelativePath, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

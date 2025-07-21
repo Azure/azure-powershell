@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Enables Guest Management on the Virtual Machine.
+Installs Azure Arc agent on the Virtual Machine.
 .Description
-Enables Guest Management on the Virtual Machine by installing GuestAgent.
+Installs Azure Arc agent on the Virtual Machine
 .Example
 $securePassword = ConvertTo-SecureString "*****" -AsPlainText -Force
 New-AzScVmmVMGuestAgent -Name "test-vm" -ResourceGroupName "test-rg-01" -CredentialsPassword $securePassword -CredentialsUsername 'testUser'

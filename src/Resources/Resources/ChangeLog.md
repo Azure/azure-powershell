@@ -19,6 +19,21 @@
 -->
 
 ## Upcoming Release
+* Added functionality for cmdlet `GetAzureResourceGroup`[#27865]
+* Added breaking change announcement for below cmdlets from array to list.
+  - `Get-AzRoleManagementPolicy`
+  - `Update-AzRoleManagementPolicy`
+* Added support for exporting resource group templates as Bicep files
+    - Added `OutputFormat` parameter to `Export-AzResourceGroup` cmdlet
+    - Supported values: `Json` (default), `Bicep`
+
+## Version 8.0.1
+* Fixed empty warning output issue for cmdlet `Test-AzResourceGroupDeployment` [#27888]
+
+## Version 8.0.0
+* [Breaking Change] Updated API version of resource types from latest to DefaultApiVersion for cmdlets `*-AzResource` and `Invoke-AzResourceAction`.
+
+## Version 7.11.0
 * Added SuppressDiagnostics Parameter to Test-Deployment cmdlets.
 * Added PotentialChanges to WhatIf result.
 

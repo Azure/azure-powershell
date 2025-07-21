@@ -21,10 +21,6 @@ Describe 'New-AzNetworkCloudClusterManager' {
                 $cmconfig.tagsKey1 = $cmconfig.tagsValue1
                 $cmconfig.tagsKey2 = $cmconfig.tagsValue2
             }
-            $uai = @{}
-            $uaiHash = @{
-                $cmconfig.identityResourceId = $uai
-            }
             New-AzNetworkCloudClusterManager -Name $cmconfig.clusterManagerName `
                 -ResourceGroupName $cmconfig.resourceGroup `
                 -Location $common.Location -Tag $tagshash `
@@ -33,7 +29,6 @@ Describe 'New-AzNetworkCloudClusterManager' {
                 -SubscriptionId $cmconfig.subscriptionId `
                 -EnableSystemAssignedIdentity `
                 -UserAssignedIdentity $uaiHash
-
         } | Should -Not -Throw
     }
     It 'Create ClusterManager with UserAssigned Identity' {

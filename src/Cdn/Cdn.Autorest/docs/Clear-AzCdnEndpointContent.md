@@ -12,30 +12,57 @@ Removes a content from CDN.
 
 ## SYNTAX
 
-### PurgeExpanded1 (Default)
+### PurgeExpanded (Default)
 ```
 Clear-AzCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
  -ContentPath <String[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Purge1
+### Purge
 ```
 Clear-AzCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
  -ContentFilePath <IPurgeParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### PurgeViaIdentity1
+### PurgeViaIdentity
 ```
 Clear-AzCdnEndpointContent -InputObject <ICdnIdentity> -ContentFilePath <IPurgeParameters>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### PurgeViaIdentityExpanded1
+### PurgeViaIdentityExpanded
 ```
 Clear-AzCdnEndpointContent -InputObject <ICdnIdentity> -ContentPath <String[]> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PurgeViaIdentityProfile
+```
+Clear-AzCdnEndpointContent -EndpointName <String> -ProfileInputObject <ICdnIdentity>
+ -ContentFilePath <IPurgeParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### PurgeViaIdentityProfileExpanded
+```
+Clear-AzCdnEndpointContent -EndpointName <String> -ProfileInputObject <ICdnIdentity> -ContentPath <String[]>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PurgeViaJsonFilePath
+```
+Clear-AzCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PurgeViaJsonString
+```
+Clear-AzCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,11 +105,10 @@ Accept wildcard characters: False
 
 ### -ContentFilePath
 Parameters required for content purge.
-To construct, see NOTES section for CONTENTFILEPATH properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IPurgeParameters
-Parameter Sets: Purge1, PurgeViaIdentity1
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IPurgeParameters
+Parameter Sets: Purge, PurgeViaIdentity, PurgeViaIdentityProfile
 Aliases:
 
 Required: True
@@ -98,7 +124,7 @@ Can describe a file path or a wild card directory.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: PurgeExpanded1, PurgeViaIdentityExpanded1
+Parameter Sets: PurgeExpanded, PurgeViaIdentityExpanded, PurgeViaIdentityProfileExpanded
 Aliases:
 
 Required: True
@@ -129,7 +155,7 @@ Name of the endpoint under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: Purge1, PurgeExpanded1
+Parameter Sets: Purge, PurgeExpanded, PurgeViaIdentityProfile, PurgeViaIdentityProfileExpanded, PurgeViaJsonFilePath, PurgeViaJsonString
 Aliases:
 
 Required: True
@@ -141,17 +167,46 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: PurgeViaIdentity1, PurgeViaIdentityExpanded1
+Parameter Sets: PurgeViaIdentity, PurgeViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Purge operation
+
+```yaml
+Type: System.String
+Parameter Sets: PurgeViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Purge operation
+
+```yaml
+Type: System.String
+Parameter Sets: PurgeViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -185,12 +240,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: PurgeViaIdentityProfile, PurgeViaIdentityProfileExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProfileName
 Name of the CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Purge1, PurgeExpanded1
+Parameter Sets: Purge, PurgeExpanded, PurgeViaJsonFilePath, PurgeViaJsonString
 Aliases:
 
 Required: True
@@ -205,7 +275,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Purge1, PurgeExpanded1
+Parameter Sets: Purge, PurgeExpanded, PurgeViaJsonFilePath, PurgeViaJsonString
 Aliases:
 
 Required: True
@@ -220,7 +290,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Purge1, PurgeExpanded1
+Parameter Sets: Purge, PurgeExpanded, PurgeViaJsonFilePath, PurgeViaJsonString
 Aliases:
 
 Required: False
@@ -266,9 +336,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IPurgeParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IPurgeParameters
 
 ## OUTPUTS
 

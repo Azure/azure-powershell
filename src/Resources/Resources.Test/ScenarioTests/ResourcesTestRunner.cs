@@ -35,26 +35,23 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner = TestManager.CreateInstance(output)
                 .WithNewPsScriptFilename($"{GetType().Name}.ps1")
                 .WithProjectSubfolderForTests("ScenarioTests")
-                .WithCommonPsScripts(new[]
-                {
+                .WithCommonPsScripts(
+                [
                     @"Common.ps1",
-                })
+                ])
                 .WithExtraRmModules(helper => new[]
                 {
                     helper.RMResourceModule,
                     helper.GetRMModulePath("Az.Monitor.psd1"),
                     helper.GetRMModulePath("Az.ManagedServiceIdentity.psd1"),
-                    helper.GetRMModulePath("Az.Purview.psd1")
+                    // helper.GetRMModulePath("Az.Purview.psd1") // Temporarily commented out due to type loading issue
                 })
                 .WithRecordMatcher(
                     (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) => new ResourcesRecordMatcher(ignoreResourcesClient, resourceProviders, userAgentsToIgnore)
                 )
                 .WithNewRecordMatcherArguments(
-                    userAgentsToIgnore: new Dictionary<string, string>
-                    {
-                        { "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2019-10-01" }
-                    },
-                    resourceProviders: new Dictionary<string, string>()
+                    userAgentsToIgnore: [],
+                    resourceProviders: new Dictionary<string, string>
                     {
                         {"Microsoft.Resources", null},
                         {"Microsoft.Features", null},

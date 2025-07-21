@@ -32,7 +32,7 @@ eyJNZWNEZXZpY2VUcmFuc2llbnRBdXRoS2V5IjoiMTIzNCIsIk1lY0RldmljZUF1dGhLZXlTdGFydFRp
 ```
 
 Getting the registration key for NFM device in resource group myResources with resource name myMecDevice.
-To register the device, use the commandlet Invoke-MecRegister with the registration key in the minishell session.
+To register the device, use the cmdlet Invoke-MecRegister with the registration key in the minishell session.
 
 ### Example 2: Get-AzConnectedNetworkDeviceRegistrationKey using Resource Group, Resource name and Subscription Id
 ```powershell
@@ -44,7 +44,7 @@ eyJNZWNEZXZpY2VUcmFuc2llbnRBdXRoS2V5IjoiMTIzNCIsIk1lY0RldmljZUF1dGhLZXlTdGFydFRp
 ```
 
 Getting the registration key for NFM device in resource group myResources with resource name myMecDevice.
-To register the device, use the commandlet Invoke-MecRegister with the registration key in the minishell session.
+To register the device, use the cmdlet Invoke-MecRegister with the registration key in the minishell session.
 
 ## PARAMETERS
 
@@ -148,7 +148,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IDeviceRegistrationKey
 
 ## NOTES
 

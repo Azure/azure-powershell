@@ -47,6 +47,34 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
+
+VENDORINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+
+VENDORSKUINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
 .Link
 https://learn.microsoft.com/powershell/module/az.connectednetwork/remove-azconnectednetworkvendorskupreview
 #>
@@ -55,12 +83,15 @@ function Remove-AzConnectedNetworkVendorSkuPreview {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityVendor', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityVendorSku', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
     # Preview subscription ID.
     ${PreviewSubscription},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityVendor', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
     # The name of the vendor sku.
@@ -83,8 +114,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityVendor', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${VendorInputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityVendorSku', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${VendorSkuInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -160,6 +202,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -181,10 +232,10 @@ begin {
         $mapping = @{
             Delete = 'Az.ConnectedNetwork.private\Remove-AzConnectedNetworkVendorSkuPreview_Delete';
             DeleteViaIdentity = 'Az.ConnectedNetwork.private\Remove-AzConnectedNetworkVendorSkuPreview_DeleteViaIdentity';
+            DeleteViaIdentityVendor = 'Az.ConnectedNetwork.private\Remove-AzConnectedNetworkVendorSkuPreview_DeleteViaIdentityVendor';
+            DeleteViaIdentityVendorSku = 'Az.ConnectedNetwork.private\Remove-AzConnectedNetworkVendorSkuPreview_DeleteViaIdentityVendorSku';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -198,6 +249,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

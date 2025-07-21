@@ -13,7 +13,8 @@ Gets all available ssl options for ssl policy for Application Gateway.
 ## SYNTAX
 
 ```
-Get-AzApplicationGatewayAvailableSslOption [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzApplicationGatewayAvailableSslOption [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
