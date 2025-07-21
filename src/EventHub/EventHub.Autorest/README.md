@@ -411,6 +411,11 @@ directive:
     set:
       property-name: MinCompactionLagInMin
 
+  - where:
+      subject: NetworkSecurityPerimeterConfigurationResourceAssociationName
+    set:
+      subject: NetworkSecurityPerimeterConfigurationsForAssociation
+
 # Cluster
   - where:
       verb: New
