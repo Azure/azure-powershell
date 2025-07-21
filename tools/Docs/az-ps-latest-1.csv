@@ -61,7 +61,7 @@ pac59,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac60,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataTransfer.0.1.0.zip;sourceType=sa]Az.DataTransfer,0.1.0
 pac61,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DedicatedHsm.0.4.0.zip;sourceType=sa]Az.DedicatedHsm,0.4.0
 pac62,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DependencyMap.0.1.0.zip;sourceType=sa]Az.DependencyMap,0.1.0
-pac63,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DesktopVirtualization.5.4.1.zip;sourceType=sa]Az.DesktopVirtualization,5.4.1
+pac63,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DesktopVirtualization.5.4.3.zip;sourceType=sa]Az.DesktopVirtualization,5.4.3
 pac64,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DevCenter.2.0.1.zip;sourceType=sa]Az.DevCenter,2.0.1
 pac65,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DeviceProvisioningServices.0.10.4.zip;sourceType=sa]Az.DeviceProvisioningServices,0.10.4
 pac66,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DeviceRegistry.0.1.1.zip;sourceType=sa]Az.DeviceRegistry,0.1.1
