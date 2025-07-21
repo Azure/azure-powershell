@@ -19,25 +19,19 @@
 function Test-ListStretchDatabaseRestorePoints
 {
 	# Setup
-	$location = Get-ProviderLocation "Microsoft.Sql/servers"
 	$serverVersion = "12.0";
-	$rg = Create-ResourceGroupForTest $location
+	$location = Get-Location "Microsoft.Sql" "servers" "west europe"
+	$rg = Get-AzResourceGroup -ResourceGroupName "powershell-test-rg"
+	$server = Get-AzSqlServer -ServerName "powershell-test-server" -ResourceGroupName $rg.ResourceGroupName
 
-	try
-	{
-		$server = Create-ServerForTest $rg $location
 
-		# Create stretch database with all parameters.
-		$databaseName = Get-DatabaseName
-		$stretchdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-Edition Stretch -RequestedServiceObjectiveName DS100
+	# Create stretch database with all parameters.
+	$databaseName = "powershell-test-db-stretch-db"
+	$stretchdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+		-Edition Stretch -RequestedServiceObjectiveName DS100
 
-		# Get restore points from stretch database.
-		$restorePoints = Get-AzSqlDatabaseRestorePoint -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $stretchdb.DatabaseName
-		Assert-Null $restorePoints # Since the stretch database has just been created, it should not have any discrete restore points.
-	}
-	finally
-	{
-		Remove-ResourceGroupForTest $rg
-	}
+	# Get restore points from stretch database.
+	$restorePoints = Get-AzSqlDatabaseRestorePoint -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $stretchdb.DatabaseName
+	Assert-Null $restorePoints # Since the stretch database has just been created, it should not have any discrete restore points.
+	
 }
