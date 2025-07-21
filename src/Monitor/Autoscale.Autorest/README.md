@@ -89,17 +89,13 @@ directive:
           - ScheduleHour
           - ScheduleMinute
           - ScheduleDay
-          - Webhook
-          - EmailCustomEmail
         new-output-properties:
           - Profile
           - Rule
           - ScheduleHour
           - ScheduleMinute
           - ScheduleDay
-          - Webhook
-          - EmailCustomEmail
-        change-description: The types of the properties 'Notification' and 'Profile' of type 'IAutoscaleSettingResource' will be changed from single object to 'List'. The types of the properties 'Rule', 'ScheduleHour', 'ScheduleMinute' and 'ScheduleDay' of type 'IAutoscaleProfile' will be changed from single object or fixed array to 'List'. The types of the properties 'Webhook' and 'EmailCustomEmail' of type 'IAutoscaleNotification' will be changed from single object or fixed array to 'List'.
+        change-description: The types of the properties 'Notification' and 'Profile' of type 'IAutoscaleSettingResource' will be changed from single object to 'List'. The types of the properties 'Rule', 'ScheduleHour', 'ScheduleMinute' and 'ScheduleDay' of type 'IAutoscaleProfile' will be changed from single object or fixed array to 'List'.
         deprecated-by-version: 7.0.0
         deprecated-by-azversion: 15.0.0
         change-effective-date: 2025/11/03
