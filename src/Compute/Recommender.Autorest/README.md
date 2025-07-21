@@ -36,7 +36,7 @@ input-file:
 # You need to specify your swagger files here.
 #  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/RecommenderRP/stable/2025-06-05/RecommenderRP.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
- - (this-folder)/../../../../../azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/RecommenderRP/stable/2025-06-05/RecommenderRP.json
+ - $(this-folder)/test/RecommenderRP.json
 module-version: 0.3.0
 # Normally, title is the service name
 title: Recommender

@@ -1,0 +1,267 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "ComputeRecommenderResourceProviderClient",
+    "version": "2025-06-05",
+    "description": "The Compute Recommender Resource Provider Client",
+    "x-typespec-generated": [
+      {
+        "emitter": "@azure-tools/typespec-autorest"
+      }
+    ]
+  },
+  "schemes": [
+    "https"
+  ],
+  "host": "management.azure.com",
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "flow": "implicit",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "ComputeDiagnosticBases"
+    }
+  ],
+  "paths": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/placementScores/spot": {
+      "get": {
+        "operationId": "SpotPlacementScores_Get",
+        "tags": [
+          "ComputeDiagnosticBases"
+        ],
+        "description": "Gets Spot Placement Scores metadata.",
+        "parameters": [
+          {
+            "$ref": "types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "types.json#/parameters/LocationParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/ComputeDiagnosticBase"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Gets the metadata of Spot Placement Scores.": {
+            "$ref": "./examples/GetSpotPlacementScores.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/placementScores/spot/generate": {
+      "post": {
+        "operationId": "SpotPlacementScores_Post",
+        "tags": [
+          "ComputeDiagnosticBases"
+        ],
+        "description": "Generates placement scores for Spot VM skus.",
+        "parameters": [
+          {
+            "$ref": "types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "types.json#/parameters/LocationParameter"
+          },
+          {
+            "name": "spotPlacementScoresInput",
+            "in": "body",
+            "description": "SpotPlacementScores object supplied in the body of the Post spot placement scores operation.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SpotPlacementScoresInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/SpotPlacementScoresResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Returns spot VM placement scores for given configurations.": {
+            "$ref": "./examples/GenerateSpotPlacementScores.json"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ComputeDiagnosticBase": {
+      "type": "object",
+      "description": "Contains metadata of a diagnostic type",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/DiagnosticProperties",
+          "description": "Contains additional properties of a diagnostic"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "types.json#/definitions/ProxyResource"
+        }
+      ]
+    },
+    "DiagnosticProperties": {
+      "type": "object",
+      "description": "Contains additional properties of a diagnostic",
+      "properties": {
+        "supportedResourceTypes": {
+          "type": "array",
+          "description": "Describes what are the supported resource types for a diagnostic.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "PlacementScore": {
+      "type": "object",
+      "description": "The spot placement score for sku/region/zone combination.",
+      "properties": {
+        "sku": {
+          "type": "string",
+          "description": "The resource's CRP virtual machine SKU size."
+        },
+        "region": {
+          "type": "string",
+          "description": "The region."
+        },
+        "availabilityZone": {
+          "type": "string",
+          "description": "The availability zone."
+        },
+        "score": {
+          "type": "string",
+          "description": "A placement score indicating the likelihood of successfully allocating the specified Spot VM(s), as well as the expected lifetimes of the Spot VM(s) after allocation."
+        },
+        "isQuotaAvailable": {
+          "type": "boolean",
+          "description": "Whether the desired quota is available."
+        }
+      }
+    },
+    "ResourceSize": {
+      "type": "object",
+      "description": "SpotPlacementRecommender API response.",
+      "properties": {
+        "sku": {
+          "type": "string",
+          "description": "The resource's CRP virtual machine SKU size."
+        }
+      }
+    },
+    "SpotPlacementScoresInput": {
+      "type": "object",
+      "description": "SpotPlacementScores API Input.",
+      "properties": {
+        "desiredLocations": {
+          "type": "array",
+          "description": "The desired regions",
+          "items": {
+            "type": "string"
+          }
+        },
+        "desiredSizes": {
+          "type": "array",
+          "description": "The desired virtual machine SKU sizes.",
+          "items": {
+            "$ref": "#/definitions/ResourceSize"
+          }
+        },
+        "desiredCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Desired instance count per region/zone based on the scope."
+        },
+        "availabilityZones": {
+          "type": "boolean",
+          "description": "Defines if the scope is zonal or regional."
+        }
+      }
+    },
+    "SpotPlacementScoresResponse": {
+      "type": "object",
+      "description": "SpotPlacementScores API response.",
+      "properties": {
+        "desiredLocations": {
+          "type": "array",
+          "description": "The desired regions",
+          "items": {
+            "type": "string"
+          }
+        },
+        "desiredSizes": {
+          "type": "array",
+          "description": "The desired virtual machine SKU sizes.",
+          "items": {
+            "$ref": "#/definitions/ResourceSize"
+          }
+        },
+        "desiredCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Desired instance count per region/zone based on the scope."
+        },
+        "availabilityZones": {
+          "type": "boolean",
+          "description": "Defines if the scope is zonal or regional."
+        },
+        "placementScores": {
+          "type": "array",
+          "description": "A placement score indicating the likelihood of successfully allocating the specified Spot VM(s), as well as the expected lifetimes of the Spot VM(s) after allocation.",
+          "items": {
+            "$ref": "#/definitions/PlacementScore"
+          }
+        }
+      }
+    }
+  },
+  "parameters": {}
+}
