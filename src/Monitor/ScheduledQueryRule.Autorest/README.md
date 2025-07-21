@@ -92,28 +92,7 @@ directive:
   #   - Condition
   #   - Dimension
   - where:
-      verb: New
-      subject: ScheduledQueryRule
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - ActionGroup
-          - CriterionAllOf
-          - Dimension
-          - Scope
-          - TargetResourceType
-        new-output-properties:
-          - ActionGroup
-          - Dimension
-          - CriterionAllOf
-          - Scope
-          - TargetResourceType
-        change-description: The types of the properties ActionGroup, CriterionAllOf, Scope and TargetResourceType will be changed from single object or fixed array to 'List'. The type of property 'Dimension' of type 'ICondition' will be changed from single object or fixed array to 'List'.
-        deprecated-by-version: 7.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
-  - where:
-      verb: Get|Update
+      verb: Get|Update|New
       subject: ScheduledQueryRule
     set:
       breaking-change:
