@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkCloudBmcKeySet
 
 ## SYNOPSIS
-create a new baseboard management controller key set or create the existing one for the provided cluster.
+Create a new baseboard management controller key set or create the existing one for the provided cluster.
 
 ## SYNTAX
 
@@ -16,8 +16,8 @@ create a new baseboard management controller key set or create the existing one 
 ```
 New-AzNetworkCloudBmcKeySet -ClusterInputObject <INetworkCloudIdentity> -Name <String> -AzureGroupId <String>
  -Expiration <DateTime> -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String>
- -PrivilegeLevel <String> -UserList <IKeySetUser[]> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -PrivilegeLevel <String> -UserList <IKeySetUser[]> [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -25,12 +25,12 @@ New-AzNetworkCloudBmcKeySet -ClusterInputObject <INetworkCloudIdentity> -Name <S
 New-AzNetworkCloudBmcKeySet -ClusterName <String> -Name <String> -ResourceGroupName <String>
  -AzureGroupId <String> -Expiration <DateTime> -ExtendedLocationName <String> -ExtendedLocationType <String>
  -Location <String> -PrivilegeLevel <String> -UserList <IKeySetUser[]> [-SubscriptionId <String>]
- [-IfMatch <String>] [-IfNoneMatch <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] 
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a new baseboard management controller key set or create the existing one for the provided cluster.
+Create a new baseboard management controller key set or create the existing one for the provided cluster.
 
 ## EXAMPLES
 

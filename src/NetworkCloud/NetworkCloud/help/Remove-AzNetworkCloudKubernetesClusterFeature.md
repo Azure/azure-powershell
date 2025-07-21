@@ -23,8 +23,9 @@ Remove-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesC
 ### DeleteViaIdentityKubernetesCluster
 ```
 Remove-AzNetworkCloudKubernetesClusterFeature -FeatureName <String>
- -KubernetesClusterInputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -KubernetesClusterInputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity

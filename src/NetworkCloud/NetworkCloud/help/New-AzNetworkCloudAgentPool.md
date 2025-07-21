@@ -8,15 +8,15 @@ schema: 2.0.0
 # New-AzNetworkCloudAgentPool
 
 ## SYNOPSIS
-create a new Kubernetes cluster agent pool or create the properties of the existing one.
+Create a new Kubernetes cluster agent pool or create the properties of the existing one.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzNetworkCloudAgentPool -Name <String> -KubernetesClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Count <Int64> -Location <String> -Mode <String> -VMSkuName <String>
- [-AdministratorConfigurationAdminUsername <String>]
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -Count <Int64> -Location <String>
+ -Mode <String> -VMSkuName <String> [-AdministratorConfigurationAdminUsername <String>]
  [-AdministratorConfigurationSshPublicKey <ISshPublicKey[]>] [-AgentOptionHugepagesCount <Int64>]
  [-AgentOptionHugepagesSize <String>]
  [-AttachedNetworkConfigurationL2Network <IL2NetworkAttachmentConfiguration[]>]
@@ -31,8 +31,9 @@ New-AzNetworkCloudAgentPool -Name <String> -KubernetesClusterName <String> -Reso
 
 ### CreateViaIdentityKubernetesClusterExpanded
 ```
-New-AzNetworkCloudAgentPool -Name <String> -KubernetesClusterInputObject <INetworkCloudIdentity> -Count <Int64>
- -Location <String> -Mode <String> -VMSkuName <String> [-AdministratorConfigurationAdminUsername <String>]
+New-AzNetworkCloudAgentPool -Name <String> -KubernetesClusterInputObject <INetworkCloudIdentity>
+ [-IfMatch <String>] [-IfNoneMatch <String>] -Count <Int64> -Location <String> -Mode <String>
+ -VMSkuName <String> [-AdministratorConfigurationAdminUsername <String>]
  [-AdministratorConfigurationSshPublicKey <ISshPublicKey[]>] [-AgentOptionHugepagesCount <Int64>]
  [-AgentOptionHugepagesSize <String>]
  [-AttachedNetworkConfigurationL2Network <IL2NetworkAttachmentConfiguration[]>]
@@ -46,7 +47,7 @@ New-AzNetworkCloudAgentPool -Name <String> -KubernetesClusterInputObject <INetwo
 ```
 
 ## DESCRIPTION
-create a new Kubernetes cluster agent pool or create the properties of the existing one.
+Create a new Kubernetes cluster agent pool or create the properties of the existing one.
 
 ## EXAMPLES
 
@@ -266,6 +267,39 @@ Accept wildcard characters: False
 
 ### -ExtendedLocationType
 The extended location type, for example, CustomLocation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfMatch
+The ETag of the transformation.
+Omit this value to always overwrite the current resource.
+Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfNoneMatch
+Set to '*' to allow a new record set to be created, but to prevent updating an existing resource.
+Other values will result in error from server as they are not supported.
 
 ```yaml
 Type: System.String

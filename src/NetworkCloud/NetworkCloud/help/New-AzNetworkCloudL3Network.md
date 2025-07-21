@@ -8,21 +8,22 @@ schema: 2.0.0
 # New-AzNetworkCloudL3Network
 
 ## SYNOPSIS
-create a new layer 3 (L3) network or create the properties of the existing network.
+Create a new layer 3 (L3) network or create the properties of the existing network.
 
 ## SYNTAX
 
 ```
 New-AzNetworkCloudL3Network -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -ExtendedLocationName <String> -ExtendedLocationType <String> -L3IsolationDomainId <String> -Location <String>
- -Vlan <Int64> [-HybridAksIpamEnabled <String>] [-HybridAksPluginType <String>] [-IPAllocationType <String>]
- [-InterfaceName <String>] [-Ipv4ConnectedPrefix <String>] [-Ipv6ConnectedPrefix <String>] [-Tag <Hashtable>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] -ExtendedLocationName <String> -ExtendedLocationType <String>
+ -L3IsolationDomainId <String> -Location <String> -Vlan <Int64> [-HybridAksIpamEnabled <String>]
+ [-HybridAksPluginType <String>] [-IPAllocationType <String>] [-InterfaceName <String>]
+ [-Ipv4ConnectedPrefix <String>] [-Ipv6ConnectedPrefix <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a new layer 3 (L3) network or create the properties of the existing network.
+Create a new layer 3 (L3) network or create the properties of the existing network.
 
 ## EXAMPLES
 
@@ -123,6 +124,39 @@ Accept wildcard characters: False
 Field Deprecated.
 The field was previously optional, now it will have no defined behavior and will be ignored.
 The network plugin type for Hybrid AKS.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfMatch
+The ETag of the transformation.
+Omit this value to always overwrite the current resource.
+Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfNoneMatch
+Set to '*' to allow a new record set to be created, but to prevent updating an existing resource.
+Other values will result in error from server as they are not supported.
 
 ```yaml
 Type: System.String

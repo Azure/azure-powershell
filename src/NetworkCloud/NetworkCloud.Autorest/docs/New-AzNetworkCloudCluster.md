@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkCloudCluster
 
 ## SYNOPSIS
-create a new cluster or create the properties of the cluster if it exists.
+Create a new cluster or create the properties of the cluster if it exists.
 
 ## SYNTAX
 
@@ -18,10 +18,14 @@ New-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String>
  -AggregatorOrSingleRackDefinitionRackSerialNumber <String>
  -AggregatorOrSingleRackDefinitionRackSkuId <String> -ClusterType <String> -ClusterVersion <String>
  -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String> -NetworkFabricId <String>
- [-SubscriptionId <String>] [-AggregatorOrSingleRackDefinitionAvailabilityZone <String>]
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-AggregatorOrSingleRackDefinitionAvailabilityZone <String>]
  [-AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration <IBareMetalMachineConfigurationData[]>]
  [-AggregatorOrSingleRackDefinitionRackLocation <String>]
  [-AggregatorOrSingleRackDefinitionStorageApplianceConfiguration <IStorageApplianceConfigurationData[]>]
+ [-AnalyticOutputSettingAnalyticsWorkspaceId <String>]
+ [-AnalyticsOutputSettingsAssociatedIdentityType <String>]
+ [-AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId <String>]
  [-AnalyticsWorkspaceId <String>] [-AssociatedIdentityType <String>]
  [-AssociatedIdentityUserAssignedIdentityResourceId <String>] [-ClusterLocation <String>]
  [-ClusterServicePrincipalApplicationId <String>] [-ClusterServicePrincipalId <String>]
@@ -31,14 +35,18 @@ New-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String>
  [-ComputeRackDefinition <IRackDefinition[]>] [-EnableSystemAssignedIdentity]
  [-ManagedResourceGroupConfigurationLocation <String>] [-ManagedResourceGroupConfigurationName <String>]
  [-RuntimeProtectionConfigurationEnforcementLevel <String>] [-SecretArchiveKeyVaultId <String>]
- [-SecretArchiveUseKeyVault <String>] [-Tag <Hashtable>] [-UpdateStrategyMaxUnavailable <Int64>]
- [-UpdateStrategyThresholdType <String>] [-UpdateStrategyThresholdValue <Int64>]
- [-UpdateStrategyType <String>] [-UpdateStrategyWaitTimeMinute <Int64>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SecretArchiveSettingsAssociatedIdentityType <String>]
+ [-SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId <String>]
+ [-SecretArchiveSettingVaultUri <String>] [-SecretArchiveUseKeyVault <String>] [-Tag <Hashtable>]
+ [-UpdateStrategyMaxUnavailable <Int64>] [-UpdateStrategyThresholdType <String>]
+ [-UpdateStrategyThresholdValue <Int64>] [-UpdateStrategyType <String>]
+ [-UpdateStrategyWaitTimeMinute <Int64>] [-UserAssignedIdentity <String[]>]
+ [-VulnerabilityScanningSettingContainerScan <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a new cluster or create the properties of the cluster if it exists.
+Create a new cluster or create the properties of the cluster if it exists.
 
 ## EXAMPLES
 
@@ -52,7 +60,7 @@ $tagHash = @{
 }
 $securePassword = ConvertTo-SecureString "password" -asplaintext -force
 
-New-AzNetworkCloudCluster -ResourceGroupName resourceGroup -Name clusterName -AggregatorOrSingleRackDefinitionNetworkRackId rackId -AggregatorOrSingleRackDefinitionRackSerialNumber sr1234 -AggregatorOrSingleRackDefinitionRackSkuId rackSku -ClusterType clustertype -ClusterVersion clusterversion -ExtendedLocationName CmExtendedLocation -ExtendedLocationType CustomLocation -Location location -NetworkFabricId networkFabricId -SubscriptionId subscriptionId -AggregatorOrSingleRackDefinitionAvailabilityZone avilabilityzone -AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration $baremetalmachineconfigurationdata -AggregatorOrSingleRackDefinitionRackLocation rackLocation -AggregatorOrSingleRackDefinitionStorageApplianceConfiguration $storageapplianceconfigurationdata -AnalyticsWorkspaceId anlyticsWorkSpaceId -ClusterServicePrincipalApplicationId clusterServicePrincipalAppId -ClusterServicePrincipalId ClusterServicePrincipalId -ClusterServicePrincipalPassword $securePassword -ClusterServicePrincipalTenantId tenantId -ComputeRackDefinition $computerackdefinition -Tag $tagHash
+New-AzNetworkCloudCluster -ResourceGroupName resourceGroup -Name clusterName -AggregatorOrSingleRackDefinitionNetworkRackId rackId -AggregatorOrSingleRackDefinitionRackSerialNumber sr1234 -AggregatorOrSingleRackDefinitionRackSkuId rackSku -ClusterType clustertype -ClusterVersion clusterversion -ExtendedLocationName CmExtendedLocation -ExtendedLocationType CustomLocation -Location location -NetworkFabricId networkFabricId -SubscriptionId subscriptionId -AggregatorOrSingleRackDefinitionAvailabilityZone availabilityzone -AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration $baremetalmachineconfigurationdata -AggregatorOrSingleRackDefinitionRackLocation rackLocation -AggregatorOrSingleRackDefinitionStorageApplianceConfiguration $storageapplianceconfigurationdata -AnalyticsWorkspaceId analyticsWorkSpaceId -ClusterServicePrincipalApplicationId clusterServicePrincipalAppId -ClusterServicePrincipalId ClusterServicePrincipalId -ClusterServicePrincipalPassword $securePassword -ClusterServicePrincipalTenantId tenantId -ComputeRackDefinition $computerackdefinition -Tag $tagHash
 ```
 
 ```output
@@ -62,6 +70,31 @@ eastus    clusterName      08/09/2023 18:33:54   user                    User   
 ```
 
 This command creates a new cluster.
+
+### Example 2: Create cluster with Identity
+```powershell
+$storageapplianceconfigurationdata = @()
+$baremetalmachineconfigurationdata = @()
+$computerackdefinition = @(@{IRackDefinition = "The list of rack definitions for the compute racks in a multi-rackcluster, or an empty list in a single-rack cluster."})
+$tagHash = @{
+    tag = "tag"
+}
+$securePassword = ConvertTo-SecureString "password" -asplaintext -force
+$identityUserAssignedIdentity = @{}
+$userAssignedIdentityResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myManagedIdentity"
+$identityUserAssignedIdentity.Add($userAssignedIdentityResourceId, @{})
+
+
+New-AzNetworkCloudCluster -ResourceGroupName resourceGroup -Name clusterName -AggregatorOrSingleRackDefinitionNetworkRackId rackId -AggregatorOrSingleRackDefinitionRackSerialNumber sr1234 -AggregatorOrSingleRackDefinitionRackSkuId rackSku -ClusterType clustertype -IdentityType identityType -IdentityUserAssignedIdentity $identityUserAssignedIdentity -ClusterVersion clusterversion -ExtendedLocationName CmExtendedLocation -ExtendedLocationType CustomLocation -Location location -NetworkFabricId networkFabricId -SubscriptionId subscriptionId -AggregatorOrSingleRackDefinitionAvailabilityZone availabilityZone -AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration $baremetalmachineconfigurationdata -AggregatorOrSingleRackDefinitionRackLocation rackLocation -AggregatorOrSingleRackDefinitionStorageApplianceConfiguration $storageapplianceconfigurationdata -AnalyticOutputSettingAnalyticsWorkspaceId analyticsWorkspaceId -AnalyticsOutputSettingsAssociatedIdentityType identityType -AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId userAssignedIdentityResourceId -AnalyticsWorkspaceId analyticsWorkspaceId -CommandOutputSettingContainerUrl containerUrl -AssociatedIdentityType commandOutputSettingsIdentityType -AssociatedIdentityUserAssignedIdentityResourceId commandOutputSettingsUserAssignedIdentityResourceId -ClusterServicePrincipalApplicationId clusterServicePrincipalAppId -ClusterServicePrincipalId ClusterServicePrincipalId -ClusterServicePrincipalPassword $securePassword -ClusterServicePrincipalTenantId tenantId -ComputeRackDefinition $computerackdefinition -SecretArchiveKeyVaultId keyVaultId -SecretArchiveSettingVaultUri keyVaultUri -SecretArchiveSettingsAssociatedIdentityType identityType -SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId userAssignedIdentityResourceId -SecretArchiveUseKeyVault useKeyVault -UpdateStrategyThresholdType updateStrategyThresholdType -UpdateStrategyThresholdValue updateStrategyThresholdValue -UpdateStrategyType updateStrategyType -UpdateStrategyWaitTimeMinute updateStrategyWaitTimeMinutes -VulnerabilityScanningSettingContainerScan vulnerabilityScanningSettingContainerScan -ComputeDeploymentThresholdGrouping computeDeploymentThresholdGrouping -ComputeDeploymentThresholdType computeDeploymentThresholdType -ComputeDeploymentThresholdValue computeDeploymentThresholdValue -Tag $tagHash
+```
+
+```output
+Location  Name             SystemDataCreatedAt   SystemDataCreatedBy       SystemDataCreatedByType  SystemDataLastModifiedAt SystemDataLastModifiedBy         SystemDataLastModifiedByType ResourceGroupName
+--------  ---------        -------------------   -------------------       -----------------------  ------------------------ ------------------------         ---------------------------- -----------
+uksouth    clusterName      04/10/2025 18:14:18   user                    User                       04/10/2025 18:16:10      user                             User                         RGName
+```
+
+This command creates a new cluster with Identity.
 
 ## PARAMETERS
 
@@ -172,7 +205,54 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AnalyticOutputSettingAnalyticsWorkspaceId
+The resource ID of the analytics workspace that is to be used by the specified identity.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AnalyticsOutputSettingsAssociatedIdentityType
+The type of managed identity that is being selected.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId
+The user assigned managed identity resource ID to use.
+Mutually exclusive with a system assigned identity type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AnalyticsWorkspaceId
+Field Deprecated.
 The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
 
 ```yaml
@@ -203,7 +283,7 @@ Accept wildcard characters: False
 ```
 
 ### -AssociatedIdentityType
-The type of managed identity that is being selected.
+The type of associated identity for CommandOutputSettings.
 
 ```yaml
 Type: System.String
@@ -218,8 +298,7 @@ Accept wildcard characters: False
 ```
 
 ### -AssociatedIdentityUserAssignedIdentityResourceId
-The user assigned managed identity resource ID to use.
-Mutually exclusive with a system assigned identity type.
+The resource ID of the user assigned identity for CommandOutputSettings.
 
 ```yaml
 Type: System.String
@@ -474,6 +553,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IfMatch
+The ETag of the transformation.
+Omit this value to always overwrite the current resource.
+Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfNoneMatch
+Set to '*' to allow a new record set to be created, but to prevent updating an existing resource.
+Other values will result in error from server as they are not supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The geo-location where the resource lives
 
@@ -599,6 +711,52 @@ Accept wildcard characters: False
 
 ### -SecretArchiveKeyVaultId
 The resource ID of the key vault to archive the secrets of the cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecretArchiveSettingsAssociatedIdentityType
+The type of managed identity that is being selected.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId
+The user assigned managed identity resource ID to use.
+Mutually exclusive with a system assigned identity type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecretArchiveSettingVaultUri
+The URI for the key vault used as the secret archive.
 
 ```yaml
 Type: System.String
@@ -740,6 +898,21 @@ The elements in array will be ARM resource ids in the form: '/subscriptions/{sub
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VulnerabilityScanningSettingContainerScan
+The mode selection for container vulnerability scanning.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

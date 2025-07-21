@@ -8,20 +8,20 @@ schema: 2.0.0
 # New-AzNetworkCloudTrunkedNetwork
 
 ## SYNOPSIS
-create a new trunked network or create the properties of the existing trunked network.
+Create a new trunked network or create the properties of the existing trunked network.
 
 ## SYNTAX
 
 ```
 New-AzNetworkCloudTrunkedNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -ExtendedLocationName <String> -ExtendedLocationType <String> -IsolationDomainId <String[]> -Location <String>
- -Vlan <Int64[]> [-HybridAksPluginType <String>] [-InterfaceName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] -ExtendedLocationName <String> -ExtendedLocationType <String>
+ -IsolationDomainId <String[]> -Location <String> -Vlan <Int64[]> [-HybridAksPluginType <String>]
+ [-InterfaceName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a new trunked network or create the properties of the existing trunked network.
+Create a new trunked network or create the properties of the existing trunked network.
 
 ## EXAMPLES
 
@@ -105,6 +105,39 @@ Accept wildcard characters: False
 Field Deprecated.
 The field was previously optional, now it will have no defined behavior and will be ignored.
 The network plugin type for Hybrid AKS.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfMatch
+The ETag of the transformation.
+Omit this value to always overwrite the current resource.
+Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfNoneMatch
+Set to '*' to allow a new record set to be created, but to prevent updating an existing resource.
+Other values will result in error from server as they are not supported.
 
 ```yaml
 Type: System.String

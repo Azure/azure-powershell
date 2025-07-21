@@ -8,29 +8,30 @@ schema: 2.0.0
 # New-AzNetworkCloudBmcKeySet
 
 ## SYNOPSIS
-create a new baseboard management controller key set or create the existing one for the provided cluster.
+Create a new baseboard management controller key set or create the existing one for the provided cluster.
 
 ## SYNTAX
 
 ### CreateViaIdentityClusterExpanded (Default)
 ```
-New-AzNetworkCloudBmcKeySet -Name <String> -ClusterInputObject <INetworkCloudIdentity> -AzureGroupId <String>
- -Expiration <DateTime> -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String>
- -PrivilegeLevel <String> -UserList <IKeySetUser[]> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzNetworkCloudBmcKeySet -Name <String> -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -AzureGroupId <String> -Expiration <DateTime> -ExtendedLocationName <String>
+New-AzNetworkCloudBmcKeySet -Name <String> -ClusterInputObject <INetworkCloudIdentity> [-IfMatch <String>]
+ [-IfNoneMatch <String>] -AzureGroupId <String> -Expiration <DateTime> -ExtendedLocationName <String>
  -ExtendedLocationType <String> -Location <String> -PrivilegeLevel <String> -UserList <IKeySetUser[]>
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateExpanded
+```
+New-AzNetworkCloudBmcKeySet -Name <String> -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -AzureGroupId <String>
+ -Expiration <DateTime> -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String>
+ -PrivilegeLevel <String> -UserList <IKeySetUser[]> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-create a new baseboard management controller key set or create the existing one for the provided cluster.
+Create a new baseboard management controller key set or create the existing one for the provided cluster.
 
 ## EXAMPLES
 
@@ -40,11 +41,10 @@ $tagHash = @{
     tag = "tag"
 }
 $userList = @{
+    userPrincipalName = "userPrincipalName"
     description   = "userDescription"
     azureUserName = "userName"
-    sshPublicKey  = @{
-        keyData = "ssh-rsa aaaKyfsdx= fakekey@vm"
-    }
+    sshPublicKey  = "ssh-rsa aaaKyfsdx= fakekey@vm"
 }
 
 New-AzNetworkCloudBmcKeySet -ResourceGroupName resourceGroupName -Name baseboardmgtcontrollerkeysetname -ClusterName clusterName -AzureGroupId azuregroupid -Expiration "2023-12-31T23:59:59.008Z" -ExtendedLocationName /subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/customLocationName -PrivilegeLevel ReadOnly -ExtendedLocationType CustomLocation -Location EastUs -Tag $tagHash -UserList $userList
@@ -177,6 +177,39 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfMatch
+The ETag of the transformation.
+Omit this value to always overwrite the current resource.
+Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfNoneMatch
+Set to '*' to allow a new record set to be created, but to prevent updating an existing resource.
+Other values will result in error from server as they are not supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

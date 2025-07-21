@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzNetworkCloudClusterVersionUpdate
 
 ## SYNOPSIS
-update the version of the provided cluster to one of the available supported versions.
+Update the version of the provided cluster to one of the available supported versions.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Invoke-AzNetworkCloudClusterVersionUpdate -InputObject <INetworkCloudIdentity> -
 ```
 
 ## DESCRIPTION
-update the version of the provided cluster to one of the available supported versions.
+Update the version of the provided cluster to one of the available supported versions.
 
 ## EXAMPLES
 

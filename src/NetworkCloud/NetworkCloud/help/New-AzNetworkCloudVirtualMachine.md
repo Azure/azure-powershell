@@ -8,18 +8,20 @@ schema: 2.0.0
 # New-AzNetworkCloudVirtualMachine
 
 ## SYNOPSIS
-create a new virtual machine or create the properties of the existing virtual machine.
+Create a new virtual machine or create the properties of the existing virtual machine.
 
 ## SYNTAX
 
 ```
 New-AzNetworkCloudVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -AdminUsername <String> -CloudServiceNetworkAttachmentAttachedNetworkId <String>
+ [-IfMatch <String>] [-IfNoneMatch <String>] -AdminUsername <String>
+ -CloudServiceNetworkAttachmentAttachedNetworkId <String>
  -CloudServiceNetworkAttachmentIPAllocationMethod <String> -CpuCore <Int64> -ExtendedLocationName <String>
  -ExtendedLocationType <String> -Location <String> -MemorySizeGb <Int64> -OSDiskSizeGb <Int64>
  -VMImage <String> [-BootMethod <String>] [-CloudServiceNetworkAttachmentDefaultGateway <String>]
  [-CloudServiceNetworkAttachmentIpv4Address <String>] [-CloudServiceNetworkAttachmentIpv6Address <String>]
- [-CloudServiceNetworkAttachmentName <String>] [-IsolateEmulatorThread <String>]
+ [-CloudServiceNetworkAttachmentName <String>] [-ConsoleExtendedLocationName <String>]
+ [-ConsoleExtendedLocationType <String>] [-IsolateEmulatorThread <String>]
  [-NetworkAttachment <INetworkAttachment[]>] [-NetworkData <String>] [-OSDiskCreateOption <String>]
  [-OSDiskDeleteOption <String>] [-PlacementHint <IVirtualMachinePlacementHint[]>]
  [-SshPublicKey <ISshPublicKey[]>] [-StorageProfileVolumeAttachment <String[]>] [-Tag <Hashtable>]
@@ -30,7 +32,7 @@ New-AzNetworkCloudVirtualMachine -Name <String> -ResourceGroupName <String> [-Su
 ```
 
 ## DESCRIPTION
-create a new virtual machine or create the properties of the existing virtual machine.
+Create a new virtual machine or create the properties of the existing virtual machine.
 
 ## EXAMPLES
 
@@ -202,6 +204,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ConsoleExtendedLocationName
+The resource ID of the extended location on which the resource will be created.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConsoleExtendedLocationType
+The extended location type, for example, CustomLocation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CpuCore
 The number of CPU cores in the virtual machine.
 
@@ -257,6 +289,39 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfMatch
+The ETag of the transformation.
+Omit this value to always overwrite the current resource.
+Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfNoneMatch
+Set to '*' to allow a new record set to be created, but to prevent updating an existing resource.
+Other values will result in error from server as they are not supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -21,9 +21,9 @@ Remove-AzNetworkCloudBmcKeySet -ClusterName <String> -Name <String> -ResourceGro
 
 ### DeleteViaIdentityCluster
 ```
-Remove-AzNetworkCloudBmcKeySet -Name <String> -ClusterInputObject <INetworkCloudIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzNetworkCloudBmcKeySet -Name <String> -ClusterInputObject <INetworkCloudIdentity> [-IfMatch <String>]
+ [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
