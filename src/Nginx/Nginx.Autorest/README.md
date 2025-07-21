@@ -38,22 +38,13 @@ root-module-name: $(prefix).Nginx
 title: Nginx
 module-version: 0.1.0
 subject-prefix: Nginx
-nested-object-to-string: true
-
-# If there are post APIs for some kinds of actions in the RP, you may need to 
-# uncomment following line to support viaIdentity for these post APIs
-# identity-correction-for-post: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update|Analysis)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
     remove: true
   - where:
       subject: Configuration|Certificate|Deployment
@@ -234,10 +225,10 @@ directive:
         ]
       }
   - model-cmdlet:
-    - NginxConfigurationFile
-    - NginxPrivateIPAddress
-    - NginxPublicIPAddress
-    - NginxNetworkProfile
+    - model-name: NginxConfigurationFile
+    - model-name: NginxPrivateIPAddress
+    - model-name: NginxPublicIPAddress
+    - model-name: NginxNetworkProfile
   - no-inline:
     - NginxNetworkProfile
 ```

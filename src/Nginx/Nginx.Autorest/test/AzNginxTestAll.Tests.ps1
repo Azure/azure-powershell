@@ -44,7 +44,6 @@ Describe "AzNginxTestAll" {
         $cert = New-AzNginxCertificate -DeploymentName $env.nginxDeployment1 -Name $env.nginxCert -ResourceGroupName $env.resourceGroup -CertificateVirtualPath "/etc/nginx/test.cert" -KeyVirtualPath "/etc/nginx/test.key" -KeyVaultSecretId $env.kvcertsecretid
         $cert.ProvisioningState | Should -Be 'Succeeded'
 
-
         # delete deployment
         Remove-AzNginxDeployment -Name $env.nginxDeployment1 -ResourceGroupName $env.resourceGroup
         $deploymentList = Get-AzNginxDeployment -ResourceGroupName $env.resourceGroup

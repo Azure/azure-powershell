@@ -8,22 +8,37 @@ schema: 2.0.0
 # New-AzNginxDeployment
 
 ## SYNOPSIS
-Create or update the NGINX deployment
+Create the NGINX deployment
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzNginxDeployment -Name <String> -ResourceGroupName <String> -Location <String>
- -NetworkProfile <INginxNetworkProfile> -SkuName <String> [-SubscriptionId <String>]
- [-AutoScaleSettingProfile <IScaleProfile[]>] [-EnableDiagnosticsSupport] [-IdentityType <IdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-ManagedResourceGroup <String>]
- [-ScalingPropertyCapacity <Int32>] [-StorageAccountContainerName <String>] [-StorageAccountName <String>]
- [-Tag <Hashtable>] [-UserProfilePreferredEmail <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzNginxDeployment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AutoScaleSettingProfile <IScaleProfile[]>] [-EnableDiagnosticsSupport] [-EnableSystemAssignedIdentity]
+ [-Location <String>] [-ManagedResourceGroup <String>] [-NetworkProfile <INginxNetworkProfile>]
+ [-ScalingPropertyCapacity <Int32>] [-SkuName <String>] [-StorageAccountContainerName <String>]
+ [-StorageAccountName <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-UserProfilePreferredEmail <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzNginxDeployment -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzNginxDeployment -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update the NGINX deployment
+Create the NGINX deployment
 
 ## EXAMPLES
 
@@ -59,11 +74,10 @@ Accept wildcard characters: False
 
 ### -AutoScaleSettingProfile
 .
-To construct, see NOTES section for AUTOSCALESETTINGPROFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.IScaleProfile[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -94,7 +108,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -104,12 +118,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-.
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -119,15 +133,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityUserAssignedIdentity
-Dictionary of \<UserIdentityProperties\>
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -139,10 +168,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -154,7 +183,7 @@ The managed resource group to deploy VNet injection related network resources.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -181,14 +210,13 @@ Accept wildcard characters: False
 
 ### -NetworkProfile
 .
-To construct, see NOTES section for NETWORKPROFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkProfile
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxNetworkProfile
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -231,7 +259,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -246,10 +274,10 @@ Name of the SKU.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -261,7 +289,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -276,7 +304,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -306,7 +334,23 @@ Dictionary of \<string\>
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -322,7 +366,7 @@ Can be an empty string or a valid email address.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -370,7 +414,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxDeployment
 
 ## NOTES
 

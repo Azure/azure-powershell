@@ -1,64 +1,60 @@
 ---
-external help file:
+external help file: Az.Nginx-help.xml
 Module Name: Az.Nginx
-online version: https://learn.microsoft.com/powershell/module/az.nginx/new-aznginxcertificate
+online version: https://learn.microsoft.com/powershell/module/az.nginx/update-aznginxconfiguration
 schema: 2.0.0
 ---
 
-# New-AzNginxCertificate
+# Update-AzNginxConfiguration
 
 ## SYNOPSIS
-Create the NGINX certificates for given NGINX deployment
+Update the NGINX configuration for given NGINX deployment
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzNginxCertificate -DeploymentName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-CertificateVirtualPath <String>] [-KeyVaultSecretId <String>]
- [-KeyVirtualPath <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityNginxDeploymentExpanded
-```
-New-AzNginxCertificate -Name <String> -NginxDeploymentInputObject <INginxIdentity>
- [-CertificateVirtualPath <String>] [-KeyVaultSecretId <String>] [-KeyVirtualPath <String>]
- [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Update-AzNginxConfiguration -DeploymentName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-File <INginxConfigurationFile[]>] [-Location <String>] [-PackageData <String>]
+ [-PackageProtectedFile <String[]>] [-ProtectedFile <INginxConfigurationFile[]>] [-RootFile <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
+### UpdateViaIdentityNginxDeploymentExpanded
 ```
-New-AzNginxCertificate -DeploymentName <String> -Name <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzNginxConfiguration -Name <String> -NginxDeploymentInputObject <INginxIdentity>
+ [-File <INginxConfigurationFile[]>] [-Location <String>] [-PackageData <String>]
+ [-PackageProtectedFile <String[]>] [-ProtectedFile <INginxConfigurationFile[]>] [-RootFile <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### CreateViaJsonString
+### UpdateViaIdentityExpanded
 ```
-New-AzNginxCertificate -DeploymentName <String> -Name <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzNginxConfiguration -InputObject <INginxIdentity> [-File <INginxConfigurationFile[]>]
+ [-Location <String>] [-PackageData <String>] [-PackageProtectedFile <String[]>]
+ [-ProtectedFile <INginxConfigurationFile[]>] [-RootFile <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create the NGINX certificates for given NGINX deployment
+Update the NGINX configuration for given NGINX deployment
 
 ## EXAMPLES
 
-### Example 1: Create a certificate for a NGINX deployment
+### Example 1: Update the Nginx configuration for given Nginx deployment
 ```powershell
-New-AzNginxCertificate -DeploymentName nginx-test -Name cert-test -ResourceGroupName nginx-test-rg -CertificateVirtualPath /etc/nginx/test.cert -KeyVirtualPath /etc/nginx/test.key -KeyVaultSecretId https://tests-kv.vault.azure.net/secrets/newcert
+Update-AzNginxConfiguration -DeploymentName nginx-test -Name default -ResourceGroupName nginx-test-rg -File $confFile -RootFile nginx.conf
 ```
 
 ```output
 Location Name
 -------- ----
-         cert-test
+         default
 ```
 
-This command creates a certificate for a NGINX deployment.
+This command updates the Nginx configuration for given Nginx deployment.
 
 ## PARAMETERS
 
@@ -68,21 +64,6 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CertificateVirtualPath
-.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNginxDeploymentExpanded
 Aliases:
 
 Required: False
@@ -113,7 +94,7 @@ The name of targeted NGINX deployment
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -123,42 +104,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -KeyVaultSecretId
+### -File
 .
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNginxDeploymentExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxConfigurationFile[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -168,18 +119,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KeyVirtualPath
-.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNginxDeploymentExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -188,7 +139,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNginxDeploymentExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -199,12 +150,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of certificate
+The name of configuration, only 'default' is supported value due to the singleton of NGINX conf
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: CertificateName
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNginxDeploymentExpanded
+Aliases: ConfigurationName
 
 Required: True
 Position: Named
@@ -218,7 +169,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
-Parameter Sets: CreateViaIdentityNginxDeploymentExpanded
+Parameter Sets: UpdateViaIdentityNginxDeploymentExpanded
 Aliases:
 
 Required: True
@@ -243,16 +194,76 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PackageData
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PackageProtectedFile
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProtectedFile
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxConfigurationFile[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RootFile
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -264,7 +275,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -314,9 +325,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxCertificate
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxConfiguration
 
 ## NOTES
 
 ## RELATED LINKS
-
