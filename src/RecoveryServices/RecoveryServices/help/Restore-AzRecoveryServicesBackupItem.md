@@ -58,7 +58,7 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] 
  [-RestoreToEdgeZone] [-DiskAccessOption <TargetDiskNetworkAccessOption>] [-TargetDiskAccessId <String>]
  [-CVMOsDiskEncryptionSetId <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
  [-RehydrateDuration <String>] [-Token <String>] [-SecureToken <SecureString>]
-[-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureVMUnManagedDiskParameterSet

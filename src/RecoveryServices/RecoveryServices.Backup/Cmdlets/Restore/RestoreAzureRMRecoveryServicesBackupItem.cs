@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public string TargetDiskAccessId { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = AzureManagedVMReplaceExistingParameterSet,
-            HelpMessage = ParamHelpMsgs.Encryption.DES)]
+            HelpMessage = ParamHelpMsgs.Encryption.CVMOsDiskEncryptionSetId)]
         [Parameter(Mandatory = false, ParameterSetName = AzureManagedVMCreateNewParameterSet,
             HelpMessage = ParamHelpMsgs.Encryption.CVMOsDiskEncryptionSetId)]
         public string CVMOsDiskEncryptionSetId { get; set; }
