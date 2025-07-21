@@ -126,6 +126,22 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public string IdentityType { get; set; }
 
         /// <summary>
+        /// Value for soft-delete retention days for the server.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Boolean value for whether or not to enable soft-delete for the server such that the server can be restored for a default of 7 days after dropping. If you want to specify a different retention period, use the RetentionDays parameter.")]
+        [PSArgumentCompleter("true", "false")]
+        public bool EnableSoftDeleteRetention { get; set; } = false;
+
+        /// <summary>
+        /// Value for soft-delete retention days for the server.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Value for soft-delete retention days for the server such that the server can be restored for the specified number of days after dropping. Only valid values are from 0 to 35. If set to 0, soft-delete retention is disabled.")]
+        [PSArgumentCompleter("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35")]
+        public int? RetentionDays { get; set; }
+
+        /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
         /// </summary>
         [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
@@ -169,6 +185,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             updateData[0].PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId ?? model.FirstOrDefault().PrimaryUserAssignedIdentityId;
             updateData[0].KeyId = this.KeyId ?? updateData[0].KeyId;
             updateData[0].FederatedClientId = this.FederatedClientId ?? updateData[0].FederatedClientId;
+            updateData[0].RetentionDays = this.EnableSoftDeleteRetention ? (this.RetentionDays ?? 7) : (int?)null;
 
             return updateData;
         }

@@ -142,7 +142,9 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
                 Administrators = GetActiveDirectoryInformation(model.Administrators),
                 PrimaryUserAssignedIdentityId = model.PrimaryUserAssignedIdentityId,
                 KeyId = model.KeyId,
-                FederatedClientId = model.FederatedClientId
+                FederatedClientId = model.FederatedClientId,
+                RetentionDays = model.RetentionDays,
+                CreateMode = model.CreateMode,
             });
 
             return CreateServerModelFromResponse(resp);
@@ -193,6 +195,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
             server.PrimaryUserAssignedIdentityId = resp.PrimaryUserAssignedIdentityId;
             server.KeyId = resp.KeyId;
             server.FederatedClientId = resp.FederatedClientId;
+            server.RetentionDays = resp.RetentionDays;
 
             return server;
         }
