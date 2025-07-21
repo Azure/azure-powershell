@@ -132,6 +132,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).ElasticSanVolume = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IElasticSanVolume) content.GetValueForProperty("ElasticSanVolume",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).ElasticSanVolume, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ElasticSanVolumeTypeConverter.ConvertFrom);
             }
+            if (content.Contains("PureStorageVolume"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).PureStorageVolume = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStorageVolume) content.GetValueForProperty("PureStorageVolume",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).PureStorageVolume, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PureStorageVolumeTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -160,9 +164,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).ElasticSanVolumeTargetId = (string) content.GetValueForProperty("ElasticSanVolumeTargetId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).ElasticSanVolumeTargetId, global::System.Convert.ToString);
             }
+            if (content.Contains("PureStorageVolumeSizeGb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).PureStorageVolumeSizeGb = (int?) content.GetValueForProperty("PureStorageVolumeSizeGb",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).PureStorageVolumeSizeGb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             if (content.Contains("DiskPoolVolumeMountOption"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).DiskPoolVolumeMountOption = (string) content.GetValueForProperty("DiskPoolVolumeMountOption",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).DiskPoolVolumeMountOption, global::System.Convert.ToString);
+            }
+            if (content.Contains("PureStorageVolumeStoragePoolId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).PureStorageVolumeStoragePoolId = (string) content.GetValueForProperty("PureStorageVolumeStoragePoolId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).PureStorageVolumeStoragePoolId, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -237,6 +249,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).ElasticSanVolume = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IElasticSanVolume) content.GetValueForProperty("ElasticSanVolume",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).ElasticSanVolume, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ElasticSanVolumeTypeConverter.ConvertFrom);
             }
+            if (content.Contains("PureStorageVolume"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).PureStorageVolume = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStorageVolume) content.GetValueForProperty("PureStorageVolume",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).PureStorageVolume, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PureStorageVolumeTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -265,9 +281,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).ElasticSanVolumeTargetId = (string) content.GetValueForProperty("ElasticSanVolumeTargetId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).ElasticSanVolumeTargetId, global::System.Convert.ToString);
             }
+            if (content.Contains("PureStorageVolumeSizeGb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).PureStorageVolumeSizeGb = (int?) content.GetValueForProperty("PureStorageVolumeSizeGb",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).PureStorageVolumeSizeGb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             if (content.Contains("DiskPoolVolumeMountOption"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).DiskPoolVolumeMountOption = (string) content.GetValueForProperty("DiskPoolVolumeMountOption",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).DiskPoolVolumeMountOption, global::System.Convert.ToString);
+            }
+            if (content.Contains("PureStorageVolumeStoragePoolId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).PureStorageVolumeStoragePoolId = (string) content.GetValueForProperty("PureStorageVolumeStoragePoolId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal)this).PureStorageVolumeStoragePoolId, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

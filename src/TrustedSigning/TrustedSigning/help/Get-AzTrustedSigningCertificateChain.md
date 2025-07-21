@@ -31,7 +31,7 @@ The **Get-AzTrustedSigningCertificateChain** cmdlet retrieves Azure TrustedSigni
 Use this cmdlet to retrieve Azure TrustedSigning Cert Chain.
 There are two sets of parameters. One set uses AccountName, ProfileName, and EndpointUrl. 
 Another set uses MetadataFilePath.
-Destination is the downloaded cert chain file path, which incldues the file name and extension .der.
+Destination is the downloaded cert chain file path, which includes the file name and extension .der.
 
 ## EXAMPLES
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### -Destination
-Specifies the downloaed cert chain file path. 
+Specifies the downloaded cert chain file path. 
 
 ```yaml
 Type: System.String

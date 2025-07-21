@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         }
 
         /// <summary>
-        /// Intializes the model adapter
+        /// Initializes the model adapter
         /// </summary>
         /// <returns>The server adapter</returns>
         protected override ImportExportDatabaseAdapter InitModelAdapter()

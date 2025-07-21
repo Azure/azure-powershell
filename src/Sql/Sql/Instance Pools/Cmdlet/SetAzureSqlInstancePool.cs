@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.Instance_Pools.Cmdlet
         public AzureSqlInstancePoolModel InputObject { get; set; }
 
         /// <summary>
-        /// Gets or sets the azure sql instance pool resource identifer
+        /// Gets or sets the azure sql instance pool resource identifier
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,

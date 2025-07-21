@@ -20,7 +20,7 @@ Get-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig -ExpressRouteCircuit <PSEx
 
 ## DESCRIPTION
 The **Get-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig** cmdlet retrieves the properties used for validating
-the adverised public prefix in Microsoft peering.
+the advertised public prefix in Microsoft peering.
 
 ## EXAMPLES
 

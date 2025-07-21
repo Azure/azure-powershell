@@ -22,7 +22,7 @@ The Set-AzMigrateLocalServerReplication cmdlet updates the target properties for
 https://learn.microsoft.com/powershell/module/az.migrate/set-azmigratelocalserverreplication
 #>
 function Set-AzMigrateLocalServerReplication {
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is based on a preview API version and may experience breaking changes in future releases.")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel])]
     [CmdletBinding(DefaultParameterSetName = 'ById', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
@@ -49,7 +49,7 @@ function Set-AzMigrateLocalServerReplication {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemDynamicMemoryConfig]
-        # Specifies the dynamic memory configration of RAM.
+        # Specifies the dynamic memory configuration of RAM.
         ${DynamicMemoryConfig},
 
         [Parameter()]

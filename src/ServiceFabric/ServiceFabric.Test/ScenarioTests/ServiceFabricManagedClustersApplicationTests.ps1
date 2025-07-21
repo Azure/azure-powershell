@@ -27,11 +27,13 @@ function Test-ManagedAppType
 	$clusterName = "sfmcps-" + (getAssetname)
 	$location = "southcentralus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
-	$pass = (ConvertTo-SecureString -AsPlainText -Force "TestPass1234!@#")
+	$pass = (ConvertTo-SecureString -AsPlainText -Force (-join ((33..126) | Get-Random -Count 16 | % {[char]$_})))
+	$tags = @{"SFRP.EnableDiagnosticMI"="true"; "SFRP.DisableDefaultOutboundAccess"="true"; "SFRP.WaitTimeBetweenUD"="00:00:10"; "testName"="Test-ManagedAppType"}
+
 	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
 
 	$cluster = New-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Location $location `
-		-AdminPassword $pass -Sku Standard -ClientCertThumbprint $testClientTp -Verbose
+		-AdminPassword $pass -Sku Standard -ClientCertThumbprint $testClientTp -Tag $tags -Verbose
 	Assert-AreEqual  "Succeeded" $cluster.ProvisioningState
 	Assert-AreEqual  "WaitingForNodes" $cluster.ClusterState
 
@@ -81,11 +83,13 @@ function Test-ManagedAppTypeVersion
 	$clusterName = "sfmcps-" + (getAssetname)
 	$location = "southcentralus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
-	$pass = (ConvertTo-SecureString -AsPlainText -Force "TestPass1234!@#")
-	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
+	$pass = (ConvertTo-SecureString -AsPlainText -Force (-join ((33..126) | Get-Random -Count 16 | % {[char]$_})))
+	$tags = @{"SFRP.EnableDiagnosticMI"="true"; "SFRP.DisableDefaultOutboundAccess"="true"; "SFRP.WaitTimeBetweenUD"="00:00:10"; "testName"="Test-ManagedAppTypeVersion"}
 
+	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
+	
 	$cluster = New-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Location $location `
-		-AdminPassword $pass -Sku Standard -ClientCertThumbprint $testClientTp -Verbose
+		-AdminPassword $pass -Sku Standard -ClientCertThumbprint $testClientTp -Tag $tags -Verbose
 	Assert-AreEqual  "Succeeded" $cluster.ProvisioningState
 	Assert-AreEqual  "WaitingForNodes" $cluster.ClusterState
 
@@ -108,7 +112,7 @@ function Test-ManagedAppTypeVersion
 
 	$tags = @{"test"="tag"}
 
-	$appTypeVersion = $appTypeVersionFromGet | Set-AzServiceFabricManagedClusterApplicationTypeVersion -Tag $tags -Verbose
+	$appTypeVersion = $appTypeVersionFromGet | Set-AzServiceFabricManagedClusterApplicationTypeVersion -Tag $tags -PackageUrl $packageV1 -Verbose
 	Assert-AreEqual "Succeeded" $appTypeVersion.ProvisioningState
 
 	$appTypeVersionFromGet = Get-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Version $v1
@@ -117,9 +121,10 @@ function Test-ManagedAppTypeVersion
 	Assert-HashtableEqual $appTypeVersion.Tags $appTypeVersionFromGet.Tags
 
 	# Test noop
-	$appTypeVersionNoop = $appTypeVersion | Set-AzServiceFabricManagedClusterApplicationTypeVersion
+	$appTypeVersionNoop = $appTypeVersion | Set-AzServiceFabricManagedClusterApplicationTypeVersion -PackageUrl $packageV1 -Verbose
 	Assert-AreEqual "Succeeded" $appTypeVersionNoop.ProvisioningState
-	Assert-AreEqualObjectProperties $appTypeVersion $appTypeVersionNoop
+	Assert-AreEqual $appTypeVersion.Id $appTypeVersionFromGet.Id
+	Assert-HashtableEqual $appTypeVersion.Tags $appTypeVersionFromGet.Tags
 
 	$removeResponse = Remove-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Version $v1 -Force -PassThru -Verbose
 	Assert-True { $removeResponse }
@@ -137,11 +142,13 @@ function Test-ManagedApp
 	$clusterName = "sfmcps-" + (getAssetname)
 	$location = "southcentralus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
-	$pass = (ConvertTo-SecureString -AsPlainText -Force "TestPass1234!@#")
+	$pass = (ConvertTo-SecureString -AsPlainText -Force (-join ((33..126) | Get-Random -Count 16 | % {[char]$_})))
+	$tags = @{"SFRP.EnableDiagnosticMI"="true"; "SFRP.DisableDefaultOutboundAccess"="true"; "SFRP.WaitTimeBetweenUD"="00:00:10"; "testName"="Test-ManagedApp"}
+
 	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
 
 	$cluster = New-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Location $location `
-		-AdminPassword $pass -Sku Standard -ClientCertThumbprint $testClientTp -Verbose
+		-AdminPassword $pass -Sku Standard -ClientCertThumbprint $testClientTp -Tag $tags -Verbose
 	Assert-AreEqual  "Succeeded" $cluster.ProvisioningState
 	Assert-AreEqual  "WaitingForNodes" $cluster.ClusterState
 
@@ -207,11 +214,13 @@ function Test-ManagedService
 	$clusterName = "sfmcps-" + (getAssetname)
 	$location = "southcentralus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
-	$pass = (ConvertTo-SecureString -AsPlainText -Force "TestPass1234!@#")
+	$pass = (ConvertTo-SecureString -AsPlainText -Force (-join ((33..126) | Get-Random -Count 16 | % {[char]$_})))
+	$tags = @{"SFRP.EnableDiagnosticMI"="true"; "SFRP.DisableDefaultOutboundAccess"="true"; "SFRP.WaitTimeBetweenUD"="00:00:10"; "testName"="Test-ManagedService"}
+
 	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
 
 	$cluster = New-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Location $location `
-		-AdminPassword $pass -Sku Standard -ClientCertThumbprint $testClientTp -Verbose
+		-AdminPassword $pass -Sku Standard -ClientCertThumbprint $testClientTp -Tag $tags -Verbose
 	Assert-AreEqual  "Succeeded" $cluster.ProvisioningState
 	Assert-AreEqual  "WaitingForNodes" $cluster.ClusterState
 

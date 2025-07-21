@@ -212,7 +212,7 @@ Accept wildcard characters: False
 ```
 
 ### -Offer
-The name of the marketplae gallery image definition offer.
+The name of the marketplace gallery image definition offer.
 
 ```yaml
 Type: System.String

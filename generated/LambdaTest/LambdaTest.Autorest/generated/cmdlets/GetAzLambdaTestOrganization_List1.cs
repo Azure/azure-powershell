@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IOrganizationResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Description(@"List OrganizationResource resources by resource group")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/LambdaTest.HyperExecute/organizations", ApiVersion = "2024-02-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/LambdaTest.HyperExecute/organizations", ApiVersion = "2024-02-01")]
     public partial class GetAzLambdaTestOrganization_List1 : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.IContext

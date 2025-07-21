@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
     public partial class StorageTableManagement : IStorageTableManagement
     {
         /// <summary>
-        /// Table servcie client from track 2 sdk
+        /// Table service client from track 2 sdk
         /// </summary>
         private TableServiceClient tableServiceClient;
 

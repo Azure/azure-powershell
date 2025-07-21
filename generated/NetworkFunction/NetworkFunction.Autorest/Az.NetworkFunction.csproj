@@ -3,6 +3,7 @@
     <PsModuleName>NetworkFunction</PsModuleName>
     <PsRootModuleName>NetworkFunction</PsRootModuleName>
     <PsModuleFolder>NetworkFunction.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

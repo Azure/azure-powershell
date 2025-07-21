@@ -30,8 +30,8 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// </param>
 
         /// <param name="x509StoreName">The local certificate store location.
-        /// Possible values include: 'AddressBook', 'AuthRoot', 'CertificateAuthority',
-        /// 'Disallowed', 'My', 'Root', 'TrustedPeople', 'TrustedPublisher'</param>
+        /// Possible values include: &#39;AddressBook&#39;, &#39;AuthRoot&#39;, &#39;CertificateAuthority&#39;,
+        /// &#39;Disallowed&#39;, &#39;My&#39;, &#39;Root&#39;, &#39;TrustedPeople&#39;, &#39;TrustedPublisher&#39;</param>
         public ServerCertificateCommonNames(System.Collections.Generic.IList<ServerCertificateCommonName> commonNames = default(System.Collections.Generic.IList<ServerCertificateCommonName>), string x509StoreName = default(string))
 
         {

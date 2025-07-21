@@ -31,7 +31,7 @@ The **Invoke-AzStorageAccountHierarchicalNamespaceUpgrade** cmdlet can validate 
 
 ## EXAMPLES
 
-### Example 1: Validate a stroage account can be upgrade to enable HierarchicalNamespace, then upgrade it to enabled HierarchicalNamespace
+### Example 1: Validate a storage account can be upgrade to enable HierarchicalNamespace, then upgrade it to enabled HierarchicalNamespace
 <!-- Skip: Output cannot be splitted from code -->
 
 
@@ -44,7 +44,7 @@ $task = Invoke-AzStorageAccountHierarchicalNamespaceUpgrade -ResourceGroupName $
 $task | Wait-Job
 ```
 
-The first command validates if a stroage account can be upgrade to enable HierarchicalNamespace. 
+The first command validates if a storage account can be upgrade to enable HierarchicalNamespace. 
 The second command upgrade the storage account to enable HierarchicalNamespace. Since the upgrade will take time, use '-Asjob' to run it in backend, and return a task.  Then wait for the task finish.
 
 ## PARAMETERS

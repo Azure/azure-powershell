@@ -28,7 +28,7 @@ Create LogScrubbingRule object for LogScrubbingSetting
 New-AzFrontDoorWafLogScrubbingRuleObject -MatchVariable "RequestHeaderNames" -SelectorMatchOperator "EqualsAny" -State "Enabled"
 ```
 
-This obejct is a parameter for LogscrubbingSetting
+This object is a parameter for LogscrubbingSetting
 
 ## PARAMETERS
 

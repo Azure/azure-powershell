@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Description(@"Delete a OrganizationResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.MongoDB.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/MongoDB.Atlas/organizations/{organizationName}", ApiVersion = "2024-11-18-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.MongoDB.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/MongoDB.Atlas/organizations/{organizationName}", ApiVersion = "2025-06-01")]
     public partial class RemoveAzMongoDBOrganization_Delete : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IContext

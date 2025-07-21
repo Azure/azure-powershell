@@ -110,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -NextHopIpAddress
-Specifies the IP address of a virtual appliance that you add to your Azurevirtual network.
+Specifies the IP address of a virtual appliance that you add to your Azure virtual network.
 This route forwards packets to that address.
 Specify this parameter only if you specify a value of VirtualAppliance for the *NextHopType* parameter.
 

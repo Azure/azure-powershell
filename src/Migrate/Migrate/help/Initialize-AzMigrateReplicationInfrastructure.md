@@ -8,7 +8,7 @@ schema: 2.0.0
 # Initialize-AzMigrateReplicationInfrastructure
 
 ## SYNOPSIS
-Initialises the infrastructure for the migrate project.
+Initializes the infrastructure for the migrate project.
 
 ## SYNTAX
 
@@ -19,11 +19,11 @@ Initialize-AzMigrateReplicationInfrastructure -ResourceGroupName <String> -Proje
 ```
 
 ## DESCRIPTION
-The Initialize-AzMigrateReplicationInfrastructure cmdlet initialises the infrastructure for the migrate project.
+The Initialize-AzMigrateReplicationInfrastructure cmdlet initializes the infrastructure for the migrate project.
 
 ## EXAMPLES
 
-### Example 1: Initialises the infrastructure for the migrate project.
+### Example 1: Initializes the infrastructure for the migrate project.
 ```powershell
 Initialize-AzMigrateReplicationInfrastructure -ResourceGroupName TestRG -ProjectName TestProject -TargetRegion centralus
 ```
@@ -32,9 +32,9 @@ Initialize-AzMigrateReplicationInfrastructure -ResourceGroupName TestRG -Project
 True
 ```
 
-Initialises the infrastructure for the migrate project.
+Initializes the infrastructure for the migrate project.
 
-### Example 2: Initialises the infrastructure for the migrate project for private endpoint scenario.
+### Example 2: Initializes the infrastructure for the migrate project for private endpoint scenario.
 ```powershell
 Initialize-AzMigrateReplicationInfrastructure -ResourceGroupName "TestRG" -ProjectName "TestPEProject" -TargetRegion "centraluseuap" -Scenario "agentlessVMware" -CacheStorageAccountId "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/singhabh-rg/providers/Microsoft.Storage/storageAccounts/singhabhstoragepe1"
 ```
@@ -43,7 +43,7 @@ Initialize-AzMigrateReplicationInfrastructure -ResourceGroupName "TestRG" -Proje
 True
 ```
 
-Initialises the infrastructure for the migrate project for private endpoint scenario.
+Initializes the infrastructure for the migrate project for private endpoint scenario.
 
 ## PARAMETERS
 

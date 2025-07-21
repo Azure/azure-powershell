@@ -28,7 +28,7 @@ The **Remove-AzPrivateDnsZoneGroup** cmdlet removes a DNS zone group.
 Remove-AzPrivateDnsZoneGroup -ResourceGroupName "rg" -PrivateEndpointName "test-pr-endpoint" -name dnsgroup1
 ```
 
-Above example removes a DNS zone grup named dnsgroup1 from endpoint test-pr-endpoint.
+Above example removes a DNS zone group named dnsgroup1 from endpoint test-pr-endpoint.
 
 ## PARAMETERS
 

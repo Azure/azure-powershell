@@ -17,7 +17,7 @@ using Microsoft.Azure.Management.Monitor.Models;
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wrapps around the MetricValue and exposes all the localized strings as invariant/localized properties
+    /// Wraps around the MetricValue and exposes all the localized strings as invariant/localized properties
     /// </summary>
     public class PSMetricValue : MetricValue
     {

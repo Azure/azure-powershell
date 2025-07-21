@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.Utilities
         }
 
         /// <summary>
-        /// Throw expception if the given condition is satisfied.
+        /// Throw exception if the given condition is satisfied.
         /// </summary>
         /// <param name="condition">Condition to verify.</param>
         /// <param name="message">Exception message to raise.</param>
