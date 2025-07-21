@@ -1,0 +1,95 @@
+{
+  "resourceType": "networkSecurityGroups/securityRules",
+  "apiVersion": "2024-02-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.stackhcivm"
+  },
+  "commands": [
+    {
+      "name": "Get-AzStackHCIVMSecurityRule",
+      "description": "Gets the specified security rule.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/networkSecurityGroups/{networkSecurityGroupName}/securityRules/{securityRuleName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmsecurityrule"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-NetworkSecurityGroupName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the specified security rule.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.securityRuleName]"
+            },
+            {
+              "name": "-NetworkSecurityGroupName",
+              "value": "[Path.networkSecurityGroupName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzStackHCIVMSecurityRule",
+      "description": "Deletes the specified security rule.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/networkSecurityGroups/{networkSecurityGroupName}/securityRules/{securityRuleName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmsecurityrule"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-NetworkSecurityGroupName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes the specified security rule.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.securityRuleName]"
+            },
+            {
+              "name": "-NetworkSecurityGroupName",
+              "value": "[Path.networkSecurityGroupName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

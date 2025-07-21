@@ -179,9 +179,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImage
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImage
 
 ## NOTES
 

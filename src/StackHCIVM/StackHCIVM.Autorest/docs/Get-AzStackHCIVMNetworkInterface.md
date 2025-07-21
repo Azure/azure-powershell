@@ -12,7 +12,7 @@ Gets a network interface
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzStackHCIVMNetworkInterface [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
@@ -30,7 +30,7 @@ Get-AzStackHCIVMNetworkInterface -Name <String> -ResourceGroupName <String> [-Su
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzStackHCIVMNetworkInterface -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -121,7 +121,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -148,6 +148,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
@@ -168,7 +169,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterface
 
 ## NOTES
 

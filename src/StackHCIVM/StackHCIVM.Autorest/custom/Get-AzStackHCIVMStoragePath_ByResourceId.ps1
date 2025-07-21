@@ -20,13 +20,13 @@ Gets a storage path blah
 Gets a storage path blah
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainer
 
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmstoragepath
 #>
 function Get-AzStackHCIVMStoragePath_ByResourceId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainer])]
 [CmdletBinding(PositionalBinding=$false)]
 
 param(

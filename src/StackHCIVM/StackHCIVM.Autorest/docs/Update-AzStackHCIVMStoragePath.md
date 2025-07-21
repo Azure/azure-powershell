@@ -96,6 +96,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity
@@ -202,6 +203,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -216,7 +218,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -270,7 +272,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainer
 
 ## NOTES
 

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.StackHCIVM
-Module Guid: 7389f67c-ec9d-4c13-9c9a-308834413af6
+Module Guid: db997a7e-ee64-49bb-b08c-c549bf733ebe
 Download Help Link: https://learn.microsoft.com/powershell/module/az.stackhcivm
 Help Version: 1.0.0.0
 Locale: en-US
@@ -17,6 +17,9 @@ The operation to add a data disk to a virtual machine.
 ### [Add-AzStackHCIVMVirtualMachineNetworkInterface](Add-AzStackHCIVMVirtualMachineNetworkInterface.md)
 The operation to add a network interface to a virtual machine.
 
+### [Get-AzStackHCIVMAttestationStatuses](Get-AzStackHCIVMAttestationStatuses.md)
+Implements AttestationStatus GET method.
+
 ### [Get-AzStackHCIVMImage](Get-AzStackHCIVMImage.md)
 Gets a gallery image
 
@@ -25,6 +28,12 @@ Gets a logical network
 
 ### [Get-AzStackHCIVMNetworkInterface](Get-AzStackHCIVMNetworkInterface.md)
 Gets a network interface
+
+### [Get-AzStackHCIVMNetworkSecurityGroup](Get-AzStackHCIVMNetworkSecurityGroup.md)
+Gets the specified network security group.
+
+### [Get-AzStackHCIVMSecurityRule](Get-AzStackHCIVMSecurityRule.md)
+Gets the specified security rule.
 
 ### [Get-AzStackHCIVMStoragePath](Get-AzStackHCIVMStoragePath.md)
 Gets a storage container
@@ -47,6 +56,12 @@ Please note some properties can be set only during logical network creation.
 The operation to create or update a network interface.
 Please note some properties can be set only during network interface creation.
 
+### [New-AzStackHCIVMNetworkSecurityGroup](New-AzStackHCIVMNetworkSecurityGroup.md)
+Create a network security group in the specified resource group.
+
+### [New-AzStackHCIVMSecurityRule](New-AzStackHCIVMSecurityRule.md)
+Create a security rule in the specified resource group.
+
 ### [New-AzStackHCIVMStoragePath](New-AzStackHCIVMStoragePath.md)
 The operation to create or update a storage container.
 Please note some properties can be set only during storage container creation.
@@ -68,6 +83,12 @@ The operation to delete a logical network.
 ### [Remove-AzStackHCIVMNetworkInterface](Remove-AzStackHCIVMNetworkInterface.md)
 The operation to delete a network interface.
 
+### [Remove-AzStackHCIVMNetworkSecurityGroup](Remove-AzStackHCIVMNetworkSecurityGroup.md)
+Deletes the specified network security group.
+
+### [Remove-AzStackHCIVMSecurityRule](Remove-AzStackHCIVMSecurityRule.md)
+Deletes the specified security rule.
+
 ### [Remove-AzStackHCIVMStoragePath](Remove-AzStackHCIVMStoragePath.md)
 The operation to delete a storage container.
 
@@ -86,11 +107,17 @@ The operation to delete a network interface from a virtual machine.
 ### [Restart-AzStackHCIVMVirtualMachine](Restart-AzStackHCIVMVirtualMachine.md)
 The operation to restart a virtual machine instance.
 
+### [Save-AzStackHCIVMVirtualMachine](Save-AzStackHCIVMVirtualMachine.md)
+The operation to save a virtual machine instance.
+
 ### [Start-AzStackHCIVMVirtualMachine](Start-AzStackHCIVMVirtualMachine.md)
 The operation to start a virtual machine instance.
 
 ### [Stop-AzStackHCIVMVirtualMachine](Stop-AzStackHCIVMVirtualMachine.md)
 The operation to stop a virtual machine instance.
+
+### [Suspend-AzStackHCIVMVirtualMachine](Suspend-AzStackHCIVMVirtualMachine.md)
+The operation to Suspend a virtual machine instance.
 
 ### [Update-AzStackHCIVMImage](Update-AzStackHCIVMImage.md)
 The operation to update an image.
@@ -100,6 +127,12 @@ The operation to update a logical network.
 
 ### [Update-AzStackHCIVMNetworkInterface](Update-AzStackHCIVMNetworkInterface.md)
 The operation to update a network interface.
+
+### [Update-AzStackHCIVMNetworkSecurityGroupTag](Update-AzStackHCIVMNetworkSecurityGroupTag.md)
+Updates a network security group tags.
+
+### [Update-AzStackHCIVMSecurityRule](Update-AzStackHCIVMSecurityRule.md)
+Create a security rule in the specified resource group.
 
 ### [Update-AzStackHCIVMStoragePath](Update-AzStackHCIVMStoragePath.md)
 The operation to update a storage container.

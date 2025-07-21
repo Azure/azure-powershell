@@ -3,6 +3,9 @@
 This directory contains the PowerShell module for the StackHcivm service.
 
 ---
+## Status
+[![Az.StackHCIVM](https://img.shields.io/powershellgallery/v/Az.StackHCIVM.svg?style=flat-square&label=Az.StackHCIVM "Az.StackHCIVM")](https://www.powershellgallery.com/packages/Az.StackHCIVM/)
+
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -56,23 +59,15 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 
 input-file:
-  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2024-01-01/common.json
-  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2024-01-01/galleryImages.json 
-  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2024-01-01/marketplaceGalleryImages.json
-  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2024-01-01/networkInterfaces.json
-  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2024-01-01/storageContainers.json
-  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2024-01-01/virtualHardDisks.json
-  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2024-01-01/virtualMachineInstances.json
-  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2024-01-01/logicalNetworks.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCIVM/preview/2024-02-01-preview/stackhcivm.json
   - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2025-01-13/HybridCompute.json
 
-module-version: 0.1.0
+module-version: 2.0.0
 title: StackHCIVM
 service-name: StackHCIVM
 subject-prefix: $(service-name)
 disable-transform-identity-type: true
 flatten-userassignedidentity: false
-
 inlining-threshold: 50
 resourcegroup-append: true
 directive:  
@@ -83,7 +78,7 @@ directive:
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+              "$ref": "../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
             }
           },
           "200": {
@@ -108,7 +103,7 @@ directive:
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+              "$ref": "../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
             }
           },
           "200": {
@@ -138,7 +133,7 @@ directive:
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+              "$ref": "../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
             }
           },
           "200": {
@@ -163,7 +158,7 @@ directive:
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+              "$ref": "../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
             }
           },
           "200": {
@@ -188,7 +183,7 @@ directive:
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+              "$ref": "../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
             }
           },
           "200": {
@@ -213,7 +208,7 @@ directive:
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+              "$ref": "../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
             }
           },
           "200": {
@@ -238,7 +233,7 @@ directive:
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+              "$ref": "../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
             }
           },
           "200": {
@@ -255,8 +250,11 @@ directive:
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/galleryImages/{galleryImageName}"].delete
     transform: >- 
       $["x-ms-long-running-operation"] = true
-   
-   
+
+ # Temporarily removing this because of build failure.
+ # The parameter 'Extension' has multiple parameter types [ISetupExtensionRequest, IMachineExtensionProperties[]] defined, which is not supported.
+ -  remove-operation: SetupExtensions
+
   # Remove the unexpanded parameter set
  -  where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^GetViaIdentity$
@@ -572,6 +570,18 @@ directive:
       subject: VirtualMachine
     hide: true
  -  where:
+      verb: Save
+      subject: VirtualMachineInstance
+    set:
+      subject: VirtualMachine
+    hide: true
+ -  where:
+      verb: Suspend
+      subject: VirtualMachineInstance
+    set:
+      subject: VirtualMachine
+    hide: true
+ -  where:
       verb: Get
       subject: VirtualMachineInstance
     set:
@@ -638,8 +648,37 @@ directive:
       subject: Extension
     hide: true
  -  where:
+      subject: ExtensionMetadataV2
+    remove: true
+ -  where:
+      subject: ExtensionPublisher
+    remove: true
+ -  where:
+      subject: ExtensionType
+    remove: true
+ -  where:
+      subject: Gateway
+    remove: true
+ -  where:
+      subject: License
+    remove: true
+ -  where:
+      subject: MachineRunCommand
+    remove: true
+ -  where:
+      subject: MachinePatch
+    remove: true
+ -  where:
+      subject: AssessMachinePatch
+    remove: true
+ -  where:
+      subject: LicenseProfile
+    remove: true
+ -  where:
+      subject: Setting
+    remove: true
+ -  where:
       subject-prefix: StackHciVM
     set:
       subject-prefix: StackHCIVM
-
 ```
