@@ -396,7 +396,6 @@ Function Get-BreakingChangeOfGeneratedModule
             If (-not $AllBreakingChangeMessages[$CmdletName][$AllParameterSetsName].ContainsKey("ParameterBreakingChange"))
             {
                 $AllBreakingChangeMessages[$CmdletName][$AllParameterSetsName]["ParameterBreakingChange"] = [System.Collections.ArrayList]::New(@($ParameterBreakingChangeMessage))
-
             }
             Else {
                 $null = $AllBreakingChangeMessages[$CmdletName][$AllParameterSetsName]["ParameterBreakingChange"].Add($ParameterBreakingChangeMessage)
