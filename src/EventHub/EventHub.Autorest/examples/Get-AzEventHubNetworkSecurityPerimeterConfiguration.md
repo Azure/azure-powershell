@@ -1,12 +1,12 @@
-### Example 1: Gets the network rule set of an EventHub namespace
+### Example 1: Gets list of NSP configurations an EventHub namespace.
 ```powershell
 Get-AzEventHubNetworkSecurityPerimeterConfiguration -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 ```
 
 ```output
 ApplicableFeature                :
-Id                               : /subscriptions/subscriptionid/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/testP
-                                   ranjitEH1/networkSecurityPerimeterConfigurations/subscriptionid.testPranjitEH1-4263ede0-d5e1-4166-9694-2f0
+Id                               : /subscriptions/subscriptionid/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/mynamespaceName
+                                    /networkSecurityPerimeterConfigurations/subscriptionid.testPranjitEH1-4263ede0-d5e1-4166-9694-2f0
                                    7739397aa
 IsBackingResource                : False
 Location                         : eastus2euap
@@ -40,11 +40,11 @@ ProfileName                      : defaultProfile
 ProvisioningIssue                :
 ProvisioningState                : Succeeded
 ResourceAssociationAccessMode    : Learning
-ResourceAssociationName          : testPranjitEH1-4263ede0-d5e1-4166-9694-2f07739397aa
+ResourceAssociationName          : myResourceAssociationName
 ResourceGroupName                : myresourcegroup
 SourceResourceId                 :
 Type                             : Microsoft.EventHub/Namespaces/networkSecurityPerimeterConfigurations
 ```
 
-Gets the network rule set of EventHub namespace `myNamespace`.
+Gets tets list of NSP configurations an EventHub namespace.
 
