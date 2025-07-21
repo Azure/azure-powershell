@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added functionality for cmdlet `GetAzureResourceGroup`[#27865]
 * Added breaking change announcement for below cmdlets from array to list.
   - `Get-AzRoleManagementPolicy`
   - `Update-AzRoleManagementPolicy`
