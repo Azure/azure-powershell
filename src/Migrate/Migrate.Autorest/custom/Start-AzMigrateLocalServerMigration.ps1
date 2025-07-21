@@ -171,8 +171,8 @@ function Start-AzMigrateLocalServerMigration {
                 -ResourceGroupName $resourceGroupName `
                 -VaultName $vaultName `
                 -ProtectedItemName $protectedItemName `
-                -NoWait $true `
-                -Property $properties
+                -Property $properties `
+                -NoWait
 
             $jobName = $operation.Target.Split("/")[-1].Split("?")[0].Split("_")[0]
             return Az.Migrate.Internal\Get-AzMigrateLocalReplicationJob `
