@@ -550,27 +550,71 @@ If ($StaticAnalysisUX)
     Return 0
 }
 
+# If ($StaticAnalysisCmdletDiff)
+# {
+#     If ($PSBoundParameters.ContainsKey("TargetModule"))
+#     {
+#         $CmdletDiffModuleList = $TargetModule
+#     }
+#     Else
+#     {
+#         $CmdletDiffModuleList = Join-String -Separator ';' -InputObject $CIPlan.'cmdlet-diff'
+#     }
+#     If ("" -Ne $CmdletDiffModuleList)
+#     {
+#         Write-Host "Running static analysis for cmdlet diff..."
+#         dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers cmdlet-diff -u -m $CmdletDiffModuleList
+#         If ($LASTEXITCODE -ne 0)
+#         {
+#             Return $LASTEXITCODE
+#         }
+#     }
+#     Return 0
+# }
+
+
 If ($StaticAnalysisCmdletDiff)
 {
-    If ($PSBoundParameters.ContainsKey("TargetModule"))
-    {
-        $CmdletDiffModuleList = $TargetModule
-    }
-    Else
-    {
-        $CmdletDiffModuleList = Join-String -Separator ';' -InputObject $CIPlan.'cmdlet-diff'
-    }
-    If ("" -Ne $CmdletDiffModuleList)
-    {
-        Write-Host "Running static analysis for cmdlet diff..."
-        dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers cmdlet-diff -u -m $CmdletDiffModuleList
-        If ($LASTEXITCODE -ne 0)
+    try {
+        If ($PSBoundParameters.ContainsKey("TargetModule"))
         {
-            Return $LASTEXITCODE
+            $CmdletDiffModuleList = $TargetModule
         }
+        Else
+        {
+            $CmdletDiffModuleList = Join-String -Separator ';' -InputObject $CIPlan.'cmdlet-diff'
+        }
+
+        If ("" -ne $CmdletDiffModuleList)
+        {
+            Write-Host "Running static analysis for cmdlet diff..."
+            dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll `
+                -p $RepoArtifacts/$Configuration `
+                -r $StaticAnalysisOutputDirectory `
+                --analyzers cmdlet-diff `
+                -u `
+                -m $CmdletDiffModuleList
+
+            If ($LASTEXITCODE -ne 0)
+            {
+                Write-Host "dotnet process failed with exit code $LASTEXITCODE"
+                Return $LASTEXITCODE
+            }
+        }
+
+        Return 0
     }
-    Return 0
+    catch {
+        Write-Host "❌ Exception occurred while running static analysis"
+        Write-Host $_.Exception.Message
+        if ($_.ScriptStackTrace) {
+            Write-Host "StackTrace:"
+            Write-Host $_.ScriptStackTrace
+        }
+        Return 9999
+    }
 }
+
 
 If ($StaticAnalysisGeneratedSdk)
 {
