@@ -14,8 +14,7 @@ Searches for deleted entries in trash which match the filter.
 ## SYNTAX
 
 ```
-Get-AzDataLakeStoreDeletedItem [-Account] <String> [-Filter] <String> [-Count <Int32>] [-ListAfter <String>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDataLakeStoreDeletedItem [-Account] <String> [-Filter] <String> [-Count <Int32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,8 +22,7 @@ The **Get-AzDataLakeStoreDeletedItem** cmdlet searches the deleted files or fold
 It displays the following attributes of the deleted items - OriginalPath, TrashDirPath, Type, CreationTime.
 This could be a long running operation as it may have to search through millions of files in trash and could be run as a job.
  Caution: Undeleting files is a best effort operation. There are no guarantees that a file can be restored once it is deleted. The use of this API is enabled via allowlisting. 
- If your ADL account is not allowl
- isted, then using this api will throw Not implemented exception. For further information and assistance please contact Microsoft support.
+ If your ADL account is not allowlisted, then using this api will throw Not implemented exception. For further information and assistance please contact Microsoft support.
 
 ## EXAMPLES
 
@@ -113,21 +111,6 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ListAfter
-Token returned by system in the previous invocation
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

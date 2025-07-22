@@ -722,7 +722,7 @@ function Test-DataLakeStoreFileSystem
 		Assert-True {Remove-AzDataLakeStoreItem -Account $accountName -paths $summaryFolder -force -recurse -passthru} "Remove folder failed"
 		Assert-Throws {Get-AzDataLakeStoreItem -Account $accountName -path $summaryFolder}
 		Assert-True {Remove-AzDataLakeStoreItem -Account $accountName -paths $encodingFolder -force -recurse -passthru} "Remove folder failed"
-	
+
 		# Delete Data Lake account
 		Assert-True {Remove-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
@@ -760,7 +760,7 @@ function Test-DataLakeStoreFileSystemPermissions
 		$accountName = Get-DataLakeStoreAccountName
 		New-AzResourceGroup -Name $resourceGroupName -Location $location
 		$accountCreated = New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DisableEncryption
-	
+
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
 		Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountCreated.Type
@@ -1100,8 +1100,8 @@ function Test-EnumerateAndRestoreDataLakeStoreDeletedItem
 
 	try
 	{
-        Create-FilesAndFolders -accountName $accountName
-        Delete-FilesAndFolders -accountName $accountName
+		Create-FilesAndFolders -accountName $accountName
+		Delete-FilesAndFolders -accountName $accountName
 		
 		# search deleted folder
 		$out = Get-AzDataLakeStoreDeletedItem -Account $accountName -filter "adlTestDir1" -Count 1000
