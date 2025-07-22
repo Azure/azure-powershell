@@ -39,7 +39,7 @@ This operation may take considerable time when searching through millions of del
 
 ### Example 1: Search for deleted items.
 ```powershell
-PS C:\> Get-AzDataLakeStoreDeletedItemsWithToken -Account "ml1ptrashtest" -Filter "test0/file_123"
+Get-AzDataLakeStoreDeletedItemsWithToken -Account "ml1ptrashtest" -Filter "test0/file_123"
 ```
 
 ```output
@@ -55,7 +55,7 @@ This example searches for deleted items matching the pattern "test0/file_123".
 
 ### Example 2: Search for deleted items with pagination.
 ```powershell
-PS C:\> Get-AzDataLakeStoreDeletedItemsWithToken -Account "ml1ptrashtest" -Filter "test0/file_123" -ListAfter "133862976000000000/co3aa1020309024/"
+Get-AzDataLakeStoreDeletedItemsWithToken -Account "ml1ptrashtest" -Filter "test0/file_123" -ListAfter "133862976000000000/co3aa1020309024/"
 ```
 
 ```output
