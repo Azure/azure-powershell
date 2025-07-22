@@ -1055,54 +1055,6 @@ function Delete-FilesAndFolders
     }
 }
 
-<#
-.SYNOPSIS
-Tests DataLakeStore deleted items operations (Enumerate).
-#>
-function Test-EnumerateDataLakeStoreDeletedItem
-{
-    param
-    (
-        $fileToCopy,
-        $location,
-        $accountName
-
-    )
-
-    if ([string]::IsNullOrEmpty($location))
-    {
-        $location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
-    }
-
-    try
-    {
-        Create-FilesAndFolders -accountName $accountName
-        Delete-FilesAndFolders -accountName $accountName
-
-        $out = Get-AzDataLakeStoreDeletedItem -Account $accountName -filter "adlTestDir1" -Count 2
-        
-        if ($out.ContinuationToken -ne $null)
-        {
-            $out = Get-AzDataLakeStoreDeletedItem -Account $accountName -filter "adlTestDir1" -Count 2 -ListAfter $out.ContinuationToken
-            Assert-NotNull $out "Failed to get deleted items with continuation token"
-        }
-
-        $out = Get-AzDataLakeStoreDeletedItem -Account $accountName -filter "adlTestDir2" -Count 2
-        Assert-NotNull $out "No deleted items found for adlTestDir2"
-        
-        if ($out.ContinuationToken -ne $null)
-        {
-            $out = Get-AzDataLakeStoreDeletedItem -Account $accountName -filter "adlTestDir2" -Count 2 -ListAfter $out.ContinuationToken
-            Assert-NotNull $out "Failed to get deleted items with continuation token"
-        }
-    }
-    finally
-    {
-       # Skip cleanup for existing account and resource group
-		Write-Host "Skipping cleanup for existing account and resource group."	
-    }
-}
-
 function Restore-DeletedItems {
     param (
         [string]$accountName,
@@ -1156,7 +1108,7 @@ function Test-EnumerateAndRestoreDataLakeStoreDeletedItem
 		Restore-DeletedItems -accountName $accountName -items $out
 
 		$out = Get-AzDataLakeStoreDeletedItem -Account $accountName -filter "adlTestDir2" -Count 1000
-		 Restore-DeletedItems -accountName $accountName -items $out
+		Restore-DeletedItems -accountName $accountName -items $out
 	}
 	finally
 	{
@@ -1164,4 +1116,69 @@ function Test-EnumerateAndRestoreDataLakeStoreDeletedItem
 		# Skip cleanup for existing account and resource group
 		Write-Host "Skipping cleanup for existing account and resource group."
 	}
+}
+
+<#
+.SYNOPSIS
+Tests DataLakeStore deleted items operations with token (Enumerate with pagination).
+#>
+function Test-EnumerateDataLakeStoreDeletedItemsWithToken
+{
+    param
+    (
+        $fileToCopy,
+        $location,
+        $accountName
+    )
+
+    if ([string]::IsNullOrEmpty($location))
+    {
+        $location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+    }
+
+    try
+    {
+        Create-FilesAndFolders -accountName $accountName
+        Delete-FilesAndFolders -accountName $accountName
+
+        # Test basic enumeration with token
+        $out = Get-AzDataLakeStoreDeletedItemsWithToken -Account $accountName -filter "adlTestDir1" -Count 2
+        Assert-NotNull $out "No deleted items found for adlTestDir1"
+        
+        # Check if we have pagination results
+        $hasMoreResults = $false
+        $continuationToken = $null
+        
+        foreach ($item in $out) {
+            if ($item.ContinuationToken -ne $null -and $item.ContinuationToken -ne "") {
+                $hasMoreResults = $true
+                $continuationToken = $item.ContinuationToken
+                break
+            }
+        }
+        
+        # If there are more results, test pagination
+        if ($hasMoreResults) {
+            $out2 = Get-AzDataLakeStoreDeletedItemsWithToken -Account $accountName -filter "adlTestDir1" -Count 2 -ListAfter $continuationToken
+            Assert-NotNull $out2 "Failed to get deleted items with continuation token"
+        }
+
+        # Test with different filter
+        $out3 = Get-AzDataLakeStoreDeletedItemsWithToken -Account $accountName -filter "adlTestDir2" -Count 2
+        Assert-NotNull $out3 "No deleted items found for adlTestDir2"
+        
+        # Verify that the items returned have the expected properties
+        foreach ($item in $out) {
+            if ($null -ne $item.DeletedItem) {
+                Assert-NotNull $item.DeletedItem.OriginalPath "DeletedItem should have OriginalPath"
+                Assert-NotNull $item.DeletedItem.TrashDirPath "DeletedItem should have TrashDirPath"
+                Assert-NotNull $item.DeletedItem.Type "DeletedItem should have Type"
+            }
+        }
+    }
+    finally
+    {
+       # Skip cleanup for existing account and resource group
+		Write-Host "Skipping cleanup for existing account and resource group."	
+    }
 }

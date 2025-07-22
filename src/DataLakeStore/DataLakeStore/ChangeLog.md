@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added support for passing continuation token to enable pagination in GetAzureDataLakeStoreDeletedItem
+* Added a new cmdlet GetAzureDataLakeStoreDeletedItemWithtoken to support pagination in  GetAzureDataLakeStoreDeletedItem
 
 ## Version 1.4.0
 * Upgraded nuget package to signed package.

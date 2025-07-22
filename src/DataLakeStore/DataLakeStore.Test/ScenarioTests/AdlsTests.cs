@@ -94,16 +94,16 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
-        public void TestAdlsEnumerateDeletedItem()
+        public void TestAdlsEnumerateAndRestoreDeletedItem()
         {
-            TestRunner.RunTestScript($"Test-EnumerateDataLakeStoreDeletedItem -location '{ResourceGroupLocation}' -accountName '{AccountName}'");
+            TestRunner.RunTestScript($"Test-EnumerateAndRestoreDataLakeStoreDeletedItem -location '{ResourceGroupLocation}' -accountName '{AccountName}'");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
-        public void TestAdlsEnumerateAndRestoreDeletedItem()
+        public void TestAdlsEnumerateDeletedItemsWithToken()
         {
-            TestRunner.RunTestScript($"Test-EnumerateAndRestoreDataLakeStoreDeletedItem -location '{ResourceGroupLocation} '-accountName '{AccountName}'");
+            TestRunner.RunTestScript($"Test-EnumerateDataLakeStoreDeletedItemsWithToken -location '{ResourceGroupLocation}' -accountName '{AccountName}'");
         }
     }
 }

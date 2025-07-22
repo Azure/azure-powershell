@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.DataLakeStore.Models;
 using System.Linq;
 using System.Management.Automation;
+using System.Collections.Generic;
+using Microsoft.Azure.Commands.DataLakeStore.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeStoreDeletedItem", DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(DataLakeStoreDeletedItem))]
-    [Alias("Get-AdlStoreDeletedItem")]
-    public class GetAzureDataLakeStoreDeletedItem : DataLakeStoreFileSystemCmdletBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeStoreDeletedItemsWithToken", DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(DeletedItemWithToken))]
+    [Alias("Get-AdlStoreDeletedItemsWithToken")]
+    public class GetAzureDataLakeStoreDeletedItemsWithToken : DataLakeStoreFileSystemCmdletBase
     {
         private const string DefaultParameterSet = "Default";
 
@@ -47,6 +48,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage = "Minimum number of entries to search for")]
         public int Count { get; set; } = 100;
 
+        [Parameter(ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            ParameterSetName = DefaultParameterSet,
+            HelpMessage = "Token returned by system in the previous invocation")]
+        public string ListAfter { get; set; }
+
         [Parameter(Mandatory = false,
             ParameterSetName = DefaultParameterSet,
             HelpMessage = "Run cmdlet in the background")]
@@ -54,8 +61,24 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            var toReturn = DataLakeStoreFileSystemClient.EnumerateDeletedItems(Account, Filter, Count, this, CmdletCancellationToken).Select(entry => new DataLakeStoreDeletedItem(entry)).ToList();
-            WriteObject(toReturn);
+            var (deletedItems, continuationToken) = DataLakeStoreFileSystemClient.EnumerateDeletedItemsWithToken(Account, Filter, Count, ListAfter, this, CmdletCancellationToken);
+
+            var output = deletedItems
+                .Select(entry => new DeletedItemWithToken
+                {
+                    DeletedItem = new DataLakeStoreDeletedItem(entry),
+                    ContinuationToken = null
+                })
+                .ToList();
+
+            output.Add(new DeletedItemWithToken
+            {
+                DeletedItem = null,
+                ContinuationToken = continuationToken
+            });
+
+            WriteObject(output, enumerateCollection: true);
         }
     }
 }
+
