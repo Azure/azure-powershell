@@ -25,6 +25,9 @@
   - `Update-AzActivityLogAlert`
   - `New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject`
   - `New-AzActivityLogAlertAlertRuleLeafConditionObject`
+  - `Get-AzMonitorWorkspace`
+  - `New-AzMonitorWorkspace`
+  - `Update-AzMonitorWorkspace`
   - `New-AzDiagnosticSetting`
   - `New-AzSubscriptionDiagnosticSetting`
   - `Get-AzDiagnosticSetting`
