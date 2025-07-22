@@ -98,9 +98,6 @@ Create an in-memory object for NamespaceReplicaLocation.
 ### [New-AzEventHubNamespace](New-AzEventHubNamespace.md)
 Creates an EventHub Namespace
 
-### [New-AzEventHubNetworkSecurityPerimeterConfiguration](New-AzEventHubNetworkSecurityPerimeterConfiguration.md)
-Refreshes any information about the association.
-
 ### [New-AzEventHubSchemaGroup](New-AzEventHubSchemaGroup.md)
 Create an EventHub schema group.
 

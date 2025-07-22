@@ -260,6 +260,11 @@ directive:
     set:
       property-name: Description
 
+  - where:
+      verb: New
+      subject: NetworkSecurityPerimeterConfiguration
+    hide: true
+
 # Hide New-AzEventHubNetworkRuleSet 
   - where:
       verb: New
