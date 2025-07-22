@@ -170,7 +170,7 @@ function New-AzMigrateLocalServerReplication {
     
     process {
         Import-Module $PSScriptRoot\Helper\AzLocalCommonSettings.ps1
-        Import-Module $PSScriptRoot\Helper\CommonHelper.ps1
+        Import-Module $PSScriptRoot\Helper\AZLocalCommonHelper.ps1
 
         CheckResourceGraphModuleDependency
         CheckResourcesModuleDependency
@@ -268,7 +268,7 @@ function New-AzMigrateLocalServerReplication {
                 $runAsAccountId = $hyperVCluster.RunAsAccountId
             }
         }
-        else
+        elseif ($SiteType -eq $SiteTypes.VMwareSites)
         {
             $instanceType = $AzLocalInstanceTypes.VMwareToAzLocal
 
@@ -315,6 +315,10 @@ function New-AzMigrateLocalServerReplication {
 
                 $runAsAccountId = $vmwareVCenter.RunAsAccountId
             }
+        }
+        else
+        {
+            throw "Unsupported site type '$SiteType'. Only Hyper-V and VMware sites are supported."
         }
 
         if ([string]::IsNullOrEmpty($runAsAccountId)) {
