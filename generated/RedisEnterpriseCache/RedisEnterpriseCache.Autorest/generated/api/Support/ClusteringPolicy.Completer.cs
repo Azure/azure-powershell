@@ -7,8 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
 {
 
     /// <summary>
-    /// Clustering policy - default is OSSCluster. This property must be chosen at create time, and cannot be changed without
-    /// deleting the database.
+    /// Clustering policy - default is OSSCluster. This property can be updated only if the current value is NoCluster. If the
+    /// value is OSSCluster or EnterpriseCluster, it cannot be updated without deleting the database.
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicyTypeConverter))]
     public partial struct ClusteringPolicy :
@@ -36,6 +36,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "OSSCluster".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'OSSCluster'", "OSSCluster", global::System.Management.Automation.CompletionResultType.ParameterValue, "OSSCluster");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "NoCluster".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'NoCluster'", "NoCluster", global::System.Management.Automation.CompletionResultType.ParameterValue, "NoCluster");
             }
         }
     }

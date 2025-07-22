@@ -18,6 +18,7 @@ using Commands.StorageSync.Interop.Interfaces;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
+using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
 using Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity;
 using Microsoft.Azure.Commands.StorageSync.Test.Common;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -97,13 +98,13 @@ namespace StorageSync.Test.Common
         /// Create Server Managed Identity Provider
         /// </summary>
         /// <returns>ServerManagedIdentityProvider interface</returns>
-        public IServerManagedIdentityProvider CreateServerManagedIdentityProvider() => IsPlaybackMode ? new MockServerManagedIdentityProvider() : new ServerManagedIdentityProvider();
+        public IServerManagedIdentityProvider CreateServerManagedIdentityProvider() => IsPlaybackMode ? new MockServerManagedIdentityProvider(TestName) : new ServerManagedIdentityProvider();
 
         /// <summary>
         /// Creates the Sync Server Registration management.
         /// </summary>
         /// <returns>IEcsManagement.</returns>
-        public ISyncServerRegistration CreateSyncServerManagement() => IsPlaybackMode ? new MockSyncServerRegistrationClient(CreateEcsManagement()) as ISyncServerRegistration :
+        public ISyncServerRegistration CreateSyncServerManagement() => IsPlaybackMode ? new MockSyncServerRegistrationClient(TestName,CreateEcsManagement()) as ISyncServerRegistration :
             new SyncServerRegistrationClient(CreateEcsManagement(),CreateServerManagedIdentityProvider());
 
         /// <summary>
@@ -147,7 +148,7 @@ namespace StorageSync.Test.Common
         }
 
         /// <summary>
-        /// Waits for access propogation.
+        /// Waits for access propagation.
         /// </summary>
         public void Wait()
         {
@@ -172,5 +173,14 @@ namespace StorageSync.Test.Common
         /// </summary>
         /// <returns>MicrosoftGraphServicePrincipal</returns>
         public MicrosoftGraphServicePrincipal GetServicePrincipalOrNull() => new() { Id = "384dab06-7a70-4ecf-a04e-284602199124" }; // Change Object ID if we are using some other tenant
+
+        LocalServerType IStorageSyncResourceManager.GetServerTypeFromRegistry()
+        {
+            if (TestName == "TestPatchRegisteredServer")
+            {
+                return LocalServerType.ArcEnabledHybridServer;
+            }
+            return LocalServerType.HybridServer;
+        }
     }
 }

@@ -135,6 +135,9 @@ $ConfiguringCloudManagementClusterSvc = "Creating Cloud Management cluster resou
 $StartingCloudManagementMessage = "Starting Cloud Management agent."
 $RemoteSupportConsentText = "`r`n`r`nBy approving this request, the Microsoft support organization or the Azure engineering team supporting this feature ('Microsoft Support Engineer') will be given direct access to your device for troubleshooting purposes and/or resolving the technical issue described in the Microsoft support case. `r`n`r`nDuring a remote support session, a Microsoft Support Engineer may need to collect logs. By enabling remote support, you have agreed to a diagnostic logs collection by Microsoft Support Engineer to address a support case You also acknowledge and consent to the upload and retention of those logs in an Azure storage account managed and controlled by Microsoft. These logs may be accessed by Microsoft in the context of a support case and to improve the health of Azure Stack HCI. `r`n`r`nThe data will be used only to troubleshoot failures that are subject to a support ticket, and will not be used for marketing, advertising, or any other commercial purposes without your consent. The data may be retained for up to ninety (90) days and will be handled following our standard privacy practices (https://privacy.microsoft.com/en-US/). Any data previously collected with your consent will not be affected by the revocation of your permission."
 
+$UpgradeOSMessage = "Your system is running Azure Local, version 22H2, and will no longer receive security updates and support after May 31, 2025. To continue receiving security updates and support, you must upgrade your operating system. Visit https://aka.ms/azlocal-os-upgrade to learn more."
+$UpgradeToSolutionMessage = "Your system is not running the Azure Local solution. Install the solution upgrade to get the latest features and capabilities. Visit https://aka.ms/azlocal-solution-upgrade to learn more."
+
 $AlreadyLoggedFlag = "Already Logged"
 #endregion
 
@@ -434,13 +437,14 @@ Function Write-NodeEventLog{
         if($IsManagementNode)
         {
             Write-VerboseLog ("Connecting from management node")
+            $ComputerNameWithDNSSuffix = $ComputerName + '.' + (Get-WmiObject Win32_ComputerSystem).Domain
             if($Null -eq $Credentials)
             {
-                $session = New-PSSession -ComputerName $ComputerName
+                $session = New-PSSession -ComputerName $ComputerNameWithDNSSuffix
             }
             else
             {
-                $session = New-PSSession -ComputerName $ComputerName -Credential $Credentials
+                $session = New-PSSession -ComputerName $ComputerNameWithDNSSuffix -Credential $Credentials
             }
         }
         else
@@ -490,6 +494,75 @@ Function Print-FunctionParameters{
         }
     }
     return "Parameters for {0} are: {1}" -f $Message, ($body | Out-String ) 
+}
+
+function Confirm-UserAcknowledgmentToUpgradeOS {
+    [CmdletBinding(SupportsShouldProcess = $true, ConfirmImpact = 'High')]
+    param(
+        [Parameter(Mandatory=$true)]
+        [System.Management.Automation.Runspaces.PSSession]
+        $ClusterNodeSession
+    )
+
+    $osVersionDetectoid = { $displayVersion = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").DisplayVersion; $buildNumber = (Get-CimInstance -ClassName CIM_OperatingSystem).BuildNumber; New-Object -TypeName PSObject -Property @{'DisplayVersion'=$displayVersion; 'BuildNumber'=$buildNumber} }
+    $osVersionInfo = Invoke-Command -Session $clusterNodeSession -ScriptBlock $osVersionDetectoid
+    $isOSVersion22H2 =  ([Int]::Parse($osVersionInfo.BuildNumber) -le $22H2BuildNumber)
+
+    $doNotAbort = $true
+
+    if ($isOSVersion22H2)
+    {
+        $doNotAbort = $PSCmdlet.ShouldProcess("", "" ,$UpgradeOSMessage)
+    }
+    if( -not $doNotAbort)
+    {
+        throw "Aborting based on user input"
+    }
+}
+
+function Confirm-UserAcknowledgmentUpgradeToSolution {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$true)]
+        [System.Management.Automation.Runspaces.PSSession]
+        $ClusterNodeSession
+    )
+
+    $osVersionDetectoid = { $displayVersion = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").DisplayVersion; $buildNumber = (Get-CimInstance -ClassName CIM_OperatingSystem).BuildNumber; New-Object -TypeName PSObject -Property @{'DisplayVersion'=$displayVersion; 'BuildNumber'=$buildNumber} }
+    $osVersionInfo = Invoke-Command -Session $clusterNodeSession -ScriptBlock $osVersionDetectoid
+
+    # Combined script block to check both deployment and ECE service status
+    $solutionDetectoid = { 
+        # Check deployment registry key
+        $deploymentRegKey = Get-ItemProperty -Path "HKLM:\Software\Microsoft\AzureStackStampInformation" -Name "DeployType" -ErrorAction SilentlyContinue
+        $hasDeploymentReg = $false
+        if ($null -ne $deploymentRegKey) {
+            $deployType = $deploymentRegKey.DeployType
+            $hasDeploymentReg = ($deployType -ieq "Deployment")
+        }
+        
+        # Check ECE service
+        $eceWindowsService = Get-Service | Where-Object Name -in @("Azure Stack HCI Orchestrator Service", "ECE Windows Service")
+        $hasECEService = ($null -ne $eceWindowsService)
+
+        New-Object -TypeName PSObject -Property @{
+            'HasDeploymentReg' = $hasDeploymentReg
+            'HasECEService' = $hasECEService
+        }
+    }
+
+    # Warning - if the OS version is 23H2 or later with no solution running
+    if (([Int]::Parse($osVersionInfo.BuildNumber) -ge $23H2BuildNumber))
+    {
+        Write-VerboseLog "Checking solution deployment status."
+        $solutionStatus = Invoke-Command -Session $ClusterNodeSession -ScriptBlock $solutionDetectoid
+        
+        # If neither deployment registry key nor ECE service indicates solution is running
+        if (-not $solutionStatus.HasDeploymentReg -and -not $solutionStatus.HasECEService)
+        {
+            Write-Warning $UpgradeToSolutionMessage
+        }
+    }
 }
 
 $CheckNodeArcRegistrationStateScriptBlock = {
@@ -861,7 +934,7 @@ function Get-ManagementUrl {
 }
 
 <#
-Executes a script while suppresing any progressbar coming from cmdlets in script
+Executes a script while suppressing any progressbar coming from cmdlets in script
 Useful while running long running cmdlets (202 pattern) since progressbar from these cmdlets 
 do not have useful information
 #>
@@ -2242,13 +2315,14 @@ param(
 
     if($IsManagementNode)
     {
+        $ComputerNameWithDNSSuffix = "$ComputerName.$ClusterDNSSuffix"
         if($Credential -eq $Null)
         {
-            $session = New-PSSession -ComputerName $ComputerName
+            $session = New-PSSession -ComputerName $ComputerNameWithDNSSuffix
         }
         else
         {
-            $session = New-PSSession -ComputerName $ComputerName -Credential $Credential
+            $session = New-PSSession -ComputerName $ComputerNameWithDNSSuffix -Credential $Credential
         }
     }
     else
@@ -2490,13 +2564,14 @@ param(
     if($IsManagementNode)
     {
         Write-VerboseLog ("connecting via Management node")
+        $ComputerNameWithDNSSuffix = "$ComputerName.$ClusterDNSSuffix"
         if($Credential -eq $Null)
         {
-            $session = New-PSSession -ComputerName $ComputerName
+            $session = New-PSSession -ComputerName $ComputerNameWithDNSSuffix
         }
         else
         {
-            $session = New-PSSession -ComputerName $ComputerName -Credential $Credential
+            $session = New-PSSession -ComputerName $ComputerNameWithDNSSuffix -Credential $Credential
         }
     }
     else
@@ -2917,6 +2992,13 @@ param(
         $operationStatus = [OperationStatus]::Unused
 
         $regContext, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails -ComputerName $ComputerName -Credential $Credential -IsManagementNode $isManagementNode
+
+        Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
+
+        if ($RepairRegistration -eq $true)
+        {
+            Confirm-UserAcknowledgmentUpgradeToSolution -ClusterNodeSession $clusterNodeSession
+        }
 
         $global:HCILogsDirectory = Setup-Logging -LogsDirectory $LogsDirectory -LogFilePrefix "RegisterHCI" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -IsClusterRegistered $IsClusterRegistered -ClusterNodeSession $clusterNodeSession
         
@@ -4166,6 +4248,9 @@ param(
 
         $regContext, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails -ComputerName $ComputerName -Credential $Credential -IsManagementNode $isManagementNode
 
+        Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
+        Confirm-UserAcknowledgmentUpgradeToSolution -ClusterNodeSession $clusterNodeSession
+
         $global:HCILogsDirectory = Setup-Logging -LogFilePrefix "UnregisterHCI" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -IsClusterRegistered $IsClusterRegistered -ClusterNodeSession $clusterNodeSession 
 
         Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $CheckingDependentModules -percentcomplete 1
@@ -4590,6 +4675,8 @@ param(
             $clusterNodeSession = New-PSSession -ComputerName localhost
         }
 
+        Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
+
         $logsDirectory = Get-LogsDirectoryHelper -ClusterNodeSession $clusterNodeSession | Out-String
     
         if (![string]::IsNullOrEmpty($logsDirectory)) 
@@ -4640,7 +4727,8 @@ function Get-SetupLoggingDetails
 
     if($isManagementNode)
     {
-        $nodeSessionParams.Add('ComputerName', $ComputerName)
+        $ComputerNameWithDNSSuffix = $ComputerName + '.' + (Get-WmiObject Win32_ComputerSystem).Domain
+        $nodeSessionParams.Add('ComputerName', $ComputerNameWithDNSSuffix)
 
         if($null -ne $Credential)
         {
@@ -4779,6 +4867,8 @@ param(
         }
 
         $regContext, $IsClusterRegistered, $clusterNodeSession, $nodeSessionParams = Get-SetupLoggingDetails -ComputerName $ComputerName -Credential $Credential -IsManagementNode $isManagementNode 
+
+        Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
         Setup-Logging -LogFilePrefix "SetAzStackHCI" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -IsClusterRegistered $IsClusterRegistered -ClusterNodeSession $clusterNodeSession | Out-Null
 
@@ -5443,6 +5533,10 @@ param(
                 $IsManagementNode = $True
             }
 
+            $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails -Credential $Credential -ComputerName $ComputerName -IsManagementNode $IsManagementNode
+
+            Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
+
             $LogFilePrefix = "EnableAzStackHCIAttestation"
             $DebugEnabled = $DebugPreference -ne "SilentlyContinue"
             $date = Get-Date
@@ -5730,6 +5824,10 @@ param(
                 $IsManagementNode = $True
             }
 
+            $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails -Credential $Credential -ComputerName $ComputerName -IsManagementNode $IsManagementNode
+
+            Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
+
             $LogFilePrefix = "DisableAzStackHCIAttestation"
             $DebugEnabled = $DebugPreference -ne "SilentlyContinue"
             
@@ -5941,6 +6039,10 @@ param(
 
         try
         {
+
+            $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+            Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
+
             $LogFilePrefix = "AddAzStackHCIVMAttestation"
             $DebugEnabled = $DebugPreference -ne "SilentlyContinue"
             $date = Get-Date
@@ -6134,6 +6236,9 @@ param(
 
         try
         {
+            $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+            Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
+
             $LogFilePrefix = "RemoveAzStackHCIVMAttestation"
             $DebugEnabled = $DebugPreference -ne "SilentlyContinue"
             
@@ -6259,6 +6364,9 @@ param(
     {
         try
         {
+            $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+            Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
+
             $getImdsOutputList = [System.Collections.ArrayList]::new()
 
             $SessionParams = @{
@@ -6504,6 +6612,8 @@ function Install-AzStackHCIRemoteSupport{
 
     $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails
 
+    Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
+
     $IsClusterRegistered = $regContext.RegistrationStatus -eq [RegistrationStatus]::Registered
     Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportInstall" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -ClusterNodeSession $clusterNodeSession -IsClusterRegistered $IsClusterRegistered | Out-Null
     if ($Null -ne $clusterNodeSession)
@@ -6541,6 +6651,7 @@ function Remove-AzStackHCIRemoteSupport{
     param()
 
     $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
     Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportRemove" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -ClusterNodeSession $clusterNodeSession -IsClusterRegistered $IsClusterRegistered | Out-Null
     if ($Null -ne $clusterNodeSession)
     {
@@ -6607,6 +6718,9 @@ function Enable-AzStackHCIRemoteSupport{
         $AgreeToRemoteSupportConsent
     )
 
+    $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
+
     if ($AgreeToRemoteSupportConsent -ne $true)
     {
         if($PSCmdlet.ShouldContinue("`r`nProceed with enabling remote support?", $RemoteSupportConsentText))
@@ -6650,6 +6764,10 @@ function Disable-AzStackHCIRemoteSupport{
     [CmdletBinding(SupportsShouldProcess)]
     [OutputType([Boolean])]
     param()
+
+    $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
+
     $agentInstallType = (Get-ItemProperty -Path "HKLM:\SYSTEM\Software\Microsoft\AzureStack\Observability\RemoteSupport" -ErrorAction SilentlyContinue).InstallType
     $observabilityStackPresent = Assert-IsObservabilityStackPresent
 
@@ -6694,6 +6812,9 @@ function Get-AzStackHCIRemoteSupportAccess{
         [switch]
         $IncludeExpired
     )
+
+    $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
     $agentInstallType = (Get-ItemProperty -Path "HKLM:\SYSTEM\Software\Microsoft\AzureStack\Observability\RemoteSupport" -ErrorAction SilentlyContinue).InstallType
     $observabilityStackPresent = Assert-IsObservabilityStackPresent
@@ -6793,6 +6914,9 @@ function Get-AzStackHCIRemoteSupportSessionHistory{
         [DateTime]
         $FromDate = (Get-Date).AddDays(-7)
     )
+
+    $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
     $agentInstallType = (Get-ItemProperty -Path "HKLM:\SYSTEM\Software\Microsoft\AzureStack\Observability\RemoteSupport" -ErrorAction SilentlyContinue).InstallType
     $observabilityStackPresent = Assert-IsObservabilityStackPresent

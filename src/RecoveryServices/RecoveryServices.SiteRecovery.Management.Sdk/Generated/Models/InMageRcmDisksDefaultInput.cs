@@ -28,16 +28,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="diskType">The disk type.
-        /// Possible values include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'</param>
+        /// Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;, &#39;StandardSSD_LRS&#39;,
+        /// &#39;PremiumV2_LRS&#39;, &#39;UltraSSD_LRS&#39;, &#39;StandardSSD_ZRS&#39;, &#39;Premium_ZRS&#39;</param>
 
         /// <param name="diskEncryptionSetId">The DiskEncryptionSet ARM Id.
         /// </param>
-        public InMageRcmDisksDefaultInput(string logStorageAccountId, string diskType, string diskEncryptionSetId = default(string))
+
+        /// <param name="sectorSizeInBytes">The logical sector size (in bytes), 512 by default.
+        /// </param>
+        public InMageRcmDisksDefaultInput(string logStorageAccountId, string diskType, string diskEncryptionSetId = default(string), int? sectorSizeInBytes = default(int?))
 
         {
             this.LogStorageAccountId = logStorageAccountId;
             this.DiskType = diskType;
             this.DiskEncryptionSetId = diskEncryptionSetId;
+            this.SectorSizeInBytes = sectorSizeInBytes;
             CustomInit();
         }
 
@@ -54,7 +59,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string LogStorageAccountId {get; set; }
 
         /// <summary>
-        /// Gets or sets the disk type. Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;, &#39;StandardSSD_LRS&#39;
+        /// Gets or sets the disk type. Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;, &#39;StandardSSD_LRS&#39;, &#39;PremiumV2_LRS&#39;, &#39;UltraSSD_LRS&#39;, &#39;StandardSSD_ZRS&#39;, &#39;Premium_ZRS&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskType")]
         public string DiskType {get; set; }
@@ -64,6 +69,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskEncryptionSetId")]
         public string DiskEncryptionSetId {get; set; }
+
+        /// <summary>
+        /// Gets or sets the logical sector size (in bytes), 512 by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sectorSizeInBytes")]
+        public int? SectorSizeInBytes {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

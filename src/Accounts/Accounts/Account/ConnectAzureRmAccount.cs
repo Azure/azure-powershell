@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Azure.Identity;
-
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
@@ -40,7 +39,6 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Sanitizer;
 using Microsoft.WindowsAzure.Commands.Common.Utilities;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-
 using System;
 using System.Collections.Concurrent;
 using System.Linq;
@@ -225,7 +223,7 @@ namespace Microsoft.Azure.Commands.Profile
         public SwitchParameter SendCertificateChain { get; set; }
 
 
-        [Parameter(ParameterSetName = ServicePrincipalCertificateFileParameterSet, Mandatory = true, HelpMessage = "The path of certficate file in pkcs#12 format.")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateFileParameterSet, Mandatory = true, HelpMessage = "The path of certificate file in pkcs#12 format.")]
         public String CertificatePath { get; set; }
 
         [Parameter(ParameterSetName = ServicePrincipalCertificateFileParameterSet, HelpMessage = "The password required to access the pkcs#12 certificate file.")]
@@ -235,6 +233,10 @@ namespace Microsoft.Azure.Commands.Profile
         [Alias("ClientAssertion")]
         [ValidateNotNullOrEmpty]
         public string FederatedToken { get; set; }
+
+        [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Specifies the claims challenge with base64 encoding.")]
+        [ValidateNotNullOrEmpty]
+        public string ClaimsChallenge { get; set; }
 
         protected override IAzureContext DefaultContext
         {
@@ -295,7 +297,7 @@ namespace Microsoft.Azure.Commands.Profile
             // todo: ideally cancellation token should be passed to authentication factory as a parameter
             // however AuthenticationFactory.Authenticate does not support it
             // so I store it in AzureSession.Instance as a global variable
-            // todo: CancellationTokenSource should be visiable only in cmdlet class
+            // todo: CancellationTokenSource should be visible only in cmdlet class
             // CancellationTokenSource.Token should be passed to other classes
             AzureSession.Instance.RegisterComponent("LoginCancellationToken", () => new CancellationTokenSource(), true);
         }
@@ -339,7 +341,7 @@ namespace Microsoft.Azure.Commands.Profile
 
             if (ParameterSetName.Equals(UserWithCredentialParameterSet))
             {
-                WriteWarning(Resources.UsernamePasswordDeprecateWarningMessage);
+                WriteWarning(IsSigningInToPublicCloud() ? string.Format(Resources.RopcDeprecationPublicCloud, "September 1, 2025") : Resources.RopcDeprecationSovereignClouds);
             }
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Subscription)))
@@ -352,7 +354,6 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     subscriptionName = Subscription;
                 }
-
             }
             else if (AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager))
             {
@@ -369,6 +370,15 @@ namespace Microsoft.Azure.Commands.Profile
                     {
                         subscriptionName = subscriptionFromConfig;
                     }
+                }
+            }
+
+            string claimsChallenge = null;
+            if (this.IsParameterBound(c => c.ClaimsChallenge))
+            {
+                if (!ClaimsChallengeUtilities.TryParseClaimsChallenge(ClaimsChallenge, out claimsChallenge))
+                {
+                    throw new PSArgumentException(Resources.InvalidClaimsChallenge, nameof(ClaimsChallenge));
                 }
             }
 
@@ -517,8 +527,7 @@ namespace Microsoft.Azure.Commands.Profile
                     return;
                 }
 
-                IHttpOperationsFactory httpClientFactory = null;
-                AzureSession.Instance.TryGetComponent(HttpClientOperationsFactory.Name, out httpClientFactory);
+                AzureSession.Instance.TryGetComponent(HttpClientOperationsFactory.Name, out IHttpOperationsFactory httpClientFactory);
 
                 SetContextWithOverwritePrompt((localProfile, profileClient, name) =>
                 {
@@ -548,6 +557,7 @@ namespace Microsoft.Azure.Commands.Profile
                         SkipValidation,
                         new OpenIDConfiguration(Tenant, baseUri: _environment.ActiveDirectoryAuthority, httpClientFactory: httpClientFactory),
                         WriteWarningEvent, //Could not use WriteWarning directly because it may be in worker thread
+                        claimsChallenge,
                         name,
                         shouldPopulateContextList,
                         MaxContextPopulation,
@@ -596,6 +606,15 @@ namespace Microsoft.Azure.Commands.Profile
 
                 WriteAnnouncementsPeriodically();
             }
+        }
+
+        private bool IsSigningInToPublicCloud()
+        {
+            if (_environment == null)
+            {
+                return true; // Default to public cloud if no environment is specified
+            }
+            return _environment.ActiveDirectoryAuthority.Equals(AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud].ActiveDirectoryAuthority, StringComparison.OrdinalIgnoreCase);
         }
 
         private void WriteAnnouncementsPeriodically()
@@ -860,6 +879,7 @@ namespace Microsoft.Azure.Commands.Profile
                 AzureSession.Instance.RegisterComponent(nameof(MsalAccessTokenAcquirerFactory), () => new MsalAccessTokenAcquirerFactory());
                 AzureSession.Instance.RegisterComponent<ISshCredentialFactory>(nameof(ISshCredentialFactory), () => new SshCredentialFactory());
                 AzureSession.Instance.RegisterComponent<IOutputSanitizer>(nameof(IOutputSanitizer), () => new OutputSanitizer());
+                AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(AuthenticationTelemetry.Name, () => new AuthenticationTelemetry());
 #if DEBUG || TESTCOVERAGE
                 AzureSession.Instance.RegisterComponent<ITestCoverage>(nameof(ITestCoverage), () => new TestCoverage());
 #endif
@@ -891,7 +911,7 @@ namespace Microsoft.Azure.Commands.Profile
             }
             catch (Exception ex)
             {
-                WriteDebug(string.Format("Failed to add telemtry for config as {0}", ex.Message));
+                WriteDebug(string.Format("Failed to add telemetry for config as {0}", ex.Message));
             }
         }
 

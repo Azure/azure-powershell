@@ -30,6 +30,12 @@ Get-AzReservation -InputObject <IReservationsIdentity> [-Expand <String>] [-Defa
  [<CommonParameters>]
 ```
 
+### GetViaIdentityReservationOrder
+```
+Get-AzReservation -Id <String> -ReservationOrderInputObject <IReservationsIdentity> [-Expand <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List
 ```
 Get-AzReservation -OrderId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -54,11 +60,11 @@ centralus  bd82bff8-4d29-9375-8194-ce0709fc1691/f2c3a058-b469-4529-88fa-1bae251c
 ```
 
 Get the list of reservation orders in the current tenant.
-By design, some propeties do not have data due to the api response(e.g.
+By design, some properties do not have data due to the api response(e.g.
 LastUpdatedDateTime and SkuDescription).
 In this case please get the single reservation with command in example 2 to get the missing data.
 
-Some data might be trucated due to the width of powershell view, appending this to the end of the command to show the truncated data: | ft -Wrap
+Some data might be truncated due to the width of powershell view, appending this to the end of the command to show the truncated data: | ft -Wrap
 
 ### Example 2: Get the reservation details given ReservationOrderId and ReservationId
 ```powershell
@@ -72,7 +78,7 @@ centralus a87c1742-0080-5b4d-b953-8531ad46fdc8/cad6fef7-ae86-4d47-91d0-67c897934
 ```
 
 Get the details of a single reservation.
-Some data might be trucated due to the width of powershell view, appending this to the end of the command to show the truncated data: | ft -Wrap
+Some data might be truncated due to the width of powershell view, appending this to the end of the command to show the truncated data: | ft -Wrap
 
 ## PARAMETERS
 
@@ -97,7 +103,7 @@ Supported value of this query is renewProperties
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentity
+Parameter Sets: Get, GetViaIdentity, GetViaIdentityReservationOrder
 Aliases:
 
 Required: False
@@ -145,7 +151,7 @@ Id of the reservation item
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityReservationOrder
 Aliases: ReservationId
 
 Required: True
@@ -157,7 +163,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
@@ -201,6 +206,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ReservationOrderInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
+Parameter Sets: GetViaIdentityReservationOrder
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SelectedState
 The selected provisioning state
 
@@ -240,7 +260,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationResponse
 
 ## NOTES
 

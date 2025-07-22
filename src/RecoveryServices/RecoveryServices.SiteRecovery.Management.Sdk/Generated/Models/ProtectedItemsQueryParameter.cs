@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="multiVMGroupCreateOption">Whether Multi VM group is auto created or specified by user.
-        /// Possible values include: 'AutoCreated', 'UserSpecified'</param>
+        /// Possible values include: &#39;AutoCreated&#39;, &#39;UserSpecified&#39;</param>
 
         /// <param name="processServerId">The process server Id filter.
         /// </param>

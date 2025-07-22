@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Profile
                     var defaultProfile = DefaultProfile as AzureRmProfile;
                     if (defaultProfile != null && string.Equals(AzureSession.Instance?.ARMContextSaveMode, "CurrentUser"))
                     {
-                        defaultProfile.RefreshContextsFromCache();
+                        defaultProfile.RefreshContextsFromCache(_cmdletContext);
                     }
                 }
                 catch (Exception e)

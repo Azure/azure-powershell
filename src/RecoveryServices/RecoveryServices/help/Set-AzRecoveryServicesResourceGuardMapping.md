@@ -14,7 +14,8 @@ Sets the resource guard mapping to the recovery services vault.
 
 ```
 Set-AzRecoveryServicesResourceGuardMapping [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- -ResourceGuardId <String> [-Token <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceGuardId <String> [-Token <String>] [-SecureToken <SecureString>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +30,7 @@ $token = (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").To
 Set-AzRecoveryServicesResourceGuardMapping -VaultId $vault.ID -ResourceGuardId "Resource-Guard-Id" -Token $token
 ```
 
-The first command fetches the access token for the resource guard tenant where the resource guard is present. The second command creates a mapping between the RSVault $vault and Resource guard. Please note that token parameter is optional and only needed to authenticate cross tenant protected opeartions.
+The first command fetches the access token for the resource guard tenant where the resource guard is present. The second command creates a mapping between the RSVault $vault and Resource guard. Please note that token parameter is optional and only needed to authenticate cross tenant protected operations.
 
 ## PARAMETERS
 
@@ -57,6 +58,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecureToken
+Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

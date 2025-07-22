@@ -43,8 +43,9 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var resource = interactiveParameters.Environment.GetEndpoint(interactiveParameters.ResourceId) ?? interactiveParameters.ResourceId;
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
             var clientId = Constants.PowerShellClientId;
+            var claimsChallenge = interactiveParameters.ClaimsChallenge;
 
-            var requestContext = new TokenRequestContext(scopes, isCaeEnabled: true);
+            var requestContext = new TokenRequestContext(scopes, claims: claimsChallenge, isCaeEnabled: true);
             var authority = interactiveParameters.Environment.ActiveDirectoryAuthority;
 
             var options = new InteractiveBrowserCredentialBrokerOptions(WindowHandleUtilities.GetConsoleOrTerminalWindow())
@@ -62,6 +63,12 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             };
             options.DisableInstanceDiscovery = interactiveParameters.DisableInstanceDiscovery ?? options.DisableInstanceDiscovery;
             var browserCredential = new InteractiveBrowserCredential(options);
+
+            CheckTokenCachePersistanceEnabled = () =>
+            {
+                return options?.TokenCachePersistenceOptions != null && !(options.TokenCachePersistenceOptions is UnsafeTokenCacheOptions);
+            };
+            CollectTelemetry(browserCredential, options);
 
             TracingAdapter.Information($"{DateTime.Now:T} - [InteractiveWamAuthenticator] Calling InteractiveBrowserCredential.AuthenticateAsync with TenantId:'{options.TenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}', RedirectUri:'{options.RedirectUri}'");
             var authTask = browserCredential.AuthenticateAsync(requestContext, cancellationToken);

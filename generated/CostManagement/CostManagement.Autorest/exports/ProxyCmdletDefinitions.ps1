@@ -28,7 +28,7 @@ Get-AzCostManagementExportExecutionHistory -InputObject $getExport
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExportExecution
+Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportExecutionListResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,16 +40,18 @@ INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
   [BillingProfileId <String>]: BillingProfile ID
   [ExportName <String>]: Export Name.
   [ExternalCloudProviderId <String>]: This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations.
-  [ExternalCloudProviderType <ExternalCloudProviderType?>]: The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account.
+  [ExternalCloudProviderType <String>]: The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account.
   [Id <String>]: Resource identity path
   [OperationId <String>]: The target operation Id.
   [Scope <String>]: The scope associated with view operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope.
   [ViewName <String>]: View name
 .Link
 https://learn.microsoft.com/powershell/module/az.costmanagement/get-azcostmanagementexportexecutionhistory
+.Link
+https://docs.microsoft.com/en-us/rest/api/costmanagement/
 #>
 function Get-AzCostManagementExportExecutionHistory {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExportExecution])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportExecutionListResult])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -68,7 +70,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -127,6 +128,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -156,6 +166,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -212,7 +225,9 @@ Get-AzCostManagementExport -Name 'TestExport' -Scope 'subscriptions/**********'
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExport
+Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExport
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportListResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -224,16 +239,18 @@ INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
   [BillingProfileId <String>]: BillingProfile ID
   [ExportName <String>]: Export Name.
   [ExternalCloudProviderId <String>]: This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations.
-  [ExternalCloudProviderType <ExternalCloudProviderType?>]: The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account.
+  [ExternalCloudProviderType <String>]: The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account.
   [Id <String>]: Resource identity path
   [OperationId <String>]: The target operation Id.
   [Scope <String>]: The scope associated with view operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope.
   [ViewName <String>]: View name
 .Link
 https://learn.microsoft.com/powershell/module/az.costmanagement/get-azcostmanagementexport
+.Link
+https://docs.microsoft.com/en-us/rest/api/costmanagement/
 #>
 function Get-AzCostManagementExport {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExport])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExport], [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportListResult])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -254,7 +271,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -320,6 +336,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -350,6 +375,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -419,13 +447,15 @@ INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
   [BillingProfileId <String>]: BillingProfile ID
   [ExportName <String>]: Export Name.
   [ExternalCloudProviderId <String>]: This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations.
-  [ExternalCloudProviderType <ExternalCloudProviderType?>]: The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account.
+  [ExternalCloudProviderType <String>]: The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account.
   [Id <String>]: Resource identity path
   [OperationId <String>]: The target operation Id.
   [Scope <String>]: The scope associated with view operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope.
   [ViewName <String>]: View name
 .Link
 https://learn.microsoft.com/powershell/module/az.costmanagement/invoke-azcostmanagementexecuteexport
+.Link
+https://docs.microsoft.com/en-us/rest/api/costmanagement/
 #>
 function Invoke-AzCostManagementExecuteExport {
 [OutputType([System.Boolean])]
@@ -447,7 +477,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -512,6 +541,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -541,6 +579,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -597,12 +638,14 @@ For more details on the roles see, https://docs.microsoft.com/en-us/azure/cost-m
 Invoke-AzCostManagementReservationDetailReport -BillingAccountId "00000000-0000-0000-0000-0000000000" -StartDate "2022-10-01" -EndDate "2022-10-20"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IOperationStatus
+Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IOperationStatus
 .Link
 https://learn.microsoft.com/powershell/module/az.costmanagement/invoke-azcostmanagementreservationdetailreport
+.Link
+https://docs.microsoft.com/en-us/rest/api/costmanagement/
 #>
 function Invoke-AzCostManagementReservationDetailReport {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IOperationStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IOperationStatus])]
 [CmdletBinding(DefaultParameterSetName='By', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -697,6 +740,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -726,6 +778,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -792,12 +847,14 @@ The details on the file(s) available for download will be available in the polli
 New-AzCostManagementDetailReport -Scope "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f" -Metric 'ActualCost' -TimePeriodStart "2022-10-01" -TimePeriodEnd "2022-10-20"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20220501.ICostDetailsOperationResults
+Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostDetailsOperationResults
 .Link
 https://learn.microsoft.com/powershell/module/az.costmanagement/new-azcostmanagementdetailreport
+.Link
+https://docs.microsoft.com/en-us/rest/api/costmanagement/
 #>
 function New-AzCostManagementDetailReport {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20220501.ICostDetailsOperationResults])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostDetailsOperationResults])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -808,7 +865,7 @@ param(
     # Also, Modern Commerce Account scopes are '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for billingAccount scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
     ${Scope},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # This parameter can be used only by Enterprise Agreement customers.
@@ -818,7 +875,7 @@ param(
     # If a timePeriod, invoiceId or billingPeriod parameter is not provided in the request body the API will return the current month's cost.
     ${BillingPeriod},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # This parameter can only be used by Microsoft Customer Agreement customers.
@@ -827,27 +884,39 @@ param(
     # If a timePeriod, invoiceId or billingPeriod parameter is not provided in the request body the API will return the current month's cost.
     ${InvoiceId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.CostDetailsMetricType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("ActualCost", "AmortizedCost")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.CostDetailsMetricType]
+    [System.String]
     # The type of the detailed report.
     # By default ActualCost is provided
     ${Metric},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # The end date to pull data to.
     # example format 2020-03-15
     ${TimePeriodEnd},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # The start date to pull data from.
     # example format 2020-03-15
     ${TimePeriodStart},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -917,6 +986,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -937,6 +1015,8 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.CostManagement.private\New-AzCostManagementDetailReport_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.CostManagement.private\New-AzCostManagementDetailReport_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.CostManagement.private\New-AzCostManagementDetailReport_CreateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -945,6 +1025,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1014,13 +1097,15 @@ INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
   [BillingProfileId <String>]: BillingProfile ID
   [ExportName <String>]: Export Name.
   [ExternalCloudProviderId <String>]: This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations.
-  [ExternalCloudProviderType <ExternalCloudProviderType?>]: The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account.
+  [ExternalCloudProviderType <String>]: The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account.
   [Id <String>]: Resource identity path
   [OperationId <String>]: The target operation Id.
   [Scope <String>]: The scope associated with view operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope.
   [ViewName <String>]: View name
 .Link
 https://learn.microsoft.com/powershell/module/az.costmanagement/remove-azcostmanagementexport
+.Link
+https://docs.microsoft.com/en-us/rest/api/costmanagement/
 #>
 function Remove-AzCostManagementExport {
 [OutputType([System.Boolean])]
@@ -1043,7 +1128,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1108,6 +1192,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1137,6 +1230,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1193,29 +1289,34 @@ $filter = New-AzCostManagementQueryFilterObject -Dimensions $dimensions
 Invoke-AzCostManagementQuery -Type Usage -Scope "subscriptions/***********" -DatasetGranularity 'Monthly' -DatasetFilter $filter -Timeframe MonthToDate -Debug
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryResult
+Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 DATASETFILTER <IQueryFilter>: Has filter expression to use in the query.
-  [And <IQueryFilter[]>]: The logical "AND" expression. Must have at least 2 items.
+  [And <List<IQueryFilter>>]: The logical "AND" expression. Must have at least 2 items.
+    [And <List<IQueryFilter>>]: The logical "AND" expression. Must have at least 2 items.
+    [Dimensions <IQueryComparisonExpression>]: Has comparison expression for a dimension
+      Name <String>: The name of the column to use in comparison.
+      Value <List<String>>: Array of values to use for comparison
+    [Not <IQueryFilter>]: The logical "NOT" expression.
+    [Or <List<IQueryFilter>>]: The logical "OR" expression. Must have at least 2 items.
+    [Tag <IQueryComparisonExpression>]: Has comparison expression for a tag
   [Dimensions <IQueryComparisonExpression>]: Has comparison expression for a dimension
-    Name <String>: The name of the column to use in comparison.
-    Value <String[]>: Array of values to use for comparison
   [Not <IQueryFilter>]: The logical "NOT" expression.
-  [Or <IQueryFilter[]>]: The logical "OR" expression. Must have at least 2 items.
+  [Or <List<IQueryFilter>>]: The logical "OR" expression. Must have at least 2 items.
   [Tag <IQueryComparisonExpression>]: Has comparison expression for a tag
 
 DATASETGROUPING <IQueryGrouping[]>: Array of group by expression to use in the query.
   Name <String>: The name of the column to group.
-  Type <QueryColumnType>: Has type of the column to group.
+  Type <String>: Has type of the column to group.
 .Link
 https://learn.microsoft.com/powershell/module/az.costmanagement/invoke-azcostmanagementquery
 #>
 function Invoke-AzCostManagementQuery {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryResult])]
 [CmdletBinding(DefaultParameterSetName='UsageExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UsageExpanded', Mandatory)]
@@ -1231,23 +1332,23 @@ param(
     ${ExternalCloudProviderId},
 
     [Parameter(ParameterSetName='UsageExpanded1', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("ExternalBillingAccounts", "ExternalSubscriptions")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType]
+    [System.String]
     # The external cloud provider type associated with dimension/query operations.
     ${ExternalCloudProviderType},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("MonthToDate", "BillingMonthToDate", "TheLastMonth", "TheLastBillingMonth", "WeekToDate", "Custom")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType]
+    [System.String]
     # The time frame for pulling data for the query.
     ${Timeframe},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Usage", "ActualCost", "AmortizedCost")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType]
+    [System.String]
     # The type of the query.
     ${Type},
 
@@ -1259,30 +1360,28 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryDatasetAggregation]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryDatasetAggregation]))]
     [System.Collections.Hashtable]
     # Dictionary of aggregation expression to use in the query.
     ${DatasetAggregation},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryFilter]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryFilter]
     # Has filter expression to use in the query.
-    # To construct, see NOTES section for DATASETFILTER properties and create a hash table.
     ${DatasetFilter},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Daily")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType]
+    [System.String]
     # The granularity of rows in the query.
     ${DatasetGranularity},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryGrouping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryGrouping[]]
     # Array of group by expression to use in the query.
-    # To construct, see NOTES section for DATASETGROUPING properties and create a hash table.
     ${DatasetGrouping},
 
     [Parameter()]
@@ -1352,6 +1451,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1381,6 +1489,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1439,12 +1550,12 @@ Create operation does not require eTag.
 New-AzCostManagementExport -Scope "subscriptions/***********" -Name "CostManagementExportTest" -ScheduleStatus "Active" -ScheduleRecurrence "Daily" -RecurrencePeriodFrom "2020-10-31T20:00:00Z" -RecurrencePeriodTo "2020-11-30T00:00:00Z" -Format "Csv" -DestinationResourceId "/subscriptions/*************/resourceGroups/ResourceGroupTest/providers/Microsoft.Storage/storageAccounts/storageAccountTest" `  -DestinationContainer "exports" -DestinationRootFolderPath "ad-hoc" -DefinitionType "Usage" -DefinitionTimeframe "MonthToDate" -DatasetGranularity "Daily"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExport
+Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExport
 .Link
 https://learn.microsoft.com/powershell/module/az.costmanagement/new-azcostmanagementexport
 #>
 function New-AzCostManagementExport {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExport])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExport])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1460,7 +1571,7 @@ param(
     # This parameter defines the scope of costmanagement from different perspectives 'Subscription','ResourceGroup' and 'Provide Service'.
     ${Scope},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String[]]
     # Array of column names to be included in the export.
@@ -1468,101 +1579,147 @@ param(
     # The available columns can vary by customer channel (see examples).
     ${ConfigurationColumn},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Daily")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType]
+    [System.String]
     # The granularity of rows in the export.
     # Currently only 'Daily' is supported.
     ${DataSetGranularity},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("MonthToDate", "BillingMonthToDate", "TheLastMonth", "TheLastBillingMonth", "WeekToDate", "Custom")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType]
+    [System.String]
     # The time frame for pulling data for the export.
     # If custom, then a specific time period must be provided.
     ${DefinitionTimeframe},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Usage", "ActualCost", "AmortizedCost")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType]
+    [System.String]
     # The type of the export.
     # Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations.
     ${DefinitionType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # The name of the container where exports will be uploaded.
+    # If the container does not exist it will be created.
     ${DestinationContainer},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # The resource id of the storage account where exports will be delivered.
+    # This is not required if a sasToken and storageAccount are specified.
     ${DestinationResourceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # The name of the directory where exports will be uploaded.
     ${DestinationRootFolderPath},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType]
+    [System.String]
+    # A SAS token for the storage account.
+    # For a restricted set of Azure customers this together with storageAccount can be specified instead of resourceId.
+    # Note: the value returned by the API for this property will always be obfuscated.
+    # Returning this same obfuscated value will not result in the SAS token being updated.
+    # To update this value a new SAS token must be specified.
+    ${DestinationSasToken},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+    [System.String]
+    # The storage account where exports will be uploaded.
+    # For a restricted set of Azure customers this together with sasToken can be specified instead of resourceId.
+    ${DestinationStorageAccount},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+    [System.String]
+    # eTag of the resource.
+    # To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
+    ${ETag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Csv")]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+    [System.String]
     # The format of the export being delivered.
     # Currently only 'Csv' is supported.
     ${Format},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # If set to true, exported data will be partitioned by size and placed in a blob directory together with a manifest file.
+    # Note: this option is currently available only for modern commerce scopes.
+    ${PartitionData},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.DateTime]
     # The start date of recurrence.
     ${RecurrencePeriodFrom},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.DateTime]
     # The end date of recurrence.
     ${RecurrencePeriodTo},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Daily", "Weekly", "Monthly", "Annually")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType]
+    [System.String]
     # The schedule recurrence.
     ${ScheduleRecurrence},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Active", "Inactive")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType]
+    [System.String]
     # The status of the export's schedule.
     # If 'Inactive', the export's schedule is paused.
     ${ScheduleStatus},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.DateTime]
     # The start date for export data.
     ${TimePeriodFrom},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.DateTime]
     # The end date for export data.
     ${TimePeriodTo},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1612,6 +1769,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1632,6 +1798,8 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.CostManagement.custom\New-AzCostManagementExport';
+            CreateViaJsonFilePath = 'Az.CostManagement.custom\New-AzCostManagementExport';
+            CreateViaJsonString = 'Az.CostManagement.custom\New-AzCostManagementExport';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1640,6 +1808,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1685,19 +1856,19 @@ end {
 
 <#
 .Synopsis
-Create a in-memory object for QueryComparisonExpression
+Create an in-memory object for QueryComparisonExpression.
 .Description
-Create a in-memory object for QueryComparisonExpression
+Create an in-memory object for QueryComparisonExpression.
 .Example
 New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Value @('East US', 'West Europe')
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryComparisonExpression
+Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryComparisonExpression
 .Link
-https://learn.microsoft.com/powershell/module/az.CostManagement/new-AzCostManagementQueryComparisonExpressionObject
+https://learn.microsoft.com/powershell/module/Az.CostManagement/new-azcostmanagementquerycomparisonexpressionobject
 #>
 function New-AzCostManagementQueryComparisonExpressionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryComparisonExpression])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryComparisonExpression])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -1705,12 +1876,6 @@ param(
     [System.String]
     # The name of the column to use in comparison.
     ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.OperatorType]
-    # The operator to use for comparison.
-    ${Operator},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
@@ -1726,6 +1891,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1754,6 +1922,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1799,97 +1970,107 @@ end {
 
 <#
 .Synopsis
-Create a in-memory object for QueryFilter
+Create an in-memory object for QueryFilter.
 .Description
-Create a in-memory object for QueryFilter
+Create an in-memory object for QueryFilter.
 .Example
 $orDimension = New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Value @('East US', 'West Europe')
 $orTag = New-AzCostManagementQueryComparisonExpressionObject -Name 'Environment' -Value @('UAT', 'Prod')
 New-AzCostManagementQueryFilterObject -or @((New-AzCostManagementQueryFilterObject -Dimensions $orDimension), (New-AzCostManagementQueryFilterObject -Tag $orTag))
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryFilter
+Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryFilter
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 AND <IQueryFilter[]>: The logical "AND" expression. Must have at least 2 items.
-  [And <IQueryFilter[]>]: The logical "AND" expression. Must have at least 2 items.
+  [And <List<IQueryFilter>>]: The logical "AND" expression. Must have at least 2 items.
+    [And <List<IQueryFilter>>]: The logical "AND" expression. Must have at least 2 items.
+    [Dimensions <IQueryComparisonExpression>]: Has comparison expression for a dimension
+      Name <String>: The name of the column to use in comparison.
+      Value <List<String>>: Array of values to use for comparison
+    [Not <IQueryFilter>]: The logical "NOT" expression.
+    [Or <List<IQueryFilter>>]: The logical "OR" expression. Must have at least 2 items.
+    [Tag <IQueryComparisonExpression>]: Has comparison expression for a tag
   [Dimensions <IQueryComparisonExpression>]: Has comparison expression for a dimension
-    Name <String>: The name of the column to use in comparison.
-    Value <String[]>: Array of values to use for comparison
   [Not <IQueryFilter>]: The logical "NOT" expression.
-  [Or <IQueryFilter[]>]: The logical "OR" expression. Must have at least 2 items.
+  [Or <List<IQueryFilter>>]: The logical "OR" expression. Must have at least 2 items.
   [Tag <IQueryComparisonExpression>]: Has comparison expression for a tag
 
-DIMENSIONS <IQueryComparisonExpression>: Has comparison expression for a dimensions.
+DIMENSIONS <IQueryComparisonExpression>: Has comparison expression for a dimension.
   Name <String>: The name of the column to use in comparison.
-  Value <String[]>: Array of values to use for comparison
+  Value <List<String>>: Array of values to use for comparison
 
 NOT <IQueryFilter>: The logical "NOT" expression.
-  [And <IQueryFilter[]>]: The logical "AND" expression. Must have at least 2 items.
+  [And <List<IQueryFilter>>]: The logical "AND" expression. Must have at least 2 items.
+    [And <List<IQueryFilter>>]: The logical "AND" expression. Must have at least 2 items.
+    [Dimensions <IQueryComparisonExpression>]: Has comparison expression for a dimension
+      Name <String>: The name of the column to use in comparison.
+      Value <List<String>>: Array of values to use for comparison
+    [Not <IQueryFilter>]: The logical "NOT" expression.
+    [Or <List<IQueryFilter>>]: The logical "OR" expression. Must have at least 2 items.
+    [Tag <IQueryComparisonExpression>]: Has comparison expression for a tag
   [Dimensions <IQueryComparisonExpression>]: Has comparison expression for a dimension
-    Name <String>: The name of the column to use in comparison.
-    Value <String[]>: Array of values to use for comparison
   [Not <IQueryFilter>]: The logical "NOT" expression.
-  [Or <IQueryFilter[]>]: The logical "OR" expression. Must have at least 2 items.
+  [Or <List<IQueryFilter>>]: The logical "OR" expression. Must have at least 2 items.
   [Tag <IQueryComparisonExpression>]: Has comparison expression for a tag
 
 OR <IQueryFilter[]>: The logical "OR" expression. Must have at least 2 items.
-  [And <IQueryFilter[]>]: The logical "AND" expression. Must have at least 2 items.
+  [And <List<IQueryFilter>>]: The logical "AND" expression. Must have at least 2 items.
+    [And <List<IQueryFilter>>]: The logical "AND" expression. Must have at least 2 items.
+    [Dimensions <IQueryComparisonExpression>]: Has comparison expression for a dimension
+      Name <String>: The name of the column to use in comparison.
+      Value <List<String>>: Array of values to use for comparison
+    [Not <IQueryFilter>]: The logical "NOT" expression.
+    [Or <List<IQueryFilter>>]: The logical "OR" expression. Must have at least 2 items.
+    [Tag <IQueryComparisonExpression>]: Has comparison expression for a tag
   [Dimensions <IQueryComparisonExpression>]: Has comparison expression for a dimension
-    Name <String>: The name of the column to use in comparison.
-    Value <String[]>: Array of values to use for comparison
   [Not <IQueryFilter>]: The logical "NOT" expression.
-  [Or <IQueryFilter[]>]: The logical "OR" expression. Must have at least 2 items.
+  [Or <List<IQueryFilter>>]: The logical "OR" expression. Must have at least 2 items.
   [Tag <IQueryComparisonExpression>]: Has comparison expression for a tag
 
 TAG <IQueryComparisonExpression>: Has comparison expression for a tag.
   Name <String>: The name of the column to use in comparison.
-  Value <String[]>: Array of values to use for comparison
+  Value <List<String>>: Array of values to use for comparison
 .Link
-https://learn.microsoft.com/powershell/module/az.CostManagement/new-AzCostManagementQueryFilterObject
+https://learn.microsoft.com/powershell/module/Az.CostManagement/new-azcostmanagementqueryfilterobject
 #>
 function New-AzCostManagementQueryFilterObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryFilter])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryFilter])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryFilter[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryFilter[]]
     # The logical "AND" expression.
     # Must have at least 2 items.
-    # To construct, see NOTES section for AND properties and create a hash table.
     ${And},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryComparisonExpression]
-    # Has comparison expression for a dimensions.
-    # To construct, see NOTES section for DIMENSIONS properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryComparisonExpression]
+    # Has comparison expression for a dimension.
     ${Dimensions},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryFilter]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryFilter]
     # The logical "NOT" expression.
-    # To construct, see NOTES section for NOT properties and create a hash table.
     ${Not},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryFilter[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryFilter[]]
     # The logical "OR" expression.
     # Must have at least 2 items.
-    # To construct, see NOTES section for OR properties and create a hash table.
     ${Or},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryComparisonExpression]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryComparisonExpression]
     # Has comparison expression for a tag.
-    # To construct, see NOTES section for TAG properties and create a hash table.
     ${Tag}
 )
 
@@ -1900,6 +2081,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1928,6 +2112,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1991,7 +2178,7 @@ Update-AzCostManagementExport -InputObject $oldExport -ScheduleRecurrence 'Weekl
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExport
+Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExport
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2003,7 +2190,7 @@ INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
   [BillingProfileId <String>]: BillingProfile ID
   [ExportName <String>]: Export Name.
   [ExternalCloudProviderId <String>]: This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations.
-  [ExternalCloudProviderType <ExternalCloudProviderType?>]: The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account.
+  [ExternalCloudProviderType <String>]: The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account.
   [Id <String>]: Resource identity path
   [OperationId <String>]: The target operation Id.
   [Scope <String>]: The scope associated with view operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope.
@@ -2012,10 +2199,12 @@ INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.costmanagement/update-azcostmanagementexport
 #>
 function Update-AzCostManagementExport {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExport])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExport])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Alias('ExportName')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Path')]
     [System.String]
@@ -2023,6 +2212,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Path')]
     [System.String]
     # This parameter defines the scope of costmanagement from different perspectives 'Subscription','ResourceGroup' and 'Provide Service'.
@@ -2032,10 +2223,10 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String[]]
     # Array of column names to be included in the export.
@@ -2043,108 +2234,164 @@ param(
     # The available columns can vary by customer channel (see examples).
     ${ConfigurationColumn},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Daily")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType]
+    [System.String]
     # The granularity of rows in the export.
     # Currently only 'Daily' is supported.
     ${DataSetGranularity},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("MonthToDate", "BillingMonthToDate", "TheLastMonth", "TheLastBillingMonth", "WeekToDate", "Custom")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType]
+    [System.String]
     # The time frame for pulling data for the export.
     # If custom, then a specific time period must be provided.
     ${DefinitionTimeframe},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Usage", "ActualCost", "AmortizedCost")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType]
+    [System.String]
     # The type of the export.
     # Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations.
     ${DefinitionType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # The name of the container where exports will be uploaded.
+    # If the container does not exist it will be created.
     ${DestinationContainer},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # The resource id of the storage account where exports will be delivered.
+    # This is not required if a sasToken and storageAccount are specified.
     ${DestinationResourceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # The name of the directory where exports will be uploaded.
     ${DestinationRootFolderPath},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+    [System.String]
+    # A SAS token for the storage account.
+    # For a restricted set of Azure customers this together with storageAccount can be specified instead of resourceId.
+    # Note: the value returned by the API for this property will always be obfuscated.
+    # Returning this same obfuscated value will not result in the SAS token being updated.
+    # To update this value a new SAS token must be specified.
+    ${DestinationSasToken},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+    [System.String]
+    # The storage account where exports will be uploaded.
+    # For a restricted set of Azure customers this together with sasToken can be specified instead of resourceId.
+    ${DestinationStorageAccount},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # eTag of the resource.
     # To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
     ${ETag},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Csv")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType]
+    [System.String]
     # The format of the export being delivered.
     # Currently only 'Csv' is supported.
     ${Format},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # If set to true, exported data will be partitioned by size and placed in a blob directory together with a manifest file.
+    # Note: this option is currently available only for modern commerce scopes.
+    ${PartitionData},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.DateTime]
     # The start date of recurrence.
     ${RecurrencePeriodFrom},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.DateTime]
     # The end date of recurrence.
     ${RecurrencePeriodTo},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Daily", "Weekly", "Monthly", "Annually")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType]
+    [System.String]
     # The schedule recurrence.
     ${ScheduleRecurrence},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Active", "Inactive")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType]
+    [System.String]
     # The status of the export's schedule.
     # If 'Inactive', the export's schedule is paused.
     ${ScheduleStatus},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.DateTime]
     # The start date for export data.
     ${TimePeriodFrom},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.DateTime]
     # The end date for export data.
     ${TimePeriodTo},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -2194,6 +2441,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2214,6 +2470,8 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.CostManagement.custom\Update-AzCostManagementExport';
+            UpdateViaJsonString = 'Az.CostManagement.custom\Update-AzCostManagementExport';
+            UpdateViaJsonFilePath = 'Az.CostManagement.custom\Update-AzCostManagementExport';
             UpdateViaIdentityExpanded = 'Az.CostManagement.custom\Update-AzCostManagementExport';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -2223,6 +2481,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

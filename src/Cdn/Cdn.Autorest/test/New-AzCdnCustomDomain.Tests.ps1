@@ -18,8 +18,8 @@ Describe 'New-AzCdnCustomDomain'  {
     It 'CreateExpanded' {
         $subId = $env.SubscriptionId
         # Hard-coding host and endpoint names due to requirement for DNS CNAME
-        $classicCdnEndpointName = 'ps-20240402-domain030'
-        $customDomainHostName = 'ps-20240402-domain030.ps.cdne2e.azfdtest.xyz'
+        $classicCdnEndpointName = 'ps-2024-0901-domain030'
+        $customDomainHostName = 'ps-2024-0901-domain030.ps.cdne2e.azfdtest.xyz'
         $customDomainName = 'cd-pstest010'
         $location = "westus"
         $origin = @{

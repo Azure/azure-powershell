@@ -44,6 +44,13 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             SharedTokenCacheCredentialOptions options = GetTokenCredentialOptions(silentParameters, tenantId, authority, tokenCacheProvider);
             var cacheCredential = azureCredentialFactory.CreateSharedTokenCacheCredentials(options);
             var requestContext = new TokenRequestContext(scopes, isCaeEnabled: true);
+
+            CheckTokenCachePersistanceEnabled = () =>
+            {
+                return options.TokenCachePersistenceOptions != null && !(options.TokenCachePersistenceOptions is UnsafeTokenCacheOptions);
+            };
+            CollectTelemetry(cacheCredential, options);
+
             var parametersLog = $"- TenantId:'{options.TenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}', UserId:'{silentParameters.UserId}'";
             return MsalAccessToken.GetAccessTokenAsync(
                 nameof(SilentAuthenticator),

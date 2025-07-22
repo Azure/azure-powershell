@@ -271,7 +271,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryZone
-Specifies the primary Availabilty zone of the replication protected items that will be part of this recovery plan.
+Specifies the primary Availability zone of the replication protected items that will be part of this recovery plan.
 
 ```yaml
 Type: System.String
@@ -328,7 +328,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryZone
-Specifies the primary Availabilty zone of the replication protected items that will be part of this recovery plan.
+Specifies the primary Availability zone of the replication protected items that will be part of this recovery plan.
 
 ```yaml
 Type: System.String

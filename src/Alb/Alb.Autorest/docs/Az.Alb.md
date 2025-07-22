@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Alb
-Module Guid: 593f5094-e96e-4646-9c96-5342db09e51a
+Module Guid: 9cd42152-6d04-457b-86ba-311fa3cf15a3
 Download Help Link: https://learn.microsoft.com/powershell/module/az.alb
 Help Version: 1.0.0.0
 Locale: en-US
@@ -20,14 +20,20 @@ Get a Association
 ### [Get-AzAlbFrontend](Get-AzAlbFrontend.md)
 Get a Frontend
 
+### [Get-AzAlbSecurityPolicy](Get-AzAlbSecurityPolicy.md)
+Get a SecurityPolicy
+
 ### [New-AzAlb](New-AzAlb.md)
-Create a TrafficController
+create a TrafficController
 
 ### [New-AzAlbAssociation](New-AzAlbAssociation.md)
-Create a Association
+create a Association
 
 ### [New-AzAlbFrontend](New-AzAlbFrontend.md)
-Create a Frontend
+create a Frontend
+
+### [New-AzAlbSecurityPolicyWaf](New-AzAlbSecurityPolicyWaf.md)
+create a SecurityPolicy
 
 ### [Remove-AzAlb](Remove-AzAlb.md)
 Delete a TrafficController
@@ -38,12 +44,18 @@ Delete a Association
 ### [Remove-AzAlbFrontend](Remove-AzAlbFrontend.md)
 Delete a Frontend
 
+### [Remove-AzAlbSecurityPolicy](Remove-AzAlbSecurityPolicy.md)
+Delete a SecurityPolicy
+
 ### [Update-AzAlb](Update-AzAlb.md)
-Update a TrafficController
+update a TrafficController
 
 ### [Update-AzAlbAssociation](Update-AzAlbAssociation.md)
-Update a Association
+update a Association
 
 ### [Update-AzAlbFrontend](Update-AzAlbFrontend.md)
-Update a Frontend
+update a Frontend
+
+### [Update-AzAlbSecurityPolicyWaf](Update-AzAlbSecurityPolicyWaf.md)
+update a SecurityPolicy
 

@@ -109,8 +109,8 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The default number of nodes for the node pools.")]
         public int NodeOsDiskSize { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The size of the Virtual Machine. Default value is Standard_D2_v2")]
-        public string NodeVmSize { get; set; } = "Standard_D2_v2";
+        [Parameter(Mandatory = false, HelpMessage = "The size of the Virtual Machine. Default value is dynamically selected by the AKS resource provider based on quota and capacity.")]
+        public string NodeVmSize { get; set; } = "";
 
         [Parameter(Mandatory = false, HelpMessage = "Node pool labels used for building Kubernetes network.")]
         public Hashtable NodePoolLabel { get; set; }
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.Aks
         public ManagedClusterAADProfile AadProfile { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The administrator password to use for Windows VMs. Password requirement:"
-          + "At least one lower case, one upper case, one special character !@#$%^&*(), the minimum lenth is 12.")]
+          + "At least one lower case, one upper case, one special character !@#$%^&*(), the minimum length is 12.")]
         [ValidateSecureString(RegularExpression = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%\\^&\\*\\(\\)])[a-zA-Z\\d!@#$%\\^&\\*\\(\\)]{12,123}$", ParameterName = nameof(WindowsProfileAdminUserPassword))]
         public SecureString WindowsProfileAdminUserPassword { get; set; }
 

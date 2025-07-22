@@ -235,7 +235,7 @@ $endOfLifeDate = "2024-08-02T00:00:00+00:00"
 New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryImageDefinitionName $galleryImageDefinitionName -Name $galleryImageVersionName -Location $location -SourceImageId $sourceImageId -PublishingProfileEndOfLifeDate $endOfLifeDate
 ```
 
-This example has the end-of-life date for image version set to August 2, 2024 at mignight UTC. End-of-life dates can be specified for both the image definitions and image versions. Image versions can still be used after the end-of-life dates.
+This example has the end-of-life date for image version set to August 2, 2024 at midnight UTC. End-of-life dates can be specified for both the image definitions and image versions. Image versions can still be used after the end-of-life dates.
 
 ### Example 13: Create an image version for Confidential VM
 

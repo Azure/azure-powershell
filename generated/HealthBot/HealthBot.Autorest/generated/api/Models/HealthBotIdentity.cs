@@ -53,6 +53,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Bot resource.",
         SerializedName = @"botName",
         PossibleTypes = new [] { typeof(string) })]
@@ -61,6 +64,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -69,6 +75,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Bot resource group in the user subscription.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -77,6 +86,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Azure Subscription ID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

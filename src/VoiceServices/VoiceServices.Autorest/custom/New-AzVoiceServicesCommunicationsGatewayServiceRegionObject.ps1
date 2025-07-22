@@ -21,12 +21,13 @@ Create an in-memory object for ServiceRegionProperties.
 Create an in-memory object for ServiceRegionProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ServiceRegionProperties
+Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ServiceRegionProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.VoiceServices/new-AzVoiceServicesCommunicationsGatewayServiceRegionObject
 #>
 function New-AzVoiceServicesCommunicationsGatewayServiceRegionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ServiceRegionProperties')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ServiceRegionProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -42,7 +43,7 @@ function New-AzVoiceServicesCommunicationsGatewayServiceRegionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ServiceRegionProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ServiceRegionProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name

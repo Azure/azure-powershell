@@ -73,6 +73,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                     // TokenCachePersistenceOptions = tokenCachePersistenceOptions, // allows MSAL to cache access tokens
                     AuthorityHost = new Uri(authority)
                 };
+                csOptions.DisableInstanceDiscovery = spParameters.DisableInstanceDiscovery ?? csOptions.DisableInstanceDiscovery;
                 tokenCredential = azureCredentialFactory.CreateClientSecretCredential(tenantId, spParameters.ApplicationId, spParameters.Secret, csOptions);
                 parametersLog = $"- ApplicationId:'{spParameters.ApplicationId}', TenantId:'{tenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{csOptions.AuthorityHost}'";
             }
@@ -96,6 +97,8 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             {
                 throw new MsalException(MsalError.AuthenticationFailed, string.Format(AuthenticationFailedMessage, clientId));
             }
+
+            CollectTelemetry(tokenCredential);
 
             return MsalAccessToken.GetAccessTokenAsync(
                 nameof(ServicePrincipalAuthenticator),

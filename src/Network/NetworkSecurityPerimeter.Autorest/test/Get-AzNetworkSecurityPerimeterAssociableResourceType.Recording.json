@@ -1,0 +1,134 @@
+{
+  "Get-AzNetworkSecurityPerimeterAssociableResourceType+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/locations/eastus2euap/perimeterAssociableResourceTypes?api-version=2024-07-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/locations/eastus2euap/perimeterAssociableResourceTypes?api-version=2024-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "65d201ae-c961-4f6e-ac1b-3f576a167388" ],
+        "CommandName": [ "Get-AzNetworkSecurityPerimeterAssociableResourceType" ],
+        "FullCommandName": [ "Get-AzNetworkSecurityPerimeterAssociableResourceType_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.2.0", "PSVersion/v7.4.7", "Az.NetworkSecurityPerimeter/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=37ca76fe-83f1-4c59-823b-b1953db8111c/eastus/96b62317-462d-48cf-91e5-ee92b285e606" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "beabdd29-d0b7-476e-91f4-4fd7ace9b4bc" ],
+        "x-ms-correlation-request-id": [ "beabdd29-d0b7-476e-91f4-4fd7ace9b4bc" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250516T091250Z:beabdd29-d0b7-476e-91f4-4fd7ace9b4bc" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 687B38BFAD3C4B0FA14CB3F6223C6B7C Ref B: MNZ221060618051 Ref C: 2025-05-16T09:12:49Z" ],
+        "Date": [ "Fri, 16 May 2025 09:12:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5359" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"\",\"nextLink\":\"https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/locations/eastus2euap/perimeterAssociableResourceTypes?api-version=2024-07-01\u0026firstIndex=10\u0026pageSize=10\",\"value\":[{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.Sql.servers\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.Sql.servers\",\"properties\":{\"providerNamespace\":\"Microsoft.Sql\",\"resourceType\":\"servers\",\"displayName\":\"Microsoft.Sql/servers\",\"apiVersion\":\"2021-02-01-preview\",\"publicDnsZones\":[\"database.windows.net\"],\"features\":[],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.Storage.storageAccounts\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.Storage.storageAccounts\",\"properties\":{\"providerNamespace\":\"Microsoft.Storage\",\"resourceType\":\"storageAccounts\",\"displayName\":\"Microsoft.Storage/storageAccounts\",\"apiVersion\":\"2021-09-01\",\"publicDnsZones\":[\"blob.core.windows.net\",\"table.core.windows.net\",\"queue.core.windows.net\",\"file.core.windows.net\",\"web.core.windows.net\",\"dfs.core.windows.net\"],\"features\":[],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.EventHub.namespaces\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.EventHub.namespaces\",\"properties\":{\"providerNamespace\":\"Microsoft.EventHub\",\"resourceType\":\"namespaces\",\"displayName\":\"Microsoft.EventHub/namespaces\",\"apiVersion\":\"2022-01-01-preview\",\"publicDnsZones\":[\"servicebus.windows.net\"],\"features\":[],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.CognitiveServices.accounts\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.CognitiveServices.accounts\",\"properties\":{\"providerNamespace\":\"Microsoft.CognitiveServices\",\"resourceType\":\"accounts\",\"displayName\":\"Microsoft.CognitiveServices/accounts\",\"apiVersion\":\"2021-10-01\",\"publicDnsZones\":[\"cognitiveservices.azure.com\",\"openai.azure.com\"],\"features\":[],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.Search.searchServices\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.Search.searchServices\",\"properties\":{\"providerNamespace\":\"Microsoft.Search\",\"resourceType\":\"searchServices\",\"displayName\":\"Microsoft.Search/searchServices\",\"apiVersion\":\"2021-06-06-Preview\",\"publicDnsZones\":[\"search.windows.net\"],\"features\":[],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.Purview.accounts\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.Purview.accounts\",\"properties\":{\"providerNamespace\":\"Microsoft.Purview\",\"resourceType\":\"accounts\",\"displayName\":\"Microsoft.Purview/accounts\",\"apiVersion\":\"2022-02-01-preview\",\"publicDnsZones\":[\"purview.azure.com\"],\"features\":[],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.ContainerService.managedClusters\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.ContainerService.managedClusters\",\"properties\":{\"providerNamespace\":\"Microsoft.ContainerService\",\"resourceType\":\"managedClusters\",\"displayName\":\"Microsoft.ContainerService/managedClusters\",\"apiVersion\":\"2022-03-01\",\"publicDnsZones\":[\"azmk8s.io\"],\"features\":[],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.KeyVault.vaults\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.KeyVault.vaults\",\"properties\":{\"providerNamespace\":\"Microsoft.KeyVault\",\"resourceType\":\"vaults\",\"displayName\":\"Microsoft.KeyVault/vaults\",\"apiVersion\":\"2022-02-01-preview\",\"publicDnsZones\":[\"vault.azure.net\",\"vaultcore.azure.net\"],\"features\":[],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.OperationalInsights.workspaces\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.OperationalInsights.workspaces\",\"properties\":{\"providerNamespace\":\"Microsoft.OperationalInsights\",\"resourceType\":\"workspaces\",\"displayName\":\"Microsoft.OperationalInsights/workspaces\",\"apiVersion\":\"2021-10-01\",\"publicDnsZones\":[\"monitor.azure.com\",\"oms.opinsights.azure.com\",\"ods.opinsights.azure.com\",\"agentsvc.azure-automation.net\",\"blob.core.windows.net\"],\"features\":[\"query\",\"ingestion\"],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.Insights.dataCollectionEndpoints\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.Insights.dataCollectionEndpoints\",\"properties\":{\"providerNamespace\":\"Microsoft.Insights\",\"resourceType\":\"dataCollectionEndpoints\",\"displayName\":\"Microsoft.Insights/dataCollectionEndpoints\",\"apiVersion\":\"2021-10-01\",\"publicDnsZones\":[\"monitor.azure.com\"],\"features\":[],\"availableControls\":[]}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzNetworkSecurityPerimeterAssociableResourceType+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/locations/eastus2euap/perimeterAssociableResourceTypes?api-version=2024-07-01\u0026firstIndex=10\u0026pageSize=10+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/locations/eastus2euap/perimeterAssociableResourceTypes?api-version=2024-07-01\u0026firstIndex=10\u0026pageSize=10",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "65d201ae-c961-4f6e-ac1b-3f576a167388" ],
+        "CommandName": [ "Get-AzNetworkSecurityPerimeterAssociableResourceType" ],
+        "FullCommandName": [ "Get-AzNetworkSecurityPerimeterAssociableResourceType_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.2.0", "PSVersion/v7.4.7", "Az.NetworkSecurityPerimeter/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=37ca76fe-83f1-4c59-823b-b1953db8111c/eastus/70d059b7-75cd-4e2e-8e80-e69b8064ecd1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "d6ef8043-2e0e-4f3a-b56b-64e64c6723c4" ],
+        "x-ms-correlation-request-id": [ "d6ef8043-2e0e-4f3a-b56b-64e64c6723c4" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250516T091251Z:d6ef8043-2e0e-4f3a-b56b-64e64c6723c4" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E96432FCE9BA44DDA6F44563FEFF2787 Ref B: MNZ221060618051 Ref C: 2025-05-16T09:12:50Z" ],
+        "Date": [ "Fri, 16 May 2025 09:12:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5524" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"\",\"nextLink\":\"https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/locations/eastus2euap/perimeterAssociableResourceTypes?api-version=2024-07-01\u0026firstIndex=20\u0026pageSize=10\",\"value\":[{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.ServiceBus.namespaces\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.ServiceBus.namespaces\",\"properties\":{\"providerNamespace\":\"Microsoft.ServiceBus\",\"resourceType\":\"namespaces\",\"displayName\":\"Microsoft.ServiceBus/namespaces\",\"apiVersion\":\"2022-01-01-preview\",\"publicDnsZones\":[\"servicebus.windows.net\"],\"features\":[],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.Insights.ScheduledQueryRules\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.Insights.ScheduledQueryRules\",\"properties\":{\"providerNamespace\":\"Microsoft.Insights\",\"resourceType\":\"ScheduledQueryRules\",\"displayName\":\"Microsoft.Insights/ScheduledQueryRules\",\"apiVersion\":\"2021-10-01\",\"publicDnsZones\":[],\"features\":[],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.Insights.actionGroups\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.Insights.actionGroups\",\"properties\":{\"providerNamespace\":\"Microsoft.Insights\",\"resourceType\":\"actionGroups\",\"displayName\":\"Microsoft.Insights/actionGroups\",\"apiVersion\":\"2021-10-01\",\"publicDnsZones\":[\"azns.azure.com\",\"azns.azure.net\",\"azns.azure.cn\",\"azns.microsofticm.com\",\"azurenotifications.msftcloudes.cn\",\"azurenotifications.msftcloudes.net\"],\"features\":[],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.DocumentDB.databaseAccounts\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.DocumentDB.databaseAccounts\",\"properties\":{\"providerNamespace\":\"Microsoft.DocumentDB\",\"resourceType\":\"databaseAccounts\",\"displayName\":\"Microsoft.DocumentDB/databaseAccounts\",\"apiVersion\":\"2024-05-15-preview\",\"publicDnsZones\":[\"documents.azure.com\",\"mongo.cosmos.azure.com\",\"cassandra.cosmos.azure.com\",\"gremlin.cosmos.azure.com\",\"table.cosmos.azure.com\"],\"features\":[],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.Devices.IotHubs\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.Devices.IotHubs\",\"properties\":{\"providerNamespace\":\"Microsoft.Devices\",\"resourceType\":\"IotHubs\",\"displayName\":\"Microsoft.Devices/IotHubs\",\"apiVersion\":\"2023-07-15-preview\",\"publicDnsZones\":[\"servicebus.windows.net\",\"azure-devices.net\"],\"features\":[],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.DigitalTwins.digitalTwinsInstances\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.DigitalTwins.digitalTwinsInstances\",\"properties\":{\"providerNamespace\":\"Microsoft.DigitalTwins\",\"resourceType\":\"digitalTwinsInstances\",\"displayName\":\"Microsoft.DigitalTwins/digitalTwinsInstances\",\"apiVersion\":\"2023-06-30-preview\",\"publicDnsZones\":[\"digitaltwins.azure.net\",\"digitaltwins.azure.cn\",\"azuredigitaltwins-ppe.net\"],\"features\":[],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.Attestation.attestationProviders\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.Attestation.attestationProviders\",\"properties\":{\"providerNamespace\":\"Microsoft.Attestation\",\"resourceType\":\"attestationProviders\",\"displayName\":\"Microsoft.Attestation/attestationProviders\",\"apiVersion\":\"2023-03-01-preview\",\"publicDnsZones\":[\"attest.azure.net\",\"attest.azure.us\"],\"features\":[],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.BotService.botServices\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.BotService.botServices\",\"properties\":{\"providerNamespace\":\"Microsoft.BotService\",\"resourceType\":\"botServices\",\"displayName\":\"Microsoft.BotService/botServices\",\"apiVersion\":\"2022-06-15-preview\",\"publicDnsZones\":[\"botframework.com\"],\"features\":[\"bot\",\"channelClient\",\"tokenService\"],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.ContainerRegistry.registries\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.ContainerRegistry.registries\",\"properties\":{\"providerNamespace\":\"Microsoft.ContainerRegistry\",\"resourceType\":\"registries\",\"displayName\":\"Microsoft.ContainerRegistry/registries\",\"apiVersion\":\"2023-05-31-preview\",\"publicDnsZones\":[\"azurecr.io\"],\"features\":[],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.DeviceUpdate.accounts\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.DeviceUpdate.accounts\",\"properties\":{\"providerNamespace\":\"Microsoft.DeviceUpdate\",\"resourceType\":\"accounts\",\"displayName\":\"Microsoft.DeviceUpdate/accounts\",\"apiVersion\":\"2023-09-01-preview\",\"publicDnsZones\":[\"adu.microsoft.com\"],\"features\":[],\"availableControls\":[]}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzNetworkSecurityPerimeterAssociableResourceType+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/locations/eastus2euap/perimeterAssociableResourceTypes?api-version=2024-07-01\u0026firstIndex=20\u0026pageSize=10+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/locations/eastus2euap/perimeterAssociableResourceTypes?api-version=2024-07-01\u0026firstIndex=20\u0026pageSize=10",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "65d201ae-c961-4f6e-ac1b-3f576a167388" ],
+        "CommandName": [ "Get-AzNetworkSecurityPerimeterAssociableResourceType" ],
+        "FullCommandName": [ "Get-AzNetworkSecurityPerimeterAssociableResourceType_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.2.0", "PSVersion/v7.4.7", "Az.NetworkSecurityPerimeter/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=37ca76fe-83f1-4c59-823b-b1953db8111c/eastus/8275abae-6eb5-42aa-b1f6-6e77eeed902f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "07c40ceb-7f40-4cda-82ac-8aaae8fc3532" ],
+        "x-ms-correlation-request-id": [ "07c40ceb-7f40-4cda-82ac-8aaae8fc3532" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250516T091252Z:07c40ceb-7f40-4cda-82ac-8aaae8fc3532" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FB860F513EF04E69A8A4674914F37222 Ref B: MNZ221060618051 Ref C: 2025-05-16T09:12:51Z" ],
+        "Date": [ "Fri, 16 May 2025 09:12:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4684" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"\",\"nextLink\":\"\",\"value\":[{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.EventGrid.topics\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.EventGrid.topics\",\"properties\":{\"providerNamespace\":\"Microsoft.EventGrid\",\"resourceType\":\"topics\",\"displayName\":\"Microsoft.EventGrid/topics\",\"apiVersion\":\"2023-06-01-preview\",\"publicDnsZones\":[\"eventgrid.azure.net\"],\"features\":[],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.EventGrid.domains\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.EventGrid.domains\",\"properties\":{\"providerNamespace\":\"Microsoft.EventGrid\",\"resourceType\":\"domains\",\"displayName\":\"Microsoft.EventGrid/domains\",\"apiVersion\":\"2023-06-01-preview\",\"publicDnsZones\":[\"eventgrid.azure.net\"],\"features\":[],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.AppConfiguration.configurationStores\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.AppConfiguration.configurationStores\",\"properties\":{\"providerNamespace\":\"Microsoft.AppConfiguration\",\"resourceType\":\"configurationStores\",\"displayName\":\"Microsoft.AppConfiguration/configurationStores\",\"apiVersion\":\"2024-07-01-preview\",\"publicDnsZones\":[\"azconfig.io\",\"azconfig.azure.us\",\"azconfig.azure.cn\"],\"features\":[],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.Batch.batchAccounts\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.Batch.batchAccounts\",\"properties\":{\"providerNamespace\":\"Microsoft.Batch\",\"resourceType\":\"batchAccounts\",\"displayName\":\"Microsoft.Batch/batchAccounts\",\"apiVersion\":\"2024-03-01-privatepreview\",\"publicDnsZones\":[\"batch.azure.com\",\"batch.chinacloudapi.cn\",\"batch.eaglex.ic.gov\",\"batch.microsoft.scloud\",\"batch-test.windows-int.net\",\"batch.usgovcloudapi.net\"],\"features\":[],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.Web.sites\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.Web.sites\",\"properties\":{\"providerNamespace\":\"Microsoft.Web\",\"resourceType\":\"sites\",\"displayName\":\"Microsoft.Web/sites\",\"apiVersion\":\"2022-03-01\",\"publicDnsZones\":[\"azurewebsites.net\"],\"features\":[\"mainSite\",\"scmSite\",\"mainSiteForSlots\",\"scmSiteForSlots\"],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.HybridCompute.privateLinkScopes\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.HybridCompute\",\"properties\":{\"providerNamespace\":\"Microsoft.HybridCompute\",\"resourceType\":\"privateLinkScopes\",\"displayName\":\"Microsoft.HybridCompute.privateLinkScopes\",\"apiVersion\":\"2023-10-03-preview\",\"publicDnsZones\":[\"his.arc.azure.com\",\"guestconfiguration.azure.com\",\"dp.kubernetesconfiguration.azure.com\"],\"features\":[],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.Communication.CommunicationServices\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.Communication.CommunicationServices\",\"properties\":{\"providerNamespace\":\"Microsoft.Communication\",\"resourceType\":\"CommunicationServices\",\"displayName\":\"Microsoft.Communication/CommunicationServices\",\"apiVersion\":\"2023-12-25-preview\",\"publicDnsZones\":[\"communication.azure.com\",\"communication.azure.net\"],\"features\":[],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.Network.networkWatchers\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.Network.networkWatchers\",\"properties\":{\"providerNamespace\":\"Microsoft.Network\",\"resourceType\":\"networkWatchers\",\"displayName\":\"Microsoft.Network/networkWatchers\",\"apiVersion\":\"2024-01-01\",\"publicDnsZones\":[\"networkwatcher.azure.com\"],\"features\":[],\"availableControls\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.Kusto.clusters\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.Kusto.clusters\",\"properties\":{\"providerNamespace\":\"Microsoft.Kusto\",\"resourceType\":\"clusters\",\"displayName\":\"Microsoft.Kusto/clusters\",\"apiVersion\":\"2025-02-14\",\"publicDnsZones\":[\"kusto.windows.net\"],\"features\":[],\"availableControls\":[]}}]}",
+      "isContentBase64": false
+    }
+  }
+}

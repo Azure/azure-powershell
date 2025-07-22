@@ -10,16 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a Association</summary>
+    /// <summary>create a Association</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzAlbAssociation_CreateExpanded", SupportsShouldProcess = true)]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.PreviewMessage("Application Gateway for Containers is currently in Preview.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.Description(@"Create a Association")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.Description(@"create a Association")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}", ApiVersion = "2023-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}", ApiVersion = "2025-01-01")]
     public partial class NewAzAlbAssociation_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IContext

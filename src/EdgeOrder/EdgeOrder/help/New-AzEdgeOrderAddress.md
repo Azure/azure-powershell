@@ -8,11 +8,12 @@ schema: 2.0.0
 # New-AzEdgeOrderAddress
 
 ## SYNOPSIS
-Creates a new address with the specified parameters.
+create a new address with the specified parameters.
 Existing address can be updated with this API
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzEdgeOrderAddress -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -ContactDetail <IContactDetails> -Location <String> [-ShippingAddress <IShippingAddress>] [-Tag <Hashtable>]
@@ -20,8 +21,22 @@ New-AzEdgeOrderAddress -Name <String> -ResourceGroupName <String> [-Subscription
  [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzEdgeOrderAddress -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzEdgeOrderAddress -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates a new address with the specified parameters.
+create a new address with the specified parameters.
 Existing address can be updated with this API
 
 ## EXAMPLES
@@ -79,11 +94,10 @@ Accept wildcard characters: False
 
 ### -ContactDetail
 Contact details for the address
-To construct, see NOTES section for CONTACTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IContactDetails
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IContactDetails
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -109,12 +123,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -173,11 +217,10 @@ Accept wildcard characters: False
 
 ### -ShippingAddress
 Shipping details for the address
-To construct, see NOTES section for SHIPPINGADDRESS properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IShippingAddress
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IShippingAddress
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -207,7 +250,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -255,7 +298,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressResource
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressResource
 
 ## NOTES
 

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected const string DefaultParameterSet = "DefaultParameter",
                                FriendMethodParameterSet = "FriendMethod";
-        private InstanceViewTypes UserDataExpand = InstanceViewTypes.UserData;
+        private VmssVMInstanceViewTypes UserDataExpand = VmssVMInstanceViewTypes.UserData;
         
         public override void ExecuteCmdlet()
         {

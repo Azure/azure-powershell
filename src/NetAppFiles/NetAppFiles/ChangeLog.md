@@ -18,7 +18,26 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated to api-version 2025-03-01
 
+## Version 0.24.0
+* Added `NfsV4IdDomain` to `New-AzNetAppFilesAccount` and `Update-AzNetAppFilesAccount`
+* Added added support CRR data recovery options for VolumeGroups with `DataReplicationSourceId`, DataReplicationSchedule to `New-AzNetAppFilesVolumeGroup`
+* Added `OracleDatabaseSize`, `NumberOfDataVolumes`, `OracleDatabaseThroughput` for Oracle Volume groups support in `New-AzNetAppFilesVolumeGroup`
+* Added `KeyVaultPrivateEndpointResourceId`, `Zone` to `New-AzNetAppFilesVolumeGroup`  
+
+## Version 0.23.0
+* Added `NfsV4IdDomain` to `New-AzNetAppFilesAccount` and `Update-AzNetAppFilesAccount`
+
+## Version 0.22.0
+* Added `FederatedClientId` to `New-AzNetAppFilesAccount` and `Update-AzNetAppFilesAccount`
+* Added `Get-AzNetAppFilesUsage`
+
+## Version 0.21.0
+* Added new parameter `CoolAccessTieringPolicy` to  `New-AzNetAppFilesVolume` and `Update-AzNetAppFilesVolume`,
+* Added new cmdLet`Invoke-AzNetAppFilesAccountChangeKeyVault` to change Key Vault/Managed HSM that is used for encryption of volumes under NetApp account. `Get-AzNetAppFilesAccountKeyVaultInformation` can be used to get information for this command.  
+* Added new cmdLet `Get-AzNetAppFilesAccountKeyVaultInformation`, Gets information that can be used in `Invoke-AzNetAppFilesAccountChangeKeyVault`
+* Added new cmdLet `Convert-AzNetAppFilesAccountToCmk`  Transition volumes encryption from PMK to CMK.
 ## Version 0.20.1
 * Upgraded nuget package to signed package.
 

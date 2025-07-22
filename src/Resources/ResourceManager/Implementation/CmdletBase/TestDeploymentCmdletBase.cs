@@ -17,6 +17,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "The query string (for example, a SAS token) to be used with the TemplateUri parameter. Would be used in case of linked templates")]
         public string QueryString { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Sets the validation level for validate/what-if. ValidationLevel can be Template(Skips provider validation), Provider(Performs full validation), " +
+                                                   "or ProviderNoRbac(Performs full validation using RBAC read checks instead of RBAC write checks for provider validation).")]
+        public string ValidationLevel { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "When set, validation diagnostics will not be shown for valid deployments.")]
+        public SwitchParameter SuppressDiagnostics { get; set; }
+
         public override object GetDynamicParameters()
         {
             if (!string.IsNullOrEmpty(QueryString))
@@ -28,19 +35,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
 
         public void WriteOutput(TemplateValidationInfo validationInfo)
         {
-            if (validationInfo.Errors.Count == 0)
+            if (validationInfo.Errors.Count > 0)
+            {
+                WriteObject(validationInfo.Errors.Select(e => e.ToPSResourceManagerError()).ToList());
+            }
+            else if (!SuppressDiagnostics.IsPresent && validationInfo.Diagnostics.Count > 0)
             {
                 var builder = new ColoredStringBuilder();
 
                 var formatter = new WhatIfOperationResultFormatter(builder);
 
-                formatter.FormatDiagnostics(validationInfo.Diagnostics, new List<PSWhatIfChange>());
+                formatter.FormatDiagnostics(validationInfo.Diagnostics, new List<PSWhatIfChange>(), new List<PSWhatIfChange>());
 
-                WriteObject(builder.ToString());
-            }
-            else
-            {
-                WriteObject(validationInfo.Errors.Select(e => e.ToPSResourceManagerError()).ToList());
+                WriteWarning(builder.ToString());
             }
         }
 

@@ -66,6 +66,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PropertyOrigin.Owned)]
         public string ProvisioningState { get => this._provisioningState; }
 
+        /// <summary>Backing field for <see cref="Zone" /> property.</summary>
+        private System.Collections.Generic.List<string> _zone;
+
+        /// <summary>Specifies zones of standby container group pools.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> Zone { get => this._zone; set => this._zone = value; }
+
         /// <summary>
         /// Creates an new <see cref="StandbyContainerGroupPoolResourceProperties" /> instance.
         /// </summary>
@@ -146,6 +153,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Deleting")]
         string ProvisioningState { get;  }
+        /// <summary>Specifies zones of standby container group pools.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Specifies zones of standby container group pools.",
+        SerializedName = @"zones",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> Zone { get; set; }
 
     }
     /// Details of the StandbyContainerGroupPool.
@@ -172,6 +190,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         /// <summary>The status of the last operation.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Deleting")]
         string ProvisioningState { get; set; }
+        /// <summary>Specifies zones of standby container group pools.</summary>
+        System.Collections.Generic.List<string> Zone { get; set; }
 
     }
 }

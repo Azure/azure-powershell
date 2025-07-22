@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.EdgeOrder
-online version: https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-AzEdgeOrderShippingAddressObject
+online version: https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-azedgeordershippingaddressobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Create an in-memory object for ShippingAddress.
 ## SYNTAX
 
 ```
-New-AzEdgeOrderShippingAddressObject -Country <String> -StreetAddress1 <String> [-AddressType <AddressType>]
+New-AzEdgeOrderShippingAddressObject -Country <String> -StreetAddress1 <String> [-AddressType <String>]
  [-City <String>] [-CompanyName <String>] [-PostalCode <String>] [-StateOrProvince <String>]
  [-StreetAddress2 <String>] [-StreetAddress3 <String>] [-ZipExtendedCode <String>] [<CommonParameters>]
 ```
@@ -51,7 +51,7 @@ Creates a in-memory shipping address object
 Type of address.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Support.AddressType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -204,7 +204,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingAddress
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ShippingAddress
 
 ## NOTES
 

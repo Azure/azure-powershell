@@ -44,7 +44,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="remoteVolumeRegion">The remote region for the other end of the Volume Replication.
         /// </param>
-        public ReplicationObject(string replicationId = default(string), string endpointType = default(string), string replicationSchedule = default(string), string remoteVolumeResourceId = default(string), RemotePath remotePath = default(RemotePath), string remoteVolumeRegion = default(string))
+
+        /// <param name="destinationReplications">A list of destination replications
+        /// </param>
+        public ReplicationObject(string replicationId = default(string), string endpointType = default(string), string replicationSchedule = default(string), string remoteVolumeResourceId = default(string), RemotePath remotePath = default(RemotePath), string remoteVolumeRegion = default(string), System.Collections.Generic.IList<DestinationReplication> destinationReplications = default(System.Collections.Generic.IList<DestinationReplication>))
 
         {
             this.ReplicationId = replicationId;
@@ -53,6 +56,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.RemoteVolumeResourceId = remoteVolumeResourceId;
             this.RemotePath = remotePath;
             this.RemoteVolumeRegion = remoteVolumeRegion;
+            this.DestinationReplications = destinationReplications;
             CustomInit();
         }
 
@@ -69,11 +73,11 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public string ReplicationId {get; private set; }
 
         /// <summary>
-        /// Gets or sets indicates whether the local volume is the source or
-        /// destination for the Volume Replication Possible values include: &#39;src&#39;, &#39;dst&#39;
+        /// Gets indicates whether the local volume is the source or destination for
+        /// the Volume Replication Possible values include: &#39;src&#39;, &#39;dst&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "endpointType")]
-        public string EndpointType {get; set; }
+        public string EndpointType {get; private set; }
 
         /// <summary>
         /// Gets or sets schedule Possible values include: &#39;_10minutely&#39;, &#39;hourly&#39;, &#39;daily&#39;
@@ -100,6 +104,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "remoteVolumeRegion")]
         public string RemoteVolumeRegion {get; set; }
+
+        /// <summary>
+        /// Gets a list of destination replications
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "destinationReplications")]
+        public System.Collections.Generic.IList<DestinationReplication> DestinationReplications {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -116,6 +126,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             {
                 this.RemotePath.Validate();
             }
+
 
         }
     }

@@ -108,5 +108,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzVirtualNetwork](./New-AzVirtualNetwork.md)
 
 [Remove-AzVirtualNetwork](./Remove-AzVirtualNetwork.md)
-
-

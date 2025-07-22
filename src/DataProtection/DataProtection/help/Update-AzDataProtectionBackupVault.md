@@ -117,8 +117,8 @@ Name          Location      Type                                  IdentityType
 vaultName southeastasia Microsoft.DataProtection/backupVaults UserAssigned
 ```
 
-This command is used to change CmkIdentityType from SystemAssigned to UserAssgined.
-CmkIdenityId is a required parameter.
+This command is used to change CmkIdentityType from SystemAssigned to UserAssigned.
+CmkIdentityId is a required parameter.
 
 ### Example 6: Update vault to assign a User Assigned Managed Identity (UAMI)
 ```powershell
@@ -286,7 +286,7 @@ Customer Managed Key details of the resource.
 To construct, see NOTES section for ENCRYPTIONSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IEncryptionSettings
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IEncryptionSettings
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -554,7 +554,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupVaultResource
 
 ## NOTES
 

@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.NumberInFilter
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridnumberinfilterobject
 #>
 function New-AzEventGridNumberInFilterObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.NumberInFilter')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

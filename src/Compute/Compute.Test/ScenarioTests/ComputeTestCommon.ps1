@@ -466,8 +466,11 @@ Gets default VM size string
 function Get-DefaultVMSize
 {
     param([string] $location = "westus")
-
-    $vmSizes = Get-AzVMSize -Location $location | where { $_.NumberOfCores -ge 4 -and $_.MaxDataDiskCount -ge 8 };
+    $vmSizes = Get-AzComputeResourceSku -Location $location | Where-Object {
+        $_.ResourceType -eq "virtualMachines" -and
+        ([int]($_.Capabilities | Where-Object { $_.Name -eq "vCPUs" }).Value) -ge 4 -and
+        ([int]($_.Capabilities | Where-Object { $_.Name -eq "MaxDataDiskCount" }).Value) -ge 8
+    }
 
     foreach ($sz in $vmSizes)
     {

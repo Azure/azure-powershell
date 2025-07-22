@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Peering
-online version: https://learn.microsoft.com/powershell/module/Az.Peering/new-AzPeeringDirectConnectionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Peering/new-azpeeringdirectconnectionobject
 schema: 2.0.0
 ---
 
@@ -18,8 +18,8 @@ New-AzPeeringDirectConnectionObject [-BandwidthInMbps <Int32>] [-BgpSessionMaxPr
  [-BgpSessionMicrosoftSessionIPv4Address <String>] [-BgpSessionMicrosoftSessionIPv6Address <String>]
  [-BgpSessionPeerSessionIPv4Address <String>] [-BgpSessionPeerSessionIPv6Address <String>]
  [-BgpSessionPrefixV4 <String>] [-BgpSessionPrefixV6 <String>] [-ConnectionIdentifier <String>]
- [-PeeringDbFacilityId <Int32>] [-SessionAddressProvider <SessionAddressProvider>]
- [-UseForPeeringService <Boolean>] [<CommonParameters>]
+ [-PeeringDbFacilityId <Int32>] [-SessionAddressProvider <String>] [-UseForPeeringService <Boolean>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +38,6 @@ New-AzPeeringDirectConnectionObject -BandwidthInMbps 10000 -BgpSessionMaxPrefixe
 BandwidthInMbps ConnectionIdentifier ConnectionState ErrorMessage MicrosoftTrackingId PeeringDbFacilityId ProvisionedBandwidthInMbps
 --------------- -------------------- --------------- ------------ ------------------- ------------------- --------------------------
 10000           c111111111111        PendingApproval                                  82
-
 ```
 
 Creates an in-memory direct connection object
@@ -229,7 +228,7 @@ Accept wildcard characters: False
 The field indicating if Microsoft provides session ip addresses.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.SessionAddressProvider
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -262,7 +261,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.DirectConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.DirectConnection
 
 ## NOTES
 

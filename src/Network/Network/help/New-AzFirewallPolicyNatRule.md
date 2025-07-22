@@ -16,28 +16,32 @@ Create a new Azure Firewall Policy NAT Rule
 ```
 New-AzFirewallPolicyNatRule -Name <String> [-Description <String>] -SourceAddress <String[]>
  -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]> -TranslatedAddress <String>
- -TranslatedPort <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -TranslatedPort <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SourceAddressAndTranslatedFqdn
 ```
 New-AzFirewallPolicyNatRule -Name <String> [-Description <String>] -SourceAddress <String[]>
  -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]> -TranslatedFqdn <String>
- -TranslatedPort <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -TranslatedPort <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SourceIpGroupAndTranslatedAddress
 ```
 New-AzFirewallPolicyNatRule -Name <String> [-Description <String>] -SourceIpGroup <String[]>
  -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]> -TranslatedAddress <String>
- -TranslatedPort <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -TranslatedPort <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SourceIpGroupAndTranslatedFqdn
 ```
 New-AzFirewallPolicyNatRule -Name <String> [-Description <String>] -SourceIpGroup <String[]>
  -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]> -TranslatedFqdn <String>
- -TranslatedPort <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -TranslatedPort <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

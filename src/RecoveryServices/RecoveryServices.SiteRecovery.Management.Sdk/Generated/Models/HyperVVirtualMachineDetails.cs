@@ -39,15 +39,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="hasPhysicalDisk">A value indicating whether the VM has a physical disk attached. String
         /// value of SrsDataContract.PresenceStatus enum.
-        /// Possible values include: 'Unknown', 'Present', 'NotPresent'</param>
+        /// Possible values include: &#39;Unknown&#39;, &#39;Present&#39;, &#39;NotPresent&#39;</param>
 
         /// <param name="hasFibreChannelAdapter">A value indicating whether the VM has a fibre channel adapter attached.
         /// String value of SrsDataContract.PresenceStatus enum.
-        /// Possible values include: 'Unknown', 'Present', 'NotPresent'</param>
+        /// Possible values include: &#39;Unknown&#39;, &#39;Present&#39;, &#39;NotPresent&#39;</param>
 
         /// <param name="hasSharedVhd">A value indicating whether the VM has a shared VHD attached. String value
         /// of SrsDataContract.PresenceStatus enum.
-        /// Possible values include: 'Unknown', 'Present', 'NotPresent'</param>
+        /// Possible values include: &#39;Unknown&#39;, &#39;Present&#39;, &#39;NotPresent&#39;</param>
 
         /// <param name="hyperVHostId">The Id of the hyper-v host in fabric.
         /// </param>

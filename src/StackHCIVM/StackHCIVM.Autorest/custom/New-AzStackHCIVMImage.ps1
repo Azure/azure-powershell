@@ -118,7 +118,7 @@ function New-AzStackHCIVMImage{
     [Parameter(ParameterSetName='Marketplace', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.String]
-    # The name of the marketplae gallery image definition offer.
+    # The name of the marketplace gallery image definition offer.
     ${Offer},
 
     [Parameter(ParameterSetName='Marketplace', Mandatory)]

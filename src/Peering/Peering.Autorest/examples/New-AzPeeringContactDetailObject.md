@@ -10,4 +10,3 @@ abc@xyz.com 1234567890 Noc
 ```
 
 Creates a ContactDetail object with the specified email phone and role stores it in memory
-

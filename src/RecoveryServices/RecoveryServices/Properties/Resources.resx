@@ -337,4 +337,10 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="UnexpectedParameterToken" xml:space="preserve">
     <value>{0} is not protected via MUA, either protect or try without the Token parameter</value>
   </data>
+  <data name="BothTokenProvided" xml:space="preserve">
+    <value>Both Token and SecureToken parameters cannot be provided together</value>
+  </data>
+  <data name="TokenParameterDepricate" xml:space="preserve">
+    <value>The Token parameter is deprecated and will be removed in future versions. Please use SecureToken instead</value>
+  </data>
 </root>

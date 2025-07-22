@@ -19,6 +19,6 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 
 Describe 'Get-AzLabServicesUserVM' {
     It 'Get Email' {
-        Get-AzLabServicesUserVM -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Email $ENV:UserEmail | Should -BeNullOrEmpty
+        Get-AzLabServicesUserVM -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -Email $env.UserEmail | Should -BeNullOrEmpty
     }    
 }

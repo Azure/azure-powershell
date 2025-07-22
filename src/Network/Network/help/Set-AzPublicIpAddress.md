@@ -143,5 +143,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzPublicIpAddress](./New-AzPublicIpAddress.md)
 
 [Remove-AzPublicIpAddress](./Remove-AzPublicIpAddress.md)
-
-

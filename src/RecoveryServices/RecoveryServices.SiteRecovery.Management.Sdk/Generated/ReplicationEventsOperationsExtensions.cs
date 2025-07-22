@@ -21,9 +21,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='odataQuery'>
         /// 
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<EventModel> List(this IReplicationEventsOperations operations, Microsoft.Rest.Azure.OData.ODataQuery<EventQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<EventQueryParameter>))
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<EventModel> List(this IReplicationEventsOperations operations, string resourceGroupName, string resourceName, Microsoft.Rest.Azure.OData.ODataQuery<EventQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<EventQueryParameter>))
         {
-                return ((IReplicationEventsOperations)operations).ListAsync(odataQuery).GetAwaiter().GetResult();
+                return ((IReplicationEventsOperations)operations).ListAsync(resourceGroupName, resourceName, odataQuery).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -35,12 +42,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='odataQuery'>
         /// 
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<EventModel>> ListAsync(this IReplicationEventsOperations operations, Microsoft.Rest.Azure.OData.ODataQuery<EventQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<EventQueryParameter>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<EventModel>> ListAsync(this IReplicationEventsOperations operations, string resourceGroupName, string resourceName, Microsoft.Rest.Azure.OData.ODataQuery<EventQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<EventQueryParameter>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(odataQuery, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, resourceName, odataQuery, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -51,12 +65,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='eventName'>
         /// The name of the Azure Site Recovery event.
         /// </param>
-        public static EventModel Get(this IReplicationEventsOperations operations, string eventName)
+        public static EventModel Get(this IReplicationEventsOperations operations, string resourceGroupName, string resourceName, string eventName)
         {
-                return ((IReplicationEventsOperations)operations).GetAsync(eventName).GetAwaiter().GetResult();
+                return ((IReplicationEventsOperations)operations).GetAsync(resourceGroupName, resourceName, eventName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -65,15 +86,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='eventName'>
         /// The name of the Azure Site Recovery event.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<EventModel> GetAsync(this IReplicationEventsOperations operations, string eventName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<EventModel> GetAsync(this IReplicationEventsOperations operations, string resourceGroupName, string resourceName, string eventName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(eventName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, resourceName, eventName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

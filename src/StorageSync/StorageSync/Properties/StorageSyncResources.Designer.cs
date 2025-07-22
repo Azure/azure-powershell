@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &gt;This hybrid server is not Azure Arc-enabled. Please ensure that the Azure Connected Machine agent is installed and the server is connected to Azure Arc..
+        /// </summary>
+        internal static string AgentMI_ArcServerNotEnabled {
+            get {
+                return ResourceManager.GetString("AgentMI_ArcServerNotEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Secret file path content is empty. Expected to read challenge key..
         /// </summary>
         internal static string AgentMI_ChallengeTokenNullError {
@@ -70,20 +79,29 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Request to HIMDS endpoint failed due to a socket exception. Ensure Azure Arc process is running on this server via &apos;azcmagent show&apos;..
+        /// </summary>
+        internal static string AgentMI_HIMDSSocketExceptionError {
+            get {
+                return ResourceManager.GetString("AgentMI_HIMDSSocketExceptionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request to Azure IMDS endpoint failed due to a socket exception. Ensure Azure VM IMDS is running. .
+        /// </summary>
+        internal static string AgentMI_IMDSSocketExceptionError {
+            get {
+                return ResourceManager.GetString("AgentMI_IMDSSocketExceptionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Secret file is invalid. It is either empty, not in the expected directory, or not of file type .key..
         /// </summary>
         internal static string AgentMI_InvalidSecretFileError {
             get {
                 return ResourceManager.GetString("AgentMI_InvalidSecretFileError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Secret file path does not exist on the server..
-        /// </summary>
-        internal static string AgentMI_MissingSecretFilePathOnServerError {
-            get {
-                return ResourceManager.GetString("AgentMI_MissingSecretFilePathOnServerError", resourceCulture);
             }
         }
         
@@ -129,6 +147,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         internal static string AgentMI_MissingWWWAuthenticateValueError {
             get {
                 return ResourceManager.GetString("AgentMI_MissingWWWAuthenticateValueError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GetEnvironmentVariable failed to find &apos;ProgramData&apos;.
+        /// </summary>
+        internal static string AgentMI_ProgramDataNotFoundError {
+            get {
+                return ResourceManager.GetString("AgentMI_ProgramDataNotFoundError", resourceCulture);
             }
         }
         
@@ -529,7 +556,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Succesfully retrieved secondary certificate with thumbprint: {0} from store with HResult: {1}.
+        ///   Looks up a localized string similar to Successfully retrieved secondary certificate with thumbprint: {0} from store with HResult: {1}.
         /// </summary>
         internal static string ResetCertificateMessageFormat3 {
             get {

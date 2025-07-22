@@ -60,11 +60,11 @@ Delete a Spatial Anchors Account.
 Check Name Availability for local uniqueness
 
 ### [Update-AzMixedRealityObjectAnchorsAccount](Update-AzMixedRealityObjectAnchorsAccount.md)
-Updating an Object Anchors Account
+Creating or Updating an object anchors Account.
 
 ### [Update-AzMixedRealityRemoteRenderingAccount](Update-AzMixedRealityRemoteRenderingAccount.md)
-Updating a Remote Rendering Account
+Creating or Updating a Remote Rendering Account.
 
 ### [Update-AzMixedRealitySpatialAnchorsAccount](Update-AzMixedRealitySpatialAnchorsAccount.md)
-Updating a Spatial Anchors Account
+Creating or Updating a Spatial Anchors Account.
 

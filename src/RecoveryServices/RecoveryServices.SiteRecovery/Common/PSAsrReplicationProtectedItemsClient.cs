@@ -40,6 +40,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationProtectedItems.BeginDeleteWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
@@ -68,6 +70,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationProtectedItems.BeginCreateWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
@@ -93,6 +97,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var firstPage = this.GetSiteRecoveryClient()
                 .ReplicationProtectedItems
                 .ListByReplicationProtectionContainersWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     this.GetRequestHeaders(true))
@@ -125,6 +131,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             return this.GetSiteRecoveryClient()
                 .ReplicationProtectedItems.GetWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     replicatedProtectedItemName,
@@ -150,6 +158,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationProtectedItems.BeginAddDisksWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
@@ -178,6 +188,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationProtectedItems.BeginRemoveDisksWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
@@ -205,6 +217,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     protectedItemsQueryParameter.ToQueryString());
             var firstPage = this.GetSiteRecoveryClient()
                 .ReplicationProtectedItems.ListWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     odataQuery,
                     null,
                     this.GetRequestHeaders(true))
@@ -236,6 +250,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationProtectedItems.BeginPurgeWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
@@ -251,7 +267,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Start applying Recovery Point.
         /// </summary>
         /// <param name="fabricName">Fabric Name.</param>
-        /// <param name="protectionContainerName">Protection Conatiner Name.</param>
+        /// <param name="protectionContainerName">Protection Container Name.</param>
         /// <param name="replicationProtectedItemName">Replication Protected Item.</param>
         /// <param name="input">Input for applying recovery point.</param>
         /// <returns>Job Response</returns>
@@ -263,6 +279,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationProtectedItems.BeginApplyRecoveryPointWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
@@ -279,7 +297,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Starts Commit Failover
         /// </summary>
         /// <param name="fabricName">Fabric Name</param>
-        /// <param name="protectionContainerName">Protection Conatiner Name</param>
+        /// <param name="protectionContainerName">Protection Container Name</param>
         /// <param name="replicationProtectedItemName">Replication Protected Item</param>
         /// <returns>Job Response</returns>
         public PSSiteRecoveryLongRunningOperation StartAzureSiteRecoveryCommitFailover(
@@ -289,6 +307,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationProtectedItems.BeginFailoverCommitWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
@@ -304,7 +324,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Starts cancel failover.
         /// </summary>
         /// <param name="fabricName">Fabric name.</param>
-        /// <param name="protectionContainerName">Protection conatiner name.</param>
+        /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicationProtectedItemName">Replication protected item.</param>
         /// <returns>Job response.</returns>
         public PSSiteRecoveryLongRunningOperation StartAzureSiteRecoveryCancelFailover(
@@ -314,6 +334,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationProtectedItems.BeginFailoverCancelWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
@@ -330,7 +352,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name="fabricName">Fabric Name</param>
         /// <param name="protectionContainerName">Protection Container Name</param>
-        /// <param name="replicationProtectedItemName">Replication Protected Itenm</param>
+        /// <param name="replicationProtectedItemName">Replication Protected Item</param>
         /// <param name="input">Input for Planned Failover</param>
         /// <returns>Job Response</returns>
         public PSSiteRecoveryLongRunningOperation StartAzureSiteRecoveryPlannedFailover(
@@ -341,6 +363,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationProtectedItems.BeginPlannedFailoverWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
@@ -357,7 +381,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Re-protects the Azure Site Recovery protection entity.
         /// </summary>
         /// <param name="fabricName">Fabric Name</param>
-        /// <param name="protectionContainerName">Protection Conatiner Name</param>
+        /// <param name="protectionContainerName">Protection Container Name</param>
         /// <param name="replicationProtectedItemName">Replication Protected Item</param>
         /// <param name="input">Input for Reprotect</param>
         /// <returns>Job Response</returns>
@@ -369,6 +393,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationProtectedItems.BeginReprotectWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
@@ -385,7 +411,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Starts Test Failover
         /// </summary>
         /// <param name="fabricName">Fabric Name</param>
-        /// <param name="protectionContainerName">Protection Conatiner Name</param>
+        /// <param name="protectionContainerName">Protection Container Name</param>
         /// <param name="replicationProtectedItemName">Replication Protected Item</param>
         /// <param name="input">Input for Test failover</param>
         /// <returns>Job Response</returns>
@@ -397,6 +423,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationProtectedItems.BeginTestFailoverWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
@@ -413,7 +441,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Starts Test Failover Cleanup.
         /// </summary>
         /// <param name="fabricName">Fabric Name.</param>
-        /// <param name="protectionContainerName">Protection Conatiner Name.</param>
+        /// <param name="protectionContainerName">Protection Container Name.</param>
         /// <param name="replicationProtectedItemName">Replication Protected Item.</param>
         /// <param name="input">Input for Test failover cleanup.</param>
         /// <returns>Job Response.</returns>
@@ -425,6 +453,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationProtectedItems.BeginTestFailoverCleanupWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
@@ -441,7 +471,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Starts Unplanned Failover
         /// </summary>
         /// <param name="fabricName">Fabric Name</param>
-        /// <param name="protectionContainerName">Protection Conatiner Name</param>
+        /// <param name="protectionContainerName">Protection Container Name</param>
         /// <param name="replicationProtectedItemName">Replication Protected Item</param>
         /// <param name="input">Input for Unplanned failover</param>
         /// <returns>Job Response</returns>
@@ -453,6 +483,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationProtectedItems.BeginUnplannedFailoverWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
@@ -469,7 +501,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Resyncs / Repairs Replication.
         /// </summary>
         /// <param name="fabricName">Fabric Name</param>
-        /// <param name="protectionContainerName">Protection Conatiner Name</param>
+        /// <param name="protectionContainerName">Protection Container Name</param>
         /// <param name="replicationProtectedItemName">Replication Protected Item</param>
         /// <returns>Job Response</returns>
         public PSSiteRecoveryLongRunningOperation StartAzureSiteRecoveryResynchronizeReplication(
@@ -479,6 +511,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationProtectedItems.BeginRepairReplicationWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
@@ -494,7 +528,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Updates Mobility Service.
         /// </summary>
         /// <param name="fabricName">Fabric Name</param>
-        /// <param name="protectionContainerName">Protection Conatiner Name</param>
+        /// <param name="protectionContainerName">Protection Container Name</param>
         /// <param name="replicationProtectedItemName">Replication Protected Item</param>
         /// <param name="input">Update Mobility Service Request</param>
         /// <returns>Job Response</returns>
@@ -506,6 +540,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationProtectedItems.BeginUpdateMobilityServiceWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
@@ -522,7 +558,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Switch the Azure Site Recovery protection entity replication direction.
         /// </summary>
         /// <param name="fabricName">Fabric Name</param>
-        /// <param name="protectionContainerName">Protection Conatiner Name</param>
+        /// <param name="protectionContainerName">Protection Container Name</param>
         /// <param name="input">Input for Switch</param>
         /// <returns>Job Response</returns>
         public PSSiteRecoveryLongRunningOperation StartSwitchProtection(
@@ -532,6 +568,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationProtectionContainers.BeginSwitchProtectionWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     input.Properties,
@@ -559,6 +597,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationProtectedItems.BeginUpdateWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
@@ -575,7 +615,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Switch appliance of a replication protected item.
         /// </summary>
         /// <param name="fabricName">Fabric Name.</param>
-        /// <param name="protectionContainerName">Protection Conatiner Name.</param>
+        /// <param name="protectionContainerName">Protection Container Name.</param>
         /// <param name="replicationProtectedItemName">Replication Protected Item.</param>
         /// <param name="input">Input for update appliance.</param>
         /// <returns>Job Response.</returns>
@@ -587,6 +627,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationProtectedItems.BeginUpdateApplianceWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,

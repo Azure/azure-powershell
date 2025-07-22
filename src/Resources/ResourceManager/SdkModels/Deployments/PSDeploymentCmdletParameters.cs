@@ -43,5 +43,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         public OnErrorDeployment OnErrorDeployment { get; set; }
 
         public IDictionary<string, IList<string>> AuxTenantHeaders { get; set; }
+
+        public string ValidationLevel { get; set; }
     }
 }

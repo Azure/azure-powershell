@@ -12,7 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Start-AzImageBuilderTemplate' {
-    It 'Run' -Skip {
+    It 'Run' {
+        Write-Host -ForegroundColor Green "Starting the image builder template..."
         Start-AzImageBuilderTemplate -Name $env.templateName -ResourceGroupName $env.rg
         $template = Get-AzImageBuilderTemplate -Name $env.templateName -ResourceGroupName $env.rg
         $template.LastRunStatusRunState | Should -Be 'Succeeded'

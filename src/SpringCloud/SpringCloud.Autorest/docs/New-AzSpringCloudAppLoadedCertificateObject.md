@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.SpringCloud
-online version: https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudAppLoadedCertificateObject
+online version: https://learn.microsoft.com/powershell/module/Az.SpringCloud/new-azspringcloudapploadedcertificateobject
 schema: 2.0.0
 ---
 
@@ -74,7 +74,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.LoadedCertificate
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.LoadedCertificate
 
 ## NOTES
 

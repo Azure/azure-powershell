@@ -38,7 +38,7 @@ Gets an order item.
 ### Example 1: Get orderItem details
 ```powershell
 $orderItem = Get-AzEdgeOrderItem -Name examplePowershell -SubscriptionId "SubscriptionId" -ResourceGroupName "resourceGroupName"   
-$ordderItem | Format-List
+$orderItem | Format-List
 ```
 
 ```output
@@ -165,7 +165,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResource
 
 ## NOTES
 

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.EndpointCertificate.Cmdlet
     public abstract class AzureSqlInstanceEndpointCertificateCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlInstanceEndpointCertificateModel>, AzureSqlInstanceEndpointCertificateAdapter>
     {
         /// <summary>
-        /// Intializes the model adapter
+        /// Initializes the model adapter
         /// </summary>
         /// <returns></returns>
         protected override AzureSqlInstanceEndpointCertificateAdapter InitModelAdapter()

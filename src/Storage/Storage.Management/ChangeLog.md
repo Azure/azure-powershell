@@ -19,6 +19,50 @@
 -->
 ## Upcoming Release
 
+## Version 9.1.0
+* Supported set SasExpirationAction as Log or Block, together with SasExpirationPeriod
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported Storage task assignment
+    - `New-AzStorageTaskAssignment`
+    - `Update-AzStorageTaskAssignment`
+    - `Get-AzStorageTaskAssignment`
+    - `Remove-AzStorageTaskAssignment`
+    - `Get-AzStorageTaskAssignmentinstancesReport`
+
+## Version 9.0.0
+* Removed MD5 from blob and file upload in some scenarios
+    - `Set-AzStorageFileContent`
+    - `Set-AzStorageBlobContent`
+* Added prompt for customer confirmation for long running account migration operation .
+    - `Start-AzStorageAccountMigration`
+
+## Version 8.4.0
+* When create Storage context, allowed user input StorageAccountName
+    - `New-AzStorageContext`
+* Reported error when user create user delegation SAS with a storage context not contains StorageAccountName.
+    - `New-AzStorageBlobSASToken`
+    - `New-AzStorageContainerSASToken`
+    - `New-AzDataLakeGen2SasToken`
+
+## Version 8.3.0
+* Supported NFS File Share and NFS file and directory properties
+    - `Get-AzStorageFile`
+    - `Get-AzStorageFileContent`
+    - `New-AzStorageDirectory`
+    - `Remove-AzStorageFile`
+    - `Set-AzStorageFileContent`
+    - `Start-AzStorageFileCopy`
+* Supported File share properties: Protocol, EnableSnapshotVirtualDirectoryAccess.
+    - `New-AzStorageShare`
+    - `Get-AzStorageShare`
+* Supported create hard link in NFS File Share 
+    - `New-AzStorageFileHardLink`
+* Added warning message for upcoming breaking change on upload Azure file
+    - `Set-AzStorageFileContent`
+* Added warning messages for an upcoming breaking change when converting the account's redundancy configuration
+    - `Start-AzStorageAccountMigration`
+
 ## Version 8.2.0
 * Supported new SkuName when create/update Storage account for Files Provisioned v2 account type:  "StandardV2_LRS", "StandardV2_GRS", "StandardV2_ZRS", "StandardV2_GZRS", "PremiumV2_LRS", "PremiumV2_ZRS"
     - `New-AzStorageAccount`

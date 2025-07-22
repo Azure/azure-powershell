@@ -25,6 +25,12 @@ Remove-AzDeviceUpdateInstance -InputObject <IDeviceUpdateIdentity> [-DefaultProf
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityAccount
+```
+Remove-AzDeviceUpdateInstance -AccountInputObject <IDeviceUpdateIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Deletes instance.
 
@@ -45,6 +51,21 @@ Get-AzDeviceUpdateInstance -AccountName azpstest-account -ResourceGroupName azps
 Deletes instance.
 
 ## PARAMETERS
+
+### -AccountInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity
+Parameter Sets: DeleteViaIdentityAccount
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -AccountName
 Account name.
@@ -94,7 +115,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity
@@ -113,7 +133,7 @@ Instance name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityAccount
 Aliases: InstanceName
 
 Required: True

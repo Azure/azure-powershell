@@ -1,0 +1,47 @@
+{
+  "Get-AzArizeAIOrganization+[NoContext]+List+$GET+https://management.azure.com/subscriptions/61641157-140c-4b97-b365-30ff76d9f82e/resourceGroups/yashika-rg-arize/providers/ArizeAi.ObservabilityEval/organizations?api-version=2024-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/61641157-140c-4b97-b365-30ff76d9f82e/resourceGroups/yashika-rg-arize/providers/ArizeAi.ObservabilityEval/organizations?api-version=2024-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "d854b3fe-0761-43de-986d-32019e7542e3" ],
+        "CommandName": [ "Get-AzArizeAIOrganization" ],
+        "FullCommandName": [ "Get-AzArizeAIOrganization_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.2", "Az.ArizeAI/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "d66a9fb5-b1b5-418b-bee0-55e0b4712240" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "3b62177d-2300-4ed9-9e3d-8ebf172a07d6" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-request-id": [ "3b62177d-2300-4ed9-9e3d-8ebf172a07d6" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20250709T095739Z:3b62177d-2300-4ed9-9e3d-8ebf172a07d6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 81BDCBBC30034C16B45C9E20BE859889 Ref B: PNQ231110907040 Ref C: 2025-07-09T09:57:38Z" ],
+        "Date": [ "Wed, 09 Jul 2025 09:57:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2984" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/61641157-140c-4b97-b365-30ff76d9f82e/resourceGroups/yashika-rg-arize/providers/arizeai.observabilityeval/organizations/test1\",\"name\":\"test1\",\"type\":\"arizeai.observabilityeval/organizations\",\"location\":\"East US\",\"tags\":{},\"systemData\":{\"createdBy\":\"yashikajain@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-09T08:57:27.6373121Z\",\"lastModifiedBy\":\"yashikajain@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-09T09:45:51.6309883Z\"},\"properties\":{\"marketplace\":{\"subscriptionId\":\"12394046-cf48-42a3-d6b3-caea0292af1d\",\"subscriptionStatus\":\"Subscribed\",\"offerDetails\":{\"publisherId\":\"arizeai1657829589668\",\"offerId\":\"arize-liftr-0\",\"planId\":\"arize-eval_observ-pro\",\"planName\":\"Arize Observability \u0026 Evaluations – Pro (PAYG Monthly)\",\"termUnit\":\"P1M\",\"termId\":\"gmz7xq9ge3py\"}},\"provisioningState\":\"Failed\",\"user\":{\"firstName\":\"\",\"lastName\":\"\",\"emailAddress\":\"yashikajain@microsoft.com\",\"upn\":\"yashikajain@microsoft.com\",\"phoneNumber\":\"\"},\"partnerProperties\":{\"description\":\"testing\"}}},{\"id\":\"/subscriptions/61641157-140c-4b97-b365-30ff76d9f82e/resourceGroups/yashika-rg-arize/providers/ArizeAi.ObservabilityEval/organizations/test4\",\"name\":\"test4\",\"type\":\"arizeai.observabilityeval/organizations\",\"location\":\"East US\",\"systemData\":{\"createdBy\":\"yashikajain@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-09T09:14:18.2031001Z\",\"lastModifiedBy\":\"yashikajain@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-09T09:27:49.3127019Z\"},\"properties\":{\"marketplace\":{\"subscriptionId\":\"61641157-140c-4b97-b365-30ff76d9f82e\",\"subscriptionStatus\":\"PendingFulfillmentStart\",\"offerDetails\":{\"publisherId\":\"arizeai1657829589668\",\"offerId\":\"arize-liftr-0\",\"planId\":\"liftr-test-0\",\"planName\":\"Liftr Test 0\",\"termUnit\":\"P1M\",\"termId\":\"gmz7xq9ge3py\"}},\"provisioningState\":\"Succeeded\",\"user\":{\"firstName\":\"\",\"lastName\":\"\",\"emailAddress\":\"yashikajain@microsoft.com\",\"upn\":\"yashikajain@microsoft.com\"},\"partnerProperties\":{\"description\":\"testing\"}}},{\"id\":\"/subscriptions/61641157-140c-4b97-b365-30ff76d9f82e/resourceGroups/yashika-rg-arize/providers/ArizeAi.ObservabilityEval/organizations/test5\",\"name\":\"test5\",\"type\":\"arizeai.observabilityeval/organizations\",\"location\":\"East US\",\"systemData\":{\"createdBy\":\"yashikajain@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-09T09:40:58.5290346Z\",\"lastModifiedBy\":\"yashikajain@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-09T09:40:58.5290346Z\"},\"properties\":{\"marketplace\":{\"subscriptionId\":\"915002cf-e63b-455b-d6fd-41652a52f2ba\",\"subscriptionStatus\":\"Subscribed\",\"offerDetails\":{\"publisherId\":\"arizeai1657829589668\",\"offerId\":\"arize-liftr-0\",\"planId\":\"liftr-test-0\",\"planName\":\"Liftr Test 0\",\"termUnit\":\"P1M\",\"termId\":\"gmz7xq9ge3py\"}},\"provisioningState\":\"Succeeded\",\"user\":{\"firstName\":\"\",\"lastName\":\"\",\"emailAddress\":\"yashikajain@microsoft.com\",\"upn\":\"yashikajain@microsoft.com\"},\"partnerProperties\":{\"description\":\"testing\"}}}]}",
+      "isContentBase64": false
+    }
+  }
+}

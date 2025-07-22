@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="NewWorkspaceCollectionDescription" xml:space="preserve">
-    <value>Creating new workspace colleciton '{0}'</value>
+    <value>Creating new workspace collection '{0}'</value>
   </data>
   <data name="NewWorkspaceCollectionWarning" xml:space="preserve">
     <value>Are you sure you want to create new workspace collection with name '{0}'?</value>
@@ -133,7 +133,7 @@
     <value>Resetting access key '{0}' on workspace collection '{1}'</value>
   </data>
   <data name="ResetWorkspaceCollectionAccessKeyWarning" xml:space="preserve">
-    <value>Are you sure you want to reset access key '{0}' on workspace colleciton '{1}'?</value>
+    <value>Are you sure you want to reset access key '{0}' on workspace collection '{1}'?</value>
   </data>
   <data name="ShouldProcessCaption" xml:space="preserve">
     <value>Confirm</value>

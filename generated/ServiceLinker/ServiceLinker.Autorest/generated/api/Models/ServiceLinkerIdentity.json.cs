@@ -76,14 +76,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)Location;}
-            {_dryrunName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("dryrunName"), out var __jsonDryrunName) ? (string)__jsonDryrunName : (string)DryrunName;}
-            {_connectorName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("connectorName"), out var __jsonConnectorName) ? (string)__jsonConnectorName : (string)ConnectorName;}
-            {_resourceUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("resourceUri"), out var __jsonResourceUri) ? (string)__jsonResourceUri : (string)ResourceUri;}
-            {_linkerName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("linkerName"), out var __jsonLinkerName) ? (string)__jsonLinkerName : (string)LinkerName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
+            {_dryrunName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("dryrunName"), out var __jsonDryrunName) ? (string)__jsonDryrunName : (string)_dryrunName;}
+            {_connectorName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("connectorName"), out var __jsonConnectorName) ? (string)__jsonConnectorName : (string)_connectorName;}
+            {_resourceUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("resourceUri"), out var __jsonResourceUri) ? (string)__jsonResourceUri : (string)_resourceUri;}
+            {_linkerName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("linkerName"), out var __jsonLinkerName) ? (string)__jsonLinkerName : (string)_linkerName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

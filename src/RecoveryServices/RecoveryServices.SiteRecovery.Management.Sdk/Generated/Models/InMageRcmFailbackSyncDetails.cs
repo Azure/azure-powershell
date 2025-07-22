@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
 
         /// <param name="progressHealth">The progress health.
-        /// Possible values include: 'None', 'InProgress', 'SlowProgress',
-        /// 'NoProgress', 'Queued'</param>
+        /// Possible values include: &#39;None&#39;, &#39;InProgress&#39;, &#39;SlowProgress&#39;,
+        /// &#39;NoProgress&#39;, &#39;Queued&#39;</param>
 
         /// <param name="transferredBytes">The transferred bytes from source VM to azure for the disk.
         /// </param>

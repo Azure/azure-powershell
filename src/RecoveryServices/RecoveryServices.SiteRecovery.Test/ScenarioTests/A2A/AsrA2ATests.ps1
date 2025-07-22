@@ -19,6 +19,311 @@
 
 <#
 .SYNOPSIS
+    NewA2ADiskReplicationConfigurationUltraDisk creation test.
+#>
+function Test-NewA2AManagedDiskReplicationConfigurationForUltraDisk {
+     param([string] $seed = '108')
+
+    $primaryPolicyName = getPrimaryPolicy
+    $recoveryPolicyName = getRecoveryPolicy
+
+    $primaryContainerMappingName = getPrimaryContainerMapping
+    $recoveryContainerMappingName = getRecoveryContainerMapping
+
+    $primaryContainerName = getPrimaryContainer
+    $recoveryContainerName = getRecoveryContainer
+    $vaultRgLocation = getVaultRgLocation
+    $vaultName = getVaultName
+    $vaultLocation = getVaultLocation
+    $vaultRg = getVaultRg
+    $primaryLocation = getPrimaryLocation
+    $recoveryLocation = getRecoveryLocation
+    $primaryFabricName = getPrimaryFabric
+    $recoveryFabricName = getRecoveryFabric
+    $RecoveryReplicaDiskAccountType = "Premium_LRS"
+    $RecoveryTargetDiskAccountType = "UltraSSD_LRS"
+    $policyName = getPrimaryPolicy
+    $mappingName = getPrimaryContainerMapping
+    $primaryNetMapping = getPrimaryNetworkMapping
+
+    #create recovery side resources
+    $recRgName = getRecoveryResourceGroupName
+    New-AzResourceGroup -name $recRgName -location $recoveryLocation -force
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    $RecoveryAzureNetworkId = createRecoveryNetworkId
+
+    #create primary
+    $vmName = getAzureVmName
+    $v2VmId = createAzureVmInAvailabilityZone
+    $vm = get-azVm -ResourceGroupName $vmName -Name $vmName
+
+    # Stop the VM
+    Stop-AzVM -Name $vmName -ResourceGroupName $vmName -force
+    # Enable Ultra Disk compatibility
+    $vm = Get-AzVM -name $vmName -ResourceGroupName $vmName
+    Update-AzVM -ResourceGroupName $vmName -VM $vm -UltraSSDEnabled $True
+    # Start the VM
+    Start-AzVM -Name $vmName -ResourceGroupName $vmName
+
+    #create disk and attach
+    $diskName = getAzureDataDiskName
+    $primaryZone = getPrimaryZone
+    $newDiskConfig = New-AzDiskConfig -SkuName 'UltraSSD_LRS' -Location $vm.Location  -CreateOption Empty -DiskSizeGB 20 -Zone $primaryZone
+    $newDisk = New-AzDisk -ResourceGroupName $vm.ResourceGroupName -DiskName $diskName -Disk $newDiskConfig
+    $vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Attach -ManagedDiskId $newDisk.Id -Lun 1
+    Update-azVm -ResourceGroupName $vmName -VM $vm
+
+
+    $logStg = createCacheStorageAccountForZone($vm.Location, $vm.ReservationGroupName, "Premium_LRS")
+    $dataDiskId = $vm.StorageProfile.DataDisks[0].ManagedDisk.Id
+    $index = $v2VmId.IndexOf("/providers/")
+    $Rg = $v2VmId.Substring(0, $index)
+    $PrimaryAzureNetworkId = $Rg + "/providers/Microsoft.Network/virtualNetworks/" + $vmName
+
+    # vault Creation
+    New-AzResourceGroup -name $vaultRg -location $vaultRgLocation -force
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    New-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName -Location $vaultLocation
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName
+    Set-ASRVaultContext -Vault $Vault
+
+    # fabric Creation
+    $fabJob = New-AzRecoveryServicesAsrFabric -Azure -Name $primaryFabricName -Location $primaryLocation
+    WaitForJobCompletion -JobId $fabJob.Name
+    $fab = Get-AzRecoveryServicesAsrFabric -Name $primaryFabricName
+    Assert-true { $fab.name -eq $primaryFabricName }
+    Assert-AreEqual $fab.FabricSpecificDetails.Location $primaryLocation
+
+    $fabJob = New-AzRecoveryServicesAsrFabric -Azure -Name $recoveryFabricName -Location $recoveryLocation
+    WaitForJobCompletion -JobId $fabJob.Name
+    $fab = Get-AzRecoveryServicesAsrFabric -Name $recoveryFabricName
+    Assert-true { $fab.name -eq $recoveryFabricName }
+    Assert-AreEqual $fab.FabricSpecificDetails.Location $recoveryLocation
+    $pf = get-asrFabric -Name $primaryFabricName
+    $rf = get-asrFabric -Name $recoveryFabricName
+
+    $RecoveryResourceGroupId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/" + $recRgName
+
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStg `
+        -DiskId $dataDiskId -RecoveryResourceGroupId  $RecoveryResourceGroupId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
+        -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+
+    Assert-True { $v.DiskId -eq $dataDiskId }
+}
+
+<#
+.SYNOPSIS
+    NewA2ADiskReplicationConfigurationPv2 creation test.
+#>
+function Test-NewA2AManagedDiskReplicationConfigurationForPv2 {
+     param([string] $seed = '107')
+
+    $primaryPolicyName = getPrimaryPolicy
+    $recoveryPolicyName = getRecoveryPolicy
+
+    $primaryContainerMappingName = getPrimaryContainerMapping
+    $recoveryContainerMappingName = getRecoveryContainerMapping
+
+    $primaryContainerName = getPrimaryContainer
+    $recoveryContainerName = getRecoveryContainer
+    $vaultRgLocation = getVaultRgLocation
+    $vaultName = getVaultName
+    $vaultLocation = getVaultLocation
+    $vaultRg = getVaultRg
+    $primaryLocation = getPrimaryLocation
+    $recoveryLocation = getRecoveryLocation
+    $primaryFabricName = getPrimaryFabric
+    $recoveryFabricName = getRecoveryFabric
+    $RecoveryReplicaDiskAccountType = "Premium_LRS"
+    $RecoveryTargetDiskAccountType = "PremiumV2_LRS"
+    $policyName = getPrimaryPolicy
+    $mappingName = getPrimaryContainerMapping
+    $primaryNetMapping = getPrimaryNetworkMapping
+
+    #create recovery side resources
+    $recRgName = getRecoveryResourceGroupName
+    New-AzResourceGroup -name $recRgName -location $recoveryLocation -force
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    $RecoveryAzureNetworkId = createRecoveryNetworkId
+
+    #create primary
+    $vmName = getAzureVmName
+    $v2VmId = createAzureVmInAvailabilityZone
+    $vm = get-azVm -ResourceGroupName $vmName -Name $vmName
+
+    #create disk and attach
+    $diskName = getAzureDataDiskName
+    $primaryZone = getPrimaryZone
+    $newDiskConfig = New-AzDiskConfig -SkuName 'PremiumV2_LRS' -Location $vm.Location  -CreateOption Empty -DiskSizeGB 20 -Zone $primaryZone
+    $newDisk = New-AzDisk -ResourceGroupName $vm.ResourceGroupName -DiskName $diskName -Disk $newDiskConfig
+    $vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Attach -ManagedDiskId $newDisk.Id -Lun 1
+    Update-azVm -ResourceGroupName $vmName -VM $vm
+
+
+    $logStg = createCacheStorageAccountForZone($vm.Location, $vm.ReservationGroupName, "Premium_LRS")
+    $dataDiskId = $vm.StorageProfile.DataDisks[0].ManagedDisk.Id
+    $index = $v2VmId.IndexOf("/providers/")
+    $Rg = $v2VmId.Substring(0, $index)
+    $PrimaryAzureNetworkId = $Rg + "/providers/Microsoft.Network/virtualNetworks/" + $vmName
+
+    # vault Creation
+    New-AzResourceGroup -name $vaultRg -location $vaultRgLocation -force
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    New-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName -Location $vaultLocation
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName
+    Set-ASRVaultContext -Vault $Vault
+
+    # fabric Creation
+    $fabJob = New-AzRecoveryServicesAsrFabric -Azure -Name $primaryFabricName -Location $primaryLocation
+    WaitForJobCompletion -JobId $fabJob.Name
+    $fab = Get-AzRecoveryServicesAsrFabric -Name $primaryFabricName
+    Assert-true { $fab.name -eq $primaryFabricName }
+    Assert-AreEqual $fab.FabricSpecificDetails.Location $primaryLocation
+
+    $fabJob = New-AzRecoveryServicesAsrFabric -Azure -Name $recoveryFabricName -Location $recoveryLocation
+    WaitForJobCompletion -JobId $fabJob.Name
+    $fab = Get-AzRecoveryServicesAsrFabric -Name $recoveryFabricName
+    Assert-true { $fab.name -eq $recoveryFabricName }
+    Assert-AreEqual $fab.FabricSpecificDetails.Location $recoveryLocation
+    $pf = get-asrFabric -Name $primaryFabricName
+    $rf = get-asrFabric -Name $recoveryFabricName
+
+    $RecoveryResourceGroupId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/" + $recRgName
+
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStg `
+        -DiskId $dataDiskId -RecoveryResourceGroupId  $RecoveryResourceGroupId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
+        -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+
+    Assert-True { $v.DiskId -eq $dataDiskId }
+}
+
+<#
+.SYNOPSIS
+    Test Cluster Test Failover Job.
+#>
+function Test-ClusterTestFailoverAndFailoverCleanupJob {
+    $primaryContainerName = getClusterPrimaryContainerName
+    $primaryFabricName = getClusterPrimaryFabricName
+    $recoveryResourceGroupName = getClusterRecoveryResourceGroupName
+    $vaultName = getClusterVaultName
+    $clusterName = getClusterName
+    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $recoveryResourceGroupName -Name $vaultName
+    Set-ASRVaultContext -Vault $Vault
+    $primaryFabric = get-asrFabric -Name $primaryFabricName
+    $protectionContainer = get-asrProtectionContainer -Name $primaryContainerName -Fabric $primaryFabric
+    $protectionCluster = get-ASRReplicationProtectionCluster -ProtectionContainer $protectionContainer -Name $clusterName
+
+    #TFO
+    $tfoJob = Start-AzRecoveryServicesAsrClusterTestFailoverJob -ReplicationProtectionCluster $protectionCluster -Direction PrimaryToRecovery -AzureVMNetworkId "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Shashank-1903224559-asr/providers/Microsoft.Network/virtualNetworks/adVNET-asr" -LatestProcessedRecoveryPoint
+
+    WaitForJobCompletion -JobId $tfoJob.Name
+    #Get recovery vm and verify
+    $recvm = get-azVm -ResourceGroupName $recoveryResourceGroupName -Name "sdgql1-test"
+    Assert-NotNull($recvm.Id);
+
+    #TFO cleanup
+    $tfoCleanupJob = Start-AzRecoveryServicesAsrClusterTestFailoverCleanupJob -ReplicationProtectionCluster $protectionCluster
+
+    WaitForJobCompletion -JobId $tfoCleanupJob.Name
+    #Get recovery vm will give exception
+    Assert-ThrowsContains { get-azVm -ResourceGroupName $recoveryResourceGroupName -Name "sdgql1-test"} "The Resource 'Microsoft.Compute/virtualMachines/sdgql1-test' under resource group 'ClusterRG-Shashank-1903224559-asr' was not found."
+
+    #Get ClusterRecoveryPoint
+    $clusterRecoveryPoints = Get-AzRecoveryServicesAsrClusterRecoveryPoint -ReplicationProtectionCluster $protectionCluster
+    #Node Recovery Point
+    $nodeRecoveryPoints = @("/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Shashank-1903224559-asr/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/8fbcf43b-798e-57f3-9c82-a2c5d9af7541/replicationProtectedItems/20yNCJytW0HBUYGHL4YEigFgyjgmh2u_Bm7QQ-_YqY0/recoveryPoints/c7a79558-a464-4ba9-90e9-13b91860570c")
+    
+    #TFO
+    $tfoJob = Start-AzRecoveryServicesAsrClusterTestFailoverJob -ReplicationProtectionCluster $protectionCluster -Direction PrimaryToRecovery -AzureVMNetworkId "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Shashank-1903224559-asr/providers/Microsoft.Network/virtualNetworks/adVNET-asr" -ClusterRecoveryPoint $clusterRecoveryPoints[-1] -ListNodeRecoveryPoint $nodeRecoveryPoints
+
+    WaitForJobCompletion -JobId $tfoJob.Name
+    #Get recovery vm and verify
+    $recvm = get-azVm -ResourceGroupName $recoveryResourceGroupName -Name "sdgql1-test"
+    Assert-NotNull($recvm.Id);
+    #TFO cleanup
+    $tfoCleanupJob = Start-AzRecoveryServicesAsrClusterTestFailoverCleanupJob -ReplicationProtectionCluster $protectionCluster
+
+    WaitForJobCompletion -JobId $tfoCleanupJob.Name
+    #Get recovery vm will give exception
+    Assert-ThrowsContains { get-azVm -ResourceGroupName $recoveryResourceGroupName -Name "sdgql1-test"} "The Resource 'Microsoft.Compute/virtualMachines/sdgql1-test' under resource group 'ClusterRG-Shashank-1903224559-asr' was not found."
+}
+
+<#
+.SYNOPSIS
+    Test Cluster Unplanned Failover Job.
+#>
+function Test-ClusterUnplannedFailoverJob {
+    $primaryContainerName = getClusterPrimaryContainerName
+    $primaryFabricName = getClusterPrimaryFabricName
+    $recoveryResourceGroupName = getClusterRecoveryResourceGroupName
+    $vaultName = getClusterVaultName
+    $clusterName = getClusterName
+    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $recoveryResourceGroupName -Name $vaultName
+    Set-ASRVaultContext -Vault $Vault
+    $primaryFabric = get-asrFabric -Name $primaryFabricName
+    $protectionContainer = get-asrProtectionContainer -Name $primaryContainerName -Fabric $primaryFabric
+    $protectionCluster = get-ASRReplicationProtectionCluster -ProtectionContainer $protectionContainer -Name $clusterName
+
+    $ufoJob = Start-AzRecoveryServicesAsrClusterUnplannedFailoverJob -ReplicationProtectionCluster $protectionCluster  -Direction PrimaryToRecovery -LatestProcessedRecoveryPoint
+
+    WaitForJobCompletion -JobId $ufoJob.Name
+    #Get recovery vm and verify
+    $recvm = get-azVm -ResourceGroupName $recoveryResourceGroupName -Name "sdgql1"
+    Assert-NotNull($recvm.Id);
+}
+
+<#
+.SYNOPSIS
+    Test Cluster Apply Cluster Recovery Point.
+#>
+function Test-ApplyClusterRecoveryPoint {
+    $primaryContainerName = getClusterPrimaryContainerName
+    $primaryFabricName = getClusterPrimaryFabricName
+    $recoveryResourceGroupName = getClusterRecoveryResourceGroupName
+    $vaultName = getClusterVaultName
+    $clusterName = getClusterName
+    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $recoveryResourceGroupName -Name $vaultName
+    Set-ASRVaultContext -Vault $Vault
+    $primaryFabric = get-asrFabric -Name $primaryFabricName
+    $protectionContainer = get-asrProtectionContainer -Name $primaryContainerName -Fabric $primaryFabric
+    $protectionCluster = get-ASRReplicationProtectionCluster -ProtectionContainer $protectionContainer -Name $clusterName
+
+    $changePitJob = Start-AzRecoveryServicesAsrApplyClusterRecoveryPoint -ReplicationProtectionCluster $protectionCluster -LatestProcessedRecoveryPoint
+
+    WaitForJobCompletion -JobId $changePitJob.Name
+    #Get recovery vm and verify
+    $recvm = get-azVm -ResourceGroupName $recoveryResourceGroupName -Name "sdgql1"
+    Assert-NotNull($recvm.Id);
+}
+
+<#
+.SYNOPSIS
+    Test Cluster Commit Failover Job.
+#>
+function Test-ClusterCommitFailoverJob {
+    $primaryContainerName = getClusterPrimaryContainerName
+    $primaryFabricName = getClusterPrimaryFabricName
+    $recoveryResourceGroupName = getClusterRecoveryResourceGroupName
+    $vaultName = getClusterVaultName
+    $clusterName = getClusterName
+    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $recoveryResourceGroupName -Name $vaultName
+    Set-ASRVaultContext -Vault $Vault
+    $primaryFabric = get-asrFabric -Name $primaryFabricName
+    $protectionContainer = get-asrProtectionContainer -Name $primaryContainerName -Fabric $primaryFabric
+    $protectionCluster = get-ASRReplicationProtectionCluster -ProtectionContainer $protectionContainer -Name $clusterName
+
+    $CommitFailoverJob = Start-AzRecoveryServicesAsrClusterCommitFailoverJob -ReplicationProtectionCluster $protectionCluster  
+
+    WaitForJobCompletion -JobId $CommitFailoverJob.Name
+    #Get recovery vm and verify
+    $recvm = get-azVm -ResourceGroupName $recoveryResourceGroupName -Name "sdgql1"
+    Assert-NotNull($recvm.Id);
+}
+
+<#
+.SYNOPSIS
     NewA2ADiskReplicationConfiguration creation test.
 #>
 
@@ -629,7 +934,7 @@ function Test-ReplicateProximityPlacementGroupVm {
     $job = New-AzRecoveryServicesAsrNetworkMapping -AzureToAzure -Name $primaryNetMapping -PrimaryFabric $pf -PrimaryAzureNetworkId $PrimaryAzureNetworkId -RecoveryFabric $rf -RecoveryAzureNetworkId $RecoveryAzureNetworkId
     WaitForJobCompletion -JobId $job.Name
 
-    #Reverse Conatiner mapping
+    #Reverse Container mapping
     $job = New-AzRecoveryServicesAsrProtectionContainerMapping -Name $recMappingName -Policy $policy -PrimaryProtectionContainer $rc -RecoveryProtectionContainer $pc
     WaitForJobCompletion -JobId $job.Name
     $revMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Name $recMappingName -ProtectionContainer $rc  
@@ -772,7 +1077,7 @@ function Test-VMNicConfig {
     $job = New-AzRecoveryServicesAsrNetworkMapping -AzureToAzure -Name $primaryNetMapping -PrimaryFabric $pf -PrimaryAzureNetworkId $PrimaryAzureNetworkId -RecoveryFabric $rf -RecoveryAzureNetworkId $RecoveryAzureNetworkId
     WaitForJobCompletion -JobId $job.Name
 
-    #Reverse Conatiner mapping
+    #Reverse Container mapping
     $job = New-AzRecoveryServicesAsrProtectionContainerMapping -Name $recMappingName -Policy $policy -PrimaryProtectionContainer $rc -RecoveryProtectionContainer $pc
     WaitForJobCompletion -JobId $job.Name
     $revMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Name $recMappingName -ProtectionContainer $rc  
@@ -1420,6 +1725,184 @@ function Test-RecoveryPlanReplication {
 
 <#
 .SYNOPSIS
+    Test A2AReplicationProtectionCluster new parametersets
+#>
+function Test-A2AReplicationProtectionCluster{
+    $Vault = Get-AzRecoveryServicesVault -Name "vijamipowershelltest" -ResourceGroupName "vijami-alertrg"
+    Set-ASRVaultContext -Vault $Vault
+    $fabricName = "asr-a2a-default-eastus2"
+    $fabric = Get-AzRecoveryServicesAsrFabric -Name $fabricName
+    $pc = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric
+    $forwardpcm = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $pc -Name "eastus2-westus-24-hour-retention-policy"
+    $clusterName = "PowershellTestLatest"
+    $clusterjob = New-AzRecoveryServicesAsrReplicationProtectionCluster -AzureToAzure -Name $clusterName -ProtectionContainerMapping $forwardpcm
+
+    WaitForJobCompletion -JobId $clusterjob.Name
+    $cluster = Get-AzRecoveryServicesAsrReplicationProtectionCluster -Name $clusterName -ProtectionContainer $pc
+
+    $vmId1 = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103092752/providers/Microsoft.Compute/virtualMachines/sdgql0"
+    $rgId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103092752-asr"
+    $avset = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103092752-asr/providers/Microsoft.Compute/availabilitySets/SDGQL-AS-asr"
+    $ppg = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103092752-asr/providers/Microsoft.Compute/proximityPlacementGroups/sdgql-ppg-asr"
+    $networkId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103092752-asr/providers/Microsoft.Network/virtualNetworks/adVNET-asr"
+    $storageId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg/providers/Microsoft.Storage/storageAccounts/er9stavijamipoweasrcache"
+    $rpiName1 = "sdgql0"
+    $EnableJob1 = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -Name $rpiName1 -ReplicationProtectionCluster $cluster `
+    -AzureVmId $vmId1 -ProtectionContainerMapping $forwardpcm -RecoveryResourceGroupId $rgId -RecoveryAvailabilitySetId $avset `
+    -RecoveryProximityPlacementGroupId $ppg -RecoveryAzureNetworkId $networkId -LogStorageAccountId $storageId
+
+    $vmId2 = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103092752/providers/Microsoft.Compute/virtualMachines/sdgql1"
+    $rpiName2 = "sdgql1"
+    
+    $RecoveryReplicaDiskAccountType = "Premium_LRS"
+    $RecoveryTargetDiskAccountType = "Premium_LRS"
+    $vhdId1 = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103092752/providers/Microsoft.Compute/disks/sdgql1-osdisk"
+    $vhdId2 = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103092752/providers/Microsoft.Compute/disks/sdgql-datadisk0"
+    $disk1 = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $storageId `
+        -DiskId $vhdId1 -RecoveryResourceGroupId  $rgId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
+        -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+    $disk2 = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $storageId `
+        -DiskId $vhdId2 -RecoveryResourceGroupId  $rgId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
+        -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+    $disks = @()
+    $disks += $disk1
+    $disks += $disk2
+    $EnableJob2 = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -Name $rpiName2 `
+    -AzureToAzureDiskReplicationConfiguration $disks -ReplicationProtectionCluster $cluster -AzureVmId $vmId2 `
+    -ProtectionContainerMapping $forwardpcm -RecoveryResourceGroupId $rgId -RecoveryAvailabilitySetId $avset `
+    -RecoveryProximityPlacementGroupId $ppg -RecoveryAzureNetworkId $networkId
+
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    WaitForJobCompletion -JobId $EnableJob1.Name
+    WaitForJobCompletion -JobId $EnableJob2.Name
+
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    WaitForIRCompletion -affectedObjectId $EnableJob1.TargetObjectId
+    WaitForIRCompletion -affectedObjectId $EnableJob2.TargetObjectId
+
+    $clusterToDisableName = "PowershellTestLatest"
+    $clusterToDisable = Get-AzRecoveryServicesAsrReplicationProtectionCluster -Name $clusterToDisableName -ProtectionContainer $pc
+    $DisableJob = Remove-AzRecoveryServicesAsrReplicationProtectionCluster -ReplicationProtectionCluster $clusterToDisable
+    WaitForJobCompletion -JobId $DisableJob.Name
+}
+
+<#
+.SYNOPSIS
+    Test A2AResyncReplicationProtectionCluster parametersets
+#>
+function Test-A2AResyncReplicationProtectionCluster{
+    $Vault = Get-AzRecoveryServicesVault -Name "vijamitest" -ResourceGroupName "vijami-alertrg"
+    Set-ASRVaultContext -Vault $Vault
+    $fabricName = "asr-a2a-default-eastus2"
+    $fabric = Get-AzRecoveryServicesAsrFabric -Name $fabricName
+    $pc = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric
+    $forwardpcm = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $pc -Name "eastus2-westus-24-hour-retention-policy"
+    $clusterName = "pscluster"
+    $cluster = Get-AzRecoveryServicesAsrReplicationProtectionCluster -Name $clusterName -ProtectionContainer $pc
+
+    $ResyncJob = Start-AzRecoveryServicesAsrClusterResynchronizeReplicationJob -ReplicationProtectionCluster $cluster
+
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    WaitForJobCompletion -JobId $ResyncJob.Name
+}
+
+<#
+.SYNOPSIS
+    Test A2AReprotectClusterWithoutProtectedItemDetails parametersets
+#>
+function Test-A2AReprotectClusterWithoutProtectedItemDetails{
+    $Vault = Get-AzRecoveryServicesVault -Name "vijami1903" -ResourceGroupName "vijami-alertrg"
+    Set-ASRVaultContext -Vault $Vault
+    $fabricName = "asr-a2a-default-eastus2"
+    $fabric = Get-AzRecoveryServicesAsrFabric -Name $fabricName
+    $pc = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric
+    $forwardpcm = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $pc -Name "eastus2-westus-24-hour-retention-policy"
+    $clusterName = "cluster924"
+    $cluster = Get-AzRecoveryServicesAsrReplicationProtectionCluster -Name $clusterName -ProtectionContainer $pc
+
+    $storage = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg/providers/Microsoft.Storage/storageAccounts/yerp1nvijamitestasrcache"
+    $ppg = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1003165924/providers/Microsoft.Compute/proximityPlacementGroups/sdgql-ppg"
+    $avset = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1003165924/providers/Microsoft.Compute/availabilitySets/SDGQL-AS"
+    $rgId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1003165924"
+
+    # Without protected item details
+    $recoveryFabricName = "asr-a2a-default-westus"
+    $recoveryFabric = Get-AzRecoveryServicesAsrFabric -Name $recoveryFabricName
+    $recoverypc = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $recoveryFabric
+    $recoverypcm = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $recoverypc -Name "westus-eastus2-24-hour-retention-policy"
+    $ReprotectJob = Update-AzRecoveryServicesAsrClusterProtectionDirection -AzureToAzure -ReplicationProtectionCluster $cluster `
+    -RecoveryProximityPlacementGroupId $ppg -RecoveryAvailabilitySetId $avset `
+    -RecoveryResourceGroupId $rgId -LogStorageAccountId $storage -ProtectionContainerMapping $recoverypcm
+
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    WaitForJobCompletion -JobId $ReprotectJob.Name
+}
+
+<#
+.SYNOPSIS
+    Test-A2AReprotectClusterWithProtectedItemDetails parametersets
+#>
+function Test-A2AReprotectClusterWithProtectedItemDetails{
+    $Vault = Get-AzRecoveryServicesVault -Name "vijami2003" -ResourceGroupName "vijami-alertrg"
+    Set-ASRVaultContext -Vault $Vault
+    $fabricName = "asr-a2a-default-eastus2"
+    $fabric = Get-AzRecoveryServicesAsrFabric -Name $fabricName
+    $pc = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric
+    $forwardpcm = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $pc -Name "eastus2-westus-24-hour-retention-policy"
+    $clusterName = "sharedcluster"
+    $cluster = Get-AzRecoveryServicesAsrReplicationProtectionCluster -Name $clusterName -ProtectionContainer $pc
+
+    $storage = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg/providers/Microsoft.Storage/storageAccounts/yerp1nvijamitestasrcache"
+    $ppg = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Shashank-1903211114/providers/Microsoft.Compute/proximityPlacementGroups/sdgql-ppg"
+    $avset = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Shashank-1903211114/providers/Microsoft.Compute/availabilitySets/SDGQL-AS"
+    $rgId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Shashank-1903211114"
+
+    # With protected item details
+    $recoveryFabricName = "asr-a2a-default-westus"
+    $recoveryFabric = Get-AzRecoveryServicesAsrFabric -Name $recoveryFabricName
+    $recoverypc = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $recoveryFabric
+    $recoverypcm = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $recoverypc -Name "westus-eastus2-24-hour-retention-policy"
+    
+    $rpiName1 = "LgmdzaWuGZLO_cJHE7U-jgIqKAtIiUS2EfqlpOxaio0"
+    $rpi1 = New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig `
+    -ReplicationProtectedItemName $rpiName1 -RecoveryResourceGroupId $rgId `
+    -RecoveryAvailabilitySetId $avset -RecoveryProximityPlacementGroupId $ppg 
+
+    $RecoveryReplicaDiskAccountType = "Premium_LRS"
+    $RecoveryTargetDiskAccountType = "Premium_LRS"
+    $vhdId1 = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Shashank-1903211114-asr/providers/Microsoft.Compute/disks/sdgql1-osdisk"
+    $vhdId2 = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Shashank-1903211114-asr/providers/Microsoft.Compute/disks/sdgql-datadisk0"
+    $disk1 = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $storage `
+        -DiskId $vhdId1 -RecoveryResourceGroupId  $rgId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType `
+        -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+    $disk2 = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $storage `
+        -DiskId $vhdId2 -RecoveryResourceGroupId  $rgId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType `
+        -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+
+    $disks = @()
+    $disks += $disk1
+    $disks += $disk2
+
+    $rpiName2 = "2InGmCRe9AA7MIHDYK6iGDh9QDAML0cclNQt0rSzc5o"
+    $rpi2 = New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig -ManagedDisk `
+    -ReplicationProtectedItemName $rpiName2 -RecoveryResourceGroupId $rgId `
+    -AzureToAzureDiskReplicationConfiguration $disks -RecoveryAvailabilitySetId $avset `
+    -RecoveryProximityPlacementGroupId $ppg 
+
+     $rpis = @()
+     $rpis += $rpi1
+     $rpis += $rpi2
+
+    $ReprotectJob = Update-AzRecoveryServicesAsrClusterProtectionDirection -AzureToAzure -ReplicationProtectionCluster $cluster `
+    -AzureToAzureReplicationProtectedItemConfig $rpis -LogStorageAccountId $storage -ProtectionContainerMapping $recoverypcm `
+    -RecoveryResourceGroupId $rgId
+
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    WaitForJobCompletion -JobId $ReprotectJob.Name
+}
+
+<#
+.SYNOPSIS
     Test VMSS replication new parametersets
 #>
 
@@ -1702,4 +2185,35 @@ function Test-CRGReplication {
     # Failover
     $failoverjob = Start-AzRecoveryServicesAsrUnPlannedFailoverJob -ReplicationProtectedItem $pe -Direction PrimaryToRecovery -PerformSourceSideAction
     WaitForJobCompletion -JobId $failoverjob.Name
+}
+
+<#
+.SYNOPSIS
+    Test-A2ASingleVMReprotect parametersets
+#>
+function Test-A2ASingleVMReprotect{
+$vault = Get-AzRecoveryServicesVault -Name "vijamireprotecttest" -ResourceGroupName "vijami-alertrg"
+
+Set-AzRecoveryServicesAsrVaultContext -Vault $vault
+
+$primaryfabric = Get-AzRecoveryServicesAsrFabric -Name asr-a2a-default-uksouth
+
+$PrimaryProtContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $primaryfabric
+
+$recoveryfabric = Get-AzRecoveryServicesAsrFabric -Name asr-a2a-default-ukwest
+
+$RecoveryContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $recoveryfabric
+
+$RecoveryMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $RecoveryContainer -Name  ukwest-uksouth-24-hour-retention-policy
+
+$ReplicationProtectedItem = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName "reprotectvm" -ProtectionContainer $PrimaryProtContainer
+
+$CacheStorageAccount = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/gl-rec-rg-prod-z2zgql-ukw/providers/Microsoft.Storage/storageAccounts/bootdiag0411052737"
+
+$rgId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg"
+
+$ReprotectJob = Update-AzRecoveryServicesAsrProtectionDirection -AzureToAzure -ReplicationProtectedItem $ReplicationProtectedItem -ProtectionContainerMapping $RecoveryMapping -LogStorageAccountId $CacheStorageAccount -RecoveryResourceGroupID $rgId
+
+[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+WaitForJobCompletion -JobId $ReprotectJob.Name
 }

@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Management.Compute
             /// </param>
             /// <param name='expand'>
             /// The expand expression to apply to the operation. Allowed values are
-            /// 'instanceView'.
+            /// 'virtualMachines/$ref'.
             /// </param>
             public static IPage<AvailabilitySet> ListBySubscription(this IAvailabilitySetsOperations operations, string expand = default(string))
             {
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Management.Compute
             /// </param>
             /// <param name='expand'>
             /// The expand expression to apply to the operation. Allowed values are
-            /// 'instanceView'.
+            /// 'virtualMachines/$ref'.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -302,6 +302,239 @@ namespace Microsoft.Azure.Management.Compute
                 {
                     return _result.Body;
                 }
+            }
+
+            /// <summary>
+            /// Start migration operation on an Availability Set to move its Virtual
+            /// Machines to a Virtual Machine Scale Set. This should be followed by a
+            /// migrate operation on each Virtual Machine that triggers a downtime on the
+            /// Virtual Machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='availabilitySetName'>
+            /// The name of the availability set.
+            /// </param>
+            /// <param name='virtualMachineScaleSetFlexible'>
+            /// Specifies information about the Virtual Machine Scale Set that the
+            /// Availability Set should be migrated to. Minimum api‐version: 2024‐11‐01.
+            /// </param>
+            public static void StartMigrationToVirtualMachineScaleSet(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName, SubResource virtualMachineScaleSetFlexible)
+            {
+                operations.StartMigrationToVirtualMachineScaleSetAsync(resourceGroupName, availabilitySetName, virtualMachineScaleSetFlexible).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Start migration operation on an Availability Set to move its Virtual
+            /// Machines to a Virtual Machine Scale Set. This should be followed by a
+            /// migrate operation on each Virtual Machine that triggers a downtime on the
+            /// Virtual Machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='availabilitySetName'>
+            /// The name of the availability set.
+            /// </param>
+            /// <param name='virtualMachineScaleSetFlexible'>
+            /// Specifies information about the Virtual Machine Scale Set that the
+            /// Availability Set should be migrated to. Minimum api‐version: 2024‐11‐01.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task StartMigrationToVirtualMachineScaleSetAsync(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName, SubResource virtualMachineScaleSetFlexible, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.StartMigrationToVirtualMachineScaleSetWithHttpMessagesAsync(resourceGroupName, availabilitySetName, virtualMachineScaleSetFlexible, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Cancel the migration operation on an Availability Set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='availabilitySetName'>
+            /// The name of the availability set.
+            /// </param>
+            public static void CancelMigrationToVirtualMachineScaleSet(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName)
+            {
+                operations.CancelMigrationToVirtualMachineScaleSetAsync(resourceGroupName, availabilitySetName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Cancel the migration operation on an Availability Set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='availabilitySetName'>
+            /// The name of the availability set.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task CancelMigrationToVirtualMachineScaleSetAsync(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.CancelMigrationToVirtualMachineScaleSetWithHttpMessagesAsync(resourceGroupName, availabilitySetName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Validates that the Virtual Machines in the Availability Set can be migrated
+            /// to the provided Virtual Machine Scale Set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='availabilitySetName'>
+            /// The name of the availability set.
+            /// </param>
+            /// <param name='virtualMachineScaleSetFlexible'>
+            /// Specifies information about the Virtual Machine Scale Set that the
+            /// Availability Set should be migrated to. Minimum api‐version: 2024‐11‐01.
+            /// </param>
+            public static void ValidateMigrationToVirtualMachineScaleSet(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName, SubResource virtualMachineScaleSetFlexible)
+            {
+                operations.ValidateMigrationToVirtualMachineScaleSetAsync(resourceGroupName, availabilitySetName, virtualMachineScaleSetFlexible).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Validates that the Virtual Machines in the Availability Set can be migrated
+            /// to the provided Virtual Machine Scale Set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='availabilitySetName'>
+            /// The name of the availability set.
+            /// </param>
+            /// <param name='virtualMachineScaleSetFlexible'>
+            /// Specifies information about the Virtual Machine Scale Set that the
+            /// Availability Set should be migrated to. Minimum api‐version: 2024‐11‐01.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task ValidateMigrationToVirtualMachineScaleSetAsync(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName, SubResource virtualMachineScaleSetFlexible, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.ValidateMigrationToVirtualMachineScaleSetWithHttpMessagesAsync(resourceGroupName, availabilitySetName, virtualMachineScaleSetFlexible, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Create a new Flexible Virtual Machine Scale Set and migrate all the Virtual
+            /// Machines in the Availability Set. This does not trigger a downtime on the
+            /// Virtual Machines.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='availabilitySetName'>
+            /// The name of the availability set.
+            /// </param>
+            /// <param name='virtualMachineScaleSetName'>
+            /// Specifies information about the Virtual Machine Scale Set that the
+            /// Availability Set should be converted to.
+            /// </param>
+            public static void ConvertToVirtualMachineScaleSet(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName, string virtualMachineScaleSetName = default(string))
+            {
+                operations.ConvertToVirtualMachineScaleSetAsync(resourceGroupName, availabilitySetName, virtualMachineScaleSetName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Create a new Flexible Virtual Machine Scale Set and migrate all the Virtual
+            /// Machines in the Availability Set. This does not trigger a downtime on the
+            /// Virtual Machines.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='availabilitySetName'>
+            /// The name of the availability set.
+            /// </param>
+            /// <param name='virtualMachineScaleSetName'>
+            /// Specifies information about the Virtual Machine Scale Set that the
+            /// Availability Set should be converted to.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task ConvertToVirtualMachineScaleSetAsync(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName, string virtualMachineScaleSetName = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.ConvertToVirtualMachineScaleSetWithHttpMessagesAsync(resourceGroupName, availabilitySetName, virtualMachineScaleSetName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Create a new Flexible Virtual Machine Scale Set and migrate all the Virtual
+            /// Machines in the Availability Set. This does not trigger a downtime on the
+            /// Virtual Machines.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='availabilitySetName'>
+            /// The name of the availability set.
+            /// </param>
+            /// <param name='virtualMachineScaleSetName'>
+            /// Specifies information about the Virtual Machine Scale Set that the
+            /// Availability Set should be converted to.
+            /// </param>
+            public static void BeginConvertToVirtualMachineScaleSet(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName, string virtualMachineScaleSetName = default(string))
+            {
+                operations.BeginConvertToVirtualMachineScaleSetAsync(resourceGroupName, availabilitySetName, virtualMachineScaleSetName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Create a new Flexible Virtual Machine Scale Set and migrate all the Virtual
+            /// Machines in the Availability Set. This does not trigger a downtime on the
+            /// Virtual Machines.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='availabilitySetName'>
+            /// The name of the availability set.
+            /// </param>
+            /// <param name='virtualMachineScaleSetName'>
+            /// Specifies information about the Virtual Machine Scale Set that the
+            /// Availability Set should be converted to.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginConvertToVirtualMachineScaleSetAsync(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName, string virtualMachineScaleSetName = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginConvertToVirtualMachineScaleSetWithHttpMessagesAsync(resourceGroupName, availabilitySetName, virtualMachineScaleSetName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

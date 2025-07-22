@@ -14,7 +14,8 @@ Updates a connectivity configuration.
 
 ```
 Set-AzNetworkManagerConnectivityConfiguration -InputObject <PSNetworkManagerConnectivityConfiguration> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,6 +40,11 @@ ConnectivityTopology  : HubAndSpoke
 Hubs                  : {/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub}
 DeleteExistingPeering : True
 IsGlobal              : False
+ConnectivityCapability : {
+                             "ConnectedGroupPrivateEndpointScale": "Standard",
+                             "ConnectedGroupAddressOverlap": "Disallowed",
+                             "PeeringEnforcement": "Unenforced"
+                           }
 AppliesToGroups       : {/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup,
                         /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup2}
 AppliesToGroupsText   : [
@@ -82,6 +88,71 @@ Id                    : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/reso
 ```
 
 Updates a connectivity configuration's group members.
+
+### Example 2
+```powershell
+$ConnectivityConfiguration = Get-AzNetworkManagerConnectivityConfiguration -Name "psConnectivityConfig" -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup"
+$ConnectivityConfiguration.ConnectivityCapability = [PSCustomObject]@{
+    ConnectedGroupPrivateEndpointScale = "HighScale"
+    ConnectedGroupAddressOverlap = "Allowed"
+    PeeringEnforcement = "Enforced"
+}
+Set-AzNetworkManagerConnectivityConfiguration -InputObject $ConnectivityConfiguration
+```
+
+```output
+ConnectivityTopology  : HubAndSpoke
+Hubs                  : {/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub}
+DeleteExistingPeering : True
+IsGlobal              : False
+ConnectivityCapability : {
+                             "ConnectedGroupPrivateEndpointScale": "HighScale",
+                             "ConnectedGroupAddressOverlap": "Allowed",
+                             "PeeringEnforcement": "Enforced"
+                           }
+AppliesToGroups       : {/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup,
+                        /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup2}
+AppliesToGroupsText   : [
+                          {
+                            "NetworkGroupId":
+                        "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup",
+                            "UseHubGateway": "False",
+                            "IsGlobal": "False",
+                            "GroupConnectivity": "None"
+                          },
+                          {
+                            "NetworkGroupId":
+                        "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup2",
+                            "UseHubGateway": "False",
+                            "IsGlobal": "False",
+                            "GroupConnectivity": "None"
+                          }
+                        ]
+HubsText              : [
+                          {
+                            "ResourceId": "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub",
+                            "ResourceType": "Microsoft.Network/virtualNetworks"
+                          }
+                        ]
+DisplayName           :
+Description           :
+Type                  : Microsoft.Network/networkManagers/connectivityConfigurations
+ProvisioningState     : Succeeded
+SystemData            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText        : {
+                          "CreatedBy": "jaredgorthy@microsoft.com",
+                          "CreatedByType": "User",
+                          "CreatedAt": "2022-08-07T04:37:43.1186543Z",
+                          "LastModifiedBy": "jaredgorthy@microsoft.com",
+                          "LastModifiedByType": "User",
+                          "LastModifiedAt": "2022-08-08T00:58:41.1751638Z"
+                        }
+Name                  : psConnectivityConfig
+Etag                  :
+Id                    : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/connectivityConfigurations/psConnectivityConfig
+```
+
+Updates the connectivity capabilities of an existing configuration.
 
 ## PARAMETERS
 

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Dashboard
-Module Guid: 8475f339-2250-485a-a9cc-aba350de72d2
+Module Guid: d7271e13-06f6-4847-8499-12633a408ce4
 Download Help Link: https://learn.microsoft.com/powershell/module/az.dashboard
 Help Version: 1.0.0.0
 Locale: en-US
@@ -25,5 +25,6 @@ Create an in-memory object for AzureMonitorWorkspaceIntegration.
 Delete a workspace for Grafana resource.
 
 ### [Update-AzGrafana](Update-AzGrafana.md)
-Update a workspace for Grafana resource.
+update a workspace for Grafana resource.
+This API is idempotent, so user can either update a new grafana or update an existing grafana.
 

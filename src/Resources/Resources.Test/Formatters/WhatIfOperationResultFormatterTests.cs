@@ -478,6 +478,69 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void Format_FormatsDiagnosticsAndUnsupportedChangesAndPotentialChanges()
+        {
+            var whatIfChanges = new List<WhatIfChange>
+            {
+                new WhatIfChange
+                {
+                    ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo",
+                    ChangeType = ChangeType.Unsupported,
+                    UnsupportedReason = "Unable to determine the source."
+                }
+            };
+
+            var potentialChanges = new List<WhatIfChange>
+            {
+                new WhatIfChange
+                {
+                    ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo2",
+                    ChangeType = ChangeType.Create,
+                    UnsupportedReason = "Unable to determine the source."
+                }
+            };
+
+            var diagnostics = new List<DeploymentDiagnosticsDefinition>
+            {
+                new DeploymentDiagnosticsDefinition("Warning", "Code", "Nested Deployment Skipped.", "resource1")
+            };
+
+            string expected = $@"Resource and property changes are indicated with these symbols:
+  [38;5;77m+[0m Create
+  [38;5;246mx[0m Unsupported
+
+The deployment will update the following scope:
+
+Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
+[38;5;246m
+  x p0/foo
+[0m
+Resource changes: 1 unsupported.
+
+
+The following change MAY OR MAY NOT be deployed to the following scope:
+
+Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
+[38;5;77m
+  + p0/foo2
+[0m
+Potential changes: 1 to create.
+
+Diagnostics (2): 
+[38;5;136m(resource1) Nested Deployment Skipped. (Code)
+[0m[38;5;136m(/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo) Unable to determine the source. (Unsupported)
+[0m".Replace("\r\n", Environment.NewLine);
+
+            // Act.
+            string result = WhatIfOperationResultFormatter.Format(
+                new PSWhatIfOperationResult(new WhatIfOperationResult(changes: whatIfChanges, potentialChanges: potentialChanges, diagnostics: diagnostics)));
+
+            // Assert.
+            Assert.Contains(expected, result);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Format_FormatsDiagnostics()
         {
             var diagnostics = new List<DeploymentDiagnosticsDefinition>

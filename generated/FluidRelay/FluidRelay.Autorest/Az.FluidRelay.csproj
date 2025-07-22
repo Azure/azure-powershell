@@ -2,9 +2,10 @@
   <PropertyGroup>
     <PsModuleName>FluidRelay</PsModuleName>
     <PsRootModuleName>FluidRelay</PsRootModuleName>
+    <PsModuleFolder>FluidRelay.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.FluidRelay</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
-
 </Project>

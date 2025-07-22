@@ -41,7 +41,6 @@ using System.Linq;
 using System.Management.Automation;
 using System.Net.Http;
 using System.Runtime.InteropServices;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
@@ -109,11 +108,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                     {
                         MockSubscriptionClientFactory.SubGetQueueVerLatest.Enqueue(() =>
                         {
-                            throw new CloudException("Subscription is not in the tenenat.");
+                            throw new CloudException("Subscription is not in the tenant.");
                         });
                         subscriptionGetQueue.Enqueue(() =>
                         {
-                            throw new CloudException("Subscription is not in the tenenat.");
+                            throw new CloudException("Subscription is not in the tenant.");
                         });
                     }
                 }
@@ -176,6 +175,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         {
             TestExecutionHelpers.SetUpSessionAndProfile();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(AuthenticationTelemetry.Name, () => new AuthenticationTelemetry());
         }
 
         [Fact]

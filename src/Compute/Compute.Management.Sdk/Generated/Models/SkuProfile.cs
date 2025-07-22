@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="allocationStrategy">Specifies the allocation strategy
         /// for the virtual machine scale set based on which the VMs will be
         /// allocated. Possible values include: 'LowestPrice',
-        /// 'CapacityOptimized'</param>
+        /// 'CapacityOptimized', 'Prioritized'</param>
         public SkuProfile(IList<SkuProfileVMSize> vmSizes = default(IList<SkuProfileVMSize>), string allocationStrategy = default(string))
         {
             VmSizes = vmSizes;
@@ -61,7 +61,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Gets or sets specifies the allocation strategy for the virtual
         /// machine scale set based on which the VMs will be allocated.
-        /// Possible values include: 'LowestPrice', 'CapacityOptimized'
+        /// Possible values include: 'LowestPrice', 'CapacityOptimized',
+        /// 'Prioritized'
         /// </summary>
         [JsonProperty(PropertyName = "allocationStrategy")]
         public string AllocationStrategy { get; set; }

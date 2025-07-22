@@ -15,7 +15,8 @@ Gets the CosmosDB Gremlin Graph.
 ### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBGremlinGraph -ResourceGroupName <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] -AccountName <String> -DatabaseName <String> [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] -AccountName <String> -DatabaseName <String>
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet

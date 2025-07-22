@@ -19,6 +19,12 @@
 -->
 
 ## Upcoming Release
+* Fixed an error when remove artifact throw `ArgumentNullException`
+## Version 3.2.1
+* Fixed an error of not correctly setting the cmdlet context
+
+## Version 3.2.0
+* Supported copyComputeScale and pipelineExternalComputeScale in `Set-AzSynapseIntegrationRuntime` Command
 
 ## Version 3.1.2
 * Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.21.

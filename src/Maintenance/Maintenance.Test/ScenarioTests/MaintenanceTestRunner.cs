@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.ScenarioTests
                     },
                     resourceProviders: new Dictionary<string, string>
                     {
+                        { "Microsoft.Compute", null },
                         { "Microsoft.Resources", null },
                         { "Microsoft.Features", null },
                         { "Microsoft.Authorization", null },

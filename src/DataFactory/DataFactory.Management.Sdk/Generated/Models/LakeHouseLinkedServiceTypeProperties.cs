@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     using System.Linq;
 
     /// <summary>
-    /// Microsoft Fabric LakeHouse linked service properties.
+    /// Microsoft Fabric Lakehouse linked service properties.
     /// </summary>
     public partial class LakeHouseLinkedServiceTypeProperties
     {
@@ -28,16 +28,16 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// resultType string).
         /// </param>
 
-        /// <param name="artifactId">The ID of Microsoft Fabric LakeHouse artifact. Type: string (or Expression
+        /// <param name="artifactId">The ID of Microsoft Fabric Lakehouse artifact. Type: string (or Expression
         /// with resultType string).
         /// </param>
 
         /// <param name="servicePrincipalId">The ID of the application used to authenticate against Microsoft Fabric
-        /// LakeHouse. Type: string (or Expression with resultType string).
+        /// Lakehouse. Type: string (or Expression with resultType string).
         /// </param>
 
         /// <param name="servicePrincipalKey">The Key of the application used to authenticate against Microsoft Fabric
-        /// LakeHouse.
+        /// Lakehouse.
         /// </param>
 
         /// <param name="tenant">The name or ID of the tenant to which the service principal belongs. Type:
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public object WorkspaceId {get; set; }
 
         /// <summary>
-        /// Gets or sets the ID of Microsoft Fabric LakeHouse artifact. Type: string
+        /// Gets or sets the ID of Microsoft Fabric Lakehouse artifact. Type: string
         /// (or Expression with resultType string).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "artifactId")]
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <summary>
         /// Gets or sets the ID of the application used to authenticate against
-        /// Microsoft Fabric LakeHouse. Type: string (or Expression with resultType
+        /// Microsoft Fabric Lakehouse. Type: string (or Expression with resultType
         /// string).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "servicePrincipalId")]
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <summary>
         /// Gets or sets the Key of the application used to authenticate against
-        /// Microsoft Fabric LakeHouse.
+        /// Microsoft Fabric Lakehouse.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "servicePrincipalKey")]
         public SecretBase ServicePrincipalKey {get; set; }

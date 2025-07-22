@@ -16,7 +16,8 @@ Creates back-end TCP\TLS setting for an application gateway.
 New-AzApplicationGatewayBackendSetting -Name <String> -Port <Int32> -Protocol <String> [-Timeout <Int32>]
  [-ProbeId <String>] [-Probe <PSApplicationGatewayProbe>]
  [-TrustedRootCertificate <PSApplicationGatewayTrustedRootCertificate[]>] [-PickHostNameFromBackendAddress]
- [-HostName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-HostName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

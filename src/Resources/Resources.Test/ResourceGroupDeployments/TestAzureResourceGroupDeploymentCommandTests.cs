@@ -31,6 +31,7 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.NewSdkExtensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters;
 using Newtonsoft.Json.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+using FluentAssertions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
@@ -141,10 +142,120 @@ Diagnostics (3):
 {Color.Reset}"
             .Replace("\r\n", Environment.NewLine);
 
+            commandRuntimeMock.Verify(f => f.WriteWarning(expected), Times.Once());
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<List<PSResourceManagerError>>()), Times.Never());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ValidatesPSResourceGroupDeploymentWithUserTemplateWithDiagnosticsSuppressed()
+        {
+            PSDeploymentCmdletParameters expectedParameters = new PSDeploymentCmdletParameters()
+            {
+                TemplateFile = templateFile
+            };
+            PSDeploymentCmdletParameters actualParameters = new PSDeploymentCmdletParameters();
+
+            List<DeploymentDiagnosticsDefinition> diagnostics = new List<DeploymentDiagnosticsDefinition>()
+            {
+                new DeploymentDiagnosticsDefinition(code: "202", message: "bad input", target: "resource1", level: "Warning"),
+                new DeploymentDiagnosticsDefinition(code: "203", message: "bad input 2", target: "resource2", level: "Warning"),
+                new DeploymentDiagnosticsDefinition(code: "203", message: "bad input 3",  target: "resource3", level: "Error")
+            };
+
+            DeploymentPropertiesExtended deploymentPropertiesExtended = new DeploymentPropertiesExtended(diagnostics: diagnostics);
+
+            DeploymentValidateResult expectedDeploymentValidateResult = new DeploymentValidateResult(properties: deploymentPropertiesExtended);
+            TemplateValidationInfo expectedResults = new(expectedDeploymentValidateResult);
+
+            resourcesClientMock.Setup(f => f.ValidateDeployment(
+                It.IsAny<PSDeploymentCmdletParameters>()))
+                .Returns(expectedResults)
+                .Callback((PSDeploymentCmdletParameters p) => { actualParameters = p; });
+
+            cmdlet.ResourceGroupName = resourceGroupName;
+            cmdlet.TemplateFile = expectedParameters.TemplateFile;
+
+            cmdlet.SuppressDiagnostics = true;
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(expectedParameters.TemplateFile, actualParameters.TemplateFile);
+            Assert.NotNull(actualParameters.TemplateParameterObject);
+
+            string expected = $@"
+
+Diagnostics (3): 
+{Color.DarkYellow}(resource1) bad input (202)
+{Color.Reset}{Color.DarkYellow}(resource2) bad input 2 (203)
+{Color.Reset}{Color.Red}(resource3) bad input 3 (203)
+{Color.Reset}"
+            .Replace("\r\n", Environment.NewLine);
+
             JToken expectedToken = new JValue(expected);
             PSObject expectedObject = new PSObject(JTokenExtensions.ConvertPropertyValueForPsObject(propertyValue: expectedToken));
 
-            commandRuntimeMock.Verify(f => f.WriteObject(expectedObject, true), Times.Once());
+            commandRuntimeMock.Verify(f => f.WriteObject(expectedObject, true), Times.Never());
+            commandRuntimeMock.Verify(f => f.WriteWarning(It.IsAny<string>()), Times.Never());
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<List<PSResourceManagerError>>()), Times.Never());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ValidatesPSResourceGroupDeploymentWithUserTemplateProviderNoRbac()
+        {
+            PSDeploymentCmdletParameters expectedParameters = new PSDeploymentCmdletParameters()
+            {
+                TemplateFile = templateFile,
+                ValidationLevel = ValidationLevel.ProviderNoRbac
+            };
+            PSDeploymentCmdletParameters actualParameters = new PSDeploymentCmdletParameters();
+
+            TemplateValidationInfo expectedResults = new(new DeploymentValidateResult());
+
+            resourcesClientMock.Setup(f => f.ValidateDeployment(
+                It.IsAny<PSDeploymentCmdletParameters>()))
+                .Returns(expectedResults)
+                .Callback((PSDeploymentCmdletParameters p) => { actualParameters = p; });
+
+            cmdlet.ResourceGroupName = resourceGroupName;
+            cmdlet.TemplateFile = expectedParameters.TemplateFile;
+            cmdlet.ValidationLevel = ValidationLevel.ProviderNoRbac;
+
+            cmdlet.ExecuteCmdlet();
+
+            actualParameters.TemplateFile.Should().Equals(expectedParameters.TemplateFile);
+
+            actualParameters.ValidationLevel.Should().Be(ValidationLevel.ProviderNoRbac);
+
+            Assert.NotNull(actualParameters.TemplateParameterObject);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ValidatesPSResourceGroupDeploymentWithUserTemplateNoDiagnosticsNoErrors()
+        {
+            PSDeploymentCmdletParameters expectedParameters = new PSDeploymentCmdletParameters()
+            {
+                TemplateFile = templateFile
+            };
+            PSDeploymentCmdletParameters actualParameters = new PSDeploymentCmdletParameters();
+
+            TemplateValidationInfo expectedResults = new(new DeploymentValidateResult());
+
+            resourcesClientMock.Setup(f => f.ValidateDeployment(
+                It.IsAny<PSDeploymentCmdletParameters>()))
+                .Returns(expectedResults)
+                .Callback((PSDeploymentCmdletParameters p) => { actualParameters = p; });
+
+            cmdlet.ResourceGroupName = resourceGroupName;
+            cmdlet.TemplateFile = expectedParameters.TemplateFile;
+
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(expectedParameters.TemplateFile, actualParameters.TemplateFile);
+            Assert.NotNull(actualParameters.TemplateParameterObject);
+
+            commandRuntimeMock.Verify(f => f.WriteWarning(It.IsAny<string>()), Times.Never());
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<List<PSResourceManagerError>>()), Times.Never());
         }
     }

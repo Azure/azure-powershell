@@ -116,7 +116,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models
             }
             if (content.Contains("OfferType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentityInternal)this).OfferType = (Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType?) content.GetValueForProperty("OfferType",((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentityInternal)this).OfferType, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentityInternal)this).OfferType = (string) content.GetValueForProperty("OfferType",((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentityInternal)this).OfferType, global::System.Convert.ToString);
             }
             if (content.Contains("PublisherId"))
             {
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models
             }
             if (content.Contains("OfferType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentityInternal)this).OfferType = (Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType?) content.GetValueForProperty("OfferType",((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentityInternal)this).OfferType, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentityInternal)this).OfferType = (string) content.GetValueForProperty("OfferType",((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentityInternal)this).OfferType, global::System.Convert.ToString);
             }
             if (content.Contains("PublisherId"))
             {

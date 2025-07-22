@@ -16,6 +16,8 @@ namespace AzDev.Services
 {
     public class NoopLogger : ILogger
     {
+        public static readonly NoopLogger Instance = new NoopLogger();
+
         public void Debug(string message)
         {
         }

@@ -8,18 +8,31 @@ schema: 2.0.0
 # New-AzAksSnapshot
 
 ## SYNOPSIS
-Creates or updates a snapshot.
+create a snapshot.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzAksSnapshot -ResourceGroupName <String> -ResourceName <String> -Location <String>
- [-SubscriptionId <String>] [-CreationDataSourceResourceId <String>] [-SnapshotType <SnapshotType>]
+ [-SubscriptionId <String>] [-CreationDataSourceResourceId <String>] [-SnapshotType <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzAksSnapshot -ResourceGroupName <String> -ResourceName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzAksSnapshot -ResourceGroupName <String> -ResourceName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates a snapshot.
+create a snapshot.
 
 ## EXAMPLES
 
@@ -45,7 +58,7 @@ This is the ARM ID of the source object to be used to create the target object.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -71,12 +84,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -122,8 +165,8 @@ The type of a snapshot.
 The default is NodePool.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.SnapshotType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -153,7 +196,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -201,7 +244,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ISnapshot
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshot
 
 ## NOTES
 

@@ -17,7 +17,7 @@ Azure PowerShell defines most commonly used exceptions, all of which inherit fro
 | AzPSInvalidOperationException | Internal |  | This exception should be thrown when a method call is invalid for the object's current state. |
 | AzPSIOException | User |  | This exception should be thrown when an I/O error occurs. |
 | AzPSKeyNotFoundException | Internal | MapKeyName | This exception should be thrown when the key specified for accessing an element in a collection does not match any key in the collection. |
-| AzPSApplicationException | Internal |  | This exception is representive of ApplicationException in Azure PowerShell. |
+| AzPSApplicationException | Internal |  | This exception is representative of ApplicationException in Azure PowerShell. |
 | AzPSFileNotFoundException | User | FileName (Not full path) | This exception should be thrown when accessing a file that does not exist. |
 
 There are three types of errors in Azure PowerShell.
@@ -37,7 +37,7 @@ throw new AzPSArgumentException(
     nameof(EnableNodeAutoScaling),
     desensitizedMessage: Resources.AksNodePoolAutoScalingParametersMustAppearTogether);
 ``````
-  
+
 - An code example for from *AzPSCloudException*
 
 The source code is [KubeCmdletBase.cs](https://github.com/Azure/azure-powershell/blob/77b1e37e11179e59333edd825b2459435cab8726/src/Aks/Aks/Commands/KubeCmdletBase.cs).

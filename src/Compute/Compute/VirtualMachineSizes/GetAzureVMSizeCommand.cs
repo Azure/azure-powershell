@@ -24,24 +24,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [GenericBreakingChangeWithVersion("The \"ListVirtualMachineSize\" parameter set will be deprecated as its API: \"Virtual Machine Sizes - List\" is deprecated. For listing available VM sizes by subscription or location, please use instead \"Get-AzComputeResourceSku\". Other parameter sets: \"List Available Sizes for Availability Set\" and \"List Available Sizes for Virtual Machine\" will continue to be supported.", "14.0.0", "10.0.0")]
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMSize", DefaultParameterSetName = ListVirtualMachineSizeParamSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMSize", DefaultParameterSetName = ListAvailableSizesForVirtualMachine)]
     [OutputType(typeof(PSVirtualMachineSize))]
     public class GetAzureVMSizeCommand : VirtualMachineSizeBaseCmdlet
     {
-        protected const string ListVirtualMachineSizeParamSet = "ListVirtualMachineSizeParamSet";
         protected const string ListAvailableSizesForAvailabilitySet = "ListAvailableSizesForAvailabilitySet";
         protected const string ListAvailableSizesForVirtualMachine = "ListAvailableSizesForVirtualMachine";
-
-        [Parameter(
-           Mandatory = true,
-           Position = 0,
-           ParameterSetName = ListVirtualMachineSizeParamSet,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The location name.")]
-        [LocationCompleter("Microsoft.Compute/locations/vmSizes")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
 
         [Parameter(
            Mandatory = true,
@@ -93,15 +81,11 @@ namespace Microsoft.Azure.Commands.Compute
                         this.ResourceGroupName,
                         this.VMName).GetAwaiter().GetResult();
                 }
-                else if (!string.IsNullOrEmpty(this.AvailabilitySetName))
+                else
                 {
                     result = this.AvailabilitySetClient.ListAvailableSizesWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.AvailabilitySetName).GetAwaiter().GetResult();
-                }
-                else
-                {
-                    result = this.VirtualMachineSizeClient.ListWithHttpMessagesAsync(this.Location.Canonicalize()).GetAwaiter().GetResult();
                 }
 
                 List<PSVirtualMachineSize> psResultList = new List<PSVirtualMachineSize>();

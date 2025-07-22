@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.HanaOnAzure.private.dll'
   FormatsToProcess = './Az.HanaOnAzure.format.ps1xml'
-  FunctionsToExport = 'Get-AzSapMonitor', 'Get-AzSapMonitorProviderInstance', 'New-AzSapMonitor', 'New-AzSapMonitorProviderInstance', 'Remove-AzSapMonitor', 'Remove-AzSapMonitorProviderInstance', 'Update-AzSapMonitor', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzSapMonitor', 'Get-AzSapMonitorProviderInstance', 'New-AzSapMonitor', 'New-AzSapMonitorProviderInstance', 'Remove-AzSapMonitor', 'Remove-AzSapMonitorProviderInstance', 'Update-AzSapMonitor', 'Update-AzSapMonitorProviderInstance'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'HanaOn'

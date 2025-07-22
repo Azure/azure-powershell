@@ -25,6 +25,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string PrivateIpAddressVersion { get; set; }
 
         [JsonProperty(Order = 2)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public int? PrivateIpAddressPrefixLength { get; set; }
+
+        [JsonProperty(Order = 2)]
         public List<PSBackendAddressPool> LoadBalancerBackendAddressPools { get; set; }
 
         [JsonProperty(Order = 2)]

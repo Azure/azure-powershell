@@ -31,7 +31,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="diskType">The disk type.
-        /// Possible values include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'</param>
+        /// Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;, &#39;StandardSSD_LRS&#39;,
+        /// &#39;PremiumV2_LRS&#39;, &#39;UltraSSD_LRS&#39;, &#39;StandardSSD_ZRS&#39;, &#39;Premium_ZRS&#39;</param>
 
         /// <param name="diskPath">The disk path.
         /// </param>
@@ -65,7 +66,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="targetDiskName">The name for the target managed disk.
         /// </param>
-        public VMwareCbtProtectedDiskDetails(string diskId = default(string), string diskName = default(string), string diskType = default(string), string diskPath = default(string), string isOSDisk = default(string), long? capacityInBytes = default(long?), string logStorageAccountId = default(string), string logStorageAccountSasSecretName = default(string), string diskEncryptionSetId = default(string), string seedManagedDiskId = default(string), string seedBlobUri = default(string), string targetManagedDiskId = default(string), string targetBlobUri = default(string), string targetDiskName = default(string))
+
+        /// <param name="gatewayOperationDetails">A value indicating the gateway operation details.
+        /// </param>
+
+        /// <param name="sectorSizeInBytes">The logical sector size (in bytes), 512 by default.
+        /// </param>
+        public VMwareCbtProtectedDiskDetails(string diskId = default(string), string diskName = default(string), string diskType = default(string), string diskPath = default(string), string isOSDisk = default(string), long? capacityInBytes = default(long?), string logStorageAccountId = default(string), string logStorageAccountSasSecretName = default(string), string diskEncryptionSetId = default(string), string seedManagedDiskId = default(string), string seedBlobUri = default(string), string targetManagedDiskId = default(string), string targetBlobUri = default(string), string targetDiskName = default(string), GatewayOperationDetails gatewayOperationDetails = default(GatewayOperationDetails), int? sectorSizeInBytes = default(int?))
 
         {
             this.DiskId = diskId;
@@ -82,6 +89,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.TargetManagedDiskId = targetManagedDiskId;
             this.TargetBlobUri = targetBlobUri;
             this.TargetDiskName = targetDiskName;
+            this.GatewayOperationDetails = gatewayOperationDetails;
+            this.SectorSizeInBytes = sectorSizeInBytes;
             CustomInit();
         }
 
@@ -104,7 +113,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string DiskName {get; private set; }
 
         /// <summary>
-        /// Gets or sets the disk type. Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;, &#39;StandardSSD_LRS&#39;
+        /// Gets or sets the disk type. Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;, &#39;StandardSSD_LRS&#39;, &#39;PremiumV2_LRS&#39;, &#39;UltraSSD_LRS&#39;, &#39;StandardSSD_ZRS&#39;, &#39;Premium_ZRS&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskType")]
         public string DiskType {get; set; }
@@ -174,5 +183,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "targetDiskName")]
         public string TargetDiskName {get; set; }
+
+        /// <summary>
+        /// Gets a value indicating the gateway operation details.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "gatewayOperationDetails")]
+        public GatewayOperationDetails GatewayOperationDetails {get; private set; }
+
+        /// <summary>
+        /// Gets or sets the logical sector size (in bytes), 512 by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sectorSizeInBytes")]
+        public int? SectorSizeInBytes {get; set; }
     }
 }

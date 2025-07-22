@@ -43,12 +43,6 @@ title: ChangeAnalysis
 module-version: 0.1.0
 subject-prefix: $(service-name)
 
-identity-correction-for-post: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   - from: swagger-document 
     where: $.paths["/{resourceId}/providers/Microsoft.ChangeAnalysis/resourceChanges"].post.summary
@@ -70,5 +64,4 @@ directive:
     where: $.paths["/subscriptions/{subscriptionId}/providers/Microsoft.ChangeAnalysis/changes"].get.operationId
     transform: >-
       return "ChangeAnalysis_ListBySubscription"
-  
 ```

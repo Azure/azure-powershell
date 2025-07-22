@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.Common
         public const string Validation = nameof(Validation);
 
         /// <summary>
-        /// Event indicating a parameter validatio9n warning
+        /// Event indicating a parameter validation warning
         /// </summary>
         public const string ValidationWarning = nameof(ValidationWarning);
 

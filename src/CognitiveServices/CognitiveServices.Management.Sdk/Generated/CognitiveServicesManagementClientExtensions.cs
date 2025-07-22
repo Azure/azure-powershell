@@ -72,5 +72,32 @@ namespace Microsoft.Azure.Management.CognitiveServices
                 return _result.Body;
             }
         }
+        /// <summary>
+        /// Model capacity calculator.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        public static CalculateModelCapacityResult CalculateModelCapacity(this ICognitiveServicesManagementClient operations, DeploymentModel model = default(DeploymentModel), string skuName = default(string), System.Collections.Generic.IList<ModelCapacityCalculatorWorkload> workloads = default(System.Collections.Generic.IList<ModelCapacityCalculatorWorkload>))
+        {
+                return ((ICognitiveServicesManagementClient)operations).CalculateModelCapacityAsync(model, skuName, workloads).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Model capacity calculator.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CalculateModelCapacityResult> CalculateModelCapacityAsync(this ICognitiveServicesManagementClient operations, DeploymentModel model = default(DeploymentModel), string skuName = default(string), System.Collections.Generic.IList<ModelCapacityCalculatorWorkload> workloads = default(System.Collections.Generic.IList<ModelCapacityCalculatorWorkload>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CalculateModelCapacityWithHttpMessagesAsync(model, skuName, workloads, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
     }
 }

@@ -79,6 +79,11 @@ namespace Microsoft.Azure.Management.NetApp
         INetAppResourceOperations NetAppResource { get; }
 
         /// <summary>
+        /// Gets the INetAppResourceUsagesOperations
+        /// </summary>
+        INetAppResourceUsagesOperations NetAppResourceUsages { get; }
+
+        /// <summary>
         /// Gets the INetAppResourceQuotaLimitsOperations
         /// </summary>
         INetAppResourceQuotaLimitsOperations NetAppResourceQuotaLimits { get; }

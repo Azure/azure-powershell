@@ -5,36 +5,45 @@ online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/remove
 schema: 2.0.0
 ---
 
-# Remove-AzCosmosDBMongoDBDatabase
+# Remove-AzCosmosDBMongoDBRoleDefinition
 
 ## SYNOPSIS
-Deletes a CosmosDB MongoDB Database.
+This cmdlet removes a MongoDB role definition from a specified Cosmos DB account.
 
 ## SYNTAX
 
-### ByNameParameterSet
+### ByNameParameterSet (Default)
 ```
-Remove-AzCosmosDBMongoDBDatabase -AccountName <String> -Name <String> -ResourceGroupName <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzCosmosDBMongoDBRoleDefinition -ResourceGroupName <String> -AccountName <String> -Id <String>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ByParentObjectParameterSet
+```
+Remove-AzCosmosDBMongoDBRoleDefinition -Id <String> -DatabaseAccountObject <PSDatabaseAccountGetResults>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Remove-AzCosmosDBMongoDBDatabase -InputObject <PSMongoDBDatabaseGetResults> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzCosmosDBMongoDBRoleDefinition -Id <String> -InputObject <PSMongoDBRoleDefinitionGetResults>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzCosmosDBMongoDBDatabase** cmdlet deletes a CosmosDB MongoDB Database.
+This cmdlet removes a MongoDB role definition from a specified Cosmos DB account.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Remove-AzCosmosDBMongoDBDatabase -ResourceGroupName "rgName" -AccountName "accountName" -Name "dbName"
+Remove-AzCosmosDBMongoDBRoleDefinition -AccountName "account-name" -ResourceGroupName "resource-group-name" -Id "role-id"
 ```
 
-The cmdlet returns an object of type bool(when -PassThru is passed) which is true, if the delete was successful.
+This command removes a MongoDB role definition from a specified Cosmos DB account.
 
 ## PARAMETERS
 
@@ -53,6 +62,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DatabaseAccountObject
+CosmosDB Account object
+
+```yaml
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseAccountGetResults
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -68,11 +92,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Mongo Database object.
+### -Id
+Unique ID (\<Databasename\>.\<RoleName\>) for the MongoDB Role Definition.
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSMongoDBDatabaseGetResults
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+A MongoDB Role Definition For Mongo DB.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.MongoDB.PSMongoDBRoleDefinitionGetResults
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -80,21 +119,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-Database name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByNameParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -165,11 +189,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.CosmosDB.Models.PSMongoDBDatabaseGetResults
+### Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseAccountGetResults
+
+### Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.MongoDB.PSMongoDBRoleDefinitionGetResults
 
 ## OUTPUTS
-
-### System.Void
 
 ### System.Boolean
 

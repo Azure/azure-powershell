@@ -37,6 +37,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagedServiceIdentity", ".
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ManagedServiceIdentity", "..\..\generated\ManagedServiceIdentity\ManagedServiceIdentity.Autorest\Az.ManagedServiceIdentity.csproj", "{56B353C6-3B64-4F0B-BE03-F9DDAB11B5A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyVault", "..\KeyVault\KeyVault\KeyVault.csproj", "{BE97E514-42ED-43D1-95FA-BA341BC9B3DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.KeyVault", "..\..\generated\KeyVault\KeyVault.Autorest\Az.KeyVault.csproj", "{D7E93A87-CA53-4A9E-A996-7180A21F550B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -102,6 +106,14 @@ Global
 		{56B353C6-3B64-4F0B-BE03-F9DDAB11B5A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56B353C6-3B64-4F0B-BE03-F9DDAB11B5A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56B353C6-3B64-4F0B-BE03-F9DDAB11B5A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE97E514-42ED-43D1-95FA-BA341BC9B3DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE97E514-42ED-43D1-95FA-BA341BC9B3DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE97E514-42ED-43D1-95FA-BA341BC9B3DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE97E514-42ED-43D1-95FA-BA341BC9B3DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7E93A87-CA53-4A9E-A996-7180A21F550B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7E93A87-CA53-4A9E-A996-7180A21F550B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7E93A87-CA53-4A9E-A996-7180A21F550B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7E93A87-CA53-4A9E-A996-7180A21F550B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5A8717FF-5C7C-45E9-9B5F-C980D1DDA076} = {70681436-2EA6-4510-A2D8-5D2F7DE4086C}

@@ -368,6 +368,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string Premium_ZRS = "Premium_ZRS";
 
         /// <summary>
+        ///     Represents PremiumV2_LRS storage account.
+        /// </summary>
+        public const string PremiumV2_LRS = "PremiumV2_LRS";
+
+        /// <summary>
+        ///     Represents UltraSSD_LRS storage account.
+        /// </summary>
+        public const string UltraSSD_LRS = "UltraSSD_LRS";
+        /// <summary>
         ///     Represents primary location.
         /// </summary>
         public const string PrimaryLocation = "Primary";
@@ -460,7 +469,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string Required = "Required";
 
         /// <summary>
-        ///     Failover deployment model: ResourceMananger
+        ///     Failover deployment model: ResourceManager
         /// </summary>
         public const string ResourceManager = "ResourceManager";
 
@@ -1157,7 +1166,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
-    ///     ASR Heatlth Event Severity mapped with Monitoring Event in SRS.
+    ///     ASR Health Event Severity mapped with Monitoring Event in SRS.
     /// </summary>
     public static class ASRHealthEventServerity
     {

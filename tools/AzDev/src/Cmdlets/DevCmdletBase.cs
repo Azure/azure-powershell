@@ -60,12 +60,12 @@ namespace AzDev.Cmdlets
         /// <summary>
         /// Gets the context provider. Use <see cref="Context"/> property to get the context.
         /// </summary>
-        internal IContextProvider ContextProvider => AzDevModule.GetComponent<IContextProvider>(nameof(IContextProvider));
+        internal IContextProvider ContextProvider => AzDevModule.GetService<IContextProvider>();
 
         /// <summary>
         /// Gets the codebase provider. Use <see cref="Codebase"/> property to get the codebase.
         /// </summary>
-        internal ICodebaseProvider CodebaseProvider => AzDevModule.GetComponent<ICodebaseProvider>(nameof(ICodebaseProvider));
+        internal ICodebaseProvider CodebaseProvider => AzDevModule.GetService<ICodebaseProvider>();
 
         public DevCmdletBase()
         {
@@ -73,19 +73,35 @@ namespace AzDev.Cmdlets
 
         public void OnImport()
         {
-            var contextProvider = new DefaultContextProvider(Constants.DevContextFilePath);
-            var codebaseProvider = new DefaultCodebaseProvider(contextProvider);
-
-            AzDevModule.SetComponent<IContextProvider>(nameof(IContextProvider), contextProvider);
-            AzDevModule.SetComponent<ICodebaseProvider>(nameof(ICodebaseProvider), codebaseProvider);
+            AzDevModule.Initialize();
         }
 
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
-            ILogger logger = new PSCmdletLogger(this);
-            AzDevModule.GetComponent<IContextProvider>(nameof(IContextProvider)).SetLogger(logger);
-            AzDevModule.GetComponent<ICodebaseProvider>(nameof(ICodebaseProvider)).SetLogger(logger);
+            SetUpCmdletLogger();
+        }
+
+        private void SetUpCmdletLogger()
+        {
+            if (AzDevModule.GetService<ILogger>() is PSCmdletLogger logger)
+            {
+                logger.SetCmdlet(this);
+            }
+        }
+
+        protected override void EndProcessing()
+        {
+            base.EndProcessing();
+            ClearCmdletLogger();
+        }
+
+        private static void ClearCmdletLogger()
+        {
+            if (AzDevModule.GetService<ILogger>() is PSCmdletLogger logger)
+            {
+                logger.UnsetCmdlet();
+            }
         }
 
         protected T SelectFrom<T>(string message, IEnumerable<T> options, bool retryIfInvalid = true)

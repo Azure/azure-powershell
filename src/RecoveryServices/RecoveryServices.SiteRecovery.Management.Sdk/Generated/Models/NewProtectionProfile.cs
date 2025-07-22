@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="multiVMSyncStatus">A value indicating whether multi-VM sync has to be enabled. Value should be
         /// &#39;Enabled&#39; or &#39;Disabled&#39;.
-        /// Possible values include: 'Enable', 'Disable'</param>
+        /// Possible values include: &#39;Enable&#39;, &#39;Disable&#39;</param>
         public NewProtectionProfile(string policyName, string multiVMSyncStatus, int? recoveryPointHistory = default(int?), int? crashConsistentFrequencyInMinutes = default(int?), int? appConsistentFrequencyInMinutes = default(int?))
 
         {

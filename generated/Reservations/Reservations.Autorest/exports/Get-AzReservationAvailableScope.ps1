@@ -23,20 +23,21 @@ Check whether the scopes from request is valid for `Reservation`.\n
 Get-AzReservationAvailableScope -ReservationId 2ef560a7-f469-4b62-87b7-5312d588ce2a  -ReservationOrderId 2b9b9372-24e1-4a07-a354-2078fe347cf9 -Scope "/subscriptions/3f0487ff-27ca-4b9c-2a23-000770724b1b"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IAvailableScopeRequest
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ISubscriptionScopeProperties
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IAvailableScopeProperties
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <IAvailableScopeRequest>: Available scope
-  [Scope <String[]>]: 
-
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ReservationId <String>]: Id of the reservation item
+  [ReservationOrderId <String>]: Order Id of the reservation
+  [SubscriptionId <String>]: Id of the subscription
+
+RESERVATIONORDERINPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [ReservationId <String>]: Id of the reservation item
   [ReservationOrderId <String>]: Order Id of the reservation
@@ -45,46 +46,58 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationavailablescope
 #>
 function Get-AzReservationAvailableScope {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ISubscriptionScopeProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IAvailableScopeProperties])]
 [CmdletBinding(DefaultParameterSetName='AvailableExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Available', Mandatory)]
     [Parameter(ParameterSetName='AvailableExpanded', Mandatory)]
+    [Parameter(ParameterSetName='AvailableViaIdentityReservationOrderExpanded', Mandatory)]
+    [Parameter(ParameterSetName='AvailableViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='AvailableViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [System.String]
     # Id of the reservation item
     ${ReservationId},
 
-    [Parameter(ParameterSetName='Available', Mandatory)]
     [Parameter(ParameterSetName='AvailableExpanded', Mandatory)]
+    [Parameter(ParameterSetName='AvailableViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='AvailableViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [System.String]
     # Order Id of the reservation
     ${ReservationOrderId},
 
-    [Parameter(ParameterSetName='AvailableViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='AvailableViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='Available', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='AvailableViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IAvailableScopeRequest]
-    # Available scope
-    # To construct, see NOTES section for BODY properties and create a hash table.
-    ${Body},
+    [Parameter(ParameterSetName='AvailableViaIdentityReservationOrderExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity]
+    # Identity Parameter
+    ${ReservationOrderInputObject},
 
     [Parameter(ParameterSetName='AvailableExpanded')]
     [Parameter(ParameterSetName='AvailableViaIdentityExpanded')]
+    [Parameter(ParameterSetName='AvailableViaIdentityReservationOrderExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String[]]
     # .
     ${Scope},
+
+    [Parameter(ParameterSetName='AvailableViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Available operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='AvailableViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Json string supplied to the Available operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -154,6 +167,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -173,10 +195,11 @@ begin {
         }
 
         $mapping = @{
-            Available = 'Az.Reservations.private\Get-AzReservationAvailableScope_Available';
             AvailableExpanded = 'Az.Reservations.private\Get-AzReservationAvailableScope_AvailableExpanded';
-            AvailableViaIdentity = 'Az.Reservations.private\Get-AzReservationAvailableScope_AvailableViaIdentity';
             AvailableViaIdentityExpanded = 'Az.Reservations.private\Get-AzReservationAvailableScope_AvailableViaIdentityExpanded';
+            AvailableViaIdentityReservationOrderExpanded = 'Az.Reservations.private\Get-AzReservationAvailableScope_AvailableViaIdentityReservationOrderExpanded';
+            AvailableViaJsonFilePath = 'Az.Reservations.private\Get-AzReservationAvailableScope_AvailableViaJsonFilePath';
+            AvailableViaJsonString = 'Az.Reservations.private\Get-AzReservationAvailableScope_AvailableViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -185,6 +208,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

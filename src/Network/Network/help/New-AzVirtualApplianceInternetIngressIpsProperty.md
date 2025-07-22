@@ -14,7 +14,8 @@ Define a Network Virtual Appliance Internet Ingress IPs Property for the resourc
 
 ```
 New-AzVirtualApplianceInternetIngressIpsProperty -InternetIngressPublicIpId <String[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

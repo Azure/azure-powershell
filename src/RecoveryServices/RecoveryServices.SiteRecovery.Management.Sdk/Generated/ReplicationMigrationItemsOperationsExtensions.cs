@@ -21,6 +21,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='odataQuery'>
         /// 
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -33,9 +40,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='takeToken'>
         /// The page size.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<MigrationItem> ListByReplicationProtectionContainers(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, Microsoft.Rest.Azure.OData.ODataQuery<MigrationItemsQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<MigrationItemsQueryParameter>), string skipToken = default(string), string takeToken = default(string))
+        public static Microsoft.Rest.Azure.IPage<MigrationItem> ListByReplicationProtectionContainers(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, Microsoft.Rest.Azure.OData.ODataQuery<MigrationItemsQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<MigrationItemsQueryParameter>), string skipToken = default(string), string takeToken = default(string))
         {
-                return ((IReplicationMigrationItemsOperations)operations).ListByReplicationProtectionContainersAsync(fabricName, protectionContainerName, odataQuery, skipToken, takeToken).GetAwaiter().GetResult();
+                return ((IReplicationMigrationItemsOperations)operations).ListByReplicationProtectionContainersAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, odataQuery, skipToken, takeToken).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -47,6 +54,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='odataQuery'>
         /// 
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -62,9 +76,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MigrationItem>> ListByReplicationProtectionContainersAsync(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, Microsoft.Rest.Azure.OData.ODataQuery<MigrationItemsQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<MigrationItemsQueryParameter>), string skipToken = default(string), string takeToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MigrationItem>> ListByReplicationProtectionContainersAsync(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, Microsoft.Rest.Azure.OData.ODataQuery<MigrationItemsQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<MigrationItemsQueryParameter>), string skipToken = default(string), string takeToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByReplicationProtectionContainersWithHttpMessagesAsync(fabricName, protectionContainerName, odataQuery, skipToken, takeToken, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByReplicationProtectionContainersWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, odataQuery, skipToken, takeToken, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -75,6 +89,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric unique name.
         /// </param>
@@ -84,9 +105,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='migrationItemName'>
         /// Migration item name.
         /// </param>
-        public static MigrationItem Get(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName)
+        public static MigrationItem Get(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName)
         {
-                return ((IReplicationMigrationItemsOperations)operations).GetAsync(fabricName, protectionContainerName, migrationItemName).GetAwaiter().GetResult();
+                return ((IReplicationMigrationItemsOperations)operations).GetAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -94,6 +115,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric unique name.
@@ -107,9 +135,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<MigrationItem> GetAsync(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<MigrationItem> GetAsync(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(fabricName, protectionContainerName, migrationItemName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -120,6 +148,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -129,9 +164,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='migrationItemName'>
         /// Migration item name.
         /// </param>
-        public static MigrationItem Create(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, EnableMigrationInputProperties properties)
+        public static MigrationItem Create(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, EnableMigrationInputProperties properties)
         {
-                return ((IReplicationMigrationItemsOperations)operations).CreateAsync(fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
+                return ((IReplicationMigrationItemsOperations)operations).CreateAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -139,6 +174,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -152,9 +194,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<MigrationItem> CreateAsync(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, EnableMigrationInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<MigrationItem> CreateAsync(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, EnableMigrationInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateWithHttpMessagesAsync(fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -164,6 +206,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -177,9 +226,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='deleteOption'>
         /// The delete option.
         /// </param>
-        public static void Delete(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, string deleteOption = default(string))
+        public static void Delete(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, string deleteOption = default(string))
         {
-                ((IReplicationMigrationItemsOperations)operations).DeleteAsync(fabricName, protectionContainerName, migrationItemName, deleteOption).GetAwaiter().GetResult();
+                ((IReplicationMigrationItemsOperations)operations).DeleteAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, deleteOption).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -187,6 +236,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -203,15 +259,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, string deleteOption = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, string deleteOption = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(fabricName, protectionContainerName, migrationItemName, deleteOption, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, deleteOption, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// The operation to update the recovery settings of an ASR migration item.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -222,9 +285,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='migrationItemName'>
         /// Migration item name.
         /// </param>
-        public static MigrationItem Update(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, UpdateMigrationItemInputProperties properties = default(UpdateMigrationItemInputProperties))
+        public static MigrationItem Update(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, UpdateMigrationItemInputProperties properties = default(UpdateMigrationItemInputProperties))
         {
-                return ((IReplicationMigrationItemsOperations)operations).UpdateAsync(fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
+                return ((IReplicationMigrationItemsOperations)operations).UpdateAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -232,6 +295,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -245,9 +315,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<MigrationItem> UpdateAsync(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, UpdateMigrationItemInputProperties properties = default(UpdateMigrationItemInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<MigrationItem> UpdateAsync(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, UpdateMigrationItemInputProperties properties = default(UpdateMigrationItemInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -258,6 +328,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -267,9 +344,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='migrationItemName'>
         /// Migration item name.
         /// </param>
-        public static MigrationItem Migrate(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, MigrateInputProperties properties)
+        public static MigrationItem Migrate(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, MigrateInputProperties properties)
         {
-                return ((IReplicationMigrationItemsOperations)operations).MigrateAsync(fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
+                return ((IReplicationMigrationItemsOperations)operations).MigrateAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -278,6 +355,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -290,9 +374,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<MigrationItem> MigrateAsync(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, MigrateInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<MigrationItem> MigrateAsync(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, MigrateInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.MigrateWithHttpMessagesAsync(fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.MigrateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -303,6 +387,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -312,9 +403,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='migrationItemName'>
         /// Migration item name.
         /// </param>
-        public static MigrationItem PauseReplication(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, PauseReplicationInputProperties properties)
+        public static MigrationItem PauseReplication(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, PauseReplicationInputProperties properties)
         {
-                return ((IReplicationMigrationItemsOperations)operations).PauseReplicationAsync(fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
+                return ((IReplicationMigrationItemsOperations)operations).PauseReplicationAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -323,6 +414,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -335,9 +433,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<MigrationItem> PauseReplicationAsync(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, PauseReplicationInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<MigrationItem> PauseReplicationAsync(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, PauseReplicationInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.PauseReplicationWithHttpMessagesAsync(fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.PauseReplicationWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -348,6 +446,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -357,9 +462,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='migrationItemName'>
         /// Migration item name.
         /// </param>
-        public static MigrationItem ResumeReplication(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, ResumeReplicationInputProperties properties)
+        public static MigrationItem ResumeReplication(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, ResumeReplicationInputProperties properties)
         {
-                return ((IReplicationMigrationItemsOperations)operations).ResumeReplicationAsync(fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
+                return ((IReplicationMigrationItemsOperations)operations).ResumeReplicationAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -368,6 +473,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -380,9 +492,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<MigrationItem> ResumeReplicationAsync(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, ResumeReplicationInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<MigrationItem> ResumeReplicationAsync(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, ResumeReplicationInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ResumeReplicationWithHttpMessagesAsync(fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ResumeReplicationWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -393,6 +505,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -402,9 +521,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='migrationItemName'>
         /// Migration item name.
         /// </param>
-        public static MigrationItem Resync(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, ResyncInputProperties properties)
+        public static MigrationItem Resync(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, ResyncInputProperties properties)
         {
-                return ((IReplicationMigrationItemsOperations)operations).ResyncAsync(fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
+                return ((IReplicationMigrationItemsOperations)operations).ResyncAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -413,6 +532,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -425,9 +551,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<MigrationItem> ResyncAsync(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, ResyncInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<MigrationItem> ResyncAsync(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, ResyncInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ResyncWithHttpMessagesAsync(fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ResyncWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -438,6 +564,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -447,9 +580,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='migrationItemName'>
         /// Migration item name.
         /// </param>
-        public static MigrationItem TestMigrate(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateInputProperties properties)
+        public static MigrationItem TestMigrate(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateInputProperties properties)
         {
-                return ((IReplicationMigrationItemsOperations)operations).TestMigrateAsync(fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
+                return ((IReplicationMigrationItemsOperations)operations).TestMigrateAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -457,6 +590,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -470,9 +610,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<MigrationItem> TestMigrateAsync(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<MigrationItem> TestMigrateAsync(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.TestMigrateWithHttpMessagesAsync(fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.TestMigrateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -483,6 +623,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -492,9 +639,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='migrationItemName'>
         /// Migration item name.
         /// </param>
-        public static MigrationItem TestMigrateCleanup(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateCleanupInputProperties properties)
+        public static MigrationItem TestMigrateCleanup(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateCleanupInputProperties properties)
         {
-                return ((IReplicationMigrationItemsOperations)operations).TestMigrateCleanupAsync(fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
+                return ((IReplicationMigrationItemsOperations)operations).TestMigrateCleanupAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -502,6 +649,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -515,9 +669,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<MigrationItem> TestMigrateCleanupAsync(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateCleanupInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<MigrationItem> TestMigrateCleanupAsync(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateCleanupInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.TestMigrateCleanupWithHttpMessagesAsync(fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.TestMigrateCleanupWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -531,15 +685,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='odataQuery'>
         /// 
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='skipToken'>
         /// The pagination token.
         /// </param>
         /// <param name='takeToken'>
         /// The page size.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<MigrationItem> List(this IReplicationMigrationItemsOperations operations, Microsoft.Rest.Azure.OData.ODataQuery<MigrationItemsQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<MigrationItemsQueryParameter>), string skipToken = default(string), string takeToken = default(string))
+        public static Microsoft.Rest.Azure.IPage<MigrationItem> List(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, Microsoft.Rest.Azure.OData.ODataQuery<MigrationItemsQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<MigrationItemsQueryParameter>), string skipToken = default(string), string takeToken = default(string))
         {
-                return ((IReplicationMigrationItemsOperations)operations).ListAsync(odataQuery, skipToken, takeToken).GetAwaiter().GetResult();
+                return ((IReplicationMigrationItemsOperations)operations).ListAsync(resourceGroupName, resourceName, odataQuery, skipToken, takeToken).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -551,6 +712,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='odataQuery'>
         /// 
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='skipToken'>
         /// The pagination token.
         /// </param>
@@ -560,9 +728,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MigrationItem>> ListAsync(this IReplicationMigrationItemsOperations operations, Microsoft.Rest.Azure.OData.ODataQuery<MigrationItemsQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<MigrationItemsQueryParameter>), string skipToken = default(string), string takeToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MigrationItem>> ListAsync(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, Microsoft.Rest.Azure.OData.ODataQuery<MigrationItemsQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<MigrationItemsQueryParameter>), string skipToken = default(string), string takeToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(odataQuery, skipToken, takeToken, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, resourceName, odataQuery, skipToken, takeToken, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -573,6 +741,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -582,9 +757,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='migrationItemName'>
         /// Migration item name.
         /// </param>
-        public static MigrationItem BeginCreate(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, EnableMigrationInputProperties properties)
+        public static MigrationItem BeginCreate(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, EnableMigrationInputProperties properties)
         {
-                return ((IReplicationMigrationItemsOperations)operations).BeginCreateAsync(fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
+                return ((IReplicationMigrationItemsOperations)operations).BeginCreateAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -592,6 +767,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -605,9 +787,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<MigrationItem> BeginCreateAsync(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, EnableMigrationInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<MigrationItem> BeginCreateAsync(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, EnableMigrationInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -617,6 +799,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -630,9 +819,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='deleteOption'>
         /// The delete option.
         /// </param>
-        public static void BeginDelete(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, string deleteOption = default(string))
+        public static void BeginDelete(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, string deleteOption = default(string))
         {
-                ((IReplicationMigrationItemsOperations)operations).BeginDeleteAsync(fabricName, protectionContainerName, migrationItemName, deleteOption).GetAwaiter().GetResult();
+                ((IReplicationMigrationItemsOperations)operations).BeginDeleteAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, deleteOption).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -640,6 +829,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -656,15 +852,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, string deleteOption = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, string deleteOption = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(fabricName, protectionContainerName, migrationItemName, deleteOption, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, deleteOption, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// The operation to update the recovery settings of an ASR migration item.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -675,9 +878,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='migrationItemName'>
         /// Migration item name.
         /// </param>
-        public static MigrationItem BeginUpdate(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, UpdateMigrationItemInputProperties properties = default(UpdateMigrationItemInputProperties))
+        public static MigrationItem BeginUpdate(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, UpdateMigrationItemInputProperties properties = default(UpdateMigrationItemInputProperties))
         {
-                return ((IReplicationMigrationItemsOperations)operations).BeginUpdateAsync(fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
+                return ((IReplicationMigrationItemsOperations)operations).BeginUpdateAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -685,6 +888,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -698,9 +908,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<MigrationItem> BeginUpdateAsync(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, UpdateMigrationItemInputProperties properties = default(UpdateMigrationItemInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<MigrationItem> BeginUpdateAsync(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, UpdateMigrationItemInputProperties properties = default(UpdateMigrationItemInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -711,6 +921,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -720,9 +937,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='migrationItemName'>
         /// Migration item name.
         /// </param>
-        public static MigrationItem BeginMigrate(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, MigrateInputProperties properties)
+        public static MigrationItem BeginMigrate(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, MigrateInputProperties properties)
         {
-                return ((IReplicationMigrationItemsOperations)operations).BeginMigrateAsync(fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
+                return ((IReplicationMigrationItemsOperations)operations).BeginMigrateAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -731,6 +948,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -743,9 +967,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<MigrationItem> BeginMigrateAsync(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, MigrateInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<MigrationItem> BeginMigrateAsync(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, MigrateInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginMigrateWithHttpMessagesAsync(fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginMigrateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -756,6 +980,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -765,9 +996,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='migrationItemName'>
         /// Migration item name.
         /// </param>
-        public static MigrationItem BeginPauseReplication(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, PauseReplicationInputProperties properties)
+        public static MigrationItem BeginPauseReplication(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, PauseReplicationInputProperties properties)
         {
-                return ((IReplicationMigrationItemsOperations)operations).BeginPauseReplicationAsync(fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
+                return ((IReplicationMigrationItemsOperations)operations).BeginPauseReplicationAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -776,6 +1007,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -788,9 +1026,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<MigrationItem> BeginPauseReplicationAsync(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, PauseReplicationInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<MigrationItem> BeginPauseReplicationAsync(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, PauseReplicationInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginPauseReplicationWithHttpMessagesAsync(fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginPauseReplicationWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -801,6 +1039,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -810,9 +1055,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='migrationItemName'>
         /// Migration item name.
         /// </param>
-        public static MigrationItem BeginResumeReplication(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, ResumeReplicationInputProperties properties)
+        public static MigrationItem BeginResumeReplication(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, ResumeReplicationInputProperties properties)
         {
-                return ((IReplicationMigrationItemsOperations)operations).BeginResumeReplicationAsync(fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
+                return ((IReplicationMigrationItemsOperations)operations).BeginResumeReplicationAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -821,6 +1066,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -833,9 +1085,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<MigrationItem> BeginResumeReplicationAsync(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, ResumeReplicationInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<MigrationItem> BeginResumeReplicationAsync(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, ResumeReplicationInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginResumeReplicationWithHttpMessagesAsync(fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginResumeReplicationWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -846,6 +1098,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -855,9 +1114,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='migrationItemName'>
         /// Migration item name.
         /// </param>
-        public static MigrationItem BeginResync(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, ResyncInputProperties properties)
+        public static MigrationItem BeginResync(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, ResyncInputProperties properties)
         {
-                return ((IReplicationMigrationItemsOperations)operations).BeginResyncAsync(fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
+                return ((IReplicationMigrationItemsOperations)operations).BeginResyncAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -866,6 +1125,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -878,9 +1144,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<MigrationItem> BeginResyncAsync(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, ResyncInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<MigrationItem> BeginResyncAsync(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, ResyncInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginResyncWithHttpMessagesAsync(fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginResyncWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -891,6 +1157,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -900,9 +1173,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='migrationItemName'>
         /// Migration item name.
         /// </param>
-        public static MigrationItem BeginTestMigrate(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateInputProperties properties)
+        public static MigrationItem BeginTestMigrate(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateInputProperties properties)
         {
-                return ((IReplicationMigrationItemsOperations)operations).BeginTestMigrateAsync(fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
+                return ((IReplicationMigrationItemsOperations)operations).BeginTestMigrateAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -910,6 +1183,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -923,9 +1203,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<MigrationItem> BeginTestMigrateAsync(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<MigrationItem> BeginTestMigrateAsync(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginTestMigrateWithHttpMessagesAsync(fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginTestMigrateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -936,6 +1216,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -945,9 +1232,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='migrationItemName'>
         /// Migration item name.
         /// </param>
-        public static MigrationItem BeginTestMigrateCleanup(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateCleanupInputProperties properties)
+        public static MigrationItem BeginTestMigrateCleanup(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateCleanupInputProperties properties)
         {
-                return ((IReplicationMigrationItemsOperations)operations).BeginTestMigrateCleanupAsync(fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
+                return ((IReplicationMigrationItemsOperations)operations).BeginTestMigrateCleanupAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -955,6 +1242,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -968,9 +1262,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<MigrationItem> BeginTestMigrateCleanupAsync(this IReplicationMigrationItemsOperations operations, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateCleanupInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<MigrationItem> BeginTestMigrateCleanupAsync(this IReplicationMigrationItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateCleanupInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginTestMigrateCleanupWithHttpMessagesAsync(fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginTestMigrateCleanupWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, migrationItemName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

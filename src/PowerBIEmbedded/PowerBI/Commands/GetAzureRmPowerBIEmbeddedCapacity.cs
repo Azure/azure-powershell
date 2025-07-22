@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.PowerBI
             }
             else
             {
-                // List all capacities in given resource group if avaliable otherwise all capacities in the subscription
+                // List all capacities in given resource group if available otherwise all capacities in the subscription
                 var list = PowerBIClient.ListCapacities(resourceGroupName);
                 WriteObject(list, true);
             }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzStandbyVMPool
 
 ## SYNOPSIS
-Create a StandbyVirtualMachinePoolResource
+create a StandbyVirtualMachinePoolResource
 
 ## SYNTAX
 
@@ -16,30 +16,28 @@ Create a StandbyVirtualMachinePoolResource
 ```
 New-AzStandbyVMPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  [-MaxReadyCapacity <Int64>] [-MinReadyCapacity <Int64>] [-Tag <Hashtable>] [-VMSSId <String>]
- [-VMState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VMState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzStandbyVMPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzStandbyVMPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a StandbyVirtualMachinePoolResource
+create a StandbyVirtualMachinePoolResource
 
 ## EXAMPLES
 
-### Example 1: Creat a new standby virtual machine pool
+### Example 1: Create a new standby virtual machine pool
 ```powershell
 New-AzStandbyVMPool `
 -Name testPool `
@@ -73,7 +71,7 @@ Type                              : microsoft.standbypool/standbyvirtualmachinep
 VirtualMachineState               : Running
 ```
 
-Above commnand is creating a new standby virtual machine pool
+Above command is creating a new standby virtual machine pool
 
 ## PARAMETERS
 

@@ -54,10 +54,6 @@ module-version: 0.1.0
 title: CustomProviders
 subject-prefix: ''
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   - where:
       subject: CustomResourceProvider
@@ -69,27 +65,16 @@ directive:
     set:
       subject: CustomProviderAssociation
 
-  - where: 
-      verb: New
-      subject: ^CustomProvider.*$
-      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Create$
-    remove: true
-  
   - where:
-      verb: Set
-      subject: CustomProviderAssociation
-      variant: ^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
 
   - where:
       verb: Set
       subject: ^CustomProvider$
-    remove: true
-
-  - where:
-      verb: Update
-      subject: CustomProvider
-      variant: ^Update$|^UpdateViaIdentity$
     remove: true
 
   - where:

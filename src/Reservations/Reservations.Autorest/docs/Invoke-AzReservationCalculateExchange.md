@@ -19,10 +19,16 @@ Invoke-AzReservationCalculateExchange [-ReservationsToExchange <IReservationToRe
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Post
+### PostViaJsonFilePath
 ```
-Invoke-AzReservationCalculateExchange -Body <ICalculateExchangeRequest> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzReservationCalculateExchange -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PostViaJsonString
+```
+Invoke-AzReservationCalculateExchange -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,22 +106,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-Calculate exchange request
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateExchangeRequest
-Parameter Sets: Post
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -126,6 +116,36 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Post operation
+
+```yaml
+Type: System.String
+Parameter Sets: PostViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Post operation
+
+```yaml
+Type: System.String
+Parameter Sets: PostViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -149,10 +169,9 @@ Accept wildcard characters: False
 
 ### -ReservationsToExchange
 List of reservations that are being returned in this exchange.
-To construct, see NOTES section for RESERVATIONSTOEXCHANGE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationToReturn[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationToReturn[]
 Parameter Sets: PostExpanded
 Aliases:
 
@@ -165,10 +184,9 @@ Accept wildcard characters: False
 
 ### -ReservationsToPurchase
 List of reservations that are being purchased in this exchange.
-To construct, see NOTES section for RESERVATIONSTOPURCHASE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPurchaseRequest[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequest[]
 Parameter Sets: PostExpanded
 Aliases:
 
@@ -181,10 +199,9 @@ Accept wildcard characters: False
 
 ### -SavingsPlansToPurchase
 List of savings plans that are being purchased in this exchange.
-To construct, see NOTES section for SAVINGSPLANSTOPURCHASE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ISavingsPlanPurchaseRequest[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISavingsPlanPurchaseRequest[]
 Parameter Sets: PostExpanded
 Aliases:
 
@@ -231,11 +248,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateExchangeRequest
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateExchangeOperationResultResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICalculateExchangeOperationResultResponse
 
 ## NOTES
 

@@ -36,7 +36,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
             "AzureRMContext", "Break", "Debug", "DefaultProfile", "EnableTestCoverage",
             "ErrorAction", "ErrorVariable", "HttpPipelineAppend", "HttpPipelinePrepend", "InformationAction",
             "InformationVariable", "OutBuffer", "OutVariable", "PipelineVariable", "Proxy",
-            "ProxyCredential", "ProxyUseDefaultCredentials", "Verbose", "WarningAction", "WarningVariable"
+            "ProxyCredential", "ProxyUseDefaultCredentials", "Verbose", "WarningAction", "WarningVariable", "ProgressAction"
         };
         private List<CmdletDiffInformation> diffInfo;
         public CmdletDiffAnalyzer()
@@ -514,6 +514,11 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
                 }
                 foreach (var oldParam in oldParameterSet.Parameters)
                 {
+                    // Skip ignored parameters
+                    if (_ignoreParameters.Contains(oldParam.ParameterMetadata.Name))
+                    {
+                        continue;
+                    }
                     var newParam = newSet.Parameters.FirstOrDefault(p => p.ParameterMetadata.Name == oldParam.ParameterMetadata.Name);
                     if (newParam == null)
                     {
@@ -588,6 +593,11 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
                 }
                 foreach (var newParam in newSet.Parameters)
                 {
+                    // Skip ignored parameters
+                    if (_ignoreParameters.Contains(newParam.ParameterMetadata.Name))
+                    {
+                        continue;
+                    }
                     var oldParam = oldParameterSet.Parameters.FirstOrDefault(p => p.ParameterMetadata.Name == newParam.ParameterMetadata.Name);
                     if (oldParam == null)
                     {

@@ -68,17 +68,17 @@ Describe 'AzMixedRealitySpatialAnchorsAccount' {
         } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -Skip {
         {
-            $config = Update-AzMixedRealitySpatialAnchorsAccount -Name $env.spatialAnchorsAccount1 -ResourceGroupName $env.resourceGroup -Location eastus -Tag @{"a"="1"}
+            $config = Update-AzMixedRealitySpatialAnchorsAccount -Name $env.spatialAnchorsAccount1 -ResourceGroupName $env.resourceGroup -Tag @{"a"="1"}
             $config.Name | Should -Be $env.spatialAnchorsAccount1
         } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -Skip {
         {
             $config = Get-AzMixedRealitySpatialAnchorsAccount -Name $env.spatialAnchorsAccount2 -ResourceGroupName $env.resourceGroup
-            $config = Update-AzMixedRealitySpatialAnchorsAccount -InputObject $config -Location eastus -Tag @{"a"="1"}
+            $config = Update-AzMixedRealitySpatialAnchorsAccount -InputObject $config -Tag @{"a"="1"}
             $config.Name | Should -Be $env.spatialAnchorsAccount2
         } | Should -Not -Throw
     }

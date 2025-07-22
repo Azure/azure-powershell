@@ -43,13 +43,6 @@ title: Elastic
 module-version: 0.1.0
 subject-prefix: $elastic
 
-identity-correction-for-post: true
-resourcegroup-append: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   # Swagger issue that the ProvisioningState should readonly.
   - from: swagger-document
@@ -112,8 +105,16 @@ directive:
       parameter-description: The SKU depends on the Elasticsearch Plans available for your account and is a combination of PlanID_Term. \<br>For instance, if the plan ID is "planXYZ" and term is "Yearly", the SKU will be "planXYZ_Yearly". \<br>You may find your eligible plans [here](https://portal.azure.com/#view/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/elastic.ec-azure-pp/selectionMode~/false/resourceGroupId//resourceGroupLocation//dontDiscardJourney~/false/selectedMenuId/home/launchingContext~/%7B%22galleryItemId%22%3A%22elastic.ec-azure-ppess-consumption-2024%22%2C%22source%22%3A%5B%22GalleryFeaturedMenuItemPart%22%2C%22VirtualizedTileDetails%22%5D%2C%22menuItemId%22%3A%22home%22%2C%22subMenuItemId%22%3A%22Search%20results%22%2C%22telemetryId%22%3A%2262f8ce76-e5e4-4983-9d3e-5c608a0b2bff%22%7D/searchTelemetryId/cca0a8d3-f232-4156-948f-701a5d74a729) or in the online documentation [here](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/elastic.ec-azure-pp) for more details or in case of any issues with the SKU.
 
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^UpgradeViaIdentityExpanded$
+      subject: Monitor|VMCollection|TagRule|OpenAi|ExternalUser
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
       subject: Monitor|VMCollection|TagRule
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^UpgradeViaIdentityExpanded$|^UpgradeViaJsonFilePath$|^UpgradeViaJsonString$
+    remove: true
+  - where:
+      subject: OrganizationApiKey
+      variant: ^Get$
     remove: true
 
   - where:
@@ -137,6 +138,7 @@ directive:
           - Name
           - ProvisioningState
 
-  # - model-cmdlet:
-  #   - FilteringTag
+  - model-cmdlet:
+      - model-name: FilteringTag
+        cmdlet-name: New-AzElasticFilteringTagObject
 ```

@@ -21,15 +21,15 @@ Create an in-memory object for ImageTemplateSource.
 Create an in-memory object for ImageTemplateSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplatePlatformImageSource
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplatePlatformImageSource
 .Link
 https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatesourceobject
 #>
 function New-AzImageBuilderTemplateSourceObject_PlatformImageSource {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplatePlatformImageSource')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplatePlatformImageSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
-
         [Parameter(HelpMessage="Image offer from the [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).")]
         [string]
         $Offer,
@@ -51,17 +51,13 @@ function New-AzImageBuilderTemplateSourceObject_PlatformImageSource {
         [Parameter(HelpMessage="Image version from the [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages). If 'latest' is specified here, the version is evaluated when the image build takes place, not when the template is submitted.")]
         [string]
         $Version,
-        # Change it to switch parameter
-        # [Parameter(Mandatory, HelpMessage="Specifies the type of source image you want to start with.")]
-        # [string]
-        # $Type
         [Parameter(Mandatory, HelpMessage="Describes an image source from [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).")]
         [Switch]
         $PlatformImageSource
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplatePlatformImageSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplatePlatformImageSource]::New()
 
         if ($PSBoundParameters.ContainsKey('Offer')) {
             $Object.Offer = $Offer
@@ -83,9 +79,6 @@ function New-AzImageBuilderTemplateSourceObject_PlatformImageSource {
         }
         if ($PSBoundParameters.ContainsKey('Version')) {
             $Object.Version = $Version
-        }
-        if ($PlatformImageSource.IsPresent) {
-            $Object.Type = "PlatformImage"
         }
         return $Object
     }

@@ -15,13 +15,16 @@ API to register a new Kubernetes cluster and create a tracked resource in Azure 
 ```
 New-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-HttpProxy <Uri>] [-HttpsProxy <Uri>] [-NoProxy <String>] [-ProxyCert <String>] [-OnboardingTimeout <Int32>]
- [-DisableAutoUpgrade] [-ContainerLogPath <String>] -Location <String> [-KubeConfig <String>]
- [-KubeContext <String>] [-AzureHybridBenefit <AzureHybridBenefit>] [-Distribution <String>]
- [-DistributionVersion <String>] [-Infrastructure <String>] [-PrivateLinkScopeResourceId <String>]
- [-PrivateLinkState <PrivateLinkState>] [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>]
- [-CustomLocationsOid <String>] [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>]
- [-WorkloadIdentityEnabled] [-AcceptEULA] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ConfigurationSetting <Hashtable>] [-ConfigurationProtectedSetting <Hashtable>] [-GatewayResourceId <String>]
+ [-DisableAutoUpgrade] [-ContainerLogPath <String>] -Location <String>
+ [-AadProfileAdminGroupObjectID <String[]>] [-AadProfileEnableAzureRbac] [-AadProfileTenantId <String>]
+ [-ArcAgentProfileAgentError <IAgentError[]>] [-ArcAgentProfileDesiredAgentVersion <String>]
+ [-ArcAgentProfileSystemComponent <ISystemComponent[]>] [-KubeConfig <String>] [-KubeContext <String>]
+ [-AzureHybridBenefit <String>] [-Distribution <String>] [-DistributionVersion <String>] [-GatewayEnabled]
+ [-Infrastructure <String>] [-Kind <String>] [-PrivateLinkScopeResourceId <String>]
+ [-PrivateLinkState <String>] [-ProvisioningState <String>] [-Tag <Hashtable>] [-CustomLocationsOid <String>]
+ [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>] [-WorkloadIdentityEnabled]
+ [-AcceptEULA] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ConfigurationSetting <Hashtable>]
+ [-ConfigurationProtectedSetting <Hashtable>] [-GatewayResourceId <String>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -141,11 +144,102 @@ This command creates a connected kubernetes with custom onboarding timeout.
 
 ## PARAMETERS
 
+### -AadProfileAdminGroupObjectID
+The list of AAD group object IDs that will have admin role of the cluster.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AadProfileEnableAzureRbac
+Whether to enable Azure RBAC for Kubernetes authorization.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AadProfileTenantId
+The AAD tenant ID to use for authentication.
+If not specified, will use the tenant of the deployment subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AcceptEULA
 Accept EULA of ConnectedKubernetes, legal term will pop up without this parameter provided
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ArcAgentProfileAgentError
+List of arc agentry and system components errors on the cluster resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IAgentError[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ArcAgentProfileDesiredAgentVersion
+Version of the Arc agents to be installed on the cluster resource
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ArcAgentProfileSystemComponent
+List of system extensions that are installed on the cluster resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.ISystemComponent[]
 Parameter Sets: (All)
 Aliases:
 
@@ -175,7 +269,7 @@ Accept wildcard characters: False
 Indicates whether Azure Hybrid Benefit is opted in
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AzureHybridBenefit
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -262,7 +356,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -311,6 +406,21 @@ The Kubernetes distribution version on this connected cluster.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GatewayEnabled
+Indicates whether the gateway for arc router connectivity is enabled.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -381,6 +491,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Kind
+The kind of connected cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KubeConfig
 Path to the kube config file
 
@@ -397,7 +522,7 @@ Accept wildcard characters: False
 ```
 
 ### -KubeContext
-Kubconfig context from current machine
+Kubeconfig context from current machine
 
 ```yaml
 Type: System.String
@@ -502,6 +627,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateLinkScopeResourceId
+This is populated only if privateLinkState is enabled.
 The resource id of the private link scope this connected cluster is assigned to, if any.
 
 ```yaml
@@ -520,7 +646,7 @@ Accept wildcard characters: False
 Property which describes the state of private link on a connected cluster resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.PrivateLinkState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -535,7 +661,7 @@ Accept wildcard characters: False
 Provisioning state of the connected cluster resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ProvisioningState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -660,7 +786,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedCluster
 
 ## NOTES
 

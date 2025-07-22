@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.PowerShe
     public bool UseExpandedFormat { get; set; }
 
     private const string ModelNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models";
-    private const string SupportNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Support";
+    private const string SupportNamespace = @"${$project.supportNamespace.fullName}";
 
     protected override void ProcessRecord()
     {

@@ -2,9 +2,10 @@
   <PropertyGroup>
     <PsModuleName>CostManagement</PsModuleName>
     <PsRootModuleName>CostManagement</PsRootModuleName>
+    <PsModuleFolder>CostManagement.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.CostManagement</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
-
 </Project>

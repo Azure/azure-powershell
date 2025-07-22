@@ -229,13 +229,32 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSVirtualNetworkGatewayConnection CreateVirtualNetworkGatewayConnection()
         {
+            Dictionary<string, List<string>> auxAuthHeader = null;
+            List<string> resourceIds = new List<string>();
             var vnetGatewayConnection = new PSVirtualNetworkGatewayConnection();
             vnetGatewayConnection.Name = this.Name;
             vnetGatewayConnection.ResourceGroupName = this.ResourceGroupName;
             vnetGatewayConnection.Location = this.Location;
             vnetGatewayConnection.VirtualNetworkGateway1 = this.VirtualNetworkGateway1;
-            vnetGatewayConnection.VirtualNetworkGateway2 = this.VirtualNetworkGateway2;
-            vnetGatewayConnection.LocalNetworkGateway2 = this.LocalNetworkGateway2;
+
+            // Get the aux header for the LNG2/VNG2
+            if (this.VirtualNetworkGateway2 != null)
+            {
+                vnetGatewayConnection.VirtualNetworkGateway2 = this.VirtualNetworkGateway2;
+                resourceIds.Add(this.VirtualNetworkGateway2.Id);
+            }
+
+            if (this.LocalNetworkGateway2 != null)
+            {
+                vnetGatewayConnection.LocalNetworkGateway2 = this.LocalNetworkGateway2;
+                resourceIds.Add(this.LocalNetworkGateway2.Id);
+            }
+            var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+            if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+            {
+                auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+            }
+
             vnetGatewayConnection.ConnectionType = this.ConnectionType;
             vnetGatewayConnection.RoutingWeight = this.RoutingWeight;
             vnetGatewayConnection.DpdTimeoutSeconds = this.DpdTimeoutInSeconds;
@@ -322,7 +341,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnectionModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create VirtualNetworkConnection call
-            this.VirtualNetworkGatewayConnectionClient.CreateOrUpdate(this.ResourceGroupName, this.Name, vnetGatewayConnectionModel);
+            this.VirtualNetworkGatewayConnectionClient.CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, vnetGatewayConnectionModel, auxAuthHeader).GetAwaiter().GetResult();
 
             var getVirtualNetworkGatewayConnection = this.GetVirtualNetworkGatewayConnection(this.ResourceGroupName, this.Name);
 

@@ -59,7 +59,7 @@ Name            ResourceGroupName
 testStoragePath       test-rg
 ```
 
-This command updates an exisiting storage path in the specified resource group.
+This command updates an existing storage path in the specified resource group.
 
 ## PARAMETERS
 

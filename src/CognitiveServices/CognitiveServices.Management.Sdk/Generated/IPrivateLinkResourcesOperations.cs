@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.CognitiveServices
     public partial interface IPrivateLinkResourcesOperations
     {
         /// <summary>
-        /// Gets the private link resources that need to be created for a Cognitive Services account.
+        /// Gets the private link resources that need to be created for a Cognitive
+        /// Services account.
         /// </summary>
         /// <remarks>
-        /// Gets the private link resources that need to be created for a Cognitive Services account.
+        /// Gets the private link resources that need to be created for a Cognitive
+        /// Services account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

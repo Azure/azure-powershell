@@ -80,7 +80,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             bool? enableSecureBoot = null,
             string securityType = null,
             string ifMatch = null,
-            string ifNoneMatch = null
+            string ifNoneMatch = null,
+            string zonePlacementPolicy = null,
+            string[] includeZone = null,
+            string[] excludeZone = null,
+            bool? alignRegionalDisksToVMZone = null,
+            bool? enableProxyAgent = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -140,7 +145,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                 deleteOption: osDiskDeleteOption),
                             DataDisks = DataDiskStrategy.CreateDataDisks(
                                 imageAndOsType?.DataDiskLuns, dataDisks, dataDiskDeleteOption),
-                            DiskControllerType = diskControllerType
+                            DiskControllerType = diskControllerType,
+                            AlignRegionalDisksToVMZone = alignRegionalDisksToVMZone
                         },
                         AvailabilitySet = engine.GetReference(availabilitySet),
                         Zones = zones,
@@ -152,20 +158,26 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         Priority = priority,
                         EvictionPolicy = evictionPolicy,
                         BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                        SecurityProfile = ((encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType != null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType))
-                    ? new SecurityProfile
-                    {
-                        EncryptionAtHost = encryptionAtHostPresent,
-                        UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
-                        SecurityType = securityType,
-                    } : null,
+                        SecurityProfile = new SecurityProfile
+                        {
+                            EncryptionAtHost = encryptionAtHostPresent,
+                            UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
+                            SecurityType = securityType,
+                            ProxyAgentSettings = enableProxyAgent == true ? new ProxyAgentSettings(enableProxyAgent) : null,
+                        },
                         CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
                         {
                             CapacityReservationGroup = new SubResource(capacityReservationGroupId)
                         },
                         UserData = userData,
                         PlatformFaultDomain = platformFaultDomain,
-                        ExtendedLocation = extendedLocation
+                        ExtendedLocation = extendedLocation,
+                        Placement = (zonePlacementPolicy == null && includeZone == null && excludeZone == null) ? null : new Placement
+                        {
+                            ZonePlacementPolicy = zonePlacementPolicy,
+                            IncludeZones = includeZone,
+                            ExcludeZones = excludeZone
+                        }
                     };
                     if(auxAuthHeader != null)
                     {
@@ -257,7 +269,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Priority = priority,
                     EvictionPolicy = evictionPolicy,
                     BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                    SecurityProfile = ((encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType!= null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType)) 
+                    SecurityProfile = (encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType!= null)
                     ? new SecurityProfile
                     {
                         EncryptionAtHost = encryptionAtHostPresent,

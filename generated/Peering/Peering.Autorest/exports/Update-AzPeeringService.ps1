@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Updates tags for a peering service with the specified name under the given subscription and resource group.
+update tags for a peering service with the specified name under the given subscription and resource group.
 .Description
-Updates tags for a peering service with the specified name under the given subscription and resource group.
+update tags for a peering service with the specified name under the given subscription and resource group.
 .Example
 $tags=@{hello='world'}
 Update-AzPeeringService -Name DRTestInterCloud -ResourceGroupName DemoRG -Tag $tags
@@ -26,7 +26,7 @@ Update-AzPeeringService -Name DRTestInterCloud -ResourceGroupName DemoRG -Tag $t
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeeringService
+Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringService
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,7 +47,7 @@ INPUTOBJECT <IPeeringIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.peering/update-azpeeringservice
 #>
 function Update-AzPeeringService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeeringService])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringService])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -74,12 +74,11 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Gets or sets the tags, a dictionary of descriptors arm object
     ${Tag},
@@ -140,6 +139,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -162,9 +170,7 @@ begin {
             UpdateExpanded = 'Az.Peering.private\Update-AzPeeringService_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Peering.private\Update-AzPeeringService_UpdateViaIdentityExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -178,6 +184,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

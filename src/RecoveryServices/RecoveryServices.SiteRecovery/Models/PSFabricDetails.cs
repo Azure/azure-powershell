@@ -2097,6 +2097,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         public ASRAzureToAzureSpecificRPIDetails(A2AReplicationDetails details)
         {
+            this.ProtectionClusterId = details.ProtectionClusterId;
             this.FabricObjectId = details.FabricObjectId;
             this.MultiVmGroupId = details.MultiVMGroupId;
             this.MultiVmGroupName = details.MultiVMGroupName;
@@ -2191,6 +2192,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Multi vm group name.
         /// </summary>
         public string MultiVmGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the replication protection cluster Id.
+        /// </summary>
+        public string ProtectionClusterId { get; set; }
 
         /// <summary>
         /// Operating system type.
@@ -2351,12 +2357,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
 
         /// <summary>
-        /// Gets or sets the only constant ID throught out the enable disable cycle.
+        /// Gets or sets the only constant ID through out the enable disable cycle.
         /// (with multiple switch protections in the middle) - Recovery Plans refer this ID.
         /// </summary>
         public string LifecycleId { get; set; }
 
-        // check do we need to expoxed these 2 (TODO)
+        // check do we need to exposed these 2 (TODO)
         // public string RecoveryFabricObjectId;  //how it is different from parent RecoveryFabricId
         // public string managementId;
     }

@@ -67,6 +67,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="licenseType">License Type of the VM to be used.
         /// </param>
 
+        /// <param name="linuxLicenseType">The license type for Linux VM&#39;s.
+        /// Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;LinuxServer&#39;</param>
+
         /// <param name="storageAccountId">The replication storage account ARM Id. This is applicable only for the
         /// blob based replication test hook.
         /// </param>
@@ -129,7 +132,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="initialReplicationProgressHealth">The initial replication progress health.
-        /// Possible values include: 'None', 'InProgress', 'SlowProgress', 'NoProgress'</param>
+        /// Possible values include: &#39;None&#39;, &#39;InProgress&#39;, &#39;SlowProgress&#39;, &#39;NoProgress&#39;</param>
 
         /// <param name="resyncProgressPercentage">The resync progress percentage. This is calculated based on total bytes
         /// processed for all disks in the source VM.
@@ -144,17 +147,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="resyncProgressHealth">The resync progress health.
-        /// Possible values include: 'None', 'InProgress', 'SlowProgress', 'NoProgress'</param>
+        /// Possible values include: &#39;None&#39;, &#39;InProgress&#39;, &#39;SlowProgress&#39;, &#39;NoProgress&#39;</param>
 
         /// <param name="resyncRequired">A value indicating whether resync is required.
         /// </param>
 
         /// <param name="resyncState">The resync state.
-        /// Possible values include: 'None', 'PreparedForResynchronization',
-        /// 'StartedResynchronization'</param>
+        /// Possible values include: &#39;None&#39;, &#39;PreparedForResynchronization&#39;,
+        /// &#39;StartedResynchronization&#39;</param>
 
         /// <param name="agentUpgradeState">The agent auto upgrade state.
-        /// Possible values include: 'None', 'Started', 'Completed', 'Commit'</param>
+        /// Possible values include: &#39;None&#39;, &#39;Started&#39;, &#39;Completed&#39;, &#39;Commit&#39;</param>
 
         /// <param name="lastAgentUpgradeType">The last agent upgrade type.
         /// </param>
@@ -166,6 +169,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="protectedDisks">The list of protected disks.
+        /// </param>
+
+        /// <param name="unprotectedDisks">The list of unprotected disks.
         /// </param>
 
         /// <param name="isLastUpgradeSuccessful">A value indicating whether last agent upgrade was successful or not.
@@ -189,7 +195,31 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="discoveredVMDetails">The discovered VM details.
         /// </param>
-        public InMageRcmReplicationDetails(string internalIdentifier = default(string), string fabricDiscoveryMachineId = default(string), string multiVMGroupName = default(string), string discoveryType = default(string), string processServerId = default(string), int? processorCoreCount = default(int?), double? allocatedMemoryInMb = default(double?), string processServerName = default(string), string runAsAccountId = default(string), string osType = default(string), string firmwareType = default(string), string primaryNicIPAddress = default(string), string targetGeneration = default(string), string licenseType = default(string), string storageAccountId = default(string), string targetVMName = default(string), string targetVMSize = default(string), string targetResourceGroupId = default(string), string targetLocation = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string targetBootDiagnosticsStorageAccountId = default(string), string targetNetworkId = default(string), string testNetworkId = default(string), string failoverRecoveryPointId = default(string), System.DateTime? lastRecoveryPointReceived = default(System.DateTime?), long? lastRpoInSeconds = default(long?), System.DateTime? lastRpoCalculatedTime = default(System.DateTime?), string lastRecoveryPointId = default(string), int? initialReplicationProgressPercentage = default(int?), long? initialReplicationProcessedBytes = default(long?), long? initialReplicationTransferredBytes = default(long?), string initialReplicationProgressHealth = default(string), int? resyncProgressPercentage = default(int?), long? resyncProcessedBytes = default(long?), long? resyncTransferredBytes = default(long?), string resyncProgressHealth = default(string), string resyncRequired = default(string), string resyncState = default(string), string agentUpgradeState = default(string), string lastAgentUpgradeType = default(string), string agentUpgradeJobId = default(string), string agentUpgradeAttemptToVersion = default(string), System.Collections.Generic.IList<InMageRcmProtectedDiskDetails> protectedDisks = default(System.Collections.Generic.IList<InMageRcmProtectedDiskDetails>), string isLastUpgradeSuccessful = default(string), bool? isAgentRegistrationSuccessfulAfterFailover = default(bool?), InMageRcmMobilityAgentDetails mobilityAgentDetails = default(InMageRcmMobilityAgentDetails), System.Collections.Generic.IList<InMageRcmLastAgentUpgradeErrorDetails> lastAgentUpgradeErrorDetails = default(System.Collections.Generic.IList<InMageRcmLastAgentUpgradeErrorDetails>), System.Collections.Generic.IList<InMageRcmAgentUpgradeBlockingErrorDetails> agentUpgradeBlockingErrorDetails = default(System.Collections.Generic.IList<InMageRcmAgentUpgradeBlockingErrorDetails>), System.Collections.Generic.IList<InMageRcmNicDetails> vmNics = default(System.Collections.Generic.IList<InMageRcmNicDetails>), InMageRcmDiscoveredProtectedVmDetails discoveredVMDetails = default(InMageRcmDiscoveredProtectedVmDetails))
+
+        /// <param name="targetVMTags">The target VM tags.
+        /// </param>
+
+        /// <param name="seedManagedDiskTags">The tags for the seed managed disks.
+        /// </param>
+
+        /// <param name="targetManagedDiskTags">The tags for the target managed disks.
+        /// </param>
+
+        /// <param name="targetNicTags">The tags for the target NICs.
+        /// </param>
+
+        /// <param name="sqlServerLicenseType">The SQL Server license type.
+        /// </param>
+
+        /// <param name="supportedOSVersions">A value indicating the inplace OS Upgrade version.
+        /// </param>
+
+        /// <param name="osName">The OS name associated with VM.
+        /// </param>
+
+        /// <param name="targetVMSecurityProfile">The target VM security profile.
+        /// </param>
+        public InMageRcmReplicationDetails(string internalIdentifier = default(string), string fabricDiscoveryMachineId = default(string), string multiVMGroupName = default(string), string discoveryType = default(string), string processServerId = default(string), int? processorCoreCount = default(int?), double? allocatedMemoryInMb = default(double?), string processServerName = default(string), string runAsAccountId = default(string), string osType = default(string), string firmwareType = default(string), string primaryNicIPAddress = default(string), string targetGeneration = default(string), string licenseType = default(string), string linuxLicenseType = default(string), string storageAccountId = default(string), string targetVMName = default(string), string targetVMSize = default(string), string targetResourceGroupId = default(string), string targetLocation = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string targetBootDiagnosticsStorageAccountId = default(string), string targetNetworkId = default(string), string testNetworkId = default(string), string failoverRecoveryPointId = default(string), System.DateTime? lastRecoveryPointReceived = default(System.DateTime?), long? lastRpoInSeconds = default(long?), System.DateTime? lastRpoCalculatedTime = default(System.DateTime?), string lastRecoveryPointId = default(string), int? initialReplicationProgressPercentage = default(int?), long? initialReplicationProcessedBytes = default(long?), long? initialReplicationTransferredBytes = default(long?), string initialReplicationProgressHealth = default(string), int? resyncProgressPercentage = default(int?), long? resyncProcessedBytes = default(long?), long? resyncTransferredBytes = default(long?), string resyncProgressHealth = default(string), string resyncRequired = default(string), string resyncState = default(string), string agentUpgradeState = default(string), string lastAgentUpgradeType = default(string), string agentUpgradeJobId = default(string), string agentUpgradeAttemptToVersion = default(string), System.Collections.Generic.IList<InMageRcmProtectedDiskDetails> protectedDisks = default(System.Collections.Generic.IList<InMageRcmProtectedDiskDetails>), System.Collections.Generic.IList<InMageRcmUnProtectedDiskDetails> unprotectedDisks = default(System.Collections.Generic.IList<InMageRcmUnProtectedDiskDetails>), string isLastUpgradeSuccessful = default(string), bool? isAgentRegistrationSuccessfulAfterFailover = default(bool?), InMageRcmMobilityAgentDetails mobilityAgentDetails = default(InMageRcmMobilityAgentDetails), System.Collections.Generic.IList<InMageRcmLastAgentUpgradeErrorDetails> lastAgentUpgradeErrorDetails = default(System.Collections.Generic.IList<InMageRcmLastAgentUpgradeErrorDetails>), System.Collections.Generic.IList<InMageRcmAgentUpgradeBlockingErrorDetails> agentUpgradeBlockingErrorDetails = default(System.Collections.Generic.IList<InMageRcmAgentUpgradeBlockingErrorDetails>), System.Collections.Generic.IList<InMageRcmNicDetails> vmNics = default(System.Collections.Generic.IList<InMageRcmNicDetails>), InMageRcmDiscoveredProtectedVmDetails discoveredVMDetails = default(InMageRcmDiscoveredProtectedVmDetails), System.Collections.Generic.IList<UserCreatedResourceTag> targetVMTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), System.Collections.Generic.IList<UserCreatedResourceTag> seedManagedDiskTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), System.Collections.Generic.IList<UserCreatedResourceTag> targetManagedDiskTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), System.Collections.Generic.IList<UserCreatedResourceTag> targetNicTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), string sqlServerLicenseType = default(string), System.Collections.Generic.IList<string> supportedOSVersions = default(System.Collections.Generic.IList<string>), string osName = default(string), SecurityProfileProperties targetVMSecurityProfile = default(SecurityProfileProperties))
 
         {
             this.InternalIdentifier = internalIdentifier;
@@ -206,6 +236,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.PrimaryNicIPAddress = primaryNicIPAddress;
             this.TargetGeneration = targetGeneration;
             this.LicenseType = licenseType;
+            this.LinuxLicenseType = linuxLicenseType;
             this.StorageAccountId = storageAccountId;
             this.TargetVMName = targetVMName;
             this.TargetVMSize = targetVMSize;
@@ -237,6 +268,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.AgentUpgradeJobId = agentUpgradeJobId;
             this.AgentUpgradeAttemptToVersion = agentUpgradeAttemptToVersion;
             this.ProtectedDisks = protectedDisks;
+            this.UnprotectedDisks = unprotectedDisks;
             this.IsLastUpgradeSuccessful = isLastUpgradeSuccessful;
             this.IsAgentRegistrationSuccessfulAfterFailover = isAgentRegistrationSuccessfulAfterFailover;
             this.MobilityAgentDetails = mobilityAgentDetails;
@@ -244,6 +276,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.AgentUpgradeBlockingErrorDetails = agentUpgradeBlockingErrorDetails;
             this.VMNics = vmNics;
             this.DiscoveredVMDetails = discoveredVMDetails;
+            this.TargetVMTags = targetVMTags;
+            this.SeedManagedDiskTags = seedManagedDiskTags;
+            this.TargetManagedDiskTags = targetManagedDiskTags;
+            this.TargetNicTags = targetNicTags;
+            this.SqlServerLicenseType = sqlServerLicenseType;
+            this.SupportedOSVersions = supportedOSVersions;
+            this.OSName = osName;
+            this.TargetVMSecurityProfile = targetVMSecurityProfile;
             CustomInit();
         }
 
@@ -336,6 +376,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "licenseType")]
         public string LicenseType {get; set; }
+
+        /// <summary>
+        /// Gets or sets the license type for Linux VM&#39;s. Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;LinuxServer&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "linuxLicenseType")]
+        public string LinuxLicenseType {get; set; }
 
         /// <summary>
         /// Gets the replication storage account ARM Id. This is applicable only for
@@ -531,6 +577,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public System.Collections.Generic.IList<InMageRcmProtectedDiskDetails> ProtectedDisks {get; set; }
 
         /// <summary>
+        /// Gets or sets the list of unprotected disks.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "unprotectedDisks")]
+        public System.Collections.Generic.IList<InMageRcmUnProtectedDiskDetails> UnprotectedDisks {get; set; }
+
+        /// <summary>
         /// Gets a value indicating whether last agent upgrade was successful or not.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "isLastUpgradeSuccessful")]
@@ -572,5 +624,53 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "discoveredVmDetails")]
         public InMageRcmDiscoveredProtectedVmDetails DiscoveredVMDetails {get; set; }
+
+        /// <summary>
+        /// Gets or sets the target VM tags.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetVmTags")]
+        public System.Collections.Generic.IList<UserCreatedResourceTag> TargetVMTags {get; set; }
+
+        /// <summary>
+        /// Gets or sets the tags for the seed managed disks.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "seedManagedDiskTags")]
+        public System.Collections.Generic.IList<UserCreatedResourceTag> SeedManagedDiskTags {get; set; }
+
+        /// <summary>
+        /// Gets or sets the tags for the target managed disks.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetManagedDiskTags")]
+        public System.Collections.Generic.IList<UserCreatedResourceTag> TargetManagedDiskTags {get; set; }
+
+        /// <summary>
+        /// Gets or sets the tags for the target NICs.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetNicTags")]
+        public System.Collections.Generic.IList<UserCreatedResourceTag> TargetNicTags {get; set; }
+
+        /// <summary>
+        /// Gets or sets the SQL Server license type.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sqlServerLicenseType")]
+        public string SqlServerLicenseType {get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the inplace OS Upgrade version.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "supportedOSVersions")]
+        public System.Collections.Generic.IList<string> SupportedOSVersions {get; set; }
+
+        /// <summary>
+        /// Gets or sets the OS name associated with VM.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "osName")]
+        public string OSName {get; set; }
+
+        /// <summary>
+        /// Gets or sets the target VM security profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetVmSecurityProfile")]
+        public SecurityProfileProperties TargetVMSecurityProfile {get; set; }
     }
 }

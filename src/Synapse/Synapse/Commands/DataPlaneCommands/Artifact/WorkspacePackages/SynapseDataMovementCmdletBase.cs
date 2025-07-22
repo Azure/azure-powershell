@@ -95,6 +95,7 @@ namespace Microsoft.Azure.Commands.Synapse.Commands
 
         protected override void BeginProcessing()
         {
+            base.BeginProcessing();
             if (!AsJob.IsPresent)
             {
                 DoBeginProcessing();

@@ -87,10 +87,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
                 return container;
             }
             __trackedResource?.ToJson(container, serializationMode);
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate))
-            {
-                AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
-            }
+            AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
