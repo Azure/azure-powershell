@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Cmdlets
     /// [OpenAPI] List=>GET:"/{resourceUri}/providers/Microsoft.Insights/diagnosticSettings"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDiagnosticSetting_List")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource", "15.0.0", "7.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"Log","Metric"}, NewOutputProperties=new string[] {"Log","Metric"}, ChangeDescription="The types of the properties Log and Metric will be changed from single object or fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Description(@"Gets the active diagnostic settings list for the specified resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Generated]
