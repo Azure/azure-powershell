@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWorkloadsProviderInstance
 
 ## SYNOPSIS
-create a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
+Create a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
 
 ## SYNTAX
 
@@ -50,7 +50,7 @@ New-AzWorkloadsProviderInstance -MonitorName <String> -Name <String> -ResourceGr
 ```
 
 ## DESCRIPTION
-create a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
+Create a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
 
 ## EXAMPLES
 

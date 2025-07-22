@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWorkloadsProviderInstance
 
 ## SYNOPSIS
-update a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
+Update a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
 
 ## SYNTAX
 
@@ -57,7 +57,7 @@ Update-AzWorkloadsProviderInstance -MonitorInputObject <IMonitorsIdentity> -Name
 ```
 
 ## DESCRIPTION
-update a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
+Update a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
 
 ## EXAMPLES
 

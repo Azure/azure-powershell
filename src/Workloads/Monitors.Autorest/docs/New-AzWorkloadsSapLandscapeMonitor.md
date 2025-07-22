@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWorkloadsSapLandscapeMonitor
 
 ## SYNOPSIS
-create a SAP Landscape Monitor Dashboard for the specified subscription, resource group, and resource name.
+Create a SAP Landscape Monitor Dashboard for the specified subscription, resource group, and resource name.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <Str
 ```
 
 ## DESCRIPTION
-create a SAP Landscape Monitor Dashboard for the specified subscription, resource group, and resource name.
+Create a SAP Landscape Monitor Dashboard for the specified subscription, resource group, and resource name.
 
 ## EXAMPLES
 
