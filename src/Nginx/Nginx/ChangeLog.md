@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added breaking change announcement for below cmdlets from fixed array to list.
+  - `Get-AzNginxConfiguration`
+  - `New-AzNginxConfiguration`
+  - `Get-AzNginxDeployment`
+  - `New-AzNginxDeployment`
+  - `Update-AzNginxDeployment`
+  - `Invoke-AzNginxAnalysisConfiguration`
+  - `New-AzNginxNetworkProfileObject`
 
 ## Version 1.2.0
 * Upgraded nuget package to signed package.
