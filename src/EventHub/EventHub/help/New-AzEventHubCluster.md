@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventHubCluster
 
 ## SYNOPSIS
-create an instance of an Event Hubs Cluster.
+Create an instance of an Event Hubs Cluster.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzEventHubCluster -Name <String> -ResourceGroupName <String> [-SubscriptionI
 ```
 
 ## DESCRIPTION
-create an instance of an Event Hubs Cluster.
+Create an instance of an Event Hubs Cluster.
 
 ## EXAMPLES
 

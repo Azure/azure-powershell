@@ -18,8 +18,10 @@ New-AzEventHubNamespace -Name <String> -ResourceGroupName <String> [-Subscriptio
  [-RequireInfrastructureEncryption] [-ZoneRedundant] [-KeyVaultProperty <IKeyVaultProperties[]>]
  [-IdentityType <String>] [-UserAssignedIdentityId <String[]>] [-EnableAutoInflate]
  [-MaximumThroughputUnit <Int64>] [-MinimumTlsVersion <String>] [-SkuName <String>]
- [-PublicNetworkAccess <String>] [-SkuCapacity <Int64>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PublicNetworkAccess <String>] [-SkuCapacity <Int64>] [-Tag <Hashtable>]
+ [-GeoDataReplicationMaxReplicationLagDurationInSecond <Int64>]
+ [-GeoDataReplicationLocation <INamespaceReplicaLocation[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -262,6 +264,38 @@ Value that indicates whether AutoInflate is enabled for eventhub namespace.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GeoDataReplicationLocation
+Properties for User Assigned Identities
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocation[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GeoDataReplicationMaxReplicationLagDurationInSecond
+The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.
+When the lag exceeds the configured amount, operations on the primary replica will be failed.
+The allowed values are 0 and 5 minutes to 1 day.
+
+```yaml
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 

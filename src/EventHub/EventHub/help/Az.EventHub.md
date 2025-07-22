@@ -50,17 +50,17 @@ Gets the description of the specified namespace.
 ### [Get-AzEventHubNetworkRuleSet](Get-AzEventHubNetworkRuleSet.md)
 Gets NetworkRuleSet for a Namespace.
 
+### [Get-AzEventHubNetworkSecurityPerimeterConfiguration](Get-AzEventHubNetworkSecurityPerimeterConfiguration.md)
+Gets list of current NetworkSecurityPerimeterConfiguration for Namespace
+
+### [Get-AzEventHubNetworkSecurityPerimeterConfigurationsForAssociation](Get-AzEventHubNetworkSecurityPerimeterConfigurationsForAssociation.md)
+Return a NetworkSecurityPerimeterConfigurations resourceAssociationName
+
 ### [Get-AzEventHubPrivateEndpointConnection](Get-AzEventHubPrivateEndpointConnection.md)
 Gets a description for the specified Private Endpoint Connection name.
 
 ### [Get-AzEventHubPrivateLink](Get-AzEventHubPrivateLink.md)
 Gets lists of resources that supports Privatelinks.
-
-### [Get-AzEventHubNetworkSecurityPerimeterConfigurationsForAssociation](Get-AzEventHubNetworkSecurityPerimeterConfigurationsForAssociation.md)
-Gets the network security configuration of an EventHub namespace for a given ResourceAssociationName.
-
-### [Get-AzEventHubNetworkSecurityPerimeterConfiguration](Get-AzEventHubNetworkSecurityPerimeterConfiguration.md)
-Gets list of NSP configurations an EventHub namespace.
 
 ### [Get-AzEventHubSchemaGroup](Get-AzEventHubSchemaGroup.md)
 Gets the details of an EventHub schema group.
@@ -75,7 +75,7 @@ Create an ApplicationGroup for a Namespace.
 Creates an EventHub Authorization Rule
 
 ### [New-AzEventHubAuthorizationRuleSASToken](New-AzEventHubAuthorizationRuleSASToken.md)
-Generates a SAS token for Azure eventhub authorization rule of namespace/eventhub.
+Generates a SAS token for Azure eventhub authorization rule of namespace/eventhub. 
 
 ### [New-AzEventHubCluster](New-AzEventHubCluster.md)
 Create an instance of an Event Hubs Cluster.
@@ -101,6 +101,9 @@ Create an in-memory object for NamespaceReplicaLocation.
 ### [New-AzEventHubNamespace](New-AzEventHubNamespace.md)
 Creates an EventHub Namespace
 
+### [New-AzEventHubNetworkSecurityPerimeterConfiguration](New-AzEventHubNetworkSecurityPerimeterConfiguration.md)
+Refreshes any information about the association.
+
 ### [New-AzEventHubSchemaGroup](New-AzEventHubSchemaGroup.md)
 Create an EventHub schema group.
 
@@ -120,7 +123,8 @@ Deletes an ApplicationGroup for a Namespace.
 Removes an EventHub Authorization Rule
 
 ### [Remove-AzEventHubCluster](Remove-AzEventHubCluster.md)
-Deletes an existing Event Hubs Cluster. This operation is idempotent.
+Deletes an existing Event Hubs Cluster.
+This operation is idempotent.
 
 ### [Remove-AzEventHubConsumerGroup](Remove-AzEventHubConsumerGroup.md)
 Deletes a consumer group from the specified Event Hub and resource group.
@@ -129,10 +133,12 @@ Deletes a consumer group from the specified Event Hub and resource group.
 Deletes an Alias(Disaster Recovery configuration)
 
 ### [Remove-AzEventHubNamespace](Remove-AzEventHubNamespace.md)
-Deletes an existing namespace. This operation also removes all associated resources under the namespace.
+Deletes an existing namespace.
+This operation also removes all associated resources under the namespace.
 
 ### [Remove-AzEventHubPrivateEndpointConnection](Remove-AzEventHubPrivateEndpointConnection.md)
-Deletes an existing namespace. This operation also removes all associated resources under the namespace.
+Deletes an existing namespace.
+This operation also removes all associated resources under the namespace.
 
 ### [Remove-AzEventHubSchemaGroup](Remove-AzEventHubSchemaGroup.md)
 Deletes an EventHub schema group.

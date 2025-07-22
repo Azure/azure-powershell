@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.EventHub-help.xml
 Module Name: Az.EventHub
 online version: https://learn.microsoft.com/powershell/module/az.eventhub/start-azeventhubnamespacefailover
 schema: 2.0.0
@@ -15,14 +15,14 @@ Triggers EventHub Namespace Failover
 ### SetExpanded (Default)
 ```
 Start-AzEventHubNamespaceFailOver -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Force] [-PrimaryLocation <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-PrimaryLocation <String>] [-Force] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
 Start-AzEventHubNamespaceFailOver -InputObject <IEventHubIdentity> [-Force] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +33,7 @@ Triggers EventHub Namespace Failover
 ### Example 1: Triggers EventHub Namespace Failover.
 ```powershell
 Start-AzEventHubNamespaceFailOver -ResourceGroupName myresourceGroup -NamespaceName mynamespace -PrimaryLocation mylocation
-$eventhubNamespace = Get-AzEventHubNamespace -ResourceGroupName myresourceGroup -Name mynamespace 
+$eventhubNamespace = Get-AzEventHubNamespace -ResourceGroupName myresourceGroup -Name mynamespace
 ```
 
 ```output
@@ -276,4 +276,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

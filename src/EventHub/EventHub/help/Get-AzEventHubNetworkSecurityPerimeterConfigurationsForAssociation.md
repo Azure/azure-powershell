@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.EventHub-help.xml
 Module Name: Az.EventHub
 online version: https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubnetworksecurityperimeterconfigurationsforassociation
 schema: 2.0.0
@@ -19,16 +19,17 @@ Get-AzEventHubNetworkSecurityPerimeterConfigurationsForAssociation -NamespaceNam
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityNamespace
+```
+Get-AzEventHubNetworkSecurityPerimeterConfigurationsForAssociation -ResourceAssociationName <String>
+ -NamespaceInputObject <IEventHubIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzEventHubNetworkSecurityPerimeterConfigurationsForAssociation -InputObject <IEventHubIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityNamespace
-```
-Get-AzEventHubNetworkSecurityPerimeterConfigurationsForAssociation -NamespaceInputObject <IEventHubIdentity>
- -ResourceAssociationName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -208,4 +209,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventHub
 
 ## SYNOPSIS
-create a new Event Hub as a nested resource within a Namespace.
+Create a new Event Hub as a nested resource within a Namespace.
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ New-AzEventHub -Name <String> -NamespaceInputObject <IEventHubIdentity> -Paramet
 ```
 
 ## DESCRIPTION
-create a new Event Hub as a nested resource within a Namespace.
+Create a new Event Hub as a nested resource within a Namespace.
 
 ## EXAMPLES
 
@@ -68,7 +68,7 @@ Location                     : eastus
 MessageRetentionInDay        : 7
 Name                         : myEventHub
 PartitionCount               : 5
-PartitionId                  : {0, 1, 2, 3�}
+PartitionId                  : {0, 1, 2, 3…}
 ResourceGroupName            : myResourceGroup
 RetentionTimeInHour          : 168
 SizeLimitInBytes             :

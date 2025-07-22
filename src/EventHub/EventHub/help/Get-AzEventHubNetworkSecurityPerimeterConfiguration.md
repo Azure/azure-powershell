@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.EventHub-help.xml
 Module Name: Az.EventHub
 online version: https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubnetworksecurityperimeterconfiguration
 schema: 2.0.0
@@ -14,7 +14,8 @@ Gets list of current NetworkSecurityPerimeterConfiguration for Namespace
 
 ```
 Get-AzEventHubNetworkSecurityPerimeterConfiguration -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -148,4 +149,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
