@@ -226,7 +226,7 @@ function New-AzMigrateLocalServerReplication {
                 # machine is on a single Hyper-V host
                 $hostIdArray = $machine.HostId.Split("/")
                 if ($hostIdArray.Length -lt 11) {
-                    throw "Invalid Hyper-V Host ARM ID '$hostIdArray'"
+                    throw "Invalid Hyper-V Host ARM ID '$($machine.HostId)'"
                 }
 
                 $hostResourceGroupName = $hostIdArray[4]
@@ -249,7 +249,7 @@ function New-AzMigrateLocalServerReplication {
                 # machine is on a Hyper-V cluster
                 $clusterIdArray = $machine.ClusterId.Split("/")
                 if ($clusterIdArray.Length -lt 11) {
-                    throw "Invalid Hyper-V Cluster ARM ID '$clusterIdArray'"
+                    throw "Invalid Hyper-V Cluster ARM ID '$($machine.ClusterId)'"
                 }
 
                 $clusterResourceGroupName = $clusterIdArray[4]
@@ -297,7 +297,7 @@ function New-AzMigrateLocalServerReplication {
                 # machine is on a single vCenter
                 $vCenterIdArray = $machine.VCenterId.Split("/")
                 if ($vCenterIdArray.Length -lt 11) {
-                    throw "Invalid VMware vCenter ARM ID '$vCenterIdArray'"
+                    throw "Invalid VMware vCenter ARM ID '$($machine.VCenterId)'"
                 }
 
                 $vCenterResourceGroupName = $vCenterIdArray[4]
