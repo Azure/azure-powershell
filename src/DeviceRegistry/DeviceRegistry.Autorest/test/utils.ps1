@@ -44,9 +44,9 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
-    $env.Add("resourceGroup", "adr-test-pwsh-rg")
+    $env.Add("resourceGroup", "adr-pwsh-test-rg")
     $env.Add("location", "eastus2")
-    $env.Add("extendedLocationName", "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-test-pwsh-rg/providers/Microsoft.ExtendedLocation/customLocations/location-a6n5o")
+    $env.Add("extendedLocationName", "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4")
     $env.Add("extendedLocationType", "CustomLocation")
 
     $jsonStringConfig = '{"defaultPublishingInterval": 200, "defaultSamplingInterval": 500, "defaultQueueSize": 10}'
@@ -221,6 +221,115 @@ function setupEnv() {
         }
     })
     $env.Add("billingContainerName", "adr-billing")
+    $env.Add("namespaceTests", @{
+        createTests = @{
+            key1 = "myendpoint1"
+            key2 = "myendpoint2"
+            endpoints = @{
+                "myendpoint1" = @{
+                    "resourceId" = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1"
+                    "address" = "https://myendpoint1.westeurope-1.iothub.azure.net"
+                    "endpointType" = "Microsoft.Devices/IotHubs"
+                }
+                "myendpoint2" = @{
+                    "resourceId" = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2"
+                    "address" = "https://myendpoint2.westeurope-1.iothub.azure.net"
+                    "endpointType" = "Microsoft.Devices/IotHubs"
+                }
+            }
+            CreateExpanded = @{
+                name = "test-namespace-create-expanded1"
+            }
+            CreateViaJsonFilePath = @{
+                name = "test-namespace-create-json-file-path"
+                jsonFilePath = "./jsonFiles/CreateNamespace.json"
+            }
+            CreateViaJsonString = @{
+                name = "test-namespace-create-json-string"
+                jsonStringFilePath = "./jsonFiles/CreateNamespace.json"
+            }
+        }
+        getTests = @{
+            List = @{
+                names = @(
+                    "test-namespace-list1"
+                    "test-namespace-list2"
+                )
+                jsonFilePath = "./jsonFiles/CreateNamespace.json"
+            }
+            Get = @{
+                name = "test-namespace-get"
+                key1 = "myendpoint1"
+                key2 = "myendpoint2"
+                endpoints = @{
+                    "myendpoint1" = @{
+                        "resourceId" = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1"
+                        "address" = "https://myendpoint1.westeurope-1.iothub.azure.net"
+                        "endpointType" = "Microsoft.Devices/IotHubs"
+                    }
+                    "myendpoint2" = @{
+                        "resourceId" = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2"
+                        "address" = "https://myendpoint2.westeurope-1.iothub.azure.net"
+                        "endpointType" = "Microsoft.Devices/IotHubs"
+                    }
+                }
+                jsonFilePath = "./jsonFiles/CreateNamespace.json"
+            }
+            GetViaIdentity = @{
+                name = "test-namespace-get-via-identity"
+                key1 = "myendpoint1"
+                key2 = "myendpoint2"
+                endpoints = @{
+                    "myendpoint1" = @{
+                        "resourceId" = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1"
+                        "address" = "https://myendpoint1.westeurope-1.iothub.azure.net"
+                        "endpointType" = "Microsoft.Devices/IotHubs"
+                    }
+                    "myendpoint2" = @{
+                        "resourceId" = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2"
+                        "address" = "https://myendpoint2.westeurope-1.iothub.azure.net"
+                        "endpointType" = "Microsoft.Devices/IotHubs"
+                    }
+                }
+                jsonFilePath = "./jsonFiles/CreateNamespace.json"
+            }
+        }
+        deleteTests = @{
+            Delete = @{
+                name = "test-namespace-delete"
+                jsonFilePath = "./jsonFiles/CreateNamespace.json"
+            }
+            DeleteViaIdentity = @{
+                name = "test-namespace-delete-via-identity"
+                jsonFilePath = "./jsonFiles/CreateNamespace.json"
+            }
+        }
+        updateTests = @{
+            key1 = "myendpoint1"
+            endpoints = @{
+                "myendpoint1" = @{
+                    "resourceId" = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1"
+                    "address" = "https://myendpoint1.westeurope-1.iothub.azure.net"
+                    "endpointType" = "Microsoft.Devices/IotHubs"
+                }
+            }
+            createJsonFilePath = "./jsonFiles/CreateNamespace.json"
+            UpdateExpanded = @{
+                name = "test-namespace-update"
+            }
+            UpdateViaJsonString = @{
+                name = "test-namespace-update-via-json-string"
+                updateJsonFilePath = "./jsonFiles/UpdateNamespace.json"
+            }
+            UpdateViaJsonFilePath = @{
+                name = "test-namespace-update-via-json-file-path"
+                updateJsonFilePath = "./jsonFiles/UpdateNamespace.json"
+            }
+            UpdateViaIdentityExpanded = @{
+                name = "test-namespace-update-via-identity-expanded"
+            }
+        }
+    })
 
     # Save the $env to a file
     $envFile = 'env.json'
