@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated SF to latest api preview version `2023-11-01-preview`
 * Added parameter `VmSize` to allow for in-place sku swap for cmdlet `Set-AzServiceFabricManagedNodeType`.
 * Updated SFMC to latest api preview version `2025-03-01-preview`
 
