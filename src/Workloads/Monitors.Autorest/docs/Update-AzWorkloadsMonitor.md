@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWorkloadsMonitor
 
 ## SYNOPSIS
-update a SAP monitor for the specified subscription, resource group, and resource name.
+Update a SAP monitor for the specified subscription, resource group, and resource name.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Update-AzWorkloadsMonitor -InputObject <IMonitorsIdentity> [-AppLocation <String
 ```
 
 ## DESCRIPTION
-update a SAP monitor for the specified subscription, resource group, and resource name.
+Update a SAP monitor for the specified subscription, resource group, and resource name.
 
 ## EXAMPLES
 

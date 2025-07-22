@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWorkloadsMonitor
 
 ## SYNOPSIS
-create a SAP monitor for the specified subscription, resource group, and resource name.
+Create a SAP monitor for the specified subscription, resource group, and resource name.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ New-AzWorkloadsMonitor -Name <String> -ResourceGroupName <String> -JsonString <S
 ```
 
 ## DESCRIPTION
-create a SAP monitor for the specified subscription, resource group, and resource name.
+Create a SAP monitor for the specified subscription, resource group, and resource name.
 
 ## EXAMPLES
 
