@@ -25,6 +25,11 @@
   - `Update-AzActivityLogAlert`
   - `New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject`
   - `New-AzActivityLogAlertAlertRuleLeafConditionObject`
+  - `New-AzDiagnosticSetting`
+  - `New-AzSubscriptionDiagnosticSetting`
+  - `Get-AzDiagnosticSetting`
+  - `Get-AzDiagnosticSettingCategory`
+  - `Get-AzSubscriptionDiagnosticSetting`
   - `Get-AzAutoscalePredictiveMetric`
   - `Get-AzAutoscaleSetting`
   - `New-AzAutoscaleNotificationObject`
