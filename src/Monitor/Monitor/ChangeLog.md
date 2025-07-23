@@ -25,14 +25,6 @@
   - `Update-AzActivityLogAlert`
   - `New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject`
   - `New-AzActivityLogAlertAlertRuleLeafConditionObject`
-  - `Get-AzMonitorWorkspace`
-  - `New-AzMonitorWorkspace`
-  - `Update-AzMonitorWorkspace`
-  - `New-AzDiagnosticSetting`
-  - `New-AzSubscriptionDiagnosticSetting`
-  - `Get-AzDiagnosticSetting`
-  - `Get-AzDiagnosticSettingCategory`
-  - `Get-AzSubscriptionDiagnosticSetting`
   - `Get-AzAutoscalePredictiveMetric`
   - `Get-AzAutoscaleSetting`
   - `New-AzAutoscaleNotificationObject`
@@ -41,6 +33,19 @@
   - `New-AzAutoscaleScaleRuleObject`
   - `New-AzAutoscaleSetting`
   - `Update-AzAutoscaleSetting`
+  - `Get-AzMonitorWorkspace`
+  - `New-AzMonitorWorkspace`
+  - `Update-AzMonitorWorkspace`
+  - `New-AzDiagnosticSetting`
+  - `New-AzSubscriptionDiagnosticSetting`
+  - `Get-AzDiagnosticSetting`
+  - `Get-AzDiagnosticSettingCategory`
+  - `Get-AzSubscriptionDiagnosticSetting`
+  - `Get-AzScheduledQueryRule`
+  - `New-AzScheduledQueryRule`
+  - `New-AzScheduledQueryRuleConditionObject`
+  - `New-AzScheduledQueryRuleDimensionObject`
+  - `Update-AzScheduledQueryRule`
 
 ## Version 6.0.2
 * Pipeline Group upgraded API version to 2024-10-01-preview
