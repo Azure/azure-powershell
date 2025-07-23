@@ -441,7 +441,8 @@ function setupEnv() {
                         deviceName = "myDeviceName"
                         endpointName = "myEndpointName"
                     }
-                    displayName = "test-ns-dasset-displayName"
+                    discoveryId = "myDiscoveryId"
+                    version = 1
                     manufacturer = "Contoso123"
                     manufacturerUri = "https://contoso.com"
                     model = "ContosoModel"
@@ -493,16 +494,18 @@ function setupEnv() {
             createJsonFilePath = "./jsonFiles/CreateNamespaceDiscoveredAsset.json"
             commonPatchConfig = @{
                 documentationUri = "https://www.example.com/foo"
-                displayName = "foo-dasset-displayName"
+                serialNumber = "123-456789-012345-6"
             }
             commonProperties = @{
                 deviceRef = @{
                     deviceName = "myDeviceName"
                     endpointName = "myEndpointName"
                 }
+                discoveryId = "myDiscoveryId"
+                version = 1
                 displayName = "test-ns-dasset-displayName"
                 manufacturer = "Contoso123"
-                manufacturerUri = "https://contoso.com"
+                manufacturerUri = "https://www.contoso.com/manufacturerUri"
                 model = "ContosoModel"
                 productCode = "SA34VDG"
                 softwareRevision = "2.0"
