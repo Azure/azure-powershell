@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new cmdlets for Eventhubnetworksecurityperimeterconfiguration - 'Get-AzEventHubNetworkSecurityPerimeterConfigurationsForAssociation', 'Get-AzEventHubNetworkSecurityPerimeterConfiguration'
 
 ## Version 5.3.0
 * Added parameters 'MaxReplicationLagDurationInSeconds' and 'Replicalocation' in cmdlets 'New-AzEventHubNamespace' & 'Set-AzEventHubNamespace'
