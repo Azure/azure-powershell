@@ -112,12 +112,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             if (string.IsNullOrEmpty(moduleName) || string.IsNullOrEmpty(commandName) || string.IsNullOrEmpty(sourceScriptName) || ExcludedSource.Contains(sourceScriptName))
                 return;
 
-            var pattern = @"[\\|\/](?:artifacts[\\|\/]Debug|src)[\\|\/](?:Az\.)?(?<ModuleName>[a-zA-Z]+)[\\|\/]";
-            var match = Regex.Match(sourceScriptPath, pattern, RegexOptions.IgnoreCase);
-            var testingModuleName = $"Az.{match.Groups["ModuleName"].Value}";
-            if (string.Compare(testingModuleName, moduleName, true) != 0)
-                return;
-
             var csvFilePath = Path.Combine(s_testCoveragePath, $"{moduleName}.csv");
             StringBuilder csvData = new StringBuilder();
 
