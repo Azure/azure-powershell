@@ -4,8 +4,10 @@ This directory contains the service clients of Az.Compute module.
 ## Run Generation
 In this directory, run AutoRest:
 ```
+rm -r Generated/*
 autorest --reset
-autorest --use:@microsoft.azure/autorest.csharp@2.3.90 --memory:32g --node-options="--stack-size=8192"
+autorest --use:@microsoft.azure/autorest.csharp@2.3.90 --tag=package-compute --memory:32g
+autorest --use:@microsoft.azure/autorest.csharp@2.3.90 --tag=package-sku-only
 ```
 
 ### AutoRest Configuration
@@ -13,7 +15,9 @@ autorest --use:@microsoft.azure/autorest.csharp@2.3.90 --memory:32g --node-optio
 
 ``` yaml
 csharp: true
-clear-output-folder: true
+clear-output-folder: false
+output-folder: Generated
+namespace: Microsoft.Azure.Management.Compute
 reflect-api-versions: true
 openapi-type: arm
 azure-arm: true
@@ -21,24 +25,27 @@ license-header: MICROSOFT_MIT_NO_VERSION
 
 title: ComputeManagementClient
 payload-flattening-threshold: 1
+```
 
+## Configuration
+
+```yaml
 commit: 21f9b6302bb5b6f647e1b4d716c684e1af3119a8
+```
+
+### Tag: package-compute
+
+These settings apply only when `--tag=package-compute` is specified on the command line.
+
+```yaml $(tag) == 'package-compute'
+
 input-file: 
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-11-01/ComputeRP.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2025-01-02/DiskRP.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2024-03-03/GalleryRP.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/common-types/v1/common.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Skus/stable/2021-07-01/skus.json
-
-
-
-output-folder: Generated
-namespace: Microsoft.Azure.Management.Compute
-
 
 directive:
-
-
   - from: swagger-document
     where: $..definitions.OperatingSystemStateTypes
     transform: >
@@ -629,7 +636,18 @@ directive:
       }
       
       return $;
+```
 
+### Tag: package-sku-only
+
+These settings apply only when `--tag=package-sku-only` is specified on the command line.
+
+```yaml $(tag) == 'package-sku-only'
+
+input-file: 
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Skus/stable/2021-07-01/skus.json
+
+directive:
   - from: swagger-document
     where: $.definitions.ExtendedLocationType
     transform: |
