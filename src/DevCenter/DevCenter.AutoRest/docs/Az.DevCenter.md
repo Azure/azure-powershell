@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DevCenter
-Module Guid: 24d861ed-547c-4787-81d0-d5e222ff4d0d
+Module Guid: a99f1246-613b-410f-b91b-5331cc1595d1
 Download Help Link: https://learn.microsoft.com/powershell/module/az.devcenter
 Help Version: 1.0.0.0
 Locale: en-US

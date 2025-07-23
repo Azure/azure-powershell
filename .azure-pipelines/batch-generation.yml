@@ -1,8 +1,21 @@
 parameters:
 - name: TestChangedModulesOnly
-  displayName: 'Only run tests on modules that are changed by regeneration'
+  type: boolean
+  default: true
+# Selected modules to generate, build, analyze and test
+- name: SelectedTargetModules
   type: string
-  default: 'True'
+  default: 'None'
+- name: NotificationReceiversOverride
+  type: string
+  default: 'None'
+# branch from when creating the generation branch
+- name: GenerationBaseBranch
+  type: string
+  default: 'main'
+- name: PrepareModulesOnGenerationBranch
+  type: boolean
+  default: false
 
 variables:
   IntermediateStepTimeoutInMinutes: 30
@@ -39,6 +52,22 @@ stages:
       pool: ${{ variables.WindowsAgentPoolName }}
       steps:
 
+      - task: PowerShell@2
+        name: showVariables
+        displayName: 'Show Variables'
+        inputs:
+          targetType: inline
+          pwsh: true
+          script: |
+            Write-Host "Pipeline variable SkippedModules: $($env:SkippedModules)"
+            Write-Host "Pipeline variable FailedJobNotificationReceivers: $($env:FailedJobNotificationReceivers)"
+
+            Write-Host "Parameter TestChangedModulesOnly: ${{ parameters.TestChangedModulesOnly }}"
+            Write-Host "Parameter SelectedTargetModules: ${{ parameters.SelectedTargetModules }}"
+            Write-Host "Parameter NotificationReceiversOverride: ${{ parameters.NotificationReceiversOverride }}"
+            Write-Host "Parameter GenerationBaseBranch: ${{ parameters.GenerationBaseBranch }}"
+            Write-Host "Parameter PrepareModulesOnGenerationBranch: ${{ parameters.PrepareModulesOnGenerationBranch }}"
+
       # TODO: (Bernard) Uncomment the no checkout step after automatically install repo into agents 
       # - checkout: none
       - checkout: self
@@ -59,7 +88,7 @@ stages:
             $token = "$(GitHubToken)"
 
             $createBranchPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'create-branch.ps1'
-            & $createBranchPath -Owner 'Azure' -Repo 'azure-powershell' -BaseBranch "$(GenerationBaseBranch)" -NewBranch $generationBranch -Token $token
+            & $createBranchPath -Owner 'Azure' -Repo 'azure-powershell' -BaseBranch "${{ parameters.GenerationBaseBranch }}" -NewBranch $generationBranch -Token $token
             Write-Host "##vso[task.setvariable variable=GenerationBranch;isOutput=true]$generationBranch"
 
       - task: PowerShell@2
@@ -82,10 +111,18 @@ stages:
           targetType: inline
           pwsh: true
           script: |
+            if ($env:PREPARE_MODULES_ON_GENERATION_BRANCH -eq 'true') {
+              Write-Host "Checkout to GenerationBranch: $(checkout.GenerationBranch)"
+              git fetch origin "$(checkout.GenerationBranch)"
+              git checkout "$(checkout.GenerationBranch)"
+            }
+
             $prepareModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'prepare.ps1'
             & $prepareModulesPath -RepoRoot "$(Build.SourcesDirectory)" -MaxParallelJobs "${{ variables.MaxParallelGenerateJobs }}"
         env:
           SKIPPED_MODULES: $(SkippedModules)
+          SELECTED_TARGET_MODULES: ${{ parameters.SelectedTargetModules }}
+          PREPARE_MODULES_ON_GENERATION_BRANCH: ${{ parameters.PrepareModulesOnGenerationBranch }}
 
       - task: PublishPipelineArtifact@1
         displayName: 'Upload generated targets'
@@ -515,3 +552,4 @@ stages:
             env:
               TEAMS_URL: $(TEAMS_URL)
               FailedJobNotificationReceivers: $(FailedJobNotificationReceivers)
+              NotificationReceiversOverride: ${{ parameters.NotificationReceiversOverride }}

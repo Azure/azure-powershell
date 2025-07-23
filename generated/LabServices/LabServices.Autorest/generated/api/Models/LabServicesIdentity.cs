@@ -105,6 +105,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -113,6 +116,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The image name.",
         SerializedName = @"imageName",
         PossibleTypes = new [] { typeof(string) })]
@@ -123,6 +129,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.",
         SerializedName = @"labName",
         PossibleTypes = new [] { typeof(string) })]
@@ -133,6 +142,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.",
         SerializedName = @"labPlanName",
         PossibleTypes = new [] { typeof(string) })]
@@ -141,6 +153,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The operation result ID / name.",
         SerializedName = @"operationResultId",
         PossibleTypes = new [] { typeof(string) })]
@@ -149,6 +164,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -159,6 +177,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.",
         SerializedName = @"scheduleName",
         PossibleTypes = new [] { typeof(string) })]
@@ -167,6 +188,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -177,6 +201,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the user that uniquely identifies it within containing lab. Used in resource URIs.",
         SerializedName = @"userName",
         PossibleTypes = new [] { typeof(string) })]
@@ -187,6 +214,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.",
         SerializedName = @"virtualMachineName",
         PossibleTypes = new [] { typeof(string) })]

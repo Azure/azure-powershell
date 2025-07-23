@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Description(@"List the operations for the provider")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.HttpPath(Path = "/providers/LambdaTest.HyperExecute/operations", ApiVersion = "2024-02-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.HttpPath(Path = "/providers/LambdaTest.HyperExecute/operations", ApiVersion = "2024-02-01")]
     public partial class GetAzLambdaTestOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.IContext

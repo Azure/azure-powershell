@@ -573,7 +573,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         }
 
         /// <summary>
-        /// Lazy creation of a single instance of a resoures client
+        /// Lazy creation of a single instance of a resources client
         /// </summary>
         private ResourceManagementClient GetCurrentResourcesClient()
         {

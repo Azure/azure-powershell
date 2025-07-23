@@ -193,7 +193,7 @@
     <value>Primary Certificate Thumbprint: {0} Secondary Certificate Thumbprint: {1}</value>
   </data>
   <data name="ResetCertificateMessageFormat3" xml:space="preserve">
-    <value>Succesfully retrieved secondary certificate with thumbprint: {0} from store with HResult: {1}</value>
+    <value>Successfully retrieved secondary certificate with thumbprint: {0} from store with HResult: {1}</value>
   </data>
   <data name="ResetCertificateMessageFormat4" xml:space="preserve">
     <value>Failed to retrieve the secondary certificate from store with HResult: {0}</value>
@@ -294,9 +294,6 @@
   <data name="AgentMI_InvalidSecretFileError" xml:space="preserve">
     <value>Secret file is invalid. It is either empty, not in the expected directory, or not of file type .key.</value>
   </data>
-  <data name="AgentMI_MissingSecretFilePathOnServerError" xml:space="preserve">
-    <value>Secret file path does not exist on the server.</value>
-  </data>
   <data name="AgentMI_MissingSystemAssignedIdentityError" xml:space="preserve">
     <value>No system-assigned Managed Identity was found for this resource.</value>
   </data>
@@ -326,5 +323,8 @@
   </data>
   <data name="AgentMI_ArcServerNotEnabled" xml:space="preserve">
     <value>&gt;This hybrid server is not Azure Arc-enabled. Please ensure that the Azure Connected Machine agent is installed and the server is connected to Azure Arc.</value>
+  </data>
+  <data name="AgentMI_ProgramDataNotFoundError" xml:space="preserve">
+    <value>GetEnvironmentVariable failed to find 'ProgramData'</value>
   </data>
 </root>

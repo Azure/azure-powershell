@@ -24,7 +24,7 @@ namespace Commands.StorageSync.Interop.DataObjects
     public sealed class Win32Helper
     {
         /// <summary>
-        /// Coes the create instance.
+        /// Does the create instance.
         /// </summary>
         /// <param name="clsid">The CLSID.</param>
         /// <param name="inner">The inner.</param>
@@ -43,7 +43,7 @@ namespace Commands.StorageSync.Interop.DataObjects
             out IntPtr rReturnedComObject);
 
         /// <summary>
-        /// Coes the initialize.
+        /// Does the initialize.
         /// </summary>
         /// <param name="reserved3">The reserved3.</param>
         /// <returns>Int32.</returns>
@@ -53,7 +53,7 @@ namespace Commands.StorageSync.Interop.DataObjects
             );
 
         /// <summary>
-        /// Coes the set proxy blanket.
+        /// Does the set proxy blanket.
         /// </summary>
         /// <param name="pProxy">The p proxy.</param>
         /// <param name="dwAuthnSvc">The dw authn SVC.</param>
@@ -62,7 +62,7 @@ namespace Commands.StorageSync.Interop.DataObjects
         /// <param name="dwAuthnLevel">The dw authn level.</param>
         /// <param name="dwImpLevel">The dw imp level.</param>
         /// <param name="pAuthInfo">The p authentication information.</param>
-        /// <param name="dwCapababilities">The dw capababilities.</param>
+        /// <param name="dwCapababilities">The dw capabilities.</param>
         /// <returns>System.Int32.</returns>
         [DllImport("ole32.DLL", CharSet = CharSet.Auto)]
         public static extern int CoSetProxyBlanket(

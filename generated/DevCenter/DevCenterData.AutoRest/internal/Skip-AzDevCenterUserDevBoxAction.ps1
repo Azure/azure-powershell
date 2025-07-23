@@ -56,7 +56,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/skip-azdevcenteruserdevboxaction
+https://learn.microsoft.com/powershell/module/az.devcenter/skip-azdevcenteruserdevboxaction
 #>
 function Skip-AzDevCenterUserDevBoxAction {
 [OutputType([System.Boolean])]

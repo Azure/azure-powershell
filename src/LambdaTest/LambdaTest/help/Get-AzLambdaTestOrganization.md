@@ -14,7 +14,8 @@ Get a OrganizationResource
 
 ### List (Default)
 ```
-Get-AzLambdaTestOrganization [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLambdaTestOrganization [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get

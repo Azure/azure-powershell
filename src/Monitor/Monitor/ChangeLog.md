@@ -19,6 +19,33 @@
 -->
 
 ## Upcoming Release
+* Added breaking change announcement for below cmdlets from single object or fixed array to list.
+  - `Get-AzActivityLogAlert`
+  - `New-AzActivityLogAlert`
+  - `Update-AzActivityLogAlert`
+  - `New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject`
+  - `New-AzActivityLogAlertAlertRuleLeafConditionObject`
+  - `Get-AzAutoscalePredictiveMetric`
+  - `Get-AzAutoscaleSetting`
+  - `New-AzAutoscaleNotificationObject`
+  - `New-AzAutoscaleProfileObject`
+  - `New-AzAutoscaleScaleRuleMetricDimensionObject`
+  - `New-AzAutoscaleScaleRuleObject`
+  - `New-AzAutoscaleSetting`
+  - `Update-AzAutoscaleSetting`
+  - `Get-AzMonitorWorkspace`
+  - `New-AzMonitorWorkspace`
+  - `Update-AzMonitorWorkspace`
+  - `New-AzDiagnosticSetting`
+  - `New-AzSubscriptionDiagnosticSetting`
+  - `Get-AzDiagnosticSetting`
+  - `Get-AzDiagnosticSettingCategory`
+  - `Get-AzSubscriptionDiagnosticSetting`
+  - `Get-AzScheduledQueryRule`
+  - `New-AzScheduledQueryRule`
+  - `New-AzScheduledQueryRuleConditionObject`
+  - `New-AzScheduledQueryRuleDimensionObject`
+  - `Update-AzScheduledQueryRule`
 
 ## Version 6.0.2
 * Pipeline Group upgraded API version to 2024-10-01-preview
