@@ -57,17 +57,9 @@ namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
                     (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) => new UrlDecodingRecordMatcher(ignoreResourcesClient, resourceProviders, userAgentsToIgnore)
                 )
                 .WithManagementClients(context =>
-                    {
-                        AdlsClientFactory.IsTest = true;
-                        var creds = context.GetClientCredentials(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix);
-                        AdlsClientFactory.CustomDelegatingHAndler = context.AddHandlers(creds, new AdlMockDelegatingHandler());
-                        AdlsClientFactory.MockCredentials = creds;
-                        return new object();
-                    }
-                )
-                .WithCleanupAction(
-                    () => AdlsClientFactory.IsTest = false
-                )
+                {
+                    return new object();
+                })
                 .Build();
         }
     }
