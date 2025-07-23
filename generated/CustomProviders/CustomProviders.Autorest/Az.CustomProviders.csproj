@@ -3,6 +3,7 @@
     <PsModuleName>CustomProviders</PsModuleName>
     <PsRootModuleName>CustomProviders</PsRootModuleName>
     <PsModuleFolder>CustomProviders.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

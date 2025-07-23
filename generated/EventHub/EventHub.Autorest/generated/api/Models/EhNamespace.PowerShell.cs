@@ -170,6 +170,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Encryption = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEncryption) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Encryption, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.EncryptionTypeConverter.ConvertFrom);
             }
+            if (content.Contains("PlatformCapability"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).PlatformCapability = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPlatformCapabilities) content.GetValueForProperty("PlatformCapability",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).PlatformCapability, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.PlatformCapabilitiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("IdentityType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).IdentityType, global::System.Convert.ToString);
@@ -266,6 +270,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).KeySource = (string) content.GetValueForProperty("KeySource",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).KeySource, global::System.Convert.ToString);
             }
+            if (content.Contains("PlatformCapabilityConfidentialCompute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).PlatformCapabilityConfidentialCompute = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConfidentialCompute) content.GetValueForProperty("PlatformCapabilityConfidentialCompute",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).PlatformCapabilityConfidentialCompute, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ConfidentialComputeTypeConverter.ConvertFrom);
+            }
             if (content.Contains("KeyVaultProperty"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).KeyVaultProperty = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IKeyVaultProperties>) content.GetValueForProperty("KeyVaultProperty",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).KeyVaultProperty, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IKeyVaultProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.KeyVaultPropertiesTypeConverter.ConvertFrom));
@@ -273,6 +281,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             if (content.Contains("RequireInfrastructureEncryption"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).RequireInfrastructureEncryption = (bool?) content.GetValueForProperty("RequireInfrastructureEncryption",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).RequireInfrastructureEncryption, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ConfidentialComputeMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).ConfidentialComputeMode = (string) content.GetValueForProperty("ConfidentialComputeMode",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).ConfidentialComputeMode, global::System.Convert.ToString);
             }
             if (content.Contains("GeoDataReplicationMaxReplicationLagDurationInSecond"))
             {
@@ -367,6 +379,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Encryption = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEncryption) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).Encryption, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.EncryptionTypeConverter.ConvertFrom);
             }
+            if (content.Contains("PlatformCapability"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).PlatformCapability = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPlatformCapabilities) content.GetValueForProperty("PlatformCapability",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).PlatformCapability, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.PlatformCapabilitiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("IdentityType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).IdentityType, global::System.Convert.ToString);
@@ -463,6 +479,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).KeySource = (string) content.GetValueForProperty("KeySource",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).KeySource, global::System.Convert.ToString);
             }
+            if (content.Contains("PlatformCapabilityConfidentialCompute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).PlatformCapabilityConfidentialCompute = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConfidentialCompute) content.GetValueForProperty("PlatformCapabilityConfidentialCompute",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).PlatformCapabilityConfidentialCompute, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ConfidentialComputeTypeConverter.ConvertFrom);
+            }
             if (content.Contains("KeyVaultProperty"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).KeyVaultProperty = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IKeyVaultProperties>) content.GetValueForProperty("KeyVaultProperty",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).KeyVaultProperty, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IKeyVaultProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.KeyVaultPropertiesTypeConverter.ConvertFrom));
@@ -470,6 +490,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             if (content.Contains("RequireInfrastructureEncryption"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).RequireInfrastructureEncryption = (bool?) content.GetValueForProperty("RequireInfrastructureEncryption",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).RequireInfrastructureEncryption, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ConfidentialComputeMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).ConfidentialComputeMode = (string) content.GetValueForProperty("ConfidentialComputeMode",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal)this).ConfidentialComputeMode, global::System.Convert.ToString);
             }
             if (content.Contains("GeoDataReplicationMaxReplicationLagDurationInSecond"))
             {

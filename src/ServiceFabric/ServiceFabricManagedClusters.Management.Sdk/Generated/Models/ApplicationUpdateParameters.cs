@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
     using System.Linq;
 
     /// <summary>
-    /// Application update request
+    /// Application update request.
     /// </summary>
     public partial class ApplicationUpdateParameters
     {

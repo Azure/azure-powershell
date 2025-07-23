@@ -73,7 +73,7 @@ directive:
       subject: (ActivityLogAlert)(.*)
     set:
       subject-prefix: ""
-
+  # Add breaking change for them, will add back. 
   - model-cmdlet:
     - model-name: AlertRuleAnyOfOrLeafCondition
     - model-name: AlertRuleLeafCondition

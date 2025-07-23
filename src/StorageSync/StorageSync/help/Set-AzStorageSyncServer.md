@@ -14,20 +14,16 @@ This command will set the server with identity. This helps to enable the server 
 
 ### StringParameterSet (Default)
 ```
-Set-AzStorageSyncServer [-ResourceGroupName] <String> [-StorageSyncServiceName] <String> [-Identity] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzStorageSyncServer [-ResourceGroupName] <String> [-StorageSyncServiceName] <String> [-ServerId] <String>
+ [-Identity] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectParameterSet
 ```
-Set-AzStorageSyncServer [-ParentObject] <PSStorageSyncService>  [-Identity] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ParentStringParameterSet
-```
-Set-AzStorageSyncServer [-ParentResourceId] <String>  [-Identity] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzStorageSyncServer [-InputObject] <PSRegisteredServer> [-Identity] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,13 +71,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ParentObject
-StorageSyncService Object, normally passed through the parameter.
+### -Identity
+Registered Server Identity
 
 ```yaml
-Type: Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+RegisteredServer Object, normally passed through the parameter.
+
+```yaml
+Type: Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer
 Parameter Sets: ObjectParameterSet
-Aliases: StorageSyncService
+Aliases: RegisteredServer
 
 Required: True
 Position: 0
@@ -90,18 +101,18 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ParentResourceId
-StorageSyncService Parent Resource Id
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.String
-Parameter Sets: ParentStringParameterSet
-Aliases: StorageSyncServiceId
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -116,7 +127,22 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServerId
+Name of the RegisteredServer.
+
+```yaml
+Type: System.String
+Parameter Sets: StringParameterSet
+Aliases: RegisteredServerName
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -130,21 +156,6 @@ Aliases: ParentName
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -CloudTiering
-Identity Parameter
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -181,7 +192,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
