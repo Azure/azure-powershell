@@ -1,5 +1,5 @@
 ---
-external help file: Az.Migrate-help.xml
+external help file:
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/set-azmigratelocalserverreplication
 schema: 2.0.0
@@ -61,7 +61,7 @@ SystemDataLastModifiedBy           :
 SystemDataLastModifiedByType       : 
 TargetFabricProviderId             : 22f00372-a1b7-467f-87ce-d95e17a6e7c7
 Task                               : {Creating or updating the protected item, Initializing Protection, Enabling Protection, Starting Replication}
-Type                               : Microsoft.DataReplication/replicationVaults/jobs
+Type                               : Microsoft.DataReplication/replicationVaults/jobs	
 ```
 
 Update dynamic memory configuration.
@@ -248,3 +248,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
