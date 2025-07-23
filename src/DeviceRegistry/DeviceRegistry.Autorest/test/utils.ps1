@@ -331,6 +331,205 @@ function setupEnv() {
         }
     })
 
+    $env.Add("namespaceAssetTests", @{
+        namespaceName = "adr-namespace"
+        createTests = @{
+            CreateExpanded = @{
+                name = "test-ns-asset-create-expanded"
+                properties = @{
+                    deviceRef = @{
+                        deviceName = "myDeviceName"
+                        endpointName = "myEndpointName"
+                    }
+                    externalAssetId = "test-ns-asset-externalAssetId"
+                    displayName = "test-ns-asset-displayName"
+                    manufacturer = "Contoso123"
+                    manufacturerUri = "https://contoso.com"
+                    model = "ContosoModel"
+                    productCode = "SA34VDG"
+                    softwareRevision = "2.0"
+                    hardwareRevision = "1.0"
+                    serialNumber = "64-103816-519918-8"
+                    documentationUri = "https://www.example.com/manual"
+                }
+            }
+            CreateViaJsonFilePath = @{
+                name = "test-ns-asset-create-json-file-path"
+                jsonFilePath = "./jsonFiles/CreateNamespaceAsset.json"
+            }
+            CreateViaJsonString = @{
+                name = "test-ns-asset-create-json-string"
+                jsonFilePath = "./jsonFiles/CreateNamespaceAsset.json"
+            }
+        }
+        getTests = @{
+            jsonFilePath = "./jsonFiles/CreateNamespaceAsset.json"
+            List = @{
+                name1 = "test-ns-asset-list1"
+                name2 = "test-ns-asset-list2"
+            }
+            GetViaIdentityNamespace = @{
+                name = "test-ns-asset-get-via-identity"
+            }
+            Get = @{
+                name = "test-ns-asset-get"
+            }
+            GetViaIdentity = @{
+                name = "test-ns-asset-get-via-identity"
+            }
+        }
+        deleteTests = @{
+            jsonFilePath = "./jsonFiles/CreateNamespaceAsset.json"
+            Delete = @{
+                name = "test-ns-asset-delete"
+            }
+            DeleteViaIdentityNamespace = @{
+                name = "test-ns-asset-delete-via-identity"
+            }
+            DeleteViaIdentity = @{
+                name = "test-ns-asset-delete-via-identity"
+            }
+        }
+        updateTests = @{
+            createJsonFilePath = "./jsonFiles/CreateNamespaceAsset.json"
+            commonPatchConfig = @{
+                documentationUri = "https://www.example.com/foo"
+                displayName = "foo-asset-displayName"
+            }
+            commonProperties = @{
+                deviceRef = @{
+                    deviceName = "myDeviceName"
+                    endpointName = "myEndpointName"
+                }
+                externalAssetId = "test-asset-externalAssetId"
+                displayName = "test-ns-asset-displayName"
+                manufacturer = "Contoso123"
+                manufacturerUri = "https://www.contoso.com/manufacturerUri"
+                model = "ContosoModel"
+                productCode = "SA34VDG"
+                softwareRevision = "2.0"
+                serialNumber = "64-103816-519918-8"
+                documentationUri = "https://www.example.com/manual"
+            }
+            UpdateExpanded = @{
+                name = "test-ns-asset-update"
+            }
+            UpdateViaJsonString = @{
+                name = "test-ns-asset-update-via-json-string"
+                updateJsonFilePath = "./jsonFiles/UpdateNamespaceAsset.json"
+            }
+            UpdateViaJsonFilePath = @{
+                name = "test-ns-asset-update-via-json-file-path"
+                updateJsonFilePath = "./jsonFiles/UpdateNamespaceAsset.json"
+            }
+            UpdateViaIdentityNamespaceExpanded = @{
+                name = "test-ns-asset-update-via-identity-ns-expanded"
+            }
+            UpdateViaIdentityExpanded = @{
+                name = "test-ns-asset-update-via-identity-expanded"
+            }
+        }
+    })
+
+    $env.Add("namespaceDiscoveredAssetTests", @{
+        namespaceName = "adr-namespace"
+        createTests = @{
+            CreateExpanded = @{
+                name = "test-ns-dasset-create-expanded"
+                properties = @{
+                    deviceRef = @{
+                        deviceName = "myDeviceName"
+                        endpointName = "myEndpointName"
+                    }
+                    displayName = "test-ns-dasset-displayName"
+                    manufacturer = "Contoso123"
+                    manufacturerUri = "https://contoso.com"
+                    model = "ContosoModel"
+                    productCode = "SA34VDG"
+                    softwareRevision = "2.0"
+                    hardwareRevision = "1.0"
+                    serialNumber = "64-103816-519918-8"
+                    documentationUri = "https://www.example.com/manual"
+                }
+            }
+            CreateViaJsonFilePath = @{
+                name = "test-ns-dasset-create-json-file-path"
+                jsonFilePath = "./jsonFiles/CreateNamespaceDiscoveredAsset.json"
+            }
+            CreateViaJsonString = @{
+                name = "test-ns-dasset-create-json-string"
+                jsonFilePath = "./jsonFiles/CreateNamespaceDiscoveredAsset.json"
+            }
+        }
+        getTests = @{
+            jsonFilePath = "./jsonFiles/CreateNamespaceDiscoveredAsset.json"
+            List = @{
+                name1 = "test-ns-dasset-list1"
+                name2 = "test-ns-dasset-list2"
+            }
+            GetViaIdentityNamespace = @{
+                name = "test-ns-dasset-get-via-identity"
+            }
+            Get = @{
+                name = "test-ns-dasset-get"
+            }
+            GetViaIdentity = @{
+                name = "test-ns-dasset-get-via-identity"
+            }
+        }
+        deleteTests = @{
+            jsonFilePath = "./jsonFiles/CreateNamespaceDiscoveredAsset.json"
+            Delete = @{
+                name = "test-ns-dasset-delete"
+            }
+            DeleteViaIdentityNamespace = @{
+                name = "test-ns-dasset-delete-via-identity"
+            }
+            DeleteViaIdentity = @{
+                name = "test-ns-dasset-delete-via-identity"
+            }
+        }
+        updateTests = @{
+            createJsonFilePath = "./jsonFiles/CreateNamespaceDiscoveredAsset.json"
+            commonPatchConfig = @{
+                documentationUri = "https://www.example.com/foo"
+                displayName = "foo-dasset-displayName"
+            }
+            commonProperties = @{
+                deviceRef = @{
+                    deviceName = "myDeviceName"
+                    endpointName = "myEndpointName"
+                }
+                displayName = "test-ns-dasset-displayName"
+                manufacturer = "Contoso123"
+                manufacturerUri = "https://contoso.com"
+                model = "ContosoModel"
+                productCode = "SA34VDG"
+                softwareRevision = "2.0"
+                hardwareRevision = "1.0"
+                serialNumber = "64-103816-519918-8"
+                documentationUri = "https://www.example.com/manual"
+            }
+            UpdateExpanded = @{
+                name = "test-ns-dasset-update"
+            }
+            UpdateViaJsonString = @{
+                name = "test-ns-dasset-update-via-json-string"
+                updateJsonFilePath = "./jsonFiles/UpdateNamespaceDiscoveredAsset.json"
+            }
+            UpdateViaJsonFilePath = @{
+                name = "test-ns-dasset-update-via-json-file-path"
+                updateJsonFilePath = "./jsonFiles/UpdateNamespaceDiscoveredAsset.json"
+            }
+            UpdateViaIdentityNamespaceExpanded = @{
+                name = "test-ns-dasset-update-via-identity-ns-expanded"
+            }
+            UpdateViaIdentityExpanded = @{
+                name = "test-ns-dasset-update-via-identity-expanded"
+            }
+        }
+    })
+
     # Save the $env to a file
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
