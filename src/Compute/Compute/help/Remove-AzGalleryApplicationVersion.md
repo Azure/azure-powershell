@@ -1,5 +1,5 @@
 ---
-external help file: Az.Compute-help.xml
+external help file:
 Module Name: Az.Compute
 online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azgalleryapplicationversion
 schema: 2.0.0
@@ -16,13 +16,13 @@ Delete a gallery Application Version.
 ```
 Remove-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzGalleryApplicationVersion -InputObject <IComputeIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,9 +30,9 @@ Delete a gallery Application Version.
 
 ## EXAMPLES
 
-### Example 1: Remove a Gallery Application Version
+### Example 1: Remove a Gallery Application Version 
 ```powershell
-Remove-AzGalleryApplicationVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -Name $name
+Remove-AzGalleryApplicationVersion -ResourceGroupName $rgNmae -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -Name $name
 ```
 
 Delete a gallery application version.
@@ -237,3 +237,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

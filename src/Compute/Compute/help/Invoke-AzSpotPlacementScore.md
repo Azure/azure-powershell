@@ -1,5 +1,5 @@
 ---
-external help file: Az.Compute-help.xml
+external help file:
 Module Name: Az.Compute
 online version: https://learn.microsoft.com/powershell/module/az.compute/invoke-azspotplacementscore
 schema: 2.0.0
@@ -16,28 +16,27 @@ Generates placement scores for Spot VM skus.
 ```
 Invoke-AzSpotPlacementScore -Location <String> [-SubscriptionId <String>] [-AvailabilityZone]
  [-DesiredCount <Int32>] [-DesiredLocation <String[]>] [-DesiredSize <IResourceSize[]>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Post
 ```
-Invoke-AzSpotPlacementScore -Location <String> [-SubscriptionId <String>]
- -SpotPlacementScoresInput <ISpotPlacementScoresInput> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### PostViaIdentityExpanded
-```
-Invoke-AzSpotPlacementScore -InputObject <IComputeIdentity> [-AvailabilityZone] [-DesiredCount <Int32>]
- [-DesiredLocation <String[]>] [-DesiredSize <IResourceSize[]>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzSpotPlacementScore -Location <String> -SpotPlacementScoresInput <ISpotPlacementScoresInput>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PostViaIdentity
 ```
 Invoke-AzSpotPlacementScore -InputObject <IComputeIdentity>
- -SpotPlacementScoresInput <ISpotPlacementScoresInput> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SpotPlacementScoresInput <ISpotPlacementScoresInput> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### PostViaIdentityExpanded
+```
+Invoke-AzSpotPlacementScore -InputObject <IComputeIdentity> [-AvailabilityZone] [-DesiredCount <Int32>]
+ [-DesiredLocation <String[]>] [-DesiredSize <IResourceSize[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -265,7 +264,7 @@ The desired resource SKUs.
 To construct, see NOTES section for DESIREDSIZE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.IResourceSize[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.IResourceSize[]
 Parameter Sets: PostExpanded, PostViaIdentityExpanded
 Aliases:
 
@@ -282,7 +281,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: PostViaIdentityExpanded, PostViaIdentity
+Parameter Sets: PostViaIdentity, PostViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -297,7 +296,7 @@ The name of the Azure region.
 
 ```yaml
 Type: System.String
-Parameter Sets: PostExpanded, Post
+Parameter Sets: Post, PostExpanded
 Aliases:
 
 Required: True
@@ -312,7 +311,7 @@ SpotPlacementScores API Input.
 To construct, see NOTES section for SPOTPLACEMENTSCORESINPUT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresInput
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresInput
 Parameter Sets: Post, PostViaIdentity
 Aliases: SpotPlacementRecommenderInput
 
@@ -329,7 +328,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: PostExpanded, Post
+Parameter Sets: Post, PostExpanded
 Aliases:
 
 Required: False
@@ -375,13 +374,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresInput
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresInput
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresResponse
 
 ## NOTES
 
@@ -390,3 +389,4 @@ ALIASES
 Invoke-AzSpotPlacementRecommender
 
 ## RELATED LINKS
+

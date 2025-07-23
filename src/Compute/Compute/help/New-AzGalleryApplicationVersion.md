@@ -1,5 +1,5 @@
 ---
-external help file: Az.Compute-help.xml
+external help file:
 Module Name: Az.Compute
 online version: https://learn.microsoft.com/powershell/module/az.compute/new-azgalleryapplicationversion
 schema: 2.0.0
@@ -14,12 +14,12 @@ Create or update a gallery Application Version.
 
 ```
 New-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String> -Install <String> -Remove <String>
- [-DefaultConfigFileLink <String>] [-PackageFileLink <String>] [-PublishingProfileEndOfLifeDate <DateTime>]
+ -ResourceGroupName <String> -Install <String> -Location <String> -Remove <String> [-SubscriptionId <String>]
+ [-ConfigFileName <String>] [-DefaultConfigFileLink <String>] [-PackageFileLink <String>]
+ [-PackageFileName <String>] [-PublishingProfileEndOfLifeDate <DateTime>]
  [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>] [-Tag <Hashtable>]
- [-TargetRegion <ITargetRegion[]>] [-Update <String>] [-PackageFileName <String>] [-ConfigFileName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-TargetRegion <ITargetRegion[]>] [-Update <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +35,7 @@ $storAcc = Get-AzStorageAccount -ResourceGroupName $rgName -Name $storAccName
 $blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $storAcc.Context
 $SASToken = New-AzStorageBlobSASToken -Container $containerName -Blob $blobName -Permission rwd -Context $storAcc.Context
 $SASUri = $blob.ICloudBlob.Uri.AbsoluteUri + $SASToken 
-New-AzGalleryApplicationVersion -ResourceGroupName $rgname -Location EastUS -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -name "0.1.0" -PackageFileLink $SASUri -Install "powershell -command 'Expand-Archive -Path package.zip -DestinationPath C:\\package\'" -Remove "del C:\\package"
+New-AzGalleryApplicationVersion -ResourceGroupName $rgname -Location EastUS -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -name "0.1.0" -PackageFileLink $SASUri -Install "powershell -command 'Expand-Archive -Path package.zip -DestinationPath C:\\package\'" -Remove "del C:\\package" 
 ```
 
 Creating a Gallery Application Version.
@@ -426,3 +426,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

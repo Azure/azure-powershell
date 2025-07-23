@@ -16,7 +16,7 @@ Adds a Rules Identity to a PSGalleryInVmAccessControlProfileVersion object.
 Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity
  -GalleryInVmAccessControlProfileVersion <PSGalleryInVMAccessControlProfileVersion> -IdentityName <String>
  [-UserName <String>] [-GroupName <String>] [-ExePath <String>] [-ProcessName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -123,21 +123,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

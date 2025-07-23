@@ -1,5 +1,5 @@
 ---
-external help file: Az.Compute-help.xml
+external help file:
 Module Name: Az.Compute
 online version: https://learn.microsoft.com/powershell/module/az.compute/update-azgalleryapplicationversion
 schema: 2.0.0
@@ -15,11 +15,11 @@ Update a gallery Application Version.
 ### UpdateExpanded (Default)
 ```
 Update-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -PackageFileLink <String>
+ -ResourceGroupName <String> -PackageFileLink <String> [-SubscriptionId <String>]
  [-DefaultConfigFileLink <String>] [-PublishingProfileEndOfLifeDate <DateTime>]
  [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>] [-Tag <Hashtable>]
- [-TargetRegion <ITargetRegion[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TargetRegion <ITargetRegion[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -27,8 +27,8 @@ Update-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName
 Update-AzGalleryApplicationVersion -InputObject <IComputeIdentity> -PackageFileLink <String>
  [-DefaultConfigFileLink <String>] [-PublishingProfileEndOfLifeDate <DateTime>]
  [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>] [-Tag <Hashtable>]
- [-TargetRegion <ITargetRegion[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TargetRegion <ITargetRegion[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +44,7 @@ $storAcc = Get-AzStorageAccount -ResourceGroupName $rgName -Name $storAccName
 $blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $storAcc.Context
 $SASToken = New-AzStorageBlobSASToken -Container $containerName -Blob $blobName -Permission rwd -Context $storAcc.Context
 $SASUri = $blob.ICloudBlob.Uri.AbsoluteUri + "?" +$SASToken 
-Update-AzGalleryApplicationVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -name "0.1.0" -PackageFileLink $SASUri -ReplicaCount 3
+Update-AzGalleryApplicationVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -name "0.1.0" -PackageFileLink $SASUri -ReplicaCount 3 
 ```
 
 Updating a Gallery Application Version's replica count.
@@ -350,3 +350,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

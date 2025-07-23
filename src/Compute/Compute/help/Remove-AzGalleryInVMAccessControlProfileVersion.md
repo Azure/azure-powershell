@@ -16,21 +16,21 @@ Removes a specific version of a gallery inVMAccessControlProfile.
 ```
 Remove-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName <String> -GalleryName <String>
  -GalleryInVMAccessControlProfileName <String> -GalleryInVMAccessControlProfileVersionName <String> [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
 Remove-AzGalleryInVMAccessControlProfileVersion [-Force] -ResourceId <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ObjectParameter
 ```
 Remove-AzGalleryInVMAccessControlProfileVersion [-Force] -InputObject <PSGalleryInVMAccessControlProfile>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -150,21 +150,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

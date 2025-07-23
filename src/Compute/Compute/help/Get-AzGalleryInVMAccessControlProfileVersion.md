@@ -16,13 +16,13 @@ Gets the specified version of a gallery inVMAccessControlProfile or a list of ve
 ```
 Get-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName <String> -GalleryName <String>
  -GalleryInVMAccessControlProfileName <String> [-GalleryInVMAccessControlProfileVersionName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
 Get-AzGalleryInVMAccessControlProfileVersion [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,21 +103,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

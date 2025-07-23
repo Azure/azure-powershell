@@ -15,7 +15,7 @@ Adds a Rules Role to a PSGalleryInVmAccessControlProfileVersion object.
 ```
 Add-AzGalleryInVMAccessControlProfileVersionRulesRole
  -GalleryInVmAccessControlProfileVersion <PSGalleryInVMAccessControlProfileVersion> -RoleName <String>
- -Privilege <String[]> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ -Privilege <String[]> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -78,21 +78,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

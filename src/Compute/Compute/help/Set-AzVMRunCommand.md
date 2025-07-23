@@ -1,5 +1,5 @@
 ---
-external help file: Az.Compute-help.xml
+external help file:
 Module Name: Az.Compute
 online version: https://learn.microsoft.com/powershell/module/az.compute/set-azvmruncommand
 schema: 2.0.0
@@ -14,8 +14,8 @@ The operation to create or update the run command.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzVMRunCommand -ResourceGroupName <String> -RunCommandName <String> -VMName <String>
- [-SubscriptionId <String>] -Location <String> [-AsyncExecution] [-ErrorBlobManagedIdentityClientId <String>]
+Set-AzVMRunCommand -ResourceGroupName <String> -RunCommandName <String> -VMName <String> -Location <String>
+ [-SubscriptionId <String>] [-AsyncExecution] [-ErrorBlobManagedIdentityClientId <String>]
  [-ErrorBlobManagedIdentityObjectId <String>] [-ErrorBlobUri <String>]
  [-OutputBlobManagedIdentityClientId <String>] [-OutputBlobManagedIdentityObjectId <String>]
  [-OutputBlobUri <String>] [-Parameter <IRunCommandInputParameter[]>]
@@ -23,20 +23,20 @@ Set-AzVMRunCommand -ResourceGroupName <String> -RunCommandName <String> -VMName 
  [-ScriptUriManagedIdentityClientId <String>] [-ScriptUriManagedIdentityObjectId <String>]
  [-SourceCommandId <String>] [-SourceScript <String>] [-SourceScriptUri <String>] [-Tag <Hashtable>]
  [-TimeoutInSecond <Int32>] [-TreatFailureAsDeploymentFailure] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ScriptLocalPath
 ```
-Set-AzVMRunCommand -ResourceGroupName <String> -RunCommandName <String> -VMName <String>
- [-SubscriptionId <String>] -Location <String> [-AsyncExecution] [-ErrorBlobManagedIdentityClientId <String>]
- [-ErrorBlobManagedIdentityObjectId <String>] [-ErrorBlobUri <String>]
- [-OutputBlobManagedIdentityClientId <String>] [-OutputBlobManagedIdentityObjectId <String>]
- [-OutputBlobUri <String>] [-Parameter <IRunCommandInputParameter[]>]
- [-ProtectedParameter <IRunCommandInputParameter[]>] [-RunAsPassword <String>] [-RunAsUser <String>]
- [-ScriptUriManagedIdentityClientId <String>] [-ScriptUriManagedIdentityObjectId <String>] [-Tag <Hashtable>]
- [-TimeoutInSecond <Int32>] [-TreatFailureAsDeploymentFailure] -ScriptLocalPath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+Set-AzVMRunCommand -ResourceGroupName <String> -RunCommandName <String> -VMName <String> -Location <String>
+ -ScriptLocalPath <String> [-SubscriptionId <String>] [-AsyncExecution]
+ [-ErrorBlobManagedIdentityClientId <String>] [-ErrorBlobManagedIdentityObjectId <String>]
+ [-ErrorBlobUri <String>] [-OutputBlobManagedIdentityClientId <String>]
+ [-OutputBlobManagedIdentityObjectId <String>] [-OutputBlobUri <String>]
+ [-Parameter <IRunCommandInputParameter[]>] [-ProtectedParameter <IRunCommandInputParameter[]>]
+ [-RunAsPassword <String>] [-RunAsUser <String>] [-ScriptUriManagedIdentityClientId <String>]
+ [-ScriptUriManagedIdentityObjectId <String>] [-Tag <Hashtable>] [-TimeoutInSecond <Int32>]
+ [-TreatFailureAsDeploymentFailure] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -406,6 +406,7 @@ Accept wildcard characters: False
 
 ### -ScriptLocalPath
 
+
 ```yaml
 Type: System.String
 Parameter Sets: ScriptLocalPath
@@ -618,3 +619,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
