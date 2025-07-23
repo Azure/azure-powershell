@@ -141,6 +141,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public int? VCore { get; set; }
 
         /// <summary>
+        /// Gets or sets the Storage IOps for instance
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Determines how much Storage IOps to associate with instance.")]
+        public int MemorySizeInGb { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not the public data endpoint is enabled.
         /// </summary>
         [Parameter(Mandatory = false,

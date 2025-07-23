@@ -234,9 +234,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
-        public static void Delete(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName)
+        public static ManagedInstancesDeleteHeaders Delete(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName)
         {
-                ((IManagedInstancesOperations)operations).DeleteAsync(resourceGroupName, managedInstanceName).GetAwaiter().GetResult();
+                return ((IManagedInstancesOperations)operations).DeleteAsync(resourceGroupName, managedInstanceName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -255,9 +255,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedInstancesDeleteHeaders> DeleteAsync(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, managedInstanceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, managedInstanceName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Updates a managed instance.
@@ -316,9 +319,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='replicaType'>
         /// The type of replica to be failed over.
         /// </param>
-        public static void Failover(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, string replicaType = default(string))
+        public static ManagedInstancesFailoverHeaders Failover(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, string replicaType = default(string))
         {
-                ((IManagedInstancesOperations)operations).FailoverAsync(resourceGroupName, managedInstanceName, replicaType).GetAwaiter().GetResult();
+                return ((IManagedInstancesOperations)operations).FailoverAsync(resourceGroupName, managedInstanceName, replicaType).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -340,9 +343,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task FailoverAsync(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, string replicaType = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedInstancesFailoverHeaders> FailoverAsync(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, string replicaType = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.FailoverWithHttpMessagesAsync(resourceGroupName, managedInstanceName, replicaType, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.FailoverWithHttpMessagesAsync(resourceGroupName, managedInstanceName, replicaType, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Gets the collection of outbound network dependencies for the given managed
@@ -651,9 +657,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
-        public static void BeginDelete(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName)
+        public static ManagedInstancesDeleteHeaders BeginDelete(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName)
         {
-                ((IManagedInstancesOperations)operations).BeginDeleteAsync(resourceGroupName, managedInstanceName).GetAwaiter().GetResult();
+                return ((IManagedInstancesOperations)operations).BeginDeleteAsync(resourceGroupName, managedInstanceName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -672,9 +678,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedInstancesDeleteHeaders> BeginDeleteAsync(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, managedInstanceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, managedInstanceName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Updates a managed instance.
@@ -733,9 +742,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='replicaType'>
         /// The type of replica to be failed over.
         /// </param>
-        public static void BeginFailover(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, string replicaType = default(string))
+        public static ManagedInstancesFailoverHeaders BeginFailover(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, string replicaType = default(string))
         {
-                ((IManagedInstancesOperations)operations).BeginFailoverAsync(resourceGroupName, managedInstanceName, replicaType).GetAwaiter().GetResult();
+                return ((IManagedInstancesOperations)operations).BeginFailoverAsync(resourceGroupName, managedInstanceName, replicaType).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -757,9 +766,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginFailoverAsync(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, string replicaType = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedInstancesFailoverHeaders> BeginFailoverAsync(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, string replicaType = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginFailoverWithHttpMessagesAsync(resourceGroupName, managedInstanceName, replicaType, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginFailoverWithHttpMessagesAsync(resourceGroupName, managedInstanceName, replicaType, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Refresh external governance enablement status.

@@ -179,6 +179,17 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public int VCore { get; set; }
 
         /// <summary>
+        /// Gets or sets the Storage IOps for instance
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Determines how much Storage IOps to associate with instance.",
+            ParameterSetName = NewBySkuNameParameterSet)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "Determines how much Storage IOps to associate with instance.",
+            ParameterSetName = NewByEditionAndComputeGenerationParameterSet)]
+        public int MemorySizeInGb { get; set; }
+
+        /// <summary>
         /// Gets or sets the instance SKU name
         /// </summary>
         [Parameter(ParameterSetName = NewBySkuNameParameterSet,

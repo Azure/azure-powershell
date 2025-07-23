@@ -1027,6 +1027,16 @@ function Get-DefaultManagedInstanceParametersHermesTesting()
 	}
 }
 
+function Get-DefaultManagedInstanceParametersFlexibleMemoryTesting()
+{
+	return @{
+		rg = "flexible-memory-validation";
+		location = "eastus2euap";
+		subnet = "/subscriptions/62e48210-5e43-423e-889b-c277f3e08c39/resourceGroups/flexible-memory-validation/providers/Microsoft.Network/virtualNetworks/vnet-createmanagedinstance-fleximem/subnets/ManagedInstance";
+		subscriptionId = "62e48210-5e43-423e-889b-c277f3e08c39";
+	}
+}
+
 <#
 	.SYNOPSIS
 	Creates the test environment needed to perform the Sql managed instance CRUD tests

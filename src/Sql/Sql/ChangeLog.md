@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+placeholder to sql mi flexible memory feature
 
 ## Version 6.0.4
 * Added server level action groups in enum of action groups to be able to be configured via auditing.
