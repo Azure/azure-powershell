@@ -1,15 +1,15 @@
 {
-  "SubscriptionId": "17ee8ecb-b995-4a26-b4d5-c281538f9a99",
-  "Tenant": "2ffc1db7-b373-4be0-a5ec-f54edd5bf695",
-  "resourceGroupName": "EDGECI-REGISTRATION-hc1s46r0303-rX3MGPo6",
-  "newResourceGroupName": "EDGECI-REGISTRATION-hc1s46r0303-rX3MGPo6" ,
-  "newSubscriptionId" : "17ee8ecb-b995-4a26-b4d5-c281538f9a99",
-  "newCustomLocationId": "/subscriptions/17ee8ecb-b995-4a26-b4d5-c281538f9a99/resourceGroups/EDGECI-REGISTRATION-hc1s46r0303-rX3MGPo6/providers/Microsoft.ExtendedLocation/customLocations/s-cluster-customlocation",
+  "SubscriptionId": "e31a31ea-38a5-4045-8ba3-ac91d411060a",
+  "Tenant": "d9b73d5e-a9d3-41ba-88c3-796a643e3edd",
+  "resourceGroupName": "EDGECI-REGISTRATION-HC1n25r1035-2Yx4N6oM",
+  "newResourceGroupName": "EDGECI-REGISTRATION-HC1n25r1035-2Yx4N6oM",
+  "newSubscriptionId": "e31a31ea-38a5-4045-8ba3-ac91d411060a",
+  "newCustomLocationId": "/subscriptions/e31a31ea-38a5-4045-8ba3-ac91d411060a/resourceGroups/EDGECI-REGISTRATION-HC1n25r1035-2Yx4N6oM/providers/Microsoft.ExtendedLocation/customLocations/s-cluster-customlocation",
   "location": "eastus",
   "mkpImageNameURN": "testMkpImage1URN1127",
   "mkpImageName": "testMkpImage1",
   "imageName": "testImage",
-  "customLocationId": "/subscriptions/17ee8ecb-b995-4a26-b4d5-c281538f9a99/resourceGroups/EDGECI-REGISTRATION-hc1s46r0303-rX3MGPo6/providers/Microsoft.ExtendedLocation/customLocations/s-cluster-customlocation",
+  "customLocationId": "/subscriptions/e31a31ea-38a5-4045-8ba3-ac91d411060a/resourceGroups/EDGECI-REGISTRATION-HC1n25r1035-2Yx4N6oM/providers/Microsoft.ExtendedLocation/customLocations/s-cluster-customlocation",
   "imagePath": "C:\\ClusterStorage\\UserStorage_1\\LinuxGen2VHDx-UbuntuServer24.04.2.vhdx",
   "osTypeLinux": "Linux",
   "osTypeWindows": "Windows",
@@ -27,7 +27,7 @@
   "storageContainerPath": "C:\\ClusterStorage\\UserStorage_1\\testPath0226",
   "vmImageName": "bugbashimage",
   "vmVhdName": "testVhdDisk20106",
-  "vmImageId": "/subscriptions/17ee8ecb-b995-4a26-b4d5-c281538f9a99/resourceGroups/EDGECI-REGISTRATION-hc1s46r0303-rX3MGPo6/providers/microsoft.azurestackhci/marketplacegalleryimages/test-marketplace",
+  "vmImageId": "/subscriptions/e31a31ea-38a5-4045-8ba3-ac91d411060a/resourceGroups/EDGECI-REGISTRATION-HC1n25r1035-2Yx4N6oM/providers/microsoft.azurestackhci/marketplacegalleryimages/test-marketplace",
   "vmSize": "Standard_K8S_v1",
   "adminUsername": "localadmin",
   "vmName1": "testVm1",
@@ -36,5 +36,5 @@
   "vhdName2": "testVhd2",
   "nicName1": "testNic1",
   "osDiskName": "testOsDisk",
-  "SubnetId": "/subscriptions/17ee8ecb-b995-4a26-b4d5-c281538f9a99/resourceGroups/EDGECI-REGISTRATION-hc1s46r0303-rX3MGPo6/providers/Microsoft.AzureStackHCI/logicalNetworks/VMLnet-14evUOKS" 
-  }
+  "SubnetId": "/subscriptions/e31a31ea-38a5-4045-8ba3-ac91d411060a/resourceGroups/EDGECI-REGISTRATION-HC1n25r1035-2Yx4N6oM/providers/Microsoft.AzureStackHCI/logicalNetworks/VMLnet-14evUOKS"
+}

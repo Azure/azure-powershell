@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.1
+* Upgraded API to 2024-02-01-preview version. 
+
 ## Version 1.1.0
 * Upgraded nuget package to signed package.
 
