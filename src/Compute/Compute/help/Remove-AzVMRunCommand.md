@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Compute-help.xml
 Module Name: Az.Compute
 online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azvmruncommand
 schema: 2.0.0
@@ -14,15 +14,15 @@ The operation to delete the run command.
 
 ### Delete (Default)
 ```
-Remove-AzVMRunCommand -ResourceGroupName <String> -RunCommandName <String> -VMName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzVMRunCommand -ResourceGroupName <String> -RunCommandName <String> [-SubscriptionId <String>]
+ -VMName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzVMRunCommand -InputObject <IComputeIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -222,4 +222,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

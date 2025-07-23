@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Compute-help.xml
 Module Name: Az.Compute
 online version: https://learn.microsoft.com/powershell/module/az.compute/update-azgalleryapplication
 schema: 2.0.0
@@ -16,13 +16,14 @@ Update a gallery Application Definition.
 ```
 Update-AzGalleryApplication -GalleryName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzGalleryApplication -InputObject <IComputeIdentity> [-Description <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -240,4 +241,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

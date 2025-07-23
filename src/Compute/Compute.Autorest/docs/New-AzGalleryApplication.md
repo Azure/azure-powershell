@@ -1,41 +1,34 @@
 ---
-external help file: Az.Compute-help.xml
+external help file:
 Module Name: Az.Compute
-online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azgalleryapplication
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azgalleryapplication
 schema: 2.0.0
 ---
 
-# Remove-AzGalleryApplication
+# New-AzGalleryApplication
 
 ## SYNOPSIS
-Delete a gallery Application.
+Create or update a gallery Application Definition.
 
 ## SYNTAX
 
-### Delete (Default)
 ```
-Remove-AzGalleryApplication -GalleryName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzGalleryApplication -InputObject <IComputeIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzGalleryApplication -GalleryName <String> -Name <String> -ResourceGroupName <String> -Location <String>
+ -SupportedOSType <OperatingSystemTypes> [-SubscriptionId <String>] [-Description <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a gallery Application.
+Create or update a gallery Application Definition.
 
 ## EXAMPLES
 
-### Example 1: Remove a Gallery Application
+### Example 1: Create a gallery application 
 ```powershell
-Remove-AzGalleryApplication -ResourceGroupName $rgNmae -GalleryName $galleryName -Name $name
+New-AzGalleryApplication -ResourceGroupName $rgName -Location EastUS -GalleryName $galleryName -Name $name -SupportedOSType Windows
 ```
 
-Delete a gallery application.
+Creating a Gallery Application in a Gallery.
 
 ## PARAMETERS
 
@@ -55,8 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -70,12 +62,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GalleryName
-The name of the Shared Application Gallery in which the Application Definition is to be deleted.
+### -Description
+The description of this gallery Application Definition resource.
+This property is updatable.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GalleryName
+The name of the Shared Application Gallery in which the Application Definition is to be created.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -85,28 +93,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -Location
+Resource location
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: DeleteViaIdentity
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the gallery Application Definition to be deleted.
+The name of the gallery Application Definition to be created or updated.
+The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle.
+The maximum length is 80 characters.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases: GalleryApplicationName
 
 Required: True
@@ -131,27 +140,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -167,12 +161,49 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SupportedOSType
+This property allows you to specify the supported type of the OS that application is built for.
+
+
+ Possible values are:
+
+ **Windows**
+
+ **Linux**
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemTypes
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Resource tags
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -213,12 +244,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication
 
 ## NOTES
 
 ## RELATED LINKS
+

@@ -1,41 +1,41 @@
 ---
-external help file: Az.Compute-help.xml
+external help file:
 Module Name: Az.Compute
-online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azgalleryapplication
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azgalleryapplicationversion
 schema: 2.0.0
 ---
 
-# Remove-AzGalleryApplication
+# Remove-AzGalleryApplicationVersion
 
 ## SYNOPSIS
-Delete a gallery Application.
+Delete a gallery Application Version.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzGalleryApplication -GalleryName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzGalleryApplication -InputObject <IComputeIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzGalleryApplicationVersion -InputObject <IComputeIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a gallery Application.
+Delete a gallery Application Version.
 
 ## EXAMPLES
 
-### Example 1: Remove a Gallery Application
+### Example 1: Remove a Gallery Application Version 
 ```powershell
-Remove-AzGalleryApplication -ResourceGroupName $rgNmae -GalleryName $galleryName -Name $name
+Remove-AzGalleryApplicationVersion -ResourceGroupName $rgNmae -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -Name $name
 ```
 
-Delete a gallery application.
+Delete a gallery application version.
 
 ## PARAMETERS
 
@@ -70,8 +70,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GalleryApplicationName
+The name of the gallery Application Definition in which the Application Version resides.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -GalleryName
-The name of the Shared Application Gallery in which the Application Definition is to be deleted.
+The name of the Shared Application Gallery in which the Application Definition resides.
 
 ```yaml
 Type: System.String
@@ -102,12 +117,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the gallery Application Definition to be deleted.
+The name of the gallery Application Version to be deleted.
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: GalleryApplicationName
+Aliases: GalleryApplicationVersionName
 
 Required: True
 Position: Named
@@ -222,3 +237,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

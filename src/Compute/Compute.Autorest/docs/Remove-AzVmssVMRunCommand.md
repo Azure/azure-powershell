@@ -1,41 +1,41 @@
 ---
-external help file: Az.Compute-help.xml
+external help file:
 Module Name: Az.Compute
-online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azgalleryapplication
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azvmssvmruncommand
 schema: 2.0.0
 ---
 
-# Remove-AzGalleryApplication
+# Remove-AzVmssVMRunCommand
 
 ## SYNOPSIS
-Delete a gallery Application.
+The operation to delete the VMSS VM run command.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzGalleryApplication -GalleryName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzVmssVMRunCommand -InstanceId <String> -ResourceGroupName <String> -RunCommandName <String>
+ -VMScaleSetName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzGalleryApplication -InputObject <IComputeIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzVmssVMRunCommand -InputObject <IComputeIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a gallery Application.
+The operation to delete the VMSS VM run command.
 
 ## EXAMPLES
 
-### Example 1: Remove a Gallery Application
+### Example 1: Remove VMSS VM RunCommand
 ```powershell
-Remove-AzGalleryApplication -ResourceGroupName $rgNmae -GalleryName $galleryName -Name $name
+Remove-AzVmssVMRunCommand -InstanceId 3 -ResourceGroupName $rgname -RunCommandName "first" -VMScaleSetName $vmssname
 ```
 
-Delete a gallery application.
+Remove VMSS VM RunCommand
 
 ## PARAMETERS
 
@@ -70,21 +70,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GalleryName
-The name of the Shared Application Gallery in which the Application Definition is to be deleted.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -101,13 +86,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the gallery Application Definition to be deleted.
+### -InstanceId
+The instance ID of the virtual machine.
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: GalleryApplicationName
+Aliases:
 
 Required: True
 Position: Named
@@ -161,6 +146,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RunCommandName
+The name of the virtual machine run command.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Subscription credentials which uniquely identify Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -173,6 +173,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VMScaleSetName
+The name of the VM scale set.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -222,3 +237,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -1,44 +1,53 @@
 ---
-external help file: Az.Compute-help.xml
+external help file:
 Module Name: Az.Compute
-online version: https://learn.microsoft.com/powershell/module/az.compute/new-azgalleryapplicationversion
+online version: https://learn.microsoft.com/powershell/module/az.compute/update-azgalleryapplicationversion
 schema: 2.0.0
 ---
 
-# New-AzGalleryApplicationVersion
+# Update-AzGalleryApplicationVersion
 
 ## SYNOPSIS
-Create or update a gallery Application Version.
+Update a gallery Application Version.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-New-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String> -Install <String> -Remove <String>
- [-DefaultConfigFileLink <String>] [-PackageFileLink <String>] [-PublishingProfileEndOfLifeDate <DateTime>]
+Update-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName <String> -Name <String>
+ -ResourceGroupName <String> -PackageFileLink <String> [-SubscriptionId <String>]
+ [-DefaultConfigFileLink <String>] [-PublishingProfileEndOfLifeDate <DateTime>]
  [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>] [-Tag <Hashtable>]
- [-TargetRegion <ITargetRegion[]>] [-Update <String>] [-PackageFileName <String>] [-ConfigFileName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-TargetRegion <ITargetRegion[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzGalleryApplicationVersion -InputObject <IComputeIdentity> -PackageFileLink <String>
+ [-DefaultConfigFileLink <String>] [-PublishingProfileEndOfLifeDate <DateTime>]
+ [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>] [-Tag <Hashtable>]
+ [-TargetRegion <ITargetRegion[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update a gallery Application Version.
+Update a gallery Application Version.
 
 ## EXAMPLES
 
-### Example 1: Create a gallery application version.
+### Example 1: Update Replica Count of Gallery Application Version
 ```powershell
 $ctx = New-AzStorageContext -StorageAccountName $storAccName
 $SASToken = New-AzStorageBlobSASToken -Context $ctx -Container $containerName -blob $blobName -Permission r
 $storAcc = Get-AzStorageAccount -ResourceGroupName $rgName -Name $storAccName
 $blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $storAcc.Context
 $SASToken = New-AzStorageBlobSASToken -Container $containerName -Blob $blobName -Permission rwd -Context $storAcc.Context
-$SASUri = $blob.ICloudBlob.Uri.AbsoluteUri + $SASToken 
-New-AzGalleryApplicationVersion -ResourceGroupName $rgname -Location EastUS -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -name "0.1.0" -PackageFileLink $SASUri -Install "powershell -command 'Expand-Archive -Path package.zip -DestinationPath C:\\package\'" -Remove "del C:\\package"
+$SASUri = $blob.ICloudBlob.Uri.AbsoluteUri + "?" +$SASToken 
+Update-AzGalleryApplicationVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -name "0.1.0" -PackageFileLink $SASUri -ReplicaCount 3 
 ```
 
-Creating a Gallery Application Version.
+Updating a Gallery Application Version's replica count.
 Using SAS Uri for the blob for PackageFileLink.
 
 ## PARAMETERS
@@ -48,24 +57,6 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConfigFileName
-Optional.
-The name to assign the downloaded config file on the VM.
-This is limited to 4096 characters.
-If not specified, the config file will be named the Gallery Application name appended with "_config".
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -108,11 +99,11 @@ Accept wildcard characters: False
 ```
 
 ### -GalleryApplicationName
-The name of the gallery Application Definition in which the Application Version is to be created.
+The name of the gallery Application Definition in which the Application Version is to be updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -127,7 +118,7 @@ The name of the Shared Application Gallery in which the Application Definition r
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -137,47 +128,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Install
-Required.
-The path and arguments to install the gallery application.
-This is limited to 4096 characters.
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-Resource location
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the gallery Application Version to be created.
+The name of the gallery Application Version to be updated.
 Needs to follow semantic version name pattern: The allowed characters are digit and period.
 Digits must be within the range of a 32-bit integer.
 Format: \<MajorVersion\>.\<MinorVersion\>.\<Patch\>
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases: GalleryApplicationVersionName
 
 Required: True
@@ -211,25 +186,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PackageFileName
-Optional.
-The name to assign the downloaded package file on the VM.
-This is limited to 4096 characters.
-If not specified, the package file will be named the same as the Gallery Application name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -268,23 +225,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Remove
-Required.
-The path and arguments to remove the gallery application.
-This is limited to 4096 characters.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ReplicaCount
 The number of replicas of the Image Version to be created per region.
 This property would take effect for a region when regionalReplicaCount is not specified.
@@ -307,7 +247,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -323,7 +263,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -355,24 +295,6 @@ To construct, see NOTES section for TARGETREGION properties and create a hash ta
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ITargetRegion[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Update
-Optional.
-The path and arguments to update the gallery application.
-If not present, then update operation will invoke remove command on the previous version and install command on the current version of the gallery application.
-This is limited to 4096 characters.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -419,6 +341,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion
@@ -426,3 +350,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

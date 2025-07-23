@@ -28,7 +28,7 @@ which then can be used with the **[New-AzGalleryInVMAccessControlProfileVersion]
 
 ### Example 1
 ```powershell
-New-AzGalleryInVMAccessControlProfileVersionConfig -Name "myProfileVersion" -Location "West US 2" -Mode "Audit" -DefaultAccess "Deny" -TargetLocation @("West US", "West US 2") -ExcludeFromLatest 
+New-AzGalleryInVMAccessControlProfileVersionConfig -Name "myProfileVersion" -Location "West US 2" -Mode "Audit" -DefaultAccess "Deny" -TargetLocation @("West US", "West US 2") -ExcludeFromLatest
 ```
 
 Creates a local PSGalleryInVmAccessControlProfileVersion object with the specified parameters.
@@ -39,11 +39,10 @@ $CPVersionConfig = New-AzGalleryInVMAccessControlProfileVersionConfig -Name "myP
 | Add-AzGalleryInVMAccessControlProfileVersionRulesPrivilege -PrivilegeName "GoalState" -Path "/machine" -QueryParameter @{ comp = "goalstate" } `
 | Add-AzGalleryInVMAccessControlProfileVersionRulesRole -RoleName "Provisioning" -Privilege @("GoalState") `
 | Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity -IdentityName "WinPA" -UserName "SYSTEM" -GroupName "Administrators" -ExePath "C:\Windows\System32\cscript.exe" -ProcessName "cscript" `
-| Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment -Role "Provisioning" -Identity @("WinPA") 
+| Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment -Role "Provisioning" -Identity @("WinPA")
 ```
 
 Creates a local PSGalleryInVmAccessControlProfileVersion object then add rules.
-
 
 ## PARAMETERS
 

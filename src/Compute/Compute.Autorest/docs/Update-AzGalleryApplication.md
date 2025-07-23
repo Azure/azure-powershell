@@ -1,41 +1,41 @@
 ---
-external help file: Az.Compute-help.xml
+external help file:
 Module Name: Az.Compute
-online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azgalleryapplication
+online version: https://learn.microsoft.com/powershell/module/az.compute/update-azgalleryapplication
 schema: 2.0.0
 ---
 
-# Remove-AzGalleryApplication
+# Update-AzGalleryApplication
 
 ## SYNOPSIS
-Delete a gallery Application.
+Update a gallery Application Definition.
 
 ## SYNTAX
 
-### Delete (Default)
+### UpdateExpanded (Default)
 ```
-Remove-AzGalleryApplication -GalleryName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzGalleryApplication -GalleryName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### UpdateViaIdentityExpanded
 ```
-Remove-AzGalleryApplication -InputObject <IComputeIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzGalleryApplication -InputObject <IComputeIdentity> [-Description <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a gallery Application.
+Update a gallery Application Definition.
 
 ## EXAMPLES
 
-### Example 1: Remove a Gallery Application
+### Example 1: Update a Gallery Application
 ```powershell
-Remove-AzGalleryApplication -ResourceGroupName $rgNmae -GalleryName $galleryName -Name $name
+Update-AzGalleryApplication -ResourceGroupName $rgName -GalleryName $galleryName -Name $name -Description "New Description"
 ```
 
-Delete a gallery application.
+Updating a Gallery Application.
 
 ## PARAMETERS
 
@@ -70,12 +70,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GalleryName
-The name of the Shared Application Gallery in which the Application Definition is to be deleted.
+### -Description
+The description of this gallery Application Definition resource.
+This property is updatable.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GalleryName
+The name of the Shared Application Gallery in which the Application Definition is to be updated.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -91,7 +107,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -102,11 +118,13 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the gallery Application Definition to be deleted.
+The name of the gallery Application Definition to be updated.
+The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle.
+The maximum length is 80 characters.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases: GalleryApplicationName
 
 Required: True
@@ -131,27 +149,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -167,12 +170,27 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Resource tags
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -217,8 +235,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication
 
 ## NOTES
 
 ## RELATED LINKS
+

@@ -30,7 +30,7 @@ $inVMAccessControlProfileVersion  = New-AzGalleryInVMAccessControlProfileVersion
 Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -IdentityName "WinPA" -UserName "SYSTEM" -GroupName "Administrators" -ExePath "C:\Windows\System32\cscript.exe" -ProcessName "cscript" 
 Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -IdentityName "WinPA2" -UserName "SYSTEM" -GroupName "Administrators" -ExePath "C:\Windows\System32\cscript.exe" -ProcessName "cscript" 
 
-Remove-AzGalleryInVMAccessControlProfileVersionRulesIdentity -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -IdentityName "WinPA2"  
+Remove-AzGalleryInVMAccessControlProfileVersionRulesIdentity -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -IdentityName "WinPA2"
 ```
 
 Creates a local PSGalleryInVMAccessControlProfileVersion object, add two rule identities, then remove the identity with name "WinPA2". 
@@ -41,7 +41,7 @@ Creates a local PSGalleryInVMAccessControlProfileVersion object, add two rule id
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 PSGalleryInVmAccessControlProfileVersion object created from New-AzGalleryInVMAccessControlProfileVersionConfig.
 
 ```yaml
-Type: PSGalleryInVMAccessControlProfileVersion
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSGalleryInVMAccessControlProfileVersion
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 The name of the identity.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name
 
