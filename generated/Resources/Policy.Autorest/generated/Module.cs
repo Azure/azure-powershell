@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
     using EventListenerDelegate = global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Management.Automation.InvocationInfo, string, string, string, global::System.Exception, global::System.Threading.Tasks.Task>;
     using NextDelegate = global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>;
     using SanitizerDelegate = global::System.Action<object, string>;
-    using GetTelemetryInfoDelegate = global::System.Func<string, global::System.Collections.Generic.Dictionary<global::System.String,global::System.String>>;
+    using GetTelemetryInfoDelegate = global::System.Func<string, global::System.Collections.Generic.Dictionary<global::System.String, global::System.String>>;
 
     /// <summary>A class that contains the module-common code and data.</summary>
     public partial class Module
@@ -65,10 +65,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         public GetTelemetryInfoDelegate GetTelemetryInfo { get; set; }
 
         /// <summary>the singleton of this module class</summary>
-        public static Microsoft.Azure.PowerShell.Cmdlets.Policy.Module Instance { get { if (_instance == null) { lock (_singletonLock) { if (_instance == null) { _instance = new Module(); }}} return _instance; } }
+        public static Microsoft.Azure.PowerShell.Cmdlets.Policy.Module Instance { get { if (_instance == null) { lock (_singletonLock) { if (_instance == null) { _instance = new Module(); } } } return _instance; } }
 
         /// <summary>The Name of this module</summary>
-        public string Name => @"Az.Policy";
+        public string Name => @"Az.Resources";
 
         /// <summary>The delegate to call when this module is loaded (supporting a commmon module).</summary>
         public ModuleLoadPipelineDelegate OnModuleLoad { get; set; }
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         public global::System.String ProfileName { get; set; }
 
         /// <summary>The ResourceID for this module (azure arm).</summary>
-        public string ResourceId => @"Az.Policy";
+        public string ResourceId => @"Az.Resources";
 
         /// <summary>The delegate to call in WriteObject to sanitize the output object.</summary>
         public SanitizerDelegate SanitizeOutput { get; set; }
@@ -107,14 +107,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <param name="parameterSetName">the cmdlet's parameterset name.</param>
         /// <param name="extensibleParameters">a dict for extensible parameters</param>
         /// <returns>An instance of Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.HttpPipeline for the remote call.</returns>
-        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.HttpPipeline CreatePipeline(global::System.Management.Automation.InvocationInfo invocationInfo, string correlationId, string processRecordId, string parameterSetName = null, global::System.Collections.Generic.IDictionary<string,object> extensibleParameters = null)
+        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.HttpPipeline CreatePipeline(global::System.Management.Automation.InvocationInfo invocationInfo, string correlationId, string processRecordId, string parameterSetName = null, global::System.Collections.Generic.IDictionary<string, object> extensibleParameters = null)
         {
             Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.HttpPipeline pipeline = null;
             BeforeCreatePipeline(invocationInfo, ref pipeline);
             pipeline = (pipeline ?? (_useProxy ? _pipelineWithProxy : _pipeline)).Clone();
             AfterCreatePipeline(invocationInfo, ref pipeline);
             pipeline.Append(new Runtime.CmdInfoHandler(processRecordId, invocationInfo, parameterSetName).SendAsync);
-            OnNewRequest?.Invoke( invocationInfo, correlationId,processRecordId, (step)=> { pipeline.Prepend(step); } , (step)=> { pipeline.Append(step); } );
+            OnNewRequest?.Invoke(invocationInfo, correlationId, processRecordId, (step) => { pipeline.Prepend(step); }, (step) => { pipeline.Append(step); });
             return pipeline;
         }
 
@@ -125,17 +125,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// The parameter value from the common module. (Note: this should be type converted on the way back)
         /// </returns>
-        public object GetParameter(global::System.Management.Automation.InvocationInfo invocationInfo, string correlationId, string parameterName) => GetParameterValue?.Invoke( ResourceId, Name, invocationInfo, correlationId,parameterName );
+        public object GetParameter(global::System.Management.Automation.InvocationInfo invocationInfo, string correlationId, string parameterName) => GetParameterValue?.Invoke(ResourceId, Name, invocationInfo, correlationId, parameterName);
 
         /// <summary>Initialization steps performed after the module is loaded.</summary>
         public void Init()
         {
             if (_init == false)
             {
-                lock (_initLock) {
-                    if (_init == false) {
-                        OnModuleLoad?.Invoke( ResourceId, Name ,(step)=> { _pipeline.Prepend(step); } , (step)=> { _pipeline.Append(step); } );
-                        OnModuleLoad?.Invoke( ResourceId, Name ,(step)=> { _pipelineWithProxy.Prepend(step); } , (step)=> { _pipelineWithProxy.Append(step); } );
+                lock (_initLock)
+                {
+                    if (_init == false)
+                    {
+                        OnModuleLoad?.Invoke(ResourceId, Name, (step) => { _pipeline.Prepend(step); }, (step) => { _pipeline.Append(step); });
+                        OnModuleLoad?.Invoke(ResourceId, Name, (step) => { _pipelineWithProxy.Prepend(step); }, (step) => { _pipelineWithProxy.Append(step); });
                         CustomInit();
                         _init = true;
                     }
@@ -174,7 +176,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
             else
             {
                 _webProxy.UseDefaultCredentials = false;
-                _webProxy.Credentials = proxyCredential ?.GetNetworkCredential();
+                _webProxy.Credentials = proxyCredential?.GetNetworkCredential();
             }
         }
 
@@ -193,9 +195,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task Signal(string id, global::System.Threading.CancellationToken token, global::System.Func<global::System.EventArgs> getEventData, SignalDelegate signal, global::System.Management.Automation.InvocationInfo invocationInfo, string parameterSetName, string correlationId, string processRecordId, global::System.Exception exception)
         {
-            using( NoSynchronizationContext )
+            using (NoSynchronizationContext)
             {
-                await EventListener?.Invoke(id,token,getEventData, signal, invocationInfo, parameterSetName, correlationId,processRecordId,exception);
+                await EventListener?.Invoke(id, token, getEventData, signal, invocationInfo, parameterSetName, correlationId, processRecordId, exception);
             }
         }
     }

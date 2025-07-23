@@ -63,7 +63,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace
         public static Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Module Instance => Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Module._instance?? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Module._instance = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Module());
 
         /// <summary>The Name of this module</summary>
-        public string Name => @"Az.MonitorWorkspace";
+        public string Name => @"Az.Monitor";
 
         /// <summary>The delegate to call when this module is loaded (supporting a commmon module).</summary>
         public ModuleLoadPipelineDelegate OnModuleLoad { get; set; }
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace
         public global::System.String ProfileName { get; set; }
 
         /// <summary>The ResourceID for this module (azure arm).</summary>
-        public string ResourceId => @"Az.MonitorWorkspace";
+        public string ResourceId => @"Az.Monitor";
 
         /// <summary>The delegate to call in WriteObject to sanitize the output object.</summary>
         public SanitizerDelegate SanitizeOutput { get; set; }
