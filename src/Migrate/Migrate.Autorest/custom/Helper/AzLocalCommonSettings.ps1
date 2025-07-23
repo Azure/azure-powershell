@@ -112,10 +112,10 @@ $VmReplicationValidationMessages = @{
     VmPoweredOff            = "The VM is currently powered off. $VmReplicationValidationMessage";
     AlreadyInReplication    = "The VM is already in replication. $VmReplicationValidationMessage";
     VmNotHighlyAvailable    = "VM not highly available. $VmReplicationValidationMessage";
-    HyperVIntegrationServicesNotRunning = "Hyper-V Integration Services not running on VM. $VmReplicationValidationMessage";
-    VmWareToolsNotInstalled = "VMware tools not installed on VM. If you plan on migrating static IP of the VMware VM, please ensure VMware Tools are installed on the VM, and allow up to 30 minutes before migrating.";
-    VmWareToolsNotRunning   = "VMware tools not running on VM. If you plan on migrating static IP of the VMware VM, please ensure VMware Tools are running on the VM, and allow up to 30 minutes before migrating.";
-    OsTypeNotSupported      = "The OS type of the VM is not known at time of replication. If it is a custom OS build of either Windows or Linux, please run `Set-AzMigrateLocalServerReplication -TargetObjectID <ProtectedItemId> -OsType <OsType>` to specify the OS type before migrating.";
+    HyperVIntegrationServicesNotRunning = "Hyper-V Integration Services are not running on VM. $VmReplicationValidationMessage";
+    VmWareToolsNotInstalled = "VMware Tools are not installed on the VM. To preserve static IPs during migration, install VMware Tools and wait up to 30 minutes for the system to detect the changes.";
+    VmWareToolsNotRunning   = "VMware Tools are not running on the VM. To preserve static IPs during migration, ensure VMware Tools are running and wait up to 30 minutes for the system to detect the changes.";
+    OsTypeNotSupported      = "The VM OS type could not be identified. For custom Windows or Linux builds, run: `Set-AzMigrateLocalServerReplication -TargetObjectID <ProtectedItemId> -OsType <OsType>` to specify the OS type before migration.";
 }
 
 $ArcResourceBridgeValidationMessages = @{
