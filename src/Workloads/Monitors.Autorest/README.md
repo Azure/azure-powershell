@@ -45,10 +45,6 @@ root-module-name: $(prefix).Workloads
 title: Monitors
 subject-prefix: Workloads
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors
-resourcegroup-append: true
-identity-correction-for-post: true
-nested-object-to-string: true
-#add-api-version-in-model-namespace: true
 inlining-threshold: 100
 
 directive:
