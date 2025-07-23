@@ -362,7 +362,7 @@ In this example, we use DiskAccessOption parameter to trigger a restore to new V
 ## PARAMETERS
 
 ### -CVMOsDiskEncryptionSetId
-The disk encryption set is used to encrypt disks at rest when they are created from vault-based recovery points. Please ensure that the disk encryption set also has access to the relevant key vault. For instant restores, where data is restored from snapshot recovery points, the currently active disk encryption set is automatically used to encrypt newly created disks.
+Specify the Disk Encryption Set ID to use for OS disk encryption during restore of a Confidential VM. This is applicable only for Confidential VMs with managed disks. Please ensure that Disk Encryption Set has access to the Key vault.
 
 ```yaml
 Type: System.String
