@@ -30,7 +30,7 @@ function New-AzActivityLogAlertAlertRuleLeafConditionObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRuleLeafCondition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.ParameterBreakingChange("ContainsAny", "15.0.0", "7.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
+
         [Parameter(HelpMessage="The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.")]
         [string[]]
         $ContainsAny,
