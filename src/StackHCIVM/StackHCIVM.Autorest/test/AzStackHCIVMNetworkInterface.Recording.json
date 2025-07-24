@@ -1,13 +1,55 @@
 {
-  "AzStackHCIVMNetworkInterface+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e31a31ea-38a5-4045-8ba3-ac91d411060a/resourceGroups/EDGECI-REGISTRATION-HC1n25r1035-2Yx4N6oM/providers/Microsoft.AzureStackHCI/networkInterfaces?api-version=2024-02-01-preview+1": {
+  "AzStackHCIVMNetworkInterface+[NoContext]+Create Network Interface  +$GET+https://management.azure.com/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/logicalNetworks/VMLnet-14evUOKS?api-version=2024-02-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e31a31ea-38a5-4045-8ba3-ac91d411060a/resourceGroups/EDGECI-REGISTRATION-HC1n25r1035-2Yx4N6oM/providers/Microsoft.AzureStackHCI/networkInterfaces?api-version=2024-02-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/logicalNetworks/VMLnet-14evUOKS?api-version=2024-02-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "a7206670-ac9a-4be7-b0df-f3ef23212ea2" ],
+        "x-ms-unique-id": [ "53" ],
+        "x-ms-client-request-id": [ "bbb999d5-5b1c-4b15-b833-68ca6135f64e" ],
+        "CommandName": [ "Az.StackHCIVM\\Get-AzStackHCIVMLogicalNetwork" ],
+        "FullCommandName": [ "Get-AzStackHCIVMLogicalNetwork_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.StackHCIVM/2.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "4f69f63b-1b73-4bbe-98ec-009bd03a6bf9" ],
+        "x-ms-correlation-request-id": [ "4f69f63b-1b73-4bbe-98ec-009bd03a6bf9" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20250724T202923Z:4f69f63b-1b73-4bbe-98ec-009bd03a6bf9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E2C0D6090B024C7EB0EBE5C57223CC51 Ref B: MWH011020808029 Ref C: 2025-07-24T20:29:23Z" ],
+        "Date": [ "Thu, 24 Jul 2025 20:29:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "267" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.AzureStackHCI/logicalNetworks/VMLnet-14evUOKS\u0027 under resource group \u0027EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzStackHCIVMNetworkInterface+[NoContext]+List+$GET+https://management.azure.com/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/networkInterfaces?api-version=2024-02-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/networkInterfaces?api-version=2024-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "54" ],
+        "x-ms-client-request-id": [ "605dd054-e4fc-4039-974a-a31c8c06cb13" ],
         "CommandName": [ "Get-AzStackHCIVMNetworkInterface" ],
         "FullCommandName": [ "Get-AzStackHCIVMNetworkInterface_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -24,14 +66,14 @@
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-request-id": [ "84d4d915-1bc6-4375-888b-90f6e4bcde6c" ],
-        "x-ms-correlation-request-id": [ "84d4d915-1bc6-4375-888b-90f6e4bcde6c" ],
-        "x-ms-routing-request-id": [ "EASTUS:20250722T005559Z:84d4d915-1bc6-4375-888b-90f6e4bcde6c" ],
+        "x-ms-request-id": [ "de440943-61cb-493a-a88a-52c3f642e3e1" ],
+        "x-ms-correlation-request-id": [ "de440943-61cb-493a-a88a-52c3f642e3e1" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20250724T202923Z:de440943-61cb-493a-a88a-52c3f642e3e1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C9DE11BE4FA54103840B0ECE9FF24475 Ref B: MWH011020807034 Ref C: 2025-07-22T00:55:59Z" ],
-        "Date": [ "Tue, 22 Jul 2025 00:55:59 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 460BEAD0F81E46F1A78C2E766EEB8E60 Ref B: MWH011020808029 Ref C: 2025-07-24T20:29:23Z" ],
+        "Date": [ "Thu, 24 Jul 2025 20:29:23 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "12" ],
@@ -42,15 +84,15 @@
       "isContentBase64": false
     }
   },
-  "AzStackHCIVMNetworkInterface+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/e31a31ea-38a5-4045-8ba3-ac91d411060a/resourceGroups/EDGECI-REGISTRATION-HC1n25r1035-2Yx4N6oM/providers/Microsoft.AzureStackHCI/networkInterfaces/testnicPowershell0226?api-version=2024-02-01-preview+1": {
+  "AzStackHCIVMNetworkInterface+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/networkInterfaces/testnicPowershell0226?api-version=2024-02-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e31a31ea-38a5-4045-8ba3-ac91d411060a/resourceGroups/EDGECI-REGISTRATION-HC1n25r1035-2Yx4N6oM/providers/Microsoft.AzureStackHCI/networkInterfaces/testnicPowershell0226?api-version=2024-02-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/networkInterfaces/testnicPowershell0226?api-version=2024-02-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "23a2b129-fac0-4742-8b39-817bdae2b052" ],
+        "x-ms-unique-id": [ "55" ],
+        "x-ms-client-request-id": [ "cb76bc42-334f-4ded-b090-cf158045c470" ],
         "CommandName": [ "Get-AzStackHCIVMNetworkInterface" ],
         "FullCommandName": [ "Get-AzStackHCIVMNetworkInterface_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -66,21 +108,104 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "9cc81ad0-bc16-4164-a508-1615ba785f75" ],
-        "x-ms-correlation-request-id": [ "9cc81ad0-bc16-4164-a508-1615ba785f75" ],
-        "x-ms-routing-request-id": [ "EASTUS:20250722T005559Z:9cc81ad0-bc16-4164-a508-1615ba785f75" ],
+        "x-ms-request-id": [ "c1ab6a26-7e10-4459-b62b-36f2ea9e88a3" ],
+        "x-ms-correlation-request-id": [ "c1ab6a26-7e10-4459-b62b-36f2ea9e88a3" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20250724T202924Z:c1ab6a26-7e10-4459-b62b-36f2ea9e88a3" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6FA2D7BEAAA349FA84E2C839329820EC Ref B: MWH011020807034 Ref C: 2025-07-22T00:55:59Z" ],
-        "Date": [ "Tue, 22 Jul 2025 00:55:59 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 7F27CECCD4114B82B1535C41F8DEDE60 Ref B: MWH011020808029 Ref C: 2025-07-24T20:29:24Z" ],
+        "Date": [ "Thu, 24 Jul 2025 20:29:23 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "275" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.AzureStackHCI/networkInterfaces/testnicPowershell0226\u0027 under resource group \u0027EDGECI-REGISTRATION-HC1n25r1035-2Yx4N6oM\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.AzureStackHCI/networkInterfaces/testnicPowershell0226\u0027 under resource group \u0027EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzStackHCIVMNetworkInterface+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/networkInterfaces/testnicPowershell0226?api-version=2024-02-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/networkInterfaces/testnicPowershell0226?api-version=2024-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "56" ],
+        "x-ms-client-request-id": [ "2861755c-0dcb-4e9a-acb9-7f4f5edc7f8f" ],
+        "CommandName": [ "Az.StackHCIVM.internal\\Remove-AzStackHCIVMNetworkInterface" ],
+        "FullCommandName": [ "Remove-AzStackHCIVMNetworkInterface_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.StackHCIVM/2.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-request-id": [ "45cc1095-c56c-494c-a855-3dc59b74b88c" ],
+        "x-ms-correlation-request-id": [ "45cc1095-c56c-494c-a855-3dc59b74b88c" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20250724T202924Z:45cc1095-c56c-494c-a855-3dc59b74b88c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B9B33605B79843778858B799B6CDD052 Ref B: MWH011020808029 Ref C: 2025-07-24T20:29:24Z" ],
+        "Date": [ "Thu, 24 Jul 2025 20:29:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "AzStackHCIVMNetworkInterface+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/networkInterfaces/testnicPowershell0226?api-version=2024-02-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/networkInterfaces/testnicPowershell0226?api-version=2024-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "57" ],
+        "x-ms-client-request-id": [ "58ee26e0-5aa2-47bd-84c2-e4d527b87814" ],
+        "CommandName": [ "Get-AzStackHCIVMNetworkInterface" ],
+        "FullCommandName": [ "Get-AzStackHCIVMNetworkInterface_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.StackHCIVM/2.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "95da4e5a-746b-41fd-8dd6-d38cd6c1b8e0" ],
+        "x-ms-correlation-request-id": [ "95da4e5a-746b-41fd-8dd6-d38cd6c1b8e0" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20250724T202924Z:95da4e5a-746b-41fd-8dd6-d38cd6c1b8e0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AD77889F13B64CB3BF646DA79DF9E95F Ref B: MWH011020808029 Ref C: 2025-07-24T20:29:24Z" ],
+        "Date": [ "Thu, 24 Jul 2025 20:29:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "275" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.AzureStackHCI/networkInterfaces/testnicPowershell0226\u0027 under resource group \u0027EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
       "isContentBase64": false
     }
   }

@@ -16,6 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVMImageNew'))
 
 Describe 'AzStackHCIVMImageNew' {
     It 'Create Image '  {
+        print("creating image with name: $($env:imageName) and path: $($env:imagePath)")
         New-AzStackHCIVMImage -Name  $env.imageName -ImagePath  $env.imagePath  -SubscriptionId $env.newSubscriptionId -ResourceGroupName $env.newResourceGroupName -CustomLocationId $env.newCustomLocationId -Location $env.location -OSType $env.osTypeLinux | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
     }
     It 'Create MarketplaceImage' {

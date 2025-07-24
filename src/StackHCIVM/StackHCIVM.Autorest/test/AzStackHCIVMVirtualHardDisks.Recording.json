@@ -1,13 +1,147 @@
 {
-  "AzStackHCIVMVirtualHardDisks+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e31a31ea-38a5-4045-8ba3-ac91d411060a/resourceGroups/EDGECI-REGISTRATION-HC1n25r1035-2Yx4N6oM/providers/Microsoft.AzureStackHCI/virtualHardDisks?api-version=2024-02-01-preview+1": {
+  "AzStackHCIVMVirtualHardDisks+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1127?api-version=2024-02-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1127?api-version=2024-02-01-preview",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"diskSizeGB\": 2\r\n  },\r\n  \"extendedLocation\": {\r\n    \"name\": \"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.ExtendedLocation/customLocations/s45r2205-cl-customlocation\",\r\n    \"type\": \"CustomLocation\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "339" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3c080584-0000-0100-0000-688297e60000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=d9b73d5e-a9d3-41ba-88c3-796a643e3edd,objectId=7a71a15e-5f34-4f90-9adf-d32f77671976/canadacentral/9e8d4da2-9073-4753-9d81-9d9dc46b4a5c" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "3e06f053-527d-414e-a782-fec9eb0bf26e" ],
+        "x-ms-request-id": [ "3ad64fde-5249-40fe-b7f8-5e3df7722db1" ],
+        "x-ms-correlation-request-id": [ "1ca1d169-bae1-4edb-a074-898c0cc89263" ],
+        "x-azure-ref": [ "20250724T203030Z-r1f96556cc422mt8hC1BL1anm40000000bp000000000hhws" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/b76c2bfe-18e3-439c-8c07-cb98e8765b23*C2FCB905F616CA7D26A372CA24D6F15928730D69DEF1487803A3F32A92BAAF4B?api-version=2024-02-01-preview\u0026t=638889858308185731\u0026c=MIIIrzCCBpegAwIBAgITUQB9QzjGM-gzP6SKwQABAH1DODANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDQwHhcNMjUwNzE3MDkyNjQzWhcNMjYwMTEzMDkyNjQzWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhxeiJnrbYzgOiNeotAmwrpLo8zqXawo29HlPEKSWGNpwVkhmHFqN4eFKrftK3jfL7aSOh_A0uy24UHaQv2KENCLtqDioz1GfweOsDapp5UiBD-U6LHl85M_uP24hI1p6ZO4ebjQwoIT2omwWJB9TjOJ3TWFVvRt6TiAcb77fOPZOeQdtfQG96KlaEpjS6cSKxmAplsDPohWL0kIiwx7UUrSf3HRqoTMbGTmTrSrRLDyT2-Z31roaOC1IR1QsKBhjfefaq-rwp2QadLVm98QOJ-UY3D-nSsB8OCF9OeDIge7D79g1hg1vsEQvbhKmtsJ8OYuMMHlmXBjd6qTVWpf_ECAwEAAaOCBJwwggSYMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHkBggrBgEFBQcBAQSCAdYwggHSMGgGCCsGAQUFBzAChlxodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDEuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDIuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDMuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDQuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDAdBgNVHQ4EFgQUNPwFcUCSZ2QO3pIs-VL6KQGyvj4wDgYDVR0PAQH_BAQDAgWgMIIBNQYDVR0fBIIBLDCCASgwggEkoIIBIKCCARyGQmh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DUkwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDEuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDIuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDMuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDQuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybDCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwHwYDVR0jBBgwFoAUOXFdqRUQLcTffi9ZbkBNwN_vNpowHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA0GCSqGSIb3DQEBCwUAA4ICAQB8Fv0_G2GghYOlOdiRRQWkhdpgLzm9D6fzHP_nq6vze1JWeYUjaGKb9IsvLFUiFUL0VhaBscsrCMAV63ME15EyGQRYmqPP5lZjiB1obrkhN86LFNcN-JcAfAuluuzEvn8kRTBtIOUXrYnepNHmd7-C_xOvVgMRK3wiLM3aVezziMM87k8UdqeKNCk9Ji5yhnREPamw66-PSPGG3Id6fIufOh3gsAFy0TXXNCdmRbMNqY3yd0FFgFAGCG1rHUq5W5B14VJSWurDoPLMAhXQDVTZIISg6pD6dZtLiCkMGeP2blyE4hY0eEWwhrNgKIJS_49dVaLoXK8_-9N0PP4lp1zk794b0hHnx5B6w0EUFGElVnyZcgGqYN8a9ycS8_S5qKHJ5p8jcs9xzsH6NVw24PbUN51_BvO1aAw4oeyhBumpXLooifvoBr9-ZjdRYW5yCZq_GTNKIGXKN949NiBVOmcSauYbT_EAG2Y9jM2OCbd9FxxPAyaKY-t3cFojg5aakUzyOwJ21ygoYByO04i2ymUCrp9eMqNI8_qq8vYOSQGfAyr8iAa57pcLbC8YVPHazVskHdymLtrkmQaUb6fOOB-0yBTfmLgrjJ4FPla3oQEEqwk3LsaxANRuDr5Cw_v_WPNuai4cj_CJR6sOJ2Ar2Gb5fvMlNIgRGvWqjBVgcHHLJA\u0026s=aKJ5vcJACPkOCVPJ_hOCu6JpKhyj2kMuTPfwVZbhIVJm4JjTBxIcekwjLdFfVdyRFiCVY6CnZ15aAgf4MV3CKbnhK_eQNqao50lDTIw43O91H_rSdeEinqgLdwNifloiclrDTeDFvNjVuHzubfjQFguHmX3jYNFpNcdkbFaJQcmH7KYJH2HVZUx6r_63sm1K9ulhGA66W26mtGIZuTssjgnNQy5Ybu1yf_2htNyAAuO837ZXT8K9IS6Ro06BsX7goMdrer2pG1pH8apWMYYNe5L-u58KfBLe62X8yMmCv_C5_NjwjUImkrGDWzlaabCAbXRFxN9jaoCyc8nKViOLeg\u0026h=y1swzZXOf5Fpk8-q_Y6OBbLIMnkd0v-9fedfvIeHZuM" ],
+        "x-ms-async-operation-timeout": [ "P6D" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20250724T203030Z:1ca1d169-bae1-4edb-a074-898c0cc89263" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: 963AEB39D0F743DF9D75E93AB8E538C4 Ref B: MWH011020808029 Ref C: 2025-07-24T20:30:29Z" ],
+        "Date": [ "Thu, 24 Jul 2025 20:30:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "819" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1127\",\"name\":\"testVhd1127\",\"type\":\"microsoft.azurestackhci/virtualharddisks\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.ExtendedLocation/customLocations/s45r2205-cl-customlocation\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"Harika.Vedati@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-24T20:30:30.3653657Z\",\"lastModifiedBy\":\"Harika.Vedati@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-24T20:30:30.3653657Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"diskSizeGB\":2}}",
+      "isContentBase64": false
+    }
+  },
+  "AzStackHCIVMVirtualHardDisks+[NoContext]+Create+$GET+https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/b76c2bfe-18e3-439c-8c07-cb98e8765b23*C2FCB905F616CA7D26A372CA24D6F15928730D69DEF1487803A3F32A92BAAF4B?api-version=2024-02-01-preview\u0026t=638889858308185731\u0026c=MIIIrzCCBpegAwIBAgITUQB9QzjGM-gzP6SKwQABAH1DODANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDQwHhcNMjUwNzE3MDkyNjQzWhcNMjYwMTEzMDkyNjQzWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhxeiJnrbYzgOiNeotAmwrpLo8zqXawo29HlPEKSWGNpwVkhmHFqN4eFKrftK3jfL7aSOh_A0uy24UHaQv2KENCLtqDioz1GfweOsDapp5UiBD-U6LHl85M_uP24hI1p6ZO4ebjQwoIT2omwWJB9TjOJ3TWFVvRt6TiAcb77fOPZOeQdtfQG96KlaEpjS6cSKxmAplsDPohWL0kIiwx7UUrSf3HRqoTMbGTmTrSrRLDyT2-Z31roaOC1IR1QsKBhjfefaq-rwp2QadLVm98QOJ-UY3D-nSsB8OCF9OeDIge7D79g1hg1vsEQvbhKmtsJ8OYuMMHlmXBjd6qTVWpf_ECAwEAAaOCBJwwggSYMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHkBggrBgEFBQcBAQSCAdYwggHSMGgGCCsGAQUFBzAChlxodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDEuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDIuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDMuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDQuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDAdBgNVHQ4EFgQUNPwFcUCSZ2QO3pIs-VL6KQGyvj4wDgYDVR0PAQH_BAQDAgWgMIIBNQYDVR0fBIIBLDCCASgwggEkoIIBIKCCARyGQmh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DUkwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDEuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDIuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDMuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDQuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybDCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwHwYDVR0jBBgwFoAUOXFdqRUQLcTffi9ZbkBNwN_vNpowHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA0GCSqGSIb3DQEBCwUAA4ICAQB8Fv0_G2GghYOlOdiRRQWkhdpgLzm9D6fzHP_nq6vze1JWeYUjaGKb9IsvLFUiFUL0VhaBscsrCMAV63ME15EyGQRYmqPP5lZjiB1obrkhN86LFNcN-JcAfAuluuzEvn8kRTBtIOUXrYnepNHmd7-C_xOvVgMRK3wiLM3aVezziMM87k8UdqeKNCk9Ji5yhnREPamw66-PSPGG3Id6fIufOh3gsAFy0TXXNCdmRbMNqY3yd0FFgFAGCG1rHUq5W5B14VJSWurDoPLMAhXQDVTZIISg6pD6dZtLiCkMGeP2blyE4hY0eEWwhrNgKIJS_49dVaLoXK8_-9N0PP4lp1zk794b0hHnx5B6w0EUFGElVnyZcgGqYN8a9ycS8_S5qKHJ5p8jcs9xzsH6NVw24PbUN51_BvO1aAw4oeyhBumpXLooifvoBr9-ZjdRYW5yCZq_GTNKIGXKN949NiBVOmcSauYbT_EAG2Y9jM2OCbd9FxxPAyaKY-t3cFojg5aakUzyOwJ21ygoYByO04i2ymUCrp9eMqNI8_qq8vYOSQGfAyr8iAa57pcLbC8YVPHazVskHdymLtrkmQaUb6fOOB-0yBTfmLgrjJ4FPla3oQEEqwk3LsaxANRuDr5Cw_v_WPNuai4cj_CJR6sOJ2Ar2Gb5fvMlNIgRGvWqjBVgcHHLJA\u0026s=aKJ5vcJACPkOCVPJ_hOCu6JpKhyj2kMuTPfwVZbhIVJm4JjTBxIcekwjLdFfVdyRFiCVY6CnZ15aAgf4MV3CKbnhK_eQNqao50lDTIw43O91H_rSdeEinqgLdwNifloiclrDTeDFvNjVuHzubfjQFguHmX3jYNFpNcdkbFaJQcmH7KYJH2HVZUx6r_63sm1K9ulhGA66W26mtGIZuTssjgnNQy5Ybu1yf_2htNyAAuO837ZXT8K9IS6Ro06BsX7goMdrer2pG1pH8apWMYYNe5L-u58KfBLe62X8yMmCv_C5_NjwjUImkrGDWzlaabCAbXRFxN9jaoCyc8nKViOLeg\u0026h=y1swzZXOf5Fpk8-q_Y6OBbLIMnkd0v-9fedfvIeHZuM+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e31a31ea-38a5-4045-8ba3-ac91d411060a/resourceGroups/EDGECI-REGISTRATION-HC1n25r1035-2Yx4N6oM/providers/Microsoft.AzureStackHCI/virtualHardDisks?api-version=2024-02-01-preview",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/b76c2bfe-18e3-439c-8c07-cb98e8765b23*C2FCB905F616CA7D26A372CA24D6F15928730D69DEF1487803A3F32A92BAAF4B?api-version=2024-02-01-preview\u0026t=638889858308185731\u0026c=MIIIrzCCBpegAwIBAgITUQB9QzjGM-gzP6SKwQABAH1DODANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDQwHhcNMjUwNzE3MDkyNjQzWhcNMjYwMTEzMDkyNjQzWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhxeiJnrbYzgOiNeotAmwrpLo8zqXawo29HlPEKSWGNpwVkhmHFqN4eFKrftK3jfL7aSOh_A0uy24UHaQv2KENCLtqDioz1GfweOsDapp5UiBD-U6LHl85M_uP24hI1p6ZO4ebjQwoIT2omwWJB9TjOJ3TWFVvRt6TiAcb77fOPZOeQdtfQG96KlaEpjS6cSKxmAplsDPohWL0kIiwx7UUrSf3HRqoTMbGTmTrSrRLDyT2-Z31roaOC1IR1QsKBhjfefaq-rwp2QadLVm98QOJ-UY3D-nSsB8OCF9OeDIge7D79g1hg1vsEQvbhKmtsJ8OYuMMHlmXBjd6qTVWpf_ECAwEAAaOCBJwwggSYMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHkBggrBgEFBQcBAQSCAdYwggHSMGgGCCsGAQUFBzAChlxodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDEuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDIuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDMuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDQuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDAdBgNVHQ4EFgQUNPwFcUCSZ2QO3pIs-VL6KQGyvj4wDgYDVR0PAQH_BAQDAgWgMIIBNQYDVR0fBIIBLDCCASgwggEkoIIBIKCCARyGQmh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DUkwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDEuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDIuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDMuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDQuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybDCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwHwYDVR0jBBgwFoAUOXFdqRUQLcTffi9ZbkBNwN_vNpowHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA0GCSqGSIb3DQEBCwUAA4ICAQB8Fv0_G2GghYOlOdiRRQWkhdpgLzm9D6fzHP_nq6vze1JWeYUjaGKb9IsvLFUiFUL0VhaBscsrCMAV63ME15EyGQRYmqPP5lZjiB1obrkhN86LFNcN-JcAfAuluuzEvn8kRTBtIOUXrYnepNHmd7-C_xOvVgMRK3wiLM3aVezziMM87k8UdqeKNCk9Ji5yhnREPamw66-PSPGG3Id6fIufOh3gsAFy0TXXNCdmRbMNqY3yd0FFgFAGCG1rHUq5W5B14VJSWurDoPLMAhXQDVTZIISg6pD6dZtLiCkMGeP2blyE4hY0eEWwhrNgKIJS_49dVaLoXK8_-9N0PP4lp1zk794b0hHnx5B6w0EUFGElVnyZcgGqYN8a9ycS8_S5qKHJ5p8jcs9xzsH6NVw24PbUN51_BvO1aAw4oeyhBumpXLooifvoBr9-ZjdRYW5yCZq_GTNKIGXKN949NiBVOmcSauYbT_EAG2Y9jM2OCbd9FxxPAyaKY-t3cFojg5aakUzyOwJ21ygoYByO04i2ymUCrp9eMqNI8_qq8vYOSQGfAyr8iAa57pcLbC8YVPHazVskHdymLtrkmQaUb6fOOB-0yBTfmLgrjJ4FPla3oQEEqwk3LsaxANRuDr5Cw_v_WPNuai4cj_CJR6sOJ2Ar2Gb5fvMlNIgRGvWqjBVgcHHLJA\u0026s=aKJ5vcJACPkOCVPJ_hOCu6JpKhyj2kMuTPfwVZbhIVJm4JjTBxIcekwjLdFfVdyRFiCVY6CnZ15aAgf4MV3CKbnhK_eQNqao50lDTIw43O91H_rSdeEinqgLdwNifloiclrDTeDFvNjVuHzubfjQFguHmX3jYNFpNcdkbFaJQcmH7KYJH2HVZUx6r_63sm1K9ulhGA66W26mtGIZuTssjgnNQy5Ybu1yf_2htNyAAuO837ZXT8K9IS6Ro06BsX7goMdrer2pG1pH8apWMYYNe5L-u58KfBLe62X8yMmCv_C5_NjwjUImkrGDWzlaabCAbXRFxN9jaoCyc8nKViOLeg\u0026h=y1swzZXOf5Fpk8-q_Y6OBbLIMnkd0v-9fedfvIeHZuM",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "d99d6951-002c-4740-b28e-affe87d81e84" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "68" ],
+        "x-ms-client-request-id": [ "bfbfad10-df8c-4519-a484-cd6d5d7d0cfe" ],
+        "CommandName": [ "Az.StackHCIVM.internal\\New-AzStackHCIVMVirtualHardDisk" ],
+        "FullCommandName": [ "New-AzStackHCIVMVirtualHardDisk_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.StackHCIVM/2.0.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3b0074f6-0000-0100-0000-688297ed0000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-request-id": [ "e5d4473f-2dac-407a-8865-5827ba80b0f9" ],
+        "x-ms-correlation-request-id": [ "da13ca21-2aa9-4a0b-8861-6b0df3b22a16" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20250724T203101Z:da13ca21-2aa9-4a0b-8861-6b0df3b22a16" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F261BA9D00424F72A2FBC2D7965B903C Ref B: MWH011020808029 Ref C: 2025-07-24T20:31:01Z" ],
+        "Date": [ "Thu, 24 Jul 2025 20:31:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "611" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/b76c2bfe-18e3-439c-8c07-cb98e8765b23*C2FCB905F616CA7D26A372CA24D6F15928730D69DEF1487803A3F32A92BAAF4B\",\"name\":\"b76c2bfe-18e3-439c-8c07-cb98e8765b23*C2FCB905F616CA7D26A372CA24D6F15928730D69DEF1487803A3F32A92BAAF4B\",\"resourceId\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1127\",\"status\":\"Succeeded\",\"startTime\":\"2025-07-24T20:30:30.4157765Z\",\"endTime\":\"2025-07-24T20:30:37.4168168Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzStackHCIVMVirtualHardDisks+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1127?api-version=2024-02-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1127?api-version=2024-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "69" ],
+        "x-ms-client-request-id": [ "bfbfad10-df8c-4519-a484-cd6d5d7d0cfe" ],
+        "CommandName": [ "Az.StackHCIVM.internal\\New-AzStackHCIVMVirtualHardDisk" ],
+        "FullCommandName": [ "New-AzStackHCIVMVirtualHardDisk_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.StackHCIVM/2.0.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3c086f85-0000-0100-0000-688297ee0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "89df6103-a4bd-4512-892a-090f82bebada" ],
+        "x-ms-correlation-request-id": [ "ce3103a2-c317-476c-b366-9860e93652e8" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20250724T203101Z:ce3103a2-c317-476c-b366-9860e93652e8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E1B9F144D5DD4E088F82E5B04455617C Ref B: MWH011020808029 Ref C: 2025-07-24T20:31:01Z" ],
+        "Date": [ "Thu, 24 Jul 2025 20:31:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1127\",\"name\":\"testVhd1127\",\"type\":\"microsoft.azurestackhci/virtualharddisks\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.ExtendedLocation/customLocations/s45r2205-cl-customlocation\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"Harika.Vedati@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-24T20:30:30.3653657Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-07-24T20:30:38.5119155Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"diskSizeGB\":2,\"status\":{\"errorCode\":\"\",\"errorMessage\":\"\",\"provisioningStatus\":{\"operationId\":\"b76c2bfe-18e3-439c-8c07-cb98e8765b23*C2FCB905F616CA7D26A372CA24D6F15928730D69DEF1487803A3F32A92BAAF4B\",\"status\":\"Succeeded\"}},\"blockSizeBytes\":null,\"diskFileFormat\":\"vhdx\",\"hyperVGeneration\":null,\"logicalSectorBytes\":null,\"physicalSectorBytes\":null,\"dynamic\":null,\"containerId\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage1-8592ded0f2014db793012ad73db12a36\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzStackHCIVMVirtualHardDisks+[NoContext]+List+$GET+https://management.azure.com/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/virtualHardDisks?api-version=2024-02-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/virtualHardDisks?api-version=2024-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "70" ],
+        "x-ms-client-request-id": [ "97383d38-402b-4065-9806-ed52f51b72cb" ],
         "CommandName": [ "Get-AzStackHCIVMVirtualHardDisk" ],
         "FullCommandName": [ "Get-AzStackHCIVMVirtualHardDisk_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,35 +156,219 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "7e1ef750-160d-4688-a4e5-4dde62a05052", "c0e02245-13f9-4cab-abd5-8afc5d824ba8" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-request-id": [ "2bc86594-9ec7-4ed5-b2bf-18306b1b7c0b" ],
-        "x-ms-correlation-request-id": [ "2bc86594-9ec7-4ed5-b2bf-18306b1b7c0b" ],
-        "x-ms-routing-request-id": [ "EASTUS:20250722T005601Z:2bc86594-9ec7-4ed5-b2bf-18306b1b7c0b" ],
+        "x-ms-request-id": [ "f729f21f-f6ec-46f1-9fd2-c4c77f4baf8c" ],
+        "x-ms-correlation-request-id": [ "f729f21f-f6ec-46f1-9fd2-c4c77f4baf8c" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20250724T203102Z:f729f21f-f6ec-46f1-9fd2-c4c77f4baf8c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 90E6F6C3148B446D8A756C9DD3042D68 Ref B: MWH011020807034 Ref C: 2025-07-22T00:56:01Z" ],
-        "Date": [ "Tue, 22 Jul 2025 00:56:01 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: B1489B1A5F7C4C798E56A6C385E4B2C3 Ref B: MWH011020808029 Ref C: 2025-07-24T20:31:01Z" ],
+        "Date": [ "Thu, 24 Jul 2025 20:31:01 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "12" ],
+        "Content-Length": [ "6495" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1\",\"name\":\"testVhd1\",\"type\":\"microsoft.azurestackhci/virtualharddisks\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.ExtendedLocation/customLocations/s45r2205-cl-customlocation\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"Harika.Vedati@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-23T23:40:54.2359158Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-07-24T20:03:48.5448242Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"status\":{\"provisioningStatus\":{\"status\":\"Succeeded\",\"operationId\":\"4018cc17-2c63-4405-822d-98c6fed46775*5A2DC239D96B3A4504BD2D145C95A6934D928A85D497C95AACE7F043FD680512\"},\"errorCode\":\"\",\"errorMessage\":\"\"},\"diskSizeGB\":2,\"diskFileFormat\":\"vhdx\",\"containerId\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage1-8592ded0f2014db793012ad73db12a36\"}},{\"id\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd2\",\"name\":\"testVhd2\",\"type\":\"microsoft.azurestackhci/virtualharddisks\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.ExtendedLocation/customLocations/s45r2205-cl-customlocation\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"Harika.Vedati@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-23T23:41:27.6562878Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-07-24T19:10:52.4677585Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"status\":{\"provisioningStatus\":{\"status\":\"Succeeded\",\"operationId\":\"7fe3c43a-6614-4c11-8259-a51aa25998e2*B0023D79EA1DD37D2B0A04E0AF82EE0EA1941303FB962C832ECA19F0E051B37F\"},\"errorCode\":\"\",\"errorMessage\":\"\"},\"diskSizeGB\":2,\"diskFileFormat\":\"vhdx\",\"containerId\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage1-8592ded0f2014db793012ad73db12a36\"}},{\"id\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/virtualHardDisks/testOsDisk\",\"name\":\"testOsDisk\",\"type\":\"microsoft.azurestackhci/virtualharddisks\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.ExtendedLocation/customLocations/s45r2205-cl-customlocation\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"Harika.Vedati@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-23T23:42:00.1649544Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-07-24T19:11:24.0992618Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"status\":{\"provisioningStatus\":{\"status\":\"Succeeded\",\"operationId\":\"7d4d6c54-79b7-46c6-9153-9f4e6aedb4cd*45B06B43A209010415FBC57F6EC301CB78E5AD68D0F0724FF402BC2FCA5CEAC2\"},\"errorCode\":\"\",\"errorMessage\":\"\"},\"diskSizeGB\":2,\"diskFileFormat\":\"vhdx\",\"containerId\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage1-8592ded0f2014db793012ad73db12a36\"}},{\"id\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1127\",\"name\":\"testVhd1127\",\"type\":\"microsoft.azurestackhci/virtualharddisks\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.ExtendedLocation/customLocations/s45r2205-cl-customlocation\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"Harika.Vedati@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-24T20:30:30.3653657Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-07-24T20:30:38.5119155Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"diskSizeGB\":2,\"status\":{\"errorCode\":\"\",\"errorMessage\":\"\",\"provisioningStatus\":{\"operationId\":\"b76c2bfe-18e3-439c-8c07-cb98e8765b23*C2FCB905F616CA7D26A372CA24D6F15928730D69DEF1487803A3F32A92BAAF4B\",\"status\":\"Succeeded\"}},\"diskFileFormat\":\"vhdx\",\"containerId\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage1-8592ded0f2014db793012ad73db12a36\"}},{\"id\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/virtualHardDisks/vhdmanage-25fmDPCA\",\"name\":\"vhdmanage-25fmDPCA\",\"type\":\"microsoft.azurestackhci/virtualharddisks\",\"location\":\"canadacentral\",\"extendedLocation\":{\"name\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.ExtendedLocation/customLocations/s45r2205-cl-customlocation\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"7c9745c4-efab-4a38-b9b0-1df759fb926b\",\"createdByType\":\"Application\",\"createdAt\":\"2025-07-22T13:33:08.8437972Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-07-22T16:52:25.3872011Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"diskSizeGB\":32,\"dynamic\":true,\"status\":{\"errorCode\":\"\",\"errorMessage\":\"\",\"provisioningStatus\":{\"operationId\":\"7983bdeb-f583-4cf6-8df5-c9109976ec5f*885A67CBE16372E73F8428143BC8C273BCEDA70CCEABD198F269A94FC1B686CC\",\"status\":\"Succeeded\"}},\"diskFileFormat\":\"vhdx\",\"containerId\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage1-8592ded0f2014db793012ad73db12a36\"}}]}",
       "isContentBase64": false
     }
   },
-  "AzStackHCIVMVirtualHardDisks+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/e31a31ea-38a5-4045-8ba3-ac91d411060a/resourceGroups/EDGECI-REGISTRATION-HC1n25r1035-2Yx4N6oM/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1127?api-version=2024-02-01-preview+1": {
+  "AzStackHCIVMVirtualHardDisks+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1127?api-version=2024-02-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e31a31ea-38a5-4045-8ba3-ac91d411060a/resourceGroups/EDGECI-REGISTRATION-HC1n25r1035-2Yx4N6oM/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1127?api-version=2024-02-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1127?api-version=2024-02-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "3040b665-b4b7-48b4-acfa-97561ba146be" ],
+        "x-ms-unique-id": [ "71" ],
+        "x-ms-client-request-id": [ "f8d3a01a-643a-4b4d-aa58-617ea12a584d" ],
+        "CommandName": [ "Get-AzStackHCIVMVirtualHardDisk" ],
+        "FullCommandName": [ "Get-AzStackHCIVMVirtualHardDisk_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.StackHCIVM/2.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3c086f85-0000-0100-0000-688297ee0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "3b56f6f7-bf32-43e5-b814-b85bcadb2de1" ],
+        "x-ms-correlation-request-id": [ "07eda9f1-f3de-4657-acf7-a1c57778cdcb" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20250724T203102Z:07eda9f1-f3de-4657-acf7-a1c57778cdcb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D84083CBE77E41AE932AD7331B321D45 Ref B: MWH011020808029 Ref C: 2025-07-24T20:31:02Z" ],
+        "Date": [ "Thu, 24 Jul 2025 20:31:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1127\",\"name\":\"testVhd1127\",\"type\":\"microsoft.azurestackhci/virtualharddisks\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.ExtendedLocation/customLocations/s45r2205-cl-customlocation\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"Harika.Vedati@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-24T20:30:30.3653657Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-07-24T20:30:38.5119155Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"diskSizeGB\":2,\"status\":{\"errorCode\":\"\",\"errorMessage\":\"\",\"provisioningStatus\":{\"operationId\":\"b76c2bfe-18e3-439c-8c07-cb98e8765b23*C2FCB905F616CA7D26A372CA24D6F15928730D69DEF1487803A3F32A92BAAF4B\",\"status\":\"Succeeded\"}},\"blockSizeBytes\":null,\"diskFileFormat\":\"vhdx\",\"hyperVGeneration\":null,\"logicalSectorBytes\":null,\"physicalSectorBytes\":null,\"dynamic\":null,\"containerId\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage1-8592ded0f2014db793012ad73db12a36\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzStackHCIVMVirtualHardDisks+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1127?api-version=2024-02-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1127?api-version=2024-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "72" ],
+        "x-ms-client-request-id": [ "374080da-6ed4-49da-a024-75185d2c2734" ],
+        "CommandName": [ "Az.StackHCIVM.internal\\Remove-AzStackHCIVMVirtualHardDisk" ],
+        "FullCommandName": [ "Remove-AzStackHCIVMVirtualHardDisk_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.StackHCIVM/2.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3c08af86-0000-0100-0000-688298070000\"" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/5432c6a9-b232-4a10-9819-ffd97913a093*C2FCB905F616CA7D26A372CA24D6F15928730D69DEF1487803A3F32A92BAAF4B?api-version=2024-02-01-preview\u0026t=638889858634239372\u0026c=MIIIrzCCBpegAwIBAgITUQB9QzjGM-gzP6SKwQABAH1DODANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDQwHhcNMjUwNzE3MDkyNjQzWhcNMjYwMTEzMDkyNjQzWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhxeiJnrbYzgOiNeotAmwrpLo8zqXawo29HlPEKSWGNpwVkhmHFqN4eFKrftK3jfL7aSOh_A0uy24UHaQv2KENCLtqDioz1GfweOsDapp5UiBD-U6LHl85M_uP24hI1p6ZO4ebjQwoIT2omwWJB9TjOJ3TWFVvRt6TiAcb77fOPZOeQdtfQG96KlaEpjS6cSKxmAplsDPohWL0kIiwx7UUrSf3HRqoTMbGTmTrSrRLDyT2-Z31roaOC1IR1QsKBhjfefaq-rwp2QadLVm98QOJ-UY3D-nSsB8OCF9OeDIge7D79g1hg1vsEQvbhKmtsJ8OYuMMHlmXBjd6qTVWpf_ECAwEAAaOCBJwwggSYMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHkBggrBgEFBQcBAQSCAdYwggHSMGgGCCsGAQUFBzAChlxodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDEuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDIuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDMuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDQuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDAdBgNVHQ4EFgQUNPwFcUCSZ2QO3pIs-VL6KQGyvj4wDgYDVR0PAQH_BAQDAgWgMIIBNQYDVR0fBIIBLDCCASgwggEkoIIBIKCCARyGQmh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DUkwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDEuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDIuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDMuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDQuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybDCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwHwYDVR0jBBgwFoAUOXFdqRUQLcTffi9ZbkBNwN_vNpowHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA0GCSqGSIb3DQEBCwUAA4ICAQB8Fv0_G2GghYOlOdiRRQWkhdpgLzm9D6fzHP_nq6vze1JWeYUjaGKb9IsvLFUiFUL0VhaBscsrCMAV63ME15EyGQRYmqPP5lZjiB1obrkhN86LFNcN-JcAfAuluuzEvn8kRTBtIOUXrYnepNHmd7-C_xOvVgMRK3wiLM3aVezziMM87k8UdqeKNCk9Ji5yhnREPamw66-PSPGG3Id6fIufOh3gsAFy0TXXNCdmRbMNqY3yd0FFgFAGCG1rHUq5W5B14VJSWurDoPLMAhXQDVTZIISg6pD6dZtLiCkMGeP2blyE4hY0eEWwhrNgKIJS_49dVaLoXK8_-9N0PP4lp1zk794b0hHnx5B6w0EUFGElVnyZcgGqYN8a9ycS8_S5qKHJ5p8jcs9xzsH6NVw24PbUN51_BvO1aAw4oeyhBumpXLooifvoBr9-ZjdRYW5yCZq_GTNKIGXKN949NiBVOmcSauYbT_EAG2Y9jM2OCbd9FxxPAyaKY-t3cFojg5aakUzyOwJ21ygoYByO04i2ymUCrp9eMqNI8_qq8vYOSQGfAyr8iAa57pcLbC8YVPHazVskHdymLtrkmQaUb6fOOB-0yBTfmLgrjJ4FPla3oQEEqwk3LsaxANRuDr5Cw_v_WPNuai4cj_CJR6sOJ2Ar2Gb5fvMlNIgRGvWqjBVgcHHLJA\u0026s=jzt67BtHPz3FpWP4tZHA6o_SMvpffMBvZoYLuTUPkSyakEjshlocsuOeGBvsc4CA0aPKNWCw9fHiWV34zpirxxAuTlMWg-OQnh9Wb8NgvMpLbqfPCCVzluvtUD_GM_eCxQJBOxbPlBoUTLyU1hpD_qQ6nPwE8bUOPo2i2aFwFFYe_s5rS4Mb7PqROE4iomGi6DLcpjlEBgJjt7yLveZ7-geHT3iSI03zZ4VPswgFlFmx8AFU5m0442SFuQ7OxG-jPjvt1soOjqbOlPJdjxx39MJUYww4ih_GH9gNRjLIo8Clha4-S8P6cIjAXitZflrfdLkyH3AZ689QplJYcA2qPg\u0026h=QRKfmtVoqci_aJcbKxfc8_JvYAYfwMpSY-kyfQUVS0U" ],
+        "x-ms-operation-identifier": [ "tenantId=d9b73d5e-a9d3-41ba-88c3-796a643e3edd,objectId=7a71a15e-5f34-4f90-9adf-d32f77671976/canadacentral/6ea7dd87-0280-4a54-b831-1c1a1f0bba88" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "eb4abea2-cca2-4300-b787-7684d6c9c6fc" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-azure-ref": [ "20250724T203102Z-16d7544c7fdg7sbqhC1MNZvnsn00000006tg0000000061gk" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/5432c6a9-b232-4a10-9819-ffd97913a093*C2FCB905F616CA7D26A372CA24D6F15928730D69DEF1487803A3F32A92BAAF4B?api-version=2024-02-01-preview\u0026t=638889858634083159\u0026c=MIIIrzCCBpegAwIBAgITUQB9QzjGM-gzP6SKwQABAH1DODANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDQwHhcNMjUwNzE3MDkyNjQzWhcNMjYwMTEzMDkyNjQzWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhxeiJnrbYzgOiNeotAmwrpLo8zqXawo29HlPEKSWGNpwVkhmHFqN4eFKrftK3jfL7aSOh_A0uy24UHaQv2KENCLtqDioz1GfweOsDapp5UiBD-U6LHl85M_uP24hI1p6ZO4ebjQwoIT2omwWJB9TjOJ3TWFVvRt6TiAcb77fOPZOeQdtfQG96KlaEpjS6cSKxmAplsDPohWL0kIiwx7UUrSf3HRqoTMbGTmTrSrRLDyT2-Z31roaOC1IR1QsKBhjfefaq-rwp2QadLVm98QOJ-UY3D-nSsB8OCF9OeDIge7D79g1hg1vsEQvbhKmtsJ8OYuMMHlmXBjd6qTVWpf_ECAwEAAaOCBJwwggSYMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHkBggrBgEFBQcBAQSCAdYwggHSMGgGCCsGAQUFBzAChlxodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDEuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDIuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDMuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDQuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDAdBgNVHQ4EFgQUNPwFcUCSZ2QO3pIs-VL6KQGyvj4wDgYDVR0PAQH_BAQDAgWgMIIBNQYDVR0fBIIBLDCCASgwggEkoIIBIKCCARyGQmh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DUkwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDEuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDIuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDMuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDQuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybDCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwHwYDVR0jBBgwFoAUOXFdqRUQLcTffi9ZbkBNwN_vNpowHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA0GCSqGSIb3DQEBCwUAA4ICAQB8Fv0_G2GghYOlOdiRRQWkhdpgLzm9D6fzHP_nq6vze1JWeYUjaGKb9IsvLFUiFUL0VhaBscsrCMAV63ME15EyGQRYmqPP5lZjiB1obrkhN86LFNcN-JcAfAuluuzEvn8kRTBtIOUXrYnepNHmd7-C_xOvVgMRK3wiLM3aVezziMM87k8UdqeKNCk9Ji5yhnREPamw66-PSPGG3Id6fIufOh3gsAFy0TXXNCdmRbMNqY3yd0FFgFAGCG1rHUq5W5B14VJSWurDoPLMAhXQDVTZIISg6pD6dZtLiCkMGeP2blyE4hY0eEWwhrNgKIJS_49dVaLoXK8_-9N0PP4lp1zk794b0hHnx5B6w0EUFGElVnyZcgGqYN8a9ycS8_S5qKHJ5p8jcs9xzsH6NVw24PbUN51_BvO1aAw4oeyhBumpXLooifvoBr9-ZjdRYW5yCZq_GTNKIGXKN949NiBVOmcSauYbT_EAG2Y9jM2OCbd9FxxPAyaKY-t3cFojg5aakUzyOwJ21ygoYByO04i2ymUCrp9eMqNI8_qq8vYOSQGfAyr8iAa57pcLbC8YVPHazVskHdymLtrkmQaUb6fOOB-0yBTfmLgrjJ4FPla3oQEEqwk3LsaxANRuDr5Cw_v_WPNuai4cj_CJR6sOJ2Ar2Gb5fvMlNIgRGvWqjBVgcHHLJA\u0026s=d9_asTuQQC2ffA4m410IcVuRx9NsX040X17XTGAgQY1FPWiZfiJ5hBl-hlRLumvWqzRXvLM8i55WHIwjH3a-5xs0SZpXf28_WSV-DdPGRZAcAL5H2APi-3CYY4MKAbuIXpZko3X31Y-o2MGK4PxQ1-Q5c9KO81vL2i8NOkxkIDj-fhLUTVUzVqnjw2VHP9IAQVfl1NNAg-3CIvL1VW81uqwhR6WkRksoSeSqP_teBla09mPWyPiGwHICJXB7CqZmR_WNmXvwWM0Jk1mZvn41NvSwqzajy76uxknubegAzld00eGj0Y6MdgeR1hMKwyTSZ_hUpqF4D98wLiHHE_uUvw\u0026h=e_kBRr48MpklGqW65K1SLHYQ1JXmTAafr68JwTGMvsY" ],
+        "x-ms-correlation-request-id": [ "07bd8e4e-bf56-4141-ac43-8ae92eb9f000" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20250724T203103Z:07bd8e4e-bf56-4141-ac43-8ae92eb9f000" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: 2AC32069A9B543E9B35DFF1A72449878 Ref B: MWH011020808029 Ref C: 2025-07-24T20:31:02Z" ],
+        "Date": [ "Thu, 24 Jul 2025 20:31:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "AzStackHCIVMVirtualHardDisks+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/5432c6a9-b232-4a10-9819-ffd97913a093*C2FCB905F616CA7D26A372CA24D6F15928730D69DEF1487803A3F32A92BAAF4B?api-version=2024-02-01-preview\u0026t=638889858634083159\u0026c=MIIIrzCCBpegAwIBAgITUQB9QzjGM-gzP6SKwQABAH1DODANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDQwHhcNMjUwNzE3MDkyNjQzWhcNMjYwMTEzMDkyNjQzWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhxeiJnrbYzgOiNeotAmwrpLo8zqXawo29HlPEKSWGNpwVkhmHFqN4eFKrftK3jfL7aSOh_A0uy24UHaQv2KENCLtqDioz1GfweOsDapp5UiBD-U6LHl85M_uP24hI1p6ZO4ebjQwoIT2omwWJB9TjOJ3TWFVvRt6TiAcb77fOPZOeQdtfQG96KlaEpjS6cSKxmAplsDPohWL0kIiwx7UUrSf3HRqoTMbGTmTrSrRLDyT2-Z31roaOC1IR1QsKBhjfefaq-rwp2QadLVm98QOJ-UY3D-nSsB8OCF9OeDIge7D79g1hg1vsEQvbhKmtsJ8OYuMMHlmXBjd6qTVWpf_ECAwEAAaOCBJwwggSYMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHkBggrBgEFBQcBAQSCAdYwggHSMGgGCCsGAQUFBzAChlxodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDEuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDIuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDMuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDQuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDAdBgNVHQ4EFgQUNPwFcUCSZ2QO3pIs-VL6KQGyvj4wDgYDVR0PAQH_BAQDAgWgMIIBNQYDVR0fBIIBLDCCASgwggEkoIIBIKCCARyGQmh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DUkwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDEuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDIuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDMuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDQuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybDCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwHwYDVR0jBBgwFoAUOXFdqRUQLcTffi9ZbkBNwN_vNpowHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA0GCSqGSIb3DQEBCwUAA4ICAQB8Fv0_G2GghYOlOdiRRQWkhdpgLzm9D6fzHP_nq6vze1JWeYUjaGKb9IsvLFUiFUL0VhaBscsrCMAV63ME15EyGQRYmqPP5lZjiB1obrkhN86LFNcN-JcAfAuluuzEvn8kRTBtIOUXrYnepNHmd7-C_xOvVgMRK3wiLM3aVezziMM87k8UdqeKNCk9Ji5yhnREPamw66-PSPGG3Id6fIufOh3gsAFy0TXXNCdmRbMNqY3yd0FFgFAGCG1rHUq5W5B14VJSWurDoPLMAhXQDVTZIISg6pD6dZtLiCkMGeP2blyE4hY0eEWwhrNgKIJS_49dVaLoXK8_-9N0PP4lp1zk794b0hHnx5B6w0EUFGElVnyZcgGqYN8a9ycS8_S5qKHJ5p8jcs9xzsH6NVw24PbUN51_BvO1aAw4oeyhBumpXLooifvoBr9-ZjdRYW5yCZq_GTNKIGXKN949NiBVOmcSauYbT_EAG2Y9jM2OCbd9FxxPAyaKY-t3cFojg5aakUzyOwJ21ygoYByO04i2ymUCrp9eMqNI8_qq8vYOSQGfAyr8iAa57pcLbC8YVPHazVskHdymLtrkmQaUb6fOOB-0yBTfmLgrjJ4FPla3oQEEqwk3LsaxANRuDr5Cw_v_WPNuai4cj_CJR6sOJ2Ar2Gb5fvMlNIgRGvWqjBVgcHHLJA\u0026s=d9_asTuQQC2ffA4m410IcVuRx9NsX040X17XTGAgQY1FPWiZfiJ5hBl-hlRLumvWqzRXvLM8i55WHIwjH3a-5xs0SZpXf28_WSV-DdPGRZAcAL5H2APi-3CYY4MKAbuIXpZko3X31Y-o2MGK4PxQ1-Q5c9KO81vL2i8NOkxkIDj-fhLUTVUzVqnjw2VHP9IAQVfl1NNAg-3CIvL1VW81uqwhR6WkRksoSeSqP_teBla09mPWyPiGwHICJXB7CqZmR_WNmXvwWM0Jk1mZvn41NvSwqzajy76uxknubegAzld00eGj0Y6MdgeR1hMKwyTSZ_hUpqF4D98wLiHHE_uUvw\u0026h=e_kBRr48MpklGqW65K1SLHYQ1JXmTAafr68JwTGMvsY+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/5432c6a9-b232-4a10-9819-ffd97913a093*C2FCB905F616CA7D26A372CA24D6F15928730D69DEF1487803A3F32A92BAAF4B?api-version=2024-02-01-preview\u0026t=638889858634083159\u0026c=MIIIrzCCBpegAwIBAgITUQB9QzjGM-gzP6SKwQABAH1DODANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDQwHhcNMjUwNzE3MDkyNjQzWhcNMjYwMTEzMDkyNjQzWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhxeiJnrbYzgOiNeotAmwrpLo8zqXawo29HlPEKSWGNpwVkhmHFqN4eFKrftK3jfL7aSOh_A0uy24UHaQv2KENCLtqDioz1GfweOsDapp5UiBD-U6LHl85M_uP24hI1p6ZO4ebjQwoIT2omwWJB9TjOJ3TWFVvRt6TiAcb77fOPZOeQdtfQG96KlaEpjS6cSKxmAplsDPohWL0kIiwx7UUrSf3HRqoTMbGTmTrSrRLDyT2-Z31roaOC1IR1QsKBhjfefaq-rwp2QadLVm98QOJ-UY3D-nSsB8OCF9OeDIge7D79g1hg1vsEQvbhKmtsJ8OYuMMHlmXBjd6qTVWpf_ECAwEAAaOCBJwwggSYMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHkBggrBgEFBQcBAQSCAdYwggHSMGgGCCsGAQUFBzAChlxodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDEuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDIuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDMuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDQuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDAdBgNVHQ4EFgQUNPwFcUCSZ2QO3pIs-VL6KQGyvj4wDgYDVR0PAQH_BAQDAgWgMIIBNQYDVR0fBIIBLDCCASgwggEkoIIBIKCCARyGQmh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DUkwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDEuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDIuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDMuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDQuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybDCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwHwYDVR0jBBgwFoAUOXFdqRUQLcTffi9ZbkBNwN_vNpowHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA0GCSqGSIb3DQEBCwUAA4ICAQB8Fv0_G2GghYOlOdiRRQWkhdpgLzm9D6fzHP_nq6vze1JWeYUjaGKb9IsvLFUiFUL0VhaBscsrCMAV63ME15EyGQRYmqPP5lZjiB1obrkhN86LFNcN-JcAfAuluuzEvn8kRTBtIOUXrYnepNHmd7-C_xOvVgMRK3wiLM3aVezziMM87k8UdqeKNCk9Ji5yhnREPamw66-PSPGG3Id6fIufOh3gsAFy0TXXNCdmRbMNqY3yd0FFgFAGCG1rHUq5W5B14VJSWurDoPLMAhXQDVTZIISg6pD6dZtLiCkMGeP2blyE4hY0eEWwhrNgKIJS_49dVaLoXK8_-9N0PP4lp1zk794b0hHnx5B6w0EUFGElVnyZcgGqYN8a9ycS8_S5qKHJ5p8jcs9xzsH6NVw24PbUN51_BvO1aAw4oeyhBumpXLooifvoBr9-ZjdRYW5yCZq_GTNKIGXKN949NiBVOmcSauYbT_EAG2Y9jM2OCbd9FxxPAyaKY-t3cFojg5aakUzyOwJ21ygoYByO04i2ymUCrp9eMqNI8_qq8vYOSQGfAyr8iAa57pcLbC8YVPHazVskHdymLtrkmQaUb6fOOB-0yBTfmLgrjJ4FPla3oQEEqwk3LsaxANRuDr5Cw_v_WPNuai4cj_CJR6sOJ2Ar2Gb5fvMlNIgRGvWqjBVgcHHLJA\u0026s=d9_asTuQQC2ffA4m410IcVuRx9NsX040X17XTGAgQY1FPWiZfiJ5hBl-hlRLumvWqzRXvLM8i55WHIwjH3a-5xs0SZpXf28_WSV-DdPGRZAcAL5H2APi-3CYY4MKAbuIXpZko3X31Y-o2MGK4PxQ1-Q5c9KO81vL2i8NOkxkIDj-fhLUTVUzVqnjw2VHP9IAQVfl1NNAg-3CIvL1VW81uqwhR6WkRksoSeSqP_teBla09mPWyPiGwHICJXB7CqZmR_WNmXvwWM0Jk1mZvn41NvSwqzajy76uxknubegAzld00eGj0Y6MdgeR1hMKwyTSZ_hUpqF4D98wLiHHE_uUvw\u0026h=e_kBRr48MpklGqW65K1SLHYQ1JXmTAafr68JwTGMvsY",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "73" ],
+        "x-ms-client-request-id": [ "374080da-6ed4-49da-a024-75185d2c2734" ],
+        "CommandName": [ "Az.StackHCIVM.internal\\Remove-AzStackHCIVMVirtualHardDisk" ],
+        "FullCommandName": [ "Remove-AzStackHCIVMVirtualHardDisk_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.StackHCIVM/2.0.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3b0070f7-0000-0100-0000-6882981a0000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-request-id": [ "2d3a92f0-5eed-4b38-b9b4-cfa8d49e3fe4" ],
+        "x-ms-correlation-request-id": [ "98c9fc3f-a7d3-4ce3-b98f-88d3f14898ee" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20250724T203133Z:98c9fc3f-a7d3-4ce3-b98f-88d3f14898ee" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C0D7B23541E04FB7B26ACF0A30D35B82 Ref B: MWH011020808029 Ref C: 2025-07-24T20:31:33Z" ],
+        "Date": [ "Thu, 24 Jul 2025 20:31:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "599" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/5432c6a9-b232-4a10-9819-ffd97913a093*C2FCB905F616CA7D26A372CA24D6F15928730D69DEF1487803A3F32A92BAAF4B\",\"name\":\"5432c6a9-b232-4a10-9819-ffd97913a093*C2FCB905F616CA7D26A372CA24D6F15928730D69DEF1487803A3F32A92BAAF4B\",\"resourceId\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1127\",\"status\":\"Succeeded\",\"startTime\":\"2025-07-24T20:31:02.734448Z\",\"endTime\":\"2025-07-24T20:31:22.8400743Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzStackHCIVMVirtualHardDisks+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/5432c6a9-b232-4a10-9819-ffd97913a093*C2FCB905F616CA7D26A372CA24D6F15928730D69DEF1487803A3F32A92BAAF4B?api-version=2024-02-01-preview\u0026t=638889858634239372\u0026c=MIIIrzCCBpegAwIBAgITUQB9QzjGM-gzP6SKwQABAH1DODANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDQwHhcNMjUwNzE3MDkyNjQzWhcNMjYwMTEzMDkyNjQzWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhxeiJnrbYzgOiNeotAmwrpLo8zqXawo29HlPEKSWGNpwVkhmHFqN4eFKrftK3jfL7aSOh_A0uy24UHaQv2KENCLtqDioz1GfweOsDapp5UiBD-U6LHl85M_uP24hI1p6ZO4ebjQwoIT2omwWJB9TjOJ3TWFVvRt6TiAcb77fOPZOeQdtfQG96KlaEpjS6cSKxmAplsDPohWL0kIiwx7UUrSf3HRqoTMbGTmTrSrRLDyT2-Z31roaOC1IR1QsKBhjfefaq-rwp2QadLVm98QOJ-UY3D-nSsB8OCF9OeDIge7D79g1hg1vsEQvbhKmtsJ8OYuMMHlmXBjd6qTVWpf_ECAwEAAaOCBJwwggSYMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHkBggrBgEFBQcBAQSCAdYwggHSMGgGCCsGAQUFBzAChlxodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDEuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDIuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDMuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDQuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDAdBgNVHQ4EFgQUNPwFcUCSZ2QO3pIs-VL6KQGyvj4wDgYDVR0PAQH_BAQDAgWgMIIBNQYDVR0fBIIBLDCCASgwggEkoIIBIKCCARyGQmh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DUkwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDEuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDIuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDMuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDQuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybDCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwHwYDVR0jBBgwFoAUOXFdqRUQLcTffi9ZbkBNwN_vNpowHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA0GCSqGSIb3DQEBCwUAA4ICAQB8Fv0_G2GghYOlOdiRRQWkhdpgLzm9D6fzHP_nq6vze1JWeYUjaGKb9IsvLFUiFUL0VhaBscsrCMAV63ME15EyGQRYmqPP5lZjiB1obrkhN86LFNcN-JcAfAuluuzEvn8kRTBtIOUXrYnepNHmd7-C_xOvVgMRK3wiLM3aVezziMM87k8UdqeKNCk9Ji5yhnREPamw66-PSPGG3Id6fIufOh3gsAFy0TXXNCdmRbMNqY3yd0FFgFAGCG1rHUq5W5B14VJSWurDoPLMAhXQDVTZIISg6pD6dZtLiCkMGeP2blyE4hY0eEWwhrNgKIJS_49dVaLoXK8_-9N0PP4lp1zk794b0hHnx5B6w0EUFGElVnyZcgGqYN8a9ycS8_S5qKHJ5p8jcs9xzsH6NVw24PbUN51_BvO1aAw4oeyhBumpXLooifvoBr9-ZjdRYW5yCZq_GTNKIGXKN949NiBVOmcSauYbT_EAG2Y9jM2OCbd9FxxPAyaKY-t3cFojg5aakUzyOwJ21ygoYByO04i2ymUCrp9eMqNI8_qq8vYOSQGfAyr8iAa57pcLbC8YVPHazVskHdymLtrkmQaUb6fOOB-0yBTfmLgrjJ4FPla3oQEEqwk3LsaxANRuDr5Cw_v_WPNuai4cj_CJR6sOJ2Ar2Gb5fvMlNIgRGvWqjBVgcHHLJA\u0026s=jzt67BtHPz3FpWP4tZHA6o_SMvpffMBvZoYLuTUPkSyakEjshlocsuOeGBvsc4CA0aPKNWCw9fHiWV34zpirxxAuTlMWg-OQnh9Wb8NgvMpLbqfPCCVzluvtUD_GM_eCxQJBOxbPlBoUTLyU1hpD_qQ6nPwE8bUOPo2i2aFwFFYe_s5rS4Mb7PqROE4iomGi6DLcpjlEBgJjt7yLveZ7-geHT3iSI03zZ4VPswgFlFmx8AFU5m0442SFuQ7OxG-jPjvt1soOjqbOlPJdjxx39MJUYww4ih_GH9gNRjLIo8Clha4-S8P6cIjAXitZflrfdLkyH3AZ689QplJYcA2qPg\u0026h=QRKfmtVoqci_aJcbKxfc8_JvYAYfwMpSY-kyfQUVS0U+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/5432c6a9-b232-4a10-9819-ffd97913a093*C2FCB905F616CA7D26A372CA24D6F15928730D69DEF1487803A3F32A92BAAF4B?api-version=2024-02-01-preview\u0026t=638889858634239372\u0026c=MIIIrzCCBpegAwIBAgITUQB9QzjGM-gzP6SKwQABAH1DODANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDQwHhcNMjUwNzE3MDkyNjQzWhcNMjYwMTEzMDkyNjQzWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhxeiJnrbYzgOiNeotAmwrpLo8zqXawo29HlPEKSWGNpwVkhmHFqN4eFKrftK3jfL7aSOh_A0uy24UHaQv2KENCLtqDioz1GfweOsDapp5UiBD-U6LHl85M_uP24hI1p6ZO4ebjQwoIT2omwWJB9TjOJ3TWFVvRt6TiAcb77fOPZOeQdtfQG96KlaEpjS6cSKxmAplsDPohWL0kIiwx7UUrSf3HRqoTMbGTmTrSrRLDyT2-Z31roaOC1IR1QsKBhjfefaq-rwp2QadLVm98QOJ-UY3D-nSsB8OCF9OeDIge7D79g1hg1vsEQvbhKmtsJ8OYuMMHlmXBjd6qTVWpf_ECAwEAAaOCBJwwggSYMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHkBggrBgEFBQcBAQSCAdYwggHSMGgGCCsGAQUFBzAChlxodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDEuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDIuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDMuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDBYBggrBgEFBQcwAoZMaHR0cDovL2NybDQuYW1lLmdibC9haWEvbWVsMDFwa2lpbnRjYTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNydDAdBgNVHQ4EFgQUNPwFcUCSZ2QO3pIs-VL6KQGyvj4wDgYDVR0PAQH_BAQDAgWgMIIBNQYDVR0fBIIBLDCCASgwggEkoIIBIKCCARyGQmh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DUkwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDEuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDIuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDMuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybIY0aHR0cDovL2NybDQuYW1lLmdibC9jcmwvQU1FJTIwSW5mcmElMjBDQSUyMDA0KDEpLmNybDCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwHwYDVR0jBBgwFoAUOXFdqRUQLcTffi9ZbkBNwN_vNpowHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA0GCSqGSIb3DQEBCwUAA4ICAQB8Fv0_G2GghYOlOdiRRQWkhdpgLzm9D6fzHP_nq6vze1JWeYUjaGKb9IsvLFUiFUL0VhaBscsrCMAV63ME15EyGQRYmqPP5lZjiB1obrkhN86LFNcN-JcAfAuluuzEvn8kRTBtIOUXrYnepNHmd7-C_xOvVgMRK3wiLM3aVezziMM87k8UdqeKNCk9Ji5yhnREPamw66-PSPGG3Id6fIufOh3gsAFy0TXXNCdmRbMNqY3yd0FFgFAGCG1rHUq5W5B14VJSWurDoPLMAhXQDVTZIISg6pD6dZtLiCkMGeP2blyE4hY0eEWwhrNgKIJS_49dVaLoXK8_-9N0PP4lp1zk794b0hHnx5B6w0EUFGElVnyZcgGqYN8a9ycS8_S5qKHJ5p8jcs9xzsH6NVw24PbUN51_BvO1aAw4oeyhBumpXLooifvoBr9-ZjdRYW5yCZq_GTNKIGXKN949NiBVOmcSauYbT_EAG2Y9jM2OCbd9FxxPAyaKY-t3cFojg5aakUzyOwJ21ygoYByO04i2ymUCrp9eMqNI8_qq8vYOSQGfAyr8iAa57pcLbC8YVPHazVskHdymLtrkmQaUb6fOOB-0yBTfmLgrjJ4FPla3oQEEqwk3LsaxANRuDr5Cw_v_WPNuai4cj_CJR6sOJ2Ar2Gb5fvMlNIgRGvWqjBVgcHHLJA\u0026s=jzt67BtHPz3FpWP4tZHA6o_SMvpffMBvZoYLuTUPkSyakEjshlocsuOeGBvsc4CA0aPKNWCw9fHiWV34zpirxxAuTlMWg-OQnh9Wb8NgvMpLbqfPCCVzluvtUD_GM_eCxQJBOxbPlBoUTLyU1hpD_qQ6nPwE8bUOPo2i2aFwFFYe_s5rS4Mb7PqROE4iomGi6DLcpjlEBgJjt7yLveZ7-geHT3iSI03zZ4VPswgFlFmx8AFU5m0442SFuQ7OxG-jPjvt1soOjqbOlPJdjxx39MJUYww4ih_GH9gNRjLIo8Clha4-S8P6cIjAXitZflrfdLkyH3AZ689QplJYcA2qPg\u0026h=QRKfmtVoqci_aJcbKxfc8_JvYAYfwMpSY-kyfQUVS0U",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "74" ],
+        "x-ms-client-request-id": [ "374080da-6ed4-49da-a024-75185d2c2734" ],
+        "CommandName": [ "Az.StackHCIVM.internal\\Remove-AzStackHCIVMVirtualHardDisk" ],
+        "FullCommandName": [ "Remove-AzStackHCIVMVirtualHardDisk_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.StackHCIVM/2.0.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3b0070f7-0000-0100-0000-6882981a0000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-request-id": [ "738f2158-3865-4ad3-ac5f-dd43ee498256" ],
+        "x-ms-correlation-request-id": [ "8ba4b746-56e7-41e5-890e-bbc7325a7677" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20250724T203134Z:8ba4b746-56e7-41e5-890e-bbc7325a7677" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1972BAC9999C4BEF9D5A58A418BA448F Ref B: MWH011020808029 Ref C: 2025-07-24T20:31:34Z" ],
+        "Date": [ "Thu, 24 Jul 2025 20:31:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "599" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/5432c6a9-b232-4a10-9819-ffd97913a093*C2FCB905F616CA7D26A372CA24D6F15928730D69DEF1487803A3F32A92BAAF4B\",\"name\":\"5432c6a9-b232-4a10-9819-ffd97913a093*C2FCB905F616CA7D26A372CA24D6F15928730D69DEF1487803A3F32A92BAAF4B\",\"resourceId\":\"/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1127\",\"status\":\"Succeeded\",\"startTime\":\"2025-07-24T20:31:02.734448Z\",\"endTime\":\"2025-07-24T20:31:22.8400743Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzStackHCIVMVirtualHardDisks+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1127?api-version=2024-02-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1127?api-version=2024-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "75" ],
+        "x-ms-client-request-id": [ "774fa691-72e6-4443-aead-629d55499980" ],
         "CommandName": [ "Get-AzStackHCIVMVirtualHardDisk" ],
         "FullCommandName": [ "Get-AzStackHCIVMVirtualHardDisk_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -65,22 +383,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "f8a7cf7d-8bb9-463e-9136-19dac7578440" ],
-        "x-ms-correlation-request-id": [ "f8a7cf7d-8bb9-463e-9136-19dac7578440" ],
-        "x-ms-routing-request-id": [ "EASTUS:20250722T005602Z:f8a7cf7d-8bb9-463e-9136-19dac7578440" ],
+        "x-ms-request-id": [ "6e73ca49-82a9-4d15-9e5c-d570c59530b7" ],
+        "x-ms-correlation-request-id": [ "7b6932fd-aa7c-4276-97ab-187062e85848" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20250724T203134Z:7b6932fd-aa7c-4276-97ab-187062e85848" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F7A5406BFD3C440896A2CAFD659F06B6 Ref B: MWH011020807034 Ref C: 2025-07-22T00:56:02Z" ],
-        "Date": [ "Tue, 22 Jul 2025 00:56:02 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: A1C4E1128AFA4994B0569BCD193C0F5A Ref B: MWH011020808029 Ref C: 2025-07-24T20:31:34Z" ],
+        "Date": [ "Thu, 24 Jul 2025 20:31:33 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "264" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Content-Length": [ "137" ],
+        "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.AzureStackHCI/virtualHardDisks/testVhd1127\u0027 under resource group \u0027EDGECI-REGISTRATION-HC1n25r1035-2Yx4N6oM\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The resource \u0027Microsoft.AzureStackHCI/virtualHardDisks/testVhd1127\u0027 could not be found.\"}}",
       "isContentBase64": false
     }
   }

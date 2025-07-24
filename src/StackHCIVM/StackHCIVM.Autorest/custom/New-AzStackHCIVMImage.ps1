@@ -331,7 +331,7 @@ function New-AzStackHCIVMImage{
                 while ($PercentCompleted -ne 100 ) {                  
                     $image = Az.StackHCIVM.internal\Get-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
                     $PercentCompleted = $image.StatusProgressPercentage
-                    if ($PercentCompleted -eq $null){
+                    if ($null -eq $PercentCompleted){
                         $PercentCompleted = 0
                     } 
                     Write-Progress -Activity "Download Percentage: " -Status "$PercentCompleted % Complete" -PercentComplete $PercentCompleted
@@ -350,7 +350,7 @@ function New-AzStackHCIVMImage{
                 if ($e.FullyQualifiedErrorId -match "MissingAzureKubernetesMapping" ){
                     Write-Error "An older version of the Arc VM cluster extension is installed on your cluster. Please downgrade the Az.StackHCIVm version to 1.0.1 to proceed." -ErrorAction Stop
                 } else {
-                    Write-Error $e.Exception.Message -ErrorAction Stop
+                    Write-Error $e -ErrorAction Stop
                 }
             }
 
@@ -394,7 +394,7 @@ function New-AzStackHCIVMImage{
                 while ($PercentCompleted -ne 100 ) {                  
                     $image = Az.StackHCIVM.internal\Get-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
                     $PercentCompleted = $image.StatusProgressPercentage
-                    if ($PercentCompleted -eq $null){
+                    if ($null -eq $PercentCompleted){
                         $PercentCompleted = 0
                     } 
                     Write-Progress -Activity "Download Percentage: " -Status "$PercentCompleted % Complete" -PercentComplete $PercentCompleted
