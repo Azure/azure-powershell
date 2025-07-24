@@ -38,7 +38,7 @@ Update the NGINX deployment
 
 ## EXAMPLES
 
-### Example 1: Enable the diagnosticss support for a NGINX deployment
+### Example 1: Enable the diagnostics support for a NGINX deployment
 ```powershell
 Update-AzNginxDeployment -Name nginx-test -ResourceGroupName nginx-test-rg -EnableDiagnosticsSupport
 ```

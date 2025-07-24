@@ -27,6 +27,7 @@ https://learn.microsoft.com/powershell/module/Az.Nginx/new-AzNginxNetworkProfile
 #>
 function New-AzNginxNetworkProfileObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxNetworkProfile')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxNetworkProfile", "15.0.0", "2.0.0", "2025/11/03", ChangeDescription = "The types of the properties PrivateIPAddress and PublicIPAddress of Property FrontendIPConfiguration will be changed from fixed array to 'List'.")]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
