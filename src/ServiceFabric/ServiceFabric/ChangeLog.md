@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new cmdlets for managed node types:
+    - `Disable-AzServiceFabricManagedNodeType`
+    - `Enable-AzServiceFabricManagedNodeType`
+    - `Move-AzServiceFabricManagedNodeType`
 * Added parameter `VmSize` to allow for in-place sku swap for cmdlet `Set-AzServiceFabricManagedNodeType`.
 * Updated SFMC to latest api preview version `2025-03-01-preview`
 
