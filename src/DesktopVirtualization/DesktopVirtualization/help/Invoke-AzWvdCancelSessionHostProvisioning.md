@@ -1,58 +1,57 @@
 ---
 external help file: Az.DesktopVirtualization-help.xml
 Module Name: Az.DesktopVirtualization
-online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/invoke-azwvdcontrolsessionhostprovisioning
+online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/invoke-azwvdcancelsessionhostprovisioning
 schema: 2.0.0
 ---
 
-# Invoke-AzWvdControlSessionHostProvisioning
+# Invoke-AzWvdCancelSessionHostProvisioning
 
 ## SYNOPSIS
 Control provisioning of a hostpool.
 
 ## SYNTAX
 
-### PostExpanded (Default)
+### Post (Default)
 ```
-Invoke-AzWvdControlSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzWvdCancelSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PostViaJsonString
 ```
-Invoke-AzWvdControlSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
+Invoke-AzWvdCancelSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PostViaJsonFilePath
 ```
-Invoke-AzWvdControlSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
+Invoke-AzWvdCancelSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Post
+### PostExpanded
 ```
-Invoke-AzWvdControlSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -HostPoolProvisioningControlParameter <IHostPoolProvisioningControlParameter>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Invoke-AzWvdCancelSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PostViaIdentityExpanded
 ```
-Invoke-AzWvdControlSessionHostProvisioning -InputObject <IDesktopVirtualizationIdentity>
+Invoke-AzWvdCancelSessionHostProvisioning -InputObject <IDesktopVirtualizationIdentity>
  [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PostViaIdentity
 ```
-Invoke-AzWvdControlSessionHostProvisioning -InputObject <IDesktopVirtualizationIdentity>
- -HostPoolProvisioningControlParameter <IHostPoolProvisioningControlParameter> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzWvdCancelSessionHostProvisioning -InputObject <IDesktopVirtualizationIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,15 +59,15 @@ Control provisioning of a hostpool.
 
 ## EXAMPLES
 
-### Example 1: Controls a SessionHostProvisioning Operation on a HostPool
+### Example 1: Cancels a SessionHostProvisioning Operation on a HostPool
 ```powershell
-Invoke-AzWvdControlSessionHostProvisioning -HostPoolName HostPoolName `
+Invoke-AzWvdCancelSessionHostProvisioning -HostPoolName HostPoolName `
                             -ResourceGroupName resourceGroupName `
                             -SubscriptionId subscriptionId `
                             -CancelMessage cancelMessage
 ```
 
-This command controls an ongoing sessionHostProvisioning operation on the given hostpool.
+This command cancels an ongoing sessionHostProvisioning operation on the given hostpool.
 
 ## PARAMETERS
 
@@ -123,28 +122,13 @@ The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: PostExpanded, PostViaJsonString, PostViaJsonFilePath, Post
+Parameter Sets: Post, PostViaJsonString, PostViaJsonFilePath, PostExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HostPoolProvisioningControlParameter
-Represents properties for a hostpool provisioning control request.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolProvisioningControlParameter
-Parameter Sets: Post, PostViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -229,7 +213,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: PostExpanded, PostViaJsonString, PostViaJsonFilePath, Post
+Parameter Sets: Post, PostViaJsonString, PostViaJsonFilePath, PostExpanded
 Aliases:
 
 Required: True
@@ -245,7 +229,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: PostExpanded, PostViaJsonString, PostViaJsonFilePath, Post
+Parameter Sets: Post, PostViaJsonString, PostViaJsonFilePath, PostExpanded
 Aliases:
 
 Required: False

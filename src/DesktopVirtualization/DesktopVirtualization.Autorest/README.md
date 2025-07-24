@@ -126,4 +126,14 @@ directive:
       subject: SessionHostProvisioningStatuses
     set:
       subject: SessionHostProvisioningStatus
+  - where:
+      verb: Invoke
+      subject: ControlSessionHostProvisioning
+    set:
+      subject: CancelSessionHostProvisioning
+  - where:
+      verb: Invoke
+      subject: CancelSessionHostProvisioning
+      parameter-name: HostPoolProvisioningControlParameter
+    hide: true
 ```

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DesktopVirtualization
-Module Guid: 68ff75eb-4f94-4503-a496-3c3b139de342
+Module Guid: 74e391e3-55f0-4351-b932-a45952324e52
 Download Help Link: https://learn.microsoft.com/powershell/module/az.desktopvirtualization
 Help Version: 1.0.0.0
 Locale: en-US
@@ -86,7 +86,7 @@ Get a workspace.
 ### [Import-AzWvdAppAttachPackageInfo](Import-AzWvdAppAttachPackageInfo.md)
 Gets information from a package given the path to the package.
 
-### [Invoke-AzWvdControlSessionHostProvisioning](Invoke-AzWvdControlSessionHostProvisioning.md)
+### [Invoke-AzWvdCancelSessionHostProvisioning](Invoke-AzWvdCancelSessionHostProvisioning.md)
 Control provisioning of a hostpool.
 
 ### [Invoke-AzWvdControlSessionHostUpdate](Invoke-AzWvdControlSessionHostUpdate.md)
