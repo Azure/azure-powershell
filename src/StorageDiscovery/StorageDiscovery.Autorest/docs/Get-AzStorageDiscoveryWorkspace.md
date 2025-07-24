@@ -40,7 +40,7 @@ Get a StorageDiscoveryWorkspace
 
 ## EXAMPLES
 
-### Example 1: Get a workspace proeprties
+### Example 1: Get a workspace properties
 ```powershell
 Get-AzStorageDiscoveryWorkspace -Name $workSpaceName  -ResourceGroupName $ResourceGroupName
 ```
