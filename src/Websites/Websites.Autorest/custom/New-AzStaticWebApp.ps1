@@ -28,7 +28,7 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource
+Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStaticSiteArmResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,7 +42,7 @@ SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager
 https://learn.microsoft.com/powershell/module/az.websites/new-azstaticwebapp
 #>
 function New-AzStaticWebApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStaticSiteArmResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -135,7 +135,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IManagedServiceIdentityUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IManagedServiceIdentityUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # The list of user assigned identities associated with the resource.
     # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
@@ -187,7 +187,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
