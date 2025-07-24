@@ -21,13 +21,13 @@
   "vhdName": "testVhd1127",
   "sizeGb": 2,
   "lnetName": "testLnetPowershell0226",
-  "vmSwitchName": "ConvergedSwitch(managementcomputestorage)",
+  "vmSwitchName": "ConvergedSwitch(managementcompute)",
   "nicName": "testnicPowershell0226",
   "storagePathName": "teststoragepath1",
   "storageContainerPath": "C:\\ClusterStorage\\UserStorage_1\\testPath0226",
   "vmImageName": "bugbashimage",
   "vmVhdName": "testVhdDisk20106",
-  "vmImageId": "/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/microsoft.azurestackhci/marketplacegalleryimages/test-marketplace",
+  "vmImageId": "/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/microsoft.azurestackhci/galleryimages/WinImage-35qmDYC",
   "vmSize": "Standard_K8S_v1",
   "adminUsername": "localadmin",
   "vmName1": "testVm1",
@@ -36,5 +36,5 @@
   "vhdName2": "testVhd2",
   "nicName1": "testNic1",
   "osDiskName": "testOsDisk",
-  "SubnetId": "/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/logicalNetworks/VMLnet-14evUOKS"
+  "SubnetId": "/subscriptions/844dd120-eaf7-4b51-a076-1f1f45ee42c5/resourceGroups/EDGECI-REGISTRATION-rr1s45r2205-xQidyfvR/providers/Microsoft.AzureStackHCI/logicalNetworks/VMLnet-77sjKHZO"
 }
