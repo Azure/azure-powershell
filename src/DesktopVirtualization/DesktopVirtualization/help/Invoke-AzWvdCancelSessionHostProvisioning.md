@@ -12,11 +12,11 @@ Control provisioning of a hostpool.
 
 ## SYNTAX
 
-### Post (Default)
+### PostExpanded (Default)
 ```
 Invoke-AzWvdCancelSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PostViaJsonString
@@ -33,25 +33,11 @@ Invoke-AzWvdCancelSessionHostProvisioning -HostPoolName <String> -ResourceGroupN
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### PostExpanded
-```
-Invoke-AzWvdCancelSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### PostViaIdentityExpanded
 ```
 Invoke-AzWvdCancelSessionHostProvisioning -InputObject <IDesktopVirtualizationIdentity>
  [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### PostViaIdentity
-```
-Invoke-AzWvdCancelSessionHostProvisioning -InputObject <IDesktopVirtualizationIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -122,7 +108,7 @@ The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: Post, PostViaJsonString, PostViaJsonFilePath, PostExpanded
+Parameter Sets: PostExpanded, PostViaJsonString, PostViaJsonFilePath
 Aliases:
 
 Required: True
@@ -137,7 +123,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: PostViaIdentityExpanded, PostViaIdentity
+Parameter Sets: PostViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -213,7 +199,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Post, PostViaJsonString, PostViaJsonFilePath, PostExpanded
+Parameter Sets: PostExpanded, PostViaJsonString, PostViaJsonFilePath
 Aliases:
 
 Required: True
@@ -229,7 +215,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Post, PostViaJsonString, PostViaJsonFilePath, PostExpanded
+Parameter Sets: PostExpanded, PostViaJsonString, PostViaJsonFilePath
 Aliases:
 
 Required: False
@@ -276,8 +262,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolProvisioningControlParameter
 
 ## OUTPUTS
 

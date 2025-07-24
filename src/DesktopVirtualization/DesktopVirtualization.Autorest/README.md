@@ -134,6 +134,6 @@ directive:
   - where:
       verb: Invoke
       subject: CancelSessionHostProvisioning
-      parameter-name: HostPoolProvisioningControlParameter
-    hide: true
+      variant: ^Post$|^PostViaIdentity$
+    remove: true
 ```

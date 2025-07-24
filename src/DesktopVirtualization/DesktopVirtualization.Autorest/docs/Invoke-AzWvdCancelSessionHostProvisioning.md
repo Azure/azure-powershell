@@ -12,24 +12,11 @@ Control provisioning of a hostpool.
 
 ## SYNTAX
 
-### Post (Default)
-```
-Invoke-AzWvdCancelSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### PostExpanded
+### PostExpanded (Default)
 ```
 Invoke-AzWvdCancelSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PostViaIdentity
-```
-Invoke-AzWvdCancelSessionHostProvisioning -InputObject <IDesktopVirtualizationIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PostViaIdentityExpanded
@@ -121,7 +108,7 @@ The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: Post, PostExpanded, PostViaJsonFilePath, PostViaJsonString
+Parameter Sets: PostExpanded, PostViaJsonFilePath, PostViaJsonString
 Aliases:
 
 Required: True
@@ -136,7 +123,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: PostViaIdentity, PostViaIdentityExpanded
+Parameter Sets: PostViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -212,7 +199,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Post, PostExpanded, PostViaJsonFilePath, PostViaJsonString
+Parameter Sets: PostExpanded, PostViaJsonFilePath, PostViaJsonString
 Aliases:
 
 Required: True
@@ -228,7 +215,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Post, PostExpanded, PostViaJsonFilePath, PostViaJsonString
+Parameter Sets: PostExpanded, PostViaJsonFilePath, PostViaJsonString
 Aliases:
 
 Required: False
@@ -275,8 +262,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolProvisioningControlParameter
 
 ## OUTPUTS
 
