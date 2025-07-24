@@ -14,13 +14,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
     /// <remarks>
     /// [OpenAPI] Post=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default/controlSessionHostProvisioning"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzWvdControlSessionHostProvisioning_PostViaJsonFilePath", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzWvdCancelSessionHostProvisioning_PostViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Description(@"Control provisioning of a hostpool.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default/controlSessionHostProvisioning", ApiVersion = "2025-03-01-preview")]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.NotSuggestDefaultParameterSet]
-    public partial class InvokeAzWvdControlSessionHostProvisioning_PostViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
+    public partial class InvokeAzWvdCancelSessionHostProvisioning_PostViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IContext
     {
@@ -41,16 +40,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
-        public global::System.String _jsonString;
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
+        /// <summary>Represents properties for a hostpool provisioning control request.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolProvisioningControlParameter _hostPoolProvisioningControlParameterBody = new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.HostPoolProvisioningControlParameter();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -61,6 +52,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>The cancel message sent to the user on the session host.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The cancel message sent to the user on the session host.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The cancel message sent to the user on the session host.",
+        SerializedName = @"cancelMessage",
+        PossibleTypes = new [] { typeof(string) })]
+        public string CancelMessage { get => _hostPoolProvisioningControlParameterBody.CancelMessage ?? null; set => _hostPoolProvisioningControlParameterBody.CancelMessage = value; }
 
         /// <summary>Accessor for cancellationTokenSource.</summary>
         public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
@@ -81,20 +83,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
-        /// <summary>Backing field for <see cref="HostPoolName" /> property.</summary>
-        private string _hostPoolName;
-
-        /// <summary>The name of the host pool within the specified resource group</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the host pool within the specified resource group")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The name of the host pool within the specified resource group",
-        SerializedName = @"hostPoolName",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Path)]
-        public string HostPoolName { get => this._hostPoolName; set => this._hostPoolName = value; }
-
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
         [global::System.Management.Automation.ValidateNotNull]
@@ -107,21 +95,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
+        /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity _inputObject;
+
+        /// <summary>Identity Parameter</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Identity Parameter", ValueFromPipeline = true)]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Path)]
+        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity InputObject { get => this._inputObject; set => this._inputObject = value; }
+
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
-
-        /// <summary>Backing field for <see cref="JsonFilePath" /> property.</summary>
-        private string _jsonFilePath;
-
-        /// <summary>Path of Json file supplied to the Post operation</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Path of Json file supplied to the Post operation")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"Path of Json file supplied to the Post operation",
-        SerializedName = @"JsonFilePath",
-        PossibleTypes = new [] { typeof(string) })]
-        public string JsonFilePath { get => this._jsonFilePath; set { if (!System.IO.File.Exists(value)) { throw new Exception("Cannot find File " + value); } this._jsonString = System.IO.File.ReadAllText(value); this._jsonFilePath = value; } }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -167,39 +150,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
-        /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
-        private string _resourceGroupName;
-
-        /// <summary>The name of the resource group. The name is case insensitive.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group. The name is case insensitive.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The name of the resource group. The name is case insensitive.",
-        SerializedName = @"resourceGroupName",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Path)]
-        public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
-
-        /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
-        private string _subscriptionId;
-
-        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription. The value must be an UUID.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The ID of the target subscription. The value must be an UUID.",
-        SerializedName = @"subscriptionId",
-        PossibleTypes = new [] { typeof(string) })]
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(
-        Name = @"",
-        Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id",
-        SetCondition = @"")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Path)]
-        public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
-
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
@@ -242,11 +192,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
 
         /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
         /// <returns>
-        /// a duplicate instance of InvokeAzWvdControlSessionHostProvisioning_PostViaJsonFilePath
+        /// a duplicate instance of InvokeAzWvdCancelSessionHostProvisioning_PostViaIdentityExpanded
         /// </returns>
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets.InvokeAzWvdControlSessionHostProvisioning_PostViaJsonFilePath Clone()
+        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets.InvokeAzWvdCancelSessionHostProvisioning_PostViaIdentityExpanded Clone()
         {
-            var clone = new InvokeAzWvdControlSessionHostProvisioning_PostViaJsonFilePath();
+            var clone = new InvokeAzWvdCancelSessionHostProvisioning_PostViaIdentityExpanded();
             clone.__correlationId = this.__correlationId;
             clone.__processRecordId = this.__processRecordId;
             clone.DefaultProfile = this.DefaultProfile;
@@ -259,21 +209,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.SubscriptionId = this.SubscriptionId;
-            clone.ResourceGroupName = this.ResourceGroupName;
-            clone.HostPoolName = this.HostPoolName;
-            clone.JsonFilePath = this.JsonFilePath;
+            clone._hostPoolProvisioningControlParameterBody = this._hostPoolProvisioningControlParameterBody;
             return clone;
         }
 
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -295,10 +237,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InvokeAzWvdControlSessionHostProvisioning_PostViaJsonFilePath" /> cmdlet
+        /// Initializes a new instance of the <see cref="InvokeAzWvdCancelSessionHostProvisioning_PostViaIdentityExpanded" /> cmdlet
         /// class.
         /// </summary>
-        public InvokeAzWvdControlSessionHostProvisioning_PostViaJsonFilePath()
+        public InvokeAzWvdCancelSessionHostProvisioning_PostViaIdentityExpanded()
         {
 
         }
@@ -488,12 +430,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ControlSessionHostProvisioningPostViaJsonString(SubscriptionId, ResourceGroupName, HostPoolName, _jsonString, onOk, onDefault, this, Pipeline);
+                    if (InputObject?.Id != null)
+                    {
+                        await this.Client.ControlSessionHostProvisioningPostViaIdentity(InputObject.Id, _hostPoolProvisioningControlParameterBody, onOk, onDefault, this, Pipeline);
+                    }
+                    else
+                    {
+                        // try to call with PATH parameters from Input Object
+                        if (null == InputObject.SubscriptionId)
+                        {
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.SubscriptionId"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                        }
+                        if (null == InputObject.ResourceGroupName)
+                        {
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ResourceGroupName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                        }
+                        if (null == InputObject.HostPoolName)
+                        {
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.HostPoolName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                        }
+                        await this.Client.ControlSessionHostProvisioningPost(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.HostPoolName ?? null, _hostPoolProvisioningControlParameterBody, onOk, onDefault, this, Pipeline);
+                    }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,HostPoolName=HostPoolName})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });

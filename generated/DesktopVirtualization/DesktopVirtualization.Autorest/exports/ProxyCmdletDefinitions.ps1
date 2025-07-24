@@ -6027,24 +6027,19 @@ Control provisioning of a hostpool.
 .Description
 Control provisioning of a hostpool.
 .Example
-Invoke-AzWvdControlSessionHostProvisioning -HostPoolName HostPoolName `
+Invoke-AzWvdCancelSessionHostProvisioning -HostPoolName HostPoolName `
                             -ResourceGroupName resourceGroupName `
                             -SubscriptionId subscriptionId `
                             -CancelMessage cancelMessage
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolProvisioningControlParameter
 .Outputs
 System.Boolean
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-HOSTPOOLPROVISIONINGCONTROLPARAMETER <IHostPoolProvisioningControlParameter>: Represents properties for a hostpool provisioning control request.
-  [CancelMessage <String>]: The cancel message sent to the user on the session host.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [AppAttachPackageName <String>]: The name of the App Attach package arm object
@@ -6063,13 +6058,12 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://learn.microsoft.com/powershell/module/az.desktopvirtualization/invoke-azwvdcontrolsessionhostprovisioning
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/invoke-azwvdcancelsessionhostprovisioning
 #>
-function Invoke-AzWvdControlSessionHostProvisioning {
+function Invoke-AzWvdCancelSessionHostProvisioning {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Post', Mandatory)]
     [Parameter(ParameterSetName='PostExpanded', Mandatory)]
     [Parameter(ParameterSetName='PostViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='PostViaJsonString', Mandatory)]
@@ -6078,7 +6072,6 @@ param(
     # The name of the host pool within the specified resource group
     ${HostPoolName},
 
-    [Parameter(ParameterSetName='Post', Mandatory)]
     [Parameter(ParameterSetName='PostExpanded', Mandatory)]
     [Parameter(ParameterSetName='PostViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='PostViaJsonString', Mandatory)]
@@ -6088,7 +6081,6 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Post')]
     [Parameter(ParameterSetName='PostExpanded')]
     [Parameter(ParameterSetName='PostViaJsonFilePath')]
     [Parameter(ParameterSetName='PostViaJsonString')]
@@ -6099,19 +6091,11 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PostViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
     ${InputObject},
-
-    [Parameter(ParameterSetName='Post', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolProvisioningControlParameter]
-    # Represents properties for a hostpool provisioning control request.
-    ${HostPoolProvisioningControlParameter},
 
     [Parameter(ParameterSetName='PostExpanded')]
     [Parameter(ParameterSetName='PostViaIdentityExpanded')]
@@ -6234,14 +6218,12 @@ begin {
         }
 
         $mapping = @{
-            Post = 'Az.DesktopVirtualization.private\Invoke-AzWvdControlSessionHostProvisioning_Post';
-            PostExpanded = 'Az.DesktopVirtualization.private\Invoke-AzWvdControlSessionHostProvisioning_PostExpanded';
-            PostViaIdentity = 'Az.DesktopVirtualization.private\Invoke-AzWvdControlSessionHostProvisioning_PostViaIdentity';
-            PostViaIdentityExpanded = 'Az.DesktopVirtualization.private\Invoke-AzWvdControlSessionHostProvisioning_PostViaIdentityExpanded';
-            PostViaJsonFilePath = 'Az.DesktopVirtualization.private\Invoke-AzWvdControlSessionHostProvisioning_PostViaJsonFilePath';
-            PostViaJsonString = 'Az.DesktopVirtualization.private\Invoke-AzWvdControlSessionHostProvisioning_PostViaJsonString';
+            PostExpanded = 'Az.DesktopVirtualization.private\Invoke-AzWvdCancelSessionHostProvisioning_PostExpanded';
+            PostViaIdentityExpanded = 'Az.DesktopVirtualization.private\Invoke-AzWvdCancelSessionHostProvisioning_PostViaIdentityExpanded';
+            PostViaJsonFilePath = 'Az.DesktopVirtualization.private\Invoke-AzWvdCancelSessionHostProvisioning_PostViaJsonFilePath';
+            PostViaJsonString = 'Az.DesktopVirtualization.private\Invoke-AzWvdCancelSessionHostProvisioning_PostViaJsonString';
         }
-        if (('Post', 'PostExpanded', 'PostViaJsonFilePath', 'PostViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('PostExpanded', 'PostViaJsonFilePath', 'PostViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
