@@ -13,8 +13,8 @@ Create an in-memory object for NetworkAttachment.
 ## SYNTAX
 
 ```
-New-AzNetworkCloudNetworkAttachmentObject [-AttachedNetworkId <String>] [-DefaultGateway <String>]
- [-IPAllocationMethod <String>] [-Ipv4Address <String>] [-Ipv6Address <String>] [-Name <String>]
+New-AzNetworkCloudNetworkAttachmentObject -AttachedNetworkId <String> -IPAllocationMethod <String>
+ [-DefaultGateway <String>] [-Ipv4Address <String>] [-Ipv6Address <String>] [-Name <String>]
  [<CommonParameters>]
 ```
 
@@ -48,7 +48,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -81,7 +81,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

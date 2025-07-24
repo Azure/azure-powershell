@@ -56,17 +56,17 @@ function New-AzNetworkCloudInitialAgentPoolConfigurationObject {
         [Parameter(HelpMessage="The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used.")]
         [string[]]
         $AvailabilityZone,
-        [Parameter(HelpMessage="The number of virtual machines that use this configuration.")]
+        [Parameter(Mandatory, HelpMessage="The number of virtual machines that use this configuration.")]
         [long]
         $Count,
         [Parameter(HelpMessage="The labels applied to the nodes in this agent pool.")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesLabel[]]
         $Label,
-        [Parameter(HelpMessage="The selection of how this agent pool is utilized, either as a system pool or a user pool. System pools run the features and critical services for the Kubernetes Cluster, while user pools are dedicated to user workloads. Every Kubernetes cluster must contain at least one system node pool with at least one node.")]
+        [Parameter(Mandatory, HelpMessage="The selection of how this agent pool is utilized, either as a system pool or a user pool. System pools run the features and critical services for the Kubernetes Cluster, while user pools are dedicated to user workloads. Every Kubernetes cluster must contain at least one system node pool with at least one node.")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("System", "User", "NotApplicable")]
         [string]
         $Mode,
-        [Parameter(HelpMessage="The name that will be used for the agent pool resource representing this agent pool.")]
+        [Parameter(Mandatory, HelpMessage="The name that will be used for the agent pool resource representing this agent pool.")]
         [string]
         $Name,
         [Parameter(HelpMessage="The taints applied to the nodes in this agent pool.")]
@@ -81,7 +81,7 @@ function New-AzNetworkCloudInitialAgentPoolConfigurationObject {
         [Parameter(HelpMessage="The maximum number or percentage of nodes that can be unavailable during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 0 is used. One of MaxSurge and MaxUnavailable must be greater than 0.")]
         [string]
         $UpgradeSettingMaxUnavailable,
-        [Parameter(HelpMessage="The name of the VM SKU that determines the size of resources allocated for node VMs.")]
+        [Parameter(Mandatory, HelpMessage="The name of the VM SKU that determines the size of resources allocated for node VMs.")]
         [string]
         $VMSkuName
     )

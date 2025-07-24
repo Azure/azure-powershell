@@ -38,7 +38,7 @@ function New-AzNetworkCloudIpAddressPoolObject {
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
         [string]
         $AutoAssign,
-        [Parameter(HelpMessage="The name used to identify this IP address pool for association with a BGP advertisement.")]
+        [Parameter(Mandatory, HelpMessage="The name used to identify this IP address pool for association with a BGP advertisement.")]
         [string]
         $Name,
         [Parameter(HelpMessage="The indicator to prevent the use of IP addresses ending with .0 and .255 for this pool. Enabling this option will only use IP addresses between .1 and .254 inclusive.")]

@@ -13,8 +13,8 @@ Create an in-memory object for VirtualMachinePlacementHint.
 ## SYNTAX
 
 ```
-New-AzNetworkCloudVirtualMachinePlacementHintObject [-HintType <String>] [-ResourceId <String>]
- [-SchedulingExecution <String>] [-Scope <String>] [<CommonParameters>]
+New-AzNetworkCloudVirtualMachinePlacementHintObject -HintType <String> -ResourceId <String>
+ -SchedulingExecution <String> -Scope <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +45,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -60,7 +60,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -75,7 +75,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -91,7 +91,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

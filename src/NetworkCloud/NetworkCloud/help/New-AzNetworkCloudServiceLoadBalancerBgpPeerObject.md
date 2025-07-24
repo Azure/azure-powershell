@@ -13,10 +13,9 @@ Create an in-memory object for ServiceLoadBalancerBgpPeer.
 ## SYNTAX
 
 ```
-New-AzNetworkCloudServiceLoadBalancerBgpPeerObject [-BfdEnabled <String>] [-BgpMultiHop <String>]
- [-HoldTime <String>] [-KeepAliveTime <String>] [-MyAsn <Int64>] [-Name <String>] [-Password <String>]
- [-PeerAddress <String>] [-PeerAsn <Int64>] [-PeerPort <Int64>]
- [<CommonParameters>]
+New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name <String> -PeerAddress <String> -PeerAsn <Int64>
+ [-BfdEnabled <String>] [-BgpMultiHop <String>] [-HoldTime <String>] [-KeepAliveTime <String>] [-MyAsn <Int64>]
+ [-Password <String>] [-PeerPort <Int64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -128,7 +127,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -158,7 +157,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -173,7 +172,7 @@ Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

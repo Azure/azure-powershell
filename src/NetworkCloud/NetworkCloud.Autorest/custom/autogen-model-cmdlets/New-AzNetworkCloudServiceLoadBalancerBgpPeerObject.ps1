@@ -48,16 +48,16 @@ function New-AzNetworkCloudServiceLoadBalancerBgpPeerObject {
         [Parameter(HelpMessage="The autonomous system number used for the local end of the BGP session.")]
         [long]
         $MyAsn,
-        [Parameter(HelpMessage="The name used to identify this BGP peer for association with a BGP advertisement.")]
+        [Parameter(Mandatory, HelpMessage="The name used to identify this BGP peer for association with a BGP advertisement.")]
         [string]
         $Name,
         [Parameter(HelpMessage="The authentication password for routers enforcing TCP MD5 authenticated sessions.")]
         [string]
         $Password,
-        [Parameter(HelpMessage="The IPv4 or IPv6 address used to connect this BGP session.")]
+        [Parameter(Mandatory, HelpMessage="The IPv4 or IPv6 address used to connect this BGP session.")]
         [string]
         $PeerAddress,
-        [Parameter(HelpMessage="The autonomous system number expected from the remote end of the BGP session.")]
+        [Parameter(Mandatory, HelpMessage="The autonomous system number expected from the remote end of the BGP session.")]
         [long]
         $PeerAsn,
         [Parameter(HelpMessage="The port used to connect this BGP session.")]

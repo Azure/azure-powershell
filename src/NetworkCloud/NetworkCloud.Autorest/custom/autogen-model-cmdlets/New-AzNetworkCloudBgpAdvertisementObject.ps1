@@ -38,7 +38,7 @@ function New-AzNetworkCloudBgpAdvertisementObject {
         [Parameter(HelpMessage="The names of the BGP communities to be associated with the announcement, utilizing a BGP community string in 1234:1234 format.")]
         [string[]]
         $Community,
-        [Parameter(HelpMessage="The names of the IP address pools associated with this announcement.")]
+        [Parameter(Mandatory, HelpMessage="The names of the IP address pools associated with this announcement.")]
         [string[]]
         $IPAddressPool,
         [Parameter(HelpMessage="The names of the BGP peers to limit this advertisement to. If no values are specified, all BGP peers will receive this advertisement.")]

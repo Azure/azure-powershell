@@ -20,6 +20,20 @@ Invoke-AzNetworkCloudBareMetalMachineDataExtract -InputObject <INetworkCloudIden
  [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### RunViaJsonString
+```
+Invoke-AzNetworkCloudBareMetalMachineDataExtract -BareMetalMachineName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RunViaJsonFilePath
+```
+Invoke-AzNetworkCloudBareMetalMachineDataExtract -BareMetalMachineName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### RunExpanded
 ```
 Invoke-AzNetworkCloudBareMetalMachineDataExtract -BareMetalMachineName <String> -ResourceGroupName <String>
@@ -41,7 +55,7 @@ $command = @{
     arguments = "commandArguments"
 }
 
-Invoke-AzNetworkCloudBareMetalMachineDataExtract -BareMetalMachineName bmmName -ResourceGroupName resourcceGroupName -SubscriptionId subscriptionId -Command $command -LimitTimeSecond limitTimeInSeconds -Debug
+Invoke-AzNetworkCloudBareMetalMachineDataExtract -BareMetalMachineName bmmName -ResourceGroupName resourceGroupName -SubscriptionId subscriptionId -Command $command -LimitTimeSecond limitTimeInSeconds -Debug
 ```
 
 This command runs a provided data extraction command on a bare metal machine.
@@ -70,7 +84,7 @@ The name of the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded
+Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded
 Aliases:
 
 Required: True
@@ -85,7 +99,7 @@ The list of curated data extraction commands to be executed directly against the
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineCommandSpecification[]
-Parameter Sets: (All)
+Parameter Sets: RunViaIdentityExpanded, RunExpanded
 Aliases:
 
 Required: True
@@ -126,12 +140,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Run operation
+
+```yaml
+Type: System.String
+Parameter Sets: RunViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Run operation
+
+```yaml
+Type: System.String
+Parameter Sets: RunViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LimitTimeSecond
 The maximum time the commands are allowed to run.If the execution time exceeds the maximum, the script will be stopped, any output produced until then will be captured, and the exit code matching a timeout will be returned (252).
 
 ```yaml
 Type: System.Int64
-Parameter Sets: (All)
+Parameter Sets: RunViaIdentityExpanded, RunExpanded
 Aliases:
 
 Required: True
@@ -177,7 +221,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded
+Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded
 Aliases:
 
 Required: True
@@ -193,7 +237,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded
+Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded
 Aliases:
 
 Required: False

@@ -19,6 +19,20 @@ Invoke-AzNetworkCloudBareMetalMachineCordon -BareMetalMachineName <String> -Reso
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CordonViaJsonString
+```
+Invoke-AzNetworkCloudBareMetalMachineCordon -BareMetalMachineName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CordonViaJsonFilePath
+```
+Invoke-AzNetworkCloudBareMetalMachineCordon -BareMetalMachineName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### CordonViaIdentityExpanded
 ```
 Invoke-AzNetworkCloudBareMetalMachineCordon -InputObject <INetworkCloudIdentity> [-Evacuate <String>]
@@ -60,7 +74,7 @@ The name of the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: CordonExpanded
+Parameter Sets: CordonExpanded, CordonViaJsonString, CordonViaJsonFilePath
 Aliases:
 
 Required: True
@@ -91,7 +105,7 @@ The indicator of whether to evacuate the node workload when the bare metal machi
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CordonExpanded, CordonViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -113,6 +127,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Cordon operation
+
+```yaml
+Type: System.String
+Parameter Sets: CordonViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Cordon operation
+
+```yaml
+Type: System.String
+Parameter Sets: CordonViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -152,7 +196,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CordonExpanded
+Parameter Sets: CordonExpanded, CordonViaJsonString, CordonViaJsonFilePath
 Aliases:
 
 Required: True
@@ -168,7 +212,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CordonExpanded
+Parameter Sets: CordonExpanded, CordonViaJsonString, CordonViaJsonFilePath
 Aliases:
 
 Required: False

@@ -13,16 +13,16 @@ Create an in-memory object for InitialAgentPoolConfiguration.
 ## SYNTAX
 
 ```
-New-AzNetworkCloudInitialAgentPoolConfigurationObject [-AdministratorConfigurationAdminUsername <String>]
+New-AzNetworkCloudInitialAgentPoolConfigurationObject -Count <Int64> -Mode <String> -Name <String>
+ -VMSkuName <String> [-AdministratorConfigurationAdminUsername <String>]
  [-AdministratorConfigurationSshPublicKey <ISshPublicKey[]>] [-AgentOptionHugepagesCount <Int64>]
  [-AgentOptionHugepagesSize <String>]
  [-AttachedNetworkConfigurationL2Network <IL2NetworkAttachmentConfiguration[]>]
  [-AttachedNetworkConfigurationL3Network <IL3NetworkAttachmentConfiguration[]>]
  [-AttachedNetworkConfigurationTrunkedNetwork <ITrunkedNetworkAttachmentConfiguration[]>]
- [-AvailabilityZone <String[]>] [-Count <Int64>] [-Label <IKubernetesLabel[]>] [-Mode <String>]
- [-Name <String>] [-Taint <IKubernetesLabel[]>] [-UpgradeSettingDrainTimeout <Int64>]
- [-UpgradeSettingMaxSurge <String>] [-UpgradeSettingMaxUnavailable <String>] [-VMSkuName <String>]
- [<CommonParameters>]
+ [-AvailabilityZone <String[]>] [-Label <IKubernetesLabel[]>] [-Taint <IKubernetesLabel[]>]
+ [-UpgradeSettingDrainTimeout <Int64>] [-UpgradeSettingMaxSurge <String>]
+ [-UpgradeSettingMaxUnavailable <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -170,7 +170,7 @@ Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -202,7 +202,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -217,7 +217,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -307,7 +307,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

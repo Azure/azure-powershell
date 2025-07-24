@@ -21,6 +21,22 @@ New-AzNetworkCloudBmcKeySet -Name <String> -ClusterInputObject <INetworkCloudIde
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonString
+```
+New-AzNetworkCloudBmcKeySet -Name <String> -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzNetworkCloudBmcKeySet -Name <String> -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### CreateExpanded
 ```
 New-AzNetworkCloudBmcKeySet -Name <String> -ClusterName <String> -ResourceGroupName <String>
@@ -82,7 +98,7 @@ Users that are not in the group will not have access.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaIdentityClusterExpanded, CreateExpanded
 Aliases:
 
 Required: True
@@ -112,7 +128,7 @@ The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateViaJsonString, CreateViaJsonFilePath, CreateExpanded
 Aliases:
 
 Required: True
@@ -143,7 +159,7 @@ The date and time after which the users in this key set will be removed from the
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: CreateViaIdentityClusterExpanded, CreateExpanded
 Aliases:
 
 Required: True
@@ -158,7 +174,7 @@ The resource ID of the extended location on which the resource will be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaIdentityClusterExpanded, CreateExpanded
 Aliases:
 
 Required: True
@@ -173,7 +189,7 @@ The extended location type, for example, CustomLocation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaIdentityClusterExpanded, CreateExpanded
 Aliases:
 
 Required: True
@@ -216,12 +232,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaIdentityClusterExpanded, CreateExpanded
 Aliases:
 
 Required: True
@@ -266,7 +312,7 @@ The access level allowed for the users in this key set.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaIdentityClusterExpanded, CreateExpanded
 Aliases:
 
 Required: True
@@ -282,7 +328,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateViaJsonString, CreateViaJsonFilePath, CreateExpanded
 Aliases:
 
 Required: True
@@ -298,7 +344,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateViaJsonString, CreateViaJsonFilePath, CreateExpanded
 Aliases:
 
 Required: False
@@ -313,7 +359,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateViaIdentityClusterExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -328,7 +374,7 @@ The unique list of permitted users.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKeySetUser[]
-Parameter Sets: (All)
+Parameter Sets: CreateViaIdentityClusterExpanded, CreateExpanded
 Aliases:
 
 Required: True

@@ -13,8 +13,8 @@ Create an in-memory object for BgpAdvertisement.
 ## SYNTAX
 
 ```
-New-AzNetworkCloudBgpAdvertisementObject [-AdvertiseToFabric <String>] [-Community <String[]>]
- [-IPAddressPool <String[]>] [-Peer <String[]>] [<CommonParameters>]
+New-AzNetworkCloudBgpAdvertisementObject -IPAddressPool <String[]> [-AdvertiseToFabric <String>]
+ [-Community <String[]>] [-Peer <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,7 +76,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

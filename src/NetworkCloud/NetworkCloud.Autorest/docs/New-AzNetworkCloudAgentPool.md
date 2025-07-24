@@ -46,6 +46,20 @@ New-AzNetworkCloudAgentPool -KubernetesClusterInputObject <INetworkCloudIdentity
  [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzNetworkCloudAgentPool -KubernetesClusterName <String> -Name <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzNetworkCloudAgentPool -KubernetesClusterName <String> -Name <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Create a new Kubernetes cluster agent pool or create the properties of the existing one.
 
@@ -87,7 +101,7 @@ If not supplied, a user name will be chosen by the service.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: False
@@ -103,7 +117,7 @@ In some cases, specification of public keys may be required to produce a working
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: False
@@ -118,7 +132,7 @@ The number of hugepages to allocate.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: False
@@ -133,7 +147,7 @@ The size of the hugepages to allocate.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: False
@@ -163,7 +177,7 @@ The list of Layer 2 Networks and related configuration for attachment.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL2NetworkAttachmentConfiguration[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: False
@@ -178,7 +192,7 @@ The list of Layer 3 Networks and related configuration for attachment.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL3NetworkAttachmentConfiguration[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: False
@@ -193,7 +207,7 @@ The list of Trunked Networks and related configuration for attachment.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrunkedNetworkAttachmentConfiguration[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: False
@@ -209,7 +223,7 @@ If not specified, all availability zones will be used.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: False
@@ -224,7 +238,7 @@ The number of virtual machines that use this configuration.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: True
@@ -255,7 +269,7 @@ The resource ID of the extended location on which the resource will be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: False
@@ -270,7 +284,7 @@ The extended location type, for example, CustomLocation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: False
@@ -313,6 +327,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KubernetesClusterInputObject
 Identity Parameter
 
@@ -333,7 +377,7 @@ The name of the Kubernetes cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -348,7 +392,7 @@ The labels applied to the nodes in this agent pool.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesLabel[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: False
@@ -363,7 +407,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: True
@@ -380,7 +424,7 @@ Every Kubernetes cluster must contain at least one system node pool with at leas
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: True
@@ -426,7 +470,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -442,7 +486,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -457,7 +501,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: False
@@ -472,7 +516,7 @@ The taints applied to the nodes in this agent pool.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesLabel[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: False
@@ -488,7 +532,7 @@ If not specified during creation, a value of 1800 seconds is used.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: False
@@ -510,7 +554,7 @@ One of MaxSurge and MaxUnavailable must be greater than 0.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: False
@@ -532,7 +576,7 @@ One of MaxSurge and MaxUnavailable must be greater than 0.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: False
@@ -547,7 +591,7 @@ The name of the VM SKU that determines the size of resources allocated for node 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: True

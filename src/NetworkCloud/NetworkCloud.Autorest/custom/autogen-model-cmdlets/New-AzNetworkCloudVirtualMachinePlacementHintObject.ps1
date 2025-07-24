@@ -31,18 +31,18 @@ function New-AzNetworkCloudVirtualMachinePlacementHintObject {
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(HelpMessage="The specification of whether this hint supports affinity or anti-affinity with the referenced resources.")]
+        [Parameter(Mandatory, HelpMessage="The specification of whether this hint supports affinity or anti-affinity with the referenced resources.")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Affinity", "AntiAffinity")]
         [string]
         $HintType,
-        [Parameter(HelpMessage="The resource ID of the target object that the placement hints will be checked against, e.g., the bare metal node to host the virtual machine.")]
+        [Parameter(Mandatory, HelpMessage="The resource ID of the target object that the placement hints will be checked against, e.g., the bare metal node to host the virtual machine.")]
         [string]
         $ResourceId,
-        [Parameter(HelpMessage="The indicator of whether the hint is a hard or soft requirement during scheduling.")]
+        [Parameter(Mandatory, HelpMessage="The indicator of whether the hint is a hard or soft requirement during scheduling.")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Hard", "Soft")]
         [string]
         $SchedulingExecution,
-        [Parameter(HelpMessage="The scope for the virtual machine affinity or anti-affinity placement hint. It should always be `"Machine`" in the case of node affinity.")]
+        [Parameter(Mandatory, HelpMessage="The scope for the virtual machine affinity or anti-affinity placement hint. It should always be `"Machine`" in the case of node affinity.")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Rack", "Machine")]
         [string]
         $Scope

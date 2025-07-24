@@ -31,7 +31,7 @@ function New-AzNetworkCloudNetworkAttachmentObject {
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(HelpMessage="The resource ID of the associated network attached to the virtual machine.
+        [Parameter(Mandatory, HelpMessage="The resource ID of the associated network attached to the virtual machine.
         It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources.")]
         [string]
         $AttachedNetworkId,
@@ -40,7 +40,7 @@ function New-AzNetworkCloudNetworkAttachmentObject {
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
         [string]
         $DefaultGateway,
-        [Parameter(HelpMessage="The IP allocation mechanism for the virtual machine.
+        [Parameter(Mandatory, HelpMessage="The IP allocation mechanism for the virtual machine.
         Dynamic and Static are only valid for l3Network which may also specify Disabled.
         Otherwise, Disabled is the only permitted value.")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Dynamic", "Static", "Disabled")]

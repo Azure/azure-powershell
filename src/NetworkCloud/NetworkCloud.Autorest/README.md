@@ -50,14 +50,14 @@ directive:
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^(Create|Update|Cordon|Deploy|Enable|Replace|Run|PowerOff)(?!.*?Expanded)
+      variant: ^(Create|Update|Cordon|Deploy|Enable|Replace|Run|PowerOff)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
       variant: ^CreateViaIdentityExpanded$
     remove: true
   - where:
       subject: KuberneteClusterNode
-      variant: ^Restart$|^RestartViaIdentity$
+      variant: ^(Restart)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   # Remove the set-* cmdlet
   - where:
@@ -280,7 +280,59 @@ directive:
   - from: swagger-document
     where: $.definitions.ServicePrincipalInformation.properties.password
     transform: $.format = "password"
-
+  # Fix required property missing mutability
+  - from: swagger-document
+    where: $.definitions.BgpAdvertisement.properties.ipAddressPools
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.ControlPlaneNodeConfiguration.properties.vmSkuName
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.InitialAgentPoolConfiguration.properties.count
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.InitialAgentPoolConfiguration.properties.mode
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.InitialAgentPoolConfiguration.properties.vmSkuName
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.InitialAgentPoolConfiguration.properties.name
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.IpAddressPool.properties.name
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.L3NetworkAttachmentConfiguration.properties.networkId
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.NetworkAttachment.properties.attachedNetworkId
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.NetworkAttachment.properties.ipAllocationMethod
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.ServiceLoadBalancerBgpPeer.properties.name
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.ServiceLoadBalancerBgpPeer.properties.peerAddress
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.ServiceLoadBalancerBgpPeer.properties.peerAsn
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.VirtualMachinePlacementHint.properties.hintType
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.VirtualMachinePlacementHint.properties.schedulingExecution
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.VirtualMachinePlacementHint.properties.resourceId
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.VirtualMachinePlacementHint.properties.scope
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  
   # Add model-cmdlet for any properties/sub-properties of complex type
   - model-cmdlet:
     - model-name: BareMetalMachineConfigurationData

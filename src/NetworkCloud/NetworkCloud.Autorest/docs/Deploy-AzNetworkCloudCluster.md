@@ -25,6 +25,20 @@ Deploy-AzNetworkCloudCluster -InputObject <INetworkCloudIdentity> [-SkipValidati
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeployViaJsonFilePath
+```
+Deploy-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### DeployViaJsonString
+```
+Deploy-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Deploy the cluster using the rack configuration provided during creation.
 
@@ -91,12 +105,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Deploy operation
+
+```yaml
+Type: System.String
+Parameter Sets: DeployViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Deploy operation
+
+```yaml
+Type: System.String
+Parameter Sets: DeployViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeployExpanded
+Parameter Sets: DeployExpanded, DeployViaJsonFilePath, DeployViaJsonString
 Aliases: ClusterName
 
 Required: True
@@ -142,7 +186,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeployExpanded
+Parameter Sets: DeployExpanded, DeployViaJsonFilePath, DeployViaJsonString
 Aliases:
 
 Required: True
@@ -157,7 +201,7 @@ The names of bare metal machines in the cluster that should be skipped during en
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: DeployExpanded, DeployViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -173,7 +217,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeployExpanded
+Parameter Sets: DeployExpanded, DeployViaJsonFilePath, DeployViaJsonString
 Aliases:
 
 Required: False

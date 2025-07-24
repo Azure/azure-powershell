@@ -35,7 +35,7 @@ function New-AzNetworkCloudL3NetworkAttachmentConfigurationObject {
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
         [string]
         $IpamEnabled,
-        [Parameter(HelpMessage="The resource ID of the network that is being configured for attachment.")]
+        [Parameter(Mandatory, HelpMessage="The resource ID of the network that is being configured for attachment.")]
         [string]
         $NetworkId,
         [Parameter(HelpMessage="The indicator of how this network will be utilized by the Kubernetes cluster.")]

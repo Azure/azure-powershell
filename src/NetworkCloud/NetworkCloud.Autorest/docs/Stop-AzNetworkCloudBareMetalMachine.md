@@ -25,6 +25,20 @@ Stop-AzNetworkCloudBareMetalMachine -InputObject <INetworkCloudIdentity> [-SkipS
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### PowerOffViaJsonFilePath
+```
+Stop-AzNetworkCloudBareMetalMachine -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### PowerOffViaJsonString
+```
+Stop-AzNetworkCloudBareMetalMachine -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Power off the provided bare metal machine.
 
@@ -85,12 +99,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the PowerOff operation
+
+```yaml
+Type: System.String
+Parameter Sets: PowerOffViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the PowerOff operation
+
+```yaml
+Type: System.String
+Parameter Sets: PowerOffViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: PowerOffExpanded
+Parameter Sets: PowerOffExpanded, PowerOffViaJsonFilePath, PowerOffViaJsonString
 Aliases: BareMetalMachineName
 
 Required: True
@@ -136,7 +180,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: PowerOffExpanded
+Parameter Sets: PowerOffExpanded, PowerOffViaJsonFilePath, PowerOffViaJsonString
 Aliases:
 
 Required: True
@@ -151,7 +195,7 @@ The indicator of whether to skip the graceful OS shutdown and power off the bare
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: PowerOffExpanded, PowerOffViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -167,7 +211,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: PowerOffExpanded
+Parameter Sets: PowerOffExpanded, PowerOffViaJsonFilePath, PowerOffViaJsonString
 Aliases:
 
 Required: False

@@ -43,7 +43,7 @@ function New-AzNetworkCloudControlPlaneNodeConfigurationObject {
         [Parameter(Mandatory, HelpMessage="The number of virtual machines that use this configuration.")]
         [long]
         $Count,
-        [Parameter(HelpMessage="The name of the VM SKU supplied during creation.")]
+        [Parameter(Mandatory, HelpMessage="The name of the VM SKU supplied during creation.")]
         [string]
         $VMSkuName
     )

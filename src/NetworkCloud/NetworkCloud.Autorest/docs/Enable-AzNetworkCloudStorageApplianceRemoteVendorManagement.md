@@ -26,6 +26,20 @@ Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -InputObject <INetwo
  [-WhatIf] [<CommonParameters>]
 ```
 
+### EnableViaJsonFilePath
+```
+Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -ResourceGroupName <String>
+ -StorageApplianceName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### EnableViaJsonString
+```
+Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -ResourceGroupName <String>
+ -StorageApplianceName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Enable remote vendor management of the provided storage appliance.
 
@@ -86,6 +100,36 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Enable operation
+
+```yaml
+Type: System.String
+Parameter Sets: EnableViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Enable operation
+
+```yaml
+Type: System.String
+Parameter Sets: EnableViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -122,7 +166,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded
+Parameter Sets: EnableExpanded, EnableViaJsonFilePath, EnableViaJsonString
 Aliases:
 
 Required: True
@@ -137,7 +181,7 @@ The name of the storage appliance.
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded
+Parameter Sets: EnableExpanded, EnableViaJsonFilePath, EnableViaJsonString
 Aliases:
 
 Required: True
@@ -153,7 +197,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded
+Parameter Sets: EnableExpanded, EnableViaJsonFilePath, EnableViaJsonString
 Aliases:
 
 Required: False
@@ -170,7 +214,7 @@ The list of IPv4 subnets (in CIDR format), IPv6 subnets (in CIDR format), or hos
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: EnableExpanded, EnableViaIdentityExpanded
 Aliases:
 
 Required: False
