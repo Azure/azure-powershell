@@ -1,0 +1,199 @@
+{
+  "resourceType": "reservations",
+  "apiVersion": "2024-11-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.purestorageblock"
+  },
+  "commands": [
+    {
+      "name": "Get-AzPureStorageBlockReservationBillingReport",
+      "description": "Provides a summarized report along with actions for resources billed via given reservation",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PureStorage.Block/reservations/{reservationName}/getBillingReport",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.purestorageblock/get-azpurestorageblockreservationbillingreport"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ReservationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Provides a summarized report along with actions for resources billed via given reservation",
+          "parameters": [
+            {
+              "name": "-ReservationName",
+              "value": "[Path.reservationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzPureStorageBlockReservationBillingStatus",
+      "description": "Provides various statistics about resources billed via given reservation.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PureStorage.Block/reservations/{reservationName}/getBillingStatus",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.purestorageblock/get-azpurestorageblockreservationbillingstatus"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ReservationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Provides various statistics about resources billed via given reservation.",
+          "parameters": [
+            {
+              "name": "-ReservationName",
+              "value": "[Path.reservationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzPureStorageBlockReservationResourceLimit",
+      "description": "Limits constraining certain resource properties.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PureStorage.Block/reservations/{reservationName}/getResourceLimits",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.purestorageblock/get-azpurestorageblockreservationresourcelimit"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ReservationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Limits constraining certain resource properties.",
+          "parameters": [
+            {
+              "name": "-ReservationName",
+              "value": "[Path.reservationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzPureStorageBlockReservation",
+      "description": "Get a reservation",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PureStorage.Block/reservations/{reservationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.purestorageblock/get-azpurestorageblockreservation"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a reservation",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.reservationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzPureStorageBlockReservation",
+      "description": "Delete a reservation",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PureStorage.Block/reservations/{reservationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.purestorageblock/remove-azpurestorageblockreservation"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a reservation",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.reservationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
