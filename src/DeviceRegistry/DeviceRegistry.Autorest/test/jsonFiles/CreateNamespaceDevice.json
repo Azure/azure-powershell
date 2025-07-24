@@ -1,0 +1,57 @@
+{
+  "tags": {
+    "sensor": "temperature,humidity"
+  },
+  "location": "eastus2",
+  "extendedLocation": {
+    "name": "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4",
+    "type": "CustomLocation"
+  },
+  "properties": {
+    "enabled": true,
+    "manufacturer": "Contoso",
+    "model": "foo123",
+    "operatingSystem": "Linux",
+    "operatingSystemVersion": "1000",
+    "endpoints": {
+      "outbound": {
+        "assigned": {
+          "myendpoint2": {
+            "address": "https://myendpoint2.westeurope-1.edge.azure.net",
+            "endpointType": "azure-iot-edge"
+          }
+        }
+      },
+      "inbound": {
+        "endpoint1": {
+          "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
+          "endpointType": "Microsoft.IotHub",
+          "authentication": {
+            "method": "Certificate",
+            "x509Credentials": {
+              "certificateSecretName": "mycertificate"
+            }
+          }
+        },
+        "endpoint2": {
+          "address": "https://myendpoint2.westeurope-1.iothub.azure.net",
+          "endpointType": "Microsoft.IotHub",
+          "authentication": {
+            "method": "UsernamePassword",
+            "usernamePasswordCredentials": {
+              "usernameSecretName": "myusername",
+              "passwordSecretName": "mypassword"
+            }
+          }
+        }
+      }
+    },
+    "attributes": {
+      "deviceType": "sensor",
+      "deviceOwner": "dev",
+      "deviceCategory": 4000,
+      "invalid": "foo",
+      "x-ms-iothub-credential-id": ""
+    }
+  }
+}

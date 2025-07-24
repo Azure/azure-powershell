@@ -369,7 +369,7 @@ function setupEnv() {
                 name2 = "test-ns-asset-list2"
             }
             GetViaIdentityNamespace = @{
-                name = "test-ns-asset-get-via-identity"
+                name = "test-ns-asset-get-via-identity-ns"
             }
             Get = @{
                 name = "test-ns-asset-get"
@@ -384,7 +384,7 @@ function setupEnv() {
                 name = "test-ns-asset-delete"
             }
             DeleteViaIdentityNamespace = @{
-                name = "test-ns-asset-delete-via-identity"
+                name = "test-ns-asset-delete-via-identity-ns"
             }
             DeleteViaIdentity = @{
                 name = "test-ns-asset-delete-via-identity"
@@ -469,7 +469,7 @@ function setupEnv() {
                 name2 = "test-ns-dasset-list2"
             }
             GetViaIdentityNamespace = @{
-                name = "test-ns-dasset-get-via-identity"
+                name = "test-ns-dasset-get-via-identity-ns"
             }
             Get = @{
                 name = "test-ns-dasset-get"
@@ -484,7 +484,7 @@ function setupEnv() {
                 name = "test-ns-dasset-delete"
             }
             DeleteViaIdentityNamespace = @{
-                name = "test-ns-dasset-delete-via-identity"
+                name = "test-ns-dasset-delete-via-identity-ns"
             }
             DeleteViaIdentity = @{
                 name = "test-ns-dasset-delete-via-identity"
@@ -529,6 +529,117 @@ function setupEnv() {
             }
             UpdateViaIdentityExpanded = @{
                 name = "test-ns-dasset-update-via-identity-expanded"
+            }
+        }
+    })
+
+    $env.Add("namespaceDeviceTests", @{
+        namespaceName = "adr-namespace"
+        createTests = @{
+            commonProperties = @{
+                enabled = $true
+                manufacturer = "Contoso"
+                model = "foo123"
+                operatingSystem = "Linux"
+                operatingSystemVersion = "1000"
+                outboundEndpointName = "myendpoint2"
+                outboundAddress = "https://myendpoint2.westeurope-1.edge.azure.net"
+                outboundEndpointType = "azure-iot-edge"
+                inboundEndpointName1 = "endpoint1"
+                inboundEndpointName2 = "endpoint2"
+                inboundAddress1 = "https://myendpoint1.westeurope-1.iothub.azure.net"
+                inboundEndpointType1 = "Microsoft.IotHub"
+                inboundAddress2 = "https://myendpoint2.westeurope-1.iothub.azure.net"
+                inboundEndpointType2 = "Microsoft.IotHub"
+                authenticationMethod1 = "Certificate"
+                authenticationMethod2 = "UsernamePassword"
+                certificateSecretName = "mycertificate"
+                usernameSecretName = "myUsernameSecretRef"
+                passwordSecretName = "myPasswordSecretRef"
+            }
+            CreateExpanded = @{
+                name = "test-ns-device-create-expanded"
+            }
+            CreateViaJsonFilePath = @{
+                name = "test-ns-device-create-json-file-path"
+                jsonFilePath = "./jsonFiles/CreateNamespaceDevice.json"
+            }
+            CreateViaJsonString = @{
+                name = "test-ns-device-create-json-string"
+                jsonFilePath = "./jsonFiles/CreateNamespaceDevice.json"
+            }
+        }
+        getTests = @{
+            jsonFilePath = "./jsonFiles/CreateNamespaceDevice.json"
+            List = @{
+                name1 = "test-ns-device-list1"
+                name2 = "test-ns-device-list2"
+            }
+            GetViaIdentityNamespace = @{
+                name = "test-ns-device-get-via-identity-ns"
+            }
+            Get = @{
+                name = "test-ns-device-get"
+            }
+            GetViaIdentity = @{
+                name = "test-ns-device-get-via-identity"
+            }
+        }
+        deleteTests = @{
+            jsonFilePath = "./jsonFiles/CreateNamespaceDevice.json"
+            Delete = @{
+                name = "test-ns-device-delete"
+            }
+            DeleteViaIdentityNamespace = @{
+                name = "test-ns-device-delete-via-identity"
+            }
+            DeleteViaIdentity = @{
+                name = "test-ns-device-delete-via-identity"
+            }
+        }
+        updateTests = @{
+            createJsonFilePath = "./jsonFiles/CreateNamespaceDevice.json"
+            commonPatchConfig = @{
+                operatingSystemVersion = "2000"
+                authenticationMethod1 = "Anonymous"
+            }
+            commonProperties = @{
+                enabled = $true
+                manufacturer = "Contoso"
+                model = "foo123"
+                operatingSystem = "Linux"
+                operatingSystemVersion = "1000"
+                outboundEndpointName = "myendpoint2"
+                outboundAddress = "https://myendpoint2.westeurope-1.edge.azure.net"
+                outboundEndpointType = "azure-iot-edge"
+                inboundEndpointName1 = "endpoint1"
+                inboundEndpointName2 = "endpoint2"
+                inboundAddress1 = "https://myendpoint1.westeurope-1.iothub.azure.net"
+                inboundEndpointType1 = "Microsoft.IotHub"
+                inboundAddress2 = "https://myendpoint2.westeurope-1.iothub.azure.net"
+                inboundEndpointType2 = "Microsoft.IotHub"
+                authenticationMethod1 = "Certificate"
+                authenticationMethod2 = "UsernamePassword"
+                certificateSecretName = "mycertificate"
+                usernameSecretName = "myusername"
+                passwordSecretName = "mypassword"
+            }
+            UpdateExpanded = @{
+                name = "test-ns-device-update"
+            }
+            UpdateViaJsonString = @{
+                name = "test-ns-device-update-via-json-string"
+                updateJsonFilePath = "./jsonFiles/UpdateNamespaceDevice.json"
+            }
+            UpdateViaJsonFilePath = @{
+                name = "test-ns-device-update-via-json-file-path"
+                updateJsonFilePath = "./jsonFiles/UpdateNamespaceDevice.json"
+            }
+            UpdateViaIdentityNamespaceExpanded = @{
+                name = "test-ns-device-update-via-identity-ns-expanded"
+            }
+            UpdateViaIdentityExpanded = @{
+                name = "test-ns-device-update-via-identity-expanded"
             }
         }
     })
