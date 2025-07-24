@@ -14,12 +14,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
     /// <remarks>
     /// [OpenAPI] Post=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default/controlSessionHostProvisioning"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzWvdControlSessionHostProvisioning_Post", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzWvdCancelSessionHostProvisioning_PostViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Description(@"Control provisioning of a hostpool.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default/controlSessionHostProvisioning", ApiVersion = "2025-03-01-preview")]
-    public partial class InvokeAzWvdControlSessionHostProvisioning_Post : global::System.Management.Automation.PSCmdlet,
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.NotSuggestDefaultParameterSet]
+    public partial class InvokeAzWvdCancelSessionHostProvisioning_PostViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IContext
     {
@@ -40,14 +41,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
+        public global::System.String _jsonString;
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -92,20 +86,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Path)]
         public string HostPoolName { get => this._hostPoolName; set => this._hostPoolName = value; }
 
-        /// <summary>Backing field for <see cref="HostPoolProvisioningControlParameter" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolProvisioningControlParameter _hostPoolProvisioningControlParameter;
-
-        /// <summary>Represents properties for a hostpool provisioning control request.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Represents properties for a hostpool provisioning control request.", ValueFromPipeline = true)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"Represents properties for a hostpool provisioning control request.",
-        SerializedName = @"hostPoolProvisioningControlParameter",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolProvisioningControlParameter) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolProvisioningControlParameter HostPoolProvisioningControlParameter { get => this._hostPoolProvisioningControlParameter; set => this._hostPoolProvisioningControlParameter = value; }
-
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
         [global::System.Management.Automation.ValidateNotNull]
@@ -120,6 +100,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
+
+        /// <summary>Backing field for <see cref="JsonFilePath" /> property.</summary>
+        private string _jsonFilePath;
+
+        /// <summary>Path of Json file supplied to the Post operation</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Path of Json file supplied to the Post operation")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"Path of Json file supplied to the Post operation",
+        SerializedName = @"JsonFilePath",
+        PossibleTypes = new [] { typeof(string) })]
+        public string JsonFilePath { get => this._jsonFilePath; set { if (!System.IO.File.Exists(value)) { throw new Exception("Cannot find File " + value); } this._jsonString = System.IO.File.ReadAllText(value); this._jsonFilePath = value; } }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -239,10 +232,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         }
 
         /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
-        /// <returns>a duplicate instance of InvokeAzWvdControlSessionHostProvisioning_Post</returns>
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets.InvokeAzWvdControlSessionHostProvisioning_Post Clone()
+        /// <returns>
+        /// a duplicate instance of InvokeAzWvdCancelSessionHostProvisioning_PostViaJsonFilePath
+        /// </returns>
+        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets.InvokeAzWvdCancelSessionHostProvisioning_PostViaJsonFilePath Clone()
         {
-            var clone = new InvokeAzWvdControlSessionHostProvisioning_Post();
+            var clone = new InvokeAzWvdCancelSessionHostProvisioning_PostViaJsonFilePath();
             clone.__correlationId = this.__correlationId;
             clone.__processRecordId = this.__processRecordId;
             clone.DefaultProfile = this.DefaultProfile;
@@ -258,18 +253,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
             clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.HostPoolName = this.HostPoolName;
-            clone.HostPoolProvisioningControlParameter = this.HostPoolProvisioningControlParameter;
+            clone.JsonFilePath = this.JsonFilePath;
             return clone;
         }
 
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -291,9 +281,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InvokeAzWvdControlSessionHostProvisioning_Post" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="InvokeAzWvdCancelSessionHostProvisioning_PostViaJsonFilePath" /> cmdlet class.
         /// </summary>
-        public InvokeAzWvdControlSessionHostProvisioning_Post()
+        public InvokeAzWvdCancelSessionHostProvisioning_PostViaJsonFilePath()
         {
 
         }
@@ -483,7 +473,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ControlSessionHostProvisioningPost(SubscriptionId, ResourceGroupName, HostPoolName, HostPoolProvisioningControlParameter, onOk, onDefault, this, Pipeline);
+                    await this.Client.ControlSessionHostProvisioningPostViaJsonString(SubscriptionId, ResourceGroupName, HostPoolName, _jsonString, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.UndeclaredResponseException urexception)
