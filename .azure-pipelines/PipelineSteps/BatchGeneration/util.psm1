@@ -1,18 +1,41 @@
-function Get-AutorestV4ModuleMap {
+function Get-BatchGenerationModuleMap {
     param (
         [string]$srcPath
     )
-    
+    $skippedModules = $env:SKIPPED_MODULES -split ',' | ForEach-Object { $_.Trim() }
+    $selectedTargetModules = @{}
+    if ($env:SELECTED_TARGET_MODULES -ne "none") {
+        $env:SELECTED_TARGET_MODULES -split ',' | ForEach-Object {
+            $key = $_.Trim()
+            if ($key -ne '') {
+                $selectedTargetModules[$key] = $true
+            }
+        }
+    }
     $result = @{}
+    $modules = Get-ChildItem -Path $srcPath -Directory
 
-    Get-ChildItem -Path $srcPath -Directory | ForEach-Object {
-        $module = $_
+    foreach($module in $modules) {
+        if ($skippedModules -contains $module.Name) {
+            Write-Warning "Skipping module: $($module.Name) as it is in the skipped modules list."
+            continue
+        }
 
-        Get-ChildItem -Path $module.FullName -Directory | Where-Object { 
+        if ($selectedTargetModules.Count -gt 0 -and -not $selectedTargetModules.ContainsKey($module.Name)) {
+            Write-Warning "Skipping module: $($module.Name) as it is not in the selected target modules list."
+            continue
+        }
+
+        $subModules = Get-ChildItem -Path $module.FullName -Directory | Where-Object { 
             $_.Name -like '*.autorest'
-        } | ForEach-Object {
-            $subModule = $_
-            
+        }
+        foreach ($subModule in $subModules) {
+            $tspPath = Join-Path $subModule.FullName 'tsp-location.yaml'
+            if (Test-Path $tspPath){
+                Write-Warning "tsp-location.yaml found in $($subModule.FullName), skipping."
+                continue
+            }
+                       
             $readmePath = Join-Path $subModule.FullName 'README.md'
 
             if (Test-Path $readmePath) {
@@ -66,9 +89,7 @@ function Write-Matrix {
         [string]$RepoRoot
     )
 
-    Write-Host "$VariableName module groups: $($GroupedModules.Count)"
-    $GroupedModules | ForEach-Object { $_ -join ', ' } | ForEach-Object { Write-Host $_ }
-
+    Write-Host "##[group]$VariableName module groups: $($GroupedModules.Count)"
     $targets = @{}
     $MatrixStr = ""
     $index = 0
@@ -76,8 +97,11 @@ function Write-Matrix {
         $key = ($index + 1).ToString() + "-" + $modules.Count
         $MatrixStr = "$MatrixStr,'$key':{'MatrixKey':'$key'}"
         $targets[$key] = $modules
+        $moduleNamesStr = $modules -join ', '
+        Write-Host "$key : $moduleNamesStr"
         $index++
     }
+    Write-Host "##[endgroup]"
 
     if ($MatrixStr -and $MatrixStr.Length -gt 1) {
         $MatrixStr = $MatrixStr.Substring(1)
@@ -91,6 +115,7 @@ function Write-Matrix {
     }
     $targetsOutputFile = Join-Path $targetsOutputDir "$VariableName.json"
     $targets | ConvertTo-Json -Depth 5 | Out-File -FilePath $targetsOutputFile -Encoding utf8
+    Write-Host
 }
 
 function Get-Targets {

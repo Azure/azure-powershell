@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update the outputs of breaking change announcements.
+
+## Version 2.1.1
 * Added breaking change announcement for below commands.
   - `Get-AzRelayNamespace`
   - `Get-AzRelayNamespaceNetworkRuleSet`

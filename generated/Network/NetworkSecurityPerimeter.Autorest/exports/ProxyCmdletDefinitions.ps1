@@ -2017,9 +2017,9 @@ end {
 
 <#
 .Synopsis
-create a network access rule.
+Create a network access rule.
 .Description
-create a network access rule.
+Create a network access rule.
 .Example
 New-AzNetworkSecurityPerimeterAccessRule -Name access-rule-test-1 -ProfileName profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -AddressPrefix '10.10.0.0/16' -Direction 'Inbound'
 .Example
@@ -2422,9 +2422,9 @@ end {
 
 <#
 .Synopsis
-create a NSP resource association.
+Create a NSP resource association.
 .Description
-create a NSP resource association.
+Create a NSP resource association.
 .Example
 $profileId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers/Microsoft.Network/networkSecurityPerimeters/nsp-test-1/profiles/profile-test-1'
 $privateLinkResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-2/providers/Microsoft.Sql/servers/sql-server-test-1'
@@ -2745,9 +2745,9 @@ end {
 
 <#
 .Synopsis
-create NSP link resource.
+Create NSP link resource.
 .Description
-create NSP link resource.
+Create NSP link resource.
 .Example
 $remotePerimeterId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers/Microsoft.Network/networkSecurityPerimeters/test-nsp-2"
 New-AzNetworkSecurityPerimeterLink -Name link-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName test-nsp-1 -AutoApprovedRemotePerimeterResourceId $remotePerimeterId  -LocalInboundProfile @('*') -RemoteInboundProfile @('*')
@@ -3071,9 +3071,9 @@ end {
 
 <#
 .Synopsis
-create NSP logging configuration.
+Create NSP logging configuration.
 .Description
-create NSP logging configuration.
+Create NSP logging configuration.
 .Example
 New-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -EnabledLogCategory @('NspPublicOutboundPerimeterRulesAllowed')
 
@@ -3376,9 +3376,9 @@ end {
 
 <#
 .Synopsis
-create a network profile.
+Create a network profile.
 .Description
-create a network profile.
+Create a network profile.
 .Example
 New-AzNetworkSecurityPerimeterProfile -Name profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 
@@ -3655,9 +3655,9 @@ end {
 
 <#
 .Synopsis
-create a Network Security Perimeter.
+Create a Network Security Perimeter.
 .Description
-create a Network Security Perimeter.
+Create a Network Security Perimeter.
 .Example
 New-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1 -Location eastus2euap
 

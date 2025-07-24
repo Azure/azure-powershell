@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.TrafficRouting
                     {
                         CmdletHelpers.SetObjectProperty(rampUpRule, item.Key, item.Value);
                     }
-                    //Check for Rule existance with the given name.
+                    //Check for Rule existence with the given name.
                     var givenRampUpRuleObj = siteConfig.Experiments.RampUpRules.FirstOrDefault(item => item.Name == rampUpRule.Name);
                     if (givenRampUpRuleObj != null)
                     {

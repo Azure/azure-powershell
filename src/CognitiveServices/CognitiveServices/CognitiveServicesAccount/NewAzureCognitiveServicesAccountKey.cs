@@ -23,7 +23,7 @@ using CognitiveServicesModels = Microsoft.Azure.Management.CognitiveServices.Mod
 namespace Microsoft.Azure.Commands.Management.CognitiveServices
 {
     /// <summary>
-    /// Regnerate Cognitive Services Account Key (Key1 or Key2)
+    /// Regenerate Cognitive Services Account Key (Key1 or Key2)
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccountKey", SupportsShouldProcess = true), OutputType(typeof(CognitiveServicesModels.ApiKeys))]
     public class NewAzureCognitiveServicesAccountKeyCommand : CognitiveServicesAccountBaseCmdlet

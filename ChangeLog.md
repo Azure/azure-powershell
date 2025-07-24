@@ -1,3 +1,61 @@
+## 14.2.0 - July 2025
+#### Az.Accounts 5.1.1
+* Updated the date in the message about multi-factor authentication (MFA). For more details, see https://go.microsoft.com/fwlink/?linkid=2276971
+
+#### Az.CosmosDB 1.18.1
+* Fixed incorrect help documents for MongoDB cmdlets.
+
+#### Az.DataFactory 1.19.4
+* Added support for Databricks Job Activity.
+* Added more support for QuickBooks connection properties.
+
+#### Az.ElasticSan 1.4.1
+* Added warning message for data integrity checking when create/update a volume group.
+    - 'New-AzElasticSanVolumeGroup'
+    - 'Update-AzElasticSanVolumeGroup'
+
+#### Az.ManagedServices 3.1.1
+* Added breaking change announcement for below commands from array or single object to list.
+    - 'Get-AzManagedServicesAssignment'
+    - 'Get-AzManagedServicesDefinition'
+    - 'Get-AzManagedServicesMarketplaceDefinition'
+    - 'New-AzManagedServicesAssignment'
+    - 'New-AzManagedServicesAuthorizationObject'
+    - 'New-AzManagedServicesDefinition'
+    - 'New-AzManagedServicesEligibleApproverObject'
+    - 'New-AzManagedServicesEligibleAuthorizationObject' 
+
+#### Az.Network 7.18.0
+* Added a new command which creates an object for CaptureSetting, and added properties 'FileCount', 'FileSizeInBytes', and 'SessionTimeLimitInSeconds', which helps to configure the capture setting for packet capture as well as support for it for the following cmdlets:
+	- 'New-AzPacketCaptureSettingsConfig'
+* Added properties 'ContinuousCapture', 'LocalPath', and 'CaptureSetting' reference in Packet capture V2 command, as well as support for it for the following cmdlets:
+    - 'New-AzNetworkWatcherPacketCaptureV2'
+* Onboarded Application Gateway WAF Exceptions cmdlet.
+    - 'New-AzApplicationGatewayFirewallPolicyException' 
+
+#### Az.Relay 2.1.1
+* Added breaking change announcement for below commands.
+  - 'Get-AzRelayNamespace'
+  - 'Get-AzRelayNamespaceNetworkRuleSet'
+  - 'Set-AzRelayNamespaceNetworkRuleSet'
+
+#### Az.Resources 8.0.1
+* Fixed empty warning output issue for cmdlet 'Test-AzResourceGroupDeployment' [#27888]
+
+#### Az.Storage 9.1.0
+* Supported set SasExpirationAction as Log or Block, together with SasExpirationPeriod
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+* Supported Storage task assignment
+    - 'New-AzStorageTaskAssignment'
+    - 'Update-AzStorageTaskAssignment'
+    - 'Get-AzStorageTaskAssignment'
+    - 'Remove-AzStorageTaskAssignment'
+    - 'Get-AzStorageTaskAssignmentinstancesReport'
+
+#### Az.StorageAction 1.0.0
+* General availability for module Az.StorageAction
+
 ## 14.1.0 - June 2025
 #### Az.Accounts 5.0.2
 * Upgrade Azure.Core to 1.45.0

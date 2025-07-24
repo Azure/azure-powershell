@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added parameter `Location` to allow users to specify a different node type location than the resource group location in cmdlet `Add-AzServiceFabricNodeType`.
+* Added parameter `VmSize` to allow for in-place sku swap for cmdlet `Set-AzServiceFabricManagedNodeType`.
+* Updated SFMC to latest api preview version `2025-03-01-preview`
 
 ## Version 3.5.0
 * Upgraded nuget package to signed package.

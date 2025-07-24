@@ -670,7 +670,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <summary>
         /// Creates an AzureSqlElasticJobStepOutputModel from a JobStep model
         /// </summary>
-        /// <param name="model">The JobStep model repsonse</param>
+        /// <param name="model">The JobStep model response</param>
         /// <returns>An AzureSqlElasticJobStepOutputModel</returns>
         private static AzureSqlElasticJobStepOutputModel CreateJobStepOutputModel(JobStep model)
         {

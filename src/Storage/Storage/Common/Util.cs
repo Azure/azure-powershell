@@ -253,7 +253,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Used in DMlib ShouldOverwriteCallback, to convert object to blob/file/localpath, and return path
         /// </summary>
-        /// <param name="instance">object instace</param>
+        /// <param name="instance">object instance</param>
         /// <returns>path of the object</returns>
         public static string ConvertToString(this object instance)
         {
@@ -380,7 +380,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// Get the Blob Type of the Track2 Blob client type
         /// </summary>
         /// <param name="blob"></param>
-        /// <param name="CheckOnServer"> If Track2 blob Client don't contain blob type inforamtion, try to get it on server</param>
+        /// <param name="CheckOnServer"> If Track2 blob Client don't contain blob type information, try to get it on server</param>
         public static global::Azure.Storage.Blobs.Models.BlobType? GetBlobType(BlobBaseClient blob, bool CheckOnServer = false)
         {
             if (blob is BlockBlobClient)
@@ -541,7 +541,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <param name="userDelegationKeyEndTime"></param>
         public static void ValidateUserDelegationKeyStartEndTime(DateTimeOffset userDelegationKeyStartTime, DateTimeOffset userDelegationKeyEndTime)
         {
-            //Check the Expire Time and Start Time, should remove this if server can rerturn clear error message
+            //Check the Expire Time and Start Time, should remove this if server can return clear error message
             const double MAX_LIFE_TIME_DAYS = 7;
             TimeSpan maxLifeTime = TimeSpan.FromDays(MAX_LIFE_TIME_DAYS);
             if (userDelegationKeyEndTime <= DateTimeOffset.UtcNow)
