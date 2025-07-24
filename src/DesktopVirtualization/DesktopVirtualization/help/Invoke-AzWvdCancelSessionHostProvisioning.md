@@ -1,11 +1,11 @@
 ---
-external help file:
+external help file: Az.DesktopVirtualization-help.xml
 Module Name: Az.DesktopVirtualization
-online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/invoke-azwvdcontrolsessionhostprovisioning
+online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/invoke-azwvdcancelsessionhostprovisioning
 schema: 2.0.0
 ---
 
-# Invoke-AzWvdControlSessionHostProvisioning
+# Invoke-AzWvdCancelSessionHostProvisioning
 
 ## SYNOPSIS
 Control provisioning of a hostpool.
@@ -14,44 +14,30 @@ Control provisioning of a hostpool.
 
 ### PostExpanded (Default)
 ```
-Invoke-AzWvdControlSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
+Invoke-AzWvdCancelSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Post
-```
-Invoke-AzWvdControlSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
- -HostPoolProvisioningControlParameter <IHostPoolProvisioningControlParameter> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PostViaIdentity
-```
-Invoke-AzWvdControlSessionHostProvisioning -InputObject <IDesktopVirtualizationIdentity>
- -HostPoolProvisioningControlParameter <IHostPoolProvisioningControlParameter> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PostViaIdentityExpanded
-```
-Invoke-AzWvdControlSessionHostProvisioning -InputObject <IDesktopVirtualizationIdentity>
- [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### PostViaJsonFilePath
-```
-Invoke-AzWvdControlSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PostViaJsonString
 ```
-Invoke-AzWvdControlSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzWvdCancelSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PostViaJsonFilePath
+```
+Invoke-AzWvdCancelSessionHostProvisioning -HostPoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PostViaIdentityExpanded
+```
+Invoke-AzWvdCancelSessionHostProvisioning -InputObject <IDesktopVirtualizationIdentity>
+ [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,15 +45,15 @@ Control provisioning of a hostpool.
 
 ## EXAMPLES
 
-### Example 1: Controls a SessionHostProvisioning Operation on a HostPool
+### Example 1: Cancels a SessionHostProvisioning Operation on a HostPool
 ```powershell
-Invoke-AzWvdControlSessionHostProvisioning -HostPoolName HostPoolName `
+Invoke-AzWvdCancelSessionHostProvisioning -HostPoolName HostPoolName `
                             -ResourceGroupName resourceGroupName `
                             -SubscriptionId subscriptionId `
                             -CancelMessage cancelMessage
 ```
 
-This command controls an ongoing sessionHostProvisioning operation on the given hostpool.
+This command cancels an ongoing sessionHostProvisioning operation on the given hostpool.
 
 ## PARAMETERS
 
@@ -122,7 +108,7 @@ The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: Post, PostExpanded, PostViaJsonFilePath, PostViaJsonString
+Parameter Sets: PostExpanded, PostViaJsonString, PostViaJsonFilePath
 Aliases:
 
 Required: True
@@ -132,27 +118,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HostPoolProvisioningControlParameter
-Represents properties for a hostpool provisioning control request.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolProvisioningControlParameter
-Parameter Sets: Post, PostViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: PostViaIdentity, PostViaIdentityExpanded
+Parameter Sets: PostViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -228,7 +199,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Post, PostExpanded, PostViaJsonFilePath, PostViaJsonString
+Parameter Sets: PostExpanded, PostViaJsonString, PostViaJsonFilePath
 Aliases:
 
 Required: True
@@ -244,7 +215,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Post, PostExpanded, PostViaJsonFilePath, PostViaJsonString
+Parameter Sets: PostExpanded, PostViaJsonString, PostViaJsonFilePath
 Aliases:
 
 Required: False
@@ -292,8 +263,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolProvisioningControlParameter
-
 ## OUTPUTS
 
 ### System.Boolean
@@ -301,4 +270,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -86,7 +86,7 @@ Get a workspace.
 ### [Import-AzWvdAppAttachPackageInfo](Import-AzWvdAppAttachPackageInfo.md)
 Gets information from a package given the path to the package.
 
-### [Invoke-AzWvdControlSessionHostProvisioning](Invoke-AzWvdControlSessionHostProvisioning.md)
+### [Invoke-AzWvdCancelSessionHostProvisioning](Invoke-AzWvdCancelSessionHostProvisioning.md)
 Control provisioning of a hostpool.
 
 ### [Invoke-AzWvdControlSessionHostUpdate](Invoke-AzWvdControlSessionHostUpdate.md)
