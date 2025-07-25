@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Compute
             // Add retry logic due to CRP service restart known issue CRP bug: 3564713
             // Similar approach taken in DSC cmdlet as well
             var count = 1;
-            Rest.Azure.AzureOperationResponse<VirtualMachineExtension> op = null;
+            Rest.Azure.AzureOperationResponse<VirtualMachineExtension, VirtualMachineExtensionsCreateOrUpdateHeaders> op = null;
             while (count <= 2)
             {
                 try

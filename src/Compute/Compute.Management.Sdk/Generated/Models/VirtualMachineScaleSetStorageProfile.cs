@@ -49,6 +49,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// information about disks, see [About disks and VHDs for Azure
         /// virtual
         /// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).</param>
+        /// <param name="diskControllerType">Specifies the disk controller type
+        /// configured for the virtual machines in the scale set. Minimum
+        /// api-version: 2022-08-01. Possible values include: 'SCSI',
+        /// 'NVMe'</param>
         public VirtualMachineScaleSetStorageProfile(ImageReference imageReference = default(ImageReference), VirtualMachineScaleSetOSDisk osDisk = default(VirtualMachineScaleSetOSDisk), IList<VirtualMachineScaleSetDataDisk> dataDisks = default(IList<VirtualMachineScaleSetDataDisk>), string diskControllerType = default(string))
         {
             ImageReference = imageReference;
@@ -93,6 +97,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         public IList<VirtualMachineScaleSetDataDisk> DataDisks { get; set; }
 
         /// <summary>
+        /// Gets or sets specifies the disk controller type configured for the
+        /// virtual machines in the scale set. Minimum api-version: 2022-08-01.
+        /// Possible values include: 'SCSI', 'NVMe'
         /// </summary>
         [JsonProperty(PropertyName = "diskControllerType")]
         public string DiskControllerType { get; set; }
