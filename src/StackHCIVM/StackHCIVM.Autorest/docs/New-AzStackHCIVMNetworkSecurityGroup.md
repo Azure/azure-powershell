@@ -38,27 +38,14 @@ Create a network security group in the specified resource group.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a Network Security Group
 ```powershell
-{{ Add code here }}
+
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
 ```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+New-AzStackHCIVMNetworkSecurityGroup -Name "testnsg" -ResourceGroupName "test-rg" -Location "eastus"  -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/
+ ```
 
 ## PARAMETERS
 

@@ -56,27 +56,14 @@ Create a security rule in the specified resource group.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a Network Security Rule
 ```powershell
-{{ Add code here }}
+
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
 ```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+New-AzStackHCIVMSecurityRule -Name "testnsgrule" -NetworkSecurityGroupName "testnsg"-ResourceGroupName "test-rg"
+ ```
 
 ## PARAMETERS
 
