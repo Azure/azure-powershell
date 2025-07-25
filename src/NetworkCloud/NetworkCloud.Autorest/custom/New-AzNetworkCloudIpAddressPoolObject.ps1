@@ -29,7 +29,7 @@ function New-AzNetworkCloudIpAddressPoolObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IpAddressPool')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
-
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.ParameterBreakingChange("Address", "15.0.0", "2.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Parameter(Mandatory, HelpMessage="The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses. For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes.")]
         [string[]]
         $Address,

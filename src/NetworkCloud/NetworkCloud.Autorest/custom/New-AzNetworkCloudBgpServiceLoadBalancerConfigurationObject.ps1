@@ -31,16 +31,19 @@ function New-AzNetworkCloudBgpServiceLoadBalancerConfigurationObject {
     Param(
 
         [Parameter(HelpMessage="The association of IP address pools to the communities and peers, allowing for announcement of IPs.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.ParameterBreakingChange("BgpAdvertisement", "15.0.0", "2.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBgpAdvertisement[]]
         $BgpAdvertisement,
         [Parameter(HelpMessage="The list of additional BgpPeer entities that the Kubernetes cluster will peer with. All peering must be explicitly defined.")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IServiceLoadBalancerBgpPeer[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.ParameterBreakingChange("BgpPeer", "15.0.0", "2.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         $BgpPeer,
         [Parameter(HelpMessage="The indicator to specify if the load balancer peers with the network fabric.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.FabricPeeringEnabled])]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.FabricPeeringEnabled]
         $FabricPeeringEnabled,
         [Parameter(HelpMessage="The list of pools of IP addresses that can be allocated to load balancer services.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.ParameterBreakingChange("IPAddressPool", "15.0.0", "2.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IIPAddressPool[]]
         $IPAddressPool
     )
