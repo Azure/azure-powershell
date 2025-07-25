@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Upgraded SpotPlacementScore cmdlets to api version 2025-06-05
 
 ## Version 10.1.0
 * Support for Metadata Security Protocol (MSP) support for Gallery
