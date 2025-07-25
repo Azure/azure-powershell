@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.MsSqlServerProvider
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsprovidersqlserverinstanceobject
 #>
 function New-AzWorkloadsProviderSqlServerInstanceObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.MsSqlServerProviderInstanceProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
@@ -84,7 +85,6 @@ function New-AzWorkloadsProviderSqlServerInstanceObject {
         if ($PSBoundParameters.ContainsKey('SslPreference')) {
             $Object.SslPreference = $SslPreference
         }
-        $Object.ProviderType = 'MsSqlServer'
         return $Object
     }
 }

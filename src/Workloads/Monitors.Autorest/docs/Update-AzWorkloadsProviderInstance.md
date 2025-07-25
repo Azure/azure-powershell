@@ -20,32 +20,11 @@ Update-AzWorkloadsProviderInstance -MonitorName <String> -Name <String> -Resourc
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzWorkloadsProviderInstance -MonitorName <String> -Name <String> -ResourceGroupName <String>
- -ProviderInstanceParameter <IProviderInstance> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzWorkloadsProviderInstance -InputObject <IMonitorsIdentity>
- -ProviderInstanceParameter <IProviderInstance> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzWorkloadsProviderInstance -InputObject <IMonitorsIdentity> [-EnableSystemAssignedIdentity <Boolean?>]
  [-ProviderSetting <IProviderSpecificProperties>] [-UserAssignedIdentity <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityMonitor
-```
-Update-AzWorkloadsProviderInstance -MonitorInputObject <IMonitorsIdentity> -Name <String>
- -ProviderInstanceParameter <IProviderInstance> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityMonitorExpanded
@@ -121,7 +100,7 @@ Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityMonitorExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -136,7 +115,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -151,7 +130,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
-Parameter Sets: UpdateViaIdentityMonitor, UpdateViaIdentityMonitorExpanded
+Parameter Sets: UpdateViaIdentityMonitorExpanded
 Aliases:
 
 Required: True
@@ -166,7 +145,7 @@ Name of the SAP monitor resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -181,7 +160,7 @@ Name of the provider instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityMonitor, UpdateViaIdentityMonitorExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMonitorExpanded
 Aliases: ProviderInstanceName
 
 Required: True
@@ -206,27 +185,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProviderInstanceParameter
-A provider instance associated with SAP monitor.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IProviderInstance
-Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityMonitor
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ProviderSetting
 Defines the provider specific properties.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IProviderSpecificProperties
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityMonitorExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -242,7 +206,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -257,7 +221,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -273,7 +237,7 @@ The elements in array will be ARM resource ids in the form: '/subscriptions/{sub
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityMonitorExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -320,8 +284,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IProviderInstance
 
 ## OUTPUTS
 

@@ -42,13 +42,6 @@ New-AzWorkloadsProviderInstance -Name <String> -MonitorInputObject <IMonitorsIde
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaIdentityMonitor
-```
-New-AzWorkloadsProviderInstance -Name <String> -MonitorInputObject <IMonitorsIdentity>
- -ProviderInstanceParameter <IProviderInstance> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Create a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
 
@@ -166,7 +159,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
-Parameter Sets: CreateViaIdentityMonitorExpanded, CreateViaIdentityMonitor
+Parameter Sets: CreateViaIdentityMonitorExpanded
 Aliases:
 
 Required: True
@@ -218,21 +211,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProviderInstanceParameter
-A provider instance associated with SAP monitor.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IProviderInstance
-Parameter Sets: CreateViaIdentityMonitor
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -335,8 +313,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IProviderInstance
 
 ## OUTPUTS
 

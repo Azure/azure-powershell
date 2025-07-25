@@ -23,9 +23,10 @@ Create an in-memory object for PrometheusHaClusterProviderInstanceProperties.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.PrometheusHaClusterProviderInstanceProperties
 .Link
-https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderprometheushaclusterinstanceobject
+https://learn.microsoft.com/powershell/module/Az.Workloads/new-azworkloadsproviderprometheushaclusterinstanceobject
 #>
 function New-AzWorkloadsProviderPrometheusHaClusterInstanceObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.PrometheusHaClusterProviderInstanceProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
@@ -69,12 +70,9 @@ function New-AzWorkloadsProviderPrometheusHaClusterInstanceObject {
         if ($PSBoundParameters.ContainsKey('SslCertificateUri')) {
             $Object.SslCertificateUri = $SslCertificateUri
         }
-
         if ($PSBoundParameters.ContainsKey('SslPreference')) {
             $Object.SslPreference = $SslPreference
         }
-
-        $Object.ProviderType = 'PrometheusHaCluster'
         return $Object
     }
 }

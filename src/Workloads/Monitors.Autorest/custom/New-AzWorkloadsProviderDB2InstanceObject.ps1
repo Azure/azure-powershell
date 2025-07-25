@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.DB2ProviderInstance
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderdb2instanceobject
 #>
 function New-AzWorkloadsProviderDB2InstanceObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.DB2ProviderInstanceProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
@@ -90,8 +91,6 @@ function New-AzWorkloadsProviderDB2InstanceObject {
         if ($PSBoundParameters.ContainsKey('SslPreference')) {
             $Object.SslPreference = $SslPreference
         }
-
-        $Object.ProviderType = 'Db2'
         return $Object
     }
 }

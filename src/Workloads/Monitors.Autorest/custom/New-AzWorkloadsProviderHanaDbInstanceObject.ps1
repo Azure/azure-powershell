@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.HanaDbProviderInsta
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderhanadbinstanceobject
 #>
 function New-AzWorkloadsProviderHanaDbInstanceObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.HanaDbProviderInstanceProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
@@ -102,7 +103,6 @@ function New-AzWorkloadsProviderHanaDbInstanceObject {
         if ($PSBoundParameters.ContainsKey('SslPreference')) {
             $Object.SslPreference = $SslPreference
         }
-        $Object.ProviderType = 'SapHana'
         return $Object
     }
 }

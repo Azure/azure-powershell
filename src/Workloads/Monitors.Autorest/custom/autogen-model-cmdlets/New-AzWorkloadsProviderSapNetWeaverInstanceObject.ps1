@@ -23,9 +23,10 @@ Create an in-memory object for SapNetWeaverProviderInstanceProperties.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.SapNetWeaverProviderInstanceProperties
 .Link
-https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsprovidersapnetweaverinstanceobject
+https://learn.microsoft.com/powershell/module/Az.Workloads/new-azworkloadsprovidersapnetweaverinstanceobject
 #>
 function New-AzWorkloadsProviderSapNetWeaverInstanceObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.SapNetWeaverProviderInstanceProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
@@ -102,7 +103,6 @@ function New-AzWorkloadsProviderSapNetWeaverInstanceObject {
         if ($PSBoundParameters.ContainsKey('SslPreference')) {
             $Object.SslPreference = $SslPreference
         }
-        $Object.ProviderType = 'SapNetWeaver'
         return $Object
     }
 }

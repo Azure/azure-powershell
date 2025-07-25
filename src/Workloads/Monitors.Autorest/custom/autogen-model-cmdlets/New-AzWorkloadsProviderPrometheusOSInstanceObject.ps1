@@ -23,9 +23,10 @@ Create an in-memory object for PrometheusOSProviderInstanceProperties.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.PrometheusOSProviderInstanceProperties
 .Link
-https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderprometheusosinstanceobject
+https://learn.microsoft.com/powershell/module/Az.Workloads/new-azworkloadsproviderprometheusosinstanceobject
 #>
 function New-AzWorkloadsProviderPrometheusOSInstanceObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.PrometheusOSProviderInstanceProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
@@ -60,7 +61,6 @@ function New-AzWorkloadsProviderPrometheusOSInstanceObject {
         if ($PSBoundParameters.ContainsKey('SslPreference')) {
             $Object.SslPreference = $SslPreference
         }
-        $Object.ProviderType = 'PrometheusOS'
         return $Object
     }
 }
