@@ -751,6 +751,88 @@ function setupEnv() {
         }
     })
 
+    $env.Add("schemaRegistryTests", @{
+        createTests = @{
+            commonProperties = @{
+                displayName = "Schema Registry namespace 001"
+                description = "This is a sample Schema Registry"
+                storageAccountContainerUrl = "https://mystorageacc.blob.core.windows.net/mycontainer"
+            }
+            CreateExpanded = @{
+                name = "test-sr-create-expanded"
+                namespace = "sr-namespace-001"
+            }
+            CreateViaJsonFilePath = @{
+                name = "test-sr-create-json-file-path"
+                jsonFilePath = "./jsonFiles/CreateSchemaRegistry.json"
+                namespace = "sr-namespace-002"
+            }
+            CreateViaJsonString = @{
+                name = "test-sr-create-json-string"
+                namespace = "sr-namespace-003"
+            }
+        }
+        getTests = @{
+            commonProperties = @{
+                displayName = "Schema Registry namespace 001"
+                description = "This is a sample Schema Registry"
+                storageAccountContainerUrl = "https://mystorageacc.blob.core.windows.net/mycontainer"
+            }
+            List = @{
+                names = @(
+                    "test-sr-list1"
+                    "test-sr-list2"
+                )
+                namespaces = @(
+                    "sr-get-namespace-001"
+                    "sr-get-namespace-002"
+                )
+            }
+            Get = @{
+                name = "test-sr-get"
+                namespace = "sr-get-namespace-003"
+            }
+            GetViaIdentity = @{
+                name = "test-sr-get-via-identity"
+                namespace = "sr-get-namespace-004"
+            }
+        }
+        deleteTests = @{
+            commonProperties = @{
+                displayName = "Schema Registry namespace 001"
+                description = "This is a sample Schema Registry"
+                storageAccountContainerUrl = "https://mystorageacc.blob.core.windows.net/mycontainer"
+            }
+            Delete = @{
+                name = "test-sr-delete"
+                namespace = "sr-delete-ns-001"
+            }
+            DeleteViaIdentity = @{
+                name = "test-sr-delete-via-identity"
+                namespace = "sr-delete-ns-002"
+            }
+        }
+        updateTests = @{
+            commonProperties = @{
+                displayName = "Schema Registry namespace 001"
+                description = "This is a sample Schema Registry"
+                storageAccountContainerUrl = "https://mystorageacc.blob.core.windows.net/mycontainer"
+            }
+            commonPatchConfig = @{
+                displayName = "Updated schema registry display name"
+                description = "Updated schema registry description"
+            }
+            UpdateExpanded = @{
+                name = "test-schema-registry-update"
+                namespace = "sr-update-ns-001"
+            }
+            UpdateViaIdentityExpanded = @{
+                name = "test-schema-registry-update-via-identity-expanded"
+                namespace = "sr-update-ns-002"
+            }
+        }
+    })
+
     # Save the $env to a file
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
