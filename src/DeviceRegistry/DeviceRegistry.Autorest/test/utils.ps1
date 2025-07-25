@@ -833,6 +833,86 @@ function setupEnv() {
         }
     })
 
+    $env.Add("schemaTests", @{
+        schemaRegistryName = "aio-sr-d179cdfcb7"
+        commonProperties = @{
+            displayName = "My schema"
+            description = "This is a sample schema"
+            format = "JsonSchema/draft-07"
+            schemaType = "MessageSchema"
+            tagsKey = "sampleKey"
+            tagsValue = "sampleValue"
+        }
+        createTests = @{
+            CreateExpanded = @{
+                name = "test-schema-create-expanded"
+            }
+            CreateViaJsonFilePath = @{
+                name = "test-schema-create-json-file-path"
+                jsonFilePath = "./jsonFiles/CreateSchema.json"
+            }
+            CreateViaJsonString = @{
+                name = "test-schema-create-json-string"
+                jsonStringFilePath = "./jsonFiles/CreateSchema.json"
+            }
+        }
+        getTests = @{
+            List = @{
+                names = @(
+                    "test-schema-list1"
+                    "test-schema-list2"
+                )
+                jsonFilePath = "./jsonFiles/CreateSchema.json"
+            }
+            Get = @{
+                name = "test-schema-get"
+                jsonFilePath = "./jsonFiles/CreateSchema.json"
+            }
+            GetViaIdentitySchemaRegistry = @{
+                name = "test-schema-get-via-identity-sr"
+                jsonFilePath = "./jsonFiles/CreateSchema.json"
+            }
+            GetViaIdentity = @{
+                name = "test-schema-get-via-identity"
+                jsonFilePath = "./jsonFiles/CreateSchema.json"
+            }
+        }
+        deleteTests = @{
+            Delete = @{
+                name = "test-schema-delete"
+                jsonFilePath = "./jsonFiles/CreateSchema.json"
+            }
+            DeleteViaIdentitySchemaRegistry = @{
+                name = "test-schema-delete-via-identity-sr"
+                jsonFilePath = "./jsonFiles/CreateSchema.json"
+            }
+            DeleteViaIdentity = @{
+                name = "test-schema-delete-via-identity"
+                jsonFilePath = "./jsonFiles/CreateSchema.json"
+            }
+        }
+        updateTests = @{
+            commonPatchConfig = @{
+                displayName = "Updated schema display name"
+                description = "Updated schema description"
+                tagsKey = "updatedKey"
+                tagsValue = "updatedValue"
+            }
+            UpdateExpanded = @{
+                name = "test-schema-update"
+                jsonFilePath = "./jsonFiles/CreateSchema.json"
+            }
+            UpdateViaIdentitySchemaRegistryExpanded = @{
+                name = "test-schema-update-via-identity-sr-expanded"
+                jsonFilePath = "./jsonFiles/CreateSchema.json"
+            }
+            UpdateViaIdentityExpanded = @{
+                name = "test-schema-update-via-identity-expanded"
+                jsonFilePath = "./jsonFiles/CreateSchema.json"
+            }
+        }
+    })
+
     # Save the $env to a file
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
