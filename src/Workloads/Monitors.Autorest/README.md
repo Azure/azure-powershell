@@ -48,54 +48,22 @@ namespace: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors
 inlining-threshold: 100
 
 directive:
+- where:
+    variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
+  remove: true
+
 # Monitor
-- where:
-    verb: New
-    subject: ^Monitor$
-    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
-  remove: true
-
-- where:
-    verb: Update
-    subject: ^Monitor$
-    variant: ^Update$|^UpdateViaIdentity$
-  remove: true
-
-- where:
-    subject: ^Monitor$
-    parameter-name: IdentityUserAssignedIdentity
-  set:
-    parameter-name: UserAssignedIdentity
-
 - where:
     subject: ^Monitor$
     parameter-name: ManagedResourceGroupConfigurationName
   set:
     parameter-name: ManagedResourceGroupName
 
-# ProviderInstance
-- where:
-    verb: New
-    subject: ^ProviderInstance$
-    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
-  remove: true
-
 # SapLandscapeMonitor
-- where:
-    verb: New
-    subject: ^SapLandscapeMonitor$
-    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
-  remove: true
-
 - where:
     verb: Get
     subject: ^SapLandscapeMonitor$
     variant: ^List$
-  remove: true
-- where:
-    verb: Update
-    subject: ^SapLandscapeMonitor$
-    variant: ^Update$|^UpdateViaIdentity$
   remove: true
 
 # Module Table Formatting
@@ -138,18 +106,22 @@ directive:
   - ErrorInnerError
 - model-cmdlet:
   - model-name: SapLandscapeMonitorSidMapping
-    cmdlet-name: New-AzWorkloadsSapLandscapeMonitorSidMappingObject
   - model-name: SapLandscapeMonitorMetricThresholds
-    cmdlet-name: New-AzWorkloadsSapLandscapeMonitorMetricThresholdsObject
+  - model-name: PrometheusHaClusterProviderInstanceProperties
+    cmdlet-name: New-AzWorkloadsProviderPrometheusHaClusterInstanceObject
+  - model-name: PrometheusOSProviderInstanceProperties
+    cmdlet-name: New-AzWorkloadsProviderPrometheusOSInstanceObject
+  - model-name: SapNetWeaverProviderInstanceProperties
+    cmdlet-name: New-AzWorkloadsProviderSapNetWeaverInstanceObject
 
 # remove System Data in module Monitor, ProviderInstance, SapApplicationServerInstance, SapCentralServerInstance, SapDatabaseInstance, SapLandscapeMonitor, SapVirtualInstance
 - from: Monitor.cs
   where: $
-  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData');
+  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISystemData SystemData');
 - from: ProviderInstance.cs
   where: $
-  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData');
+  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISystemData SystemData');
 - from: SapLandscapeMonitor.cs
   where: $
-  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData');
+  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISystemData SystemData');
 ```
