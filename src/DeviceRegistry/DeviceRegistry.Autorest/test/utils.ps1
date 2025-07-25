@@ -329,6 +329,40 @@ function setupEnv() {
                 name = "test-namespace-update-via-identity-expanded"
             }
         }
+        migrateTests = @{
+            commonProperties = @{
+                namespace = "adr-namespace"
+                resourceIdPrefix = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/assets/"
+                targetAddress = "https://myendpoint1.westeurope-1.iothub.azure.net"
+                endpointProfileType = "Microsoft.IotHub"
+            }
+            
+            MigrateExpanded = @{
+                assetEndpointProfileName = "myassetendpointprofile1"
+                assetName = "test-asset1"
+            }
+            Migrate = @{
+                assetEndpointProfileName = "myassetendpointprofile2"
+                assetName = "test-asset2"
+            }
+            MigrateViaIdentity = @{
+                assetEndpointProfileName = "myassetendpointprofile3"
+                assetName = "test-asset3"
+            }
+            MigrateViaIdentityExpanded = @{
+                assetEndpointProfileName = "myassetendpointprofile4"
+                assetName = "test-asset4"
+            }
+            MigrateViaJsonFilePath = @{
+                assetEndpointProfileName = "myassetendpointprofile5"
+                assetName = "test-asset5"
+                jsonFilePath = "./jsonFiles/MoveNamespace.json"
+            }
+            MigrateViaJsonString = @{
+                assetEndpointProfileName = "myassetendpointprofile6"
+                assetName = "test-asset6"
+            }
+        }
     })
 
     $env.Add("namespaceAssetTests", @{
