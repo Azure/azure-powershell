@@ -1,22 +1,5 @@
-### Example 1: {{ Add title here }}
+### Example 1:  Get a Network Security Rule
 ```powershell
-{{ Add code here }}
+Get-AzStackHCIVMSecurityRule -Name 'testnsgrule' -ResourceGroupName 'test-rg' -NetworkSecurityGroupName 'testnsg'
 ```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+This command gets a specific network security rule in the specified resource group. 

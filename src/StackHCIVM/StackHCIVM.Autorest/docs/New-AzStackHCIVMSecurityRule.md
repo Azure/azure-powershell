@@ -62,7 +62,7 @@ Create a security rule in the specified resource group.
 ```
 
 ```powershell
-New-AzStackHCIVMSecurityRule -Name "testnsgrule" -NetworkSecurityGroupName "testnsg"-ResourceGroupName "test-rg"
+New-AzStackHCIVMSecurityRule -Name "testnsgrule" -NetworkSecurityGroupName "testnsg" -ResourceGroupName "test-rg"
  ```
 
 ## PARAMETERS
