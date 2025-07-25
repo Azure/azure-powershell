@@ -26,6 +26,7 @@ https://learn.microsoft.com/powershell/module/az.applicationinsights/update-azap
 #>
 function Update-AzApplicationInsights {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent", "15.0.0", "7.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IPrivateLinkScopedResource", DeprecatedOutputProperties = ("PrivateLinkScopedResource Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IPrivateLinkScopedResource"), NewOutputProperties = ("PrivateLinkScopedResource System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IPrivateLinkScopedResource]"))]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]

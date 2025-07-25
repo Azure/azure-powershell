@@ -18,6 +18,28 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added breaking change announcement for below commands from array or single object to list.
+  * `Get-AzApplicationInsights`
+  * `New-AzApplicationInsights`
+  * `Update-AzApplicationInsights`
+  * `Get-AzApplicationInsightsApiKey`
+  * `New-AzApplicationInsightsApiKey`
+  * `Remove-AzApplicationInsightsApiKey`
+  * `Get-AzApplicationInsightsMyWorkbook`
+  * `New-AzApplicationInsightsMyWorkbook`
+  * `Update-AzApplicationInsightsMyWorkbook`
+  * `Get-AzApplicationInsightsWorkbook`
+  * `New-AzApplicationInsightsWorkbook`
+  * `Update-AzApplicationInsightsWorkbook`
+  * `Get-AzApplicationInsightsWebTest`
+  * `New-AzApplicationInsightsWebTest`
+  * `Update-AzApplicationInsightsWebTest`
+  * `Get-AzApplicationInsightsWorkbookRevision`
+  * `Get-AzApplicationInsightsWorkbookTemplate`
+  * `New-AzApplicationInsightsWorkbookTemplate`
+  * `Update-AzApplicationInsightsWorkbookTemplate`
+  * `Set-AzApplicationInsightsDailyCap`
+  * `Set-AzApplicationInsightsPricingPlan`
 
 ## Version 2.3.0
 * Upgraded nuget package to signed package.

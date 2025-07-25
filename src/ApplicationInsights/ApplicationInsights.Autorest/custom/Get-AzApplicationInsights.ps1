@@ -23,6 +23,7 @@ https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azappli
 #>
 function Get-AzApplicationInsights {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent], [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.PSApplicationInsightsComponentWithPricingPlan])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent", "15.0.0", "7.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IPrivateLinkScopedResource", DeprecatedOutputProperties = ("PrivateLinkScopedResource Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IPrivateLinkScopedResource"), NewOutputProperties = ("PrivateLinkScopedResource System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IPrivateLinkScopedResource]"))]
     [CmdletBinding(DefaultParameterSetName='ListBySubscription', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='Get', Mandatory)]
